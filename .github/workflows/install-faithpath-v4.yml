@@ -1,0 +1,39 @@
+name: Install FaithPath V4
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/install-faithpath-v4.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  install-v4:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout develop/v4
+        uses: actions/checkout@v4
+        with:
+          ref: develop/v4
+          fetch-depth: 0
+
+      - name: Download FaithPath V4
+        run: |
+          curl -L "https://raw.githubusercontent.com/akwasiacheampongma-code/Faithpath-/main/develop/FaithPath-V4-Netlify.zip" -o /tmp/FaithPath-V4-Netlify.zip
+
+      - name: Install V4
+        run: |
+          rm -rf develop
+          unzip -o /tmp/FaithPath-V4-Netlify.zip -d .
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          git diff --cached --quiet || git commit -m "Upload FaithPath V4"
+          git push origin HEAD:develop/v4
