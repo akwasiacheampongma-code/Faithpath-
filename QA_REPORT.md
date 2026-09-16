@@ -1,33 +1,39 @@
-# QA Report — FaithPath V4 FP4-20260916-C
+# QA Report — FaithPath V4 FP4-20260916-D
 
 ## Automatisiert / statisch geprüft
 - JavaScript-Syntax: bestanden (`node --check`).
 - 312 Einheiten / 1.560 Fragen geladen.
 - 312/312 Einheiten besitzen eine Reflexionsfrage; 312 unterschiedliche Reflexionsfragen.
 - Beide Bibeln: 66 Bücher / 1.189 Kapitel; OTB 31.103, Luther 31.102 Verse.
-- 84 im App-Code gefundene situative/geführte Referenzvorkommen geprüft; alle referenzierten Bücher, Kapitel und Endverse existieren in Luther 1912.
-- Netlify Publish-Root ist flach; `index.html`, `_redirects`, `_headers`, `netlify.toml`, `sw.js`, Manifest vorhanden.
-- Storage-Key-Kompatibilität beibehalten.
-- Regressionstest bestanden: Story-Reflexion speichert vollständige Bibelreferenz.
-- Regressionstest bestanden: Story-Reflexion lässt sich mit einem bestehenden Weg verbinden.
-- Regressionstest bestanden: Neuer Weg aus einer ausstehenden Reflexion übernimmt die Verbindung automatisch.
-- Regressionstest bestanden: Kapitelbereiche mit `to=999` werden auf die real vorhandenen Verse begrenzt.
-- Regressionstest bestanden: Direkteinstieg öffnet „Lesen“.
-- Regressionstest bestanden: 14-Tage-Snooze verändert `lastReview` nicht.
-- Regressionstest bestanden: Es existiert höchstens ein Bottom-Sheet gleichzeitig.
-- Regressionstest bestanden: Guided-Plan-Fortschritt wird im Backup wiederhergestellt.
-- Regressionstest bestanden: Nicht zusammenhängende Verse erzeugen keinen speicherbaren Bereich.
-- Regressionstest bestanden: Markierungen sind an ihre Bibelübersetzung gebunden.
-- Regressionstest bestanden: Quiz-Fortschritt erreicht 100 %.
+- Alle Story-Bereiche existieren in beiden lokalen Bibelsets; `to=999` wird nur als Kapitelende interpretiert.
+- Alle 1.560 Fragen besitzen gültige Antwortlisten und gültige Correct-Answer-Indizes.
+- 150 Service-Worker-Assets geprüft; keine referenzierte Offline-Datei fehlt.
+- Netlify Publish-Root ist flach; `index.html`, `_redirects`, `_headers`, `netlify.toml`, `sw.js` und Manifest vorhanden.
+- Storage-Key-Kompatibilität beibehalten; Hauptschema in Build D auf Version 3 normalisiert.
 
-## Funktionale Risikofälle berücksichtigt
-- Leere Wege, leeres Journal und leere Markierungen besitzen Empty States.
-- Ungültige/fehlende Bibeldatei erzeugt einen Ladefehler statt still falsche Daten.
-- Beschädigter Backup-Import wird abgelehnt.
-- Lange Texte umbrechen; responsive Regeln für kleine Mobilbreiten, Tablet und Desktop vorhanden.
-- Reduced Motion wird respektiert.
-- Touch-Ziele der primären Controls sind auf ca. 44–48 px ausgelegt.
-- Service Worker hat eindeutige V4-Cache-ID und löscht alte FaithPath-Caches bei Aktivierung.
+## Build-D-Regressionen
+- Baum bleibt ohne bestätigte Entwicklung auf „Samen“.
+- Erste bestätigte Entwicklung führt zur ersten Wachstumsstufe.
+- Abgelaufener 14-Tage-Snooze wird auch bei einem jüngeren Weg fällig.
+- Noch nicht abgelaufener Snooze bleibt verborgen.
+- Fehlende `steps`, `reviews` und `milestones` alter Wege werden sicher zu leeren Arrays normalisiert.
+- Alte Buchcodes in Markierungen werden migriert (`jak` → `JAS`).
+- Alte Buchcodes in Journal-Referenzen werden migriert (`mar` → `MRK`).
+- Alte Weg-Verbindungen im Legacy-Format werden in das kanonische Referenzformat migriert (`joh` → `JHN`).
+- Falsch typisierte verschachtelte Wegdaten werden beim Import abgelehnt.
+- `openPath()` setzt den aktiven Navigationstab auf `paths`.
+- Die Glaubensgeschichte zeigt bei mehr als 120 Einträgen einen sichtbaren „Weitere anzeigen“-Kontrollpunkt.
+- Nach dem Nachladen werden die restlichen Einträge angezeigt.
+
+## Bereits aus Build B/C weiter geprüft
+- Story-Reflexion speichert vollständige Bibelreferenz und lässt sich mit bestehendem oder neuem Weg verbinden.
+- Kapitelbereiche wählen nur tatsächlich vorhandene Verse.
+- Direkteinstieg „Zur Bibel“ öffnet „Lesen“.
+- Es existiert höchstens ein Bottom-Sheet gleichzeitig.
+- Guided-Plan-Fortschritt wird im Backup wiederhergestellt.
+- Nicht zusammenhängende Verse erzeugen keinen falschen durchgehenden Speicherbereich.
+- Markierungen bleiben an die gespeicherte Bibelübersetzung gebunden.
+- Quiz-Fortschritt erreicht 100 %.
 
 ## Noch nicht als vollständig abgeschlossen behauptet
-Ein echter manueller Test auf mehreren physischen iPhones/iPads/Android-Geräten und ein vollständiger VoiceOver-Test sind vor einem breiten Store-Launch weiterhin nötig. Der Build ist für einen kleinen kontrollierten Web-Bezahltest gedacht, nicht als abschließend zertifizierter App-Store-Release.
+Ein echter manueller Test auf mehreren physischen iPhones/iPads/Android-Geräten und ein vollständiger VoiceOver-Test sind vor einem breiten Store-Launch weiterhin nötig. LocalStorage bleibt bewusst gerätegebunden; Cross-Device-Sync ist nicht Bestandteil dieses Builds.

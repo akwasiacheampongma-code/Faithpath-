@@ -1,5 +1,17 @@
 # Changelog — FaithPath V4
 
+## FP4-20260916-D
+- Baumstufe hängt jetzt ausschließlich von ausdrücklich bestätigten Entwicklungen ab; ein bloß angelegter Weg verändert den Baum nicht mehr.
+- Ein expliziter 14-Tage-Snooze wird nach genau diesem Termin fällig und nicht mehr von der normalen 21-Tage-Schwelle blockiert.
+- Hauptdaten auf Schema-Version 3 normalisiert: alte Buchcodes in Markierungen, Journal-Referenzen und Weg-Verbindungen werden beim Laden/Import auf die aktuellen Codes migriert.
+- Backup-Import normalisiert fehlende verschachtelte Arrays und lehnt falsch typisierte Weg-Daten ab, bevor sie später die UI beschädigen können.
+- Öffnen eines Weges setzt den aktiven Bereich zuverlässig auf „Mein Weg“.
+- Verbundene Bibelstellen sind aus dem Weg wieder direkt öffnbar; verbundene Reflexionen öffnen ihren gespeicherten Text und optional den zugehörigen Bibelabschnitt.
+- Glaubensgeschichte blendet Einträge ab 121 nicht mehr still aus; weitere Einträge lassen sich in 120er-Schritten nachladen.
+- Geführte Themenwege speichern neue Bibel-Verbindungen im gleichen kanonischen Linkformat wie manuell verbundene Stellen.
+- 12 gezielte Build-D-Regressionstests sowie kompletter Content-/Offline-Asset-Check bestanden.
+- Service-Worker-Cache auf Build D angehoben.
+
 ## FP4-20260916-C
 - Direkteinstieg „Zur Bibel“ öffnet jetzt zuverlässig den Tab „Lesen“ statt „Entdecken“.
 - „In 2 Wochen erinnern“ setzt nur noch einen 14-Tage-Snooze und verschiebt nicht zusätzlich den letzten Rückblick um 21 Tage.
