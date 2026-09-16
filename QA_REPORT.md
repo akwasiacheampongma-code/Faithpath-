@@ -1,4 +1,4 @@
-# QA Report — FaithPath V4 FP4-20260916-B
+# QA Report — FaithPath V4 FP4-20260916-C
 
 ## Automatisiert / statisch geprüft
 - JavaScript-Syntax: bestanden (`node --check`).
@@ -12,6 +12,13 @@
 - Regressionstest bestanden: Story-Reflexion lässt sich mit einem bestehenden Weg verbinden.
 - Regressionstest bestanden: Neuer Weg aus einer ausstehenden Reflexion übernimmt die Verbindung automatisch.
 - Regressionstest bestanden: Kapitelbereiche mit `to=999` werden auf die real vorhandenen Verse begrenzt.
+- Regressionstest bestanden: Direkteinstieg öffnet „Lesen“.
+- Regressionstest bestanden: 14-Tage-Snooze verändert `lastReview` nicht.
+- Regressionstest bestanden: Es existiert höchstens ein Bottom-Sheet gleichzeitig.
+- Regressionstest bestanden: Guided-Plan-Fortschritt wird im Backup wiederhergestellt.
+- Regressionstest bestanden: Nicht zusammenhängende Verse erzeugen keinen speicherbaren Bereich.
+- Regressionstest bestanden: Markierungen sind an ihre Bibelübersetzung gebunden.
+- Regressionstest bestanden: Quiz-Fortschritt erreicht 100 %.
 
 ## Funktionale Risikofälle berücksichtigt
 - Leere Wege, leeres Journal und leere Markierungen besitzen Empty States.

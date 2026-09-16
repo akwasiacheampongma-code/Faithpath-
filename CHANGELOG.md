@@ -1,5 +1,16 @@
 # Changelog — FaithPath V4
 
+## FP4-20260916-C
+- Direkteinstieg „Zur Bibel“ öffnet jetzt zuverlässig den Tab „Lesen“ statt „Entdecken“.
+- „In 2 Wochen erinnern“ setzt nur noch einen 14-Tage-Snooze und verschiebt nicht zusätzlich den letzten Rückblick um 21 Tage.
+- Bottom-Sheets ersetzen vorhandene Dialoge statt sich übereinander zu stapeln.
+- Backups enthalten jetzt auch den Fortschritt der geführten Wege (`faithpath.guidedPlans.v1`); ältere Backups bleiben importierbar.
+- Nicht zusammenhängende Versauswahlen können nicht mehr versehentlich als durchgehender Bereich gespeichert werden.
+- Markierungen und Journal-Bibellinks respektieren die beim Speichern verwendete Bibelübersetzung; ältere Markierungen ohne Feld gelten als OTB.
+- Quiz-Fortschritt erreicht nach Beantwortung der letzten Frage 100 %.
+- Sieben gezielte Regressionstests für diese Fehler bestanden.
+- Service-Worker-Cache auf Build C angehoben.
+
 ## FP4-20260916-B
 - Kernfehler im Reflexionsfluss behoben: „Mit Weg verbinden“ funktioniert jetzt auch nach einer Reflexion aus „Bibel entdecken“.
 - Story-Reflexionen speichern nun eine vollständige Bibelreferenz; der Journal-Link führt wieder korrekt zum zugehörigen Abschnitt.
