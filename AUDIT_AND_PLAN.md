@@ -9,7 +9,7 @@ Gefundene Risiken: uneinheitliche Buchcodes (`joh`, `mar`, `jak` vs. lokale `JHN
 
 Content: echte App-Datei enthält 312 NT-Einheiten / 1.560 Fragen. 260 Kapitelquiz-Einheiten sind text-extraktiv erzeugt und nicht als vollständig manuell redaktionell geprüft zu behandeln. Airtable besitzt ein deutlich größeres redaktionelles FaithPath-System mit 864 Einheiten und Prüfstatus-Feldern; es wurde bewusst nicht als Runtime-Abhängigkeit eingebaut und nichts wurde überschrieben.
 
-GitHub: die verbundene GitHub-Installation liefert aktuell keine zugänglichen Repositories. Deshalb wurde kein Repository erfunden oder verändert.
+GitHub: Repository `akwasiacheampongma-code/Faithpath-` ist erreichbar. V4 liegt auf `develop/v4`; der Upload auf den Branch wurde über einen GitHub-Actions-Workflow erfolgreich ausgeführt.
 
 ## Priorisierter Plan
 MUSS: Kernloop sichtbar machen; Erinnerungslücken; echte Glaubensgeschichte; Buchcode-/Referenzfehler; Datenmigration; Backup-Sicherheit; Service Worker/Netlify; mobile Informationsarchitektur.

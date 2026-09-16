@@ -1,4 +1,4 @@
-# QA Report — FaithPath V4 FP4-20260916-A
+# QA Report — FaithPath V4 FP4-20260916-B
 
 ## Automatisiert / statisch geprüft
 - JavaScript-Syntax: bestanden (`node --check`).
@@ -8,6 +8,10 @@
 - 84 im App-Code gefundene situative/geführte Referenzvorkommen geprüft; alle referenzierten Bücher, Kapitel und Endverse existieren in Luther 1912.
 - Netlify Publish-Root ist flach; `index.html`, `_redirects`, `_headers`, `netlify.toml`, `sw.js`, Manifest vorhanden.
 - Storage-Key-Kompatibilität beibehalten.
+- Regressionstest bestanden: Story-Reflexion speichert vollständige Bibelreferenz.
+- Regressionstest bestanden: Story-Reflexion lässt sich mit einem bestehenden Weg verbinden.
+- Regressionstest bestanden: Neuer Weg aus einer ausstehenden Reflexion übernimmt die Verbindung automatisch.
+- Regressionstest bestanden: Kapitelbereiche mit `to=999` werden auf die real vorhandenen Verse begrenzt.
 
 ## Funktionale Risikofälle berücksichtigt
 - Leere Wege, leeres Journal und leere Markierungen besitzen Empty States.

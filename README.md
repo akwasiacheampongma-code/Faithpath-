@@ -14,4 +14,4 @@ Persönliche Daten liegen in LocalStorage. Bestehender Hauptschlüssel `faithpat
 OTB Deutsch und Luther 1912 sind vollständig lokal enthalten. V4 normalisiert ältere Kurz-Codes (z. B. `joh` → `JHN`, `mar` → `MRK`, `jak` → `JAS`) bevor Dateien geladen werden.
 
 ## Build
-`FP4-20260916-A` · Service Worker Cache `faithpath-v4-fp4-20260916-a`.
+`FP4-20260916-B` · Service Worker Cache `faithpath-v4-fp4-20260916-b`.
