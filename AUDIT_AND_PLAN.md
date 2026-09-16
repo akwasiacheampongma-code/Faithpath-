@@ -3,7 +3,7 @@
 ## Audit
 Architecture: statische Vanilla-JS-PWA ohne Build-Tool. Hauptlogik in `app.js`, Styling in `styles.css`, Inhalte in `data/`, zwei lokale Bibelsets, sieben Tree-Assets. Das ist für Offline-first und geringe Betriebskosten sinnvoll, erhöht aber das Risiko einer zu großen monolithischen `app.js`.
 
-Storage: `faithpath.v1.rebuild` (Hauptdaten), `faithpath.guidedPlans.v1` (Planfortschritt), bisher `faithpath.onboarding.v3`. V4 behält die ersten beiden unverändert und migriert das Hauptobjekt additive auf Schema-Version 3.
+Storage: `faithpath.v1.rebuild` (Hauptdaten), `faithpath.guidedPlans.v1` (Planfortschritt), bisher `faithpath.onboarding.v3`. V4 behält die ersten beiden unverändert und migriert das Hauptobjekt additive auf Schema-Version 4.
 
 Gefundene Risiken: uneinheitliche Buchcodes (`joh`, `mar`, `jak` vs. lokale `JHN`, `MRK`, `JAS`); Service Worker war im Ausgangs-`index.html` nicht registriert; alte UI war stark kartenbasiert; Rückblick basierte fast nur auf Weg-Alter statt auf mehreren Datenspuren; persönliche Historie war auf Event-Logs reduziert; Backup-Import akzeptierte praktisch jedes JSON; einige Navigationsaufrufe nutzten `path` statt `paths`; geführte Wege referenzierten `openPassage`, obwohl diese Funktion im Ausgangsbuild nicht definiert war.
 

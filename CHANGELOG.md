@@ -1,5 +1,21 @@
 # Changelog — FaithPath V4
 
+## FP4-20260916-E
+- Backup-Import gegen manipulierte IDs/XSS gehärtet: importierte IDs werden auf ein sicheres Format normalisiert, doppelte IDs werden eindeutig gemacht und unbekannte Bibelreferenzen werden vor dem Ersetzen lokaler Daten abgelehnt.
+- Verschachtelte Backup-Daten werden tief normalisiert/validiert (`steps`, `reviews`, `milestones`, Links, Journal, Markierungen, Reflexionen, Events und Guided-Plan-Fortschritt); fehlerhafte Importe bleiben atomar und verändern den bestehenden Stand nicht.
+- Legacy-Backups mit unvollständigen optionalen Bibelreferenzen bleiben importierbar; die defekte Referenz wird sicher verworfen statt den ganzen Import zu blockieren.
+- Reader merkt sich seinen Ursprung (Thema, Anfänger-Guide, Guided Plan, Story, Weg, Journal oder Markierung) und führt mit „Zurück“ wieder dorthin.
+- Gespeicherte Luther-/OTB-Referenzen öffnen in ihrer gespeicherten Übersetzung, ohne die globale Bibelpräferenz still zu verändern.
+- Kontextuell geöffnete Referenzen überschreiben den echten „Weiterlesen“-Stand nicht mehr.
+- Bestätigte Entwicklungen werden in der Glaubensgeschichte nicht mehr zusätzlich als identischer Rückblick doppelt angezeigt.
+- Erinnerungen an Markierungen werden jetzt über konkrete Bibelreferenz, Übersetzung und – sofern vorhanden – Highlight-ID abgeglichen statt nur über den sichtbaren Labeltext.
+- Neue Wege starten ohne fingierten „letzten Rückblick“; die Startseite zeigt bis zum ersten echten Rückblick stattdessen „gestartet …“.
+- Doppelte Markierungen derselben Stelle in derselben Übersetzung werden verhindert; nach dem Markieren wird die Auswahl geschlossen.
+- Reader-Fehler (z. B. ungültiger/fehlender Bibeltext) werden abgefangen statt als unhandled JavaScript-Fehler durchzulaufen.
+- Backup-Dateien sind auf 10 MB begrenzt, derselbe Import kann nach Erfolg/Fehler erneut ausgewählt werden, Export-Blob-URLs werden iOS-freundlicher verzögert freigegeben und transienter UI-Zustand wird nach Restore zurückgesetzt.
+- Weg-Löschung räumt zugehörige Reminder-/Dismiss-Zustände mit auf; Step-/Review-Mutationen sind gegen fehlende Ziele abgesichert.
+- Service-Worker-Cache auf Build E angehoben.
+
 ## FP4-20260916-D
 - Baumstufe hängt jetzt ausschließlich von ausdrücklich bestätigten Entwicklungen ab; ein bloß angelegter Weg verändert den Baum nicht mehr.
 - Ein expliziter 14-Tage-Snooze wird nach genau diesem Termin fällig und nicht mehr von der normalen 21-Tage-Schwelle blockiert.
