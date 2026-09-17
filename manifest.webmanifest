@@ -1,22 +1,26 @@
 {
-  "name": "FaithPath",
+  "id": "./",
+  "name": "FaithPath – deine persönliche Glaubensgeschichte",
   "short_name": "FaithPath",
   "lang": "de",
-  "description": "Bibel lesen, reflektieren, Wege gehen und Entwicklung wiederentdecken.",
-  "start_url": "./",
+  "description": "Was ist aus deinen Gedanken, Bibeltexten und kleinen Schritten geworden?",
+  "start_url": "./#today",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#f4f0e7",
-  "theme_color": "#f4f0e7",
+  "background_color": "#f7f6f0",
+  "theme_color": "#f7f6f0",
   "icons": [
     {
       "src": "icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

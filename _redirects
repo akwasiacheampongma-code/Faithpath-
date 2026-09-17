@@ -1,1 +1,7 @@
+# Missing data and code must never masquerade as a successful HTML response.
+/data/* /404.html 404
+/releases/* /404.html 404
+/trees/* /404.html 404
+/icons/* /404.html 404
+# Navigation uses hashes; this also handles accidental path deep links.
 /* /index.html 200
