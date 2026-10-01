@@ -32,7 +32,7 @@
     "review logic"
   ],
   "final_status": "UI_PREMIUM_FAIL",
-  "validation_phase": "LOCAL_PASS_LIVE_PENDING",
+  "validation_phase": "LOCAL_PASS_LIVE_BLOCKED_BY_NETWORK_POLICY",
   "local_evidence": {
     "browser_scenarios": 12,
     "runtime_checks": 27,
@@ -98,10 +98,18 @@
     ],
     "text_enlargement": "200%",
     "accessibility": "Existing axe checks PASS",
-    "screenshots_directory": "qa-output/ui-premium/local"
+    "screenshots_directory": "qa-output/ui-premium/local",
+    "screenshots_count": 52,
+    "screenshot_review": "Required screens visually inspected; consistent warm palette, serif headings, line motifs, readable in-flow reader action, personal path before explanation, no new fixed UI."
   },
   "live_qa": {
-    "status": "PENDING"
+    "status": "BLOCKED",
+    "reason": "Environment proxy returns HTTP 403 for new preview hostname; awaiting network allowlist update",
+    "requested_hosts": [
+      "develop-v4-ui1--zesty-rolypoly-d11fff.netlify.app",
+      "6abe657275e5a711d5d0cd79--zesty-rolypoly-d11fff.netlify.app"
+    ],
+    "http_status": 403
   },
   "limitations": [
     "No real Safari/iPhone or VoiceOver test",
@@ -109,5 +117,27 @@
   ],
   "production_deploy": false,
   "main_merge": false,
-  "release_tag": false
+  "release_tag": false,
+  "deployment": {
+    "id": "6abe657275e5a711d5d0cd79",
+    "state": "ready",
+    "context": "deploy-preview",
+    "branch": "develop-v4-ui1",
+    "deploy_ssl_url": "https://develop-v4-ui1--zesty-rolypoly-d11fff.netlify.app",
+    "ssl_url": "https://zesty-rolypoly-d11fff.netlify.app",
+    "published_at": null,
+    "error_message": null,
+    "source_branch": "develop/v4",
+    "source_commit": "e41c5b3",
+    "draft_requested": true,
+    "production_before": "6abe488b89cb1f33d9248eb8",
+    "production_unchanged": true,
+    "immutable_test_url": "https://6abe657275e5a711d5d0cd79--zesty-rolypoly-d11fff.netlify.app",
+    "file_integrity": {
+      "source_backed_files_matching": 301,
+      "netlify_generated_files": [
+        "netlify.toml"
+      ]
+    }
+  }
 }
