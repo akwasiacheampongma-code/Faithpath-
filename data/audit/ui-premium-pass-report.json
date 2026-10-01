@@ -1,0 +1,113 @@
+{
+  "base_build": "FP4-20261001-G-MENU1",
+  "build": "FP4-20261001-G-UI1",
+  "source_branch": "develop/v4",
+  "content_changed": false,
+  "data_model_changed": false,
+  "menu_logic_changed": false,
+  "today": "PASS",
+  "journal_empty_state": "PASS",
+  "reader_reflection_entry": "PASS",
+  "visual_consistency": "PASS",
+  "mobile_390x844": "PASS",
+  "regression_tests": "PASS",
+  "console_errors": 0,
+  "load_errors": 0,
+  "files_changed": [
+    "src/app.js",
+    "src/version.js",
+    "styles.css",
+    "tests/ui-premium.mjs",
+    "tests/ui-premium-preservation.mjs",
+    "docs/UI_PREMIUM_DESIGN_SYSTEM.md",
+    "data/audit/ui-premium-pass-report.json"
+  ],
+  "known_untouched_areas": [
+    "offline logic",
+    "update logic",
+    "menu mechanism",
+    "data model",
+    "quiz logic",
+    "guided path progress",
+    "review logic"
+  ],
+  "final_status": "UI_PREMIUM_FAIL",
+  "validation_phase": "LOCAL_PASS_LIVE_PENDING",
+  "local_evidence": {
+    "browser_scenarios": 12,
+    "runtime_checks": 27,
+    "menu_checks": {
+      "menu_open": "PASS",
+      "aria_expanded": "PASS",
+      "menu_close": "PASS",
+      "menu_escape": "PASS",
+      "menu_overlay_close": "PASS",
+      "menu_repeat_10": "PASS",
+      "menu_after_reload": "PASS",
+      "all_available_menu_items": "PASS",
+      "menu_after_deeplink": "PASS",
+      "menu_after_browser_back": "PASS",
+      "menu_mobile_touch": "PASS",
+      "menu_keyboard_focus": "PASS",
+      "menu_with_active_service_worker_offline": "PASS"
+    },
+    "ui_checks": [
+      {
+        "name": "journal_empty_state",
+        "status": "PASS"
+      },
+      {
+        "name": "today",
+        "status": "PASS"
+      },
+      {
+        "name": "reader_reflection_entry",
+        "status": "PASS"
+      },
+      {
+        "name": "responsive_and_zoom",
+        "status": "PASS"
+      },
+      {
+        "name": "no_js_or_load_errors",
+        "status": "PASS"
+      }
+    ],
+    "preservation": {
+      "status": "PASS",
+      "base_commit": "4465dff5fd4860772c6aefec545395d1ec8af4e6",
+      "protected_files": 153,
+      "app_logic_unchanged": true,
+      "reader_logic_unchanged": true,
+      "permitted_views": [
+        "home",
+        "reader",
+        "paths",
+        "path",
+        "journal",
+        "journalResults",
+        "more"
+      ]
+    },
+    "content_hash": "04d8bdf8a7e2c4377cbe2eb812744fb1fc7cfd9a837817b61ae9e31a647d0d1b",
+    "viewports": [
+      "320x568",
+      "390x844",
+      "768x1024",
+      "1440x1000"
+    ],
+    "text_enlargement": "200%",
+    "accessibility": "Existing axe checks PASS",
+    "screenshots_directory": "qa-output/ui-premium/local"
+  },
+  "live_qa": {
+    "status": "PENDING"
+  },
+  "limitations": [
+    "No real Safari/iPhone or VoiceOver test",
+    "Live service-worker lifecycle and old-build-to-UI1 update not assessed; logic unchanged"
+  ],
+  "production_deploy": false,
+  "main_merge": false,
+  "release_tag": false
+}

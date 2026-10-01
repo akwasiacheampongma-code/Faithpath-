@@ -188,15 +188,24 @@ function home() {
   const data = s(),
     pending = gaps(data),
     active = data.paths.filter((p) => !p.archived),
-    lvl = treeLevel(data),
-    latest = timeline(data)[0];
+    currentPath = active.find((p) => p.steps.some((step) => !step.done)) || active[0],
+    nextStep = currentPath?.steps.find((step) => !step.done),
+    lastThought = [
+      ...data.journal.map((j) => ({ ...j, route: "entry/" + encodeURIComponent(j.id) })),
+      ...data.reflections.map((r) => ({ ...r, route: "reflection/" + encodeURIComponent(r.id) })),
+    ].sort((a, b) => (time(b.date) || 0) - (time(a.date) || 0))[0],
+    returning = !!(data.paths.length || lastThought || data.reading || data.highlights.length || data.reviews.length),
+    explanation = `<section class="home-note"><span class="overline">Deine persönliche Glaubensgeschichte</span><h2>Ein Gedanke. Ein Schritt.<br>Und später ein neuer Blick.</h2><p>Verbinde, was dich beschäftigt, mit deinem persönlichen Weg. FaithPath erinnert dich später daran.</p></section>`;
   let draft = null;
   try {
     draft = JSON.parse(localStorage.getItem(KEYS.draft));
   } catch {}
-  shell(`<div class="home-intro"><div>${heading("Ein Moment für dich", "Was bewegt dich gerade?", "Du musst nicht wissen, wo du anfangen sollst.")}<div class="home-start">${link(`Ich brauche Orientierung ${icon("arrow")}`, "guidance", "button primary")}${link(`${icon("book")} Direkt zur Bibel`, "bible", "button quiet")}</div></div><div class="home-art"><img src="trees/tree-stage-${lvl + 1}.webp" alt="Olivenbaum: ${e(stageNames[lvl])}" width="500" height="500"><span>${e(stageNames[lvl])}</span></div></div>
+  shell(`<div class="home-intro"><div>${heading(returning ? "Schön, dass du wieder da bist" : "Ein Moment für dich", "Was bewegt dich gerade?", returning ? "Deine Geschichte darf hier weitergehen." : "Du musst nicht wissen, wo du anfangen sollst.")}<div class="home-start">${link(`Ich brauche Orientierung ${icon("arrow")}`, "guidance", "button primary")}${link(`${icon("book")} Direkt zur Bibel`, "bible", "button quiet")}</div></div></div>
  ${draft?.values ? `<aside class="draft-strip"><span>Ein Gedanke wartet noch auf dich.</span>${button("Entwurf fortsetzen", "resume", {}, "text-button")}</aside>` : ""}
- ${pending.length ? `<section class="revisit"><span class="overline">Damals & heute · ${date(pending[0].at)}</span><h2>Was ist daraus geworden?</h2><p>${e(pending[0].title)}</p><blockquote>${e(pending[0].detail)}</blockquote><div class="actions">${button("In Ruhe zurückblicken", "gap", { key: pending[0].key }, "button primary")}${link(pending.length > 1 ? `${pending.length} offene Rückblicke` : "Alle Rückblicke", "reviews")}</div></section>` : `<section class="home-note"><span class="overline">Glaube im Alltag</span><h2>Ein Gedanke. Ein Schritt.<br>Und später ein neuer Blick.</h2><p>Verbinde, was dich beschäftigt, mit deinem persönlichen Weg. FaithPath erinnert dich später daran.</p></section>`}
+ ${!returning ? explanation : ""}
+ ${currentPath ? `<section class="personal-path"><div class="section-heading"><span class="overline">Dein aktueller Weg</span>${icon("leaf")}</div><h2>${link(e(currentPath.title), "path/" + encodeURIComponent(currentPath.id), "personal-title")}</h2>${currentPath.why ? `<p class="path-why">${e(currentPath.why)}</p>` : ""}${nextStep ? `<div class="personal-step"><span class="overline">Dein nächster Schritt</span><p>${e(nextStep.text)}</p></div>` : `<p class="meta">Ein Moment zum Festhalten oder Zurückblicken.</p>`}${link(`Meinen Weg öffnen ${icon("arrow")}`, "path/" + encodeURIComponent(currentPath.id), "text-link")}</section>` : ""}
+ ${data.reading || lastThought ? `<section class="personal-recent" aria-label="Zu deiner Geschichte zurückkehren">${data.reading ? `<article><span class="overline">Zuletzt gelesen</span><h2>${link(e(refLabel(data.reading)), readRoute(data.reading), "personal-title")}</h2>${link(`Weiterlesen ${icon("arrow")}`, readRoute(data.reading), "text-link")}</article>` : ""}${lastThought ? `<article><span class="overline">Dein letzter Gedanke</span><p class="thought-preview">${e(lastThought.text)}</p>${link(`Wieder ansehen ${icon("arrow")}`, lastThought.route, "text-link")}</article>` : ""}</section>` : ""}
+ ${pending.length ? `<section class="revisit"><span class="overline">Damals & heute · ${date(pending[0].at)}</span><h2>Was ist daraus geworden?</h2><p>${e(pending[0].title)}</p><blockquote>${e(pending[0].detail)}</blockquote><div class="actions">${button("In Ruhe zurückblicken", "gap", { key: pending[0].key }, "button primary")}${link(pending.length > 1 ? `${pending.length} offene Rückblicke` : "Alle Rückblicke", "reviews")}</div></section>` : ""}
  <div class="quick-links">${link(`${icon("pen")}<span>Festhalten</span>`, "compose", "quick-link")}${link(`${icon("history")}<span>Meine Geschichte</span>`, "history", "quick-link")}</div>
  <section class="section"><div class="section-heading"><h2>${active.length ? "Was dich begleitet" : "Dein erster Weg"}</h2>${link("Mein Weg", "paths")}</div>${
    active.length
@@ -212,7 +221,8 @@ function home() {
          .join("")
      : `<p>Vielleicht Geduld, Vertrauen oder eine offene Frage. Dein Weg darf klein anfangen.</p>${button("Einen Weg beginnen", "new-path", {}, "text-button")}`
  }</section>
- <div class="manifesto"><span>${icon("leaf")}</span><p>FaithPath misst nicht deinen Glauben.<br><strong>FaithPath hilft dir, deine Entwicklung zu erkennen.</strong></p></div>`);
+ ${returning ? explanation : ""}
+ <div class="manifesto"><span>${icon("leaf")}</span><p>FaithPath misst nicht deinen Glauben.<br><strong>FaithPath hilft dir, deine Entwicklung zu erkennen.</strong></p></div>`, "today", returning ? "home-page returning-home" : "home-page first-home");
 }
 function guidance() {
   shell(
@@ -420,7 +430,7 @@ async function reader(parts, params, token) {
       .join(
         "",
       )}</select></div><div class="reader-selectors"><div><label for="reader-book">Buch</label><select id="reader-book" data-change="reader-book">${ui.books.map((x) => `<option value="${x.code}" ${x.code === code ? "selected" : ""}>${e(x.name)}</option>`).join("")}</select></div><div><label for="reader-chapter">Kapitel</label><select id="reader-chapter" data-change="reader-chapter">${b.chapters.map((_, i) => `<option value="${i + 1}" ${i + 1 === +chapter ? "selected" : ""}>${i + 1}</option>`).join("")}</select></div></div>
- ${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<div class="reading-text" id="verses">${vs.map((v) => `<button type="button" class="verse ${s().highlights.some((h) => normBook(h.book) === code && +h.chapter === +chapter && (h.translation || "otb") === tr && v[0] >= h.from && v[0] <= h.to) ? "marked" : ""} ${ref.from && v[0] >= ref.from && v[0] <= (ref.to || ref.from) ? "in-passage" : ""}" data-action="verse" data-v="${v[0]}" aria-pressed="false" aria-label="Vers ${v[0]}: ${e(v[1])}"><sup>${v[0]}</sup><span>${e(v[1])}</span></button>`).join("")}</div>
+ ${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${vs.map((v) => `<button type="button" class="verse ${s().highlights.some((h) => normBook(h.book) === code && +h.chapter === +chapter && (h.translation || "otb") === tr && v[0] >= h.from && v[0] <= h.to) ? "marked" : ""} ${ref.from && v[0] >= ref.from && v[0] <= (ref.to || ref.from) ? "in-passage" : ""}" data-action="verse" data-v="${v[0]}" aria-pressed="false" aria-label="Vers ${v[0]}: ${e(v[1])}"><sup>${v[0]}</sup><span>${e(v[1])}</span></button>`).join("")}</div>
  <div class="chapter-nav">${ref.chapter > 1 ? link("← Vorheriges Kapitel", readRoute({ book: code, chapter: ref.chapter - 1, translation: tr })) : ""}${ref.chapter < b.chapters.length ? link("Nächstes Kapitel →", readRoute({ book: code, chapter: ref.chapter + 1, translation: tr })) : ""}</div>
  <section class="reflection-invite"><span class="overline">Was bleibt bei dir?</span><h2>${e(ctx?.question || "Was berührt dich in diesem Text?")}</h2><p>Ein Satz genügt. Du kannst daraus später einen Weg machen.</p>${button("Meinen Gedanken festhalten", "reflect-reader", {}, "button primary")}</section><small class="translation-credit">${e(TRANSLATIONS[tr].name)} · ${tr === "otb" ? "CC BY-SA 4.0" : "gemeinfrei"} · ${link("Textquelle", "licenses")}</small><div id="selection-bar"></div>`,
     "bible",
@@ -554,8 +564,9 @@ function quiz() {
 function paths() {
   const data = s().paths.filter((p) => !!p.archived === ui.archive);
   shell(
-    `${heading("Mein Weg", "Was dich über Zeit begleitet.", "Bibelstellen, Gedanken und kleine Schritte. Deine Geschichte bleibt zusammen.")}<div class="actions">${button("Weg beginnen", "new-path", {}, "button primary")}${button(ui.archive ? "Aktive Wege" : "Archiv", "toggle-archive", {}, "button quiet")}</div>${data.length ? `<div class="path-list">${data.map((p, i) => `<article><span class="path-index">${String(i + 1).padStart(2, "0")}</span><div>${link(e(p.title), "path/" + encodeURIComponent(p.id), "path-title")}<p>${e(p.why || category(p.category).label)}</p><small>Seit ${date(p.started)}${p.milestones.length ? " · Entwicklung festgehalten" : ""}</small></div></article>`).join("")}</div>` : empty(ui.archive ? "Noch keine archivierten Wege." : "Dein Weg darf klein anfangen.", ui.archive ? "Ruhende Wege behalten ihre ganze Geschichte." : "Vielleicht möchtest du geduldiger zuhören oder einer offenen Frage Raum geben.")}<section class="section">${row("Dein Olivenbaum", "Die Entwicklung, die du selbst festgehalten hast.", "tree")}${row("Geführte Wege", "Eine ruhige Begleitung für deinen Anfang.", "plans")}${row("Deine ganze Geschichte", "Bibelstellen, Gedanken und Entwicklungen.", "history")}</section>`,
+    `${heading("Mein Weg", "Was dich über Zeit begleitet.", "Bibelstellen, Gedanken und kleine Schritte. Deine Geschichte bleibt zusammen.")}<div class="actions">${button("Weg beginnen", "new-path", {}, "button primary")}${button(ui.archive ? "Aktive Wege" : "Archiv", "toggle-archive", {}, "button quiet")}</div>${data.length ? `<div class="path-list">${data.map((p, i) => `<article><span class="path-index">${icon("leaf")}</span><div>${link(e(p.title), "path/" + encodeURIComponent(p.id), "path-title")}<p>${e(p.why || category(p.category).label)}</p><small>Seit ${date(p.started)}${p.milestones.length ? " · Entwicklung festgehalten" : ""}</small></div></article>`).join("")}</div>` : empty(ui.archive ? "Noch keine archivierten Wege." : "Dein Weg darf klein anfangen.", ui.archive ? "Ruhende Wege behalten ihre ganze Geschichte." : "Vielleicht möchtest du geduldiger zuhören oder einer offenen Frage Raum geben.")}<section class="section">${row("Dein Olivenbaum", "Die Entwicklung, die du selbst festgehalten hast.", "tree")}${row("Geführte Wege", "Eine ruhige Begleitung für deinen Anfang.", "plans")}${row("Deine ganze Geschichte", "Bibelstellen, Gedanken und Entwicklungen.", "history")}</section>`,
     "paths",
+    "path-page",
   );
 }
 function path(pid) {
@@ -585,6 +596,7 @@ function path(pid) {
         : ""
     }<small>Ein ausprobierter Schritt ist noch keine bestätigte Entwicklung.</small></section><section class="section"><div class="section-heading"><h2>Die Geschichte dieses Weges</h2></div>${timelineHTML(entries, ui.historyLimit)}${entries.length > ui.historyLimit ? button("Weitere Momente", "more-history", { path: pid }, "button quiet") : ""}</section><details class="path-options"><summary>Weg verwalten</summary><div class="actions">${button("Titel & Beschreibung ändern", "edit-path", { id: pid }, "button quiet")}${button(p.archived ? "Weg wieder aufnehmen" : "Weg archivieren", "archive-path", { id: pid }, "button quiet")}${button("Weg löschen", "delete-path", { id: pid }, "text-button danger-text")}</div></details>`,
     "paths",
+    "path-page",
   );
 }
 function tree() {
@@ -595,8 +607,9 @@ function tree() {
   );
 }
 function journal() {
+  const hasEntries = s().journal.length > 0;
   shell(
-    `<div class="heading-with-action">${heading("Journal", "Festhalten, was bleibt.", "Deine Gedanken dürfen sich verändern. Hier kannst du zu ihnen zurückkehren.")}${button(icon("plus") + '<span class="sr-only">Neuer Eintrag</span>', "new-entry", {}, "icon-button")}</div><div class="field"><label for="journal-search">In deinen Einträgen suchen</label><input id="journal-search" type="search" data-input="journal" placeholder="Gedanke oder Bibelstelle" value="${e(ui.search)}"></div><div class="filters" aria-label="Einträge filtern">${["Alle", "Gedanken", "Bibel", "Reflexion", "Predigt", "Gebet", "Dankbarkeit", "Ziele"].map((f) => button(e(f), "journal-filter", { filter: f }, "filter " + (ui.filter === f ? "active" : ""))).join("")}</div><div id="journal-results">${journalResults()}</div>`,
+    `<div class="heading-with-action">${heading("Journal", "Festhalten, was bleibt.", "Deine Gedanken dürfen sich verändern. Hier kannst du zu ihnen zurückkehren.")}${hasEntries ? button(icon("plus") + '<span class="sr-only">Neuer Eintrag</span>', "new-entry", {}, "icon-button") : ""}</div>${hasEntries ? `<div class="field"><label for="journal-search">In deinen Einträgen suchen</label><input id="journal-search" type="search" data-input="journal" placeholder="Gedanke oder Bibelstelle" value="${e(ui.search)}"></div><div class="filters" aria-label="Einträge filtern">${["Alle", "Gedanken", "Bibel", "Reflexion", "Predigt", "Gebet", "Dankbarkeit", "Ziele"].map((f) => button(e(f), "journal-filter", { filter: f }, "filter " + (ui.filter === f ? "active" : ""))).join("")}</div>` : ""}<div id="journal-results">${journalResults()}</div>`,
     "journal",
   );
 }
@@ -631,9 +644,9 @@ function journalResults() {
         ui.journalLimit,
       )}${items.length > ui.journalLimit ? button("Weitere Einträge", "more-journal", {}, "button quiet") : ""}`
     : empty(
-        ui.search ? "Kein passender Eintrag." : "Ein Gedanke reicht.",
-        "Du kannst frei schreiben, eine Predigtnotiz sammeln oder vom Bibeltext aus reflektieren.",
-        button("Etwas festhalten", "new-entry", {}, "button primary"),
+        s().journal.length ? "Kein passender Eintrag." : "Dein erster Gedanke darf klein sein.",
+        s().journal.length ? "Versuche einen anderen Suchbegriff oder wähle einen anderen Filter." : "Ein Satz, eine offene Frage oder etwas, das dich berührt hat. Hier bleibt es Teil deiner Geschichte.",
+        button(s().journal.length ? "Etwas festhalten" : "Ersten Gedanken festhalten", "new-entry", {}, "button primary"),
       );
 }
 function entry(id, kind = "entry") {
@@ -679,6 +692,7 @@ function more() {
   shell(
     `${heading("Mehr", "Deine Daten. Deine Entscheidung.")}<div class="list">${row("Meine Geschichte", "Frühere Gedanken und ihre Entwicklung.", "history")}${row("Geführte Wege", "Eine ruhige Begleitung.", "plans")}${row("Entdecken & Verständnisfragen", "Geschichten, Kapitel und Reflexion.", "discover")}${row("Markierungen", "Deine gespeicherten Bibelstellen.", "marks")}${row("Inhalte & Prüfstatus", "Was vorhanden ist und was noch geprüft werden muss.", "content-status")}</div><section class="section"><h2>Deine Daten sichern</h2><p>Deine persönlichen Einträge bleiben in diesem Browser. Ein Backup schützt sie, wenn du das Gerät wechselst oder Browserdaten löschst.</p><div class="actions">${button("Backup exportieren", "export", {}, "button primary")}${button("Backup importieren", "import", {}, "button quiet")}</div><input id="import-file" type="file" accept=".json,application/json" hidden>${!store.error && deviceStorage.getItem(KEYS.restore) ? button("Stand vor dem letzten Import wiederherstellen", "undo-import", {}, "text-button") : ""}</section><section class="section"><h2>Offline & auf dem iPhone</h2><p id="offline-state" role="status">${ui.offline ? "Beide Bibeln und die App sind für dieses Gerät offline bereit." : "Offline-Vorbereitung läuft, solange diese Seite online geöffnet ist."}</p>${button("Offline-Status prüfen", "offline-check", {}, "text-button")}<p>Auf dem iPhone: In Safari „Teilen“ öffnen, dann „Zum Home-Bildschirm“ wählen. Zum ersten Einrichten online bleiben, bis oben „offline bereit“ steht.</p></section><section class="section"><h2>Privat auf deinem Gerät</h2><p>Keine Werbung, keine Tracking-SDKs, kein KI-Chat. Persönliche Texte werden nicht an FaithPath übertragen. Sie sind lokal gespeichert und nicht zusätzlich verschlüsselt. Der Hosting-Anbieter verarbeitet beim Laden technische Verbindungsdaten.</p>${link("Bibeltexte & Lizenzen", "licenses")}${button("Einführung ansehen", "onboard", {}, "text-button")}</section><small class="build-id">FaithPath V4 · ${BUILD}</small>`,
     "more",
+    "settings-page",
   );
 }
 function contentStatus() {
