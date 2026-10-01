@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "runtime_data_sources": [
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/index.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/stories.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/reference-index.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/faithpath-content-index.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/nachlese-stories.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/nachlese-questions.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/faithpath-nachlese-story-flow.json",
+    "http://127.0.0.1:4174/data/bibles/otb/JHN.json",
+    "http://127.0.0.1:4174/data/bibles/l1912/JHN.json",
+    "http://127.0.0.1:4174/data/bibles/otb/GEN.json",
+    "http://127.0.0.1:4174/data/bibles/l1912/GEN.json"
+  ],
+  "candidate_is_runtime_source": true,
+  "legacy_release_sources_remaining": [],
+  "faithpath_ids_loaded": 1560,
+  "nachlese_ids_loaded": 2314,
+  "chapter_quiz_loaded": 1300,
+  "runtime_story_links_valid": true,
+  "special_cases_valid": true,
+  "errors": [],
+  "evidence": "27-test runtime smoke compared all loaded FP/N source objects and the entire flow with frozen JSON, not only counts.",
+  "hardcoded_paths_before": [
+    "index.html → releases/FP4-20260916-F/src/app.js",
+    "F CONTENT_BASE → ../data/",
+    "Old SW cached F assets"
+  ],
+  "active_paths_after": [
+    "index.html → releases/FP4-20261001-G/src/app.js",
+    "CONTENT_BASE → /releases/FP4-20261001-G/data/",
+    "Translation Bible paths → /data/bibles/{translation}/{book}.json"
+  ],
+  "service_worker_build": "FP4-20261001-G",
+  "content_hash": "04d8bdf8a7e2c4377cbe2eb812744fb1fc7cfd9a837817b61ae9e31a647d0d1b",
+  "content_sources_unchanged": true
+}

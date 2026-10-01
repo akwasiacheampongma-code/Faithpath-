@@ -24,11 +24,16 @@ appears once in the flow, with both N and FP IDs in `source_question_ids`.
 Semantic variants retain their original source objects and exact wordings.
 Chapter-quiz questions never enter this flow. All 2,314 N IDs appear once.
 
-There are 256 verified FP links. FAITHPATH_ONLY links select a unique canonical
-DOCX context containing the complete original FP question reference; they do
-not fabricate a corresponding N question. Four reconstructed semantic links
-remain REVIEW_REQUIRED: FP-0120, FP-0147, FP-0151, FP-0239. Their original FP
-questions remain in the source pool and in the review register.
+There are 260 verified FP story links. FAITHPATH_ONLY links select a unique
+canonical DOCX context containing the complete original FP question reference;
+they do not fabricate a corresponding N question. Three reviewed cases
+(FP-0120, FP-0151, FP-0239) retain different question targets as separate FP
+items in that context, with candidate N IDs retained only in audit provenance.
+FP-0147 and N-1536 are verified semantic variants: the good-shepherd statement
+is labeled John 10,11 in the local OTB dataset and 10,12 in the local Luther-1912
+dataset. Both source references remain unchanged. No new word-equal deduplication
+was applied. Review-required IDs are now empty. The full decisions and original
+mapping classifications are in `reports/faithpath-review-decisions.json`.
 
 Provenance uses original filenames and SHA-256 hashes. Source copies are in
 `reports/sources/`; `faithpath-source-manifest.json` binds their repository
@@ -50,7 +55,7 @@ classes. Existing `to:999` legacy full-chapter sentinels remain unchanged.
 The immutable F publish files under `releases/FP4-20260916-F` are unchanged.
 This is source-data and model preparation, not a new production release. The
 current shipped reader does not yet consume the derived story flow; its
-integration and a separately versioned build remain release-gate work after
-the four mapping decisions are resolved. Historical Build-E whole-content hash
+integration and a separately versioned build remain release-gate work following
+the resolved mapping decisions. Historical Build-E whole-content hash
 tests intentionally cannot certify the authorized content edits; the new
 validator instead enforces the original master snapshot plus explicit changes.

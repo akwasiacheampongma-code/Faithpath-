@@ -11,8 +11,8 @@
   "missing_ids": [],
   "qa_evidence_gaps": 0,
   "unmaterialized_corrections": 0,
-  "content_conflicts": 4,
-  "content_conflicts_definition": "Four reconstructed semantic mappings requiring a decision; the four historical final-field conflicts are resolved. No zero forced by guessing.",
+  "content_conflicts": 0,
+  "content_conflicts_definition": "Four reconstructed mapping findings resolved: one approved semantic association with dataset-specific Bible witnesses, three retained independent FP story questions. No question/answer/reference corrections in this run.",
   "historical_conflict_ids_resolved": [
     "FP-0021",
     "FP-0024",
@@ -28,66 +28,24 @@
   "combined_story_count": 436,
   "nachlese_questions": 2314,
   "unique_n_ids": 2314,
-  "verified_mapping_count": 256,
+  "verified_mapping_count": 260,
   "verified_EXAKT": 92,
-  "verified_SINNGLEICH": 74,
-  "FAITHPATH_ONLY_retained_and_story_assigned": 86,
+  "verified_SINNGLEICH": 75,
+  "FAITHPATH_ONLY_retained_and_story_assigned": 89,
   "FAITHPATH_ONLY_chapter_rows_retained_separately": 40,
   "KONFLIKT_resolved": 4,
-  "HIGH_processed": 145,
-  "HIGH_review_required": 1,
-  "MEDIUM_verified": 25,
-  "MEDIUM_review_required": 3,
-  "review_required": 4,
+  "HIGH_processed": 146,
+  "HIGH_review_required": 0,
+  "MEDIUM_verified": 28,
+  "MEDIUM_review_required": 0,
+  "review_required": 0,
   "chapter_quiz_questions": 1300,
   "word_equal_duplicates_single_flow_item": 95,
   "validator_result": "PASS",
-  "technical_status": "PASS_WITH_FINDINGS",
-  "status": "BLOCKED",
+  "technical_status": "PASS",
+  "status": "READY_FOR_RELEASE_GATE",
   "release_status": "NOT_AUTHORIZED",
-  "remaining_blockers": [
-    {
-      "type": "REVIEW_REQUIRED",
-      "FP_ID": "FP-0120",
-      "N_ID": "N-1466",
-      "reasons": [
-        "FP asks about healing outcome; N asks about Jesus command and the father response; these are different question targets."
-      ],
-      "Confidence": "MEDIUM"
-    },
-    {
-      "type": "REVIEW_REQUIRED",
-      "FP_ID": "FP-0147",
-      "N_ID": "N-1536",
-      "reasons": [
-        "FP_N_REFERENCE_NO_OVERLAP",
-        "FP reference John 10,11 and final N reference John 10,12 do not overlap."
-      ],
-      "Confidence": "MEDIUM"
-    },
-    {
-      "type": "REVIEW_REQUIRED",
-      "FP_ID": "FP-0151",
-      "N_ID": "N-1544",
-      "reasons": [
-        "FP asks for the sick man name; N asks his place of origin; different question/answer targets."
-      ],
-      "Confidence": "HIGH"
-    },
-    {
-      "type": "REVIEW_REQUIRED",
-      "FP_ID": "FP-0239",
-      "N_ID": "N-1761",
-      "reasons": [
-        "FP asks why Herod was struck; final N question/answer describes what happened without stating that reason."
-      ],
-      "Confidence": "MEDIUM"
-    },
-    {
-      "type": "RELEASE_CONSUMER_AND_NEW_VERSION_BUILD_PENDING",
-      "description": "Current immutable F reader still loads old release files; derived source model not yet wired into a separately versioned local release. No build/deploy or main merge performed."
-    }
-  ],
+  "remaining_blockers": [],
   "source_roles": {
     "FP_PDF": "Approved status/order/blocks; no new editorial review",
     "DOCX": "Canonical 435-story structure/order/reflections",
@@ -95,8 +53,21 @@
     "reconstructed_mapping": "Only verified per-row technical associations"
   },
   "next_required_actions": [
-    "Resolve FP-0120, FP-0147, FP-0151 and FP-0239 mappings explicitly; keep source objects unchanged until then.",
-    "Integrate separated canonical story-flow model into reader and prepare a new local versioned build; do not replace historical F assets or deploy production automatically."
+    "At the release gate, verify reader integration and a separately versioned local build; those were outside this four-case task. No production release is authorized."
   ],
-  "commit_after_recorded_in": "/workspace/faithpath-materialization-20261001/completion.json"
+  "commit_after_recorded_in": "reports/faithpath-review-decisions.json",
+  "documented_independent_question_exceptions": [
+    "FP-0120",
+    "FP-0151",
+    "FP-0239"
+  ],
+  "status_scope": "Source data and four-case review; not runtime/build/deployment approval.",
+  "review_resolution_report": "reports/faithpath-review-decisions.json",
+  "release_gate_pending_checks": [
+    {
+      "type": "RELEASE_CONSUMER_AND_NEW_VERSION_BUILD_PENDING",
+      "description": "Retained from previous preflight: current immutable F reader still loads historical release files. Reader integration and a new local versioned build have not been performed by this four-case task."
+    }
+  ],
+  "current_worktree_base_commit": "dc1e6782ef142de528c4c1b023ce96a70fc6753f"
 }

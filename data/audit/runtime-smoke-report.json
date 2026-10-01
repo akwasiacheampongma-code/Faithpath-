@@ -1,0 +1,152 @@
+{
+  "status": "PASS",
+  "build_id": "FP4-20261001-G",
+  "tests_total": 27,
+  "tests_passed": 27,
+  "tests_failed": 0,
+  "console_errors": [],
+  "network_404": [],
+  "legacy_release_requests": [],
+  "faithpath_question_runtime_pass": true,
+  "nachlese_runtime_pass": true,
+  "chapter_quiz_runtime_pass": true,
+  "deep_link_pass": true,
+  "reload_pass": true,
+  "offline_pass": true,
+  "special_cases_pass": true,
+  "results": [
+    {
+      "name": "01 App starts",
+      "status": "PASS"
+    },
+    {
+      "name": "02 Home and candidate pools",
+      "status": "PASS"
+    },
+    {
+      "name": "03 All story links and source identities",
+      "status": "PASS"
+    },
+    {
+      "name": "04 Canonical story view",
+      "status": "PASS"
+    },
+    {
+      "name": "05 FaithPath MC exact four options",
+      "status": "PASS"
+    },
+    {
+      "name": "06 Correct answer and unchanged explanation",
+      "status": "PASS"
+    },
+    {
+      "name": "07 Exact reflection",
+      "status": "PASS"
+    },
+    {
+      "name": "08 Nachlese question and original answer",
+      "status": "PASS"
+    },
+    {
+      "name": "09 Namespace distinction",
+      "status": "PASS"
+    },
+    {
+      "name": "10 Chapter quiz remains separate",
+      "status": "PASS"
+    },
+    {
+      "name": "11 Deep URL",
+      "status": "PASS"
+    },
+    {
+      "name": "12 Deep reload",
+      "status": "PASS"
+    },
+    {
+      "name": "13 Back and forward",
+      "status": "PASS"
+    },
+    {
+      "name": "14 OTB translation",
+      "status": "PASS"
+    },
+    {
+      "name": "15 Luther translation",
+      "status": "PASS"
+    },
+    {
+      "name": "Special FP-0120",
+      "status": "PASS"
+    },
+    {
+      "name": "Special FP-0147",
+      "status": "PASS"
+    },
+    {
+      "name": "Special FP-0151",
+      "status": "PASS"
+    },
+    {
+      "name": "Special FP-0239",
+      "status": "PASS"
+    },
+    {
+      "name": "20 Service worker new build ready",
+      "status": "PASS"
+    },
+    {
+      "name": "21 Offline source question and reload",
+      "status": "PASS"
+    },
+    {
+      "name": "22 Offline Bible in both translations",
+      "status": "PASS"
+    },
+    {
+      "name": "23 New session candidate",
+      "status": "PASS"
+    },
+    {
+      "name": "24 Missing data controlled error preserves user data",
+      "status": "PASS"
+    },
+    {
+      "name": "25 No fatal console errors",
+      "status": "PASS"
+    },
+    {
+      "name": "26 No production JSON 404",
+      "status": "PASS"
+    },
+    {
+      "name": "27 No legacy runtime requests",
+      "status": "PASS"
+    }
+  ],
+  "requests": [
+    "http://127.0.0.1:4174/",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/styles.css",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/src/app.js",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/src/store.js",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/src/domain.js",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/src/content.js",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/src/version.js",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/src/runtime-model.js",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/index.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/stories.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/reference-index.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/faithpath-content-index.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/nachlese-stories.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/nachlese-questions.json",
+    "http://127.0.0.1:4174/releases/FP4-20261001-G/data/faithpath-nachlese-story-flow.json",
+    "http://127.0.0.1:4174/icons/icon-192.png",
+    "http://127.0.0.1:4174/trees/tree-stage-1.webp",
+    "http://127.0.0.1:4174/app/deep/link",
+    "http://127.0.0.1:4174/data/bibles/otb/JHN.json",
+    "http://127.0.0.1:4174/data/bibles/l1912/JHN.json",
+    "http://127.0.0.1:4174/data/bibles/otb/GEN.json",
+    "http://127.0.0.1:4174/data/bibles/l1912/GEN.json"
+  ],
+  "errors": []
+}

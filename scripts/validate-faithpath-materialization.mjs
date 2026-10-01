@@ -169,12 +169,54 @@ const excludedRows = mergeReport.rows.filter(r => r.verification_status === 'EXC
 check(mergeReport.rows.length === 300 && new Set(mergeReport.rows.map(r => r.FP_ID)).size === 300, 'Mapping report rows incomplete/duplicated');
 check(verifiedRows.length === storyFlow.mapping_links.length && assignment.size === verifiedRows.length, 'Unverified or missing mapping write');
 for (const row of verifiedRows) check(assignment.get(row.FP_ID) === row.Story_ID, `Written story mapping mismatch ${row.FP_ID}`);
+for (const link of storyFlow.mapping_links) {
+  const row = verifiedRows.find(r => r.FP_ID === link.FP_ID);
+  check(Boolean(row) && link.N_ID === row.N_ID && link.Match_Status === row.Match_Status && link.Story_ID === row.Story_ID, `Mapping link provenance mismatch ${link.FP_ID}`);
+  if (link.N_ID) check(nById.get(link.N_ID)?.source_story_id === link.Story_ID, `N context mismatch ${link.FP_ID}`);
+}
 for (const row of reviewRows) check(!assignment.has(row.FP_ID) && fpById.has(row.FP_ID), `Uncertain row written or source dropped ${row.FP_ID}`);
 for (const row of excludedRows) check(!assignment.has(row.FP_ID) && categories.get(row.FP_ID) === 'chapter-quiz', `Excluded chapter row mishandled ${row.FP_ID}`);
 check(equal(reviewRows.map(r => r.FP_ID), storyFlow.unmapped_faithpath_ids), 'Review register mismatch');
 check(equal(index.verified_story_merge_FP_ids, verifiedRows.map(r => r.FP_ID)), 'Content index verified mapping mismatch');
 check(equal(index.review_required_FP_ids, reviewRows.map(r => r.FP_ID)), 'Content index review mapping mismatch');
 check(deduplicated === mergeReport.word_equal_duplicates_single_flow_item, 'Dedup report count differs');
+
+// The four reviewed associations may change the derived flow, never either source pool.
+const resolution = read('reports/faithpath-review-decisions.json');
+const resolvedIds = ['FP-0120', 'FP-0147', 'FP-0151', 'FP-0239'];
+check(equal(resolution.scope, resolvedIds) && equal(resolution.cases.map(c => c.id), resolvedIds), 'Four-case scope changed');
+for (const [file, digest] of Object.entries(resolution.locked_source_hashes)) check(hash(fs.readFileSync(path.join(root, file))) === digest, `Reviewed source changed ${file}`);
+for (const c of resolution.cases) {
+  const q = fpById.get(c.id), n = nById.get(c.candidate_N_ID);
+  const link = storyFlow.mapping_links.find(l => l.FP_ID === c.id);
+  check(Boolean(q && n && link), `Reviewed ID lost ${c.id}`);
+  if (!q || !n || !link) continue;
+  check(c.faithpath_value === `${q.q} → ${q.a[q.c]}` && c.comparison_value === `${n.id}: ${n.q} → ${n.answer}`, `Reviewed content evidence changed ${c.id}`);
+  check(c.content_change_required === false && c.final_value === null, `Unapproved content edit ${c.id}`);
+  check(link.N_ID === c.verified_N_ID && link.Story_ID === c.Story_ID && link.decision === c.decision && link.candidate_N_ID === c.candidate_N_ID, `Decision not materialized ${c.id}`);
+  const story = storyFlow.stories.find(s => s.story_id === c.Story_ID);
+  const item = story?.flow_items.find(i => i.source_question_ids.includes(c.id));
+  check(Boolean(item) && equal(item.source_question_ids, [c.id]) && item.deduplication === 'NONE', `Reviewed variant incorrectly deduplicated ${c.id}`);
+  for (const e of c.source_evidence) {
+    check(hash(fs.readFileSync(path.join(root, e.file))) === e.sha256, `Review evidence hash mismatch ${c.id}/${e.file}`);
+    if (e.verse) {
+      const tr = e.file.includes('/l1912/') ? 'l1912' : 'otb';
+      check(bibles[tr][e.book]?.[e.chapter - 1]?.find(v => Number(v[0]) === e.verse)?.[1] === e.text, `Review Bible text mismatch ${c.id}`);
+    }
+  }
+  if (c.id === 'FP-0147') {
+    check(c.decision === 'APPROVE' && c.verified_N_ID === 'N-1536' && q.ref === 'Johannes 10,11' && n.ref === 'Johannes 10,12', 'Translation-aware Hirte association invalid');
+    check(bibles.l1912.JHN[9].find(v => Number(v[0]) === 12)[1].includes('Der gute Hirte läßt sein Leben für seine Schafe.'), 'Luther-1912 witness missing');
+    check(bibles.otb.JHN[9].find(v => Number(v[0]) === 11)[1].includes('Der gute Hirte lässt sein Leben für die Schafe.'), 'OTB witness missing');
+  } else check(c.decision === 'KEEP_AS_EXCEPTION' && c.verified_N_ID === null && link.Match_Status === 'FAITHPATH_ONLY', `False N equivalence persisted ${c.id}`);
+}
+const oldFlow = structuredClone(storyFlow);
+oldFlow.mapping_links = oldFlow.mapping_links.filter(l => !resolvedIds.includes(l.FP_ID));
+for (const story of oldFlow.stories) story.flow_items = story.flow_items.filter(i => !i.source_question_ids.some(id => resolvedIds.includes(id)));
+oldFlow.status = resolution.flow_before_status;
+oldFlow.unmapped_faithpath_ids = resolvedIds;
+const canonical = value => Array.isArray(value) ? value.map(canonical) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(k => [k, canonical(value[k])])) : value;
+check(hash(Buffer.from(JSON.stringify(canonical(oldFlow)))) === resolution.flow_before_canonical_sha256, 'Flow changes exceeded the four reviewed cases');
 const result = {status: errors.length ? 'FAIL' : 'PASS', faithpath_questions: questions, unique_fp_ids: new Set(ids).size, legacy_story_units: storyUnits, chapter_quiz_questions: chapterQuestions, nachlese_questions: nQuestions.length, unique_n_ids:nById.size, canonical_nachlese_stories:nStories.length, combined_story_count:storyFlow.stories.length, verified_story_links:verifiedRows.length, review_required:reviewRows.length, chapter_rows_excluded_from_merge:excludedRows.length, word_equal_duplicates_single_flow_item:deduplicated, approved_field_changes: approved.size, actual_field_changes: actual.size, correct_index_changes: 0, reference_changes: 0, errors};
 console.log(JSON.stringify(result, null, 2));
 if (errors.length) process.exitCode = 1;

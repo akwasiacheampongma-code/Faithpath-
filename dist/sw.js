@@ -1,0 +1,92 @@
+const BUILD = "FP4-20261001-G";
+const PREFIX = "faithpath:" + self.registration.scope;
+const CACHE = PREFIX + BUILD;
+const ASSETS = ["./404.html","./BUILD.txt","./candidate-integrity.json","./data/bibles/LUTHER1912-NOTICE.txt","./data/bibles/OTB-LICENSE.txt","./data/bibles/l1912/1CH.json","./data/bibles/l1912/1CO.json","./data/bibles/l1912/1JN.json","./data/bibles/l1912/1KI.json","./data/bibles/l1912/1PE.json","./data/bibles/l1912/1SA.json","./data/bibles/l1912/1TH.json","./data/bibles/l1912/1TI.json","./data/bibles/l1912/2CH.json","./data/bibles/l1912/2CO.json","./data/bibles/l1912/2JN.json","./data/bibles/l1912/2KI.json","./data/bibles/l1912/2PE.json","./data/bibles/l1912/2SA.json","./data/bibles/l1912/2TH.json","./data/bibles/l1912/2TI.json","./data/bibles/l1912/3JN.json","./data/bibles/l1912/ACT.json","./data/bibles/l1912/AMO.json","./data/bibles/l1912/COL.json","./data/bibles/l1912/DAN.json","./data/bibles/l1912/DEU.json","./data/bibles/l1912/ECC.json","./data/bibles/l1912/EPH.json","./data/bibles/l1912/EST.json","./data/bibles/l1912/EXO.json","./data/bibles/l1912/EZK.json","./data/bibles/l1912/EZR.json","./data/bibles/l1912/GAL.json","./data/bibles/l1912/GEN.json","./data/bibles/l1912/HAB.json","./data/bibles/l1912/HAG.json","./data/bibles/l1912/HEB.json","./data/bibles/l1912/HOS.json","./data/bibles/l1912/ISA.json","./data/bibles/l1912/JAS.json","./data/bibles/l1912/JDG.json","./data/bibles/l1912/JER.json","./data/bibles/l1912/JHN.json","./data/bibles/l1912/JOB.json","./data/bibles/l1912/JOL.json","./data/bibles/l1912/JON.json","./data/bibles/l1912/JOS.json","./data/bibles/l1912/JUD.json","./data/bibles/l1912/LAM.json","./data/bibles/l1912/LEV.json","./data/bibles/l1912/LUK.json","./data/bibles/l1912/MAL.json","./data/bibles/l1912/MAT.json","./data/bibles/l1912/MIC.json","./data/bibles/l1912/MRK.json","./data/bibles/l1912/NAM.json","./data/bibles/l1912/NEH.json","./data/bibles/l1912/NUM.json","./data/bibles/l1912/OBA.json","./data/bibles/l1912/PHM.json","./data/bibles/l1912/PHP.json","./data/bibles/l1912/PRO.json","./data/bibles/l1912/PSA.json","./data/bibles/l1912/REV.json","./data/bibles/l1912/ROM.json","./data/bibles/l1912/RUT.json","./data/bibles/l1912/SNG.json","./data/bibles/l1912/TIT.json","./data/bibles/l1912/ZEC.json","./data/bibles/l1912/ZEP.json","./data/bibles/otb/1CH.json","./data/bibles/otb/1CO.json","./data/bibles/otb/1JN.json","./data/bibles/otb/1KI.json","./data/bibles/otb/1PE.json","./data/bibles/otb/1SA.json","./data/bibles/otb/1TH.json","./data/bibles/otb/1TI.json","./data/bibles/otb/2CH.json","./data/bibles/otb/2CO.json","./data/bibles/otb/2JN.json","./data/bibles/otb/2KI.json","./data/bibles/otb/2PE.json","./data/bibles/otb/2SA.json","./data/bibles/otb/2TH.json","./data/bibles/otb/2TI.json","./data/bibles/otb/3JN.json","./data/bibles/otb/ACT.json","./data/bibles/otb/AMO.json","./data/bibles/otb/COL.json","./data/bibles/otb/DAN.json","./data/bibles/otb/DEU.json","./data/bibles/otb/ECC.json","./data/bibles/otb/EPH.json","./data/bibles/otb/EST.json","./data/bibles/otb/EXO.json","./data/bibles/otb/EZK.json","./data/bibles/otb/EZR.json","./data/bibles/otb/GAL.json","./data/bibles/otb/GEN.json","./data/bibles/otb/HAB.json","./data/bibles/otb/HAG.json","./data/bibles/otb/HEB.json","./data/bibles/otb/HOS.json","./data/bibles/otb/ISA.json","./data/bibles/otb/JAS.json","./data/bibles/otb/JDG.json","./data/bibles/otb/JER.json","./data/bibles/otb/JHN.json","./data/bibles/otb/JOB.json","./data/bibles/otb/JOL.json","./data/bibles/otb/JON.json","./data/bibles/otb/JOS.json","./data/bibles/otb/JUD.json","./data/bibles/otb/LAM.json","./data/bibles/otb/LEV.json","./data/bibles/otb/LUK.json","./data/bibles/otb/MAL.json","./data/bibles/otb/MAT.json","./data/bibles/otb/MIC.json","./data/bibles/otb/MRK.json","./data/bibles/otb/NAM.json","./data/bibles/otb/NEH.json","./data/bibles/otb/NUM.json","./data/bibles/otb/OBA.json","./data/bibles/otb/PHM.json","./data/bibles/otb/PHP.json","./data/bibles/otb/PRO.json","./data/bibles/otb/PSA.json","./data/bibles/otb/REV.json","./data/bibles/otb/ROM.json","./data/bibles/otb/RUT.json","./data/bibles/otb/SNG.json","./data/bibles/otb/TIT.json","./data/bibles/otb/ZEC.json","./data/bibles/otb/ZEP.json","./icons/icon-192.png","./icons/icon-512.png","./index.html","./manifest.webmanifest","./releases/FP4-20261001-G/data/bibles/LUTHER1912-NOTICE.txt","./releases/FP4-20261001-G/data/bibles/OTB-LICENSE.txt","./releases/FP4-20261001-G/data/bibles/l1912/1CH.json","./releases/FP4-20261001-G/data/bibles/l1912/1CO.json","./releases/FP4-20261001-G/data/bibles/l1912/1JN.json","./releases/FP4-20261001-G/data/bibles/l1912/1KI.json","./releases/FP4-20261001-G/data/bibles/l1912/1PE.json","./releases/FP4-20261001-G/data/bibles/l1912/1SA.json","./releases/FP4-20261001-G/data/bibles/l1912/1TH.json","./releases/FP4-20261001-G/data/bibles/l1912/1TI.json","./releases/FP4-20261001-G/data/bibles/l1912/2CH.json","./releases/FP4-20261001-G/data/bibles/l1912/2CO.json","./releases/FP4-20261001-G/data/bibles/l1912/2JN.json","./releases/FP4-20261001-G/data/bibles/l1912/2KI.json","./releases/FP4-20261001-G/data/bibles/l1912/2PE.json","./releases/FP4-20261001-G/data/bibles/l1912/2SA.json","./releases/FP4-20261001-G/data/bibles/l1912/2TH.json","./releases/FP4-20261001-G/data/bibles/l1912/2TI.json","./releases/FP4-20261001-G/data/bibles/l1912/3JN.json","./releases/FP4-20261001-G/data/bibles/l1912/ACT.json","./releases/FP4-20261001-G/data/bibles/l1912/AMO.json","./releases/FP4-20261001-G/data/bibles/l1912/COL.json","./releases/FP4-20261001-G/data/bibles/l1912/DAN.json","./releases/FP4-20261001-G/data/bibles/l1912/DEU.json","./releases/FP4-20261001-G/data/bibles/l1912/ECC.json","./releases/FP4-20261001-G/data/bibles/l1912/EPH.json","./releases/FP4-20261001-G/data/bibles/l1912/EST.json","./releases/FP4-20261001-G/data/bibles/l1912/EXO.json","./releases/FP4-20261001-G/data/bibles/l1912/EZK.json","./releases/FP4-20261001-G/data/bibles/l1912/EZR.json","./releases/FP4-20261001-G/data/bibles/l1912/GAL.json","./releases/FP4-20261001-G/data/bibles/l1912/GEN.json","./releases/FP4-20261001-G/data/bibles/l1912/HAB.json","./releases/FP4-20261001-G/data/bibles/l1912/HAG.json","./releases/FP4-20261001-G/data/bibles/l1912/HEB.json","./releases/FP4-20261001-G/data/bibles/l1912/HOS.json","./releases/FP4-20261001-G/data/bibles/l1912/ISA.json","./releases/FP4-20261001-G/data/bibles/l1912/JAS.json","./releases/FP4-20261001-G/data/bibles/l1912/JDG.json","./releases/FP4-20261001-G/data/bibles/l1912/JER.json","./releases/FP4-20261001-G/data/bibles/l1912/JHN.json","./releases/FP4-20261001-G/data/bibles/l1912/JOB.json","./releases/FP4-20261001-G/data/bibles/l1912/JOL.json","./releases/FP4-20261001-G/data/bibles/l1912/JON.json","./releases/FP4-20261001-G/data/bibles/l1912/JOS.json","./releases/FP4-20261001-G/data/bibles/l1912/JUD.json","./releases/FP4-20261001-G/data/bibles/l1912/LAM.json","./releases/FP4-20261001-G/data/bibles/l1912/LEV.json","./releases/FP4-20261001-G/data/bibles/l1912/LUK.json","./releases/FP4-20261001-G/data/bibles/l1912/MAL.json","./releases/FP4-20261001-G/data/bibles/l1912/MAT.json","./releases/FP4-20261001-G/data/bibles/l1912/MIC.json","./releases/FP4-20261001-G/data/bibles/l1912/MRK.json","./releases/FP4-20261001-G/data/bibles/l1912/NAM.json","./releases/FP4-20261001-G/data/bibles/l1912/NEH.json","./releases/FP4-20261001-G/data/bibles/l1912/NUM.json","./releases/FP4-20261001-G/data/bibles/l1912/OBA.json","./releases/FP4-20261001-G/data/bibles/l1912/PHM.json","./releases/FP4-20261001-G/data/bibles/l1912/PHP.json","./releases/FP4-20261001-G/data/bibles/l1912/PRO.json","./releases/FP4-20261001-G/data/bibles/l1912/PSA.json","./releases/FP4-20261001-G/data/bibles/l1912/REV.json","./releases/FP4-20261001-G/data/bibles/l1912/ROM.json","./releases/FP4-20261001-G/data/bibles/l1912/RUT.json","./releases/FP4-20261001-G/data/bibles/l1912/SNG.json","./releases/FP4-20261001-G/data/bibles/l1912/TIT.json","./releases/FP4-20261001-G/data/bibles/l1912/ZEC.json","./releases/FP4-20261001-G/data/bibles/l1912/ZEP.json","./releases/FP4-20261001-G/data/bibles/otb/1CH.json","./releases/FP4-20261001-G/data/bibles/otb/1CO.json","./releases/FP4-20261001-G/data/bibles/otb/1JN.json","./releases/FP4-20261001-G/data/bibles/otb/1KI.json","./releases/FP4-20261001-G/data/bibles/otb/1PE.json","./releases/FP4-20261001-G/data/bibles/otb/1SA.json","./releases/FP4-20261001-G/data/bibles/otb/1TH.json","./releases/FP4-20261001-G/data/bibles/otb/1TI.json","./releases/FP4-20261001-G/data/bibles/otb/2CH.json","./releases/FP4-20261001-G/data/bibles/otb/2CO.json","./releases/FP4-20261001-G/data/bibles/otb/2JN.json","./releases/FP4-20261001-G/data/bibles/otb/2KI.json","./releases/FP4-20261001-G/data/bibles/otb/2PE.json","./releases/FP4-20261001-G/data/bibles/otb/2SA.json","./releases/FP4-20261001-G/data/bibles/otb/2TH.json","./releases/FP4-20261001-G/data/bibles/otb/2TI.json","./releases/FP4-20261001-G/data/bibles/otb/3JN.json","./releases/FP4-20261001-G/data/bibles/otb/ACT.json","./releases/FP4-20261001-G/data/bibles/otb/AMO.json","./releases/FP4-20261001-G/data/bibles/otb/COL.json","./releases/FP4-20261001-G/data/bibles/otb/DAN.json","./releases/FP4-20261001-G/data/bibles/otb/DEU.json","./releases/FP4-20261001-G/data/bibles/otb/ECC.json","./releases/FP4-20261001-G/data/bibles/otb/EPH.json","./releases/FP4-20261001-G/data/bibles/otb/EST.json","./releases/FP4-20261001-G/data/bibles/otb/EXO.json","./releases/FP4-20261001-G/data/bibles/otb/EZK.json","./releases/FP4-20261001-G/data/bibles/otb/EZR.json","./releases/FP4-20261001-G/data/bibles/otb/GAL.json","./releases/FP4-20261001-G/data/bibles/otb/GEN.json","./releases/FP4-20261001-G/data/bibles/otb/HAB.json","./releases/FP4-20261001-G/data/bibles/otb/HAG.json","./releases/FP4-20261001-G/data/bibles/otb/HEB.json","./releases/FP4-20261001-G/data/bibles/otb/HOS.json","./releases/FP4-20261001-G/data/bibles/otb/ISA.json","./releases/FP4-20261001-G/data/bibles/otb/JAS.json","./releases/FP4-20261001-G/data/bibles/otb/JDG.json","./releases/FP4-20261001-G/data/bibles/otb/JER.json","./releases/FP4-20261001-G/data/bibles/otb/JHN.json","./releases/FP4-20261001-G/data/bibles/otb/JOB.json","./releases/FP4-20261001-G/data/bibles/otb/JOL.json","./releases/FP4-20261001-G/data/bibles/otb/JON.json","./releases/FP4-20261001-G/data/bibles/otb/JOS.json","./releases/FP4-20261001-G/data/bibles/otb/JUD.json","./releases/FP4-20261001-G/data/bibles/otb/LAM.json","./releases/FP4-20261001-G/data/bibles/otb/LEV.json","./releases/FP4-20261001-G/data/bibles/otb/LUK.json","./releases/FP4-20261001-G/data/bibles/otb/MAL.json","./releases/FP4-20261001-G/data/bibles/otb/MAT.json","./releases/FP4-20261001-G/data/bibles/otb/MIC.json","./releases/FP4-20261001-G/data/bibles/otb/MRK.json","./releases/FP4-20261001-G/data/bibles/otb/NAM.json","./releases/FP4-20261001-G/data/bibles/otb/NEH.json","./releases/FP4-20261001-G/data/bibles/otb/NUM.json","./releases/FP4-20261001-G/data/bibles/otb/OBA.json","./releases/FP4-20261001-G/data/bibles/otb/PHM.json","./releases/FP4-20261001-G/data/bibles/otb/PHP.json","./releases/FP4-20261001-G/data/bibles/otb/PRO.json","./releases/FP4-20261001-G/data/bibles/otb/PSA.json","./releases/FP4-20261001-G/data/bibles/otb/REV.json","./releases/FP4-20261001-G/data/bibles/otb/ROM.json","./releases/FP4-20261001-G/data/bibles/otb/RUT.json","./releases/FP4-20261001-G/data/bibles/otb/SNG.json","./releases/FP4-20261001-G/data/bibles/otb/TIT.json","./releases/FP4-20261001-G/data/bibles/otb/ZEC.json","./releases/FP4-20261001-G/data/bibles/otb/ZEP.json","./releases/FP4-20261001-G/data/content-report.json","./releases/FP4-20261001-G/data/faithpath-content-index.json","./releases/FP4-20261001-G/data/faithpath-nachlese-story-flow.json","./releases/FP4-20261001-G/data/index.json","./releases/FP4-20261001-G/data/nachlese-questions.json","./releases/FP4-20261001-G/data/nachlese-stories.json","./releases/FP4-20261001-G/data/nt-quiz-status.json","./releases/FP4-20261001-G/data/reference-index.json","./releases/FP4-20261001-G/data/stories.json","./releases/FP4-20261001-G/src/app.js","./releases/FP4-20261001-G/src/content.js","./releases/FP4-20261001-G/src/domain.js","./releases/FP4-20261001-G/src/runtime-model.js","./releases/FP4-20261001-G/src/store.js","./releases/FP4-20261001-G/src/version.js","./releases/FP4-20261001-G/styles.css","./trees/tree-stage-1.webp","./trees/tree-stage-2.webp","./trees/tree-stage-3.webp","./trees/tree-stage-4.webp","./trees/tree-stage-5.webp","./trees/tree-stage-6.webp","./trees/tree-stage-7.webp"];
+const absolute = (p) => new URL(p, self.registration.scope).href;
+const allowed = new Set(ASSETS.map(absolute));
+self.addEventListener("install", (event) =>
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(CACHE);
+      // Fetch a coherent, complete release. A failed download never replaces a working version.
+      try {
+        for (let i = 0; i < ASSETS.length; i += 8)
+          await Promise.all(
+            ASSETS.slice(i, i + 8).map(async (file) => {
+              const req = new Request(absolute(file), { cache: "reload" }),
+                response = await fetch(req);
+              if (!response.ok)
+                throw new Error("Offline asset missing: " + file);
+              if (
+                file.endsWith(".json") &&
+                !response.headers.get("content-type")?.includes("json")
+              )
+                throw new Error("Invalid content: " + file);
+              await cache.put(req, response);
+            }),
+          );
+        await cache.put(absolute("./offline-ready"), new Response(BUILD));
+      } catch (error) {
+        await caches.delete(CACHE);
+        throw error;
+      }
+      // An update waits. The UI activates it only on a deliberate user action.
+    })(),
+  ),
+);
+self.addEventListener("activate", (event) =>
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys(),
+        ours = keys.filter((k) => k.startsWith(PREFIX));
+      // Keep the previous release for already-open tabs. Never delete another application's cache.
+      const old = ours.filter((k) => k !== CACHE);
+      for (const key of old.slice(0, -1)) await caches.delete(key);
+      await self.clients.claim();
+    })(),
+  ),
+);
+self.addEventListener("message", (event) => {
+  if (event.data?.type === "SKIP_WAITING") self.skipWaiting();
+  if (event.data?.type === "STATUS")
+    event.waitUntil(
+      caches
+        .open(CACHE)
+        .then((c) => c.match(absolute("./offline-ready")))
+        .then((ready) =>
+          event.ports[0]?.postMessage({ ready: !!ready, build: BUILD }),
+        ),
+    );
+});
+self.addEventListener("fetch", (event) => {
+  const request = event.request,
+    url = new URL(request.url);
+  if (request.method !== "GET" || url.origin !== self.location.origin) return;
+  // Browser update checks for sw.js and unknown requests stay on the network.
+  if (url.pathname.endsWith("/sw.js")) return;
+  if (request.mode === "navigate") {
+    event.respondWith(
+      caches
+        .open(CACHE)
+        .then((c) => c.match(absolute("./index.html")))
+        .then((r) => r || fetch(request)),
+    );
+    return;
+  }
+  if (!allowed.has(url.href) && !url.pathname.includes("/releases/")) return;
+  event.respondWith(
+    (async () => {
+      const own = await caches.open(CACHE),
+        cached = await own.match(request);
+      if (cached) return cached;
+      if (url.pathname.includes("/releases/")) {
+        const keys = (await caches.keys()).filter((k) => k.startsWith(PREFIX));
+        for (const key of keys) {
+          const found = await (await caches.open(key)).match(request);
+          if (found) return found;
+        }
+      }
+      return fetch(request);
+    })(),
+  );
+});

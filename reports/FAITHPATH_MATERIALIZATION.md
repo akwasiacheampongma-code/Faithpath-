@@ -1,3 +1,5 @@
+> Historical materialization snapshot. The four review cases below have since been resolved. Current results: [FAITHPATH_REVIEW_DECISIONS.md](FAITHPATH_REVIEW_DECISIONS.md) and `faithpath-preflight.json`.
+
 # FaithPath/Nachlese — materialization and preflight
 
 Source branch: develop/v4; original commit 5f6c597916a5854f83085538ae345ff4c2d629dc. Dry runs completed before writes. No editorial whole-catalog recheck, production deploy, remote push or main merge.

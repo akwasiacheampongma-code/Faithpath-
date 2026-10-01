@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "build_id": "FP4-20261001-G",
+  "content_hash": "04d8bdf8a7e2c4377cbe2eb812744fb1fc7cfd9a837817b61ae9e31a647d0d1b",
+  "build_hash": "7fee1990f1939ac05cf470861f2add48173eaa7364c503abdc143434e150ae6e",
+  "core_tests": {
+    "expected": 22,
+    "passed": 22,
+    "failed": 0
+  },
+  "migration_test": "PASS",
+  "referential_integrity": "PASS",
+  "data_loss_test": "PASS",
+  "browser_tests": {
+    "passed": 12,
+    "failed": 0
+  },
+  "service_worker_tests": {
+    "passed": 3,
+    "failed": 0
+  },
+  "errors": [],
+  "validator": "PASS",
+  "runtime_schema_validator": "PASS",
+  "production_JSON_files_parsed": 275,
+  "production_reference_index_exactly_matches_both_Bibles": true,
+  "content_locked_files": 139,
+  "content_hashes_unchanged": true,
+  "special_cases_valid": true,
+  "core_execution": {
+    "command": "node --test --test-isolation=none --test-reporter=junit --test-reporter-destination=/tmp/faithpath-G-core-results.xml tests/core.test.mjs",
+    "cwd": "/tmp/faithpath-G-regression-s5a5rrz2",
+    "data_source": "dist/releases/FP4-20261001-G/data",
+    "runtime_source": "dist/releases/FP4-20261001-G/src",
+    "test_source_sha256": "9587aa3834ce7a2a385e0329e1a371f40efd912d50053fd3fb7dde274f0425da"
+  },
+  "core_test_adjustment": {
+    "old_test": "Kein Originalquiz, Bibeltext oder Baumasset verloren oder redaktionell verändert",
+    "new_test": "Nur belegte Migrationen verändern Inhalte; IDs, Quiz, Bibel und Baumassets bleiben erhalten",
+    "reason": "Replace obsolete Build-E whole-question hash equality with an exhaustive original-master-versus-candidate diff constrained by all 3301 documented field changes. The Build-E Bible/tree/icon hash expectations remain unchanged. No blind golden hash update.",
+    "unchanged_tests": 21
+  },
+  "browser_execution": {
+    "command": "FAITHPATH_CHROMIUM=/usr/bin/chromium FAITHPATH_AXE=/tmp/faithpath-test-deps/node_modules/axe-core/axe.min.js node tests/browser.mjs",
+    "exit_code": 0,
+    "production_origin": "http://127.0.0.1:4176",
+    "test_source_sha256": "9e3e1356760c0c3179869b7498ba6616fd32a39ed07ccd84b41b7b2b0e494265",
+    "note": "Initial attempt was incomplete/failed; isolated-port final full execution passes all 12 groups. Optional targeted test filter is unset in the final run."
+  },
+  "service_worker_execution": {
+    "command": "FAITHPATH_CHROMIUM=/usr/bin/chromium node tests/service-worker.mjs",
+    "exit_code": 0,
+    "test_source_sha256": "1a4f666f825795d65d7cfab745b5115144d4e0910fe33ad69f2b4b54927972df",
+    "target_build": "FP4-20261001-G",
+    "note": "Historical E/F labels in test names are retained; BUILD imported from src/version.js is FP4-20261001-G and deploy() consumes current dist. Update variants are isolated QA builds, never production."
+  },
+  "source_documents_unchanged": true,
+  "no_content_or_mapping_changes": true,
+  "timestamp_utc": "2026-10-01T08:23:52.826140+00:00"
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="Migration erhält lange Texte, unbekannte Felder, IDs und alle Sammlungen" time="0.003267" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Vor Migration wird der exakte Originaltext gesichert; wiederholter Start verändert IDs nicht" time="0.002746" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Beschädigtes JSON und zukünftiges Schema werden niemals durch leere Daten ersetzt" time="0.000500" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Speicherfehler lässt alten Zustand und Original unverändert" time="0.000622" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Migration ohne Platz für Sicherung schreibt nichts ins Original" time="0.002137" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Konkurrierender Tab wird erkannt statt überschrieben" time="0.000463" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Backup-Rundreise erhält alle Daten und Planfortschritt" time="0.004375" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Ungültige Importdaten, Duplikate und Prototype-Keys verändern keinen Datenstand" time="0.000465" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Vor Import wird ein wiederherstellbarer vorheriger Stand gesichert" time="0.000399" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Angehakte Schritte verändern den Olivenbaum nicht; Archiv löscht keine Entwicklung" time="0.000846" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Nur explizit bestätigte globale Entwicklungen zählen" time="0.000250" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Frische Aktivitäten ergeben keine Erinnerung; alte Notizen schon" time="0.000798" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Snooze, Abschluss und ungültige Datumswerte werden respektiert" time="0.000155" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Neue Wegreflexion verschiebt abgeleitete Erinnerung statt alte Aktivität zu behaupten" time="0.000647" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Verknüpfte Markierungen erzeugen keine doppelte Erinnerung" time="0.001549" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Reflexion und Journal werden nur bei exakt sicherer Legacy-Verbindung zusammengeführt" time="0.000637" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Wegverbindung bewahrt Bibel, Journal und Reflexion in einer Chronologie" time="0.000797" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Rückblick und zugehöriger Meilenstein erscheinen nicht doppelt" time="0.000594" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Alle tatsächlichen Inhalte, Codes und Referenzen in beiden Übersetzungen validieren" time="0.100748" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Nur belegte Migrationen verändern Inhalte; IDs, Quiz, Bibel und Baumassets bleiben erhalten" time="0.159536" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Erledigter Schritt und letzter Legacy-Rückblick verschieben eine veraltete Erinnerung" time="0.001973" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<testcase name="Frisch bearbeiteter Gedanke wird nicht sofort als vergessen angezeigt" time="0.000182" classname="test" file="/tmp/faithpath-G-regression-s5a5rrz2/tests/core.test.mjs"/>
+	<!-- tests 22 -->
+	<!-- suites 0 -->
+	<!-- pass 22 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 313.456808 -->
+</testsuites>

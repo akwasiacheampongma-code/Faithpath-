@@ -3899,12 +3899,12 @@
     },
     {
       "FP_ID": "FP-0120",
-      "N_ID": "N-1466",
-      "Match_Status": "SINNGLEICH",
+      "N_ID": null,
+      "Match_Status": "FAITHPATH_ONLY",
       "Confidence_before": "MEDIUM",
-      "verification_status": "REVIEW_REQUIRED",
-      "Story_ID": null,
-      "Story_Title": null,
+      "verification_status": "VERIFIED_FOR_WRITE",
+      "Story_ID": "NS-0274",
+      "Story_Title": "Dein Sohn lebt",
       "sources": [
         {
           "file": "3-Nachlese-Fragenkatalog-2-.docx",
@@ -3923,10 +3923,8 @@
           "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
         }
       ],
-      "reasons": [
-        "FP asks about healing outcome; N asks about Jesus command and the father response; these are different question targets."
-      ],
-      "semantic_verification": null,
+      "reasons": [],
+      "semantic_verification": "FaithPath fragt nach dem Heilungsergebnis; N-1466 fragt nach Jesu Zuspruch und der Reaktion des Vaters. Johannes 4,50–53 belegt beide Inhalte, aber keine semantische Dublette. Die vollständige FP-Spanne passt eindeutig zur DOCX-Story NS-0274. Als eigenständige FaithPath-Frage im Storyfluss erhalten; kein N-Fragenmatch.",
       "source_preview_differences": [
         {
           "field": "N_question",
@@ -3940,7 +3938,14 @@
           "canonical_final_value": "Jesus sagte: Gehe hin, dein Sohn lebt. Der Mann glaubte dem Wort und ging hin.",
           "handling": "Canonical final QA fields preserved; preview never copied into content."
         }
-      ]
+      ],
+      "source_Match_Status": "SINNGLEICH",
+      "candidate_N_ID": "N-1466",
+      "prior_review_reasons": [
+        "FP asks about healing outcome; N asks about Jesus command and the father response; these are different question targets."
+      ],
+      "decision": "KEEP_AS_EXCEPTION",
+      "decision_evidence": "reports/faithpath-review-decisions.json#FP-0120"
     },
     {
       "FP_ID": "FP-0121",
@@ -5025,9 +5030,9 @@
       "N_ID": "N-1536",
       "Match_Status": "SINNGLEICH",
       "Confidence_before": "MEDIUM",
-      "verification_status": "REVIEW_REQUIRED",
-      "Story_ID": null,
-      "Story_Title": null,
+      "verification_status": "VERIFIED_FOR_WRITE",
+      "Story_ID": "NS-0286",
+      "Story_Title": "Der gute Hirte",
       "sources": [
         {
           "file": "3-Nachlese-Fragenkatalog-2-.docx",
@@ -5046,11 +5051,8 @@
           "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
         }
       ],
-      "reasons": [
-        "FP_N_REFERENCE_NO_OVERLAP",
-        "FP reference John 10,11 and final N reference John 10,12 do not overlap."
-      ],
-      "semantic_verification": null,
+      "reasons": [],
+      "semantic_verification": "Frage und richtige Antwort sind sinngleich. Im vorhandenen Luther-1912-Datensatz steht die Aussage des guten Hirten unter Johannes 10,12; im OTB-Datensatz unter Johannes 10,11. DOCX und finale Nachlese-Prüftabelle nennen 10,12, FaithPath nennt 10,11. Die unterschiedlichen Verse sind damit durch die tatsächlichen Übersetzungsdatensätze belegt und kein Inhaltswiderspruch. Beide Originalreferenzen und Formulierungen unverändert erhalten; keine wortgleiche Deduplizierung.",
       "source_preview_differences": [
         {
           "field": "N_final_answer",
@@ -5058,7 +5060,15 @@
           "canonical_final_value": "Er lässt sein Leben für seine Schafe",
           "handling": "Canonical final QA fields preserved; preview never copied into content."
         }
-      ]
+      ],
+      "source_Match_Status": "SINNGLEICH",
+      "candidate_N_ID": "N-1536",
+      "prior_review_reasons": [
+        "FP_N_REFERENCE_NO_OVERLAP",
+        "FP reference John 10,11 and final N reference John 10,12 do not overlap."
+      ],
+      "decision": "APPROVE",
+      "decision_evidence": "reports/faithpath-review-decisions.json#FP-0147"
     },
     {
       "FP_ID": "FP-0148",
@@ -5218,12 +5228,12 @@
     },
     {
       "FP_ID": "FP-0151",
-      "N_ID": "N-1544",
-      "Match_Status": "SINNGLEICH",
+      "N_ID": null,
+      "Match_Status": "FAITHPATH_ONLY",
       "Confidence_before": "HIGH",
-      "verification_status": "REVIEW_REQUIRED",
-      "Story_ID": null,
-      "Story_Title": null,
+      "verification_status": "VERIFIED_FOR_WRITE",
+      "Story_ID": "NS-0288",
+      "Story_Title": "Lazarus, komm heraus",
       "sources": [
         {
           "file": "3-Nachlese-Fragenkatalog-2-.docx",
@@ -5242,10 +5252,8 @@
           "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
         }
       ],
-      "reasons": [
-        "FP asks for the sick man name; N asks his place of origin; different question/answer targets."
-      ],
-      "semantic_verification": null,
+      "reasons": [],
+      "semantic_verification": "FaithPath fragt nach dem Namen Lazarus, N-1544 nach dessen Herkunft Bethanien. Die finale Nachlese-Prüftabelle korrigiert gerade die im Mapping verwendete alte Namensantwort zur Herkunftsantwort. Johannes 11,1 belegt beides. Keine semantische Dublette; eigenständige FaithPath-Frage in der eindeutig passenden DOCX-Story NS-0288 erhalten.",
       "source_preview_differences": [
         {
           "field": "N_final_answer",
@@ -5253,7 +5261,14 @@
           "canonical_final_value": "Von Bethanien, dem Flecken Marias und ihrer Schwester Martha.",
           "handling": "Canonical final QA fields preserved; preview never copied into content."
         }
-      ]
+      ],
+      "source_Match_Status": "SINNGLEICH",
+      "candidate_N_ID": "N-1544",
+      "prior_review_reasons": [
+        "FP asks for the sick man name; N asks his place of origin; different question/answer targets."
+      ],
+      "decision": "KEEP_AS_EXCEPTION",
+      "decision_evidence": "reports/faithpath-review-decisions.json#FP-0151"
     },
     {
       "FP_ID": "FP-0152",
@@ -8658,12 +8673,12 @@
     },
     {
       "FP_ID": "FP-0239",
-      "N_ID": "N-1761",
-      "Match_Status": "SINNGLEICH",
+      "N_ID": null,
+      "Match_Status": "FAITHPATH_ONLY",
       "Confidence_before": "MEDIUM",
-      "verification_status": "REVIEW_REQUIRED",
-      "Story_ID": null,
-      "Story_Title": null,
+      "verification_status": "VERIFIED_FOR_WRITE",
+      "Story_ID": "NS-0326",
+      "Story_Title": "Rhode öffnet nicht",
       "sources": [
         {
           "file": "3-Nachlese-Fragenkatalog-2-.docx",
@@ -8682,10 +8697,8 @@
           "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
         }
       ],
-      "reasons": [
-        "FP asks why Herod was struck; final N question/answer describes what happened without stating that reason."
-      ],
-      "semantic_verification": null,
+      "reasons": [],
+      "semantic_verification": "FaithPath fragt nach dem ausdrücklich genannten Grund der Bestrafung, N-1761 nach Ablauf und Folgen. Apostelgeschichte 12,23 belegt den FaithPath-Grund, 12,22–23 den Nachlese-Ablauf. Keine semantische Dublette; eigenständige FaithPath-Frage in der eindeutig passenden DOCX-Story NS-0326 erhalten.",
       "source_preview_differences": [
         {
           "field": "N_final_answer",
@@ -8699,7 +8712,14 @@
           "canonical_final_value": "Apostelgeschichte 12,22–23",
           "handling": "Canonical final QA fields preserved; preview never copied into content."
         }
-      ]
+      ],
+      "source_Match_Status": "SINNGLEICH",
+      "candidate_N_ID": "N-1761",
+      "prior_review_reasons": [
+        "FP asks why Herod was struck; final N question/answer describes what happened without stating that reason."
+      ],
+      "decision": "KEEP_AS_EXCEPTION",
+      "decision_evidence": "reports/faithpath-review-decisions.json#FP-0239"
     },
     {
       "FP_ID": "FP-0240",
@@ -10805,7 +10825,7 @@
     }
   ],
   "counts": {
-    "mode": "DRY_RUN",
+    "mode": "FOUR_CASES_RESOLVED",
     "canonical_story_count": 435,
     "combined_story_count": 436,
     "target_story_count": 436,
@@ -10821,29 +10841,31 @@
     "match_status_counts": {
       "EXAKT": 92,
       "KONFLIKT": 4,
-      "SINNGLEICH": 78,
-      "FAITHPATH_ONLY": 126
+      "SINNGLEICH": 75,
+      "FAITHPATH_ONLY": 129
     },
     "verification_status_counts": {
-      "VERIFIED_FOR_WRITE": 256,
-      "REVIEW_REQUIRED": 4,
+      "VERIFIED_FOR_WRITE": 260,
       "EXCLUDED_CHAPTER_QUIZ": 40
     },
     "verified_by_match_status": {
       "EXAKT": 92,
       "KONFLIKT": 4,
-      "SINNGLEICH": 74,
-      "FAITHPATH_ONLY": 86
+      "SINNGLEICH": 75,
+      "FAITHPATH_ONLY": 89
     },
-    "high_verified": 145,
-    "medium_verified": 25,
-    "review_required": 4
+    "high_verified": 146,
+    "medium_verified": 28,
+    "review_required": 0,
+    "original_reconstructed_match_status_counts": {
+      "EXAKT": 92,
+      "KONFLIKT": 4,
+      "SINNGLEICH": 78,
+      "FAITHPATH_ONLY": 126
+    },
+    "documented_independent_question_exceptions": 3
   },
-  "review_required": [
-    "FP-0120",
-    "FP-0147",
-    "FP-0151",
-    "FP-0239"
-  ],
-  "canonical_source_preview_handling": "Mapping previews are not field replacements; DOCX structure and final QA field sources take precedence."
+  "review_required": [],
+  "canonical_source_preview_handling": "Mapping previews are not field replacements; DOCX structure and final QA field sources take precedence.",
+  "review_resolution_report": "reports/faithpath-review-decisions.json"
 }

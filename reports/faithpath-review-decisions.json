@@ -1,0 +1,1239 @@
+{
+  "agent": "faithpath-four-case-resolution",
+  "branch": "develop/v4",
+  "commit_before": "dc1e6782ef142de528c4c1b023ce96a70fc6753f",
+  "scope": [
+    "FP-0120",
+    "FP-0147",
+    "FP-0151",
+    "FP-0239"
+  ],
+  "cases": [
+    {
+      "id": "FP-0120",
+      "type": "DISTINCT_FAITHPATH_QUESTION_SAME_STORY",
+      "faithpath_value": "Was geschieht mit dem Sohn des königlichen Beamten? → Er wird gesund",
+      "comparison_value": "N-1466: Was sagte Jesus, und was tat der Mann? → Jesus sagte: Gehe hin, dein Sohn lebt. Der Mann glaubte dem Wort und ging hin.",
+      "bible_reference": {
+        "faithpath": "Johannes 4,50-53",
+        "nachlese": "Johannes 4,50"
+      },
+      "source_evidence": [
+        {
+          "file": "data/stories.json",
+          "sha256": "690e77a255a7665897acfde12222d7f2b788503bcc0159805fbca2dfb3c3ec58",
+          "locator": "$[23].questions[4]"
+        },
+        {
+          "file": "reports/sources/1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+          "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778",
+          "sheet": "FP-N-Mapping",
+          "row": 121,
+          "original_match_status": "SINNGLEICH",
+          "candidate_N_ID": "N-1466",
+          "story_title": "Dein Sohn lebt",
+          "story_span": "Johannes 4,43–54"
+        },
+        {
+          "file": "reports/sources/3-Nachlese-Fragenkatalog-2-.docx",
+          "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af",
+          "paragraph": 2607,
+          "value": "5. Was sagte Jesus — und was tat der Mann?  —  Gehe hin, dein Sohn lebt. Der Mann glaubte und ging hin.  (Johannes 4,50)",
+          "story_heading_paragraph": 2599,
+          "story_title": "Dein Sohn lebt",
+          "story_span": "Johannes 4,43–54"
+        },
+        {
+          "file": "reports/sources/1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+          "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62",
+          "sheet": "Prüftabelle",
+          "row": 1467,
+          "id": "N-1466",
+          "q": "Was sagte Jesus, und was tat der Mann?",
+          "answer": "Jesus sagte: Gehe hin, dein Sohn lebt. Der Mann glaubte dem Wort und ging hin.",
+          "ref": "Johannes 4,50",
+          "status": "VERIFIZIERT",
+          "correction_documentation": "Jesus sagte: Gehe hin, dein Sohn lebt. Der Mann glaubte dem Wort und ging hin."
+        },
+        {
+          "file": "reports/sources/2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+          "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f",
+          "page": 8,
+          "value": "FP-0120          Story-/Merge-Prüfung               BESTANDEN          JA            0                 Vorprüfung: 57 SINNGLEICH, 42 FAITHPATH_ONLY, 1 KONFLIKT; final berücksichtigt/freigegeben.",
+          "scope": "Finaler FP-Prüfstatus; keine konkrete N↔FP-Zuordnung."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 50,
+          "text": "Jesus spricht zu ihm: Gehe hin, dein Sohn lebt! der Mensch glaubte dem Wort, das Jesus zu ihm sagte, und ging hin."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 51,
+          "text": "Und indem er hinabging, begegneten ihm seine Knechte, verkündigten ihm und sprachen: Dein Kind lebt."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 52,
+          "text": "Da forschte er von ihnen die Stunde, in welcher es besser mit ihm geworden war. Und sie sprachen zu ihm: Gestern um die siebente Stunde verließ ihn das Fieber."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 53,
+          "text": "Da merkte der Vater, daß es um die Stunde wäre, in welcher Jesus zu ihm gesagt hatte: Dein Sohn lebt. Und er glaubte mit seinem ganzen Hause."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 50,
+          "text": "Jesus sagte zu ihm: „Geh; dein Sohn wird leben.“ Der Mann glaubte dem Wort, das Jesus zu ihm gesprochen hatte, und ging."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 51,
+          "text": "Als er auf dem Weg war, begegneten ihm seine Diener mit der Nachricht, dass sein Junge lebte."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 52,
+          "text": "Er fragte sie nach der Stunde, in der es seinem Sohn besser ging, und sie sagten zu ihm: „Gestern um ein Uhr nachmittags verließ ihn das Fieber.“"
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 53,
+          "text": "Da erkannte der Vater, dass dies der genaue Moment war, in dem Jesus ihm gesagt hatte: „Dein Sohn wird leben.“ So kamen er und sein ganzes Haus zum Glauben."
+        }
+      ],
+      "decision": "KEEP_AS_EXCEPTION",
+      "reason": "FaithPath fragt nach dem Heilungsergebnis; N-1466 fragt nach Jesu Zuspruch und der Reaktion des Vaters. Johannes 4,50–53 belegt beide Inhalte, aber keine semantische Dublette. Die vollständige FP-Spanne passt eindeutig zur DOCX-Story NS-0274. Als eigenständige FaithPath-Frage im Storyfluss erhalten; kein N-Fragenmatch.",
+      "content_change_required": false,
+      "final_value": null,
+      "Story_ID": "NS-0274",
+      "Story_Title": "Dein Sohn lebt",
+      "candidate_N_ID": "N-1466",
+      "verified_N_ID": null,
+      "original_Match_Status": "SINNGLEICH",
+      "effective_Match_Status": "FAITHPATH_ONLY",
+      "JSON_Locator": "$[23].questions[4]"
+    },
+    {
+      "id": "FP-0147",
+      "type": "TRANSLATION_REFERENCE_EQUIVALENCE",
+      "faithpath_value": "Was tut der gute Hirte nach Johannes 10 für die Schafe? → Er lässt sein Leben für sie",
+      "comparison_value": "N-1536: Was tut der gute Hirte für die Schafe? → Er lässt sein Leben für seine Schafe",
+      "bible_reference": {
+        "faithpath": "Johannes 10,11",
+        "nachlese": "Johannes 10,12"
+      },
+      "source_evidence": [
+        {
+          "file": "data/stories.json",
+          "sha256": "690e77a255a7665897acfde12222d7f2b788503bcc0159805fbca2dfb3c3ec58",
+          "locator": "$[29].questions[1]"
+        },
+        {
+          "file": "reports/sources/1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+          "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778",
+          "sheet": "FP-N-Mapping",
+          "row": 148,
+          "original_match_status": "SINNGLEICH",
+          "candidate_N_ID": "N-1536",
+          "story_title": "Der gute Hirte",
+          "story_span": "Johannes 10,1–18"
+        },
+        {
+          "file": "reports/sources/3-Nachlese-Fragenkatalog-2-.docx",
+          "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af",
+          "paragraph": 2725,
+          "value": "4. Was tut der gute Hirte für die Schafe?  —  Er lässt sein Leben für seine Schafe  (Johannes 10,12)",
+          "story_heading_paragraph": 2718,
+          "story_title": "Der gute Hirte",
+          "story_span": "Johannes 10,1–18"
+        },
+        {
+          "file": "reports/sources/1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+          "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62",
+          "sheet": "Prüftabelle",
+          "row": 1537,
+          "id": "N-1536",
+          "q": "Was tut der gute Hirte für die Schafe?",
+          "answer": "Er lässt sein Leben für seine Schafe",
+          "ref": "Johannes 10,12",
+          "status": "VERIFIZIERT",
+          "correction_documentation": null
+        },
+        {
+          "file": "reports/sources/2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+          "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f",
+          "page": 9,
+          "value": "FP-0147          Story-/Merge-Prüfung   BESTANDEN   JA         0               Vorprüfung: 57 SINNGLEICH, 42 FAITHPATH_ONLY, 1 KONFLIKT; final berücksichtigt/freigegeben.",
+          "scope": "Finaler FP-Prüfstatus; keine konkrete N↔FP-Zuordnung."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 10,
+          "verse": 11,
+          "text": "Ich bin gekommen, daß sie das Leben und volle Genüge haben sollen."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 10,
+          "verse": 12,
+          "text": "Ich bin der gute Hirte. Der gute Hirte läßt sein Leben für seine Schafe. Der Mietling aber, der nicht Hirte ist, des die Schafe nicht eigen sind, sieht den Wolf kommen und verläßt die Schafe und flieht; und der Wolf erhascht und zerstreut die Schafe."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 10,
+          "verse": 11,
+          "text": "„Ich bin der gute Hirte. Der gute Hirte lässt sein Leben für die Schafe."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 10,
+          "verse": 12,
+          "text": "Der Mietling aber, der nicht der Hirte ist, dem die Schafe nicht gehören, sieht den Wolf kommen und verlässt die Schafe und flieht; und der Wolf raubt und zerstreut sie."
+        }
+      ],
+      "decision": "APPROVE",
+      "reason": "Frage und richtige Antwort sind sinngleich. Im vorhandenen Luther-1912-Datensatz steht die Aussage des guten Hirten unter Johannes 10,12; im OTB-Datensatz unter Johannes 10,11. DOCX und finale Nachlese-Prüftabelle nennen 10,12, FaithPath nennt 10,11. Die unterschiedlichen Verse sind damit durch die tatsächlichen Übersetzungsdatensätze belegt und kein Inhaltswiderspruch. Beide Originalreferenzen und Formulierungen unverändert erhalten; keine wortgleiche Deduplizierung.",
+      "content_change_required": false,
+      "final_value": null,
+      "Story_ID": "NS-0286",
+      "Story_Title": "Der gute Hirte",
+      "candidate_N_ID": "N-1536",
+      "verified_N_ID": "N-1536",
+      "original_Match_Status": "SINNGLEICH",
+      "effective_Match_Status": "SINNGLEICH",
+      "JSON_Locator": "$[29].questions[1]"
+    },
+    {
+      "id": "FP-0151",
+      "type": "DISTINCT_FAITHPATH_QUESTION_SAME_STORY",
+      "faithpath_value": "Wie heißt der kranke Mann aus Bethanien, um den es zu Beginn von Johannes 11 geht? → Lazarus",
+      "comparison_value": "N-1544: Woher war Lazarus? → Von Bethanien, dem Flecken Marias und ihrer Schwester Martha.",
+      "bible_reference": {
+        "faithpath": "Johannes 11,1",
+        "nachlese": "Johannes 11,1"
+      },
+      "source_evidence": [
+        {
+          "file": "data/stories.json",
+          "sha256": "690e77a255a7665897acfde12222d7f2b788503bcc0159805fbca2dfb3c3ec58",
+          "locator": "$[30].questions[0]"
+        },
+        {
+          "file": "reports/sources/1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+          "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778",
+          "sheet": "FP-N-Mapping",
+          "row": 152,
+          "original_match_status": "SINNGLEICH",
+          "candidate_N_ID": "N-1544",
+          "story_title": "Lazarus, komm heraus",
+          "story_span": "Johannes 11,1–44"
+        },
+        {
+          "file": "reports/sources/3-Nachlese-Fragenkatalog-2-.docx",
+          "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af",
+          "paragraph": 2741,
+          "value": "1. Woher war Lazarus?  —  Es lag aber einer krank mit Namen Lazarus  (Johannes 11,1)",
+          "story_heading_paragraph": 2737,
+          "story_title": "Lazarus, komm heraus",
+          "story_span": "Johannes 11,1–44"
+        },
+        {
+          "file": "reports/sources/1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+          "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62",
+          "sheet": "Prüftabelle",
+          "row": 1545,
+          "id": "N-1544",
+          "q": "Woher war Lazarus?",
+          "answer": "Von Bethanien, dem Flecken Marias und ihrer Schwester Martha.",
+          "ref": "Johannes 11,1",
+          "status": "VERIFIZIERT",
+          "correction_documentation": "Von Bethanien, dem Flecken Marias und ihrer Schwester Martha."
+        },
+        {
+          "file": "reports/sources/2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+          "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f",
+          "page": 9,
+          "value": "FP-0151          Story-/Merge-Prüfung   BESTANDEN   JA         0               Vorprüfung: 57 SINNGLEICH, 42 FAITHPATH_ONLY, 1 KONFLIKT; final berücksichtigt/freigegeben.",
+          "scope": "Finaler FP-Prüfstatus; keine konkrete N↔FP-Zuordnung."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 11,
+          "verse": 1,
+          "text": "Es lag aber einer krank mit Namen Lazarus, von Bethanien, in dem Flecken Marias und ihrer Schwester Martha."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 11,
+          "verse": 1,
+          "text": "Es war ein Mann namens Lazarus, der krank war. Er war aus Bethanien, dem Dorf von Maria und ihrer Schwester Martha."
+        }
+      ],
+      "decision": "KEEP_AS_EXCEPTION",
+      "reason": "FaithPath fragt nach dem Namen Lazarus, N-1544 nach dessen Herkunft Bethanien. Die finale Nachlese-Prüftabelle korrigiert gerade die im Mapping verwendete alte Namensantwort zur Herkunftsantwort. Johannes 11,1 belegt beides. Keine semantische Dublette; eigenständige FaithPath-Frage in der eindeutig passenden DOCX-Story NS-0288 erhalten.",
+      "content_change_required": false,
+      "final_value": null,
+      "Story_ID": "NS-0288",
+      "Story_Title": "Lazarus, komm heraus",
+      "candidate_N_ID": "N-1544",
+      "verified_N_ID": null,
+      "original_Match_Status": "SINNGLEICH",
+      "effective_Match_Status": "FAITHPATH_ONLY",
+      "JSON_Locator": "$[30].questions[0]"
+    },
+    {
+      "id": "FP-0239",
+      "type": "DISTINCT_FAITHPATH_QUESTION_SAME_STORY",
+      "faithpath_value": "Warum wurde Herodes laut Text vom Engel des Herrn geschlagen? → Weil er Gott nicht die Ehre gab",
+      "comparison_value": "N-1761: Was geschah Herodes, als das Volk rief: Das ist Gottes Stimme? → Als das Volk rief: „Das ist Gottes Stimme und nicht eines Menschen!“, schlug ihn alsbald der Engel des HERRN; er ward von Würmern gefressen und gab den Geist auf.",
+      "bible_reference": {
+        "faithpath": "Apg 12,23",
+        "nachlese": "Apostelgeschichte 12,22–23"
+      },
+      "source_evidence": [
+        {
+          "file": "data/stories.json",
+          "sha256": "690e77a255a7665897acfde12222d7f2b788503bcc0159805fbca2dfb3c3ec58",
+          "locator": "$[47].questions[3]"
+        },
+        {
+          "file": "reports/sources/1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+          "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778",
+          "sheet": "FP-N-Mapping",
+          "row": 240,
+          "original_match_status": "SINNGLEICH",
+          "candidate_N_ID": "N-1761",
+          "story_title": "Rhode öffnet nicht",
+          "story_span": "Apostelgeschichte 12,1–24"
+        },
+        {
+          "file": "reports/sources/3-Nachlese-Fragenkatalog-2-.docx",
+          "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af",
+          "paragraph": 3111,
+          "value": "6. Was geschah Herodes, als das Volk rief: Das ist Gottes Stimme?  —  Das Volk aber rief zu: Das ist Gottes  (Apostelgeschichte 12,22–23)",
+          "story_heading_paragraph": 3102,
+          "story_title": "Rhode öffnet nicht",
+          "story_span": "Apostelgeschichte 12,1–24"
+        },
+        {
+          "file": "reports/sources/1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+          "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62",
+          "sheet": "Prüftabelle",
+          "row": 1762,
+          "id": "N-1761",
+          "q": "Was geschah Herodes, als das Volk rief: Das ist Gottes Stimme?",
+          "answer": "Als das Volk rief: „Das ist Gottes Stimme und nicht eines Menschen!“, schlug ihn alsbald der Engel des HERRN; er ward von Würmern gefressen und gab den Geist auf.",
+          "ref": "Apostelgeschichte 12,22–23",
+          "status": "VERIFIZIERT",
+          "correction_documentation": "Als das Volk rief: „Das ist Gottes Stimme und nicht eines Menschen!“, schlug ihn alsbald der Engel des HERRN; er ward von Würmern gefressen und gab den Geist auf."
+        },
+        {
+          "file": "reports/sources/2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+          "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f",
+          "page": 12,
+          "value": "FP-0239          Story-/Merge-Prüfung + Beginn   BESTANDEN   JA         0               Vorprüfung: 16 SINNGLEICH, 84 FAITHPATH_ONLY, 0 KONFLIKTE; final",
+          "scope": "Finaler FP-Prüfstatus; keine konkrete N↔FP-Zuordnung."
+        },
+        {
+          "file": "data/bibles/l1912/ACT.json",
+          "sha256": "effc527eefa050c7eefbdbae276b2738387a7abae7314bd57c57461304adcf3c",
+          "book": "ACT",
+          "chapter": 12,
+          "verse": 23,
+          "text": "Alsbald schlug ihn der Engel des HERRN, darum daß er die Ehre nicht Gott gab; und ward gefressen von den Würmern und gab den Geist auf."
+        },
+        {
+          "file": "data/bibles/otb/ACT.json",
+          "sha256": "61fc28b210e5f21a9ebb1c17866e1c52e1d21a34cdcb9767245fd7b641d00e2f",
+          "book": "ACT",
+          "chapter": 12,
+          "verse": 23,
+          "text": "Sofort, weil Herodes Gott nicht die Ehre gab, schlug ihn ein Engel des Herrn nieder, und er wurde von Würmern zerfressen und starb."
+        }
+      ],
+      "decision": "KEEP_AS_EXCEPTION",
+      "reason": "FaithPath fragt nach dem ausdrücklich genannten Grund der Bestrafung, N-1761 nach Ablauf und Folgen. Apostelgeschichte 12,23 belegt den FaithPath-Grund, 12,22–23 den Nachlese-Ablauf. Keine semantische Dublette; eigenständige FaithPath-Frage in der eindeutig passenden DOCX-Story NS-0326 erhalten.",
+      "content_change_required": false,
+      "final_value": null,
+      "Story_ID": "NS-0326",
+      "Story_Title": "Rhode öffnet nicht",
+      "candidate_N_ID": "N-1761",
+      "verified_N_ID": null,
+      "original_Match_Status": "SINNGLEICH",
+      "effective_Match_Status": "FAITHPATH_ONLY",
+      "JSON_Locator": "$[47].questions[3]"
+    }
+  ],
+  "content_changes": 0,
+  "locked_source_hashes": {
+    "data/stories.json": "690e77a255a7665897acfde12222d7f2b788503bcc0159805fbca2dfb3c3ec58",
+    "data/nachlese-questions.json": "e475c34506a20aefd71a4e41a5fdec813c0ed0add5790397aa4b68cbdc6aa73d",
+    "data/nachlese-stories.json": "5ff19290f042667e6f321e23de16c4c933ce43fc87a070612dd006d1a529afc6",
+    "data/bibles/l1912/JHN.json": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+    "data/bibles/otb/JHN.json": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+    "data/bibles/l1912/ACT.json": "effc527eefa050c7eefbdbae276b2738387a7abae7314bd57c57461304adcf3c",
+    "data/bibles/otb/ACT.json": "61fc28b210e5f21a9ebb1c17866e1c52e1d21a34cdcb9767245fd7b641d00e2f"
+  },
+  "original_reconstructed_aggregates_preserved": true,
+  "aggregate_note": "Historische PDF-/Mapping-Aggregate bleiben unveränderte Quellnachweise. Drei bisherige SINNGLEICH-Kandidaten werden im effektiven technischen Merge ausdrücklich als eigenständige Storyfragen behandelt.",
+  "changes": [
+    {
+      "FP_ID": "FP-0120",
+      "N_ID": null,
+      "candidate_N_ID": "N-1466",
+      "Story_ID": "NS-0274",
+      "Story_Title": "Dein Sohn lebt",
+      "JSON_Locator": "data/faithpath-nachlese-story-flow.json#mapping_links/119",
+      "field": "source_bound_story_link",
+      "old_value": null,
+      "new_value": {
+        "FP_ID": "FP-0120",
+        "N_ID": null,
+        "Story_ID": "NS-0274",
+        "Match_Status": "FAITHPATH_ONLY",
+        "Confidence_before": "MEDIUM",
+        "verification_status": "VERIFIED_FOR_WRITE",
+        "decision": "KEEP_AS_EXCEPTION",
+        "candidate_N_ID": "N-1466",
+        "source_Match_Status": "SINNGLEICH"
+      },
+      "flow_item_added": {
+        "primary_question_id": "FP-0120",
+        "source_question_ids": [
+          "FP-0120"
+        ],
+        "deduplication": "NONE"
+      },
+      "old_review_row": {
+        "FP_ID": "FP-0120",
+        "N_ID": "N-1466",
+        "Match_Status": "SINNGLEICH",
+        "Confidence_before": "MEDIUM",
+        "verification_status": "REVIEW_REQUIRED",
+        "Story_ID": null,
+        "Story_Title": null,
+        "sources": [
+          {
+            "file": "3-Nachlese-Fragenkatalog-2-.docx",
+            "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af"
+          },
+          {
+            "file": "1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+            "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62"
+          },
+          {
+            "file": "1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+            "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778"
+          },
+          {
+            "file": "2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+            "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
+          }
+        ],
+        "reasons": [
+          "FP asks about healing outcome; N asks about Jesus command and the father response; these are different question targets."
+        ],
+        "semantic_verification": null,
+        "source_preview_differences": [
+          {
+            "field": "N_question",
+            "mapping_preview": "Was sagte Jesus — und was tat der Mann?",
+            "canonical_final_value": "Was sagte Jesus, und was tat der Mann?",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          },
+          {
+            "field": "N_final_answer",
+            "mapping_preview": "Gehe hin, dein Sohn lebt. Der Mann glaubte und ging hin.",
+            "canonical_final_value": "Jesus sagte: Gehe hin, dein Sohn lebt. Der Mann glaubte dem Wort und ging hin.",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          }
+        ]
+      },
+      "new_verified_row": {
+        "FP_ID": "FP-0120",
+        "N_ID": null,
+        "Match_Status": "FAITHPATH_ONLY",
+        "Confidence_before": "MEDIUM",
+        "verification_status": "VERIFIED_FOR_WRITE",
+        "Story_ID": "NS-0274",
+        "Story_Title": "Dein Sohn lebt",
+        "sources": [
+          {
+            "file": "3-Nachlese-Fragenkatalog-2-.docx",
+            "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af"
+          },
+          {
+            "file": "1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+            "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62"
+          },
+          {
+            "file": "1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+            "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778"
+          },
+          {
+            "file": "2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+            "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
+          }
+        ],
+        "reasons": [],
+        "semantic_verification": "FaithPath fragt nach dem Heilungsergebnis; N-1466 fragt nach Jesu Zuspruch und der Reaktion des Vaters. Johannes 4,50–53 belegt beide Inhalte, aber keine semantische Dublette. Die vollständige FP-Spanne passt eindeutig zur DOCX-Story NS-0274. Als eigenständige FaithPath-Frage im Storyfluss erhalten; kein N-Fragenmatch.",
+        "source_preview_differences": [
+          {
+            "field": "N_question",
+            "mapping_preview": "Was sagte Jesus — und was tat der Mann?",
+            "canonical_final_value": "Was sagte Jesus, und was tat der Mann?",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          },
+          {
+            "field": "N_final_answer",
+            "mapping_preview": "Gehe hin, dein Sohn lebt. Der Mann glaubte und ging hin.",
+            "canonical_final_value": "Jesus sagte: Gehe hin, dein Sohn lebt. Der Mann glaubte dem Wort und ging hin.",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          }
+        ],
+        "source_Match_Status": "SINNGLEICH",
+        "candidate_N_ID": "N-1466",
+        "prior_review_reasons": [
+          "FP asks about healing outcome; N asks about Jesus command and the father response; these are different question targets."
+        ],
+        "decision": "KEEP_AS_EXCEPTION",
+        "decision_evidence": "reports/faithpath-review-decisions.json#FP-0120"
+      },
+      "Match_Status": "FAITHPATH_ONLY",
+      "Confidence_before": "MEDIUM",
+      "verification_status": "VERIFIED_FOR_WRITE",
+      "used_sources": [
+        {
+          "file": "data/stories.json",
+          "sha256": "690e77a255a7665897acfde12222d7f2b788503bcc0159805fbca2dfb3c3ec58",
+          "locator": "$[23].questions[4]"
+        },
+        {
+          "file": "reports/sources/1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+          "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778",
+          "sheet": "FP-N-Mapping",
+          "row": 121,
+          "original_match_status": "SINNGLEICH",
+          "candidate_N_ID": "N-1466",
+          "story_title": "Dein Sohn lebt",
+          "story_span": "Johannes 4,43–54"
+        },
+        {
+          "file": "reports/sources/3-Nachlese-Fragenkatalog-2-.docx",
+          "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af",
+          "paragraph": 2607,
+          "value": "5. Was sagte Jesus — und was tat der Mann?  —  Gehe hin, dein Sohn lebt. Der Mann glaubte und ging hin.  (Johannes 4,50)",
+          "story_heading_paragraph": 2599,
+          "story_title": "Dein Sohn lebt",
+          "story_span": "Johannes 4,43–54"
+        },
+        {
+          "file": "reports/sources/1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+          "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62",
+          "sheet": "Prüftabelle",
+          "row": 1467,
+          "id": "N-1466",
+          "q": "Was sagte Jesus, und was tat der Mann?",
+          "answer": "Jesus sagte: Gehe hin, dein Sohn lebt. Der Mann glaubte dem Wort und ging hin.",
+          "ref": "Johannes 4,50",
+          "status": "VERIFIZIERT",
+          "correction_documentation": "Jesus sagte: Gehe hin, dein Sohn lebt. Der Mann glaubte dem Wort und ging hin."
+        },
+        {
+          "file": "reports/sources/2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+          "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f",
+          "page": 8,
+          "value": "FP-0120          Story-/Merge-Prüfung               BESTANDEN          JA            0                 Vorprüfung: 57 SINNGLEICH, 42 FAITHPATH_ONLY, 1 KONFLIKT; final berücksichtigt/freigegeben.",
+          "scope": "Finaler FP-Prüfstatus; keine konkrete N↔FP-Zuordnung."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 50,
+          "text": "Jesus spricht zu ihm: Gehe hin, dein Sohn lebt! der Mensch glaubte dem Wort, das Jesus zu ihm sagte, und ging hin."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 51,
+          "text": "Und indem er hinabging, begegneten ihm seine Knechte, verkündigten ihm und sprachen: Dein Kind lebt."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 52,
+          "text": "Da forschte er von ihnen die Stunde, in welcher es besser mit ihm geworden war. Und sie sprachen zu ihm: Gestern um die siebente Stunde verließ ihn das Fieber."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 53,
+          "text": "Da merkte der Vater, daß es um die Stunde wäre, in welcher Jesus zu ihm gesagt hatte: Dein Sohn lebt. Und er glaubte mit seinem ganzen Hause."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 50,
+          "text": "Jesus sagte zu ihm: „Geh; dein Sohn wird leben.“ Der Mann glaubte dem Wort, das Jesus zu ihm gesprochen hatte, und ging."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 51,
+          "text": "Als er auf dem Weg war, begegneten ihm seine Diener mit der Nachricht, dass sein Junge lebte."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 52,
+          "text": "Er fragte sie nach der Stunde, in der es seinem Sohn besser ging, und sie sagten zu ihm: „Gestern um ein Uhr nachmittags verließ ihn das Fieber.“"
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 4,
+          "verse": 53,
+          "text": "Da erkannte der Vater, dass dies der genaue Moment war, in dem Jesus ihm gesagt hatte: „Dein Sohn wird leben.“ So kamen er und sein ganzes Haus zum Glauben."
+        }
+      ]
+    },
+    {
+      "FP_ID": "FP-0147",
+      "N_ID": "N-1536",
+      "candidate_N_ID": "N-1536",
+      "Story_ID": "NS-0286",
+      "Story_Title": "Der gute Hirte",
+      "JSON_Locator": "data/faithpath-nachlese-story-flow.json#mapping_links/146",
+      "field": "source_bound_story_link",
+      "old_value": null,
+      "new_value": {
+        "FP_ID": "FP-0147",
+        "N_ID": "N-1536",
+        "Story_ID": "NS-0286",
+        "Match_Status": "SINNGLEICH",
+        "Confidence_before": "MEDIUM",
+        "verification_status": "VERIFIED_FOR_WRITE",
+        "decision": "APPROVE",
+        "candidate_N_ID": "N-1536",
+        "source_Match_Status": "SINNGLEICH"
+      },
+      "flow_item_added": {
+        "primary_question_id": "FP-0147",
+        "source_question_ids": [
+          "FP-0147"
+        ],
+        "deduplication": "NONE"
+      },
+      "old_review_row": {
+        "FP_ID": "FP-0147",
+        "N_ID": "N-1536",
+        "Match_Status": "SINNGLEICH",
+        "Confidence_before": "MEDIUM",
+        "verification_status": "REVIEW_REQUIRED",
+        "Story_ID": null,
+        "Story_Title": null,
+        "sources": [
+          {
+            "file": "3-Nachlese-Fragenkatalog-2-.docx",
+            "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af"
+          },
+          {
+            "file": "1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+            "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62"
+          },
+          {
+            "file": "1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+            "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778"
+          },
+          {
+            "file": "2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+            "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
+          }
+        ],
+        "reasons": [
+          "FP_N_REFERENCE_NO_OVERLAP",
+          "FP reference John 10,11 and final N reference John 10,12 do not overlap."
+        ],
+        "semantic_verification": null,
+        "source_preview_differences": [
+          {
+            "field": "N_final_answer",
+            "mapping_preview": "Er lässt sein Leben für seine Schafe (Johannes 10,12)",
+            "canonical_final_value": "Er lässt sein Leben für seine Schafe",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          }
+        ]
+      },
+      "new_verified_row": {
+        "FP_ID": "FP-0147",
+        "N_ID": "N-1536",
+        "Match_Status": "SINNGLEICH",
+        "Confidence_before": "MEDIUM",
+        "verification_status": "VERIFIED_FOR_WRITE",
+        "Story_ID": "NS-0286",
+        "Story_Title": "Der gute Hirte",
+        "sources": [
+          {
+            "file": "3-Nachlese-Fragenkatalog-2-.docx",
+            "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af"
+          },
+          {
+            "file": "1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+            "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62"
+          },
+          {
+            "file": "1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+            "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778"
+          },
+          {
+            "file": "2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+            "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
+          }
+        ],
+        "reasons": [],
+        "semantic_verification": "Frage und richtige Antwort sind sinngleich. Im vorhandenen Luther-1912-Datensatz steht die Aussage des guten Hirten unter Johannes 10,12; im OTB-Datensatz unter Johannes 10,11. DOCX und finale Nachlese-Prüftabelle nennen 10,12, FaithPath nennt 10,11. Die unterschiedlichen Verse sind damit durch die tatsächlichen Übersetzungsdatensätze belegt und kein Inhaltswiderspruch. Beide Originalreferenzen und Formulierungen unverändert erhalten; keine wortgleiche Deduplizierung.",
+        "source_preview_differences": [
+          {
+            "field": "N_final_answer",
+            "mapping_preview": "Er lässt sein Leben für seine Schafe (Johannes 10,12)",
+            "canonical_final_value": "Er lässt sein Leben für seine Schafe",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          }
+        ],
+        "source_Match_Status": "SINNGLEICH",
+        "candidate_N_ID": "N-1536",
+        "prior_review_reasons": [
+          "FP_N_REFERENCE_NO_OVERLAP",
+          "FP reference John 10,11 and final N reference John 10,12 do not overlap."
+        ],
+        "decision": "APPROVE",
+        "decision_evidence": "reports/faithpath-review-decisions.json#FP-0147"
+      },
+      "Match_Status": "SINNGLEICH",
+      "Confidence_before": "MEDIUM",
+      "verification_status": "VERIFIED_FOR_WRITE",
+      "used_sources": [
+        {
+          "file": "data/stories.json",
+          "sha256": "690e77a255a7665897acfde12222d7f2b788503bcc0159805fbca2dfb3c3ec58",
+          "locator": "$[29].questions[1]"
+        },
+        {
+          "file": "reports/sources/1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+          "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778",
+          "sheet": "FP-N-Mapping",
+          "row": 148,
+          "original_match_status": "SINNGLEICH",
+          "candidate_N_ID": "N-1536",
+          "story_title": "Der gute Hirte",
+          "story_span": "Johannes 10,1–18"
+        },
+        {
+          "file": "reports/sources/3-Nachlese-Fragenkatalog-2-.docx",
+          "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af",
+          "paragraph": 2725,
+          "value": "4. Was tut der gute Hirte für die Schafe?  —  Er lässt sein Leben für seine Schafe  (Johannes 10,12)",
+          "story_heading_paragraph": 2718,
+          "story_title": "Der gute Hirte",
+          "story_span": "Johannes 10,1–18"
+        },
+        {
+          "file": "reports/sources/1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+          "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62",
+          "sheet": "Prüftabelle",
+          "row": 1537,
+          "id": "N-1536",
+          "q": "Was tut der gute Hirte für die Schafe?",
+          "answer": "Er lässt sein Leben für seine Schafe",
+          "ref": "Johannes 10,12",
+          "status": "VERIFIZIERT",
+          "correction_documentation": null
+        },
+        {
+          "file": "reports/sources/2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+          "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f",
+          "page": 9,
+          "value": "FP-0147          Story-/Merge-Prüfung   BESTANDEN   JA         0               Vorprüfung: 57 SINNGLEICH, 42 FAITHPATH_ONLY, 1 KONFLIKT; final berücksichtigt/freigegeben.",
+          "scope": "Finaler FP-Prüfstatus; keine konkrete N↔FP-Zuordnung."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 10,
+          "verse": 11,
+          "text": "Ich bin gekommen, daß sie das Leben und volle Genüge haben sollen."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 10,
+          "verse": 12,
+          "text": "Ich bin der gute Hirte. Der gute Hirte läßt sein Leben für seine Schafe. Der Mietling aber, der nicht Hirte ist, des die Schafe nicht eigen sind, sieht den Wolf kommen und verläßt die Schafe und flieht; und der Wolf erhascht und zerstreut die Schafe."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 10,
+          "verse": 11,
+          "text": "„Ich bin der gute Hirte. Der gute Hirte lässt sein Leben für die Schafe."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 10,
+          "verse": 12,
+          "text": "Der Mietling aber, der nicht der Hirte ist, dem die Schafe nicht gehören, sieht den Wolf kommen und verlässt die Schafe und flieht; und der Wolf raubt und zerstreut sie."
+        }
+      ]
+    },
+    {
+      "FP_ID": "FP-0151",
+      "N_ID": null,
+      "candidate_N_ID": "N-1544",
+      "Story_ID": "NS-0288",
+      "Story_Title": "Lazarus, komm heraus",
+      "JSON_Locator": "data/faithpath-nachlese-story-flow.json#mapping_links/150",
+      "field": "source_bound_story_link",
+      "old_value": null,
+      "new_value": {
+        "FP_ID": "FP-0151",
+        "N_ID": null,
+        "Story_ID": "NS-0288",
+        "Match_Status": "FAITHPATH_ONLY",
+        "Confidence_before": "HIGH",
+        "verification_status": "VERIFIED_FOR_WRITE",
+        "decision": "KEEP_AS_EXCEPTION",
+        "candidate_N_ID": "N-1544",
+        "source_Match_Status": "SINNGLEICH"
+      },
+      "flow_item_added": {
+        "primary_question_id": "FP-0151",
+        "source_question_ids": [
+          "FP-0151"
+        ],
+        "deduplication": "NONE"
+      },
+      "old_review_row": {
+        "FP_ID": "FP-0151",
+        "N_ID": "N-1544",
+        "Match_Status": "SINNGLEICH",
+        "Confidence_before": "HIGH",
+        "verification_status": "REVIEW_REQUIRED",
+        "Story_ID": null,
+        "Story_Title": null,
+        "sources": [
+          {
+            "file": "3-Nachlese-Fragenkatalog-2-.docx",
+            "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af"
+          },
+          {
+            "file": "1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+            "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62"
+          },
+          {
+            "file": "1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+            "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778"
+          },
+          {
+            "file": "2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+            "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
+          }
+        ],
+        "reasons": [
+          "FP asks for the sick man name; N asks his place of origin; different question/answer targets."
+        ],
+        "semantic_verification": null,
+        "source_preview_differences": [
+          {
+            "field": "N_final_answer",
+            "mapping_preview": "Es lag aber einer krank mit Namen Lazarus (Johannes 11,1)",
+            "canonical_final_value": "Von Bethanien, dem Flecken Marias und ihrer Schwester Martha.",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          }
+        ]
+      },
+      "new_verified_row": {
+        "FP_ID": "FP-0151",
+        "N_ID": null,
+        "Match_Status": "FAITHPATH_ONLY",
+        "Confidence_before": "HIGH",
+        "verification_status": "VERIFIED_FOR_WRITE",
+        "Story_ID": "NS-0288",
+        "Story_Title": "Lazarus, komm heraus",
+        "sources": [
+          {
+            "file": "3-Nachlese-Fragenkatalog-2-.docx",
+            "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af"
+          },
+          {
+            "file": "1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+            "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62"
+          },
+          {
+            "file": "1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+            "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778"
+          },
+          {
+            "file": "2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+            "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
+          }
+        ],
+        "reasons": [],
+        "semantic_verification": "FaithPath fragt nach dem Namen Lazarus, N-1544 nach dessen Herkunft Bethanien. Die finale Nachlese-Prüftabelle korrigiert gerade die im Mapping verwendete alte Namensantwort zur Herkunftsantwort. Johannes 11,1 belegt beides. Keine semantische Dublette; eigenständige FaithPath-Frage in der eindeutig passenden DOCX-Story NS-0288 erhalten.",
+        "source_preview_differences": [
+          {
+            "field": "N_final_answer",
+            "mapping_preview": "Es lag aber einer krank mit Namen Lazarus (Johannes 11,1)",
+            "canonical_final_value": "Von Bethanien, dem Flecken Marias und ihrer Schwester Martha.",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          }
+        ],
+        "source_Match_Status": "SINNGLEICH",
+        "candidate_N_ID": "N-1544",
+        "prior_review_reasons": [
+          "FP asks for the sick man name; N asks his place of origin; different question/answer targets."
+        ],
+        "decision": "KEEP_AS_EXCEPTION",
+        "decision_evidence": "reports/faithpath-review-decisions.json#FP-0151"
+      },
+      "Match_Status": "FAITHPATH_ONLY",
+      "Confidence_before": "HIGH",
+      "verification_status": "VERIFIED_FOR_WRITE",
+      "used_sources": [
+        {
+          "file": "data/stories.json",
+          "sha256": "690e77a255a7665897acfde12222d7f2b788503bcc0159805fbca2dfb3c3ec58",
+          "locator": "$[30].questions[0]"
+        },
+        {
+          "file": "reports/sources/1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+          "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778",
+          "sheet": "FP-N-Mapping",
+          "row": 152,
+          "original_match_status": "SINNGLEICH",
+          "candidate_N_ID": "N-1544",
+          "story_title": "Lazarus, komm heraus",
+          "story_span": "Johannes 11,1–44"
+        },
+        {
+          "file": "reports/sources/3-Nachlese-Fragenkatalog-2-.docx",
+          "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af",
+          "paragraph": 2741,
+          "value": "1. Woher war Lazarus?  —  Es lag aber einer krank mit Namen Lazarus  (Johannes 11,1)",
+          "story_heading_paragraph": 2737,
+          "story_title": "Lazarus, komm heraus",
+          "story_span": "Johannes 11,1–44"
+        },
+        {
+          "file": "reports/sources/1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+          "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62",
+          "sheet": "Prüftabelle",
+          "row": 1545,
+          "id": "N-1544",
+          "q": "Woher war Lazarus?",
+          "answer": "Von Bethanien, dem Flecken Marias und ihrer Schwester Martha.",
+          "ref": "Johannes 11,1",
+          "status": "VERIFIZIERT",
+          "correction_documentation": "Von Bethanien, dem Flecken Marias und ihrer Schwester Martha."
+        },
+        {
+          "file": "reports/sources/2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+          "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f",
+          "page": 9,
+          "value": "FP-0151          Story-/Merge-Prüfung   BESTANDEN   JA         0               Vorprüfung: 57 SINNGLEICH, 42 FAITHPATH_ONLY, 1 KONFLIKT; final berücksichtigt/freigegeben.",
+          "scope": "Finaler FP-Prüfstatus; keine konkrete N↔FP-Zuordnung."
+        },
+        {
+          "file": "data/bibles/l1912/JHN.json",
+          "sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+          "book": "JHN",
+          "chapter": 11,
+          "verse": 1,
+          "text": "Es lag aber einer krank mit Namen Lazarus, von Bethanien, in dem Flecken Marias und ihrer Schwester Martha."
+        },
+        {
+          "file": "data/bibles/otb/JHN.json",
+          "sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+          "book": "JHN",
+          "chapter": 11,
+          "verse": 1,
+          "text": "Es war ein Mann namens Lazarus, der krank war. Er war aus Bethanien, dem Dorf von Maria und ihrer Schwester Martha."
+        }
+      ]
+    },
+    {
+      "FP_ID": "FP-0239",
+      "N_ID": null,
+      "candidate_N_ID": "N-1761",
+      "Story_ID": "NS-0326",
+      "Story_Title": "Rhode öffnet nicht",
+      "JSON_Locator": "data/faithpath-nachlese-story-flow.json#mapping_links/238",
+      "field": "source_bound_story_link",
+      "old_value": null,
+      "new_value": {
+        "FP_ID": "FP-0239",
+        "N_ID": null,
+        "Story_ID": "NS-0326",
+        "Match_Status": "FAITHPATH_ONLY",
+        "Confidence_before": "MEDIUM",
+        "verification_status": "VERIFIED_FOR_WRITE",
+        "decision": "KEEP_AS_EXCEPTION",
+        "candidate_N_ID": "N-1761",
+        "source_Match_Status": "SINNGLEICH"
+      },
+      "flow_item_added": {
+        "primary_question_id": "FP-0239",
+        "source_question_ids": [
+          "FP-0239"
+        ],
+        "deduplication": "NONE"
+      },
+      "old_review_row": {
+        "FP_ID": "FP-0239",
+        "N_ID": "N-1761",
+        "Match_Status": "SINNGLEICH",
+        "Confidence_before": "MEDIUM",
+        "verification_status": "REVIEW_REQUIRED",
+        "Story_ID": null,
+        "Story_Title": null,
+        "sources": [
+          {
+            "file": "3-Nachlese-Fragenkatalog-2-.docx",
+            "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af"
+          },
+          {
+            "file": "1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+            "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62"
+          },
+          {
+            "file": "1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+            "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778"
+          },
+          {
+            "file": "2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+            "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
+          }
+        ],
+        "reasons": [
+          "FP asks why Herod was struck; final N question/answer describes what happened without stating that reason."
+        ],
+        "semantic_verification": null,
+        "source_preview_differences": [
+          {
+            "field": "N_final_answer",
+            "mapping_preview": "Das Volk aber rief zu: Das ist Gottes",
+            "canonical_final_value": "Als das Volk rief: „Das ist Gottes Stimme und nicht eines Menschen!“, schlug ihn alsbald der Engel des HERRN; er ward von Würmern gefressen und gab den Geist auf.",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          },
+          {
+            "field": "N_ref",
+            "mapping_preview": null,
+            "canonical_final_value": "Apostelgeschichte 12,22–23",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          }
+        ]
+      },
+      "new_verified_row": {
+        "FP_ID": "FP-0239",
+        "N_ID": null,
+        "Match_Status": "FAITHPATH_ONLY",
+        "Confidence_before": "MEDIUM",
+        "verification_status": "VERIFIED_FOR_WRITE",
+        "Story_ID": "NS-0326",
+        "Story_Title": "Rhode öffnet nicht",
+        "sources": [
+          {
+            "file": "3-Nachlese-Fragenkatalog-2-.docx",
+            "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af"
+          },
+          {
+            "file": "1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+            "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62"
+          },
+          {
+            "file": "1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+            "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778"
+          },
+          {
+            "file": "2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+            "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f"
+          }
+        ],
+        "reasons": [],
+        "semantic_verification": "FaithPath fragt nach dem ausdrücklich genannten Grund der Bestrafung, N-1761 nach Ablauf und Folgen. Apostelgeschichte 12,23 belegt den FaithPath-Grund, 12,22–23 den Nachlese-Ablauf. Keine semantische Dublette; eigenständige FaithPath-Frage in der eindeutig passenden DOCX-Story NS-0326 erhalten.",
+        "source_preview_differences": [
+          {
+            "field": "N_final_answer",
+            "mapping_preview": "Das Volk aber rief zu: Das ist Gottes",
+            "canonical_final_value": "Als das Volk rief: „Das ist Gottes Stimme und nicht eines Menschen!“, schlug ihn alsbald der Engel des HERRN; er ward von Würmern gefressen und gab den Geist auf.",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          },
+          {
+            "field": "N_ref",
+            "mapping_preview": null,
+            "canonical_final_value": "Apostelgeschichte 12,22–23",
+            "handling": "Canonical final QA fields preserved; preview never copied into content."
+          }
+        ],
+        "source_Match_Status": "SINNGLEICH",
+        "candidate_N_ID": "N-1761",
+        "prior_review_reasons": [
+          "FP asks why Herod was struck; final N question/answer describes what happened without stating that reason."
+        ],
+        "decision": "KEEP_AS_EXCEPTION",
+        "decision_evidence": "reports/faithpath-review-decisions.json#FP-0239"
+      },
+      "Match_Status": "FAITHPATH_ONLY",
+      "Confidence_before": "MEDIUM",
+      "verification_status": "VERIFIED_FOR_WRITE",
+      "used_sources": [
+        {
+          "file": "data/stories.json",
+          "sha256": "690e77a255a7665897acfde12222d7f2b788503bcc0159805fbca2dfb3c3ec58",
+          "locator": "$[47].questions[3]"
+        },
+        {
+          "file": "reports/sources/1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+          "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778",
+          "sheet": "FP-N-Mapping",
+          "row": 240,
+          "original_match_status": "SINNGLEICH",
+          "candidate_N_ID": "N-1761",
+          "story_title": "Rhode öffnet nicht",
+          "story_span": "Apostelgeschichte 12,1–24"
+        },
+        {
+          "file": "reports/sources/3-Nachlese-Fragenkatalog-2-.docx",
+          "sha256": "5372d28a12f67ac677e93d9dd7175660e8d427c67b36c1ce2bca487e3db093af",
+          "paragraph": 3111,
+          "value": "6. Was geschah Herodes, als das Volk rief: Das ist Gottes Stimme?  —  Das Volk aber rief zu: Das ist Gottes  (Apostelgeschichte 12,22–23)",
+          "story_heading_paragraph": 3102,
+          "story_title": "Rhode öffnet nicht",
+          "story_span": "Apostelgeschichte 12,1–24"
+        },
+        {
+          "file": "reports/sources/1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+          "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62",
+          "sheet": "Prüftabelle",
+          "row": 1762,
+          "id": "N-1761",
+          "q": "Was geschah Herodes, als das Volk rief: Das ist Gottes Stimme?",
+          "answer": "Als das Volk rief: „Das ist Gottes Stimme und nicht eines Menschen!“, schlug ihn alsbald der Engel des HERRN; er ward von Würmern gefressen und gab den Geist auf.",
+          "ref": "Apostelgeschichte 12,22–23",
+          "status": "VERIFIZIERT",
+          "correction_documentation": "Als das Volk rief: „Das ist Gottes Stimme und nicht eines Menschen!“, schlug ihn alsbald der Engel des HERRN; er ward von Würmern gefressen und gab den Geist auf."
+        },
+        {
+          "file": "reports/sources/2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+          "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f",
+          "page": 12,
+          "value": "FP-0239          Story-/Merge-Prüfung + Beginn   BESTANDEN   JA         0               Vorprüfung: 16 SINNGLEICH, 84 FAITHPATH_ONLY, 0 KONFLIKTE; final",
+          "scope": "Finaler FP-Prüfstatus; keine konkrete N↔FP-Zuordnung."
+        },
+        {
+          "file": "data/bibles/l1912/ACT.json",
+          "sha256": "effc527eefa050c7eefbdbae276b2738387a7abae7314bd57c57461304adcf3c",
+          "book": "ACT",
+          "chapter": 12,
+          "verse": 23,
+          "text": "Alsbald schlug ihn der Engel des HERRN, darum daß er die Ehre nicht Gott gab; und ward gefressen von den Würmern und gab den Geist auf."
+        },
+        {
+          "file": "data/bibles/otb/ACT.json",
+          "sha256": "61fc28b210e5f21a9ebb1c17866e1c52e1d21a34cdcb9767245fd7b641d00e2f",
+          "book": "ACT",
+          "chapter": 12,
+          "verse": 23,
+          "text": "Sofort, weil Herodes Gott nicht die Ehre gab, schlug ihn ein Engel des Herrn nieder, und er wurde von Würmern zerfressen und starb."
+        }
+      ]
+    }
+  ],
+  "release_status": "NOT_AUTHORIZED",
+  "flow_before_canonical_sha256": "a95d84dd0eef9a3ee465016f08071a9622a75d5bb046e17cb44f9ce2bd85bb6c",
+  "flow_before_status": "PARTIAL_VERIFIED_MERGE_WITH_REVIEW_REQUIRED",
+  "validation": {
+    "status": "PASS",
+    "faithpath_questions": 1560,
+    "unique_fp_ids": 1560,
+    "legacy_story_units": 52,
+    "chapter_quiz_questions": 1300,
+    "nachlese_questions": 2314,
+    "unique_n_ids": 2314,
+    "canonical_nachlese_stories": 435,
+    "combined_story_count": 436,
+    "verified_story_links": 260,
+    "review_required": 0,
+    "chapter_rows_excluded_from_merge": 40,
+    "word_equal_duplicates_single_flow_item": 95,
+    "approved_field_changes": 3301,
+    "actual_field_changes": 3301,
+    "correct_index_changes": 0,
+    "reference_changes": 0,
+    "errors": []
+  },
+  "review_required_after": 0,
+  "status": "READY_FOR_RELEASE_GATE",
+  "status_scope": "Four-case source-data resolution; release-gate checks are separate.",
+  "content_conflicts_after": 0,
+  "commit_after": "dc1e6782ef142de528c4c1b023ce96a70fc6753f",
+  "new_commit_created": false,
+  "note": "Changes remain local in working tree. No push, deploy or merge."
+}
