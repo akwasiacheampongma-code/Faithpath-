@@ -32,7 +32,7 @@
   "page_errors_during_menu": 0,
   "regression_status": "PASS",
   "final_status": "MENU_FIX_FAIL",
-  "validation_phase": "LOCAL_PASS_LIVE_PENDING",
+  "validation_phase": "LOCAL_PASS_LIVE_DEFERRED_BY_USER",
   "local_menu_evidence": {
     "checks": {
       "menu_open": "PASS",
@@ -186,5 +186,31 @@
     "uncaughtErrors": []
   },
   "service_worker_update_tests": "PASS: migration, deliberate update/draft, failed update fallback",
-  "content_verification": "139 JSON content files byte-identical; original question, reference and mapping files unchanged."
+  "content_verification": "139 JSON content files byte-identical; original question, reference and mapping files unchanged.",
+  "deployment": {
+    "id": "6abe488b89cb1f33d9248eb8",
+    "state": "ready",
+    "context": "deploy-preview",
+    "branch": "develop-v4",
+    "deploy_ssl_url": "https://develop-v4--zesty-rolypoly-d11fff.netlify.app",
+    "ssl_url": "https://zesty-rolypoly-d11fff.netlify.app",
+    "published_at": null,
+    "error_message": null,
+    "source_branch": "develop/v4",
+    "source_commit": "418db854005d49e225e5b4109d4e173885b61234",
+    "production_before": "6abe2c1b47947d29f9f32986",
+    "production_after": "6abe2c1b47947d29f9f32986",
+    "production_unchanged": true,
+    "draft_requested": true,
+    "immutable_test_url": "https://6abe488b89cb1f33d9248eb8--zesty-rolypoly-d11fff.netlify.app"
+  },
+  "live_qa": {
+    "status": "NOT_RUN",
+    "blocker": "HTTP proxy rejects the new staging hosts with 403 Forbidden; hosts absent from environment allowlist.",
+    "user_decision": "Live-Abnahme vorerst offen lassen",
+    "service_worker_live": "NOT_VERIFIED",
+    "production_deploy": false,
+    "main_merge": false,
+    "release_tag": false
+  }
 }
