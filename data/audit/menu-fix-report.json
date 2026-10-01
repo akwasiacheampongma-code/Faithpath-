@@ -1,0 +1,190 @@
+{
+  "build": "FP4-20261001-G",
+  "staging_build": "FP4-20261001-G-MENU1",
+  "bug": "MENU_NAVIGATION_FAILURE",
+  "reproduced_before_fix": true,
+  "root_cause": "Die obere Drei-Punkte-Steuerung war ein Link auf #more ohne eigenständigen Menü-State, Overlay oder Close- und Fokus-Verhalten. Vorhandene Quiz-, Rückblick- und Orientierungsfunktionen waren nicht im Hauptmenü erreichbar.",
+  "files_changed": [
+    ".gitignore",
+    "src/app.js",
+    "src/menu.js",
+    "src/version.js",
+    "styles.css",
+    "tests/browser.mjs",
+    "tests/menu-qa.py",
+    "data/audit/menu-fix-report.json"
+  ],
+  "content_changed": false,
+  "menu_button_is_real_button": true,
+  "menu_open": "PASS",
+  "aria_expanded": "PASS",
+  "menu_close": "PASS",
+  "menu_escape": "PASS",
+  "menu_overlay_close": "PASS",
+  "menu_repeat_10": "PASS",
+  "menu_after_reload": "PASS",
+  "all_available_menu_items": "PASS",
+  "menu_after_deeplink": "PASS",
+  "menu_after_browser_back": "PASS",
+  "menu_mobile_touch": "PASS",
+  "missing_routes_or_features": [],
+  "console_errors_during_menu": 0,
+  "page_errors_during_menu": 0,
+  "regression_status": "PASS",
+  "final_status": "MENU_FIX_FAIL",
+  "validation_phase": "LOCAL_PASS_LIVE_PENDING",
+  "local_menu_evidence": {
+    "checks": {
+      "menu_open": "PASS",
+      "aria_expanded": "PASS",
+      "menu_close": "PASS",
+      "menu_escape": "PASS",
+      "menu_overlay_close": "PASS",
+      "menu_repeat_10": "PASS",
+      "menu_after_reload": "PASS",
+      "all_available_menu_items": "PASS",
+      "menu_after_deeplink": "PASS",
+      "menu_after_browser_back": "PASS",
+      "menu_mobile_touch": "PASS",
+      "menu_keyboard_focus": "PASS",
+      "menu_with_active_service_worker_offline": "PASS"
+    },
+    "details": {
+      "menu_items": [
+        {
+          "label": "Heute",
+          "href": "#today",
+          "heading": "Was bewegt dich gerade?"
+        },
+        {
+          "label": "Bibel",
+          "href": "#bible",
+          "heading": "Die Bibel. Raum zum Verstehen."
+        },
+        {
+          "label": "Entdecken / Geschichten",
+          "href": "#discover",
+          "heading": "Verstehen, was du liest."
+        },
+        {
+          "label": "Quiz",
+          "href": "#quizzes",
+          "heading": "Verständnisfragen zum Bibeltext."
+        },
+        {
+          "label": "Mein Weg",
+          "href": "#paths",
+          "heading": "Was dich über Zeit begleitet."
+        },
+        {
+          "label": "Journal",
+          "href": "#journal",
+          "heading": "Festhalten, was bleibt."
+        },
+        {
+          "label": "Rückblicke",
+          "href": "#reviews",
+          "heading": "Was ist daraus geworden?"
+        },
+        {
+          "label": "Geführte Wege",
+          "href": "#plans",
+          "heading": "Ein Thema, das dich begleitet."
+        },
+        {
+          "label": "Was beschäftigt dich?",
+          "href": "#guidance",
+          "heading": "Was beschäftigt dich?"
+        },
+        {
+          "label": "Meine Geschichte",
+          "href": "#history",
+          "heading": "Damals wichtig. Heute Teil von dir."
+        },
+        {
+          "label": "Markierungen",
+          "href": "#marks",
+          "heading": "Markierungen"
+        },
+        {
+          "label": "Mehr / Einstellungen",
+          "href": "#more",
+          "heading": "Deine Daten. Deine Entscheidung."
+        }
+      ],
+      "technical": {
+        "pointer_events": "auto",
+        "z_index": "auto",
+        "aria_controls": "main-menu",
+        "expanded": "false",
+        "overlay_hidden": true,
+        "drawer_hidden": true,
+        "scroll_lock": false,
+        "service_worker": "http://127.0.0.1:4174/sw.js",
+        "rejections": []
+      }
+    },
+    "console_errors": [],
+    "page_errors": [],
+    "engine": "Chromium",
+    "viewport": "390x844",
+    "touch": true,
+    "url": "http://127.0.0.1:4174"
+  },
+  "regression_evidence": {
+    "engine": "Chromium",
+    "results": [
+      {
+        "name": "Neuer Nutzer: Onboarding → Situation → Bibel → Reflexion → Weg → Schritt",
+        "status": "passed"
+      },
+      {
+        "name": "Erfahren: Buch/Kapitel, markieren, Notiz, Wegverbindung, Übersetzung, Kopieren",
+        "status": "passed"
+      },
+      {
+        "name": "Weg: Schritt ist keine Entwicklung; Reflexion, bestätigter Rückblick, Archiv",
+        "status": "passed"
+      },
+      {
+        "name": "Erinnerungslücke: alte Aktivität → später erinnern → Rückblick ohne Bewertung",
+        "status": "passed"
+      },
+      {
+        "name": "Journal: Predigtnotiz, Filter, Suche, Öffnen und chronologischer Verlauf",
+        "status": "passed"
+      },
+      {
+        "name": "Quiz: Story → fünf Fragen → Erklärungen → Reflexion ohne Punktzahl",
+        "status": "passed"
+      },
+      {
+        "name": "Geführter Weg: Abschnitt lesen → Reflexion → Fortschritt bleibt nach Reload",
+        "status": "passed"
+      },
+      {
+        "name": "Backup: Export → Importvorschau → Restore; beschädigte Datei verändert nichts",
+        "status": "passed"
+      },
+      {
+        "name": "PWA: vollständige Offline-Vorbereitung → offline Reload → beide Bibeln",
+        "status": "passed"
+      },
+      {
+        "name": "Fehlerzustände: ungültiger Vers, beschädigter Speicher, fehlende Datei",
+        "status": "passed"
+      },
+      {
+        "name": "Responsive, lange Texte, viele Einträge, Zoom, Fokus und Reduced Motion",
+        "status": "passed"
+      },
+      {
+        "name": "Direkte Adresse und Browser-Reload starten mit richtigen Asset-Pfaden",
+        "status": "passed"
+      }
+    ],
+    "uncaughtErrors": []
+  },
+  "service_worker_update_tests": "PASS: migration, deliberate update/draft, failed update fallback",
+  "content_verification": "139 JSON content files byte-identical; original question, reference and mapping files unchanged."
+}

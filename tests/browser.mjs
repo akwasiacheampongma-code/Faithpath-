@@ -597,7 +597,8 @@ try {
       );
       await overflow(p);
       await p.evaluate(() => (document.documentElement.style.fontSize = ""));
-      await p.getByRole("link", { name: "Mehr und Einstellungen" }).click();
+      await p.getByRole("button", { name: "Hauptmenü öffnen oder schließen" }).click();
+      await p.locator("#main-menu").getByRole("link", { name: "Mehr / Einstellungen", exact: true }).click();
       await p.getByRole("button", { name: "Einführung ansehen" }).click();
       await p.keyboard.press("Escape");
       assert.equal(await p.locator("dialog[open]").count(), 0);

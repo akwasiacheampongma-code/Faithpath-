@@ -1,3 +1,4 @@
+import { closeMenu, menuMarkup } from "./menu.js";
 import { createStore, KEYS, id, now } from "./store.js";
 import {
   normBook,
@@ -155,8 +156,9 @@ function go(route) {
   else location.hash = route;
 }
 function shell(body, active = "today", cls = "") {
+  closeMenu(false);
   $("#app").innerHTML =
-    `<header class="topbar"><a class="wordmark" href="#today" aria-label="FaithPath Startseite">${icon("leaf")}FaithPath<span class="brand-dot">.</span></a><div class="top-right"><span class="offline-label">${!navigator.onLine ? "Offline" : ui.offline ? "Auf diesem Gerät" : ""}</span>${link(icon("more") + '<span class="sr-only">Mehr und Einstellungen</span>', "more", "icon-button")}</div></header><nav class="primary-nav" aria-label="Hauptnavigation">${[
+    `<header class="topbar"><a class="wordmark" href="#today" aria-label="FaithPath Startseite">${icon("leaf")}FaithPath<span class="brand-dot">.</span></a><div class="top-right"><span class="offline-label">${!navigator.onLine ? "Offline" : ui.offline ? "Auf diesem Gerät" : ""}</span><button type="button" id="menu-toggle" class="icon-button" aria-label="Hauptmenü öffnen oder schließen" aria-expanded="false" aria-controls="main-menu">${icon("more")}</button></div></header><nav class="primary-nav" aria-label="Hauptnavigation">${[
       ["today", "home", "Heute"],
       ["bible", "book", "Bibel"],
       ["paths", "path", "Mein Weg"],
@@ -168,7 +170,7 @@ function shell(body, active = "today", cls = "") {
       )
       .join(
         "",
-      )}</nav><div class="page ${cls}">${ui.waiting ? `<aside class="update-notice" role="status">Eine neue Version ist bereit. ${button("Jetzt aktualisieren", "update", {}, "text-button")}</aside>` : ""}${store.error ? `<aside class="error-notice" role="alert"><strong>Deine gespeicherten Daten brauchen Aufmerksamkeit.</strong><p>${e(store.error.message)} Der Originalstand bleibt erhalten.</p>${button("Originaldaten sichern", "raw-backup", {}, "text-button")}${link("Backup wiederherstellen", "more")}</aside>` : ""}<main id="main">${body}</main><footer class="page-footer">Deine persönliche Glaubensgeschichte.</footer></div>`;
+      )}</nav><div class="page ${cls}">${ui.waiting ? `<aside class="update-notice" role="status">Eine neue Version ist bereit. ${button("Jetzt aktualisieren", "update", {}, "text-button")}</aside>` : ""}${store.error ? `<aside class="error-notice" role="alert"><strong>Deine gespeicherten Daten brauchen Aufmerksamkeit.</strong><p>${e(store.error.message)} Der Originalstand bleibt erhalten.</p>${button("Originaldaten sichern", "raw-backup", {}, "text-button")}${link("Backup wiederherstellen", "more")}</aside>` : ""}<main id="main">${body}</main><footer class="page-footer">Deine persönliche Glaubensgeschichte.</footer></div>${menuMarkup(ui.route)}`;
   document.title = `FaithPath · ${$("h1")?.textContent || "Deine persönliche Glaubensgeschichte"}`;
 }
 function timelineHTML(items, limit = 40) {
@@ -492,6 +494,9 @@ function discover() {
       )}</select></div><div class="field"><label for="story-kind">Inhalte</label><select id="story-kind" data-change="story-kind"><option value="alle">Alle Einheiten</option><option value="geschichte" ${ui.storyKind === "geschichte" ? "selected" : ""}>Geschichten</option><option value="kapitel" ${ui.storyKind === "kapitel" ? "selected" : ""}>Kapitelübungen</option></select></div></div><section><h2>Gemeinsame Geschichten</h2>${runtimeModel.flow.stories.map(x => row(x.title, x.ref, "merged-story/" + x.story_id)).join("")}</section><div id="story-results">${storyResults()}</div>${link("So sind die Inhalte geprüft", "content-status")}`,
     "bible",
   );
+}
+function quizIndex() {
+  shell(`${heading("Quiz", "Verständnisfragen zum Bibeltext.")}<div class="list">${ui.stories.filter(x => x.questions.length).map(x => row(x.title, `${x.ref} · ${x.questions.length} Fragen`, "quiz/" + x.id)).join("")}</div>`, "bible");
 }
 function storyResults() {
   const q = ui.storySearch.toLowerCase(),
@@ -1621,6 +1626,7 @@ async function render() {
     else if (kind === "mark") markDetail(key);
     else if (kind === "discover") discover();
     else if (kind === "story") story(key);
+    else if (kind === "quizzes") quizIndex();
     else if (kind === "quiz") {
       if (!ui.quiz || String(ui.quiz.story.id) !== key) {
         const x = ui.stories.find((x) => String(x.id) === key);

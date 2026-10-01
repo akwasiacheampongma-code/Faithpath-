@@ -1623,3 +1623,16 @@ dialog form > p {
     break-inside: avoid;
   }
 }
+/* Main menu: keep the controller tappable above the backdrop. */
+.menu-open { overflow: hidden; }
+.menu-open #menu-toggle { position: relative; z-index: 130; }
+.menu-overlay { position: fixed; inset: 0; z-index: 110; background: rgb(20 40 30 / 35%); touch-action: none; }
+.menu-drawer { position: fixed; z-index: 120; top: 80px; right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); width: min(360px, calc(100vw - 24px)); box-sizing: border-box; padding: 20px; overflow-y: auto; overscroll-behavior: contain; background: #f7f6f0; color: #29483b; border: 1px solid #d8ded2; border-radius: 18px; box-shadow: 0 12px 40px rgb(20 40 30 / 20%); }
+.menu-drawer[hidden], .menu-overlay[hidden] { display: none; }
+.menu-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+.menu-heading h2 { margin: 0; }
+.menu-heading button { font-size: 28px; min-width: 48px; min-height: 48px; }
+.menu-drawer nav { display: grid; gap: 4px; }
+.menu-drawer nav a { display: flex; align-items: center; min-height: 48px; padding: 8px 12px; border-radius: 8px; color: inherit; text-decoration: none; overflow-wrap: anywhere; }
+.menu-drawer nav a:hover, .menu-drawer nav a[aria-current="page"] { background: #e6ebe1; }
+#menu-toggle:focus-visible, .menu-drawer a:focus-visible, .menu-drawer button:focus-visible { outline: 3px solid #315a46; outline-offset: 3px; }
