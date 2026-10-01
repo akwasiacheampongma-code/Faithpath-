@@ -1,0 +1,102 @@
+{
+  "agent": "faithpath-preflight",
+  "branch": "develop/v4",
+  "source_commit_before": "5f6c597916a5854f83085538ae345ff4c2d629dc",
+  "source_master_blob_before": "18995d231f90df332eef500471060469421aff88",
+  "materialized_stories_blob": "67131d2b7233cd2107b9124bc95db4c87f539320",
+  "faithpath_expected": 1560,
+  "faithpath_found": 1560,
+  "ids_complete": true,
+  "duplicate_ids": 0,
+  "missing_ids": [],
+  "qa_evidence_gaps": 0,
+  "unmaterialized_corrections": 0,
+  "content_conflicts": 4,
+  "content_conflicts_definition": "Four reconstructed semantic mappings requiring a decision; the four historical final-field conflicts are resolved. No zero forced by guessing.",
+  "historical_conflict_ids_resolved": [
+    "FP-0021",
+    "FP-0024",
+    "FP-0025",
+    "FP-0175"
+  ],
+  "final_field_corrections_materialized": 5,
+  "exact_verse_reconstructions_materialized": 1736,
+  "documented_in_pdf_1707": 1707,
+  "additional_mixed_block_exact_reconstructions": 29,
+  "faithpath_ids_persisted": 1560,
+  "canonical_nachlese_story_count": 435,
+  "combined_story_count": 436,
+  "nachlese_questions": 2314,
+  "unique_n_ids": 2314,
+  "verified_mapping_count": 256,
+  "verified_EXAKT": 92,
+  "verified_SINNGLEICH": 74,
+  "FAITHPATH_ONLY_retained_and_story_assigned": 86,
+  "FAITHPATH_ONLY_chapter_rows_retained_separately": 40,
+  "KONFLIKT_resolved": 4,
+  "HIGH_processed": 145,
+  "HIGH_review_required": 1,
+  "MEDIUM_verified": 25,
+  "MEDIUM_review_required": 3,
+  "review_required": 4,
+  "chapter_quiz_questions": 1300,
+  "word_equal_duplicates_single_flow_item": 95,
+  "validator_result": "PASS",
+  "technical_status": "PASS_WITH_FINDINGS",
+  "status": "BLOCKED",
+  "release_status": "NOT_AUTHORIZED",
+  "remaining_blockers": [
+    {
+      "type": "REVIEW_REQUIRED",
+      "FP_ID": "FP-0120",
+      "N_ID": "N-1466",
+      "reasons": [
+        "FP asks about healing outcome; N asks about Jesus command and the father response; these are different question targets."
+      ],
+      "Confidence": "MEDIUM"
+    },
+    {
+      "type": "REVIEW_REQUIRED",
+      "FP_ID": "FP-0147",
+      "N_ID": "N-1536",
+      "reasons": [
+        "FP_N_REFERENCE_NO_OVERLAP",
+        "FP reference John 10,11 and final N reference John 10,12 do not overlap."
+      ],
+      "Confidence": "MEDIUM"
+    },
+    {
+      "type": "REVIEW_REQUIRED",
+      "FP_ID": "FP-0151",
+      "N_ID": "N-1544",
+      "reasons": [
+        "FP asks for the sick man name; N asks his place of origin; different question/answer targets."
+      ],
+      "Confidence": "HIGH"
+    },
+    {
+      "type": "REVIEW_REQUIRED",
+      "FP_ID": "FP-0239",
+      "N_ID": "N-1761",
+      "reasons": [
+        "FP asks why Herod was struck; final N question/answer describes what happened without stating that reason."
+      ],
+      "Confidence": "MEDIUM"
+    },
+    {
+      "type": "RELEASE_CONSUMER_AND_NEW_VERSION_BUILD_PENDING",
+      "description": "Current immutable F reader still loads old release files; derived source model not yet wired into a separately versioned local release. No build/deploy or main merge performed."
+    }
+  ],
+  "source_roles": {
+    "FP_PDF": "Approved status/order/blocks; no new editorial review",
+    "DOCX": "Canonical 435-story structure/order/reflections",
+    "final_N_QA_XLSX": "Final N question/answer/reference fields",
+    "reconstructed_mapping": "Only verified per-row technical associations"
+  },
+  "next_required_actions": [
+    "Resolve FP-0120, FP-0147, FP-0151 and FP-0239 mappings explicitly; keep source objects unchanged until then.",
+    "Integrate separated canonical story-flow model into reader and prepare a new local versioned build; do not replace historical F assets or deploy production automatically."
+  ],
+  "commit_after_recorded_in": "/workspace/faithpath-materialization-20261001/completion.json"
+}
