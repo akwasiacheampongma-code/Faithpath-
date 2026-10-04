@@ -153,7 +153,7 @@ try {
   await poll(async () => (await status())?.build === BUILD);
   await p
     .getByRole("heading", {
-      name: "Deine Daten. Deine Entscheidung.",
+      name: "Raum für deine Geschichte.",
       exact: true,
     })
     .waitFor();

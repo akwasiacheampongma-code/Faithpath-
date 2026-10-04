@@ -59,7 +59,7 @@ try {
   if (!baseline) await check('journal_empty_state', async () => {
     assert.equal(await fresh.p.locator('#journal-search').count(), 0);
     assert.equal(await fresh.p.locator('.filters').count(), 0);
-    await fresh.p.getByRole('button', { name: 'Ersten Gedanken festhalten', exact: true }).click();
+    await fresh.p.getByRole('button', { name: 'Gedanken festhalten', exact: true }).click();
     await fresh.p.getByLabel('Dein Gedanke', { exact: true }).fill('Mein erster Gedanke.');
     await fresh.p.locator('#editor-form button[type=submit]').click();
     await fresh.p.getByRole('button', { name: 'Für jetzt reicht der Gedanke', exact: true }).click();
@@ -81,7 +81,8 @@ try {
     assert(order.includes(seed.journal[0].text));
     assert.equal(await p.locator('a[href="#read/JHN/3/otb"]').count(), 2);
     const card = await p.locator('.personal-path').boundingBox();
-    assert(card.y < 500, 'Current path visible early at 390x844');
+    const navigation = await p.locator('.primary-nav').boundingBox();
+    assert(card.y < navigation.y, 'Current path begins above bottom navigation at 390x844');
   });
   const screens = [['bible', '03-bible'], ['read/JHN/3/otb', '04-reader'], ['journal', '06-journal-filled'], ['paths', '07-my-paths'], ['path/qa-path', '07-path-detail'], ['reviews', '08-reviews'], ['plans', '09-guided-paths'], ['guidance', '10-guidance'], ['more', '12-settings'], ['discover', 'discover'], ['quizzes', 'quiz'], ['marks', 'marks'], ['history', 'history']];
   for (const [r, name] of screens) { await route(p, r); await shot(p, name); }

@@ -11,7 +11,7 @@ const require = createRequire(import.meta.url),
 const root = process.cwd(),
   out = path.join(root, "qa-output");
 fs.mkdirSync(out, { recursive: true });
-const server = spawn(process.execPath, ["scripts/serve.mjs", "dist"], {
+const server = spawn(process.execPath, ["scripts/serve.mjs", process.env.FAITHPATH_TEST_ROOT || "dist"], {
   stdio: ["ignore", "pipe", "inherit"],
   env: { ...process.env, PORT: process.env.FAITHPATH_PORT || "4176" },
 });
@@ -138,7 +138,7 @@ try {
       await p
         .getByRole("heading", { name: "Was beschäftigt dich?", exact: true })
         .waitFor();
-      await p.locator(".topic-grid a").first().click();
+      await p.locator(".topic-intro a").first().click();
       await p.locator(".passage-list a").first().click();
       await p.locator(".reading-text").waitFor();
       await snap(p, "reader-context-mobile");
@@ -190,6 +190,7 @@ try {
       await p.locator(".reading-text").waitFor();
       await p.locator('[data-v="12"]').click();
       await p.getByRole("button", { name: "Markieren", exact: true }).click();
+      await p.getByRole("option", { name: "Olive", exact: true }).click();
       await p.getByRole("button", { name: "Notiz", exact: true }).click();
       await p
         .getByLabel("Dein Gedanke", { exact: true })
@@ -269,8 +270,8 @@ try {
         .getByRole("heading", { name: "Geduld im Alltag", exact: true })
         .waitFor();
       assert.equal((await state(p)).paths[0].milestones.length, 1);
-      await p.getByText("Weg verwalten", { exact: true }).click();
-      await p.getByRole("button", { name: "Weg archivieren" }).click();
+      await p.locator(".path-options summary").click();
+      await p.getByRole("button", { name: "Archivieren" }).click();
       assert.equal((await state(p)).paths[0].milestones.length, 1);
       await visit(p, "tree", "Keimling");
       await snap(p, "tree-mobile");
@@ -305,10 +306,10 @@ try {
     try {
       await visit(p, "today", "Was bewegt dich gerade?");
       await snap(p, "returning-home-mobile");
-      await p.getByRole("button", { name: "In Ruhe zurückblicken" }).click();
+      await p.getByRole("button", { name: "Darauf zurückblicken" }).click();
       await p.getByRole("button", { name: "In zwei Wochen erinnern" }).click();
       assert.ok((await state(p)).reminderSnoozes["journal:old"]);
-      await p.getByRole("button", { name: "In Ruhe zurückblicken" }).click();
+      await p.getByRole("button", { name: "Darauf zurückblicken" }).click();
       await p.getByRole("button", { name: "Jetzt zurückblicken" }).click();
       await p.getByLabel("Wo stehst du gerade?").selectOption("working");
       await p.getByRole("button", { name: "Rückblick speichern" }).click();
@@ -332,7 +333,7 @@ try {
     const { c, p } = await context(appState);
     try {
       await visit(p, "journal", "Festhalten, was bleibt.");
-      await p.getByRole("button", { name: "Neuer Eintrag" }).click();
+      await p.getByRole("button", { name: /Neuer Eintrag|Gedanken festhalten/ }).click();
       await p
         .getByLabel("Dein Gedanke", { exact: true })
         .fill("Predigt am Sonntag: Einander zuhören.");
@@ -342,10 +343,12 @@ try {
         .getByRole("button", { name: "Für jetzt reicht der Gedanke" })
         .click();
       await visit(p, "journal");
+      await p.locator(".journal-tools summary").filter({hasText:"Filter"}).click();
       await p.getByRole("button", { name: "Predigt", exact: true }).click();
+      await p.locator(".journal-tools summary").filter({hasText:"Suchen"}).click();
       await p.getByLabel("In deinen Einträgen suchen").fill("Sonntag");
-      assert.equal(await p.locator(".timeline li").count(), 1);
-      await p.locator(".timeline-title").click();
+      assert.equal(await p.locator(".journal-page-entry").count(), 1);
+      await p.locator(".journal-page-entry h3 a").click();
       await p
         .getByText("Predigt am Sonntag: Einander zuhören.", { exact: true })
         .waitFor();
@@ -357,10 +360,11 @@ try {
       await c.close();
     }
   });
-  await test("Quiz: Story → fünf Fragen → Erklärungen → Reflexion ohne Punktzahl", async () => {
+  await test("Kapitelquiz: fünf Fragen → Erklärungen → Reflexion ohne Punktzahl (Story-Merge separat geprüft)", async () => {
     const { c, p } = await context(appState);
     try {
       await visit(p, "discover", "Verstehen, was du liest.");
+      await p.locator("#story-kind").selectOption("kapitel");
       await p.locator("#story-results a").first().click();
       await p.locator('[data-action="quiz"]').click();
       for (let i = 0; i < 5; i++) {
@@ -393,7 +397,7 @@ try {
     const { c, p } = await context(appState);
     try {
       await visit(p, "plans");
-      await p.locator("main .list a").first().click();
+      await p.locator(".guided-teaser h2 a").first().click();
       await p.locator(".plan-sections a").first().click();
       await p.locator(".reading-text").waitFor();
       await p
@@ -424,7 +428,8 @@ try {
   await test("Backup: Export → Importvorschau → Restore; beschädigte Datei verändert nichts", async () => {
     const { c, p } = await context(appState);
     try {
-      await visit(p, "more", "Deine Daten. Deine Entscheidung.");
+      await visit(p, "more", "Raum für deine Geschichte.");
+      await p.getByRole("link", {name:"Daten & Backup",exact:false}).click();
       const dl = p.waitForEvent("download");
       await p.getByRole("button", { name: "Backup exportieren" }).click();
       const downloaded = await dl,
@@ -454,7 +459,7 @@ try {
         .click();
       await p
         .getByRole("heading", {
-          name: "Deine Daten. Deine Entscheidung.",
+          name: "Daten & Backup",
           exact: true,
         })
         .waitFor();
@@ -469,6 +474,7 @@ try {
     const { c, p } = await context(appState);
     try {
       await visit(p, "more");
+      await p.getByRole("link", {name:"Einstellungen",exact:true}).click();
       await p
         .locator("#offline-state")
         .filter({
@@ -480,7 +486,7 @@ try {
       await p.reload();
       await p
         .getByRole("heading", {
-          name: "Deine Daten. Deine Entscheidung.",
+          name: "Einstellungen",
           exact: true,
         })
         .waitFor();
@@ -579,9 +585,9 @@ try {
       }
       await p.setViewportSize({ width: 390, height: 844 });
       await visit(p, "journal");
-      assert.equal(await p.locator(".timeline li").count(), 40);
+      assert.equal(await p.locator(".journal-page-entry").count(), 40);
       await p.getByRole("button", { name: "Weitere Einträge" }).click();
-      assert.equal(await p.locator(".timeline li").count(), 80);
+      assert.equal(await p.locator(".journal-page-entry").count(), 80);
       await visit(p, "entry/" + d.journal[0].id);
       assert.equal(
         (await p.locator(".entry-text").textContent()).length,
@@ -599,6 +605,7 @@ try {
       await p.evaluate(() => (document.documentElement.style.fontSize = ""));
       await p.getByRole("button", { name: "Hauptmenü öffnen oder schließen" }).click();
       await p.locator("#main-menu").getByRole("link", { name: "Mehr / Einstellungen", exact: true }).click();
+      await p.getByRole("link", {name:"Einstellungen",exact:true}).click();
       await p.getByRole("button", { name: "Einführung ansehen" }).click();
       await p.keyboard.press("Escape");
       assert.equal(await p.locator("dialog[open]").count(), 0);

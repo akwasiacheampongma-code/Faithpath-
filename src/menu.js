@@ -33,11 +33,17 @@ function openMenu() {
   panel.querySelector("button").focus({ preventScroll: true });
 }
 export function menuMarkup(route) {
-  const current = route.split("/")[0];
+  const current = route.split("?")[0].split("/")[0];
+  const groups = [
+    ["Hauptbereiche",["today","bible","paths","journal"]],
+    ["Persönlich",["history","reviews","marks"]],
+    ["Entdecken",["guidance","plans","discover","quizzes"]],
+    ["Einstellungen & Daten",["more"]],
+  ];
   return `<div id="menu-overlay" class="menu-overlay" hidden aria-hidden="true"></div>
     <section id="main-menu" class="menu-drawer" role="dialog" aria-labelledby="menu-title" hidden>
       <div class="menu-heading"><h2 id="menu-title">Menü</h2><button type="button" class="icon-button" data-menu-close aria-label="Menü schließen">×</button></div>
-      <nav aria-label="Alle Bereiche">${destinations.map(([target,label]) => `<a href="#${target}"${current === target ? ' aria-current="page"' : ""}>${label}</a>`).join("")}</nav>
+      <nav aria-label="Alle Bereiche">${groups.map(([label,targets])=>`<span class="overline menu-group-label">${label}</span>${targets.map(target=>{const label=destinations.find(x=>x[0]===target)[1];return `<a href="#${target}"${current === target ? ' aria-current="page"' : ""}>${label}</a>`;}).join("")}`).join("")}</nav>
     </section>`;
 }
 document.addEventListener("click", event => {

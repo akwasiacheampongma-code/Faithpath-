@@ -224,7 +224,7 @@ export function gaps(s, now = Date.now()) {
       .filter((x) => time(x) != null)
       .sort((a, b) => time(b) - time(a));
     const last = activity[0] || p.started,
-      step = [...(p.steps || [])].reverse().find((x) => !x.done);
+      step = (p.steps || []).find((x) => !x.done);
     const link = [...(p.links || [])].sort(
       (a, b) => (time(b.date) || 0) - (time(a.date) || 0),
     )[0];

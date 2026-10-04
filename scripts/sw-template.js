@@ -62,6 +62,9 @@ self.addEventListener("fetch", (event) => {
   const request = event.request,
     url = new URL(request.url);
   if (request.method !== "GET" || url.origin !== self.location.origin) return;
+  // QA reports/downloads are standalone documents, not application navigation.
+  // Serving the cached app shell here breaks reports for already-controlled browsers.
+  if (url.pathname.startsWith(new URL("./qa/", self.registration.scope).pathname)) return;
   // Browser update checks for sw.js and unknown requests stay on the network.
   if (url.pathname.endsWith("/sw.js")) return;
   if (request.mode === "navigate") {
