@@ -1,3 +1,6 @@
+import {recordExploredChapter,observeChapterEnd} from './bible-journey.js';
+import {journeyView,journeyAcknowledgement,treeBranchView,pathFacts,themePicker} from './experience-view.js';
+import {themeId,applyTheme,THEMES} from './themes.js';
 import {createChapterCatalog,chapterUnit,chapterQuizRoute,chapterQuizNavigation} from "./chapter-questions.js";
 import {journalMatches} from "./journal-search.js";
 import {deleteJournalEntry,restoreJournalEntry,journalDraftMatches,setJournalPath} from "./journal-management.js";
@@ -65,6 +68,7 @@ const deviceStorage = {
 };
 const store = createStore(deviceStorage),
   s = () => store.state;
+applyTheme(document,themeId(s()));
 const ui = {
   books: [],
   stories: [],
@@ -170,6 +174,8 @@ function go(route) {
   else location.hash = route;
 }
 function shell(body, active = "today", cls = "") {
+  ui.journeyStop?.(); ui.journeyStop=null;
+  applyTheme(document,themeId(s()));
   closeMenu(false);
   const toast=$("#toast"); if(toast) document.body.append(toast);
   $("#app").innerHTML =
@@ -353,7 +359,7 @@ function plan(kind, pid) {
 }
 function bible() {
   const reading=safeReading();
-  shell(`${heading("Lesen","Die Bibel. Raum zum Verstehen.","Lies in deinem Tempo. Tippe auf einen Vers, um ihn zu markieren oder einen Gedanken festzuhalten.")}${reading ? `<section class="continue-reading continuity-strip"><span class="overline">Weiterlesen</span><span class="meta">Zuletzt gelesen${reading.at ? ' · '+date(reading.at) : ''}</span><h2>${e(refLabel(reading.ref))}</h2>${link("Weiterlesen",readRoute(reading.ref),"text-link")}</section>` : ""}<div class="segmented" aria-label="Bibelbereiche">${link("Lesen","bible","active")}${link("Entdecken","discover")}${link("Markierungen","marks")}</div><div class="field"><label for="book-search">Buch finden</label><input type="search" id="book-search" data-input="books" placeholder="Zum Beispiel Römer" autocomplete="off"></div><div class="book-columns" id="book-list">${bookList()}</div>`,"bible","bible-page depth-page");
+  shell(`${heading("Lesen","Die Bibel. Raum zum Verstehen.","Lies in deinem Tempo. Tippe auf einen Vers, um ihn zu markieren oder einen Gedanken festzuhalten.")}${reading ? `<section class="continue-reading continuity-strip"><span class="overline">Weiterlesen</span><span class="meta">Zuletzt gelesen${reading.at ? ' · '+date(reading.at) : ''}</span><h2>${e(refLabel(reading.ref))}</h2>${link("Weiterlesen",readRoute(reading.ref),"text-link")}</section>` : ""}<p class="bible-journey-entry">${link("Deine Bibelreise", "bible-journey", "text-link")}</p><div class="segmented" aria-label="Bibelbereiche">${link("Lesen","bible","active")}${link("Entdecken","discover")}${link("Markierungen","marks")}</div><div class="field"><label for="book-search">Buch finden</label><input type="search" id="book-search" data-input="books" placeholder="Zum Beispiel Römer" autocomplete="off"></div><div class="book-columns" id="book-list">${bookList()}</div>`,"bible","bible-page depth-page");
 }
 function bookList(query = "") {
   return [ui.books.slice(0, 39), ui.books.slice(39)]
@@ -508,12 +514,15 @@ async function reader(parts, params, token) {
       .join(
         "",
       )}</select></div><div class="reader-selectors"><div><label for="reader-book">Buch</label><select id="reader-book" data-change="reader-book">${ui.books.map((x) => `<option value="${x.code}" ${x.code === code ? "selected" : ""}>${e(x.name)}</option>`).join("")}</select></div><div><label for="reader-chapter">Kapitel</label><select id="reader-chapter" data-change="reader-chapter">${b.chapters.map((_, i) => `<option value="${i + 1}" ${i + 1 === +chapter ? "selected" : ""}>${i + 1}</option>`).join("")}</select></div></div>
- ${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${vs.map(v => readerVerse(v, ref)).join("")}</div>
- ${readerChapterQuestions(ref, origin)}<div class="chapter-nav">${ref.chapter > 1 ? link("← Vorheriges Kapitel", readRoute({ book: code, chapter: ref.chapter - 1, translation: tr })) : ""}${ref.chapter < b.chapters.length ? link("Nächstes Kapitel →", readRoute({ book: code, chapter: ref.chapter + 1, translation: tr })) : ""}</div>
+ ${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${vs.map(v => readerVerse(v, ref)).join("")}<span id="chapter-end-sentinel" aria-hidden="true"></span></div>
+ ${journeyAcknowledgement(s(),ui.books,ref)}${readerChapterQuestions(ref, origin)}<div class="chapter-nav">${ref.chapter > 1 ? link("← Vorheriges Kapitel", readRoute({ book: code, chapter: ref.chapter - 1, translation: tr })) : ""}${ref.chapter < b.chapters.length ? link("Nächstes Kapitel →", readRoute({ book: code, chapter: ref.chapter + 1, translation: tr })) : ""}</div>
  <section class="reflection-invite"><span class="overline">Was bleibt bei dir?</span><h2>${e(ctx?.question || "Was berührt dich in diesem Text?")}</h2><p>Ein Satz genügt. Du kannst daraus später einen Weg machen.</p>${button("Meinen Gedanken festhalten", "reflect-reader", {}, "button primary")}</section><small class="translation-credit">${e(TRANSLATIONS[tr].name)} · ${tr === "otb" ? "CC BY-SA 4.0" : "gemeinfrei"} · ${link("Textquelle", "licenses")}</small><div id="selection-bar"></div>`,
     "bible",
     "reader-page",
   );
+  ui.journeyStop=observeChapterEnd({sentinel:$("#chapter-end-sentinel"),topbar:$(".topbar"),nav:$(".primary-nav"),isCurrent:()=>ui.token===token,isBlocked:()=>$("#dialog").open||ui.selection.size>0||$("#menu-toggle")?.getAttribute("aria-expanded")==="true",onReached:()=>{
+    try{change(data=>recordExploredChapter(data,ref,ui.books,now(),id()));const ack=$(".journey-acknowledgement");if(ack)ack.hidden=false;}catch(error){notify(error.message,true);}
+  }});
 }
 function readerChapterQuestions(ref, origin) {
   const unit = chapterUnit(ui.chapterCatalog, ref.book, ref.chapter);
@@ -640,7 +649,7 @@ function path(pid) {
   const p=s().paths.find(p=>p.id===pid);if(!p)return notFound();
   const entries=timeline(s(),pid), open=p.steps.filter(x=>!x.done), thoughts=s().journal.filter(j=>j.pathIds?.includes(pid)).slice().sort((a,b)=>time(b.date)-time(a.date));
   const renderToken=ui.token;
-  shell(`${back("Meine Wege","paths")}<div class="path-titlebar">${heading(category(p.category).label,p.title,p.why)}<details class="path-options"><summary aria-label="Weg verwalten">${icon("more")}<span class="sr-only">Weg verwalten</span></summary><div class="path-context">${button("Weg bearbeiten","edit-path",{id:pid},"text-button")}${button(p.archived ? "Weg wieder aufnehmen" : "Archivieren","archive-path",{id:pid},"text-button")}${button("Weg löschen","delete-path",{id:pid},"text-button danger-text")}</div></details></div><p class="meta">Begonnen am ${date(p.started)}${p.archived ? " · archiviert" : ""}</p>
+  shell(`${back("Meine Wege","paths")}<div class="path-titlebar">${heading(category(p.category).label,p.title,p.why)}<details class="path-options"><summary aria-label="Weg verwalten">${icon("more")}<span class="sr-only">Weg verwalten</span></summary><div class="path-context">${button("Weg bearbeiten","edit-path",{id:pid},"text-button")}${button(p.archived ? "Weg wieder aufnehmen" : "Archivieren","archive-path",{id:pid},"text-button")}${button("Weg löschen","delete-path",{id:pid},"text-button danger-text")}</div></details></div><p class="meta">Begonnen am ${date(p.started)}${p.archived ? " · archiviert" : ""}</p>${pathFacts(s(),pid)}
   <section class="next-step"><div class="section-heading"><span class="overline">Als Nächstes</span>${open.length ? button(icon("plus")+'<span class="sr-only">Schritt hinzufügen</span>',"step",{id:pid},"icon-button") : ""}</div>${open.length ? open.slice(0,1).map((x,i)=>`<div class="path-step ${i===0 ? "current-path-step" : ""}"><label class="step-row"><input type="checkbox" data-change="step-done" data-path="${e(pid)}" data-id="${e(x.id)}"><span>${e(x.text)}</span></label><div class="step-actions">${button("Bearbeiten","edit-step",{path:pid,id:x.id},"text-button")}${i ? button("Als Nächstes","current-step",{path:pid,id:x.id},"text-button") : ""}</div></div>`).join("") : `<h2>Ein kleiner nächster Schritt</h2><p>Was könntest du im Alltag ausprobieren?</p>${button("Schritt hinzufügen","step",{id:pid},"text-button")}`}<small>Ein ausprobierter Schritt ist noch keine bestätigte Entwicklung.</small></section>
   ${pathContext(s(),pid)?.step && pathContext(s(),pid)?.reference ? `<p class="step-reference meta">Zu diesem Weg: ${link(e(refLabel(pathContext(s(),pid).reference)),readRoute(pathContext(s(),pid).reference))}</p>` : ""}
   <div class="actions path-main-actions">${button("Gedanken festhalten","reflect-path",{id:pid},"button primary")}${button("Zurückblicken","review-path",{id:pid},"text-button")}</div>
@@ -663,8 +672,9 @@ function path(pid) {
 function tree() {
   const lvl = treeLevel(s());
   shell(
-    `${back("Mein Weg", "paths")}${heading("Dein Olivenbaum", stageNames[lvl], "Dieses Bild steht für Entwicklung, die du selbst dokumentiert hast. Es sagt nichts darüber aus, wie gut dein Glaube ist.")}<figure class="tree-figure"><img src="trees/tree-stage-${lvl + 1}.webp" alt="${e(stageNames[lvl])}" width="700" height="700"><figcaption>Ruhende Wege und schwierige Zeiten nehmen deiner Geschichte nichts weg.</figcaption></figure><section class="section"><h2>Was hinter dem Baum steht</h2>${timelineHTML(timeline(s()).filter((x) => x.kind === "Entwicklung festgehalten")) || "<p>Wenn du später selbst eine Entwicklung bestätigst, wird sie hier sichtbar.</p>"}<details><summary>Wie sich das Bild verändert</summary><p>Die sieben vorhandenen Bilder folgen der Anzahl deiner festgehaltenen Entwicklungen: 0, 1, 2, 3–4, 5–6, 7–9 und ab 10. Das ist eine symbolische Darstellung, keine Messung deines Glaubens. Einzelne Äste sind noch nicht bestimmten Wegen zugeordnet.</p></details></section>`,
+    `${back("Mein Weg", "paths")}${heading("Dein Olivenbaum", stageNames[lvl], "Dieses Bild steht für Entwicklung, die du selbst dokumentiert hast. Es sagt nichts darüber aus, wie gut dein Glaube ist.")}${treeBranchView(s(),lvl)}<section class="section"><h2>Was hinter dem Baum steht</h2>${timelineHTML(timeline(s()).filter((x) => x.kind === "Entwicklung festgehalten")) || "<p>Wenn du später selbst eine Entwicklung bestätigst, wird sie hier sichtbar.</p>"}<details><summary>Wie sich das Bild verändert</summary><p>Die sieben vorhandenen Bilder folgen der Anzahl deiner festgehaltenen Entwicklungen: 0, 1, 2, 3–4, 5–6, 7–9 und ab 10. Das ist eine symbolische Darstellung, keine Messung deines Glaubens. Die nummerierten Äste öffnen echte Wege, zu denen du selbst etwas festgehalten hast.</p></details></section>`,
     "paths",
+    "tree-page",
   );
 }
 function journal() {
@@ -708,7 +718,7 @@ function reviews() {
 function more() {
   const section=new URLSearchParams(location.hash.split("?")[1]||"").get("section");
   if(section === "data")return shell(`${back("Mehr","more")}${heading("Einstellungen & Daten","Daten & Backup")}<section class="section"><h2>Deine Daten sichern</h2><p>Deine FaithPath-Daten bleiben auf diesem Gerät. Es gibt keine automatische Gerätesynchronisation. Exportiere regelmäßig ein Backup, wenn du deine Einträge zusätzlich sichern möchtest. Ein Import stellt den Stand der Backup-Datei wieder her und ersetzt die aktuell angezeigten Daten.</p><div class="actions">${button("Backup exportieren", "export", {}, "button primary")}${button("Backup importieren", "import", {}, "button quiet")}</div><input id="import-file" type="file" accept=".json,application/json" hidden>${!store.error && deviceStorage.getItem(KEYS.restore) ? button("Stand vor dem letzten Import wiederherstellen", "undo-import", {}, "text-button") : ""}</section>`,"more","settings-page utility-page");
-  if(section === "settings")return shell(`${back("Mehr","more")}${heading("Einstellungen & Daten","Einstellungen")}<section class="section"><h2>Offline & auf dem iPhone</h2><p id="offline-state" role="status">${ui.offline ? "Beide Bibeln und die App sind für dieses Gerät offline bereit." : "Offline-Vorbereitung läuft, solange diese Seite online geöffnet ist."}</p>${button("Offline-Status prüfen", "offline-check", {}, "text-button")}<p>Auf dem iPhone: In Safari „Teilen“ öffnen, dann „Zum Home-Bildschirm“ wählen. Zum ersten Einrichten online bleiben, bis oben „offline bereit“ steht.</p></section><section class="section"><h2>Privat auf deinem Gerät</h2><p>Keine Werbung, keine Tracking-SDKs, kein KI-Chat. Persönliche Texte werden nicht an FaithPath übertragen. Sie sind lokal gespeichert und nicht zusätzlich verschlüsselt. Der Hosting-Anbieter verarbeitet beim Laden technische Verbindungsdaten.</p>${link("Bibeltexte & Lizenzen", "licenses")}${button("Einführung ansehen", "onboard", {}, "text-button")}</section><div class="list">${row("Bibeltexte & Lizenzen","","licenses")}${row("Inhalte & Prüfstatus","","content-status")}</div><small class="build-id">FaithPath V4 · ${BUILD}</small>`,"more","settings-page utility-page");
+  if(section === "settings")return shell(`${back("Mehr","more")}${heading("Einstellungen & Daten","Einstellungen")}${themePicker(s())}<section class="section"><h2>Offline & auf dem iPhone</h2><p id="offline-state" role="status">${ui.offline ? "Beide Bibeln und die App sind für dieses Gerät offline bereit." : "Offline-Vorbereitung läuft, solange diese Seite online geöffnet ist."}</p>${button("Offline-Status prüfen", "offline-check", {}, "text-button")}<p>Auf dem iPhone: In Safari „Teilen“ öffnen, dann „Zum Home-Bildschirm“ wählen. Zum ersten Einrichten online bleiben, bis oben „offline bereit“ steht.</p></section><section class="section"><h2>Privat auf deinem Gerät</h2><p>Keine Werbung, keine Tracking-SDKs, kein KI-Chat. Persönliche Texte werden nicht an FaithPath übertragen. Sie sind lokal gespeichert und nicht zusätzlich verschlüsselt. Der Hosting-Anbieter verarbeitet beim Laden technische Verbindungsdaten.</p>${link("Bibeltexte & Lizenzen", "licenses")}${button("Einführung ansehen", "onboard", {}, "text-button")}</section><div class="list">${row("Bibeltexte & Lizenzen","","licenses")}${row("Inhalte & Prüfstatus","","content-status")}</div><small class="build-id">FaithPath V4 · ${BUILD}</small>`,"more","settings-page utility-page");
   const menuRow=(title,desc,route,ic="arrow",featured=false)=>link(`${icon(ic)}<span><strong>${e(title)}</strong>${desc?`<small>${e(desc)}</small>`:""}</span>${icon("arrow")}`,route,"more-row"+(featured?" more-featured":""));
   shell(`${heading("Mehr","Raum für deine Geschichte.")}<section class="more-group" aria-labelledby="more-personal"><h2 id="more-personal" class="overline">Persönlich</h2>${menuRow("Meine Geschichte","Dein persönlicher Weg im Verlauf.","history","leaf",true)}${menuRow("Rückblicke","Auf frühere Gedanken zurückschauen.","reviews","history")}${menuRow("Markierungen","Deine gespeicherten Bibelstellen.","marks","book")}</section><section class="more-group" aria-labelledby="more-discover"><h2 id="more-discover" class="overline">Entdecken</h2>${menuRow("Was beschäftigt dich?","","guidance","leaf")}${menuRow("Geführte Wege","Eine ruhige Begleitung.","plans","path")}${menuRow("Entdecken & Quiz","Geschichten, Kapitel und Verständnisfragen.","discover","book")}</section><section class="more-group utility-group" aria-labelledby="more-utility"><h2 id="more-utility" class="overline">Einstellungen & Daten</h2>${menuRow("Einstellungen","","more?section=settings","more")}${menuRow("Daten & Backup","","more?section=data","lock")}</section>`,"more","more-page");
 }
@@ -1276,6 +1286,10 @@ function confirmJournalDeletion(id) {
   const title=$("#dialog-title");title.tabIndex=-1;title.focus({preventScroll:true});$("#dialog").scrollTop=0;
 }
 async function action(a, d, el) {
+  if(a==="set-theme"){
+    if(!THEMES.some(t=>t.id===d.themeId))return;
+    change(data=>{data.settings.theme=d.themeId;});applyTheme(document,d.themeId);more();$(`[data-theme-id="${d.themeId}"]`)?.focus({preventScroll:true});return;
+  }
   el?.closest(".path-options,.entry-options")?.removeAttribute("open");
   if(a === "journal-path"){openForm("journal-path",{id:d.id});return;}
   if(a === "delete-journal"){confirmJournalDeletion(d.id);return;}
@@ -1707,6 +1721,9 @@ async function render() {
     else if (kind === "guidance") guidance();
     else if (kind === "topic") topic(key);
     else if (kind === "bible") bible();
+    else if (kind === "bible-journey") {
+      const view=journeyView(s(),ui.books,key);if(!view)return notFound();shell(`${back(key?"Deine Bibelreise":"Bibel",key?"bible-journey":"bible")}${heading("Bibelreise",view.title)}${view.body}`,"bible","journey-page editorial-page depth-page");
+    }
     else if (kind === "chapters") chapters(key);
     else if (kind === "chapter-quizzes") chapterCollection(key);
     else if (kind === "read") {
@@ -1946,4 +1963,9 @@ document.addEventListener("click",ev=>{
   const target=ev.target.closest('[data-action="source-answer"]');if(!target || target.disabled)return;
   ui.sourceAnswerId=target.dataset.id;ui.sourceAnswer=Number(target.dataset.answer);sourceQuestion(target.dataset.id);
   const feedback=$(".explanation");if(feedback){feedback.tabIndex=-1;feedback.focus();}
+});
+
+document.addEventListener("keydown",event=>{
+ const tile=event.target.closest?.(".theme-tile");if(!tile||!["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Home","End"].includes(event.key))return;event.preventDefault();const ids=THEMES.map(t=>t.id),i=ids.indexOf(tile.dataset.themeId),next=event.key==="Home"?0:event.key==="End"?ids.length-1:(i+(["ArrowRight","ArrowDown"].includes(event.key)?1:-1)+ids.length)%ids.length;
+ Promise.resolve(action("set-theme",{themeId:ids[next]},tile)).catch(showError);
 });

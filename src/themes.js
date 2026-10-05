@@ -1,0 +1,3 @@
+export const THEMES=Object.freeze([{id:'light',label:'Hell',dark:false},{id:'atmospheric',label:'Atmosphärisch',dark:true},{id:'paper',label:'Papier',dark:false},{id:'night',label:'Nacht',dark:true}]);
+export const themeId=data=>THEMES.some(t=>t.id===data.settings?.theme)?data.settings.theme:'light';
+export function applyTheme(doc,id){const selected=THEMES.some(t=>t.id===id)?id:'light';doc.documentElement.dataset.theme=selected;const meta=doc.querySelector('meta[name="theme-color"]');if(meta&&doc.defaultView)meta.content=doc.defaultView.getComputedStyle(doc.documentElement).getPropertyValue('--fp-bg').trim();return selected;}

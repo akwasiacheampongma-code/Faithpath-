@@ -23,7 +23,8 @@ fs.cpSync('src',`${out}/${release}/src`,{recursive:true});fs.copyFileSync('style
 for(const d of ['data/bibles','trees','icons'])fs.cpSync(d,`${out}/${d}`,{recursive:true});
 for(const f of ['manifest.webmanifest','_headers','_redirects','404.html'])fs.copyFileSync(f,`${out}/${f}`);
 fs.writeFileSync(`${out}/index.html`,fs.readFileSync('index.html','utf8').replace('./styles.css',`./${release}/styles.css`).replace('./src/app.js',`./${release}/src/app.js`));
-fs.writeFileSync(`${out}/BUILD.txt`,`${BUILD}\nBranch: develop/v4\n`);
+const workingBranch=execFileSync('git',['branch','--show-current'],{encoding:'utf8'}).trim()||'detached';
+fs.writeFileSync(`${out}/BUILD.txt`,`${BUILD}\nBranch: ${workingBranch}\n`);
 fs.writeFileSync(`${out}/candidate-integrity.json`,JSON.stringify({build:BUILD,content_hash:contentHash,algorithm:'SHA256(JSON.stringify(sorted path-to-SHA256 map)); data/**/*.json excluding data/audit/**',files:candidateFiles},null,2));
 const assets=files(out).filter(f=>!f.endsWith('_headers')&&!f.endsWith('_redirects')).map(f=>'./'+path.relative(out,f)).sort();
 fs.writeFileSync(`${out}/sw.js`,fs.readFileSync('scripts/sw-template.js','utf8').replace('__BUILD__',BUILD).replace('__ASSETS__',JSON.stringify(assets)));
