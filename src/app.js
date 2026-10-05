@@ -1,3 +1,4 @@
+import {createChapterCatalog,chapterUnit,chapterQuizRoute,chapterQuizNavigation} from "./chapter-questions.js";
 import {journalMatches} from "./journal-search.js";
 import {deleteJournalEntry,restoreJournalEntry,journalDraftMatches,setJournalPath} from "./journal-management.js";
 import {journalTransaction,recoverJournalWrite,JOURNAL_WRITE_KEY,journalWriteActive} from "./journal-storage.js";
@@ -508,11 +509,32 @@ async function reader(parts, params, token) {
         "",
       )}</select></div><div class="reader-selectors"><div><label for="reader-book">Buch</label><select id="reader-book" data-change="reader-book">${ui.books.map((x) => `<option value="${x.code}" ${x.code === code ? "selected" : ""}>${e(x.name)}</option>`).join("")}</select></div><div><label for="reader-chapter">Kapitel</label><select id="reader-chapter" data-change="reader-chapter">${b.chapters.map((_, i) => `<option value="${i + 1}" ${i + 1 === +chapter ? "selected" : ""}>${i + 1}</option>`).join("")}</select></div></div>
  ${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${vs.map(v => readerVerse(v, ref)).join("")}</div>
- <div class="chapter-nav">${ref.chapter > 1 ? link("← Vorheriges Kapitel", readRoute({ book: code, chapter: ref.chapter - 1, translation: tr })) : ""}${ref.chapter < b.chapters.length ? link("Nächstes Kapitel →", readRoute({ book: code, chapter: ref.chapter + 1, translation: tr })) : ""}</div>
+ ${readerChapterQuestions(ref, origin)}<div class="chapter-nav">${ref.chapter > 1 ? link("← Vorheriges Kapitel", readRoute({ book: code, chapter: ref.chapter - 1, translation: tr })) : ""}${ref.chapter < b.chapters.length ? link("Nächstes Kapitel →", readRoute({ book: code, chapter: ref.chapter + 1, translation: tr })) : ""}</div>
  <section class="reflection-invite"><span class="overline">Was bleibt bei dir?</span><h2>${e(ctx?.question || "Was berührt dich in diesem Text?")}</h2><p>Ein Satz genügt. Du kannst daraus später einen Weg machen.</p>${button("Meinen Gedanken festhalten", "reflect-reader", {}, "button primary")}</section><small class="translation-credit">${e(TRANSLATIONS[tr].name)} · ${tr === "otb" ? "CC BY-SA 4.0" : "gemeinfrei"} · ${link("Textquelle", "licenses")}</small><div id="selection-bar"></div>`,
     "bible",
     "reader-page",
   );
+}
+function readerChapterQuestions(ref, origin) {
+  const unit = chapterUnit(ui.chapterCatalog, ref.book, ref.chapter);
+  if (!unit) return "";
+  return `<section class="reader-chapter-questions" data-unit-id="${unit.id}" aria-labelledby="chapter-questions-title"><span class="overline">Kapitel abgeschlossen</span><h2 id="chapter-questions-title">${unit.questions.length} Fragen zu diesem Kapitel</h2><p>Prüfe dein Verständnis des gelesenen Textes.</p>${s().quiz[unit.id]?.done ? '<p class="meta">Fragen zu diesem Kapitel bereits angesehen.</p>' : ""}<div class="chapter-questions-actions">${link("Fragen starten", chapterQuizRoute(unit, readRoute(ref, origin)), "button primary")}${button("Später", "skip-chapter-quiz", {}, "text-button")}</div></section>`;
+}
+function chapterCollection(bookCode) {
+  const code = bookCode ? normBook(bookCode) : "";
+  const book = ui.books.find(book => book.code === code);
+  const units = code ? ui.chapterCatalog.byBook.get(code) : null;
+  if (code && (!book || !units)) return notFound();
+  const collectionRow = (title, sub, route, data) => row(title, sub, route).replace('<a ', `<a ${data} `);
+  const rows = code ? units.map(unit => collectionRow(`Kapitel ${unit.chapter + 1}`, `${unit.questions.length} Fragen${s().quiz[unit.id]?.done ? " · angesehen" : ""}`, chapterQuizRoute(unit, `chapter-quizzes/${code}`), `data-chapter-unit="${unit.id}"`)).join("") : ui.books.filter(book => ui.chapterCatalog.byBook.has(book.code)).map(book => {
+    const units = ui.chapterCatalog.byBook.get(book.code), count = units.reduce((n, unit) => n + unit.questions.length, 0);
+    return collectionRow(book.name, `${units.length} Kapitel`, `chapter-quizzes/${book.code}`, `data-chapter-book="${book.code}" data-chapters="${units.length}" data-questions="${count}"`);
+  }).join("");
+  shell(`${back(code ? "Kapitelfragen" : "Entdecken", code ? "chapter-quizzes" : "discover")}${heading("Kapitelfragen", code ? book.name : "Buch für Buch verstehen.", code ? "Fragen zum gelesenen Kapitel. In deinem Tempo." : "Wähle ein Buch und dann ein Kapitel.")}<div class="chapter-quiz-collection">${rows}</div>`, "bible", "chapter-questions-page depth-page");
+}
+function chapterQuizComplete(unit, navigation) {
+  const amount = unit.questions.length === 5 ? "fünf" : unit.questions.length;
+  shell(`${back("Zurück", navigation.backRoute)}<section class="chapter-quiz-complete">${heading("Kapitelfragen abgeschlossen", `Fragen zu ${unit.ref}`, `Du hast die ${amount} Fragen zu ${unit.ref} angesehen.`)}<div class="chapter-questions-actions">${link("Zurück zum Kapitel", navigation.readerRoute, "button primary")}${navigation.nextReaderRoute ? link("Nächstes Kapitel lesen", navigation.nextReaderRoute, "button quiet") : ""}${link("Zur Sammlung", navigation.collectionRoute, "text-link")}</div>${button("Gedanken festhalten", "reflect-story", {id:unit.id}, "text-button")}</section>`, "bible", "chapter-questions-page depth-page");
 }
 function selection() {
   const a = [...ui.selection].sort((a, b) => a - b);
@@ -550,7 +572,7 @@ function markDetail(id) {
 }
 function discover() {
   shell(
-    `${heading("Entdecken", "Verstehen, was du liest.", "Geschichten und Fragen, die dich zurück zum Text führen. Ohne Punkte oder Ranglisten.")}<div class="segmented">${link("Lesen", "bible")}${link("Entdecken", "discover", "active")}${link("Markierungen", "marks")}</div>${!ui.storySearch && !ui.storyBook && ui.storyKind==="alle" ? `<section class="discover-editorial"><span class="overline">Eine Geschichte zum Anfang</span>${runtimeModel.flow.stories.slice(0,3).map((x,i)=>`<article class="${i ? "editorial-small" : "editorial-lead"}"><h2>${link(e(x.title),"merged-story/"+x.story_id)}</h2><p>${e(x.ref)}</p>${link("Lesen & verstehen","merged-story/"+x.story_id,"text-link")}</article>`).join("")}</section><details class="discover-topics"><summary>Nach einem Thema beginnen</summary>${LIFE_TOPICS.map(t=>row(t.title,t.sub,"topic/"+t.id)).join("")}</details>` : ""}<div class="field"><label for="story-search">Geschichte, Thema oder Bibelstelle suchen</label><input id="story-search" type="search" data-input="stories" value="${e(ui.storySearch)}" placeholder="Zum Beispiel Vergebung"></div><div class="filter-pair"><div class="field"><label for="story-book">Buch</label><select id="story-book" data-change="story-book"><option value="">Alle Bücher</option>${ui.books
+    `${heading("Entdecken", "Verstehen, was du liest.", "Geschichten und Fragen, die dich zurück zum Text führen. Ohne Punkte oder Ranglisten.")}<div class="segmented">${link("Lesen", "bible")}${link("Entdecken", "discover", "active")}${link("Markierungen", "marks")}</div><p class="chapter-collection-entry">${link("Kapitelübungen", "chapter-quizzes", "text-link")}</p>${!ui.storySearch && !ui.storyBook && ui.storyKind==="alle" ? `<section class="discover-editorial"><span class="overline">Eine Geschichte zum Anfang</span>${runtimeModel.flow.stories.slice(0,3).map((x,i)=>`<article class="${i ? "editorial-small" : "editorial-lead"}"><h2>${link(e(x.title),"merged-story/"+x.story_id)}</h2><p>${e(x.ref)}</p>${link("Lesen & verstehen","merged-story/"+x.story_id,"text-link")}</article>`).join("")}</section><details class="discover-topics"><summary>Nach einem Thema beginnen</summary>${LIFE_TOPICS.map(t=>row(t.title,t.sub,"topic/"+t.id)).join("")}</details>` : ""}<div class="field"><label for="story-search">Geschichte, Thema oder Bibelstelle suchen</label><input id="story-search" type="search" data-input="stories" value="${e(ui.storySearch)}" placeholder="Zum Beispiel Vergebung"></div><div class="filter-pair"><div class="field"><label for="story-book">Buch</label><select id="story-book" data-change="story-book"><option value="">Alle Bücher</option>${ui.books
       .filter((b) => discoveryItems().some(x=>normBook(x.references?.[0]?.book || x.book)===b.code))
       .map(
         (b) =>
@@ -599,10 +621,10 @@ function story(id) {
   );
 }
 function quiz() {
-  const { story: x, index, answer } = ui.quiz,
+  const { story: x, index, answer, navigation } = ui.quiz,
     q = x.questions[index];
   shell(
-    `${back("Zur Geschichte", "story/" + x.id)}<div class="quiz-head"><span class="overline">Verständnisfragen</span><span>Frage ${index + 1} von ${x.questions.length}</span></div><h1 class="quiz-title" tabindex="-1" data-question-id="${e(q.faithpath_id)}">${e(q.q)}</h1><p class="meta">${e(x.ref)}${x.kind === "chapter-quiz" ? " · Grundlage: Luther 1912" : ""}</p><div class="answers">${q.a.map((a, i) => `<button type="button" data-action="answer" data-answer="${i}" ${answer != null ? "disabled" : ""} class="answer ${answer != null && i === q.c ? "correct" : answer === i ? "selected-wrong" : ""}"><span>${String.fromCharCode(65 + i)}</span><span>${e(a)}${answer != null && i === q.c ? "<small>Richtige Antwort</small>" : answer === i ? "<small>Deine Antwort</small>" : ""}</span></button>`).join("")}</div>${answer != null ? `<section class="explanation" role="status"><strong>${answer === q.c ? "Ja, das steht im Text." : "Schau noch einmal auf den Zusammenhang."}</strong><p>${e(q.x)}</p><span class="meta">${e(q.ref || q.p)}</span></section>${button(index === x.questions.length - 1 ? "Zur persönlichen Reflexion" : "Nächste Frage", "next-question", {}, "button primary")}` : ""}`,
+    `${back(navigation?.backRoute.startsWith("read/") ? "Zurück zum Kapitel" : navigation?.backRoute.startsWith("chapter-quizzes/") ? "Zur Kapitelliste" : "Zur Geschichte", navigation?.backRoute || "story/" + x.id)}<div class="quiz-head"><span class="overline">${x.kind === "chapter-quiz" ? "Fragen zu diesem Kapitel" : "Verständnisfragen"}</span><span>Frage ${index + 1} von ${x.questions.length}</span></div><h1 class="quiz-title" tabindex="-1" data-question-id="${e(q.faithpath_id)}">${e(q.q)}</h1><p class="meta">${e(x.ref)}${x.kind === "chapter-quiz" ? " · Grundlage: Luther 1912" : ""}</p><div class="answers">${q.a.map((a, i) => `<button type="button" data-action="answer" data-answer="${i}" ${answer != null ? "disabled" : ""} class="answer ${answer != null && i === q.c ? "correct" : answer === i ? "selected-wrong" : ""}"><span>${String.fromCharCode(65 + i)}</span><span>${e(a)}${answer != null && i === q.c ? "<small>Richtige Antwort</small>" : answer === i ? "<small>Deine Antwort</small>" : ""}</span></button>`).join("")}</div>${answer != null ? `<section class="explanation" role="status" tabindex="-1"><strong>${answer === q.c ? "Ja, das steht im Text." : "Schau noch einmal auf den Zusammenhang."}</strong><p>${e(q.x)}</p><span class="meta">${e(q.ref || q.p)}</span></section>${button(index === x.questions.length - 1 ? "Kapitel abschließen" : "Nächste Frage", "next-question", {}, "button primary")}` : ""}`,
     "bible",
   );
 }
@@ -1465,19 +1487,25 @@ async function action(a, d, el) {
     closeModal();if($(".reader-page")){refreshHighlights();selectionBar();}else go("marks");
     undoNotice("Markierung entfernt",()=>change(data=>{if(JSON.stringify(data.highlights)!==after)throw new Error("Die Markierungen wurden inzwischen geändert. Rückgängig ist nicht mehr sicher.");data.highlights=before;}));return;
   }
+  if (a === "skip-chapter-quiz") {
+    $(".reader-chapter-questions")?.remove();
+    $(".chapter-nav a")?.focus();
+    return;
+  }
   if (a === "quiz") {
     const x = ui.stories.find((x) => String(x.id) === d.id);
     if (!x) return;
     const canonical=canonicalStoryForLegacy(x);
     if(canonical){go("question/"+canonical.flow_items[0].primary_question_id);return;}
     ui.quiz = { story: x, index: 0, answer: null };
-    go("quiz/" + d.id);
+    go(chapterQuizRoute(x, "story/" + x.id));
     return;
   }
   if (a === "answer") {
     if (ui.quiz.answer != null) return;
     ui.quiz.answer = +d.answer;
     quiz();
+    $(".explanation")?.focus();
     return;
   }
   if (a === "next-question") {
@@ -1490,8 +1518,8 @@ async function action(a, d, el) {
     } else {
       const x = ui.quiz.story;
       change((data) => (data.quiz[x.id] = { ...data.quiz[x.id], done: now() }));
-      go("story/" + x.id);
-      notify("Was möchtest du aus dem Text mitnehmen?");
+      const route = chapterQuizRoute(x, ui.quiz.returnRoute);
+      go(route + (route.includes("?") ? "&" : "?") + "complete=1");
     }
     return;
   }
@@ -1671,6 +1699,7 @@ async function render() {
       [name, query = ""] = route.split("?"),
       parts = name.split("/").map(decodeURIComponent),
       [kind, key] = parts;
+    const previousRoute = ui.route;
     ui.route = route;
     if (kind === "merged-story") mergedStory(key);
     else if (kind === "question") sourceQuestion(key);
@@ -1679,6 +1708,7 @@ async function render() {
     else if (kind === "topic") topic(key);
     else if (kind === "bible") bible();
     else if (kind === "chapters") chapters(key);
+    else if (kind === "chapter-quizzes") chapterCollection(key);
     else if (kind === "read") {
       shell(
         `${heading("Bibel", "Der Text wird geöffnet.")}<p role="status">Ein Moment …</p>`,
@@ -1692,14 +1722,16 @@ async function render() {
     else if (kind === "story") story(key);
     else if (kind === "quizzes") quizIndex();
     else if (kind === "quiz") {
-      if (!ui.quiz || String(ui.quiz.story.id) !== key) {
-        const x = ui.stories.find((x) => String(x.id) === key);
-        if (!x) return notFound();
-        const canonical=canonicalStoryForLegacy(x);
-        if(canonical){go("question/"+canonical.flow_items[0].primary_question_id);return;}
-        ui.quiz = { story: x, index: 0, answer: null };
-      }
-      quiz();
+      const x = ui.stories.find((x) => String(x.id) === key);
+      if (!x) return notFound();
+      const canonical=canonicalStoryForLegacy(x);
+      if(canonical){go("question/"+canonical.flow_items[0].primary_question_id);return;}
+      const params = new URLSearchParams(query), returnRoute = params.get("return") || "";
+      if (!ui.quiz || String(ui.quiz.story.id) !== key || previousRoute.split("?")[0] !== name || ui.quiz.returnRoute !== returnRoute)
+        ui.quiz = {story:x, index:0, answer:null, returnRoute};
+      ui.quiz.navigation = chapterQuizNavigation(x, ui.books, s().translation, returnRoute);
+      if (params.get("complete") === "1" && s().quiz[x.id]?.done) chapterQuizComplete(x, ui.quiz.navigation);
+      else quiz();
     } else if (kind === "paths") paths();
     else if (kind === "path") path(key);
     else if (kind === "tree") tree();
@@ -1874,6 +1906,7 @@ async function init() {
     runtimeModel = await loadRuntimeModel(CONTENT_BASE);
     ui.books = runtimeModel.books;
     ui.stories = runtimeModel.units;
+    ui.chapterCatalog = createChapterCatalog(ui.stories, ui.books);
     ui.refs = runtimeModel.refs;
     await render();
     if(journalRecoveryError)notify(journalRecoveryError.message,true);

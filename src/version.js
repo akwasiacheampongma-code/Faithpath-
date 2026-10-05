@@ -1,1 +1,1 @@
-export const BUILD = "FP4-20261004-G-PRODUCT1";
+export const BUILD = "FP4-20261005-G-CHAPTER1";

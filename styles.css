@@ -2211,3 +2211,29 @@ input, select, textarea { border-radius: var(--radius-small); border-color: var(
 .story-connections:empty { display: none; }
 .merged-question-page .quiz-head { gap: var(--space-3); flex-wrap: wrap; }
 .question-flow-nav { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-block: var(--space-4); }
+.reader-chapter-questions {
+  margin-block: var(--space-5);
+  padding-block: var(--space-5) var(--space-2);
+  border-top: 1px solid var(--border);
+}
+.reader-chapter-questions h2 { margin-block: var(--space-2) var(--space-3); }
+.chapter-questions-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-block: var(--space-4);
+}
+.chapter-questions-actions > a,
+.chapter-questions-actions > button {
+  max-inline-size: 100%;
+  min-height: 44px;
+  height: auto;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.chapter-quiz-collection .list-row { min-height: 44px; }
+.chapter-quiz-collection .list-row strong { font-size: var(--type-body); }
+.chapter-quiz-collection .list-row small { font-size: var(--type-meta); }
+.chapter-collection-entry { margin-block: var(--space-3) var(--space-4); }
