@@ -2437,12 +2437,21 @@ html[data-theme="atmospheric"] .color-dot, html[data-theme="night"] .color-dot {
 .tree-branch-scene { position: relative; max-width: 440px; margin-inline: auto; }
 .interactive-tree .tree-branch-scene img { display: block; width: 100%; height: auto; max-height: none; object-fit: contain; }
 .tree-branch-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.tree-branch-overlay path { fill: none; stroke: var(--accent); stroke-width: 1.2px; vector-effect: non-scaling-stroke; }
-.tree-branch-overlay .branch-reviewed { stroke-width: 2px; }
-.tree-branch-hit { position: absolute; transform: translate(-50%,-50%); display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 4px; color: var(--ink); background: var(--surface-elevated); border: 2px solid var(--accent); border-radius: 50%; font-size: var(--type-body); font-weight: 600; text-decoration: none; }
-.tree-branch-hit { line-height: 1; }
-.tree-branch-hit:hover { background: var(--primary-soft); }
-.tree-branch-hit:focus-visible { outline-color: var(--fp-focus); outline-offset: 4px; }
+/* Woody overlays stay subordinate to the original artwork. Hit areas remain 44px. */
+.interactive-tree { --branch-bark: #493a28; --branch-grain: #a18d64; --branch-marker-bg: #ede5cf; --branch-marker-ink: #403b28; --branch-marker-border: #81734e; }
+html[data-theme="paper"] .interactive-tree { --branch-grain: #a79065; --branch-marker-bg: #ece0c4; }
+html[data-theme="atmospheric"] .interactive-tree { --branch-bark: #403522; --branch-grain: #b09b73; --branch-marker-bg: #d9c59c; --branch-marker-ink: #29392d; }
+html[data-theme="night"] .interactive-tree { --branch-bark: #393329; --branch-grain: #ad9d7d; --branch-marker-bg: #cfc4a5; --branch-marker-ink: #30352b; }
+.tree-branch-overlay path { fill: none; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.tree-branch-overlay .branch-bark { stroke: var(--branch-bark); stroke-width: 3.2px; opacity: .42; }
+.tree-branch-overlay .branch-grain { fill: var(--branch-grain); stroke: none; opacity: .68; }
+.branch-stage-2 .branch-bark { stroke-width: 2px; }
+.branch-stage-2 .branch-grain { opacity: .58; }
+.tree-branch-hit { position: absolute; transform: translate(-50%,-50%); display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; background: transparent; border: 0; border-radius: 50%; line-height: 1; text-decoration: none; }
+.tree-branch-marker { display: flex; align-items: center; justify-content: center; width: calc(1em + 8px); height: calc(1em + 8px); min-width: 24px; min-height: 24px; padding: 0; border: 1px solid var(--branch-marker-border); border-radius: 50%; background: var(--branch-marker-bg); color: var(--branch-marker-ink); font-size: var(--type-meta); font-weight: 600; line-height: 1; }
+.tree-branch-marker.branch-reviewed { border-width: 2px; }
+.tree-branch-hit:hover .tree-branch-marker { border-color: var(--branch-marker-ink); }
+.tree-branch-hit:focus-visible { outline: 2px solid var(--fp-focus); outline-offset: 2px; background: transparent; }
 .theme-picker { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,9rem),1fr)); gap: var(--space-3); }
 .theme-tile { min-width: 0; text-align: left; display: flex; flex-direction: column; gap: var(--space-2); min-height: 44px; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius); color: var(--ink); background: var(--surface); overflow-wrap: normal; word-break: normal; }
 .theme-tile[aria-checked="true"] { outline: 2px solid var(--primary); outline-offset: 2px; }
@@ -2450,25 +2459,25 @@ html[data-theme="atmospheric"] .color-dot, html[data-theme="night"] .color-dot {
 .theme-preview { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 56px; padding: var(--space-2); background: var(--mini-bg); color: var(--mini-text); border-radius: var(--radius-small); border: 1px solid var(--mini-accent); font-family: var(--serif); }
 .theme-preview i { width: 16px; height: 16px; border-radius: 50%; background: var(--mini-accent); }
 @media (max-width: 360px) { .theme-picker { grid-template-columns: repeat(auto-fit,minmax(min(100%,8rem),1fr)); } }
-.branch-stage-2 [data-slot="0"] { left: 50%; top: 55%; }
-.branch-stage-3 [data-slot="0"] { left: 30%; top: 46%; }
-.branch-stage-3 [data-slot="1"] { left: 67%; top: 39%; }
-.branch-stage-3 [data-slot="2"] { left: 70%; top: 58%; }
-.branch-stage-4 [data-slot="0"] { left: 29%; top: 33%; }
-.branch-stage-4 [data-slot="1"] { left: 68%; top: 32%; }
-.branch-stage-4 [data-slot="2"] { left: 22%; top: 49%; }
-.branch-stage-4 [data-slot="3"] { left: 75%; top: 47%; }
-.branch-stage-4 [data-slot="4"] { left: 48%; top: 23%; }
-.branch-stage-5 [data-slot="0"] { left: 29%; top: 33%; }
-.branch-stage-5 [data-slot="1"] { left: 68%; top: 32%; }
-.branch-stage-5 [data-slot="2"] { left: 22%; top: 49%; }
-.branch-stage-5 [data-slot="3"] { left: 75%; top: 47%; }
-.branch-stage-5 [data-slot="4"] { left: 48%; top: 23%; }
-.branch-stage-6 [data-slot="0"] { left: 29%; top: 33%; }
-.branch-stage-6 [data-slot="1"] { left: 68%; top: 32%; }
-.branch-stage-6 [data-slot="2"] { left: 22%; top: 49%; }
-.branch-stage-6 [data-slot="3"] { left: 75%; top: 47%; }
-.branch-stage-6 [data-slot="4"] { left: 48%; top: 23%; }
+.branch-stage-2 [data-slot="0"] { left: 59.5%; top: 54.5%; }
+.branch-stage-3 [data-slot="0"] { left: 31%; top: 45%; }
+.branch-stage-3 [data-slot="1"] { left: 65%; top: 30%; }
+.branch-stage-3 [data-slot="2"] { left: 80%; top: 47%; }
+.branch-stage-4 [data-slot="0"] { left: 35%; top: 34%; }
+.branch-stage-4 [data-slot="1"] { left: 76%; top: 35%; }
+.branch-stage-4 [data-slot="2"] { left: 18%; top: 51%; }
+.branch-stage-4 [data-slot="3"] { left: 85%; top: 47%; }
+.branch-stage-4 [data-slot="4"] { left: 57%; top: 23%; }
+.branch-stage-5 [data-slot="0"] { left: 30%; top: 38%; }
+.branch-stage-5 [data-slot="1"] { left: 76%; top: 32%; }
+.branch-stage-5 [data-slot="2"] { left: 16%; top: 51%; }
+.branch-stage-5 [data-slot="3"] { left: 89%; top: 49%; }
+.branch-stage-5 [data-slot="4"] { left: 55%; top: 22%; }
+.branch-stage-6 [data-slot="0"] { left: 29%; top: 35%; }
+.branch-stage-6 [data-slot="1"] { left: 80%; top: 27%; }
+.branch-stage-6 [data-slot="2"] { left: 14%; top: 51%; }
+.branch-stage-6 [data-slot="3"] { left: 91%; top: 50%; }
+.branch-stage-6 [data-slot="4"] { left: 55%; top: 15%; }
 .theme-preview[data-preview="light"] { --mini-bg:#f7f6f0; --mini-text:#303830; --mini-accent:#78623d; }
 .theme-preview[data-preview="atmospheric"] { --mini-bg:#101b19; --mini-text:#ede8dd; --mini-accent:#e4bc80; }
 .theme-preview[data-preview="paper"] { --mini-bg:#f4edde; --mini-text:#38372e; --mini-accent:#7c6236; }
