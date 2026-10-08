@@ -1,8 +1,11 @@
 import fs from "node:fs";
+import { validateFinalNtQuiz } from "./validate-nt-quiz.mjs";
+import { parseQuizReferences } from "./quiz-reference-ranges.mjs";
 import path from "node:path";
 import { LIFE_TOPICS, GUIDED_PLANS, BEGINNER_GUIDES } from "../src/content.js";
 import { normBook, validRef } from "../src/domain.js";
 export function auditContent(root = process.cwd()) {
+  const approvedMaster = fs.existsSync(path.join(root, "reports/nt-quiz-final/manifest.json")) ? validateFinalNtQuiz(root) : null;
   const read = (f) => JSON.parse(fs.readFileSync(path.join(root, f), "utf8"));
   const books = read("data/index.json"),
     stories = read("data/stories.json"),
@@ -40,16 +43,7 @@ export function auditContent(root = process.cwd()) {
   for (const b of books) aliases[b.name] = b.code;
   const errors = [],
     warnings = [],
-    parse = (text) => {
-      const m = /^(.+?) (\d+),(\d+)(?:[–-](\d+))?$/.exec(text);
-      if (!m || !aliases[m[1]]) throw new Error("Unbekannte Referenz: " + text);
-      return {
-        book: aliases[m[1]],
-        chapter: +m[2],
-        from: +m[3],
-        to: +(m[4] || m[3]),
-      };
-    };
+    parse = (text) => parseQuizReferences(text, books, aliases);
   for (const tr of ["otb", "l1912"]) {
     index[tr] = {};
     let chapters = 0,
@@ -86,6 +80,7 @@ export function auditContent(root = process.cwd()) {
   let questions = 0,
     verified = 0,
     pending = 0,
+    approved = 0,
     missing = 0;
   for (const x of stories) {
     if (ids.has(x.id)) errors.push("Doppelte Story " + x.id);
@@ -108,14 +103,17 @@ export function auditContent(root = process.cwd()) {
       )
         errors.push("Fragenstruktur " + x.id + "/" + i);
       try {
-        verify(parse(q.ref || q.p), "Frage " + x.id + "/" + i);
+        for (const ref of parse(q.ref || q.p)) verify(ref, "Frage " + x.id + "/" + i);
       } catch (err) {
         errors.push(err.message);
       }
     }
     if (x.verification?.status === "verse-checked")
       verified += x.questions.length;
-    else if (x.kind === "chapter-quiz") pending += x.questions.length;
+    else if (x.kind === "chapter-quiz") {
+      if (approvedMaster) approved += x.questions.length;
+      else pending += x.questions.length;
+    }
     else missing += x.questions.length;
   }
   const report = {
@@ -127,6 +125,7 @@ export function auditContent(root = process.cwd()) {
     uniqueReflections: new Set(stories.map((x) => x.reflection)).size,
     existingVerification: verified,
     editorialPending: pending,
+    approvedNtMaster: approved,
     missingVerification: missing,
     situationPlanReferences: references.length,
     errors,
