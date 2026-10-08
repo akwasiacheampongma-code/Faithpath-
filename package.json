@@ -9,7 +9,12 @@
     "validate": "node scripts/validate-content.mjs",
     "serve": "node scripts/serve.mjs",
     "test:browser": "npm run build && node tests/browser.mjs",
-    "test:update": "npm run build && node tests/service-worker.mjs"
+    "test:update": "npm run build && node tests/service-worker.mjs",
+    "import:nt-quiz": "python3 scripts/import-nt-quiz.py",
+    "validate:nt-quiz": "python3 scripts/import-nt-quiz.py --check && node scripts/validate-nt-quiz.mjs",
+    "test:nt-quiz:browser": "node tests/nt-quiz-browser.mjs",
+    "test:nt-quiz:update": "node tests/nt-quiz-update.mjs",
+    "pretest": "npm run validate"
   },
   "engines": {
     "node": ">=20"
