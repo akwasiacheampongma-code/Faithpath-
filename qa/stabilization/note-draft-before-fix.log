@@ -1,0 +1,4 @@
+FAIL Removing the Bible-note role preserves unsaved reflection words and allows saving them without restoring that role The expression evaluated to a falsy value:
+
+  assert(await draft(page))
+

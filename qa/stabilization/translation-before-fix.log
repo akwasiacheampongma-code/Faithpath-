@@ -1,0 +1,40 @@
+✔ Import rejects pathIds object before any storage mutation (6.533838ms)
+✔ Import rejects global review text before any storage mutation (0.648127ms)
+✔ Import rejects missing path before any storage mutation (1.081927ms)
+✔ Import rejects missing mirror before any storage mutation (0.989892ms)
+✔ Import rejects missing journal link before any storage mutation (1.105172ms)
+✔ Import rejects duplicate nested ID before any storage mutation (1.460466ms)
+✔ Import rejects invalid ref object before any storage mutation (0.466118ms)
+✔ Import rejects invalid quiz state before any storage mutation (0.383026ms)
+✔ Import rejects invalid reading before any storage mutation (0.563342ms)
+✔ Import rejects invalid default translation before any storage mutation (0.576641ms)
+✖ Import rejects null default translation before any storage mutation (0.942041ms)
+✔ Valid legacy IDs, unknown fields and detached historical review sources survive import/export/reload (4.490641ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29.363477
+
+✖ failing tests:
+
+test at tests/import-safety.test.mjs:20:36
+✖ Import rejects null default translation before any storage mutation (0.942041ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/Faithpath-/tests/import-safety.test.mjs:23:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

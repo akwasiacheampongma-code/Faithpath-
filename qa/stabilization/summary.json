@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "verified_code_commit": "ded1c39a25242a859082b90caf23402ebb25625e",
+  "backup_commit": "aabfc725653bbb93dc02aba6d1da46c9dca1eb6c",
+  "build": "FP4-20261015-G-STABLE1",
+  "content_hash": "812f002add339a256d807530d3509297678e41f9e27e381938e50036234c36b9",
+  "build_hash": "8fefcc9b187b66c12b19444844b9f1e7c4671a5d5c4f8816ff36f6984fd9c4d0",
+  "reproduced_candidate_builds": 2,
+  "candidate_artifact_files": 321,
+  "protected_content_files_unchanged": 141,
+  "node_test_cases": 107,
+  "additional_assertion_suites": 1,
+  "core_browser_flows": 12,
+  "targeted_browser_scenarios": 12,
+  "actual_local_update_checkpoints": 3,
+  "real_device_tested": false,
+  "production_deployed": false,
+  "review": "independent agent review; identified lifecycle/path/import findings addressed; no remaining release-blocking finding in scoped review"
+}

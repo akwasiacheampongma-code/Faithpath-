@@ -1,0 +1,54 @@
+{
+  "base": "http://127.0.0.1:4174",
+  "results": [
+    {
+      "name": "Actual editor replaces A with B and removes B, with mirror and links synchronized",
+      "status": "PASS"
+    },
+    {
+      "name": "Closed journal draft survives unrelated form, export, reload, resume and save",
+      "status": "PASS"
+    },
+    {
+      "name": "Reflection draft survives cancellation and resumes with archived selected path",
+      "status": "PASS"
+    },
+    {
+      "name": "Two tabs preserve the first draft while a second tab saves its distinct journal text",
+      "status": "PASS"
+    },
+    {
+      "name": "In-flight save disables text input and double submit until the journal lock releases",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancel note deletion never adopts a newer draft and allows exporting the original editor words",
+      "status": "PASS"
+    },
+    {
+      "name": "Malformed import cannot change saved state or a pending personal draft",
+      "status": "PASS"
+    },
+    {
+      "name": "Removing the Bible-note role preserves unsaved reflection words and allows saving them without restoring that role",
+      "status": "PASS"
+    },
+    {
+      "name": "Draft conflict dialog fits 320×568",
+      "status": "PASS"
+    },
+    {
+      "name": "Draft conflict dialog fits 375×667",
+      "status": "PASS"
+    },
+    {
+      "name": "Draft conflict dialog fits 390×844",
+      "status": "PASS"
+    },
+    {
+      "name": "Draft conflict dialog fits 430×932",
+      "status": "PASS"
+    }
+  ],
+  "errors": []
+}

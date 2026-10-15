@@ -1,0 +1,54 @@
+✖ Editing replaces A with B and synchronizes the exact mirror (5.734578ms)
+✖ Editing replaces A with no path and synchronizes the exact mirror (2.545699ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16.309053
+
+✖ failing tests:
+
+test at tests/editor-path-regression.test.mjs:13:33
+✖ Editing replaces A with B and synchronizes the exact mirror (5.734578ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'A',
+      'B'
+    ]
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-/tests/editor-path-regression.test.mjs:20:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/editor-path-regression.test.mjs:13:33
+✖ Editing replaces A with no path and synchronizes the exact mirror (2.545699ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'A'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-/tests/editor-path-regression.test.mjs:20:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
