@@ -1,3 +1,4 @@
+import {groupOriginPairs,countLabel} from './journey-sword.js';
 import {recordExploredChapter,observeChapterEnd} from './bible-journey.js';
 import {journeyView,journeyAcknowledgement,treeBranchView,pathFacts,themePicker} from './experience-view.js';
 import {themeId,applyTheme,THEMES} from './themes.js';
@@ -196,7 +197,19 @@ function shell(body, active = "today", cls = "") {
   ui.navObserver?.disconnect();
   ui.navObserver=new ResizeObserver(entries=>{if(innerWidth<1100)document.documentElement.style.setProperty("--bottom-nav-height",entries[0].target.getBoundingClientRect().height+"px");});
   ui.navObserver.observe($(".primary-nav"));
+  ui.tabsObserver?.disconnect();
+  ui.tabsObserver=new ResizeObserver(()=>updateTabCues());
+  for(const tabs of $$(".segmented")){ui.tabsObserver.observe(tabs);tabs.addEventListener('scroll',()=>updateTabCues(),{passive:true});}
+  updateTabCues();
   document.title = `FaithPath · ${$("h1")?.textContent || "Deine persönliche Glaubensgeschichte"}`;
+}
+function updateTabCues() {
+ for(const tabs of $$(".segmented")){
+  const overflow=tabs.scrollWidth>tabs.clientWidth+2;
+  tabs.classList.toggle('tabs-more-end',overflow&&tabs.scrollLeft+tabs.clientWidth<tabs.scrollWidth-2);
+  tabs.classList.toggle('tabs-more-start',overflow&&tabs.scrollLeft>2);
+  if(overflow)tabs.setAttribute('aria-description','Weitere Bereiche sind durch horizontales Scrollen erreichbar.');else tabs.removeAttribute('aria-description');
+ }
 }
 function timelineHTML(items, limit = 40) {
   return items.length
@@ -210,7 +223,7 @@ function timelineHTML(items, limit = 40) {
     : "";
 }
 function hasPersonalHistory(data=s()) {
-  return !!(data.paths.length || data.journal.length || data.reflections.length || data.reading || data.highlights.length || data.reviews.length || Object.values(data.guidedPlans).some(p=>Object.values(p).some(Boolean)));
+  return !!(data.paths.length || data.journal.length || data.reflections.length || data.highlights.length || data.reviews.length || Object.values(data.guidedPlans).some(p=>Object.values(p).some(Boolean)));
 }
 function canonicalStoryForLegacy(unit) {
   if(!unit || unit.kind === "chapter-quiz")return null;
@@ -301,7 +314,7 @@ function colorPalette(args) {
   if (!ref) return;
   const existing = args.id ? s().highlights.filter(h => h.id === args.id) : s().highlights.filter(h => overlapsRef(h, ref));
   const colors = new Set(existing.map(highlightColor));
-  modal("Markierung gestalten", `<p class="meta">${e(refLabel(ref))}</p><div class="highlight-palette" role="listbox" aria-label="Markierungsfarbe">${Object.entries(HIGHLIGHT_COLORS).map(([c,label]) => `<button type="button" class="color-choice highlight-${c}" role="option" aria-selected="${colors.size === 1 && colors.has(c)}" data-action="paint-highlight" data-color="${c}" data-ref="${e(JSON.stringify(ref))}" data-id="${e(args.id || "")}" tabindex="${(colors.size===1 ? colors.has(c) : c==='olive') ? 0 : -1}" data-active="${colors.size === 1 && colors.has(c)}"><span class="color-dot" aria-hidden="true">${colors.size === 1 && colors.has(c) ? "✓" : ""}</span><span>${label}</span></button>`).join("")}</div><p class="meta">Zum Wiederfinden – ohne Bewertung.</p>${args.id ? button("Markierung entfernen", "remove-mark", {id:args.id}, "text-button danger-text") : existing.length ? button("Markierung entfernen", "remove-selected-highlight", {ref:JSON.stringify(ref)}, "text-button danger-text") : ""}`);
+  modal("Markierung gestalten", `<p class="meta">${e(refLabel(ref))}</p><div class="highlight-palette" role="listbox" aria-label="Markierungsfarbe">${Object.entries(HIGHLIGHT_COLORS).map(([c,label]) => `<button type="button" class="color-choice highlight-${c}" role="option" aria-selected="${colors.size === 1 && colors.has(c)}" data-action="paint-highlight" data-color="${c}" data-ref="${e(JSON.stringify(ref))}" data-id="${e(args.id || "")}" tabindex="${(colors.size===1 ? colors.has(c) : c==='olive') ? 0 : -1}" data-active="${colors.size === 1 && colors.has(c)}"><span class="color-dot" aria-hidden="true">${colors.size === 1 && colors.has(c) ? "✓" : ""}</span><span>${label}</span></button>`).join("")}</div><p class="meta">Zum Wiederfinden.</p>${args.id ? button("Markierung entfernen", "remove-mark", {id:args.id}, "text-button danger-text") : existing.length ? button("Markierung entfernen", "remove-selected-highlight", {ref:JSON.stringify(ref)}, "text-button danger-text") : ""}`);
 }
 function safeReading() {
   const x=readingContext(s());if(!x)return null;
@@ -309,6 +322,9 @@ function safeReading() {
 }
 function continuityPairHTML(pair) {
   return `<article class="continuity-pair" data-pair-kind="${e(pair.kind)}"><span class="overline">Damals → Heute</span><div class="continuity-before"><span class="meta">Damals · ${date(pair.before.date)}</span><blockquote>${e(pair.before.text)}</blockquote></div><div class="continuity-after"><span class="meta">Heute · ${date(pair.after.date)}</span><blockquote>${e(pair.after.text)}</blockquote></div>${storyConnections(pair.before)}${link(pair.review ? "Rückblick öffnen" : "Gedanken ansehen",pair.after.route,"text-link")}</article>`;
+}
+function continuityGroupsHTML(pairs,limit=Infinity) {
+ return groupOriginPairs(pairs).slice(0,limit).map(group=>`<article class="continuity-pair" data-pair-kind="${e(group.pairs[0].kind)}"><span class="overline">Damals → Heute</span><div class="continuity-before"><span class="meta">Damals · ${date(group.before.date)}</span><blockquote>${e(group.before.text)}</blockquote></div>${group.pairs.map(pair=>`<div class="continuity-after continuity-today"><span class="meta">Heute · ${date(pair.after.date)}</span><blockquote>${e(pair.after.text)}</blockquote>${link(pair.review?"Rückblick öffnen":"Gedanken ansehen",pair.after.route,"text-link")}</div>`).join("")}${storyConnections(group.before)}</article>`).join("");
 }
 function verseContext(n,ref) {
   const h=verseHighlight(n,ref);if(!h||n!==+h.from)return "";
@@ -344,8 +360,16 @@ function planRef(p, i) {
 function planProgress(kind, pid) {
   return s().guidedPlans[kind === "guide" ? "guide:" + pid : pid] || {};
 }
+// Descriptors reflect the existing section structure, not new content or scope.
+function offerPurpose(p,kind) {
+ if(kind==='guide'&&p.id==='start')return 'Grundlagen mit Lesehilfe';
+ if(kind==='plan'&&p.id==='start7')return 'Grundlagen mit Reflexionsfragen';
+ if(kind==='guide'&&p.id==='gebet')return 'Gebet · vier Einstiege mit Lesehilfe';
+ if(kind==='plan'&&p.id==='gebet5')return 'Gebet · fünf Abschnitte zur Reflexion';
+ return kind==='guide'?'Lesen mit einer kurzen Einordnung':'Lesen mit einer persönlichen Frage';
+}
 function plans() {
-  const teaser=(p,kind)=>{const progress=planProgress(kind,p.id),last=Object.keys(progress).filter(k=>progress[k]).map(Number).sort((a,b)=>b-a)[0];return `<article class="guided-teaser"><span class="overline">${kind==="guide" ? "Begleitet beginnen" : "In deinem Tempo"}</span><h2>${link(e(p.title.replace(/^\d+ Tage – /,"")),kind+"/"+p.id)}</h2>${p.sub ? `<p>${e(p.sub)}</p>` : ""}<div class="guided-structure"><span>${p.days.length} Abschnitte</span>${last != null && p.days[last] ? `<span>Zuletzt: ${e(p.days[last].title || p.days[last][0] || "Abschnitt " + (last+1))}</span>` : ""}</div>${link(last != null ? "Weiter begleiten lassen" : "Weg ansehen",kind+"/"+p.id,"text-link")}</article>`;};
+  const teaser=(p,kind)=>{const progress=planProgress(kind,p.id),last=Object.keys(progress).filter(k=>progress[k]).map(Number).sort((a,b)=>b-a)[0];return `<article class="guided-teaser"><span class="overline">${e(offerPurpose(p,kind))}</span><h2>${link(e(p.title.replace(/^\d+ Tage – /,"")),kind+"/"+p.id)}</h2>${p.sub ? `<p>${e(p.sub)}</p>` : ""}<div class="guided-structure"><span>${p.days.length} Abschnitte</span>${last != null && p.days[last] ? `<span>Zuletzt: ${e(p.days[last].title || p.days[last][0] || "Abschnitt " + (last+1))}</span>` : ""}</div>${link(last != null ? "Weiter begleiten lassen" : "Weg ansehen",kind+"/"+p.id,"text-link")}</article>`;};
   shell(`${back("Heute","today")}${heading("Geführte Wege","Ein Thema, das dich begleitet.","Lesen. Verstehen. Ausprobieren. In deinem Tempo.")}<div class="guided-teasers">${(hasPersonalHistory() ? [...GUIDED_PLANS.map(p=>teaser(p,"plan")),...BEGINNER_GUIDES.map(p=>teaser(p,"guide"))] : [...BEGINNER_GUIDES.map(p=>teaser(p,"guide")),...GUIDED_PLANS.map(p=>teaser(p,"plan"))]).join("")}</div>`,"today","plans-page depth-page");
 }
 function plan(kind, pid) {
@@ -362,6 +386,8 @@ function bible() {
   shell(`${heading("Lesen","Die Bibel. Raum zum Verstehen.","Lies in deinem Tempo. Tippe auf einen Vers, um ihn zu markieren oder einen Gedanken festzuhalten.")}${reading ? `<section class="continue-reading continuity-strip"><span class="overline">Weiterlesen</span><span class="meta">Zuletzt gelesen${reading.at ? ' · '+date(reading.at) : ''}</span><h2>${e(refLabel(reading.ref))}</h2>${link("Weiterlesen",readRoute(reading.ref),"text-link")}</section>` : ""}<p class="bible-journey-entry">${link("Deine Bibelreise", "bible-journey", "text-link")}</p><div class="segmented" aria-label="Bibelbereiche">${link("Lesen","bible","active")}${link("Entdecken","discover")}${link("Markierungen","marks")}</div><div class="field"><label for="book-search">Buch finden</label><input type="search" id="book-search" data-input="books" placeholder="Zum Beispiel Römer" autocomplete="off"></div><div class="book-columns" id="book-list">${bookList()}</div>`,"bible","bible-page depth-page");
 }
 function bookList(query = "") {
+  if(!ui.books.some(b=>(b.name+" "+b.code).toLowerCase().includes(query.trim().toLowerCase())))return `<section class="book-search-empty" role="status"><h2>Kein Buch gefunden.</h2><p>Suche hier nach einem Buchnamen, zum Beispiel: Johannes.</p><p class="meta">Eine konkrete Bibelstelle kannst du nach Auswahl des Buches über das Kapitel öffnen.</p>${button("Alle Bücher ansehen","reset-book-search",{},"text-button")}</section>`;
+  query=query.trim();
   return [ui.books.slice(0, 39), ui.books.slice(39)]
     .map(
       (books, i) =>
@@ -650,13 +676,13 @@ function path(pid) {
   const entries=timeline(s(),pid), open=p.steps.filter(x=>!x.done), thoughts=s().journal.filter(j=>j.pathIds?.includes(pid)).slice().sort((a,b)=>time(b.date)-time(a.date));
   const renderToken=ui.token;
   shell(`${back("Meine Wege","paths")}<div class="path-titlebar">${heading(category(p.category).label,p.title,p.why)}<details class="path-options"><summary aria-label="Weg verwalten">${icon("more")}<span class="sr-only">Weg verwalten</span></summary><div class="path-context">${button("Weg bearbeiten","edit-path",{id:pid},"text-button")}${button(p.archived ? "Weg wieder aufnehmen" : "Archivieren","archive-path",{id:pid},"text-button")}${button("Weg löschen","delete-path",{id:pid},"text-button danger-text")}</div></details></div><p class="meta">Begonnen am ${date(p.started)}${p.archived ? " · archiviert" : ""}</p>${pathFacts(s(),pid)}
-  <section class="next-step"><div class="section-heading"><span class="overline">Als Nächstes</span>${open.length ? button(icon("plus")+'<span class="sr-only">Schritt hinzufügen</span>',"step",{id:pid},"icon-button") : ""}</div>${open.length ? open.slice(0,1).map((x,i)=>`<div class="path-step ${i===0 ? "current-path-step" : ""}"><label class="step-row"><input type="checkbox" data-change="step-done" data-path="${e(pid)}" data-id="${e(x.id)}"><span>${e(x.text)}</span></label><div class="step-actions">${button("Bearbeiten","edit-step",{path:pid,id:x.id},"text-button")}${i ? button("Als Nächstes","current-step",{path:pid,id:x.id},"text-button") : ""}</div></div>`).join("") : `<h2>Ein kleiner nächster Schritt</h2><p>Was könntest du im Alltag ausprobieren?</p>${button("Schritt hinzufügen","step",{id:pid},"text-button")}`}<small>Ein ausprobierter Schritt ist noch keine bestätigte Entwicklung.</small></section>
-  ${pathContext(s(),pid)?.step && pathContext(s(),pid)?.reference ? `<p class="step-reference meta">Zu diesem Weg: ${link(e(refLabel(pathContext(s(),pid).reference)),readRoute(pathContext(s(),pid).reference))}</p>` : ""}
+  <section class="next-step"><div class="section-heading"><span class="overline">Als Nächstes</span>${open.length ? button(icon("plus")+'<span class="sr-only">Schritt hinzufügen</span>',"step",{id:pid},"icon-button") : ""}</div>${open.length ? open.slice(0,1).map((x,i)=>`<div class="path-step ${i===0 ? "current-path-step" : ""}"><label class="step-row"><input type="checkbox" data-change="step-done" data-path="${e(pid)}" data-id="${e(x.id)}"><span>${e(x.text)}</span></label><div class="step-actions">${button("Bearbeiten","edit-step",{path:pid,id:x.id},"text-button")}${i ? button("Als Nächstes","current-step",{path:pid,id:x.id},"text-button") : ""}</div></div>`).join("") : `<h2>Ein kleiner nächster Schritt</h2><p>Was könntest du im Alltag ausprobieren?</p>${button("Schritt hinzufügen","step",{id:pid},"text-button")}`}</section>
   <div class="actions path-main-actions">${button("Gedanken festhalten","reflect-path",{id:pid},"button primary")}${button("Zurückblicken","review-path",{id:pid},"text-button")}</div>
   ${pathContinuityHTML(pid)}
   ${open.length>1 ? `<section class="further-steps section"><h2>Weitere Schritte</h2>${open.slice(1).map(x=>`<div class="path-step"><label class="step-row"><input type="checkbox" data-change="step-done" data-path="${e(pid)}" data-id="${e(x.id)}"><span>${e(x.text)}</span></label><div class="step-actions">${button("Bearbeiten","edit-step",{path:pid,id:x.id},"text-button")}${button("Als Nächstes","current-step",{path:pid,id:x.id},"text-button")}</div></div>`).join("")}</section>` : ""}
-  ${thoughts.length > 1 ? `<section class="path-thoughts section"><span class="overline">Was dich begleitet</span><h2>Frühere Gedanken</h2>${thoughts.slice(1,3).map(j=>`<blockquote>${link(e(j.text),"entry/"+encodeURIComponent(j.id))}<small>${date(j.date)}</small></blockquote>`).join("")}</section>` : ""}
-  ${p.links.some(l=>l.ref) ? `<section class="path-scriptures section"><h2>Bibelstellen auf deinem Weg</h2>${p.links.filter(l=>l.ref).map(l=>{const h=s().highlights.find(h=>overlapsRef(h,l.ref)),j=s().journal.find(j=>j.ref && overlapsRef(j.ref,l.ref) && j.pathIds?.includes(pid));return `<article>${link(e(l.label || refLabel(l.ref)),readRoute(l.ref),"scripture-reference")}<blockquote data-path-quote="${e(JSON.stringify(l.ref))}">${e(h?.snippet || "")}</blockquote>${j ? `<span class="overline">Warum diese Stelle dazugehört</span><p>${e(j.text)}</p>` : ""}</article>`;}).join("")}</section>` : ""}
+  ${thoughts.length>1||p.links.some(l=>l.ref)?`<details class="path-linked-history section"><summary>Gedanken & Bibelstellen auf diesem Weg</summary>  ${thoughts.length > 1 ? `<section class="path-thoughts"><span class="overline">Was dich begleitet</span><h2>Frühere Gedanken</h2>${thoughts.slice(1,3).map(j=>`<blockquote>${link(e(j.text),"entry/"+encodeURIComponent(j.id))}<small>${date(j.date)}</small></blockquote>`).join("")}</section>` : ""}
+  ${p.links.some(l=>l.ref) ? `<section class="path-scriptures"><h2>Bibelstellen auf deinem Weg</h2>${p.links.filter(l=>l.ref).map(l=>{const h=s().highlights.find(h=>overlapsRef(h,l.ref)),j=s().journal.find(j=>j.ref && overlapsRef(j.ref,l.ref) && j.pathIds?.includes(pid));return `<article>${link(e(l.label || refLabel(l.ref)),readRoute(l.ref),"scripture-reference")}<blockquote data-path-quote="${e(JSON.stringify(l.ref))}">${e(h?.snippet || "")}</blockquote>${j ? `<span class="overline">Warum diese Stelle dazugehört</span><p>${e(j.text)}</p>` : ""}</article>`;}).join("")}</section>` : ""}
+</details>`:""}
   ${p.steps.some(x=>x.done) ? `<details class="past-steps section"><summary>Ausprobierte Schritte (${p.steps.filter(x=>x.done).length})</summary>${p.steps.filter(x=>x.done).map(x=>`<label class="step-row"><input type="checkbox" checked data-change="step-done" data-path="${e(pid)}" data-id="${e(x.id)}"><span>${e(x.text)}</span></label>`).join("")}</details>` : ""}
   <section class="section path-story"><span class="overline">Von damals bis heute</span><h2>Die Geschichte dieses Weges</h2>${timelineHTML(entries,ui.historyLimit)}${entries.length>ui.historyLimit ? button("Weitere Momente","more-history",{path:pid},"button quiet") : ""}</section>`,"paths","path-page depth-page");
   for (const quote of $$("[data-path-quote]")) {
@@ -687,33 +713,31 @@ function journalResults() {
   const items=s().journal.filter(j=>(ui.filter === "Alle" || [j.type,j.subtype].includes(ui.filter) || (ui.filter === "Gedanken" && j.type === "Journal") || (ui.filter === "Mit Weg" && j.pathIds?.some(id=>s().paths.some(p=>p.id===id))) || (ui.filter === "Mit Bibelstelle" && j.ref)) && journalMatches(j,ui.search,ui.books,s().paths)).sort((a,b)=>(time(b.date)||0)-(time(a.date)||0));
   if(!items.length)return empty(s().journal.length ? "Kein passender Eintrag." : "Was möchtest du festhalten?",s().journal.length ? "Versuche einen anderen Suchbegriff oder wähle einen anderen Filter." : "Ein Satz, eine offene Frage oder etwas, das dich berührt hat. Hier bleibt es Teil deiner Geschichte.",button("Gedanken festhalten","new-entry",{},"button primary"));
   const months=new Map();for(const j of items.slice(0,ui.journalLimit)){const month=time(j.date)==null ? "Datum unbekannt" : new Date(j.date).toLocaleDateString("de-DE",{month:"long",year:"numeric"});if(!months.has(month))months.set(month,[]);months.get(month).push(j);}
-  return `<p class="meta journal-result-count" aria-live="polite">${items.length} Einträge</p><div class="journal-pages">${[...months].map(([month,entries])=>`<section class="journal-month"><h2 class="overline">${e(month)}</h2>${entries.map(j=>{const paths=(j.pathIds||[]).map(id=>s().paths.find(p=>p.id===id)).filter(Boolean);return `<article class="journal-page-entry"><time>${time(j.date)==null?"Datum unbekannt":new Date(j.date).toLocaleDateString("de-DE",{day:"numeric",month:"long"})}</time><span class="overline">${e(j.subtype||j.type||"Gedanke")}</span><h3>${link(e(j.text.length>220?j.text.slice(0,217)+"…":j.text),"entry/"+encodeURIComponent(j.id))}</h3><div class="journal-context">${paths.length ? link("Mit Weg „"+e(paths[0].title)+"“ verbunden","path/"+encodeURIComponent(paths[0].id),"context-label") : ""}${j.ref ? link(e(refLabel(j.ref)),readRoute(j.ref),"context-label") : ""}</div></article>`;}).join("")}</section>`).join("")}</div>${items.length>ui.journalLimit?button("Weitere Einträge","more-journal",{},"button quiet"):""}`;
+  return `<p class="meta journal-result-count" aria-live="polite">${countLabel(items.length,'Eintrag','Einträge')}</p><div class="journal-pages">${[...months].map(([month,entries])=>`<section class="journal-month"><h2 class="overline">${e(month)}</h2>${entries.map(j=>{const paths=(j.pathIds||[]).map(id=>s().paths.find(p=>p.id===id)).filter(Boolean);return `<article class="journal-page-entry"><time>${time(j.date)==null?"Datum unbekannt":new Date(j.date).toLocaleDateString("de-DE",{day:"numeric",month:"long"})}</time><span class="overline">${e(j.subtype||j.type||"Gedanke")}</span><h3>${link(e(j.text.length>220?j.text.slice(0,217)+"…":j.text),"entry/"+encodeURIComponent(j.id))}</h3><div class="journal-context">${paths.length ? link("Mit Weg „"+e(paths[0].title)+"“ verbunden","path/"+encodeURIComponent(paths[0].id),"context-label") : ""}${j.ref ? link(e(refLabel(j.ref)),readRoute(j.ref),"context-label") : ""}</div></article>`;}).join("")}</section>`).join("")}</div>${items.length>ui.journalLimit?button("Weitere Einträge","more-journal",{},"button quiet"):""}`;
 }
 function entry(id, kind = "entry") {
   const x=(kind === "reflection"?s().reflections:kind === "review"?allReviews(s()):s().journal).find(j=>j.id===id);if(!x)return notFound();
   const later=reviewsFor(s(),x,kind === "reflection"?"reflection":"journal")[0],previous=ui.continuitySaved===x.id?previousThought(s(),x):null;
-  shell(`${back("Journal","journal")}<header class="entry-heading"><div><span class="overline">${e(x.subtype||x.type||(kind === "review"?"Rückblick":"Reflexion"))}</span><h1 tabindex="-1">${date(x.date)}</h1></div>${kind === "entry" ? `<details class="entry-options"><summary aria-label="Journaleintrag verwalten">${icon("more")}<span class="sr-only">Journaleintrag verwalten</span></summary><div class="entry-context-menu">${button("Bearbeiten","edit-entry",{id},"text-button")}${button("Weg verbinden / ändern","journal-path",{id},"text-button")}${isBibleNote(x)?button("Notiz löschen","delete-note",{id,kind:"journal"},"text-button danger-text"):""}${button("Journaleintrag löschen","delete-journal",{id},"text-button danger-text")}</div></details>` : ""}</header><div class="entry-text preserve">${e(x.text)}</div><div class="entry-connections">${(x.pathIds||[]).map(pid=>{const p=s().paths.find(p=>p.id===pid);return p?`<p>Teil deines Weges: ${link(e(p.title),"path/"+encodeURIComponent(pid))}</p>`:"";}).join("")}${x.ref?`<p>Verbunden mit ${link(e(refLabel(x.ref)),readRoute(x.ref,"journal"))}</p>`:""}${later?`<p>Später darauf zurückgeblickt · ${link("Rückblick ansehen",later.route)}</p>`:""}</div>${previous?`<aside class="continuity-strip previous-thought-prompt"><p>Dazu hast du schon einmal etwas festgehalten.</p>${link("Früheren Gedanken ansehen",previous.route,"text-link")}</aside>`:""}${kind === "reflection"&&isBibleNote(x)?button("Notiz bearbeiten","edit-note",{id,kind:"reflection"},"button quiet"):""}${kind === "reflection"&&isBibleNote(x)?`<div class="note-delete-row">${button("Notiz löschen","delete-note",{id,kind:"reflection"},"text-button danger-text")}</div>`:""}`,"journal","journal-detail editorial-page");
+  shell(`${back("Journal","journal")}<header class="entry-heading"><div><span class="overline">${e(x.subtype||x.type||(kind === "review"?"Rückblick":"Reflexion"))}</span><h1 tabindex="-1">${date(x.date)}</h1></div>${kind === "entry" ? `<details class="entry-options"><summary aria-label="Journaleintrag verwalten">${icon("more")}<span class="sr-only">Journaleintrag verwalten</span></summary><div class="entry-context-menu">${button("Bearbeiten","edit-entry",{id},"text-button")}${button("Weg verbinden / ändern","journal-path",{id},"text-button")}${isBibleNote(x)?button("Notiz an der Bibelstelle entfernen","delete-note",{id,kind:"journal"},"text-button danger-text"):""}${button("Journaleintrag löschen","delete-journal",{id},"text-button danger-text")}</div></details>` : ""}</header><div class="entry-text preserve">${e(x.text)}</div><div class="entry-connections">${(x.pathIds||[]).map(pid=>{const p=s().paths.find(p=>p.id===pid);return p?`<p>Teil deines Weges: ${link(e(p.title),"path/"+encodeURIComponent(pid))}</p>`:"";}).join("")}${x.ref?`<p>Verbunden mit ${link(e(refLabel(x.ref)),readRoute(x.ref,"journal"))}</p>`:""}${later?`<p>Später darauf zurückgeblickt · ${link("Rückblick ansehen",later.route)}</p>`:""}</div>${previous?`<aside class="continuity-strip previous-thought-prompt"><p>Dazu hast du schon einmal etwas festgehalten.</p>${link("Früheren Gedanken ansehen",previous.route,"text-link")}</aside>`:""}${kind === "reflection"&&isBibleNote(x)?button("Notiz bearbeiten","edit-note",{id,kind:"reflection"},"button quiet"):""}${kind === "reflection"&&isBibleNote(x)?`<div class="note-delete-row">${button("Notiz an der Bibelstelle entfernen","delete-note",{id,kind:"reflection"},"text-button danger-text")}</div>`:""}`,"journal","journal-detail editorial-page");
 }
 function storyTimeline(items,limit) {
   const groups=new Map();for(const x of items.slice(0,limit)) {const d=new Date(x.at),key=d.toLocaleDateString("de-DE",{month:"long",year:"numeric"});if(!groups.has(key))groups.set(key,[]);groups.get(key).push(x);}
   return [...groups].map(([month,moments])=>`<section class="story-month"><h2 class="overline">${e(month)}</h2>${timelineHTML(moments,limit)}</section>`).join("");
 }
 function reflectionPairs() {
-  return reviewPairs(s()).slice(0,2).map(continuityPairHTML).join("");
+  return continuityGroupsHTML(reviewPairs(s()),2);
 }
 function history() {
   const items = timeline(s());
   shell(
-    `${back("Heute", "today")}${heading("Deine Glaubensgeschichte", "Damals wichtig. Heute Teil von dir.", "Bibelstellen, Gedanken, Wege und Rückblicke — in ihrem Zusammenhang.")}<div class="segmented">${link("Meine Geschichte", "history", "active")}${link("Offene Rückblicke", "reviews")}</div>${reflectionPairs()}${items.length ? storyTimeline(items, ui.historyLimit) : empty("Deine Geschichte beginnt mit einem Moment.", "Wenn du einen Gedanken oder eine Entwicklung festhältst, findest du ihn hier wieder.", link("Einen Anfang finden", "guidance", "button primary"))}${items.length > ui.historyLimit ? button("Weitere Momente", "more-history", {}, "button quiet") : ""}`,
+    `${back("Heute", "today")}${heading("Deine Glaubensgeschichte", "Damals wichtig. Heute Teil von dir.", "Bibelstellen, Gedanken, Wege und Rückblicke — in ihrem Zusammenhang.")}<div class="segmented">${link("Meine Geschichte", "history", "active")}${link("Rückblicke", "reviews")}</div>${reflectionPairs()}${items.length ? (reviewPairs(s()).length ? `<details class="history-moments"${ui.historyExpanded ? " open" : ""}><summary>Alle Momente deiner Geschichte</summary>${storyTimeline(items,ui.historyLimit)}</details>` : storyTimeline(items,ui.historyLimit)) : empty("Deine Geschichte beginnt mit einem Moment.", "Wenn du einen Gedanken oder eine Entwicklung festhältst, findest du ihn hier wieder.", link("Einen Anfang finden", "guidance", "button primary"))}${items.length > ui.historyLimit ? button("Weitere Momente", "more-history", {}, "button quiet") : ""}`,
     "paths", "history-page depth-page",
   );
 }
 function reviews() {
-  const pending = gaps(s()),completed=allReviews(s()),pairs=reviewPairs(s()).filter(p=>p.review);
-  shell(
-    `${back("Heute", "today")}${heading("Rückblicke", "Was ist daraus geworden?", "Du musst nichts nachholen. Vielleicht möchtest du einen früheren Gedanken noch einmal ansehen.")}<div class="segmented">${link("Meine Geschichte", "history")}${link("Offene Rückblicke", "reviews", "active")}</div>${completed.length ? `<section class="completed-reviews" aria-label="Deine Rückblicke">${completed.slice(0,5).map(r=>{const pair=pairs.find(p=>p.review.id===r.id);return pair ? continuityPairHTML(pair) : `<article class="continuity-strip"><span class="meta">${date(r.date)}</span><blockquote>${e(r.text)}</blockquote>${link("Rückblick öffnen",r.route,"text-link")}</article>`;}).join("")}</section>` : ""}${pending.length ? pending.map((g) => `<article class="review-row"><span class="overline">${date(g.at)} · vor ${g.age} Tagen</span><h2>${e(g.title)}</h2><p class="clamp">${e(g.detail)}</p>${button("Rückblick beginnen", "gap", { key: g.key }, "text-button")}</article>`).join("") : completed.length ? `<p class="meta">Gerade ist kein weiterer Rückblick offen.</p>` : empty("Gerade ist nichts offen.", "Wenn ein Gedanke etwas zurückliegt, findest du hier eine Einladung zum Zurückblicken.", link("Meine Wege", "paths", "button primary"))}<p class="meta">Erinnerungen erscheinen beim Öffnen der App. Es werden keine Push-Nachrichten verschickt.</p>`,
-    "paths", "reviews-page depth-page",
-  );
+ const pending=gaps(s()),completed=allReviews(s()),pairs=reviewPairs(s()).filter(p=>p.review);
+ const shown=completed.slice(0,5),paired=new Set(pairs.filter(p=>shown.some(r=>r.id===p.review.id)).map(p=>p.review.id));
+ shell(`${back("Heute","today")}${heading("Rückblicke","Was ist daraus geworden?","Du musst nichts nachholen. Vielleicht möchtest du einen früheren Gedanken noch einmal ansehen.")}<div class="segmented">${link("Meine Geschichte","history")}${link("Rückblicke","reviews","active")}</div><section class="pending-reviews"><h2 class="overline">Offene Rückblicke</h2>${pending.length?pending.map(g=>`<article class="review-row"><span class="overline">${date(g.at)} · vor ${g.age} Tagen</span><h3>${e(g.title)}</h3><p class="clamp">${e(g.detail)}</p>${button("Rückblick beginnen","gap",{key:g.key},"text-button")}</article>`).join(""):completed.length?'<p class="meta">Gerade ist kein weiterer Rückblick offen.</p>':empty("Gerade ist nichts offen.","Wenn ein Gedanke etwas zurückliegt, findest du hier eine Einladung zum Zurückblicken.",link("Meine Wege","paths","button primary"))}</section>${completed.length?`<section class="completed-reviews" aria-label="Deine Rückblicke"><h2 class="overline">Festgehaltene Rückblicke</h2>${continuityGroupsHTML(pairs.filter(p=>paired.has(p.review.id)))}${shown.filter(r=>!paired.has(r.id)).map(r=>`<article class="continuity-strip"><span class="meta">${date(r.date)}</span><blockquote>${e(r.text)}</blockquote>${link("Rückblick öffnen",r.route,"text-link")}</article>`).join("")}</section>`:""}<p class="meta">Erinnerungen erscheinen beim Öffnen der App. Es werden keine Push-Nachrichten verschickt.</p>`,"paths","reviews-page depth-page");
 }
 function more() {
   const section=new URLSearchParams(location.hash.split("?")[1]||"").get("section");
@@ -751,7 +775,7 @@ const pathOptions = () => [
 ];
 function modal(title, content, form = null, values = null) {
   const d = $("#dialog");
-  d.classList.toggle("core-dialog", ["path", "step", "note", "entry"].includes(form?.type) || ["Markierung gestalten", "Markierung entfernen?", "Weg wirklich löschen?", "Notiz wirklich löschen?"].includes(title));
+  d.classList.toggle("core-dialog", ["path", "step", "note", "entry"].includes(form?.type) || ["Markierung gestalten", "Markierung entfernen?", "Weg wirklich löschen?", "Notiz an der Bibelstelle entfernen?"].includes(title));
   ui.dialogRoute = location.hash.slice(1);
   ui.form = form;
   d.innerHTML = `<div class="dialog-top"><h2 id="dialog-title" aria-label="${e(title)}">${e(title).replace("Journaleintrag", "Journal<wbr>eintrag")}</h2>${button(icon("close") + '<span class="sr-only">Schließen</span>', "close", {}, "icon-button")}</div>${content}`;
@@ -907,7 +931,7 @@ function openForm(type, args = {}, restored = null) {
   }
   if (!body) return;
   const existingNote=type === "entry" ? s().journal.find(x=>x.id===args.id) : type === "note" ? s().reflections.find(x=>x.id===args.id) : null;
-  const deletion=isBibleNote(existingNote) ? `<div class="note-delete-row">${button("Notiz löschen","delete-note",{id:args.id,kind:type === "note" ? "reflection" : "journal"},"text-button danger-text")}</div>` : "";
+  const deletion=isBibleNote(existingNote) ? `<div class="note-delete-row">${button("Notiz an der Bibelstelle entfernen","delete-note",{id:args.id,kind:type === "note" ? "reflection" : "journal"},"text-button danger-text")}</div>` : "";
   modal(
     title,
     `<form id="editor-form"><div id="form-error" role="alert" tabindex="-1"></div>${body}<button class="button primary full" type="submit">${cta}</button>${deletion}</form>`,
@@ -1266,6 +1290,14 @@ async function pwa() {
     );
   }
 }
+async function fillJourneyScripture(root) {
+ try {
+  const book=await getBook('EPH','l1912'),text=book.chapters[5].find(v=>v[0]===17)?.[1];
+  if(!text||!root.isConnected)return;
+  const start=text.indexOf('und das Schwert');
+  for(const quote of root.querySelectorAll('[data-journey-scripture]'))quote.textContent=start>=0?'… '+text.slice(start):text;
+ }catch {if(root.isConnected)for(const quote of root.querySelectorAll('[data-journey-scripture]'))quote.textContent='Den Bibeltext findest du in Epheser 6,17.';}
+}
 function cancelNoteDeletion() {
   const pending=ui.noteDeletion;ui.noteDeletion=null;
   if(pending?.form)openForm(pending.form.type,pending.form.args,pending.values);else closeModal();
@@ -1274,7 +1306,7 @@ function confirmNoteDeletion(kind,id) {
   const note=(kind === "journal" ? s().journal : s().reflections).find(x=>x.id===id);
   if(!isBibleNote(note))throw new Error("Diese Bibelnotiz ist nicht mehr vorhanden.");
   ui.noteDeletion={kind,id,form:ui.form,values:ui.form ? snapshotForm() : null};
-  modal("Notiz wirklich löschen?",`<div id="form-error" role="alert" tabindex="-1"></div><p>Die Notiz wird entfernt. Deine Bibelmarkierung und andere Verknüpfungen bleiben erhalten.</p><p class="meta">Der zugehörige Journalgedanke bleibt in deiner Geschichte erhalten.</p><div class="actions">${button("Abbrechen","cancel-note-delete",{},"button quiet")}${button("Notiz löschen","confirm-note-delete",{},"button danger")}</div>`);
+  modal("Notiz an der Bibelstelle entfernen?",`<div id="form-error" role="alert" tabindex="-1"></div><p>Die Verbindung dieser Notiz mit der Bibelstelle wird entfernt. Markierung, Farbe und Wegverknüpfung bleiben erhalten.</p><p class="meta">${kind === "journal" ? "Dein Gedanke bleibt im Journal erhalten." : "Dein festgehaltener Gedanke bleibt in deiner Geschichte erhalten."}</p><div class="actions">${button("Abbrechen","cancel-note-delete",{},"button quiet")}${button("Notiz an der Bibelstelle entfernen","confirm-note-delete",{},"button danger")}</div>`);
   const title=$("#dialog-title");title.tabIndex=-1;title.focus({preventScroll:true});$("#dialog").scrollTop=0;
 }
 function confirmJournalDeletion(id) {
@@ -1286,6 +1318,10 @@ function confirmJournalDeletion(id) {
   const title=$("#dialog-title");title.tabIndex=-1;title.focus({preventScroll:true});$("#dialog").scrollTop=0;
 }
 async function action(a, d, el) {
+  if(a==='sword-info'){
+    modal("Warum ein Schwert?",`<blockquote class="journey-scripture"><p data-journey-scripture></p><cite>${link("Epheser 6,17","read/EPH/6/l1912?from=17&to=17")}</cite></blockquote><p>Das Schwert zeigt die Teile der Bibel, die du selbst gelesen hast. Es bewertet nicht deinen Glauben.</p><p class="meta">Sichtbar werden nur Kapitel, deren Ende du im Reader erreicht hast. Kapitelfragen sind optional.</p>${button("Schließen","close",{},"button quiet")}`);fillJourneyScripture($("#dialog"));return;
+  }
+  if(a==='reset-book-search'){$("#book-search").value="";$("#book-list").innerHTML=bookList();$("#book-search").focus();return;}
   if(a==="set-theme"){
     if(!THEMES.some(t=>t.id===d.themeId))return;
     change(data=>{data.settings.theme=d.themeId;});applyTheme(document,d.themeId);more();$(`[data-theme-id="${d.themeId}"]`)?.focus({preventScroll:true});return;
@@ -1308,7 +1344,7 @@ async function action(a, d, el) {
     let snapshot;change(data=>snapshot=deleteBibleNote(data,pending.kind,pending.id,now()));
     try{const draft=JSON.parse(localStorage.getItem(KEYS.draft)||"null");if(snapshot.some(n=>n.id===draft?.args?.id && (n.kind === "journal" ? draft.type === "entry" : draft.type === "note")))localStorage.removeItem(KEYS.draft);}catch{}
     ui.noteDeletion=null;closeModal();await render();
-    undoNotice("Notiz gelöscht",()=>change(data=>restoreBibleNote(data,snapshot)));return;
+    undoNotice("Notiz an der Bibelstelle entfernt",()=>change(data=>restoreBibleNote(data,snapshot)));return;
   }
   if (a === "close") {
     if(ui.noteDeletion){cancelNoteDeletion();return;}
@@ -1614,6 +1650,7 @@ async function action(a, d, el) {
     return;
   }
   if (a === "more-history") {
+    ui.historyExpanded = true;
     ui.historyLimit += 40;
     d.path ? path(d.path) : history();
     return;
@@ -1722,7 +1759,7 @@ async function render() {
     else if (kind === "topic") topic(key);
     else if (kind === "bible") bible();
     else if (kind === "bible-journey") {
-      const view=journeyView(s(),ui.books,key);if(!view)return notFound();shell(`${back(key?"Deine Bibelreise":"Bibel",key?"bible-journey":"bible")}${heading("Bibelreise",view.title)}${view.body}`,"bible","journey-page editorial-page depth-page");
+      const view=journeyView(s(),ui.books,key);if(!view)return notFound();shell(`${back(key?"Deine Bibelreise":"Bibel",key?"bible-journey":"bible")}${heading("Bibelreise",view.title)}${view.body}`,"bible","journey-page editorial-page depth-page");if(!key)fillJourneyScripture($("#main"));
     }
     else if (kind === "chapters") chapters(key);
     else if (kind === "chapter-quizzes") chapterCollection(key);
