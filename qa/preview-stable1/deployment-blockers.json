@@ -1,0 +1,49 @@
+{
+  "apiProbes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/user",
+      "status": 401,
+      "response": {
+        "code": 401,
+        "message": "Access Denied"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sites/61a5e54b-0587-4de5-9203-4fa5cd03ee7e",
+      "status": 401,
+      "response": {
+        "code": 401,
+        "message": "Access Denied"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/sites/bea821b6-6f30-4385-8dca-c0f7150954d1",
+      "status": 401,
+      "response": {
+        "code": 401,
+        "message": "Access Denied"
+      },
+      "afterPublicAccessApproval": true
+    }
+  ],
+  "credentialValuesRecorded": false,
+  "qaSiteId": "bea821b6-6f30-4385-8dca-c0f7150954d1",
+  "qaPublishedFaithPathBuild": null,
+  "networkPolicyAllowsQADomain": false,
+  "visitorAccessChange": {
+    "initialResult": "rejected by automatic approval review",
+    "initialReason": "Public access was not expressly authorized; removing SSO across all contexts was judged a persistent access-protection weakening.",
+    "userApproval": "Öffentliche Freigabe nur dieser QA-Site genehmigen",
+    "finalResult": "success",
+    "currentProtection": {
+      "requiresPassword": false,
+      "requiresSSOTeamLogin": false
+    },
+    "scope": "QA site bea821b6-6f30-4385-8dca-c0f7150954d1 only"
+  },
+  "productionDeployIdBeforeAndAfter": "6ac4c83bfdb6fe46924d3b81",
+  "lastObservedUTC": "2026-10-15T18:29:11.862105+00:00"
+}

@@ -1,0 +1,64 @@
+{
+  "observedOn": "2026-10-15",
+  "production": [
+    {
+      "id": "61a5e54b-0587-4de5-9203-4fa5cd03ee7e",
+      "plan": "nf_team_dev",
+      "claimed": true,
+      "name": "zesty-rolypoly-d11fff",
+      "_enrichedFields": {
+        "teamId": "6aa0233f7c73596bad78989c",
+        "netlifyUrlForProject": "https://app.netlify.com/projects/zesty-rolypoly-d11fff",
+        "projectAccessControls": {
+          "requiresPassword": false,
+          "whichProjectsRequirePassword": null,
+          "requiresSSOTeamLogin": true,
+          "whichProjectsRequireSSOTeamLogin": "non_production"
+        },
+        "urls": {
+          "primarySiteUrl": "http://zesty-rolypoly-d11fff.netlify.app",
+          "branchVersionOfSite": "http://6ac4c83bfdb6fe46924d3b81--zesty-rolypoly-d11fff.netlify.app"
+        },
+        "currentDeploy": {
+          "state": "current",
+          "currentDeploy": {
+            "id": "6ac4c83bfdb6fe46924d3b81",
+            "state": "ready"
+          }
+        },
+        "extraFeatures": {
+          "forms": "not enabled"
+        }
+      }
+    }
+  ],
+  "qa": [
+    {
+      "id": "bea821b6-6f30-4385-8dca-c0f7150954d1",
+      "plan": "nf_team_dev",
+      "claimed": true,
+      "name": "faithpath-stable1-qa-20261015",
+      "_enrichedFields": {
+        "teamId": "6aa0233f7c73596bad78989c",
+        "netlifyUrlForProject": "https://app.netlify.com/projects/faithpath-stable1-qa-20261015",
+        "projectAccessControls": {
+          "requiresPassword": false,
+          "whichProjectsRequirePassword": null,
+          "requiresSSOTeamLogin": true,
+          "whichProjectsRequireSSOTeamLogin": "all"
+        },
+        "urls": {
+          "primarySiteUrl": "http://faithpath-stable1-qa-20261015.netlify.app",
+          "branchVersionOfSite": "http://6ad0eee123c43188853df812--faithpath-stable1-qa-20261015.netlify.app"
+        },
+        "currentDeploy": {
+          "state": "current",
+          "currentDeploy": {}
+        },
+        "extraFeatures": {
+          "forms": "not enabled"
+        }
+      }
+    }
+  ]
+}

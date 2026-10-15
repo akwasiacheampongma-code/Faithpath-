@@ -1,0 +1,12 @@
+PASS Actual editor replaces A with B and removes B, with mirror and links synchronized
+PASS Closed journal draft survives unrelated form, export, reload, resume and save
+PASS Reflection draft survives cancellation and resumes with archived selected path
+PASS Two tabs preserve the first draft while a second tab saves its distinct journal text
+PASS In-flight save disables text input and double submit until the journal lock releases
+PASS Cancel note deletion never adopts a newer draft and allows exporting the original editor words
+PASS Malformed import cannot change saved state or a pending personal draft
+PASS Removing the Bible-note role preserves unsaved reflection words and allows saving them without restoring that role
+PASS Draft conflict dialog fits 320×568
+PASS Draft conflict dialog fits 375×667
+PASS Draft conflict dialog fits 390×844
+PASS Draft conflict dialog fits 430×932
