@@ -1,3 +1,4 @@
+import {beginDraftSession,saveDraft,clearDraft,discardDraft,completedDraft} from './drafts.js';
 import {groupOriginPairs,countLabel} from './journey-sword.js';
 import {recordExploredChapter,observeChapterEnd} from './bible-journey.js';
 import {journeyView,journeyAcknowledgement,treeBranchView,pathFacts,themePicker} from './experience-view.js';
@@ -778,6 +779,7 @@ function modal(title, content, form = null, values = null) {
   d.classList.toggle("core-dialog", ["path", "step", "note", "entry"].includes(form?.type) || ["Markierung gestalten", "Markierung entfernen?", "Weg wirklich löschen?", "Notiz an der Bibelstelle entfernen?"].includes(title));
   ui.dialogRoute = location.hash.slice(1);
   ui.form = form;
+  ui.draftSession = null;
   d.innerHTML = `<div class="dialog-top"><h2 id="dialog-title" aria-label="${e(title)}">${e(title).replace("Journaleintrag", "Journal<wbr>eintrag")}</h2>${button(icon("close") + '<span class="sr-only">Schließen</span>', "close", {}, "icon-button")}</div>${content}`;
   if (values)
     for (const [k, v] of Object.entries(values)) {
@@ -793,11 +795,13 @@ function modal(title, content, form = null, values = null) {
   // Focus once while opening; a later timer must not override keyboard navigation.
   ($("input:not([type=checkbox]),textarea,select",d) || $(".color-choice[tabindex=\"0\"]",d) || $("button",d))?.focus();
 }
-function finishForm() {
+async function finishForm(draftSession = ui.draftSession) {
   try {
-    localStorage.removeItem(KEYS.draft);
-  } catch {}
+    await clearDraft(localStorage,draftSession);
+  } catch { notify("Dein gespeicherter Gedanke ist erhalten. Der Entwurf konnte noch nicht entfernt werden.",true); }
+  if(ui.draftSession!==draftSession)return;
   ui.form = null;
+  ui.draftSession = null;
   $("#dialog").close();
   document.body.classList.remove("modal-open");
 }
@@ -806,6 +810,7 @@ function closeModal() {
   ui.noteDeletion=null;
   ui.journalDeletion=null;
   ui.form = null;
+  ui.draftSession = null;
   $("#dialog").close();
   document.body.classList.remove("modal-open");
   if(journalFocus)$(".entry-options summary")?.focus();
@@ -816,19 +821,25 @@ function snapshotForm() {
     values[el.name] = el.type === "checkbox" ? el.checked : el.value;
   return values;
 }
-function persistDraft() {
+async function persistDraft() {
   if (!ui.form) return;
+  const form=ui.form,session=ui.draftSession,values=snapshotForm();
   try {
     if(journalRecoveryError||localStorage.getItem(JOURNAL_WRITE_KEY))throw new Error("Journal-Speichervorgang noch offen");
-    localStorage.setItem(
-      KEYS.draft,
-      JSON.stringify({ ...ui.form, values: snapshotForm(), saved: now() }),
-    );
-  } catch {
-    notify("Dein Entwurf kann gerade nicht zwischengespeichert werden.", true);
+    if(!session)throw new Error("Dieser Entwurf konnte nicht sicher geöffnet werden.");
+    await saveDraft(localStorage,session,{...form,values,saved:now()});
+  } catch (error) {
+    notify("Dein Entwurf kann gerade nicht zwischengespeichert werden. "+error.message, true);
   }
 }
-function openForm(type, args = {}, restored = null) {
+function openForm(type, args = {}, restored = null, draftRaw = undefined) {
+  const existingDraft=localStorage.getItem(KEYS.draft);
+  if(existingDraft!==null&&restored===null){
+    ui.pendingForm={type,args,raw:existingDraft};
+    modal("Ein Entwurf wartet auf dich",`<p>Du hast noch etwas Ungespeichertes. Möchtest du dort weiterschreiben?</p>${button("Entwurf fortsetzen","resume",{},"button primary full")}${button("Entwurf als Datei sichern","export-draft",{},"button quiet full")}${button("Entwurf verwerfen und neu beginnen","discard-and-open",{},"text-button")}`);
+    return;
+  }
+  const draftSession=beginDraftSession(localStorage,restored!==null ? (draftRaw===undefined ? existingDraft : draftRaw) : null);
   let title = "",
     body = "",
     cta = "Speichern",
@@ -838,7 +849,7 @@ function openForm(type, args = {}, restored = null) {
     title="Weg verbinden / ändern";body=`<p class="meta">Die ausgewählte Zuordnung ersetzt die bisherigen Wegzuordnungen dieses Eintrags. Bibelstellen auf deinen Wegen bleiben erhalten.</p>`+select("Persönlicher Weg","pathId",[["","Noch keinem Weg zuordnen"],...s().paths.map(p=>[p.id,p.title+(p.archived?" · archiviert":"")])],old.pathIds?.[0]||"");
   }
   if(type === "note") {
-    const old=s().reflections.find(x=>x.id===args.id);if(!isBibleNote(old))throw new Error("Diese Bibelnotiz ist nicht mehr vorhanden.");
+    const old=s().reflections.find(x=>x.id===args.id);if(!isBibleNote(old)&&!old?.bibleNoteDeletedAt)throw new Error("Diese Bibelnotiz ist nicht mehr vorhanden.");
     title="Notiz bearbeiten";body=`<p class="meta">${e(refLabel(old.ref))}</p>${textarea("Dein Gedanke","text",old.text)}`;
   }
   if (type === "entry") {
@@ -866,7 +877,7 @@ function openForm(type, args = {}, restored = null) {
         "Ziele",
       ].map((x) => [x, x]),
       values.kind,
-    )}${select("Persönlicher Weg (optional)", "pathId", pathOptions(), values.pathId)}${args.planId ? `<label class="checkbox-row"><input type="checkbox" name="planDone" checked> Diesen Abschnitt als festgehalten markieren</label>` : ""}`;
+    )}${select("Persönlicher Weg (optional)", "pathId", [...pathOptions(),...s().paths.filter(p=>p.archived&&p.id===(restored?.pathId??values.pathId)).map(p=>[p.id,p.title+" · archiviert"])], restored?.pathId??values.pathId)}${args.planId ? `<label class="checkbox-row"><input type="checkbox" name="planDone" checked> Diesen Abschnitt als festgehalten markieren</label>` : ""}`;
     cta = "Gedanken speichern";
   } else if (type === "path") {
     const old = args.id ? s().paths.find((p) => p.id === args.id) : null;
@@ -938,6 +949,7 @@ function openForm(type, args = {}, restored = null) {
     { type, args },
     restored,
   );
+  ui.draftSession=draftSession;
   if (type === "review") updateDevelopment();
 }
 function updateDevelopment() {
@@ -968,17 +980,18 @@ function addRef(data, pathId, ref) {
 }
 async function submitForm() {
   if (!ui.form) return;
+  const draftSession=ui.draftSession;
   const { type, args } = ui.form,
     v = snapshotForm(),
     at = now();
   if(type === "journal-path") {
-    change(data=>setJournalPath(data,args.id,v.pathId));finishForm();go("entry/"+encodeURIComponent(args.id));notify(v.pathId?"Mit deinem Weg verbunden":"Wegzuordnung entfernt");return;
+    change(data=>setJournalPath(data,args.id,v.pathId));await finishForm(draftSession);go("entry/"+encodeURIComponent(args.id));notify(v.pathId?"Mit deinem Weg verbunden":"Wegzuordnung entfernt");return;
   }
   if(type === "note") {
     const text=v.text.trim();if(!text)throw new Error("Schreibe einen Gedanken, bevor du ihn speicherst.");
-    change(data=>{const r=data.reflections.find(x=>x.id===args.id);if(!isBibleNote(r))throw new Error("Diese Notiz wurde inzwischen entfernt.");
-      const j=data.journal.find(j=>j.reflectionId===r.id&&sameRef(j.ref,r.ref)&&j.text===r.text);r.text=text;r.updatedAt=at;if(j){j.text=text;j.updatedAt=at;}});
-    finishForm();go("reflection/"+encodeURIComponent(args.id));notify("Deine Notiz ist gespeichert.");return;
+    await journalTransaction(store,localStorage,data=>{const r=data.reflections.find(x=>x.id===args.id);if(!isBibleNote(r)&&!r?.bibleNoteDeletedAt)throw new Error("Diese Notiz wurde inzwischen entfernt.");
+      const j=data.journal.find(j=>j.reflectionId===r.id&&sameRef(j.ref,r.ref)&&j.text===r.text);r.text=text;r.updatedAt=at;if(j){j.text=text;j.updatedAt=at;}},(_,raw)=>completedDraft(draftSession,raw));
+    await finishForm(draftSession);go("reflection/"+encodeURIComponent(args.id));notify("Deine Notiz ist gespeichert.");return;
   }
   if (type === "entry") {
     const text = v.text.trim();
@@ -987,11 +1000,12 @@ async function submitForm() {
     const jid = args.id || id(),
       rid = id();
     let chosen = v.pathId;
-    change((d) => {
+    await journalTransaction(store,localStorage,(d) => {
       const old = args.id ? d.journal.find((j) => j.id === args.id) : null;
       if (args.id && !old)
         throw new Error("Dieser Eintrag wurde inzwischen entfernt.");
       if (old) {
+        if(chosen!==(old.pathIds?.[0]||""))setJournalPath(d,jid,chosen);
         old.text = text;
         old.subtype = v.kind;
         old.updatedAt = at;
@@ -1027,15 +1041,15 @@ async function submitForm() {
           storyId: args.storyId || null,
         });
       }
-      if (chosen) attach(d, chosen, jid);
+      if (chosen && !old) attach(d, chosen, jid);
       if (args.planId && v.planDone) {
         const key =
           args.planKind === "guide" ? "guide:" + args.planId : args.planId;
         d.guidedPlans[key] ??= {};
         d.guidedPlans[key][args.day] = true;
       }
-    });
-    finishForm();
+    },(_,raw)=>completedDraft(draftSession,raw));
+    await finishForm(draftSession);
     ui.continuitySaved = args.id ? null : jid;
     go("entry/" + encodeURIComponent(jid));
     notify("Dein Gedanke ist gespeichert.");
@@ -1088,7 +1102,7 @@ async function submitForm() {
       if (args.entryId) attach(d, pid, args.entryId);
       if (args.ref) addRef(d, pid, args.ref);
     });
-    finishForm();
+    await finishForm(draftSession);
     go("path/" + encodeURIComponent(pid));
     notify(args.id ? "Weg aktualisiert." : "Dein Weg hat begonnen.");
   } else if (type === "step") {
@@ -1100,7 +1114,7 @@ async function submitForm() {
         const step=p.steps.find(x=>x.id===args.stepId && !x.done);if(!step)throw new Error("Bereits ausprobierte Schritte werden nicht überschrieben.");step.text=v.text.trim();
       } else p.steps.push({id:id(),text:v.text.trim(),done:false,createdAt:at});
     });
-    finishForm();
+    await finishForm(draftSession);
     go("path/" + encodeURIComponent(args.pathId));
     notify("Schritt festgehalten.");
   } else if (type === "review") {
@@ -1147,7 +1161,7 @@ async function submitForm() {
         ).toISOString();
       else d.dismissedGaps[key] = at;
     });
-    finishForm();
+    await finishForm(draftSession);
     go(pid ? "path/" + encodeURIComponent(pid) : "history");
     notify(
       confirmed
@@ -1181,7 +1195,10 @@ function importRefs(next) {
     ...next.highlights,
     ...next.journal.map((x) => x.ref),
     ...next.reflections.map((x) => x.ref),
+    ...next.reviews.map((x) => x.ref),
+    ...next.events.map((x) => x.ref),
     ...next.paths.flatMap((p) => p.links.map((x) => x.ref)),
+    ...next.paths.flatMap((p) => p.reviews.map((x) => x.ref)),
     next.reading,
   ].filter(Boolean);
   for (const r of refs) validRef(r, ui.refs);
@@ -1300,12 +1317,20 @@ async function fillJourneyScripture(root) {
 }
 function cancelNoteDeletion() {
   const pending=ui.noteDeletion;ui.noteDeletion=null;
-  if(pending?.form)openForm(pending.form.type,pending.form.args,pending.values);else closeModal();
+  if(pending?.form){
+    const expected=pending.draftSession?.expectedRaw??null;
+    if(localStorage.getItem(KEYS.draft)!==expected){
+      ui.editorRecovery={...pending.form,values:pending.values};
+      modal("Ein neuerer Entwurf bleibt erhalten",`<p>Inzwischen wurde ein anderer Entwurf gespeichert. Sichere deine gerade bearbeiteten Worte als Datei, bevor du den anderen Entwurf öffnest.</p>${button("Meine Worte als Datei sichern","export-editor-recovery",{},"button primary full")}${button("Schließen","close",{},"button quiet")}`);
+      return;
+    }
+    openForm(pending.form.type,pending.form.args,pending.values,expected);
+  }else closeModal();
 }
 function confirmNoteDeletion(kind,id) {
   const note=(kind === "journal" ? s().journal : s().reflections).find(x=>x.id===id);
   if(!isBibleNote(note))throw new Error("Diese Bibelnotiz ist nicht mehr vorhanden.");
-  ui.noteDeletion={kind,id,form:ui.form,values:ui.form ? snapshotForm() : null};
+  ui.noteDeletion={kind,id,form:ui.form,values:ui.form ? snapshotForm() : null,draftSession:ui.draftSession};
   modal("Notiz an der Bibelstelle entfernen?",`<div id="form-error" role="alert" tabindex="-1"></div><p>Die Verbindung dieser Notiz mit der Bibelstelle wird entfernt. Markierung, Farbe und Wegverknüpfung bleiben erhalten.</p><p class="meta">${kind === "journal" ? "Dein Gedanke bleibt im Journal erhalten." : "Dein festgehaltener Gedanke bleibt in deiner Geschichte erhalten."}</p><div class="actions">${button("Abbrechen","cancel-note-delete",{},"button quiet")}${button("Notiz an der Bibelstelle entfernen","confirm-note-delete",{},"button danger")}</div>`);
   const title=$("#dialog-title");title.tabIndex=-1;title.focus({preventScroll:true});$("#dialog").scrollTop=0;
 }
@@ -1342,7 +1367,8 @@ async function action(a, d, el) {
   if(a === "confirm-note-delete") {
     const pending=ui.noteDeletion;if(!pending)throw new Error("Bitte öffne die Löschbestätigung erneut.");
     let snapshot;change(data=>snapshot=deleteBibleNote(data,pending.kind,pending.id,now()));
-    try{const draft=JSON.parse(localStorage.getItem(KEYS.draft)||"null");if(snapshot.some(n=>n.id===draft?.args?.id && (n.kind === "journal" ? draft.type === "entry" : draft.type === "note")))localStorage.removeItem(KEYS.draft);}catch{}
+    // Removing the Bible-note role does not discard unsaved personal words.
+    // A resumed former-note draft edits its retained text without restoring that role.
     ui.noteDeletion=null;closeModal();await render();
     undoNotice("Notiz an der Bibelstelle entfernt",()=>change(data=>restoreBibleNote(data,snapshot)));return;
   }
@@ -1390,8 +1416,23 @@ async function action(a, d, el) {
     return;
   }
   if (a === "resume") {
-    const x = JSON.parse(localStorage.getItem(KEYS.draft) || "null");
-    if (x) openForm(x.type, x.args, x.values);
+    const raw=localStorage.getItem(KEYS.draft),x = JSON.parse(raw || "null");
+    if (x) openForm(x.type, x.args, x.values,raw);
+    return;
+  }
+  if(a === "export-draft"){
+    const raw=localStorage.getItem(KEYS.draft);
+    if(raw!==null)download({app:"FaithPath-Entwurf",draft:JSON.parse(raw)},"FaithPath-Entwurf.json");
+    return;
+  }
+  if(a === "export-editor-recovery"){
+    if(ui.editorRecovery)download({app:"FaithPath-Entwurf",draft:ui.editorRecovery},"FaithPath-Entwurf.json");
+    return;
+  }
+  if(a === "discard-and-open"){
+    const pending=ui.pendingForm;if(!pending)return;
+    await discardDraft(localStorage,pending.raw);ui.pendingForm=null;
+    openForm(pending.type,pending.args);
     return;
   }
   if (a === "focus-passage") {
@@ -1677,7 +1718,7 @@ async function action(a, d, el) {
     if (!ui.import) return;
     store.restore(ui.import);
     ui.import = null;
-    finishForm();
+    await finishForm();
     go("more?section=data");
     notify("Backup wiederhergestellt.");
     return;
@@ -1857,7 +1898,14 @@ document.addEventListener("click", (ev) => {
 document.addEventListener("submit", (ev) => {
   if (ev.target.id === "editor-form") {
     ev.preventDefault();
-    submitForm().catch(showError);
+    if(ui.saving)return;
+    ui.saving=true;
+    const controls=$$("button,input,textarea,select",$("#dialog")).map(el=>[el,el.disabled]);
+    for(const [el] of controls)el.disabled=true;
+    submitForm().catch(showError).finally(()=>{
+      ui.saving=false;
+      for(const [el,disabled] of controls)if(el.isConnected)el.disabled=disabled;
+    });
   }
 });
 document.addEventListener("input", (ev) => {
@@ -1932,7 +1980,7 @@ document.addEventListener("change", (ev) => {
     if (el.type === "checkbox") el.checked = !el.checked;
   }
 });
-$("#dialog").addEventListener("cancel",ev=>{if(ui.noteDeletion){ev.preventDefault();cancelNoteDeletion();}else if(ui.journalDeletion){ev.preventDefault();closeModal();}});
+$("#dialog").addEventListener("cancel",ev=>{if(ui.saving){ev.preventDefault();return;}if(ui.noteDeletion){ev.preventDefault();cancelNoteDeletion();}else if(ui.journalDeletion){ev.preventDefault();closeModal();}});
 $("#dialog").addEventListener("close", () => {
   if (!$("#dialog").open) {
     ui.form = null;

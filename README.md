@@ -5,13 +5,35 @@
 FaithPath ist eine offline-first PWA. Der Kern ist nicht das Sammeln von Punkten, sondern der Kreislauf: Situation/Bibel → verstehen → reflektieren → persönlicher Weg → kleiner Schritt → späterer Rückblick → selbst dokumentierte Entwicklung.
 
 ## Deployment auf Netlify
-Der Ordner ist bereits der Publish-Root. `index.html`, `_redirects`, `_headers`, `netlify.toml`, Manifest und Service Worker liegen auf Root-Ebene. Für Drag-and-drop den Inhalt dieses Builds bzw. die bereitgestellte flache ZIP verwenden. Es gibt keinen Build-Schritt.
+Der Quellstand benötigt Node >=20. `npm run build` erzeugt den vollständigen,
+versionierten Publish-Ordner `dist`; genau diesen Ordner verwendet `netlify.toml`.
+Alte eingecheckte Root-/dist-Artefakte sind kein verlässlicher aktueller Build.
+Keine Produktionsveröffentlichung erfolgt automatisch durch diese Anleitung.
+
+```sh
+npm ci
+npm test
+npm run build
+node scripts/serve.mjs dist
+```
 
 ## Datenschutz und Speicherung
-Persönliche Daten liegen in LocalStorage. Bestehender Hauptschlüssel `faithpath.v1.rebuild` bleibt erhalten; Guided-Plan-Fortschritt bleibt unter `faithpath.guidedPlans.v1`. V4 ergänzt innerhalb des Hauptobjekts `reminderSnoozes` und `dismissedGaps`, ohne alte Daten zu löschen. Build E normalisiert das Hauptschema auf Version 4 und validiert Backups tief, bevor sie lokale Daten ersetzen. Onboarding verwendet `faithpath.onboarding.v4`.
+Persönliche Daten liegen lokal und unverschlüsselt in LocalStorage. Der Hauptschlüssel
+`faithpath.v1.rebuild`, das bestehende Schema V5 und das Backupformat bleiben erhalten.
+Der ältere Schlüssel `faithpath.guidedPlans.v1` bleibt für die Migration lesbar;
+aktueller Planfortschritt gehört zum Hauptbestand. Onboarding verwendet
+`faithpath.onboarding.v4`. Es gibt keine automatische Gerätesynchronisation.
+Regelmäßige externe Backups schützen vor Geräteverlust und Browserdatenlöschung.
 
 ## Bibel
 OTB Deutsch und Luther 1912 sind vollständig lokal enthalten. V4 normalisiert ältere Kurz-Codes (z. B. `joh` → `JHN`, `mar` → `MRK`, `jak` → `JAS`) bevor Dateien geladen werden.
 
-## Build
-`FP4-20260916-E` · Service Worker Cache `faithpath-v4-fp4-20260916-e`.
+## Produktionssicherung und Entwicklung
+
+- Gesicherte Produktion: `FP4-20261006-G-POLISH1`, Branch `backup/production-polish1-20261015`.
+- Stabilisierungskandidat: `FP4-20261015-G-STABLE1`, Branch `fix/production-stabilization-20261015`.
+- [Rekonstruktion und exakte Reproduktion](docs/PRODUCTION_RECOVERY.md)
+- [Architektur, Datenregeln und Testabläufe](docs/MAINTENANCE.md)
+
+Die überarbeiteten Kapitelquizfragen auf `content/nt-quiz-final-1300` sind ein
+separater Content-Stand und werden hier nicht automatisch übernommen.

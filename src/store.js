@@ -1,3 +1,4 @@
+import {validateImportedFields,validateImportedRelations} from './import-validation.js';
 // The original keys remain readable. Migration never discards unknown fields.
 export const KEYS = Object.freeze({
   main: "faithpath.v1.rebuild",
@@ -221,10 +222,15 @@ export function createStore(storage) {
         throw new Error("Kein FaithPath-Backup.");
       const raw = input.data || input;
       validateShape(raw, true);
-      return migrate(raw, input.guidedPlans || {});
+      validateImportedFields(raw);
+      const next=migrate(raw, input.guidedPlans || {});
+      validateImportedRelations(next);
+      return next;
     },
     restore(next) {
       validateShape(next, true);
+      validateImportedFields(next);
+      validateImportedRelations(next);
       if (storage.getItem(KEYS.main) !== last)
         throw new Error("Daten wurden inzwischen geändert. Bitte neu laden.");
       storage.setItem(
