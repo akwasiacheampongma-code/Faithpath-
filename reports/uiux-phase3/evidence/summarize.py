@@ -1,0 +1,15 @@
+import json,pathlib,re,hashlib
+r=pathlib.Path('/workspace/Faithpath-uiux-phase3');s=pathlib.Path('/workspace/scratch/uiux-phase3');q='qa-output/uiux-phase3'
+paths={'core':'qa-output/browser-results.json','stabilization':q+'/stabilization/results.json','chapter':q+'/chapter/results.json','nt':'qa-output/nt-quiz-final/results.json','nachlese':'qa-output/nachlese-mc/corpus-browser/results.json','mc-fixtures':q+'/mc-fixtures/results.json','worker':'qa-output/service-worker-results.json','today':'qa-output/uiux-phase1/browser/results.json','today-zoom':'qa-output/uiux-phase1/zoom/results.json','phase2':q+'/phase2/results.json','phase2-stress':'qa-output/uiux-phase2/stress/results.json','phase2-short':q+'/phase2-short/results.json','experience':q+'/experience/results.json','core-depth':q+'/core-depth/results.json','core-axe':q+'/core-axe/results.json','continuity':q+'/continuity/results.json','branches':q+'/branches/results.json','overview':q+'/overview-final/results.json','detail':q+'/detail-final/results.json','tree':q+'/tree-final/results.json','reviews':q+'/reviews-final/results.json','short-navigation':q+'/short-final/results.json','stress':q+'/stress/results.json','journey':q+'/journey/results.json'}
+suites={}
+for name,path in paths.items():
+ raw=(r/path).read_bytes();d=json.loads(raw);rows=d if isinstance(d,list)else d['results'];assert rows,(name,'no results');assert all(x['status'].lower()in['pass','passed']for x in rows),(name,[x for x in rows if x['status'].lower()not in['pass','passed']])
+ if isinstance(d,dict):
+  for key in ['errors','consoleErrors','pageErrors','uncaughtErrors','rejections','badResponses','loads']:assert not d.get(key),(name,key,d.get(key))
+ suites[name]={'checks':len(rows),'status':'PASS','artifact':path,'sha256':hashlib.sha256(raw).hexdigest()}
+unit=(s/'unit.log').read_text();assert 'ℹ fail 0'in unit;count=int(re.search(r'ℹ tests (\d+)',unit)[1]);assert count==166
+update=json.loads((r/q/'update/results.json').read_text());assert len(update['results'])==8 and not update['errors'];assert update['candidateBuild'].endswith('UIUX3')and update['previousBuild'].endswith('UIUX2')
+for phase in ['before','after']:
+ d=json.loads((r/q/phase/'measurements.json').read_text());assert len(d['results'])==120 and not d['errors'];assert not any(x['overflow']for x in d['results']);assert len(list((r/q/phase).glob('*.png')))==168
+m=json.loads((r/q/'build-committed/release-integrity.json').read_text());summary=dict(status='PASS',build=m['build'],implementation_commit='f6f857d8c88affcd20872cac0c8e8c3a8a3910f0',build_hash=m['build_hash'],content_hash=m['content_hash'],unit_tests=count,browser_cases=sum(x['checks']for x in suites.values()),update_checkpoints=8,screenshot_pairs=126,original_before_after_png=336,suites=suites,physical_device_gates={'UIUX1':'OFFEN','UIUX2':'OFFEN','UIUX3':'OFFEN'},synthetic_data_only=True)
+(s/'qa-summary.json').write_text(json.dumps(summary,indent=2));print(json.dumps({k:v for k,v in summary.items()if k!='suites'},indent=2))

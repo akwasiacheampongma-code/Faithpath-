@@ -1,0 +1,92 @@
+{
+  "base": "http://127.0.0.1:4395",
+  "baseline": false,
+  "results": [
+    {
+      "name": "Bibelreise is reachable inside Bible; old opens and quiz do not fabricate history",
+      "status": "PASS"
+    },
+    {
+      "name": "only real documented paths appear on the original tree",
+      "status": "PASS"
+    },
+    {
+      "name": "four themes share one settings picker",
+      "status": "PASS"
+    },
+    {
+      "name": "opening and leaving before chapter end does not count",
+      "status": "PASS"
+    },
+    {
+      "name": "quiz-only completion does not count as reading",
+      "status": "PASS"
+    },
+    {
+      "name": "end reached once, acknowledgement before quiz; reload/re-read/translation do not duplicate",
+      "status": "PASS"
+    },
+    {
+      "name": "short one-chapter book completes factually and hub/book state/link is correct",
+      "status": "PASS"
+    },
+    {
+      "name": "storage refusal never reports unsaved completion or changes the selected theme",
+      "status": "PASS"
+    },
+    {
+      "name": "theme changes only optional setting, live/reload; keyboard radio flow",
+      "status": "PASS"
+    },
+    {
+      "name": "branch fixture 1, cap 1, exact links and no target collisions @320/200",
+      "status": "PASS"
+    },
+    {
+      "name": "branch fixture 3, cap 3, exact links and no target collisions @320/200",
+      "status": "PASS"
+    },
+    {
+      "name": "branch fixture 5, cap 5, exact links and no target collisions @320/200",
+      "status": "PASS"
+    },
+    {
+      "name": "branch fixture 8, cap 5, exact links and no target collisions @320/200",
+      "status": "PASS"
+    },
+    {
+      "name": "backup includes optional theme and journey; import preserves core and progress",
+      "status": "PASS"
+    },
+    {
+      "name": "offline completion, theme/reload, quiz and branches light",
+      "status": "PASS"
+    },
+    {
+      "name": "offline completion, theme/reload, quiz and branches atmospheric",
+      "status": "PASS"
+    },
+    {
+      "name": "offline completion, theme/reload, quiz and branches paper",
+      "status": "PASS"
+    },
+    {
+      "name": "offline completion, theme/reload, quiz and branches night",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "loads": [],
+  "shots": [
+    "qa-output/uiux-phase3/experience/chapter-completion.png",
+    "qa-output/uiux-phase3/experience/tree-1-320-200.png",
+    "qa-output/uiux-phase3/experience/path-from-1-branches.png",
+    "qa-output/uiux-phase3/experience/tree-3-320-200.png",
+    "qa-output/uiux-phase3/experience/path-from-3-branches.png",
+    "qa-output/uiux-phase3/experience/tree-5-320-200.png",
+    "qa-output/uiux-phase3/experience/path-from-5-branches.png",
+    "qa-output/uiux-phase3/experience/tree-8-320-200.png",
+    "qa-output/uiux-phase3/experience/path-from-8-branches.png"
+  ]
+}

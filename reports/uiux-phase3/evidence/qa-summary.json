@@ -1,0 +1,164 @@
+{
+  "status": "PASS",
+  "build": "FP4-20261016-G-STABLE1-UIUX3",
+  "implementation_commit": "f6f857d8c88affcd20872cac0c8e8c3a8a3910f0",
+  "build_hash": "5e554bb230055879ccfa457d75d887e1e28eaca7928291875fe41ee801c7f7f1",
+  "content_hash": "8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309",
+  "unit_tests": 166,
+  "browser_cases": 760,
+  "update_checkpoints": 8,
+  "screenshot_pairs": 126,
+  "original_before_after_png": 336,
+  "suites": {
+    "core": {
+      "checks": 12,
+      "status": "PASS",
+      "artifact": "qa-output/browser-results.json",
+      "sha256": "23bd8b53b94e58958b87977e3bb9ae7130b2c0ba144106be84acbbe1e1a875e1"
+    },
+    "stabilization": {
+      "checks": 12,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/stabilization/results.json",
+      "sha256": "6ae0c5c04abd12ce616b1685fb51398e9714db06c27fe747f61ea55409762b06"
+    },
+    "chapter": {
+      "checks": 17,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/chapter/results.json",
+      "sha256": "893502bd98c0ab3db7779a2c48e6612c8e4fb0004dcf5b16ebae6d7b12d81c15"
+    },
+    "nt": {
+      "checks": 24,
+      "status": "PASS",
+      "artifact": "qa-output/nt-quiz-final/results.json",
+      "sha256": "6e0151ccedd1f773598bffda8ab14d77c1319fd35f31991c366cbf5c7026d226"
+    },
+    "nachlese": {
+      "checks": 36,
+      "status": "PASS",
+      "artifact": "qa-output/nachlese-mc/corpus-browser/results.json",
+      "sha256": "26c566d68417785f37a4d745b62cf9e6d962e58ed11b7e3baece9c88e45e7c34"
+    },
+    "mc-fixtures": {
+      "checks": 6,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/mc-fixtures/results.json",
+      "sha256": "7c360ba57ec987334107f19f5c1e45a06afe2d9c4ccd1ba3730f49cc39f92cca"
+    },
+    "worker": {
+      "checks": 3,
+      "status": "PASS",
+      "artifact": "qa-output/service-worker-results.json",
+      "sha256": "8822b5695980142ddf9640b62aaece403ab6eb75a38c3365c4f58573d7f26ade"
+    },
+    "today": {
+      "checks": 130,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase1/browser/results.json",
+      "sha256": "2087a95fa4100d88d8d2da6aa46aa286feb4666b356fa6f9434cfc32f61c14e0"
+    },
+    "today-zoom": {
+      "checks": 2,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase1/zoom/results.json",
+      "sha256": "a31c93bf06faf04e96c690bc08b3c34be9409fdbc0c2808a83db07e65181bde9"
+    },
+    "phase2": {
+      "checks": 24,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/phase2/results.json",
+      "sha256": "6df222db27bde37c09d2971d6b5b931ab6731a72e9b052495f767f0d13f23a78"
+    },
+    "phase2-stress": {
+      "checks": 40,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase2/stress/results.json",
+      "sha256": "df1446ad0c21970845c49d5d22d06d17c6e7299deedc872ae21310e4c3dc7329"
+    },
+    "phase2-short": {
+      "checks": 12,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/phase2-short/results.json",
+      "sha256": "d8cef56f31ac1c8fc13a5b55cb315ba6fcb76e35347c62b441ce7c59cbd5343c"
+    },
+    "experience": {
+      "checks": 18,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/experience/results.json",
+      "sha256": "14a9141752468f1dcca2bcb4fd79301650e5a04841fd3c8571c383592cf44250"
+    },
+    "core-depth": {
+      "checks": 15,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/core-depth/results.json",
+      "sha256": "59ad6bfd05248a6c30fb73454ff5746e6ee43dd7d6ea6619e1105120b24db888"
+    },
+    "core-axe": {
+      "checks": 15,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/core-axe/results.json",
+      "sha256": "72066f90bd47e7c511bdaf29c6f38e440a476ed831a660a41c3bc5c86ef70a94"
+    },
+    "continuity": {
+      "checks": 24,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/continuity/results.json",
+      "sha256": "29b8678bd3bb687e5b2db1aa5fa508eafd568ea1cfd8e5b3898e5e4619397f88"
+    },
+    "branches": {
+      "checks": 56,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/branches/results.json",
+      "sha256": "100e56c47f10def043ffde6fea08dc09043893508a6606810bdd87d869b379b4"
+    },
+    "overview": {
+      "checks": 56,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/overview-final/results.json",
+      "sha256": "b0ebcb5233a19ad7042a7e3124cf2ae39d4ac94d6fb28ff801361bc46d7e6bb0"
+    },
+    "detail": {
+      "checks": 32,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/detail-final/results.json",
+      "sha256": "1740e0044af94ddaa0730bb47170569f75b0827205f32fe1d6236890929f1508"
+    },
+    "tree": {
+      "checks": 72,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/tree-final/results.json",
+      "sha256": "00caabc4baa49c34e5c0e80617872d6ed82dd5163f5ed8621b92d504c43ee598"
+    },
+    "reviews": {
+      "checks": 72,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/reviews-final/results.json",
+      "sha256": "c93543e76a6c52bf83b7ca2e67de2246eb4206fe652dc7af4278af7992f14acf"
+    },
+    "short-navigation": {
+      "checks": 20,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/short-final/results.json",
+      "sha256": "4073e0184981a375029bf8df1779577cf87dc12908e0047cc7022766bd3cb038"
+    },
+    "stress": {
+      "checks": 60,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/stress/results.json",
+      "sha256": "5449e71d2bc6fe3fe60ed596a03c6eeb0e73900839f2dc9344e266fe2dfa4020"
+    },
+    "journey": {
+      "checks": 2,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/journey/results.json",
+      "sha256": "0fd5c99e10c790c6d8685ccb09b02825c28c1c58a26d7fe348a046ef17aff8ab"
+    }
+  },
+  "physical_device_gates": {
+    "UIUX1": "OFFEN",
+    "UIUX2": "OFFEN",
+    "UIUX3": "OFFEN"
+  },
+  "synthetic_data_only": true
+}

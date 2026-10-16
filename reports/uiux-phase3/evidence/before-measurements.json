@@ -1,0 +1,1088 @@
+{
+  "base": "http://127.0.0.1:4390",
+  "phase": "before",
+  "results": [
+    {
+      "name": "paths-empty",
+      "fixture": "empty",
+      "route": "paths",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-active",
+      "fixture": "active",
+      "route": "paths",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-five",
+      "fixture": "five",
+      "route": "paths",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-many",
+      "fixture": "many",
+      "route": "paths",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-archived",
+      "fixture": "archived",
+      "route": "paths",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-long",
+      "fixture": "long",
+      "route": "paths",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-mixed",
+      "fixture": "mixed",
+      "route": "paths",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path-active",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path-completed",
+      "fixture": "completed",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path-many-thoughts",
+      "fixture": "many-thoughts",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path-missing-source",
+      "fixture": "missing-source",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-0",
+      "fixture": "tree-0",
+      "route": "tree",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-1",
+      "fixture": "tree-1",
+      "route": "tree",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-2",
+      "fixture": "tree-2",
+      "route": "tree",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-3",
+      "fixture": "tree-3",
+      "route": "tree",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-4",
+      "fixture": "tree-4",
+      "route": "tree",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-5",
+      "fixture": "tree-5",
+      "route": "tree",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-6",
+      "fixture": "tree-6",
+      "route": "tree",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-editor",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "fixture": "active",
+      "route": "review/review-old",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-empty",
+      "fixture": "empty",
+      "route": "paths",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-active",
+      "fixture": "active",
+      "route": "paths",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-five",
+      "fixture": "five",
+      "route": "paths",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-many",
+      "fixture": "many",
+      "route": "paths",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-archived",
+      "fixture": "archived",
+      "route": "paths",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-long",
+      "fixture": "long",
+      "route": "paths",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-mixed",
+      "fixture": "mixed",
+      "route": "paths",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path-active",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path-completed",
+      "fixture": "completed",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path-many-thoughts",
+      "fixture": "many-thoughts",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path-missing-source",
+      "fixture": "missing-source",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-0",
+      "fixture": "tree-0",
+      "route": "tree",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-1",
+      "fixture": "tree-1",
+      "route": "tree",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-2",
+      "fixture": "tree-2",
+      "route": "tree",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-3",
+      "fixture": "tree-3",
+      "route": "tree",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-4",
+      "fixture": "tree-4",
+      "route": "tree",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-5",
+      "fixture": "tree-5",
+      "route": "tree",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "tree-6",
+      "fixture": "tree-6",
+      "route": "tree",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-editor",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "fixture": "active",
+      "route": "review/review-old",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "paths-empty",
+      "fixture": "empty",
+      "route": "paths",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-active",
+      "fixture": "active",
+      "route": "paths",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-five",
+      "fixture": "five",
+      "route": "paths",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-many",
+      "fixture": "many",
+      "route": "paths",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-archived",
+      "fixture": "archived",
+      "route": "paths",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-long",
+      "fixture": "long",
+      "route": "paths",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-mixed",
+      "fixture": "mixed",
+      "route": "paths",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path-active",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path-completed",
+      "fixture": "completed",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path-many-thoughts",
+      "fixture": "many-thoughts",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path-missing-source",
+      "fixture": "missing-source",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-0",
+      "fixture": "tree-0",
+      "route": "tree",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-1",
+      "fixture": "tree-1",
+      "route": "tree",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-2",
+      "fixture": "tree-2",
+      "route": "tree",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-3",
+      "fixture": "tree-3",
+      "route": "tree",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-4",
+      "fixture": "tree-4",
+      "route": "tree",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-5",
+      "fixture": "tree-5",
+      "route": "tree",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-6",
+      "fixture": "tree-6",
+      "route": "tree",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-editor",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "fixture": "active",
+      "route": "review/review-old",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-empty",
+      "fixture": "empty",
+      "route": "paths",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-active",
+      "fixture": "active",
+      "route": "paths",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-five",
+      "fixture": "five",
+      "route": "paths",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-many",
+      "fixture": "many",
+      "route": "paths",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-archived",
+      "fixture": "archived",
+      "route": "paths",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-long",
+      "fixture": "long",
+      "route": "paths",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-mixed",
+      "fixture": "mixed",
+      "route": "paths",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path-active",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path-completed",
+      "fixture": "completed",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path-many-thoughts",
+      "fixture": "many-thoughts",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path-missing-source",
+      "fixture": "missing-source",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-0",
+      "fixture": "tree-0",
+      "route": "tree",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-1",
+      "fixture": "tree-1",
+      "route": "tree",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-2",
+      "fixture": "tree-2",
+      "route": "tree",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-3",
+      "fixture": "tree-3",
+      "route": "tree",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-4",
+      "fixture": "tree-4",
+      "route": "tree",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-5",
+      "fixture": "tree-5",
+      "route": "tree",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "tree-6",
+      "fixture": "tree-6",
+      "route": "tree",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-editor",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "fixture": "active",
+      "route": "review/review-old",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "paths-empty",
+      "fixture": "empty",
+      "route": "paths",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-active",
+      "fixture": "active",
+      "route": "paths",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-five",
+      "fixture": "five",
+      "route": "paths",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-many",
+      "fixture": "many",
+      "route": "paths",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-archived",
+      "fixture": "archived",
+      "route": "paths",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-long",
+      "fixture": "long",
+      "route": "paths",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-mixed",
+      "fixture": "mixed",
+      "route": "paths",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path-active",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path-completed",
+      "fixture": "completed",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path-many-thoughts",
+      "fixture": "many-thoughts",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path-missing-source",
+      "fixture": "missing-source",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-0",
+      "fixture": "tree-0",
+      "route": "tree",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-1",
+      "fixture": "tree-1",
+      "route": "tree",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-2",
+      "fixture": "tree-2",
+      "route": "tree",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-3",
+      "fixture": "tree-3",
+      "route": "tree",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-4",
+      "fixture": "tree-4",
+      "route": "tree",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-5",
+      "fixture": "tree-5",
+      "route": "tree",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-6",
+      "fixture": "tree-6",
+      "route": "tree",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-editor",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "fixture": "active",
+      "route": "review/review-old",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-empty",
+      "fixture": "empty",
+      "route": "paths",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-active",
+      "fixture": "active",
+      "route": "paths",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-five",
+      "fixture": "five",
+      "route": "paths",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-many",
+      "fixture": "many",
+      "route": "paths",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-archived",
+      "fixture": "archived",
+      "route": "paths",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-long",
+      "fixture": "long",
+      "route": "paths",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "paths-mixed",
+      "fixture": "mixed",
+      "route": "paths",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path-active",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path-completed",
+      "fixture": "completed",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path-many-thoughts",
+      "fixture": "many-thoughts",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path-missing-source",
+      "fixture": "missing-source",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-0",
+      "fixture": "tree-0",
+      "route": "tree",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-1",
+      "fixture": "tree-1",
+      "route": "tree",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-2",
+      "fixture": "tree-2",
+      "route": "tree",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-3",
+      "fixture": "tree-3",
+      "route": "tree",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-4",
+      "fixture": "tree-4",
+      "route": "tree",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-5",
+      "fixture": "tree-5",
+      "route": "tree",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "tree-6",
+      "fixture": "tree-6",
+      "route": "tree",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-editor",
+      "fixture": "active",
+      "route": "path/personal-path",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "fixture": "active",
+      "route": "review/review-old",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "syntheticDataOnly": true
+}

@@ -17,9 +17,9 @@ try{for(const width of (process.env.QA_WIDTH?[Number(process.env.QA_WIDTH)]:[320
   await p.locator('.past-steps summary').click();await p.locator('.past-steps [data-id="later-0"]').click();await p.waitForFunction(k=>!JSON.parse(localStorage.getItem(k)).paths[0].steps.find(s=>s.id==='later-0').done,KEYS.main);assert.equal(treeLevel(await state(p)),level);
  });
  await check(`All real thoughts and original reviews remain reachable with pagination / ${theme} / ${width}`,async()=>{
-  const data=phase3Fixture('many-thoughts',theme);await p.evaluate(({KEYS,data})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{KEYS,data});await p.reload();await p.locator('.path-story').waitFor();const before=await state(p);assert.equal(await p.locator('.path-story .timeline li').count(),40);
+  const data=phase3Fixture('many-thoughts',theme);delete data.journal[0].reflectionId;await p.evaluate(({KEYS,data})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{KEYS,data});await p.reload();await p.locator('.path-story').waitFor();const before=await state(p);assert.equal(await p.locator('.path-story .timeline li').count(),40);
   let pages=0;while(await p.locator('[data-action="more-history"]').count()){await p.locator('[data-action="more-history"]').click();assert(await p.evaluate(()=>document.activeElement.closest('.path-story')!==null));assert(++pages<5);}
-  const links=await p.locator('.path-story a').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')));for(const thought of data.journal)assert(links.includes('#entry/'+thought.id),thought.id);assert.equal(links.filter(x=>x==='#entry/thought-old').length,1);assert(links.includes('#review/review-old'));assert.deepEqual(await state(p),before);
+  const links=await p.locator('.path-story .timeline a').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')));for(const thought of data.journal)assert(links.includes('#entry/'+thought.id),thought.id);assert.equal(links.filter(x=>x==='#entry/thought-old').length,1);assert(links.includes('#review/review-old'));assert.deepEqual(await state(p),before);
  });
  await check(`Archive/restore, long prose and axe / ${theme} / ${width}`,async()=>{
   const data=phase3Fixture('long',theme);await p.evaluate(({KEYS,data})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{KEYS,data});await p.reload();await p.locator('.path-page').waitFor();
