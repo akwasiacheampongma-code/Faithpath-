@@ -1,5 +1,5 @@
-import {selectPathsOverview} from './paths-model.js';
-import {renderPathsOverview} from './paths-view.js';
+import {selectPathsOverview,selectPathDetail} from './paths-model.js';
+import {renderPathsOverview,renderPathDetail} from './paths-view.js';
 import {swordExplanation} from './journey-view.js';
 import {storyQuestionState,renderStoryQuestion} from './story-flow-view.js';
 import {chapterOffer,chapterNavigation,initiallyVisibleChapterEnd} from './reader-view.js';
@@ -300,10 +300,6 @@ function verseContext(n,ref) {
   const h=verseHighlight(n,ref);if(!h||n!==+h.from)return "";
   const c=highlightContext(s(),h),p=c.paths[0],j=c.notes[0];if(!p&&!j)return "";
   return `<aside class="verse-context continuity-strip" data-verse-context="${n}" aria-label="Dein Kontext zu dieser Stelle">${p ? `<p>Mit deinem Weg ${link('„'+e(p.title)+'“',"path/"+encodeURIComponent(p.id))} verbunden.</p>` : ""}${j ? `<p>${link("Dazu hast du etwas festgehalten.",j.route)}</p>` : ""}</aside>`;
-}
-function pathContinuityHTML(pid) {
-  const c=pathContext(s(),pid);if(!c)return "";
-  return `<section class="path-continuity continuity-strip" aria-label="Zu diesem Weg"><span class="overline">Zu diesem Weg</span>${c.reference ? `<p><span class="meta">${c.reading ? "Zuletzt gelesen" : "Verbundene Bibelstelle"}</span>${link(e(refLabel(c.reading?.ref || c.reference)),readRoute(c.reading?.ref || c.reference))}</p>` : ""}${c.thought ? `<p><span class="meta">Zuletzt festgehalten</span>${link(e(c.thought.text),c.thought.route)}</p>` : ""}${c.review ? `<p><span class="meta">Letzter Rückblick · ${date(c.review.date)}</span>${link(e(c.review.text),c.review.route)}</p>` : ""}</section>`;
 }
 function guidance() {
   shell(
@@ -650,19 +646,9 @@ function paths() {
   shell(renderPathsOverview(selectPathsOverview(s(),{archived:ui.archive}),{heading,button,row,date}),"paths","paths-page depth-page");
 }
 function path(pid) {
-  const p=s().paths.find(p=>p.id===pid);if(!p)return notFound();
-  const entries=timeline(s(),pid), open=p.steps.filter(x=>!x.done), thoughts=s().journal.filter(j=>j.pathIds?.includes(pid)).slice().sort((a,b)=>time(b.date)-time(a.date));
+  const model=selectPathDetail(s(),pid,{limit:ui.historyLimit});if(!model)return notFound();
   const renderToken=ui.token;
-  shell(`${back("Meine Wege","paths")}<div class="path-titlebar">${heading(category(p.category).label,p.title,p.why)}<details class="path-options"><summary aria-label="Weg verwalten">${icon("more")}<span class="sr-only">Weg verwalten</span></summary><div class="path-context">${button("Weg bearbeiten","edit-path",{id:pid},"text-button")}${button(p.archived ? "Weg wieder aufnehmen" : "Archivieren","archive-path",{id:pid},"text-button")}${button("Weg löschen","delete-path",{id:pid},"text-button danger-text")}</div></details></div><p class="meta">Begonnen am ${date(p.started)}${p.archived ? " · archiviert" : ""}</p>${pathFacts(s(),pid)}
-  <section class="next-step"><div class="section-heading"><span class="overline">Als Nächstes</span>${open.length ? button(icon("plus")+'<span class="sr-only">Schritt hinzufügen</span>',"step",{id:pid},"icon-button") : ""}</div>${open.length ? open.slice(0,1).map((x,i)=>`<div class="path-step ${i===0 ? "current-path-step" : ""}"><label class="step-row"><input type="checkbox" data-change="step-done" data-path="${e(pid)}" data-id="${e(x.id)}"><span>${e(x.text)}</span></label><div class="step-actions">${button("Bearbeiten","edit-step",{path:pid,id:x.id},"text-button")}${i ? button("Als Nächstes","current-step",{path:pid,id:x.id},"text-button") : ""}</div></div>`).join("") : `<h2>Ein kleiner nächster Schritt</h2><p>Was könntest du im Alltag ausprobieren?</p>${button("Schritt hinzufügen","step",{id:pid},"text-button")}`}</section>
-  <div class="actions path-main-actions">${button("Gedanken festhalten","reflect-path",{id:pid},"button primary")}${button("Zurückblicken","review-path",{id:pid},"text-button")}</div>
-  ${pathContinuityHTML(pid)}
-  ${open.length>1 ? `<section class="further-steps section"><h2>Weitere Schritte</h2>${open.slice(1).map(x=>`<div class="path-step"><label class="step-row"><input type="checkbox" data-change="step-done" data-path="${e(pid)}" data-id="${e(x.id)}"><span>${e(x.text)}</span></label><div class="step-actions">${button("Bearbeiten","edit-step",{path:pid,id:x.id},"text-button")}${button("Als Nächstes","current-step",{path:pid,id:x.id},"text-button")}</div></div>`).join("")}</section>` : ""}
-  ${thoughts.length>1||p.links.some(l=>l.ref)?`<details class="path-linked-history section"><summary>Gedanken & Bibelstellen auf diesem Weg</summary>  ${thoughts.length > 1 ? `<section class="path-thoughts"><span class="overline">Was dich begleitet</span><h2>Frühere Gedanken</h2>${thoughts.slice(1,3).map(j=>`<blockquote>${link(e(j.text),"entry/"+encodeURIComponent(j.id))}<small>${date(j.date)}</small></blockquote>`).join("")}</section>` : ""}
-  ${p.links.some(l=>l.ref) ? `<section class="path-scriptures"><h2>Bibelstellen auf deinem Weg</h2>${p.links.filter(l=>l.ref).map(l=>{const h=s().highlights.find(h=>overlapsRef(h,l.ref)),j=s().journal.find(j=>j.ref && overlapsRef(j.ref,l.ref) && j.pathIds?.includes(pid));return `<article>${link(e(l.label || refLabel(l.ref)),readRoute(l.ref),"scripture-reference")}<blockquote data-path-quote="${e(JSON.stringify(l.ref))}">${e(h?.snippet || "")}</blockquote>${j ? `<span class="overline">Warum diese Stelle dazugehört</span><p>${e(j.text)}</p>` : ""}</article>`;}).join("")}</section>` : ""}
-</details>`:""}
-  ${p.steps.some(x=>x.done) ? `<details class="past-steps section"><summary>Ausprobierte Schritte (${p.steps.filter(x=>x.done).length})</summary>${p.steps.filter(x=>x.done).map(x=>`<label class="step-row"><input type="checkbox" checked data-change="step-done" data-path="${e(pid)}" data-id="${e(x.id)}"><span>${e(x.text)}</span></label>`).join("")}</details>` : ""}
-  <section class="section path-story"><span class="overline">Von damals bis heute</span><h2>Die Geschichte dieses Weges</h2>${timelineHTML(entries,ui.historyLimit)}${entries.length>ui.historyLimit ? button("Weitere Momente","more-history",{path:pid},"button quiet") : ""}</section>`,"paths","path-page depth-page");
+  shell(renderPathDetail(model,{back,heading,button,link,date,refLabel,readRoute:ref=>readRoute(ref,"path/"+pid),timelineHTML,categoryLabel:category(model.path.category).label,facts:pathFacts(s(),pid)}),"paths","path-page depth-page");
   for (const quote of $$("[data-path-quote]")) {
     if (quote.textContent) continue;
     const ref=JSON.parse(quote.dataset.pathQuote);
@@ -1672,8 +1658,10 @@ async function action(a, d, el) {
   }
   if (a === "more-history") {
     ui.historyExpanded = true;
+    const previousLimit=ui.historyLimit;
     ui.historyLimit += 40;
     d.path ? path(d.path) : history();
+    if(d.path){const first=$$(".path-story .timeline li")[previousLimit],target=first?.querySelector("a")||first;if(target){target.tabIndex=-1;target.focus();}}
     return;
   }
   if (a === "export") {
@@ -1832,6 +1820,9 @@ async function render() {
     if (token !== ui.token) return;
     window.scrollTo({ top: 0, behavior: "instant" });
     $("h1")?.focus({ preventScroll: true });
+    if(kind==="path"&&new URLSearchParams(query).get("section")==="story"){
+      const story=$(".path-story");if(story){story.focus();story.scrollIntoView({block:"start",behavior:"instant"});}
+    }
     if(kind==="merged-story"&&new URLSearchParams(query).get("reflection")==="1"){
       const invitation=$(".reflection-invite");if(invitation){invitation.tabIndex=-1;invitation.focus();invitation.scrollIntoView({block:"start",behavior:"instant"});}
     }
@@ -1951,6 +1942,8 @@ document.addEventListener("change", (ev) => {
         step.completedAt = el.checked ? now() : null;
       });
       path(el.dataset.path);
+      const next=$(".next-step input")||$("#path-next-step-title");
+      if(next){if(next.tagName!=="INPUT")next.tabIndex=-1;next.focus();}
     } else if (c === "story-book") {
       ui.storyBook = el.value;
       $("#story-results").innerHTML = storyResults();

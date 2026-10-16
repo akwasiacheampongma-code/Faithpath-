@@ -19,3 +19,33 @@
 .paths-page .paths-empty p { line-height: 1.7; }
 .paths-page :is(h1,h2,p,a,button) { overflow-wrap: anywhere; }
 @media (max-width: 350px) { .paths-page .path-card-link { padding: 16px; } }
+
+/* Path detail: one current step, original companions, and bounded real history. */
+.path-page .path-titlebar .page-heading { padding-bottom: 8px; }
+.path-page .path-titlebar h1 { font-size: clamp(1.625rem,6.5vw,2rem); line-height: 1.25; }
+.path-page .path-titlebar { align-items: flex-start; gap: 12px; }
+.path-page .path-options { flex-shrink: 0; }
+.path-page .path-options > summary { display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+.path-page .path-purpose { border-block: 1px solid var(--line); padding-block: 4px; margin-top: 16px; }
+.path-page .path-purpose > summary { min-height: 44px; padding-block: 10px; }
+.path-page .path-purpose p { line-height: 1.75; }
+.path-page .next-step { border-radius: 14px; padding: 20px; margin-block: 20px; }
+.path-page .next-step .section-heading { display: flex; align-items: center; gap: 12px; }
+.path-page .next-step h2 { font-size: 1rem; font-family: var(--sans); letter-spacing: 0; margin: 0; }
+.path-page .next-step > small { display: block; line-height: 1.6; margin-top: 16px; }
+.path-page .current-path-step .step-row span { font-size: 1.25rem; line-height: 1.6; }
+.path-page .step-row { min-height: 48px; align-items: flex-start; }
+.path-page .step-row input { flex-shrink: 0; margin-top: 6px; }
+.path-page .path-main-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.path-page .path-companions { border-top: 1px solid var(--line); padding-top: 24px; }
+.path-page .path-continuity { padding: 0; border: 0; margin: 0; }
+.path-page .path-thought { padding-block: 12px; }
+.path-page .path-thought blockquote { margin: 8px 0; font-family: var(--serif); font-size: 1.125rem; line-height: 1.75; }
+.path-page .thought-preview { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; min-height: 44px; }
+.path-page .path-scripture { padding-block: 12px; }
+.path-page .path-scripture blockquote { line-height: 1.7; color: var(--muted); margin: 8px 0; }
+.path-page .path-linked-history > summary,.path-page .past-steps > summary { min-height: 44px; padding-block: 12px; }
+.path-page .path-story { scroll-margin-top: 24px; }
+.path-page .path-moment-count { margin-top: 16px; }
+.path-page :is(h1,h2,p,blockquote,a,button) { overflow-wrap: anywhere; }
+@media (max-width: 350px) { .path-page .next-step { padding: 16px; } }
