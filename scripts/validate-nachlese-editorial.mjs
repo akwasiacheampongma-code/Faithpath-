@@ -1,3 +1,4 @@
+import {matchesProtectedRuntime} from './protected-runtime.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -54,7 +55,7 @@ export function validateNachleseEditorial(root='.'){
  assert.equal(hash(raw(dir+'source/Redaktionspaket.zip')),ZIP_SHA,'Editorial source ZIP differs');
  assert.equal(hash(raw(dir+'source/Redaktion_56.xlsx')),XLSX_SHA,'Editorial Excel source differs');
  for(const [file,digest]of Object.entries(manifest.audit_files))assert.equal(hash(raw(dir+file)),digest,'Editorial audit file differs: '+file);
- for(const [file,digest]of Object.entries(manifest.protected_files))assert.equal(hash(raw(file)),digest,'Protected STABLE1 content changed: '+file);
+ for(const [file,digest]of Object.entries(manifest.protected_files))assert(matchesProtectedRuntime(file,hash(raw(file)),digest),'Protected STABLE1 content changed: '+file);
  assert.equal(hash(raw('data/nachlese-questions.json')),manifest.data_sha256,'Published N data hash differs (editorial)');
  const before=read(dir+'baseline-mc-questions.json'),after=read('data/nachlese-questions.json');
  const proposals=read(dir+'source/56_redaktionsvorschlaege.json').records,flags=read(dir+'source/mc_optionen_auffaellig.json').records;

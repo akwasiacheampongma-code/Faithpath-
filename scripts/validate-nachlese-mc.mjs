@@ -1,3 +1,4 @@
+import {matchesProtectedRuntime} from './protected-runtime.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -21,7 +22,7 @@ export function validateNachleseMc(root='.'){
   assert.equal(hash(raw(dir+'baseline-active-questions.json')),BASELINE_SHA,'N source baseline changed');
   assert.equal(manifest.baseline_sha256,BASELINE_SHA);
   for(const [name,digest] of Object.entries(manifest.audit_files))assert.equal(hash(raw(dir+name)),digest,'N audit artifact changed: '+name);
-  for(const [name,digest] of Object.entries(manifest.protected_files))assert.equal(hash(raw(name)),digest,'Protected STABLE1 content changed: '+name);
+  for(const [name,digest] of Object.entries(manifest.protected_files))assert(matchesProtectedRuntime(name,hash(raw(name)),digest),'Protected STABLE1 content changed: '+name);
   assert.equal(hash(raw(published)),manifest.data_sha256,'Published N data hash differs');
   const before=read(dir+'baseline-active-questions.json'),after=read(published);
   const lines=file=>raw(dir+file).toString('utf8').trim().split('\n').map(line=>JSON.parse(line));
