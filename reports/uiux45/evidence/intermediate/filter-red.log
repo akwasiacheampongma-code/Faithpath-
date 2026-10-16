@@ -1,0 +1,10 @@
+FAIL Journal filter exposes current criterion / light/320 AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'Filter'
+- 'Filter · Gedanken'
+         ^
+
+    at file:///workspace/Faithpath-uiux-integration/tests/uiux45-integration-browser.mjs:14:262
+    at async check (file:///workspace/Faithpath-uiux-integration/tests/uiux45-integration-browser.mjs:9:35)
+    at async file:///workspace/Faithpath-uiux-integration/tests/uiux45-integration-browser.mjs:14:2

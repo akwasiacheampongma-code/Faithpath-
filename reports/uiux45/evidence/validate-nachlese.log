@@ -1,0 +1,12 @@
+
+> faithpath@4.0.0 validate:nachlese-editorial
+> python3 scripts/validate-nachlese-editorial-source.py --check && node scripts/validate-nachlese-mc.mjs
+
+{"status": "PASS", "proposal_rows": 56, "heuristic_pairs": 227, "marked_questions": 150, "excel_json_match": true, "original_fields_match_installed_baseline": true, "input_status": "DRAFT; not a prior human approval", "writes": 0}
+{"status":"PASS","total":2314,"active_story_questions":2479,"already_complete":165,"to_complete":2314,"reflections":0,"separate_story_reflections":436,"added":2314,"manual":0,"preexisting_n_mc":2258,"added_this_phase":56,"marked_reviewed":150,"marked_corrected":0,"segmented_references_reviewed":2,"reviewed_both_translations":208,"not_re_reviewed_this_phase":2106,"held_decisions":0,"changed_questions":58,"separate_nachlese_reflections":435,"hidden_faithpath_aliases":95,"ids_and_story_links_unchanged":true,"questions_and_refs_unchanged":false,"only_verified_editorial_changes":true,"story_flow_unchanged":true,"progress_schema_unchanged":true,"previous_mc_release":{"status":"PASS","total":2314,"active_story_questions":2479,"already_complete":165,"to_complete":2314,"reflections":0,"separate_story_reflections":436,"added":2258,"manual":56,"separate_nachlese_reflections":435,"hidden_faithpath_aliases":95,"questions_and_refs_unchanged":true,"story_flow_unchanged":true,"progress_schema_unchanged":true}}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+{"status":"PASS","total":2314,"active_story_questions":2479,"already_complete":165,"to_complete":2314,"reflections":0,"separate_story_reflections":436,"added":2314,"manual":0,"preexisting_n_mc":2258,"added_this_phase":56,"marked_reviewed":150,"marked_corrected":0,"segmented_references_reviewed":2,"reviewed_both_translations":208,"not_re_reviewed_this_phase":2106,"held_decisions":0,"changed_questions":58,"separate_nachlese_reflections":435,"hidden_faithpath_aliases":95,"ids_and_story_links_unchanged":true,"questions_and_refs_unchanged":false,"only_verified_editorial_changes":true,"story_flow_unchanged":true,"progress_schema_unchanged":true}
