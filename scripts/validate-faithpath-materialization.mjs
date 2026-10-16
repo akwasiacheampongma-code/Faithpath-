@@ -107,7 +107,9 @@ for (const entry of report.changes.filter(c => c.change_kind === 'EXACT_VERSE_RE
 const sourceManifest = read('reports/faithpath-source-manifest.json');
 for (const source of sourceManifest) check(hash(fs.readFileSync(path.join(root, source.repo_path))) === source.sha256, `Source artifact hash mismatch ${source.repo_path}`);
 const nStories = read('data/nachlese-stories.json').stories;
-const nQuestions = read('data/nachlese-questions.json').questions;
+// Historical merge proof uses its original source; current editorial deltas are
+// independently checked by validateNachleseMc above before this comparison.
+const nQuestions = read('reports/nachlese-mc/baseline-active-questions.json').questions;
 const docxBaseline = read('reports/faithpath-docx-story-baseline.json');
 const nBaseline = read('reports/faithpath-final-nachlese-baseline.json');
 const storyFlow = read('data/faithpath-nachlese-story-flow.json');

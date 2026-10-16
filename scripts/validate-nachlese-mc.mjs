@@ -2,52 +2,28 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
+import {canonicalHash,validateNachleseRecord} from './nachlese-mc-evidence.mjs';
+import {validateNachleseEditorial} from './validate-nachlese-editorial.mjs';
+export {canonicalHash,validateNachleseRecord} from './nachlese-mc-evidence.mjs';
 
 const BASELINE_SHA='e475c34506a20aefd71a4e41a5fdec813c0ed0add5790397aa4b68cbdc6aa73d';
 const BASE_COMMIT='6f96ec8be376af3b0de03094a5052ae909054658';
 const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
 const text=value=>typeof value==='string'&&value.trim().length>0;
-const ordered=value=>Array.isArray(value)?value.map(ordered):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,ordered(value[key])])):value;
-export const canonicalHash=value=>hash(JSON.stringify(ordered(value)));
-
-// This verifies structure, provenance and literal evidence. Semantic truth and
-// plausibility additionally require the separately recorded per-question review.
-export function validateNachleseRecord(source,record,verseLookup){
-  assert.equal(record.id,source.id,'N-ID differs');
-  assert(['ready','manual','reflection'].includes(record.status),'Unknown N-MC status');
-  if(record.status!=='ready'){
-    assert(text(record.reason),'Held question needs a reason');
-    assert(!Object.hasOwn(record,'a')&&!Object.hasOwn(record,'c'),'Held question must not publish choices');
-    return record.status;
-  }
-  assert(Array.isArray(record.a)&&record.a.length===4&&record.a.every(text),'Four nonempty N-MC options required');
-  assert.equal(new Set(record.a.map(s=>s.normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase('de-DE'))).size,4,'Duplicate N-MC options');
-  assert(Number.isInteger(record.c)&&record.c>=0&&record.c<4,'N-MC correct index');
-  assert.equal(record.a[record.c],source.answer,'Original N answer changed');
-  const proof=p=>{
-    assert(p&&text(p.key)&&text(p.quote)&&text(p.reason),'Incomplete Bible evidence');
-    const verse=verseLookup(p.key);
-    assert(text(verse)&&verse.includes(p.quote),`Bible quote differs: ${record.id}/${p.key}`);
-  };
-  proof(record.correct_check);
-  assert(Array.isArray(record.wrong_checks)&&record.wrong_checks.length===3,'Three distractor checks required');
-  const wrong=record.a.filter((_,i)=>i!==record.c);
-  assert.deepEqual(record.wrong_checks.map(p=>p.option).sort(),[...wrong].sort(),'Distractor checks do not match all three wrong options');
-  for(const p of record.wrong_checks)proof(p);
-  return 'ready';
-}
 
 export function validateNachleseMc(root='.'){
   const raw=file=>fs.readFileSync(path.join(root,file)),read=file=>JSON.parse(raw(file));
   const dir='reports/nachlese-mc/';
+  const successor=fs.existsSync(path.join(root,'reports/nachlese-editorial-56/manifest.json')) ? validateNachleseEditorial(root) : null;
+  const published=successor ? 'reports/nachlese-editorial-56/baseline-mc-questions.json' : 'data/nachlese-questions.json';
   const manifest=read(dir+'manifest.json');
   assert.equal(manifest.schema_version,1);assert.equal(manifest.base_commit,BASE_COMMIT);
   assert.equal(hash(raw(dir+'baseline-active-questions.json')),BASELINE_SHA,'N source baseline changed');
   assert.equal(manifest.baseline_sha256,BASELINE_SHA);
   for(const [name,digest] of Object.entries(manifest.audit_files))assert.equal(hash(raw(dir+name)),digest,'N audit artifact changed: '+name);
   for(const [name,digest] of Object.entries(manifest.protected_files))assert.equal(hash(raw(name)),digest,'Protected STABLE1 content changed: '+name);
-  assert.equal(hash(raw('data/nachlese-questions.json')),manifest.data_sha256,'Published N data hash differs');
-  const before=read(dir+'baseline-active-questions.json'),after=read('data/nachlese-questions.json');
+  assert.equal(hash(raw(published)),manifest.data_sha256,'Published N data hash differs');
+  const before=read(dir+'baseline-active-questions.json'),after=read(published);
   const lines=file=>raw(dir+file).toString('utf8').trim().split('\n').map(line=>JSON.parse(line));
   const authors=lines('authored.jsonl'),reviews=lines('reviews.jsonl'),master=read(dir+'master.json');
   assert.equal(before.count,2314);assert.equal(before.questions.length,2314);
@@ -109,6 +85,7 @@ export function validateNachleseMc(root='.'){
   }
   assert.deepEqual(after,expected,'Existing N source fields, order or provenance changed');
   assert.equal(counts.added+counts.manual+counts.reflections,counts.total);
-  return {status:'PASS',...counts,separate_nachlese_reflections:435,hidden_faithpath_aliases:95,questions_and_refs_unchanged:true,story_flow_unchanged:true,progress_schema_unchanged:true};
+  const previous={status:'PASS',...counts,separate_nachlese_reflections:435,hidden_faithpath_aliases:95,questions_and_refs_unchanged:true,story_flow_unchanged:true,progress_schema_unchanged:true};
+  return successor ? {...successor,previous_mc_release:previous} : previous;
 }
 if(process.argv[1]===new URL(import.meta.url).pathname)console.log(JSON.stringify(validateNachleseMc(process.argv[2]||'.')));

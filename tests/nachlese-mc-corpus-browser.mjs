@@ -52,7 +52,7 @@ try{
    assert.equal(await p.locator('.answer.correct').getAttribute('data-answer'),String(q.c));
    assert.equal(await p.locator('.answer.selected-wrong').count(),1);
    assert.equal(await p.locator('.answer:disabled').count(),4);
-   assert.equal(await p.locator('.explanation p').innerText(),q.answer);
+   assert.equal(await p.locator('.explanation p').innerText(),q.x||q.answer);
    assert(await p.locator('.explanation').evaluate(el=>document.activeElement===el));
    assert.equal(await p.evaluate(k=>localStorage.getItem(k),KEYS.main),before);
    await p.reload();await p.locator('.answer').first().waitFor();
@@ -71,7 +71,8 @@ try{
    }
    tested.push({id:q.id,width,correct:true,incorrect:true});
   });
-  await check(`Held sources stay unchanged and continue to reveal existing answers ${width}`,async()=>{
+  await check(`Completion or held-source fallback matches the published corpus ${width}`,async()=>{
+   if(!held.length){assert.equal(ready.length,2314);return;}
    for(const q of [held[0],held.at(-1)]){
     await route('question/'+q.id);assert.equal(await p.locator('.answer').count(),0);
     await p.locator('.source-answer summary').click();assert.equal(await p.locator('[data-n-answer]').innerText(),q.answer);

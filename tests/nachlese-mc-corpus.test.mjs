@@ -18,6 +18,7 @@ test('Corpus gate rejects published data drift and protected flow changes',()=>{
  try{
   // Isolated copies keep negative tests away from the real source files.
   fs.cpSync('reports/nachlese-mc',path.join(temp,'reports/nachlese-mc'),{recursive:true});
+  if(fs.existsSync('reports/nachlese-editorial-56'))fs.cpSync('reports/nachlese-editorial-56',path.join(temp,'reports/nachlese-editorial-56'),{recursive:true});
   const manifest=JSON.parse(fs.readFileSync('reports/nachlese-mc/manifest.json'));
   for(const file of [...Object.keys(manifest.protected_files),'data/nachlese-questions.json']){
    const dest=path.join(temp,file);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(file,dest);

@@ -1,0 +1,2051 @@
+{
+  "note": "Heuristic triage only; does not prove the option is false/true",
+  "records": [
+    {
+      "id": "N-0045",
+      "correct": "Einen Altar dem HERRN",
+      "suspect_wrong": "Einen Palast dem HERRN",
+      "similarity": 0.865,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0065",
+      "correct": "Also verachtete Esau seine Erstgeburt",
+      "suspect_wrong": "Also ehrte Esau seine Erstgeburt.",
+      "similarity": 0.885,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0103",
+      "correct": "Gott",
+      "suspect_wrong": "Den König mehr als Gott",
+      "similarity": 0.348,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-0103",
+      "correct": "Gott",
+      "suspect_wrong": "Die Soldaten mehr als Gott",
+      "similarity": 0.308,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-0113",
+      "correct": "Der Gott Abrahams, Isaaks und Jakobs",
+      "suspect_wrong": "Der Gott nur Abrahams, ohne Isaak und Jakob",
+      "similarity": 0.862,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0151",
+      "correct": "Am zehnten Tage des siebenten Monats",
+      "suspect_wrong": "Am ersten Tage des siebenten Monats",
+      "similarity": 0.918,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0151",
+      "correct": "Am zehnten Tage des siebenten Monats",
+      "suspect_wrong": "Am zehnten Tage des ersten Monats",
+      "similarity": 0.881,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0151",
+      "correct": "Am zehnten Tage des siebenten Monats",
+      "suspect_wrong": "Am fünfzehnten Tage des siebenten Monats",
+      "similarity": 0.939,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0155",
+      "correct": "Im Jahr einmal",
+      "suspect_wrong": "Im Jahr zweimal",
+      "similarity": 0.88,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0176",
+      "correct": "Ein einiger HERR",
+      "suspect_wrong": "Kein einziger HERR",
+      "similarity": 0.933,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0212",
+      "correct": "Ich aber und mein Haus wollen dem HERRN dienen",
+      "suspect_wrong": "Ich aber und mein Haus wollen Dagon dienen.",
+      "similarity": 0.877,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0236",
+      "correct": "Ruth, dass sie sein Weib ward",
+      "suspect_wrong": "Orpa, dass sie sein Weib ward",
+      "similarity": 0.87,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0251",
+      "correct": "Zu dem Bethlehemiter Isai",
+      "suspect_wrong": "Zu dem Bethlehemiter Boas",
+      "similarity": 0.864,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0280",
+      "correct": "In seiner Wohnung, im Himmel.",
+      "suspect_wrong": "In seiner Wohnung im Meer",
+      "similarity": 0.864,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0303",
+      "correct": "Sich siebenmal im Jordan waschen",
+      "suspect_wrong": "Sich siebenmal im Nil waschen",
+      "similarity": 0.868,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0327",
+      "correct": "Lasst uns die Mauern Jerusalems bauen",
+      "suspect_wrong": "Lasst uns die Mauern Jerusalems abbrechen!",
+      "similarity": 0.882,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0354",
+      "correct": "Nun hat dich mein Auge gesehen",
+      "suspect_wrong": "Nun hat dich mein Auge niemals gesehen.",
+      "similarity": 0.877,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0372",
+      "correct": "An dir allein habe ich gesündigt",
+      "suspect_wrong": "An Baal allein habe ich gesündigt.",
+      "similarity": 0.873,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0372",
+      "correct": "An dir allein habe ich gesündigt",
+      "suspect_wrong": "An Dagon allein habe ich gesündigt.",
+      "similarity": 0.893,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0393",
+      "correct": "Die Vergebung, dass man dich fürchte",
+      "suspect_wrong": "Die Vergebung, dass man dich verachte",
+      "similarity": 0.918,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0442",
+      "correct": "Gedanken des Friedens und nicht des Leidens",
+      "suspect_wrong": "Gedanken des Leidens und nicht des Friedens",
+      "similarity": 0.865,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0454",
+      "correct": "Der HERR ist mein Teil",
+      "suspect_wrong": "Der HERR ist nicht mein Teil",
+      "similarity": 0.878,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0484",
+      "correct": "Das Recht",
+      "suspect_wrong": "Das Unrecht",
+      "similarity": 0.889,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0497",
+      "correct": "Es sind noch vierzig Tage, so wird Ninive untergehen.",
+      "suspect_wrong": "Es sind noch sieben Tage, so wird Ninive untergehen.",
+      "similarity": 0.894,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0497",
+      "correct": "Es sind noch vierzig Tage, so wird Ninive untergehen.",
+      "suspect_wrong": "Es sind noch siebzig Tage, so wird Ninive untergehen.",
+      "similarity": 0.953,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0497",
+      "correct": "Es sind noch vierzig Tage, so wird Ninive untergehen.",
+      "suspect_wrong": "Es sind noch hundert Tage, so wird Ninive untergehen.",
+      "similarity": 0.884,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0559",
+      "correct": "Gleich als eine Taube.",
+      "suspect_wrong": "Gleich als ein Rabe.",
+      "similarity": 0.882,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0562",
+      "correct": "40 Tage und Nächte",
+      "suspect_wrong": "7 Tage und Nächte",
+      "similarity": 0.897,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0562",
+      "correct": "40 Tage und Nächte",
+      "suspect_wrong": "12 Tage und Nächte",
+      "similarity": 0.867,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0562",
+      "correct": "40 Tage und Nächte",
+      "suspect_wrong": "30 Tage und Nächte",
+      "similarity": 0.933,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0641",
+      "correct": "An Barmherzigkeit",
+      "suspect_wrong": "Am Opfer statt an Barmherzigkeit",
+      "similarity": 0.727,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-0673",
+      "correct": "Zu den verlorenen Schafen aus dem Hause Israel",
+      "suspect_wrong": "Zu den verlorenen Schafen aus dem Hause Edom",
+      "similarity": 0.895,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0673",
+      "correct": "Zu den verlorenen Schafen aus dem Hause Israel",
+      "suspect_wrong": "Zu den verlorenen Schafen aus dem Hause Ägypten",
+      "similarity": 0.861,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0673",
+      "correct": "Zu den verlorenen Schafen aus dem Hause Israel",
+      "suspect_wrong": "Zu den verlorenen Schafen aus dem Hause Babel",
+      "similarity": 0.935,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0693",
+      "correct": "Elia, der da soll zukünftig sein.",
+      "suspect_wrong": "Jeremia, der da soll zukünftig sein.",
+      "similarity": 0.909,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0693",
+      "correct": "Elia, der da soll zukünftig sein.",
+      "suspect_wrong": "Jesaja, der da soll zukünftig sein.",
+      "similarity": 0.889,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0716",
+      "correct": "Das Zeichen des Propheten Jona",
+      "suspect_wrong": "Das Zeichen des Propheten Elia",
+      "similarity": 0.885,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0716",
+      "correct": "Das Zeichen des Propheten Jona",
+      "suspect_wrong": "Das Zeichen des Propheten Elisa",
+      "similarity": 0.868,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0716",
+      "correct": "Das Zeichen des Propheten Jona",
+      "suspect_wrong": "Das Zeichen des Propheten Jesaja",
+      "similarity": 0.889,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0720",
+      "correct": "Sieben, die ärger sind denn er selbst",
+      "suspect_wrong": "Drei, die ärger sind denn er selbst",
+      "similarity": 0.862,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0720",
+      "correct": "Sieben, die ärger sind denn er selbst",
+      "suspect_wrong": "Fünf, die ärger sind denn er selbst",
+      "similarity": 0.862,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0721",
+      "correct": "Seine Mutter und seine Brüder",
+      "suspect_wrong": "Sein Vater und seine Brüder",
+      "similarity": 0.875,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0737",
+      "correct": "Unter drei Scheffel Mehl",
+      "suspect_wrong": "Unter einen Scheffel Mehl",
+      "similarity": 0.884,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0737",
+      "correct": "Unter drei Scheffel Mehl",
+      "suspect_wrong": "Unter zwei Scheffel Mehl",
+      "similarity": 0.905,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0758",
+      "correct": "Fünf Brote und zwei Fische",
+      "suspect_wrong": "Fünf Brote und drei Fische",
+      "similarity": 0.909,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0762",
+      "correct": "In der vierten Nachtwache",
+      "suspect_wrong": "In der ersten Nachtwache",
+      "similarity": 0.93,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0762",
+      "correct": "In der vierten Nachtwache",
+      "suspect_wrong": "In der zweiten Nachtwache",
+      "similarity": 0.864,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0762",
+      "correct": "In der vierten Nachtwache",
+      "suspect_wrong": "In der dritten Nachtwache",
+      "similarity": 0.864,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0768",
+      "correct": "Für ihre Tochter, die vom Teufel übel geplagt wurde.",
+      "suspect_wrong": "Für ihren Sohn, der vom Teufel übel geplagt wurde.",
+      "similarity": 0.878,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0768",
+      "correct": "Für ihre Tochter, die vom Teufel übel geplagt wurde.",
+      "suspect_wrong": "Für ihre Schwester, die vom Teufel übel geplagt wurde.",
+      "similarity": 0.93,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0768",
+      "correct": "Für ihre Tochter, die vom Teufel übel geplagt wurde.",
+      "suspect_wrong": "Für ihre Mutter, die vom Teufel übel geplagt wurde.",
+      "similarity": 0.94,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0804",
+      "correct": "Hundert",
+      "suspect_wrong": "Zweihundert",
+      "similarity": 0.778,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-0809",
+      "correct": "Zehntausend Pfund",
+      "suspect_wrong": "Tausend Pfund",
+      "similarity": 0.857,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-0829",
+      "correct": "Ein jeglicher seinen Groschen",
+      "suspect_wrong": "Ein jeglicher einen halben Groschen",
+      "similarity": 0.877,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0829",
+      "correct": "Ein jeglicher seinen Groschen",
+      "suspect_wrong": "Ein jeglicher zehn Groschen",
+      "similarity": 0.88,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0831",
+      "correct": "Siehst du darum so scheel, daß ich so gütig bin?",
+      "suspect_wrong": "Siehst du darum so scheel, daß ich so geizig bin?",
+      "similarity": 0.933,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0839",
+      "correct": "Ach HERR, du Sohn Davids, erbarme dich unser!",
+      "suspect_wrong": "Ach HERR, du Sohn Aarons, erbarme dich unser!",
+      "similarity": 0.886,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0839",
+      "correct": "Ach HERR, du Sohn Davids, erbarme dich unser!",
+      "suspect_wrong": "Ach HERR, du Sohn des Zacharias, erbarme dich unser!",
+      "similarity": 0.868,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0841",
+      "correct": "HERR, dass unsere Augen aufgetan werden",
+      "suspect_wrong": "HERR, dass unsere Ohren aufgetan werden",
+      "similarity": 0.909,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0853",
+      "correct": "Aus dem Munde der Unmündigen und Säuglinge hast du Lob zugerichtet.",
+      "suspect_wrong": "Aus dem Munde der Unmündigen und Säuglinge hast du Reichtum statt Lob zugerichtet.",
+      "similarity": 0.896,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0865",
+      "correct": "Die Zöllner und Huren",
+      "suspect_wrong": "Die Hohenpriester und Ältesten eher als die Zöllner und Huren",
+      "similarity": 0.514,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-0877",
+      "correct": "Viele sind berufen, aber wenige sind auserwählt.",
+      "suspect_wrong": "Viele sind berufen, und alle Berufenen sind auserwählt.",
+      "similarity": 0.86,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0937",
+      "correct": "Dem, der zehn Zentner hat",
+      "suspect_wrong": "Dem, der zwei Zentner hat",
+      "similarity": 0.9,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0951",
+      "correct": "Einer unter euch wird mich verraten",
+      "suspect_wrong": "Keiner unter euch wird mich verraten.",
+      "similarity": 0.984,
+      "flags": [
+        "one_option_contains_another",
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0953",
+      "correct": "Nehmet, esset; das ist mein Leib",
+      "suspect_wrong": "Nehmet, esset; das ist mein Blut.",
+      "similarity": 0.88,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0956",
+      "correct": "In dieser Nacht, ehe der Hahn kräht, wirst du mich dreimal verleugnen.",
+      "suspect_wrong": "In dieser Nacht, nachdem der Hahn kräht, wirst du mich einmal verleugnen.",
+      "similarity": 0.904,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0956",
+      "correct": "In dieser Nacht, ehe der Hahn kräht, wirst du mich dreimal verleugnen.",
+      "suspect_wrong": "In dieser Nacht, ehe der Hahn kräht, wirst du mich siebenmal verleugnen.",
+      "similarity": 0.93,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0964",
+      "correct": "Ihm wurde ein Ohr abgehauen",
+      "suspect_wrong": "Ihm wurde eine Hand abgehauen.",
+      "similarity": 0.875,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0964",
+      "correct": "Ihm wurde ein Ohr abgehauen",
+      "suspect_wrong": "Ihm wurde ein Fuß abgehauen.",
+      "similarity": 0.87,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0970",
+      "correct": "Er hat gesagt: Ich kann den Tempel Gottes abbrechen und in drei Tagen ihn bauen.",
+      "suspect_wrong": "Er hat gesagt: Ich kann den Tempel Gottes abbrechen und in sieben Tagen bauen.",
+      "similarity": 0.913,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-0977",
+      "correct": "Der Hahn krähte",
+      "suspect_wrong": "Der Hahn krähte erst sieben Tage später.",
+      "similarity": 0.565,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1006",
+      "correct": "Nach Galiläa; da werdet ihr ihn sehen",
+      "suspect_wrong": "Nach Judäa; da werdet ihr ihn sehen",
+      "similarity": 0.862,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1006",
+      "correct": "Nach Galiläa; da werdet ihr ihn sehen",
+      "suspect_wrong": "Nach Samaria; da werdet ihr ihn sehen",
+      "similarity": 0.867,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1016",
+      "correct": "Kamelhaare und ein lederner Gürtel; Heuschrecken und wilder Honig.",
+      "suspect_wrong": "Purpur und ein lederner Gürtel; Heuschrecken und wilder Honig.",
+      "similarity": 0.87,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1028",
+      "correct": "Am Fieber.",
+      "suspect_wrong": "Am Aussatz statt am Fieber",
+      "similarity": 0.533,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1028",
+      "correct": "Am Fieber.",
+      "suspect_wrong": "An Blindheit statt am Fieber",
+      "similarity": 0.5,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1028",
+      "correct": "Am Fieber.",
+      "suspect_wrong": "An einer verdorrten Hand statt am Fieber",
+      "similarity": 0.381,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1048",
+      "correct": "Über den Sabbat.",
+      "suspect_wrong": "Nur über die Werktage, nicht über den Sabbat",
+      "similarity": 0.531,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1048",
+      "correct": "Über den Sabbat.",
+      "suspect_wrong": "Nur über das Sabbatjahr, nicht über den Sabbat",
+      "similarity": 0.51,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1048",
+      "correct": "Über den Sabbat.",
+      "suspect_wrong": "Nur über den Neumond, nicht über den Sabbat",
+      "similarity": 0.542,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1058",
+      "correct": "Bnehargem, das ist gesagt: Donnerskinder",
+      "suspect_wrong": "Bnehargem, das ist gesagt: Friedenskinder",
+      "similarity": 0.87,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1062",
+      "correct": "Zuvor den Starken binden",
+      "suspect_wrong": "Zuvor den Starken losbinden",
+      "similarity": 0.933,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1076",
+      "correct": "Hinten auf dem Schiff auf einem Kissen.",
+      "suspect_wrong": "Vorn auf dem Schiff auf einem Kissen",
+      "similarity": 0.871,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1076",
+      "correct": "Hinten auf dem Schiff auf einem Kissen.",
+      "suspect_wrong": "Hinten auf dem Schiff auf einer Bank ohne Kissen",
+      "similarity": 0.861,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1079",
+      "correct": "Wer ist der? denn Wind und Meer sind ihm gehorsam!",
+      "suspect_wrong": "Wer ist der? denn Wind und Meer sind ihm ungehorsam!",
+      "similarity": 0.975,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1089",
+      "correct": "Zwölf Jahre; sie sollten ihr zu essen geben",
+      "suspect_wrong": "Zwölf Jahre; sie sollten ihr nichts zu essen geben",
+      "similarity": 0.921,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1099",
+      "correct": "Fünftausend; zwölf Körbe voll Brocken.",
+      "suspect_wrong": "Viertausend; zwölf Körbe voll Brocken",
+      "similarity": 0.875,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1101",
+      "correct": "Um die vierte Wache der Nacht",
+      "suspect_wrong": "Um die erste Wache der Nacht",
+      "similarity": 0.936,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1101",
+      "correct": "Um die vierte Wache der Nacht",
+      "suspect_wrong": "Um die zweite Wache der Nacht",
+      "similarity": 0.875,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1101",
+      "correct": "Um die vierte Wache der Nacht",
+      "suspect_wrong": "Um die dritte Wache der Nacht",
+      "similarity": 0.875,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1102",
+      "correct": "Er wollte an ihnen vorübergehen; sie hielten ihn für ein Gespenst.",
+      "suspect_wrong": "Er wollte an ihnen vorübergehen; sie hielten ihn für einen Fischer.",
+      "similarity": 0.899,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1102",
+      "correct": "Er wollte an ihnen vorübergehen; sie hielten ihn für ein Gespenst.",
+      "suspect_wrong": "Er wollte an ihnen vorübergehen; sie hielten ihn für einen Engel.",
+      "similarity": 0.897,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1111",
+      "correct": "Lass zuvor die Kinder satt werden",
+      "suspect_wrong": "Lass zuvor die Hunde satt werden",
+      "similarity": 0.909,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1138",
+      "correct": "Dies ist mein lieber Sohn; den sollt ihr hören!",
+      "suspect_wrong": "Dies ist mein lieber Sohn; den sollt ihr nicht hören!",
+      "similarity": 0.937,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1213",
+      "correct": "Ich werde den Hirten schlagen, und die Schafe werden sich zerstreuen.",
+      "suspect_wrong": "Ich werde den Hirten schlagen, und die Schafe werden sich versammeln.",
+      "similarity": 0.912,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1213",
+      "correct": "Ich werde den Hirten schlagen, und die Schafe werden sich zerstreuen.",
+      "suspect_wrong": "Ich werde den Hirten bewahren, und die Schafe werden sich zerstreuen.",
+      "similarity": 0.912,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1240",
+      "correct": "Maria Magdalena, von der er sieben Geister ausgetrieben hatte.",
+      "suspect_wrong": "Maria Magdalena, von der er drei Geister ausgetrieben hatte.",
+      "similarity": 0.922,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1240",
+      "correct": "Maria Magdalena, von der er sieben Geister ausgetrieben hatte.",
+      "suspect_wrong": "Maria Magdalena, von der er zwölf Geister ausgetrieben hatte.",
+      "similarity": 0.893,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1240",
+      "correct": "Maria Magdalena, von der er sieben Geister ausgetrieben hatte.",
+      "suspect_wrong": "Maria Magdalena, von der er einen Geist ausgetrieben hatte.",
+      "similarity": 0.931,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1251",
+      "correct": "Im sechsten Monat; nach Nazareth in Galiläa.",
+      "suspect_wrong": "Im dritten Monat; nach Nazareth in Galiläa.",
+      "similarity": 0.873,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1257",
+      "correct": "Siehe, ich bin des HERRN Magd; mir geschehe, wie du gesagt hast.",
+      "suspect_wrong": "Siehe, ich bin des HERRN Magd; es geschehe nicht, wie du gesagt hast.",
+      "similarity": 0.902,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1260",
+      "correct": "Die Mutter meines HERRN",
+      "suspect_wrong": "Die Tochter meines HERRN",
+      "similarity": 0.878,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1265",
+      "correct": "Mitnichten, sondern er soll Johannes heißen.",
+      "suspect_wrong": "Mitnichten, sondern er soll Joseph heißen.",
+      "similarity": 0.889,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1265",
+      "correct": "Mitnichten, sondern er soll Johannes heißen.",
+      "suspect_wrong": "Mitnichten, sondern er soll Samuel heißen.",
+      "similarity": 0.861,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1277",
+      "correct": "Ein Paar Turteltauben oder zwei junge Tauben",
+      "suspect_wrong": "Ein Paar Turteltauben oder zwei junge Lämmer",
+      "similarity": 0.868,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1280",
+      "correct": "Es wird ein Schwert durch deine Seele dringen",
+      "suspect_wrong": "Es wird ein Pfeil durch deine Seele dringen.",
+      "similarity": 0.865,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1280",
+      "correct": "Es wird ein Schwert durch deine Seele dringen",
+      "suspect_wrong": "Es wird ein Speer durch deine Seele dringen.",
+      "similarity": 0.919,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1280",
+      "correct": "Es wird ein Schwert durch deine Seele dringen",
+      "suspect_wrong": "Es wird ein Dorn durch deine Seele dringen.",
+      "similarity": 0.877,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1281",
+      "correct": "Bei vierundachtzig Jahren",
+      "suspect_wrong": "Bei vierundsechzig Jahren",
+      "similarity": 0.913,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1289",
+      "correct": "Das Buch des Propheten Jesaja",
+      "suspect_wrong": "Das Buch des Propheten Jeremia",
+      "similarity": 0.863,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1297",
+      "correct": "HERR, gehe von mir hinaus! ich bin ein sündiger Mensch.",
+      "suspect_wrong": "HERR, gehe von mir hinaus! Ich bin ein gerechter Mensch.",
+      "similarity": 0.874,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1297",
+      "correct": "HERR, gehe von mir hinaus! ich bin ein sündiger Mensch.",
+      "suspect_wrong": "HERR, gehe von mir hinaus! Du bist ein sündiger Mensch.",
+      "similarity": 0.907,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1310",
+      "correct": "Denn sie hat viel Liebe erzeigt.",
+      "suspect_wrong": "Denn sie hat keine Liebe erzeigt.",
+      "similarity": 0.906,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1319",
+      "correct": "Mit der Frage: Wer ist denn mein Nächster?",
+      "suspect_wrong": "Mit der Frage: Wer ist denn mein Herr?",
+      "similarity": 0.903,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1319",
+      "correct": "Mit der Frage: Wer ist denn mein Nächster?",
+      "suspect_wrong": "Mit der Frage: Wer ist denn mein Vater?",
+      "similarity": 0.889,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1326",
+      "correct": "Daß ihre Schwester sie allein dienen ließ.",
+      "suspect_wrong": "Dass ihre Schwester sie allein beten ließ.",
+      "similarity": 0.886,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1348",
+      "correct": "Hundert / neunundneunzig in der Wüste",
+      "suspect_wrong": "Hundert / neunzig in der Wüste",
+      "similarity": 0.873,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1349",
+      "correct": "Zehn; einen davon verliert sie.",
+      "suspect_wrong": "Zehn; zwei davon verliert sie.",
+      "similarity": 0.898,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1349",
+      "correct": "Zehn; einen davon verliert sie.",
+      "suspect_wrong": "Zwölf; einen davon verliert sie.",
+      "similarity": 0.863,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1349",
+      "correct": "Zehn; einen davon verliert sie.",
+      "suspect_wrong": "Fünf; einen davon verliert sie.",
+      "similarity": 0.88,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1354",
+      "correct": "Die Säue zu hüten; er begehrte Treber",
+      "suspect_wrong": "Die Schafe zu hüten; er begehrte Treber.",
+      "similarity": 0.903,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1354",
+      "correct": "Die Säue zu hüten; er begehrte Treber",
+      "suspect_wrong": "Die Säue zu hüten; er begehrte Wein.",
+      "similarity": 0.862,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1365",
+      "correct": "Zehn, die standen von ferne",
+      "suspect_wrong": "Sieben, die standen von ferne",
+      "similarity": 0.87,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1368",
+      "correct": "Sind ihrer nicht zehn rein geworden? Wo sind aber die neun?",
+      "suspect_wrong": "Sind ihrer nicht zwölf rein geworden? Wo sind aber die elf?",
+      "similarity": 0.872,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1368",
+      "correct": "Sind ihrer nicht zehn rein geworden? Wo sind aber die neun?",
+      "suspect_wrong": "Sind ihrer nicht zehn rein geworden? Wo sind aber die fünf?",
+      "similarity": 0.936,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1368",
+      "correct": "Sind ihrer nicht zehn rein geworden? Wo sind aber die neun?",
+      "suspect_wrong": "Sind ihrer nicht sieben rein geworden? Wo sind aber die sechs?",
+      "similarity": 0.866,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1389",
+      "correct": "Kein Stein",
+      "suspect_wrong": "Kein Stein außer den Grundsteinen.",
+      "similarity": 0.474,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1389",
+      "correct": "Kein Stein",
+      "suspect_wrong": "Kein Stein außer den Ecksteinen.",
+      "similarity": 0.5,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1389",
+      "correct": "Kein Stein",
+      "suspect_wrong": "Kein Stein außer den Steinen der Außenmauer.",
+      "similarity": 0.391,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1395",
+      "correct": "HERR, gedenke an mich, wenn du in dein Reich kommst!",
+      "suspect_wrong": "HERR, gedenke an mich, wenn du aus deinem Reich kommst!",
+      "similarity": 0.916,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1397",
+      "correct": "Am ersten Tage der Woche sehr früh",
+      "suspect_wrong": "Am letzten Tage der Woche sehr früh",
+      "similarity": 0.912,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1399",
+      "correct": "Was suchet ihr den Lebendigen bei den Toten?",
+      "suspect_wrong": "Was suchet ihr den Lebendigen bei den Kranken?",
+      "similarity": 0.892,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1411",
+      "correct": "Ein Stück von gebratenem Fisch und Honigseim",
+      "suspect_wrong": "Ein Stück von rohem Fisch und Honigseim",
+      "similarity": 0.873,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1411",
+      "correct": "Ein Stück von gebratenem Fisch und Honigseim",
+      "suspect_wrong": "Ein Stück von gebratenem Lamm und Honigseim",
+      "similarity": 0.88,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1431",
+      "correct": "Was kann von Nazareth Gutes kommen?",
+      "suspect_wrong": "Was kann von Nazareth Böses kommen?",
+      "similarity": 0.897,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1437",
+      "correct": "Du hast den guten Wein bisher behalten",
+      "suspect_wrong": "Du hast den geringen Wein bisher behalten.",
+      "similarity": 0.896,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1438",
+      "correct": "Das ist das erste Zeichen, das Jesus tat",
+      "suspect_wrong": "Das ist das zweite Zeichen, das Jesus tat.",
+      "similarity": 0.923,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1438",
+      "correct": "Das ist das erste Zeichen, das Jesus tat",
+      "suspect_wrong": "Das ist das siebente Zeichen, das Jesus tat.",
+      "similarity": 0.896,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1438",
+      "correct": "Das ist das erste Zeichen, das Jesus tat",
+      "suspect_wrong": "Das ist das letzte Zeichen, das Jesus tat.",
+      "similarity": 0.923,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1441",
+      "correct": "Brechet diesen Tempel, und am dritten Tage will ich ihn aufrichten.",
+      "suspect_wrong": "Brechet diesen Tempel, und am siebenten Tage will ich ihn aufrichten.",
+      "similarity": 0.929,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1442",
+      "correct": "In 46 Jahren",
+      "suspect_wrong": "In 40 Jahren",
+      "similarity": 0.9,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1442",
+      "correct": "In 46 Jahren",
+      "suspect_wrong": "In 24 Jahren",
+      "similarity": 0.9,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1457",
+      "correct": "Auf Jakobs Brunnen um die sechste Stunde",
+      "suspect_wrong": "Auf Jakobs Brunnen um die dritte Stunde",
+      "similarity": 0.866,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1457",
+      "correct": "Auf Jakobs Brunnen um die sechste Stunde",
+      "suspect_wrong": "Auf Jakobs Brunnen um die neunte Stunde",
+      "similarity": 0.896,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1457",
+      "correct": "Auf Jakobs Brunnen um die sechste Stunde",
+      "suspect_wrong": "Auf Abrahams Brunnen um die sechste Stunde",
+      "similarity": 0.886,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1467",
+      "correct": "Gestern um die siebente Stunde",
+      "suspect_wrong": "Gestern um die sechste Stunde",
+      "similarity": 0.863,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1467",
+      "correct": "Gestern um die siebente Stunde",
+      "suspect_wrong": "Gestern um die neunte Stunde",
+      "similarity": 0.88,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1478",
+      "correct": "Mose, auf welchen ihr hofft",
+      "suspect_wrong": "Elia, auf welchen ihr hofft",
+      "similarity": 0.864,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1481",
+      "correct": "Fünf Gerstenbrote und zwei Fische",
+      "suspect_wrong": "Sieben Gerstenbrote und zwei Fische",
+      "similarity": 0.867,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1481",
+      "correct": "Fünf Gerstenbrote und zwei Fische",
+      "suspect_wrong": "Fünf Gerstenbrote und drei Fische",
+      "similarity": 0.931,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1525",
+      "correct": "Abraham ward froh, daß er Jesu Tag sehen sollte; und er sah ihn und freute sich.",
+      "suspect_wrong": "Abraham ward froh, dass er den Tag des Mose sehen sollte; und er sah ihn und freute sich.",
+      "similarity": 0.885,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1525",
+      "correct": "Abraham ward froh, daß er Jesu Tag sehen sollte; und er sah ihn und freute sich.",
+      "suspect_wrong": "Abraham ward froh, dass er den Tag des David sehen sollte; und er sah ihn und freute sich.",
+      "similarity": 0.879,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1541",
+      "correct": "Ich und der Vater sind eins",
+      "suspect_wrong": "Ich und der Vater sind Gegner",
+      "similarity": 0.87,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1542",
+      "correct": "Nicht um eines guten Werkes willen, sondern um der Gotteslästerung willen, weil er sich als Mensch selbst Gott gleich mache.",
+      "suspect_wrong": "Um eines guten Werkes willen.",
+      "similarity": 0.381,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1557",
+      "correct": "Dreihundert Groschen",
+      "suspect_wrong": "Hundert Groschen",
+      "similarity": 0.882,
+      "flags": [
+        "one_option_contains_another",
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1557",
+      "correct": "Dreihundert Groschen",
+      "suspect_wrong": "Zweihundert Groschen",
+      "similarity": 0.895,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1589",
+      "correct": "HERR, zeige uns den Vater, so genügt uns.",
+      "suspect_wrong": "Herr, zeige uns den Kaiser, so genügt uns",
+      "similarity": 0.921,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1610",
+      "correct": "Dein Wort ist die Wahrheit",
+      "suspect_wrong": "Dein Wort ist keine Wahrheit",
+      "similarity": 0.913,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1620",
+      "correct": "Mein Reich ist nicht von dieser Welt",
+      "suspect_wrong": "Mein Reich ist von dieser Welt",
+      "similarity": 0.909,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1638",
+      "correct": "Ihr sollt ihm kein Bein zerbrechen",
+      "suspect_wrong": "Ihr sollt ihm beide Beine zerbrechen",
+      "similarity": 0.9,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1638",
+      "correct": "Ihr sollt ihm kein Bein zerbrechen",
+      "suspect_wrong": "Ihr sollt ihm ein Bein zerbrechen",
+      "similarity": 0.982,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1649",
+      "correct": "Zur Rechten des Schiffs; hundertdreiundfünfzig große Fische.",
+      "suspect_wrong": "Zur Linken des Schiffs; hundertdreiundfünfzig große Fische",
+      "similarity": 0.913,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1695",
+      "correct": "Einen Acker",
+      "suspect_wrong": "Keinen Acker, sondern ausschließlich Vieh",
+      "similarity": 0.435,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1715",
+      "correct": "HERR Jesu, nimm meinen Geist auf!",
+      "suspect_wrong": "Herr Mose, nimm meinen Geist auf!",
+      "similarity": 0.885,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1726",
+      "correct": "Ich glaube, daß Jesus Christus Gottes Sohn ist.",
+      "suspect_wrong": "Ich glaube, dass Jesus Christus nicht Gottes Sohn ist",
+      "similarity": 0.902,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1730",
+      "correct": "Ich bin Jesus, den du verfolgst",
+      "suspect_wrong": "Ich bin Johannes, den du verfolgst",
+      "similarity": 0.868,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1788",
+      "correct": "Komm herüber nach Mazedonien und hilf uns!",
+      "suspect_wrong": "Komm herüber nach Italien und hilf uns!",
+      "similarity": 0.866,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1804",
+      "correct": "Ein Jahr und sechs Monate",
+      "suspect_wrong": "Sechs Monate",
+      "similarity": 0.688,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1815",
+      "correct": "Fünfzigtausend Groschen",
+      "suspect_wrong": "Fünftausend Groschen",
+      "similarity": 0.927,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1821",
+      "correct": "Am ersten Tage der Woche",
+      "suspect_wrong": "Am dritten Tage der Woche",
+      "similarity": 0.878,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1821",
+      "correct": "Am ersten Tage der Woche",
+      "suspect_wrong": "Am sechsten Tage der Woche",
+      "similarity": 0.905,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1850",
+      "correct": "Zweihundert Kriegsknechte, siebzig Reiter und zweihundert Schützen.",
+      "suspect_wrong": "Hundert Kriegsknechte, siebzig Reiter und hundert Schützen",
+      "similarity": 0.927,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1850",
+      "correct": "Zweihundert Kriegsknechte, siebzig Reiter und zweihundert Schützen.",
+      "suspect_wrong": "Zweihundert Kriegsknechte, zwanzig Reiter und zweihundert Schützen",
+      "similarity": 0.932,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1850",
+      "correct": "Zweihundert Kriegsknechte, siebzig Reiter und zweihundert Schützen.",
+      "suspect_wrong": "Zweihundert Kriegsknechte, siebzig Reiter und fünfzig Schützen",
+      "similarity": 0.877,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1871",
+      "correct": "Zweihundert und sechundsiebzig Seelen",
+      "suspect_wrong": "Hundertsechsundsiebzig Seelen",
+      "similarity": 0.871,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1871",
+      "correct": "Zweihundert und sechundsiebzig Seelen",
+      "suspect_wrong": "Dreihundertsechsundsiebzig Seelen",
+      "similarity": 0.879,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1872",
+      "correct": "Er wollte Paulus erhalten",
+      "suspect_wrong": "Er wollte Paulus erhalten, ließ aber die Tötung aller Gefangenen ausdrücklich zu",
+      "similarity": 0.489,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1886",
+      "correct": "Zur Buße",
+      "suspect_wrong": "Zur Verstockung statt zur Buße",
+      "similarity": 0.424,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1886",
+      "correct": "Zur Buße",
+      "suspect_wrong": "Zur Selbstgerechtigkeit statt zur Buße",
+      "similarity": 0.341,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1886",
+      "correct": "Zur Buße",
+      "suspect_wrong": "Zur Verzweiflung statt zur Buße",
+      "similarity": 0.412,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1890",
+      "correct": "Erkenntnis der Sünde",
+      "suspect_wrong": "Völlige Freiheit von jeder Erkenntnis der Sünde",
+      "similarity": 0.61,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1898",
+      "correct": "Zorn",
+      "suspect_wrong": "Frieden ohne Zorn",
+      "similarity": 0.421,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1910",
+      "correct": "Das Gesetz ist geistlich; ich aber bin fleischlich, unter die Sünde verkauft.",
+      "suspect_wrong": "Das Gesetz ist geistlich und ich bin fleischlich, aber nicht unter die Sünde verkauft",
+      "similarity": 0.881,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1917",
+      "correct": "Wer Christi Geist nicht hat",
+      "suspect_wrong": "Wer Christi Geist hat",
+      "similarity": 0.878,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1925",
+      "correct": "Christus ist des Gesetzes Ende",
+      "suspect_wrong": "Christus ist des Gesetzes Gefangener",
+      "similarity": 0.862,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-1946",
+      "correct": "Seinem HERRN",
+      "suspect_wrong": "Dem fremden Menschen, der ihn richtet, statt seinem Herrn.",
+      "similarity": 0.379,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1946",
+      "correct": "Seinem HERRN",
+      "suspect_wrong": "Sich selbst allein, unabhängig von seinem Herrn.",
+      "similarity": 0.431,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1954",
+      "correct": "Des Herrn",
+      "suspect_wrong": "Seiner selbst anstelle des Herrn.",
+      "similarity": 0.444,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1954",
+      "correct": "Des Herrn",
+      "suspect_wrong": "Seines Reichtums anstelle des Herrn.",
+      "similarity": 0.41,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1954",
+      "correct": "Des Herrn",
+      "suspect_wrong": "Seiner Abstammung anstelle des Herrn.",
+      "similarity": 0.4,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1974",
+      "correct": "Die Liebe",
+      "suspect_wrong": "Glaube und Hoffnung gemeinsam, beide größer als die Liebe.",
+      "similarity": 0.286,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-1997",
+      "correct": "Einen fröhlichen Geber",
+      "suspect_wrong": "Gott hat einen fröhlichen Geber ausdrücklich nicht lieb.",
+      "similarity": 0.588,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2003",
+      "correct": "Seiner Schwachheit",
+      "suspect_wrong": "Seiner eigenen Stärke statt seiner Schwachheit.",
+      "similarity": 0.586,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2003",
+      "correct": "Seiner Schwachheit",
+      "suspect_wrong": "Seiner Schwachheit, damit die Kraft Christi gerade nicht bei ihm wohne.",
+      "similarity": 0.447,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2006",
+      "correct": "Zu einem anderen Evangelium",
+      "suspect_wrong": "Zu einem anderen Evangelium, ohne sich vom berufenden Gott abzuwenden.",
+      "similarity": 0.578,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2022",
+      "correct": "Im Geist",
+      "suspect_wrong": "Nach den Lüsten des Fleisches statt im Geist.",
+      "similarity": 0.318,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2022",
+      "correct": "Im Geist",
+      "suspect_wrong": "Im Geist wandeln, damit sie die Lüste des Fleisches vollbringen.",
+      "similarity": 0.233,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2024",
+      "correct": "Sie kreuzigen ihr Fleisch samt den Lüsten und Begierden.",
+      "suspect_wrong": "Sie pflegen ihr Fleisch samt Lüsten und Begierden.",
+      "similarity": 0.876,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2028",
+      "correct": "Gutes tun",
+      "suspect_wrong": "Wir werden trotz beharrlichen Gutestuns niemals ernten.",
+      "similarity": 0.286,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2028",
+      "correct": "Gutes tun",
+      "suspect_wrong": "Wir sollen sofort ernten, bevor wir überhaupt Gutes tun.",
+      "similarity": 0.296,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2050",
+      "correct": "Den Harnisch Gottes",
+      "suspect_wrong": "Ohne jeden Harnisch Gottes gegen den Teufel bestehen wollen.",
+      "similarity": 0.5,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2056",
+      "correct": "Christus ist mein Leben, und Sterben ist mein Gewinn.",
+      "suspect_wrong": "Christus ist mein Leben, aber Sterben ist mir kein Gewinn.",
+      "similarity": 0.889,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2078",
+      "correct": "Durch das Blut an seinem Kreuz",
+      "suspect_wrong": "Durch fremdes Blut statt durch das Blut an seinem Kreuz.",
+      "similarity": 0.704,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2112",
+      "correct": "Geiz",
+      "suspect_wrong": "Die Genügsamkeit statt des Geizes.",
+      "similarity": 0.242,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2112",
+      "correct": "Geiz",
+      "suspect_wrong": "Die Freigebigkeit statt des Geizes.",
+      "similarity": 0.235,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2112",
+      "correct": "Geiz",
+      "suspect_wrong": "Die Gottseligkeit statt des Geizes.",
+      "similarity": 0.235,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2123",
+      "correct": "Die Krone der Gerechtigkeit",
+      "suspect_wrong": "Eine Krone der Ungerechtigkeit.",
+      "similarity": 0.902,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2136",
+      "correct": "Durch den Sohn",
+      "suspect_wrong": "Durch Mose statt durch den Sohn.",
+      "similarity": 0.632,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2136",
+      "correct": "Durch den Sohn",
+      "suspect_wrong": "Durch einen Engel statt durch den Sohn.",
+      "similarity": 0.545,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2136",
+      "correct": "Durch den Sohn",
+      "suspect_wrong": "Durch einen der Väter statt durch den Sohn.",
+      "similarity": 0.511,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2150",
+      "correct": "Zum Eingang in das Heilige durch das Blut Jesu",
+      "suspect_wrong": "Zum Eingang in das Heilige ohne das Blut Jesu.",
+      "similarity": 0.907,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2180",
+      "correct": "Wer leidet, bete; wer guten Mutes ist, singe Psalmen.",
+      "suspect_wrong": "Wer leidet, soll nicht beten; wer guten Mutes ist, singe Psalmen.",
+      "similarity": 0.891,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2195",
+      "correct": "Den Demütigen",
+      "suspect_wrong": "Den Hoffärtigen statt den Demütigen.",
+      "similarity": 0.558,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2195",
+      "correct": "Den Demütigen",
+      "suspect_wrong": "Den Demütigen gibt er Gnade, den Hoffärtigen aber genau dieselbe Anerkennung ohne Widerstand.",
+      "similarity": 0.264,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2201",
+      "correct": "Dies ist mein lieber Sohn, an dem ich Wohlgefallen habe.",
+      "suspect_wrong": "Dies ist mein lieber Sohn, an dem ich kein Wohlgefallen habe.",
+      "similarity": 0.957,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2207",
+      "correct": "Wie ein Dieb in der Nacht",
+      "suspect_wrong": "Wie ein Dieb in der Nacht, aber ohne jede Veränderung von Himmel und Erde.",
+      "similarity": 0.506,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2208",
+      "correct": "Mit heiligem Wandel und gottseligem Wesen",
+      "suspect_wrong": "Mit unheiligem Wandel und gottlosem Wesen.",
+      "similarity": 0.889,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2242",
+      "correct": "An die sieben Gemeinden in Asien",
+      "suspect_wrong": "An die sieben Gemeinden in Galatien.",
+      "similarity": 0.912,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2265",
+      "correct": "Lau.",
+      "suspect_wrong": "Ständig abwechselnd kalt und warm, aber niemals lau.",
+      "similarity": 0.13,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2270",
+      "correct": "Eine Tür",
+      "suspect_wrong": "Eine Tür, die fest verschlossen war.",
+      "similarity": 0.389,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2277",
+      "correct": "Der Löwe aus dem Geschlecht Juda, die Wurzel Davids.",
+      "suspect_wrong": "Der Löwe aus dem Geschlecht Juda, aber ohne die Wurzel Davids.",
+      "similarity": 0.913,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2284",
+      "correct": "Alle Tränen",
+      "suspect_wrong": "Alle Tränen außer denen aus ihrer Trübsal.",
+      "similarity": 0.444,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2285",
+      "correct": "Mit der Sonne; der Mond unter ihren Füßen",
+      "suspect_wrong": "Mit der Sonne; die Erde unter ihren Füßen.",
+      "similarity": 0.909,
+      "flags": [
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2290",
+      "correct": "Das Reich",
+      "suspect_wrong": "Er hat das Reich verloren.",
+      "similarity": 0.552,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2290",
+      "correct": "Das Reich",
+      "suspect_wrong": "Er hat das Reich einem anderen Gott überlassen.",
+      "similarity": 0.34,
+      "flags": [
+        "one_option_contains_another"
+      ]
+    },
+    {
+      "id": "N-2293",
+      "correct": "Treu und Wahrhaftig",
+      "suspect_wrong": "Untreu und Wahrhaftig.",
+      "similarity": 0.944,
+      "flags": [
+        "one_option_contains_another",
+        "high_string_similarity"
+      ]
+    },
+    {
+      "id": "N-2293",
+      "correct": "Treu und Wahrhaftig",
+      "suspect_wrong": "Untreu und Unwahrhaftig.",
+      "similarity": 0.895,
+      "flags": [
+        "high_string_similarity"
+      ]
+    }
+  ]
+}
