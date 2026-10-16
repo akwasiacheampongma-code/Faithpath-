@@ -33,3 +33,7 @@ UIUX2-Originalquelle `f500bce97e0eb4cb72908b29ca060b86e631d507` aus Git archivie
 `tests/phase3-update.mjs` erwartet den exakt gehashten UIUX2-Build unter `qa-output/uiux-phase3/baseline` und UIUX3 unter `.../build-a`; alternativ `FAITHPATH_PREVIOUS_ROOT` und `FAITHPATH_CANDIDATE_ROOT` setzen. Test erzeugt selbst eine isolierte Origin auf 4396, installiert UIUX2-Service-Worker, kopiert UIUX3 (Worker zuletzt atomar), lädt das Dokument neu und aktiviert erst über das echte Updateangebot. Persönliche V5-Daten inklusive bereits ausgeführter V3-Migration,260 Quizschlüssel,Storyfortschritt,alteEreignisse,Markierungen und Entwurf werden verglichen. Danach Offline-Kaltreload, beide Bibeln, neue Ansichten/CSS, Kapitelquiz und Nachlese prüfen. Es ist ein echter Chromium-Service-Worker-Wechsel auf gleicher Origin, keine Versionssimulation und kein physischer iPhone-Test.
 
 Die physische Gate-Anleitung steht unter `docs/UIUX_PHASE3_IPHONE_GATE_2026-10-16.md`. Es wurde keine Test-/Produktionsseite veröffentlicht.
+
+## Lieferdateien
+
+Der App-Build ist ein eigenes ZIP. Das kompakte Prüf-ZIP enthält sämtliche finalen Ergebnisdateien, Rohlogs, Bericht, Quellenpatch und die Vergleichsdatei mit126eingebetteten Vorher-/Nachher-Paaren. Alle336Original-PNGs inklusive Langseiten liegen im separaten `FaithPath_UIUX3_Originalscreenshots_2026-10-16.zip`, mit internem SHA256-Manifest. Äußere Prüfsummen aller Lieferdateien stehen in `FaithPath_UIUX3_Pruefsummen.txt`; der Lieferbeleg bindet beide Archive an denselben geprüften Build.

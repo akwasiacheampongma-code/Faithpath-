@@ -110,7 +110,7 @@ Verglichen wurden persönliche Speicherbytes, bereits ausgeführte V3→V5-Migra
 
 Prüfergebnis: Texte bleiben lesbar und umbrechen, Originalmotive werden nicht beschnitten, vorhandene Zweige behalten ausreichende Zielflächen, Dialoge und Aktionen bleiben über vertikalen Scroll erreichbar. Lange persönliche Geschichten werden zugänglich fortgesetzt. Ein kleiner Viewport zeigt erwartungsgemäß einen Ausschnitt der scrollbaren Seite; eine volle Baumgrafik ist auf der Seite verfügbar und wird nicht zur gleichzeitig komplett sichtbaren Miniatur verkleinert.
 
-Die selbständige Vergleichsdatei und Originalbilder liegen im separaten Prüf-ZIP. Die folgenden Beispiele sind echte Browseraufnahmen:
+Die selbständige Vergleichsdatei mit allen 126 eingebetteten Paaren liegt im kompakten Prüf-ZIP. Ein separates Screenshot-ZIP enthält alle 336 Original-PNGs einschließlich Langseiten, jeweils mit Prüfsummen. So müssen nicht sämtliche zusätzlichen Bilddateien früherer Regressionen erneut heruntergeladen werden; deren vollständige Ergebnisdateien und Rohlogs bleiben im Prüf-ZIP enthalten. Die folgenden Beispiele sind echte Browseraufnahmen:
 
 ![Vorher – Wegübersicht UIUX2 bei 390 Pixeln](screenshots/before-paths-active-light-390.png)
 
