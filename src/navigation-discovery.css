@@ -1,0 +1,14 @@
+/* UIUX4 only: existing theme definitions and four primary tabs stay authoritative. */
+.navigation-phase4 { padding-top: 0; scroll-padding-block: 92px 16px; }
+.navigation-phase4 .menu-heading { position: sticky; top: 0; z-index: 1; background: var(--paper); padding-block: 16px; margin: 0; border-bottom: 1px solid var(--line); }
+.navigation-phase4 .menu-task-group { padding-block: 10px; border-bottom: 1px solid var(--line); }
+.navigation-phase4 .menu-task-group:last-child { border-bottom: 0; }
+.navigation-phase4 .menu-group-label { display: block; padding: 8px 12px; }
+.navigation-phase4 nav a { scroll-margin-block: 92px 16px; }
+.navigation-more .more-secondary { border-top: 1px solid var(--line); margin-block: 24px; padding-top: 20px; }
+.navigation-more .more-secondary > h2 { font: 600 1rem var(--sans); }
+.navigation-more .more-introduction { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+.navigation-more .more-introduction p { color: var(--muted); line-height: 1.65; }
+.navigation-more :is(h1,h2,h3,p,a,button) { overflow-wrap: anywhere; }
+.discover-page .discovery-shortcuts { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-block: 16px; }
+.discover-page .discovery-shortcuts a { display: inline-flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }

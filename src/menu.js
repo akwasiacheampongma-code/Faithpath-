@@ -1,11 +1,4 @@
-const destinations = [
-  ["today", "Heute"], ["bible", "Bibel"],
-  ["discover", "Entdecken / Geschichten"], ["quizzes", "Quiz"],
-  ["paths", "Mein Weg"], ["journal", "Journal"],
-  ["reviews", "Rückblicke"], ["plans", "Geführte Wege"],
-  ["guidance", "Was beschäftigt dich?"], ["history", "Meine Geschichte"],
-  ["marks", "Markierungen"], ["more", "Mehr / Einstellungen"],
-];
+import {navigationGroups} from './navigation-model.js';
 const toggle = () => document.getElementById("menu-toggle");
 const drawer = () => document.getElementById("main-menu");
 let locked = [];
@@ -27,30 +20,25 @@ function openMenu() {
   document.getElementById("menu-overlay").hidden = false;
   toggle().setAttribute("aria-expanded", "true");
   document.body.classList.add("menu-open");
-  locked = [...document.querySelectorAll(".page,.primary-nav,.wordmark")]
+  locked = [...document.querySelectorAll(".page,.primary-nav,.topbar,.skip-link")]
     .map(element => [element, element.inert]);
   for (const [element] of locked) element.inert = true;
   panel.querySelector("button").focus({ preventScroll: true });
 }
 export function menuMarkup(route) {
-  const current = route.split("?")[0].split("/")[0];
-  const groups = [
-    ["Hauptbereiche",["today","bible","paths","journal"]],
-    ["Persönlich",["history","reviews","marks"]],
-    ["Entdecken",["guidance","plans","discover","quizzes"]],
-    ["Einstellungen & Daten",["more"]],
-  ];
   return `<div id="menu-overlay" class="menu-overlay" hidden aria-hidden="true"></div>
-    <section id="main-menu" class="menu-drawer" role="dialog" aria-labelledby="menu-title" hidden>
+    <section id="main-menu" class="menu-drawer navigation-phase4" role="dialog" aria-modal="true" aria-labelledby="menu-title" hidden>
       <div class="menu-heading"><h2 id="menu-title">Menü</h2><button type="button" class="icon-button" data-menu-close aria-label="Menü schließen">×</button></div>
-      <nav aria-label="Alle Bereiche">${groups.map(([label,targets])=>`<span class="overline menu-group-label">${label}</span>${targets.map(target=>{const label=destinations.find(x=>x[0]===target)[1];return `<a href="#${target}"${current === target ? ' aria-current="page"' : ""}>${label}</a>`;}).join("")}`).join("")}</nav>
+      <nav aria-label="Alle Bereiche">${navigationGroups(route).map(group=>`<div class="menu-task-group"><span class="overline menu-group-label">${group.label}</span>${group.items.map(item=>`<a href="#${item.route}"${item.current?' aria-current="page"':''}>${item.label}</a>`).join('')}</div>`).join('')}</nav>
     </section>`;
 }
 document.addEventListener("click", event => {
   if (event.target.closest("#menu-toggle")) {
     drawer()?.hidden ? openMenu() : closeMenu();
   } else if (event.target.closest("[data-menu-close],#menu-overlay,#main-menu a")) {
-    closeMenu();
+    const anchor=event.target.closest('#main-menu a');
+    closeMenu(!anchor);
+    if(anchor&&(anchor.hash===location.hash||event.metaKey||event.ctrlKey||event.shiftKey))document.querySelector('main h1')?.focus({preventScroll:true});
   }
 });
 document.addEventListener("keydown", event => {
@@ -59,7 +47,7 @@ document.addEventListener("keydown", event => {
     event.preventDefault();
     closeMenu();
   } else if (event.key === "Tab") {
-    const controls = [toggle(), ...drawer().querySelectorAll("button,a")];
+    const controls = [...drawer().querySelectorAll("button,a")];
     const index = controls.indexOf(document.activeElement);
     if (event.shiftKey && index <= 0) {
       event.preventDefault(); controls.at(-1).focus();
