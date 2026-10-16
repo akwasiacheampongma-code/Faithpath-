@@ -19,7 +19,9 @@ export function selectPathsOverview(data,{archived=false}={}) {
 export function selectPathDetail(data,pid,{limit=40,at=Date.now()}={}) {
  const path=data.paths.find(p=>p.id===pid);if(!path)return null;
  const evidence=pathEvidence(data,pid),context=pathContext(data,pid);
- const thoughts=evidence.thoughts.map(thought=>({...thought,route:(data.journal.includes(thought)?'entry/':'reflection/')+encodeURIComponent(thought.id)})).sort((a,b)=>(time(b.date)||0)-(time(a.date)||0));
+ // Match timeline's legacy mirror rule too; older backups lack reflectionId.
+ const canonicalThoughts=evidence.thoughts.filter(thought=>data.journal.includes(thought)||!data.journal.some(j=>j.reflectionId===thought.id||(j.text===thought.text&&j.date===thought.date)));
+ const thoughts=canonicalThoughts.map(thought=>({...thought,route:(data.journal.includes(thought)?'entry/':'reflection/')+encodeURIComponent(thought.id)})).sort((a,b)=>(time(b.date)||0)-(time(a.date)||0));
  const reviews=allReviews(data).filter(review=>evidence.reviews.some(r=>r.id===review.id));
  const scriptures=[];
  for(const link of path.links||[])if(link.ref&&!scriptures.some(item=>sameRef(item.ref,link.ref)))scriptures.push({id:link.id,label:link.label,ref:link.ref});

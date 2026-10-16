@@ -24,3 +24,6 @@ test('source snapshot rejects mismatched/future metadata, escapes text and never
 test('journal edits between a frozen invitation and review save never become the old quoted text',()=>{
  const data=phase3Fixture(),r=data.reviews[0];r.sourceAt=data.journal[0].date;data.journal[0].text='Edited before the review was saved';data.journal[0].updatedAt='2026-08-15T12:00:00.000Z';const x=reviewSourceContext(data,r);assert.equal(x.state,'edited');assert.equal(x.text,null);
 });
+test('real highlight sources retain a truthful exact-ID reference without invented historical wording',()=>{
+ const data=phase3Fixture();data.highlights=[{id:'h/x',book:'JHN',chapter:3,from:1,to:1,translation:'otb',snippet:'Heutiger Text',at:'2026-08-01'}];const r={id:'rh',sourceKey:'highlight:h/x',date:at};let x=reviewSourceContext(data,r);assert.equal(x.state,'reference');assert.equal(x.originalRoute,'mark/h%2Fx');assert.equal(x.text,null);assert.doesNotMatch(x.note,/nicht mehr vorhanden/);data.highlights=[];assert.equal(reviewSourceContext(data,r).state,'missing');
+});

@@ -12,3 +12,7 @@ test('large histories expose true continuation, completed and reopened steps sta
  const data=phase3Fixture('many-thoughts'),model=selectPathDetail(data,'personal-path',{limit:40});assert(model.moments.length>40);assert.equal(model.visibleMoments.length,40);assert(model.hasMore);assert.equal(selectPathDetail(data,'personal-path',{limit:1000}).hasMore,false);
  data.paths[0].steps.forEach(s=>s.done=true);assert.equal(selectPathDetail(data,'personal-path').nextStep,null);data.paths[0].steps[1].done=false;assert.equal(selectPathDetail(data,'personal-path').nextStep.id,'later-0');
 });
+test('legacy text/date mirrors remain one thought and one historical moment without rewriting records',()=>{
+ const data=phase3Fixture();delete data.journal[0].reflectionId;const before=JSON.stringify(data),model=selectPathDetail(data,'personal-path');
+ assert.equal(model.thoughts.length,2);assert.equal(model.thoughts.filter(t=>t.id==='mirror-old').length,0);assert.equal(model.moments.filter(m=>m.route==='reflection/mirror-old').length,0);assert.equal(model.moments.filter(m=>m.route==='entry/thought-old').length,1);assert.equal(JSON.stringify(data),before);
+});

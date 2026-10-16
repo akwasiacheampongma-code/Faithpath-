@@ -36,6 +36,12 @@ export function reviewSourceContext(data,review) {
   }
   return path?{...fallback,state:'path-only',title:path.title,originalRoute:'path/'+encodeURIComponent(pid),originalLabel:'Zugehörigen Weg öffnen',note:'Der damalige Wortlaut und der konkrete Schritt wurden bei diesem älteren Rückblick nicht mitgespeichert.'}:fallback;
  }
+ // A highlight can still be opened by exact ID. Its current snippet is not
+ // evidence of the wording at review time, so do not quote it as history.
+ if(key.startsWith('highlight:')){
+  const matches=data.highlights.filter(item=>item.id===key.slice(10));
+  return matches.length===1?{...fallback,state:'reference',originalRoute:'mark/'+encodeURIComponent(matches[0].id),originalLabel:'Zugehörige Markierung öffnen',note:'Dieser Rückblick gehört zu einer Bibelmarkierung. Ihr damaliger Wortlaut wurde nicht mitgespeichert.'}:{...fallback,state:matches.length?'ambiguous':'missing'};
+ }
  const [kind,...parts]=key.split(':'),id=parts.join(':'),collection=['journal','j'].includes(kind)?data.journal:['reflection','r'].includes(kind)?data.reflections:[];
  const matches=collection.filter(item=>item.id===id);if(matches.length!==1)return {...fallback,state:matches.length?'ambiguous':'missing'};
  const source=matches[0],type=['journal','j'].includes(kind)?'journal':'reflection';

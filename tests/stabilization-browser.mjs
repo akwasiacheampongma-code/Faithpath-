@@ -33,7 +33,7 @@ await test('Actual editor replaces A with B and removes B, with mirror and links
 });
 await test('Closed journal draft survives unrelated form, export, reload, resume and save',async()=>{
   const {context,page}=await setup();await edit(page);await page.getByLabel('Dein Gedanke',{exact:true}).fill('Ungespeichert & persönlich');await page.waitForFunction(k=>JSON.parse(localStorage.getItem(k)).values.text==='Ungespeichert & persönlich',KEYS.draft);
-  await page.getByRole('button',{name:'Schließen',exact:true}).click();await page.evaluate(()=>navigator.locks.request('faithpath-journal-write',async()=>{}));const raw=await draft(page);await route(page,'paths');await page.getByRole('button',{name:'Weg beginnen',exact:true}).click();
+  await page.getByRole('button',{name:'Schließen',exact:true}).click();await page.evaluate(()=>navigator.locks.request('faithpath-journal-write',async()=>{}));const raw=await draft(page);await route(page,'paths');await page.locator('[data-action="new-path"]').first().click();
   await page.getByRole('dialog',{name:'Ein Entwurf wartet auf dich'}).waitFor();assert.equal(await draft(page),raw);
   const download=page.waitForEvent('download');await page.getByRole('button',{name:'Entwurf als Datei sichern'}).click();await(await download).saveAs(out+'/draft-export.json');assert.equal(await draft(page),raw);
   await page.reload();await route(page,'today');await page.getByRole('button',{name:'Entwurf fortsetzen',exact:true}).click();assert.equal(await page.getByLabel('Dein Gedanke',{exact:true}).inputValue(),'Ungespeichert & persönlich');
