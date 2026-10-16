@@ -2,7 +2,7 @@
 import fs from 'node:fs';import assert from 'node:assert/strict';import {chromium} from 'playwright';import {KEYS,empty} from '../src/store.js';
 const base=process.env.QA_URL||'http://127.0.0.1:4390',out=process.env.QA_OUT||'qa-output/uiux-phase3/short-navigation';fs.mkdirSync(out,{recursive:true});const results=[],errors=[];
 const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
-try{for(const [width,height]of [[320,568],[390,844],[430,932]])for(const tr of ['otb','l1912'])for(const from of ['read/JHN/3/'+tr,'discover']){
+try{for(const [width,height]of (process.env.QA_DESKTOP==='1'?[[1440,1000]]:[[320,568],[390,844],[430,932],[768,1024],[1440,1000]]))for(const tr of ['otb','l1912'])for(const from of ['read/JHN/3/'+tr,'discover']){
  const c=await b.newContext({viewport:{width,height},isMobile:true,hasTouch:true,reducedMotion:'reduce'}),p=await c.newPage();const data=empty();await c.addInitScript(({KEYS,data})=>{if(!localStorage.getItem(KEYS.main))localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');},{KEYS,data});p.on('pageerror',e=>errors.push(e.message));
  let beforeY=0,measurement;
  try{
@@ -13,7 +13,7 @@ try{for(const [width,height]of [[320,568],[390,844],[430,932]])for(const tr of [
   measurement=await p.evaluate(k=>({scrollY,end:document.querySelector('#chapter-end-sentinel').getBoundingClientRect().toJSON(),nav:document.querySelector('.primary-nav').getBoundingClientRect().toJSON(),top:document.querySelector('.topbar').getBoundingClientRect().toJSON(),confirmation:!document.querySelector('.short-chapter-confirm').hidden,events:JSON.parse(localStorage.getItem(k)).events.filter(e=>e.kind==='chapter-explored')}),KEYS.main);
   assert.equal(measurement.events.filter(e=>e.ref.book==='PSA').length,0,'Navigation alone must not explore Psalm 117');
   const fits=measurement.end.top>=measurement.top.bottom&&measurement.end.bottom<=measurement.nav.top;
-  if(fits)assert(measurement.confirmation,'An initially visible short chapter requires confirmation');
+  if(fits||width>=390)assert(measurement.confirmation,'An initially visible short chapter requires confirmation');
   const button=p.locator('[data-action="explore-chapter"]');if(measurement.confirmation)await button.click();else await p.locator('#chapter-end-sentinel').scrollIntoViewIfNeeded();await p.locator('.journey-acknowledgement').waitFor({state:'visible'});
   assert.equal(await p.evaluate(k=>JSON.parse(localStorage.getItem(k)).events.filter(e=>e.kind==='chapter-explored'&&e.ref.book==='PSA').length,KEYS.main),1);
   results.push({width,height,tr,from,beforeY,measurement,status:'PASS'});

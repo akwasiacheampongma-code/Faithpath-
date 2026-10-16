@@ -14,3 +14,10 @@ export function chapterNavigation({previous,next}) {
 export function initiallyVisibleChapterEnd({top,bottom,scrollY,topbarBottom,navTop}) {
  return top+scrollY>=topbarBottom && bottom+scrollY<=navTop;
 }
+
+// Match the chapter-end observer: a sidebar is not a bottom obstruction.
+// Used before the router resets scroll, when projecting the chapter's opening layout.
+export function chapterOpeningBottom({nav,topbarBottom,viewportWidth,viewportHeight}) {
+ return nav&&nav.top>topbarBottom&&nav.bottom>=viewportHeight-1&&nav.width>viewportWidth/2
+  ? Math.min(viewportHeight,nav.top):viewportHeight;
+}

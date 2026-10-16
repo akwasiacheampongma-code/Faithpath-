@@ -4,7 +4,7 @@ import {selectPathsOverview,selectPathDetail} from './paths-model.js';
 import {renderPathsOverview,renderPathDetail} from './paths-view.js';
 import {swordExplanation} from './journey-view.js';
 import {storyQuestionState,renderStoryQuestion} from './story-flow-view.js';
-import {chapterOffer,chapterNavigation,initiallyVisibleChapterEnd} from './reader-view.js';
+import {chapterOffer,chapterNavigation,initiallyVisibleChapterEnd,chapterOpeningBottom} from './reader-view.js';
 import {selectToday} from './today-model.js';
 import {renderToday} from './today-view.js';
 import {beginDraftSession,saveDraft,clearDraft,discardDraft,completedDraft} from './drafts.js';
@@ -515,7 +515,9 @@ async function reader(parts, params, token) {
     "reader-page",
   );
   const end=$("#chapter-end-sentinel").getBoundingClientRect();
-  ui.reader.needsConfirmation=initiallyVisibleChapterEnd({top:end.top,bottom:end.bottom,scrollY:window.scrollY,topbarBottom:$(".topbar").getBoundingClientRect().bottom,navTop:$(".primary-nav").getBoundingClientRect().top});
+  const topbarBottom=$(".topbar").getBoundingClientRect().bottom;
+  const openingBottom=chapterOpeningBottom({nav:$(".primary-nav").getBoundingClientRect(),topbarBottom,viewportWidth:window.innerWidth,viewportHeight:window.innerHeight});
+  ui.reader.needsConfirmation=initiallyVisibleChapterEnd({top:end.top,bottom:end.bottom,scrollY:window.scrollY,topbarBottom,navTop:openingBottom});
   const alreadyExplored=!$(".journey-acknowledgement").hidden;
   $(".short-chapter-confirm").hidden=!ui.reader.needsConfirmation||alreadyExplored;
   ui.journeyStop=observeChapterEnd({sentinel:$("#chapter-end-sentinel"),topbar:$(".topbar"),nav:$(".primary-nav"),isCurrent:()=>ui.token===token,isBlocked:()=>ui.reader.needsConfirmation||$("#dialog").open||ui.selection.size>0||$("#menu-toggle")?.getAttribute("aria-expanded")==="true",onReached:acknowledgeReaderChapter});
