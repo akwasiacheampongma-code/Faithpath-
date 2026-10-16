@@ -1,3 +1,5 @@
+import {selectReviews} from './reviews-model.js';
+import {renderReviewDetail,renderCompletedReviews,renderPendingReviews} from './reviews-view.js';
 import {selectJournal} from './journal-model.js';
 import {renderJournal,renderJournalResults,journalCount} from './journal-view.js';
 import {onboardingContent} from './onboarding-view.js';
@@ -104,6 +106,7 @@ const ui = {
   storyLimit: DISCOVERY_PAGE_SIZE,
   historyLimit: 40,
   journalLimit: 40,
+  reviewsLimit: 40,
   quiz: null,
   form: null,
   import: null,
@@ -678,6 +681,7 @@ function journalResults(model=journalModel()) {
 function refreshJournal(){const model=journalModel();$("#journal-results").innerHTML=journalResults(model);$("#journal-count").textContent=journalCount(model);}
 function entry(id, kind = "entry") {
   const x=(kind === "reflection"?s().reflections:kind === "review"?allReviews(s()):s().journal).find(j=>j.id===id);if(!x)return notFound();
+  if(kind==="review"){const path=s().paths.find(p=>p.id===x.pathId);shell(renderReviewDetail(x,reviewSourceContext(s(),x),{back,link,date,path}),"paths","journal-detail editorial-page path-page path-review-page");return;}
   const later=reviewsFor(s(),x,kind === "reflection"?"reflection":"journal")[0],previous=ui.continuitySaved===x.id?previousThought(s(),x):null;
   const ownPath=kind==="review"&&x.pathId&&s().paths.find(p=>p.id===x.pathId);
   shell(`${ownPath?back("Zum Weg","path/"+encodeURIComponent(ownPath.id)):back("Journal","journal")}<header class="entry-heading"><div><span class="overline">${e(x.subtype||x.type||(kind === "review"?"Rückblick":"Reflexion"))}</span><h1 tabindex="-1">${date(x.date)}</h1></div>${kind === "entry" ? `<details class="entry-options"><summary aria-label="Journaleintrag verwalten">${icon("more")}<span class="sr-only">Journaleintrag verwalten</span></summary><div class="entry-context-menu">${button("Bearbeiten","edit-entry",{id},"text-button")}${button("Weg verbinden / ändern","journal-path",{id},"text-button")}${isBibleNote(x)?button("Notiz an der Bibelstelle entfernen","delete-note",{id,kind:"journal"},"text-button danger-text"):""}${button("Journaleintrag löschen","delete-journal",{id},"text-button danger-text")}</div></details>` : ""}</header>${kind==="review"?renderReviewSource(reviewSourceContext(s(),x),{link,date}):""}<div class="entry-text preserve">${e(x.text)}</div><div class="entry-connections">${(x.pathIds||[]).map(pid=>{const p=s().paths.find(p=>p.id===pid);return p?`<p>Teil deines Weges: ${link(e(p.title),"path/"+encodeURIComponent(pid))}</p>`:"";}).join("")}${x.ref?`<p>Verbunden mit ${link(e(refLabel(x.ref)),readRoute(x.ref,"journal"))}</p>`:""}${later?`<p>Später darauf zurückgeblickt · ${link("Rückblick ansehen",later.route)}</p>`:""}</div>${previous?`<aside class="continuity-strip previous-thought-prompt"><p>Dazu hast du schon einmal etwas festgehalten.</p>${link("Früheren Gedanken ansehen",previous.route,"text-link")}</aside>`:""}${kind === "reflection"&&isBibleNote(x)?button("Notiz bearbeiten","edit-note",{id,kind:"reflection"},"button quiet"):""}${kind === "reflection"&&isBibleNote(x)?`<div class="note-delete-row">${button("Notiz an der Bibelstelle entfernen","delete-note",{id,kind:"reflection"},"text-button danger-text")}</div>`:""}`,"journal","journal-detail editorial-page"+(kind==="review"?" path-page path-review-page":""));
@@ -697,9 +701,8 @@ function history() {
   );
 }
 function reviews() {
- const pending=gaps(s()),completed=allReviews(s()),pairs=reviewPairs(s()).filter(p=>p.review);
- const shown=completed.slice(0,5),paired=new Set(pairs.filter(p=>shown.some(r=>r.id===p.review.id)).map(p=>p.review.id));
- shell(`${back("Heute","today")}${heading("Rückblicke","Was ist daraus geworden?","Du musst nichts nachholen. Vielleicht möchtest du einen früheren Gedanken noch einmal ansehen.")}<div class="segmented">${link("Meine Geschichte","history")}${link("Rückblicke","reviews","active")}</div><section class="pending-reviews"><h2 class="overline">Offene Rückblicke</h2>${pending.length?pending.map(g=>`<article class="review-row"><span class="overline">${date(g.at)} · vor ${g.age} Tagen</span><h3>${e(g.title)}</h3><p class="clamp">${e(g.detail)}</p>${button("Rückblick beginnen","gap",{key:g.key},"text-button")}</article>`).join(""):completed.length?'<p class="meta">Gerade ist kein weiterer Rückblick offen.</p>':empty("Gerade ist nichts offen.","Wenn ein Gedanke etwas zurückliegt, findest du hier eine Einladung zum Zurückblicken.",link("Meine Wege","paths","button primary"))}</section>${completed.length?`<section class="completed-reviews" aria-label="Deine Rückblicke"><h2 class="overline">Festgehaltene Rückblicke</h2>${continuityGroupsHTML(pairs.filter(p=>paired.has(p.review.id)))}${shown.filter(r=>!paired.has(r.id)).map(r=>`<article class="continuity-strip"><span class="meta">${date(r.date)}</span><blockquote>${e(r.text)}</blockquote>${link("Rückblick öffnen",r.route,"text-link")}</article>`).join("")}</section>`:""}<p class="meta">Erinnerungen erscheinen beim Öffnen der App. Es werden keine Push-Nachrichten verschickt.</p>`,"paths","reviews-page depth-page");
+ const model=selectReviews(s(),{limit:ui.reviewsLimit});
+ shell(`${back("Heute","today")}${heading("Rückblicke","Was ist daraus geworden?","Ein früherer Gedanke und das, was du später dazu festhältst. Ohne Bewertung.")}<div class="segmented">${link("Meine Geschichte","history")}${link("Rückblicke","reviews","active")}</div>${renderPendingReviews(model.pending,{date,button,link})}${renderCompletedReviews(model,{link,date,button})}<p class="meta">Erinnerungen erscheinen beim Öffnen der App. Es werden keine Push-Nachrichten verschickt.</p>`,"paths","reviews-page depth-page");
 }
 function more() {
   const section=new URLSearchParams(location.hash.split("?")[1]||"").get("section");
@@ -1662,6 +1665,7 @@ async function action(a, d, el) {
     $$("[data-journal-id] h3 a")[count]?.focus();
     return;
   }
+  if(a === "more-reviews"){const before=$$("[data-review-id]").length;ui.reviewsLimit+=40;reviews();$$("[data-review-id] .continuity-after a")[before]?.focus();return;}
   if (a === "more-history") {
     ui.historyExpanded = true;
     const previousLimit=ui.historyLimit;
