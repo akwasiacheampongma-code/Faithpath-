@@ -1,6 +1,7 @@
 import {phase3Fixture,TEST_NOW} from './phase3-fixtures.mjs';
 export {TEST_NOW};
 export function phase5Fixture(name='thirty',theme='light'){
+ if(name==='one-due'){const d=phase5Fixture('ten-due',theme);d.journal=d.journal.slice(0,1);return d;}
  if(name==='empty')return phase3Fixture('empty',theme);
  const d=phase3Fixture(name==='multiple'?'multiple-links':'active',theme);
  if(['one','thirty','threehundred','long','legacy','none','ten-due'].includes(name)){

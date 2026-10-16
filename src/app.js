@@ -1185,6 +1185,7 @@ function importRefs(next) {
   return next;
 }
 function showBackupPreview(next,{mode="import",exported=null}={}) {
+ ui.importRequest++; // Any newer recovery/check flow supersedes outstanding file reads.
  if(!store.error)store.backup(); // Reuse existing stale-tab guard before describing the current state.
  const session=createRestoreSession(next,localStorage);
  modal(mode==="check"?"Backup geprüft":"Bestand vor Wiederherstellung vergleichen",backupPreview({current:backupSummary(s()),incoming:backupSummary(next),mode,exported,date,hasDraft:session.draftRaw!==null,button}));
@@ -1715,8 +1716,16 @@ async function action(a, d, el) {
   if (a === "confirm-import") {
     if(!ui.import||ui.import.stage!=="confirm")return;
     const session=ui.import;
-    const restore=()=>{assertRestoreSession(session,localStorage);store.restore(session.next);};
-    if(navigator.locks)await navigator.locks.request("faithpath-journal-write",restore);else restore();
+    const restore=()=>{
+      // Re-check ownership after waiting: closing, navigating or a newer preview cancels this authorization.
+      if(ui.import!==session||session.stage!=="confirm"||!$("#dialog").open)return false;
+      assertRestoreSession(session,localStorage);store.restore(session.next);session.stage="done";return true;
+    };
+    el.disabled=true;
+    let restored;
+    try{restored=navigator.locks?await navigator.locks.request("faithpath-journal-write",restore):restore();}
+    finally{if(el.isConnected)el.disabled=false;}
+    if(!restored)return;
     closeModal();go("more?section=data");notify("Backup wiederhergestellt. Ein offener Entwurf bleibt erhalten.");return;
   }
   if (a === "undo-import") {
