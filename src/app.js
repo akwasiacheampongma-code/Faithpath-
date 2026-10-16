@@ -1,3 +1,5 @@
+import {selectToday} from './today-model.js';
+import {renderToday} from './today-view.js';
 import {beginDraftSession,saveDraft,clearDraft,discardDraft,completedDraft} from './drafts.js';
 import {groupOriginPairs,countLabel} from './journey-sword.js';
 import {recordExploredChapter,observeChapterEnd} from './bible-journey.js';
@@ -240,51 +242,13 @@ function storyConnections(x) {
   return pieces.length ? `<div class="story-connections">${pieces.join("")}</div>` : "";
 }
 function home() {
-  const data = s(),
-    pending = gaps(data),
-    lvl = treeLevel(data),
-    active = data.paths.filter((p) => !p.archived),
-    currentPath = active.find((p) => p.steps.some((step) => !step.done)) || active[0],
-    nextStep = currentPath?.steps.find((step) => !step.done),
-    lastThought = [
-      ...data.journal.map((j) => ({ ...j, route: "entry/" + encodeURIComponent(j.id) })),
-      ...data.reflections.map((r) => ({ ...r, route: "reflection/" + encodeURIComponent(r.id) })),
-    ].sort((a, b) => (time(b.date) || 0) - (time(a.date) || 0))[0],
-    returning = !!(data.paths.length || lastThought || data.reading || data.highlights.length || data.reviews.length),
-    explanation = `<section class="home-note"><span class="overline">Deine persönliche Glaubensgeschichte</span><h2>Ein Gedanke. Ein Schritt.<br>Und später ein neuer Blick.</h2><p>Verbinde, was dich beschäftigt, mit deinem persönlichen Weg. FaithPath erinnert dich später daran.</p></section>`;
   let draft = null;
-  try {
-    draft = JSON.parse(localStorage.getItem(KEYS.draft));
-  } catch {}
-  shell(`<header class="today-header">${heading(returning ? "Schön, dass du da bist" : "Ein Moment für dich", "Was bewegt dich gerade?")}</header>
- <section class="olive-hero ${stageNames[lvl].length > 20 ? "olive-hero--long-title" : ""}" aria-labelledby="today-tree-title">
-   <div class="olive-hero-copy"><div class="olive-hero-heading"><span class="overline">Deine Entwicklung</span><h2 id="today-tree-title">${e(stageNames[lvl])}</h2></div><p>Aus dem, was du selbst festgehalten hast.</p>${currentPath ? link("Deinen Weg ansehen", "path/" + encodeURIComponent(currentPath.id), "text-link olive-hero-cta") : data.paths.length ? link("Deinen Weg ansehen", "paths", "text-link olive-hero-cta") : button("Deinen Weg beginnen", "new-path", {}, "text-button olive-hero-cta")}</div>
-   <div class="olive-tree-visual"><img src="trees/tree-stage-${lvl + 1}.webp" alt="Olivenbaum – ${e(stageNames[lvl])}" width="1086" height="1448"></div>
- </section>
- <nav class="today-entry-actions" aria-label="Deinen Einstieg wählen">${link("Ich brauche Orientierung", "guidance", "button primary")}${link("Direkt zur Bibel", "bible", "button quiet")}</nav>
- ${currentPath ? `<section class="personal-path"><div class="section-heading"><span class="overline">Dein aktueller Weg</span>${icon("leaf")}</div><h2>${link(e(currentPath.title), "path/" + encodeURIComponent(currentPath.id), "personal-title")}</h2>${currentPath.why ? `<p class="path-why">${e(currentPath.why)}</p>` : ""}${nextStep ? `<div class="personal-step"><span class="overline">Dein nächster Schritt</span><p>${e(nextStep.text)}</p></div>` : `<p class="meta">Ein Moment zum Festhalten oder Zurückblicken.</p>`}${link(`Meinen Weg öffnen ${icon("arrow")}`, "path/" + encodeURIComponent(currentPath.id), "text-link")}</section>` : `<section class="personal-path today-first-path ${!hasPersonalHistory(data) ? "beginner-entry" : ""}">${!hasPersonalHistory(data) ? `<span class="overline">Neu im Glauben</span><h2>Du brauchst kein Vorwissen.</h2>${link("Neu im Glauben", "guide/start", "text-link")}` : `<span class="overline">Dein erster Weg</span><h2>Ein Thema, das dich begleitet.</h2><p>Vielleicht Geduld, Vertrauen oder eine offene Frage. Dein Weg darf klein anfangen.</p>${button("Einen Weg beginnen", "new-path", {}, "text-button")}`}</section>`}
- ${pending.length ? `<section class="revisit continuity-reminder"><span class="overline">Noch offen · ${date(pending[0].at)}</span><h2>Möchtest du noch einmal darauf schauen?</h2><p>${e(pending[0].title)}</p><blockquote>${e(pending[0].detail)}</blockquote><div class="actions">${button("Darauf zurückblicken", "gap", { key: pending[0].key }, "text-button")}${link(pending.length > 1 ? `${pending.length} offene Rückblicke` : "Alle Rückblicke", "reviews")}</div></section>` : ""}
- ${data.reading || lastThought ? `<section class="personal-recent" aria-label="Zu deiner Geschichte zurückkehren">${data.reading ? `<article><span class="overline">Zuletzt gelesen</span><h2>${link(e(refLabel(data.reading)), readRoute(data.reading), "personal-title")}</h2>${link(`Weiterlesen ${icon("arrow")}`, readRoute(data.reading), "text-link")}</article>` : ""}${lastThought ? `<article><span class="overline">Dein letzter Gedanke</span><p class="thought-preview">${e(lastThought.text)}</p>${link(`Wieder ansehen ${icon("arrow")}`, lastThought.route, "text-link")}</article>` : ""}</section>` : ""}
-
- ${draft?.values ? `<aside class="draft-strip"><span>Ein Gedanke wartet noch auf dich.</span>${button("Entwurf fortsetzen", "resume", {}, "text-button")}</aside>` : ""}
- ${explanation}
- <div class="quick-links">${link(`${icon("pen")}<span>Festhalten</span>`, "compose", "quick-link")}${link(`${icon("history")}<span>Meine Geschichte</span>`, "history", "quick-link")}</div>
- <section class="section"><div class="section-heading"><h2>${active.length ? "Was dich begleitet" : "Dein erster Weg"}</h2>${link("Mein Weg", "paths")}</div>${
-   active.length
-     ? active
-         .slice(0, 3)
-         .map((p) =>
-           row(
-             p.title,
-             p.why || category(p.category).label,
-             "path/" + encodeURIComponent(p.id),
-           ),
-         )
-         .join("")
-     : `<p>Vielleicht Geduld, Vertrauen oder eine offene Frage. Dein Weg darf klein anfangen.</p>${button("Einen Weg beginnen", "new-path", {}, "text-button")}`
- }</section>
- <div class="manifesto"><span>${icon("leaf")}</span><p>FaithPath misst nicht deinen Glauben.<br><strong>FaithPath hilft dir, deine Entwicklung zu erkennen.</strong></p></div>`, "today", returning ? "home-page today-variant-b returning-home" : "home-page today-variant-b first-home");
+  try { draft = JSON.parse(localStorage.getItem(KEYS.draft)); } catch {}
+  const model = selectToday(s(), {draft});
+  shell(renderToday(model, {e,link,button,icon,refLabel,readRoute,date,category}),
+    "today", "home-page today-phase1 " + (model.returning ? "returning-home" : "first-home"));
 }
+
 function undoNotice(text, restore) {
   notify(text);
   const token = Symbol(); ui.undo = { token, restore, expires: Date.now() + 8000 };

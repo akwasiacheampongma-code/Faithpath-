@@ -1,0 +1,64 @@
+/* Phase 1 only. Global component styles and all four theme tokens stay intact.
+   DOM order is reading/focus order; nothing is reordered, hidden or clipped to
+   fake first-viewport visibility. Long text and text zoom expand naturally. */
+.today-phase1 { max-width: 850px; padding-top: 20px; }
+.today-phase1 #main { display: grid; gap: 18px; }
+.today-phase1 #main > * { min-width: 0; margin: 0; }
+.today-phase1 .today-header h1 { margin: 6px 0 0; font-size: clamp(1.625rem, 6.7vw, 2rem); line-height: 1.2; }
+.today-phase1 .overline { display: block; font-size: .6875rem; line-height: 1.5; letter-spacing: .1em; }
+.today-phase1 h2 { font-size: 1.375rem; line-height: 1.25; }
+.today-phase1 :is(h1,h2,p,a,button,blockquote,strong,small) { overflow-wrap: anywhere; }
+.today-phase1 :is(a,button) { max-width: 100%; }
+.today-phase1 .today-entry-actions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.today-phase1 .today-entry-actions .button { padding: 12px 10px; min-height: 64px; font-size: .9375rem; line-height: 1.45; }
+.today-phase1 .personal-path { padding: 18px; border-top: 3px solid var(--primary); background: var(--elevated-surface); }
+.today-phase1 .personal-path h2 { margin: 6px 0 10px; }
+.today-phase1 .today-step-text { margin: 0 0 16px; color: var(--text-primary); font-size: 1rem; line-height: 1.5; }
+.today-phase1 .today-path-action { display: flex; width: 100%; min-height: 48px; padding: 10px 12px; font-size: .9375rem; line-height: 1.45; gap: 10px; }
+.today-phase1 .today-path-action svg { flex: 0 0 20px; }
+.today-phase1 .olive-hero { display: grid; grid-template-columns: minmax(0,1fr) 100px; align-items: center; gap: 16px; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.today-phase1 .olive-hero-copy { min-width: 0; }
+.today-phase1 .olive-hero h2 { margin: 5px 0 7px; font-size: 1.375rem; }
+.today-phase1 .olive-hero-copy p { margin: 0; font-size: .875rem; line-height: 1.5; color: var(--text-secondary); }
+.today-phase1 .olive-tree-visual { display: flex; justify-content: center; min-width: 0; }
+.today-phase1 .olive-tree-visual img { display: block; width: 100%; height: 134px; object-fit: contain; }
+.today-phase1 .draft-strip { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; text-align: left; gap: 2px 12px; padding: 10px 14px; border: 1px solid var(--primary-border); border-radius: var(--radius); background: var(--primary-soft); }
+.today-phase1 .today-draft button { min-height: 44px; font-size: .875rem; padding: 5px 0; }
+.today-phase1 .personal-recent { display: grid; grid-template-columns: minmax(0,1fr); gap: 12px; }
+.today-phase1 .personal-recent article { background: none; box-shadow: none; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; padding: 2px 0 14px; }
+.today-phase1 .personal-recent h2 { margin: 4px 0 0; }
+.today-phase1 .personal-recent .text-link { min-height: 44px; }
+.today-phase1 .thought-preview { font-size: 1.125rem; margin: 6px 0 0; }
+.today-phase1 .today-start-path { padding: 6px 0 16px; border-bottom: 1px solid var(--border); }
+.today-phase1 .today-start-path h2 { margin: 6px 0 10px; }
+.today-phase1 .today-start-path p { margin: 0; color: var(--text-secondary); font-size: .9375rem; }
+.today-phase1 .today-start-path :is(a,button) { display: flex; width: fit-content; min-height: 44px; }
+.today-phase1 .today-review { padding: 16px; border-radius: var(--radius); }
+.today-phase1 .today-review h2 { margin: 6px 0 10px; }
+.today-phase1 .today-review blockquote { margin: 8px 0; }
+.today-phase1 .today-review .actions { gap: 4px 16px; }
+.today-phase1 .today-review :is(a,button) { min-height: 44px; }
+.today-phase1 .today-other-paths h2 { margin: 0; }
+.today-phase1 .today-other-paths .section-heading { flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+.today-phase1 .today-other-paths .text-link { min-height: 44px; }
+.today-phase1 .today-capture { padding-top: 4px; }
+.today-phase1 .manifesto { margin-top: 8px; padding-top: 18px; }
+.today-phase1 .manifesto p { font-size: .875rem; }
+@media (max-width: 360px) {
+ .today-phase1 { padding-top: 14px; }
+ .today-phase1 #main { gap: 14px; }
+ .today-phase1 .personal-path { padding: 14px; }
+ .today-phase1 .today-entry-actions { gap: 8px; }
+ .today-phase1 .today-entry-actions .button { padding: 10px 8px; font-size: .875rem; }
+ .today-phase1 .olive-hero { grid-template-columns: minmax(0,1fr) 80px; gap: 12px; padding: 14px; }
+ .today-phase1 .olive-tree-visual img { height: 112px; }
+ .today-phase1 .olive-hero h2 { font-size: 1.25rem; }
+}
+@media (min-width: 700px) {
+ .today-phase1 #main { gap: 24px; }
+ .today-phase1 .personal-recent { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+/* Rem-based breakpoint responds to browser text zoom as well as narrow windows. */
+@media (max-width: 22rem) {
+ .today-phase1 .olive-hero { grid-template-columns: minmax(0,1fr) 80px; }
+}
