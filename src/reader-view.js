@@ -8,3 +8,9 @@ export function chapterOffer(options) {
 export function chapterNavigation({previous,next}) {
  return `<nav class="chapter-nav" aria-label="Kapitel wechseln">${previous?`<a href="#${e(previous)}">← Vorheriges Kapitel</a>`:''}${next?`<a href="#${e(next)}">Nächstes Kapitel →</a>`:''}</nav>`;
 }
+
+// At scroll position zero, a very short chapter can expose its end immediately.
+// Seeing that initial layout is not evidence of reading; request a deliberate confirmation.
+export function initiallyVisibleChapterEnd({top,bottom,scrollY,topbarBottom,navTop}) {
+ return top+scrollY>=topbarBottom && bottom+scrollY<=navTop;
+}

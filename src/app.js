@@ -1,6 +1,6 @@
 import {swordExplanation} from './journey-view.js';
 import {storyQuestionState,renderStoryQuestion} from './story-flow-view.js';
-import {chapterOffer,chapterNavigation} from './reader-view.js';
+import {chapterOffer,chapterNavigation,initiallyVisibleChapterEnd} from './reader-view.js';
 import {selectToday} from './today-model.js';
 import {renderToday} from './today-view.js';
 import {beginDraftSession,saveDraft,clearDraft,discardDraft,completedDraft} from './drafts.js';
@@ -509,14 +509,27 @@ async function reader(parts, params, token) {
         "",
       )}</select></div><div class="reader-selectors"><div><label for="reader-book">Buch</label><select id="reader-book" data-change="reader-book">${ui.books.map((x) => `<option value="${x.code}" ${x.code === code ? "selected" : ""}>${e(x.name)}</option>`).join("")}</select></div><div><label for="reader-chapter">Kapitel</label><select id="reader-chapter" data-change="reader-chapter">${b.chapters.map((_, i) => `<option value="${i + 1}" ${i + 1 === +chapter ? "selected" : ""}>${i + 1}</option>`).join("")}</select></div></div>
  ${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${vs.map(v => readerVerse(v, ref)).join("")}<span id="chapter-end-sentinel" aria-hidden="true"></span></div>
- ${journeyAcknowledgement(s(),ui.books,ref)}${readerChapterQuestions(ref, origin)}${chapterNavigation({previous:ref.chapter>1?readRoute({book:code,chapter:ref.chapter-1,translation:tr},origin):null,next:ref.chapter<b.chapters.length?readRoute({book:code,chapter:ref.chapter+1,translation:tr},origin):null})}
+ <section class="short-chapter-confirm" hidden><p>Wenn du dieses kurze Kapitel gelesen hast, kannst du es als Teil deiner Bibelreise festhalten.</p>${button("Kapitel als erkundet festhalten","explore-chapter",{},"button quiet")}</section>${journeyAcknowledgement(s(),ui.books,ref)}${readerChapterQuestions(ref, origin)}${chapterNavigation({previous:ref.chapter>1?readRoute({book:code,chapter:ref.chapter-1,translation:tr},origin):null,next:ref.chapter<b.chapters.length?readRoute({book:code,chapter:ref.chapter+1,translation:tr},origin):null})}
  <section class="reflection-invite"><span class="overline">Was bleibt bei dir?</span><h2>${e(ctx?.question || "Was berührt dich in diesem Text?")}</h2><p>Ein Satz genügt. Du kannst daraus später einen Weg machen.</p>${button("Meinen Gedanken festhalten", "reflect-reader", {}, "button primary")}</section><small class="translation-credit">${e(TRANSLATIONS[tr].name)} · ${tr === "otb" ? "CC BY-SA 4.0" : "gemeinfrei"} · ${link("Textquelle", "licenses")}</small><div id="selection-bar"></div>`,
     "bible",
     "reader-page",
   );
-  ui.journeyStop=observeChapterEnd({sentinel:$("#chapter-end-sentinel"),topbar:$(".topbar"),nav:$(".primary-nav"),isCurrent:()=>ui.token===token,isBlocked:()=>$("#dialog").open||ui.selection.size>0||$("#menu-toggle")?.getAttribute("aria-expanded")==="true",onReached:()=>{
-    try{change(data=>recordExploredChapter(data,ref,ui.books,now(),id()));const ack=$(".journey-acknowledgement");if(ack)ack.hidden=false;}catch(error){notify(error.message,true);}
-  }});
+  const end=$("#chapter-end-sentinel").getBoundingClientRect();
+  ui.reader.needsConfirmation=initiallyVisibleChapterEnd({top:end.top,bottom:end.bottom,scrollY:window.scrollY,topbarBottom:$(".topbar").getBoundingClientRect().bottom,navTop:$(".primary-nav").getBoundingClientRect().top});
+  const alreadyExplored=!$(".journey-acknowledgement").hidden;
+  $(".short-chapter-confirm").hidden=!ui.reader.needsConfirmation||alreadyExplored;
+  ui.journeyStop=observeChapterEnd({sentinel:$("#chapter-end-sentinel"),topbar:$(".topbar"),nav:$(".primary-nav"),isCurrent:()=>ui.token===token,isBlocked:()=>ui.reader.needsConfirmation||$("#dialog").open||ui.selection.size>0||$("#menu-toggle")?.getAttribute("aria-expanded")==="true",onReached:acknowledgeReaderChapter});
+}
+// One persistence path for automatic long-chapter endings and deliberate short-chapter consent.
+function acknowledgeReaderChapter() {
+  if(!ui.reader||!$(".reader-page"))return;
+  try {
+    change(data=>recordExploredChapter(data,ui.reader.ref,ui.books,now(),id()));
+    const ack=$(".journey-acknowledgement");if(ack)ack.hidden=false;
+    const confirmation=$(".short-chapter-confirm");if(confirmation)confirmation.hidden=true;
+    ui.reader.needsConfirmation=false;
+    ui.journeyStop?.();ui.journeyStop=null;
+  } catch(error){notify(error.message,true);}
 }
 function readerChapterQuestions(ref, origin) {
   const unit = chapterUnit(ui.chapterCatalog, ref.book, ref.chapter);
@@ -1543,6 +1556,10 @@ async function action(a, d, el) {
     const after=JSON.stringify(s().highlights);
     closeModal();if($(".reader-page")){refreshHighlights();selectionBar();}else go("marks");
     undoNotice("Markierung entfernt",()=>change(data=>{if(JSON.stringify(data.highlights)!==after)throw new Error("Die Markierungen wurden inzwischen geändert. Rückgängig ist nicht mehr sicher.");data.highlights=before;}));return;
+  }
+  if (a === "explore-chapter") {
+    if(ui.reader?.needsConfirmation)acknowledgeReaderChapter();
+    return;
   }
   if (a === "skip-chapter-quiz") {
     $(".reader-chapter-questions")?.remove();
