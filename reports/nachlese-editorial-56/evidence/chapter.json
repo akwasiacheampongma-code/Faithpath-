@@ -1,0 +1,128 @@
+{
+  "base": "http://127.0.0.1:4343",
+  "build": "FP4-20261016-G-STABLE1-NMC2",
+  "baseline": false,
+  "results": [
+    {
+      "name": "reader has the canonical chapter quiz strictly after the final verse",
+      "status": "PASS"
+    },
+    {
+      "name": "one compact collection contains 27 books, 260 chapters and 1300 questions",
+      "status": "PASS"
+    },
+    {
+      "name": "every book collection exposes precisely its existing canonical units without duplicate questions",
+      "status": "PASS"
+    },
+    {
+      "name": "all required boundary mappings and no-data chapter have the right reader behavior",
+      "status": "PASS"
+    },
+    {
+      "name": "Später skips only the current UI section and creates no quiz, reminder or task",
+      "status": "PASS"
+    },
+    {
+      "name": "reader origin, full five questions, canonical status sync, reload and original personal data",
+      "status": "PASS"
+    },
+    {
+      "name": "collection origin returns to its book and preserves reader translation; direct and legacy routes work",
+      "status": "PASS"
+    },
+    {
+      "name": "book quiz links accessible from existing Entdecken architecture",
+      "status": "PASS"
+    },
+    {
+      "name": "backup preserves the single canonical completion and its existing metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 320x568 @100% and axe",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 390x844 @100% and axe",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 768x1024 @100% and axe",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 1440x1000 @100% and axe",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 320x568 @200% and axe",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 390x844 @200% and axe",
+      "status": "PASS"
+    },
+    {
+      "name": "complete keyboard flow and Reduced Motion from final verse to completion",
+      "status": "PASS"
+    },
+    {
+      "name": "prepared offline reader to all five questions, correct return, collection status and offline reload",
+      "status": "PASS"
+    }
+  ],
+  "shots": [
+    "qa-output/nachlese-editorial/chapter/01-reader-end-390.png",
+    "qa-output/nachlese-editorial/chapter/05-collection-books.png",
+    "qa-output/nachlese-editorial/chapter/06-collection-chapters.png",
+    "qa-output/nachlese-editorial/chapter/04-reader-without-quiz.png",
+    "qa-output/nachlese-editorial/chapter/08-question-1.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/11-quiz-completed.png",
+    "qa-output/nachlese-editorial/chapter/12-reader-return.png",
+    "qa-output/nachlese-editorial/chapter/07-completed-chapter.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/reader-end-320-100.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/completion-320-100.png",
+    "qa-output/nachlese-editorial/chapter/320-collection-100.png",
+    "qa-output/nachlese-editorial/chapter/reader-end-390-100.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/completion-390-100.png",
+    "qa-output/nachlese-editorial/chapter/390-collection-100.png",
+    "qa-output/nachlese-editorial/chapter/reader-end-768-100.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/completion-768-100.png",
+    "qa-output/nachlese-editorial/chapter/768-collection-100.png",
+    "qa-output/nachlese-editorial/chapter/reader-end-1440-100.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/completion-1440-100.png",
+    "qa-output/nachlese-editorial/chapter/1440-collection-100.png",
+    "qa-output/nachlese-editorial/chapter/reader-end-320-200.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/completion-320-200.png",
+    "qa-output/nachlese-editorial/chapter/320-collection-200.png",
+    "qa-output/nachlese-editorial/chapter/reader-end-390-200.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/completion-390-200.png",
+    "qa-output/nachlese-editorial/chapter/390-collection-200.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png",
+    "qa-output/nachlese-editorial/chapter/09-answered-question.png",
+    "qa-output/nachlese-editorial/chapter/10-question-5.png"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "loads": []
+}

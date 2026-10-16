@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "node_tests": 126,
+  "browser_worker_checks": 186,
+  "suites": {
+    "core": {
+      "status": "PASS",
+      "count": 12,
+      "artifact": "qa-output/browser-results.json"
+    },
+    "stabilization": {
+      "status": "PASS",
+      "count": 12,
+      "artifact": "qa-output/nachlese-editorial/stabilization/results.json"
+    },
+    "chapter": {
+      "status": "PASS",
+      "count": 17,
+      "artifact": "qa-output/nachlese-editorial/chapter/results.json"
+    },
+    "nt": {
+      "status": "PASS",
+      "count": 24,
+      "artifact": "qa-output/nt-quiz-final/results.json",
+      "actually_tested_question_ids": 90
+    },
+    "mc-corpus": {
+      "status": "PASS",
+      "count": 36,
+      "artifact": "qa-output/nachlese-mc/corpus-browser/results.json"
+    },
+    "mc-fixture": {
+      "status": "PASS",
+      "count": 6,
+      "artifact": "qa-output/nachlese-editorial/fixtures/results.json"
+    },
+    "editorial": {
+      "status": "PASS",
+      "count": 70,
+      "artifact": "qa-output/nachlese-editorial/browser/results.json",
+      "tested_question_viewports": 66
+    },
+    "sw": {
+      "status": "PASS",
+      "count": 3,
+      "artifact": "qa-output/service-worker-results.json"
+    },
+    "update": {
+      "status": "PASS",
+      "count": 6,
+      "artifact": "qa-output/nachlese-editorial/update/results.json"
+    }
+  },
+  "physical_iphone_safari_pwa_voiceover": "OFFEN",
+  "netlify_deploy": "NOT_PERFORMED"
+}
