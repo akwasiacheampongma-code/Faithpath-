@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "date_utc": "2026-10-16T08:52:43.764768+00:00",
+  "date_utc": "2026-10-16T08:58:34.438363+00:00",
   "base_commit": "6f96ec8be376af3b0de03094a5052ae909054658",
   "build": "FP4-20261016-G-STABLE1-NMC1",
   "content_hash": "9af4bc150dbc5fe0b0afa77a0de8f16751a91838605c083bfacae519256f616e",
@@ -9,7 +9,9 @@
     "status": "PASS",
     "tests": 119,
     "failures": 0,
-    "skipped": 0
+    "skipped": 0,
+    "exit_code": 0,
+    "log_sha256": "9bae8a8da169801796dff3f80cdbb95b172ca5ec937d48cde35391702d02f2d2"
   },
   "browser_suites": {
     "core": {
@@ -68,5 +70,10 @@
   "qa_harness_corrections": [
     "CSP blocks inline axe injection: use DevTools evaluation; production CSP unchanged",
     "A hash-only SPA route change does not reload the document: actual update scenario now performs and verifies a document reload"
-  ]
+  ],
+  "implementation_commit": "e90b41d91bfd7eb113b104898316590ae1c2243a",
+  "committed_source_artifact_match": {
+    "status": "PASS",
+    "sources_checked": 162
+  }
 }
