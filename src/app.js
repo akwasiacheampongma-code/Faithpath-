@@ -1,3 +1,5 @@
+import {backupSummary,inspectBackupFile,createRestoreSession,assertRestoreSession} from './backup-model.js';
+import {renderBackupPage,backupPreview,backupConfirmation} from './backup-view.js';
 import {selectReminderControls,renderReminderControls,reminderWhy} from './reminders-view.js';
 import {selectReviews} from './reviews-model.js';
 import {renderReviewDetail,renderCompletedReviews,renderPendingReviews} from './reviews-view.js';
@@ -79,6 +81,7 @@ const shortDate = (d) =>
 let journalRecoveryError=null;
 try{await recoverJournalWrite(window.localStorage);}catch(error){journalRecoveryError=error;}
 const deviceStorage = {
+  removeItem: k=>window.localStorage.removeItem(k),
   getItem: (k) => window.localStorage.getItem(k),
   setItem: (k, v) => {if(journalRecoveryError)throw journalRecoveryError;if(!journalWriteActive()&&localStorage.getItem(JOURNAL_WRITE_KEY))throw new Error("Ein Journal-Speichervorgang ist noch offen. Bitte lade FaithPath neu, bevor du weiterschreibst.");window.localStorage.setItem(k, v);},
 };
@@ -106,6 +109,8 @@ const ui = {
   quiz: null,
   form: null,
   import: null,
+  importRequest: 0,
+  backupMode: "import",
   offline: false,
   waiting: null,
   archive: false,
@@ -165,6 +170,8 @@ function showError(error) {
   const message =
     error?.message || "Das hat nicht funktioniert. Bitte versuche es erneut.";
   const field = $("#form-error");
+  const backupField=$("#backup-error");
+  if(backupField){backupField.textContent=message;backupField.focus();return;}
   if (field) {
     field.textContent = message;
     field.focus();
@@ -708,7 +715,7 @@ function reviews() {
 }
 function more() {
   const section=new URLSearchParams(location.hash.split("?")[1]||"").get("section");
-  if(section === "data")return shell(`${back("Mehr","more")}${heading("Einstellungen & Daten","Daten & Backup")}<section class="section"><h2>Deine Daten sichern</h2><p>Deine FaithPath-Daten bleiben auf diesem Gerät. Es gibt keine automatische Gerätesynchronisation. Exportiere regelmäßig ein Backup, wenn du deine Einträge zusätzlich sichern möchtest. Ein Import stellt den Stand der Backup-Datei wieder her und ersetzt die aktuell angezeigten Daten.</p><div class="actions">${button("Backup exportieren", "export", {}, "button primary")}${button("Backup importieren", "import", {}, "button quiet")}</div><input id="import-file" type="file" accept=".json,application/json" hidden>${!store.error && deviceStorage.getItem(KEYS.restore) ? button("Stand vor dem letzten Import wiederherstellen", "undo-import", {}, "text-button") : ""}</section>`,"more","settings-page utility-page");
+  if(section === "data")return shell(renderBackupPage({back,heading,button,canUndo:!store.error&&!!deviceStorage.getItem(KEYS.restore)}),"more","settings-page utility-page backup-page");
   if(section === "settings")return shell(`${back("Mehr","more")}${heading("Einstellungen & Daten","Einstellungen")}${themePicker(s())}<section class="section"><h2>Offline & auf dem iPhone</h2><p id="offline-state" role="status">${ui.offline ? "Beide Bibeln und die App sind für dieses Gerät offline bereit." : "Offline-Vorbereitung läuft, solange diese Seite online geöffnet ist."}</p>${button("Offline-Status prüfen", "offline-check", {}, "text-button")}<p>Auf dem iPhone: In Safari „Teilen“ öffnen, dann „Zum Home-Bildschirm“ wählen. Zum ersten Einrichten online bleiben, bis oben „offline bereit“ steht.</p></section><section class="section"><h2>Privat auf deinem Gerät</h2><p>Keine Werbung, keine Tracking-SDKs, kein KI-Chat. Persönliche Texte werden nicht an FaithPath übertragen. Sie sind lokal gespeichert und nicht zusätzlich verschlüsselt. Der Hosting-Anbieter verarbeitet beim Laden technische Verbindungsdaten.</p>${link("Bibeltexte & Lizenzen", "licenses")}${button("Einführung ansehen", "onboard", {}, "text-button")}</section><div class="list">${row("Bibeltexte & Lizenzen","","licenses")}${row("Inhalte & Prüfstatus","","content-status")}</div><small class="build-id">FaithPath V4 · ${BUILD}</small>`,"more","settings-page utility-page");
   const menuRow=(title,desc,route,ic="arrow",featured=false)=>link(`${icon(ic)}<span><strong>${e(title)}</strong>${desc?`<small>${e(desc)}</small>`:""}</span>${icon("arrow")}`,route,"more-row"+(featured?" more-featured":""));
   shell(`${heading("Mehr","Raum für deine Geschichte.")}<section class="more-group" aria-labelledby="more-personal"><h2 id="more-personal" class="overline">Persönlich</h2>${menuRow("Meine Geschichte","Dein persönlicher Weg im Verlauf.","history","leaf",true)}${menuRow("Rückblicke","Auf frühere Gedanken zurückschauen.","reviews","history")}${menuRow("Markierungen","Deine gespeicherten Bibelstellen.","marks","book")}</section><section class="more-group" aria-labelledby="more-discover"><h2 id="more-discover" class="overline">Entdecken</h2>${menuRow("Was beschäftigt dich?","","guidance","leaf")}${menuRow("Geführte Wege","Eine ruhige Begleitung.","plans","path")}${menuRow("Entdecken & Quiz","Geschichten, Kapitel und Verständnisfragen.","discover","book")}</section><section class="more-group utility-group" aria-labelledby="more-utility"><h2 id="more-utility" class="overline">Einstellungen & Daten</h2>${menuRow("Einstellungen","","more?section=settings","more")}${menuRow("Daten & Backup","","more?section=data","lock")}</section>`,"more","more-page");
@@ -772,6 +779,7 @@ async function finishForm(draftSession = ui.draftSession) {
   document.body.classList.remove("modal-open");
 }
 function closeModal() {
+  ui.importRequest++;ui.import=null;
   const journalFocus=ui.journalDeletion;
   ui.noteDeletion=null;
   ui.journalDeletion=null;
@@ -1176,18 +1184,20 @@ function importRefs(next) {
   for (const r of refs) validRef(r, ui.refs);
   return next;
 }
-async function importFile(file) {
-  if (!file) return;
-  if (file.size > 20 * 1024 * 1024)
-    throw new Error(
-      "Diese Datei ist zu groß. Unterstützt werden Backups bis 20 MB.",
-    );
-  const next = importRefs(store.prepareImport(JSON.parse(await file.text())));
-  ui.import = next;
-  modal(
-    "Backup wiederherstellen?",
-    `<p>Die Datei enthält ${next.paths.length} Wege, ${next.journal.length} Einträge und ${next.highlights.length} Markierungen.</p><p>Der aktuelle Stand wird vorher auf diesem Gerät gesichert. Das Backup ersetzt anschließend die angezeigten Daten.</p>${button("Backup wiederherstellen", "confirm-import", {}, "button primary full")}${button("Abbrechen", "close", {}, "button quiet full")}`,
-  );
+function showBackupPreview(next,{mode="import",exported=null}={}) {
+ if(!store.error)store.backup(); // Reuse existing stale-tab guard before describing the current state.
+ const session=createRestoreSession(next,localStorage);
+ modal(mode==="check"?"Backup geprüft":"Bestand vor Wiederherstellung vergleichen",backupPreview({current:backupSummary(s()),incoming:backupSummary(next),mode,exported,date,hasDraft:session.draftRaw!==null,button}));
+ ui.import=mode==="check"?null:session;
+}
+async function importFile(file,mode="import") {
+ if(!file)return;
+ const request=++ui.importRequest,route=location.hash,main=localStorage.getItem(KEYS.main),draft=localStorage.getItem(KEYS.draft);
+ ui.import=null;
+ const result=await inspectBackupFile(file,{store,validateRefs:importRefs});
+ if(request!==ui.importRequest||route!==location.hash)return;
+ if(main!==localStorage.getItem(KEYS.main)||draft!==localStorage.getItem(KEYS.draft))throw new Error("Daten oder Entwurf wurden während der Dateiprüfung geändert. Bitte prüfe erneut.");
+ showBackupPreview(result.next,{mode,exported:result.exported});
 }
 function onboarding(step = 0) {
   const pages = [
@@ -1685,6 +1695,7 @@ async function action(a, d, el) {
       store.backup(),
       "FaithPath-Backup-" + now().slice(0, 10) + ".json",
     );
+    if($("#backup-export-help"))$("#backup-export-help").textContent="Download angefordert. Bitte prüfe im Download-Ordner bzw. in Dateien, ob die JSON-Datei vorhanden ist. FaithPath kann die dauerhafte Speicherung nicht bestätigen.";
     return;
   }
   if (a === "raw-backup") {
@@ -1694,34 +1705,25 @@ async function action(a, d, el) {
     );
     return;
   }
-  if (a === "import") {
-    $("#import-file").click();
-    return;
+  if (a === "import"||a === "check-backup") {
+    ui.backupMode=a==="check-backup"?"check":"import";$("#import-file").click();return;
+  }
+  if(a === "review-import") {
+    assertRestoreSession(ui.import,localStorage);ui.import.stage="confirm";
+    modal("Backup wirklich wiederherstellen?",backupConfirmation(button));return;
   }
   if (a === "confirm-import") {
-    if (!ui.import) return;
-    store.restore(ui.import);
-    ui.import = null;
-    await finishForm();
-    go("more?section=data");
-    notify("Backup wiederhergestellt.");
-    return;
+    if(!ui.import||ui.import.stage!=="confirm")return;
+    const session=ui.import;
+    const restore=()=>{assertRestoreSession(session,localStorage);store.restore(session.next);};
+    if(navigator.locks)await navigator.locks.request("faithpath-journal-write",restore);else restore();
+    closeModal();go("more?section=data");notify("Backup wiederhergestellt. Ein offener Entwurf bleibt erhalten.");return;
   }
   if (a === "undo-import") {
-    const old = JSON.parse(localStorage.getItem(KEYS.restore) || "null");
-    if (!old) throw new Error("Kein früherer Stand gefunden.");
-    const restored = old.raw
-      ? JSON.parse(old.raw)
-      : { paths: [], journal: [], highlights: [] };
-    ui.import = store.prepareImport({
-      data: restored,
-      guidedPlans: JSON.parse(old.guidedPlansRaw || "{}"),
-    });
-    modal(
-      "Früheren Stand wiederherstellen?",
-      `<p>Der Stand vor dem letzten Import wird wieder sichtbar. Der jetzige Stand wird dabei erneut gesichert.</p>${button("Früheren Stand wiederherstellen", "confirm-import", {}, "button primary")}`,
-    );
-    return;
+    const old=JSON.parse(localStorage.getItem(KEYS.restore)||"null");
+    if(!old)throw new Error("Kein früherer Stand gefunden.");
+    const restored=old.raw?JSON.parse(old.raw):{paths:[],journal:[],highlights:[]};
+    showBackupPreview(importRefs(store.prepareImport({data:restored,guidedPlans:JSON.parse(old.guidedPlansRaw||"{}")})));return;
   }
   if (a === "onboard") {
     onboarding();
@@ -1925,7 +1927,7 @@ document.addEventListener("change", (ev) => {
     if (el.name === "status") updateDevelopment();
     if (el.closest("#editor-form")) persistDraft();
     if (el.id === "import-file") {
-      importFile(el.files[0]).catch((err) =>
+      importFile(el.files[0],ui.backupMode).catch((err) =>
         notify("Import abgebrochen: " + err.message, true),
       );
       el.value = "";
@@ -1981,7 +1983,7 @@ document.addEventListener("change", (ev) => {
 $("#dialog").addEventListener("cancel",ev=>{if(ui.saving){ev.preventDefault();return;}if(ui.noteDeletion){ev.preventDefault();cancelNoteDeletion();}else if(ui.journalDeletion){ev.preventDefault();closeModal();}});
 $("#dialog").addEventListener("close", () => {
   if (!$("#dialog").open) {
-    ui.form = null;
+    ui.form = null;ui.importRequest++;ui.import=null;
     document.body.classList.remove("modal-open");
   }
 });

@@ -208,6 +208,8 @@ export function createStore(storage) {
       return state;
     },
     backup() {
+      if(error)throw new Error("Deine Daten konnten nicht sicher geladen werden. Bitte sichere den Originalstand.");
+      if(storage.getItem(KEYS.main)!==last)throw new Error("Deine Daten wurden in einem anderen Tab geändert. Bitte lade FaithPath vor dem Export neu.");
       return {
         app: "FaithPath",
         version: 4,
@@ -233,16 +235,15 @@ export function createStore(storage) {
       validateImportedRelations(next);
       if (storage.getItem(KEYS.main) !== last)
         throw new Error("Daten wurden inzwischen geändert. Bitte neu laden.");
-      storage.setItem(
-        KEYS.restore,
-        JSON.stringify({
-          raw: last,
-          guidedPlansRaw: storage.getItem(KEYS.plans),
-          saved: now(),
-        }),
-      );
+      const previousRestore=storage.getItem(KEYS.restore);
+      const safetyCopy=JSON.stringify({raw:last,guidedPlansRaw:storage.getItem(KEYS.plans),saved:now()});
+      storage.setItem(KEYS.restore,safetyCopy);
       const serialized = JSON.stringify(next);
-      storage.setItem(KEYS.main, serialized);
+      try{storage.setItem(KEYS.main,serialized);}catch{
+        // Main writes are atomic; preserve the older recovery copy when possible.
+        try{if(storage.getItem(KEYS.restore)===safetyCopy){if(previousRestore!==null)storage.setItem(KEYS.restore,previousRestore);else storage.removeItem?.(KEYS.restore);}}catch{}
+        throw new Error("Nicht wiederhergestellt: Der Gerätespeicher ist nicht verfügbar oder voll. Dein aktueller Stand bleibt erhalten.");
+      }
       state = clone(next);
       last = serialized;
       error = null;

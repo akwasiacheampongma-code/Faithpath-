@@ -1,3 +1,4 @@
+// UIUX5: same functional assertions; restore now has two explicit confirmation stages.
 // Browser acceptance tests against the production build. No application runtime dependencies.
 import fs from "node:fs";
 import path from "node:path";
@@ -345,7 +346,7 @@ try {
       await visit(p, "journal");
       await p.locator(".journal-tools summary").filter({hasText:"Filter"}).click();
       await p.getByRole("button", { name: "Predigt", exact: true }).click();
-      await p.locator(".journal-tools summary").filter({hasText:"Suchen"}).click();
+      assert(await p.locator("#journal-search").isVisible()); // UIUX5: direct search, no redundant disclosure.
       await p.getByLabel("In deinen Einträgen suchen").fill("Sonntag");
       assert.equal(await p.locator(".journal-page-entry").count(), 1);
       await p.locator(".journal-page-entry h3 a").click();
@@ -452,9 +453,9 @@ try {
       assert.deepEqual(await state(p), before);
       await p.locator("#import-file").setInputFiles(file);
       await p
-        .getByRole("heading", { name: "Backup wiederherstellen?", exact: true })
+        .getByRole("heading", { name: "Bestand vor Wiederherstellung vergleichen", exact: true })
         .waitFor();
-      await p
+      await p.locator('[data-action=review-import]').click();await p
         .getByRole("button", { name: "Backup wiederherstellen", exact: true })
         .click();
       await p
