@@ -1,0 +1,279 @@
+{
+  "status": "PASS",
+  "build": "FP4-20261016-G-STABLE1-UIUX5",
+  "implementation_commit": "e33c139ca46090cdeb74d82b91e20797f0273071",
+  "build_hash": "cf155e3ef0fabb40928991822edab7649a61d99f3fe94a319c7290e83e323e84",
+  "content_hash": "8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309",
+  "unit_tests": 180,
+  "browser_cases": 993,
+  "update_checkpoints": 10,
+  "screenshot_pairs": 144,
+  "original_before_after_png": 288,
+  "suites": {
+    "core": {
+      "checks": 12,
+      "status": "PASS",
+      "artifact": "qa-output/browser-results.json",
+      "sha256": "23bd8b53b94e58958b87977e3bb9ae7130b2c0ba144106be84acbbe1e1a875e1",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "stabilization": {
+      "checks": 12,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/stabilization/results.json",
+      "sha256": "3556e3bc719e5d769edd761ee03a57273bc0b9be591d332165584d77281d737d",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "chapter": {
+      "checks": 17,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/chapter/results.json",
+      "sha256": "97c2bbb93958a4b81296f52a5f48a11d7ad75fd075c2fa056721a51a29e0bfdd",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "nt": {
+      "checks": 24,
+      "status": "PASS",
+      "artifact": "qa-output/nt-quiz-final/results.json",
+      "sha256": "aeda0578902888febb83974923dfd3be00bd036413c2a2c0c302133ce819e65b",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "nachlese": {
+      "checks": 36,
+      "status": "PASS",
+      "artifact": "qa-output/nachlese-mc/corpus-browser/results.json",
+      "sha256": "166b41958b06d4651daf837d35de8baf2172bd9c2998bb24b5d3c65df12af986",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "mc-fixtures": {
+      "checks": 6,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/mc-fixtures/results.json",
+      "sha256": "9376843b02e52060ac10bb8445785092c3c2ece4385300d682d918b031df333c",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "worker": {
+      "checks": 3,
+      "status": "PASS",
+      "artifact": "qa-output/service-worker-results.json",
+      "sha256": "8822b5695980142ddf9640b62aaece403ab6eb75a38c3365c4f58573d7f26ade",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "today": {
+      "checks": 130,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase1/browser/results.json",
+      "sha256": "2f2dfd9e05d1af2643761ba2b80b934e8d1fb460acb6a6e8f93552fe13fc4423",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "today-zoom": {
+      "checks": 2,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase1/zoom/results.json",
+      "sha256": "28d2d3262e1a054d57a9073f6caf386ff066c727a0794819fbde51842f8625d0",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "phase2": {
+      "checks": 24,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/phase2/results.json",
+      "sha256": "ad6776bfbb3887f380375977b0d02ab728427e61406adb4c8f3e412c0d338785",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "phase2-stress": {
+      "checks": 40,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase2/stress/results.json",
+      "sha256": "df1446ad0c21970845c49d5d22d06d17c6e7299deedc872ae21310e4c3dc7329",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "phase2-short": {
+      "checks": 12,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/phase2-short/results.json",
+      "sha256": "d8cef56f31ac1c8fc13a5b55cb315ba6fcb76e35347c62b441ce7c59cbd5343c",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "experience": {
+      "checks": 18,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/experience/results.json",
+      "sha256": "07d80b52a244687f4a36471001667dd95666d4d96dd2c26dd2e21882a2d38c73",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "core-depth": {
+      "checks": 15,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/core-depth/results.json",
+      "sha256": "59ad6bfd05248a6c30fb73454ff5746e6ee43dd7d6ea6619e1105120b24db888",
+      "tested_layer": "Final CSS candidate"
+    },
+    "core-axe": {
+      "checks": 15,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/core-axe/results.json",
+      "sha256": "72066f90bd47e7c511bdaf29c6f38e440a476ed831a660a41c3bc5c86ef70a94",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "continuity": {
+      "checks": 24,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/continuity/results.json",
+      "sha256": "6c0742cb4a0949881ee7dd7e2a68f4568f21bd1a290691a045d3639de10d8a8b",
+      "tested_layer": "Final CSS candidate"
+    },
+    "branches": {
+      "checks": 56,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/branches/results.json",
+      "sha256": "a862475e15e84342465f7285f7ee01027386d6adc30b7c362bb8803fd8a1ee9b",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "overview": {
+      "checks": 56,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/overview/results.json",
+      "sha256": "12313b6ffd1bc63d319d7e5dbb406494c5c31f9aaeeade2798d4ca8d59050ee2",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "detail": {
+      "checks": 32,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/detail/results.json",
+      "sha256": "a320eb0c10bb34db8dcf22d50b43eaf1e8485a04c1bbee75d4229398380053ca",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "tree": {
+      "checks": 72,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/tree/results.json",
+      "sha256": "ea78b6d7953418b00322721c485838140c2297e48eab0500fd29a0d5d913733d",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "reviews-original": {
+      "checks": 72,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/reviews-original/results.json",
+      "sha256": "8d399f3fe215a7d7352f2317ae14809dc07261904cf4e8284aaa9407e0a5754e",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "short-navigation": {
+      "checks": 20,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/short-final/results.json",
+      "sha256": "a050b12ac5b71d5f6816a1b92df3572ac6322b980622f7131a02715daa49d303",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "stress-original": {
+      "checks": 60,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/stress/results.json",
+      "sha256": "5449e71d2bc6fe3fe60ed596a03c6eeb0e73900839f2dc9344e266fe2dfa4020",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "journey": {
+      "checks": 2,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase3/journey/results.json",
+      "sha256": "0fd5c99e10c790c6d8685ccb09b02825c28c1c58a26d7fe348a046ef17aff8ab",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "premium-journal": {
+      "checks": 12,
+      "status": "PASS",
+      "artifact": "qa-output/premium-final/local-journal/results.json",
+      "sha256": "85d891750e933ba7be65a1594299028f45058bb89128ec19dcf64019cee9641c",
+      "tested_layer": "Final CSS candidate"
+    },
+    "final-notes": {
+      "checks": 11,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/final-notes/results.json",
+      "sha256": "81dc55d1ebfe28272c0cc1487482030f5a8d70a9c7efed65b75f8503164313fc",
+      "tested_layer": "Final CSS candidate"
+    },
+    "journal5": {
+      "checks": 54,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/journal-final/results.json",
+      "sha256": "ba34a51e83c650ea7a0e7524b386f248c25ebeaaa1036c2110af1c85d6ba8c4f",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "reviews5": {
+      "checks": 48,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/reviews-final/results.json",
+      "sha256": "f27927f0fb9b6368c302a7d96191af56099de1249587cbdcceb14e1943932c30",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "reminders5": {
+      "checks": 15,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/reminders-final/results.json",
+      "sha256": "343e7d64c578d395086c42b9df8bde767627230284f898da01579e2b1b9f1587",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "backup5": {
+      "checks": 29,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/backup-final/results.json",
+      "sha256": "47261e9cf6413a7c76ffe2ab842e395f9c508e55d11383e6167c9e59e98631ca",
+      "tested_layer": "Final CSS candidate"
+    },
+    "backup-races5": {
+      "checks": 4,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/backup-races-final/results.json",
+      "sha256": "fa62f4821f7de68a606a823aa8da8f5d7c237d228d0714514de68261bbac9ae4",
+      "tested_layer": "Final CSS candidate"
+    },
+    "stress5": {
+      "checks": 36,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/stress5/results.json",
+      "sha256": "cd70e722959cffff0ef85b7fc3c484351c061d4914db8b4e14b5c4960c2230f0",
+      "tested_layer": "Byte-identical functional JavaScript snapshot"
+    },
+    "backup-dialogs5": {
+      "checks": 24,
+      "status": "PASS",
+      "artifact": "qa-output/uiux-phase5/backup-dialogs/results.json",
+      "sha256": "6e6bce430fcf0983f7a48f69a9ae99092d6681f1e0378b23030691a84a1b2cc6",
+      "tested_layer": "Final CSS candidate"
+    }
+  },
+  "physical_device_gates": {
+    "UIUX1": "OFFEN",
+    "UIUX2": "OFFEN",
+    "UIUX3": "OFFEN",
+    "UIUX4": "OFFEN",
+    "UIUX5": "OFFEN"
+  },
+  "synthetic_data_only": true,
+  "UIUX4_included": false,
+  "deferred_findings": [
+    {
+      "priority": "P3",
+      "issue": "Collapsed journal filter summary may show generic or previous label; selected state and results are correct."
+    }
+  ],
+  "style_delta": {
+    "status": "PASS",
+    "functional_js_commit": "adb673e1b79e3bfdf59d0a6bbfa2638a653b10b3",
+    "final_implementation_commit": "e33c139ca46090cdeb74d82b91e20797f0273071",
+    "application_js_and_all_other_build_inputs_byte_identical": true,
+    "only_source_delta": [
+      "src/journal-reviews-backup.css"
+    ],
+    "scope": "Two CSS rules for #dialog:has(.backup-dialog), natural header scrolling at large text",
+    "final_css_targeted_suites": [
+      "backup-dialogs5",
+      "backup5",
+      "backup-races5",
+      "core-depth",
+      "continuity"
+    ],
+    "final_css_update_and_screenshots": true
+  },
+  "functional_build_hash": "c20a3c015286aabdd8b36ec1cbadb86917fb13cb7b60f1da874d6c5297674945"
+}

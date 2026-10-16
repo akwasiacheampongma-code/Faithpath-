@@ -1,0 +1,61 @@
+{
+  "base": "http://127.0.0.1:4430",
+  "results": [
+    {
+      "name": "Journal is month-grouped, compact controls, separate entry and note actions",
+      "status": "PASS"
+    },
+    {
+      "name": "Create/edit literal journal text, change path without losing existing Bible link",
+      "status": "PASS"
+    },
+    {
+      "name": "Confirmation Cancel and Escape leave data and exact draft intact",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete physically, keep highlights/path/steps/review text, clean mirror/references/draft",
+      "status": "PASS"
+    },
+    {
+      "name": "8-second Undo restores exact metadata and references plus draft, reload persistent",
+      "status": "PASS"
+    },
+    {
+      "name": "Backup after physical delete omits entry/mirror; old backup restores correctly",
+      "status": "PASS"
+    },
+    {
+      "name": "Full storage fails safely; no record or draft disappears",
+      "status": "PASS"
+    },
+    {
+      "name": "Selective draft removal failure cancels saved deletion and keeps actionable error",
+      "status": "PASS"
+    },
+    {
+      "name": "Selective draft Undo failure keeps deletion atomic; retry restores complete saved entry and draft",
+      "status": "PASS"
+    },
+    {
+      "name": "Interrupted main/draft storage failure recovers unsaved text after reload",
+      "status": "PASS"
+    },
+    {
+      "name": "Denied recovery cleanup cannot be advanced by another write; reload safely unlocks saving",
+      "status": "PASS"
+    },
+    {
+      "name": "Deleted journal persists offline; independent review and Bible highlight stay accessible",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "loads": [],
+  "shots": [
+    "qa-output/premium-final/local-journal/journal-options.png",
+    "qa-output/premium-final/local-journal/journal-delete-confirmation.png",
+    "qa-output/premium-final/local-journal/journal-after-delete.png"
+  ]
+}

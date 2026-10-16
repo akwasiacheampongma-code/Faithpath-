@@ -1,0 +1,27 @@
+{
+  "build": "FP4-20261016-G-STABLE1-UIUX5",
+  "results": [
+    {
+      "name": "Actual Chromium page-scale 200% and keyboard action 320",
+      "status": "PASS",
+      "viewport": {
+        "scale": 2,
+        "width": 160,
+        "height": 284,
+        "layoutWidth": 320
+      }
+    },
+    {
+      "name": "Actual Chromium page-scale 200% and keyboard action 390",
+      "status": "PASS",
+      "viewport": {
+        "scale": 2,
+        "width": 195,
+        "height": 422,
+        "layoutWidth": 390
+      }
+    }
+  ],
+  "physicalPinchGesture": "OFFEN; Chromium CDP page scaling exercised",
+  "syntheticDataOnly": true
+}

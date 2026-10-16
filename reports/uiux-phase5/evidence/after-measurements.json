@@ -1,0 +1,1304 @@
+{
+  "phase": "after",
+  "base": "http://127.0.0.1:4430",
+  "results": [
+    {
+      "name": "journal-empty",
+      "route": "journal",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-one",
+      "route": "journal",
+      "fixture": "one",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-thirty",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-threehundred",
+      "route": "journal",
+      "fixture": "threehundred",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-long",
+      "route": "journal",
+      "fixture": "long",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-multiple",
+      "route": "journal",
+      "fixture": "multiple",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-legacy",
+      "route": "journal",
+      "fixture": "legacy",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-search",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-none",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "entry",
+      "route": "entry/thought-old",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "reviews-empty",
+      "route": "reviews",
+      "fixture": "no-due",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "reviews-ten",
+      "route": "reviews",
+      "fixture": "ten-due",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "route": "review/review-old",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-snapshot",
+      "route": "review/snapshot-review",
+      "fixture": "review-snapshot",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-edited",
+      "route": "review/review-old",
+      "fixture": "review-edited",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "history",
+      "route": "history",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "backup",
+      "route": "more?section=data",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "draft",
+      "route": "compose",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-empty",
+      "route": "journal",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-one",
+      "route": "journal",
+      "fixture": "one",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-thirty",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-threehundred",
+      "route": "journal",
+      "fixture": "threehundred",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-long",
+      "route": "journal",
+      "fixture": "long",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-multiple",
+      "route": "journal",
+      "fixture": "multiple",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-legacy",
+      "route": "journal",
+      "fixture": "legacy",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-search",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-none",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "entry",
+      "route": "entry/thought-old",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "reviews-empty",
+      "route": "reviews",
+      "fixture": "no-due",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "reviews-ten",
+      "route": "reviews",
+      "fixture": "ten-due",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "route": "review/review-old",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-snapshot",
+      "route": "review/snapshot-review",
+      "fixture": "review-snapshot",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "review-edited",
+      "route": "review/review-old",
+      "fixture": "review-edited",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "history",
+      "route": "history",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "backup",
+      "route": "more?section=data",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "draft",
+      "route": "compose",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "journal-empty",
+      "route": "journal",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-one",
+      "route": "journal",
+      "fixture": "one",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-thirty",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-threehundred",
+      "route": "journal",
+      "fixture": "threehundred",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-long",
+      "route": "journal",
+      "fixture": "long",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-multiple",
+      "route": "journal",
+      "fixture": "multiple",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-legacy",
+      "route": "journal",
+      "fixture": "legacy",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-search",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-none",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "entry",
+      "route": "entry/thought-old",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "reviews-empty",
+      "route": "reviews",
+      "fixture": "no-due",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "reviews-ten",
+      "route": "reviews",
+      "fixture": "ten-due",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "route": "review/review-old",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-snapshot",
+      "route": "review/snapshot-review",
+      "fixture": "review-snapshot",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-edited",
+      "route": "review/review-old",
+      "fixture": "review-edited",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "history",
+      "route": "history",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "backup",
+      "route": "more?section=data",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "draft",
+      "route": "compose",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-empty",
+      "route": "journal",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-one",
+      "route": "journal",
+      "fixture": "one",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-thirty",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-threehundred",
+      "route": "journal",
+      "fixture": "threehundred",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-long",
+      "route": "journal",
+      "fixture": "long",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-multiple",
+      "route": "journal",
+      "fixture": "multiple",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-legacy",
+      "route": "journal",
+      "fixture": "legacy",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-search",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-none",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "entry",
+      "route": "entry/thought-old",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "reviews-empty",
+      "route": "reviews",
+      "fixture": "no-due",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "reviews-ten",
+      "route": "reviews",
+      "fixture": "ten-due",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "route": "review/review-old",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-snapshot",
+      "route": "review/snapshot-review",
+      "fixture": "review-snapshot",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "review-edited",
+      "route": "review/review-old",
+      "fixture": "review-edited",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "history",
+      "route": "history",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "backup",
+      "route": "more?section=data",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "draft",
+      "route": "compose",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "journal-empty",
+      "route": "journal",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-one",
+      "route": "journal",
+      "fixture": "one",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-thirty",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-threehundred",
+      "route": "journal",
+      "fixture": "threehundred",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-long",
+      "route": "journal",
+      "fixture": "long",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-multiple",
+      "route": "journal",
+      "fixture": "multiple",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-legacy",
+      "route": "journal",
+      "fixture": "legacy",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-search",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-none",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "entry",
+      "route": "entry/thought-old",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "reviews-empty",
+      "route": "reviews",
+      "fixture": "no-due",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "reviews-ten",
+      "route": "reviews",
+      "fixture": "ten-due",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "route": "review/review-old",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-snapshot",
+      "route": "review/snapshot-review",
+      "fixture": "review-snapshot",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-edited",
+      "route": "review/review-old",
+      "fixture": "review-edited",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "history",
+      "route": "history",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "backup",
+      "route": "more?section=data",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "draft",
+      "route": "compose",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-empty",
+      "route": "journal",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-one",
+      "route": "journal",
+      "fixture": "one",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-thirty",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-threehundred",
+      "route": "journal",
+      "fixture": "threehundred",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-long",
+      "route": "journal",
+      "fixture": "long",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-multiple",
+      "route": "journal",
+      "fixture": "multiple",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-legacy",
+      "route": "journal",
+      "fixture": "legacy",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-search",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-none",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "entry",
+      "route": "entry/thought-old",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "reviews-empty",
+      "route": "reviews",
+      "fixture": "no-due",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "reviews-ten",
+      "route": "reviews",
+      "fixture": "ten-due",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "route": "review/review-old",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-snapshot",
+      "route": "review/snapshot-review",
+      "fixture": "review-snapshot",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "review-edited",
+      "route": "review/review-old",
+      "fixture": "review-edited",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "history",
+      "route": "history",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "backup",
+      "route": "more?section=data",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "draft",
+      "route": "compose",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "journal-empty",
+      "route": "journal",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-one",
+      "route": "journal",
+      "fixture": "one",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-thirty",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-threehundred",
+      "route": "journal",
+      "fixture": "threehundred",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-long",
+      "route": "journal",
+      "fixture": "long",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-multiple",
+      "route": "journal",
+      "fixture": "multiple",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-legacy",
+      "route": "journal",
+      "fixture": "legacy",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-search",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-none",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "entry",
+      "route": "entry/thought-old",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "reviews-empty",
+      "route": "reviews",
+      "fixture": "no-due",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "reviews-ten",
+      "route": "reviews",
+      "fixture": "ten-due",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "route": "review/review-old",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-snapshot",
+      "route": "review/snapshot-review",
+      "fixture": "review-snapshot",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-edited",
+      "route": "review/review-old",
+      "fixture": "review-edited",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "history",
+      "route": "history",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "backup",
+      "route": "more?section=data",
+      "fixture": "thirty",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "draft",
+      "route": "compose",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-empty",
+      "route": "journal",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-one",
+      "route": "journal",
+      "fixture": "one",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-thirty",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-threehundred",
+      "route": "journal",
+      "fixture": "threehundred",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-long",
+      "route": "journal",
+      "fixture": "long",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-multiple",
+      "route": "journal",
+      "fixture": "multiple",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-legacy",
+      "route": "journal",
+      "fixture": "legacy",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-search",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "journal-none",
+      "route": "journal",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "entry",
+      "route": "entry/thought-old",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "reviews-empty",
+      "route": "reviews",
+      "fixture": "no-due",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "reviews-ten",
+      "route": "reviews",
+      "fixture": "ten-due",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-original",
+      "route": "review/review-old",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-snapshot",
+      "route": "review/snapshot-review",
+      "fixture": "review-snapshot",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-edited",
+      "route": "review/review-old",
+      "fixture": "review-edited",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "history",
+      "route": "history",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "backup",
+      "route": "more?section=data",
+      "fixture": "thirty",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "draft",
+      "route": "compose",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "syntheticDataOnly": true
+}

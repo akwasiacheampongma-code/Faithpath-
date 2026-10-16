@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "functional_js_commit": "adb673e1b79e3bfdf59d0a6bbfa2638a653b10b3",
+  "final_implementation_commit": "e33c139ca46090cdeb74d82b91e20797f0273071",
+  "application_js_and_all_other_build_inputs_byte_identical": true,
+  "only_source_delta": [
+    "src/journal-reviews-backup.css"
+  ],
+  "scope": "Two CSS rules for #dialog:has(.backup-dialog), natural header scrolling at large text",
+  "final_css_targeted_suites": [
+    "backup-dialogs5",
+    "backup5",
+    "backup-races5",
+    "core-depth",
+    "continuity"
+  ],
+  "final_css_update_and_screenshots": true
+}

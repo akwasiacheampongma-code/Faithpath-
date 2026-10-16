@@ -1,0 +1,36 @@
+{
+  "build": "UIUX3 exact",
+  "focus": [
+    {
+      "tag": "BUTTON",
+      "inDialog": true,
+      "modal": true
+    },
+    {
+      "tag": "BODY",
+      "inDialog": false,
+      "modal": true
+    },
+    {
+      "tag": "BUTTON",
+      "inDialog": true,
+      "modal": true
+    },
+    {
+      "tag": "BUTTON",
+      "inDialog": true,
+      "modal": true
+    },
+    {
+      "tag": "BUTTON",
+      "inDialog": true,
+      "modal": true
+    },
+    {
+      "tag": "BODY",
+      "inDialog": false,
+      "modal": true
+    }
+  ],
+  "bodyTransitionAlreadyExists": true
+}
