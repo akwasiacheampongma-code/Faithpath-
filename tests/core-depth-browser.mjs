@@ -60,7 +60,7 @@ try{
  }
  for(const viewport of [{width:390,height:844},{width:320,height:568}]){
   const {c,p}=await context(empty(),viewport);await test('empty states '+viewport.width,async()=>{
-    for(const [r,name] of [['journal','journal'],['marks','marks'],['paths','paths'],['history','history'],['reviews','reviews']]){await route(p,r);assert.equal(await p.locator('.empty .button.primary').count(),1);if(r==='journal')assert.equal(await p.locator('#journal-search').count(),0);if(r==='marks')assert.equal(await p.locator('.mark-filters').count(),0);await screenshot(p,'empty-'+viewport.width+'-'+name);await measure(p,'empty-'+viewport.width+'-'+name);}
+    for(const [r,name] of [['journal','journal'],['marks','marks'],['paths','paths'],['history','history'],['reviews','reviews']]){await route(p,r);if(r==='journal')assert.equal(await p.getByRole('button',{name:'Gedanken festhalten',exact:true}).count(),1);else if(r==='reviews')assert.equal(await p.locator('.pending-reviews a[href="#paths"]').count(),1);else assert.equal(await p.locator('.empty .button.primary').count(),1);if(r==='journal')assert.equal(await p.locator('#journal-search').count(),0);if(r==='marks')assert.equal(await p.locator('.mark-filters').count(),0);await screenshot(p,'empty-'+viewport.width+'-'+name);await measure(p,'empty-'+viewport.width+'-'+name);}
   });await c.close();
  }
  for(const viewport of [{width:390,height:844},{width:320,height:568},{width:768,height:1024},{width:1440,height:1000}]){
