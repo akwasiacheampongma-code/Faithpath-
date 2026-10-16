@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import {validateFinalNtQuiz} from './validate-nt-quiz.mjs';
+import {validateNachleseMc} from './validate-nachlese-mc.mjs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { isDeepStrictEqual as equal } from 'node:util';
@@ -11,10 +12,11 @@ const originalBytes = fs.readFileSync(path.join(root, 'reports/faithpath-origina
 const original = JSON.parse(originalBytes);
 // Preserve the historical migration proof; independently validate its approved successor.
 validateFinalNtQuiz(root);
+validateNachleseMc(root);
 const currentBytes = fs.readFileSync(path.join(root, 'reports/nt-quiz-final/pre-import-stories.json'));
 const current = JSON.parse(currentBytes);
 const index = read('data/faithpath-content-index.json');
-const historicalSource = file => file === 'data/stories.json' ? currentBytes : fs.readFileSync(path.join(root, file));
+const historicalSource = file => file === 'data/stories.json' ? currentBytes : file === 'data/nachlese-questions.json' ? fs.readFileSync(path.join(root,'reports/nachlese-mc/baseline-active-questions.json')) : fs.readFileSync(path.join(root, file));
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const errors = [];
 const check = (condition, message) => { if (!condition) errors.push(message); };

@@ -27,6 +27,11 @@ export function createRuntimeModel(data) {
   const canonical = new Map(ns.stories.map(s => [s.id,s]));
   for (const q of nq.questions) {
     require(text(q.id) && !n.has(q.id) && text(q.q) && text(q.answer) && text(q.ref) && q.source_namespace === 'Nachlese' && canonical.has(q.source_story_id), 'N-Pflichtfelder');
+    if (Object.hasOwn(q,'a') || Object.hasOwn(q,'c')) {
+      require(Array.isArray(q.a) && q.a.length === 4 && q.a.every(text) &&
+        new Set(q.a.map(value=>value.normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase('de-DE'))).size === 4 &&
+        Number.isInteger(q.c) && q.c >= 0 && q.c < 4 && q.a[q.c] === q.answer, 'N-MC-Antwortschema');
+    }
     require(Array.isArray(q.references) && q.references.length > 0 && q.provenance?.docx_original?.id === q.id && q.provenance.final_qa_status === 'VERIFIZIERT', 'N-Provenienz');
     n.set(q.id,q);
   }

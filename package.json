@@ -14,6 +14,10 @@
     "validate:nt-quiz": "python3 scripts/import-nt-quiz.py --check && node scripts/validate-nt-quiz.mjs",
     "test:nt-quiz:browser": "node tests/nt-quiz-browser.mjs",
     "test:nt-quiz:update": "node tests/quiz-final-update.mjs",
+    "validate:nachlese-mc": "node scripts/validate-nachlese-mc.mjs",
+    "test:nachlese-mc:browser": "node tests/nachlese-mc-corpus-browser.mjs",
+    "test:nachlese-mc:fixtures": "node tests/nachlese-mc-browser.mjs",
+    "test:nachlese-mc:update": "node tests/nachlese-mc-update.mjs",
     "pretest": "npm run validate"
   },
   "engines": {

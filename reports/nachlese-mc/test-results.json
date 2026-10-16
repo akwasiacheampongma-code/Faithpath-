@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "date_utc": "2026-10-16T08:52:43.764768+00:00",
+  "base_commit": "6f96ec8be376af3b0de03094a5052ae909054658",
+  "build": "FP4-20261016-G-STABLE1-NMC1",
+  "content_hash": "9af4bc150dbc5fe0b0afa77a0de8f16751a91838605c083bfacae519256f616e",
+  "build_hash": "9dc4a8931b7ef1400fd0f6a8a950658e6e121b90797a5a732afe43536dc3bfde",
+  "unit": {
+    "status": "PASS",
+    "tests": 119,
+    "failures": 0,
+    "skipped": 0
+  },
+  "browser_suites": {
+    "core": {
+      "status": "PASS",
+      "count": 12
+    },
+    "stabilization": {
+      "status": "PASS",
+      "count": 12
+    },
+    "chapter": {
+      "status": "PASS",
+      "count": 17
+    },
+    "nt": {
+      "status": "PASS",
+      "count": 24
+    },
+    "nachlese_actual": {
+      "status": "PASS",
+      "count": 36
+    },
+    "nachlese_fixtures": {
+      "status": "PASS",
+      "count": 6
+    },
+    "sw_regression": {
+      "status": "PASS",
+      "count": 3
+    }
+  },
+  "browser_cases_total": 110,
+  "actual_nachlese_ui_questions": 16,
+  "actual_nachlese_ui_executions_two_sizes": 32,
+  "nt_ui_questions": 90,
+  "update": {
+    "status": "PASS",
+    "scenario_count": 1,
+    "checkpoints": 5,
+    "previous_build": "FP4-20261016-G-STABLE1-NTFINAL1",
+    "candidate_build": "FP4-20261016-G-STABLE1-NMC1",
+    "same_origin_local": true,
+    "offline": true,
+    "synthetic_personal_data_only": true
+  },
+  "all_2314_original_n_records_unchanged_except_optional_a_c": true,
+  "active_mc_added": 2258,
+  "held_for_manual_decision": 56,
+  "reflections_changed": 0,
+  "new_imports_or_story_merge": false,
+  "netlify_deployed": false,
+  "real_iphone_safari": "OPEN",
+  "installed_iphone_pwa": "OPEN",
+  "voiceover": "OPEN",
+  "editorial_review": "Model-assisted per-question authoring, separate review and targeted semantic-duplicate checks; no human editorial approval claimed",
+  "qa_harness_corrections": [
+    "CSP blocks inline axe injection: use DevTools evaluation; production CSP unchanged",
+    "A hash-only SPA route change does not reload the document: actual update scenario now performs and verifies a document reload"
+  ]
+}
