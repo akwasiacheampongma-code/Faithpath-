@@ -1,0 +1,54 @@
+{
+  "status": "NT_INTEGRATION_PASS",
+  "dateUTC": "2026-10-16T03:21:27.282378+00:00",
+  "branch": "integration/quiz-final-on-stable1",
+  "implementationCommit": "a8389dfd2bd111c1472d657c8aac055662c03c07",
+  "stableBase": "6ce37acf164f3e048b5446f115d918274c789f25",
+  "approvedSourceCommit": "3a2eb1809a329f96e2764f4aeb8bae3620d32be4",
+  "build": "FP4-20261016-G-STABLE1-NTFINAL1",
+  "content_hash": "5f7516623d451e3edefe16f1b61ce4f0f100aa9d419519b2ce75d0d13184686c",
+  "build_hash": "9cf11e6834d2cfbd065c3cdfb78f213f2e76dc302a2daaae707f0267ba8d3a38",
+  "questions": 1300,
+  "chapters": 260,
+  "books": 27,
+  "excelMatchesRuntime": true,
+  "idsAndProgressKeysUnchanged": true,
+  "protectedFilesUnchanged": 191,
+  "baselineUnitRunnerPasses": 108,
+  "candidateUnitRunnerPasses": 111,
+  "browserAndUpdateChecks": {
+    "core-browser.json": {
+      "status": "PASS",
+      "count": 12
+    },
+    "stabilization-browser.json": {
+      "status": "PASS",
+      "count": 12
+    },
+    "chapter-browser.json": {
+      "status": "PASS",
+      "count": 17
+    },
+    "nt-browser.json": {
+      "status": "PASS",
+      "count": 24
+    },
+    "stable1-update.json": {
+      "status": "PASS",
+      "count": 4
+    },
+    "polish1-update.json": {
+      "status": "PASS",
+      "count": 3
+    },
+    "service-worker.json": {
+      "status": "PASS",
+      "count": 3
+    }
+  },
+  "reproducibleArtifactFiles": 321,
+  "ATChapterImport": "WITHHELD_NO_APPROVED_SOURCE",
+  "hostedPreview": "NOT_DEPLOYED_PER_USER_INSTRUCTION",
+  "physicalIPhoneGate": "OPEN",
+  "productionRelease": "NO_GO_UNTIL_HOSTED_AND_DEVICE_GATE"
+}

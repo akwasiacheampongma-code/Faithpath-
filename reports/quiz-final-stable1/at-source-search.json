@@ -1,0 +1,76 @@
+{
+  "searched": "all advertised Git heads, available Git history, main transfer archives, repository workbooks and workspace files",
+  "inventory": [
+    {
+      "file": "reports/sources/1-FaithPath_Nachlese_Mapping_RECONSTRUCTED_20261001.xlsx",
+      "sha256": "7d80126b52e8625ad9898d3ae59f1a99689b81f02494b6cee05f2cc75f0ac778",
+      "sheets": [
+        "README",
+        "FP-N-Mapping",
+        "Finale-Feldwerte",
+        "Block-Abgleich",
+        "Story-Quelle",
+        "Codex-Übergabe"
+      ]
+    },
+    {
+      "file": "reports/sources/4-FaithPath_Nachlese_Merge_Status_20261001.xlsx",
+      "sha256": "19510848b0507f6e18d83a8d035c2a55705a8bde7044ec9d16cdaeb0beb26ee5",
+      "sheets": [
+        "Übersicht",
+        "Merge-Entscheidungen",
+        "FaithPath-Blöcke",
+        "Codex-Übergabe"
+      ]
+    },
+    {
+      "file": "reports/sources/1-Nachlese_FINAL_gepruefter_Fragenkatalog.xlsx",
+      "sha256": "4d52d5155f729c40f5634a6a5f4c3dd09efdb7c716fa9ec191224c1272db1f62",
+      "sheets": [
+        "Prüftabelle",
+        "Übersicht",
+        "Listen",
+        "Zweitprüfung",
+        "Ergebnisübersicht",
+        "Prüfplan A09",
+        "Prüfkontrolle A10",
+        "Prüfkontrolle A11",
+        "Prüfkontrolle A12",
+        "Prüfergebnisse",
+        "Prüfkontrolle A13",
+        "Prüfkontrolle A14",
+        "Prüfkontrolle A15",
+        "Prüfkontrolle A16",
+        "Prüfkontrolle A17",
+        "Prüfkontrolle A18",
+        "Prüfkontrolle A19",
+        "Prüfkontrolle A20",
+        "Prüfkontrolle A21",
+        "Prüfkontrolle A22",
+        "Prüfkontrolle A23",
+        "Prüfkontrolle A24",
+        "Pre-QA Übersicht",
+        "Pre-QA Treffer",
+        "FINAL Freigabestatus"
+      ]
+    },
+    {
+      "gitSource": "origin/main:develop/FaithPath-V4-F-GitHub.zip",
+      "sha256": "f590a7c6494c19e35d8bca21e02c6d14dbd16cbf003ae82d1622e3a1e2c24178",
+      "workbooks": []
+    },
+    {
+      "gitSource": "origin/main:develop/FaithPath-V4-Netlify.zip",
+      "sha256": "1a115c8774925fbf8a1f00844195a00b4f21343dd9946d8f6882827d4e5c2551",
+      "workbooks": []
+    }
+  ],
+  "approvedATChapterMasterFound": false,
+  "ATAction": "withheld; no replacement from Nachlese or old quizzes",
+  "historicalCatalog": {
+    "file": "reports/sources/2-FaithPath_GESAMT_Fragen_Pruefkatalog_FP0001-1560-1-.pdf",
+    "sha256": "10c0b1f8011a9daf86a55700b0daf52c199191ef148ab2466c84547a17e0d33f",
+    "scope": "FP-0001 through FP-1560, final status 2026-09-30; existing 260 story questions plus 1300 NT chapter questions",
+    "standaloneFinalATChapterImportSource": false
+  }
+}
