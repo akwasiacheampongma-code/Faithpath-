@@ -50,11 +50,11 @@ try{
    await p.evaluate(({data,KEYS})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{data:phase2Fixture(theme,n),KEYS});await p.reload();await route(p,'bible-journey');
    const before=await state(p),sword=p.locator('svg.journey-sword');assert.equal(await sword.count(),1);assert((await sword.getAttribute('aria-label')).includes(`${n} von 1189`));
    assert.equal(await p.locator('.journey-facts dd').first().innerText(),String(n));assert.equal(await p.locator('.sword-count').innerText(),`${n} von 1.189 Kapiteln erkundet`);
-   const box=await sword.boundingBox();assert(box.width>0&&box.width<=width);assert.equal(await sword.getAttribute('viewBox'),'0 0 260 292');await bounds(p);
+   await p.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));const box=await sword.boundingBox(),countBox=await p.locator('.sword-count').boundingBox(),navBox=await p.locator('.primary-nav').boundingBox();assert(box.y+box.height<=navBox.y+1,'Complete sword above navigation');assert(countBox.y+countBox.height<=navBox.y+1,'Small progress count above navigation');assert(box.width>0&&box.width<=width);assert.equal(await sword.getAttribute('viewBox'),'0 0 260 292');await bounds(p);
    assert.deepEqual(await state(p),before);
   }
   await audit(p,`Sword ${theme} ${width}`);await p.locator('[data-action="sword-info"]').click();await p.locator('[data-journey-scripture]').last().filter({hasText:'und nehmet den Helm'}).waitFor();
-  assert((await p.getByRole('dialog').innerText()).includes('nicht gegen Menschen'));await p.getByRole('dialog').getByRole('button',{name:'Schließen',exact:true}).click();
+  assert((await p.getByRole('dialog').innerText()).includes('nicht gegen Menschen'));await p.getByRole('dialog').getByRole('button',{name:'Schließen',exact:true}).first().click();
   await p.locator('.journey-scripture a').first().click();await p.locator('.verse').first().waitFor();assert.equal(await p.locator('#translation').inputValue(),'l1912');assert(p.url().includes('from=17'));assert.equal(await p.locator('.verse[data-v="17"]').innerText(),'17\nund nehmet den Helm des Heils und das Schwert des Geistes, welches ist das Wort Gottes.');
   await route(p,'bible-journey/GEN');assert.equal(await p.locator('svg.journey-sword').count(),0);assert.equal(await p.locator('.journey-chapters li').count(),50);
  });

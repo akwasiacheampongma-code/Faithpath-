@@ -1,3 +1,4 @@
+import {swordExplanation} from './journey-view.js';
 import {storyQuestionState,renderStoryQuestion} from './story-flow-view.js';
 import {chapterOffer,chapterNavigation} from './reader-view.js';
 import {selectToday} from './today-model.js';
@@ -1277,8 +1278,7 @@ async function fillJourneyScripture(root) {
  try {
   const book=await getBook('EPH','l1912'),text=book.chapters[5].find(v=>v[0]===17)?.[1];
   if(!text||!root.isConnected)return;
-  const start=text.indexOf('und das Schwert');
-  for(const quote of root.querySelectorAll('[data-journey-scripture]'))quote.textContent=start>=0?'… '+text.slice(start):text;
+  for(const quote of root.querySelectorAll('[data-journey-scripture]'))quote.textContent=text;
  }catch {if(root.isConnected)for(const quote of root.querySelectorAll('[data-journey-scripture]'))quote.textContent='Den Bibeltext findest du in Epheser 6,17.';}
 }
 function cancelNoteDeletion() {
@@ -1310,7 +1310,7 @@ function confirmJournalDeletion(id) {
 }
 async function action(a, d, el) {
   if(a==='sword-info'){
-    modal("Warum ein Schwert?",`<blockquote class="journey-scripture"><p data-journey-scripture></p><cite>${link("Epheser 6,17","read/EPH/6/l1912?from=17&to=17")}</cite></blockquote><p>Das Schwert zeigt die Teile der Bibel, die du selbst gelesen hast. Es bewertet nicht deinen Glauben.</p><p class="meta">Sichtbar werden nur Kapitel, deren Ende du im Reader erreicht hast. Kapitelfragen sind optional.</p>${button("Schließen","close",{},"button quiet")}`);fillJourneyScripture($("#dialog"));return;
+    modal("Warum ein Schwert?",`${swordExplanation()}${button("Schließen","close",{},"button quiet")}`);fillJourneyScripture($("#dialog"));return;
   }
   if(a==='reset-book-search'){$("#book-search").value="";$("#book-list").innerHTML=bookList();$("#book-search").focus();return;}
   if(a==="set-theme"){

@@ -1,26 +1,9 @@
-import {journeySummary,exploredChapters} from './bible-journey.js';
+export {journeyView,journeyAcknowledgement,sword} from './journey-view.js';
 import {treeBranches,pathEvidence} from './tree-branches.js';
-import {progressiveSword,countLabel} from './journey-sword.js';
+import {countLabel} from './journey-sword.js';
 import {THEMES,themeId} from './themes.js';
 const e=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const route=(data,book,chapter)=>`read/${book}/${chapter}/${data.translation||'otb'}`;
 const link=(label,r,cls='text-link',extra='')=>`<a class="${cls}" href="#${e(r)}" ${extra}>${e(label)}</a>`;
-export const sword=()=>'<svg class="journey-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 19 3-3m-2-3 5 5M9 15l9-9 1-3-3 1-9 9M3 21l2-2"/></svg>';
-export function journeyAcknowledgement(data,books,ref){const done=exploredChapters(data,books).has(ref.book+':'+ref.chapter),name=books.find(b=>b.code===ref.book)?.name||ref.book;return `<section class="journey-acknowledgement" aria-live="polite" ${done?'':'hidden'}>${sword()}<div><span class="overline">Kapitel erkundet</span><p>${e(name)} ${ref.chapter} ist jetzt Teil deiner Bibelreise.</p>${link('Deine Bibelreise ansehen','bible-journey/'+ref.book)}</div></section>`;}
-export function journeyView(data,books,code=''){
- const x=journeySummary(data,books),book=x.books.find(b=>b.code===code);if(code&&!book)return null;
- const reading=x.reading;
- if(book){const known=new Set(book.explored.map(e=>e.chapter)),next=book.current&&!known.has(book.current)?book.current:Array.from({length:book.chapters},(_,i)=>i+1).find(c=>!known.has(c))||book.current||1;
- return {title:book.name,body:`<p class="journey-reading-state">${known.size} von ${book.chapters} Kapiteln erkundet${known.size===book.chapters?' · vollständig erkundet':''}</p>${link('Hier weiter',route(data,code,next),'button primary')}<p class="journey-grid-key meta">✓ Erkundet · → Als Nächstes · weitere Kapitel offen</p><ol class="journey-chapters">${Array.from({length:book.chapters},(_,i)=>{const c=i+1,done=known.has(c),current=book.current===c,isNext=!done&&c===next,state=done?'erkundet':isNext?'als Nächstes':'noch nicht erkundet';return `<li class="${done?'is-explored':isNext?'is-next':''}">${link(String(c),route(data,code,c),'journey-chapter-link',`aria-label="${e(book.name)} Kapitel ${c}, ${state}${current?', zuletzt geöffnet':''}" ${isNext?'aria-current="step"':''}`)}<span class="chapter-state" aria-hidden="true">${done?'✓':isNext?'→':''}</span></li>`;}).join('')}</ol>`};
- }
- const bookRow=b=>`<li>${link(b.name,'bible-journey/'+b.code,'journey-book-link')}<span class="meta">${b.explored.length} von ${b.chapters} Kapiteln erkundet${b.explored.length===b.chapters?' · vollständig':''}</span><svg class="journey-book-track" viewBox="0 0 100 3" preserveAspectRatio="none" aria-hidden="true"><rect width="100" height="3"/><rect width="${b.explored.length/b.chapters*100}" height="3"/></svg></li>`;
- const started=x.books.filter(b=>b.explored.length>0).sort((a,b)=>(b.code===reading?.book)-(a.code===reading?.book)||Math.max(...b.explored.map(e=>Date.parse(e.at)))-Math.max(...a.explored.map(e=>Date.parse(e.at))));
- const continuation=reading?`<section class="journey-resume continuity-strip"><span class="overline">Hier weiter</span><h2>${e(books.find(b=>b.code===reading.book)?.name||reading.book)} ${reading.chapter} weiterlesen</h2>${link('Weiterlesen',route({...data,translation:data.reading.translation||data.translation},reading.book,reading.chapter),'button primary')}</section>`:link('Bibel öffnen','bible','button primary journey-start');
- return {title:'Deine Bibelreise',body:`<section class="journey-sword-hub" aria-label="Deine gelesenen Kapitel"><p class="journey-intro">${x.chapters?'Was du selbst gelesen hast, wird sichtbar.':'Wenn du ein Kapitel bis zum Ende liest, wird es Teil deiner Bibelreise.'}</p><div class="journey-sword-scene">${progressiveSword(x)}</div>${!x.chapters?'<h2 class="journey-beginning">Deine Bibelreise beginnt hier</h2>':''}${continuation}<blockquote class="journey-scripture"><p data-journey-scripture></p><cite>${link('Epheser 6,17','read/EPH/6/l1912?from=17&to=17','text-link')}</cite></blockquote><p class="journey-symbol-explanation meta">Das Schwert zeigt die Teile der Bibel, die du selbst gelesen hast. Es bewertet nicht deinen Glauben.</p><button type="button" class="text-button sword-info" data-action="sword-info">Warum ein Schwert?</button></section>
- <dl class="journey-facts"><div><dt>Kapitel erkundet</dt><dd>${x.chapters}</dd></div><div><dt>Bücher begonnen</dt><dd>${x.begunBooks}</dd></div><div><dt>Bücher vollständig erkundet</dt><dd>${x.completedBooks}</dd></div></dl>
- ${started.length?`<section class="journey-started"><h2>Begonnene Bücher</h2><ul class="journey-books">${started.map(bookRow).join('')}</ul></section>`:''}
- ${[['Altes Testament',x.books.slice(0,39)],['Neues Testament',x.books.slice(39)]].map(([title,bs])=>`<section class="journey-testament"><h2>${title}</h2><ul class="journey-books">${bs.map(bookRow).join('')}</ul></section>`).join('')}`};
-}
 // Fixed attachment zones traced against each original tree asset; presentation only.
 const branchGeometry = {
  2: [
