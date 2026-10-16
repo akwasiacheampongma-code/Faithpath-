@@ -51,6 +51,8 @@ try{
    const seed=todayFixture('returning',theme);await p.evaluate(({seed,KEYS})=>localStorage.setItem(KEYS.main,JSON.stringify(seed.data)),{seed,KEYS});await p.reload();await route(p,'today');await p.evaluate(axe);
    const report=await p.evaluate(async()=>await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}}));accessibility.push({theme,width,violations:report.violations});assert.deepEqual(report.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),[]);
    const primary=p.locator('.today-path-action');await primary.focus();assert(await primary.evaluate(el=>el===document.activeElement&&getComputedStyle(el).outlineStyle!=='none'));await p.keyboard.press('Enter');await p.locator('#main h1').filter({hasText:'In Ruhe zuhören'}).waitFor();assert(p.url().endsWith('#path/today-path'));
+   await p.getByRole('link',{name:'FaithPath Startseite',exact:true}).click();await p.locator('.today-phase1').waitFor();
+   assert(await p.locator('#main h1').evaluate(el=>el===document.activeElement),'Route handoff must focus Today heading');
   });
   await check(`Entry navigation and first-path creation / ${theme} / ${width}`,async()=>{
    const seed=todayFixture('new',theme);await p.evaluate(({seed,KEYS})=>{localStorage.setItem(KEYS.main,JSON.stringify(seed.data));localStorage.removeItem(KEYS.draft);},{seed,KEYS});await p.reload();await route(p,'today');

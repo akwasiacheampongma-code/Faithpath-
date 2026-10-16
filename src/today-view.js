@@ -97,7 +97,7 @@ export function renderToday(model,ui){
  return `
   <header class="today-header">
    <span class="overline">${returning?'Schön, dass du da bist':'Ein Moment für dich'}</span>
-   <h1>Was bewegt dich gerade?</h1>
+   <h1 tabindex="-1">Was bewegt dich gerade?</h1>
   </header>
   ${returning?path:entry(true)}
   ${draft}

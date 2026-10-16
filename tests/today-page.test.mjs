@@ -53,3 +53,6 @@ test('An unsaved first draft does not move the two new-user entry routes below s
 test('Archived-only entry names the existing overview honestly instead of promising an already-open archive filter',()=>{
  const html=renderToday(model('archived'),adapter);assert(html.includes('Wege und Archiv öffnen'));assert(html.includes('href="#paths"'));assert(!html.includes('Archivierte Wege ansehen'));
 });
+test('Today heading remains programmatically focusable for the existing route focus handoff',()=>{
+ const html=renderToday(model('returning'),adapter);assert(html.includes('<h1 tabindex="-1">Was bewegt dich gerade?</h1>'));
+});
