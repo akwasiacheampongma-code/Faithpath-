@@ -1,3 +1,4 @@
+import {selectTreeHistory,renderTreeJourney} from './tree-view.js';
 import {selectPathsOverview,selectPathDetail} from './paths-model.js';
 import {renderPathsOverview,renderPathDetail} from './paths-view.js';
 import {swordExplanation} from './journey-view.js';
@@ -660,12 +661,8 @@ function path(pid) {
   }
 }
 function tree() {
-  const lvl = treeLevel(s());
-  shell(
-    `${back("Mein Weg", "paths")}${heading("Dein Olivenbaum", stageNames[lvl], "Dieses Bild steht für Entwicklung, die du selbst dokumentiert hast. Es sagt nichts darüber aus, wie gut dein Glaube ist.")}${treeBranchView(s(),lvl)}<section class="section"><h2>Was hinter dem Baum steht</h2>${timelineHTML(timeline(s()).filter((x) => x.kind === "Entwicklung festgehalten")) || "<p>Wenn du später selbst eine Entwicklung bestätigst, wird sie hier sichtbar.</p>"}<details><summary>Wie sich das Bild verändert</summary><p>Die sieben vorhandenen Bilder folgen der Anzahl deiner festgehaltenen Entwicklungen: 0, 1, 2, 3–4, 5–6, 7–9 und ab 10. Das ist eine symbolische Darstellung, keine Messung deines Glaubens. Die nummerierten Äste öffnen echte Wege, zu denen du selbst etwas festgehalten hast.</p></details></section>`,
-    "paths",
-    "tree-page",
-  );
+  const model=selectTreeHistory(s());
+  shell(renderTreeJourney(model,{back,heading,link,date,stageName:stageNames[model.stage],branchMarkup:treeBranchView(s(),model.stage)}),"paths","tree-page");
 }
 function journal() {
   const hasEntries = s().journal.length > 0;

@@ -49,3 +49,24 @@
 .path-page .path-moment-count { margin-top: 16px; }
 .path-page :is(h1,h2,p,blockquote,a,button) { overflow-wrap: anywhere; }
 @media (max-width: 350px) { .path-page .next-step { padding: 16px; } }
+
+/* Original tree assets and marker geometry. Do not crop or distort the scene. */
+.tree-page .page-heading { padding-bottom: 8px; }
+.tree-page .page-heading h1 { font-size: clamp(1.625rem,6.5vw,2rem); line-height: 1.25; }
+.tree-page .tree-personal-meaning { max-width: 42ch; line-height: 1.75; color: var(--muted); }
+.tree-page .tree-branch-scene { max-width: 380px; }
+.tree-page :is(.branch-stage-0,.branch-stage-1) { max-width: 230px; }
+.tree-page .tree-figure { margin-block: 20px; }
+.tree-page .tree-figure figcaption { max-width: 38ch; margin: 16px auto 0; line-height: 1.65; font-size: .875rem; }
+.tree-page :is(.tree-paths,.tree-other-paths,.tree-unplaced) { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 20px; }
+.tree-page .tree-unplaced ul { list-style: none; padding: 0; }
+.tree-page .tree-unplaced li { padding-block: 12px; border-bottom: 1px solid var(--line); }
+.tree-page .tree-unplaced .meta { display: block; }
+.tree-page .branch-path-link { min-height: 44px; display: flex; align-items: center; }
+.tree-page .tree-evidence details { border-top: 1px solid var(--line); margin-block: 16px; }
+.tree-page .tree-evidence summary { min-height: 44px; padding-block: 12px; }
+.tree-page .tree-evidence p { line-height: 1.75; }
+.tree-page .tree-source-list { padding-left: 24px; }
+.tree-page .tree-source-list li { padding-block: 16px; border-bottom: 1px solid var(--line); }
+.tree-page .tree-source-list blockquote { margin: 12px 0; font-family: var(--serif); line-height: 1.75; }
+.tree-page :is(h1,h2,p,blockquote,a) { overflow-wrap: anywhere; }

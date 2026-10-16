@@ -1,0 +1,24 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {createRequire} from 'node:module';import {chromium} from 'playwright';import {KEYS} from '../src/store.js';import {treeLevel} from '../src/domain.js';import {phase3Fixture} from './phase3-fixtures.mjs';
+const base=process.env.QA_URL||'http://127.0.0.1:4393',out=process.env.QA_OUT||'qa-output/uiux-phase3/tree';fs.mkdirSync(out,{recursive:true});const results=[],errors=[],axe=fs.readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.min.js'),'utf8'),b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+const check=async(name,fn)=>{try{await fn();results.push({name,status:'PASS'});}catch(e){results.push({name,status:'FAIL',error:e.stack});}console.log(results.at(-1).status,name,results.at(-1).error||'')};const state=p=>p.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEYS.main);
+try{for(const width of [320,390])for(const theme of ['light','atmospheric','paper','night']){
+ const c=await b.newContext({viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'}),p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await c.addInitScript(KEYS=>localStorage.setItem(KEYS.onboard,'done'),KEYS);await p.goto(base+'/#tree');await p.locator('#main h1').waitFor();
+ async function seed(data){await p.evaluate(({KEYS,data})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{KEYS,data});await p.reload();await p.goto(base+'/#tree');await p.locator('.tree-branch-scene img').evaluate(img=>img.decode());}
+ for(let stage=0;stage<7;stage++)await check(`Original tree stage ${stage} / ${theme} / ${width}`,async()=>{
+  const data=phase3Fixture('tree-'+stage,theme);await seed(data);const before=await state(p);assert((await p.locator('.tree-branch-scene img').getAttribute('src')).endsWith(`tree-stage-${stage+1}.webp`));assert.equal(await p.locator('.tree-branch-scene img').evaluate(img=>getComputedStyle(img).objectFit),'contain');
+  assert.equal(await p.locator('.tree-branch-hit').count(),stage<2?0:1);assert.equal(await p.locator('.tree-source-list li').count(),data.paths[0].milestones.length);
+  if(stage<2)assert.equal(await p.locator('.tree-other-paths a[href="#path/personal-path"]').count(),1);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(await state(p),before);
+ });
+ await check(`Actual branch targets and empty archived access / ${theme} / ${width}`,async()=>{
+  const data=phase3Fixture('many',theme);data.paths[0].milestones=phase3Fixture('tree-6').paths[0].milestones;await seed(data);const markers=await p.locator('.tree-branch-hit').all();assert.equal(markers.length,5);const boxes=[];
+  for(const marker of markers){const id=await marker.getAttribute('data-path-id');const r=await marker.boundingBox();assert(r.width>=44&&r.height>=44);boxes.push(r);assert(data.paths.some(path=>path.id===id));}
+  for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){const a=boxes[i],z=boxes[j];assert(!(a.x<z.x+z.width&&a.x+a.width>z.x&&a.y<z.y+z.height&&a.y+a.height>z.y),'Branch touch targets overlap');}
+  const href=await markers[0].getAttribute('href');await markers[0].click();await p.locator('.path-page').waitFor();assert(p.url().endsWith(href));
+  const empty=phase3Fixture('no-evidence',theme);empty.paths[0].archived=true;await seed(empty);assert.equal(await p.locator('.tree-branch-hit').count(),0);await p.locator('.tree-unplaced a[href="#path/personal-path"]').click();await p.locator('.path-page').waitFor();assert((await p.locator('.path-page').innerText()).includes('archiviert'));
+ });
+ await check(`Delete/undo retains original development and personal records / ${theme} / ${width}`,async()=>{
+  await seed(phase3Fixture('tree-6',theme));const before=await state(p);await p.goto(base+'/#path/personal-path');await p.locator('.path-options summary').click();await p.locator('[data-action="delete-path"]').click();await p.locator('[data-action="confirm-delete"]').click();await p.locator('.paths-page').waitFor();const after=await state(p);assert.equal(treeLevel(after),6);assert.equal(after.paths.length,0);assert.equal(after.journal.length,before.journal.length);assert.equal(after.quiz['10070'].legacy,'preserve');
+  await p.locator('[data-action="undo-core"]').click();await p.waitForFunction(k=>JSON.parse(localStorage.getItem(k)).paths.length===1,KEYS.main);assert.deepEqual(await state(p),before);
+  await p.goto(base+'/#tree');await p.evaluate(axe);const r=await p.evaluate(()=>axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa','wcag22aa']}}));assert.deepEqual(r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),[]);
+ });await c.close();
+}}finally{await b.close();fs.writeFileSync(out+'/results.json',JSON.stringify({base,results,errors},null,2));}if(errors.length||results.some(x=>x.status==='FAIL'))process.exitCode=1;
