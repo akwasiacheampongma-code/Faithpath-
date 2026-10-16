@@ -1,3 +1,4 @@
+import {renderReviewSource} from './path-review-context.js';
 import {escapeHtml as e} from './view-html.js';
 
 /** HTML only. Existing helpers/actions own navigation, editors and storage. */
@@ -52,6 +53,7 @@ export function renderPathDetail(model,helpers) {
   ${past.length?`<details class="past-steps section"><summary>Ausprobierte Schritte (${past.length})</summary>${past.map(step=>pathStep(step,pid,helpers)).join('')}</details>`:''}
   <section class="section path-story" tabindex="-1" aria-labelledby="path-story-title"><span class="overline">Von damals bis heute</span><h2 id="path-story-title">Die Geschichte dieses Weges</h2>
    <p class="meta">Deine eigenen Gedanken und festgehaltenen Momente. Auch offene Fragen gehören dazu.</p>
+   ${model.reviewContexts?.length?`<details class="path-review-contexts"><summary>Deine Rückblicke im Zusammenhang (${model.reviewContexts.length})</summary>${model.reviewContexts.slice(0,3).map(({review,context})=>`<article class="path-review-card"><span class="meta">Dein Rückblick · ${e(date(review.date))}</span>${renderReviewSource(context,helpers)}<blockquote class="preserve">${e(review.text)}</blockquote><p class="meta">${review.confirmedDevelopment?'Von dir ausdrücklich als Entwicklung festgehalten.':'Ein persönlicher Rückblick, ohne Bewertung.'}</p>${link('Rückblick öffnen',review.route,'text-link')}</article>`).join('')}${model.reviewContexts.length>3?'<p class="meta">Weitere Rückblicke findest du in der folgenden Geschichte.</p>':''}</details>`:''}
    ${timelineHTML(visibleMoments,model.limit)}<p class="meta path-moment-count" aria-live="polite">${visibleMoments.length} von ${moments.length} Momenten</p>
    ${hasMore?button('Weitere Momente','more-history',{path:pid},'button quiet'):''}
   </section>`;

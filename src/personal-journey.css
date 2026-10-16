@@ -70,3 +70,12 @@
 .tree-page .tree-source-list li { padding-block: 16px; border-bottom: 1px solid var(--line); }
 .tree-page .tree-source-list blockquote { margin: 12px 0; font-family: var(--serif); line-height: 1.75; }
 .tree-page :is(h1,h2,p,blockquote,a) { overflow-wrap: anywhere; }
+
+/* Exact review context. Original wording is shown only when verifiable. */
+.path-page .path-review-source { border-left: 2px solid var(--primary); padding: 12px 0 12px 16px; margin-block: 20px; }
+.path-page .path-review-source .meta { display: block; margin-top: 8px; }
+.path-page .path-review-source blockquote { font-family: var(--serif); font-size: 1.125rem; line-height: 1.75; margin: 12px 0; }
+.path-page .path-review-contexts > summary { min-height: 44px; padding-block: 12px; }
+.path-page .path-review-card { padding-block: 20px; border-block: 1px solid var(--line); margin-bottom: 16px; }
+.path-page .path-review-card > blockquote { margin: 16px 0; font-family: var(--serif); font-size: 1.125rem; line-height: 1.75; }
+.path-review-page .entry-text { line-height: 1.8; }

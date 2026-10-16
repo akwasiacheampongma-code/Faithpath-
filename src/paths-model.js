@@ -1,3 +1,4 @@
+import {reviewSourceContext} from './path-review-context.js';
 import {timeline,time,sameRef,gaps} from './domain.js';
 import {pathContext,allReviews} from './continuity.js';
 import {pathEvidence} from './tree-branches.js';
@@ -31,5 +32,5 @@ export function selectPathDetail(data,pid,{limit=40,at=Date.now()}={}) {
  for(const thought of thoughts)if(!moments.some(m=>m.route===thought.route&&!m.id.startsWith('l:')))moments.push({id:(thought.route.startsWith('entry/')?'j:':'r:')+thought.id,at:thought.date,kind:thought.subtype||thought.type||'Gedanke',title:thought.text,pathId:pid,route:thought.route,ref:thought.ref});
  for(const review of reviews)if(!moments.some(m=>m.route===review.route))moments.push({id:'gr:'+review.id,at:review.date,kind:review.confirmedDevelopment?'Entwicklung festgehalten':'Rückblick',title:review.text,pathId:pid,route:review.route});
  moments=moments.filter(moment=>!moment.id.startsWith('l:')||!moments.some(other=>other!==moment&&!other.id.startsWith('l:')&&other.route===moment.route&&other.at===moment.at)).sort((a,b)=>(time(b.at)||0)-(time(a.at)||0));
- return {path,context,evidence,nextStep:context.step,thoughts,reviews,scriptures,moments,visibleMoments:moments.slice(0,limit),hasMore:moments.length>limit,limit,pending:gaps(data,at).filter(g=>g.pathId===pid)};
+ return {path,context,evidence,nextStep:context.step,thoughts,reviews,reviewContexts:reviews.map(review=>({review,context:reviewSourceContext(data,review)})),scriptures,moments,visibleMoments:moments.slice(0,limit),hasMore:moments.length>limit,limit,pending:gaps(data,at).filter(g=>g.pathId===pid)};
 }

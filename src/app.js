@@ -1,3 +1,4 @@
+import {capturePathReviewSource,reviewSourceContext,renderReviewSource} from './path-review-context.js';
 import {selectTreeHistory,renderTreeJourney} from './tree-view.js';
 import {selectPathsOverview,selectPathDetail} from './paths-model.js';
 import {renderPathsOverview,renderPathDetail} from './paths-view.js';
@@ -679,7 +680,8 @@ function journalResults() {
 function entry(id, kind = "entry") {
   const x=(kind === "reflection"?s().reflections:kind === "review"?allReviews(s()):s().journal).find(j=>j.id===id);if(!x)return notFound();
   const later=reviewsFor(s(),x,kind === "reflection"?"reflection":"journal")[0],previous=ui.continuitySaved===x.id?previousThought(s(),x):null;
-  shell(`${back("Journal","journal")}<header class="entry-heading"><div><span class="overline">${e(x.subtype||x.type||(kind === "review"?"Rückblick":"Reflexion"))}</span><h1 tabindex="-1">${date(x.date)}</h1></div>${kind === "entry" ? `<details class="entry-options"><summary aria-label="Journaleintrag verwalten">${icon("more")}<span class="sr-only">Journaleintrag verwalten</span></summary><div class="entry-context-menu">${button("Bearbeiten","edit-entry",{id},"text-button")}${button("Weg verbinden / ändern","journal-path",{id},"text-button")}${isBibleNote(x)?button("Notiz an der Bibelstelle entfernen","delete-note",{id,kind:"journal"},"text-button danger-text"):""}${button("Journaleintrag löschen","delete-journal",{id},"text-button danger-text")}</div></details>` : ""}</header><div class="entry-text preserve">${e(x.text)}</div><div class="entry-connections">${(x.pathIds||[]).map(pid=>{const p=s().paths.find(p=>p.id===pid);return p?`<p>Teil deines Weges: ${link(e(p.title),"path/"+encodeURIComponent(pid))}</p>`:"";}).join("")}${x.ref?`<p>Verbunden mit ${link(e(refLabel(x.ref)),readRoute(x.ref,"journal"))}</p>`:""}${later?`<p>Später darauf zurückgeblickt · ${link("Rückblick ansehen",later.route)}</p>`:""}</div>${previous?`<aside class="continuity-strip previous-thought-prompt"><p>Dazu hast du schon einmal etwas festgehalten.</p>${link("Früheren Gedanken ansehen",previous.route,"text-link")}</aside>`:""}${kind === "reflection"&&isBibleNote(x)?button("Notiz bearbeiten","edit-note",{id,kind:"reflection"},"button quiet"):""}${kind === "reflection"&&isBibleNote(x)?`<div class="note-delete-row">${button("Notiz an der Bibelstelle entfernen","delete-note",{id,kind:"reflection"},"text-button danger-text")}</div>`:""}`,"journal","journal-detail editorial-page");
+  const ownPath=kind==="review"&&x.pathId&&s().paths.find(p=>p.id===x.pathId);
+  shell(`${ownPath?back("Zum Weg","path/"+encodeURIComponent(ownPath.id)):back("Journal","journal")}<header class="entry-heading"><div><span class="overline">${e(x.subtype||x.type||(kind === "review"?"Rückblick":"Reflexion"))}</span><h1 tabindex="-1">${date(x.date)}</h1></div>${kind === "entry" ? `<details class="entry-options"><summary aria-label="Journaleintrag verwalten">${icon("more")}<span class="sr-only">Journaleintrag verwalten</span></summary><div class="entry-context-menu">${button("Bearbeiten","edit-entry",{id},"text-button")}${button("Weg verbinden / ändern","journal-path",{id},"text-button")}${isBibleNote(x)?button("Notiz an der Bibelstelle entfernen","delete-note",{id,kind:"journal"},"text-button danger-text"):""}${button("Journaleintrag löschen","delete-journal",{id},"text-button danger-text")}</div></details>` : ""}</header>${kind==="review"?renderReviewSource(reviewSourceContext(s(),x),{link,date}):""}<div class="entry-text preserve">${e(x.text)}</div><div class="entry-connections">${(x.pathIds||[]).map(pid=>{const p=s().paths.find(p=>p.id===pid);return p?`<p>Teil deines Weges: ${link(e(p.title),"path/"+encodeURIComponent(pid))}</p>`:"";}).join("")}${x.ref?`<p>Verbunden mit ${link(e(refLabel(x.ref)),readRoute(x.ref,"journal"))}</p>`:""}${later?`<p>Später darauf zurückgeblickt · ${link("Rückblick ansehen",later.route)}</p>`:""}</div>${previous?`<aside class="continuity-strip previous-thought-prompt"><p>Dazu hast du schon einmal etwas festgehalten.</p>${link("Früheren Gedanken ansehen",previous.route,"text-link")}</aside>`:""}${kind === "reflection"&&isBibleNote(x)?button("Notiz bearbeiten","edit-note",{id,kind:"reflection"},"button quiet"):""}${kind === "reflection"&&isBibleNote(x)?`<div class="note-delete-row">${button("Notiz an der Bibelstelle entfernen","delete-note",{id,kind:"reflection"},"text-button danger-text")}</div>`:""}`,"journal","journal-detail editorial-page"+(kind==="review"?" path-page path-review-page":""));
 }
 function storyTimeline(items,limit) {
   const groups=new Map();for(const x of items.slice(0,limit)) {const d=new Date(x.at),key=d.toLocaleDateString("de-DE",{month:"long",year:"numeric"});if(!groups.has(key))groups.set(key,[]);groups.get(key).push(x);}
@@ -874,10 +876,12 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
     body = `<p>Was wäre für „${e(p.title)}“ gerade machbar?</p>${suggestions.length ? `<details><summary>Ein paar Anregungen</summary><div class="suggestions">${suggestions.map((text) => button(e(text), "use-suggestion", { text }, "suggestion")).join("")}</div></details>` : ""}${textarea("Dein Schritt", "text", oldStep?.text || "", "Beschreibe eine konkrete, kleine Handlung.")}<p class="meta">Du probierst etwas aus. Ob daraus Entwicklung entsteht, hältst du später selbst fest.</p>`;
     cta = oldStep ? "Änderungen speichern" : "Schritt festhalten";
   } else if (type === "review") {
+    const sourceSnapshot=capturePathReviewSource(s(),args,now());
+    if(sourceSnapshot)args={...args,sourceSnapshot};
     const g = args.gap,
       p = args.pathId ? s().paths.find((p) => p.id === args.pathId) : null;
     title = "Was ist daraus geworden?";
-    body = `<p class="writing-prompt">${e(g?.title || p?.title || "Dein früherer Gedanke")}</p>${g ? `<blockquote class="previous-thought">${e(g.detail)}</blockquote><p class="meta">Festgehalten am ${date(g.at)}.</p>` : ""}${select(
+    body = `<p class="writing-prompt">${e(g?.title || p?.title || "Dein früherer Gedanke")}</p>${g ? `<blockquote class="previous-thought">${e(args.sourceSnapshot?.text||g.detail)}</blockquote><p class="meta">Letzte Aktivität am ${date(g.at)}.</p>` : args.sourceSnapshot ? `<blockquote class="previous-thought">${e(args.sourceSnapshot.text)}</blockquote><p class="meta">Bezug für diesen Rückblick. Ein anderer Schritt wird dadurch nicht automatisch bewertet.</p>` : ""}${select(
       "Wo stehst du gerade?",
       "status",
       [
@@ -1105,6 +1109,9 @@ async function submitForm() {
         sourceKey: key,
         ref: args.gap?.ref || null,
       };
+      const sourceSnapshot=capturePathReviewSource(d,args,at);
+      if(sourceSnapshot)review.sourceSnapshot=sourceSnapshot;
+      if(args.gap?.at&&!key.startsWith("path:"))review.sourceAt=args.gap.at;
       if (pid) {
         const p = d.paths.find((p) => p.id === pid);
         if (!p) throw new Error("Der Weg fehlt.");
@@ -1133,6 +1140,7 @@ async function submitForm() {
 function openGap(key) {
   const g = gaps(s()).find((g) => g.key === key);
   if (!g) return;
+  ui.reviewInvite={gap:structuredClone(g),sourceSnapshot:capturePathReviewSource(s(),{gap:g,pathId:g.pathId},now())};
   modal(
     "Ein Gedanke von damals",
     `<span class="overline">${date(g.at)}</span><h3>${e(g.title)}</h3><blockquote class="previous-thought">${e(g.detail)}</blockquote><p>Was ist daraus geworden? Es gibt nichts zu bestehen.</p>${button("Jetzt zurückblicken", "review-gap", { key }, "button primary full")}<div class="actions">${button("In zwei Wochen erinnern", "snooze", { key, days: 14 }, "button quiet")}${button("Im Moment nicht", "dismiss-gap", { key }, "text-button")}</div>${g.ref ? link("Den Bibeltext wieder lesen", readRoute(g.ref), "text-link") : ""}`,
@@ -1586,8 +1594,9 @@ async function action(a, d, el) {
     return;
   }
   if (a === "review-gap") {
-    const g = gaps(s()).find((g) => g.key === d.key);
-    if (g) openForm("review", { gap: g, pathId: g.pathId });
+    const invitation=ui.reviewInvite?.gap.key===d.key?ui.reviewInvite:null;
+    const g=invitation?.gap||gaps(s()).find(g=>g.key===d.key);
+    if(g)openForm("review",{gap:g,pathId:g.pathId,...(invitation?.sourceSnapshot?{sourceSnapshot:invitation.sourceSnapshot}:{})});
     return;
   }
   if (a === "snooze" || a === "dismiss-gap") {
@@ -1817,6 +1826,10 @@ async function render() {
     if (token !== ui.token) return;
     window.scrollTo({ top: 0, behavior: "instant" });
     $("h1")?.focus({ preventScroll: true });
+    if(kind==="path"&&new URLSearchParams(query).has("step")){
+      const stepId=new URLSearchParams(query).get("step"),input=$$(".path-step input").find(el=>el.dataset.id===stepId);
+      if(input){const disclosure=input.closest("details");if(disclosure)disclosure.open=true;input.focus();input.scrollIntoView({block:"center",behavior:"instant"});}
+    }
     if(kind==="path"&&new URLSearchParams(query).get("section")==="story"){
       const story=$(".path-story");if(story){story.focus();story.scrollIntoView({block:"start",behavior:"instant"});}
     }
