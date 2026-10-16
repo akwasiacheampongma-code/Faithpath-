@@ -1,6 +1,8 @@
 # FaithPath – UI/UX Phase 1: „Heute“ und Einstieg
 
-Stand: 16.10.2026. **Auftrag und Abnahmekriterien, noch keine implementierte Änderung und keine Freigabe.**
+Stand: 16.10.2026. **Ursprünglicher Auftrag und Abnahmekriterien.**
+
+Umsetzung und Nachweise: [Implementierungsbericht](../reports/uiux-phase1/IMPLEMENTIERUNGSBERICHT.md). **Keine Produktionsfreigabe; echtes Geräte-Gate bleibt offen.**
 
 ## Ausgangspunkt (verifiziert)
 

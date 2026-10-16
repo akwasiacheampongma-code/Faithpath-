@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "node_tests": 139,
+  "new_node_tests": 13,
+  "browser_worker_checks": 249,
+  "suites": {
+    "today": {
+      "status": "PASS",
+      "count": 130,
+      "artifact": "qa-output/uiux-phase1/browser/results.json"
+    },
+    "zoom": {
+      "status": "PASS",
+      "count": 2,
+      "artifact": "qa-output/uiux-phase1/zoom/results.json"
+    },
+    "core": {
+      "status": "PASS",
+      "count": 12,
+      "artifact": "qa-output/browser-results.json"
+    },
+    "stabilization": {
+      "status": "PASS",
+      "count": 12,
+      "artifact": "qa-output/uiux-phase1/stabilization/results.json"
+    },
+    "chapter": {
+      "status": "PASS",
+      "count": 17,
+      "artifact": "qa-output/uiux-phase1/chapter/results.json"
+    },
+    "nt": {
+      "status": "PASS",
+      "count": 24,
+      "artifact": "qa-output/nt-quiz-final/results.json",
+      "actually_tested_ids": 90
+    },
+    "nachlese": {
+      "status": "PASS",
+      "count": 36,
+      "artifact": "qa-output/nachlese-mc/corpus-browser/results.json"
+    },
+    "nachlese-fixtures": {
+      "status": "PASS",
+      "count": 6,
+      "artifact": "qa-output/uiux-phase1/mc-fixtures/results.json"
+    },
+    "worker": {
+      "status": "PASS",
+      "count": 3,
+      "artifact": "qa-output/service-worker-results.json"
+    },
+    "update": {
+      "status": "PASS",
+      "count": 7,
+      "artifact": "qa-output/uiux-phase1/update/results.json"
+    }
+  },
+  "axe_configurations": 8,
+  "axe_violations": 0,
+  "physical_device_gate": "OFFEN",
+  "netlify_deploy": "NOT_PERFORMED"
+}
