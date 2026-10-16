@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "name": "Short chapter consent and unchanged long chapter / 320 / light",
+      "status": "PASS"
+    },
+    {
+      "name": "Short chapter consent and unchanged long chapter / 320 / atmospheric",
+      "status": "PASS"
+    },
+    {
+      "name": "Short chapter consent and unchanged long chapter / 320 / paper",
+      "status": "PASS"
+    },
+    {
+      "name": "Short chapter consent and unchanged long chapter / 320 / night",
+      "status": "PASS"
+    },
+    {
+      "name": "Short chapter consent / 390 / light",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Opening a short chapter must not record exploration\n\n1 !== 0\n\n    at file:///workspace/Faithpath-uiux-phase2/tests/phase2-short-chapter-browser.mjs:9:121"
+    },
+    {
+      "name": "Short chapter consent / 390 / atmospheric",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Opening a short chapter must not record exploration\n\n1 !== 0\n\n    at file:///workspace/Faithpath-uiux-phase2/tests/phase2-short-chapter-browser.mjs:9:121"
+    },
+    {
+      "name": "Short chapter consent / 390 / paper",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Opening a short chapter must not record exploration\n\n1 !== 0\n\n    at file:///workspace/Faithpath-uiux-phase2/tests/phase2-short-chapter-browser.mjs:9:121"
+    },
+    {
+      "name": "Short chapter consent / 390 / night",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Opening a short chapter must not record exploration\n\n1 !== 0\n\n    at file:///workspace/Faithpath-uiux-phase2/tests/phase2-short-chapter-browser.mjs:9:121"
+    }
+  ],
+  "errors": [],
+  "syntheticDataOnly": true
+}

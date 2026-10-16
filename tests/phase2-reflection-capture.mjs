@@ -1,0 +1,8 @@
+import fs from 'node:fs';import {chromium} from 'playwright';import {KEYS} from '../src/store.js';import {phase2Fixture,TEST_NOW} from './phase2-fixtures.mjs';
+const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']}),measurements=[];
+try{for(const [phase,port]of [['before',4380],['after',4383]])for(const [width,height]of [[320,568],[390,844],[430,932]])for(const theme of ['light','night']){
+ const out=`qa-output/uiux-phase2/${phase}`;fs.mkdirSync(out,{recursive:true});const c=await b.newContext({viewport:{width,height},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
+ await c.addInitScript(({KEYS,data,now})=>{Date.now=()=>Date.parse(now);if(!localStorage.getItem(KEYS.main))localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');},{KEYS,data:phase2Fixture(theme),now:TEST_NOW});
+ const p=await c.newPage();await p.goto(`http://127.0.0.1:${port}/#question/N-0005`);await p.locator('.answer').first().click();await p.locator(phase==='after'?'.story-reflection':'.question-flow-nav').scrollIntoViewIfNeeded();await p.locator('.toast.visible').waitFor({state:'hidden',timeout:8000});
+ const screenshot=`last-reflection-${theme}-${width}.png`;await p.screenshot({path:out+'/'+screenshot});await p.screenshot({path:out+'/'+screenshot.replace('.png','-full.png'),fullPage:true});measurements.push({phase,name:'last-reflection',width,height,theme,screenshot});await c.close();
+}}finally{await b.close();fs.writeFileSync('qa-output/uiux-phase2/reflection-measurements.json',JSON.stringify(measurements,null,2));}console.log(measurements.length,'captures');
