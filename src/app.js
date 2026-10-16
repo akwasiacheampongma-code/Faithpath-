@@ -1,3 +1,5 @@
+import {selectPathsOverview} from './paths-model.js';
+import {renderPathsOverview} from './paths-view.js';
 import {swordExplanation} from './journey-view.js';
 import {storyQuestionState,renderStoryQuestion} from './story-flow-view.js';
 import {chapterOffer,chapterNavigation,initiallyVisibleChapterEnd} from './reader-view.js';
@@ -645,12 +647,7 @@ function quiz() {
   );
 }
 function paths() {
-  const data = s().paths.filter((p) => !!p.archived === ui.archive);
-  shell(
-    `${heading("Mein Weg", "Was dich über Zeit begleitet.", "Bibelstellen, Gedanken und kleine Schritte. Deine Geschichte bleibt zusammen.")}<div class="actions">${data.length ? button("Weg beginnen", "new-path", {}, "button primary") : ""}${button(ui.archive ? "Aktive Wege" : "Archiv", "toggle-archive", {}, "button quiet")}</div>${data.length ? `<div class="path-list">${data.map((p, i) => `<article><span class="path-index">${icon("leaf")}</span><div>${link(e(p.title), "path/" + encodeURIComponent(p.id), "path-title")}<p>${e(p.why || category(p.category).label)}</p><small>Seit ${date(p.started)}${p.milestones.length ? " · Entwicklung festgehalten" : ""}</small></div></article>`).join("")}</div>` : empty(ui.archive ? "Noch keine archivierten Wege." : "Dein Weg darf klein anfangen.", ui.archive ? "Ruhende Wege behalten ihre ganze Geschichte." : "Vielleicht möchtest du geduldiger zuhören oder einer offenen Frage Raum geben.", ui.archive ? button("Aktive Wege ansehen", "toggle-archive", {}, "button primary") : button("Deinen Weg beginnen", "new-path", {}, "button primary"))}<section class="section">${row("Dein Olivenbaum", "Die Entwicklung, die du selbst festgehalten hast.", "tree")}${row("Geführte Wege", "Eine ruhige Begleitung für deinen Anfang.", "plans")}${row("Deine ganze Geschichte", "Bibelstellen, Gedanken und Entwicklungen.", "history")}</section>`,
-    "paths",
-    "paths-page depth-page",
-  );
+  shell(renderPathsOverview(selectPathsOverview(s(),{archived:ui.archive}),{heading,button,row,date}),"paths","paths-page depth-page");
 }
 function path(pid) {
   const p=s().paths.find(p=>p.id===pid);if(!p)return notFound();

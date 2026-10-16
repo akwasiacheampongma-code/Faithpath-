@@ -1,0 +1,21 @@
+/* UIUX3: personal journey only. Theme tokens, Today and reader stay unchanged. */
+.paths-page .page-heading { padding: 12px 0 18px; }
+.paths-page .page-heading h1 { font-size: clamp(1.625rem,6.5vw,2rem); line-height: 1.25; }
+.paths-page .page-heading p { font-size: 1rem; line-height: 1.65; }
+.paths-page .paths-actions { flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.paths-page .path-list { display: grid; gap: 16px; margin-top: 20px; }
+.paths-page .path-list .personal-path-card { display: block; padding: 0; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.paths-page .path-list .personal-path-card.is-current { border-top: 3px solid var(--primary); }
+.paths-page .path-card-link { display: block; padding: 20px; text-decoration: none; color: var(--text-primary); border-radius: inherit; }
+.paths-page .path-card-link:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+.paths-page .path-title { font-family: var(--serif); font-size: 1.375rem; line-height: 1.35; margin: 10px 0; }
+.paths-page .path-card-context { color: var(--muted); font-size: .9375rem; line-height: 1.6; margin: 0 0 16px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.paths-page .path-card-next { padding-block: 14px; border-top: 1px solid var(--line); }
+.paths-page .path-card-next p { margin: 6px 0 0; font-size: 1rem; line-height: 1.65; white-space: pre-line; }
+.paths-page .path-card-footer { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
+.paths-page .path-card-footer small { font-size: .8125rem; color: var(--muted); }
+.paths-page .path-open { color: var(--primary); font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; gap: 8px; }
+.paths-page .paths-empty { border-top: 1px solid var(--line); padding-block: 24px; }
+.paths-page .paths-empty p { line-height: 1.7; }
+.paths-page :is(h1,h2,p,a,button) { overflow-wrap: anywhere; }
+@media (max-width: 350px) { .paths-page .path-card-link { padding: 16px; } }

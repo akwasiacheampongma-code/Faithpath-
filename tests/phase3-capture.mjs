@@ -1,0 +1,12 @@
+import fs from 'node:fs';import {chromium} from 'playwright';import {KEYS} from '../src/store.js';import {phase3Fixture,TEST_NOW} from './phase3-fixtures.mjs';
+const phase=process.argv[2]||'before',base=process.argv[3]||'http://127.0.0.1:4390',out=`qa-output/uiux-phase3/${phase}`;fs.mkdirSync(out,{recursive:true});const results=[],errors=[],b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
+const scenes=[...['empty','active','five','many','archived','long','mixed'].map(n=>['paths-'+n,n,'paths']),...['active','completed','many-thoughts','missing-source'].map(n=>['path-'+n,n,'path/personal-path']),...Array.from({length:7},(_,i)=>['tree-'+i,'tree-'+i,'tree']),['review-editor','active','path/personal-path'],['review-original','active','review/review-old']];
+try{for(const[width,height]of[[320,568],[390,844],[430,932]])for(const theme of ['light','night']){
+ const c=await b.newContext({viewport:{width,height},isMobile:true,hasTouch:true,reducedMotion:'reduce'});await c.addInitScript(({KEYS,now})=>{Date.now=()=>Date.parse(now);localStorage.setItem(KEYS.onboard,'done');},{KEYS,now:TEST_NOW});const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));
+ await p.goto(base+'/#today');await p.locator('#main h1').waitFor();
+ for(const[name,fixture,route]of scenes){await p.evaluate(({KEYS,data})=>{localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.removeItem(KEYS.draft);},{KEYS,data:phase3Fixture(fixture,theme)});await p.reload();await p.goto(base+'/#'+route);await p.locator('#main h1').waitFor();
+  if(name==='review-editor')await p.locator('[data-action="review-path"]').click();if(name.startsWith('tree-'))await p.locator('.tree-branch-scene img').evaluate(img=>img.decode());await p.locator('.toast.visible').waitFor({state:'hidden',timeout:8000});
+  await p.screenshot({path:`${out}/${name}-${theme}-${width}.png`});if(['paths-active','path-active','tree-0','tree-2','tree-6','review-original'].includes(name))await p.screenshot({path:`${out}/${name}-${theme}-${width}-full.png`,fullPage:true});
+  results.push({name,fixture,route,theme,width,height,overflow:await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1)});
+ }await c.close();
+}}finally{await b.close();fs.writeFileSync(out+'/measurements.json',JSON.stringify({base,phase,results,errors,syntheticDataOnly:true},null,2));}console.log(JSON.stringify({captures:results.length,errors}));
