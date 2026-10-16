@@ -8,6 +8,7 @@ import { BUILD } from "../src/version.js";
 import { KEYS } from "../src/store.js";
 const require = createRequire(import.meta.url),
   { chromium } = require("playwright"),
+  candidate = process.env.FAITHPATH_TEST_ROOT || "dist",
   out = path.resolve("qa-output"),
   root = path.join(out, "sw-origin"),
   results = [];
@@ -52,7 +53,7 @@ function deploy(dir) {
 function variant(build, broken = false) {
   const dir = path.join(out, "release-" + build);
   fs.rmSync(dir, { recursive: true, force: true });
-  fs.cpSync("dist", dir, { recursive: true });
+  fs.cpSync(candidate, dir, { recursive: true });
   fs.renameSync(
     path.join(dir, "releases", BUILD),
     path.join(dir, "releases", build),
@@ -141,7 +142,7 @@ try {
     },
     { legacy, keys: KEYS },
   );
-  deploy("dist");
+  deploy(candidate);
   await p.goto("http://127.0.0.1:4175/#more");
   await p.reload();
   await p.getByRole("button", { name: "Jetzt aktualisieren" }).waitFor();

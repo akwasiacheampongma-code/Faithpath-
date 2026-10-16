@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {validateFinalNtQuiz} from './validate-nt-quiz.mjs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { isDeepStrictEqual as equal } from 'node:util';
@@ -8,9 +9,12 @@ const read = name => JSON.parse(fs.readFileSync(path.join(root, name), 'utf8'));
 const report = read('reports/faithpath-nachlese-materialization.json');
 const originalBytes = fs.readFileSync(path.join(root, 'reports/faithpath-original-stories.json'));
 const original = JSON.parse(originalBytes);
-const currentBytes = fs.readFileSync(path.join(root, 'data/stories.json'));
+// Preserve the historical migration proof; independently validate its approved successor.
+validateFinalNtQuiz(root);
+const currentBytes = fs.readFileSync(path.join(root, 'reports/nt-quiz-final/pre-import-stories.json'));
 const current = JSON.parse(currentBytes);
 const index = read('data/faithpath-content-index.json');
+const historicalSource = file => file === 'data/stories.json' ? currentBytes : fs.readFileSync(path.join(root, file));
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const errors = [];
 const check = (condition, message) => { if (!condition) errors.push(message); };
@@ -185,7 +189,7 @@ check(deduplicated === mergeReport.word_equal_duplicates_single_flow_item, 'Dedu
 const resolution = read('reports/faithpath-review-decisions.json');
 const resolvedIds = ['FP-0120', 'FP-0147', 'FP-0151', 'FP-0239'];
 check(equal(resolution.scope, resolvedIds) && equal(resolution.cases.map(c => c.id), resolvedIds), 'Four-case scope changed');
-for (const [file, digest] of Object.entries(resolution.locked_source_hashes)) check(hash(fs.readFileSync(path.join(root, file))) === digest, `Reviewed source changed ${file}`);
+for (const [file, digest] of Object.entries(resolution.locked_source_hashes)) check(hash(historicalSource(file)) === digest, `Reviewed source changed ${file}`);
 for (const c of resolution.cases) {
   const q = fpById.get(c.id), n = nById.get(c.candidate_N_ID);
   const link = storyFlow.mapping_links.find(l => l.FP_ID === c.id);
@@ -198,7 +202,7 @@ for (const c of resolution.cases) {
   const item = story?.flow_items.find(i => i.source_question_ids.includes(c.id));
   check(Boolean(item) && equal(item.source_question_ids, [c.id]) && item.deduplication === 'NONE', `Reviewed variant incorrectly deduplicated ${c.id}`);
   for (const e of c.source_evidence) {
-    check(hash(fs.readFileSync(path.join(root, e.file))) === e.sha256, `Review evidence hash mismatch ${c.id}/${e.file}`);
+    check(hash(historicalSource(e.file)) === e.sha256, `Review evidence hash mismatch ${c.id}/${e.file}`);
     if (e.verse) {
       const tr = e.file.includes('/l1912/') ? 'l1912' : 'otb';
       check(bibles[tr][e.book]?.[e.chapter - 1]?.find(v => Number(v[0]) === e.verse)?.[1] === e.text, `Review Bible text mismatch ${c.id}`);

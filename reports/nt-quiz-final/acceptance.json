@@ -1,0 +1,132 @@
+{
+  "status": "NT_QUIZ_FINAL_IMPORT_PASS",
+  "build": "FP4-20261008-G-NTFINAL1",
+  "base_branch": "develop/v4",
+  "base_commit": "f02106e9a15877ec8acb92f444bf62fcbc51c36e",
+  "working_branch": "content/nt-quiz-final-1300",
+  "code_commit": "272b2ce372566a92992c86a38f201e206651fa67",
+  "source_sha256": "ddb5e9c5832a1aa60e5329621c6a0c92002cd1b879177c5b39027344cce5c199",
+  "source_sheet": "FAITHPATH_IMPORT",
+  "questions": 1300,
+  "chapters": 260,
+  "books": 27,
+  "id_start": "FP-0261",
+  "id_end": "FP-1560",
+  "questions_per_chapter": 5,
+  "changed_fields": 6151,
+  "other_content_preserved": true,
+  "unit_tests": {
+    "passed": 87,
+    "failed": 0
+  },
+  "browser_suites": {
+    "core_app": 12,
+    "chapter_integration": 17,
+    "nt_import": 24,
+    "pre_import_to_final_update": 1,
+    "existing_pwa": 3
+  },
+  "browser_unique_final_questions_verified": 90,
+  "mandatory_ids": [
+    "FP-0261",
+    "FP-0401",
+    "FP-1071",
+    "FP-1124",
+    "FP-1171",
+    "FP-1281",
+    "FP-1451",
+    "FP-1560"
+  ],
+  "console_errors": 0,
+  "page_errors": 0,
+  "unhandled_promise_rejections": 0,
+  "preview_ready": true,
+  "production_technically_ready": true,
+  "production_deployed": false,
+  "build_evidence": {
+    "build": "FP4-20261008-G-NTFINAL1",
+    "files": 314,
+    "content_hash": "5f7516623d451e3edefe16f1b61ce4f0f100aa9d419519b2ce75d0d13184686c",
+    "build_hash": "0d495156102f9317100e12d550601cea5141a265933264f423234fee516a4fd5"
+  },
+  "acceptance": [
+    {
+      "pass": 1,
+      "requirement": "1.300 / 1.300 Fragen vorhanden",
+      "status": "PASS"
+    },
+    {
+      "pass": 2,
+      "requirement": "FP-0261 bis FP-1560 lückenlos",
+      "status": "PASS"
+    },
+    {
+      "pass": 3,
+      "requirement": "260 / 260 Kapitel",
+      "status": "PASS"
+    },
+    {
+      "pass": 4,
+      "requirement": "27 / 27 NT-Bücher",
+      "status": "PASS"
+    },
+    {
+      "pass": 5,
+      "requirement": "Exakt 5 Fragen je Kapitel",
+      "status": "PASS"
+    },
+    {
+      "pass": 6,
+      "requirement": "Alle correctIndex gültig und unverändert aus Master",
+      "status": "PASS"
+    },
+    {
+      "pass": 7,
+      "requirement": "Alle richtigen Antworten stimmen mit correctIndex überein",
+      "status": "PASS"
+    },
+    {
+      "pass": 8,
+      "requirement": "Alle Referenzen vorhanden und Verse validiert",
+      "status": "PASS"
+    },
+    {
+      "pass": 9,
+      "requirement": "Alle Erklärungen vorhanden",
+      "status": "PASS"
+    },
+    {
+      "pass": 10,
+      "requirement": "Build erfolgreich",
+      "status": "PASS"
+    },
+    {
+      "pass": 11,
+      "requirement": "Quizflow funktionsfähig",
+      "status": "PASS"
+    },
+    {
+      "pass": 12,
+      "requirement": "FaithPath-Kernfunktionen erhalten",
+      "status": "PASS"
+    },
+    {
+      "pass": 13,
+      "requirement": "Keine Console-/Runtime-Fehler durch Import",
+      "status": "PASS"
+    },
+    {
+      "pass": 14,
+      "requirement": "Preview technisch deploybar",
+      "status": "PASS"
+    }
+  ],
+  "review": {
+    "status": "PASS",
+    "findings_resolved": [
+      "Reference/verse validation before writes",
+      "Missing cached formula values produce IMPORT STOPP"
+    ],
+    "independent_targeted_tests": "3/3 PASS"
+  }
+}

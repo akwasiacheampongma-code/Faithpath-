@@ -1,0 +1,230 @@
+{
+  "build": "FP4-20261008-G-NTFINAL1",
+  "base": "http://127.0.0.1:4251",
+  "results": [
+    {
+      "name": "active Service Worker serves the final build",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: MAT 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: MAT 21, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: MRK 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: JHN 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: ROM 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: 1CO 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: 2CO 3, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: GAL 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: EPH 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: EPH 5, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: 1TH 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: 2TI 3, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: HEB 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: HEB 6, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: JAS 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: 1JN 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: REV 1, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "real touch: REV 22, five exact source questions",
+      "status": "PASS"
+    },
+    {
+      "name": "all eight mandatory IDs were rendered, answered, and verified",
+      "status": "PASS"
+    },
+    {
+      "name": "offline reload still uses exact final source, including Revelation boundary",
+      "status": "PASS"
+    },
+    {
+      "name": "long content, touch and reduced motion 320x568 @100%",
+      "status": "PASS"
+    },
+    {
+      "name": "long content, touch and reduced motion 390x844 @200%",
+      "status": "PASS"
+    },
+    {
+      "name": "long content, touch and reduced motion 430x932 @100%",
+      "status": "PASS"
+    }
+  ],
+  "testedIds": [
+    "FP-0261",
+    "FP-0262",
+    "FP-0263",
+    "FP-0264",
+    "FP-0265",
+    "FP-0361",
+    "FP-0362",
+    "FP-0363",
+    "FP-0364",
+    "FP-0365",
+    "FP-0401",
+    "FP-0402",
+    "FP-0403",
+    "FP-0404",
+    "FP-0405",
+    "FP-0601",
+    "FP-0602",
+    "FP-0603",
+    "FP-0604",
+    "FP-0605",
+    "FP-0846",
+    "FP-0847",
+    "FP-0848",
+    "FP-0849",
+    "FP-0850",
+    "FP-0926",
+    "FP-0927",
+    "FP-0928",
+    "FP-0929",
+    "FP-0930",
+    "FP-1016",
+    "FP-1017",
+    "FP-1018",
+    "FP-1019",
+    "FP-1020",
+    "FP-1071",
+    "FP-1072",
+    "FP-1073",
+    "FP-1074",
+    "FP-1075",
+    "FP-1101",
+    "FP-1102",
+    "FP-1103",
+    "FP-1104",
+    "FP-1105",
+    "FP-1121",
+    "FP-1122",
+    "FP-1123",
+    "FP-1124",
+    "FP-1125",
+    "FP-1171",
+    "FP-1172",
+    "FP-1173",
+    "FP-1174",
+    "FP-1175",
+    "FP-1251",
+    "FP-1252",
+    "FP-1253",
+    "FP-1254",
+    "FP-1255",
+    "FP-1281",
+    "FP-1282",
+    "FP-1283",
+    "FP-1284",
+    "FP-1285",
+    "FP-1306",
+    "FP-1307",
+    "FP-1308",
+    "FP-1309",
+    "FP-1310",
+    "FP-1346",
+    "FP-1347",
+    "FP-1348",
+    "FP-1349",
+    "FP-1350",
+    "FP-1411",
+    "FP-1412",
+    "FP-1413",
+    "FP-1414",
+    "FP-1415",
+    "FP-1451",
+    "FP-1452",
+    "FP-1453",
+    "FP-1454",
+    "FP-1455",
+    "FP-1556",
+    "FP-1557",
+    "FP-1558",
+    "FP-1559",
+    "FP-1560"
+  ],
+  "mandatory": [
+    "FP-0261",
+    "FP-0401",
+    "FP-1071",
+    "FP-1124",
+    "FP-1171",
+    "FP-1281",
+    "FP-1451",
+    "FP-1560"
+  ],
+  "sampleBooks": [
+    "MAT",
+    "MRK",
+    "JHN",
+    "ROM",
+    "1CO",
+    "GAL",
+    "EPH",
+    "1TH",
+    "HEB",
+    "JAS",
+    "1JN",
+    "REV"
+  ],
+  "longContentIds": [
+    "FP-0365",
+    "FP-1124",
+    "FP-1018",
+    "FP-0928",
+    "FP-1307",
+    "FP-1251"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "rejections": [],
+  "badResponses": []
+}

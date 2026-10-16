@@ -11,6 +11,7 @@ import {
   validRef,
   attach,
 } from "../src/domain.js";
+import { validateFinalNtQuiz } from "../scripts/validate-nt-quiz.mjs";
 import { auditContent } from "../scripts/validate-content.mjs";
 const stamp = "2026-08-01T12:00:00.000Z",
   later = "2026-09-16T12:00:00.000Z";
@@ -300,7 +301,9 @@ test("Alle tatsächlichen Inhalte, Codes und Referenzen in beiden Übersetzungen
 test("Nur belegte Migrationen verändern Inhalte; IDs, Quiz, Bibel und Baumassets bleiben erhalten", () => {
   const baseline = JSON.parse(fs.readFileSync("tests/fixtures/content-master.json"));
   const allowed = JSON.parse(fs.readFileSync("tests/fixtures/content-allowlist.json"));
-  const fresh = JSON.parse(fs.readFileSync("data/stories.json"));
+  assert.equal(validateFinalNtQuiz().content_preserved, true);
+  // The original migration remains proven against its exact archived result.
+  const fresh = JSON.parse(fs.readFileSync("reports/nt-quiz-final/pre-import-stories.json"));
   const seen = new Set();
   function walk(old, current, locator) {
     if (JSON.stringify(old) === JSON.stringify(current)) return;

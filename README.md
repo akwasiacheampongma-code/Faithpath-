@@ -12,6 +12,7 @@ Keine Produktionsveröffentlichung erfolgt automatisch durch diese Anleitung.
 
 ```sh
 npm ci
+python3 -m pip install -r requirements-nt-import.txt
 npm test
 npm run build
 node scripts/serve.mjs dist
@@ -35,5 +36,13 @@ OTB Deutsch und Luther 1912 sind vollständig lokal enthalten. V4 normalisiert �
 - [Rekonstruktion und exakte Reproduktion](docs/PRODUCTION_RECOVERY.md)
 - [Architektur, Datenregeln und Testabläufe](docs/MAINTENANCE.md)
 
-Die überarbeiteten Kapitelquizfragen auf `content/nt-quiz-final-1300` sind ein
-separater Content-Stand und werden hier nicht automatisch übernommen.
+Der Integrationskandidat `FP4-20261016-G-STABLE1-NTFINAL1` auf
+`integration/quiz-final-on-stable1` übernimmt die 1.300 freigegebenen NT-Fragen
+aus `content/nt-quiz-final-1300` feldgetreu auf STABLE1. Eine finale AT-Kapitelquelle
+ist nicht nachgewiesen; dieser Import bleibt zurückgestellt.
+Siehe [Integrationsbericht](docs/QUIZ_FINAL_STABLE1_REPORT_2026-10-16.md).
+
+Python mit `openpyxl==3.1.5` wird ausschließlich für den lokalen Excel-Import und
+die Importtests benötigt. Der Build einschließlich Master-Integritätsprüfung
+läuft weiterhin allein mit Node. `npm run validate:nt-quiz` prüft die erneute
+Ableitung aus dem unveränderten Excel-Master; Netlify wird dadurch nicht aufgerufen.

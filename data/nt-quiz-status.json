@@ -1,5 +1,5 @@
 {
-  "version": "FaithPath NT Complete Quiz 2026-09-15",
+  "version": "FaithPath NT Final Master 1300",
   "curatedExistingUnits": 52,
   "curatedExistingQuestions": 260,
   "newTestamentBooks": 27,
@@ -8,6 +8,12 @@
   "chapterQuizQuestionsAdded": 1300,
   "totalUnits": 312,
   "totalQuestions": 1560,
-  "method": "Every NT chapter has one 5-question source-extractive chapter quiz. Correct answers are exact excerpts from the local Luther 1912 chapter; distractors are exact excerpts from other chapters/books. Existing 260 curated questions are preserved.",
-  "note": "The new 1,300 chapter questions are automatically text-verified/source-extractive, not manually editorially reviewed. Existing curated questions retain their prior status."
+  "method": "Imported verbatim from the approved FAITHPATH_IMPORT sheet; zero-based answer indices and existing chapter unit IDs preserved.",
+  "note": "All 1,300 NT chapter questions are editorially approved: QA_Status and approval FREIGEGEBEN; Import_Bereit JA. Existing 260 curated story questions are unchanged.",
+  "source_file": "FaithPath_Kapitelfragen_NT_FINAL_MASTER_1300.xlsx",
+  "source_sheet": "FAITHPATH_IMPORT",
+  "source_sha256": "ddb5e9c5832a1aa60e5329621c6a0c92002cd1b879177c5b39027344cce5c199",
+  "qa_status": "FREIGEGEBEN",
+  "approval": "FREIGEGEBEN",
+  "import_ready": "JA"
 }

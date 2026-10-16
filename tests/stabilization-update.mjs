@@ -50,7 +50,7 @@ try{
   await page.reload();
   await page.getByRole('button',{name:'Jetzt aktualisieren',exact:true}).waitFor({timeout:90000});assert.deepEqual(await snapshot(),before);
   await page.getByRole('button',{name:'Jetzt aktualisieren',exact:true}).click();await ready(BUILD);assert.deepEqual(await snapshot(),before);
-  results.push('POLISH1 → STABLE1 waits for explicit activation and preserves main/draft/migration bytes');
+  results.push(`POLISH1 → ${BUILD} waits for explicit activation and preserves main/draft/migration bytes`);
   await context.setOffline(true);await page.reload();await ready(BUILD);assert.deepEqual(await snapshot(),before);
   await page.goto('http://127.0.0.1:4288/#today');await page.getByRole('button',{name:'Entwurf fortsetzen',exact:true}).click();assert.equal(await page.getByLabel('Dein Gedanke',{exact:true}).inputValue(),'Ungespeichert aus POLISH1');
   await page.locator('#editor-form button[type=submit]').click();await page.waitForFunction(k=>JSON.parse(localStorage.getItem(k)).journal[0].text==='Ungespeichert aus POLISH1',KEYS.main);

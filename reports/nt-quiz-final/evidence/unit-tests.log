@@ -1,0 +1,146 @@
+
+> faithpath@4.0.0 pretest
+> npm run validate
+
+
+> faithpath@4.0.0 validate
+> node scripts/validate-content.mjs
+
+{
+  "bibles": {
+    "otb": {
+      "books": 66,
+      "chapters": 1189,
+      "verses": 31103
+    },
+    "l1912": {
+      "books": 66,
+      "chapters": 1189,
+      "verses": 31102
+    }
+  },
+  "stories": 312,
+  "questions": 1560,
+  "books": 27,
+  "reflections": 312,
+  "uniqueReflections": 312,
+  "existingVerification": 100,
+  "editorialPending": 0,
+  "approvedNtMaster": 1300,
+  "missingVerification": 160,
+  "situationPlanReferences": 84,
+  "errors": [],
+  "warnings": [
+    "Altes Ganzkapitel-Sentinel: 21",
+    "Altes Ganzkapitel-Sentinel: 22",
+    "Altes Ganzkapitel-Sentinel: 23",
+    "Altes Ganzkapitel-Sentinel: 24",
+    "Altes Ganzkapitel-Sentinel: 25",
+    "Altes Ganzkapitel-Sentinel: 26",
+    "Altes Ganzkapitel-Sentinel: 27",
+    "Altes Ganzkapitel-Sentinel: 28",
+    "Altes Ganzkapitel-Sentinel: 29",
+    "Altes Ganzkapitel-Sentinel: 30",
+    "Altes Ganzkapitel-Sentinel: 31",
+    "Altes Ganzkapitel-Sentinel: 32"
+  ]
+}
+
+> faithpath@4.0.0 test
+> node --test tests/*.test.mjs
+
+✔ chapter collection covers all 260 original units and all 1300 exact source IDs without story content (4.083234ms)
+✔ every one-based reader chapter maps to exactly its original zero-based unit object (1.461106ms)
+✔ chapters without actual quiz data and invalid chapters have no unit (0.569456ms)
+✔ future chapter metadata indexes without an NT-only list or copying questions (5.130203ms)
+✔ a future chapter unit without actual questions cannot create an empty quiz entry (0.717729ms)
+✔ ambiguous chapter mappings and invalid unit metadata are rejected rather than picking a wrong chapter (1.479234ms)
+✔ reader and collection entry routes use the same canonical existing numeric quiz ID (0.579431ms)
+✔ reader return preserves translation, range and explicit context while next chapter is the correct chapter (0.670518ms)
+✔ collection, old story and direct routes have a useful book return without requiring an origin (0.704419ms)
+✔ foreign chapter, foreign unit and external or malformed origins safely fall back to the correct collection (0.787554ms)
+✔ Range color edits preserve old ID, metadata and unselected verse colors (1.066073ms)
+✔ Existing overlaps plus new verses are all colored without losing original IDs (0.228403ms)
+✔ Legacy highlight has safe default; optional colors round-trip in unchanged V5 backup (1.484462ms)
+✔ Path deletion retains personal content, review/milestone IDs and tree stage (0.802156ms)
+✔ Conflicting review IDs refuse deletion rather than overwrite a record (0.396656ms)
+✔ Removing part of a range preserves outside verses and original ID (0.339551ms)
+✔ Migration erhält lange Texte, unbekannte Felder, IDs und alle Sammlungen (2.806389ms)
+✔ Vor Migration wird der exakte Originaltext gesichert; wiederholter Start verändert IDs nicht (2.10195ms)
+✔ Beschädigtes JSON und zukünftiges Schema werden niemals durch leere Daten ersetzt (0.361013ms)
+✔ Speicherfehler lässt alten Zustand und Original unverändert (0.596536ms)
+✔ Migration ohne Platz für Sicherung schreibt nichts ins Original (1.597642ms)
+✔ Konkurrierender Tab wird erkannt statt überschrieben (0.394683ms)
+✔ Backup-Rundreise erhält alle Daten und Planfortschritt (2.563685ms)
+✔ Ungültige Importdaten, Duplikate und Prototype-Keys verändern keinen Datenstand (0.334312ms)
+✔ Vor Import wird ein wiederherstellbarer vorheriger Stand gesichert (0.318829ms)
+✔ Angehakte Schritte verändern den Olivenbaum nicht; Archiv löscht keine Entwicklung (0.52525ms)
+✔ Nur explizit bestätigte globale Entwicklungen zählen (0.191728ms)
+✔ Frische Aktivitäten ergeben keine Erinnerung; alte Notizen schon (0.460933ms)
+✔ Snooze, Abschluss und ungültige Datumswerte werden respektiert (0.124097ms)
+✔ Neue Wegreflexion verschiebt abgeleitete Erinnerung statt alte Aktivität zu behaupten (0.509206ms)
+✔ Verknüpfte Markierungen erzeugen keine doppelte Erinnerung (1.083759ms)
+✔ Reflexion und Journal werden nur bei exakt sicherer Legacy-Verbindung zusammengeführt (0.587914ms)
+✔ Wegverbindung bewahrt Bibel, Journal und Reflexion in einer Chronologie (0.683438ms)
+✔ Rückblick und zugehöriger Meilenstein erscheinen nicht doppelt (0.409446ms)
+✔ Alle tatsächlichen Inhalte, Codes und Referenzen in beiden Übersetzungen validieren (222.979216ms)
+✔ Nur belegte Migrationen verändern Inhalte; IDs, Quiz, Bibel und Baumassets bleiben erhalten (335.094134ms)
+✔ Erledigter Schritt und letzter Legacy-Rückblick verschieben eine veraltete Erinnerung (1.203981ms)
+✔ Frisch bearbeiteter Gedanke wird nicht sofort als vergessen angezeigt (0.127371ms)
+✔ Bible note deletion preserves journal, reference, paths, reviews, highlight and color (2.409763ms)
+✔ Unhighlighted and legacy reflection-only notes remain independently deletable (0.222364ms)
+✔ Only the explicit selected note is deleted; unrelated note stays active (0.231678ms)
+✔ Undo retains unrelated later reading but refuses to overwrite an edited note (0.710809ms)
+✔ Unrelated legacy reflection with same ID or text must not be marked deleted (0.224097ms)
+✔ Deletion and undo roundtrip through existing V5 store and backups without migration (3.008263ms)
+✔ reviewed merge covers exact source IDs once, preserves 2479 items and excludes chapter quiz (36.454117ms)
+✔ old label-free note searchable through structured name, alias, code and chapter (0.947475ms)
+✔ reference numeric boundaries prevent verse 1 matching verse 10, with range normalization (0.416726ms)
+✔ saved labels, Unicode user text, path titles and reference-free entries remain searchable (0.307292ms)
+✔ approved multi-range and single-chapter references keep every specified verse (2.235221ms)
+✔ every imported question exactly equals the approved source and other content is preserved (119.67909ms)
+✔ import check is reproducible and rejects malformed master without mutating data (6918.955438ms)
+✔ empty state does not invent reading history (1.120484ms)
+✔ reading resumes exact range and translation without mutating storage (0.789427ms)
+✔ invalid reading has no continuation link (0.114342ms)
+✔ older linked thought is found by exact context, not text similarity (0.39276ms)
+✔ deleted path cannot create false links (0.251598ms)
+✔ archived path stays addressable and done step is never current (0.307092ms)
+✔ explicit review source yields both dates and real content (0.344198ms)
+✔ changed historical content after a review is not presented as its original source (0.269616ms)
+✔ path reviews retain existing route IDs and ambiguous IDs are suppressed (4.160916ms)
+✔ highlight context uses exact references and existing paths only (1.262589ms)
+✔ edited current thought never carries its original date into a historical pair (0.175774ms)
+✔ review context does not assert reflection on text edited after that review (0.145859ms)
+✔ legacy reflection with same text/date but different reference is not deduplicated (0.1729ms)
+✔ unknown edit timestamps suppress historical attribution (2.068731ms)
+✔ Journal and exact draft deletion/Undo commit together without changing schema (11.882966ms)
+✔ Selective draft read/remove and recovery-log write failures retain saved data and draft (7.018928ms)
+✔ Main write failure rolls the draft back; no partial saved deletion (1.541057ms)
+✔ Undo draft write failure leaves deletion intact and supports safe retry (2.403258ms)
+✔ Interrupted failed write recovers exact draft on next load from durable recovery record (1.418072ms)
+✔ Interrupted committed cleanup recovers without resurrecting deleted data (0.966333ms)
+✔ Recovery never overwrites a newer unrelated draft (5.443334ms)
+✔ Journal deletion physically removes exactly the entry and explicit mirror, preserving personal data (2.642753ms)
+✔ Deletion cleans typed direct links, review sources and reminder metadata without dead pairs (1.168767ms)
+✔ No-reference journal path link disappears but standalone verse and independent same-ID reflection stay (1.225803ms)
+✔ Ambiguous, changed and shared mirrors are never silently removed (0.958511ms)
+✔ Undo restores all entry data and valid references, retaining unrelated newer records and settings (0.926574ms)
+✔ Undo detects changed references or reused IDs atomically without overwriting newer data (1.401838ms)
+✔ Only the exact journal or matching mirrored-note draft is selected for cleanup (0.333322ms)
+✔ Physical deletion and Undo roundtrip through V5 backup without migration or zombie records (2.164504ms)
+✔ Changing journal path only changes chosen entry association, preserving unrelated notes and verse link (0.469596ms)
+✔ Path management leaves an inconsistent independent reflection intact (0.285369ms)
+✔ Path draft cleanup, reconnect IDs and missing dependency Undo remain safe (0.602345ms)
+✔ Read reference and latest linked reference stay distinct and do not mutate data (1.551853ms)
+✔ Unrelated reading keeps newest linked reference without a read claim (0.23921ms)
+✔ Reminder quotes the first unfinished current step rather than the last open step (4.024992ms)
+✔ Reprioritizing unfinished steps changes reminder copy without changing due date (0.283016ms)
+ℹ tests 87
+ℹ suites 0
+ℹ pass 87
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8309.941189
