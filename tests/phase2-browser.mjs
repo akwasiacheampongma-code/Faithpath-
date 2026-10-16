@@ -41,6 +41,7 @@ try{
   assert.equal(await p.locator('.story-reflection').count(),1);assert((await p.locator('.story-reflection').innerText()).includes(sampleStory.reflection));
   await p.locator('.story-reflection [data-action="reflect-story"]').click();await p.getByLabel('Dein Gedanke',{exact:true}).fill('Synthetische Reflexion aus Phase 2');
   await p.locator('#editor-form button[type=submit]').click();
+  await p.waitForFunction(k=>JSON.parse(localStorage.getItem(k)).journal.some(j=>j.text==='Synthetische Reflexion aus Phase 2'),KEYS.main);
   const after=await state(p);assert(after.journal.some(j=>j.text==='Synthetische Reflexion aus Phase 2'));assert.deepEqual(after.quiz,before.quiz);
   await route(p,'merged-story/'+sampleStory.story_id+'?reflection=1');assert(await p.locator('.reflection-invite').evaluate(el=>el===document.activeElement));await bounds(p);await audit(p,`Story ${theme} ${width}`);
  });

@@ -1,3 +1,4 @@
+import {storyQuestionState,renderStoryQuestion} from './story-flow-view.js';
 import {chapterOffer,chapterNavigation} from './reader-view.js';
 import {selectToday} from './today-model.js';
 import {renderToday} from './today-view.js';
@@ -1817,6 +1818,9 @@ async function render() {
     if (token !== ui.token) return;
     window.scrollTo({ top: 0, behavior: "instant" });
     $("h1")?.focus({ preventScroll: true });
+    if(kind==="merged-story"&&new URLSearchParams(query).get("reflection")==="1"){
+      const invitation=$(".reflection-invite");if(invitation){invitation.tabIndex=-1;invitation.focus();invitation.scrollIntoView({block:"start",behavior:"instant"});}
+    }
   } catch (err) {
     if (token === ui.token)
       shell(
@@ -1998,17 +2002,11 @@ init();
 function mergedStory(id) {
   const x=runtimeModel.stories.get(id);if(!x)return notFound();
   const ref=validRef({...x.references[0],translation:s().translation},ui.refs);
-  shell(`${back("Entdecken","discover")}${heading(x.ref,x.title)}<div class="actions">${link("Abschnitt lesen",readRoute(ref,"merged-story/"+id),"button primary")}${link("Fragen zur Geschichte","question/"+x.flow_items[0].primary_question_id,"button quiet")}</div><section data-story-id="${e(id)}" class="section"><h2>Fragen zur Geschichte</h2>${x.flow_items.map((item,index)=>{const q=runtimeModel.fp.get(item.primary_question_id)?.question || runtimeModel.n.get(item.primary_question_id);return row(q.q,`Frage ${index+1} von ${x.flow_items.length}`,"question/"+item.primary_question_id);}).join("")}</section><section class="reflection-invite"><span class="overline">Deine Reflexion</span><h2>${e(x.reflection)}</h2>${button("Gedanken festhalten","reflect-story",{id:x.story_id},"button primary")}<p class="meta">Deine Reflexion wird nicht bewertet.</p></section>`,"bible","merged-story-page depth-page");
+  shell(`${back("Entdecken","discover")}${heading(x.ref,x.title)}<p class="story-flow-intro">Lies den Bibeltext in Ruhe. Die Fragen helfen dir beim Verstehen – dein eigener Gedanke darf daraus wachsen.</p><div class="story-flow-steps" aria-label="Dein Weg durch die Geschichte"><span>Lesen</span><span>Verstehen</span><span>Reflektieren</span></div><div class="actions">${link("Abschnitt lesen",readRoute(ref,"merged-story/"+id),"button primary")}${link("Fragen zur Geschichte","question/"+x.flow_items[0].primary_question_id,"button quiet")}</div><section data-story-id="${e(id)}" class="section story-question-list"><h2>Fragen zur Geschichte</h2><p class="meta">Du kannst jede Frage einzeln öffnen und Fragen überspringen. Antworten werden hier nicht dauerhaft als Abschluss gespeichert.</p>${x.flow_items.map((item,index)=>{const q=runtimeModel.fp.get(item.primary_question_id)?.question || runtimeModel.n.get(item.primary_question_id);return row(q.q,`Frage ${index+1} von ${x.flow_items.length}`,"question/"+item.primary_question_id);}).join("")}</section><section class="reflection-invite"><span class="overline">Deine Reflexion</span><h2>${e(x.reflection)}</h2>${button("Gedanken festhalten","reflect-story",{id:x.story_id},"button primary")}<p class="meta">Deine Reflexion wird nicht bewertet.</p></section>`,"bible","merged-story-page depth-page");
 }
 function sourceQuestion(id) {
-  const fp=runtimeModel.fp.get(id),nq=runtimeModel.n.get(id);if(!fp&&!nq)return notFound();
-  const q=fp?.question || nq, mapping=runtimeModel.flow.mapping_links.find(l=>l.FP_ID===id);
-  const storyId=mapping?.Story_ID || nq?.source_story_id,st=storyId?runtimeModel.stories.get(storyId):null;
-  const index=st?.flow_items.findIndex(item=>item.source_question_ids.includes(id)) ?? -1;
-  const hasMC=Array.isArray(q.a);
-  const result=hasMC&&Number.isInteger(ui.sourceAnswer)&&ui.sourceAnswerId===id?ui.sourceAnswer:null;
-  const previous=index>0 ? st.flow_items[index-1].primary_question_id:null,next=st&&index>=0&&index<st.flow_items.length-1 ? st.flow_items[index+1].primary_question_id:null;
-  shell(`${back("Zur Geschichte",st?"merged-story/"+storyId:"story/"+fp.unit.id)}${st&&index>=0?`<div class="quiz-head"><span class="overline">Fragen zur Geschichte</span><span>Frage ${index+1} von ${st.flow_items.length}</span></div>`:""}${heading(q.ref,q.q)}<span class="sr-only" data-question-id="${e(id)}">${e(id)}</span>${hasMC?`<div class="answers">${q.a.map((a,i)=>`<button type="button" data-action="source-answer" data-id="${e(id)}" data-answer="${i}" ${result!==null?"disabled":""} class="answer${result!==null&&i===q.c?" correct":result===i?" selected-wrong":""}"><span>${String.fromCharCode(65+i)}</span><span>${e(a)}${result!==null&&i===q.c?"<small>Richtige Antwort</small>":result===i?"<small>Deine Antwort</small>":""}</span></button>`).join("")}</div>${result!==null?`<section class="explanation" role="status"><strong>${result===q.c?"Ja, das steht im Text.":"Schau noch einmal auf den Zusammenhang."}</strong><p>${e(q.x||q.answer)}</p></section>`:""}`:`<details class="source-answer"><summary>Antwort ansehen</summary><p data-n-answer>${e(q.answer)}</p></details>`}${st?`<nav class="question-flow-nav" aria-label="Fragen zur Geschichte">${previous?link("Vorherige Frage","question/"+previous,"button quiet"):""}${next?link("Nächste Frage","question/"+next,"button quiet"):link("Zur persönlichen Reflexion","merged-story/"+storyId,"button quiet")}</nav>`:""}`,"bible","merged-question-page depth-page");
+  const state=storyQuestionState(runtimeModel,id,ui);if(!state)return notFound();
+  shell(renderStoryQuestion(state,{back,heading,link}),"bible","merged-question-page depth-page");
 }
 document.addEventListener("click",ev=>{
   const target=ev.target.closest('[data-action="source-answer"]');if(!target || target.disabled)return;

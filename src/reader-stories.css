@@ -29,3 +29,26 @@
 @media (prefers-reduced-motion: reduce) {
  .reader-page .verse { transition: none; }
 }
+
+/* Story views consume the canonical merged flow; no second question catalog. */
+.merged-story-page .story-flow-intro { max-width: 58ch; line-height: 1.7; color: var(--muted); }
+.merged-story-page .story-flow-steps { display: flex; flex-wrap: wrap; gap: 8px 20px; padding-block: 12px; border-block: 1px solid var(--line); margin-block: 24px; color: var(--primary); font-size: .875rem; }
+.merged-story-page .story-flow-steps span + span::before { content: '→'; margin-right: 12px; }
+.merged-story-page .actions { align-items: stretch; gap: 12px; }
+.merged-story-page .story-question-list { margin-top: 28px; }
+.merged-story-page .story-question-list .list-row { padding-block: 18px; }
+.merged-question-page .quiz-head { gap: 12px; align-items: baseline; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-block: 16px; }
+.merged-question-page .page-heading { padding-block: 20px 8px; }
+.merged-question-page h1 { font-size: clamp(1.5rem, 5.6vw, 2rem); line-height: 1.35; }
+.merged-question-page .answers { display: grid; gap: 12px; }
+.merged-question-page .answer { display: flex; align-items: flex-start; gap: 14px; padding: 16px; min-height: 56px; border-radius: 12px; }
+.merged-question-page .answer > span:first-child { flex: 0 0 24px; font-size: .875rem; line-height: 1.6; }
+.merged-question-page .answer > span:nth-child(2) { min-width: 0; font-size: 1rem; line-height: 1.6; }
+.merged-question-page .answer small { display: block; margin-top: 6px; font-weight: 600; }
+.merged-question-page .explanation { padding: 20px; border-radius: 12px; line-height: 1.7; scroll-margin-top: calc(var(--safe-top) + 88px); }
+.merged-question-page .question-flow-nav { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 24px; }
+.merged-question-page .question-flow-nav a { flex: 1 1 135px; }
+.merged-question-page .story-reflection { border-top: 1px solid var(--line); padding-block: 24px; margin-top: 28px; }
+.merged-question-page .story-reflection h2 { line-height: 1.35; }
+.merged-question-page .story-reflection blockquote { margin: 20px 0; padding-left: 16px; border-left: 2px solid var(--primary-border); font-family: var(--serif); font-size: 1.125rem; line-height: 1.7; }
+.merged-story-page .reflection-invite { scroll-margin-top: calc(var(--safe-top) + 88px); }
