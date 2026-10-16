@@ -1,3 +1,4 @@
+import {onboardingContent} from './onboarding-view.js';
 import {createDiscoveryIndex,selectDiscovery,DISCOVERY_PAGE_SIZE} from './discover-model.js';
 import {renderDiscovery,renderDiscoveryResults,discoveryCount} from './discover-view.js';
 import {renderMore,discoveryShortcuts} from './navigation-view.js';
@@ -737,6 +738,7 @@ const pathOptions = () => [
 ];
 function modal(title, content, form = null, values = null) {
   const d = $("#dialog");
+  d.classList.remove("onboarding-dialog");
   d.classList.toggle("core-dialog", ["path", "step", "note", "entry"].includes(form?.type) || ["Markierung gestalten", "Markierung entfernen?", "Weg wirklich löschen?", "Notiz an der Bibelstelle entfernen?"].includes(title));
   ui.dialogRoute = location.hash.slice(1);
   ui.form = form;
@@ -1184,26 +1186,17 @@ async function importFile(file) {
     `<p>Die Datei enthält ${next.paths.length} Wege, ${next.journal.length} Einträge und ${next.highlights.length} Markierungen.</p><p>Der aktuelle Stand wird vorher auf diesem Gerät gesichert. Das Backup ersetzt anschließend die angezeigten Daten.</p>${button("Backup wiederherstellen", "confirm-import", {}, "button primary full")}${button("Abbrechen", "close", {}, "button quiet full")}`,
   );
 }
-function onboarding(step = 0) {
-  const pages = [
-    [
-      "Du musst nicht wissen, wo du anfangen sollst.",
-      "Beginne bei einer Situation — oder direkt in der Bibel.",
-    ],
-    [
-      "Ein Gedanke kann dich weiter begleiten.",
-      "Verstehe den Text. Halte fest, was dich berührt. Probiere einen kleinen Schritt.",
-    ],
-    [
-      "Und später: Was ist daraus geworden?",
-      "FaithPath bringt frühere Gedanken zurück. Du hältst selbst fest, was sich verändert hat.",
-    ],
-  ];
-  const [title, text] = pages[step];
-  modal(
-    "Willkommen bei FaithPath",
-    `<div class="onboarding-art">${step === 1 ? `<ol class="onboarding-flow"><li>Bibel oder Situation</li><li>Dein Gedanke</li><li>Ein kleiner Schritt</li><li>Später zurückblicken</li></ol>` : `<img src="trees/tree-stage-${step === 0 ? 2 : 5}.webp" alt="Olivenbaum als Bild deiner persönlichen Geschichte" width="400" height="300">`}</div><span class="overline">${step + 1} von 3</span><h3 class="onboarding-title">${e(title)}</h3><p>${e(text)}</p><p class="meta">FaithPath misst nicht deinen Glauben.</p><div class="actions">${button(step === 2 ? "Meinen Anfang finden" : "Weiter", "onboard-next", { step }, "button primary")}${button("Direkt zur Bibel", "onboard-skip", {}, "text-button")}</div>`,
-  );
+function onboarding() {
+  modal("Willkommen bei FaithPath",onboardingContent({button}));
+  ui.onboardingOpen=true;
+  $("#dialog").classList.add("onboarding-dialog");
+}
+function finishOnboarding(destination=null) {
+  // Failure to persist an optional introduction must never prevent Bible access.
+  try {localStorage.setItem(KEYS.onboard,"done");} catch {}
+  ui.onboardingOpen=false;
+  closeModal();
+  if(destination)go(destination);else $("h1")?.focus({preventScroll:true});
 }
 async function offlineStatus() {
   if (!("serviceWorker" in navigator)) return false;
@@ -1339,6 +1332,7 @@ async function action(a, d, el) {
     undoNotice("Notiz an der Bibelstelle entfernt",()=>change(data=>restoreBibleNote(data,snapshot)));return;
   }
   if (a === "close") {
+    if(ui.onboardingOpen){finishOnboarding();return;}
     if(ui.noteDeletion){cancelNoteDeletion();return;}
     closeModal();
     return;
@@ -1721,21 +1715,8 @@ async function action(a, d, el) {
     onboarding();
     return;
   }
-  if (a === "onboard-next") {
-    if (+d.step < 2) onboarding(+d.step + 1);
-    else {
-      localStorage.setItem(KEYS.onboard, "done");
-      closeModal();
-      go("guidance");
-    }
-    return;
-  }
-  if (a === "onboard-skip") {
-    localStorage.setItem(KEYS.onboard, "done");
-    closeModal();
-    go("bible");
-    return;
-  }
+  if (a === "onboard-next") {finishOnboarding("guidance");return;}
+  if (a === "onboard-skip") {finishOnboarding("bible");return;}
   if (a === "offline-check") {
     notify(
       (await offlineStatus())
@@ -1970,7 +1951,7 @@ document.addEventListener("change", (ev) => {
     if (el.type === "checkbox") el.checked = !el.checked;
   }
 });
-$("#dialog").addEventListener("cancel",ev=>{if(ui.saving){ev.preventDefault();return;}if(ui.noteDeletion){ev.preventDefault();cancelNoteDeletion();}else if(ui.journalDeletion){ev.preventDefault();closeModal();}});
+$("#dialog").addEventListener("cancel",ev=>{if(ui.onboardingOpen){ev.preventDefault();finishOnboarding();return;}if(ui.saving){ev.preventDefault();return;}if(ui.noteDeletion){ev.preventDefault();cancelNoteDeletion();}else if(ui.journalDeletion){ev.preventDefault();closeModal();}});
 $("#dialog").addEventListener("close", () => {
   if (!$("#dialog").open) {
     ui.form = null;
@@ -1978,6 +1959,7 @@ $("#dialog").addEventListener("close", () => {
   }
 });
 window.addEventListener("hashchange", () => {
+  if(ui.onboardingOpen&&ui.dialogRoute!==location.hash.slice(1))finishOnboarding();
   if ($("#dialog").open && ui.dialogRoute !== location.hash.slice(1))
     closeModal();
   render();

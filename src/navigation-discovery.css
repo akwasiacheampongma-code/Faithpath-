@@ -28,3 +28,14 @@
 .discovery-phase4 .discover-editorial h3 { font-size: 1.25rem; margin-block: 8px; }
 .discovery-phase4 :is(h1,h2,h3,p,a,button,small) { overflow-wrap: anywhere; }
 .discovery-phase4 #discovery-results-title { scroll-margin-top: 24px; }
+/* One optional first-use screen, with both choices before any extra explanation. */
+#dialog.onboarding-dialog { max-width: 480px; }
+.onboarding-dialog .onboarding-intro h3 { font: 400 1.625rem/1.3 var(--serif); margin-block: 12px; }
+.onboarding-dialog .onboarding-intro p { line-height: 1.65; margin-block: 12px 20px; }
+.onboarding-dialog .onboarding-choices { display: grid; gap: 12px; }
+.onboarding-dialog .onboarding-choices button { min-height: 48px; white-space: normal; }
+.onboarding-dialog .onboarding-freedom { margin-block: 16px; line-height: 1.6; }
+.onboarding-dialog .onboarding-personal { border-top: 1px solid var(--line); }
+.onboarding-dialog .onboarding-personal summary { min-height: 44px; padding-block: 12px; cursor: pointer; }
+.onboarding-dialog .onboarding-personal p { line-height: 1.65; }
+.onboarding-dialog :is(h2,h3,p,summary,button) { overflow-wrap: anywhere; }
