@@ -1,0 +1,37 @@
+{
+  "base": "http://127.0.0.1:4400",
+  "baseline": false,
+  "results": [
+    {
+      "name": "pure N, mixed retained FP, and FP-only questions use complete canonical count and source semantics",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\n1 !== 0\n"
+    },
+    {
+      "name": "fresh beginner guide early, existing guide; returning personal priority preserved",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    }
+  ],
+  "metrics": {
+    "journalFirstEntry": 396.78125,
+    "readerFirstVerse": 408.390625
+  },
+  "shots": [
+    "qa-output/uiux-phase4/historical-before/01-journal-390.png",
+    "qa-output/uiux-phase4/historical-before/04-reader-390.png",
+    "qa-output/uiux-phase4/historical-before/06-path-steps.png",
+    "qa-output/uiux-phase4/historical-before/07-history.png",
+    "qa-output/uiux-phase4/historical-before/08-damals-heute.png",
+    "qa-output/uiux-phase4/historical-before/10-guides.png",
+    "qa-output/uiux-phase4/historical-before/11-backup.png",
+    "qa-output/uiux-phase4/historical-before/12-merged-story.png",
+    "qa-output/uiux-phase4/historical-before/13-nachlese.png",
+    "qa-output/uiux-phase4/historical-before/14-mixed-question.png",
+    "qa-output/uiux-phase4/historical-before/09-first-start.png",
+    "qa-output/uiux-phase4/historical-before/10-first-guides.png"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "loads": []
+}

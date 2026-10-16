@@ -154,7 +154,7 @@ try {
   await poll(async () => (await status())?.build === BUILD);
   await p
     .getByRole("heading", {
-      name: "Raum für deine Geschichte.",
+      name: "Gut aufgehoben.",
       exact: true,
     })
     .waitFor();

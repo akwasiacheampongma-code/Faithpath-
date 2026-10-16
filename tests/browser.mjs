@@ -425,7 +425,7 @@ try {
   await test("Backup: Export → Importvorschau → Restore; beschädigte Datei verändert nichts", async () => {
     const { c, p } = await context(appState);
     try {
-      await visit(p, "more", "Raum für deine Geschichte.");
+      await visit(p, "more", "Gut aufgehoben.");
       await p.getByRole("link", {name:"Daten & Backup",exact:false}).click();
       const dl = p.waitForEvent("download");
       await p.getByRole("button", { name: "Backup exportieren" }).click();

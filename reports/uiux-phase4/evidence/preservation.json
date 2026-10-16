@@ -1,0 +1,1353 @@
+{
+  "status": "PASS",
+  "baseline": "19ce34395570b28d6cb5235888b51c596af5b06c",
+  "files_checked": 221,
+  "byte_identical": 216,
+  "changes": [
+    "index.html",
+    "scripts/build.mjs",
+    "src/app.js",
+    "src/menu.js",
+    "src/version.js"
+  ],
+  "all_data_identical": true,
+  "today_modules_identical": true,
+  "tree_rendering_tail_identical": true,
+  "reading_authority_identical": true,
+  "storage_and_migrations_identical": true,
+  "sw_template_identical": true,
+  "active_stories": 436,
+  "active_primary_questions": 2479,
+  "source_question_ids": 2574,
+  "unique_source_question_ids": 2574,
+  "nachlese": 2314,
+  "nt": 1300,
+  "files": [
+    {
+      "path": "_headers",
+      "baseline_sha256": "53efc6304e44b3bb62d7ef64a6488b8f85c0a49b5a7ad2a37fd9276cb4465577",
+      "candidate_sha256": "53efc6304e44b3bb62d7ef64a6488b8f85c0a49b5a7ad2a37fd9276cb4465577",
+      "identical": true
+    },
+    {
+      "path": "_redirects",
+      "baseline_sha256": "c25d16bf7c7676f28367d0550693d4df24dd95e2dabc45ac1fe700b42b341904",
+      "candidate_sha256": "c25d16bf7c7676f28367d0550693d4df24dd95e2dabc45ac1fe700b42b341904",
+      "identical": true
+    },
+    {
+      "path": "data/audit/FaithPath_RELEASE_APPROVAL.json",
+      "baseline_sha256": "7b9cfbdb97d66354c1fedfb62d3004c03669aa066bd59ea81c388de6acfa0452",
+      "candidate_sha256": "7b9cfbdb97d66354c1fedfb62d3004c03669aa066bd59ea81c388de6acfa0452",
+      "identical": true
+    },
+    {
+      "path": "data/audit/FaithPath_RELEASE_VERIFICATION_REPORT.md",
+      "baseline_sha256": "e8b3aee72809a2bc3cefd69964ed70f7b269caf1088fd95fa313e1c6cdecc5e0",
+      "candidate_sha256": "e8b3aee72809a2bc3cefd69964ed70f7b269caf1088fd95fa313e1c6cdecc5e0",
+      "identical": true
+    },
+    {
+      "path": "data/audit/browser-acceptance-results.json",
+      "baseline_sha256": "fd778ae7646076097b959f26cf79080557b21551c5d14d1ac252fdad45c276b0",
+      "candidate_sha256": "fd778ae7646076097b959f26cf79080557b21551c5d14d1ac252fdad45c276b0",
+      "identical": true
+    },
+    {
+      "path": "data/audit/core-tests-results.xml",
+      "baseline_sha256": "5961752d72506a3330836c3d4d32a9b0e8f5675ef3dea25b6489ac45eaae147e",
+      "candidate_sha256": "5961752d72506a3330836c3d4d32a9b0e8f5675ef3dea25b6489ac45eaae147e",
+      "identical": true
+    },
+    {
+      "path": "data/audit/final-regression-report.json",
+      "baseline_sha256": "92dd2263021123c4ef80bdcd513769fa45806683a9d6d715b3b44e06dfead807",
+      "candidate_sha256": "92dd2263021123c4ef80bdcd513769fa45806683a9d6d715b3b44e06dfead807",
+      "identical": true
+    },
+    {
+      "path": "data/audit/history/FaithPath_RELEASE_BLOCKERS.pre-G.json",
+      "baseline_sha256": "68114bc92db7f81d5c6fb35ac8046463bf6273a170220f312fd3641210c17327",
+      "candidate_sha256": "68114bc92db7f81d5c6fb35ac8046463bf6273a170220f312fd3641210c17327",
+      "identical": true
+    },
+    {
+      "path": "data/audit/menu-fix-report.json",
+      "baseline_sha256": "ac7c8fd02b5b0d9f42893f250c2f85ae3109fbbff41f120deccce6227c3e7f04",
+      "candidate_sha256": "ac7c8fd02b5b0d9f42893f250c2f85ae3109fbbff41f120deccce6227c3e7f04",
+      "identical": true
+    },
+    {
+      "path": "data/audit/reader-integration-report.json",
+      "baseline_sha256": "94d4a47cc58a46be3b1df6f23f5c2c9ae992ab1c7b4181ec4df37db578418152",
+      "candidate_sha256": "94d4a47cc58a46be3b1df6f23f5c2c9ae992ab1c7b4181ec4df37db578418152",
+      "identical": true
+    },
+    {
+      "path": "data/audit/runtime-smoke-report.json",
+      "baseline_sha256": "9437defdb7265b75fa7702e09945d4195df8fe4e00f1c9286ca7049407118bb6",
+      "candidate_sha256": "9437defdb7265b75fa7702e09945d4195df8fe4e00f1c9286ca7049407118bb6",
+      "identical": true
+    },
+    {
+      "path": "data/audit/service-worker-results.json",
+      "baseline_sha256": "8822b5695980142ddf9640b62aaece403ab6eb75a38c3365c4f58573d7f26ade",
+      "candidate_sha256": "8822b5695980142ddf9640b62aaece403ab6eb75a38c3365c4f58573d7f26ade",
+      "identical": true
+    },
+    {
+      "path": "data/audit/ui-premium-pass-report.json",
+      "baseline_sha256": "4d1cae7d1c56e87d3166b3ffee7733d18a73202aca75b9088373c04ef78fa879",
+      "candidate_sha256": "4d1cae7d1c56e87d3166b3ffee7733d18a73202aca75b9088373c04ef78fa879",
+      "identical": true
+    },
+    {
+      "path": "data/audit/versioned-build-report.json",
+      "baseline_sha256": "11b88790bd60388d51ae207c7712c9d509c1b738080fc12b9c29582c2d2ce3ba",
+      "candidate_sha256": "11b88790bd60388d51ae207c7712c9d509c1b738080fc12b9c29582c2d2ce3ba",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/LUTHER1912-NOTICE.txt",
+      "baseline_sha256": "92dfc68645a9c66d825587c23ef067188cbb800950a98ca904611e74893070ee",
+      "candidate_sha256": "92dfc68645a9c66d825587c23ef067188cbb800950a98ca904611e74893070ee",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/OTB-LICENSE.txt",
+      "baseline_sha256": "2d0cd3c05745a500271c180086c32ca540b6d200fb018c58ed0516e734378192",
+      "candidate_sha256": "2d0cd3c05745a500271c180086c32ca540b6d200fb018c58ed0516e734378192",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/1CH.json",
+      "baseline_sha256": "be80392e4545b5d04e4daaac7cd14c339c709f137a54681046220d1178380293",
+      "candidate_sha256": "be80392e4545b5d04e4daaac7cd14c339c709f137a54681046220d1178380293",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/1CO.json",
+      "baseline_sha256": "260710f2e1019f0d65c637f1a19ac3246531d586a5e19135f57263e7bcfcd5af",
+      "candidate_sha256": "260710f2e1019f0d65c637f1a19ac3246531d586a5e19135f57263e7bcfcd5af",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/1JN.json",
+      "baseline_sha256": "dd0ba69df896c899a8260555887489b5942f3b26dd55b834253e6c9f7f8bbc6b",
+      "candidate_sha256": "dd0ba69df896c899a8260555887489b5942f3b26dd55b834253e6c9f7f8bbc6b",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/1KI.json",
+      "baseline_sha256": "1a180c22305f9dbf45570ea8e5a225425a4d37b3b92dd52b8dfa258bc13f24bd",
+      "candidate_sha256": "1a180c22305f9dbf45570ea8e5a225425a4d37b3b92dd52b8dfa258bc13f24bd",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/1PE.json",
+      "baseline_sha256": "1c882c3d4e61dbf9ba2afa02f7cc4dff9bd16a858ee5151527098ac94c926569",
+      "candidate_sha256": "1c882c3d4e61dbf9ba2afa02f7cc4dff9bd16a858ee5151527098ac94c926569",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/1SA.json",
+      "baseline_sha256": "47ae96f6c9fbe0da6418a5b3e94c8e7d690ad355986a174e92f892406161eb0c",
+      "candidate_sha256": "47ae96f6c9fbe0da6418a5b3e94c8e7d690ad355986a174e92f892406161eb0c",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/1TH.json",
+      "baseline_sha256": "0782b633b4a2344aa091140772154f8c46fec3f721479e18bc1b5e7df5bc6fd0",
+      "candidate_sha256": "0782b633b4a2344aa091140772154f8c46fec3f721479e18bc1b5e7df5bc6fd0",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/1TI.json",
+      "baseline_sha256": "677419e1a6df0dac955688981aaad0f3badd1852f1892d733e27ea6fbc2aae85",
+      "candidate_sha256": "677419e1a6df0dac955688981aaad0f3badd1852f1892d733e27ea6fbc2aae85",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/2CH.json",
+      "baseline_sha256": "4114aad338eb25b1a513f5bf7b98c3115cc0aa8d35b3448179d5ff096237c94b",
+      "candidate_sha256": "4114aad338eb25b1a513f5bf7b98c3115cc0aa8d35b3448179d5ff096237c94b",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/2CO.json",
+      "baseline_sha256": "7b36ebad96698373648270b19990623e357143ca1ada1a469b739c32ddbda1ef",
+      "candidate_sha256": "7b36ebad96698373648270b19990623e357143ca1ada1a469b739c32ddbda1ef",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/2JN.json",
+      "baseline_sha256": "ceaac538831a577eb578c48f565e4408061bf7f1344113ecdd2211aaaa006d55",
+      "candidate_sha256": "ceaac538831a577eb578c48f565e4408061bf7f1344113ecdd2211aaaa006d55",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/2KI.json",
+      "baseline_sha256": "d4db3bb97a7e093f43dd38c6c61ce01be77c27cbe7f929c9a269534f5e000728",
+      "candidate_sha256": "d4db3bb97a7e093f43dd38c6c61ce01be77c27cbe7f929c9a269534f5e000728",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/2PE.json",
+      "baseline_sha256": "31a5fc7e6b79052bf1f838d4a9537ba297dd54ef9785e8e577af1e571112ebbf",
+      "candidate_sha256": "31a5fc7e6b79052bf1f838d4a9537ba297dd54ef9785e8e577af1e571112ebbf",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/2SA.json",
+      "baseline_sha256": "4f1505527741dbef94266c8252a3e4b65caa5b22b9cb90230302661e5a823fb0",
+      "candidate_sha256": "4f1505527741dbef94266c8252a3e4b65caa5b22b9cb90230302661e5a823fb0",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/2TH.json",
+      "baseline_sha256": "936f829149a57932a943b197f5f1a06089745454e06b04e01ed515a39d569716",
+      "candidate_sha256": "936f829149a57932a943b197f5f1a06089745454e06b04e01ed515a39d569716",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/2TI.json",
+      "baseline_sha256": "7e8e6a11d80d7df78a065114fb628ee7f94d802e00ff77941ddcd122b2906f66",
+      "candidate_sha256": "7e8e6a11d80d7df78a065114fb628ee7f94d802e00ff77941ddcd122b2906f66",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/3JN.json",
+      "baseline_sha256": "5dc653481998da0f22570d4aa46c1ab3d1b7a827e5b0393004e91fd9597d6af2",
+      "candidate_sha256": "5dc653481998da0f22570d4aa46c1ab3d1b7a827e5b0393004e91fd9597d6af2",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/ACT.json",
+      "baseline_sha256": "effc527eefa050c7eefbdbae276b2738387a7abae7314bd57c57461304adcf3c",
+      "candidate_sha256": "effc527eefa050c7eefbdbae276b2738387a7abae7314bd57c57461304adcf3c",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/AMO.json",
+      "baseline_sha256": "5a731fd95a07a496e107fcd3f38070c5faae73cefa71a02f9b6ea4adf144f4ec",
+      "candidate_sha256": "5a731fd95a07a496e107fcd3f38070c5faae73cefa71a02f9b6ea4adf144f4ec",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/COL.json",
+      "baseline_sha256": "538ec494e64180b077f650d67469f7f8f13722a862d72b292d1acbb951738e56",
+      "candidate_sha256": "538ec494e64180b077f650d67469f7f8f13722a862d72b292d1acbb951738e56",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/DAN.json",
+      "baseline_sha256": "5e353567a3439d589c13958d886aee60fbe3df7bf2db1242153f4b371cbdaf10",
+      "candidate_sha256": "5e353567a3439d589c13958d886aee60fbe3df7bf2db1242153f4b371cbdaf10",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/DEU.json",
+      "baseline_sha256": "0ef81f21103285e05675fd74be57340e00400ae650e6744df17eb64ba03498fb",
+      "candidate_sha256": "0ef81f21103285e05675fd74be57340e00400ae650e6744df17eb64ba03498fb",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/ECC.json",
+      "baseline_sha256": "c3d2dc1e512c9693ba188ec2b4fa28baf80ffadea6e167576e0a57c7ea7a68f2",
+      "candidate_sha256": "c3d2dc1e512c9693ba188ec2b4fa28baf80ffadea6e167576e0a57c7ea7a68f2",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/EPH.json",
+      "baseline_sha256": "a44344e27ca765251d4066805e9b4c1e6d6ed487ebccb2bc7a8bf9c5beea0cac",
+      "candidate_sha256": "a44344e27ca765251d4066805e9b4c1e6d6ed487ebccb2bc7a8bf9c5beea0cac",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/EST.json",
+      "baseline_sha256": "fe0ade463b1ffeaa17e56785ab9dc3bc341af169a2ad5a919e77c77621361ed0",
+      "candidate_sha256": "fe0ade463b1ffeaa17e56785ab9dc3bc341af169a2ad5a919e77c77621361ed0",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/EXO.json",
+      "baseline_sha256": "a739a45a726e55a5d5a1bfdddecba653d58717560dd23aac472cf99a3e618814",
+      "candidate_sha256": "a739a45a726e55a5d5a1bfdddecba653d58717560dd23aac472cf99a3e618814",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/EZK.json",
+      "baseline_sha256": "f94364736eb6054221153b4fe5b84814ce989cd539bba10b6077253999e34c63",
+      "candidate_sha256": "f94364736eb6054221153b4fe5b84814ce989cd539bba10b6077253999e34c63",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/EZR.json",
+      "baseline_sha256": "6a2b6d76ddea27af4ddce211da9d531484d89b5d543ed72502beba2d5580735f",
+      "candidate_sha256": "6a2b6d76ddea27af4ddce211da9d531484d89b5d543ed72502beba2d5580735f",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/GAL.json",
+      "baseline_sha256": "3f320b68b4b98c73d9ff818b4dc869d050d6e3c4a2682ab882c10efb5ac28996",
+      "candidate_sha256": "3f320b68b4b98c73d9ff818b4dc869d050d6e3c4a2682ab882c10efb5ac28996",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/GEN.json",
+      "baseline_sha256": "c24a3b1f5ab6b47572b2fbffdf04e92402e2a5fe7ca1ed091089cebcedf2a08e",
+      "candidate_sha256": "c24a3b1f5ab6b47572b2fbffdf04e92402e2a5fe7ca1ed091089cebcedf2a08e",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/HAB.json",
+      "baseline_sha256": "c6651d891cbbeabbfdb5ebce8e44e33821745fd19add46a6a90f676d50fbb632",
+      "candidate_sha256": "c6651d891cbbeabbfdb5ebce8e44e33821745fd19add46a6a90f676d50fbb632",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/HAG.json",
+      "baseline_sha256": "60b84626ac5708d1818a1938e002227a4dd19f50b48e02db9c8300f45ff4a771",
+      "candidate_sha256": "60b84626ac5708d1818a1938e002227a4dd19f50b48e02db9c8300f45ff4a771",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/HEB.json",
+      "baseline_sha256": "e820846afb3430210cd0edf760e8b85dfd0fa2d48209d2b7f54839de4752380e",
+      "candidate_sha256": "e820846afb3430210cd0edf760e8b85dfd0fa2d48209d2b7f54839de4752380e",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/HOS.json",
+      "baseline_sha256": "adbf0d893e6678216c24e5bd333c9195a20d606bb2022f48fe1c4a674b6dd7d0",
+      "candidate_sha256": "adbf0d893e6678216c24e5bd333c9195a20d606bb2022f48fe1c4a674b6dd7d0",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/ISA.json",
+      "baseline_sha256": "af4f261f544422d1fb3e8af89c196bd22cdac821361dd7aebde910f97fd2cd61",
+      "candidate_sha256": "af4f261f544422d1fb3e8af89c196bd22cdac821361dd7aebde910f97fd2cd61",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/JAS.json",
+      "baseline_sha256": "af61f9e9f303f71b10c4b6c34bce103ce518fa324eb7e67e25475466ff681ed6",
+      "candidate_sha256": "af61f9e9f303f71b10c4b6c34bce103ce518fa324eb7e67e25475466ff681ed6",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/JDG.json",
+      "baseline_sha256": "fc07efa4a000849a9425c4fdad1c6c9f5c71f6d63409e9e66768cc5759f18d73",
+      "candidate_sha256": "fc07efa4a000849a9425c4fdad1c6c9f5c71f6d63409e9e66768cc5759f18d73",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/JER.json",
+      "baseline_sha256": "c9cd48d9795f72f796c31636c43350de15761ff9110bf16a62a57ef66aec97b2",
+      "candidate_sha256": "c9cd48d9795f72f796c31636c43350de15761ff9110bf16a62a57ef66aec97b2",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/JHN.json",
+      "baseline_sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+      "candidate_sha256": "24bbba8763b89d494d1bae0533401de5eb43709f12c819dbd0a6e73b2afdc42d",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/JOB.json",
+      "baseline_sha256": "cb81954f83edc27205e49e452880e4c47176f2d1bdcf20d410ef3ba6f8a21ebf",
+      "candidate_sha256": "cb81954f83edc27205e49e452880e4c47176f2d1bdcf20d410ef3ba6f8a21ebf",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/JOL.json",
+      "baseline_sha256": "648d6d86fafd614b3694a93a05e8f6e0913eb83e76c3e87049ede56525282453",
+      "candidate_sha256": "648d6d86fafd614b3694a93a05e8f6e0913eb83e76c3e87049ede56525282453",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/JON.json",
+      "baseline_sha256": "32b5ecd381ff8c561b00063ec624d3f972f288460be15d0d71cb0022ffbf26d4",
+      "candidate_sha256": "32b5ecd381ff8c561b00063ec624d3f972f288460be15d0d71cb0022ffbf26d4",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/JOS.json",
+      "baseline_sha256": "0149c9127dc43e7dbfd3e7938c9a4c41f54f427b75f82e5a7aa4efb1e96fabf8",
+      "candidate_sha256": "0149c9127dc43e7dbfd3e7938c9a4c41f54f427b75f82e5a7aa4efb1e96fabf8",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/JUD.json",
+      "baseline_sha256": "faad7bd66470183566664bceed2465562dfaab6a7310a735ed3770ba03883c08",
+      "candidate_sha256": "faad7bd66470183566664bceed2465562dfaab6a7310a735ed3770ba03883c08",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/LAM.json",
+      "baseline_sha256": "a5996f9fc4402c66da382d006c23684b14ef66cdc984af367d60f021e2e4f374",
+      "candidate_sha256": "a5996f9fc4402c66da382d006c23684b14ef66cdc984af367d60f021e2e4f374",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/LEV.json",
+      "baseline_sha256": "2105d3f155c4ddf39317f07520f78bcfbbf7a87f448f8f10df975bfa74e34dbd",
+      "candidate_sha256": "2105d3f155c4ddf39317f07520f78bcfbbf7a87f448f8f10df975bfa74e34dbd",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/LUK.json",
+      "baseline_sha256": "97ff3222e6b211e3dbf6a8c11493ba41cfab7e3e3810484e69140b3214ae7f7d",
+      "candidate_sha256": "97ff3222e6b211e3dbf6a8c11493ba41cfab7e3e3810484e69140b3214ae7f7d",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/MAL.json",
+      "baseline_sha256": "72ca5bd96d89a781f6731230def13cb90b8c82b41cadd9ac2d9e7dcf07ee4e4e",
+      "candidate_sha256": "72ca5bd96d89a781f6731230def13cb90b8c82b41cadd9ac2d9e7dcf07ee4e4e",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/MAT.json",
+      "baseline_sha256": "db29962beafc09050420b75e88242fc8c5951d7b3e6caa88ee75efb44d37c02b",
+      "candidate_sha256": "db29962beafc09050420b75e88242fc8c5951d7b3e6caa88ee75efb44d37c02b",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/MIC.json",
+      "baseline_sha256": "2d239144241e5d3b40f22fdfb60a5cdaf902dbcaf1e124e66980d73a63a08252",
+      "candidate_sha256": "2d239144241e5d3b40f22fdfb60a5cdaf902dbcaf1e124e66980d73a63a08252",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/MRK.json",
+      "baseline_sha256": "cba705acd1646d1f5c3e0fcb6d44469fd4b0a92a619985c7bdcdf65fb00d8292",
+      "candidate_sha256": "cba705acd1646d1f5c3e0fcb6d44469fd4b0a92a619985c7bdcdf65fb00d8292",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/NAM.json",
+      "baseline_sha256": "ccdc50eef660512704a20d66f60db9783a3cfdb67570caa92de48f496162dd39",
+      "candidate_sha256": "ccdc50eef660512704a20d66f60db9783a3cfdb67570caa92de48f496162dd39",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/NEH.json",
+      "baseline_sha256": "f3fbfc6e60e2494e822bfbc2488adaa1b335439d51f2e3f9ee6eac637d48a271",
+      "candidate_sha256": "f3fbfc6e60e2494e822bfbc2488adaa1b335439d51f2e3f9ee6eac637d48a271",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/NUM.json",
+      "baseline_sha256": "eb4e6c47907766f9c02d4c06da535d1c736cbe735db66da32b8f05b60a96482b",
+      "candidate_sha256": "eb4e6c47907766f9c02d4c06da535d1c736cbe735db66da32b8f05b60a96482b",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/OBA.json",
+      "baseline_sha256": "c3f6cad0cc7bd344563d1e84699c78ede653c039f349537625809b6a661859ae",
+      "candidate_sha256": "c3f6cad0cc7bd344563d1e84699c78ede653c039f349537625809b6a661859ae",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/PHM.json",
+      "baseline_sha256": "03ccb031297b75d96d0235e1bb09c89e5d6a3d52ee8223245c66c0b467c7ad63",
+      "candidate_sha256": "03ccb031297b75d96d0235e1bb09c89e5d6a3d52ee8223245c66c0b467c7ad63",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/PHP.json",
+      "baseline_sha256": "9ed5c3c6fa8f819044ff45ccc189ec8194404f2ace76c1e5c9acd1976dc0aa9f",
+      "candidate_sha256": "9ed5c3c6fa8f819044ff45ccc189ec8194404f2ace76c1e5c9acd1976dc0aa9f",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/PRO.json",
+      "baseline_sha256": "9ce34377da2a39a748b4d2e4bb698e34c604288cdc7d0720522f848497af8af3",
+      "candidate_sha256": "9ce34377da2a39a748b4d2e4bb698e34c604288cdc7d0720522f848497af8af3",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/PSA.json",
+      "baseline_sha256": "8a07e5e262cfcf64767ab6b02f7ba9f043080af234dc50f91168a1a09d399e9b",
+      "candidate_sha256": "8a07e5e262cfcf64767ab6b02f7ba9f043080af234dc50f91168a1a09d399e9b",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/REV.json",
+      "baseline_sha256": "5aa18a05e8f49d7e243f83aeba97213e86f89faa474f29017f514f755acf40f4",
+      "candidate_sha256": "5aa18a05e8f49d7e243f83aeba97213e86f89faa474f29017f514f755acf40f4",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/ROM.json",
+      "baseline_sha256": "30d1cdb5e8b3d39633de7d3ec2c1bb73dcb5227bafc603e6bcd4373eaf655b3a",
+      "candidate_sha256": "30d1cdb5e8b3d39633de7d3ec2c1bb73dcb5227bafc603e6bcd4373eaf655b3a",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/RUT.json",
+      "baseline_sha256": "2919efba437fe2738ea67e48db2e5bde239ab4e5d4a26293f8ba7125babf0f64",
+      "candidate_sha256": "2919efba437fe2738ea67e48db2e5bde239ab4e5d4a26293f8ba7125babf0f64",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/SNG.json",
+      "baseline_sha256": "59f1f5a3f7df10d67cc18048d85c1f726a2613881f62642e85fbe51216d98a41",
+      "candidate_sha256": "59f1f5a3f7df10d67cc18048d85c1f726a2613881f62642e85fbe51216d98a41",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/TIT.json",
+      "baseline_sha256": "eca1c9fd783b8a23118b27b70fc01f86704d6524b9575b9f990e0ae9f4acdc15",
+      "candidate_sha256": "eca1c9fd783b8a23118b27b70fc01f86704d6524b9575b9f990e0ae9f4acdc15",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/ZEC.json",
+      "baseline_sha256": "a81bec3d14b1467b1475b9db9e7222646aeaaf351229529d555663b9c323223a",
+      "candidate_sha256": "a81bec3d14b1467b1475b9db9e7222646aeaaf351229529d555663b9c323223a",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/l1912/ZEP.json",
+      "baseline_sha256": "99a8c903327b3ecc78a08aa1f4eb7bcc007e49f35ccd533be699cd42ba473702",
+      "candidate_sha256": "99a8c903327b3ecc78a08aa1f4eb7bcc007e49f35ccd533be699cd42ba473702",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/1CH.json",
+      "baseline_sha256": "c565ef3e93b7fdd51f1b389cf2b06ade448727315c7c5c5e5a872cf5e69921b4",
+      "candidate_sha256": "c565ef3e93b7fdd51f1b389cf2b06ade448727315c7c5c5e5a872cf5e69921b4",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/1CO.json",
+      "baseline_sha256": "97b6052852ad05986742dd0d484e5e416c1aebd76159802f290b141f9a500741",
+      "candidate_sha256": "97b6052852ad05986742dd0d484e5e416c1aebd76159802f290b141f9a500741",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/1JN.json",
+      "baseline_sha256": "63ed69c8292c8860ecd2ae7dbf474785d34044379d16b030ff4a13a877376b93",
+      "candidate_sha256": "63ed69c8292c8860ecd2ae7dbf474785d34044379d16b030ff4a13a877376b93",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/1KI.json",
+      "baseline_sha256": "8bda8ce2efda61cbd32555f09df7b01e09ae28732ccb2ccfe51587008498a557",
+      "candidate_sha256": "8bda8ce2efda61cbd32555f09df7b01e09ae28732ccb2ccfe51587008498a557",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/1PE.json",
+      "baseline_sha256": "31d5664c6ca4929872150ac5b9a2bd3e72492e7ce4a5112189ec1609c6031832",
+      "candidate_sha256": "31d5664c6ca4929872150ac5b9a2bd3e72492e7ce4a5112189ec1609c6031832",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/1SA.json",
+      "baseline_sha256": "4b8bb4abd57c8a3e56574fd6f6e577d2865af04078574f84bb76b6658ffec68b",
+      "candidate_sha256": "4b8bb4abd57c8a3e56574fd6f6e577d2865af04078574f84bb76b6658ffec68b",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/1TH.json",
+      "baseline_sha256": "1fe64def0556543bc71e6822ccc8cfe6834a8019191b358d855d4a052ca9a156",
+      "candidate_sha256": "1fe64def0556543bc71e6822ccc8cfe6834a8019191b358d855d4a052ca9a156",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/1TI.json",
+      "baseline_sha256": "bafe7ca30fe971a3972c12f7cb36eb64d554f9bdf2e30714151095f0001a1647",
+      "candidate_sha256": "bafe7ca30fe971a3972c12f7cb36eb64d554f9bdf2e30714151095f0001a1647",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/2CH.json",
+      "baseline_sha256": "8c87f1d6e079539ba5ac8034a4991756e8367229537ad4db469a4dac7663de69",
+      "candidate_sha256": "8c87f1d6e079539ba5ac8034a4991756e8367229537ad4db469a4dac7663de69",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/2CO.json",
+      "baseline_sha256": "92c48cacf98ca70444cde36e97f2bc3d97987b974290846edec341862f0bbb6d",
+      "candidate_sha256": "92c48cacf98ca70444cde36e97f2bc3d97987b974290846edec341862f0bbb6d",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/2JN.json",
+      "baseline_sha256": "f455bcb89cc4fb52f092ed03e72f9968a48382cb2494c71609180e2940c7ce67",
+      "candidate_sha256": "f455bcb89cc4fb52f092ed03e72f9968a48382cb2494c71609180e2940c7ce67",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/2KI.json",
+      "baseline_sha256": "0f424d0e84a85d90b26e30fbb1c3d6d71a53cea08bec6382f95d1773365272bc",
+      "candidate_sha256": "0f424d0e84a85d90b26e30fbb1c3d6d71a53cea08bec6382f95d1773365272bc",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/2PE.json",
+      "baseline_sha256": "78ac2d38e99e4d59b08db338453a1b26a7ec32ef50e97fefc269c9f6fc799c92",
+      "candidate_sha256": "78ac2d38e99e4d59b08db338453a1b26a7ec32ef50e97fefc269c9f6fc799c92",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/2SA.json",
+      "baseline_sha256": "51769946760a3595ca82bbac7f84fc4411706a73afae22f2025f78573c8654c3",
+      "candidate_sha256": "51769946760a3595ca82bbac7f84fc4411706a73afae22f2025f78573c8654c3",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/2TH.json",
+      "baseline_sha256": "e3322db7050d5781081f83c8b4d205217327374cf55986477601e943f1319fa4",
+      "candidate_sha256": "e3322db7050d5781081f83c8b4d205217327374cf55986477601e943f1319fa4",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/2TI.json",
+      "baseline_sha256": "09d2a9edb665ef90dc885e336eb2d50640796a6036d7caf169ca13fc919bcb98",
+      "candidate_sha256": "09d2a9edb665ef90dc885e336eb2d50640796a6036d7caf169ca13fc919bcb98",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/3JN.json",
+      "baseline_sha256": "461dddd8a5be626e6c300f87def75f87d2d2943b5ed7ecef2777314eea7ee512",
+      "candidate_sha256": "461dddd8a5be626e6c300f87def75f87d2d2943b5ed7ecef2777314eea7ee512",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/ACT.json",
+      "baseline_sha256": "61fc28b210e5f21a9ebb1c17866e1c52e1d21a34cdcb9767245fd7b641d00e2f",
+      "candidate_sha256": "61fc28b210e5f21a9ebb1c17866e1c52e1d21a34cdcb9767245fd7b641d00e2f",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/AMO.json",
+      "baseline_sha256": "bd98ea3a7b95848084ede17c836def6f828776ce8366b0cd66d164bfec713791",
+      "candidate_sha256": "bd98ea3a7b95848084ede17c836def6f828776ce8366b0cd66d164bfec713791",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/COL.json",
+      "baseline_sha256": "bca796e9b25773d2f18e33deea16d9cc27de3e55f3aa345eedd3ba3dacb6858d",
+      "candidate_sha256": "bca796e9b25773d2f18e33deea16d9cc27de3e55f3aa345eedd3ba3dacb6858d",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/DAN.json",
+      "baseline_sha256": "ac98a194b523e50a7a8332a14862bff162a2fa69247cae967a60b102397a7aae",
+      "candidate_sha256": "ac98a194b523e50a7a8332a14862bff162a2fa69247cae967a60b102397a7aae",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/DEU.json",
+      "baseline_sha256": "6c3943b5f8e4689c4156f6c7da1aecc8946dd5ce5e2d03c5ec955f8fc01b6e82",
+      "candidate_sha256": "6c3943b5f8e4689c4156f6c7da1aecc8946dd5ce5e2d03c5ec955f8fc01b6e82",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/ECC.json",
+      "baseline_sha256": "ee5db0d2ebb04dccbe21b5a9c6a1cc994188b8ac4c3c941259f9c0e1b81fc075",
+      "candidate_sha256": "ee5db0d2ebb04dccbe21b5a9c6a1cc994188b8ac4c3c941259f9c0e1b81fc075",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/EPH.json",
+      "baseline_sha256": "3855fe73c2d41cea4645ceb153197f535ea21c7a2a9c8f5e3a7f0b177c3e47fd",
+      "candidate_sha256": "3855fe73c2d41cea4645ceb153197f535ea21c7a2a9c8f5e3a7f0b177c3e47fd",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/EST.json",
+      "baseline_sha256": "89cb6c0f2b27551ba6f8dff7d8398c424b0c086041e5ad39f90e942dab92fad1",
+      "candidate_sha256": "89cb6c0f2b27551ba6f8dff7d8398c424b0c086041e5ad39f90e942dab92fad1",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/EXO.json",
+      "baseline_sha256": "459d85ce979b9a55fbdc94cdec04ef3c2e5f6300110d3b1856fefdf7fd201b51",
+      "candidate_sha256": "459d85ce979b9a55fbdc94cdec04ef3c2e5f6300110d3b1856fefdf7fd201b51",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/EZK.json",
+      "baseline_sha256": "d4a633cffa557b0107e581904453ef2c7e9f15b0dfe402ffe2e9e9468c8d9316",
+      "candidate_sha256": "d4a633cffa557b0107e581904453ef2c7e9f15b0dfe402ffe2e9e9468c8d9316",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/EZR.json",
+      "baseline_sha256": "2a78b5eb2e8e3ccfe5dd8ddce6f4265a661619ac0da3beaa3e8eef6cfd88f8fb",
+      "candidate_sha256": "2a78b5eb2e8e3ccfe5dd8ddce6f4265a661619ac0da3beaa3e8eef6cfd88f8fb",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/GAL.json",
+      "baseline_sha256": "d94732ab6251ef5fed8bc343a63106ae69067722404ee758e8c5e5281179a840",
+      "candidate_sha256": "d94732ab6251ef5fed8bc343a63106ae69067722404ee758e8c5e5281179a840",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/GEN.json",
+      "baseline_sha256": "258b52077e562e5fabbdf92d4d4d1ede77b68cb82c9d97ee7241858ffe367b60",
+      "candidate_sha256": "258b52077e562e5fabbdf92d4d4d1ede77b68cb82c9d97ee7241858ffe367b60",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/HAB.json",
+      "baseline_sha256": "aa20b368eb2c850b9d8cc1f92d589d3224da1b0f9f5cb4be28e5a438548f51e2",
+      "candidate_sha256": "aa20b368eb2c850b9d8cc1f92d589d3224da1b0f9f5cb4be28e5a438548f51e2",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/HAG.json",
+      "baseline_sha256": "0139eec17dc2db204b7790e2776e3e3b4ae13a1d973c38cac36a8755dc270378",
+      "candidate_sha256": "0139eec17dc2db204b7790e2776e3e3b4ae13a1d973c38cac36a8755dc270378",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/HEB.json",
+      "baseline_sha256": "a8cce0f3781016d20e2caaeb72110aa1b05017572d182e05250edb1fb9c41618",
+      "candidate_sha256": "a8cce0f3781016d20e2caaeb72110aa1b05017572d182e05250edb1fb9c41618",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/HOS.json",
+      "baseline_sha256": "2813b9bd3612fc181b4d5b68b63ef98ed8d8e4e3d90b41718a4c4856dc5ae58b",
+      "candidate_sha256": "2813b9bd3612fc181b4d5b68b63ef98ed8d8e4e3d90b41718a4c4856dc5ae58b",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/ISA.json",
+      "baseline_sha256": "f053b60361b78dff83ce5d3e50e59202cdc64a66d6f48c5e7944c5695e9e5b1e",
+      "candidate_sha256": "f053b60361b78dff83ce5d3e50e59202cdc64a66d6f48c5e7944c5695e9e5b1e",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/JAS.json",
+      "baseline_sha256": "19a83f3f3ace294822d456a1234ce530edd293d6a93324ccac8b7f7878aa5a79",
+      "candidate_sha256": "19a83f3f3ace294822d456a1234ce530edd293d6a93324ccac8b7f7878aa5a79",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/JDG.json",
+      "baseline_sha256": "e2e50ea398396822ba00358ae988bc84638336a3bea72ee5880751b244ab18e7",
+      "candidate_sha256": "e2e50ea398396822ba00358ae988bc84638336a3bea72ee5880751b244ab18e7",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/JER.json",
+      "baseline_sha256": "80cc141b36fe8cef073a2fab0829952ced2ffcd51b4a5fb4e2ba169c975a98fd",
+      "candidate_sha256": "80cc141b36fe8cef073a2fab0829952ced2ffcd51b4a5fb4e2ba169c975a98fd",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/JHN.json",
+      "baseline_sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+      "candidate_sha256": "938c047e44bb1a6e4a5f6c38ce367f3e30ff8c09fe36c16c391c4294fe595868",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/JOB.json",
+      "baseline_sha256": "2ae9c37e287ae17298fbc2facb9bcc952bea3fe7d49c01faabe5f4207d6e7363",
+      "candidate_sha256": "2ae9c37e287ae17298fbc2facb9bcc952bea3fe7d49c01faabe5f4207d6e7363",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/JOL.json",
+      "baseline_sha256": "c53149d899db27cfd8b3727ea79ad0efb6d6d3729865a2981c99b1f778e53e5f",
+      "candidate_sha256": "c53149d899db27cfd8b3727ea79ad0efb6d6d3729865a2981c99b1f778e53e5f",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/JON.json",
+      "baseline_sha256": "bc4a04c3d68bc0ec3f9f0d22df6e0d36e3692e2a8b370dfeddd718320a26aed3",
+      "candidate_sha256": "bc4a04c3d68bc0ec3f9f0d22df6e0d36e3692e2a8b370dfeddd718320a26aed3",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/JOS.json",
+      "baseline_sha256": "22e1356fbad45c86ccc7011db75e44c038c2af1d5127092b211779efaf386790",
+      "candidate_sha256": "22e1356fbad45c86ccc7011db75e44c038c2af1d5127092b211779efaf386790",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/JUD.json",
+      "baseline_sha256": "e5e0fbf8453cfc904c5a0e58ce010481748d2905682cfc3790f7007b40388020",
+      "candidate_sha256": "e5e0fbf8453cfc904c5a0e58ce010481748d2905682cfc3790f7007b40388020",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/LAM.json",
+      "baseline_sha256": "7ad77a9e13a2e338e526ce46d909b3bf65c71e7e888b57741eba4b7cdb38e92b",
+      "candidate_sha256": "7ad77a9e13a2e338e526ce46d909b3bf65c71e7e888b57741eba4b7cdb38e92b",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/LEV.json",
+      "baseline_sha256": "22c0be71ac2470d59d34da652be9227c4b828038876e30fb75b3130c3eb96ee8",
+      "candidate_sha256": "22c0be71ac2470d59d34da652be9227c4b828038876e30fb75b3130c3eb96ee8",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/LUK.json",
+      "baseline_sha256": "e6c86aeba06bc5f3c984e5ad64785775e09c6a2fdcb2b2864758cb2a90cd396d",
+      "candidate_sha256": "e6c86aeba06bc5f3c984e5ad64785775e09c6a2fdcb2b2864758cb2a90cd396d",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/MAL.json",
+      "baseline_sha256": "b56e76744b99a12f39cabf033bff0e97261196e88cff59c7f54f360cf4c98afc",
+      "candidate_sha256": "b56e76744b99a12f39cabf033bff0e97261196e88cff59c7f54f360cf4c98afc",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/MAT.json",
+      "baseline_sha256": "84074e0e63e1d70d12851dc9b78a825f80b53a130e1267cab83f097495fbef41",
+      "candidate_sha256": "84074e0e63e1d70d12851dc9b78a825f80b53a130e1267cab83f097495fbef41",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/MIC.json",
+      "baseline_sha256": "5ee4fb437c3d3ed639bc94aa9f603f5dcae397372d8f9eec406ad5e94db5be7b",
+      "candidate_sha256": "5ee4fb437c3d3ed639bc94aa9f603f5dcae397372d8f9eec406ad5e94db5be7b",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/MRK.json",
+      "baseline_sha256": "0b7fc9acced0b68a30f6c9bc7e0c797ab4cf34bd14ad912d3b51bc07bf438a5d",
+      "candidate_sha256": "0b7fc9acced0b68a30f6c9bc7e0c797ab4cf34bd14ad912d3b51bc07bf438a5d",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/NAM.json",
+      "baseline_sha256": "ba8cff781ac2a7102c6e2f22d8cfcb99dd10225628c7df831a20280a1ac94bbf",
+      "candidate_sha256": "ba8cff781ac2a7102c6e2f22d8cfcb99dd10225628c7df831a20280a1ac94bbf",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/NEH.json",
+      "baseline_sha256": "4342d126ff6137499e0be3647763600196f966f094be79be7becbd929aef259e",
+      "candidate_sha256": "4342d126ff6137499e0be3647763600196f966f094be79be7becbd929aef259e",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/NUM.json",
+      "baseline_sha256": "8471cb500b87ad817651bac077e471cb3872c9bc88c1d4afd0e87485b6a94d47",
+      "candidate_sha256": "8471cb500b87ad817651bac077e471cb3872c9bc88c1d4afd0e87485b6a94d47",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/OBA.json",
+      "baseline_sha256": "748729835b261c92c9a21f3531bba026a6faab693642e893aec485f0017ecbd9",
+      "candidate_sha256": "748729835b261c92c9a21f3531bba026a6faab693642e893aec485f0017ecbd9",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/PHM.json",
+      "baseline_sha256": "dc66a960af5f2ce1bf999ff82cfd4afac0ba055de558e2a6e00bac74ccf3ecfe",
+      "candidate_sha256": "dc66a960af5f2ce1bf999ff82cfd4afac0ba055de558e2a6e00bac74ccf3ecfe",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/PHP.json",
+      "baseline_sha256": "6f53b0d0767db32a4e4308239789c205c6a55ccb8f27340c086bae901cc6f2ff",
+      "candidate_sha256": "6f53b0d0767db32a4e4308239789c205c6a55ccb8f27340c086bae901cc6f2ff",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/PRO.json",
+      "baseline_sha256": "b1316dd5b99af276cf18d889463b05cc4607fddbbd8df0719f22485bf87dd2b1",
+      "candidate_sha256": "b1316dd5b99af276cf18d889463b05cc4607fddbbd8df0719f22485bf87dd2b1",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/PSA.json",
+      "baseline_sha256": "8d5ad6883a08318ebe27838c680a868d311ae4be97ad44c707dd26c5383856af",
+      "candidate_sha256": "8d5ad6883a08318ebe27838c680a868d311ae4be97ad44c707dd26c5383856af",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/REV.json",
+      "baseline_sha256": "56423653f9c3f4e7f477e37a907f55d06d51fd63a0cae5881334116e2c8b6a31",
+      "candidate_sha256": "56423653f9c3f4e7f477e37a907f55d06d51fd63a0cae5881334116e2c8b6a31",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/ROM.json",
+      "baseline_sha256": "0a375c7c626c14bf9b4aa41f74f7a23f47caf52b90a7d0111ab3cb4584f7e14e",
+      "candidate_sha256": "0a375c7c626c14bf9b4aa41f74f7a23f47caf52b90a7d0111ab3cb4584f7e14e",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/RUT.json",
+      "baseline_sha256": "5f0efbce6c42cda413d9acbad86f9e8e1cf24ffba7b4dad8aa5b3b0e679961a3",
+      "candidate_sha256": "5f0efbce6c42cda413d9acbad86f9e8e1cf24ffba7b4dad8aa5b3b0e679961a3",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/SNG.json",
+      "baseline_sha256": "fbdc6d3da0e22afc8191bfb13ab9a0f45230ca6dfc9db650f1478af18a58c5ab",
+      "candidate_sha256": "fbdc6d3da0e22afc8191bfb13ab9a0f45230ca6dfc9db650f1478af18a58c5ab",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/TIT.json",
+      "baseline_sha256": "0af8cadd81d41e5f3273b4ed985c6b611fb54ea403370c35a7bbf718d868104d",
+      "candidate_sha256": "0af8cadd81d41e5f3273b4ed985c6b611fb54ea403370c35a7bbf718d868104d",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/ZEC.json",
+      "baseline_sha256": "04306d72ca0e9176dc0d7c4232abdcff9a8e8cf3de722054529096201fbdbf53",
+      "candidate_sha256": "04306d72ca0e9176dc0d7c4232abdcff9a8e8cf3de722054529096201fbdbf53",
+      "identical": true
+    },
+    {
+      "path": "data/bibles/otb/ZEP.json",
+      "baseline_sha256": "4503c7a82f4dcea415a5fc696b031196f9bc1573c07230e814dd65876fd4a7a7",
+      "candidate_sha256": "4503c7a82f4dcea415a5fc696b031196f9bc1573c07230e814dd65876fd4a7a7",
+      "identical": true
+    },
+    {
+      "path": "data/content-report.json",
+      "baseline_sha256": "7954ffe2ac88b2a4e7a001fc22fb3f9cca233509905a736153c94384788d2491",
+      "candidate_sha256": "7954ffe2ac88b2a4e7a001fc22fb3f9cca233509905a736153c94384788d2491",
+      "identical": true
+    },
+    {
+      "path": "data/faithpath-content-index.json",
+      "baseline_sha256": "4b87ba68c4326e4902309d543f8e263c4bd2ee46d3ff312e953dc671f616fb3d",
+      "candidate_sha256": "4b87ba68c4326e4902309d543f8e263c4bd2ee46d3ff312e953dc671f616fb3d",
+      "identical": true
+    },
+    {
+      "path": "data/faithpath-nachlese-story-flow.json",
+      "baseline_sha256": "330d06b5b4e5c6413d41e8c10e16b1ff0735ac682637ccbe847ffbb4996c5435",
+      "candidate_sha256": "330d06b5b4e5c6413d41e8c10e16b1ff0735ac682637ccbe847ffbb4996c5435",
+      "identical": true
+    },
+    {
+      "path": "data/index.json",
+      "baseline_sha256": "8686e9de0c250b61f304d81ff5f9aa8462747ffbc0e8bb91a7d859570d6b822e",
+      "candidate_sha256": "8686e9de0c250b61f304d81ff5f9aa8462747ffbc0e8bb91a7d859570d6b822e",
+      "identical": true
+    },
+    {
+      "path": "data/nachlese-questions.json",
+      "baseline_sha256": "fee7b3b4c549baf9e4cdd90efeece573933e37ebaa7d551860708ffae4e8efd0",
+      "candidate_sha256": "fee7b3b4c549baf9e4cdd90efeece573933e37ebaa7d551860708ffae4e8efd0",
+      "identical": true
+    },
+    {
+      "path": "data/nachlese-stories.json",
+      "baseline_sha256": "5ff19290f042667e6f321e23de16c4c933ce43fc87a070612dd006d1a529afc6",
+      "candidate_sha256": "5ff19290f042667e6f321e23de16c4c933ce43fc87a070612dd006d1a529afc6",
+      "identical": true
+    },
+    {
+      "path": "data/nt-quiz-status.json",
+      "baseline_sha256": "8b3e37a97e15ac9b3d6856cd1b45f58c83dae1dad2486d84061a28ec44c98c7d",
+      "candidate_sha256": "8b3e37a97e15ac9b3d6856cd1b45f58c83dae1dad2486d84061a28ec44c98c7d",
+      "identical": true
+    },
+    {
+      "path": "data/reference-index.json",
+      "baseline_sha256": "794b228f00dfc2df4f265e88e686db3a8916610aef9ca610cbe377d35fd42420",
+      "candidate_sha256": "794b228f00dfc2df4f265e88e686db3a8916610aef9ca610cbe377d35fd42420",
+      "identical": true
+    },
+    {
+      "path": "data/stories.json",
+      "baseline_sha256": "f9fc48a97ecb129eaed0289cf94afa7c747f15afe381fbe6241e67fac5ec04cd",
+      "candidate_sha256": "f9fc48a97ecb129eaed0289cf94afa7c747f15afe381fbe6241e67fac5ec04cd",
+      "identical": true
+    },
+    {
+      "path": "icons/icon-192.png",
+      "baseline_sha256": "bf53a3a54687fa9bd01f6481a4dac5629966112c01b72348a8cfc3b78ba44ab2",
+      "candidate_sha256": "bf53a3a54687fa9bd01f6481a4dac5629966112c01b72348a8cfc3b78ba44ab2",
+      "identical": true
+    },
+    {
+      "path": "icons/icon-512.png",
+      "baseline_sha256": "bf3180c228abc122cd95bc1a3e08726a7081dbedac8729d9aac5c8ddae47dd67",
+      "candidate_sha256": "bf3180c228abc122cd95bc1a3e08726a7081dbedac8729d9aac5c8ddae47dd67",
+      "identical": true
+    },
+    {
+      "path": "icons/olive-v2-180.png",
+      "baseline_sha256": "664160f52709298016e379d9fd9b1a4838f3a05e33e118c64e85bf130ed9cfab",
+      "candidate_sha256": "664160f52709298016e379d9fd9b1a4838f3a05e33e118c64e85bf130ed9cfab",
+      "identical": true
+    },
+    {
+      "path": "icons/olive-v2-192.png",
+      "baseline_sha256": "1c1decd0f5d710ee6f76c3b25bce10eac4cce9df9232b9b4aacbad3da266d8f3",
+      "candidate_sha256": "1c1decd0f5d710ee6f76c3b25bce10eac4cce9df9232b9b4aacbad3da266d8f3",
+      "identical": true
+    },
+    {
+      "path": "icons/olive-v2-32.png",
+      "baseline_sha256": "8574b66480fc11cbf39dc2fdf198c5914cb9f4615e6b4c49902161d5c262f976",
+      "candidate_sha256": "8574b66480fc11cbf39dc2fdf198c5914cb9f4615e6b4c49902161d5c262f976",
+      "identical": true
+    },
+    {
+      "path": "icons/olive-v2-512.png",
+      "baseline_sha256": "1c3e855873a4edc17a8194b7cf96bea89df6e93f3823f9746082a07731ab3b6f",
+      "candidate_sha256": "1c3e855873a4edc17a8194b7cf96bea89df6e93f3823f9746082a07731ab3b6f",
+      "identical": true
+    },
+    {
+      "path": "index.html",
+      "baseline_sha256": "1a5c36a483a6ee0af92671e0561f98476c96af81925ed4783c6cd652cd7f2f36",
+      "candidate_sha256": "b0722eb4bc268f17ad76c1cc9a6496c0771f0396f59489eff3b097da8bee794b",
+      "identical": false
+    },
+    {
+      "path": "manifest.webmanifest",
+      "baseline_sha256": "f5ea3cf60ff32381f49b38564977c4ba4272b369f2581cce2e2817b6f4ae8b3e",
+      "candidate_sha256": "f5ea3cf60ff32381f49b38564977c4ba4272b369f2581cce2e2817b6f4ae8b3e",
+      "identical": true
+    },
+    {
+      "path": "scripts/build.mjs",
+      "baseline_sha256": "8854071de0726278dffb627bc23c3eabff49769791292c04290f39192842b25d",
+      "candidate_sha256": "8996b3217cce49ec4419f1d4c0c9423ff438fdb2438035b383391c9c05dba641",
+      "identical": false
+    },
+    {
+      "path": "scripts/import-nt-quiz.py",
+      "baseline_sha256": "332082c79c02fbad0b128c56f49100f50b6b0f4478fab38cbd849573ace8b057",
+      "candidate_sha256": "332082c79c02fbad0b128c56f49100f50b6b0f4478fab38cbd849573ace8b057",
+      "identical": true
+    },
+    {
+      "path": "scripts/nachlese-mc-evidence.mjs",
+      "baseline_sha256": "f87e5a65cf20758360599e7bf9b9e670b45b879babc365986b058df55beab30a",
+      "candidate_sha256": "f87e5a65cf20758360599e7bf9b9e670b45b879babc365986b058df55beab30a",
+      "identical": true
+    },
+    {
+      "path": "scripts/quiz-reference-ranges.mjs",
+      "baseline_sha256": "0bcb56804f0944677c6d6e8f7c73aef7fa66592e8a078861c2d44323648e1433",
+      "candidate_sha256": "0bcb56804f0944677c6d6e8f7c73aef7fa66592e8a078861c2d44323648e1433",
+      "identical": true
+    },
+    {
+      "path": "scripts/reproduce-production.mjs",
+      "baseline_sha256": "ba54d457849ca80e898480fdf287155a93d0a9f0a5c7ff513c697df4c636ace5",
+      "candidate_sha256": "ba54d457849ca80e898480fdf287155a93d0a9f0a5c7ff513c697df4c636ace5",
+      "identical": true
+    },
+    {
+      "path": "scripts/serve.mjs",
+      "baseline_sha256": "a2af1dc43ee54eaedf70252c885e479631e5b644ae41013e49022b23a30aea08",
+      "candidate_sha256": "a2af1dc43ee54eaedf70252c885e479631e5b644ae41013e49022b23a30aea08",
+      "identical": true
+    },
+    {
+      "path": "scripts/sw-template.js",
+      "baseline_sha256": "544c7f4805b8fc5bfc38c6af1fe3741362416457aeb1cf64ab49659bdd34a4b8",
+      "candidate_sha256": "544c7f4805b8fc5bfc38c6af1fe3741362416457aeb1cf64ab49659bdd34a4b8",
+      "identical": true
+    },
+    {
+      "path": "scripts/validate-content.mjs",
+      "baseline_sha256": "4f6ac963d9ed12ace123ccb0e92c2c4f0b938e5b943480ba64a615ca43ec14fd",
+      "candidate_sha256": "4f6ac963d9ed12ace123ccb0e92c2c4f0b938e5b943480ba64a615ca43ec14fd",
+      "identical": true
+    },
+    {
+      "path": "scripts/validate-faithpath-materialization.mjs",
+      "baseline_sha256": "b03bd4b7f0faf3aa8f3d55127b4e0545ea47f2126d85945773077d4ecc36947d",
+      "candidate_sha256": "b03bd4b7f0faf3aa8f3d55127b4e0545ea47f2126d85945773077d4ecc36947d",
+      "identical": true
+    },
+    {
+      "path": "scripts/validate-nachlese-editorial-source.py",
+      "baseline_sha256": "d48b86f951432c0b9c20eb40eb6681bf8422b9f4b32a848e45835a8a90c290a7",
+      "candidate_sha256": "d48b86f951432c0b9c20eb40eb6681bf8422b9f4b32a848e45835a8a90c290a7",
+      "identical": true
+    },
+    {
+      "path": "scripts/validate-nachlese-editorial.mjs",
+      "baseline_sha256": "2b3dd95a1cd933f861a9f13cf886875a3bc13752825845753686a161acbf3931",
+      "candidate_sha256": "2b3dd95a1cd933f861a9f13cf886875a3bc13752825845753686a161acbf3931",
+      "identical": true
+    },
+    {
+      "path": "scripts/validate-nachlese-mc.mjs",
+      "baseline_sha256": "d15268c0badf40dc88b1015f2b1db7b01839cb2b6801ed7c90b6a1e2d0a1c961",
+      "candidate_sha256": "d15268c0badf40dc88b1015f2b1db7b01839cb2b6801ed7c90b6a1e2d0a1c961",
+      "identical": true
+    },
+    {
+      "path": "scripts/validate-nt-quiz.mjs",
+      "baseline_sha256": "d33e776e5ada68606bf3a250a0cb7b7c4a45d3ae15bcf16d8e0855e6c7fcb1d2",
+      "candidate_sha256": "d33e776e5ada68606bf3a250a0cb7b7c4a45d3ae15bcf16d8e0855e6c7fcb1d2",
+      "identical": true
+    },
+    {
+      "path": "scripts/validate-runtime-schema.mjs",
+      "baseline_sha256": "218c97b1fb2588d17d44d6a3886051bebfd56dd4d0b2667bbee80af3fd258356",
+      "candidate_sha256": "218c97b1fb2588d17d44d6a3886051bebfd56dd4d0b2667bbee80af3fd258356",
+      "identical": true
+    },
+    {
+      "path": "src/app.js",
+      "baseline_sha256": "c197570e4e5c2d97be377248dc24d60e1faaa64205e4754a5b1052da78e9e624",
+      "candidate_sha256": "a58d9ae6b950201d748e2f3737af970dd217fda99a565e12c8d286b8f5e2f092",
+      "identical": false
+    },
+    {
+      "path": "src/bible-journey.js",
+      "baseline_sha256": "7c4682950dfddbb85ad34c37a8c449a894ef57fe2cb4fa56b36bd53be53b21a6",
+      "candidate_sha256": "7c4682950dfddbb85ad34c37a8c449a894ef57fe2cb4fa56b36bd53be53b21a6",
+      "identical": true
+    },
+    {
+      "path": "src/bible-notes.js",
+      "baseline_sha256": "f7c3f2507f9da6bc94398d61ee7c41300b9832f32796e9e37020dc483475fdee",
+      "candidate_sha256": "f7c3f2507f9da6bc94398d61ee7c41300b9832f32796e9e37020dc483475fdee",
+      "identical": true
+    },
+    {
+      "path": "src/chapter-questions.js",
+      "baseline_sha256": "7efd3276c687170440fe2dfd4da415c781be7efbfa3c0d7d73079920a7061deb",
+      "candidate_sha256": "7efd3276c687170440fe2dfd4da415c781be7efbfa3c0d7d73079920a7061deb",
+      "identical": true
+    },
+    {
+      "path": "src/content.js",
+      "baseline_sha256": "f20b6729406a34123abf860b4c5d69184be30da2834660601355dc71541dccda",
+      "candidate_sha256": "f20b6729406a34123abf860b4c5d69184be30da2834660601355dc71541dccda",
+      "identical": true
+    },
+    {
+      "path": "src/continuity.js",
+      "baseline_sha256": "20ab9b6cad5afbd47baebaff500bdf9e567e1e289bf65c9110a4ffec0ad113f7",
+      "candidate_sha256": "20ab9b6cad5afbd47baebaff500bdf9e567e1e289bf65c9110a4ffec0ad113f7",
+      "identical": true
+    },
+    {
+      "path": "src/core-experience.js",
+      "baseline_sha256": "3a370cefca5f4be1ea38d784c9c76778f4238058d8ef63bb3de5bbf50f2bd020",
+      "candidate_sha256": "3a370cefca5f4be1ea38d784c9c76778f4238058d8ef63bb3de5bbf50f2bd020",
+      "identical": true
+    },
+    {
+      "path": "src/domain.js",
+      "baseline_sha256": "ee05fe3c7809f7f1d3d5bf717d1b5a698fe6067a8a417a07516a7cc3da419644",
+      "candidate_sha256": "ee05fe3c7809f7f1d3d5bf717d1b5a698fe6067a8a417a07516a7cc3da419644",
+      "identical": true
+    },
+    {
+      "path": "src/drafts.js",
+      "baseline_sha256": "979195d7cf1d03e8107a3edaa0dfb53dd68f4dd75a63d2c753015b946f3dc1a3",
+      "candidate_sha256": "979195d7cf1d03e8107a3edaa0dfb53dd68f4dd75a63d2c753015b946f3dc1a3",
+      "identical": true
+    },
+    {
+      "path": "src/experience-view.js",
+      "baseline_sha256": "122a362f0faced0f3c4692a4b5d5f3ed7579de8d7de1b238e5a2e9e7cd9d799b",
+      "candidate_sha256": "122a362f0faced0f3c4692a4b5d5f3ed7579de8d7de1b238e5a2e9e7cd9d799b",
+      "identical": true
+    },
+    {
+      "path": "src/import-validation.js",
+      "baseline_sha256": "cfb18a5031df3033dba7356a8f07019383b2c130c89d43e37152e7d0f8e27b24",
+      "candidate_sha256": "cfb18a5031df3033dba7356a8f07019383b2c130c89d43e37152e7d0f8e27b24",
+      "identical": true
+    },
+    {
+      "path": "src/journal-management.js",
+      "baseline_sha256": "0b5a7de4fe99b7ac14cd894884bff724c4cfeb0fcaf6bda00b6ac6eb20b8587d",
+      "candidate_sha256": "0b5a7de4fe99b7ac14cd894884bff724c4cfeb0fcaf6bda00b6ac6eb20b8587d",
+      "identical": true
+    },
+    {
+      "path": "src/journal-search.js",
+      "baseline_sha256": "110e61a598b640aec96ca1a53c0c11e9c1469768bf634d3fe252f8492a5c3345",
+      "candidate_sha256": "110e61a598b640aec96ca1a53c0c11e9c1469768bf634d3fe252f8492a5c3345",
+      "identical": true
+    },
+    {
+      "path": "src/journal-storage.js",
+      "baseline_sha256": "dbce864f85ed1cebd6395703429bd8f888e43dd2d31b68a4b15362b885f30aee",
+      "candidate_sha256": "dbce864f85ed1cebd6395703429bd8f888e43dd2d31b68a4b15362b885f30aee",
+      "identical": true
+    },
+    {
+      "path": "src/journey-sword.js",
+      "baseline_sha256": "123fffacad90906704210dfd6cba22b41a8e3becb8f4e41043277975933be063",
+      "candidate_sha256": "123fffacad90906704210dfd6cba22b41a8e3becb8f4e41043277975933be063",
+      "identical": true
+    },
+    {
+      "path": "src/journey-view.js",
+      "baseline_sha256": "3e5876d7b6a959bd34b7d26be20dced47db99681e1f651ec37bc1c5421d7b36a",
+      "candidate_sha256": "3e5876d7b6a959bd34b7d26be20dced47db99681e1f651ec37bc1c5421d7b36a",
+      "identical": true
+    },
+    {
+      "path": "src/menu.js",
+      "baseline_sha256": "d27f6da10ec4fe1ed3d0499990dfa0ea968ea64ee75fbcc22574537fb89dc32b",
+      "candidate_sha256": "327f6c061291066dbc9b8c44e9232f354c1b046e7d629078492bb0031f6c20ae",
+      "identical": false
+    },
+    {
+      "path": "src/path-review-context.js",
+      "baseline_sha256": "27fc6706c9719280e5542e50fbef676c682cb45366065a84360a3142c8be5fe3",
+      "candidate_sha256": "27fc6706c9719280e5542e50fbef676c682cb45366065a84360a3142c8be5fe3",
+      "identical": true
+    },
+    {
+      "path": "src/paths-model.js",
+      "baseline_sha256": "c1e4ab8fb232f0aeb1345056c9ac4a0de355269743c4e9796f42a3f7222cae4c",
+      "candidate_sha256": "c1e4ab8fb232f0aeb1345056c9ac4a0de355269743c4e9796f42a3f7222cae4c",
+      "identical": true
+    },
+    {
+      "path": "src/paths-view.js",
+      "baseline_sha256": "94f3e55c77dadd273eeea68645efa367b55748fc84c417d1529b8855eb8ed29e",
+      "candidate_sha256": "94f3e55c77dadd273eeea68645efa367b55748fc84c417d1529b8855eb8ed29e",
+      "identical": true
+    },
+    {
+      "path": "src/personal-journey.css",
+      "baseline_sha256": "925ba170677048a72e8311c0afb5900613b15a5a1b04d501fcf064e82858c853",
+      "candidate_sha256": "925ba170677048a72e8311c0afb5900613b15a5a1b04d501fcf064e82858c853",
+      "identical": true
+    },
+    {
+      "path": "src/reader-stories.css",
+      "baseline_sha256": "e8447e23ed38aaf68dc2679e54154ce94c13d6fdf903dac7751775098d7f2703",
+      "candidate_sha256": "e8447e23ed38aaf68dc2679e54154ce94c13d6fdf903dac7751775098d7f2703",
+      "identical": true
+    },
+    {
+      "path": "src/reader-view.js",
+      "baseline_sha256": "4da64f428d13f3ca83e11b7f8c0e4681d43dee87b88bd23fc9843f633a3280a1",
+      "candidate_sha256": "4da64f428d13f3ca83e11b7f8c0e4681d43dee87b88bd23fc9843f633a3280a1",
+      "identical": true
+    },
+    {
+      "path": "src/runtime-model.js",
+      "baseline_sha256": "92019135db47fce281a487773b2badf5a61ca53e67b8dfddf38fe157c98fbf08",
+      "candidate_sha256": "92019135db47fce281a487773b2badf5a61ca53e67b8dfddf38fe157c98fbf08",
+      "identical": true
+    },
+    {
+      "path": "src/store.js",
+      "baseline_sha256": "c6d5dd08b2f2144b594c63a7014baa9877a52406ef950b18855681cd355c7d6d",
+      "candidate_sha256": "c6d5dd08b2f2144b594c63a7014baa9877a52406ef950b18855681cd355c7d6d",
+      "identical": true
+    },
+    {
+      "path": "src/story-flow-view.js",
+      "baseline_sha256": "9014cfc6e3f909868da716980d7e971e20284fd82791cfa9904c8e8cff6d5e1a",
+      "candidate_sha256": "9014cfc6e3f909868da716980d7e971e20284fd82791cfa9904c8e8cff6d5e1a",
+      "identical": true
+    },
+    {
+      "path": "src/themes.js",
+      "baseline_sha256": "dcc3060fa2cd86dae15e92959aa04297c06b9d3a3eda987dd9d234468952164e",
+      "candidate_sha256": "dcc3060fa2cd86dae15e92959aa04297c06b9d3a3eda987dd9d234468952164e",
+      "identical": true
+    },
+    {
+      "path": "src/today-model.js",
+      "baseline_sha256": "1565d197326ca0ebac747933546a4993600d0dbb8e5ebe9a7b3ec37d975364c6",
+      "candidate_sha256": "1565d197326ca0ebac747933546a4993600d0dbb8e5ebe9a7b3ec37d975364c6",
+      "identical": true
+    },
+    {
+      "path": "src/today-view.js",
+      "baseline_sha256": "7b145dfc2f2ea94bd3bf8a99a2748d9feab08b86e942ed65f12dc3b8b60690f5",
+      "candidate_sha256": "7b145dfc2f2ea94bd3bf8a99a2748d9feab08b86e942ed65f12dc3b8b60690f5",
+      "identical": true
+    },
+    {
+      "path": "src/today.css",
+      "baseline_sha256": "f2efe94a859d139459429f197edd395a0fa88b9d2b7b685a769533e5b20f8c92",
+      "candidate_sha256": "f2efe94a859d139459429f197edd395a0fa88b9d2b7b685a769533e5b20f8c92",
+      "identical": true
+    },
+    {
+      "path": "src/tree-branches.js",
+      "baseline_sha256": "36efd519630ee76842d16020ccd8505d5eda57ecd3ed6e2a6150b29fd45529ac",
+      "candidate_sha256": "36efd519630ee76842d16020ccd8505d5eda57ecd3ed6e2a6150b29fd45529ac",
+      "identical": true
+    },
+    {
+      "path": "src/tree-view.js",
+      "baseline_sha256": "d9fd5dd1b0ab44be96654fa33332119f1ddf13ebad2ee916ac45d545af81e98a",
+      "candidate_sha256": "d9fd5dd1b0ab44be96654fa33332119f1ddf13ebad2ee916ac45d545af81e98a",
+      "identical": true
+    },
+    {
+      "path": "src/version.js",
+      "baseline_sha256": "5b8ccbf2c9a173576013331ebd1d1f2178cba017d8fecec8fbf834f9da2e7bff",
+      "candidate_sha256": "c265a86263938309ed87a10cd9664004457c3ed7db0b3f4d95dc6a0a58a180cf",
+      "identical": false
+    },
+    {
+      "path": "src/view-html.js",
+      "baseline_sha256": "756b7883837f299f9d267d7f2fec9ff75f412224c38e7454ee153d4415092387",
+      "candidate_sha256": "756b7883837f299f9d267d7f2fec9ff75f412224c38e7454ee153d4415092387",
+      "identical": true
+    },
+    {
+      "path": "styles.css",
+      "baseline_sha256": "3b42c353fee23e19ed4fb3c3b61a485a38b2e369cb1cd1e10ddde18e8e2b28ec",
+      "candidate_sha256": "3b42c353fee23e19ed4fb3c3b61a485a38b2e369cb1cd1e10ddde18e8e2b28ec",
+      "identical": true
+    },
+    {
+      "path": "trees/tree-stage-1.webp",
+      "baseline_sha256": "d43a9b3d7490295d874d83a597c6c0b4f9d706a38d195b17a878ba2f4b96b7eb",
+      "candidate_sha256": "d43a9b3d7490295d874d83a597c6c0b4f9d706a38d195b17a878ba2f4b96b7eb",
+      "identical": true
+    },
+    {
+      "path": "trees/tree-stage-2.webp",
+      "baseline_sha256": "498c8e565c71ea186d0622d4525e16039351d6c16139680ad84bccb128779670",
+      "candidate_sha256": "498c8e565c71ea186d0622d4525e16039351d6c16139680ad84bccb128779670",
+      "identical": true
+    },
+    {
+      "path": "trees/tree-stage-3.webp",
+      "baseline_sha256": "b72fd79a064eea9e00f8dcd38117bcfb5174ab06f937981eccf92fc8510ca168",
+      "candidate_sha256": "b72fd79a064eea9e00f8dcd38117bcfb5174ab06f937981eccf92fc8510ca168",
+      "identical": true
+    },
+    {
+      "path": "trees/tree-stage-4.webp",
+      "baseline_sha256": "03858914c5d7e13dd8038468f9e85852eb3f412605db895fac81ce904f9e5347",
+      "candidate_sha256": "03858914c5d7e13dd8038468f9e85852eb3f412605db895fac81ce904f9e5347",
+      "identical": true
+    },
+    {
+      "path": "trees/tree-stage-5.webp",
+      "baseline_sha256": "934b64ca449345831096c531737fb74a585536cebaff74f1a588a69486967200",
+      "candidate_sha256": "934b64ca449345831096c531737fb74a585536cebaff74f1a588a69486967200",
+      "identical": true
+    },
+    {
+      "path": "trees/tree-stage-6.webp",
+      "baseline_sha256": "0f29732a5348ab0a6a95816d23897a32f6ae0d103e3c4f4fa34e065e599d2e63",
+      "candidate_sha256": "0f29732a5348ab0a6a95816d23897a32f6ae0d103e3c4f4fa34e065e599d2e63",
+      "identical": true
+    },
+    {
+      "path": "trees/tree-stage-7.webp",
+      "baseline_sha256": "b4d76e4eaf5783036678819b442d0a8c940a0b858647824c24f815d962933a08",
+      "candidate_sha256": "b4d76e4eaf5783036678819b442d0a8c940a0b858647824c24f815d962933a08",
+      "identical": true
+    }
+  ]
+}

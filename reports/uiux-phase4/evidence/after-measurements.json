@@ -1,0 +1,944 @@
+{
+  "phase": "after",
+  "base": "http://127.0.0.1:4404",
+  "results": [
+    {
+      "name": "more-empty",
+      "route": "more",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "more-filled",
+      "route": "more",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "drawer",
+      "route": "today",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "bible",
+      "route": "bible",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "discover",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "discover-filter",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "discover-none",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "discover-chapters",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "reader",
+      "route": "read/JHN/3/otb",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "story",
+      "route": "merged-story/NS-0001",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path",
+      "route": "path/personal-path",
+      "fixture": "active",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "onboarding",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "onboarding-skip",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "more-empty",
+      "route": "more",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "more-filled",
+      "route": "more",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "drawer",
+      "route": "today",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "bible",
+      "route": "bible",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "discover",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "discover-filter",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "discover-none",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "discover-chapters",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "reader",
+      "route": "read/JHN/3/otb",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "story",
+      "route": "merged-story/NS-0001",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "path",
+      "route": "path/personal-path",
+      "fixture": "active",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "onboarding",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "onboarding-skip",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "overflow": false
+    },
+    {
+      "name": "more-empty",
+      "route": "more",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "more-filled",
+      "route": "more",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "drawer",
+      "route": "today",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "bible",
+      "route": "bible",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "discover",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "discover-filter",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "discover-none",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "discover-chapters",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "reader",
+      "route": "read/JHN/3/otb",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "story",
+      "route": "merged-story/NS-0001",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path",
+      "route": "path/personal-path",
+      "fixture": "active",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "onboarding",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "onboarding-skip",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "more-empty",
+      "route": "more",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "more-filled",
+      "route": "more",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "drawer",
+      "route": "today",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "bible",
+      "route": "bible",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "discover",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "discover-filter",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "discover-none",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "discover-chapters",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "reader",
+      "route": "read/JHN/3/otb",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "story",
+      "route": "merged-story/NS-0001",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "path",
+      "route": "path/personal-path",
+      "fixture": "active",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "onboarding",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "onboarding-skip",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "name": "more-empty",
+      "route": "more",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "more-filled",
+      "route": "more",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "drawer",
+      "route": "today",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "bible",
+      "route": "bible",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "discover",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "discover-filter",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "discover-none",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "discover-chapters",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "reader",
+      "route": "read/JHN/3/otb",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "story",
+      "route": "merged-story/NS-0001",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path",
+      "route": "path/personal-path",
+      "fixture": "active",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "onboarding",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "onboarding-skip",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "more-empty",
+      "route": "more",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "more-filled",
+      "route": "more",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "drawer",
+      "route": "today",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "bible",
+      "route": "bible",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "discover",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "discover-filter",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "discover-none",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "discover-chapters",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "reader",
+      "route": "read/JHN/3/otb",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "story",
+      "route": "merged-story/NS-0001",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "path",
+      "route": "path/personal-path",
+      "fixture": "active",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "onboarding",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "onboarding-skip",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 430,
+      "height": 932,
+      "overflow": false
+    },
+    {
+      "name": "more-empty",
+      "route": "more",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "more-filled",
+      "route": "more",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "drawer",
+      "route": "today",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "bible",
+      "route": "bible",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "discover",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "discover-filter",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "discover-none",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "discover-chapters",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "reader",
+      "route": "read/JHN/3/otb",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "story",
+      "route": "merged-story/NS-0001",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "path",
+      "route": "path/personal-path",
+      "fixture": "active",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "onboarding",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "onboarding-skip",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "light",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "more-empty",
+      "route": "more",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "more-filled",
+      "route": "more",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "drawer",
+      "route": "today",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "bible",
+      "route": "bible",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "discover",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "discover-filter",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "discover-none",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "discover-chapters",
+      "route": "discover",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "reader",
+      "route": "read/JHN/3/otb",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "story",
+      "route": "merged-story/NS-0001",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "path",
+      "route": "path/personal-path",
+      "fixture": "active",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "onboarding",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "onboarding-skip",
+      "route": "today",
+      "fixture": "empty",
+      "theme": "night",
+      "width": 1440,
+      "height": 900,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "syntheticDataOnly": true
+}

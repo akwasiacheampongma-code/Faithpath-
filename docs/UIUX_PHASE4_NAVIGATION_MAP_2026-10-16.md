@@ -1,6 +1,6 @@
 # UIUX4 – Navigationskarte und Schutz der alten Routen
 
-Basis19ce343/UIUX3. Vor Produktänderung aus Router und Drawer erstellt. Alle Routen bleiben Hash-Routen, keine parallele Navigation. Vier Tabs unverändert: Heute, Bibel, Mein Weg, Journal.
+Basis `19ce343`/UIUX3. Vor Produktänderung aus Router und Drawer erstellt. Alle Routen bleiben Hash-Routen, keine parallele Navigation. Vier Tabs unverändert: Heute, Bibel, Mein Weg, Journal.
 
 ## Zwölf bisherige Drawer-Ziele
 
@@ -19,7 +19,7 @@ Basis19ce343/UIUX3. Vor Produktänderung aus Router und Drawer erstellt. Alle Ro
 | history | Drawer / Mehr | Drawer Meine Geschichte / Mehr Meine Geschichte / Mein Weg |1|
 | more | Drawer / Hauptmenü | Drawer Mehr / direkte Einstellungen, Backup, Einführung |1|
 
-Drawer von12auf9Links, mit Aufgaben-Gruppen. Mehr führt sekundäre persönliche Geschichte sowie Einstellungen/Daten/Einführung, kein vollständiges zweites Hauptmenü. Bestehende Inhalte werden nicht umbenannt oder neu zugeordnet.
+Drawer von 12 auf 9 Links, mit Aufgaben-Gruppen. Mehr führt sekundäre persönliche Geschichte sowie Einstellungen/Daten/Einführung, kein vollständiges zweites Hauptmenü. Bestehende Inhalte werden nicht umbenannt oder neu zugeordnet.
 
 ## Vollständige Router-Familien
 
@@ -28,12 +28,12 @@ Drawer von12auf9Links, mit Aufgaben-Gruppen. Mehr führt sekundäre persönliche
 | today | Heute |Heute|
 | guidance; topic/:id | Orientierung; topic/angst |Entdecken|
 | bible; chapters/:book | Bücher; chapters/JHN |Bibel|
-| read/:book/:chapter/:translation | read/JHN/3/otb, ?from=1&to=3&origin=path%2Fpersonal-path |Bibel|
+| read/:book/:chapter/:translation | read/JHN/3/otb, ?from=1&to=3&origin=path%2 Fpersonal-path |Bibel|
 | bible-journey; bible-journey/:book | Schwert und Buchübersicht |Bibel|
 | marks; mark/:id | Markierungen; mark/highlight-existing |Markierungen|
 | discover | Geschichten-/Inhaltssuche |Entdecken|
 | chapter-quizzes; chapter-quizzes/:book | NT-Sammlung; chapter-quizzes/JHN |Entdecken|
-| quizzes; quiz/:id | Bestehender Fragenindex; quiz/10070, ?return=read%2FJHN%2F3%2Fotb, ?complete=1 |Entdecken|
+| quizzes; quiz/:id | Bestehender Fragenindex; quiz/10070, ?return=read%2 FJHN%2 F 3%2 Fotb, ?complete=1 |Entdecken|
 | story/:id | Legacy-Geschichte/ Kapitel-Einstieg, story/10070 |Entdecken|
 | merged-story/:id | merged-story/NS-0001; ?reflection=1 |Entdecken|
 | question/:id | question/N-0001 oder FP-0001 |Entdecken|
