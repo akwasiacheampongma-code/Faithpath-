@@ -38,7 +38,7 @@ document.addEventListener("click", event => {
   } else if (event.target.closest("[data-menu-close],#menu-overlay,#main-menu a")) {
     const anchor=event.target.closest('#main-menu a');
     closeMenu(!anchor);
-    if(anchor&&(anchor.hash===location.hash||event.metaKey||event.ctrlKey||event.shiftKey))document.querySelector('main h1')?.focus({preventScroll:true});
+    if(anchor&&(anchor.hash===location.hash||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey))document.querySelector('main h1')?.focus({preventScroll:true});
   }
 });
 document.addEventListener("keydown", event => {

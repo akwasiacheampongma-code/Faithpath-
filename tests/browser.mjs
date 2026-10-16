@@ -129,12 +129,9 @@ try {
       await p.goto(base);
       await p.getByRole("dialog").waitFor();
       await snap(p, "onboarding-mobile");
-      await p.getByRole("button", { name: "Weiter", exact: true }).click();
-      await p
-        .getByText("Ein Gedanke kann dich weiter begleiten.", { exact: true })
-        .waitFor();
-      await p.getByRole("button", { name: "Weiter", exact: true }).click();
-      await p.getByRole("button", { name: "Meinen Anfang finden" }).click();
+      // UIUX4: both neutral paths are immediately available; no required slides.
+      assert(await p.getByRole("button",{name:"Direkt zur Bibel",exact:true}).isVisible());
+      await p.getByRole("button",{name:"Ich brauche Orientierung",exact:true}).click();
       await p
         .getByRole("heading", { name: "Was beschäftigt dich?", exact: true })
         .waitFor();
@@ -474,7 +471,7 @@ try {
     const { c, p } = await context(appState);
     try {
       await visit(p, "more");
-      await p.getByRole("link", {name:"Einstellungen",exact:true}).click();
+      await p.locator('#main a[href="#more?section=settings"]').click();
       await p
         .locator("#offline-state")
         .filter({
@@ -604,8 +601,8 @@ try {
       await overflow(p);
       await p.evaluate(() => (document.documentElement.style.fontSize = ""));
       await p.getByRole("button", { name: "Hauptmenü öffnen oder schließen" }).click();
-      await p.locator("#main-menu").getByRole("link", { name: "Mehr / Einstellungen", exact: true }).click();
-      await p.getByRole("link", {name:"Einstellungen",exact:true}).click();
+      await p.locator('#main-menu a[href="#more"]').click();
+      await p.locator('#main a[href="#more?section=settings"]').click();
       await p.getByRole("button", { name: "Einführung ansehen" }).click();
       await p.keyboard.press("Escape");
       assert.equal(await p.locator("dialog[open]").count(), 0);
