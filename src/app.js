@@ -1,3 +1,5 @@
+import {selectJournal} from './journal-model.js';
+import {renderJournal,renderJournalResults,journalCount} from './journal-view.js';
 import {onboardingContent} from './onboarding-view.js';
 import {createDiscoveryIndex,selectDiscovery,DISCOVERY_PAGE_SIZE} from './discover-model.js';
 import {renderDiscovery,renderDiscoveryResults,discoveryCount} from './discover-view.js';
@@ -666,18 +668,14 @@ function tree() {
   const model=selectTreeHistory(s());
   shell(renderTreeJourney(model,{back,heading,link,date,stageName:stageNames[model.stage],branchMarkup:treeBranchView(s(),model.stage)}),"paths","tree-page");
 }
+function journalModel(){return selectJournal(s(),{query:ui.search,filter:ui.filter,limit:ui.journalLimit,books:ui.books});}
 function journal() {
-  const hasEntries = s().journal.length > 0;
-  const existingCategories=[...new Set(s().journal.map(j=>j.subtype||j.type).filter(x=>x&&x!=="Journal"))];
-  const filters=["Alle",...existingCategories,...(s().journal.some(j=>j.type === "Journal")&&!existingCategories.includes("Gedanken")?["Gedanken"]:[]),...(s().journal.some(j=>j.pathIds?.some(id=>s().paths.some(p=>p.id===id)))?["Mit Weg"]:[]),...(s().journal.some(j=>j.ref)?["Mit Bibelstelle"]:[])];
-  shell(`<div class="heading-with-action">${heading("Journal", "Festhalten, was bleibt.", "Deine Gedanken dürfen sich verändern. Hier kannst du zu ihnen zurückkehren.")}${hasEntries ? button(icon("plus") + '<span class="sr-only">Neuer Eintrag</span>', "new-entry", {}, "icon-button") : ""}</div>${hasEntries ? `<div class="journal-tools"><details ${ui.search ? "open" : ""}><summary>${icon("search")}Suchen</summary><div class="field"><label for="journal-search">In deinen Einträgen suchen</label><input id="journal-search" type="search" data-input="journal" placeholder="Gedanke oder Bibelstelle" value="${e(ui.search)}"></div></details><details ${ui.filter !== "Alle" ? "open" : ""}><summary>Filter${ui.filter !== "Alle" ? " · "+e(ui.filter) : ""}</summary><div class="filters" aria-label="Einträge filtern">${filters.map(f=>button(e(f),"journal-filter",{filter:f},"filter "+(ui.filter===f?"active":""))).join("")}</div></details></div>` : ""}<div id="journal-results">${journalResults()}</div>`,"journal", "journal-page depth-page editorial-page");
+ const model=journalModel();shell(renderJournal(model,{heading,button,results:journalResults(model)}),"journal","journal-page depth-page editorial-page");
 }
-function journalResults() {
-  const items=s().journal.filter(j=>(ui.filter === "Alle" || [j.type,j.subtype].includes(ui.filter) || (ui.filter === "Gedanken" && j.type === "Journal") || (ui.filter === "Mit Weg" && j.pathIds?.some(id=>s().paths.some(p=>p.id===id))) || (ui.filter === "Mit Bibelstelle" && j.ref)) && journalMatches(j,ui.search,ui.books,s().paths)).sort((a,b)=>(time(b.date)||0)-(time(a.date)||0));
-  if(!items.length)return empty(s().journal.length ? "Kein passender Eintrag." : "Was möchtest du festhalten?",s().journal.length ? "Versuche einen anderen Suchbegriff oder wähle einen anderen Filter." : "Ein Satz, eine offene Frage oder etwas, das dich berührt hat. Hier bleibt es Teil deiner Geschichte.",button("Gedanken festhalten","new-entry",{},"button primary"));
-  const months=new Map();for(const j of items.slice(0,ui.journalLimit)){const month=time(j.date)==null ? "Datum unbekannt" : new Date(j.date).toLocaleDateString("de-DE",{month:"long",year:"numeric"});if(!months.has(month))months.set(month,[]);months.get(month).push(j);}
-  return `<p class="meta journal-result-count" aria-live="polite">${countLabel(items.length,'Eintrag','Einträge')}</p><div class="journal-pages">${[...months].map(([month,entries])=>`<section class="journal-month"><h2 class="overline">${e(month)}</h2>${entries.map(j=>{const paths=(j.pathIds||[]).map(id=>s().paths.find(p=>p.id===id)).filter(Boolean);return `<article class="journal-page-entry"><time>${time(j.date)==null?"Datum unbekannt":new Date(j.date).toLocaleDateString("de-DE",{day:"numeric",month:"long"})}</time><span class="overline">${e(j.subtype||j.type||"Gedanke")}</span><h3>${link(e(j.text.length>220?j.text.slice(0,217)+"…":j.text),"entry/"+encodeURIComponent(j.id))}</h3><div class="journal-context">${paths.length ? link("Mit Weg „"+e(paths[0].title)+"“ verbunden","path/"+encodeURIComponent(paths[0].id),"context-label") : ""}${j.ref ? link(e(refLabel(j.ref)),readRoute(j.ref),"context-label") : ""}</div></article>`;}).join("")}</section>`).join("")}</div>${items.length>ui.journalLimit?button("Weitere Einträge","more-journal",{},"button quiet"):""}`;
+function journalResults(model=journalModel()) {
+ return renderJournalResults(model,{button,link,date,refLabel,readRoute,validReference:ref=>{try{validRef(ref,ui.refs);return true;}catch{return false;}}});
 }
+function refreshJournal(){const model=journalModel();$("#journal-results").innerHTML=journalResults(model);$("#journal-count").textContent=journalCount(model);}
 function entry(id, kind = "entry") {
   const x=(kind === "reflection"?s().reflections:kind === "review"?allReviews(s()):s().journal).find(j=>j.id===id);if(!x)return notFound();
   const later=reviewsFor(s(),x,kind === "reflection"?"reflection":"journal")[0],previous=ui.continuitySaved===x.id?previousThought(s(),x):null;
@@ -1649,15 +1647,19 @@ async function action(a, d, el) {
     closeModal();go("paths");
     undoNotice("Weg gelöscht",()=>change(data=>{if(JSON.stringify(data)!==after)throw new Error("Seit dem Löschen wurde etwas gespeichert. Rückgängig würde diese Daten überschreiben und ist deshalb nicht möglich.");for(const key of Object.keys(data))delete data[key];Object.assign(data,before);}));return;
   }
+  if(a === "reset-journal") {ui.search="";ui.filter="Alle";ui.journalLimit=40;journal();$("#journal-search")?.focus();return;}
   if (a === "journal-filter") {
     ui.filter = d.filter;
     ui.journalLimit = 40;
-    journal();
+    refreshJournal();
+    $$("[data-action=journal-filter]").forEach(el=>el.classList.toggle("active",el.dataset.filter===ui.filter));
     return;
   }
   if (a === "more-journal") {
+    const count=$$("[data-journal-id]").length;
     ui.journalLimit += 40;
-    $("#journal-results").innerHTML = journalResults();
+    refreshJournal();
+    $$("[data-journal-id] h3 a")[count]?.focus();
     return;
   }
   if (a === "more-history") {
@@ -1811,6 +1813,7 @@ async function render() {
     if (token !== ui.token) return;
     window.scrollTo({ top: 0, behavior: "instant" });
     $("h1")?.focus({ preventScroll: true });
+    if(kind==="journal"&&ui.journalReturn){const previous=ui.journalReturn;ui.journalReturn=null;const target=$$("[data-journal-id]").find(el=>el.dataset.journalId===previous.id)?.querySelector("h3 a");if(target){target.focus({preventScroll:true});window.scrollTo({top:previous.scroll,behavior:"instant"});}}
     if(kind==="path"&&new URLSearchParams(query).has("step")){
       const stepId=new URLSearchParams(query).get("step"),input=$$(".path-step input").find(el=>el.dataset.id===stepId);
       if(input){const disclosure=input.closest("details");if(disclosure)disclosure.open=true;input.focus();input.scrollIntoView({block:"center",behavior:"instant"});}
@@ -1862,6 +1865,7 @@ document.addEventListener("click", (ev) => {
     ).catch(showError);
   }
   const anchor = ev.target.closest('a[href^="#"]');
+  if(anchor&&ui.route.split("?")[0]==="journal"&&anchor.closest("[data-journal-id]"))ui.journalReturn={id:anchor.closest("[data-journal-id]").dataset.journalId,scroll:scrollY};
   if (anchor && $("#dialog").open) closeModal();
 });
 document.addEventListener("submit", (ev) => {
@@ -1885,7 +1889,7 @@ document.addEventListener("input", (ev) => {
   if (el.dataset.input === "journal") {
     ui.search = el.value;
     ui.journalLimit = 40;
-    $("#journal-results").innerHTML = journalResults();
+    refreshJournal();
   }
   if (el.dataset.input === "stories") {
     ui.storySearch = el.value;ui.storyLimit=DISCOVERY_PAGE_SIZE;
