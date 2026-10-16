@@ -12,3 +12,19 @@
 .navigation-more :is(h1,h2,h3,p,a,button) { overflow-wrap: anywhere; }
 .discover-page .discovery-shortcuts { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-block: 16px; }
 .discover-page .discovery-shortcuts a { display: inline-flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+/* Bounded discovery. Content order and identifiers come exclusively from runtime mapping. */
+.discovery-phase4 .discovery-starts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.discovery-phase4 .discovery-search { border-block: 1px solid var(--line); margin-block: 24px; padding-block: 20px; }
+.discovery-phase4 .discovery-search h2 { font-size: 1.25rem; margin-top: 0; }
+.discovery-phase4 .discovery-filter-status { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
+.discovery-phase4 #discovery-count { flex: 1 1 200px; margin: 0; }
+.discovery-phase4 .discovery-result-list .list-row { min-height: 64px; }
+.discovery-phase4 .discovery-arrow { flex: 0 0 20px; font-size: 24px; }
+.discovery-phase4 .discovery-more { margin-block: 20px; }
+.discovery-phase4 .discover-editorial { display: block; border-block: 1px solid var(--line); padding-block: 12px; margin-block: 24px; }
+.discovery-phase4 .discover-editorial[hidden] { display: none; }
+.discovery-phase4 .discover-editorial summary { min-height: 44px; padding-block: 10px; cursor: pointer; }
+.discovery-phase4 .discover-editorial article { padding-block: 12px; }
+.discovery-phase4 .discover-editorial h3 { font-size: 1.25rem; margin-block: 8px; }
+.discovery-phase4 :is(h1,h2,h3,p,a,button,small) { overflow-wrap: anywhere; }
+.discovery-phase4 #discovery-results-title { scroll-margin-top: 24px; }

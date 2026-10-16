@@ -1,3 +1,5 @@
+import {createDiscoveryIndex,selectDiscovery,DISCOVERY_PAGE_SIZE} from './discover-model.js';
+import {renderDiscovery,renderDiscoveryResults,discoveryCount} from './discover-view.js';
 import {renderMore,discoveryShortcuts} from './navigation-view.js';
 import {capturePathReviewSource,reviewSourceContext,renderReviewSource} from './path-review-context.js';
 import {selectTreeHistory,renderTreeJourney} from './tree-view.js';
@@ -96,6 +98,7 @@ const ui = {
   storySearch: "",
   storyBook: "",
   storyKind: "alle",
+  storyLimit: DISCOVERY_PAGE_SIZE,
   historyLimit: 40,
   journalLimit: 40,
   quiz: null,
@@ -589,27 +592,21 @@ function markDetail(id) {
   const h = s().highlights.find(h=>h.id===id); if (!h) return notFound();
   shell(`${back("Markierungen","marks")}${heading("Deine Bibel",refLabel(h))}${scriptureNote(h,true)}`,"bible","marks-page depth-page");
 }
-function discover() {
-  shell(
-    `${heading("Entdecken", "Verstehen, was du liest.", "Geschichten und Fragen, die dich zurück zum Text führen. Ohne Punkte oder Ranglisten.")}${discoveryShortcuts({link})}<div class="segmented">${link("Lesen", "bible")}${link("Entdecken", "discover", "active")}${link("Markierungen", "marks")}</div><p class="chapter-collection-entry">${link("Kapitelübungen", "chapter-quizzes", "text-link")}</p>${!ui.storySearch && !ui.storyBook && ui.storyKind==="alle" ? `<section class="discover-editorial"><span class="overline">Eine Geschichte zum Anfang</span>${runtimeModel.flow.stories.slice(0,3).map((x,i)=>`<article class="${i ? "editorial-small" : "editorial-lead"}"><h2>${link(e(x.title),"merged-story/"+x.story_id)}</h2><p>${e(x.ref)}</p>${link("Lesen & verstehen","merged-story/"+x.story_id,"text-link")}</article>`).join("")}</section><details class="discover-topics"><summary>Nach einem Thema beginnen</summary>${LIFE_TOPICS.map(t=>row(t.title,t.sub,"topic/"+t.id)).join("")}</details>` : ""}<div class="field"><label for="story-search">Geschichte, Thema oder Bibelstelle suchen</label><input id="story-search" type="search" data-input="stories" value="${e(ui.storySearch)}" placeholder="Zum Beispiel Vergebung"></div><div class="filter-pair"><div class="field"><label for="story-book">Buch</label><select id="story-book" data-change="story-book"><option value="">Alle Bücher</option>${ui.books
-      .filter((b) => discoveryItems().some(x=>normBook(x.references?.[0]?.book || x.book)===b.code))
-      .map(
-        (b) =>
-          `<option value="${b.code}" ${ui.storyBook === b.code ? "selected" : ""}>${e(b.name)}</option>`,
-      )
-      .join(
-        "",
-      )}</select></div><div class="field"><label for="story-kind">Inhalte</label><select id="story-kind" data-change="story-kind"><option value="alle">Alle Einheiten</option><option value="geschichte" ${ui.storyKind === "geschichte" ? "selected" : ""}>Geschichten</option><option value="kapitel" ${ui.storyKind === "kapitel" ? "selected" : ""}>Kapitelübungen</option></select></div></div><div id="story-results">${storyResults()}</div>${link("So sind die Inhalte geprüft", "content-status")}`,
-    "bible", "discover-page depth-page",
-  );
+function discoverySelection() {
+ return selectDiscovery(ui.discoveryIndex,{query:ui.storySearch,book:ui.storyBook,kind:ui.storyKind,limit:ui.storyLimit});
 }
-function quizIndex() {
-  shell(`${heading("Quiz", "Verständnisfragen zum Bibeltext.")}<div class="list">${discoveryItems().map(x => row(x.title, `${x.ref} · ${x.flow_items?.length || x.questions.length} Fragen`, x.story_id ? "merged-story/"+x.story_id : "quiz/" + x.id)).join("")}</div>`, "bible");
+function discover(legacyQuiz=false) {
+ ui.discoveryLegacy=legacyQuiz;
+ shell(renderDiscovery({model:discoverySelection(),books:ui.books.filter(b=>ui.discoveryBooks.has(b.code)),filters:{query:ui.storySearch,book:ui.storyBook,kind:ui.storyKind},editorial:runtimeModel.flow.stories.slice(0,3),legacyQuiz},{heading,link,button}),"bible","discover-page discovery-phase4 depth-page");
 }
-function storyResults() {
-  const query=ui.storySearch.toLocaleLowerCase("de-DE");
-  const items=discoveryItems().filter(x=>(!ui.storyBook || normBook(x.references?.[0]?.book || x.book)===ui.storyBook) && (ui.storyKind==="alle" || (x.kind==="chapter-quiz") === (ui.storyKind==="kapitel")) && [x.title,x.desc,x.ref,x.reflection].join(" ").toLocaleLowerCase("de-DE").includes(query));
-  return items.length ? `<p class="meta" aria-live="polite">${items.length} ${ui.storyKind==="geschichte" ? "Geschichten" : ui.storyKind==="kapitel" ? "Kapitelübungen" : "Einheiten"}</p>${items.map(x=>row(x.title,`${x.ref} · ${x.flow_items?.length || x.questions.length} Fragen`,x.story_id ? "merged-story/"+x.story_id : "story/"+x.id,x.kind==="chapter-quiz" ? "Kapitelübung" : "Geschichte")).join("")}` : empty("Hier haben wir noch keinen Treffer.","Versuche ein anderes Wort oder ein anderes Buch.",button("Alle Einheiten ansehen","reset-discover",{},"button primary"));
+function quizIndex(){discover(true);}
+function storyResults(){return renderDiscoveryResults(discoverySelection(),{button},ui.discoveryLegacy);}
+function refreshDiscovery({focusNew=false,previousCount=0}={}) {
+ const target=$("#story-results");if(!target)return;
+ const model=discoverySelection();target.innerHTML=renderDiscoveryResults(model,{button},ui.discoveryLegacy);
+ $("#discovery-count").textContent=discoveryCount(model);
+ const editorial=$(".discover-editorial");if(editorial)editorial.hidden=model.filtered;
+ if(focusNew)$(".discovery-result-list")?.children[previousCount]?.focus();
 }
 function statusFor(x) {
   return x.verification?.status === "verse-checked"
@@ -1448,7 +1445,12 @@ async function action(a, d, el) {
     const h=s().highlights.find(h=>h.id===d.id); if (!h) return;
     const note=markNotes(h)[0];openForm(note?.kind === "reflection" ? "note" : "entry",note ? {id:note.id} : {ref:h,kind:"Reflexion"});return;
   }
-  if (a === "reset-discover") { ui.storySearch="";ui.storyBook="";ui.storyKind="alle";discover();return; }
+  if (a === "reset-discover") {
+    ui.storySearch="";ui.storyBook="";ui.storyKind="alle";ui.storyLimit=DISCOVERY_PAGE_SIZE;
+    $("#story-search").value="";$("#story-book").value="";$("#story-kind").value="alle";refreshDiscovery();$("#story-search").focus();return;
+  }
+  if(a === "more-discover") { const previousCount=discoverySelection().visible.length;ui.storyLimit+=DISCOVERY_PAGE_SIZE;refreshDiscovery({focusNew:true,previousCount});return; }
+  if(a === "discover-kind") {ui.storyKind=d.kind;ui.storyLimit=DISCOVERY_PAGE_SIZE;$("#story-kind").value=d.kind;refreshDiscovery();$("#discovery-results-title").focus();$("#discovery-results-title").scrollIntoView({block:"start"});return;}
   if (a === "reset-mark-filters") { ui.markColor="";ui.markBook="";ui.markContext="";marks();return; }
   if (a === "edit-step") { openForm("step",{pathId:d.path,stepId:d.id});return; }
   if (a === "current-step") {
@@ -1905,8 +1907,8 @@ document.addEventListener("input", (ev) => {
     $("#journal-results").innerHTML = journalResults();
   }
   if (el.dataset.input === "stories") {
-    ui.storySearch = el.value;
-    $("#story-results").innerHTML = storyResults();
+    ui.storySearch = el.value;ui.storyLimit=DISCOVERY_PAGE_SIZE;
+    refreshDiscovery();
   }
 });
 document.addEventListener("change", (ev) => {
@@ -1957,11 +1959,11 @@ document.addEventListener("change", (ev) => {
       const next=$(".next-step input")||$("#path-next-step-title");
       if(next){if(next.tagName!=="INPUT")next.tabIndex=-1;next.focus();}
     } else if (c === "story-book") {
-      ui.storyBook = el.value;
-      $("#story-results").innerHTML = storyResults();
+      ui.storyBook = el.value;ui.storyLimit=DISCOVERY_PAGE_SIZE;
+      refreshDiscovery();
     } else if (c === "story-kind") {
-      ui.storyKind = el.value;
-      $("#story-results").innerHTML = storyResults();
+      ui.storyKind = el.value;ui.storyLimit=DISCOVERY_PAGE_SIZE;
+      refreshDiscovery();
     }
   } catch (err) {
     showError(err);
@@ -1997,6 +1999,8 @@ async function init() {
     ui.books = runtimeModel.books;
     ui.stories = runtimeModel.units;
     ui.chapterCatalog = createChapterCatalog(ui.stories, ui.books);
+    ui.discoveryIndex=createDiscoveryIndex(discoveryItems());
+    ui.discoveryBooks=new Set(ui.discoveryIndex.map(item=>item.book));
     ui.refs = runtimeModel.refs;
     await render();
     if(journalRecoveryError)notify(journalRecoveryError.message,true);
