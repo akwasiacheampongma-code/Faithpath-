@@ -1,3 +1,4 @@
+import {selectReminderControls,renderReminderControls,reminderWhy} from './reminders-view.js';
 import {selectReviews} from './reviews-model.js';
 import {renderReviewDetail,renderCompletedReviews,renderPendingReviews} from './reviews-view.js';
 import {selectJournal} from './journal-model.js';
@@ -703,7 +704,7 @@ function history() {
 }
 function reviews() {
  const model=selectReviews(s(),{limit:ui.reviewsLimit});
- shell(`${back("Heute","today")}${heading("Rückblicke","Was ist daraus geworden?","Ein früherer Gedanke und das, was du später dazu festhältst. Ohne Bewertung.")}<div class="segmented">${link("Meine Geschichte","history")}${link("Rückblicke","reviews","active")}</div>${renderPendingReviews(model.pending,{date,button,link})}${renderCompletedReviews(model,{link,date,button})}<p class="meta">Erinnerungen erscheinen beim Öffnen der App. Es werden keine Push-Nachrichten verschickt.</p>`,"paths","reviews-page depth-page");
+ shell(`${back("Heute","today")}${heading("Rückblicke","Was ist daraus geworden?","Ein früherer Gedanke und das, was du später dazu festhältst. Ohne Bewertung.")}<div class="segmented">${link("Meine Geschichte","history")}${link("Rückblicke","reviews","active")}</div>${renderPendingReviews(model.pending,{date,button,link})}${renderCompletedReviews(model,{link,date,button})}${renderReminderControls(selectReminderControls(s()),{date,button})}`,"paths","reviews-page depth-page");
 }
 function more() {
   const section=new URLSearchParams(location.hash.split("?")[1]||"").get("section");
@@ -904,7 +905,7 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
         ["42", "In sechs Wochen"],
       ],
       "0",
-    )}<p class="meta">Alles darf so sein, wie es gerade ist. Dein bisheriger Weg bleibt bestehen.</p>`;
+    )}<p class="meta">Alles darf so sein, wie es gerade ist. Dein bisheriger Weg bleibt bestehen. Erinnerungen erscheinen nur beim Nutzen der App; keine Push-Nachrichten.</p>`;
     cta = "Rückblick speichern";
   }
   if (!body) return;
@@ -1146,7 +1147,7 @@ function openGap(key) {
   ui.reviewInvite={gap:structuredClone(g),sourceSnapshot:capturePathReviewSource(s(),{gap:g,pathId:g.pathId},now())};
   modal(
     "Ein Gedanke von damals",
-    `<span class="overline">${date(g.at)}</span><h3>${e(g.title)}</h3><blockquote class="previous-thought">${e(g.detail)}</blockquote><p>Was ist daraus geworden? Es gibt nichts zu bestehen.</p>${button("Jetzt zurückblicken", "review-gap", { key }, "button primary full")}<div class="actions">${button("In zwei Wochen erinnern", "snooze", { key, days: 14 }, "button quiet")}${button("Im Moment nicht", "dismiss-gap", { key }, "text-button")}</div>${g.ref ? link("Den Bibeltext wieder lesen", readRoute(g.ref), "text-link") : ""}`,
+    `<span class="overline">${date(g.at)}</span><h3>${e(g.title)}</h3><blockquote class="previous-thought">${e(g.detail)}</blockquote><p>Was ist daraus geworden? Es gibt nichts zu bestehen.</p>${reminderWhy(g,date)}${button("Jetzt zurückblicken", "review-gap", { key }, "button primary full")}<div class="actions">${button("In zwei Wochen erinnern", "snooze", { key, days: 14 }, "button quiet")}${button("Im Moment nicht", "dismiss-gap", { key }, "text-button")}</div>${g.ref ? link("Den Bibeltext wieder lesen", readRoute(g.ref), "text-link") : ""}`,
   );
 }
 function download(object, name) {
@@ -1602,6 +1603,7 @@ async function action(a, d, el) {
     if(g)openForm("review",{gap:g,pathId:g.pathId,...(invitation?.sourceSnapshot?{sourceSnapshot:invitation.sourceSnapshot}:{})});
     return;
   }
+  if(a === "resume-reminder") {if(!selectReminderControls(s()).paused.some(g=>g.key===d.key))throw new Error("Diese Einladung wurde inzwischen verändert.");change(data=>{delete data.reminderSnoozes[d.key];delete data.dismissedGaps[d.key];});reviews();notify("Einladung wieder zugelassen. Sie erscheint nur beim Nutzen der App.");return;}
   if (a === "snooze" || a === "dismiss-gap") {
     change((data) => {
       if (a === "snooze") {
@@ -1615,7 +1617,7 @@ async function action(a, d, el) {
     render();
     notify(
       a === "snooze"
-        ? "In zwei Wochen erscheint der Gedanke wieder."
+        ? "Frühestens in zwei Wochen wieder beim Öffnen der App."
         : "Für jetzt beiseitegelegt.",
     );
     return;
