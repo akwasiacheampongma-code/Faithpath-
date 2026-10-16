@@ -1,0 +1,31 @@
+/* Phase 2 presentation only. Existing themes and storage remain authoritative.
+   Scope by page so Today, navigation and the olive tree retain UIUX1 styling. */
+.reader-page .reader-top { gap: 12px; }
+.reader-page .reader-top select { min-width: 0; width: 48%; max-width: 190px; }
+.reader-page .reader-selectors { grid-template-columns: minmax(0, 1fr) minmax(72px, .4fr); gap: 12px; margin: 10px 0 18px; }
+.reader-page .reader-selectors > div { min-width: 0; }
+.reader-page .reader-selectors select { width: 100%; }
+.reader-page .page-heading { margin: 0 0 14px; padding: 10px 0 4px; }
+.reader-page .reader-reflection-entry { margin: 8px 0 16px; padding: 4px 0; }
+.reader-page .reading-text { max-width: 62ch; margin-inline: auto; padding: 0; }
+.reader-page .verse { font-size: clamp(1.125rem, 4.9vw, 1.3rem); line-height: 1.85; padding: 7px 4px; gap: 10px; margin-bottom: 6px; border-left-width: 3px; }
+.reader-page .verse sup { flex: 0 0 18px; font-size: .6875rem; line-height: 1.5; color: var(--muted); padding-top: 0; }
+.reader-page .verse > span { flex: 1; }
+.reader-page .verse-context { margin-left: 31px; }
+.reader-page .selection-bar { border-radius: 10px; padding: 12px; box-shadow: none; }
+.reader-page .reader-chapter-questions { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 20px; margin-block: 24px; }
+.reader-page .reader-chapter-questions h2 { margin: 10px 0; }
+.reader-page .chapter-questions-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.reader-page .chapter-nav { display: grid; grid-template-columns: repeat(auto-fit,minmax(130px,1fr)); gap: 8px; }
+.reader-page .chapter-nav a { display: flex; align-items: center; min-height: 48px; padding-block: 8px; }
+.reader-page .chapter-nav a:last-child { justify-content: flex-end; }
+.reader-page .reflection-invite { padding-block: 20px; }
+.reader-page .translation-credit { display: block; margin-top: 24px; line-height: 1.6; }
+@media (max-width: 350px) {
+ .reader-page .reader-reflection-entry { flex-wrap: wrap; gap: 0; }
+ .reader-page .reader-reflection-entry > span { display: none; }
+ .reader-page .reader-chapter-questions { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .reader-page .verse { transition: none; }
+}

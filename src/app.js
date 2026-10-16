@@ -1,3 +1,4 @@
+import {chapterOffer,chapterNavigation} from './reader-view.js';
 import {selectToday} from './today-model.js';
 import {renderToday} from './today-view.js';
 import {beginDraftSession,saveDraft,clearDraft,discardDraft,completedDraft} from './drafts.js';
@@ -506,7 +507,7 @@ async function reader(parts, params, token) {
         "",
       )}</select></div><div class="reader-selectors"><div><label for="reader-book">Buch</label><select id="reader-book" data-change="reader-book">${ui.books.map((x) => `<option value="${x.code}" ${x.code === code ? "selected" : ""}>${e(x.name)}</option>`).join("")}</select></div><div><label for="reader-chapter">Kapitel</label><select id="reader-chapter" data-change="reader-chapter">${b.chapters.map((_, i) => `<option value="${i + 1}" ${i + 1 === +chapter ? "selected" : ""}>${i + 1}</option>`).join("")}</select></div></div>
  ${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${vs.map(v => readerVerse(v, ref)).join("")}<span id="chapter-end-sentinel" aria-hidden="true"></span></div>
- ${journeyAcknowledgement(s(),ui.books,ref)}${readerChapterQuestions(ref, origin)}<div class="chapter-nav">${ref.chapter > 1 ? link("← Vorheriges Kapitel", readRoute({ book: code, chapter: ref.chapter - 1, translation: tr })) : ""}${ref.chapter < b.chapters.length ? link("Nächstes Kapitel →", readRoute({ book: code, chapter: ref.chapter + 1, translation: tr })) : ""}</div>
+ ${journeyAcknowledgement(s(),ui.books,ref)}${readerChapterQuestions(ref, origin)}${chapterNavigation({previous:ref.chapter>1?readRoute({book:code,chapter:ref.chapter-1,translation:tr},origin):null,next:ref.chapter<b.chapters.length?readRoute({book:code,chapter:ref.chapter+1,translation:tr},origin):null})}
  <section class="reflection-invite"><span class="overline">Was bleibt bei dir?</span><h2>${e(ctx?.question || "Was berührt dich in diesem Text?")}</h2><p>Ein Satz genügt. Du kannst daraus später einen Weg machen.</p>${button("Meinen Gedanken festhalten", "reflect-reader", {}, "button primary")}</section><small class="translation-credit">${e(TRANSLATIONS[tr].name)} · ${tr === "otb" ? "CC BY-SA 4.0" : "gemeinfrei"} · ${link("Textquelle", "licenses")}</small><div id="selection-bar"></div>`,
     "bible",
     "reader-page",
@@ -518,7 +519,7 @@ async function reader(parts, params, token) {
 function readerChapterQuestions(ref, origin) {
   const unit = chapterUnit(ui.chapterCatalog, ref.book, ref.chapter);
   if (!unit) return "";
-  return `<section class="reader-chapter-questions" data-unit-id="${unit.id}" aria-labelledby="chapter-questions-title"><span class="overline">Kapitel abgeschlossen</span><h2 id="chapter-questions-title">${unit.questions.length} Fragen zu diesem Kapitel</h2><p>Prüfe dein Verständnis des gelesenen Textes.</p>${s().quiz[unit.id]?.done ? '<p class="meta">Fragen zu diesem Kapitel bereits angesehen.</p>' : ""}<div class="chapter-questions-actions">${link("Fragen starten", chapterQuizRoute(unit, readRoute(ref, origin)), "button primary")}${button("Später", "skip-chapter-quiz", {}, "text-button")}</div></section>`;
+  return chapterOffer({unit,done:!!s().quiz[unit.id]?.done,quizRoute:chapterQuizRoute(unit,readRoute(ref,origin))});
 }
 function chapterCollection(bookCode) {
   const code = bookCode ? normBook(bookCode) : "";

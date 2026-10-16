@@ -26,7 +26,7 @@ fs.writeFileSync(`${out}/${release}/data/content-report.json`,JSON.stringify(rep
 fs.cpSync('src',`${out}/${release}/src`,{recursive:true});fs.copyFileSync('styles.css',`${out}/${release}/styles.css`);
 for(const d of ['data/bibles','trees','icons'])fs.cpSync(d,`${out}/${d}`,{recursive:true});
 for(const f of ['manifest.webmanifest','_headers','_redirects','404.html'])fs.copyFileSync(f,`${out}/${f}`);
-fs.writeFileSync(`${out}/index.html`,fs.readFileSync('index.html','utf8').replace('./styles.css',`./${release}/styles.css`).replace('./src/app.js',`./${release}/src/app.js`).replace('./src/today.css',`./${release}/src/today.css`));
+fs.writeFileSync(`${out}/index.html`,fs.readFileSync('index.html','utf8').replace('./styles.css',`./${release}/styles.css`).replace('./src/app.js',`./${release}/src/app.js`).replace('./src/today.css',`./${release}/src/today.css`).replace('./src/reader-stories.css',`./${release}/src/reader-stories.css`));
 // Explicit metadata override reproduces the recovered historical deployment on a backup branch.
 const workingBranch=process.env.FAITHPATH_BUILD_BRANCH||execFileSync('git',['branch','--show-current'],{encoding:'utf8'}).trim()||'detached';
 fs.writeFileSync(`${out}/BUILD.txt`,`${BUILD}\nBranch: ${workingBranch}\n`);
