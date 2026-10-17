@@ -1,0 +1,50 @@
+{
+  "status": "PASS_DESIGN_REVIEW_ONLY",
+  "study": "FP-DESIGN-20261017-6A2-VERBUNDEN",
+  "baseCommit": "5a72d038a78bd10741a1902cb478b1963a94efe2",
+  "appTests": 188,
+  "prototypeUnitTests": 37,
+  "sourceChecks": 8,
+  "matrix": 190,
+  "flowTests": 5,
+  "targetedRegressions": 7,
+  "productTests": 11,
+  "productionChanged": false,
+  "deployment": null,
+  "physicalIphoneSafariVoiceOver": "OPEN",
+  "phase6B": "NOT_AUTHORIZED",
+  "codeCommit": "5cf54d54490a4a7e681bdd3ea833b241d1c888a4",
+  "artifacts": {
+    "passed": 3,
+    "failed": 0,
+    "open": 1,
+    "results": [
+      {
+        "name": "index.html",
+        "status": "PASS"
+      },
+      {
+        "name": "report.html",
+        "status": "PASS"
+      },
+      {
+        "name": "comparison.html",
+        "status": "PASS"
+      },
+      {
+        "name": "Direct local file gallery and reader",
+        "status": "OPEN",
+        "reason": "Error: page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/index.html\nCall log:\n\u001b[2m  - navigating to \"file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/index.html\", waiting until \"load\"\u001b[22m\n",
+        "fallback": "Local server command documented in README; browser sandbox policies may restrict file frames."
+      }
+    ]
+  },
+  "screenshots": 175,
+  "axeReports": 94,
+  "axeIncomplete": {
+    "color-contrast": 22
+  },
+  "note": "Zero automatic violations; incomplete needs manual assessment. Native file opening administratively blocked; local HTTP verified. Full matrix plus affected navigation/search reruns.",
+  "navigationTests": 7,
+  "postFixDiscoveryChecks": 8
+}

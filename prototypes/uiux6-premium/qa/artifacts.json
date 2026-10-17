@@ -1,0 +1,25 @@
+{
+  "passed": 3,
+  "failed": 0,
+  "open": 1,
+  "results": [
+    {
+      "name": "index.html",
+      "status": "PASS"
+    },
+    {
+      "name": "report.html",
+      "status": "PASS"
+    },
+    {
+      "name": "comparison.html",
+      "status": "PASS"
+    },
+    {
+      "name": "Direct local file gallery and reader",
+      "status": "OPEN",
+      "reason": "Error: page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/index.html\nCall log:\n\u001b[2m  - navigating to \"file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/index.html\", waiting until \"load\"\u001b[22m\n",
+      "fallback": "Local server command documented in README; browser sandbox policies may restrict file frames."
+    }
+  ]
+}

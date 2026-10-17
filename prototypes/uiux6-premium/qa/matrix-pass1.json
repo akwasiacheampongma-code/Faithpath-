@@ -1,0 +1,790 @@
+{
+  "passed": 169,
+  "failed": 21,
+  "errors": [],
+  "external": [],
+  "assets": [],
+  "results": [
+    {
+      "name": "today/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "today/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "today/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "today/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "today/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "today/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "today/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "today/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "reader/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "reader/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "reader/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "reader/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "reader/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "reader/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "reader/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "reader/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "journal/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "journal/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "journal/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "journal/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "journal/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "journal/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "journal/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "journal/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "paths/light: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.45 (foreground color: #626e67, background color: #e9ece3, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'div > p'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "paths/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "paths/paper: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.17 (foreground color: #706a59, background color: #e8e2d3, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'div > p'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "paths/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "paths/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "paths/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "paths/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "paths/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "path/light: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.28 (foreground color: #626e67, background color: #ede6d6, font size: 7.7pt (10.24px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           '.review-teaser > .eyebrow'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.28 (foreground color: #626e67, background color: #ede6d6, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           '.review-teaser > p:nth-child(3)'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "path/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "path/paper: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 3.87 (foreground color: #706a59, background color: #e4dac2, font size: 7.7pt (10.24px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           '.review-teaser > .eyebrow'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 3.87 (foreground color: #706a59, background color: #e4dac2, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           '.review-teaser > p:nth-child(3)'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "path/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "path/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "path/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "path/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "path/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "editor/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "editor/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "editor/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "editor/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "editor/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "editor/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "editor/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "editor/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "entry/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "entry/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "entry/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "entry/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "entry/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "entry/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "entry/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "entry/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "review/light: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.45 (foreground color: #626e67, background color: #e9ece3, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'article:nth-child(3) > .section-label'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.45 (foreground color: #626e67, background color: #e9ece3, font size: 8.8pt (11.68px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'article:nth-child(3) > .source-note'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "review/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "review/paper: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.17 (foreground color: #706a59, background color: #e8e2d3, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'article:nth-child(3) > .section-label'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.17 (foreground color: #706a59, background color: #e8e2d3, font size: 8.8pt (11.68px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'article:nth-child(3) > .source-note'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "review/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "review/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "review/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "review/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "review/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "tree/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "tree/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "tree/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "tree/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "tree/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "tree/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "tree/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "tree/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "journey/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "journey/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "journey/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "journey/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "journey/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "journey/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "journey/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "journey/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "discover/light: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.28 (foreground color: #626e67, background color: #ede6d6, font size: 6.2pt (8.32px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'div:nth-child(2) > .eyebrow'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.28 (foreground color: #626e67, background color: #ede6d6, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'div:nth-child(2) > p:nth-child(3)'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.45 (foreground color: #626e67, background color: #e9ece3, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-id=\"angst\"] > span:nth-child(3)'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.41 (foreground color: #626e67, background color: #e4ebed, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-id=\"streit\"] > span:nth-child(3)'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.28 (foreground color: #626e67, background color: #ede6d6, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-id=\"einsam\"] > span:nth-child(3)'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.31 (foreground color: #626e67, background color: #f1e5df, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-id=\"entscheidung\"] > span:nth-child(3)'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "discover/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "discover/paper: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 3.87 (foreground color: #706a59, background color: #e4dac2, font size: 6.2pt (8.32px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'div:nth-child(2) > .eyebrow'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 3.87 (foreground color: #706a59, background color: #e4dac2, font size: 8.6pt (11.52px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'div:nth-child(2) > p:nth-child(3)'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.17 (foreground color: #706a59, background color: #e8e2d3, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-id=\"angst\"] > span:nth-child(3)'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.21 (foreground color: #706a59, background color: #dfe5df, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-id=\"streit\"] > span:nth-child(3)'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 3.87 (foreground color: #706a59, background color: #e4dac2, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-id=\"einsam\"] > span:nth-child(3)'\n+         ]\n+       },\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.16 (foreground color: #706a59, background color: #ede0d6, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-id=\"entscheidung\"] > span:nth-child(3)'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "discover/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "discover/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "discover/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "discover/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "discover/320: actual 200% text & reduced motion",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: [{\"tag\":\"STRONG\",\"cls\":\"\",\"right\":343.8125,\"text\":\"Streit & Konflikte\"},{\"tag\":\"STRONG\",\"cls\":\"\",\"right\":460.90625,\"text\":\"Entscheidungen\"}]\n\ntrue !== false\n"
+    },
+    {
+      "name": "story/light: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+    },
+    {
+      "name": "story/atmospheric: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+    },
+    {
+      "name": "story/paper: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+    },
+    {
+      "name": "story/night: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+    },
+    {
+      "name": "story/320: responsive",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: []\n\ntrue !== false\n"
+    },
+    {
+      "name": "story/430: responsive",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: []\n\ntrue !== false\n"
+    },
+    {
+      "name": "story/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "story/320: actual 200% text & reduced motion",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: [{\"tag\":\"SPAN\",\"cls\":\"\",\"right\":327.671875,\"text\":\"Reflektieren\"}]\n\ntrue !== false\n"
+    },
+    {
+      "name": "quiz/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "quiz/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "quiz/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "quiz/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "quiz/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "quiz/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "quiz/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "quiz/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "collection/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "collection/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "collection/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "collection/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "collection/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "collection/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "collection/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "collection/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "topic/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "topic/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "topic/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "topic/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "topic/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "topic/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "topic/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "topic/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "guided/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "guided/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "guided/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "guided/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "guided/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "guided/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "guided/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "guided/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "onboarding/light: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.45 (foreground color: #626e67, background color: #e9ece3, font size: 8.3pt (11.04px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-go=\"discover\"] > span > small'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "onboarding/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "onboarding/paper: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.17 (foreground color: #706a59, background color: #e8e2d3, font size: 8.3pt (11.04px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           'button[data-go=\"discover\"] > span > small'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "onboarding/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "onboarding/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "onboarding/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "onboarding/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "onboarding/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "settings/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "settings/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "settings/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "settings/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "settings/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "settings/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "settings/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "settings/320: actual 200% text & reduced motion",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: []\n\ntrue !== false\n"
+    },
+    {
+      "name": "reminders/light: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.45 (foreground color: #626e67, background color: #e9ece3, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           '.reminder-note > p'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "reminders/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "reminders/paper: axe & original assets",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     impact: 'serious',\n+     nodes: [\n+       {\n+         summary: 'Fix any of the following:\\n' +\n+           '  Element has insufficient color contrast of 4.17 (foreground color: #706a59, background color: #e8e2d3, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1',\n+         target: [\n+           '.reminder-note > p'\n+         ]\n+       }\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "reminders/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "reminders/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "reminders/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "reminders/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "reminders/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "backup/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "backup/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "backup/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "backup/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "backup/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "backup/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "backup/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "backup/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "archive/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "archive/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "archive/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "archive/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "archive/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "archive/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "archive/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "archive/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "states/light: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "states/atmospheric: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "states/paper: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "states/night: axe & original assets",
+      "status": "PASS"
+    },
+    {
+      "name": "states/320: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "states/430: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "states/1440: responsive",
+      "status": "PASS"
+    },
+    {
+      "name": "states/320: actual 200% text & reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "Long chapter Psalm119 both translations and all176verses",
+      "status": "PASS"
+    },
+    {
+      "name": "empty/journal/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "empty/paths/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "empty/entry/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "many/journal/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "many/paths/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "many/entry/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "long/journal/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "long/paths/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "long/entry/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "archived/journal/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "archived/paths/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "archived/entry/320: edge state",
+      "status": "PASS"
+    },
+    {
+      "name": "No external request, asset failure or runtime exception",
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Discard/back buttons do not submit the journal form",
+      "status": "PASS"
+    },
+    {
+      "name": "Late file cannot change the candidate already previewed and confirmed",
+      "status": "PASS"
+    },
+    {
+      "name": "Untrusted translation backup rejected before valid preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Untrusted unavailable reader backup rejected before valid preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Untrusted quiz index backup rejected before valid preview",
+      "status": "PASS"
+    },
+    {
+      "name": "New unrelated path never inherits old Bible links or historical review",
+      "status": "PASS"
+    },
+    {
+      "name": "Reflection from an old review retains the words and date actually displayed there",
+      "status": "PASS"
+    }
+  ]
+}

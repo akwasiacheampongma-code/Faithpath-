@@ -1,0 +1,31 @@
+{
+  "passed": 5,
+  "failed": 1,
+  "results": [
+    {
+      "name": "Both voluntary onboarding choices open the promised areas",
+      "status": "PASS"
+    },
+    {
+      "name": "Discovery search, every filter, bounded pagination and empty reset",
+      "status": "PASS"
+    },
+    {
+      "name": "Default search includes themes and guided ways as its label promises",
+      "status": "PASS"
+    },
+    {
+      "name": "Theme/guide references open real bundled reading; browser Back retains prior area",
+      "status": "FAIL",
+      "error": "TimeoutError: locator.waitFor: Timeout 6000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.screen-topic') to be visible\u001b[22m\n"
+    },
+    {
+      "name": "Leaving and returning to the same backup route invalidates a delayed read",
+      "status": "PASS"
+    },
+    {
+      "name": "State examples expose loading/error/success honestly; retry functions",
+      "status": "PASS"
+    }
+  ]
+}

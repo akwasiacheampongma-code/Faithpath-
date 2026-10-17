@@ -1,0 +1,28 @@
+{
+  "passed": 0,
+  "failed": 3,
+  "open": 1,
+  "results": [
+    {
+      "name": "index.html",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     id: 'color-contrast',\n+     nodes: [\n+       [\n+         'div:nth-child(1) > span'\n+       ],\n+       [\n+         'div:nth-child(2) > span'\n+       ],\n+       [\n+         '.explore-prompts > div:nth-child(3) > span'\n+       ]\n+     ]\n+   }\n+ ]\n- []\n"
+    },
+    {
+      "name": "report.html",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: http://localhost:4492/docs/QA.md\n\n404 !== 200\n"
+    },
+    {
+      "name": "comparison.html",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n"
+    },
+    {
+      "name": "Direct local file gallery and reader",
+      "status": "OPEN",
+      "reason": "Error: page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/index.html\nCall log:\n\u001b[2m  - navigating to \"file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/index.html\", waiting until \"load\"\u001b[22m\n",
+      "fallback": "Local server command documented in README; browser sandbox policies may restrict file frames."
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+✔ personal words are escaped without a DOM or browser globals (3.863508ms)
+✔ returning seed keeps October source wording and independently cloned state (2.678855ms)
+✔ empty, many, long and archived scenarios cover meaningful edge states (1.087963ms)
+✔ a nonempty draft survives reopening with its exact original context (0.60905ms)
+✔ saving validates before mutation, trims words and retains links and origin (2.534307ms)
+✔ new note IDs stay unique after deleting a recently created note (0.945738ms)
+✔ editing keeps the same note ID and date while preserving historical review truth (0.841421ms)
+✔ saving a review uses the captured source even after that source is edited (0.484782ms)
+✔ a story reflection preserves original unit identity without inventing a journal source (0.33112ms)
+✔ deleting removes note connections and reminders but retains historical wording (0.494607ms)
+✔ undo deletion restores original position and references exactly once (0.765827ms)
+✔ search finds actual Bible and path context and applies linked and Bible filters (0.803393ms)
+✔ steps can be added, edited, completed and archived without automatic development (0.349467ms)
+✔ only explicit confirmation creates development, retaining the illustrative demo stage (0.421426ms)
+✔ chapter exploration deduplicates reads and never changes the olive tree (0.281385ms)
+✔ quiz resumes the current original unit and requires an answer before advancing (0.233011ms)
+✔ synthetic backup roundtrip is detached and replaces only selected demo state (2.038639ms)
+✔ every seed scenario exports a valid own-schema backup (1.837054ms)
+✔ deleted source backups preserve snapshots and report missing source truthfully (0.56239ms)
+✔ backup validation rejects malformed, production, incomplete and unsupported envelopes (0.403129ms)
+✔ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (3.646632ms)
+✔ invalid restore is transactional and cannot be smuggled through a forged validation result (0.779748ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57.571
+
+> faithpath@4.0.0 pretest
+> npm run validate
+
+
+> faithpath@4.0.0 validate
+> node scripts/validate-content.mjs
+
+{
+  "bibles": {
+    "otb": {
+      "books": 66,
+      "chapters": 1189,
+      "verses": 31103
+    },
+    "l1912": {
+      "books": 66,
+      "chapters": 1189,
+      "verses": 31102
+    }
+  },
+  "stories": 312,
+  "questions": 1560,
+  "books": 27,
+  "reflections": 312,
+  "uniqueReflections": 312,
+  "existingVerification": 100,
+  "editorialPending": 0,
+  "approvedNtMaster": 1300,
+  "missingVerification": 160,
+  "situationPlanReferences": 84,
+  "errors": [],
+  "warnings": [
+    "Altes Ganzkapitel-Sentinel: 21",
+    "Altes Ganzkapitel-Sentinel: 22",
+    "Altes Ganzkapitel-Sentinel: 23",
+    "Altes Ganzkapitel-Sentinel: 24",
+    "Altes Ganzkapitel-Sentinel: 25",
+    "Altes Ganzkapitel-Sentinel: 26",
+    "Altes Ganzkapitel-Sentinel: 27",
+    "Altes Ganzkapitel-Sentinel: 28",
+    "Altes Ganzkapitel-Sentinel: 29",
+    "Altes Ganzkapitel-Sentinel: 30",
+    "Altes Ganzkapitel-Sentinel: 31",
+    "Altes Ganzkapitel-Sentinel: 32"
+  ]
+}
+
+> faithpath@4.0.0 test
+> node --test tests/*.test.mjs --test-isolation=none
+
+✔ tests/backup-phase5.test.mjs (105.832273ms)
+✔ tests/chapter-questions.test.mjs (109.273545ms)
+✔ tests/core-experience.test.mjs (65.922876ms)
+✔ tests/core.test.mjs (942.007965ms)
+✔ tests/discover-phase4.test.mjs (180.996646ms)
+✔ tests/draft-protection.test.mjs (82.092192ms)
+✔ tests/editor-path-regression.test.mjs (66.58721ms)
+✔ tests/final-experience.test.mjs (46.563205ms)
+✔ tests/final-note.test.mjs (64.965251ms)
+✔ tests/final-product.test.mjs (167.613701ms)
+✔ tests/import-safety.test.mjs (85.13779ms)
+✔ tests/journal-phase5.test.mjs (64.700922ms)
+✖ tests/nachlese-editorial-corpus.test.mjs (2023.911084ms)
+✔ tests/nachlese-editorial.test.mjs (168.510019ms)
+✔ tests/nachlese-mc-corpus.test.mjs (1734.590313ms)
+✔ tests/nachlese-mc-validation.test.mjs (88.405843ms)
+✔ tests/nachlese-mc.test.mjs (524.435894ms)
+✔ tests/navigation-phase4.test.mjs (51.599894ms)
+✔ tests/nt-quiz-import.test.mjs (8920.60096ms)
+✔ tests/onboarding-phase4.test.mjs (70.969512ms)
+✔ tests/path-detail-phase3.test.mjs (100.022516ms)
+✔ tests/path-review-phase3.test.mjs (93.583678ms)
+✔ tests/paths-phase3.test.mjs (73.005636ms)
+✔ tests/personal-continuity.test.mjs (74.060414ms)
+✔ tests/premium-journal-storage.test.mjs (86.287641ms)
+✔ tests/premium-journal.test.mjs (146.05624ms)
+✔ tests/reader-phase2.test.mjs (62.057294ms)
+✔ tests/reminders-phase5.test.mjs (66.068787ms)
+✔ tests/retest-regressions.test.mjs (64.694907ms)
+✔ tests/reviews-phase5.test.mjs (130.173457ms)
+✔ tests/short-opening-phase3.test.mjs (153.550932ms)
+✔ tests/story-phase2.test.mjs (187.71971ms)
+✔ tests/sword-phase2.test.mjs (124.248577ms)
+✔ tests/today-page.test.mjs (67.930107ms)
+✔ tests/tree-branch-visual.test.mjs (58.450421ms)
+✔ tests/tree-phase3.test.mjs (92.168192ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 35
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17171.417953
+
+✖ failing tests:
+
+test at tests/nachlese-editorial-corpus.test.mjs:1:1
+✖ tests/nachlese-editorial-corpus.test.mjs (2023.911084ms)
+  'test failed'
+✔ personal words are escaped without a DOM or browser globals (2.510351ms)
+✔ returning seed keeps October source wording and independently cloned state (2.07282ms)
+✔ empty, many, long and archived scenarios cover meaningful edge states (1.060271ms)
+✔ a nonempty draft survives reopening with its exact original context (1.430781ms)
+✔ saving validates before mutation, trims words and retains links and origin (3.318882ms)
+✔ new note IDs stay unique after deleting a recently created note (0.643933ms)
+✔ editing keeps the same note ID and date while preserving historical review truth (0.854841ms)
+✔ saving a review uses the captured source even after that source is edited (0.443359ms)
+✔ a story reflection preserves original unit identity without inventing a journal source (0.478393ms)
+✔ deleting removes note connections and reminders but retains historical wording (0.548848ms)
+✔ undo deletion restores original position and references exactly once (1.246352ms)
+✔ search finds actual Bible and path context and applies linked and Bible filters (0.824095ms)
+✔ steps can be added, edited, completed and archived without automatic development (0.407846ms)
+✔ only explicit confirmation creates development, retaining the illustrative demo stage (0.260333ms)
+✔ chapter exploration deduplicates reads and never changes the olive tree (0.256157ms)
+✔ quiz resumes the current original unit and requires an answer before advancing (0.397891ms)
+✔ synthetic backup roundtrip is detached and replaces only selected demo state (2.462719ms)
+✔ every seed scenario exports a valid own-schema backup (3.412733ms)
+✔ deleted source backups preserve snapshots and report missing source truthfully (0.44313ms)
+✔ backup validation rejects malformed, production, incomplete and unsupported envelopes (1.085159ms)
+✔ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (3.375262ms)
+✔ invalid restore is transactional and cannot be smuggled through a forged validation result (0.49678ms)
+✔ a title alone is recoverable draft content when reopening another context (0.115464ms)
+✔ a punctuation-led thought still gets a valid title and roundtrips (0.679266ms)
+✔ undo reconnects reviews written while their captured source was deleted (0.80835ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 62.155989
+✔ personal words are escaped without a DOM or browser globals (1.928701ms)
+✔ returning seed keeps October source wording and independently cloned state (1.402186ms)
+✔ empty, many, long and archived scenarios cover meaningful edge states (0.587757ms)
+✔ a nonempty draft survives reopening with its exact original context (3.597651ms)
+✔ saving validates before mutation, trims words and retains links and origin (2.695549ms)
+✔ new note IDs stay unique after deleting a recently created note (1.386223ms)
+✔ editing keeps the same note ID and date while preserving historical review truth (1.579144ms)
+✔ saving a review uses the captured source even after that source is edited (0.557561ms)
+✔ a story reflection preserves original unit identity without inventing a journal source (1.52996ms)
+✔ deleting removes note connections and reminders but retains historical wording (1.167412ms)
+✔ undo deletion restores original position and references exactly once (0.776462ms)
+✔ search finds actual Bible and path context and applies linked and Bible filters (0.756432ms)
+✔ steps can be added, edited, completed and archived without automatic development (1.583711ms)
+✔ only explicit confirmation creates development, retaining the illustrative demo stage (0.176446ms)
+✔ chapter exploration deduplicates reads and never changes the olive tree (0.151358ms)
+✔ quiz resumes the current original unit and requires an answer before advancing (0.170758ms)
+✔ synthetic backup roundtrip is detached and replaces only selected demo state (3.144387ms)
+✔ every seed scenario exports a valid own-schema backup (2.254804ms)
+✔ deleted source backups preserve snapshots and report missing source truthfully (0.372181ms)
+✔ backup validation rejects malformed, production, incomplete and unsupported envelopes (0.745245ms)
+✔ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (1.872807ms)
+✔ invalid restore is transactional and cannot be smuggled through a forged validation result (0.537622ms)
+✔ a title alone is recoverable draft content when reopening another context (0.360625ms)
+✔ a punctuation-led thought still gets a valid title and roundtrips (0.616731ms)
+✔ undo reconnects reviews written while their captured source was deleted (0.33164ms)
+✔ unknown reader translations fail validation and cannot alter state on restore (0.39107ms)
+✔ unsupported journal and highlight translations are rejected by the same allowlist (1.502638ms)
+✔ draft references with an unknown translation cannot be saved or lose their words (0.316568ms)
+✔ both bundled translations remain accepted with general canonical book references (2.671253ms)
+✔ live quiz answers accept exactly four option indices or the explicit skipped marker (0.256096ms)
+✔ backup quiz answers enforce the same four option indices and skipped marker (31.555319ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 144.10672
+✔ personal words are escaped without a DOM or browser globals (1.893048ms)
+✔ returning seed keeps October source wording and independently cloned state (1.257268ms)
+✔ empty, many, long and archived scenarios cover meaningful edge states (2.685044ms)
+✔ a nonempty draft survives reopening with its exact original context (0.502088ms)
+✔ saving validates before mutation, trims words and retains links and origin (1.831756ms)
+✔ new note IDs stay unique after deleting a recently created note (0.721138ms)
+✔ editing keeps the same note ID and date while preserving historical review truth (0.451933ms)
+✔ saving a review uses the captured source even after that source is edited (0.281906ms)
+✔ a story reflection preserves original unit identity without inventing a journal source (0.395457ms)
+✔ deleting removes note connections and reminders but retains historical wording (0.665775ms)
+✔ undo deletion restores original position and references exactly once (0.700317ms)
+✔ search finds actual Bible and path context and applies linked and Bible filters (0.3574ms)
+✔ steps can be added, edited, completed and archived without automatic development (0.44371ms)
+✔ only explicit confirmation creates development, retaining the illustrative demo stage (0.241004ms)
+✔ chapter exploration deduplicates reads and never changes the olive tree (0.115604ms)
+✔ quiz resumes the current original unit and requires an answer before advancing (0.295617ms)
+✔ synthetic backup roundtrip is detached and replaces only selected demo state (2.138929ms)
+✔ every seed scenario exports a valid own-schema backup (2.127041ms)
+✔ deleted source backups preserve snapshots and report missing source truthfully (0.355577ms)
+✔ backup validation rejects malformed, production, incomplete and unsupported envelopes (0.437401ms)
+✔ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (3.200622ms)
+✔ invalid restore is transactional and cannot be smuggled through a forged validation result (0.314004ms)
+✔ a title alone is recoverable draft content when reopening another context (0.185861ms)
+✔ a punctuation-led thought still gets a valid title and roundtrips (0.53688ms)
+✔ undo reconnects reviews written while their captured source was deleted (0.445823ms)
+✔ unknown reader translations fail validation and cannot alter state on restore (0.435097ms)
+✔ unsupported journal and highlight translations are rejected by the same allowlist (1.550701ms)
+✔ draft references with an unknown translation cannot be saved or lose their words (0.163406ms)
+✔ both bundled translations remain accepted with general canonical book references (0.472584ms)
+✔ live quiz answers accept exactly four option indices or the explicit skipped marker (0.166261ms)
+✔ backup quiz answers enforce the same four option indices and skipped marker (2.457009ms)
+✔ a newly captured edited source uses the date of those edited words (0.488377ms)
+✔ an explicit historical snapshot wins over edited live source words and is cloned (0.236737ms)
+✔ a supplied historical snapshot remains saveable after its source was deleted (0.358271ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53.56249

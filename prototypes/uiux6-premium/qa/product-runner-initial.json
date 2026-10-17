@@ -1,0 +1,54 @@
+{
+  "passed": 7,
+  "failed": 4,
+  "results": [
+    {
+      "name": "Keyboard verse, unobtrusive focus mode, modal trap and focus return",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(await p.evaluate(() => document.querySelector('dialog').contains(document.activeElement)))\n"
+    },
+    {
+      "name": "Path steps, archive and restore preserve connections and stage",
+      "status": "PASS"
+    },
+    {
+      "name": "All seven original stage labels and new illustrations are view-only",
+      "status": "PASS"
+    },
+    {
+      "name": "Sword alternatives at zero, one, 100 and all1189 documented chapters",
+      "status": "PASS"
+    },
+    {
+      "name": "Journal reminder can be deliberately chosen and removed",
+      "status": "FAIL",
+      "error": "Error: locator.click: Error: strict mode violation: locator('[data-action=\"remind-note\"]') resolved to 2 elements:\n    1) <button type=\"button\" data-id=\"j-now\" class=\"text-button\" data-action=\"remind-note\">…</button> aka locator('#main').getByRole('button', { name: 'Später erinnern' })\n    2) <button type=\"button\" data-id=\"j-now\" class=\"option-row\" data-action=\"remind-note\">…</button> aka getByLabel('Dein Gedanke').getByRole('button', { name: 'Später erinnern' })\n\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"remind-note\"]')\u001b[22m\n"
+    },
+    {
+      "name": "Actual download and file upload roundtrip retain IDs, snapshots and refs",
+      "status": "PASS"
+    },
+    {
+      "name": "Malicious-looking journal text is rendered as text and remains searchable",
+      "status": "PASS"
+    },
+    {
+      "name": "Long writing at200% and reduced viewport keeps save reachable",
+      "status": "PASS"
+    },
+    {
+      "name": "Interactive feedback, restore modal and marked verse pass automatic axe rules",
+      "status": "PASS"
+    },
+    {
+      "name": "Loaded prototype works offline without a worker or storage writes",
+      "status": "FAIL",
+      "error": "Error: locator.click: Error: strict mode violation: locator('[data-action=\"note-reader\"]') resolved to 2 elements:\n    1) <button type=\"button\" class=\"primary\" data-action=\"note-reader\">…</button> aka getByRole('button', { name: 'Einen Gedanken festhalten' })\n    2) <button type=\"button\" class=\"small-button\" data-action=\"note-reader\">…</button> aka getByRole('button', { name: 'Notiz' })\n\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"note-reader\"]')\u001b[22m\n"
+    },
+    {
+      "name": "Gallery controls and unchanged live reference are reachable",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nnull !== 'night'\n"
+    }
+  ]
+}

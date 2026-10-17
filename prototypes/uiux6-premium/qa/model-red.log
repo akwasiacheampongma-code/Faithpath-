@@ -1,0 +1,936 @@
+✖ personal words are escaped without a DOM or browser globals (2.267564ms)
+✖ returning seed keeps October source wording and independently cloned state (0.650322ms)
+✖ empty, many, long and archived scenarios cover meaningful edge states (0.291831ms)
+✖ a nonempty draft survives reopening with its exact original context (0.361846ms)
+✖ saving validates before mutation, trims words and retains links and origin (0.315687ms)
+✖ new note IDs stay unique after deleting a recently created note (0.187663ms)
+✖ editing keeps the same note ID and date while preserving historical review truth (0.221524ms)
+✖ saving a review uses the captured source even after that source is edited (0.214995ms)
+✖ a story reflection preserves original unit identity without inventing a journal source (0.19895ms)
+✖ deleting removes note connections and reminders but retains historical wording (0.462118ms)
+✖ undo deletion restores original position and references exactly once (0.206963ms)
+✖ search finds actual Bible and path context and applies linked and Bible filters (0.230268ms)
+✖ steps can be added, edited, completed and archived without automatic development (0.203468ms)
+✖ only explicit confirmation creates development, retaining the illustrative demo stage (0.414245ms)
+✖ chapter exploration deduplicates reads and never changes the olive tree (0.205721ms)
+✖ quiz resumes the current original unit and requires an answer before advancing (1.835321ms)
+✖ synthetic backup roundtrip is detached and replaces only selected demo state (0.248105ms)
+✖ every seed scenario exports a valid own-schema backup (0.224239ms)
+✖ deleted source backups preserve snapshots and report missing source truthfully (0.195045ms)
+✖ backup validation rejects malformed, production, incomplete and unsupported envelopes (0.182976ms)
+✖ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (0.208745ms)
+✖ invalid restore is transactional and cannot be smuggled through a forged validation result (0.147543ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 0
+ℹ fail 22
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 30.461415
+
+✖ failing tests:
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:12:1
+✖ personal words are escaped without a DOM or browser globals (2.267564ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:13:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:17:1
+✖ returning seed keeps October source wording and independently cloned state (0.650322ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:18:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:32:1
+✖ empty, many, long and archived scenarios cover meaningful edge states (0.291831ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:33:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:43:1
+✖ a nonempty draft survives reopening with its exact original context (0.361846ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:44:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:60:1
+✖ saving validates before mutation, trims words and retains links and origin (0.315687ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:61:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:78:1
+✖ new note IDs stay unique after deleting a recently created note (0.187663ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:79:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:88:1
+✖ editing keeps the same note ID and date while preserving historical review truth (0.221524ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:89:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:104:1
+✖ saving a review uses the captured source even after that source is edited (0.214995ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:105:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:119:1
+✖ a story reflection preserves original unit identity without inventing a journal source (0.19895ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:120:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:129:1
+✖ deleting removes note connections and reminders but retains historical wording (0.462118ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:130:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:143:1
+✖ undo deletion restores original position and references exactly once (0.206963ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:144:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:154:1
+✖ search finds actual Bible and path context and applies linked and Bible filters (0.230268ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:155:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:165:1
+✖ steps can be added, edited, completed and archived without automatic development (0.203468ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:166:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:184:1
+✖ only explicit confirmation creates development, retaining the illustrative demo stage (0.414245ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:185:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:196:1
+✖ chapter exploration deduplicates reads and never changes the olive tree (0.205721ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:197:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:208:1
+✖ quiz resumes the current original unit and requires an answer before advancing (1.835321ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:209:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:225:1
+✖ synthetic backup roundtrip is detached and replaces only selected demo state (0.248105ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:226:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:257:1
+✖ every seed scenario exports a valid own-schema backup (0.224239ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:259:69)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:264:1
+✖ deleted source backups preserve snapshots and report missing source truthfully (0.195045ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:265:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:272:1
+✖ backup validation rejects malformed, production, incomplete and unsupported envelopes (0.182976ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:273:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:282:1
+✖ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (0.208745ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at mutate (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:284:37)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:288:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:300:1
+✖ invalid restore is transactional and cannot be smuggled through a forged validation result (0.147543ms)
+  AssertionError [ERR_ASSERTION]: PremiumModel.initial is implemented
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at initial (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:8:10)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:301:17)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+✔ personal words are escaped without a DOM or browser globals (2.288296ms)
+✔ returning seed keeps October source wording and independently cloned state (3.436885ms)
+✔ empty, many, long and archived scenarios cover meaningful edge states (0.763603ms)
+✔ a nonempty draft survives reopening with its exact original context (0.719807ms)
+✔ saving validates before mutation, trims words and retains links and origin (5.516009ms)
+✔ new note IDs stay unique after deleting a recently created note (1.030306ms)
+✔ editing keeps the same note ID and date while preserving historical review truth (1.494727ms)
+✔ saving a review uses the captured source even after that source is edited (0.300604ms)
+✔ a story reflection preserves original unit identity without inventing a journal source (0.382137ms)
+✔ deleting removes note connections and reminders but retains historical wording (0.798455ms)
+✔ undo deletion restores original position and references exactly once (1.041853ms)
+✔ search finds actual Bible and path context and applies linked and Bible filters (1.044928ms)
+✔ steps can be added, edited, completed and archived without automatic development (0.321836ms)
+✔ only explicit confirmation creates development, retaining the illustrative demo stage (0.209697ms)
+✔ chapter exploration deduplicates reads and never changes the olive tree (0.951527ms)
+✔ quiz resumes the current original unit and requires an answer before advancing (0.206502ms)
+✔ synthetic backup roundtrip is detached and replaces only selected demo state (2.539585ms)
+✔ every seed scenario exports a valid own-schema backup (4.817925ms)
+✔ deleted source backups preserve snapshots and report missing source truthfully (0.700218ms)
+✔ backup validation rejects malformed, production, incomplete and unsupported envelopes (0.987301ms)
+✔ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (3.726046ms)
+✔ invalid restore is transactional and cannot be smuggled through a forged validation result (1.123507ms)
+✖ a title alone is recoverable draft content when reopening another context (3.265061ms)
+✖ a punctuation-led thought still gets a valid title and roundtrips (9.338161ms)
+✖ undo reconnects reviews written while their captured source was deleted (0.524351ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 22
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.929642
+
+✖ failing tests:
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:311:1
+✖ a title alone is recoverable draft content when reopening another context (3.265061ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be reference-equal to "expected":
+  + actual - expected
+  
+    {
+      pathIds: [],
+      ref: null,
+  +   sourceId: 'j-now',
+  -   sourceId: 'j-before',
+      sourceSnapshot: {
+  +     at: '2026-10-16T08:00:00.000Z',
+  +     text: 'Ich muss nicht sofort eine Antwort haben. Morgen möchte ich erst zuhören und dann reagieren.',
+  +     title: 'Erst zuhören.'
+  -     at: '2026-10-09T08:00:00.000Z',
+  -     text: 'Ich möchte lernen, auch mitten im Alltag bei Jesus zu bleiben.',
+  -     title: 'Vertrauen braucht Raum.'
+      },
+      text: '',
+  +   title: ''
+  -   title: 'Eine offene Überschrift'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:315:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:319:1
+✖ a punctuation-led thought still gets a valid title and roundtrips (9.338161ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(punctuation.entry.title.trim())
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:327:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:332:1
+✖ undo reconnects reviews written while their captured source was deleted (0.524351ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: true
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:340:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: true,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+✔ personal words are escaped without a DOM or browser globals (2.233022ms)
+✔ returning seed keeps October source wording and independently cloned state (2.208314ms)
+✔ empty, many, long and archived scenarios cover meaningful edge states (0.865417ms)
+✔ a nonempty draft survives reopening with its exact original context (0.983365ms)
+✔ saving validates before mutation, trims words and retains links and origin (2.565193ms)
+✔ new note IDs stay unique after deleting a recently created note (1.092259ms)
+✔ editing keeps the same note ID and date while preserving historical review truth (1.202355ms)
+✔ saving a review uses the captured source even after that source is edited (0.644593ms)
+✔ a story reflection preserves original unit identity without inventing a journal source (0.457521ms)
+✔ deleting removes note connections and reminders but retains historical wording (0.981291ms)
+✔ undo deletion restores original position and references exactly once (1.102905ms)
+✔ search finds actual Bible and path context and applies linked and Bible filters (0.722961ms)
+✔ steps can be added, edited, completed and archived without automatic development (0.653457ms)
+✔ only explicit confirmation creates development, retaining the illustrative demo stage (0.180442ms)
+✔ chapter exploration deduplicates reads and never changes the olive tree (0.122835ms)
+✔ quiz resumes the current original unit and requires an answer before advancing (0.784224ms)
+✔ synthetic backup roundtrip is detached and replaces only selected demo state (4.478562ms)
+✔ every seed scenario exports a valid own-schema backup (36.301521ms)
+✔ deleted source backups preserve snapshots and report missing source truthfully (0.540567ms)
+✔ backup validation rejects malformed, production, incomplete and unsupported envelopes (0.641328ms)
+✔ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (2.146431ms)
+✔ invalid restore is transactional and cannot be smuggled through a forged validation result (0.659206ms)
+✔ a title alone is recoverable draft content when reopening another context (0.39704ms)
+✔ a punctuation-led thought still gets a valid title and roundtrips (0.981441ms)
+✔ undo reconnects reviews written while their captured source was deleted (0.685695ms)
+✖ unknown reader translations fail validation and cannot alter state on restore (1.902102ms)
+✖ unsupported journal and highlight translations are rejected by the same allowlist (0.800358ms)
+✖ draft references with an unknown translation cannot be saved or lose their words (0.5896ms)
+✔ both bundled translations remain accepted with general canonical book references (1.99376ms)
+✖ live quiz answers accept exactly four option indices or the explicit skipped marker (0.482659ms)
+✖ backup quiz answers enforce the same four option indices and skipped marker (1.667157ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 26
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.535499
+
+✖ failing tests:
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:345:1
+✖ unknown reader translations fail validation and cannot alter state on restore (1.902102ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:350:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:355:1
+✖ unsupported journal and highlight translations are rejected by the same allowlist (0.800358ms)
+  AssertionError [ERR_ASSERTION]: bogus
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:359:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:366:1
+✖ draft references with an unknown translation cannot be saved or lose their words (0.5896ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:371:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:391:1
+✖ live quiz answers accept exactly four option indices or the explicit skipped marker (0.482659ms)
+  AssertionError [ERR_ASSERTION]: 4
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:399:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:404:1
+✖ backup quiz answers enforce the same four option indices and skipped marker (1.667157ms)
+  AssertionError [ERR_ASSERTION]: 4
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:409:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+✔ personal words are escaped without a DOM or browser globals (2.050505ms)
+✔ returning seed keeps October source wording and independently cloned state (1.879968ms)
+✔ empty, many, long and archived scenarios cover meaningful edge states (3.472773ms)
+✔ a nonempty draft survives reopening with its exact original context (2.284899ms)
+✔ saving validates before mutation, trims words and retains links and origin (1.545974ms)
+✔ new note IDs stay unique after deleting a recently created note (0.773938ms)
+✔ editing keeps the same note ID and date while preserving historical review truth (0.793117ms)
+✔ saving a review uses the captured source even after that source is edited (0.415358ms)
+✔ a story reflection preserves original unit identity without inventing a journal source (1.067282ms)
+✔ deleting removes note connections and reminders but retains historical wording (0.741259ms)
+✔ undo deletion restores original position and references exactly once (0.8281ms)
+✔ search finds actual Bible and path context and applies linked and Bible filters (0.872327ms)
+✔ steps can be added, edited, completed and archived without automatic development (0.373835ms)
+✔ only explicit confirmation creates development, retaining the illustrative demo stage (0.22513ms)
+✔ chapter exploration deduplicates reads and never changes the olive tree (0.187363ms)
+✔ quiz resumes the current original unit and requires an answer before advancing (0.259812ms)
+✔ synthetic backup roundtrip is detached and replaces only selected demo state (2.432001ms)
+✔ every seed scenario exports a valid own-schema backup (4.661808ms)
+✔ deleted source backups preserve snapshots and report missing source truthfully (0.680918ms)
+✔ backup validation rejects malformed, production, incomplete and unsupported envelopes (0.507696ms)
+✔ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (1.906629ms)
+✔ invalid restore is transactional and cannot be smuggled through a forged validation result (0.48346ms)
+✔ a title alone is recoverable draft content when reopening another context (0.199401ms)
+✔ a punctuation-led thought still gets a valid title and roundtrips (0.588689ms)
+✔ undo reconnects reviews written while their captured source was deleted (1.02012ms)
+✔ unknown reader translations fail validation and cannot alter state on restore (0.356869ms)
+✔ unsupported journal and highlight translations are rejected by the same allowlist (2.267113ms)
+✔ draft references with an unknown translation cannot be saved or lose their words (0.270198ms)
+✔ both bundled translations remain accepted with general canonical book references (0.421846ms)
+✔ live quiz answers accept exactly four option indices or the explicit skipped marker (0.154704ms)
+✔ backup quiz answers enforce the same four option indices and skipped marker (6.946096ms)
+✖ a newly captured edited source uses the date of those edited words (3.592082ms)
+✖ an explicit historical snapshot wins over edited live source words and is cloned (0.645174ms)
+✖ a supplied historical snapshot remains saveable after its source was deleted (0.421406ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 31
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 162.467745
+
+✖ failing tests:
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:413:1
+✖ a newly captured edited source uses the date of those edited words (3.592082ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   at: '2026-10-09T08:00:00.000Z',
+  -   at: '2026-10-17T10:00:14.000Z',
+      text: 'So denke ich nach meiner Bearbeitung.',
+      title: 'Neue Worte'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:419:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:423:1
+✖ an explicit historical snapshot wins over edited live source words and is cloned (0.645174ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      at: '2026-10-09T08:00:00.000Z',
+  +   text: 'Heute anders bearbeitet.',
+  +   title: 'Heute'
+  -   text: 'Ich möchte lernen, auch mitten im Alltag bei Jesus zu bleiben.',
+  -   title: 'Vertrauen braucht Raum.'
+    }
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:430:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at prototypes/uiux6-premium/tests/model.test.mjs:437:1
+✖ a supplied historical snapshot remains saveable after its source was deleted (0.421406ms)
+  AssertionError [ERR_ASSERTION]: Der damalige Gedanke ist nicht mehr verfügbar.
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-uiux6a2/prototypes/uiux6-premium/tests/model.test.mjs:443:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

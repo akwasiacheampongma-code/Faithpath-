@@ -1,0 +1,45 @@
+✔ valid synthetic snapshot is accepted against actual renderer capabilities (4.230267ms)
+✔ canonical but unavailable reading chapter is rejected before preview (0.385502ms)
+✔ unknown quiz and out-of-range question indices cannot enter renderer state (0.487777ms)
+✔ personal words are escaped without a DOM or browser globals (0.252721ms)
+✔ returning seed keeps October source wording and independently cloned state (1.191709ms)
+✔ empty, many, long and archived scenarios cover meaningful edge states (0.537482ms)
+✔ a nonempty draft survives reopening with its exact original context (0.422348ms)
+✔ saving validates before mutation, trims words and retains links and origin (0.960871ms)
+✔ new note IDs stay unique after deleting a recently created note (0.564402ms)
+✔ editing keeps the same note ID and date while preserving historical review truth (0.806678ms)
+✔ saving a review uses the captured source even after that source is edited (0.498993ms)
+✔ a story reflection preserves original unit identity without inventing a journal source (0.588608ms)
+✔ deleting removes note connections and reminders but retains historical wording (0.378982ms)
+✔ undo deletion restores original position and references exactly once (0.58936ms)
+✔ search finds actual Bible and path context and applies linked and Bible filters (1.027111ms)
+✔ steps can be added, edited, completed and archived without automatic development (0.439634ms)
+✔ only explicit confirmation creates development, retaining the illustrative demo stage (0.28416ms)
+✔ chapter exploration deduplicates reads and never changes the olive tree (0.215646ms)
+✔ quiz resumes the current original unit and requires an answer before advancing (0.32432ms)
+✔ synthetic backup roundtrip is detached and replaces only selected demo state (1.454056ms)
+✔ every seed scenario exports a valid own-schema backup (3.429689ms)
+✔ deleted source backups preserve snapshots and report missing source truthfully (0.209887ms)
+✔ backup validation rejects malformed, production, incomplete and unsupported envelopes (0.281215ms)
+✔ backup validation rejects duplicate IDs, invalid refs, missing relations and oversized words (1.521597ms)
+✔ invalid restore is transactional and cannot be smuggled through a forged validation result (0.276808ms)
+✔ a title alone is recoverable draft content when reopening another context (0.152631ms)
+✔ a punctuation-led thought still gets a valid title and roundtrips (0.56963ms)
+✔ undo reconnects reviews written while their captured source was deleted (0.673738ms)
+✔ unknown reader translations fail validation and cannot alter state on restore (0.591383ms)
+✔ unsupported journal and highlight translations are rejected by the same allowlist (0.663612ms)
+✔ draft references with an unknown translation cannot be saved or lose their words (0.159561ms)
+✔ both bundled translations remain accepted with general canonical book references (0.493715ms)
+✔ live quiz answers accept exactly four option indices or the explicit skipped marker (0.141403ms)
+✔ backup quiz answers enforce the same four option indices and skipped marker (4.060471ms)
+✔ a newly captured edited source uses the date of those edited words (0.237709ms)
+✔ an explicit historical snapshot wins over edited live source words and is cloned (0.261275ms)
+✔ a supplied historical snapshot remains saveable after its source was deleted (0.588048ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 80.714906

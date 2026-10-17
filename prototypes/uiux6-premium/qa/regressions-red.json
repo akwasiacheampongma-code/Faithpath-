@@ -1,0 +1,40 @@
+{
+  "passed": 1,
+  "failed": 6,
+  "results": [
+    {
+      "name": "Discard/back buttons do not submit the journal form",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(await p.locator('dialog').evaluate(e=>e.open))\n"
+    },
+    {
+      "name": "Late file cannot change the candidate already previewed and confirmed",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected \"actual\" to be strictly unequal to:\n\n'LATE FILE NEVER PREVIEWED'"
+    },
+    {
+      "name": "Untrusted translation backup rejected before valid preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Untrusted unavailable reader backup rejected before valid preview",
+      "status": "FAIL",
+      "error": "TimeoutError: locator.waitFor: Timeout 6000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.error-state') to be visible\u001b[22m\n"
+    },
+    {
+      "name": "Untrusted quiz index backup rejected before valid preview",
+      "status": "FAIL",
+      "error": "TimeoutError: locator.waitFor: Timeout 6000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.error-state') to be visible\u001b[22m\n"
+    },
+    {
+      "name": "New unrelated path never inherits old Bible links or historical review",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n"
+    },
+    {
+      "name": "Reflection from an old review retains the words and date actually displayed there",
+      "status": "FAIL",
+      "error": "TimeoutError: locator.click: Timeout 6000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"review-note\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"primary\" data-id=\"j-before\" data-action=\"review-note\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"status\" role=\"status\" aria-live=\"polite\" class=\"status visible\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"status\" role=\"status\" aria-live=\"polite\" class=\"status visible\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    11 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div id=\"status\" role=\"status\" aria-live=\"polite\" class=\"status visible\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n"
+    }
+  ]
+}

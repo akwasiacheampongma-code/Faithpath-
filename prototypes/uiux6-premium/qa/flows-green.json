@@ -1,0 +1,26 @@
+{
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Reader to original-reference note, focused reading and stable draft",
+      "status": "PASS"
+    },
+    {
+      "name": "Journal edit and delete/undo preserve original snapshot truth",
+      "status": "PASS"
+    },
+    {
+      "name": "Original questions: wrong/right, resume, voluntary reflection",
+      "status": "PASS"
+    },
+    {
+      "name": "Backup rejection and two-stage synthetic restore never touch original app keys",
+      "status": "PASS"
+    },
+    {
+      "name": "Chapter opening does not count; explicit completion deduplicates; step does not grow tree",
+      "status": "PASS"
+    }
+  ]
+}

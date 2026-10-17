@@ -1,0 +1,986 @@
+{
+  "status": "PASS",
+  "baseCommit": "5a72d038a78bd10741a1902cb478b1963a94efe2",
+  "unchangedTrackedFiles": 1427,
+  "oldReferenceFiles": 243,
+  "oldReferencePng": 174,
+  "oldReferenceManifest": [
+    {
+      "path": "prototypes/uiux6/BUILD.json",
+      "sha256": "90085cd2dceb4c07b2a2219efdead56b996b01505542402bcf82de3055c8f096"
+    },
+    {
+      "path": "prototypes/uiux6/MANIFEST.json",
+      "sha256": "cc3f37af80746bfd376e2238368f2cdcb68b68b6a0907b1c5918a3e832e603ad"
+    },
+    {
+      "path": "prototypes/uiux6/README.md",
+      "sha256": "66dafa068865218a17a61bce2a34851187106df2c29c147090ce2b124a931122"
+    },
+    {
+      "path": "prototypes/uiux6/SHA256SUMS.txt",
+      "sha256": "166f2d9971eb2f9f7b939dbcf08be123cddbd00db1dccfe99da369e4813b7729"
+    },
+    {
+      "path": "prototypes/uiux6/app.css",
+      "sha256": "076bcafd10105ac356a175aaafee9d7aef5528d21d05e2ad8158ff42ee5c9402"
+    },
+    {
+      "path": "prototypes/uiux6/app.js",
+      "sha256": "a307e753fc1d469239164db9e36d8f6a9d0370134b3a8ffe8601be2ee337e250"
+    },
+    {
+      "path": "prototypes/uiux6/assets/fonts/Editorial-Italic.ttf",
+      "sha256": "d843bf414381dd64b89e6c7c954075657b74168521f02b30e11d308558eda1d2"
+    },
+    {
+      "path": "prototypes/uiux6/assets/fonts/Editorial-Regular.ttf",
+      "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7"
+    },
+    {
+      "path": "prototypes/uiux6/assets/fonts/Sans-ExtraBold.ttf",
+      "sha256": "0fcbdb5cbeea00ae532352c7c94a7d288ebc911ba85f4d595012032dcab64ba8"
+    },
+    {
+      "path": "prototypes/uiux6/assets/fonts/Sans-Regular.ttf",
+      "sha256": "e64e508b2aa2880f907e470c4550980ec4c0694d103a43f36150ac3f93189bee"
+    },
+    {
+      "path": "prototypes/uiux6/assets/fonts/Sans-Semibold.ttf",
+      "sha256": "aa3b0ef53db12e3d45094030cac0e69d384e44cc5978643dd4390041cad546e2"
+    },
+    {
+      "path": "prototypes/uiux6/assets/licenses/APACHE-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "prototypes/uiux6/assets/licenses/DEJAVU-LICENSE.txt",
+      "sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9"
+    },
+    {
+      "path": "prototypes/uiux6/assets/licenses/LUTHER1912-NOTICE.txt",
+      "sha256": "92dfc68645a9c66d825587c23ef067188cbb800950a98ca904611e74893070ee"
+    },
+    {
+      "path": "prototypes/uiux6/assets/licenses/OPEN-SANS-NOTICE.txt",
+      "sha256": "94d4b78643f99d7cfa872145b38da578299f401405ca5cba66a5c95bf13933b0"
+    },
+    {
+      "path": "prototypes/uiux6/assets/licenses/OTB-LICENSE.txt",
+      "sha256": "2d0cd3c05745a500271c180086c32ca540b6d200fb018c58ed0516e734378192"
+    },
+    {
+      "path": "prototypes/uiux6/assets/trees/tree-stage-1.webp",
+      "sha256": "d43a9b3d7490295d874d83a597c6c0b4f9d706a38d195b17a878ba2f4b96b7eb"
+    },
+    {
+      "path": "prototypes/uiux6/assets/trees/tree-stage-2.webp",
+      "sha256": "498c8e565c71ea186d0622d4525e16039351d6c16139680ad84bccb128779670"
+    },
+    {
+      "path": "prototypes/uiux6/assets/trees/tree-stage-3.webp",
+      "sha256": "b72fd79a064eea9e00f8dcd38117bcfb5174ab06f937981eccf92fc8510ca168"
+    },
+    {
+      "path": "prototypes/uiux6/assets/trees/tree-stage-4.webp",
+      "sha256": "03858914c5d7e13dd8038468f9e85852eb3f412605db895fac81ce904f9e5347"
+    },
+    {
+      "path": "prototypes/uiux6/assets/trees/tree-stage-5.webp",
+      "sha256": "934b64ca449345831096c531737fb74a585536cebaff74f1a588a69486967200"
+    },
+    {
+      "path": "prototypes/uiux6/assets/trees/tree-stage-6.webp",
+      "sha256": "0f29732a5348ab0a6a95816d23897a32f6ae0d103e3c4f4fa34e065e599d2e63"
+    },
+    {
+      "path": "prototypes/uiux6/assets/trees/tree-stage-7.webp",
+      "sha256": "b4d76e4eaf5783036678819b442d0a8c940a0b858647824c24f815d962933a08"
+    },
+    {
+      "path": "prototypes/uiux6/catalog.js",
+      "sha256": "e55ab32c421990a77468b5dbd416aa0398a09a8226fb288beaba16e454603f92"
+    },
+    {
+      "path": "prototypes/uiux6/comparison.html",
+      "sha256": "7062cffda8eb6b6353c97e2eae9e187233e7e0d7bc0ca90e76cd525e70144f08"
+    },
+    {
+      "path": "prototypes/uiux6/components.js",
+      "sha256": "03ef90939e0b5e4ff9d4f8f8c707608b64dd09bd5accd029be11efa86150bc42"
+    },
+    {
+      "path": "prototypes/uiux6/docs/AUDIT.md",
+      "sha256": "cdc10ebcfbb2a0511f3615b533689d9fc1b337dc2bc298681ec0dfcaf24f144f"
+    },
+    {
+      "path": "prototypes/uiux6/docs/BRIEF_UND_PLAN.md",
+      "sha256": "03852f06b15db461a47bf71bdc2f605eb3bd45df36d38406dbb59fa84b1828b7"
+    },
+    {
+      "path": "prototypes/uiux6/docs/CODE_REVIEW.md",
+      "sha256": "85acfaaef91c771b142a08b1ca5e268e1dd663ee3eba387b2534063cef4951d7"
+    },
+    {
+      "path": "prototypes/uiux6/docs/DESIGNSYSTEM.md",
+      "sha256": "34d9da367ae637d4652db6d639852a24c85e447f729f1c547c884ce37703f7dc"
+    },
+    {
+      "path": "prototypes/uiux6/docs/INTEGRATION_6B.md",
+      "sha256": "48132c24444af2625edf1151d8c3a105a1842c23a534700992cc6de25fa3abc4"
+    },
+    {
+      "path": "prototypes/uiux6/docs/IPHONE_ABNAHME.md",
+      "sha256": "5816046ae8f3f16f1a34fea7e9081b7c923d276764d49f5af8cb28f1ac0f8b56"
+    },
+    {
+      "path": "prototypes/uiux6/docs/QA_BERICHT.md",
+      "sha256": "f05509cea32a7353e5a7de5592dd486149df21baf321afd29af2afffabc57fec"
+    },
+    {
+      "path": "prototypes/uiux6/docs/VERGLEICH_UND_EMPFEHLUNG.md",
+      "sha256": "e2d3010d0d5218ebf60fe13df9b85ecd2c7cd141caca6258d04fcd548ab9b42d"
+    },
+    {
+      "path": "prototypes/uiux6/gallery.css",
+      "sha256": "f3e05912fa7df4ae0ae9821ae87a42c94f53bbf8787f31cef57008a49950dcf9"
+    },
+    {
+      "path": "prototypes/uiux6/gallery.js",
+      "sha256": "fbf029335e03812f2a446cf2ea3bfdffe85a41c0b3ac6d420333dc37a49ed87a"
+    },
+    {
+      "path": "prototypes/uiux6/index.html",
+      "sha256": "3f7e8fc11a9f6c89cae4c4af6dea083008ce977e1994a7e181974e9f367e1fe5"
+    },
+    {
+      "path": "prototypes/uiux6/model.js",
+      "sha256": "583741c00b1d4dc69a7e29f54c09f77b737e76c5c3034cfc380b30a8083a24a9"
+    },
+    {
+      "path": "prototypes/uiux6/qa/accessibility.json",
+      "sha256": "e85826d746fdf7b3d83060cc8da8fcebf5314cc1fdc83de935b3946777d56d01"
+    },
+    {
+      "path": "prototypes/uiux6/qa/accessibility.log",
+      "sha256": "0658c0417f9c8bd54f54b93f83897e3f0c4ae91fe76ee52e02d3fafa74b949f3"
+    },
+    {
+      "path": "prototypes/uiux6/qa/baseline-build.log",
+      "sha256": "e945e7696762bc716b1a14b0447bee57e47c3175bf943a34da822f8a9eebdf09"
+    },
+    {
+      "path": "prototypes/uiux6/qa/browser.json",
+      "sha256": "cfe2e388e6d9cdddc0f59592fd7e3c9b0c0c05546af3a6be433e2c3135cc9f62"
+    },
+    {
+      "path": "prototypes/uiux6/qa/browser.log",
+      "sha256": "32887508910953fcf6221012db45e455e44660fa8e0982e0dc74016f069dbd0e"
+    },
+    {
+      "path": "prototypes/uiux6/qa/fixes-green.log",
+      "sha256": "c0bea023f38e135923813a1620607b91d705acf2969d1edddd9f28ed90be689c"
+    },
+    {
+      "path": "prototypes/uiux6/qa/fixes-red.log",
+      "sha256": "3b8992cdaad91526022c59d2792185b38b14762300555d7029d97ff518cc86b0"
+    },
+    {
+      "path": "prototypes/uiux6/qa/model-red.log",
+      "sha256": "e9feb5eb33c1d6db2068a07c53d6baeac70bb724a0c00ad5581acbe1d3a6278e"
+    },
+    {
+      "path": "prototypes/uiux6/qa/model.log",
+      "sha256": "c5ba6a6dfa919f54fde072abe3906df7f7841c182d8518e54c60f8979b210be8"
+    },
+    {
+      "path": "prototypes/uiux6/qa/overflow-before.png",
+      "sha256": "27aee77bc4ece0270168d3d8654f1b5d065cbb6fd1eb69d44744e897705836c1"
+    },
+    {
+      "path": "prototypes/uiux6/qa/preservation.json",
+      "sha256": "584364d862b7c506aa7efe255bf1769f3c03bf33f8c8aa5c7652d36dba18eca4"
+    },
+    {
+      "path": "prototypes/uiux6/qa/preservation.log",
+      "sha256": "e8158da92a30471c5138bd382a3a4f40b281d9e8b56462e08f3481add5a6fdf5"
+    },
+    {
+      "path": "prototypes/uiux6/qa/production-tests.log",
+      "sha256": "8a8db0c46c0393c2ec87400d7397a31d8c9c486eeadefe5569df4d6a9eec2f13"
+    },
+    {
+      "path": "prototypes/uiux6/qa/rebuild.log",
+      "sha256": "e945e7696762bc716b1a14b0447bee57e47c3175bf943a34da822f8a9eebdf09"
+    },
+    {
+      "path": "prototypes/uiux6/qa/sources.json",
+      "sha256": "88ff338c6220409d183fd64ccce5cae66633a18ab3a9ebe1a8500ae25c74370c"
+    },
+    {
+      "path": "prototypes/uiux6/qa/sources.log",
+      "sha256": "d5f23b3c3914ec5aa549827d86ac18c3bece528555dd1bb381aa5ddaaa048684"
+    },
+    {
+      "path": "prototypes/uiux6/qa/visual-canonical.json",
+      "sha256": "fd86151cc569a8b5a441684ad04a60ba00060d9999ce15cb37eaa148d29572e7"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-1440.png",
+      "sha256": "cc508c50d436d182699af94a698acc03d7e73e4e15d15950c8387d6b1b21fb08"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-320.png",
+      "sha256": "d8ab69ed35ad1a073a28d694ae738b2c6c9c58f57460dfcd2be6fb42f2d7cd84"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-390-full.png",
+      "sha256": "bb6c60ba286e2da84a45bab85b562506fd3dbfd250eea77cbd45f75a6588dd64"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-390.png",
+      "sha256": "1ab911ceefcb8912e42cde48500bb09f9df219fa7e16c59d16a36105618bba96"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-430.png",
+      "sha256": "61706ce50a3be7f1f21ebc2a591fc93ee3b8b624c6d8b151c6cf1a333d70a2fb"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-atmospheric.png",
+      "sha256": "fb167bb421b354d1cb92a1fe15da628a75ad54eae1669800b6bba11b4a15bc09"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-light.png",
+      "sha256": "1ab911ceefcb8912e42cde48500bb09f9df219fa7e16c59d16a36105618bba96"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-night.png",
+      "sha256": "67be811cf99e34328c79d84a1e6099d7bbb9318f18fb248d0fa364fa9831cd1d"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-paper.png",
+      "sha256": "4354feae14ab8c295f5093e1ed75523301672ed0c24b3199dc9176e5719c02b2"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-bible-text200.png",
+      "sha256": "31cda8f1d7150804fa941d268a5a8a0bacb5e5e9abef6dc3efb94725648e379d"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-composer.png",
+      "sha256": "ae3a46597186e2ad1cb9d0db184a4c1455c7be2422a2c2d812f926b1364ad88e"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-1440.png",
+      "sha256": "18254d33b7db220bcd9e24cfc65049fcbebbfeefa3aaa39af41419020ed7bf82"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-320.png",
+      "sha256": "0d2a976bc18ade2480e48db41359249688f5a53a57b859a4110b920dcc2d2b1d"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-390-full.png",
+      "sha256": "fe324b24f4344209c0c2f9b9f0837750bb2f0f3e75879300ff934303822c6f94"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-390.png",
+      "sha256": "c755074273c0a110f358fd00c1105e1bc0b40aec1892594a21528dc87fff5852"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-430.png",
+      "sha256": "87c385482c4c872b1a1cc697fcb10b5e60adf7f8270a3013578a25edae3273b2"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-atmospheric.png",
+      "sha256": "0abee302f3ec9267b48fe4baaf5a2fe5f43bf8f5d67da794e7a611535116be05"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-light.png",
+      "sha256": "c755074273c0a110f358fd00c1105e1bc0b40aec1892594a21528dc87fff5852"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-night.png",
+      "sha256": "b2177c099ddca10ff6bb8aba5e209846cd6105d73558e81baa33139b845b79dc"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-paper.png",
+      "sha256": "5aa0d96373f7080436b3aa01faebecde18c716834c895c3f8e1ada9a816ee967"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-discover-text200.png",
+      "sha256": "f312e3fcbb184c99fd7610b25acd5bfbdf739423a82d440bbb22f54366e3dc32"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-1440.png",
+      "sha256": "fecdfea953f7fbccd4f9f26d23861dafa77f034fde97453126244e85d225b07b"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-320.png",
+      "sha256": "960368da50b5886338da83b2704acc65e334d7bd1f0285c1b144b9ab37c81fb5"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-390-full.png",
+      "sha256": "e8f10e1544ae4e48125e2f8d254a36cb68f5074b5bcf4d3f28797f7372f559d1"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-390.png",
+      "sha256": "c42ecd019575d31d7ba5d81de9643cff2d5b628419ddb42a1eb30fe482d58615"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-430.png",
+      "sha256": "da381837184b5425bc777defded732a619606bac892c201baea733a86b2b81ac"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-atmospheric.png",
+      "sha256": "67f07230079288733158e5d6af228f140257f41ec5fccf9393d3d624a91c3c2a"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-light.png",
+      "sha256": "c42ecd019575d31d7ba5d81de9643cff2d5b628419ddb42a1eb30fe482d58615"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-night.png",
+      "sha256": "927075fdb8dc204db9f8f6e41d75f2d8b75d2f3d338ed051cc90f7033ddcf4ac"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-paper.png",
+      "sha256": "7050354769a2c5b0c59c0193c8810c5b123b626b71e5c5b6dcfdf53224c1bb6a"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-journal-text200.png",
+      "sha256": "748a08e3decaabe16e0dbd5bcb13a8579dcd35687e49287e4c9b16ae369d09d8"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-1440.png",
+      "sha256": "7f831115c5efa268c706e4698d7c44238c65c7c06526e07bbfe20acb7aa13008"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-320.png",
+      "sha256": "51314f4e9ac507f1016262bcba443335835cb747d3067e753b3a77d575382ee6"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-390-full.png",
+      "sha256": "493842bf5015099ef000ffac8ac9037837263818910c155e54d54f00ee8067ce"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-390.png",
+      "sha256": "0cb98f9b26482cafe511f43ab306de901944408ad641373fc56aa5f58faa0c27"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-430.png",
+      "sha256": "763b905c22917a9f21aba7e58a8aa249e9181f8d7182d8006c60d0b1ccfc1998"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-atmospheric.png",
+      "sha256": "911006adc5061e11eab573752827a5bb04108142bd3c192dbfea271f3ee2eaca"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-light.png",
+      "sha256": "0cb98f9b26482cafe511f43ab306de901944408ad641373fc56aa5f58faa0c27"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-night.png",
+      "sha256": "e8e23b3bf894a9405ac6d437d1c2b24dc23a3a7ab2163b114bd98881580513ee"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-paper.png",
+      "sha256": "f8c4887f0be2d8bf781af5c3d4775fe8009181ac2abaff2b4c9bef61027acb32"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-path-text200.png",
+      "sha256": "049881211d5f1bbc6a45f2c558b82a29fc7814a3dc8964c1ec9037515be32d76"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-quiz-explanation.png",
+      "sha256": "577356593d03dbb3f30641f85bdb0b4de8d1068d6c1c487bfd77c631f593e0d4"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-1440.png",
+      "sha256": "6464a65cbb5f2854e48062f2a3709aab6412850ca034dc3f39af5965a8735717"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-320.png",
+      "sha256": "35436bc1986802937def6e75242b05a294d931f8540c1bacdf60759626dfd677"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-390-full.png",
+      "sha256": "e914e7e797a37aada0827fcf04b1a227bcff2b784cd513743d290fb4c210b2c8"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-390.png",
+      "sha256": "544bc42c2b4e822402b60f0acba113fb350b9cf626f7f6e06746ace7f41ee2dc"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-430.png",
+      "sha256": "b11af78edcba510831d231a400c6a2a92141115a0b8e7a4760e772d591ca5044"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-atmospheric.png",
+      "sha256": "27ea9b2cc8658104b2b098ff2bf6d0dd29b34ea5b8a94968383dc007b5ee9ad0"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-light.png",
+      "sha256": "544bc42c2b4e822402b60f0acba113fb350b9cf626f7f6e06746ace7f41ee2dc"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-night.png",
+      "sha256": "0800717da81528f61c32ef4bbd7bd206b4e2e5b4a69df5c79266eadba368a324"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-paper.png",
+      "sha256": "b21e337c2f89e2632de46019dbcfc99f92e1a1a36c383903fb6bb222c4ecbb92"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/A-today-text200.png",
+      "sha256": "b261f837c133c0eb74c24e9bfff4cb3d66a1794bb401ac57c1f0d18982120009"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-1440.png",
+      "sha256": "b63cfb3b2a5ca53948d31188371cc5e4d2d5cbf292468b6ac5043f573223d896"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-320.png",
+      "sha256": "25c728d4511b80a7c0303e24835927807394fca6c977b962fca89d98525b5724"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-390-full.png",
+      "sha256": "2cabd5241ce479c7d42c8b4216e67340cc53c41bd517aa6beafea691e4211936"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-390.png",
+      "sha256": "f4f2b0c93fbf6817acf788ee3e6951c9c250266662008b65e54fcde55792f167"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-430.png",
+      "sha256": "320160c0146ed8ea9f60a9a4040936ac7ff780f64c7c568a25b9ecae22d69e4d"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-atmospheric.png",
+      "sha256": "f4f2b0c93fbf6817acf788ee3e6951c9c250266662008b65e54fcde55792f167"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-light.png",
+      "sha256": "d16bb234b87cf1c8df0401e539d0303ddd6d4b44e1abc335586a86cd2d862d43"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-night.png",
+      "sha256": "41e2492572544164a81ce7d649f2bffa89abd11081ad27304621c3ada9de2709"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-paper.png",
+      "sha256": "3fb5f95dfcc029b2b6faee269d6e5b4ee1698f1fdab799d1493169ed4c933ec8"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-bible-text200.png",
+      "sha256": "e694689aed25ee2ba393277de2720fc76b087d71eca425e21f623c3435df5c47"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-composer.png",
+      "sha256": "e52e2c762bbc5b380d619d8041a98ad3e4f887c8eacc3f7224e9f880cc00d427"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-1440.png",
+      "sha256": "4ad25ffb95b77ae8298c03b9a6cea7e9904702fc161689fa5d7fdf3892eedb35"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-320.png",
+      "sha256": "e60ed3cf0d717dceee1b2f6eb4cf86a7471a8f89a2b2153ad695550fbd9bc844"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-390-full.png",
+      "sha256": "e8d8dacecb8bcccbe61c130a5f4f3ea986632b9de6a1f3bde6dbb7225f37d3e3"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-390.png",
+      "sha256": "5249317af0d9fcb37f0ca66ab380f1daaede8bb315919ca24d2b207b85c877ca"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-430.png",
+      "sha256": "a0fd5d9161313b481c79e140c929c352f0e9b180d4a94de1a242f8b7da2436e2"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-atmospheric.png",
+      "sha256": "5249317af0d9fcb37f0ca66ab380f1daaede8bb315919ca24d2b207b85c877ca"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-light.png",
+      "sha256": "e1e2fe98cf99a3b1e39e7c6ad1a564ee8c00ca657b27dc4a29c579c1fa4ab766"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-night.png",
+      "sha256": "95a1bef1d2a313fe678f97e0e061807c9afea55cadc0b8761acf0488e4b69532"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-paper.png",
+      "sha256": "e6961bac3c47d6d098f0b652c348c727a9c02f66a475e31ee11c8e97f49aa50a"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-discover-text200.png",
+      "sha256": "6c6cf6cf1abe2fed5cf9aef555afa1463d7c42b84e178480eb873768adf38744"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-1440.png",
+      "sha256": "e35597c7d14db629792efd0599d64997e18821f3cf551c49cb4380d1430637da"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-320.png",
+      "sha256": "212e13379cc09c12dc7625f76f0c4db60a64c7933bf808a6a527b95975fdc00c"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-390-full.png",
+      "sha256": "75bc9a39b65b1758eb303e132e8ce26a36993af990119dbe9d72e56ae20f655f"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-390.png",
+      "sha256": "ae5061400042a62b0766d1e5de7bdb98eda248fb09ce331aed774a3e46b12cb1"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-430.png",
+      "sha256": "669976d2fb87ca2a4971d9360f98ac1df177905e98d220c65f81b88531f58aaa"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-atmospheric.png",
+      "sha256": "ae5061400042a62b0766d1e5de7bdb98eda248fb09ce331aed774a3e46b12cb1"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-light.png",
+      "sha256": "d4631c0301d106eea506106505940acef6cd44339868c264416c9ec3e0ba5df5"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-night.png",
+      "sha256": "cd03f4ffd2e8d567d5fbf19dac1b76dbe0956d5bf4380051c5d3a31de3876cab"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-paper.png",
+      "sha256": "095bacb4802e2331569715c846451c6d9df9eb60fc35fba850cc1e09c3b9d9a7"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-journal-text200.png",
+      "sha256": "0e7ad67b744a17850964823ae3e697ac89e4269c8583ad26aa3eac1e094e5abf"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-1440.png",
+      "sha256": "3ac25bd69332032c9e767e733c97540bf93fed3b2323e11f7242759ca93fa37f"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-320.png",
+      "sha256": "2c861d5b0ec8202d37751282489e2f2542aa5369d6d526c83680fd8dedcf841b"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-390-full.png",
+      "sha256": "19466e57dbb8b0db1a09b02409db17ea75e93887b3e6bfc5b38bc383c1282f7c"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-390.png",
+      "sha256": "a095c5ba35b37fe9c2471788db6fcd1f731395aeb464572db6b6d5cf7b481ca6"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-430.png",
+      "sha256": "92ac3d73b6146fdeabd0381e84a29c8dcd5ca3d391ce785625fdebe0c133e40c"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-atmospheric.png",
+      "sha256": "a095c5ba35b37fe9c2471788db6fcd1f731395aeb464572db6b6d5cf7b481ca6"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-light.png",
+      "sha256": "fc8a52e4c051882758d7e664d209c0edb2ef42a00f7c5304fb41d5525ae477c4"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-night.png",
+      "sha256": "b25fd086ae640be6b3c999d5570407f154ffd95bfbb62578c87bbcc6b49ccdb6"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-paper.png",
+      "sha256": "7b70c488af40f85b2ed4a19671533f6b5b4ceda73ad2123f7703e19de9c328ec"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-path-text200.png",
+      "sha256": "dbc5088ac00d895c8b681925c216abc5c604c9e1e6b57fb647b10faa04a68245"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-quiz-explanation.png",
+      "sha256": "ada170f5063e8cd58aa0c671024d5a39f896d5d0f593049bf4e3ed3e1b69f961"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-1440.png",
+      "sha256": "39379b3a0bbad26cdec6714a7b023a1211fec473a821da3148e7c80b9141fb2a"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-320.png",
+      "sha256": "464a97768f81f0b5a26facb68fcd3b207722f6de9ec15f5b9508483ba309337d"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-390-full.png",
+      "sha256": "a485132363f6bb0cb54b6fb6869ea485c4f33e3a0bd3b35a485c04459e041070"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-390.png",
+      "sha256": "6f2e85c0c7370411da60e0de94ac9eaa33536b92f8feeee8769c15f002357cbb"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-430.png",
+      "sha256": "aae045410c028e1e14a638a657fa7160e3ffa32ad26e03c7022138cf663661b1"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-atmospheric.png",
+      "sha256": "6f2e85c0c7370411da60e0de94ac9eaa33536b92f8feeee8769c15f002357cbb"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-light.png",
+      "sha256": "704ccb0ddcc8b201a009ccb790c04717236a6e12b4e303d7e47c504f24680ec9"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-night.png",
+      "sha256": "4da8853e1e98a9ff733fdc3b217633b3f38d97119bf1801acb6f5242b6293c11"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-paper.png",
+      "sha256": "391c1342749f97d74db59fe1cfd90273c26547bb64fb77cbd5077110ca197185"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/B-today-text200.png",
+      "sha256": "6c7a5567ee29b24f8319f573c92ac2d84e96a64d3928bafb4b32707fc9705046"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-1440.png",
+      "sha256": "ef7e244594686a43e00f01d896a8e42ad5da1452d93710f9f8ce0d6260bf68f3"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-320.png",
+      "sha256": "9aa9fc7f83b9cf858643e392b992206089d577934b18bd56dcbb9d0b56df4d90"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-390-full.png",
+      "sha256": "a8b09795357a88199ced2b6ae8ae439c80c30875c7c5899e04dddcdf0871ef8b"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-390.png",
+      "sha256": "2c0395d5c1acf6658efb8b6196fb01f9e519e451cf0d034a4cf2b755b6e74e65"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-430.png",
+      "sha256": "1048acaf35e68fd9dc28bddeffdfcbc70d93635b15c635bd4fba193e1bd702e6"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-atmospheric.png",
+      "sha256": "d4eb97b3d02847febec0a0d8e0e8b7fbc5ec324e012f53e787bb56702e369323"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-light.png",
+      "sha256": "9fb1d799cff9c9b99960461974c6c0c2bbacec76c3e63e0b892f2a80c3498092"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-night.png",
+      "sha256": "53463b0f0485c7d35e753d009e0fe90bea717798436338b41d26a72b7cece01d"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-paper.png",
+      "sha256": "2c0395d5c1acf6658efb8b6196fb01f9e519e451cf0d034a4cf2b755b6e74e65"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-bible-text200.png",
+      "sha256": "5966f24a3a8987f691617b528b6789b11ffbe6060484b65b46ac73c454ff4fe6"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-composer.png",
+      "sha256": "34e074d5f68272a9fe42dca03c1d9138f34491b813bbf7a232d422c7bcdc17a2"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-1440.png",
+      "sha256": "b432e473c5571a94d460b98ef6f50e08466ee69e8b71c1c0f753217c6ac2d42c"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-320.png",
+      "sha256": "ca801b870a3e2b7a4ce0f83c509646f4ff046b08d61a3c86c5e9e0bd81e768e7"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-390-full.png",
+      "sha256": "54da9460cf3db34f16114c45a744aba68f80757d90fb60a273963ac40115a70c"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-390.png",
+      "sha256": "39ed9c8909a406c01eed7c3f3f4d9a24d0feb957e093d1139268052b556706a5"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-430.png",
+      "sha256": "0a1bf74b9002b2e1fb7434dffef43982fb95b561dbbe0b712c306265ba9406fa"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-atmospheric.png",
+      "sha256": "927dc46a46172672697435a3ca23771109732e02d41ea676bcfab799f9170270"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-light.png",
+      "sha256": "51365928ef07d8c4237fa0846cd21ab4ac9981c7a526bfdebc80e563c167fce6"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-night.png",
+      "sha256": "f12adab367fa5a58b632d4fb505c83206baa7243695a183108954a08a3cb2e73"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-paper.png",
+      "sha256": "39ed9c8909a406c01eed7c3f3f4d9a24d0feb957e093d1139268052b556706a5"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-discover-text200.png",
+      "sha256": "27528926800b6982ffa53888097c4859812b046ed7486198a2dd83275fc90c29"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-1440.png",
+      "sha256": "2845931ed8d83134daab5b9e895755b81d9914f9a0bdf0d7effb82e3574aec12"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-320.png",
+      "sha256": "0a3b72dacf85d2f72c3edb40322eb4770e7cc45400a0ef75391b48a276d7b314"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-390-full.png",
+      "sha256": "fb5dce0ba4b25652ead5a967a2c5381b4c7b3319aeea97e9d8e8ee36e64750fa"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-390.png",
+      "sha256": "717c9f7961c02e746fdd3c338db6f6a39368408871d2c5eab48b938ccfcc1241"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-430.png",
+      "sha256": "62cbf17681a33e198f2a86796b436ea207394b013c5703141bacdc7cd017649b"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-atmospheric.png",
+      "sha256": "f688018f2fd8e671ca29e346036ccad3ebf771f6d8004425072bac81b0510366"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-light.png",
+      "sha256": "2d745cb88602329a9fc9cb05db2e2e307c7d773743ed070ecc213aab9ce0826f"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-night.png",
+      "sha256": "386466e92c1647b4825866920931932a0c417693b5b10d9e817e058c1b3cab58"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-paper.png",
+      "sha256": "717c9f7961c02e746fdd3c338db6f6a39368408871d2c5eab48b938ccfcc1241"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-journal-text200.png",
+      "sha256": "94cc25e00c6849023621f43e36f33cad6fd46d5c14efb99fb589cb53bfc8379b"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-1440.png",
+      "sha256": "dd9ca24198a922ae35428155ae1294385579c7599eda5f2c4f5d594628ba7c8c"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-320.png",
+      "sha256": "5249c3c6d5da30588829d4555ac075b71283dc1189b932f8b56801e7d558b857"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-390-full.png",
+      "sha256": "78e083cb2fd57e4984a90a24bcd3a7896754fa6832bc418c393f8d7ec56c2cb9"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-390.png",
+      "sha256": "f1230497f1705ec91dc2c826443ca194048cd8d13a73447da8d6d70dca58f560"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-430.png",
+      "sha256": "0ab0698b49df54b1d91864abb880e6a05e08b34bf8e0cdd0b9394014a6682cd5"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-atmospheric.png",
+      "sha256": "6b16e9fb721a97a7f5fd9894a4a4dd3513b6e40a376605f21557176da3e20f89"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-light.png",
+      "sha256": "85c9d6f35507eb1d3d6660f0670ef72952f50cf2e5cddc82bb3879f1939d3554"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-night.png",
+      "sha256": "84dd7e46f72368e6531a38c6320bc591ec5af897d11be0cf76838b18de0ec5a4"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-paper.png",
+      "sha256": "f1230497f1705ec91dc2c826443ca194048cd8d13a73447da8d6d70dca58f560"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-path-text200.png",
+      "sha256": "c835b5306121412b62b3e7de6bc914abdb689ba30dbb439510364d6b1158f16d"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-quiz-explanation.png",
+      "sha256": "6438b0a16d654216477c06f020507c03332b2c397f006c735ebef2d3a370249f"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-1440.png",
+      "sha256": "a2d4427685a020fd25b319e60db47a73226832c11a4d000208660258a1962e54"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-320.png",
+      "sha256": "11f9e4a7310b8cadd8bc76c5e52b4e4652b4469edadf18b737fe24189137cac8"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-390-full.png",
+      "sha256": "188f027d7a247c88dbbd90a60f0372e2ca5af22f7680b5f4112194287f84f036"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-390.png",
+      "sha256": "59c738ddee9536aaef6305d006ca173332ed24e32561fd8a342f3cdb8dc0e2f4"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-430.png",
+      "sha256": "b73d239c9670aeef3c95e7ff7c8701e88297066f7d445e9e60aa39015b80b564"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-atmospheric.png",
+      "sha256": "38ed6d646fe0f5cbf1cd319e6ee5eeccccbcac53343a1afda435545808417639"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-light.png",
+      "sha256": "09f82e3d8e9ca4cb7f7caccc8c0729dc2d404182f62aa7a5ec276739b07fad0e"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-night.png",
+      "sha256": "271cf603a73a97f784d3af5f4bcbf1911b7af4281aec2584cbc3d95efe42ba73"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-paper.png",
+      "sha256": "59c738ddee9536aaef6305d006ca173332ed24e32561fd8a342f3cdb8dc0e2f4"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/C-today-text200.png",
+      "sha256": "8db1368d370d74f0f83ebbed121a2a4fcb1108e8b9401fcbcf87d7d83e5ceaf8"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-bible-390.png",
+      "sha256": "fc746c9cd1de8567e902ae1bdc4b1de0997be85bdd04533e5100f7baf87383eb"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-bible-viewport.png",
+      "sha256": "762a38f82b904fbf997ff87559b997a791aaad92c7e1857e11f4fae0aa3c5c38"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-discover-390.png",
+      "sha256": "220351206f44d5536ccb3244a3a99116af8cea20374f2cc040a25bf156db9402"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-discover-viewport.png",
+      "sha256": "7ef5bed86e02063935ddf43cc295ecc1192147176bfadd3f2fbf2a84f628ff72"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-journal-390.png",
+      "sha256": "ff584ff76d6d29042b057a277726cfaf651415c1913c6a6ad3e5228d934561a7"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-journal-viewport.png",
+      "sha256": "487f1fcc4abf6662e6519418616a5a33f66e5038ba96875dd11afc6b3b7cf820"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-path-390.png",
+      "sha256": "55931bfe586335689b81c9dbdce52a4a1d0a70d21df298fff9c5e485a43c7608"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-path-viewport.png",
+      "sha256": "385ad090bd0ffb7e9c64fe7ddba2469cfb981f3a1462d7263f23c65f270b76be"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-today-390.png",
+      "sha256": "0f89d16af58f740f721d3fa7a175b732da6fd0b18e27af3fe8ca8beeba770043"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/before-today-viewport.png",
+      "sha256": "8a72669dcb2c71e5e3a11af9b9a4d0887efeaba2f26d19598436ef9cf965c778"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/gallery-desktop.png",
+      "sha256": "8621a76326b291284afde7401f15277f214999c6a4172c7fc1f420bab425c037"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/sword-0.png",
+      "sha256": "c8fdef1f3fa64fa5e315a08f52991206738fc13067883c45a372a26e845d5013"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/sword-1.png",
+      "sha256": "d6cb8865b0ae44cb16e7dd4b627abc574b25711a1c034d321df47217653ea47b"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/sword-100.png",
+      "sha256": "338eca4ee824837b30cd8a4e7798aea3a632d37929be42e83d3d158edb3cab45"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/sword-1189.png",
+      "sha256": "907d5050b0ecef08440d9b70304f1a7726f960bae865ae56bfccd07b54e749d2"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/sword-7.png",
+      "sha256": "6f308af417e9827e96a1254281b0c3b5da545c42acba20fa25b4797495881d01"
+    },
+    {
+      "path": "prototypes/uiux6/screenshots/vergleich-heute.png",
+      "sha256": "42962abfd52b8516017a2d3def532c6f516a95514968f87907a5177a6809e2d8"
+    },
+    {
+      "path": "prototypes/uiux6/scripture.js",
+      "sha256": "8078a72ad3b41cc81c33fc9f6691310e3db03db4c20cd6e093d8d01cf03c6c8a"
+    },
+    {
+      "path": "prototypes/uiux6/sword.js",
+      "sha256": "75a01541299670fc0340935869382322e94abc794f55f7a6c03ab70b7f905983"
+    },
+    {
+      "path": "prototypes/uiux6/tests/accessibility.mjs",
+      "sha256": "66c1c6a924ca6da0db02b0fe55aed79df759661d49ff0f807b41bed1902ef756"
+    },
+    {
+      "path": "prototypes/uiux6/tests/baseline.mjs",
+      "sha256": "fe4831c347af0cbe5338627bfee651c82fb3a3b8173e318464c7308856008153"
+    },
+    {
+      "path": "prototypes/uiux6/tests/browser.mjs",
+      "sha256": "d0fd1864fd5a9203e132d650cc9cc87a6be6e45288e73f33056f6ea8794a17b7"
+    },
+    {
+      "path": "prototypes/uiux6/tests/comparison.mjs",
+      "sha256": "440f05c994bbecd1433a5389bb63970b406f16dc6491684fefe7268d56777115"
+    },
+    {
+      "path": "prototypes/uiux6/tests/fixes.mjs",
+      "sha256": "28be5d14d6a483a2eeacdf4bc40c5d3b5bf70d9a002559f9f83c8a651ce5ff8f"
+    },
+    {
+      "path": "prototypes/uiux6/tests/generate-fixtures.mjs",
+      "sha256": "e5d6cef77ea538846519d6a57d4ddc03c871976009ddafb03b2e2fe7fe1ddba4"
+    },
+    {
+      "path": "prototypes/uiux6/tests/model.test.mjs",
+      "sha256": "f4582147d12ce0c179acd60769c0ae450d44182ba4679b18342e706bb058b544"
+    },
+    {
+      "path": "prototypes/uiux6/tests/overflow.mjs",
+      "sha256": "c4b5ff8c4a9c3078293ca11f818d8bf1c369a4d4b8821e85cfa5dab38f658fd1"
+    },
+    {
+      "path": "prototypes/uiux6/tests/package.py",
+      "sha256": "d4805d3453d56f869a807757dd572d0050acc6a3472cdc4c76ae32a6bc216c3a"
+    },
+    {
+      "path": "prototypes/uiux6/tests/preservation.mjs",
+      "sha256": "c1efda1a0b04ff3aa437392f1e577dff693f9f2142a31154d268e538459ce908"
+    },
+    {
+      "path": "prototypes/uiux6/tests/sources.mjs",
+      "sha256": "6e7da53d6bd9a2b4aee2e382d60d7ccdb092a82e2ce62e7b3dcad899f663a526"
+    },
+    {
+      "path": "prototypes/uiux6/tests/visual.mjs",
+      "sha256": "e14a463ee6a7211cb8ba9299056fee32c9d40923c65461af9360dfd719479dc0"
+    },
+    {
+      "path": "prototypes/uiux6/view.html",
+      "sha256": "1998f750b6a56d2d23c6e8bd157ec46e4539b4406997e113abbcbf57dadc052a"
+    }
+  ],
+  "originalAppBuildId": "FP4-20261017-G-STABLE1-UIUX45-CANDIDATE",
+  "originalAppBuildHash": "bd6866522aec7b35854bc7c7871d8ce9afb2f1eb4013fd74496423f63753b882",
+  "originalContentHash": "8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309",
+  "buildsIdentical": true,
+  "note": "Original app built twice with explicit original integration branch metadata, no prototype files included."
+}

@@ -1,0 +1,18 @@
+{
+  "screen": "tree",
+  "theme": "night",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          ".tree-stage-name"
+        ],
+        [
+          "section > p:nth-child(3)"
+        ]
+      ]
+    }
+  ]
+}

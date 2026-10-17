@@ -1,0 +1,33 @@
+{
+  "passed": 3,
+  "failed": 3,
+  "results": [
+    {
+      "name": "Both voluntary onboarding choices open the promised areas",
+      "status": "PASS"
+    },
+    {
+      "name": "Discovery search, every filter, bounded pagination and empty reset",
+      "status": "PASS"
+    },
+    {
+      "name": "Default search includes themes and guided ways as its label promises",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "name": "Theme/guide references open real bundled reading; browser Back retains prior area",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1\n"
+    },
+    {
+      "name": "Leaving and returning to the same backup route invalidates a delayed read",
+      "status": "PASS"
+    },
+    {
+      "name": "State examples expose loading/error/success honestly; retry functions",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(await p.locator('.success-state').isVisible())\n"
+    }
+  ]
+}

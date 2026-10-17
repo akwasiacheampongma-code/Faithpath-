@@ -1,0 +1,31 @@
+{
+  "passed": 0,
+  "failed": 5,
+  "results": [
+    {
+      "name": "Reader to original-reference note, focused reading and stable draft",
+      "status": "FAIL",
+      "error": "Error: page.goto: timeout: expected float, got string"
+    },
+    {
+      "name": "Journal edit and delete/undo preserve original snapshot truth",
+      "status": "FAIL",
+      "error": "Error: page.goto: timeout: expected float, got string"
+    },
+    {
+      "name": "Original questions: wrong/right, resume, voluntary reflection",
+      "status": "FAIL",
+      "error": "Error: page.goto: timeout: expected float, got string"
+    },
+    {
+      "name": "Backup rejection and two-stage synthetic restore never touch original app keys",
+      "status": "FAIL",
+      "error": "Error: page.goto: timeout: expected float, got string"
+    },
+    {
+      "name": "Chapter opening does not count; explicit completion deduplicates; step does not grow tree",
+      "status": "FAIL",
+      "error": "Error: page.goto: timeout: expected float, got string"
+    }
+  ]
+}
