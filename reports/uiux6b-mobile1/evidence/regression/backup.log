@@ -1,0 +1,29 @@
+PASS Real download, readonly check, actual restore on separate isolated origin with unchanged IDs 
+PASS Stale tab export and import comparison reject newer personal state 
+PASS Comparison, cancel, keyboard/axe/200% / light / 320 
+PASS Comparison, cancel, keyboard/axe/200% / atmospheric / 320 
+PASS Comparison, cancel, keyboard/axe/200% / paper / 320 
+PASS Comparison, cancel, keyboard/axe/200% / night / 320 
+PASS Comparison, cancel, keyboard/axe/200% / light / 390 
+PASS Comparison, cancel, keyboard/axe/200% / atmospheric / 390 
+PASS Comparison, cancel, keyboard/axe/200% / paper / 390 
+PASS Comparison, cancel, keyboard/axe/200% / night / 390 
+PASS Comparison, cancel, keyboard/axe/200% / light / 430 
+PASS Comparison, cancel, keyboard/axe/200% / atmospheric / 430 
+PASS Comparison, cancel, keyboard/axe/200% / paper / 430 
+PASS Comparison, cancel, keyboard/axe/200% / night / 430 
+PASS Comparison, cancel, keyboard/axe/200% / light / 1440 
+PASS Comparison, cancel, keyboard/axe/200% / atmospheric / 1440 
+PASS Comparison, cancel, keyboard/axe/200% / paper / 1440 
+PASS Comparison, cancel, keyboard/axe/200% / night / 1440 
+PASS Invalid schema leaves main/draft/recovery unchanged 
+PASS Invalid id leaves main/draft/recovery unchanged 
+PASS Invalid ref leaves main/draft/recovery unchanged 
+PASS Invalid json leaves main/draft/recovery unchanged 
+PASS 20MiB accepted, larger file rejected before replacement 
+PASS Newer faithpath.v1.rebuild after preview blocks confirm and preserves all bytes 
+PASS Newer faithpath.draft.v4 after preview blocks confirm and preserves all bytes 
+PASS Main quota failure rolls back prior safety copy and keeps preview retryable 
+PASS Legacy V3 check preserves unknown fields and yields existing schema migration 
+PASS Late file read cannot replace newer selection or reopen closed preview 
+PASS Undo after later edit compares explicit current state and cancel/reload never writes 

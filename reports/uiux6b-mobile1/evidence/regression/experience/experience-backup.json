@@ -1,0 +1,278 @@
+{
+  "app": "FaithPath",
+  "version": 4,
+  "schemaVersion": 5,
+  "exported": "2026-10-17T15:30:53.494Z",
+  "data": {
+    "version": 5,
+    "translation": "otb",
+    "paths": [
+      {
+        "id": "core-path",
+        "title": "Vertrauen",
+        "why": "Was ich persönlich festhalten möchte.",
+        "category": "sonstiges",
+        "started": "2026-09-01T12:00:00Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "own-step-0",
+            "text": "Ein kleiner eigener Schritt.",
+            "done": false,
+            "createdAt": "2026-09-10T12:00:00Z"
+          }
+        ],
+        "links": [
+          {
+            "id": "verse-link",
+            "kind": "verse",
+            "label": "Johannes 3,1",
+            "ref": {
+              "book": "JHN",
+              "chapter": 3,
+              "from": 1,
+              "to": 1,
+              "translation": "otb"
+            },
+            "date": "2026-09-01T12:00:00.000Z"
+          }
+        ],
+        "reviews": [
+          {
+            "id": "path-review",
+            "text": "Heute höre ich ruhiger zu.",
+            "date": "2026-09-01T12:00:00.000Z",
+            "confirmedDevelopment": true,
+            "sourceKey": "path:core-path"
+          }
+        ],
+        "milestones": [
+          {
+            "id": "own-milestone-0",
+            "text": "Von mir selbst dokumentiert.",
+            "date": "2026-09-12T12:00:00Z"
+          },
+          {
+            "id": "own-milestone-1",
+            "text": "Von mir selbst dokumentiert.",
+            "date": "2026-09-12T12:00:00Z"
+          },
+          {
+            "id": "own-milestone-2",
+            "text": "Von mir selbst dokumentiert.",
+            "date": "2026-09-12T12:00:00Z"
+          },
+          {
+            "id": "own-milestone-3",
+            "text": "Von mir selbst dokumentiert.",
+            "date": "2026-09-12T12:00:00Z"
+          },
+          {
+            "id": "own-milestone-4",
+            "text": "Von mir selbst dokumentiert.",
+            "date": "2026-09-12T12:00:00Z"
+          }
+        ]
+      },
+      {
+        "id": "branch-1",
+        "title": "Geduld",
+        "why": "Was ich persönlich festhalten möchte.",
+        "category": "sonstiges",
+        "started": "2026-09-01T12:00:00Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "own-step-1",
+            "text": "Ein kleiner eigener Schritt.",
+            "done": false,
+            "createdAt": "2026-09-09T12:00:00Z"
+          }
+        ],
+        "links": [],
+        "reviews": [],
+        "milestones": []
+      },
+      {
+        "id": "branch-2",
+        "title": "Familie",
+        "why": "Was ich persönlich festhalten möchte.",
+        "category": "sonstiges",
+        "started": "2026-09-01T12:00:00Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "own-step-2",
+            "text": "Ein kleiner eigener Schritt.",
+            "done": false,
+            "createdAt": "2026-09-08T12:00:00Z"
+          }
+        ],
+        "links": [],
+        "reviews": [],
+        "milestones": []
+      },
+      {
+        "id": "branch-3",
+        "title": "Gebet",
+        "why": "Was ich persönlich festhalten möchte.",
+        "category": "sonstiges",
+        "started": "2026-09-01T12:00:00Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "own-step-3",
+            "text": "Ein kleiner eigener Schritt.",
+            "done": false,
+            "createdAt": "2026-09-07T12:00:00Z"
+          }
+        ],
+        "links": [],
+        "reviews": [],
+        "milestones": []
+      },
+      {
+        "id": "branch-4",
+        "title": "Entscheidung",
+        "why": "Was ich persönlich festhalten möchte.",
+        "category": "sonstiges",
+        "started": "2026-09-01T12:00:00Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "own-step-4",
+            "text": "Ein kleiner eigener Schritt.",
+            "done": false,
+            "createdAt": "2026-09-06T12:00:00Z"
+          }
+        ],
+        "links": [],
+        "reviews": [],
+        "milestones": []
+      }
+    ],
+    "journal": [
+      {
+        "id": "thought-old",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "text": "Ich wusste nicht, wie ich reagieren soll.",
+        "date": "2026-09-01T12:00:00.000Z",
+        "pathIds": [
+          "core-path"
+        ]
+      },
+      {
+        "id": "thought-new",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "text": "Ich darf zuhören, bevor ich eine Antwort suche.",
+        "date": "2026-10-17T15:30:11.881Z",
+        "pathIds": [
+          "core-path"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "id": "legacy-highlight",
+        "book": "JHN",
+        "chapter": 3,
+        "from": 1,
+        "to": 1,
+        "translation": "otb",
+        "at": "2026-09-01T12:00:00.000Z",
+        "snippet": "Es war aber ein Mensch unter den Pharisäern, Nikodemus mit Namen, ein Oberster der Juden."
+      }
+    ],
+    "reflections": [],
+    "quiz": {
+      "1": {
+        "done": "2026-09-01"
+      },
+      "10070": {
+        "legacy": "keep",
+        "done": "2026-10-17T15:30:18.502Z"
+      }
+    },
+    "events": [
+      {
+        "id": "6e5c6142-0655-4358-97be-ef71d767f1c4",
+        "kind": "chapter-explored",
+        "at": "2026-10-17T15:30:22.792Z",
+        "ref": {
+          "book": "2JN",
+          "chapter": 1
+        }
+      },
+      {
+        "id": "382bae86-7363-49f5-a4b5-3f1182006c13",
+        "kind": "reading",
+        "at": "2026-10-17T15:30:22.607Z",
+        "text": "2. Johannes 1",
+        "ref": {
+          "book": "2JN",
+          "chapter": 1,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/2JN/1/otb"
+      },
+      {
+        "id": "69f00eda-85b0-401d-af88-f1b0f8e4e40f",
+        "kind": "chapter-explored",
+        "at": "2026-10-17T15:30:18.694Z",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3
+        }
+      },
+      {
+        "id": "5cf496f5-f506-4b42-a1d4-e2f215ab4728",
+        "kind": "reading",
+        "at": "2026-10-17T15:30:17.174Z",
+        "text": "Johannes 3",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/JHN/3/otb"
+      }
+    ],
+    "reading": {
+      "book": "2JN",
+      "chapter": 1,
+      "from": null,
+      "to": null,
+      "translation": "otb"
+    },
+    "reminderSnoozes": {},
+    "dismissedGaps": {},
+    "reviews": [
+      {
+        "id": "old-thought-review",
+        "date": "2026-10-17T15:30:11.881Z",
+        "text": "Heute sehe ich die Situation mit mehr Ruhe.",
+        "confirmedDevelopment": false,
+        "sourceKey": "journal:thought-old"
+      }
+    ],
+    "guidedPlans": {
+      "vertrauen": {
+        "0": true
+      }
+    },
+    "settings": {
+      "theme": "light"
+    }
+  },
+  "guidedPlans": {
+    "vertrauen": {
+      "0": true
+    }
+  }
+}

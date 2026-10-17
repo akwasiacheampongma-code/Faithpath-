@@ -26,7 +26,7 @@ for(const theme of themes)for(const[width,height]of sizes)for(const font of [100
   const row={name,route,theme,width,height,font,build:metadata.build,buildHash:metadata.build_hash};
   try{
    await page.goto(base+'/#'+route);await page.locator('#main h1').waitFor();
-   await page.waitForFunction(()=>!!navigator.serviceWorker.controller,{timeout:90000});
+   await page.waitForFunction(()=>!!navigator.serviceWorker.controller,undefined,{timeout:90000});
    if(route.startsWith('read/'))await page.locator('.verse').last().waitFor();
    await page.evaluate(()=>document.fonts.ready);if(prepare)await prepare();
    row.geometry=await page.evaluate(()=>{

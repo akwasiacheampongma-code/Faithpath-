@@ -1,0 +1,83 @@
+[
+  {
+    "name": "atomic-brand-individual-enlargement",
+    "width": 320,
+    "font": 100,
+    "inset": 0,
+    "status": "FAIL",
+    "error": "AssertionError [ERR_ASSERTION]: FaithPath must stay on one line\n\n2 !== 1\n\n    at file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:23:9\n    at async check (file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:15:215)\n    at async file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:19:1"
+  },
+  {
+    "name": "header-safe-area",
+    "width": 320,
+    "font": 200,
+    "inset": 44,
+    "status": "PASS",
+    "details": {
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 114,
+        "top": 0,
+        "right": 320,
+        "bottom": 114,
+        "left": 0
+      },
+      "children": [
+        {
+          "x": 18,
+          "y": 56.953125,
+          "width": 187.6875,
+          "height": 46.078125,
+          "top": 56.953125,
+          "right": 205.6875,
+          "bottom": 103.03125,
+          "left": 18
+        },
+        {
+          "x": 258,
+          "y": 58,
+          "width": 44,
+          "height": 44,
+          "top": 58,
+          "right": 302,
+          "bottom": 102,
+          "left": 258
+        }
+      ]
+    }
+  },
+  {
+    "name": "journal-action-first-small-screen",
+    "width": 320,
+    "font": 200,
+    "inset": 0,
+    "status": "FAIL",
+    "error": "AssertionError [ERR_ASSERTION]: The empty Journal entry action must fit above navigation at 200%\n    at file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:26:198\n    at async check (file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:15:215)\n    at async file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:26:1"
+  },
+  {
+    "name": "journal-empty-hierarchy",
+    "width": 390,
+    "font": 100,
+    "inset": 0,
+    "status": "FAIL",
+    "error": "AssertionError [ERR_ASSERTION]: Legacy depth heading must not add an empty Journal gap\n\n'20px' !== '0px'\n\n    at file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:27:226\n    at async check (file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:15:215)\n    at async file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:27:1"
+  },
+  {
+    "name": "reader-text-earlier",
+    "width": 390,
+    "font": 100,
+    "inset": 0,
+    "status": "FAIL",
+    "error": "AssertionError [ERR_ASSERTION]: Long chapter text must start within first 320 CSS pixels\n    at file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:28:128\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:502:9)\n    at async check (file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:15:215)\n    at async file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:28:1"
+  },
+  {
+    "name": "quiz-answers-earlier",
+    "width": 390,
+    "font": 100,
+    "inset": 0,
+    "status": "FAIL",
+    "error": "AssertionError [ERR_ASSERTION]: Long mobile questions need a text hierarchy below display headings\n    at file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:29:209\n    at async check (file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:15:215)\n    at async file:///workspace/Faithpath-uiux6b/tests/uiux6b-mobile1/focused.mjs:29:1"
+  }
+]

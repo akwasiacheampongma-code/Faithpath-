@@ -1,0 +1,61 @@
+{
+  "base": "http://127.0.0.1:4516",
+  "results": [
+    {
+      "name": "Create Bible note, edit via highlight, keep special characters and exact links",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancel, Close and Escape preserve note and unsaved editor draft",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete exactly note role; highlight, color, path, journal and history survive",
+      "status": "PASS"
+    },
+    {
+      "name": "Undo restores full original note, persists after reload, preserves unrelated state",
+      "status": "PASS"
+    },
+    {
+      "name": "Deleted note contexts disappear immediately, after reload and after reopening tab",
+      "status": "PASS"
+    },
+    {
+      "name": "Backup before/after deletion imports accurately without zombie active note",
+      "status": "PASS"
+    },
+    {
+      "name": "Unhighlighted verse note remains independently deletable",
+      "status": "PASS"
+    },
+    {
+      "name": "Legacy reflection-only note is editable and deletable without creating dependency",
+      "status": "PASS"
+    },
+    {
+      "name": "Empty note refused; very long note persists literally; quota failure leaves note intact",
+      "status": "PASS"
+    },
+    {
+      "name": "Same ID in different collections never removes unrelated writing draft",
+      "status": "PASS"
+    },
+    {
+      "name": "Offline cache reload keeps deleted note inactive and Undo restored note persistent",
+      "status": "PASS"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "loadErrors": [],
+  "shots": [
+    "qa-output/uiux6b-mobile1/regression/final-notes/05-note-edit.png",
+    "qa-output/uiux6b-mobile1/regression/final-notes/06-note-delete-confirmation.png",
+    "qa-output/uiux6b-mobile1/regression/final-notes/07-mark-before.png",
+    "qa-output/uiux6b-mobile1/regression/final-notes/09-reader-before.png",
+    "qa-output/uiux6b-mobile1/regression/final-notes/11-note-undo.png",
+    "qa-output/uiux6b-mobile1/regression/final-notes/08-mark-after.png",
+    "qa-output/uiux6b-mobile1/regression/final-notes/10-reader-after.png"
+  ]
+}

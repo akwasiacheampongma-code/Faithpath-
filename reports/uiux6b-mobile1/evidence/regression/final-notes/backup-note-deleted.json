@@ -1,0 +1,213 @@
+{
+  "app": "FaithPath",
+  "version": 4,
+  "schemaVersion": 5,
+  "exported": "2026-10-17T15:46:56.111Z",
+  "data": {
+    "version": 5,
+    "translation": "otb",
+    "paths": [
+      {
+        "id": "core-path",
+        "title": "In Ruhe zuhören",
+        "why": "Ich möchte Menschen aufmerksam begegnen.",
+        "category": "sonstiges",
+        "started": "2026-09-01T12:00:00.000Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "step-one",
+            "text": "Im nächsten Gespräch ausreden lassen.",
+            "done": false,
+            "createdAt": "2026-09-01T12:00:00.000Z"
+          },
+          {
+            "id": "step-two",
+            "text": "Eine Frage stellen.",
+            "done": false,
+            "createdAt": "2026-09-01T12:00:00.000Z"
+          },
+          {
+            "id": "step-done",
+            "text": "Einen Moment innehalten.",
+            "done": true,
+            "createdAt": "2026-09-01T12:00:00.000Z",
+            "completedAt": "2026-09-01T12:00:00.000Z"
+          }
+        ],
+        "links": [
+          {
+            "id": "verse-link",
+            "kind": "verse",
+            "label": "Johannes 3,1",
+            "ref": {
+              "book": "JHN",
+              "chapter": 3,
+              "from": 1,
+              "to": 1,
+              "translation": "otb"
+            },
+            "date": "2026-09-01T12:00:00.000Z"
+          },
+          {
+            "id": "entry-9649e8f7-b6c3-4505-8e0a-455c8a02ad90",
+            "kind": "reflection",
+            "journalId": "9649e8f7-b6c3-4505-8e0a-455c8a02ad90",
+            "reflectionId": "f4e6cea7-c7e1-4abd-adb9-bd6296e72bc5",
+            "ref": {
+              "book": "JHN",
+              "chapter": 3,
+              "from": 1,
+              "to": 1,
+              "translation": "otb",
+              "label": "Johannes 3,1"
+            },
+            "label": "Johannes 3,1",
+            "date": "2026-10-17T15:46:46.058Z"
+          }
+        ],
+        "reviews": [
+          {
+            "id": "path-review",
+            "text": "Heute höre ich ruhiger zu.",
+            "date": "2026-09-01T12:00:00.000Z",
+            "confirmedDevelopment": true,
+            "sourceKey": "path:core-path"
+          }
+        ],
+        "milestones": [
+          {
+            "id": "milestone-one",
+            "reviewId": "path-review",
+            "text": "Heute höre ich ruhiger zu.",
+            "date": "2026-09-01T12:00:00.000Z"
+          }
+        ]
+      }
+    ],
+    "journal": [
+      {
+        "id": "9649e8f7-b6c3-4505-8e0a-455c8a02ad90",
+        "type": "Bibel",
+        "subtype": "Reflexion",
+        "text": "Eine persönliche Notiz: Hoffnung & Vertrauen <bleiben> „ruhig“. 🌿 Bearbeitet.",
+        "date": "2026-10-17T15:46:46.058Z",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb",
+          "label": "Johannes 3,1"
+        },
+        "pathIds": [
+          "core-path"
+        ],
+        "reflectionId": "f4e6cea7-c7e1-4abd-adb9-bd6296e72bc5",
+        "storyId": null,
+        "updatedAt": "2026-10-17T15:46:46.857Z",
+        "bibleNoteDeletedAt": "2026-10-17T15:46:52.113Z"
+      },
+      {
+        "id": "thought-old",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "text": "Ich wusste nicht, wie ich reagieren soll.",
+        "date": "2026-09-01T12:00:00.000Z",
+        "pathIds": [
+          "core-path"
+        ]
+      },
+      {
+        "id": "thought-new",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "text": "Ich darf zuhören, bevor ich eine Antwort suche.",
+        "date": "2026-10-17T15:46:42.412Z",
+        "pathIds": [
+          "core-path"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "id": "legacy-highlight",
+        "book": "JHN",
+        "chapter": 3,
+        "from": 1,
+        "to": 1,
+        "translation": "otb",
+        "at": "2026-09-01T12:00:00.000Z",
+        "snippet": "Es war aber ein Mensch unter den Pharisäern, Nikodemus mit Namen, ein Oberster der Juden."
+      }
+    ],
+    "reflections": [
+      {
+        "id": "f4e6cea7-c7e1-4abd-adb9-bd6296e72bc5",
+        "text": "Eine persönliche Notiz: Hoffnung & Vertrauen <bleiben> „ruhig“. 🌿 Bearbeitet.",
+        "date": "2026-10-17T15:46:46.058Z",
+        "label": "Johannes 3,1",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb",
+          "label": "Johannes 3,1"
+        },
+        "pathIds": [
+          "core-path"
+        ],
+        "storyId": null,
+        "updatedAt": "2026-10-17T15:46:46.857Z",
+        "bibleNoteDeletedAt": "2026-10-17T15:46:52.113Z"
+      }
+    ],
+    "quiz": {},
+    "events": [
+      {
+        "id": "2ddd4de6-21a6-4847-b618-b023152fb823",
+        "kind": "reading",
+        "at": "2026-10-17T15:46:45.198Z",
+        "text": "Johannes 3",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/JHN/3/otb"
+      }
+    ],
+    "reading": {
+      "book": "JHN",
+      "chapter": 3,
+      "from": null,
+      "to": null,
+      "translation": "otb"
+    },
+    "reminderSnoozes": {},
+    "dismissedGaps": {},
+    "reviews": [
+      {
+        "id": "old-thought-review",
+        "date": "2026-10-17T15:46:42.412Z",
+        "text": "Heute sehe ich die Situation mit mehr Ruhe.",
+        "confirmedDevelopment": false,
+        "sourceKey": "journal:thought-old"
+      }
+    ],
+    "guidedPlans": {
+      "vertrauen": {
+        "0": true
+      }
+    },
+    "settings": {}
+  },
+  "guidedPlans": {
+    "vertrauen": {
+      "0": true
+    }
+  }
+}

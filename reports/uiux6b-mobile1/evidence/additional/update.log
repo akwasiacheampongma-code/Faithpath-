@@ -1,0 +1,11 @@
+PASS FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE baseline installed with 260 existing chapter completion keys, story progress, V3 migration and pending draft
+PASS FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE → FP4-20261017-G-STABLE1-UIUX6B-MOBILE2 waits for explicit activation; all personal storage bytes, all 2314 Nachlese entries and all 1300 NT questions verified
+PASS All unchanged MC data and a real correct answer work offline after an actual service-worker update
+PASS New Phase3 path, original step and early-stage tree access work offline with versioned CSS; modular Today view and versioned stylesheet work offline with the same path and draft after update
+PASS Both unchanged John10 Bible segmentations work offline and the old Luther verse11 highlight remains attached
+PASS Offline reload, resume and save preserve highlight/quiz data and consume only the owned draft
+PASS Final Revelation chapter works offline after reload; all prior chapter/story completion keys and metadata retained
+PASS Optional story reflection, exact Ephesians quotation, central sword and versioned Phase2 stylesheet function offline after FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE → FP4-20261017-G-STABLE1-UIUX6B-MOBILE2 update
+PASS UIUX5 journal search, private JSON inspection and versioned CSS function offline without changing any stored data
+PASS UIUX5 reminder controls, offline reload and open journal draft survive after the real FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE → FP4-20261017-G-STABLE1-UIUX6B-MOBILE2 update
+PASS All three licensed local fonts served by the actual worker while offline

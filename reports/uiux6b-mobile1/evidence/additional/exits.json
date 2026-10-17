@@ -1,0 +1,172 @@
+[
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exit": 0,
+    "seconds": 71.20312905311584,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "nt-source",
+    "command": [
+      "npm",
+      "run",
+      "validate:nt-quiz"
+    ],
+    "exit": 0,
+    "seconds": 4.1966893672943115,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "nachlese-source",
+    "command": [
+      "npm",
+      "run",
+      "validate:nachlese-editorial"
+    ],
+    "exit": 0,
+    "seconds": 3.170349359512329,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "backup-lifecycle",
+    "command": [
+      "node",
+      "tests/uiux6b/backup-lifecycle.mjs"
+    ],
+    "exit": 0,
+    "seconds": 6.186907768249512,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "focus",
+    "command": [
+      "node",
+      "tests/uiux6b/focus.mjs"
+    ],
+    "exit": 0,
+    "seconds": 7.393203020095825,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "reader-smoke",
+    "command": [
+      "node",
+      "tests/uiux6b/reader-smoke.mjs"
+    ],
+    "exit": 0,
+    "seconds": 28.415300607681274,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "editorial",
+    "command": [
+      "node",
+      "tests/uiux6b/editorial.mjs"
+    ],
+    "exit": 0,
+    "seconds": 13.988890647888184,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "reading-focus",
+    "command": [
+      "node",
+      "tests/uiux6b/reading-focus.mjs"
+    ],
+    "exit": 0,
+    "seconds": 10.903254747390747,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "fullscreen",
+    "command": [
+      "node",
+      "tests/uiux6b/fullscreen.mjs"
+    ],
+    "exit": 0,
+    "seconds": 35.39017128944397,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "contrast",
+    "command": [
+      "node",
+      "tests/uiux6b/contrast.mjs"
+    ],
+    "exit": 0,
+    "seconds": 33.55962896347046,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "editorial-browser",
+    "command": [
+      "node",
+      "tests/nachlese-editorial-browser.mjs"
+    ],
+    "exit": 0,
+    "seconds": 203.5567605495453,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "states",
+    "command": [
+      "node",
+      "tests/uiux6b/states-capture.mjs"
+    ],
+    "exit": 0,
+    "seconds": 179.48718118667603,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "focused",
+    "command": [
+      "node",
+      "tests/uiux6b-mobile1/focused.mjs"
+    ],
+    "exit": 0,
+    "seconds": 44.5924072265625,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  },
+  {
+    "name": "update",
+    "command": [
+      "node",
+      "tests/uiux6b-mobile1/update.mjs"
+    ],
+    "exit": 0,
+    "seconds": 54.05293893814087,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+    "buildHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+    "sourceCommit": "637af1190912fed4b8d06c854d399b4077667514"
+  }
+]

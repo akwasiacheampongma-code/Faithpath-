@@ -1,0 +1,11 @@
+PASS Create Bible note, edit via highlight, keep special characters and exact links
+PASS Cancel, Close and Escape preserve note and unsaved editor draft
+PASS Delete exactly note role; highlight, color, path, journal and history survive
+PASS Undo restores full original note, persists after reload, preserves unrelated state
+PASS Deleted note contexts disappear immediately, after reload and after reopening tab
+PASS Backup before/after deletion imports accurately without zombie active note
+PASS Unhighlighted verse note remains independently deletable
+PASS Legacy reflection-only note is editable and deletable without creating dependency
+PASS Empty note refused; very long note persists literally; quota failure leaves note intact
+PASS Same ID in different collections never removes unrelated writing draft
+PASS Offline cache reload keeps deleted note inactive and Undo restored note persistent

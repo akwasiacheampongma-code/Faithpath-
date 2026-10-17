@@ -32,7 +32,7 @@
 - [x] Verify clean linked worktree, HEAD 49ec83c and frozen build 911c3f4a…; run baseline `npm test`.
 - [x] Capture real new pre-change Journal/reader/quiz PNGs and CSS geometry in `qa-output/uiux6b-mobile1/diagnosis`.
 - [x] Probe live URL: network CONNECT 403. No live-source equivalence or Safari-specific cause claimed.
-- [ ] Record cascade findings and distinguish confirmed effects from device hypotheses.
+- [x] Record cascade findings and distinguish confirmed effects from device hypotheses.
 
 ### Task 2: Targeted presentation fixes
 
@@ -40,28 +40,28 @@
 
 **Interfaces:** Existing DOM actions, routes, form names and models unchanged. New `.brand-name` is presentation only.
 
-- [ ] Write/run `tests/uiux6b-mobile1/focused.mjs` against port4510: RED geometry assertions for header enlargement/safe inset, first Journal action, reader text and quiz answer placement.
-- [ ] Implement atomic brand and wrapping height-adaptive header, compact Journal hierarchy and single empty note, remove inherited Journal padding, reduce redundant reader/quiz heading space only on mobile.
-- [ ] Run focused browser checks against a new unique MOBILE1 build, then `npm test` and existing editor/reader/backup checks.
-- [ ] Commit with `[skip netlify] [skip ci]`.
+- [x] Write/run `tests/uiux6b-mobile1/focused.mjs` against port4510: RED geometry assertions for header enlargement/safe inset, first Journal action, reader text and quiz answer placement.
+- [x] Implement atomic brand and wrapping height-adaptive header, compact Journal hierarchy and single empty note, remove inherited Journal padding, reduce redundant reader/quiz heading space only on mobile.
+- [x] Run focused browser checks against a new unique MOBILE1 build, then `npm test` and existing editor/reader/backup checks.
+- [x] Commit with `[skip netlify] [skip ci]`.
 
 ### Task 3: Complete mobile and functional regression
 
 **Files:** `tests/uiux6b-mobile1/{matrix,update}.mjs`; reuse existing Phase1–6B suites with independent output directories.
 
-- [ ] All requested route families × four themes × four viewports × 100/150/200% text; check DOM overflow, visible fonts/images, navigation bounds, capture genuine PNGs.
-- [ ] Stress empty Journal, long chapters in both translations, long questions, many paths, very long entries, empty search, writer, keyboard and reduced motion; axe plus computed contrast.
-- [ ] Rerun original unit/content/data/browser/offline regressions and actual isolated HTTPS worker update from the frozen UIUX6B build to MOBILE1; preserve personal storage bytes and pending drafts.
-- [ ] Inspect contact sheets and individual PNGs, correct only reproduced failures, repeat affected checks.
+- [x] All requested route families × four themes × four viewports × 100/150/200% text; check DOM overflow, visible fonts/images, navigation bounds, capture genuine PNGs.
+- [x] Stress empty Journal, long chapters in both translations, long questions, many paths, very long entries, empty search, writer, keyboard and reduced motion; axe plus computed contrast.
+- [x] Rerun original unit/content/data/browser/offline regressions and actual isolated HTTPS worker update from the frozen UIUX6B build to final MOBILE2; preserve personal storage bytes and pending drafts.
+- [x] Inspect contact sheets and individual PNGs, correct only reproduced failures, repeat affected checks.
 
 ### Task 4: Evidence and delivery
 
 **Files:** `reports/uiux6b-mobile1/`, independent build and QA ZIPs in `/workspace/shared/downloads/`.
 
-- [ ] Verify all protected content/storage modules unchanged; build twice from exact committed source and compare bytes.
-- [ ] Document confirmed causes, code locations, limitations, tests, before/after screenshots and physical iPhone checklist.
-- [ ] Package deterministic ZIP, verify SHA-256 and extraction; no deployment.
-- [ ] Final whole-change independent review, then delivery evidence commit only.
+- [x] Verify all protected content/storage modules unchanged; build twice from exact committed source and compare bytes.
+- [x] Document confirmed causes, code locations, limitations, tests, before/after screenshots and physical iPhone checklist.
+- [x] Package deterministic ZIP, verify SHA-256 and extraction; no deployment.
+- [x] Final whole-change independent review; app source unchanged after the reviewed637af11. Delivery evidence commit follows.
 
 ## Execution ledger
 
@@ -72,3 +72,10 @@
 - Task2: five original RED cases plus existing Safe-Area control became6 GREEN in654a63f.191 unit tests passed; protected175 files unchanged.
 - Ruling: visual inspection of the first full matrix exposed additional mid-word Settings/Journey titles at320/200% and the opening reading line below navigation. Overflow-only assertions missed these. Stop that internal MOBILE1 trial, preserve its receipts under `qa-output/uiux6b-mobile1/trial1`, add3 RED tests, use the shared mobile page-title token (1.75rem;1.5rem below351px), preserve the Journal/Today editorial hierarchy and all40px reading text at200%. Cost: repeat the complete final regression, rather than using trial PASS records as final evidence.
 - Final candidate receives unique build-ID `FP4-20261017-G-STABLE1-UIUX6B-MOBILE2`; MOBILE1 was never published.
+
+- Final evidence: 1,104 matrix cases, 56 immutable before captures, 84 secondary states and 9 focused checks passed for MOBILE2/d1fd4804. All 14 supplementary programmes including 191 unit tests and the actual same-origin HTTPS update (11 checks) passed. Original 41-programme regression remains in progress until its complete exit manifest is available.
+- Independent review: 21 final captures, no blocking/important product findings. Corrected the matrix driver's optional wait timeout argument without changing its assertions; the full matrix had already passed the stricter default limit.
+
+- Final functional manifest complete: all 41 original browser programmes and all 14 supplementary programmes exit0, bound to source637af11/buildd1fd4804. No final retry or weakened business assertions were necessary.
+
+- Delivery verification: preview366 files and full screenshot ZIP1303 files match every extracted source byte. QA archive built twice identically. Raw evidence logs retain their captured trailing spaces; code/tests/docs formatting checks pass. Device gate and live-source equivalence remain OFFEN; no publication.

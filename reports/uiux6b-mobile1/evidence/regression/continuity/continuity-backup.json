@@ -1,0 +1,195 @@
+{
+  "app": "FaithPath",
+  "version": 4,
+  "schemaVersion": 5,
+  "exported": "2026-10-17T15:34:10.192Z",
+  "data": {
+    "version": 5,
+    "translation": "otb",
+    "paths": [
+      {
+        "id": "core-path",
+        "title": "In Ruhe zuhören",
+        "why": "Ich möchte Menschen aufmerksam begegnen.",
+        "category": "sonstiges",
+        "started": "2026-09-01T12:00:00.000Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "step-one",
+            "text": "Im nächsten Gespräch ausreden lassen.",
+            "done": false,
+            "createdAt": "2026-09-01T12:00:00.000Z"
+          },
+          {
+            "id": "step-two",
+            "text": "Eine Frage stellen.",
+            "done": false,
+            "createdAt": "2026-09-01T12:00:00.000Z"
+          },
+          {
+            "id": "step-done",
+            "text": "Einen Moment innehalten.",
+            "done": true,
+            "createdAt": "2026-09-01T12:00:00.000Z",
+            "completedAt": "2026-09-01T12:00:00.000Z"
+          }
+        ],
+        "links": [
+          {
+            "id": "verse-link",
+            "kind": "verse",
+            "label": "Johannes 3,1",
+            "ref": {
+              "book": "JHN",
+              "chapter": 3,
+              "from": 1,
+              "to": 1,
+              "translation": "otb"
+            },
+            "date": "2026-09-01T12:00:00.000Z"
+          },
+          {
+            "id": "entry-8f898a96-2145-4f1f-9966-21ab53bd7e2d",
+            "kind": "reflection",
+            "journalId": "8f898a96-2145-4f1f-9966-21ab53bd7e2d",
+            "reflectionId": "590957fa-168e-4bca-9955-c5ed71086f0c",
+            "ref": null,
+            "label": "Reflexion",
+            "date": "2026-10-17T15:34:09.599Z"
+          }
+        ],
+        "reviews": [
+          {
+            "id": "path-review",
+            "text": "Heute höre ich ruhiger zu.",
+            "date": "2026-10-17T15:33:54.467Z",
+            "confirmedDevelopment": true,
+            "sourceKey": "path:core-path"
+          }
+        ],
+        "milestones": [
+          {
+            "id": "milestone-one",
+            "reviewId": "path-review",
+            "text": "Heute höre ich ruhiger zu.",
+            "date": "2026-09-01T12:00:00.000Z"
+          }
+        ]
+      }
+    ],
+    "journal": [
+      {
+        "id": "8f898a96-2145-4f1f-9966-21ab53bd7e2d",
+        "type": "Journal",
+        "subtype": "Reflexion",
+        "text": "Heute höre ich bewusst zu.",
+        "date": "2026-10-17T15:34:09.599Z",
+        "ref": null,
+        "pathIds": [
+          "core-path"
+        ],
+        "reflectionId": "590957fa-168e-4bca-9955-c5ed71086f0c",
+        "storyId": null
+      },
+      {
+        "id": "thought-old",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "text": "Ich wusste nicht, wie ich reagieren soll.",
+        "date": "2026-09-01T12:00:00.000Z",
+        "pathIds": [
+          "core-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "thought-new",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "text": "Ich darf zuhören, bevor ich eine Antwort suche.",
+        "date": "2026-10-17T15:33:54.467Z",
+        "pathIds": [
+          "core-path"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "id": "legacy-highlight",
+        "book": "JHN",
+        "chapter": 3,
+        "from": 1,
+        "to": 1,
+        "translation": "otb",
+        "at": "2026-09-01T12:00:00.000Z",
+        "snippet": "Es war aber ein Mensch unter den Pharisäern, Nikodemus mit Namen, ein Oberster der Juden."
+      }
+    ],
+    "reflections": [
+      {
+        "id": "590957fa-168e-4bca-9955-c5ed71086f0c",
+        "text": "Heute höre ich bewusst zu.",
+        "date": "2026-10-17T15:34:09.599Z",
+        "label": "Reflexion",
+        "ref": null,
+        "pathIds": [
+          "core-path"
+        ],
+        "storyId": null
+      }
+    ],
+    "quiz": {},
+    "events": [
+      {
+        "id": "104cd40f-6c84-4834-84f6-8415cd1256f8",
+        "kind": "reading",
+        "at": "2026-10-17T15:33:59.582Z",
+        "text": "Johannes 3",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/JHN/3/otb"
+      }
+    ],
+    "reading": {
+      "book": "JHN",
+      "chapter": 3,
+      "from": null,
+      "to": null,
+      "translation": "otb"
+    },
+    "reminderSnoozes": {},
+    "dismissedGaps": {},
+    "reviews": [
+      {
+        "id": "old-thought-review",
+        "date": "2026-10-17T15:33:54.467Z",
+        "text": "Heute sehe ich die Situation mit mehr Ruhe.",
+        "confirmedDevelopment": false,
+        "sourceKey": "journal:thought-old"
+      }
+    ],
+    "guidedPlans": {
+      "vertrauen": {
+        "0": true
+      }
+    },
+    "settings": {}
+  },
+  "guidedPlans": {
+    "vertrauen": {
+      "0": true
+    }
+  }
+}

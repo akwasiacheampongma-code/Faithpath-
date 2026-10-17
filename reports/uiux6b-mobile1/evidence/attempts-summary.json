@@ -1,0 +1,23 @@
+{
+  "finalSource": "637af1190912fed4b8d06c854d399b4077667514",
+  "finalBuild": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+  "excludedAttempts": [
+    {
+      "path": "rejected-matrix-sw-blocked",
+      "reason": "Browser test blocked the service worker, causing a genuine synthetic offline warning. Images rejected and recaptured with the actual worker."
+    },
+    {
+      "path": "rejected-before-sw-blocked",
+      "reason": "Same test setup problem; final 56 before captures use the actual worker."
+    },
+    {
+      "path": "trial1",
+      "reason": "Internal MOBILE1 visual inspection exposed additional title word-breaking and opening-reader-line defects. Partial runs stopped and not counted as final; complete regression restarted against MOBILE2."
+    },
+    {
+      "path": "review except worker-* and focus-compare.json",
+      "reason": "Transient/offline-warning screenshots rejected; accepted worker-ready captures plus 21 independent final images delivered."
+    }
+  ],
+  "noProductionAttempt": true
+}
