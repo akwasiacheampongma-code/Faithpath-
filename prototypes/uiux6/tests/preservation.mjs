@@ -1,0 +1,5 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';
+const base='0ec849255fe3f06d80da77ab89d5b66f92f47560';
+const diff=execFileSync('git',['diff','--name-only',base,'--','.',':!prototypes/uiux6'],{encoding:'utf8'});assert.equal(diff.trim(),'');
+const a=JSON.parse(fs.readFileSync('qa-output/uiux6/baseline/release-integrity.json')),b=JSON.parse(fs.readFileSync('qa-output/uiux6/rebuild/release-integrity.json'));assert.equal(a.build_hash,b.build_hash);assert.deepEqual(a.files,b.files);assert.equal(a.build_hash,'bd6866522aec7b35854bc7c7871d8ce9afb2f1eb4013fd74496423f63753b882');
+const result={status:'PASS',protectedBase:base,changedFilesOutsidePrototype:[],productionFilesInEachBuild:Object.keys(a.files).length,identicalBuilds:true,productionBuild:a.build,contentHash:a.content_hash,buildHash:a.build_hash,method:'Two builds, identical fixed original branch metadata, complete release file hash map equality. No original production/runtime/content/store files changed.'};fs.writeFileSync('prototypes/uiux6/qa/preservation.json',JSON.stringify(result,null,2));console.log(result);

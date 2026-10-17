@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FaithPath · Drei mögliche Zukünfte</title>
+    <link rel="stylesheet" href="gallery.css" />
+    <script defer src="gallery.js"></script>
+  </head>
+  <body>
+    <header class="gallery-header">
+      <a class="brand" href="index.html"
+        >FaithPath<span> / Designstudie 6A</span></a
+      ><span class="badge">LOKAL · KEINE VERÖFFENTLICHUNG</span>
+    </header>
+    <main>
+      <section class="intro">
+        <p class="kicker">Ein Glaube. Deine Geschichte. Drei Perspektiven.</p>
+        <h1>Wie fühlt sich<br />Begleitung an?</h1>
+        <p>
+          Drei eigenständige Produktideen für FaithPath. Keine Farbvarianten.
+          Öffne eine Richtung, lies einen Bibeltext und halte einen eigenen
+          Beispielgedanken fest.
+        </p>
+        <div class="disclaimer">
+          Alle persönlichen Inhalte sind synthetisch. Demoeingaben bleiben nur
+          bis zum Neuladen. Die bestehende App und ihre Daten werden nicht
+          verändert.
+        </div>
+      </section>
+      <section class="directions" aria-label="Designrichtungen">
+        <button data-direction="A" aria-pressed="true">
+          <span class="letter">A</span
+          ><span
+            ><strong>Lebensbaum</strong
+            ><small
+              >Ein persönlicher Begleiter.<br />Bildhaft. Warm.
+              Zugewandt.</small
+            ></span
+          ></button
+        ><button data-direction="B" aria-pressed="false">
+          <span class="letter">B</span
+          ><span
+            ><strong>Wort & Stille</strong
+            ><small
+              >Ein konzentrierter Leseraum.<br />Präzise. Ruhig.
+              Wesentlich.</small
+            ></span
+          ></button
+        ><button data-direction="C" aria-pressed="false">
+          <span class="letter">C</span
+          ><span
+            ><strong>Lebensseiten</strong
+            ><small
+              >Eine persönliche Chronik.<br />Klar. Editorial.
+              Eigenständig.</small
+            ></span
+          >
+        </button>
+      </section>
+      <section class="workbench" aria-label="Interaktiver Designvergleich">
+        <div class="controls">
+          <label
+            >Ansicht<select id="screen">
+              <option value="today">Heute</option>
+              <option value="bible">Bibel</option>
+              <option value="path">Mein Weg</option>
+              <option value="journal">Journal</option>
+              <option value="discover">Entdecken</option>
+            </select></label
+          ><label
+            >Darstellung<select id="theme">
+              <option value="default">Charakter der Richtung</option>
+              <option value="light">Hell</option>
+              <option value="atmospheric">Atmosphärisch</option>
+              <option value="paper">Papier</option>
+              <option value="night">Nacht</option>
+            </select></label
+          ><label
+            >Bildschirm<select id="size">
+              <option value="390">390 × 844</option>
+              <option value="320">320 × 568</option>
+              <option value="430">430 × 932</option>
+              <option value="760">Desktop-Inhalt</option>
+            </select></label
+          ><label class="compare-label"
+            ><input type="checkbox" id="compare" /> Alle drei vergleichen</label
+          ><a
+            id="open"
+            class="open-link"
+            href="view.html"
+            target="_blank"
+            rel="noopener"
+            >Ohne Rahmen öffnen ↗</a
+          >
+        </div>
+        <div id="frames"></div>
+      </section>
+      <section class="try">
+        <h2>Nicht nur ansehen. Ausprobieren.</h2>
+        <ol>
+          <li>
+            Heute → nächsten Schritt ansehen → als getan festhalten. Der Baum
+            wächst dadurch nicht automatisch.
+          </li>
+          <li>
+            Bibel → Vers antippen → markieren → Notiz schreiben → im Journal
+            wiederfinden.
+          </li>
+          <li>Mein Weg → „Damals und heute“ → Originalgedanken vergleichen.</li>
+          <li>
+            Entdecken → „Fragen erleben“ → richtige oder falsche Antwort →
+            Erklärung → freiwillige Reflexion.
+          </li>
+          <li>
+            Darstellung wechseln. Kleine Breite wählen. Im Prototyp alle sieben
+            Baumgrafiken ansehen.
+          </li>
+        </ol>
+        <p>
+          Die Prototypen zeigen eine bewusst begrenzte, bedienbare Strecke.
+          Vollständige Inhalte, Export, Wiederherstellung und PWA-Verhalten
+          bleiben in der bestehenden App unverändert.
+        </p>
+      </section>
+      <section class="documents">
+        <h2>Entscheidung mit Substanz.</h2>
+        <a href="comparison.html">Echte Browseraufnahmen ansehen ↗</a
+        ><a href="docs/VERGLEICH_UND_EMPFEHLUNG.md"
+          >Designvergleich und Empfehlung ↗</a
+        ><a href="docs/DESIGNSYSTEM.md">Designsystem und Lizenzen ↗</a
+        ><a href="docs/INTEGRATION_6B.md">Integrationsplan und Aufwand ↗</a
+        ><a href="docs/QA_BERICHT.md">QA und offene Geräteabnahme ↗</a
+        ><a href="docs/AUDIT.md"
+          >Unabhängiger Audit der Ausgangsoberfläche ↗</a
+        >
+      </section>
+    </main>
+    <footer>Phase 6A endet hier. Keine Integration ohne deine Auswahl.</footer>
+  </body>
+</html>
