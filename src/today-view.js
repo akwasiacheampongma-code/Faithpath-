@@ -30,17 +30,7 @@ export function renderToday(model,ui){
    ${button('Entwurf fortsetzen','resume',{},'text-button')}
   </aside>`:'';
 
- const tree=`
-  <section class="olive-hero today-tree" aria-labelledby="today-tree-title">
-   <div class="olive-hero-copy">
-    <span class="overline">Deine Entwicklung</span>
-    <h2 id="today-tree-title">${e(stageNames[level])}</h2>
-    <p>Aus dem, was du selbst festgehalten hast.</p>
-   </div>
-   <div class="olive-tree-visual">
-    <img src="trees/tree-stage-${level+1}.webp" alt="Olivenbaum – ${e(stageNames[level])}" width="1086" height="1448">
-   </div>
-  </section>`;
+ const tree=`<a class="olive-hero today-tree" href="#tree" aria-label="Deinen Olivenbaum ansehen: ${e(stageNames[level])}"><img src="trees/tree-stage-${level+1}.webp" alt="Olivenbaum – ${e(stageNames[level])}" width="1086" height="1448"><small>${e(stageNames[level])}</small></a>`;
 
  const continuity=reading||lastThought?`
   <section class="personal-recent today-continuity" aria-label="Zu deiner Geschichte zurückkehren">
@@ -95,13 +85,9 @@ export function renderToday(model,ui){
 
  // DOM order is also visual, keyboard and screenreader order.
  return `
-  <header class="today-header">
-   <span class="overline">${returning?'Schön, dass du da bist':'Ein Moment für dich'}</span>
-   <h1 tabindex="-1">Was bewegt dich gerade?</h1>
-  </header>
-  ${returning?path:entry(true)}
   ${draft}
-  ${tree}
+  <header class="today-header"><div><span class="overline">Deine persönliche Glaubensgeschichte</span><h1 tabindex="-1">Glaube lebt<br>im Alltag.</h1><p>Ein Wort. Ein Gedanke.<br>Ein nächster Schritt.</p></div>${tree}</header>
+  ${returning?path:entry(true)}
   ${continuity}
   ${review}
   ${start}

@@ -39,7 +39,7 @@ test('Today preserves all seven existing olive stages and never treats a checked
  assert.equal(model('no-step').level,0);
 });
 test('Today provides one primary link to the current path and lists only other paths',()=>{
- const html=renderToday(model('returning'),adapter);assert.equal((html.match(/href="#path\/today-path"/g)||[]).length,1);assert(html.indexOf('personal-path')<html.indexOf('olive-hero'));
+ const html=renderToday(model('returning'),adapter);assert.equal((html.match(/href="#path\/today-path"/g)||[]).length,1);assert(html.indexOf('personal-path')<html.indexOf('today-continuity'));
  const many=model('many-paths');assert.equal(many.otherPaths.length,2);assert.equal(many.activeCount,8);
 });
 test('Today escapes personal prose and retains complete long texts without creating executable markup',()=>{
@@ -48,11 +48,11 @@ test('Today escapes personal prose and retains complete long texts without creat
 });
 test('An unsaved first draft does not move the two new-user entry routes below secondary sections',()=>{
  const m=model('draft-only');assert.equal(m.returning,false);assert(m.hasDraft);
- const html=renderToday(m,adapter);assert(html.indexOf('today-entry-actions')<html.indexOf('olive-hero'));
+ const html=renderToday(m,adapter);assert(html.indexOf('today-entry-actions')<html.indexOf('today-start-path'));
 });
 test('Archived-only entry names the existing overview honestly instead of promising an already-open archive filter',()=>{
  const html=renderToday(model('archived'),adapter);assert(html.includes('Wege und Archiv öffnen'));assert(html.includes('href="#paths"'));assert(!html.includes('Archivierte Wege ansehen'));
 });
 test('Today heading remains programmatically focusable for the existing route focus handoff',()=>{
- const html=renderToday(model('returning'),adapter);assert(html.includes('<h1 tabindex="-1">Was bewegt dich gerade?</h1>'));
+ const html=renderToday(model('returning'),adapter);assert(html.includes('<h1 tabindex="-1">Glaube lebt<br>im Alltag.</h1>'));
 });
