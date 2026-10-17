@@ -1,3 +1,4 @@
+// Axe audit contexts bypass CSP for its diagnostic styles; uninstrumented 6B route audit verifies the production CSP.
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -28,7 +29,7 @@ try {
   const seed=experienceFixture(count);seed.settings.theme=theme;
   if(milestones) seed.paths[0].milestones=Array.from({length:milestones},(_,i)=>({id:'qa-milestone-'+i,text:'Selbst dokumentiert',date:'2026-09-12T12:00:00Z'}));
   const expected=treeBranches(seed,treeLevel(seed));
-  const context=await browser.newContext({viewport:{width,height},serviceWorkers:'block',reducedMotion:'reduce'});
+  const context=await browser.newContext({bypassCSP:true,viewport:{width,height},serviceWorkers:'block',reducedMotion:'reduce'});
   await context.addInitScript(({seed,KEYS,text})=>{
    if(!localStorage.getItem(KEYS.main)){localStorage.setItem(KEYS.main,JSON.stringify(seed));localStorage.setItem(KEYS.onboard,'done');}
    document.addEventListener('DOMContentLoaded',()=>document.documentElement.style.fontSize=text+'%');

@@ -1,3 +1,4 @@
+// Axe audit contexts bypass CSP for its diagnostic styles; uninstrumented 6B route audit verifies the production CSP.
 import fs from 'node:fs';import assert from 'node:assert/strict';import {createRequire} from 'node:module';import {chromium} from 'playwright';
 import {KEYS} from '../src/store.js';import {BUILD} from '../src/version.js';import {phase2Fixture,flow,books,sampleStory} from './phase2-fixtures.mjs';
 const base=process.env.QA_URL||'http://127.0.0.1:4383',phase=process.env.PHASE||'C',out=process.env.QA_OUT||'qa-output/uiux-phase2/browser';fs.mkdirSync(out,{recursive:true});
@@ -10,7 +11,7 @@ async function bounds(p){assert(await p.evaluate(()=>document.documentElement.sc
 async function audit(p,name){await p.evaluate(axe);const r=await p.evaluate(()=>axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa','wcag22aa']}}));accessibility.push({name,violations:r.violations});assert.deepEqual(r.violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)})),[]);}
 try{
  for(const width of [320,390])for(const theme of ['light','atmospheric','paper','night']){
- const c=await browser.newContext({viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
+ const c=await browser.newContext({bypassCSP:true,viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
  await c.addInitScript(({KEYS,data})=>{if(!localStorage.getItem(KEYS.main)){localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');}},{KEYS,data:phase2Fixture(theme)});
  const p=await c.newPage();p.setDefaultTimeout(12000);p.on('pageerror',e=>errors.push(e.message));
  await check(`Reader navigation, voluntary offer, context and keyboard / ${width} / ${theme}`,async()=>{

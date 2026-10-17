@@ -1,9 +1,10 @@
+// Axe audit contexts bypass CSP for its diagnostic styles; uninstrumented 6B route audit verifies the production CSP.
 import fs from 'node:fs';import assert from 'node:assert/strict';import {createRequire} from 'node:module';import {chromium} from 'playwright';import {KEYS} from '../src/store.js';import {treeLevel} from '../src/domain.js';import {phase3Fixture} from './phase3-fixtures.mjs';
 const base=process.env.QA_URL||'http://127.0.0.1:4392',out=process.env.QA_OUT||'qa-output/uiux-phase3/detail';fs.mkdirSync(out,{recursive:true});const results=[],errors=[],axe=fs.readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.min.js'),'utf8'),b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
 const check=async(name,fn)=>{if(process.env.QA_CASE&&!name.includes(process.env.QA_CASE))return;try{await fn();results.push({name,status:'PASS'});}catch(e){results.push({name,status:'FAIL',error:e.stack});}console.log(results.at(-1).status,name,results.at(-1).error||'')};
 const state=p=>p.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEYS.main);
 try{for(const width of (process.env.QA_WIDTH?[Number(process.env.QA_WIDTH)]:[320,390]))for(const theme of (process.env.QA_THEME?[process.env.QA_THEME]:['light','atmospheric','paper','night'])){
- const c=await b.newContext({viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'}),p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await c.addInitScript(({KEYS,data})=>{if(!localStorage.getItem(KEYS.main))localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');},{KEYS,data:phase3Fixture('active',theme)});
+ const c=await b.newContext({bypassCSP:true,viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'}),p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await c.addInitScript(({KEYS,data})=>{if(!localStorage.getItem(KEYS.main))localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');},{KEYS,data:phase3Fixture('active',theme)});
  const route=async r=>{await p.goto(base+'/#'+r);await p.locator('#main h1').waitFor();};
  await route('path/personal-path');
  await check(`Bibel context and original return / ${theme} / ${width}`,async()=>{

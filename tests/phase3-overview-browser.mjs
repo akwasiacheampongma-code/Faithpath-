@@ -1,8 +1,9 @@
+// Axe audit contexts bypass CSP for its diagnostic styles; uninstrumented 6B route audit verifies the production CSP.
 import fs from 'node:fs';import assert from 'node:assert/strict';import {createRequire} from 'node:module';import {chromium} from 'playwright';import {KEYS} from '../src/store.js';import {phase3Fixture} from './phase3-fixtures.mjs';import {selectPathsOverview} from '../src/paths-model.js';
 const base=process.env.QA_URL||'http://127.0.0.1:4391',out=process.env.QA_OUT||'qa-output/uiux-phase3/overview';fs.mkdirSync(out,{recursive:true});const results=[],errors=[],axe=fs.readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.min.js'),'utf8');const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
 const check=async(name,fn)=>{try{await fn();results.push({name,status:'PASS'});}catch(e){results.push({name,status:'FAIL',error:e.stack});}console.log(results.at(-1).status,name)};
 try{for(const width of [320,390])for(const theme of ['light','atmospheric','paper','night']){
- const c=await b.newContext({viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'}),p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await c.addInitScript(KEYS=>localStorage.setItem(KEYS.onboard,'done'),KEYS);await p.goto(base+'/#paths');await p.locator('#main h1').waitFor();
+ const c=await b.newContext({bypassCSP:true,viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'}),p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await c.addInitScript(KEYS=>localStorage.setItem(KEYS.onboard,'done'),KEYS);await p.goto(base+'/#paths');await p.locator('#main h1').waitFor();
  for(const name of ['empty','active','five','many','archived','mixed','long'])await check(`${name} / ${theme} / ${width}`,async()=>{
   const data=phase3Fixture(name,theme);await p.evaluate(({KEYS,data})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{KEYS,data});await p.reload();await p.locator('#main h1').waitFor();
   const before=await p.evaluate(k=>localStorage.getItem(k),KEYS.main),model=selectPathsOverview(data);

@@ -145,6 +145,9 @@
   background: var(--highlight, var(--highlight-olive));
   color: #20382f;
 }
+.reader-page .verse.marked[aria-pressed="true"] {
+  border-bottom-color: #20382f !important;
+}
 .reader-page .verse.marked sup {
   color: #405041;
 }

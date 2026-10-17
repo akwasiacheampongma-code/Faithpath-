@@ -1,3 +1,4 @@
+// Axe audit contexts bypass CSP for its diagnostic styles; uninstrumented 6B route audit verifies the production CSP.
 // Real touch acceptance against the built app, using the approved normalized source.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -23,7 +24,7 @@ const axe=fs.readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.m
 const browser=await chromium.launch({executablePath:process.env.FAITHPATH_CHROMIUM||'/usr/bin/chromium',args:['--no-sandbox']});
 async function check(name,fn){try{await fn();results.push({name,status:'PASS'});}catch(e){results.push({name,status:'FAIL',error:e.stack});}}
 async function context(width=390,height=844,font=100){
-  const c=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
+  const c=await browser.newContext({bypassCSP:true,viewport:{width,height},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
   await c.addInitScript(({KEYS,seed,font})=>{
     if(!localStorage.getItem(KEYS.main)){localStorage.setItem(KEYS.main,JSON.stringify(seed));localStorage.setItem(KEYS.onboard,'done');}
     document.addEventListener('DOMContentLoaded',()=>document.documentElement.style.fontSize=font+'%');

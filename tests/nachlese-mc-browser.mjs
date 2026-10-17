@@ -45,7 +45,7 @@ try{
   await check(`Export/import keeps existing chapter/story completions ${width}`,async()=>{
    await route('more?section=data');const download=page.waitForEvent('download');await page.getByRole('button',{name:'Backup exportieren',exact:true}).click();const file=`${out}/synthetic-backup-${width}.json`;await(await download).saveAs(file);
    const exported=JSON.parse(fs.readFileSync(file));assert.deepEqual(exported.data.quiz,seed.quiz);
-   await page.locator('#import-file').setInputFiles(file);await page.locator('[data-action=review-import]').click();await page.getByRole('button',{name:'Backup wiederherstellen',exact:true}).click();await page.getByRole('heading',{name:'Daten & Backup',exact:true}).waitFor();
+   await page.locator('#import-file').setInputFiles(file);await page.locator('[data-action=review-import]').click();await page.getByRole('button',{name:'Backup wiederherstellen',exact:true}).click();await page.getByRole('heading',{name:'Gut aufgehoben.',exact:true}).waitFor();
    assert.deepEqual(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).quiz,KEYS.main),seed.quiz);
   });
   await context.close();

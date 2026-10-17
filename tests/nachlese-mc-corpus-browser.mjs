@@ -1,3 +1,4 @@
+// Axe audit contexts bypass CSP for its diagnostic styles; uninstrumented 6B route audit verifies the production CSP.
 // Acceptance against the actual build data: no response interception or editorial fixtures.
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
@@ -22,7 +23,7 @@ const check=async(name,fn)=>{try{await fn();results.push({name,status:'PASS'});}
 try{
  for(const [width,height,theme] of [[320,568,'night'],[390,844,'light']]){
   const seed=coreFixture();seed.settings.theme=theme;
-  const c=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
+  const c=await browser.newContext({bypassCSP:true,viewport:{width,height},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
   await c.addInitScript(({seed,KEYS})=>{if(!localStorage.getItem(KEYS.main)){localStorage.setItem(KEYS.main,JSON.stringify(seed));localStorage.setItem(KEYS.onboard,'done');}},{seed,KEYS});
   const p=await c.newPage();p.setDefaultTimeout(15000);p.on('pageerror',e=>errors.push(e.message));
   const route=async hash=>{await p.goto(base+'/#'+hash);await p.locator('#main h1').waitFor();};

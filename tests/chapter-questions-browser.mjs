@@ -1,3 +1,4 @@
+// Axe audit contexts bypass CSP for its diagnostic styles; uninstrumented 6B route audit verifies the production CSP.
 // UIUX5: same functional assertions; restore now has two explicit confirmation stages.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -22,7 +23,7 @@ fs.mkdirSync(out, {recursive:true});
 const b = await chromium.launch({executablePath:'/usr/bin/chromium', args:['--no-sandbox', ...(process.env.FAITHPATH_PROXY_SPKI ? ['--ignore-certificate-errors-spki-list='+process.env.FAITHPATH_PROXY_SPKI] : [])]});
 async function check(name, fn) {try {await fn();results.push({name,status:'PASS'});} catch(error) {results.push({name,status:'FAIL',error:error.stack});}}
 async function context(w=390,h=844,text=100,sw='block') {
-  const c = await b.newContext({viewport:{width:w,height:h},serviceWorkers:sw,reducedMotion:'reduce'});
+  const c = await b.newContext({bypassCSP:true,viewport:{width:w,height:h},serviceWorkers:sw,reducedMotion:'reduce'});
   await c.addInitScript(({seed,KEYS,text}) => {
     if (!localStorage.getItem(KEYS.main)) {localStorage.setItem(KEYS.main, JSON.stringify(seed));localStorage.setItem(KEYS.onboard,'done');}
     document.addEventListener('DOMContentLoaded', () => document.documentElement.style.fontSize=text+'%');
@@ -111,7 +112,7 @@ try {
       await route(p,'quiz/10259?return=read%2FREV%2F22%2Fotb');await play(p,units.at(-1));assert.equal(await p.getByRole('link',{name:'Nächstes Kapitel lesen',exact:true}).count(),0);
     });
     await check('book quiz links accessible from existing Entdecken architecture',async()=>{await route(p,'discover');await p.getByRole('link',{name:'Kapitelübungen',exact:true}).click();await p.locator('[data-chapter-book="JHN"]').waitFor();});
-    await check('backup preserves the single canonical completion and its existing metadata',async()=>{await route(p,'more?section=data');const download=p.waitForEvent('download');await p.getByRole('button',{name:'Backup exportieren',exact:true}).click();const file=path.join(out,'chapter-backup.json');await(await download).saveAs(file);const backup=JSON.parse(fs.readFileSync(file));assert(backup.data.quiz[john.id].done);assert.equal(backup.data.quiz[john.id].legacy,'retain');assert.equal(backup.data.version,5);await p.locator('#import-file').setInputFiles(file);await p.getByRole('heading',{name:'Bestand vor Wiederherstellung vergleichen',exact:true}).waitFor();await p.locator('[data-action=review-import]').click();await p.getByRole('button',{name:'Backup wiederherstellen',exact:true}).click();await p.getByRole('heading',{name:'Daten & Backup',exact:true}).waitFor();assert.deepEqual((await state(p)).quiz,backup.data.quiz);await route(p,'chapter-quizzes/JHN');assert((await p.locator('[data-chapter-unit="10070"]').innerText()).includes('angesehen'));});
+    await check('backup preserves the single canonical completion and its existing metadata',async()=>{await route(p,'more?section=data');const download=p.waitForEvent('download');await p.getByRole('button',{name:'Backup exportieren',exact:true}).click();const file=path.join(out,'chapter-backup.json');await(await download).saveAs(file);const backup=JSON.parse(fs.readFileSync(file));assert(backup.data.quiz[john.id].done);assert.equal(backup.data.quiz[john.id].legacy,'retain');assert.equal(backup.data.version,5);await p.locator('#import-file').setInputFiles(file);await p.getByRole('heading',{name:'Bestand vor Wiederherstellung vergleichen',exact:true}).waitFor();await p.locator('[data-action=review-import]').click();await p.getByRole('button',{name:'Backup wiederherstellen',exact:true}).click();await p.getByRole('heading',{name:'Gut aufgehoben.',exact:true}).waitFor();assert.deepEqual((await state(p)).quiz,backup.data.quiz);await route(p,'chapter-quizzes/JHN');assert((await p.locator('[data-chapter-unit="10070"]').innerText()).includes('angesehen'));});
     await c.close();
     for(const[w,h,text]of[[320,568,100],[390,844,100],[768,1024,100],[1440,1000,100],[320,568,200],[390,844,200]]){
       const{c,p}=await context(w,h,text);await check(`responsive ${w}x${h} @${text}% and axe`,async()=>{

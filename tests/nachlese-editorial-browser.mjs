@@ -51,7 +51,7 @@ try{
    const flow=read('data/faithpath-nachlese-story-flow.json');await route('merged-story/NS-0001');assert.equal(await p.locator('.reflection-invite h2').innerText(),flow.stories[0].reflection);
    await route('more?section=data');const download=p.waitForEvent('download');await p.getByRole('button',{name:'Backup exportieren',exact:true}).click();const file=`${out}/synthetic-backup-${width}.json`;await(await download).saveAs(file);
    const backup=read(file);assert.deepEqual(backup.data.quiz,seed.quiz);await p.locator('#import-file').setInputFiles(file);await p.locator('[data-action=review-import]').click();await p.getByRole('button',{name:'Backup wiederherstellen',exact:true}).click();
-   await p.getByRole('heading',{name:'Daten & Backup',exact:true}).waitFor();assert.deepEqual(await p.evaluate(k=>JSON.parse(localStorage.getItem(k)).quiz,KEYS.main),seed.quiz);
+   await p.getByRole('heading',{name:'Gut aufgehoben.',exact:true}).waitFor();assert.deepEqual(await p.evaluate(k=>JSON.parse(localStorage.getItem(k)).quiz,KEYS.main),seed.quiz);
   });
   await c.close();
  }

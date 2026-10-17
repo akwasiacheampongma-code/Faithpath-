@@ -1,3 +1,4 @@
+// Axe audit contexts bypass CSP for its diagnostic styles; uninstrumented 6B route audit verifies the production CSP.
 // UIUX5: same functional assertions; restore now has two explicit confirmation stages.
 // Browser acceptance tests against the production build. No application runtime dependencies.
 import fs from "node:fs";
@@ -33,7 +34,7 @@ const axeSource = fs.readFileSync(
 );
 let appState;
 async function context(seed, opts = {}) {
-  const c = await browser.newContext({
+  const c = await browser.newContext({bypassCSP:true,
     viewport: { width: 390, height: 844 },
     deviceScaleFactor: 1,
     isMobile: true,
@@ -302,7 +303,7 @@ try {
     ];
     const { c, p } = await context(d);
     try {
-      await visit(p, "today", "Was bewegt dich gerade?");
+      await visit(p, "today", "Glaube lebt im Alltag.");
       await snap(p, "returning-home-mobile");
       await p.getByRole("button", { name: "Darauf zurückblicken" }).click();
       await p.getByRole("button", { name: "In zwei Wochen erinnern" }).click();
@@ -330,7 +331,7 @@ try {
   await test("Journal: Predigtnotiz, Filter, Suche, Öffnen und chronologischer Verlauf", async () => {
     const { c, p } = await context(appState);
     try {
-      await visit(p, "journal", "Festhalten, was bleibt.");
+      await visit(p, "journal", "Was bleibt.");
       await p.getByRole("button", { name: /Neuer Eintrag|Gedanken festhalten/ }).click();
       await p
         .getByLabel("Dein Gedanke", { exact: true })
@@ -361,7 +362,7 @@ try {
   await test("Kapitelquiz: fünf Fragen → Erklärungen → Reflexion ohne Punktzahl (Story-Merge separat geprüft)", async () => {
     const { c, p } = await context(appState);
     try {
-      await visit(p, "discover", "Verstehen, was du liest.");
+      await visit(p, "discover", "Vom Leben zurück zum Wort.");
       await p.locator("#story-kind").selectOption("kapitel");
       await p.locator("#story-results a").first().click();
       await p.locator('[data-action="quiz"]').click();
@@ -457,7 +458,7 @@ try {
         .click();
       await p
         .getByRole("heading", {
-          name: "Daten & Backup",
+          name: "Gut aufgehoben.",
           exact: true,
         })
         .waitFor();

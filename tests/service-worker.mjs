@@ -246,7 +246,7 @@ try {
   await context.setOffline(true);
   await p.reload();
   await p
-    .getByRole("heading", { name: "Was bewegt dich gerade?", exact: true })
+    .getByRole("heading", { name: "Glaube lebt im Alltag.", exact: true })
     .waitFor();
   assert.equal(
     await p.evaluate((k) => localStorage.getItem(k), KEYS.main),

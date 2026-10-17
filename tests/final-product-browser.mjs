@@ -1,3 +1,4 @@
+// Axe audit contexts bypass CSP for its diagnostic styles; uninstrumented 6B route audit verifies the production CSP.
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -21,7 +22,7 @@ const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['-
 const results=[],errors=[],consoleErrors=[],loads=[],shots=[],metrics={};
 async function check(name,fn){try{await fn();results.push({name,status:'PASS'});}catch(e){results.push({name,status:'FAIL',error:e.message});}}
 async function context(data=seed,width=390,height=844,text=100,sw='block'){
- const c=await browser.newContext({viewport:{width,height},serviceWorkers:sw});
+ const c=await browser.newContext({bypassCSP:true,viewport:{width,height},serviceWorkers:sw});
  await c.addInitScript(({data,KEYS,text})=>{if(!localStorage.getItem(KEYS.main)){localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');}document.addEventListener('DOMContentLoaded',()=>document.documentElement.style.fontSize=text+'%');},{data,KEYS,text});
  const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text());});p.on('response',r=>{if(r.status()>=400)loads.push({url:r.url(),status:r.status()});});return{c,p};
 }

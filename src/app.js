@@ -861,7 +861,7 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
       ? "Gedanken bearbeiten"
       : args.ref
         ? "Was bleibt dir?"
-        : "Dein Gedanke";
+        : "Dein Journal";
     body = `${args.ref ? `<p class="meta">${e(refLabel(args.ref))}</p>` : ""}${args.question ? `<p class="writing-prompt">${e(args.question)}</p>` : ""}${textarea("Dein Gedanke", "text", values.text, "Ein Satz kann ein Anfang sein …")}${select(
       "Art des Eintrags",
       "kind",

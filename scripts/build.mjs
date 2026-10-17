@@ -23,7 +23,12 @@ fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(`${out}/${release}`,{rec
 fs.cpSync('data',`${out}/${release}/data`,{recursive:true,filter:p=>!p.startsWith('data/audit')});
 fs.writeFileSync(`${out}/${release}/data/reference-index.json`,JSON.stringify(index));
 fs.writeFileSync(`${out}/${release}/data/content-report.json`,JSON.stringify(report,null,2));
-fs.cpSync('src',`${out}/${release}/src`,{recursive:true});fs.copyFileSync('styles.css',`${out}/${release}/styles.css`);
+fs.cpSync('src',`${out}/${release}/src`,{recursive:true});
+// Flatten the presentation imports for one cache-coherent stylesheet. Keep local
+// font URLs relative to the emitted src/verbunden.css, never the document base.
+const designParts=['tokens','foundation','today','reader','personal','discover','system'];
+fs.writeFileSync(`${out}/${release}/src/verbunden.css`,designParts.map(name=>fs.readFileSync(`src/verbunden/${name}.css`,'utf8').replace(/url\(assets\//g,'url(verbunden/assets/')).join('\n'));
+fs.copyFileSync('styles.css',`${out}/${release}/styles.css`);
 for(const d of ['data/bibles','trees','icons'])fs.cpSync(d,`${out}/${d}`,{recursive:true});
 for(const f of ['manifest.webmanifest','_headers','_redirects','404.html'])fs.copyFileSync(f,`${out}/${f}`);
 fs.writeFileSync(`${out}/index.html`,fs.readFileSync('index.html','utf8').replace('./styles.css',`./${release}/styles.css`).replace('./src/app.js',`./${release}/src/app.js`).replace('./src/today.css',`./${release}/src/today.css`).replace('./src/reader-stories.css',`./${release}/src/reader-stories.css`).replace('./src/personal-journey.css',`./${release}/src/personal-journey.css`).replace('./src/navigation-discovery.css',`./${release}/src/navigation-discovery.css`).replace('./src/journal-reviews-backup.css',`./${release}/src/journal-reviews-backup.css`).replace('./src/verbunden.css',`./${release}/src/verbunden.css`));
