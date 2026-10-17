@@ -2,7 +2,7 @@
 
 **Isolierte Premium-Designstudie. Keine neue Version der eigentlichen App.**
 
-ZIP vollständig entpacken und `index.html` im obersten Paketordner öffnen. Dort führt „Premium-Galerie“ zu dieser Studie. Die unveränderte 6A-Galerie liegt als Geschwisterordner daneben. Keine Installation, Anmeldung oder Internetverbindung erforderlich. Die neuen Ansichten verwenden klassische lokale Skripte statt Fetch/ES-Module.
+ZIP vollständig entpacken und `index.html` im obersten Paketordner öffnen. Dort führt „Premium-Galerie“ zu dieser Studie. Die unveränderte 6A-Galerie liegt als Geschwisterordner daneben. Die Studie benötigt keine Anmeldung oder Cloudverbindung. Direkte Dateiöffnung ist vorbereitet, wird in der verwalteten Prüfumgebung jedoch administrativ blockiert; der unten angegebene lokale HTTP-Aufruf ist geprüft. Die neuen Ansichten verwenden klassische lokale Skripte statt Fetch/ES-Module.
 
 Alternativ vom Repository aus:
 
