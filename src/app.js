@@ -1451,8 +1451,10 @@ async function action(a, d, el) {
     return;
   }
   if (a === "clear-selection") {
+    const previousVerse=[...ui.selection].at(-1);
     ui.selection.clear();
     selectionBar();
+    $(`.verse[data-v="${previousVerse}"]`)?.focus({preventScroll:true});
     return;
   }
   if (a === "undo-core") {

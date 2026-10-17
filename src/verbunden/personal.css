@@ -493,3 +493,6 @@ dialog.writing-dialog {
     padding: 18px;
   }
 }
+/* Date remains metadata; unknown legacy dates are readable prose, never a day badge. */
+.journal-page .journal-page-entry>time[datetime]{font:430 1.55rem/1.2 var(--serif);color:var(--ink)}
+.journal-page .journal-page-entry>time:not([datetime]){position:static;width:auto;display:block;font:.75rem/1.6 var(--sans);margin-bottom:12px}
