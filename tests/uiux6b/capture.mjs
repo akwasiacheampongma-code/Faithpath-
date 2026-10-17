@@ -1,0 +1,11 @@
+import {chromium} from 'playwright';import fs from 'node:fs';
+import {KEYS} from '../../src/store.js';import {phase3Fixture} from '../phase3-fixtures.mjs';
+const phase=process.argv[2]||'after',base=process.argv[3]||'http://127.0.0.1:4453',out=process.env.QA_OUT||'qa-output/uiux6b/screenshots/'+phase;fs.mkdirSync(out,{recursive:true});
+const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const results=[];
+const routes={today:'today',bible:'bible',reader:'read/JHN/15/otb',paths:'paths',path:'path/personal-path',tree:'tree',journal:'journal',entry:'entry/thought-new',reviews:'reviews',review:'review/review-old',history:'history',journey:'bible-journey',discover:'discover',story:'merged-story/NS-0297',question:'question/N-1595',quiz:'quiz/10082',collection:'chapter-quizzes',topic:'topic/angst',guided:'plan/sorge7',more:'more',settings:'more?section=settings',backup:'more?section=data',marks:'marks',licenses:'licenses',status:'content-status',error:'unbekannt'};
+for(const[screen,route]of Object.entries(routes)){
+ const c=await b.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'}),data=phase3Fixture('development');data.reading={book:'JHN',chapter:15,translation:'otb'};
+ await c.addInitScript(({KEYS,data})=>{if(!localStorage.getItem(KEYS.main))localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');},{KEYS,data});const p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
+ try{await p.goto(base+'/#'+route);await p.locator('main h1').waitFor();if(screen==='reader')await p.locator('.verse').last().waitFor();await p.evaluate(()=>document.fonts.ready);await p.screenshot({path:out+'/'+screen+'.png'});await p.screenshot({path:out+'/'+screen+'-full.png',fullPage:true});results.push({screen,route,errors,overflow:await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth)});}catch(e){results.push({screen,route,error:String(e),errors});}finally{await c.close();}
+}
+await b.close();fs.writeFileSync(out+'/results.json',JSON.stringify(results,null,2));console.log(JSON.stringify({screens:results.length,failures:results.filter(x=>x.error||x.errors.length)},null,2));
