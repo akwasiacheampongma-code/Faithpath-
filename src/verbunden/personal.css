@@ -453,18 +453,21 @@ dialog.writing-dialog {
   line-height: 1.7;
 }
 @media (max-width: 350px) {
-  .writing-dialog {
+  dialog.writing-dialog {
     padding-inline: 18px;
   }
   #dialog.writing-dialog .dialog-top {
     gap: 8px;
+    flex-wrap: wrap;
   }
   #dialog.writing-dialog .dialog-top h2 {
     font-size: 0.9rem;
-    max-width: 90px;
+    flex-basis: 100%;
+    max-width: none;
   }
   .writing-dialog .dialog-header-actions {
     gap: 4px;
+    margin-left: auto;
   }
   .writing-dialog .dialog-header-actions .button {
     padding: 9px 10px;

@@ -42,20 +42,24 @@ for (const scenario of [
       const header = dialog.querySelector('.dialog-top');
       const save = dialog.querySelector('[type=submit]');
       const close = dialog.querySelector('.dialog-top .icon-button');
+      const title = dialog.querySelector('h2');
       const r = element => element.getBoundingClientRect().toJSON();
-      return {header: r(header), save: r(save), close: r(close), textarea: r(textarea),
+      return {header: r(header), title: r(title), save: r(save), close: r(close), textarea: r(textarea),
         lineHeight: parseFloat(getComputedStyle(textarea).lineHeight),
         usableLineSpace: innerHeight - Math.max(header.getBoundingClientRect().bottom, textarea.getBoundingClientRect().top),
         overflow: dialog.scrollWidth - dialog.clientWidth};
     });
     assert(geometry.usableLineSpace >= geometry.lineHeight, 'At least one complete writing line must remain below the header');
+    assert(geometry.title.width > 0, 'The writing title must have its own space');
+    assert(geometry.title.bottom <= geometry.save.top || geometry.title.right <= geometry.save.left, 'Save must not cover the title');
     assert(geometry.save.top >= scenario.inset, 'Save must respect the reserved safe top');
     assert(geometry.close.top >= scenario.inset, 'Close must respect the reserved safe top');
     assert(geometry.close.width >= 44 && geometry.close.height >= 44, 'Close must retain a 44px target');
     assert(geometry.overflow <= 1, 'No horizontal dialog overflow');
+    await page.screenshot({path: out + '/' + scenario.name + '-editor.png'});
     await page.locator('textarea[name=text]').fill('Synthetischer Gedanke, der im echten Formular bleibt.');
     await page.locator('.dialog-top [type=submit]').click();
-    await page.waitForFunction(KEYS => JSON.parse(localStorage.getItem(KEYS.main)).entries.some(e => e.text === 'Synthetischer Gedanke, der im echten Formular bleibt.'), KEYS);
+    await page.waitForFunction(KEYS => JSON.parse(localStorage.getItem(KEYS.main)).journal.some(e => e.text === 'Synthetischer Gedanke, der im echten Formular bleibt.'), KEYS);
     results.push({...scenario, geometry, status: 'PASS'});
   } catch (error) {
     results.push({...scenario, geometry, status: 'FAIL', error: error.stack});
