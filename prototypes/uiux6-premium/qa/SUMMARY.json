@@ -13,7 +13,7 @@
   "deployment": null,
   "physicalIphoneSafariVoiceOver": "OPEN",
   "phase6B": "NOT_AUTHORIZED",
-  "codeCommit": "5cf54d54490a4a7e681bdd3ea833b241d1c888a4",
+  "codeCommit": "4d75711eaff70b7143c0f1b5d50bcb1b438329c4",
   "artifacts": {
     "passed": 3,
     "failed": 0,
@@ -46,5 +46,9 @@
   },
   "note": "Zero automatic violations; incomplete needs manual assessment. Native file opening administratively blocked; local HTTP verified. Full matrix plus affected navigation/search reruns.",
   "navigationTests": 7,
-  "postFixDiscoveryChecks": 8
+  "postFixDiscoveryChecks": 8,
+  "implementationCommit": "5cf54d54490a4a7e681bdd3ea833b241d1c888a4",
+  "extractedPackageSmoke": "PASS",
+  "runtimeHash": "e8a3afb267fa60c348345d2aa97fd8d1941e950bcbd59efea4c8e49567a480a2",
+  "contentHash": "095bd46a6deeb109df53a89903621970b59798f4e7c50c0dabd5173d91f714e3"
 }

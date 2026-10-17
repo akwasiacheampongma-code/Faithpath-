@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "testedRuntimeHash": "e8a3afb267fa60c348345d2aa97fd8d1941e950bcbd59efea4c8e49567a480a2",
+  "checks": [
+    "Common extracted entrypoint opens gallery",
+    "Actual reader to verse5 contextual journal save",
+    "Unmodified C reference loads from sibling folder",
+    "Full report is reachable",
+    "Runtime hash matches packaged manifest",
+    "No runtime exceptions"
+  ],
+  "transport": "Local HTTP from extracted ZIP; not deployment",
+  "fileScheme": "OPEN: environment administrative block"
+}
