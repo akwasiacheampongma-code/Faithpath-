@@ -1,0 +1,120 @@
+@font-face {
+  font-family: Newsreader;
+  src: url(assets/fonts/Newsreader.ttf) format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Newsreader;
+  src: url(assets/fonts/Newsreader-Italic.ttf) format("truetype");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: DM;
+  src: url(assets/fonts/DMSans.ttf) format("truetype");
+  font-weight: 100 1000;
+  font-display: swap;
+}
+/* Semantic themes are independent of page composition. All fonts remain local. */
+:root {
+  --canvas: #f7f7f2;
+  --surface: #fffefa;
+  --ink: #20382f;
+  --muted: #56635a;
+  --faint: #e9ece3;
+  --line: #d8ded4;
+  --accent: #355e49;
+  --on-accent: #fffefa;
+  --warm: #ede6d6;
+  --warm-ink: #66543b;
+  --blue: #e4ebed;
+  --rose: #f1e5df;
+  --danger: #914c3c;
+  --focus: #28694b;
+  --highlight-sage: #dce8cb;
+  --highlight-gold: #f0e3ae;
+  --highlight-rose: #efd3c9;
+  --highlight-blue: #d8e7ed;
+  --selected: #dce9e1;
+  --shadow: 0 8px 32px #1937250b;
+  --display: Newsreader, Georgia, serif;
+  --sans: DM, system-ui, sans-serif;
+  --gutter: 24px;
+  --max-read: 650px;
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --nav-height: 74px;
+  color-scheme: light;
+}
+:root[data-theme="atmospheric"] {
+  --canvas: #142c27;
+  --surface: #1b352f;
+  --ink: #f0f0e4;
+  --muted: #b9c9bd;
+  --faint: #254139;
+  --line: #3a5148;
+  --accent: #b9d0ab;
+  --on-accent: #142c23;
+  --warm: #314439;
+  --warm-ink: #ddd1a5;
+  --blue: #253f43;
+  --rose: #453b35;
+  --danger: #f2b8a1;
+  --focus: #d4e8aa;
+  --highlight-sage: #435b36;
+  --highlight-gold: #5e532c;
+  --highlight-rose: #68463d;
+  --highlight-blue: #355665;
+  --selected: #355c4b;
+  --shadow: none;
+  color-scheme: dark;
+}
+:root[data-theme="paper"] {
+  --canvas: #f3eddf;
+  --surface: #fbf5e9;
+  --ink: #3d3b2e;
+  --muted: #645e4f;
+  --faint: #e8e2d3;
+  --line: #d5cdbb;
+  --accent: #596342;
+  --on-accent: #fff9ed;
+  --warm: #e4dac2;
+  --warm-ink: #62502e;
+  --blue: #dfe5df;
+  --rose: #ede0d6;
+  --danger: #954b37;
+  --focus: #4b623b;
+  --highlight-sage: #dce3c7;
+  --highlight-gold: #eadea4;
+  --highlight-rose: #eccfc2;
+  --highlight-blue: #d0e1e4;
+  --selected: #dce5cf;
+  color-scheme: light;
+}
+:root[data-theme="night"] {
+  --canvas: #141b23;
+  --surface: #1d2731;
+  --ink: #e9edf0;
+  --muted: #b7c1cb;
+  --faint: #29353f;
+  --line: #3b4854;
+  --accent: #bfd3d7;
+  --on-accent: #172630;
+  --warm: #303a42;
+  --warm-ink: #dbd0b5;
+  --blue: #293e50;
+  --rose: #423940;
+  --danger: #f0b4a2;
+  --focus: #d0e9ee;
+  --highlight-sage: #3e563b;
+  --highlight-gold: #65572e;
+  --highlight-rose: #63463e;
+  --highlight-blue: #355367;
+  --selected: #324f54;
+  --shadow: none;
+  color-scheme: dark;
+}

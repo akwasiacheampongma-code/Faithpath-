@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FaithPath · Verbunden – Premium Designstudie</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="gallery.css" />
+    <script defer src="gallery.js"></script>
+  </head>
+  <body>
+    <header class="atelier-header">
+      <a href="index.html" class="atelier-brand"
+        >FaithPath<span>DESIGNATELIER / 6A.2</span></a
+      >
+      <div>
+        <a href="comparison.html">Vorher & nachher</a
+        ><a href="report.html">Entscheidungen & QA</a>
+      </div>
+    </header>
+    <main class="atelier">
+      <section class="atelier-intro">
+        <p>PREMIUM-HAUPTRICHTUNG · VERBUNDEN</p>
+        <h1>Ein Begleiter.<br />Der bei dir bleibt.</h1>
+        <div>
+          <p>
+            Vom Wort zum Gedanken. Vom Gedanken zum nächsten Schritt. Eine
+            zusammenhängende Designstudie für FaithPath.
+          </p>
+          <span
+            >Interaktiver Prototyp · ausschließlich synthetische persönliche
+            Daten · keine Veröffentlichung</span
+          >
+        </div>
+      </section>
+      <section class="studio" aria-label="Interaktive Premium-Designgalerie">
+        <aside class="studio-tools">
+          <p class="tool-label">DIE ERFAHRUNG</p>
+          <div class="screen-buttons">
+            <button data-screen="today" aria-pressed="true">Heute</button
+            ><button data-screen="reader" aria-pressed="false">
+              Bibel lesen</button
+            ><button data-screen="journal" aria-pressed="false">Journal</button
+            ><button data-screen="paths" aria-pressed="false">Mein Weg</button
+            ><button data-screen="discover" aria-pressed="false">
+              Entdecken</button
+            ><button data-screen="journey" aria-pressed="false">
+              Bibelreise
+            </button>
+          </div>
+          <label
+            >Weitere Erlebnisse<select id="screen">
+              <option value="today">Heute</option>
+              <option value="reader">Bibelreader</option>
+              <option value="journal">Journalübersicht</option>
+              <option value="paths">Wegübersicht</option>
+              <option value="path">Ein persönlicher Weg</option>
+              <option value="editor">Ablenkungsfrei schreiben</option>
+              <option value="entry">Ein persönlicher Eintrag</option>
+              <option value="review">Damals und später</option>
+              <option value="tree">Olivenbaum · sieben Bilder</option>
+              <option value="archive">Archivierte Wege</option>
+              <option value="journey">Bibelreise & Schwert</option>
+              <option value="discover">Entdecken</option>
+              <option value="story">Eine Geschichte</option>
+              <option value="quiz">Verständnisfrage</option>
+              <option value="collection">Fragensammlung</option>
+              <option value="topic">Ein Lebensthema</option>
+              <option value="guided">Ein geführter Weg</option>
+              <option value="onboarding">Erster Einstieg</option>
+              <option value="settings">Mehr & Darstellung</option>
+              <option value="reminders">Freiwillige Erinnerungen</option>
+              <option value="backup">Sicherung & Wiederherstellung</option>
+              <option value="states">Laden, Fehler und Erfolg</option>
+            </select></label
+          >
+          <div class="tool-divider"></div>
+          <label
+            >Darstellung<select id="theme">
+              <option value="light">Hell</option>
+              <option value="atmospheric">Atmosphärisch</option>
+              <option value="paper">Papier</option>
+              <option value="night">Nacht</option>
+            </select></label
+          ><label
+            >Bildschirm<select id="size">
+              <option value="390">390 × 844</option>
+              <option value="320">320 × 568</option>
+              <option value="430">430 × 932</option>
+              <option value="1100">Desktop</option>
+            </select></label
+          ><label
+            >Persönlicher Beispielzustand<select id="scenario">
+              <option value="returning">Wiederkehrender Nutzer</option>
+              <option value="empty">Noch keine Einträge</option>
+              <option value="many">Viele Wege & Gedanken</option>
+              <option value="long">Sehr langer Journaleintrag</option>
+              <option value="archived">Archivierter Weg</option>
+            </select></label
+          ><label id="reading-label" hidden
+            >Bibelreise-Beispiel<select id="reading">
+              <option value="">Zwei dokumentierte Demokapitel</option>
+              <option value="0">Noch kein Kapitel</option>
+              <option value="1">Ein Kapitel</option>
+              <option value="100">100 Kapitel</option>
+              <option value="1189">Die ganze Bibel</option>
+            </select></label
+          ><label class="compare-switch"
+            ><input id="compare" type="checkbox" /> Mit Phase 6A
+            vergleichen</label
+          ><label id="reference-label" hidden
+            >Unveränderte Referenz<select id="reference">
+              <option value="A">A · Lebensbaum</option>
+              <option value="B">B · Wort & Stille</option>
+              <option value="C">C · Lebensseiten</option>
+            </select></label
+          ><a
+            id="open"
+            href="view.html"
+            target="_blank"
+            rel="noopener"
+            class="direct-open"
+            >Ohne Rahmen öffnen ↗</a
+          >
+          <p class="tool-note">
+            Eine neue Galerieauswahl startet die Demo neu. Deine Eingaben
+            bleiben nur innerhalb der geöffneten Ansicht erhalten.
+          </p>
+        </aside>
+        <div class="studio-stage">
+          <div id="frames"></div>
+          <p class="stage-caption" id="stage-caption">
+            Neue Premium-Studie · Originaltexte und synthetische persönliche
+            Geschichte.
+          </p>
+        </div>
+      </section>
+      <section class="explore-prompts">
+        <div>
+          <span>01 / LESEN</span>
+          <h2>Im Wort bleiben.</h2>
+          <p>
+            Öffne den Reader, wähle einen Vers und schreibe eine Notiz. Seine
+            ursprüngliche Referenz bleibt erhalten. Probiere auch den
+            Konzentrationsmodus.
+          </p>
+        </div>
+        <div>
+          <span>02 / FESTHALTEN</span>
+          <h2>Deine Worte zählen.</h2>
+          <p>
+            Bearbeite einen Eintrag. Vergleiche ihn mit dem ursprünglichen
+            Rückblick. Löschen und Rückgängig bewahren die richtige Geschichte.
+          </p>
+        </div>
+        <div>
+          <span>03 / WEITERGEHEN</span>
+          <h2>In deinem Tempo.</h2>
+          <p>
+            Erkunde eine Geschichte, beantworte Fragen und halte freiwillig
+            einen Gedanken fest. Ein erledigter Schritt macht den Baum nicht
+            automatisch größer.
+          </p>
+        </div>
+      </section>
+      <section class="scope-note">
+        <h2>Mehr als schöne Startseiten.</h2>
+        <p>
+          22 Bereiche, drei vollständige Geschichten, ein originales
+          Kapitelquiz, 70 vollständige Kapitel je Übersetzung,
+          Journalbearbeitung, historische Rückblicke, Archiv,
+          Erinnerungssteuerung und synthetische Backupprüfung.
+        </p>
+        <p>
+          Weitere Katalogdetails sind klar als Entwurf gekennzeichnet. Die echte
+          FaithPath-App bleibt unverändert. Keine PWA-Installation,
+          Hintergrundbenachrichtigung oder Produktionsfreigabe wird
+          vorgetäuscht.
+        </p>
+        <a href="report.html"
+          >Umfang, Grenzen und offene Geräteabnahme ansehen ↗</a
+        ><a href="../uiux6/index.html"
+          >Die drei unveränderten 6A-Varianten öffnen ↗</a
+        >
+      </section>
+    </main>
+    <footer>
+      Phase 6A.2 · Designentscheidung vor Integration. Kein automatischer
+      Deploy.
+    </footer>
+  </body>
+</html>

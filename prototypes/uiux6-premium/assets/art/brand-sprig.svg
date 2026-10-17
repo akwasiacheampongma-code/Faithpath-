@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 160" role="img" aria-labelledby="art-title art-desc">
+  <title id="art-title">Olivenzweig</title>
+  <desc id="art-desc">Ein einzelner, fein gezeichneter Olivenzweig für die Faithpath Gestaltung.</desc>
+  <metadata>Faithpath Phase 6A.2. Original vector geometry authored in the Codex session on 2026-10-17. No third-party imagery, traced artwork, external fonts, or image-model output.</metadata>
+  <defs>
+    <!-- Lanceolate olive leaves: original contours and engraved midribs. -->
+    <g id="leaf-olive">
+      <path d="M0 0C-9-10-10-27 0-44C9-32 11-12 0 0Z" fill="#526b55"/>
+      <path d="M0-3C-1-15-1-27 0-39" fill="none" stroke="#b8aa7d" stroke-width=".85" opacity=".8"/>
+    </g>
+    <g id="leaf-silver">
+      <path d="M0 0C-8-9-10-29 1-43C9-29 9-11 0 0Z" fill="#8b9b72"/>
+      <path d="M0-3 1-38" fill="none" stroke="#526b55" stroke-width=".75" opacity=".65"/>
+    </g>
+    <g id="sprig-a">
+      <path d="M0 0C-2-20 3-41-3-65" fill="none" stroke="#526b55" stroke-width="1.6" stroke-linecap="round"/>
+      <use href="#leaf-olive" transform="translate(0 -12) rotate(-58) scale(.54)"/>
+      <use href="#leaf-silver" transform="translate(0 -22) rotate(57) scale(.56)"/>
+      <use href="#leaf-silver" transform="translate(0 -35) rotate(-48) scale(.48)"/>
+      <use href="#leaf-olive" transform="translate(-1 -45) rotate(42) scale(.49)"/>
+      <use href="#leaf-olive" transform="translate(-2 -57) rotate(-11) scale(.57)"/>
+    </g>
+    <g id="sprig-b">
+      <path d="M0 0C4-23-2-46 4-71" fill="none" stroke="#526b55" stroke-width="1.7" stroke-linecap="round"/>
+      <use href="#leaf-silver" transform="translate(1 -10) rotate(-68) scale(.49)"/>
+      <use href="#leaf-olive" transform="translate(2 -18) rotate(65) scale(.57)"/>
+      <use href="#leaf-olive" transform="translate(1 -29) rotate(-49) scale(.57)"/>
+      <use href="#leaf-silver" transform="translate(1 -39) rotate(51) scale(.48)"/>
+      <use href="#leaf-silver" transform="translate(2 -49) rotate(-42) scale(.5)"/>
+      <use href="#leaf-olive" transform="translate(3 -59) rotate(38) scale(.45)"/>
+      <use href="#leaf-olive" transform="translate(4 -66) rotate(9) scale(.52)"/>
+    </g>
+    <g id="sprig-c">
+      <path d="M0 0C-6-19-5-39-12-60" fill="none" stroke="#526b55" stroke-width="1.6" stroke-linecap="round"/>
+      <use href="#leaf-olive" transform="translate(-3 -11) rotate(-69) scale(.59)"/>
+      <use href="#leaf-silver" transform="translate(-4 -22) rotate(47) scale(.48)"/>
+      <use href="#leaf-silver" transform="translate(-7 -35) rotate(-59) scale(.57)"/>
+      <use href="#leaf-olive" transform="translate(-9 -44) rotate(37) scale(.52)"/>
+      <use href="#leaf-olive" transform="translate(-11 -54) rotate(-21) scale(.59)"/>
+    </g>
+  </defs>
+  <!-- A single original branch, drawn as a quiet editorial brand mark. -->
+  <g>
+    <path d="M35 133C66 117 100 98 127 61C142 41 156 33 173 27" fill="none" stroke="#526b55" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>    <use href="#leaf-olive" transform="translate(64 117) rotate(-70) scale(.82)"/>
+    <use href="#leaf-silver" transform="translate(78 109) rotate(8) scale(.87)"/>
+    <use href="#leaf-silver" transform="translate(98 92) rotate(-76) scale(.9)"/>
+    <use href="#leaf-olive" transform="translate(112 79) rotate(4) scale(.85)"/>
+    <use href="#leaf-olive" transform="translate(132 55) rotate(-58) scale(.77)"/>
+    <use href="#leaf-silver" transform="translate(146 42) rotate(26) scale(.73)"/>
+    <use href="#leaf-olive" transform="translate(159 33) rotate(54) scale(.76)"/>
+  </g>
+</svg>
