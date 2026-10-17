@@ -533,3 +533,58 @@ dialog.writing-dialog {
 /* Date remains metadata; unknown legacy dates are readable prose, never a day badge. */
 .journal-page .journal-page-entry>time[datetime]{font:430 1.55rem/1.2 var(--serif);color:var(--ink)}
 .journal-page .journal-page-entry>time:not([datetime]){position:static;width:auto;display:block;font:.75rem/1.6 var(--sans);margin-bottom:12px}
+
+/* Tree meaning is explanatory content, not a progress challenge. */
+.tree-stage-guide {
+  margin: 28px 0 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.tree-stage-guide > h2 {
+  font: 430 clamp(1.45rem, 5vw, 2rem)/1.25 var(--serif);
+  margin: 10px 0 16px;
+}
+.tree-stage-current-meaning {
+  font: 400 1rem/1.75 var(--sans);
+  color: var(--ink);
+  max-width: 42rem;
+  margin-bottom: 12px;
+}
+.tree-stage-guide > .meta {line-height: 1.6; max-width: 42rem;}
+.tree-stage-guide details {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  overflow: hidden;
+}
+.tree-stage-guide summary {
+  cursor: pointer;
+  min-height: 48px;
+  padding: 16px 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.tree-stage-guide details[open] > summary {border-bottom: 1px solid var(--line);}
+.tree-stage-guide ol {list-style: none; padding: 4px 20px 18px; margin: 0;}
+.tree-stage-card {padding: 16px 0; border-bottom: 1px solid var(--line);}
+.tree-stage-card:last-child {border-bottom: 0;}
+.tree-stage-card[aria-current="step"] {
+  background: var(--primary-soft);
+  border-radius: 9px;
+  margin: 6px -10px;
+  padding: 16px 10px;
+}
+.tree-stage-card strong {display: block; font: 600 .95rem/1.45 var(--sans); color: var(--ink);}
+.tree-stage-card p, .tree-stage-why-body p {
+  font: 400 .87rem/1.7 var(--sans);
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+.tree-stage-why-body {padding: 0 20px 20px;}
+.tree-stage-why-body p {margin-top: 16px;}
+@media (max-width: 350px) {
+ .tree-stage-guide ol {padding-inline: 14px;}
+ .tree-stage-guide summary {padding-inline: 14px;}
+ .tree-stage-why-body {padding-inline: 14px;}
+}
