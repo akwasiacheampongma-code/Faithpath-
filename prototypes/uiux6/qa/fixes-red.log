@@ -1,0 +1,12 @@
+FAIL Personal note titles stay literal in entry dialog AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+1 !== 0
+
+FAIL Cancelled draft preserves original Bible reference across navigation AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert((await p.locator('dialog .reference').textContent()).includes('15,5'))
+
+FAIL Explicit Johannes 15 link actually opens chapter 15 AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+'3' !== '15'
+
