@@ -1,13 +1,495 @@
 /* Original records and original snapshots remain in their existing view adapters. */
-.journal-page .page-heading h1{font-size:2.7rem;margin-bottom:12px}.journal-page .page-heading{margin-bottom:24px}.journal-page .page-heading p{font-size:.88rem}
-.journal-page .journal-write{margin:0 0 24px}.journal-page .journal-write .button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:22px;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:16px;box-shadow:var(--shadow-soft)}.journal-write .button small{display:block;font:400 .67rem/1.6 var(--sans);margin:0 0 8px}.journal-write .button strong{font:450 1.5rem/1.2 var(--serif)}
-.journal-page .journal-tools{margin:0 0 18px}.journal-page .journal-tools .field{margin:0 0 4px}.journal-page .journal-tools input{border-color:var(--line);font-size:.8rem;padding:11px 14px}.journal-page .journal-tools summary{font-size:.75rem;min-height:44px;padding:10px 0}.journal-page .journal-tools details{margin:0}.journal-page .journal-tools .journal-reset[hidden]{display:none}.journal-page .journal-tools .journal-reset{font-size:.72rem}.journal-page .journal-result-count{font-size:.67rem;margin:0 0 28px}
-.journal-month>h2{font-family:var(--sans);font-size:.67rem;letter-spacing:.1em;margin:0 0 25px}.journal-page .journal-page-entry{position:relative;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;box-shadow:none;padding:2px 0 28px 49px;margin:0 0 28px;min-height:100px}.journal-page-entry>time{position:absolute;left:0;top:2px;width:35px;text-align:left;font:430 1.55rem var(--serif);color:var(--ink)}.journal-page-entry:before{content:'';position:absolute;left:34px;top:5px;bottom:28px;width:1px;background:var(--line)}.journal-page-entry>.overline{font-size:.55rem;letter-spacing:.08em;margin-bottom:8px}.journal-page .journal-page-entry h3{font:430 1.4rem/1.5 var(--serif);margin:8px 0 14px}.journal-page-entry h3 a{color:var(--ink);text-decoration:none}.journal-page .journal-context{gap:6px;line-height:1.6}.journal-context .context-label{background:var(--primary-soft);color:var(--primary);border-radius:6px;font-size:.62rem;padding:6px 9px;text-decoration:none;min-height:32px}.journal-empty-note{font:430 1.4rem/1.6 var(--serif);max-width:550px;margin-top:36px;color:var(--muted)}
-dialog.writing-dialog{position:fixed;inset:0;margin:0 auto;width:100%;max-width:790px;height:100dvh;max-height:100dvh;border:0;border-radius:0;padding:16px 24px calc(32px + env(safe-area-inset-bottom,0px));background:var(--paper);overscroll-behavior:contain}.writing-dialog #editor-form{margin:0;max-width:650px;margin-inline:auto}.writing-dialog .dialog-top{display:flex;position:sticky;top:-16px;z-index:4;background:var(--paper);padding:14px 0 16px;margin-bottom:24px;border-bottom:1px solid var(--line);align-items:center;gap:12px}.writing-dialog .dialog-top:before{display:none}.writing-dialog .dialog-top h2{font:500 1rem/1.3 var(--sans);margin:0;padding:0;max-width:170px}.writing-dialog .dialog-header-actions{display:flex;flex-direction:row;align-items:center;gap:8px}.writing-dialog .dialog-header-actions .button{width:auto;font-size:.74rem;min-height:44px;margin:0;padding:10px 13px;white-space:normal}.writing-dialog .dialog-header-actions .icon-button{min-width:44px;padding:8px}
-.writing-dialog textarea[name=text]{background:none;border:0;border-radius:0;padding:0;margin:0;font:400 1.4rem/1.75 var(--serif);color:var(--ink);min-height:45dvh;resize:vertical;width:100%}.writing-dialog .field:has(textarea[name=text])>label{font-size:.65rem;color:var(--muted);margin-bottom:18px}.writing-dialog textarea[name=text]::placeholder{font-style:italic;color:var(--muted);opacity:1}.writing-dialog .writing-prompt,.writing-dialog .previous-thought{font:400 1.15rem/1.6 var(--serif);padding:16px 0;border:0;border-bottom:1px solid var(--line)}.writing-dialog .field{margin:20px 0}.writing-dialog .field:has(select){border-top:1px solid var(--line);padding-top:18px}.writing-dialog .checkbox-row{font-size:.8rem;align-items:flex-start}.writing-dialog .note-delete-row{margin-top:28px}
-.journal-detail .entry-heading{align-items:flex-start;gap:14px;margin:20px 0 36px}.journal-detail .entry-heading h1{font-size:1.8rem;line-height:1.2}.journal-detail .entry-text{font:400 1.4rem/1.75 var(--serif);max-width:650px;margin:0 0 32px}.entry-connections{border-top:1px solid var(--line);padding-top:20px;font-size:.8rem;line-height:1.8}.entry-options summary,.path-options summary{border:0;background:none;min-height:44px;min-width:44px}.entry-context-menu,.path-context{background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-soft)}
-.paths-page .page-heading h1,.path-page .path-titlebar h1{font:430 2.5rem/1.1 var(--serif)}.paths-page .page-heading p{font-size:.9rem}.personal-tree-ribbon{display:flex;gap:22px;align-items:center;padding:18px 0 24px;text-decoration:none;border-bottom:1px solid var(--line);margin-bottom:24px}.personal-tree-ribbon img{width:75px;height:100px;object-fit:cover;border-radius:45px 45px 6px 6px}.personal-tree-ribbon>span{flex:1}.personal-tree-ribbon strong{display:block;font:430 1.4rem/1.25 var(--serif);color:var(--ink);margin-bottom:10px}.personal-tree-ribbon span span{font-size:.73rem;color:var(--primary)}
-.paths-page .path-list{gap:0}.paths-page .path-list .personal-path-card{border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}.paths-page .path-list .personal-path-card.is-current{border:1px solid var(--line);border-radius:16px;background:var(--surface);margin-bottom:18px}.paths-page .path-card-link{padding:22px 0}.paths-page .is-current .path-card-link{padding:22px}.paths-page .path-title{font:430 1.8rem/1.2 var(--serif)}.paths-page .path-card-next p{font:430 1.15rem/1.5 var(--serif)}.paths-page .path-card-context{font-size:.82rem}.paths-page .path-card-footer small{font-size:.65rem}.paths-page .path-open{font-size:.74rem}
-.path-page .path-titlebar{margin:12px 0}.path-page .path-titlebar .page-heading{margin:0}.path-page .path-purpose{padding:14px 0;border:0;border-bottom:1px solid var(--line)}.path-page .path-purpose p{font-size:.9rem;line-height:1.75;color:var(--muted)}.path-page .path-purpose summary{font-size:.75rem}.path-page .next-step{padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:none;margin-block:26px}.path-page .next-step .section-heading h2{font:600 .67rem/1.6 var(--sans);text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}.path-page .step-row span{font:430 1.3rem/1.5 var(--serif)}.path-page .step-actions button{font-size:.7rem}.path-page .path-thought blockquote{font:430 1.35rem/1.6 var(--serif)}.path-page .path-scripture blockquote{font:400 1.2rem/1.65 var(--serif)}.path-page .path-thought,.path-page .path-scripture{border:0;border-left:1px solid var(--line);border-radius:0;background:none;padding:8px 0 8px 18px}.path-page .path-main-actions{margin-bottom:30px}.path-story{border-top:1px solid var(--line);padding-top:30px}
-.review-then,.review-now,.reviews-page .continuity-before,.reviews-page .continuity-after{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--surface);margin:16px 0}.review-now,.reviews-page .continuity-after{background:var(--primary-soft)}.path-review-page .review-then h2,.path-review-page .review-now h2,.reviews-page .review-comparison h3{font:500 .73rem/1.6 var(--sans);color:var(--muted);margin-bottom:18px}.path-review-page .entry-text,.reviews-page .review-comparison blockquote{font:400 1.35rem/1.6 var(--serif)}.reviews-page .review-comparison{padding:0;border:0;background:none;box-shadow:none}.reviews-page .review-row{padding:24px 0;border-bottom:1px solid var(--line)}.reviews-page .review-row h3{font:430 1.65rem var(--serif)}.tree-personal-meaning{font-size:.9rem;line-height:1.8;color:var(--muted)}.tree-figure{background:none;border:0;box-shadow:none}.tree-source-list blockquote{font-family:var(--serif);font-size:1.2rem;line-height:1.7}
-@media(max-width:350px){.writing-dialog{padding-inline:18px}.writing-dialog .dialog-top{gap:8px}.writing-dialog .dialog-top h2{font-size:.9rem;max-width:90px}.writing-dialog .dialog-header-actions{gap:4px}.writing-dialog .dialog-header-actions .button{padding:9px 10px;font-size:.7rem}.journal-page .journal-write .button{padding:20px}.journal-write .button strong{font-size:1.35rem}.journal-page .journal-page-entry{padding-left:42px}.journal-page .journal-page-entry h3{font-size:1.25rem}.journal-page-entry:before{left:29px}.paths-page .page-heading h1,.path-page .path-titlebar h1{font-size:2.2rem}.path-page .next-step{padding:18px}.review-then,.review-now{padding:18px}}
+.journal-page .page-heading h1 {
+  font-size: 2.7rem;
+  margin-bottom: 12px;
+}
+.journal-page .page-heading {
+  margin-bottom: 24px;
+}
+.journal-page .page-heading p {
+  font-size: 0.88rem;
+}
+.journal-page .journal-write {
+  margin: 0 0 24px;
+}
+.journal-page .journal-write .button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 22px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+}
+.journal-write .button small {
+  display: block;
+  font: 400 0.67rem/1.6 var(--sans);
+  margin: 0 0 8px;
+}
+.journal-write .button strong {
+  font: 450 1.5rem/1.2 var(--serif);
+}
+.journal-page .journal-tools {
+  margin: 0 0 18px;
+}
+.journal-page .journal-tools .field {
+  margin: 0 0 4px;
+}
+.journal-page .journal-tools input {
+  border-color: var(--line);
+  font-size: 0.8rem;
+  padding: 11px 14px;
+}
+.journal-page .journal-tools summary {
+  font-size: 0.75rem;
+  min-height: 44px;
+  padding: 10px 0;
+}
+.journal-page .journal-tools details {
+  margin: 0;
+}
+.journal-page .journal-tools .journal-reset[hidden] {
+  display: none;
+}
+.journal-page .journal-tools .journal-reset {
+  font-size: 0.72rem;
+}
+.journal-page .journal-result-count {
+  font-size: 0.67rem;
+  margin: 0 0 28px;
+}
+.journal-month > h2 {
+  font-family: var(--sans);
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 25px;
+}
+.journal-page .journal-page-entry {
+  position: relative;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  padding: 2px 0 28px 49px;
+  margin: 0 0 28px;
+  min-height: 100px;
+}
+.journal-page-entry > time {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 35px;
+  text-align: left;
+  font: 430 1.55rem var(--serif);
+  color: var(--ink);
+}
+.journal-page-entry:before {
+  content: "";
+  position: absolute;
+  left: 34px;
+  top: 5px;
+  bottom: 28px;
+  width: 1px;
+  background: var(--line);
+}
+.journal-page-entry > .overline {
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.journal-page .journal-page-entry h3 {
+  font: 430 1.4rem/1.5 var(--serif);
+  margin: 8px 0 14px;
+}
+.journal-page-entry h3 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.journal-page .journal-context {
+  gap: 6px;
+  line-height: 1.6;
+}
+.journal-context .context-label {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-radius: 6px;
+  font-size: 0.62rem;
+  padding: 6px 9px;
+  text-decoration: none;
+  min-height: 32px;
+}
+.journal-empty-note {
+  font: 430 1.4rem/1.6 var(--serif);
+  max-width: 550px;
+  margin-top: 36px;
+  color: var(--muted);
+}
+dialog.writing-dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 790px;
+  height: 100dvh;
+  max-height: 100dvh;
+  border: 0;
+  border-radius: 0;
+  padding: 16px 24px calc(32px + env(safe-area-inset-bottom, 0px));
+  background: var(--paper);
+  overscroll-behavior: contain;
+}
+.writing-dialog #editor-form {
+  margin: 0;
+  max-width: 650px;
+  margin-inline: auto;
+}
+.writing-dialog .dialog-top {
+  display: flex;
+  position: sticky;
+  top: -16px;
+  z-index: 4;
+  background: var(--paper);
+  padding: 14px 0 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+  gap: 12px;
+}
+.writing-dialog .dialog-top:before {
+  display: none;
+}
+.writing-dialog .dialog-top h2 {
+  font: 500 1rem/1.3 var(--sans);
+  margin: 0;
+  padding: 0;
+  max-width: 170px;
+}
+.writing-dialog .dialog-header-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.writing-dialog .dialog-header-actions .button {
+  width: auto;
+  font-size: 0.74rem;
+  min-height: 44px;
+  margin: 0;
+  padding: 10px 13px;
+  white-space: normal;
+}
+.writing-dialog .dialog-header-actions .icon-button {
+  min-width: 44px;
+  padding: 8px;
+}
+.writing-dialog textarea[name="text"] {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font: 400 1.4rem/1.75 var(--serif);
+  color: var(--ink);
+  min-height: 45dvh;
+  resize: vertical;
+  width: 100%;
+}
+.writing-dialog .field:has(textarea[name="text"]) > label {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.writing-dialog textarea[name="text"]::placeholder {
+  font-style: italic;
+  color: var(--muted);
+  opacity: 1;
+}
+.writing-dialog .writing-prompt,
+.writing-dialog .previous-thought {
+  font: 400 1.15rem/1.6 var(--serif);
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+.writing-dialog .field {
+  margin: 20px 0;
+}
+.writing-dialog .field:has(select) {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.writing-dialog .checkbox-row {
+  font-size: 0.8rem;
+  align-items: flex-start;
+}
+.writing-dialog .note-delete-row {
+  margin-top: 28px;
+}
+.journal-detail .entry-heading {
+  align-items: flex-start;
+  gap: 14px;
+  margin: 20px 0 36px;
+}
+.journal-detail .entry-heading h1 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+.journal-detail .entry-text {
+  font: 400 1.4rem/1.75 var(--serif);
+  max-width: 650px;
+  margin: 0 0 32px;
+}
+.entry-connections {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+.entry-options summary,
+.path-options summary {
+  border: 0;
+  background: none;
+  min-height: 44px;
+  min-width: 44px;
+}
+.entry-context-menu,
+.path-context {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+}
+.paths-page .page-heading h1,
+.path-page .path-titlebar h1 {
+  font: 430 2.5rem/1.1 var(--serif);
+}
+.paths-page .page-heading p {
+  font-size: 0.9rem;
+}
+.personal-tree-ribbon {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  padding: 18px 0 24px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.personal-tree-ribbon img {
+  width: 75px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 45px 45px 6px 6px;
+}
+.personal-tree-ribbon > span {
+  flex: 1;
+}
+.personal-tree-ribbon strong {
+  display: block;
+  font: 430 1.4rem/1.25 var(--serif);
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.personal-tree-ribbon span span {
+  font-size: 0.73rem;
+  color: var(--primary);
+}
+.paths-page .path-list {
+  gap: 0;
+}
+.paths-page .path-list .personal-path-card {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+}
+.paths-page .path-list .personal-path-card.is-current {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  margin-bottom: 18px;
+}
+.paths-page .path-card-link {
+  padding: 22px 0;
+}
+.paths-page .is-current .path-card-link {
+  padding: 22px;
+}
+.paths-page .path-title {
+  font: 430 1.8rem/1.2 var(--serif);
+}
+.paths-page .path-card-next p {
+  font: 430 1.15rem/1.5 var(--serif);
+}
+.paths-page .path-card-context {
+  font-size: 0.82rem;
+}
+.paths-page .path-card-footer small {
+  font-size: 0.65rem;
+}
+.paths-page .path-open {
+  font-size: 0.74rem;
+}
+.path-page .path-titlebar {
+  margin: 12px 0;
+}
+.path-page .path-titlebar .page-heading {
+  margin: 0;
+}
+.path-page .path-purpose {
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+.path-page .path-purpose p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.path-page .path-purpose summary {
+  font-size: 0.75rem;
+}
+.path-page .next-step {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: none;
+  margin-block: 26px;
+}
+.path-page .next-step .section-heading h2 {
+  font: 600 0.67rem/1.6 var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.path-page .step-row span {
+  font: 430 1.3rem/1.5 var(--serif);
+}
+.path-page .step-actions button {
+  font-size: 0.7rem;
+}
+.path-page .path-thought blockquote {
+  font: 430 1.35rem/1.6 var(--serif);
+}
+.path-page .path-scripture blockquote {
+  font: 400 1.2rem/1.65 var(--serif);
+}
+.path-page .path-thought,
+.path-page .path-scripture {
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+  padding: 8px 0 8px 18px;
+}
+.path-page .path-main-actions {
+  margin-bottom: 30px;
+}
+.path-story {
+  border-top: 1px solid var(--line);
+  padding-top: 30px;
+}
+.review-then,
+.review-now,
+.reviews-page .continuity-before,
+.reviews-page .continuity-after {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  background: var(--surface);
+  margin: 16px 0;
+}
+.review-now,
+.reviews-page .continuity-after {
+  background: var(--primary-soft);
+}
+.path-review-page .review-then h2,
+.path-review-page .review-now h2,
+.reviews-page .review-comparison h3 {
+  font: 500 0.73rem/1.6 var(--sans);
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.path-review-page .entry-text,
+.reviews-page .review-comparison blockquote {
+  font: 400 1.35rem/1.6 var(--serif);
+}
+.reviews-page .review-comparison {
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.reviews-page .review-row {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.reviews-page .review-row h3 {
+  font: 430 1.65rem var(--serif);
+}
+.tree-personal-meaning {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.tree-figure {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.tree-source-list blockquote {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+@media (max-width: 350px) {
+  .writing-dialog {
+    padding-inline: 18px;
+  }
+  .writing-dialog .dialog-top {
+    gap: 8px;
+  }
+  .writing-dialog .dialog-top h2 {
+    font-size: 0.9rem;
+    max-width: 90px;
+  }
+  .writing-dialog .dialog-header-actions {
+    gap: 4px;
+  }
+  .writing-dialog .dialog-header-actions .button {
+    padding: 9px 10px;
+    font-size: 0.7rem;
+  }
+  .journal-page .journal-write .button {
+    padding: 20px;
+  }
+  .journal-write .button strong {
+    font-size: 1.35rem;
+  }
+  .journal-page .journal-page-entry {
+    padding-left: 42px;
+  }
+  .journal-page .journal-page-entry h3 {
+    font-size: 1.25rem;
+  }
+  .journal-page-entry:before {
+    left: 29px;
+  }
+  .paths-page .page-heading h1,
+  .path-page .path-titlebar h1 {
+    font-size: 2.2rem;
+  }
+  .path-page .next-step {
+    padding: 18px;
+  }
+  .review-then,
+  .review-now {
+    padding: 18px;
+  }
+}

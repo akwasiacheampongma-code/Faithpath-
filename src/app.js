@@ -1,5 +1,5 @@
 import {writingDialog} from './verbunden/dialog-view.js';
-import './verbunden/interaction.js';
+import {prepareWritingArea} from './verbunden/interaction.js';
 import {renderReaderFlow,readingTools} from './verbunden/reader-flow.js';
 import {backupSummary,inspectBackupFile,createRestoreSession,assertRestoreSession} from './backup-model.js';
 import {renderBackupPage,backupPreview,backupConfirmation} from './backup-view.js';
@@ -735,7 +735,7 @@ function reviews() {
 }
 function more() {
   const section=new URLSearchParams(location.hash.split("?")[1]||"").get("section");
-  if(section === "data")return shell(renderBackupPage({back,heading,button,canUndo:!store.error&&!!deviceStorage.getItem(KEYS.restore)}),"more","settings-page utility-page backup-page");
+  if(section === "data")return shell(renderBackupPage({back,heading,button,summary:store.error?null:backupSummary(s()),canUndo:!store.error&&!!deviceStorage.getItem(KEYS.restore)}),"more","settings-page utility-page backup-page");
   if(section === "settings")return shell(`${back("Mehr","more")}${heading("Einstellungen & Daten","Einstellungen")}${themePicker(s())}<section class="section"><h2>Offline & auf dem iPhone</h2><p id="offline-state" role="status">${ui.offline ? "Beide Bibeln und die App sind für dieses Gerät offline bereit." : "Offline-Vorbereitung läuft, solange diese Seite online geöffnet ist."}</p>${button("Offline-Status prüfen", "offline-check", {}, "text-button")}<p>Auf dem iPhone: In Safari „Teilen“ öffnen, dann „Zum Home-Bildschirm“ wählen. Zum ersten Einrichten online bleiben, bis oben „offline bereit“ steht.</p></section><section class="section"><h2>Privat auf deinem Gerät</h2><p>Keine Werbung, keine Tracking-SDKs, kein KI-Chat. Persönliche Texte werden nicht an FaithPath übertragen. Sie sind lokal gespeichert und nicht zusätzlich verschlüsselt. Der Hosting-Anbieter verarbeitet beim Laden technische Verbindungsdaten.</p>${link("Bibeltexte & Lizenzen", "licenses")}${button("Einführung ansehen", "onboard", {}, "text-button")}</section><div class="list">${row("Bibeltexte & Lizenzen","","licenses")}${row("Inhalte & Prüfstatus","","content-status")}</div><small class="build-id">FaithPath V4 · ${BUILD}</small>`,"more","settings-page utility-page");
   shell(renderMore({heading,row,button}),"more","more-page navigation-more");
 }
@@ -744,7 +744,7 @@ function contentStatus() {
 }
 function licenses() {
   shell(
-    `${back("Mehr", "more")}${heading("Textquellen", "Bibeltexte & Lizenzen")}<section class="section"><h2>Open Translation Bible Deutsch</h2><p>Quelle: OpenTranslationBible / open-bible. Creative Commons Attribution-ShareAlike 4.0 International. Der mitgelieferte Text bleibt unverändert.</p><a href="https://github.com/OpenTranslationBible/open-bible">Quellprojekt</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></section><section class="section"><h2>Lutherbibel 1912</h2><p>Gemeinfreier Text. Im Ausgangsprojekt von eBible.org (deu1912) bezogen. Unverändert erhalten.</p><a href="https://ebible.org/deu1912/">Textquelle</a></section>`,
+    `${back("Mehr", "more")}${heading("Textquellen", "Bibeltexte & Lizenzen")}<section class="section"><h2>Open Translation Bible Deutsch</h2><p>Quelle: OpenTranslationBible / open-bible. Creative Commons Attribution-ShareAlike 4.0 International. Der mitgelieferte Text bleibt unverändert.</p><a href="https://github.com/OpenTranslationBible/open-bible">Quellprojekt</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></section><section class="section"><h2>Lutherbibel 1912</h2><p>Gemeinfreier Text. Im Ausgangsprojekt von eBible.org (deu1912) bezogen. Unverändert erhalten.</p><a href="https://ebible.org/deu1912/">Textquelle</a></section><section class="section"><h2>Schriften & Gestaltung</h2><p>Newsreader und DM Sans werden lokal mitgeliefert und unter der SIL Open Font License genutzt. Es werden keine externen Schriftdienste geladen.</p><a href="${new URL('./verbunden/assets/licenses/newsreader-OFL.txt',import.meta.url).href}">Newsreader-Lizenz</a> · <a href="${new URL('./verbunden/assets/licenses/dmsans-OFL.txt',import.meta.url).href}">DM-Sans-Lizenz</a></section>`,
     "more",
   );
 }
@@ -788,6 +788,7 @@ function modal(title, content, form = null, values = null) {
   if (!d.open) d.showModal();
   d.style.scrollPaddingTop=($(".dialog-top",d).getBoundingClientRect().height+32)+"px";
   document.body.classList.add("modal-open");
+  if(writing)prepareWritingArea(d);
   // Focus once while opening; a later timer must not override keyboard navigation.
   ($("input:not([type=checkbox]),textarea,select",d) || $(".color-choice[tabindex=\"0\"]",d) || $("button",d))?.focus();
 }

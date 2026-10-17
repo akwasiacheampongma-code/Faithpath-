@@ -1,8 +1,164 @@
 /* The actual next step and reading/thought context come from selectToday. */
-.today-phase1{max-width:780px;padding-top:10px}.today-phase1 #main{gap:22px}.today-phase1 .today-header{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:14px;align-items:center;padding:20px 0 5px}
-.today-phase1 .today-header h1{font:430 2.5rem/1.02 var(--serif);letter-spacing:-.035em;margin:12px 0 18px}.today-header>div>p{font-size:.83rem;line-height:1.65;color:var(--muted);margin:0}.today-phase1 .today-header .overline{font-size:.57rem}
-.today-phase1 .olive-hero{display:block;border:0;background:none;padding:0;box-shadow:none;text-decoration:none;color:var(--muted);text-align:center}.today-phase1 .olive-hero img{width:100%;height:145px;object-fit:cover;border-radius:50% 50% 10px 10px;display:block}.today-phase1 .olive-hero small{font:400 .58rem/1.5 var(--sans);margin-top:8px;display:block}
-.today-phase1 .personal-path{border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--surface);box-shadow:var(--shadow-soft)}.today-phase1 .personal-path h2{font-size:1.9rem;line-height:1.15;margin:10px 0 14px}.today-phase1 .today-step-text{font-size:.87rem;line-height:1.65;margin-bottom:20px;color:var(--muted)}.today-phase1 .today-path-action{font-size:.84rem;padding:13px 16px;justify-content:space-between}
-.today-phase1 .today-continuity{gap:0}.today-phase1 .today-continuity article{padding:18px 0;background:none;border-bottom:1px solid var(--line)}.today-phase1 .today-continuity h2{font-size:1.4rem}.today-phase1 .thought-preview{font:430 1.3rem/1.45 var(--serif);margin:6px 0}.today-phase1 .today-entry-actions .button{font-size:.8rem;min-height:54px}.today-phase1 .today-start-path{padding-block:20px}.today-phase1 .today-start-path h2{font-size:1.8rem}.today-phase1 .today-review{background:var(--primary-soft);border:0;border-radius:14px;padding:22px}.today-phase1 .today-review h2{font-size:1.8rem}.today-phase1 .today-draft{background:var(--primary-soft);margin:0;padding:12px 16px}
-@media(max-width:350px){.today-phase1 #main{gap:18px}.today-phase1 .today-header{grid-template-columns:minmax(0,1fr) 82px;gap:10px;padding-top:12px}.today-phase1 .today-header h1{font-size:2rem;margin:10px 0 14px}.today-phase1 .olive-hero img{height:110px}.today-phase1 .olive-hero small{font-size:.5rem}.today-phase1 .personal-path{padding:18px}.today-phase1 .personal-path h2{font-size:1.7rem}.today-phase1 .today-step-text{font-size:.8rem;margin-bottom:16px}.today-phase1 .today-path-action{font-size:.75rem}}
-@media(min-width:700px){.today-phase1 .today-header{grid-template-columns:minmax(0,1fr) 170px;gap:30px}.today-phase1 .today-header h1{font-size:3.5rem}.today-phase1 .olive-hero img{height:210px}.today-phase1 .today-continuity{gap:26px}.today-phase1 .today-continuity article{padding-block:25px}}
+.today-phase1 {
+  max-width: 780px;
+  padding-top: 10px;
+}
+.today-phase1 #main {
+  gap: 22px;
+}
+.today-phase1 .today-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  gap: 14px;
+  align-items: center;
+  padding: 20px 0 5px;
+}
+.today-phase1 .today-header h1 {
+  font: 430 2.5rem/1.02 var(--serif);
+  letter-spacing: -0.035em;
+  margin: 12px 0 18px;
+}
+.today-header > div > p {
+  font-size: 0.83rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+}
+.today-phase1 .today-header .overline {
+  font-size: 0.57rem;
+}
+.today-phase1 .olive-hero {
+  display: block;
+  border: 0;
+  background: none;
+  padding: 0;
+  box-shadow: none;
+  text-decoration: none;
+  color: var(--muted);
+  text-align: center;
+}
+.today-phase1 .olive-hero img {
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  border-radius: 50% 50% 10px 10px;
+  display: block;
+}
+.today-phase1 .olive-hero small {
+  font: 400 0.58rem/1.5 var(--sans);
+  margin-top: 8px;
+  display: block;
+}
+.today-phase1 .personal-path {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+.today-phase1 .personal-path h2 {
+  font-size: 1.9rem;
+  line-height: 1.15;
+  margin: 10px 0 14px;
+}
+.today-phase1 .today-step-text {
+  font-size: 0.87rem;
+  line-height: 1.65;
+  margin-bottom: 20px;
+  color: var(--muted);
+}
+.today-phase1 .today-path-action {
+  font-size: 0.84rem;
+  padding: 13px 16px;
+  justify-content: space-between;
+}
+.today-phase1 .today-continuity {
+  gap: 0;
+}
+.today-phase1 .today-continuity article {
+  padding: 18px 0;
+  background: none;
+  border-bottom: 1px solid var(--line);
+}
+.today-phase1 .today-continuity h2 {
+  font-size: 1.4rem;
+}
+.today-phase1 .thought-preview {
+  font: 430 1.3rem/1.45 var(--serif);
+  margin: 6px 0;
+}
+.today-phase1 .today-entry-actions .button {
+  font-size: 0.8rem;
+  min-height: 54px;
+}
+.today-phase1 .today-start-path {
+  padding-block: 20px;
+}
+.today-phase1 .today-start-path h2 {
+  font-size: 1.8rem;
+}
+.today-phase1 .today-review {
+  background: var(--primary-soft);
+  border: 0;
+  border-radius: 14px;
+  padding: 22px;
+}
+.today-phase1 .today-review h2 {
+  font-size: 1.8rem;
+}
+.today-phase1 .today-draft {
+  background: var(--primary-soft);
+  margin: 0;
+  padding: 12px 16px;
+}
+@media (max-width: 350px) {
+  .today-phase1 #main {
+    gap: 18px;
+  }
+  .today-phase1 .today-header {
+    grid-template-columns: minmax(0, 1fr) 82px;
+    gap: 10px;
+    padding-top: 12px;
+  }
+  .today-phase1 .today-header h1 {
+    font-size: 2rem;
+    margin: 10px 0 14px;
+  }
+  .today-phase1 .olive-hero img {
+    height: 110px;
+  }
+  .today-phase1 .olive-hero small {
+    font-size: 0.5rem;
+  }
+  .today-phase1 .personal-path {
+    padding: 18px;
+  }
+  .today-phase1 .personal-path h2 {
+    font-size: 1.7rem;
+  }
+  .today-phase1 .today-step-text {
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+  }
+  .today-phase1 .today-path-action {
+    font-size: 0.75rem;
+  }
+}
+@media (min-width: 700px) {
+  .today-phase1 .today-header {
+    grid-template-columns: minmax(0, 1fr) 170px;
+    gap: 30px;
+  }
+  .today-phase1 .today-header h1 {
+    font-size: 3.5rem;
+  }
+  .today-phase1 .olive-hero img {
+    height: 210px;
+  }
+  .today-phase1 .today-continuity {
+    gap: 26px;
+  }
+  .today-phase1 .today-continuity article {
+    padding-block: 25px;
+  }
+}

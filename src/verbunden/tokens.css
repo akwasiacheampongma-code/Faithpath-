@@ -120,12 +120,43 @@
 }
 
 /* Bridge to the existing app contract. No persistence or theme-ID change. */
-:root,html[data-theme]{
- --fp-bg:var(--v-canvas);--fp-surface:var(--v-surface);--fp-surface-elevated:var(--v-surface);--fp-surface-muted:var(--v-warm);
- --fp-text:var(--v-ink);--fp-text-muted:var(--v-muted);--fp-primary:var(--v-accent);--fp-primary-soft:var(--v-faint);--fp-primary-muted:var(--v-faint);--fp-primary-border:var(--v-line);
- --fp-accent:var(--v-warm-ink);--fp-focus:var(--v-focus);--fp-border:var(--v-line);--fp-input-border:var(--v-muted);--fp-brand-detail:var(--v-accent);
- --fp-danger:var(--v-danger);--fp-danger-border:var(--v-danger);--fp-danger-soft:var(--v-rose);--fp-danger-strong:var(--v-danger);--fp-on-danger:var(--v-canvas);
- --fp-success:var(--v-accent);--fp-warning:var(--v-warm-ink);--fp-on-primary:var(--v-on-accent);--fp-strong:var(--v-ink);--fp-shadow-soft:var(--v-shadow);--fp-overlay:#10231dcc;
- --fp-navigation:var(--v-canvas);--fp-reader-bg:var(--v-canvas);--fp-reader-text:var(--v-ink);--sans:var(--v-sans);--serif:var(--v-display);
- --type-h1:2.5rem;--type-h2:1.75rem;--type-reading:1.25rem;--radius-small:8px;--radius:16px;--radius-large:24px;
+:root,
+html[data-theme] {
+  --fp-bg: var(--v-canvas);
+  --fp-surface: var(--v-surface);
+  --fp-surface-elevated: var(--v-surface);
+  --fp-surface-muted: var(--v-warm);
+  --fp-text: var(--v-ink);
+  --fp-text-muted: var(--v-muted);
+  --fp-primary: var(--v-accent);
+  --fp-primary-soft: var(--v-faint);
+  --fp-primary-muted: var(--v-faint);
+  --fp-primary-border: var(--v-line);
+  --fp-accent: var(--v-warm-ink);
+  --fp-focus: var(--v-focus);
+  --fp-border: var(--v-line);
+  --fp-input-border: var(--v-muted);
+  --fp-brand-detail: var(--v-accent);
+  --fp-danger: var(--v-danger);
+  --fp-danger-border: var(--v-danger);
+  --fp-danger-soft: var(--v-rose);
+  --fp-danger-strong: var(--v-danger);
+  --fp-on-danger: var(--v-canvas);
+  --fp-success: var(--v-accent);
+  --fp-warning: var(--v-warm-ink);
+  --fp-on-primary: var(--v-on-accent);
+  --fp-strong: var(--v-ink);
+  --fp-shadow-soft: var(--v-shadow);
+  --fp-overlay: #10231dcc;
+  --fp-navigation: var(--v-canvas);
+  --fp-reader-bg: var(--v-canvas);
+  --fp-reader-text: var(--v-ink);
+  --sans: var(--v-sans);
+  --serif: var(--v-display);
+  --type-h1: 2.5rem;
+  --type-h2: 1.75rem;
+  --type-reading: 1.25rem;
+  --radius-small: 8px;
+  --radius: 16px;
+  --radius-large: 24px;
 }
