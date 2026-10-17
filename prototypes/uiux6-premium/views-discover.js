@@ -9,7 +9,13 @@
         ? C.themes.map((t) => ({ ...t, kind: "theme", ref: t.sub }))
         : kind === "guided"
           ? C.guided.map((g) => ({ ...g, kind: "guided", ref: g.sub }))
-          : C.catalog.filter((x) => kind === "all" || x.kind === kind);
+          : kind === "all"
+            ? [
+                ...C.catalog,
+                ...C.themes.map((t) => ({ ...t, kind: "theme", ref: t.sub })),
+                ...C.guided.map((g) => ({ ...g, kind: "guided", ref: g.sub })),
+              ]
+            : C.catalog.filter((x) => x.kind === kind);
     items = items.filter((x) =>
       [x.title, x.ref, x.sub].join(" ").toLocaleLowerCase("de").includes(q),
     );
