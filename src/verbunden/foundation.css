@@ -413,3 +413,9 @@ textarea:focus-visible,
     font-size: 2.2rem;
   }
 }
+/* Native focus/scroll must reserve the actual wrapped navigation height. */
+@media (max-width: 1099px) {
+  html {
+    scroll-padding-bottom: calc(var(--bottom-nav-height, 74px) + 12px);
+  }
+}

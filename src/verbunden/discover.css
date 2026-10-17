@@ -437,3 +437,7 @@
     font-size: 2.8rem;
   }
 }
+/* The source-question view shares the same reading scale as chapter answers. */
+.merged-question-page .answer > span:nth-child(2) {
+  font: inherit;
+}

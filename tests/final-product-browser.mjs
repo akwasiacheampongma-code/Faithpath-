@@ -73,7 +73,7 @@ try{
   assert(await p.getByRole('button',{name:'Direkt zur Bibel',exact:true}).isVisible());await p.getByRole('button',{name:'Ich brauche Orientierung',exact:true}).click();
   await p.locator('.beginner-entry a[href="#guide/start"]').click();await p.locator('a[href^="#read/"]').first().click();await p.locator('.verse').first().waitFor();await p.locator('.reader-reflection-entry button').click();
   await p.getByLabel('Dein Gedanke',{exact:true}).fill('Mein erster Gedanke: Ich darf mit meinen Fragen anfangen.');await p.getByRole('button',{name:'Gedanken speichern',exact:true}).click();
-  assert(await p.evaluate(KEYS=>JSON.parse(localStorage.getItem(KEYS.main)).journal.some(j=>j.text==='Mein erster Gedanke: Ich darf mit meinen Fragen anfangen.'),KEYS));
+  await p.waitForFunction(KEYS=>JSON.parse(localStorage.getItem(KEYS.main)).journal.some(j=>j.text==='Mein erster Gedanke: Ich darf mit meinen Fragen anfangen.'),KEYS);
   if(await p.getByRole('button',{name:'Für jetzt reicht der Gedanke',exact:true}).count())await p.getByRole('button',{name:'Für jetzt reicht der Gedanke',exact:true}).click();await newcomer.c.close();
  });
  await route(fresh.p,'today');await shot(fresh.p,'09-first-start');await route(fresh.p,'plans');await shot(fresh.p,'10-first-guides');await fresh.c.close();
@@ -81,7 +81,7 @@ try{
   const{c,p}=await context(seed,w,h,t);
   await check(`responsive ${w} @${t}% and natural heading`,async()=>{
    for(const[r,n]of[['journal','journal'],['read/JHN/3/otb','reader'],['path/core-path','path'],['history','history'],['merged-story/NS-0113','story'],['question/N-0001','flow']]){await route(p,r);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),r);await shot(p,`${w}-${t}-${n}`);}
-   if(w===320&&t===200){await route(p,'journal');const geometry=await p.locator('.journal-page').evaluate(el=>{const h=el.querySelector('h1'),a=el.querySelector('[data-action=new-entry]'),r=document.createRange();r.setStart(h.firstChild,0);r.setEnd(h.firstChild,10);return{wordRects:[...r.getClientRects()].map(x=>({x:x.x,y:x.y,w:x.width})),h:h.getBoundingClientRect().toJSON(),a:a.getBoundingClientRect().toJSON()};});assert.equal(geometry.wordRects.length,1,'Festhalten must remain one natural word');}
+   if(w===320&&t===200){await route(p,'journal');const geometry=await p.locator('.journal-page').evaluate(el=>{const h=el.querySelector('h1'),a=el.querySelector('[data-action=new-entry]'),r=document.createRange();r.setStart(h.firstChild,0);r.setEnd(h.firstChild,h.firstChild.textContent.trim().split(/\s+/)[0].length);return{wordRects:[...r.getClientRects()].map(x=>({x:x.x,y:x.y,w:x.width})),h:h.getBoundingClientRect().toJSON(),a:a.getBoundingClientRect().toJSON()};});assert.equal(geometry.wordRects.length,1,'The current heading’s first word must remain unbroken');}
   });await c.close();
  }
  if(!baseline){
