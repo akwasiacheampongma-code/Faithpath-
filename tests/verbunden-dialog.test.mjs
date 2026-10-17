@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {writingDialog} from '../src/verbunden/dialog-view.js';
+test('writing header moves the original submit inside its original form without changing fields',()=>{
+ const submit='<button class="button primary full" type="submit">Gedanken speichern</button>',body='<form id="editor-form"><textarea name="text">Original</textarea><select name="pathId"><option>x</option></select>'+submit+'</form>',header='<div class="dialog-top"><h2 id="dialog-title">Gedanke</h2><div class="dialog-header-actions"><button type="button">Schließen</button></div></div>';
+ const html=writingDialog(body,header);assert.equal((html.match(/type="submit"/g)||[]).length,1);assert(html.startsWith('<form id="editor-form"><div'));assert(html.indexOf(submit)<html.indexOf('<textarea'));assert(html.includes('<textarea name="text">Original</textarea>'));assert(html.includes('<select name="pathId"><option>x</option></select>'));assert(html.endsWith('</form>'));
+});

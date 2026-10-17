@@ -2,7 +2,7 @@ import {renderReviewSource} from './path-review-context.js';
 import {escapeHtml as e} from './view-html.js';
 
 /** HTML only. Existing helpers/actions own navigation, editors and storage. */
-export function renderPathsOverview(model,{heading,button,row,date}) {
+export function renderPathsOverview(model,{heading,button,row,date,treePreview=''}) {
  const {cards,archived,archivedCount}=model;
  const card=({path,nextStep,isCurrent})=>`<article class="personal-path-card${isCurrent?' is-current':''}" data-path-card="${e(path.id)}">
   <a class="path-card-link" href="#path/${e(encodeURIComponent(path.id))}">
@@ -13,7 +13,7 @@ export function renderPathsOverview(model,{heading,button,row,date}) {
    <span class="path-card-footer"><small>Seit ${e(date(path.started))}</small><span class="path-open">Weg öffnen <span aria-hidden="true">→</span></span></span>
   </a></article>`;
  return `${heading('Mein Weg',archived?'Deine ruhenden Wege.':'Was dich gerade begleitet.','Bibelstellen, Gedanken und kleine Schritte bleiben zusammen.')}
-  <div class="actions paths-actions">${cards.length?button('Einen Weg beginnen','new-path',{},'button primary'):''}${button(archived?'Aktive Wege':'Archiv','toggle-archive',{},'button quiet')}</div>
+  ${treePreview}<div class="actions paths-actions">${cards.length?button('Einen Weg beginnen','new-path',{},'button primary'):''}${button(archived?'Aktive Wege':'Archiv','toggle-archive',{},'button quiet')}</div>
   ${archived?'<p class="meta">Ruhende Wege behalten ihre Geschichte. Du kannst sie jederzeit wieder aufnehmen.</p>':archivedCount?`<p class="meta">${archivedCount} ${archivedCount===1?'Weg ruht':'Wege ruhen'} im Archiv.</p>`:''}
   ${cards.length?`<div class="path-list">${cards.map(card).join('')}</div>`:`<section class="paths-empty empty"><h2>${archived?'Noch keine ruhenden Wege.':'Dein Weg darf klein anfangen.'}</h2><p>${archived?'Ein Weg darf ruhen und später weitergehen.':'Vielleicht begleitet dich eine Frage oder etwas, das du im Alltag ausprobieren möchtest.'}</p>${button('Einen Weg beginnen','new-path',{},'button primary')}<p class="meta">Ganz freiwillig. Dein Glaube wird hier nicht bewertet.</p></section>`}
   <section class="section paths-related" aria-label="Deine persönliche Geschichte">${row('Dein Olivenbaum','Entwicklung, die du selbst festgehalten hast.','tree')}${row('Deine ganze Geschichte','Gedanken und Rückblicke im Zusammenhang.','history')}${row('Geführte Wege','Eine ruhige Begleitung für deinen Anfang.','plans')}</section>`;
@@ -35,7 +35,7 @@ export function renderPathDetail(model,helpers) {
  const moreThoughts=thoughts.slice(1,3);
  return `${back('Meine Wege','paths')}<div class="path-titlebar">${heading(categoryLabel,p.title)}${controls}</div>
   <p class="meta">Begonnen am ${e(date(p.started))}${p.archived?' · archiviert':''}</p>${facts}
-  <details class="path-purpose"><summary>Warum dieser Weg?</summary><p class="preserve">${e(p.why||'Du hast noch keinen Anlass dazu festgehalten.')}</p></details>
+  <details class="path-purpose"${p.why&&p.why.length<180?' open':''}><summary>Warum dieser Weg?</summary><p class="preserve">${e(p.why||'Du hast noch keinen Anlass dazu festgehalten.')}</p></details>
   ${p.archived?'<p class="path-archive-note meta">Dieser Weg ruht. Seine Gedanken und Schritte bleiben erhalten.</p>':''}
   <section class="next-step" aria-labelledby="path-next-step-title"><div class="section-heading"><h2 id="path-next-step-title">${nextStep?'Mein nächster Schritt':'Ein kleiner nächster Schritt'}</h2>${nextStep?button('<span aria-hidden="true">+</span><span class="sr-only">Schritt hinzufügen</span>','step',{id:pid},'icon-button'):''}</div>
    ${nextStep?pathStep(nextStep,pid,helpers,true):`<p>Wenn du möchtest: Was könntest du im Alltag ausprobieren?</p>${button('Schritt hinzufügen','step',{id:pid},'text-button')}`}

@@ -1,3 +1,4 @@
+import {writingDialog} from './verbunden/dialog-view.js';
 import './verbunden/interaction.js';
 import {renderReaderFlow,readingTools} from './verbunden/reader-flow.js';
 import {backupSummary,inspectBackupFile,createRestoreSession,assertRestoreSession} from './backup-model.js';
@@ -528,8 +529,8 @@ async function reader(parts, params, token) {
       )
       .join(
         "",
-      )}</select></div><div class="reader-selectors"><div><label for="reader-book">Buch</label><select id="reader-book" data-change="reader-book">${ui.books.map((x) => `<option value="${x.code}" ${x.code === code ? "selected" : ""}>${e(x.name)}</option>`).join("")}</select></div><div><label for="reader-chapter">Kapitel</label><select id="reader-chapter" data-change="reader-chapter">${b.chapters.map((_, i) => `<option value="${i + 1}" ${i + 1 === +chapter ? "selected" : ""}>${i + 1}</option>`).join("")}</select></div></div>
- ${readingTools()}${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${renderReaderFlow(vs,v=>readerVerse(v,ref))}<span id="chapter-end-sentinel" aria-hidden="true"></span></div>
+      )}</select>${readingTools()}</div><div class="reader-selectors"><div><label for="reader-book">Buch</label><select id="reader-book" data-change="reader-book">${ui.books.map((x) => `<option value="${x.code}" ${x.code === code ? "selected" : ""}>${e(x.name)}</option>`).join("")}</select></div><div><label for="reader-chapter">Kapitel</label><select id="reader-chapter" data-change="reader-chapter">${b.chapters.map((_, i) => `<option value="${i + 1}" ${i + 1 === +chapter ? "selected" : ""}>${i + 1}</option>`).join("")}</select></div></div>
+ ${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${renderReaderFlow(vs,v=>readerVerse(v,ref))}<span id="chapter-end-sentinel" aria-hidden="true"></span></div>
  <section class="short-chapter-confirm" hidden><p>Wenn du dieses kurze Kapitel gelesen hast, kannst du es als Teil deiner Bibelreise festhalten.</p>${button("Kapitel als erkundet festhalten","explore-chapter",{},"button quiet")}</section>${journeyAcknowledgement(s(),ui.books,ref)}${readerChapterQuestions(ref, origin)}${chapterNavigation({previous:ref.chapter>1?readRoute({book:code,chapter:ref.chapter-1,translation:tr},origin):null,next:ref.chapter<b.chapters.length?readRoute({book:code,chapter:ref.chapter+1,translation:tr},origin):null})}
  <section class="reflection-invite"><span class="overline">Was bleibt bei dir?</span><h2>${e(ctx?.question || "Was berührt dich in diesem Text?")}</h2><p>Ein Satz genügt. Du kannst daraus später einen Weg machen.</p>${button("Meinen Gedanken festhalten", "reflect-reader", {}, "button primary")}</section><small class="translation-credit">${e(TRANSLATIONS[tr].name)} · ${tr === "otb" ? "CC BY-SA 4.0" : "gemeinfrei"} · ${link("Textquelle", "licenses")}</small><div id="selection-bar"></div>`,
     "bible",
@@ -628,7 +629,8 @@ function quizIndex(){discover(true);}
 function storyResults(){return renderDiscoveryResults(discoverySelection(),{button},ui.discoveryLegacy);}
 function refreshDiscovery({focusNew=false,previousCount=0}={}) {
  const target=$("#story-results");if(!target)return;
- const model=discoverySelection();target.innerHTML=renderDiscoveryResults(model,{button},ui.discoveryLegacy);
+ const model=discoverySelection();
+ const curated=$(".discovery-curation");if(curated)curated.hidden=model.filtered;target.innerHTML=renderDiscoveryResults(model,{button},ui.discoveryLegacy);
  $("#discovery-count").textContent=discoveryCount(model);
  const editorial=$(".discover-editorial");if(editorial)editorial.hidden=model.filtered;
  if(focusNew)$(".discovery-result-list")?.children[previousCount]?.focus();
@@ -670,7 +672,7 @@ function quiz() {
   );
 }
 function paths() {
-  shell(renderPathsOverview(selectPathsOverview(s(),{archived:ui.archive}),{heading,button,row,date}),"paths","paths-page depth-page");
+  shell(renderPathsOverview(selectPathsOverview(s(),{archived:ui.archive}),{heading,button,row,date,treePreview:`<a class="personal-tree-ribbon" href="#tree"><img src="trees/tree-stage-${treeLevel(s())+1}.webp" width="1086" height="1448" alt="Olivenbaum – ${e(stageNames[treeLevel(s())])}"><span><strong>Was in deinem Leben Wurzeln schlägt.</strong><span>Deinen Olivenbaum ansehen →</span></span></a>`}),"paths","paths-page depth-page");
 }
 function path(pid) {
   const model=selectPathDetail(s(),pid,{limit:ui.historyLimit});if(!model)return notFound();
@@ -701,6 +703,7 @@ function refreshJournal(){
  const model=journalModel();
  $("#journal-results").innerHTML=journalResults(model);
  $("#journal-count").textContent=journalCount(model);
+ const reset=$(".journal-tools .journal-reset");if(reset)reset.hidden=!model.query&&model.filter==="Alle";
  const summary=$(".journal-tools summary");
  if(summary)summary.textContent="Filter"+(model.filter!=="Alle"?" · "+model.filter:"");
  $$("[data-action=journal-filter]").forEach(el=>{const active=el.dataset.filter===model.filter;el.classList.toggle("active",active);el.setAttribute("aria-pressed",String(active));});
@@ -770,7 +773,10 @@ function modal(title, content, form = null, values = null) {
   ui.dialogRoute = location.hash.slice(1);
   ui.form = form;
   ui.draftSession = null;
-  d.innerHTML = `<div class="dialog-top"><h2 id="dialog-title" aria-label="${e(title)}">${e(title).replace("Journaleintrag", "Journal<wbr>eintrag")}</h2>${button(icon("close") + '<span class="sr-only">Schließen</span>', "close", {}, "icon-button")}</div>${content}`;
+  const writing=["entry","note","review"].includes(form?.type);
+  d.classList.toggle("writing-dialog",writing);
+  const dialogHeader=`<div class="dialog-top"><h2 id="dialog-title" aria-label="${e(title)}">${e(title).replace("Journaleintrag", "Journal<wbr>eintrag")}</h2><div class="dialog-header-actions">${button(icon("close") + '<span class="sr-only">Schließen</span>', "close", {}, "icon-button")}</div></div>`;
+  d.innerHTML=writing ? writingDialog(content,dialogHeader) : dialogHeader+content;
   if (values)
     for (const [k, v] of Object.entries(values)) {
       const el = d.querySelector(`[name="${CSS.escape(k)}"]`);
@@ -854,7 +860,7 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
       ? "Gedanken bearbeiten"
       : args.ref
         ? "Was bleibt dir?"
-        : "Einen Moment festhalten";
+        : "Dein Gedanke";
     body = `${args.ref ? `<p class="meta">${e(refLabel(args.ref))}</p>` : ""}${args.question ? `<p class="writing-prompt">${e(args.question)}</p>` : ""}${textarea("Dein Gedanke", "text", values.text, "Ein Satz kann ein Anfang sein …")}${select(
       "Art des Eintrags",
       "kind",

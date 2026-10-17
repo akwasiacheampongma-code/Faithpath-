@@ -4,6 +4,7 @@ let scale=1;
 document.addEventListener('click',event=>{
  const control=event.target.closest('[data-verbunden-action]');if(!control)return;
  const action=control.dataset.verbundenAction;
+ const settings=document.querySelector('.reading-settings');if(settings)settings.open=false;
  if(action==='focus'){
   const on=document.body.classList.toggle('verbunden-reading-focus');
   document.querySelectorAll('[data-verbunden-action=focus]').forEach(b=>b.setAttribute('aria-pressed',String(on)));
@@ -12,6 +13,7 @@ document.addEventListener('click',event=>{
  }else if(action==='larger'||action==='smaller'){
   scale=Math.max(.9,Math.min(1.6,Math.round((scale+(action==='larger'?.1:-.1))*10)/10));
   document.documentElement.style.setProperty('--reader-scale',scale);
+  settings?.querySelector('summary')?.focus({preventScroll:true});
   window.dispatchEvent(new Event('faithpath-reader-layout'));
  }
 });
