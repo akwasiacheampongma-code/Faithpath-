@@ -1986,6 +1986,8 @@ $("#dialog").addEventListener("close", () => {
   }
 });
 window.addEventListener("hashchange", () => {
+  ui.importRequest++; // Every navigation invalidates pending File.text(), even a later return to the same hash.
+  ui.import=null;
   if(ui.onboardingOpen&&ui.dialogRoute!==location.hash.slice(1))finishOnboarding();
   if ($("#dialog").open && ui.dialogRoute !== location.hash.slice(1))
     closeModal();
