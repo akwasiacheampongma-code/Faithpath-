@@ -1,0 +1,15 @@
+{
+  "command": [
+    "git",
+    "diff",
+    "--check",
+    "fc9e5b95e5c4bcd7e74c584874f6bc3ff6fe4539",
+    "f89eccf923ae186ad132b779a99b829e0cf9e155",
+    "--",
+    ".",
+    ":(exclude)src/verbunden/assets/licenses/*"
+  ],
+  "exit": 0,
+  "output": "",
+  "excluded": "Unmodified copied SIL OFL texts preserve the reference bytes, including their original whitespace."
+}

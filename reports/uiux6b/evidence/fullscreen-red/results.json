@@ -1,0 +1,170 @@
+{
+  "results": [
+    {
+      "name": "large-reader-editor",
+      "width": 320,
+      "height": 420,
+      "font": 200,
+      "inset": 0,
+      "route": "read/JHN/15/otb",
+      "geometry": {
+        "header": {
+          "x": 24,
+          "y": 16,
+          "width": 272,
+          "height": 332.609375,
+          "top": 16,
+          "right": 296,
+          "bottom": 348.609375,
+          "left": 24
+        },
+        "save": {
+          "x": 24,
+          "y": 30,
+          "width": 180,
+          "height": 87.21875,
+          "top": 30,
+          "right": 204,
+          "bottom": 117.21875,
+          "left": 24
+        },
+        "close": {
+          "x": 208,
+          "y": 51.609375,
+          "width": 38,
+          "height": 44,
+          "top": 51.609375,
+          "right": 246,
+          "bottom": 95.609375,
+          "left": 208
+        },
+        "textarea": {
+          "x": 24,
+          "y": 351.09375,
+          "width": 272,
+          "height": 394,
+          "top": 351.09375,
+          "right": 296,
+          "bottom": 745.09375,
+          "left": 24
+        },
+        "lineHeight": 78.4,
+        "usableLineSpace": 68.90625,
+        "overflow": 0
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: At least one complete writing line must remain below the header\n    at file:///workspace/Faithpath-uiux6b/tests/uiux6b/fullscreen.mjs:51:5"
+    },
+    {
+      "name": "large-journal-editor",
+      "width": 320,
+      "height": 420,
+      "font": 200,
+      "inset": 0,
+      "route": "journal",
+      "geometry": {
+        "header": {
+          "x": 24,
+          "y": 16,
+          "width": 272,
+          "height": 259.8125,
+          "top": 16,
+          "right": 296,
+          "bottom": 275.8125,
+          "left": 24
+        },
+        "save": {
+          "x": 24,
+          "y": 30,
+          "width": 180,
+          "height": 87.21875,
+          "top": 30,
+          "right": 204,
+          "bottom": 117.21875,
+          "left": 24
+        },
+        "close": {
+          "x": 208,
+          "y": 51.609375,
+          "width": 38,
+          "height": 44,
+          "top": 51.609375,
+          "right": 246,
+          "bottom": 95.609375,
+          "left": 208
+        },
+        "textarea": {
+          "x": 24,
+          "y": 351.078125,
+          "width": 272,
+          "height": 394,
+          "top": 351.078125,
+          "right": 296,
+          "bottom": 745.078125,
+          "left": 24
+        },
+        "lineHeight": 78.4,
+        "usableLineSpace": 68.921875,
+        "overflow": 0
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: At least one complete writing line must remain below the header\n    at file:///workspace/Faithpath-uiux6b/tests/uiux6b/fullscreen.mjs:51:5\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:502:9)"
+    },
+    {
+      "name": "safe-reader-editor",
+      "width": 390,
+      "height": 844,
+      "font": 100,
+      "inset": 44,
+      "route": "read/JHN/15/otb",
+      "geometry": {
+        "header": {
+          "x": 24,
+          "y": 16,
+          "width": 342,
+          "height": 143.78125,
+          "top": 16,
+          "right": 366,
+          "bottom": 159.78125,
+          "left": 24
+        },
+        "save": {
+          "x": 24,
+          "y": 30,
+          "width": 146.265625,
+          "height": 44,
+          "top": 30,
+          "right": 170.265625,
+          "bottom": 74,
+          "left": 24
+        },
+        "close": {
+          "x": 178.265625,
+          "y": 30,
+          "width": 38,
+          "height": 44,
+          "top": 30,
+          "right": 216.265625,
+          "bottom": 74,
+          "left": 178.265625
+        },
+        "textarea": {
+          "x": 24,
+          "y": 259.53125,
+          "width": 342,
+          "height": 382,
+          "top": 259.53125,
+          "right": 366,
+          "bottom": 641.53125,
+          "left": 24
+        },
+        "lineHeight": 39.2,
+        "usableLineSpace": 584.46875,
+        "overflow": 0
+      },
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Save must respect the reserved safe top\n    at file:///workspace/Faithpath-uiux6b/tests/uiux6b/fullscreen.mjs:52:5"
+    }
+  ],
+  "physicalDevice": "OFFEN"
+}

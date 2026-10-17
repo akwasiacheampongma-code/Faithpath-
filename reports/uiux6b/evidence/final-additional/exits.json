@@ -1,0 +1,65 @@
+[
+  {
+    "name": "backup-final",
+    "script": "backup-lifecycle",
+    "exit": 0,
+    "started": 1792238205.9135513,
+    "ended": 1792238224.1563258,
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852"
+  },
+  {
+    "name": "focus-final",
+    "script": "focus",
+    "exit": 0,
+    "started": 1792238224.1574364,
+    "ended": 1792238241.2491708,
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852"
+  },
+  {
+    "name": "reader-final",
+    "script": "reader-smoke",
+    "exit": 0,
+    "started": 1792238241.2495823,
+    "ended": 1792238299.247867,
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852"
+  },
+  {
+    "name": "editorial-final",
+    "script": "editorial",
+    "exit": 0,
+    "started": 1792238299.2483594,
+    "ended": 1792238322.3738394,
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852"
+  },
+  {
+    "name": "reading-focus-green",
+    "script": "reading-focus",
+    "exit": 0,
+    "started": 1792238322.3742802,
+    "ended": 1792238338.2923539,
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852"
+  },
+  {
+    "name": "fullscreen-green",
+    "script": "fullscreen",
+    "exit": 0,
+    "started": 1792238338.2928588,
+    "ended": 1792238396.857601,
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852"
+  },
+  {
+    "name": "contrast",
+    "script": "contrast",
+    "exit": 0,
+    "started": 1792238396.8581932,
+    "ended": 1792238451.0824518,
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852"
+  }
+]

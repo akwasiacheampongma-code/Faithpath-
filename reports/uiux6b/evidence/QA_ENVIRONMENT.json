@@ -1,0 +1,40 @@
+{
+  "environment": [
+    {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit": 0,
+      "output": "v24.19.0"
+    },
+    {
+      "command": [
+        "python3",
+        "--version"
+      ],
+      "exit": 0,
+      "output": "Python 3.12.14"
+    },
+    {
+      "command": [
+        "chromium",
+        "--version"
+      ],
+      "exit": 0,
+      "output": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)"
+    },
+    {
+      "command": [
+        "npm",
+        "ls",
+        "--depth=0"
+      ],
+      "exit": 0,
+      "output": "faithpath@4.0.0 /workspace/Faithpath-uiux6b\n├── axe-core@4.13.0 -> ./../Faithpath-uiux6a2/node_modules/axe-core\n├── playwright-core@1.62.1 extraneous -> ./../Faithpath-uiux6a2/node_modules/playwright-core\n└── playwright@1.62.1 -> ./../Faithpath-uiux6a2/node_modules/playwright"
+    }
+  ],
+  "os": "Linux; managed execution environment",
+  "syntheticOnly": true,
+  "physicalDevicesTested": false
+}

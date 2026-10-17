@@ -1,0 +1,704 @@
+{
+  "baseline": "fc9e5b95e5c4bcd7e74c584874f6bc3ff6fe4539",
+  "files": [
+    {
+      "file": "tests/app-icon-browser.mjs",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/app-icon-update-browser.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/backup-phase5.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/chapter-questions-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/chapter-questions-downloads-browser.mjs",
+      "classification": "HISTORICAL_QA_LINKS",
+      "evidence": "Frühere QA-/Downloadpfade und Berichtsausgaben; nicht erneut als aktuelles Produktgate ausgeführt. Aktuelle ZIPs und Galerie separat geprüft"
+    },
+    {
+      "file": "tests/chapter-questions-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/chapter-questions.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/continuity-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/core-depth-accessibility.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/core-depth-before.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/core-depth-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/core-depth-fixture.mjs",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/core-experience.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/core.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/discover-phase4.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/draft-protection.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/editor-path-regression.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/final-experience-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/final-experience-extra-visual.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/final-experience-fixture.mjs",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/final-experience-light-comparison.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/final-experience-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/final-experience-visual.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/final-experience.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/final-links-browser.mjs",
+      "classification": "HISTORICAL_QA_LINKS",
+      "evidence": "Frühere QA-/Downloadpfade und Berichtsausgaben; nicht erneut als aktuelles Produktgate ausgeführt. Aktuelle ZIPs und Galerie separat geprüft"
+    },
+    {
+      "file": "tests/final-note-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/final-note.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/final-product-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/final-product.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/final-safe-browser.mjs",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/final-ui-browser.mjs",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/final-update-browser.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/fixtures/baseline-e.json",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/fixtures/content-allowlist.json",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/fixtures/content-master.json",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/import-safety.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/journal-phase5.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/menu-qa.py",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/nachlese-editorial-browser.mjs",
+      "classification": "EDITORIAL_BROWSER",
+      "evidence": "evidence/extended-regression und nachlese-editorial-results.json"
+    },
+    {
+      "file": "tests/nachlese-editorial-corpus.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/nachlese-editorial-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/nachlese-editorial.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/nachlese-mc-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/nachlese-mc-corpus-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/nachlese-mc-corpus.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/nachlese-mc-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/nachlese-mc-validation.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/nachlese-mc.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/navigation-phase4.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/nt-quiz-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/nt-quiz-import.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/nt-quiz-invalid-master.py",
+      "classification": "INDIRECT",
+      "evidence": "tests/nt-quiz-import.test.mjs ruft diese Negativprüfung auf"
+    },
+    {
+      "file": "tests/onboarding-phase4.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/path-detail-phase3.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/path-review-phase3.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/paths-phase3.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/personal-continuity.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/phase2-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase2-capture.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/phase2-fixtures.mjs",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/phase2-reflection-capture.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/phase2-short-capture.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/phase2-short-chapter-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase2-stress.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase2-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/phase3-archive-capture.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/phase3-capture.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/phase3-detail-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase3-fixtures.mjs",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/phase3-journey-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase3-overview-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase3-review-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase3-short-navigation.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase3-stress.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase3-tree-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase3-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/phase4-capture.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/phase4-discover-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase4-discovery-boundary.mjs",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/phase4-menu-focus-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase4-navigation-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase4-onboarding-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase4-routes-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase4-stress-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase4-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/phase5-backup-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase5-backup-dialogs-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase5-backup-races-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase5-capture.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/phase5-export-fixtures.mjs",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/phase5-fixtures.mjs",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/phase5-journal-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase5-reminders-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase5-reviews-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/phase5-stress-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/premium-downloads-browser.mjs",
+      "classification": "HISTORICAL_QA_LINKS",
+      "evidence": "Frühere QA-/Downloadpfade und Berichtsausgaben; nicht erneut als aktuelles Produktgate ausgeführt. Aktuelle ZIPs und Galerie separat geprüft"
+    },
+    {
+      "file": "tests/premium-journal-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/premium-journal-storage.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/premium-journal.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/premium-links-browser.mjs",
+      "classification": "HISTORICAL_QA_LINKS",
+      "evidence": "Frühere QA-/Downloadpfade und Berichtsausgaben; nicht erneut als aktuelles Produktgate ausgeführt. Aktuelle ZIPs und Galerie separat geprüft"
+    },
+    {
+      "file": "tests/premium-preservation.mjs",
+      "classification": "HISTORICAL_PRESERVATION",
+      "evidence": "Alter Stand-/Variantenvergleich nicht wörtlich ausgeführt; aktueller Byte-/Routen-/Actionvergleich liegt separat vor"
+    },
+    {
+      "file": "tests/premium-system-browser.mjs",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/premium-update-browser.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/premium-visual.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/product-downloads-browser.mjs",
+      "classification": "HISTORICAL_QA_LINKS",
+      "evidence": "Frühere QA-/Downloadpfade und Berichtsausgaben; nicht erneut als aktuelles Produktgate ausgeführt. Aktuelle ZIPs und Galerie separat geprüft"
+    },
+    {
+      "file": "tests/quiz-final-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/reader-phase2.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/release-smoke.mjs",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/reminders-phase5.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/retest-edge-browser.mjs",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/retest-menu-browser.mjs",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/retest-regressions.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/reviews-phase5.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/service-worker.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/short-opening-phase3.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/stabilization-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/stabilization-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/story-phase2.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/sword-phase2.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/today-olive-variant-b-compact.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/today-olive-variant-b.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/today-page.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/today-phase1-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/today-phase1-capture.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/today-phase1-fixtures.mjs",
+      "classification": "FIXTURE",
+      "evidence": "Eingabedaten/Hilfsmodul, kein eigener Browser-Treiber"
+    },
+    {
+      "file": "tests/today-phase1-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/today-phase1-zoom.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/today-variant-b-preservation.mjs",
+      "classification": "HISTORICAL_VISUAL",
+      "evidence": "Frühere Bild-/Variantenaufnahme; neue432 Aufnahmen und erhaltene Vorher-Referenz ersetzen keine Behauptung eines PASS dieses alten Skripts"
+    },
+    {
+      "file": "tests/tree-branch-visual-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/tree-branch-visual-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    },
+    {
+      "file": "tests/tree-branch-visual.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/tree-phase3.test.mjs",
+      "classification": "UNIT",
+      "evidence": "npm test; alle36 ursprünglichen Testdateien werden erneut geladen"
+    },
+    {
+      "file": "tests/ui-premium-preservation.mjs",
+      "classification": "HISTORICAL_PRESERVATION",
+      "evidence": "Alter Stand-/Variantenvergleich nicht wörtlich ausgeführt; aktueller Byte-/Routen-/Actionvergleich liegt separat vor"
+    },
+    {
+      "file": "tests/ui-premium.mjs",
+      "classification": "OTHER_LEGACY_NOT_RUN",
+      "evidence": "Nicht erneut direkt ausgeführter älterer Treiber; keine PASS-Behauptung. Aktuelle Funktionsnachweise ausschließlich aus expliziter Matrix"
+    },
+    {
+      "file": "tests/uiux45-integration-browser.mjs",
+      "classification": "CURRENT_BROWSER",
+      "evidence": "QA_MATRIX.md; tatsächlicher Einzellauf auf dem Kandidaten"
+    },
+    {
+      "file": "tests/uiux45-update.mjs",
+      "classification": "HISTORICAL_UPDATE",
+      "evidence": "Nicht wörtlich wiederholt: versionsgebundene frühere Ausgangs-Builds; aktueller Übergang UIUX45→6B separat über echtes lokales HTTPS geprüft"
+    }
+  ],
+  "counts": {
+    "CURRENT_BROWSER": 41,
+    "EDITORIAL_BROWSER": 1,
+    "FIXTURE": 10,
+    "HISTORICAL_PRESERVATION": 2,
+    "HISTORICAL_QA_LINKS": 5,
+    "HISTORICAL_UPDATE": 15,
+    "HISTORICAL_VISUAL": 16,
+    "INDIRECT": 1,
+    "OTHER_LEGACY_NOT_RUN": 10,
+    "UNIT": 36
+  },
+  "allOriginalUnitFilesExecuted": true,
+  "allHistoricalScriptsClaimedPassed": false
+}

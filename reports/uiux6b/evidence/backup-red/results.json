@@ -1,0 +1,6 @@
+{
+  "status": "FAIL",
+  "base": "http://127.0.0.1:4450",
+  "error": "AssertionError [ERR_ASSERTION]: Returning to the identical route must not revive a stale file preview\n\ntrue !== false\n\n    at file:///workspace/Faithpath-uiux6b/tests/uiux6b/backup-lifecycle.mjs:20:9",
+  "errors": []
+}

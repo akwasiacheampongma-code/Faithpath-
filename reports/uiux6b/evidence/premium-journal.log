@@ -1,0 +1,12 @@
+PASS Journal is month-grouped, compact controls, separate entry and note actions
+PASS Create/edit literal journal text, change path without losing existing Bible link
+PASS Confirmation Cancel and Escape leave data and exact draft intact
+PASS Delete physically, keep highlights/path/steps/review text, clean mirror/references/draft
+PASS 8-second Undo restores exact metadata and references plus draft, reload persistent
+PASS Backup after physical delete omits entry/mirror; old backup restores correctly
+PASS Full storage fails safely; no record or draft disappears
+PASS Selective draft removal failure cancels saved deletion and keeps actionable error
+PASS Selective draft Undo failure keeps deletion atomic; retry restores complete saved entry and draft
+PASS Interrupted main/draft storage failure recovers unsaved text after reload
+PASS Denied recovery cleanup cannot be advanced by another write; reload safely unlocks saving
+PASS Deleted journal persists offline; independent review and Bible highlight stay accessible

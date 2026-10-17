@@ -1,0 +1,11 @@
+FaithPath UIUX6B · echte Screenshot-Vergleichsgalerie
+
+ZIP vollständig entpacken. index.html ist eine statische Galerie mit lokalen Bildern.
+Verifiziert: Aufruf über einen lokalen HTTP-Server, z.B. im entpackten Ordner:
+
+python3 -m http.server 8080 --bind 127.0.0.1
+
+Danach http://127.0.0.1:8080 im Browser öffnen. Keine Veröffentlichung.
+Direktes file://-Öffnen war in der QA-Umgebung administrativ gesperrt und ist deshalb OFFEN.
+Die PNG-Dateien können unabhängig davon einzeln geöffnet werden.
+Die Galerie ist kein Ersatz für die tatsächliche PWA im separaten Netlify-Deploy-ZIP.

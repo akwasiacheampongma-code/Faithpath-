@@ -1,0 +1,133 @@
+{
+  "base": "http://127.0.0.1:4506",
+  "baseline": false,
+  "results": [
+    {
+      "name": "one canonical story collection visible, all 436 reachable and chapter quizzes separate",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy reference search, aliases, case, ranges and numeric boundaries",
+      "status": "PASS"
+    },
+    {
+      "name": "pure N, mixed retained FP, and FP-only questions use complete canonical count and source semantics",
+      "status": "PASS"
+    },
+    {
+      "name": "old story route enters exact canonical mapped flow; old chapter remains unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "incorrect FP answer reveals existing correct answer and explanation",
+      "status": "PASS"
+    },
+    {
+      "name": "one current step, remaining open steps visible and subordinate",
+      "status": "PASS"
+    },
+    {
+      "name": "history exposes exact Bible and path links without changing review pair",
+      "status": "PASS"
+    },
+    {
+      "name": "backup copy explains device locality, manual backup and replacement",
+      "status": "PASS"
+    },
+    {
+      "name": "neutral first choices reach optional existing guide; returning personal priority preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "orientation choice to optional existing guide, Bible and first saved thought",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 320 @100% and natural heading",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 320 @200% and natural heading",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 390 @200% and natural heading",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 768 @100% and natural heading",
+      "status": "PASS"
+    },
+    {
+      "name": "responsive 1440 @100% and natural heading",
+      "status": "PASS"
+    },
+    {
+      "name": "heavy writer finds legacy linked thought, review and backup among 105 entries",
+      "status": "PASS"
+    },
+    {
+      "name": "merged content axe and keyboard 320 @200%",
+      "status": "PASS"
+    },
+    {
+      "name": "merged content axe and keyboard 390 @100%",
+      "status": "PASS"
+    },
+    {
+      "name": "offline reload search and canonical N/FP story flows and backup",
+      "status": "PASS"
+    }
+  ],
+  "metrics": {
+    "journalFirstEntry": 618.296875,
+    "readerFirstVerse": 383.5625
+  },
+  "shots": [
+    "qa-output/uiux6b/final-regression/product/01-journal-390.png",
+    "qa-output/uiux6b/final-regression/product/04-reader-390.png",
+    "qa-output/uiux6b/final-regression/product/06-path-steps.png",
+    "qa-output/uiux6b/final-regression/product/07-history.png",
+    "qa-output/uiux6b/final-regression/product/08-damals-heute.png",
+    "qa-output/uiux6b/final-regression/product/10-guides.png",
+    "qa-output/uiux6b/final-regression/product/11-backup.png",
+    "qa-output/uiux6b/final-regression/product/12-merged-story.png",
+    "qa-output/uiux6b/final-regression/product/13-nachlese.png",
+    "qa-output/uiux6b/final-regression/product/14-mixed-question.png",
+    "qa-output/uiux6b/final-regression/product/09-first-start.png",
+    "qa-output/uiux6b/final-regression/product/10-first-guides.png",
+    "qa-output/uiux6b/final-regression/product/320-100-journal.png",
+    "qa-output/uiux6b/final-regression/product/320-100-reader.png",
+    "qa-output/uiux6b/final-regression/product/320-100-path.png",
+    "qa-output/uiux6b/final-regression/product/320-100-history.png",
+    "qa-output/uiux6b/final-regression/product/320-100-story.png",
+    "qa-output/uiux6b/final-regression/product/320-100-flow.png",
+    "qa-output/uiux6b/final-regression/product/320-200-journal.png",
+    "qa-output/uiux6b/final-regression/product/320-200-reader.png",
+    "qa-output/uiux6b/final-regression/product/320-200-path.png",
+    "qa-output/uiux6b/final-regression/product/320-200-history.png",
+    "qa-output/uiux6b/final-regression/product/320-200-story.png",
+    "qa-output/uiux6b/final-regression/product/320-200-flow.png",
+    "qa-output/uiux6b/final-regression/product/390-200-journal.png",
+    "qa-output/uiux6b/final-regression/product/390-200-reader.png",
+    "qa-output/uiux6b/final-regression/product/390-200-path.png",
+    "qa-output/uiux6b/final-regression/product/390-200-history.png",
+    "qa-output/uiux6b/final-regression/product/390-200-story.png",
+    "qa-output/uiux6b/final-regression/product/390-200-flow.png",
+    "qa-output/uiux6b/final-regression/product/768-100-journal.png",
+    "qa-output/uiux6b/final-regression/product/768-100-reader.png",
+    "qa-output/uiux6b/final-regression/product/768-100-path.png",
+    "qa-output/uiux6b/final-regression/product/768-100-history.png",
+    "qa-output/uiux6b/final-regression/product/768-100-story.png",
+    "qa-output/uiux6b/final-regression/product/768-100-flow.png",
+    "qa-output/uiux6b/final-regression/product/1440-100-journal.png",
+    "qa-output/uiux6b/final-regression/product/1440-100-reader.png",
+    "qa-output/uiux6b/final-regression/product/1440-100-path.png",
+    "qa-output/uiux6b/final-regression/product/1440-100-history.png",
+    "qa-output/uiux6b/final-regression/product/1440-100-story.png",
+    "qa-output/uiux6b/final-regression/product/1440-100-flow.png"
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "loads": []
+}

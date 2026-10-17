@@ -1,0 +1,18 @@
+{
+  "screen": "reader",
+  "theme": "light",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          ".chapter-picker > span[aria-hidden=\"true\"]"
+        ],
+        [
+          ".translation-picker > span[aria-hidden=\"true\"]"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+PASS Bibelreise is reachable inside Bible; old opens and quiz do not fabricate history
+PASS only real documented paths appear on the original tree
+PASS four themes share one settings picker
+PASS opening and leaving before chapter end does not count
+PASS quiz-only completion does not count as reading
+PASS end reached once, acknowledgement before quiz; reload/re-read/translation do not duplicate
+PASS short one-chapter book completes factually and hub/book state/link is correct
+PASS storage refusal never reports unsaved completion or changes the selected theme
+PASS theme changes only optional setting, live/reload; keyboard radio flow
+PASS branch fixture 1, cap 1, exact links and no target collisions @320/200
+PASS branch fixture 3, cap 3, exact links and no target collisions @320/200
+PASS branch fixture 5, cap 5, exact links and no target collisions @320/200
+PASS branch fixture 8, cap 5, exact links and no target collisions @320/200
+PASS backup includes optional theme and journey; import preserves core and progress
+PASS offline completion, theme/reload, quiz and branches light
+PASS offline completion, theme/reload, quiz and branches atmospheric
+PASS offline completion, theme/reload, quiz and branches paper
+PASS offline completion, theme/reload, quiz and branches night

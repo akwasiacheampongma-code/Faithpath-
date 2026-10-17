@@ -1,0 +1,134 @@
+[
+  {
+    "area": "Heute",
+    "route": "today",
+    "adapter": "today-view.js / selectToday",
+    "contract": "Echter aktueller Weg, letzter Lesekontext, Gedanke und vorhandener Entwurf"
+  },
+  {
+    "area": "Bibelreader",
+    "route": "read/:book/:chapter/:translation",
+    "adapter": "app.reader / verbunden/reader-flow.js",
+    "contract": "Alle Verse, beide Übersetzungen, vorhandene Auswahlaktionen"
+  },
+  {
+    "area": "Journal",
+    "route": "journal",
+    "adapter": "journal-model.js / journal-view.js",
+    "contract": "Bestehende IDs, Suche, Filter, stabile Pagination"
+  },
+  {
+    "area": "Editor",
+    "route": "compose / existing dialogs",
+    "adapter": "openForm / drafts.js / writingDialog",
+    "contract": "Originalformular, Entwurfsbesitz und Transaktionen"
+  },
+  {
+    "area": "Wege & Archiv",
+    "route": "paths",
+    "adapter": "paths-model.js / paths-view.js",
+    "contract": "Aktiv/Archiv, vorhandene Wege und nächste Schritte"
+  },
+  {
+    "area": "Wegdetail",
+    "route": "path/:id",
+    "adapter": "paths-model.js / paths-view.js",
+    "contract": "Originalschritte und verknüpfte Momente"
+  },
+  {
+    "area": "Damals und heute",
+    "route": "review/:id / reviews",
+    "adapter": "path-review-context.js / reviews-view.js",
+    "contract": "Originalsnapshot, Datum und spätere Worte"
+  },
+  {
+    "area": "Olivenbaum",
+    "route": "tree",
+    "adapter": "tree-view.js / tree-branches.js / domain.js",
+    "contract": "Sieben Originalbilder, Schwellen und bestätigte Entwicklung"
+  },
+  {
+    "area": "Schwert",
+    "route": "bible-journey[/book]",
+    "adapter": "journey-view.js / journey-sword.js / bible-journey.js",
+    "contract": "Ein zentrales Buch-Schwert-Siegel; unveränderte echte Zählung"
+  },
+  {
+    "area": "Quiz",
+    "route": "question/:N-ID / quiz/:legacy-ID",
+    "adapter": "sourceQuestion / quiz / runtime-model.js",
+    "contract": "Originalantworten, Erklärungen und Fortschrittsschlüssel"
+  },
+  {
+    "area": "Entdecken",
+    "route": "discover",
+    "adapter": "discover-model.js / discover-view.js",
+    "contract": "696 Einheiten, Filter, 20 Treffer und Weiterladen"
+  },
+  {
+    "area": "Geschichte",
+    "route": "merged-story/:NS-ID / story/:id",
+    "adapter": "mergedStory / story-flow-view.js",
+    "contract": "Originalzuordnung, Fragenfolge und freiwillige Reflexion"
+  },
+  {
+    "area": "Kapitelübungen",
+    "route": "chapter-quizzes[/book]",
+    "adapter": "chapter-questions.js / chapterCollection",
+    "contract": "260 vorhandene NT-Einheiten, 1300 unveränderte Fragen"
+  },
+  {
+    "area": "Themen",
+    "route": "guidance / topic/:id",
+    "adapter": "guidance / topic / content.js",
+    "contract": "18 vorhandene Themen und zugehörige Bibelstellen"
+  },
+  {
+    "area": "Geführte Wege",
+    "route": "plans / plan/:id / guide/:id",
+    "adapter": "plans / plan / content.js",
+    "contract": "Bestehende Abschnitte, Reflexion und gespeicherter Stand"
+  },
+  {
+    "area": "Onboarding",
+    "route": "more -> introduction / first launch",
+    "adapter": "onboarding-view.js / onboarding",
+    "contract": "Orientierung oder direkt zur Bibel; keine Registrierung"
+  },
+  {
+    "area": "Mehr",
+    "route": "more / drawer",
+    "adapter": "navigation-view.js",
+    "contract": "Alle ursprünglichen Ziele und vier Hauptbereiche"
+  },
+  {
+    "area": "Einstellungen",
+    "route": "more?section=settings",
+    "adapter": "themes.js / themePicker / more",
+    "contract": "Alle vier echten Theme-IDs und alte Einstellungen"
+  },
+  {
+    "area": "Erinnerungen",
+    "route": "reviews / more?section=settings",
+    "adapter": "reminders-view.js / reviews-view.js",
+    "contract": "Freiwillige, App-öffnungsbasierte Hinweise; kein Push-Versprechen"
+  },
+  {
+    "area": "Backup",
+    "route": "more?section=data",
+    "adapter": "backup-model.js / backup-view.js / store.js",
+    "contract": "Originalexport, Dateiprüfung, Vergleich, Größenlimit"
+  },
+  {
+    "area": "Wiederherstellen",
+    "route": "original two-stage dialogs",
+    "adapter": "importFile / store.js / journal-storage.js",
+    "contract": "Zwei explizite Stufen, Locks, Quota und Frischeprüfung"
+  },
+  {
+    "area": "Sonderzustände",
+    "route": "marks / mark/:id / licenses / content-status / invalid route",
+    "adapter": "existing app renderers / verbunden/system.css",
+    "contract": "Leer, Fehler, Laden, gelöscht, Archiv, Undo und Lizenzen"
+  }
+]

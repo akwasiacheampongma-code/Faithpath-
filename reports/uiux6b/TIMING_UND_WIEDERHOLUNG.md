@@ -1,0 +1,9 @@
+# Langtext-Notiz: Timeout, Diagnose und unveränderte Wiederholung
+
+Der erste vollständige Lauf auf `f89eccf` hatte einen Timeout beim Playwright-Befüllen nach abgewiesener leerer Notiz. Gleichzeitig liefen sechs Browserprogramme auf der gemeinsamen Umgebung. Der Text war31.199 Zeichen lang. Der erste Ausstieg war FAIL und wird nicht nachträglich als PASS umgeschrieben.
+
+Die gezielte Probe zeigte: Editor sichtbar, aktiviert, nicht readonly; die Fehlermeldung zur leeren Eingabe korrekt. Mit einem ausschließlich diagnostisch längeren Deadlinefenster wurde exakt derselbe Text unverändert gespeichert. Befüllzeit ohne Appinstrumentierung:11.129ms. Eine getrennte Probe mit unterdrücktem Scrollaufruf brauchte16.387ms; dies bestätigte keinen Scroll-Logikdefekt und ist kein finaler Funktionsnachweis. Keine Appänderung wurde auf diese Vermutung gestützt.
+
+Der ursprüngliche `tests/final-note-browser.mjs` wurde anschließend mit seinem ursprünglichen15-Sekunden-Limit und denselben Assertions bei geringerer Last erneut ausgeführt. Alle Fälle bestanden: Erstellen und Bearbeiten, Sonderzeichen, Abbrechen/Escape/Schließen, getrennte Löschrollen, Undo, Backups vor/nach Löschen, alte Reflexionsnotiz, leere/31.199-Zeichen-Notiz, Quota-Fehler, kollidierende IDs und Offline-Neustart. Der komplette Treiber dauerte76,8s. Anwendungscode, Buildhash und Testquelle blieben identisch.
+
+Der finalen Matrix wird dieser vollständig abgeschlossene Wiederholungslauf zugeordnet. Der erste Lauf bleibt unter `evidence/timing-investigation/notes-first-timeout`, die Diagnose und Wiederholung liegen daneben. Das ist ein beobachteter lastabhängiger Testtimeout, kein Nachweis einer gelösten Geräte-Performancefrage. Lange Einfügevorgänge sind ausdrücklich Teil des offenen iPhone-Gates. Es wurde kein Timeout für den finalen ursprünglichen Test erhöht und keine Inhalts-/Datenassertion entfernt.

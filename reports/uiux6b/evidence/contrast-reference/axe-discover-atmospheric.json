@@ -1,0 +1,21 @@
+{
+  "screen": "discover",
+  "theme": "atmospheric",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          "button[data-id=\"angst\"] > .topic-glyph[aria-hidden=\"true\"]"
+        ],
+        [
+          "button[data-id=\"streit\"] > .topic-glyph[aria-hidden=\"true\"]"
+        ],
+        [
+          "button[data-id=\"entscheidung\"] > .topic-glyph[aria-hidden=\"true\"]"
+        ]
+      ]
+    }
+  ]
+}

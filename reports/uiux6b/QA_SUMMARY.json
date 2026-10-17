@@ -1,0 +1,30 @@
+{
+  "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+  "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155",
+  "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+  "contentHash": "8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309",
+  "unitTests": {
+    "pass": 191,
+    "fail": 0
+  },
+  "existingBrowserProgrammes": {
+    "pass": 41,
+    "fail": 0
+  },
+  "additionalBrowserProgrammes": {
+    "pass": 7,
+    "fail": 0
+  },
+  "writingStressCases": 5,
+  "editorialBrowserProgrammes": 1,
+  "galleryChecks": 30,
+  "uninstrumentedVisualCases": 236,
+  "secondaryStateCases": 84,
+  "newScreenshots": 432,
+  "contrastGroups": 28,
+  "contrastMeasurements": 144,
+  "realLocalHttpsUpdate": "PASS; exact UIUX45 → UIUX6B on same origin, explicit activation, offline fonts, Bible, questions and data",
+  "physicalIphoneSafariVoiceover": "OFFEN",
+  "production": "NO-GO pending physical device gate",
+  "recommendation": "GO for isolated physical device acceptance; no publication performed"
+}

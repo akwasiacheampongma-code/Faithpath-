@@ -1,0 +1,164 @@
+{
+  "app": "FaithPath",
+  "version": 4,
+  "schemaVersion": 5,
+  "exported": "2026-10-17T12:24:10.310Z",
+  "data": {
+    "version": 5,
+    "translation": "otb",
+    "paths": [
+      {
+        "id": "personal-path",
+        "title": "In Ruhe zuhören",
+        "why": "Ich möchte Menschen aufmerksam begegnen.",
+        "category": "sonstiges",
+        "started": "2026-08-01T12:00:00.000Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "different-step",
+            "text": "Ein anderer später gewählter Schritt.",
+            "done": false,
+            "createdAt": "2026-10-16"
+          },
+          {
+            "id": "step-0",
+            "text": "Später bearbeiteter Wortlaut.",
+            "done": false,
+            "createdAt": "2026-08-01T12:00:00.000Z"
+          },
+          {
+            "id": "later-0",
+            "text": "Eine offene Frage stellen.",
+            "done": false,
+            "createdAt": "2026-08-01T12:00:00.000Z"
+          },
+          {
+            "id": "past-0",
+            "text": "Vor der Antwort innehalten.",
+            "done": true,
+            "createdAt": "2026-08-01T12:00:00.000Z",
+            "completedAt": "2026-08-02T12:00:00.000Z"
+          }
+        ],
+        "links": [
+          {
+            "id": "verse-link",
+            "kind": "verse",
+            "label": "Johannes 3,1",
+            "ref": {
+              "book": "JHN",
+              "chapter": 3,
+              "from": 1,
+              "to": 1,
+              "translation": "otb"
+            },
+            "date": "2026-08-01T12:00:00.000Z"
+          },
+          {
+            "id": "thought-link",
+            "kind": "reflection",
+            "journalId": "thought-old",
+            "reflectionId": "mirror-old",
+            "label": "Mein Gedanke",
+            "date": "2026-08-01T12:00:00.000Z"
+          }
+        ],
+        "reviews": [
+          {
+            "id": "154f9a62-4643-4fee-9a90-9dc87d7574ca",
+            "date": "2026-10-17T12:24:08.075Z",
+            "text": "Ich bleibe an diesem ursprünglichen Schritt dran.",
+            "status": "working",
+            "confirmedDevelopment": false,
+            "sourceKey": "path:personal-path",
+            "ref": null,
+            "sourceSnapshot": {
+              "key": "path:personal-path",
+              "title": "In Ruhe zuhören",
+              "text": "Im nächsten Gespräch ausreden lassen.",
+              "at": "2026-10-17T12:23:59.777Z",
+              "stepId": "step-0"
+            }
+          }
+        ],
+        "milestones": [],
+        "lastReview": "2026-10-17T12:24:08.075Z"
+      }
+    ],
+    "journal": [
+      {
+        "id": "thought-old",
+        "text": "Ich war unsicher, wie ich reagieren soll.",
+        "date": "2026-08-01T12:00:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ],
+        "reflectionId": "mirror-old"
+      },
+      {
+        "id": "thought-new",
+        "text": "Ich darf erst zuhören und dann antworten.",
+        "date": "2026-10-15T12:00:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ]
+      }
+    ],
+    "highlights": [],
+    "reflections": [
+      {
+        "id": "mirror-old",
+        "text": "Ich war unsicher, wie ich reagieren soll.",
+        "date": "2026-08-01T12:00:00.000Z",
+        "pathIds": [
+          "personal-path"
+        ]
+      }
+    ],
+    "quiz": {
+      "1": {
+        "done": "2026-08-01T12:00:00.000Z",
+        "legacy": "story"
+      },
+      "10070": {
+        "done": "2026-08-01T12:00:00.000Z",
+        "legacy": "preserve"
+      }
+    },
+    "events": [
+      {
+        "id": "explored",
+        "kind": "chapter-explored",
+        "at": "2026-08-01T12:00:00.000Z",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3
+        }
+      }
+    ],
+    "reading": null,
+    "reminderSnoozes": {},
+    "dismissedGaps": {
+      "path:personal-path": "2026-10-17T12:24:08.075Z"
+    },
+    "reviews": [
+      {
+        "id": "review-old",
+        "date": "2026-09-01T12:00:00.000Z",
+        "text": "Ich sehe diesen Gedanken heute mit mehr Ruhe.",
+        "sourceKey": "journal:thought-old",
+        "confirmedDevelopment": false
+      }
+    ],
+    "guidedPlans": {},
+    "settings": {
+      "theme": "atmospheric"
+    }
+  },
+  "guidedPlans": {}
+}

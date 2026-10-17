@@ -1,0 +1,1467 @@
+{
+  "results": [
+    {
+      "name": "highlight lifecycle, notes, path connection, undo, reload, backup",
+      "status": "PASS"
+    },
+    {
+      "name": "path edit, step priority, archive/reactivate, safe delete and undo",
+      "status": "PASS"
+    },
+    {
+      "name": "reader removes selected range and undo restores every ID",
+      "status": "PASS"
+    },
+    {
+      "name": "path undo refuses to overwrite newer reading data",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy multiline step and journal remain readable and unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "empty states 390",
+      "status": "PASS"
+    },
+    {
+      "name": "empty states 320",
+      "status": "PASS"
+    },
+    {
+      "name": "visual and geometry 390",
+      "status": "PASS"
+    },
+    {
+      "name": "visual and geometry 320",
+      "status": "PASS"
+    },
+    {
+      "name": "visual and geometry 768",
+      "status": "PASS"
+    },
+    {
+      "name": "visual and geometry 1440",
+      "status": "PASS"
+    },
+    {
+      "name": "200% text 390",
+      "status": "PASS"
+    },
+    {
+      "name": "200% text 320",
+      "status": "PASS"
+    },
+    {
+      "name": "keyboard color selection and reduced motion",
+      "status": "PASS"
+    },
+    {
+      "name": "no JavaScript console or load errors",
+      "status": "PASS"
+    }
+  ],
+  "geometry": [
+    {
+      "name": "empty-390-journal",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "empty-390-marks",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "empty-390-paths",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "empty-390-history",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "empty-390-reviews",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "empty-320-journal",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "empty-320-marks",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "empty-320-paths",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "empty-320-history",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "empty-320-reviews",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-reader",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-marks",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-path",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-journal",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-reviews",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-history",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-guidance",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-guided",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-discover",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-palette",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 194.203125,
+        "width": 366,
+        "height": 455.578125,
+        "top": 194.203125,
+        "right": 378,
+        "bottom": 649.78125,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "390-delete",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 143.703125,
+        "width": 366,
+        "height": 556.578125,
+        "top": 143.703125,
+        "right": 378,
+        "bottom": 700.28125,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 777,
+        "width": 390,
+        "height": 67,
+        "top": 777,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-reader",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-marks",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-path",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-journal",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-reviews",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-history",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-guidance",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-guided",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-discover",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-palette",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 16,
+        "width": 296,
+        "height": 536,
+        "top": 16,
+        "right": 308,
+        "bottom": 552,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "320-delete",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 16,
+        "width": 296,
+        "height": 536,
+        "top": 16,
+        "right": 308,
+        "bottom": 552,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 501,
+        "width": 320,
+        "height": 67,
+        "top": 501,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-reader",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-marks",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-path",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-journal",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-reviews",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-history",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-guidance",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-guided",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-discover",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-palette",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialog": {
+        "x": 114,
+        "y": 331.703125,
+        "width": 540,
+        "height": 360.578125,
+        "top": 331.703125,
+        "right": 654,
+        "bottom": 692.28125,
+        "left": 114
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "768-delete",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "dialog": {
+        "x": 114,
+        "y": 314.40625,
+        "width": 540,
+        "height": 395.171875,
+        "top": 314.40625,
+        "right": 654,
+        "bottom": 709.578125,
+        "left": 114
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 957,
+        "width": 768,
+        "height": 67,
+        "top": 957,
+        "right": 768,
+        "bottom": 1024,
+        "left": 0
+      }
+    },
+    {
+      "name": "1440-reader",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-marks",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-path",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-journal",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-reviews",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-history",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-guidance",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-guided",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-discover",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-palette",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialog": {
+        "x": 450,
+        "y": 319.703125,
+        "width": 540,
+        "height": 360.578125,
+        "top": 319.703125,
+        "right": 990,
+        "bottom": 680.28125,
+        "left": 450
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "1440-delete",
+      "width": 1440,
+      "height": 1000,
+      "overflow": false,
+      "dialog": {
+        "x": 450,
+        "y": 302.40625,
+        "width": 540,
+        "height": 395.171875,
+        "top": 302.40625,
+        "right": 990,
+        "bottom": 697.578125,
+        "left": 450
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 190,
+        "y": 125,
+        "width": 170,
+        "height": 227,
+        "top": 125,
+        "right": 360,
+        "bottom": 352,
+        "left": 190
+      }
+    },
+    {
+      "name": "zoom-390-reader",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-390-path",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-390-journal",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-390-history",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-390-discover",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-390-guidance",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-390-plans",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-390-edit",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 16,
+        "width": 366,
+        "height": 812,
+        "top": 16,
+        "right": 378,
+        "bottom": 828,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-390-delete",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 16,
+        "width": 366,
+        "height": 812,
+        "top": 16,
+        "right": 378,
+        "bottom": 828,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-390-palette",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 34.25,
+        "width": 366,
+        "height": 775.5,
+        "top": 34.25,
+        "right": 378,
+        "bottom": 809.75,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 767.53125,
+        "width": 390,
+        "height": 76.46875,
+        "top": 767.53125,
+        "right": 390,
+        "bottom": 844,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-reader",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-path",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-journal",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-history",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-discover",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-guidance",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-plans",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-edit",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 16,
+        "width": 296,
+        "height": 536,
+        "top": 16,
+        "right": 308,
+        "bottom": 552,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-delete",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 16,
+        "width": 296,
+        "height": 536,
+        "top": 16,
+        "right": 308,
+        "bottom": 552,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    },
+    {
+      "name": "zoom-320-palette",
+      "width": 320,
+      "height": 568,
+      "overflow": false,
+      "dialog": {
+        "x": 12,
+        "y": 16,
+        "width": 296,
+        "height": 536,
+        "top": 16,
+        "right": 308,
+        "bottom": 552,
+        "left": 12
+      },
+      "dialogOverflow": false,
+      "nav": {
+        "x": 0,
+        "y": 432.0625,
+        "width": 320,
+        "height": 135.9375,
+        "top": 432.0625,
+        "right": 320,
+        "bottom": 568,
+        "left": 0
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "loads": []
+}

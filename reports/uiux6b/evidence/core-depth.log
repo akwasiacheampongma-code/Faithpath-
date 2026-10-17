@@ -1,0 +1,15 @@
+PASS highlight lifecycle, notes, path connection, undo, reload, backup
+PASS path edit, step priority, archive/reactivate, safe delete and undo
+PASS reader removes selected range and undo restores every ID
+PASS path undo refuses to overwrite newer reading data
+PASS legacy multiline step and journal remain readable and unchanged
+PASS empty states 390
+PASS empty states 320
+PASS visual and geometry 390
+PASS visual and geometry 320
+PASS visual and geometry 768
+PASS visual and geometry 1440
+PASS 200% text 390
+PASS 200% text 320
+PASS keyboard color selection and reduced motion
+PASS no JavaScript console or load errors

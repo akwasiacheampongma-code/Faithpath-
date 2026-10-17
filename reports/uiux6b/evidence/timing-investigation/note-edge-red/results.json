@@ -1,0 +1,21 @@
+[
+  {
+    "error": "Schreibe einen Gedanken, bevor du ihn speicherst.",
+    "fields": [
+      {
+        "visible": true,
+        "disabled": false,
+        "readOnly": false,
+        "html": "<textarea id=\"f-text\" name=\"text\" rows=\"5\" placeholder=\"Ein Satz kann ein Anfang sein …\" style=\"min-"
+      }
+    ],
+    "dialog": {
+      "open": true,
+      "html": "<form id=\"editor-form\"><div class=\"dialog-top\"><h2 id=\"dialog-title\" aria-label=\"Was bleibt dir?\">Was bleibt dir?</h2><div class=\"dialog-header-actions\"><button class=\"button primary full\" type=\"submit\">Gedanken speichern</button><button type=\"button\" class=\"icon-button\" data-action=\"close\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m6 6 12 12M6 18 18 6\"></path></svg><span class=\"sr-only\">Schließen</span></button></div></div><div id=\"form-error\" role=\"alert\" tabindex=\"-1\">Schreibe einen Gedanken, bevor du ihn speicherst.</div><p class=\"meta\">Johannes 3,1</p><div class=\"field\"><label for=\"f-text\">Dein Gedanke</label><textarea id=\"f-text\" name=\"text\" rows=\"5\" placeholder=\"Ein Satz ka"
+    }
+  },
+  {
+    "status": "FAIL",
+    "error": "locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Dein Gedanke', { exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <textarea rows=\"5\" id=\"f-text\" name=\"text\" placeholder=\"Ein Satz kann ein Anfang sein …\"></textarea>\u001b[22m\n\u001b[2m    - fill(\"Äöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht ausführen</script>\u001b[22m\n\u001b[2mÄöü & <script>nicht a"
+  }
+]

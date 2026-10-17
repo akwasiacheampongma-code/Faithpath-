@@ -1,0 +1,299 @@
+{
+  "app": "FaithPath",
+  "version": 4,
+  "schemaVersion": 5,
+  "exported": "2026-10-17T11:56:19.756Z",
+  "data": {
+    "version": 5,
+    "translation": "otb",
+    "paths": [
+      {
+        "id": "core-path",
+        "title": "In Ruhe zuhören",
+        "why": "Ich möchte Menschen aufmerksam begegnen.",
+        "category": "sonstiges",
+        "started": "2026-09-01T12:00:00.000Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "step-one",
+            "text": "Im nächsten Gespräch ausreden lassen.",
+            "done": false,
+            "createdAt": "2026-09-01T12:00:00.000Z"
+          },
+          {
+            "id": "step-two",
+            "text": "Eine Frage stellen.",
+            "done": false,
+            "createdAt": "2026-09-01T12:00:00.000Z"
+          },
+          {
+            "id": "step-done",
+            "text": "Einen Moment innehalten.",
+            "done": true,
+            "createdAt": "2026-09-01T12:00:00.000Z",
+            "completedAt": "2026-09-01T12:00:00.000Z"
+          }
+        ],
+        "links": [
+          {
+            "id": "verse-link",
+            "kind": "verse",
+            "label": "Johannes 3,1",
+            "ref": {
+              "book": "JHN",
+              "chapter": 3,
+              "from": 1,
+              "to": 1,
+              "translation": "otb"
+            },
+            "date": "2026-09-01T12:00:00.000Z"
+          }
+        ],
+        "reviews": [
+          {
+            "id": "path-review",
+            "text": "Heute höre ich ruhiger zu.",
+            "date": "2026-09-01T12:00:00.000Z",
+            "confirmedDevelopment": true,
+            "sourceKey": "path:core-path"
+          }
+        ],
+        "milestones": [
+          {
+            "id": "milestone-one",
+            "reviewId": "path-review",
+            "text": "Heute höre ich ruhiger zu.",
+            "date": "2026-09-01T12:00:00.000Z"
+          }
+        ]
+      }
+    ],
+    "journal": [
+      {
+        "id": "thought-old",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "text": "Ich wusste nicht, wie ich reagieren soll.",
+        "date": "2026-09-01T12:00:00.000Z",
+        "pathIds": [
+          "core-path"
+        ]
+      },
+      {
+        "id": "thought-new",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "text": "Ich darf zuhören, bevor ich eine Antwort suche.",
+        "date": "2026-10-17T11:55:53.153Z",
+        "pathIds": [
+          "core-path"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "id": "legacy-highlight",
+        "book": "JHN",
+        "chapter": 3,
+        "from": 1,
+        "to": 1,
+        "translation": "otb",
+        "at": "2026-09-01T12:00:00.000Z",
+        "snippet": "Es war aber ein Mensch unter den Pharisäern, Nikodemus mit Namen, ein Oberster der Juden."
+      }
+    ],
+    "reflections": [],
+    "quiz": {
+      "1": {
+        "done": "2026-09-01T12:00:00Z",
+        "legacy": "story"
+      },
+      "10000": {
+        "done": "2026-09-01T12:00:00Z"
+      },
+      "10070": {
+        "legacy": "retain",
+        "done": "2026-10-17T11:56:15.296Z"
+      },
+      "10259": {
+        "done": "2026-10-17T11:56:18.851Z"
+      }
+    },
+    "events": [
+      {
+        "id": "61d1dd5e-1ccd-4988-bb9c-b9818b4bb274",
+        "kind": "reading",
+        "at": "2026-10-17T11:56:06.487Z",
+        "text": "Johannes 3",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/JHN/3/otb"
+      },
+      {
+        "id": "3e690eb6-c0fa-49a5-9290-e0d04041bf1d",
+        "kind": "chapter-explored",
+        "at": "2026-10-17T11:56:06.449Z",
+        "ref": {
+          "book": "GEN",
+          "chapter": 1
+        }
+      },
+      {
+        "id": "dabe4735-4df5-4e9d-8363-7a7235d28ae7",
+        "kind": "reading",
+        "at": "2026-10-17T11:56:06.309Z",
+        "text": "1. Mose 1",
+        "ref": {
+          "book": "GEN",
+          "chapter": 1,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/GEN/1/otb"
+      },
+      {
+        "id": "ffaccabd-ee9d-4633-845c-4be15fe27ebc",
+        "kind": "reading",
+        "at": "2026-10-17T11:56:06.212Z",
+        "text": "Offenbarung 22",
+        "ref": {
+          "book": "REV",
+          "chapter": 22,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/REV/22/otb"
+      },
+      {
+        "id": "57343302-4b04-46cb-97e0-2a0d424123df",
+        "kind": "reading",
+        "at": "2026-10-17T11:56:06.112Z",
+        "text": "Apostelgeschichte 28",
+        "ref": {
+          "book": "ACT",
+          "chapter": 28,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/ACT/28/otb"
+      },
+      {
+        "id": "40a01307-c524-4973-9a8a-18116bc25b76",
+        "kind": "reading",
+        "at": "2026-10-17T11:56:05.998Z",
+        "text": "Johannes 3",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/JHN/3/otb"
+      },
+      {
+        "id": "d806629e-bf9d-4d26-8f2c-5af0ac264655",
+        "kind": "reading",
+        "at": "2026-10-17T11:56:05.872Z",
+        "text": "Markus 1",
+        "ref": {
+          "book": "MRK",
+          "chapter": 1,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/MRK/1/otb"
+      },
+      {
+        "id": "cc65ee41-15ca-4dc9-9cc5-3b6e9a1d5573",
+        "kind": "reading",
+        "at": "2026-10-17T11:56:05.672Z",
+        "text": "Matthäus 28",
+        "ref": {
+          "book": "MAT",
+          "chapter": 28,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/MAT/28/otb"
+      },
+      {
+        "id": "c5a07b91-49a9-4572-a722-a0920da4e5ad",
+        "kind": "reading",
+        "at": "2026-10-17T11:56:05.564Z",
+        "text": "Matthäus 1",
+        "ref": {
+          "book": "MAT",
+          "chapter": 1,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/MAT/1/otb"
+      },
+      {
+        "id": "a5c36e24-7fd9-48b8-9b78-00eb01ed0781",
+        "kind": "chapter-explored",
+        "at": "2026-10-17T11:56:00.591Z",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3
+        }
+      },
+      {
+        "id": "bff4cc63-cfef-4a9a-81f2-e37fb2394cbc",
+        "kind": "reading",
+        "at": "2026-10-17T11:55:59.273Z",
+        "text": "Johannes 3",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/JHN/3/otb"
+      }
+    ],
+    "reading": {
+      "book": "JHN",
+      "chapter": 3,
+      "from": 1,
+      "to": 3,
+      "translation": "l1912"
+    },
+    "reminderSnoozes": {},
+    "dismissedGaps": {},
+    "reviews": [
+      {
+        "id": "old-thought-review",
+        "date": "2026-10-17T11:55:53.153Z",
+        "text": "Heute sehe ich die Situation mit mehr Ruhe.",
+        "confirmedDevelopment": false,
+        "sourceKey": "journal:thought-old"
+      }
+    ],
+    "guidedPlans": {
+      "vertrauen": {
+        "0": true
+      }
+    },
+    "settings": {}
+  },
+  "guidedPlans": {
+    "vertrauen": {
+      "0": true
+    }
+  }
+}

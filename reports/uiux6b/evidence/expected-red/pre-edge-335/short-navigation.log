@@ -1,0 +1,93 @@
+{
+  "cases": 20,
+  "failures": [
+    {
+      "width": 320,
+      "height": 568,
+      "tr": "l1912",
+      "from": "read/JHN/3/l1912",
+      "beforeY": 1200,
+      "measurement": {
+        "scrollY": 0,
+        "end": {
+          "x": 18,
+          "y": 533.078125,
+          "width": 284,
+          "height": 1,
+          "top": 533.078125,
+          "right": 302,
+          "bottom": 534.078125,
+          "left": 18
+        },
+        "nav": {
+          "x": 0,
+          "y": 501,
+          "width": 320,
+          "height": 67,
+          "top": 501,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 70,
+          "top": 0,
+          "right": 320,
+          "bottom": 70,
+          "left": 0
+        },
+        "confirmation": false,
+        "events": []
+      },
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.journey-acknowledgement') to be visible\u001b[22m\n\u001b[2m    58 × locator resolved to hidden <section hidden=\"\" aria-live=\"polite\" class=\"journey-acknowledgement\">…</section>\u001b[22m\n\n    at /workspace/Faithpath-uiux6b/tests/phase3-short-navigation.mjs:17:225"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "tr": "l1912",
+      "from": "discover",
+      "beforeY": 1200,
+      "measurement": {
+        "scrollY": 0,
+        "end": {
+          "x": 18,
+          "y": 533.078125,
+          "width": 284,
+          "height": 1,
+          "top": 533.078125,
+          "right": 302,
+          "bottom": 534.078125,
+          "left": 18
+        },
+        "nav": {
+          "x": 0,
+          "y": 501,
+          "width": 320,
+          "height": 67,
+          "top": 501,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "top": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 70,
+          "top": 0,
+          "right": 320,
+          "bottom": 70,
+          "left": 0
+        },
+        "confirmation": false,
+        "events": []
+      },
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.journey-acknowledgement') to be visible\u001b[22m\n\u001b[2m    59 × locator resolved to hidden <section hidden=\"\" aria-live=\"polite\" class=\"journey-acknowledgement\">…</section>\u001b[22m\n\n    at /workspace/Faithpath-uiux6b/tests/phase3-short-navigation.mjs:17:225"
+    }
+  ]
+}

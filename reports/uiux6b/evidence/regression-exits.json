@@ -1,0 +1,412 @@
+[
+  {
+    "name": "core",
+    "script": "browser",
+    "exit": 0,
+    "started": 1792238152.2125099,
+    "ended": 1792238299.2546139,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "stabilization",
+    "script": "stabilization-browser",
+    "exit": 0,
+    "started": 1792238152.2130876,
+    "ended": 1792238216.3083503,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "chapter",
+    "script": "chapter-questions-browser",
+    "exit": 0,
+    "started": 1792238152.2137523,
+    "ended": 1792238386.711777,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "nt",
+    "script": "nt-quiz-browser",
+    "exit": 0,
+    "started": 1792238216.3089685,
+    "ended": 1792238704.3505564,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "nachlese",
+    "script": "nachlese-mc-corpus-browser",
+    "exit": 0,
+    "started": 1792238299.254997,
+    "ended": 1792238472.5502036,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "mc-fixtures",
+    "script": "nachlese-mc-browser",
+    "exit": 0,
+    "started": 1792238386.7122312,
+    "ended": 1792238415.053014,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "worker",
+    "script": "service-worker",
+    "exit": 0,
+    "started": 1792238415.0534532,
+    "ended": 1792238459.616346,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "today",
+    "script": "today-phase1-browser",
+    "exit": 0,
+    "started": 1792238459.6167164,
+    "ended": 1792239217.4991624,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "today-zoom",
+    "script": "today-phase1-zoom",
+    "exit": 0,
+    "started": 1792238472.5526068,
+    "ended": 1792238484.9107,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "phase2",
+    "script": "phase2-browser",
+    "exit": 0,
+    "started": 1792238484.9128258,
+    "ended": 1792238776.6018922,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "phase2-stress",
+    "script": "phase2-stress",
+    "exit": 0,
+    "started": 1792238704.351007,
+    "ended": 1792238771.813174,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "phase2-short",
+    "script": "phase2-short-chapter-browser",
+    "exit": 0,
+    "started": 1792238771.8136265,
+    "ended": 1792238844.8085244,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "experience",
+    "script": "final-experience-browser",
+    "exit": 0,
+    "started": 1792238776.6024084,
+    "ended": 1792238883.3986394,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "core-depth",
+    "script": "core-depth-browser",
+    "exit": 0,
+    "started": 1792238844.8089797,
+    "ended": 1792239011.2509055,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "core-axe",
+    "script": "core-depth-accessibility",
+    "exit": 0,
+    "started": 1792238883.4001346,
+    "ended": 1792238908.1114724,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "continuity",
+    "script": "continuity-browser",
+    "exit": 0,
+    "started": 1792238908.1119294,
+    "ended": 1792239044.6090581,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "branches",
+    "script": "tree-branch-visual-browser",
+    "exit": 0,
+    "started": 1792239011.2515543,
+    "ended": 1792239797.9030857,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "overview",
+    "script": "phase3-overview-browser",
+    "exit": 0,
+    "started": 1792239044.6093764,
+    "ended": 1792239343.699302,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "detail",
+    "script": "phase3-detail-browser",
+    "exit": 0,
+    "started": 1792239217.4995172,
+    "ended": 1792239438.0567248,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "tree",
+    "script": "phase3-tree-browser",
+    "exit": 0,
+    "started": 1792239343.6996312,
+    "ended": 1792239755.749493,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "reviews-original",
+    "script": "phase3-review-browser",
+    "exit": 0,
+    "started": 1792239438.0571735,
+    "ended": 1792240054.3526537,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "phase3-stress",
+    "script": "phase3-stress",
+    "exit": 0,
+    "started": 1792239755.7499015,
+    "ended": 1792239949.0102725,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "journey",
+    "script": "phase3-journey-browser",
+    "exit": 0,
+    "started": 1792239797.903542,
+    "ended": 1792239858.1536906,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "short-navigation",
+    "script": "phase3-short-navigation",
+    "exit": 0,
+    "started": 1792239858.154021,
+    "ended": 1792240291.3555403,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "premium-journal",
+    "script": "premium-journal-browser",
+    "exit": 0,
+    "started": 1792239949.0107408,
+    "ended": 1792240088.6628835,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "final-notes",
+    "script": "final-note-browser",
+    "exit": 0,
+    "started": 1792240612.408846,
+    "ended": 1792240689.208103,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "product",
+    "script": "final-product-browser",
+    "exit": 0,
+    "started": 1792240088.666216,
+    "ended": 1792240342.3091223,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "navigation",
+    "script": "phase4-navigation-browser",
+    "exit": 0,
+    "started": 1792239055.1660264,
+    "ended": 1792239465.1077075,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "discover",
+    "script": "phase4-discover-browser",
+    "exit": 0,
+    "started": 1792239055.1666954,
+    "ended": 1792239400.6078432,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "onboarding",
+    "script": "phase4-onboarding-browser",
+    "exit": 0,
+    "started": 1792239400.608454,
+    "ended": 1792240226.1014056,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "routes",
+    "script": "phase4-routes-browser",
+    "exit": 0,
+    "started": 1792239465.1080794,
+    "ended": 1792239794.2593825,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "menu-focus",
+    "script": "phase4-menu-focus-browser",
+    "exit": 0,
+    "started": 1792239794.2597973,
+    "ended": 1792239839.472138,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "phase4-stress",
+    "script": "phase4-stress-browser",
+    "exit": 0,
+    "started": 1792239839.4724267,
+    "ended": 1792240014.2081773,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "journal",
+    "script": "phase5-journal-browser",
+    "exit": 0,
+    "started": 1792240014.2085161,
+    "ended": 1792240447.6107433,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "reviews",
+    "script": "phase5-reviews-browser",
+    "exit": 0,
+    "started": 1792240226.101911,
+    "ended": 1792240576.312892,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "reminders",
+    "script": "phase5-reminders-browser",
+    "exit": 0,
+    "started": 1792240447.6111557,
+    "ended": 1792240523.3003554,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "backup",
+    "script": "phase5-backup-browser",
+    "exit": 0,
+    "started": 1792240523.3007126,
+    "ended": 1792240695.4996736,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "backup-races",
+    "script": "phase5-backup-races-browser",
+    "exit": 0,
+    "started": 1792240576.3140757,
+    "ended": 1792240601.4025302,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "backup-dialogs",
+    "script": "phase5-backup-dialogs-browser",
+    "exit": 0,
+    "started": 1792240601.40301,
+    "ended": 1792240683.8073342,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "phase5-stress",
+    "script": "phase5-stress-browser",
+    "exit": 0,
+    "started": 1792240683.8084173,
+    "ended": 1792240744.0068886,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  },
+  {
+    "name": "integration",
+    "script": "uiux45-integration-browser",
+    "exit": 0,
+    "started": 1792240695.500928,
+    "ended": 1792240746.172043,
+    "build": "FP4-20261017-G-STABLE1-UIUX6B-CANDIDATE",
+    "buildHash": "911c3f4a66eccc6d07f1e2f34f35256fd09f228b606af77f522ac5973e7a5852",
+    "sourceCommit": "f89eccf923ae186ad132b779a99b829e0cf9e155"
+  }
+]
