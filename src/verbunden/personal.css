@@ -1,10 +1,12 @@
 /* Original records and original snapshots remain in their existing view adapters. */
-.journal-page .page-heading h1 {
+.page.journal-page .page-heading h1 {
   font-size: 2.7rem;
   margin-bottom: 12px;
 }
-.journal-page .page-heading {
+.page.journal-page .page-heading {
   margin-bottom: 24px;
+  /* Own this padding explicitly: legacy .depth-page adds another 20px. */
+  padding: 0;
 }
 .journal-page .page-heading p {
   font-size: 0.88rem;
@@ -17,7 +19,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 22px;
+  padding: 18px;
+  gap: 12px;
   text-align: left;
   border: 1px solid var(--line);
   background: var(--surface);
@@ -31,7 +34,7 @@
   margin: 0 0 8px;
 }
 .journal-write .button strong {
-  font: 450 1.5rem/1.2 var(--serif);
+  font: 450 1.2rem/1.4 var(--serif);
 }
 .journal-page .journal-tools {
   margin: 0 0 18px;
@@ -124,10 +127,24 @@
   min-height: 32px;
 }
 .journal-empty-note {
-  font: 430 1.4rem/1.6 var(--serif);
+  font: 400 0.95rem/1.65 var(--sans);
   max-width: 550px;
-  margin-top: 36px;
+  margin: 16px 0;
   color: var(--muted);
+}
+@media (max-width: 699px) {
+  .page.journal-page .page-heading h1 {
+    font-size: 1.9rem;
+  }
+  .page.journal-page .page-heading {
+    margin-bottom: 16px;
+  }
+  .journal-page .journal-write {
+    margin-bottom: 16px;
+  }
+  .journal-page .journal-result-count {
+    margin-bottom: 16px;
+  }
 }
 dialog.writing-dialog {
   position: fixed;

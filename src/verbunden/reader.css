@@ -382,6 +382,8 @@
 .reading-settings {
   position: relative;
   margin: 0;
+  border: 0;
+  padding: 0;
 }
 .reading-settings > summary {
   display: grid;
@@ -389,6 +391,7 @@
   list-style: none;
   min-width: 44px;
   min-height: 44px;
+  padding: 0;
   font-size: 0.85rem;
   cursor: pointer;
 }
@@ -429,6 +432,27 @@
 }
 .page.reader-page .page-heading h1 {
   margin: 12px 0 14px;
+}
+@media (max-width: 699px) {
+  /* Keep the 1.25rem reading font. Reduce only the chapter's display furniture. */
+  .page.reader-page {
+    padding-top: 0;
+  }
+  .page.reader-page .page-heading {
+    padding: 0;
+    margin: 8px 0 12px;
+  }
+  .page.reader-page .page-heading h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+    margin: 8px 0 10px;
+  }
+  .reader-page .page-heading:after {
+    display: none;
+  }
+  .reader-page .reader-reflection-entry {
+    margin-bottom: 8px;
+  }
 }
 .reader-page .page-heading:after {
   margin-top: 12px;

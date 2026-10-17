@@ -212,7 +212,7 @@ function shell(body, active = "today", cls = "") {
   closeMenu(false);
   const toast=$("#toast"); if(toast) document.body.append(toast);
   $("#app").innerHTML =
-    `<header class="topbar"><a class="wordmark" href="#today" aria-label="FaithPath Startseite"><img class="brand-icon" src="./icons/olive-v2-192.png" alt="" aria-hidden="true" width="28" height="28" decoding="async">FaithPath<span class="brand-dot">.</span></a><div class="top-right"><span class="offline-label">${!navigator.onLine ? "Offline" : ui.offline ? "Auf diesem Gerät" : ""}</span><button type="button" id="menu-toggle" class="icon-button" aria-label="Hauptmenü öffnen oder schließen" aria-expanded="false" aria-controls="main-menu" aria-haspopup="dialog">${icon("more")}</button></div></header><div id="notification-slot"></div><nav class="primary-nav" aria-label="Hauptnavigation">${[
+    `<header class="topbar"><a class="wordmark" href="#today" aria-label="FaithPath Startseite"><img class="brand-icon" src="./icons/olive-v2-192.png" alt="" aria-hidden="true" width="28" height="28" decoding="async"><span class="brand-name">FaithPath<span class="brand-dot" aria-hidden="true">.</span></span></a><div class="top-right"><span class="offline-label">${!navigator.onLine ? "Offline" : ui.offline ? "Auf diesem Gerät" : ""}</span><button type="button" id="menu-toggle" class="icon-button" aria-label="Hauptmenü öffnen oder schließen" aria-expanded="false" aria-controls="main-menu" aria-haspopup="dialog">${icon("more")}</button></div></header><div id="notification-slot"></div><nav class="primary-nav" aria-label="Hauptnavigation">${[
       ["today", "home", "Heute"],
       ["bible", "book", "Bibel"],
       ["paths", "path", "Mein Weg"],

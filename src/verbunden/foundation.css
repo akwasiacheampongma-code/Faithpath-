@@ -84,6 +84,8 @@ small {
   color: var(--muted);
 }
 .topbar {
+  /* A fixed legacy height cannot contain wrapped controls or larger text. */
+  height: auto;
   min-height: 72px;
   padding: calc(10px + var(--safe-top, env(safe-area-inset-top, 0px))) 24px 8px;
   max-width: 1080px;
@@ -93,10 +95,22 @@ small {
   box-shadow: none;
   position: relative;
   margin: auto;
+  flex-wrap: wrap;
+  gap: 8px 12px;
 }
 .wordmark {
   font: 650 1.2rem/1.2 var(--sans);
   letter-spacing: -0.055em;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.wordmark .brand-name {
+  white-space: nowrap;
+}
+.wordmark .brand-dot {
+  margin: 0;
 }
 .wordmark .brand-icon {
   width: 27px;
@@ -105,6 +119,8 @@ small {
 }
 .top-right {
   gap: 12px;
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 .offline-label {
   font-size: 0.63rem;
