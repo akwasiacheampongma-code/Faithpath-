@@ -69,3 +69,6 @@
 - Ruling: user already authorizes diagnosis and correction; execute inline without a second approval step. No new visual direction or product decision.
 - Ruling: live host is not allowlisted. Continue with the frozen exact source build; report live and physical verification as open, no proxy workaround.
 - Baseline diagnostics: browser font loading succeeds; viewport meta allows zoom; no physical zoom setting can be inferred from screenshot raster size. Root text-size-adjust is `auto`, but a Safari inflation fault is not independently established.
+- Task2: five original RED cases plus existing Safe-Area control became6 GREEN in654a63f.191 unit tests passed; protected175 files unchanged.
+- Ruling: visual inspection of the first full matrix exposed additional mid-word Settings/Journey titles at320/200% and the opening reading line below navigation. Overflow-only assertions missed these. Stop that internal MOBILE1 trial, preserve its receipts under `qa-output/uiux6b-mobile1/trial1`, add3 RED tests, use the shared mobile page-title token (1.75rem;1.5rem below351px), preserve the Journal/Today editorial hierarchy and all40px reading text at200%. Cost: repeat the complete final regression, rather than using trial PASS records as final evidence.
+- Final candidate receives unique build-ID `FP4-20261017-G-STABLE1-UIUX6B-MOBILE2`; MOBILE1 was never published.

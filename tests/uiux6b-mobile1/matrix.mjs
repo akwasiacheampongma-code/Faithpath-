@@ -6,7 +6,7 @@ import {chromium} from 'playwright';
 import {KEYS} from '../../src/store.js';
 import {phase3Fixture} from '../phase3-fixtures.mjs';
 
-const base=process.env.QA_URL||'http://127.0.0.1:4512';
+const base=process.env.QA_URL||'http://127.0.0.1:4516';
 const out=process.env.QA_OUT||'qa-output/uiux6b-mobile1/matrix';
 const before=process.env.QA_BEFORE==='1';
 const themes=(process.env.QA_THEMES||'light,atmospheric,paper,night').split(',');
@@ -18,14 +18,16 @@ const metadata=await (await fetch(base+'/release-integrity.json')).json();
 function fixture(theme){const d=phase3Fixture('many',theme);d.reading={book:'JHN',chapter:15,translation:'otb'};d.journal.find(j=>j.id==='thought-new').text='Mein langer, ausschließlich synthetischer Gedanke.\n'.repeat(400);return d;}
 for(const theme of themes)for(const[width,height]of sizes)for(const font of [100,150,200]){
  if(before&&!((width===390&&font===100)||(width===320&&font===200)))continue;
- const context=await browser.newContext({viewport:{width,height},isMobile:width<700,reducedMotion:'reduce',serviceWorkers:'block'});
+ const context=await browser.newContext({viewport:{width,height},isMobile:width<700,reducedMotion:'reduce'});
  await context.addInitScript(({KEYS,data,font})=>{if(!sessionStorage.getItem('seed')){localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');sessionStorage.setItem('seed','1')}document.addEventListener('DOMContentLoaded',()=>document.documentElement.style.fontSize=font+'%')},{KEYS,data:fixture(theme),font});
  const page=await context.newPage();page.setDefaultTimeout(20000);
  page.on('pageerror',e=>errors.push({theme,width,font,message:e.message}));
  async function capture(name,route,prepare){
   const row={name,route,theme,width,height,font,build:metadata.build,buildHash:metadata.build_hash};
   try{
-   await page.goto(base+'/#'+route);await page.locator('#main h1').waitFor();if(route.startsWith('read/'))await page.locator('.verse').last().waitFor();
+   await page.goto(base+'/#'+route);await page.locator('#main h1').waitFor();
+   await page.waitForFunction(()=>!!navigator.serviceWorker.controller,{timeout:90000});
+   if(route.startsWith('read/'))await page.locator('.verse').last().waitFor();
    await page.evaluate(()=>document.fonts.ready);if(prepare)await prepare();
    row.geometry=await page.evaluate(()=>{
     const rect=e=>e.getBoundingClientRect().toJSON();const nav=document.querySelector('.primary-nav');
@@ -39,6 +41,15 @@ for(const theme of themes)for(const[width,height]of sizes)for(const font of [100
    for(const r of row.geometry.navLinks){assert(r.width>=44&&r.height>=44,'Navigation touch target <44px');assert(r.left>=-1&&r.right<=width+1,'Navigation outside viewport')}
    if(name==='journal-empty'){assert.equal(await page.locator('[data-journal-id]').count(),0);assert.equal(await page.locator('[data-action=new-entry]').count(),1)}
    if(name==='reader'||name==='luther')assert.equal(await page.locator('.verse').count(),176,'Long chapter verse loss');
+   if(!before&&(name==='reader'||name==='luther')&&width===320){
+    const line=await page.locator('.verse').first().evaluate(e=>e.getClientRects()[0].toJSON());
+    assert(line.bottom<=row.geometry.nav.y+1,'Opening reading line hidden below navigation');
+   }
+   if(!before&&(name==='settings'||name==='journey')){
+    const word=name==='settings'?'Einstellungen':'Bibelreise';
+    const count=await page.locator('#main h1').evaluate((el,word)=>{const text=el.firstChild,start=text.textContent.indexOf(word),range=document.createRange();range.setStart(text,start);range.setEnd(text,start+word.length);return range.getClientRects().length},word);
+    assert.equal(count,1,'Ordinary page-title word split across lines');
+   }
    if(name==='question'||name==='quiz')assert.equal(await page.locator('.answers button').count(),4,'Answer option loss');
    row.status='PASS';
   }catch(error){row.status='FAIL';row.error=error.stack;}
@@ -47,7 +58,7 @@ for(const theme of themes)for(const[width,height]of sizes)for(const font of [100
   results.push(row);fs.appendFileSync(out+'/progress.jsonl',JSON.stringify(row)+'\n');
  }
  for(const[name,route]of Object.entries(routes)){
-  if(before&&!['reader','quiz','journal','today'].includes(name))continue;
+  if(before&&!['reader','quiz','journal','today','settings','journey'].includes(name))continue;
   await capture(name,route);
  }
  await page.evaluate(({KEYS,data})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{KEYS,data:phase3Fixture('empty',theme)});
@@ -58,6 +69,6 @@ for(const theme of themes)for(const[width,height]of sizes)for(const font of [100
   await capture('search-empty','discover',async()=>{await page.locator('#main input[type=search]').fill('SYNTHETISCH-KEIN-TREFFER-20261017');await page.locator('#discovery-count').filter({hasText:'0 Einheiten'}).waitFor()});
  }
  await context.close();console.log(JSON.stringify({theme,width,font,completed:results.length,failures:results.filter(r=>r.status==='FAIL').length}));
- fs.writeFileSync(out+'/results.json',JSON.stringify({metadata,method:'Real Chromium PNGs; production CSP; visual matrix blocks service worker. Separate tests verify worker/offline/update. CSS root font size, not Safari page zoom.',physicalIOS:'OFFEN',results,errors},null,2));
+ fs.writeFileSync(out+'/results.json',JSON.stringify({metadata,method:'Real Chromium PNGs, production CSP and active worker. CSS root font size, not Safari page zoom. Separate tests verify offline/update.',physicalIOS:'OFFEN',results,errors},null,2));
 }
 await browser.close();process.exitCode=results.some(r=>r.status==='FAIL')||errors.length?1:0;

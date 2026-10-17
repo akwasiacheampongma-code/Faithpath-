@@ -443,7 +443,7 @@
     margin: 8px 0 12px;
   }
   .page.reader-page .page-heading h1 {
-    font-size: 1.9rem;
+    font-size: var(--v-page-title);
     line-height: 1.2;
     margin: 8px 0 10px;
   }

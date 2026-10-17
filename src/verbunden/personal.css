@@ -288,7 +288,7 @@ dialog.writing-dialog {
 }
 .paths-page .page-heading h1,
 .path-page .path-titlebar h1 {
-  font: 430 2.5rem/1.1 var(--serif);
+  font: 430 var(--v-page-title, 2.5rem)/1.1 var(--serif);
 }
 .paths-page .page-heading p {
   font-size: 0.9rem;
@@ -520,7 +520,7 @@ dialog.writing-dialog {
   }
   .paths-page .page-heading h1,
   .path-page .path-titlebar h1 {
-    font-size: 2.2rem;
+    font-size: var(--v-page-title, 2.2rem);
   }
   .path-page .next-step {
     padding: 18px;

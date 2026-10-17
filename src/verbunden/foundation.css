@@ -421,12 +421,19 @@ textarea:focus-visible,
 
 /* The shared heading also owns legacy depth/utility subroutes. */
 .page .page-heading h1 {
-  font-size: 2.5rem;
+  font-size: var(--v-page-title, 2.5rem);
   line-height: 1.1;
 }
+@media (max-width: 699px) {
+  .page {
+    /* Utility/story headings must also reflow at 200% on small phones.
+       Individual editorial titles (Today/Journal) retain their own hierarchy. */
+    --v-page-title: 1.75rem;
+  }
+}
 @media (max-width: 350px) {
-  .page .page-heading h1 {
-    font-size: 2.2rem;
+  .page {
+    --v-page-title: 1.5rem;
   }
 }
 /* Native focus/scroll must reserve the actual wrapped navigation height. */

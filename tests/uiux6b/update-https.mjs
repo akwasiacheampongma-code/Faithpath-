@@ -11,9 +11,9 @@ const previous=process.env.FAITHPATH_PREVIOUS_ROOT||'/workspace/scratch/uiux6b/b
 const candidate=process.env.FAITHPATH_CANDIDATE_ROOT||'qa-output/uiux6b/release-final';
 assert(fs.existsSync(previous+'/release-integrity.json'),'Build the exact UIUX4+5 baseline 0ec8492 first');
 const oldManifest=JSON.parse(fs.readFileSync(previous+'/release-integrity.json'));
-assert.equal(oldManifest.build,'FP4-20261017-G-STABLE1-UIUX45-CANDIDATE');
-assert.equal(oldManifest.build_hash,'bd6866522aec7b35854bc7c7871d8ce9afb2f1eb4013fd74496423f63753b882');
-const out='qa-output/uiux6b/update-https',origin=path.resolve(out,'origin'),results=[];
+assert.equal(oldManifest.build,process.env.FAITHPATH_PREVIOUS_BUILD||'FP4-20261017-G-STABLE1-UIUX45-CANDIDATE');
+assert.equal(oldManifest.build_hash,process.env.FAITHPATH_PREVIOUS_HASH||'bd6866522aec7b35854bc7c7871d8ce9afb2f1eb4013fd74496423f63753b882');
+const out=process.env.QA_OUT||'qa-output/uiux6b/update-https',origin=path.resolve(out,'origin'),results=[];
 fs.mkdirSync(out,{recursive:true});
 // Publish the worker last and atomically; never expose a transient 404 during copying.
 function deploy(dir){
@@ -57,7 +57,7 @@ try{
   assert.equal(await page.locator('.source-answer summary').count(),0);assert.equal(await page.locator('.answers button').count(),4);
   const before=await snapshot();assert.equal(JSON.parse(before.main).version,5);assert(before.migration);assert.equal(before.draft,draft);
   assert.equal(Object.keys(JSON.parse(before.main).quiz).length,261);
-  results.push('UIUX4+5 baseline installed with 260 existing chapter completion keys, story progress, V3 migration and pending draft');
+  results.push(oldManifest.build+' baseline installed with 260 existing chapter completion keys, story progress, V3 migration and pending draft');
   deploy(candidate);
   await page.goto('https://127.0.0.1:4459/#more?section=settings');
   // Changing only the hash is SPA navigation; it does not rerun registration.
@@ -68,7 +68,7 @@ try{
   await page.getByRole('button',{name:'Jetzt aktualisieren',exact:true}).click();await ready(BUILD);assert.deepEqual(await snapshot(),before);
   assert.deepEqual(await page.evaluate(async build=>(await fetch('./releases/'+build+'/data/stories.json')).json(),BUILD),finalUnits);
   assert.deepEqual(await page.evaluate(async build=>(await fetch('./releases/'+build+'/data/nachlese-questions.json')).json(),BUILD),finalNachlese);
-  results.push('UIUX45 → UIUX6B candidate waits for explicit activation; all personal storage bytes, all 2314 Nachlese entries and all 1300 NT questions verified');
+  results.push(oldManifest.build+' → '+BUILD+' waits for explicit activation; all personal storage bytes, all 2314 Nachlese entries and all 1300 NT questions verified');
   await page.screenshot({path:out+'/updated.png'});
   await context.setOffline(true);await page.reload();await ready(BUILD);assert.deepEqual(await snapshot(),before);
   assert.deepEqual(await page.evaluate(async build=>(await fetch('./releases/'+build+'/data/stories.json')).json(),BUILD),finalUnits,'All final questions must match the master even without a network connection');
@@ -115,7 +115,7 @@ try{
   await page.locator('[data-action="sword-info"]').click();await page.locator('dialog [data-journey-scripture]').filter({hasText:'und nehmet den Helm'}).waitFor();
   const phase2css=await page.evaluate(async build=>({status:(await fetch('./releases/'+build+'/src/reader-stories.css')).status,scene:getComputedStyle(document.querySelector('.journey-sword-scene')).display}),BUILD);
   assert.deepEqual(phase2css,{status:200,scene:'grid'});
-  results.push('New optional story reflection, exact Ephesians quotation, central sword and versioned Phase2 stylesheet function offline after UIUX45→UIUX6B update');
+  results.push('Optional story reflection, exact Ephesians quotation, central sword and versioned Phase2 stylesheet function offline after '+oldManifest.build+' → '+BUILD+' update');
   await page.goto('https://127.0.0.1:4459/#journal');await page.locator('#journal-search').waitFor();const phase45before=await snapshot();
   assert(await page.getByRole('button',{name:'Gedanken festhalten',exact:true}).isVisible());await page.locator('#journal-search').fill('Ungespeichert');assert.equal(await page.locator('[data-journal-id]').count(),1);
   await page.goto('https://127.0.0.1:4459/#more?section=data');await page.locator('.backup-page').waitFor();
@@ -123,7 +123,7 @@ try{
   assert.equal(await page.evaluate(async build=>(await fetch('./releases/'+build+'/src/journal-reviews-backup.css')).status,BUILD),200);
   results.push('UIUX5 journal search, private JSON inspection and versioned CSS function offline without changing any stored data');
   await page.goto('https://127.0.0.1:4459/#journal');await page.locator('[data-action=new-entry]').click();await page.locator('textarea[name=text]').fill('Ein neuer Phase5-Entwurf bleibt offline erhalten.');await page.waitForFunction(k=>localStorage.getItem(k)?.includes('Phase5-Entwurf'),KEYS.draft);await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('dialog').open);await page.evaluate(()=>navigator.locks.request('faithpath-journal-write',()=>{}));const draftBefore=await snapshot();await page.goto('https://127.0.0.1:4459/#reviews');await page.locator('.reminder-controls').waitFor();await page.reload();await page.locator('.reminder-controls').waitFor();assert.deepEqual(await snapshot(),draftBefore);
-  results.push('UIUX5 reminder controls, offline reload and open journal draft survive after the real UIUX45→UIUX6B update');
+  results.push('UIUX5 reminder controls, offline reload and open journal draft survive after the real '+oldManifest.build+' → '+BUILD+' update');
   const offlineFonts=await page.evaluate(async build=>Promise.all(['Newsreader.ttf','DMSans.ttf','Newsreader-Italic.ttf'].map(async font=>{const response=await fetch('./releases/'+build+'/src/verbunden/assets/fonts/'+font);return {font,status:response.status,bytes:(await response.arrayBuffer()).byteLength}})),BUILD);assert(offlineFonts.every(f=>f.status===200&&f.bytes>10000));results.push('All three licensed local fonts served by the actual worker while offline');
   assert.deepEqual(errors,[]);console.log('PASS',results.join('\nPASS '));
-}finally{await context.close();await browser.close();server.kill();fs.writeFileSync(out+'/results.json',JSON.stringify({previousBuild:oldManifest.build,candidateBuild:BUILD,transport:"isolated loopback HTTPS; self-signed certificate accepted by test Chromium only",physicalDeviceGate:"OFFEN",results,errors},null,2));}
+}finally{await context.close();await browser.close();server.kill();fs.writeFileSync(out+'/results.json',JSON.stringify({previousBuild:oldManifest.build,previousHash:oldManifest.build_hash,candidateBuild:BUILD,candidateHash:JSON.parse(fs.readFileSync(candidate+'/release-integrity.json')).build_hash,transport:"isolated loopback HTTPS; self-signed certificate accepted by test Chromium only",physicalDeviceGate:"OFFEN",results,errors},null,2));}

@@ -1,8 +1,8 @@
 """Byte-level preservation receipt. Does not read any personal user storage."""
 from pathlib import Path
-import hashlib,json,subprocess
+import hashlib,json,subprocess,os
 root=Path(__file__).resolve().parents[2]
-baseline='fc9e5b95e5c4bcd7e74c584874f6bc3ff6fe4539'
+baseline=os.environ.get('FAITHPATH_PRESERVE_BASELINE','fc9e5b95e5c4bcd7e74c584874f6bc3ff6fe4539')
 git=lambda *args: subprocess.check_output(['git',*args],cwd=root)
 hash=lambda data: hashlib.sha256(data).hexdigest()
 tracked=git('ls-tree','-r','--name-only',baseline).decode().splitlines()
@@ -25,7 +25,7 @@ action_pattern=r'a\s*=== "([a-z-]+)"'
 old_actions=set(re.findall(action_pattern,app_old));new_actions=set(re.findall(action_pattern,app_new))
 assert old_actions<=new_actions,old_actions-new_actions
 receipt=dict(baseline=baseline,sourceCommit=git('rev-parse','HEAD').decode().strip(),protectedFiles=rows,contentFiles=len(content),protectedModules=len(protected),routeFamilies=sorted(old_routes),routeFamiliesUnchanged=old_routes==new_routes,actionNamesRetained=sorted(old_actions),schemaMigrationAdded=False,productionDemoModelCopied=False,personalDataRead=False)
-out=root/'qa-output/uiux6b/preservation';out.mkdir(parents=True,exist_ok=True)
+out=root/os.environ.get('QA_OUT','qa-output/uiux6b/preservation');out.mkdir(parents=True,exist_ok=True)
 (out/'results.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2))
 (out/'changed-files.txt').write_bytes(git('diff','--name-status',baseline,'HEAD'))
 print(json.dumps({'protected':len(rows),'routes':len(old_routes),'actions':len(old_actions),'status':'PASS'}))
