@@ -2,6 +2,7 @@ import {treeLevel,developmentCount,time} from './domain.js';
 import {treeBranches} from './tree-branches.js';
 import {allReviews} from './continuity.js';
 import {escapeHtml as e} from './view-html.js';
+import {renderTreeStageGuide} from './tree-stage-guide.js';
 
 /** Source rows follow the unchanged counting rule, including retained development
  * after a path deletion. Unknown dates/text stay unknown; never manufacture evidence. */
@@ -24,6 +25,7 @@ export function renderTreeJourney(model,{back,heading,stageName,branchMarkup,lin
  return `${back('Mein Weg','paths')}${heading('Dein Olivenbaum',stageName)}
   <p class="tree-personal-meaning">Dieses Bild erzählt von Entwicklung, die du selbst festgehalten hast. Es bewertet weder deinen Glauben noch deinen Wert.</p>
   ${branchMarkup}
+  ${renderTreeStageGuide(model.stage)}
   ${model.unplaced.length?`<section class="tree-unplaced"><h2>Wege noch ohne verbundene Momente</h2><p class="meta">Auch diese Wege gehören zu dir. Du brauchst keinen Zweig, um sie zu öffnen.</p><ul>${model.unplaced.map(path=>`<li>${link(e(path.title),'path/'+encodeURIComponent(path.id),'branch-path-link')}${path.archived?'<span class="meta">archiviert</span>':''}</li>`).join('')}</ul></section>`:''}
   <section class="section tree-evidence"><h2>Was hinter dem Baum steht</h2>
    ${model.count?`<p>${model.count} ${model.count===1?'Entwicklung, die':'Entwicklungen, die'} du selbst festgehalten hast.</p><details><summary>Welche Momente gehören dazu?</summary><ol class="tree-source-list">${sources}</ol></details>`:'<p>Deine Gedanken und Schritte haben hier ihren Platz. Wenn du später selbst eine Entwicklung bestätigst, wird sie sichtbar.</p>'}
