@@ -55,7 +55,7 @@ try{
   }
   await audit(p,`Sword ${theme} ${width}`);await p.locator('[data-action="sword-info"]').click();await p.locator('[data-journey-scripture]').last().filter({hasText:'und nehmet den Helm'}).waitFor();
   assert((await p.getByRole('dialog').innerText()).includes('nicht gegen Menschen'));await p.getByRole('dialog').getByRole('button',{name:'Schließen',exact:true}).first().click();
-  await p.locator('.journey-scripture a').first().click();await p.locator('.verse').first().waitFor();assert.equal(await p.locator('#translation').inputValue(),'l1912');assert(p.url().includes('from=17'));assert.equal(await p.locator('.verse[data-v="17"]').innerText(),'17\nund nehmet den Helm des Heils und das Schwert des Geistes, welches ist das Wort Gottes.');
+  await p.locator('.journey-scripture a').first().click();await p.locator('.verse').first().waitFor();assert.equal(await p.locator('#translation').inputValue(),'l1912');assert(p.url().includes('from=17'));assert.equal(await p.locator('.verse[data-v="17"]>span').textContent(),'und nehmet den Helm des Heils und das Schwert des Geistes, welches ist das Wort Gottes.');
   await route(p,'bible-journey/GEN');assert.equal(await p.locator('svg.journey-sword').count(),0);assert.equal(await p.locator('.journey-chapters li').count(),50);
  });
  await c.close();

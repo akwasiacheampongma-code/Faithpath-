@@ -5,7 +5,7 @@ test('all sword states preserve exact historic reveal, counts, one SVG and immut
  for(const n of [0,1,5,300,1189]){
   const data=phase2Fixture('light',n),before=JSON.stringify(data),summary=journeySummary(data,books),state=swordReadingState(summary),html=journeyView(data,books).body;
   assert.equal(state.chapters,n);assert.equal(state.total,1189);assert.equal(state.reveal,Math.sqrt(n/1189));assert.equal((html.match(/<svg class="journey-sword"/g)||[]).length,1);
-  assert(html.includes(`${n} von 1.189 Kapiteln erkundet`));assert(progressiveSword(summary).includes(`height="${238*Math.sqrt(n/1189)}"`));
+  assert(html.includes(`${n} von 1.189 Kapiteln erkundet`));assert(progressiveSword(summary).includes(`data-reveal="${Math.sqrt(n/1189)}"`));
   assert.equal(JSON.stringify(data),before);assert(!journeyView(data,books,'GEN').body.includes('class="journey-sword"'));
  }
 });

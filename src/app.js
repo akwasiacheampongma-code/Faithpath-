@@ -1,3 +1,5 @@
+import './verbunden/interaction.js';
+import {renderReaderFlow,readingTools} from './verbunden/reader-flow.js';
 import {backupSummary,inspectBackupFile,createRestoreSession,assertRestoreSession} from './backup-model.js';
 import {renderBackupPage,backupPreview,backupConfirmation} from './backup-view.js';
 import {selectReminderControls,renderReminderControls,reminderWhy} from './reminders-view.js';
@@ -204,6 +206,7 @@ function go(route) {
 }
 function shell(body, active = "today", cls = "") {
   ui.journeyStop?.(); ui.journeyStop=null;
+  document.body.classList.remove("has-verse-selection");
   applyTheme(document,themeId(s()));
   closeMenu(false);
   const toast=$("#toast"); if(toast) document.body.append(toast);
@@ -284,7 +287,7 @@ function undoNotice(text, restore) {
 function verseHighlight(v, ref) { return s().highlights.slice().reverse().find(h => normBook(h.book) === ref.book && +h.chapter === +ref.chapter && (h.translation || "otb") === ref.translation && v >= h.from && v <= (h.to || h.from)); }
 function readerVerse(v, ref) {
   const h = verseHighlight(v[0], ref);
-  return `<button type="button" class="verse ${h ? "marked highlight-" + highlightColor(h) : ""} ${ref.from && v[0] >= ref.from && v[0] <= (ref.to || ref.from) ? "in-passage" : ""}" data-action="verse" data-v="${v[0]}" aria-pressed="false" aria-label="Vers ${v[0]}: ${e(v[1])}${h ? " · Markiert: " + HIGHLIGHT_COLORS[highlightColor(h)] : ""}"><sup>${v[0]}</sup><span>${e(v[1])}${h ? '<span class="sr-only"> · Markiert</span>' : ""}</span></button>` + verseContext(v[0],ref);
+  return `<span role="button" tabindex="0" class="verse ${h ? "marked highlight-" + highlightColor(h) : ""} ${ref.from && v[0] >= ref.from && v[0] <= (ref.to || ref.from) ? "in-passage" : ""}" data-action="verse" data-v="${v[0]}" aria-pressed="false" aria-label="Vers ${v[0]}: ${e(v[1])}${h ? " · Markiert: " + HIGHLIGHT_COLORS[highlightColor(h)] : ""}"><sup>${v[0]}</sup><span>${e(v[1])}${h ? '<span class="sr-only"> · Markiert</span>' : ""}</span></span>` + verseContext(v[0],ref);
 }
 function refreshHighlights() {
   if (!ui.reader || !$(".reader-page")) return;
@@ -526,7 +529,7 @@ async function reader(parts, params, token) {
       .join(
         "",
       )}</select></div><div class="reader-selectors"><div><label for="reader-book">Buch</label><select id="reader-book" data-change="reader-book">${ui.books.map((x) => `<option value="${x.code}" ${x.code === code ? "selected" : ""}>${e(x.name)}</option>`).join("")}</select></div><div><label for="reader-chapter">Kapitel</label><select id="reader-chapter" data-change="reader-chapter">${b.chapters.map((_, i) => `<option value="${i + 1}" ${i + 1 === +chapter ? "selected" : ""}>${i + 1}</option>`).join("")}</select></div></div>
- ${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${vs.map(v => readerVerse(v, ref)).join("")}<span id="chapter-end-sentinel" aria-hidden="true"></span></div>
+ ${readingTools()}${heading(ctx ? "Lesen & verstehen" : "Bibel", b.name + " " + ref.chapter)}${ctx ? `<aside class="context"><span class="overline">Im Zusammenhang</span><p>${e(ctx.context)}</p><span class="meta">Im Fokus: ${e(refLabel(ref))}. Das ganze Kapitel bleibt lesbar.</span>${ref.from ? button("Zum Abschnitt", "focus-passage", {}, "text-button") : ""}</aside>` : ""}<aside class="reader-reflection-entry" aria-label="Deinen Gedanken festhalten"><span>Etwas bleibt bei dir?</span>${button("Gedanken festhalten", "reflect-reader", {}, "text-button")}</aside><div class="reading-text" id="verses">${renderReaderFlow(vs,v=>readerVerse(v,ref))}<span id="chapter-end-sentinel" aria-hidden="true"></span></div>
  <section class="short-chapter-confirm" hidden><p>Wenn du dieses kurze Kapitel gelesen hast, kannst du es als Teil deiner Bibelreise festhalten.</p>${button("Kapitel als erkundet festhalten","explore-chapter",{},"button quiet")}</section>${journeyAcknowledgement(s(),ui.books,ref)}${readerChapterQuestions(ref, origin)}${chapterNavigation({previous:ref.chapter>1?readRoute({book:code,chapter:ref.chapter-1,translation:tr},origin):null,next:ref.chapter<b.chapters.length?readRoute({book:code,chapter:ref.chapter+1,translation:tr},origin):null})}
  <section class="reflection-invite"><span class="overline">Was bleibt bei dir?</span><h2>${e(ctx?.question || "Was berührt dich in diesem Text?")}</h2><p>Ein Satz genügt. Du kannst daraus später einen Weg machen.</p>${button("Meinen Gedanken festhalten", "reflect-reader", {}, "button primary")}</section><small class="translation-credit">${e(TRANSLATIONS[tr].name)} · ${tr === "otb" ? "CC BY-SA 4.0" : "gemeinfrei"} · ${link("Textquelle", "licenses")}</small><div id="selection-bar"></div>`,
     "bible",
@@ -540,6 +543,14 @@ async function reader(parts, params, token) {
   $(".short-chapter-confirm").hidden=!ui.reader.needsConfirmation||alreadyExplored;
   ui.journeyStop=observeChapterEnd({sentinel:$("#chapter-end-sentinel"),topbar:$(".topbar"),nav:$(".primary-nav"),isCurrent:()=>ui.token===token,isBlocked:()=>ui.reader.needsConfirmation||$("#dialog").open||ui.selection.size>0||$("#menu-toggle")?.getAttribute("aria-expanded")==="true",onReached:acknowledgeReaderChapter});
 }
+// A focus/font layout change is not evidence that a newly exposed ending was read.
+window.addEventListener('faithpath-reader-layout',()=>{
+ const sentinel=$('#chapter-end-sentinel');if(!sentinel||!ui.reader)return;
+ const box=sentinel.getBoundingClientRect(),topbarBottom=$('.topbar').getBoundingClientRect().bottom;
+ const navTop=chapterOpeningBottom({nav:$('.primary-nav').getBoundingClientRect(),topbarBottom,viewportWidth:innerWidth,viewportHeight:innerHeight});
+ if(!$('.journey-acknowledgement').hidden)return;
+ if(box.top>=topbarBottom&&box.bottom<=navTop){ui.reader.needsConfirmation=true;$('.short-chapter-confirm').hidden=false;}
+});
 // One persistence path for automatic long-chapter endings and deliberate short-chapter consent.
 function acknowledgeReaderChapter() {
   if(!ui.reader||!$(".reader-page"))return;
@@ -585,7 +596,7 @@ function selectionBar() {
   $$(".verse").forEach((el) => {
     el.setAttribute("aria-pressed", String(ui.selection.has(+el.dataset.v)));
   });
-  if (ui.selection.size) $(`[data-v="${Math.max(...ui.selection)}"]`)?.after(container);
+  document.body.classList.toggle("has-verse-selection",ui.selection.size>0);
   container.innerHTML = ui.selection.size
     ? `<div class="selection-bar" role="region" aria-label="Versaktionen"><span>${ui.selection.size} ${ui.selection.size === 1 ? "Vers" : "Verse"} ausgewählt</span><div>${button("Markieren", "mark", {}, "select-action")}${button("Notiz", "reflect-reader", {}, "select-action")}${button("Mit Weg verbinden", "connect-reader", {}, "select-action")}${button("Kopieren", "copy", {}, "select-action")}${button(icon("close") + '<span class="sr-only">Auswahl aufheben</span>', "clear-selection", {}, "icon-button")}</div></div>`
     : "";

@@ -1,3 +1,6 @@
 node_modules/
 qa-output/
 .netlify/
+
+# Worktrees may share the existing development dependency directory by symlink.
+node_modules
