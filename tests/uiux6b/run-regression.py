@@ -1,15 +1,15 @@
 """Original combined UIUX1–5 acceptance suite against an immutable 6B build.
-Only runtime origins/output paths differ. Assertions remain in their original tests.
+Presentation selectors follow renamed headings and the compact tree. Business, content and storage assertions remain. Axe contexts alone permit diagnostic styles; the separate uninstrumented route audit retains CSP.
 """
 import concurrent.futures,json,os,pathlib,subprocess,time
 root=pathlib.Path(__file__).resolve().parents[2]
 dest=root/'qa-output/uiux6b/regression';dest.mkdir(parents=True,exist_ok=True)
-url=os.environ.get('QA_URL','http://127.0.0.1:4453')
-common=dict(QA_URL=url,FAITHPATH_QA_URL=url,FAITHPATH_CHROMIUM='/usr/bin/chromium',FAITHPATH_TEST_ROOT='qa-output/uiux6b/final-a',FAITHPATH_CONTINUITY_BASELINE_URL='http://127.0.0.1:4450',QA_RESTORE_URL='http://127.0.0.1:4454',FAITHPATH_CORE_URL=url,PHASE='C')
+url=os.environ.get('QA_URL','http://127.0.0.1:4460')
+common=dict(QA_URL=url,FAITHPATH_QA_URL=url,FAITHPATH_CHROMIUM='/usr/bin/chromium',FAITHPATH_TEST_ROOT='qa-output/uiux6b/release-a',FAITHPATH_CONTINUITY_BASELINE_URL='http://127.0.0.1:4450',QA_RESTORE_URL='http://127.0.0.1:4461',FAITHPATH_CORE_URL=url,PHASE='C')
 cases=[('core','browser',dict(FAITHPATH_PORT='4468')),('stabilization','stabilization-browser',{}),('chapter','chapter-questions-browser',{}),('nt','nt-quiz-browser',{}),('nachlese','nachlese-mc-corpus-browser',{}),('mc-fixtures','nachlese-mc-browser',{}),('worker','service-worker',{}),('today','today-phase1-browser',{}),('today-zoom','today-phase1-zoom',{}),('phase2','phase2-browser',{}),('phase2-stress','phase2-stress',{}),('phase2-short','phase2-short-chapter-browser',{}),('experience','final-experience-browser',{}),('core-depth','core-depth-browser',{}),('core-axe','core-depth-accessibility',{}),('continuity','continuity-browser',{}),('branches','tree-branch-visual-browser',{}),('overview','phase3-overview-browser',{}),('detail','phase3-detail-browser',{}),('tree','phase3-tree-browser',{}),('reviews-original','phase3-review-browser',{}),('phase3-stress','phase3-stress',{}),('journey','phase3-journey-browser',{}),('short-navigation','phase3-short-navigation',{}),('premium-journal','premium-journal-browser',{}),('final-notes','final-note-browser',{}),('product','final-product-browser',{}),('navigation','phase4-navigation-browser',{}),('discover','phase4-discover-browser',{}),('onboarding','phase4-onboarding-browser',{}),('routes','phase4-routes-browser',{}),('menu-focus','phase4-menu-focus-browser',{}),('phase4-stress','phase4-stress-browser',{}),('journal','phase5-journal-browser',{}),('reviews','phase5-reviews-browser',{}),('reminders','phase5-reminders-browser',{}),('backup','phase5-backup-browser',{}),('backup-races','phase5-backup-races-browser',{}),('backup-dialogs','phase5-backup-dialogs-browser',{}),('phase5-stress','phase5-stress-browser',{}),('integration','uiux45-integration-browser',{})]
 if os.environ.get('QA_CASES'):
     selected=set(os.environ['QA_CASES'].split(','));cases=[x for x in cases if x[0] in selected]
-manifest=json.loads((root/'qa-output/uiux6b/final-a/release-integrity.json').read_text())
+manifest=json.loads((root/'qa-output/uiux6b/release-a/release-integrity.json').read_text())
 def run(case):
     name,script,extra=case;start=time.time();output=f'qa-output/uiux6b/regression/{name}'
     with (dest/(name+'.log')).open('w') as log:
