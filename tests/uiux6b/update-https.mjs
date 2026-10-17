@@ -85,7 +85,7 @@ try{
   const tree=page.locator('.today-tree img');await tree.evaluate(el=>el.decode());
   assert(await tree.evaluate(el=>el.naturalWidth>0&&getComputedStyle(el).objectFit==='contain'));
   const css=await page.evaluate(async build=>({status:(await fetch('./releases/'+build+'/src/today.css')).status,display:getComputedStyle(document.querySelector('.today-phase1 #main')).display}),BUILD);
-  assert.deepEqual(css,{status:200,display:'block'});assert.deepEqual(await snapshot(),before);
+  assert.deepEqual(css,{status:200,display:'grid'});assert.deepEqual(await snapshot(),before);
   await page.goto('https://127.0.0.1:4459/#path/p');await page.locator('.path-page').waitFor();assert.equal(await page.locator('.next-step .path-step input').count(),1);await page.goto('https://127.0.0.1:4459/#tree');await page.locator('.tree-page').waitFor();assert((await page.locator('.tree-page a[href="#path/p"]').count())>=1);const personalCSS=await page.evaluate(async build=>(await fetch('./releases/'+build+'/src/personal-journey.css')).status,BUILD);assert.equal(personalCSS,200);assert.deepEqual(await snapshot(),before);
   results.push('New Phase3 path, original step and early-stage tree access work offline with versioned CSS; modular Today view and versioned stylesheet work offline with the same path and draft after update');
   for(const [translation,verse,word]of [['otb',10,'Fülle'],['l1912',11,'Genüge']]){

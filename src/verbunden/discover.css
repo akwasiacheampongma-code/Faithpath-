@@ -64,6 +64,8 @@
   margin: 12px 0;
 }
 .discovery-curation h2 a {
+  font: inherit;
+  min-height: 44px;
   text-decoration: none;
   color: var(--ink);
 }
