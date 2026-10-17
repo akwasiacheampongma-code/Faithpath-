@@ -21,6 +21,8 @@ const types = {
   ".json": "application/json",
   ".webmanifest": "application/manifest+json",
   ".webp": "image/webp",
+  ".svg": "image/svg+xml",
+  ".ttf": "font/ttf",
   ".png": "image/png",
   ".txt": "text/plain; charset=utf-8",
 };

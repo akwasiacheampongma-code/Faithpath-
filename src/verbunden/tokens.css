@@ -1,0 +1,131 @@
+@font-face {
+  font-family: Newsreader;
+  src: url(assets/fonts/Newsreader.ttf) format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Newsreader;
+  src: url(assets/fonts/Newsreader-Italic.ttf) format("truetype");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: DM;
+  src: url(assets/fonts/DMSans.ttf) format("truetype");
+  font-weight: 100 1000;
+  font-display: swap;
+}
+/* Semantic themes are independent of page composition. All fonts remain local. */
+:root {
+  --v-canvas: #f7f7f2;
+  --v-surface: #fffefa;
+  --v-ink: #20382f;
+  --v-muted: #56635a;
+  --v-faint: #e9ece3;
+  --v-line: #d8ded4;
+  --v-accent: #355e49;
+  --v-on-accent: #fffefa;
+  --v-warm: #ede6d6;
+  --v-warm-ink: #66543b;
+  --v-blue: #e4ebed;
+  --v-rose: #f1e5df;
+  --v-danger: #914c3c;
+  --v-focus: #28694b;
+  --v-highlight-sage: #dce8cb;
+  --v-highlight-gold: #f0e3ae;
+  --v-highlight-rose: #efd3c9;
+  --v-highlight-blue: #d8e7ed;
+  --v-selected: #dce9e1;
+  --v-shadow: 0 8px 32px #1937250b;
+  --v-display: Newsreader, Georgia, serif;
+  --v-sans: DM, system-ui, sans-serif;
+  --v-gutter: 24px;
+  --v-max-read: 650px;
+  --v-r-sm: 8px;
+  --v-r-md: 16px;
+  --v-r-lg: 24px;
+  --v-nav-height: 74px;
+  color-scheme: light;
+}
+:root[data-theme="atmospheric"] {
+  --v-canvas: #142c27;
+  --v-surface: #1b352f;
+  --v-ink: #f0f0e4;
+  --v-muted: #b9c9bd;
+  --v-faint: #254139;
+  --v-line: #3a5148;
+  --v-accent: #b9d0ab;
+  --v-on-accent: #142c23;
+  --v-warm: #314439;
+  --v-warm-ink: #ddd1a5;
+  --v-blue: #253f43;
+  --v-rose: #453b35;
+  --v-danger: #f2b8a1;
+  --v-focus: #d4e8aa;
+  --v-highlight-sage: #435b36;
+  --v-highlight-gold: #5e532c;
+  --v-highlight-rose: #68463d;
+  --v-highlight-blue: #355665;
+  --v-selected: #355c4b;
+  --v-shadow: none;
+  color-scheme: dark;
+}
+:root[data-theme="paper"] {
+  --v-canvas: #f3eddf;
+  --v-surface: #fbf5e9;
+  --v-ink: #3d3b2e;
+  --v-muted: #645e4f;
+  --v-faint: #e8e2d3;
+  --v-line: #d5cdbb;
+  --v-accent: #596342;
+  --v-on-accent: #fff9ed;
+  --v-warm: #e4dac2;
+  --v-warm-ink: #62502e;
+  --v-blue: #dfe5df;
+  --v-rose: #ede0d6;
+  --v-danger: #954b37;
+  --v-focus: #4b623b;
+  --v-highlight-sage: #dce3c7;
+  --v-highlight-gold: #eadea4;
+  --v-highlight-rose: #eccfc2;
+  --v-highlight-blue: #d0e1e4;
+  --v-selected: #dce5cf;
+  color-scheme: light;
+}
+:root[data-theme="night"] {
+  --v-canvas: #141b23;
+  --v-surface: #1d2731;
+  --v-ink: #e9edf0;
+  --v-muted: #b7c1cb;
+  --v-faint: #29353f;
+  --v-line: #3b4854;
+  --v-accent: #bfd3d7;
+  --v-on-accent: #172630;
+  --v-warm: #303a42;
+  --v-warm-ink: #dbd0b5;
+  --v-blue: #293e50;
+  --v-rose: #423940;
+  --v-danger: #f0b4a2;
+  --v-focus: #d0e9ee;
+  --v-highlight-sage: #3e563b;
+  --v-highlight-gold: #65572e;
+  --v-highlight-rose: #63463e;
+  --v-highlight-blue: #355367;
+  --v-selected: #324f54;
+  --v-shadow: none;
+  color-scheme: dark;
+}
+
+/* Bridge to the existing app contract. No persistence or theme-ID change. */
+:root,html[data-theme]{
+ --fp-bg:var(--v-canvas);--fp-surface:var(--v-surface);--fp-surface-elevated:var(--v-surface);--fp-surface-muted:var(--v-warm);
+ --fp-text:var(--v-ink);--fp-text-muted:var(--v-muted);--fp-primary:var(--v-accent);--fp-primary-soft:var(--v-faint);--fp-primary-muted:var(--v-faint);--fp-primary-border:var(--v-line);
+ --fp-accent:var(--v-warm-ink);--fp-focus:var(--v-focus);--fp-border:var(--v-line);--fp-input-border:var(--v-muted);--fp-brand-detail:var(--v-accent);
+ --fp-danger:var(--v-danger);--fp-danger-border:var(--v-danger);--fp-danger-soft:var(--v-rose);--fp-danger-strong:var(--v-danger);--fp-on-danger:var(--v-canvas);
+ --fp-success:var(--v-accent);--fp-warning:var(--v-warm-ink);--fp-on-primary:var(--v-on-accent);--fp-strong:var(--v-ink);--fp-shadow-soft:var(--v-shadow);--fp-overlay:#10231dcc;
+ --fp-navigation:var(--v-canvas);--fp-reader-bg:var(--v-canvas);--fp-reader-text:var(--v-ink);--sans:var(--v-sans);--serif:var(--v-display);
+ --type-h1:2.5rem;--type-h2:1.75rem;--type-reading:1.25rem;--radius-small:8px;--radius:16px;--radius-large:24px;
+}
