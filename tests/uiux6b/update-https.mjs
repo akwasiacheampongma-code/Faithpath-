@@ -8,8 +8,8 @@ import {empty,KEYS} from '../../src/store.js';
 import {BUILD} from '../../src/version.js';
 
 const previous=process.env.FAITHPATH_PREVIOUS_ROOT||'/workspace/scratch/uiux6b/baseline';
-const candidate=process.env.FAITHPATH_CANDIDATE_ROOT||'qa-output/uiux6b/release-a';
-assert(fs.existsSync(previous+'/release-integrity.json'),'Build the exact integration UIUX4 baseline b06f90e first');
+const candidate=process.env.FAITHPATH_CANDIDATE_ROOT||'qa-output/uiux6b/release-final';
+assert(fs.existsSync(previous+'/release-integrity.json'),'Build the exact UIUX4+5 baseline 0ec8492 first');
 const oldManifest=JSON.parse(fs.readFileSync(previous+'/release-integrity.json'));
 assert.equal(oldManifest.build,'FP4-20261017-G-STABLE1-UIUX45-CANDIDATE');
 assert.equal(oldManifest.build_hash,'bd6866522aec7b35854bc7c7871d8ce9afb2f1eb4013fd74496423f63753b882');
@@ -57,7 +57,7 @@ try{
   assert.equal(await page.locator('.source-answer summary').count(),0);assert.equal(await page.locator('.answers button').count(),4);
   const before=await snapshot();assert.equal(JSON.parse(before.main).version,5);assert(before.migration);assert.equal(before.draft,draft);
   assert.equal(Object.keys(JSON.parse(before.main).quiz).length,261);
-  results.push('UIUX4 integration baseline installed with 260 existing chapter completion keys, story progress, V3 migration and pending draft');
+  results.push('UIUX4+5 baseline installed with 260 existing chapter completion keys, story progress, V3 migration and pending draft');
   deploy(candidate);
   await page.goto('https://127.0.0.1:4459/#more?section=settings');
   // Changing only the hash is SPA navigation; it does not rerun registration.
@@ -114,7 +114,7 @@ try{
   await page.goto('https://127.0.0.1:4459/#bible-journey');await page.locator('.sword-count').filter({hasText:'1 von 1.189'}).waitFor();
   await page.locator('[data-action="sword-info"]').click();await page.locator('dialog [data-journey-scripture]').filter({hasText:'und nehmet den Helm'}).waitFor();
   const phase2css=await page.evaluate(async build=>({status:(await fetch('./releases/'+build+'/src/reader-stories.css')).status,scene:getComputedStyle(document.querySelector('.journey-sword-scene')).display}),BUILD);
-  assert.deepEqual(phase2css,{status:200,scene:'flex'});
+  assert.deepEqual(phase2css,{status:200,scene:'grid'});
   results.push('New optional story reflection, exact Ephesians quotation, central sword and versioned Phase2 stylesheet function offline after UIUX45→UIUX6B update');
   await page.goto('https://127.0.0.1:4459/#journal');await page.locator('#journal-search').waitFor();const phase45before=await snapshot();
   assert(await page.getByRole('button',{name:'Gedanken festhalten',exact:true}).isVisible());await page.locator('#journal-search').fill('Ungespeichert');assert.equal(await page.locator('[data-journal-id]').count(),1);

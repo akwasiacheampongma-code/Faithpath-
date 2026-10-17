@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 import {KEYS} from '../../src/store.js';
 import {phase3Fixture} from '../phase3-fixtures.mjs';
-const base=process.env.QA_URL||'http://127.0.0.1:4460',out=process.env.QA_OUT||'qa-output/uiux6b/visual';fs.mkdirSync(out,{recursive:true});
+const base=process.env.QA_URL||'http://127.0.0.1:4506',out=process.env.QA_OUT||'qa-output/uiux6b/visual';fs.mkdirSync(out,{recursive:true});
 const routes={today:'today',bible:'bible',reader:'read/JHN/15/otb',paths:'paths',path:'path/personal-path',tree:'tree',journal:'journal',entry:'entry/thought-new',reviews:'reviews',review:'review/review-old',history:'history',journey:'bible-journey',discover:'discover',story:'merged-story/NS-0297',question:'question/N-1595',quiz:'quiz/10082',collection:'chapter-quizzes',topic:'topic/angst',guided:'plan/sorge7',more:'more',settings:'more?section=settings',backup:'more?section=data',marks:'marks',licenses:'licenses',status:'content-status',error:'unbekannt'};
 const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']}),results=[],errors=[],contrasts=[];
 const themes=['light','atmospheric','paper','night'];

@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 import {KEYS, empty} from '../../src/store.js';
 
-const base = process.env.QA_URL || 'http://127.0.0.1:4482';
+const base = process.env.QA_URL || 'http://127.0.0.1:4506';
 const out = process.env.QA_OUT || 'qa-output/uiux6b/fullscreen-red';
 fs.mkdirSync(out, {recursive: true});
 const browser = await chromium.launch({executablePath: '/usr/bin/chromium', args: ['--no-sandbox']});
@@ -14,6 +14,8 @@ for (const scenario of [
   {name: 'large-reader-editor', width: 320, height: 420, font: 200, inset: 0, route: 'read/JHN/15/otb'},
   {name: 'large-journal-editor', width: 320, height: 420, font: 200, inset: 0, route: 'journal'},
   {name: 'safe-reader-editor', width: 390, height: 844, font: 100, inset: 44, route: 'read/JHN/15/otb'},
+  {name: 'large-safe-reader-editor', width: 320, height: 420, font: 200, inset: 44, route: 'read/JHN/15/otb'},
+  {name: 'large-390-reader-editor', width: 390, height: 844, font: 200, inset: 0, route: 'read/JHN/15/otb'},
 ]) {
   const context = await browser.newContext({viewport: {width: scenario.width, height: scenario.height}});
   await context.addInitScript(({KEYS, data, scenario}) => {
@@ -57,9 +59,28 @@ for (const scenario of [
     assert(geometry.close.width >= 44 && geometry.close.height >= 44, 'Close must retain a 44px target');
     assert(geometry.overflow <= 1, 'No horizontal dialog overflow');
     await page.screenshot({path: out + '/' + scenario.name + '-editor.png'});
-    await page.locator('textarea[name=text]').fill('Synthetischer Gedanke, der im echten Formular bleibt.');
+    const field = page.locator('textarea[name=text]');
+    const text = 'Mein synthetischer Gedanke.\n'.repeat(80);
+    await field.fill(text);
+    await field.press('Control+End');
+    await field.press('End');
+    await page.keyboard.type('Sichtbarer letzter Gedanke.');
+    await page.waitForTimeout(100);
+    const end = await field.evaluate(field => {
+      const box = field.getBoundingClientRect();
+      const header = field.closest('dialog').querySelector('.dialog-top').getBoundingClientRect();
+      return {field: box.toJSON(), header: header.toJSON(),
+        visible: Math.min(box.bottom, innerHeight) - Math.max(box.top, header.bottom),
+        lineHeight: parseFloat(getComputedStyle(field).lineHeight),
+        innerBottom: field.scrollTop + field.clientHeight, innerHeight: field.scrollHeight};
+    });
+    geometry.end = end;
+    assert(end.visible >= end.lineHeight, 'The final writing line must remain visible after typing at the end');
+    assert(end.field.bottom <= scenario.height + 1, 'The editor end must remain inside the viewport');
+    assert(end.innerBottom >= end.innerHeight - end.lineHeight, 'The caret end must be visible inside the text field');
+    await page.screenshot({path: out + '/' + scenario.name + '-end.png'});
     await page.locator('.dialog-top [type=submit]').click();
-    await page.waitForFunction(KEYS => JSON.parse(localStorage.getItem(KEYS.main)).journal.some(e => e.text === 'Synthetischer Gedanke, der im echten Formular bleibt.'), KEYS);
+    await page.waitForFunction(({KEYS, text}) => JSON.parse(localStorage.getItem(KEYS.main)).journal.some(e => e.text === text), {KEYS, text: text + 'Sichtbarer letzter Gedanke.'});
     results.push({...scenario, geometry, status: 'PASS'});
   } catch (error) {
     results.push({...scenario, geometry, status: 'FAIL', error: error.stack});

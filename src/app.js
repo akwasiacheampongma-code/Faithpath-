@@ -790,7 +790,9 @@ function modal(title, content, form = null, values = null) {
   document.body.classList.add("modal-open");
   if(writing)prepareWritingArea(d);
   // Focus once while opening; a later timer must not override keyboard navigation.
-  ($("input:not([type=checkbox]),textarea,select",d) || $(".color-choice[tabindex=\"0\"]",d) || $("button",d))?.focus();
+  const initialControl = $("input:not([type=checkbox]),textarea,select",d) || $(".color-choice[tabindex=\"0\"]",d) || $("button",d);
+  initialControl?.focus();
+  if (writing) initialControl?.scrollIntoView({block:"start",behavior:"instant"});
 }
 async function finishForm(draftSession = ui.draftSession) {
   try {

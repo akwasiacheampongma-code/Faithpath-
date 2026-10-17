@@ -152,7 +152,8 @@ dialog.writing-dialog {
 #dialog.writing-dialog .dialog-top {
   display: flex;
   position: sticky;
-  top: var(--safe-top, env(safe-area-inset-top, 0px));
+  /* The dialog padding already reserves the safe inset for sticky children. */
+  top: 0;
   z-index: 4;
   background: var(--paper);
   padding: 14px 0 16px;
@@ -451,6 +452,18 @@ dialog.writing-dialog {
   font-family: var(--serif);
   font-size: 1.2rem;
   line-height: 1.7;
+}
+@media (max-width: 700px) {
+  #dialog.writing-dialog .dialog-top {
+    flex-wrap: wrap;
+  }
+  #dialog.writing-dialog .dialog-top h2 {
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .writing-dialog .dialog-header-actions {
+    margin-left: auto;
+  }
 }
 @media (max-width: 350px) {
   dialog.writing-dialog {

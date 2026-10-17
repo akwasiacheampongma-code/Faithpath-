@@ -58,8 +58,22 @@ export function prepareWritingArea(root = document) {
     ".writing-dialog textarea[name=text],textarea[name=text]",
   );
   if (!field || !field.closest(".writing-dialog")) return;
+  const dialog = field.closest("dialog");
+  const header = dialog.querySelector(".dialog-top");
+  const headerBottom = header.getBoundingClientRect().bottom;
+  dialog.style.scrollPaddingTop = Math.ceil(
+    headerBottom - dialog.getBoundingClientRect().top + 16,
+  ) + "px";
+  // Let the native textarea keep a long draft's caret visible. An unbounded
+  // auto-height field can grow beyond 19,000px and hide its last line behind the
+  // sticky header when the viewport is short or text is enlarged.
+  const line = parseFloat(getComputedStyle(field).lineHeight);
+  const available = Math.max(line * 2, Math.min(600, innerHeight - headerBottom - 24));
+  field.style.minHeight = Math.min(180, available) + "px";
   field.style.height = "auto";
-  field.style.height = Math.max(300, field.scrollHeight + 2) + "px";
+  field.style.height = Math.min(Math.max(180, field.scrollHeight + 2), available) + "px";
+  if (document.activeElement === field)
+    field.scrollIntoView({block: "nearest", behavior: "instant"});
 }
 document.addEventListener("input", (event) => {
   if (event.target.matches(".writing-dialog textarea[name=text]"))
