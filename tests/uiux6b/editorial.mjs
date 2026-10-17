@@ -1,0 +1,10 @@
+// Visual cascade regressions: headings must inherit their intended type scale.
+import {chromium} from 'playwright';import fs from 'node:fs';import assert from 'node:assert/strict';import{KEYS,empty}from'../../src/store.js';
+const base=process.env.QA_URL||'http://127.0.0.1:4462',out=process.env.QA_OUT||'qa-output/uiux6b/editorial-red';fs.mkdirSync(out,{recursive:true});const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']}),c=await b.newContext({viewport:{width:320,height:568}});await c.addInitScript(({KEYS,data})=>{localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done')},{KEYS,data:empty()});const p=await c.newPage();const results=[];
+for(const theme of ['light','atmospheric','paper','night']){
+ await p.goto(base+'/#discover');await p.locator('.discovery-curation h2 a').waitFor();await p.evaluate(theme=>document.documentElement.dataset.theme=theme,theme);
+ const size=await p.locator('.discovery-curation h2').evaluate(el=>({heading:parseFloat(getComputedStyle(el).fontSize),link:parseFloat(getComputedStyle(el.querySelector('a')).fontSize)}));results.push({theme,test:'curated-title-type-scale',...size,status:size.link>=size.heading*.99?'PASS':'FAIL'});
+ await p.goto(base+'/#read/JHN/15/otb');await p.locator('.verse').last().waitFor();await p.evaluate(()=>document.documentElement.style.fontSize='200%');await p.evaluate(()=>document.fonts.ready);
+ const word=await p.locator('#main h1').evaluate(el=>{const node=el.firstChild,r=document.createRange();r.setStart(node,0);r.setEnd(node,8);return{rects:r.getClientRects().length,width:r.getBoundingClientRect().width,container:el.clientWidth}});results.push({theme,test:'reader-heading-word-200',...word,status:word.rects===1&&word.width<=word.container+1?'PASS':'FAIL'});await p.screenshot({path:out+`/${theme}.png`});await p.evaluate(()=>document.documentElement.style.fontSize='100%');
+}
+await b.close();fs.writeFileSync(out+'/results.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results));process.exitCode=results.some(x=>x.status==='FAIL')?1:0;
