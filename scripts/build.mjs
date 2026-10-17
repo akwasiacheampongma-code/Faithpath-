@@ -29,10 +29,12 @@ for(const f of ['manifest.webmanifest','_headers','_redirects','404.html'])fs.co
 fs.writeFileSync(`${out}/index.html`,fs.readFileSync('index.html','utf8').replace('./styles.css',`./${release}/styles.css`).replace('./src/app.js',`./${release}/src/app.js`).replace('./src/today.css',`./${release}/src/today.css`).replace('./src/reader-stories.css',`./${release}/src/reader-stories.css`).replace('./src/personal-journey.css',`./${release}/src/personal-journey.css`).replace('./src/navigation-discovery.css',`./${release}/src/navigation-discovery.css`).replace('./src/journal-reviews-backup.css',`./${release}/src/journal-reviews-backup.css`).replace('./src/verbunden.css',`./${release}/src/verbunden.css`));
 // Explicit metadata override reproduces the recovered historical deployment on a backup branch.
 const workingBranch=process.env.FAITHPATH_BUILD_BRANCH||execFileSync('git',['branch','--show-current'],{encoding:'utf8'}).trim()||'detached';
-fs.writeFileSync(`${out}/BUILD.txt`,`${BUILD}\nBranch: ${workingBranch}\n`);
+const sourceCommit=process.env.FAITHPATH_BUILD_COMMIT||execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+if(!/^[a-f0-9]{40}$/.test(sourceCommit))throw new Error('An exact FAITHPATH_BUILD_COMMIT is required for reproducible archives');
+fs.writeFileSync(`${out}/BUILD.txt`,`${BUILD}\nBranch: ${workingBranch}\nCommit: ${sourceCommit}\n`);
 fs.writeFileSync(`${out}/candidate-integrity.json`,JSON.stringify({build:BUILD,content_hash:contentHash,algorithm:'SHA256(JSON.stringify(sorted path-to-SHA256 map)); data/**/*.json excluding data/audit/**',files:candidateFiles},null,2));
 const assets=files(out).filter(f=>!f.endsWith('_headers')&&!f.endsWith('_redirects')).map(f=>'./'+path.relative(out,f)).sort();
 fs.writeFileSync(`${out}/sw.js`,fs.readFileSync('scripts/sw-template.js','utf8').replace('__BUILD__',BUILD).replace('__ASSETS__',JSON.stringify(assets)));
 const hashes=Object.fromEntries(files(out).map(f=>[path.relative(out,f),hash(fs.readFileSync(f))]));
-fs.writeFileSync(`${out}/release-integrity.json`,JSON.stringify({build:BUILD,content_hash:contentHash,build_hash:hash(JSON.stringify(hashes)),files:hashes},null,2));
+fs.writeFileSync(`${out}/release-integrity.json`,JSON.stringify({build:BUILD,source_commit:sourceCommit,content_hash:contentHash,build_hash:hash(JSON.stringify(hashes)),files:hashes},null,2));
 console.log(JSON.stringify({build:BUILD,files:Object.keys(hashes).length+1,content_hash:contentHash,build_hash:hash(JSON.stringify(hashes))}));
