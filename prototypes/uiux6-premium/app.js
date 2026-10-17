@@ -266,7 +266,7 @@
     }
   }
   function renderDock() {
-    document.querySelectorAll("[data-verse]").forEach((el) => {
+    document.querySelectorAll(".verse[data-verse]").forEach((el) => {
       const n = Number(el.dataset.verse),
         selected = s.reader.selected.includes(n),
         color =
@@ -763,7 +763,7 @@
     renderDock();
   }
   document.addEventListener("click", (e) => {
-    const verse = e.target.closest("[data-verse]");
+    const verse = e.target.closest(".verse[data-verse]");
     if (verse) {
       onVerse(verse);
       return;
@@ -778,7 +778,10 @@
     if (action) action(b);
   });
   document.addEventListener("keydown", (e) => {
-    if (e.target.matches("[data-verse]") && ["Enter", " "].includes(e.key)) {
+    if (
+      e.target.matches(".verse[data-verse]") &&
+      ["Enter", " "].includes(e.key)
+    ) {
       e.preventDefault();
       onVerse(e.target);
     }

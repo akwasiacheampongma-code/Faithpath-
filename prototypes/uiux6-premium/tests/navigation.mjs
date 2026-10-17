@@ -11,10 +11,13 @@ async function test(name, fn) {
     viewport: { width: 320, height: 568 },
     reducedMotion: "reduce",
   });
+  const errors = [];
+  p.on("pageerror", (e) => errors.push(String(e)));
   p.setDefaultTimeout(6000);
   try {
     await p.goto("http://localhost:4492/view.html");
     await fn(p);
+    assert.deepEqual(errors, []);
     results.push({ name, status: "PASS" });
   } catch (e) {
     results.push({ name, status: "FAIL", error: String(e) });
@@ -105,11 +108,30 @@ await test("Theme/guide references open real bundled reading; browser Back retai
   for (const screen of ["topic", "guided"]) {
     await p.evaluate((screen) => PremiumDemo.open(screen), screen);
     await p.locator('#main [data-go="reader"]').first().click();
-    assert((await p.locator("[data-verse]").count()) > 0);
+    await p.locator(".screen-reader").waitFor();
+    assert((await p.locator(".bible-text .verse[data-verse]").count()) > 0);
     await p.goBack();
     await p.locator(".screen-" + screen).waitFor({ state: "visible" });
     assert.equal(await p.locator(".screen-" + screen).count(), 1);
   }
+});
+await test("Journal Bible reference opens the actual verse and returns to its entry", async (p) => {
+  await p.evaluate(() => PremiumDemo.open("entry", { id: "j-now" }));
+  await p.locator('.entry-links [data-go="reader"]').click();
+  await p.locator(".screen-reader").waitFor();
+  assert.equal(
+    await p
+      .locator('.bible-text .verse[data-verse="5"]')
+      .getAttribute("aria-pressed"),
+    "true",
+  );
+  await p.goBack();
+  await p.locator(".screen-entry").waitFor();
+  assert(
+    (await p.locator(".entry-body").innerText()).includes(
+      "Ich muss nicht sofort",
+    ),
+  );
 });
 await test("Leaving and returning to the same backup route invalidates a delayed read", async (p) => {
   await p.evaluate(() => PremiumDemo.open("backup"));
@@ -125,13 +147,11 @@ await test("Leaving and returning to the same backup route invalidates a delayed
       );
     };
   });
-  await p
-    .locator("#backup-file")
-    .setInputFiles({
-      name: "slow.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(bytes),
-    });
+  await p.locator("#backup-file").setInputFiles({
+    name: "slow.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(bytes),
+  });
   await p.waitForFunction(() => window.finishDelayed);
   await p.evaluate(() => PremiumDemo.open("journal"));
   await p.evaluate(() => PremiumDemo.open("backup"));
