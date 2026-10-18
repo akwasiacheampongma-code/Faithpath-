@@ -1,0 +1,121 @@
+{
+  "results": [
+    {
+      "name": "Real download, readonly check, actual restore on separate isolated origin with unchanged IDs",
+      "status": "PASS"
+    },
+    {
+      "name": "Stale tab export and import comparison reject newer personal state",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / light / 320",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / atmospheric / 320",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / paper / 320",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / night / 320",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / light / 390",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / atmospheric / 390",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / paper / 390",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / night / 390",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / light / 430",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / atmospheric / 430",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / paper / 430",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / night / 430",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / light / 1440",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / atmospheric / 1440",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / paper / 1440",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparison, cancel, keyboard/axe/200% / night / 1440",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid schema leaves main/draft/recovery unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid id leaves main/draft/recovery unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid ref leaves main/draft/recovery unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid json leaves main/draft/recovery unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "20MiB accepted, larger file rejected before replacement",
+      "status": "PASS"
+    },
+    {
+      "name": "Newer faithpath.v1.rebuild after preview blocks confirm and preserves all bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "Newer faithpath.draft.v4 after preview blocks confirm and preserves all bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "Main quota failure rolls back prior safety copy and keeps preview retryable",
+      "status": "PASS"
+    },
+    {
+      "name": "Legacy V3 check preserves unknown fields and yields existing schema migration",
+      "status": "PASS"
+    },
+    {
+      "name": "Late file read cannot replace newer selection or reopen closed preview",
+      "status": "PASS"
+    },
+    {
+      "name": "Undo after later edit compares explicit current state and cancel/reload never writes",
+      "status": "PASS"
+    }
+  ],
+  "errors": []
+}

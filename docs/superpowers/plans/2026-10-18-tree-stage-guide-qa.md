@@ -39,8 +39,8 @@
 - [x] Capture full representative before set from frozen original build.
 - [x] Write actual-render order/context tests; run and observe expected failures before app changes.
 - [x] Place existing current meaning before the image; keep full overview collapsed below the image, remove redundant current-description block, clarify the three biblical contexts without rewriting the seven meanings.
-- [ ] Keep typography responsive and theme-based; test first-screen meaning at normal size, complete reflow at 200%, and keyboard disclosure behavior.
-- [ ] Run full `npm test`, commit focused correction with `[skip netlify] [skip ci]` and build a new isolated `FP4-20261018-G-STABLE1-UIUX6D-TREEGUIDE2` candidate.
+- [x] Keep typography responsive and theme-based; test first-screen meaning at normal size, complete reflow at 200%, and keyboard disclosure behavior.
+- [x] Run full `npm test`, commit focused correction with `[skip netlify] [skip ci]` and build a new isolated `FP4-20261018-G-STABLE1-UIUX6D-TREEGUIDE2` candidate.
 
 ## Task 2: Regression, independent review and reproducible delivery
 
@@ -48,13 +48,13 @@
 
 **Interfaces:** Tests consume the committed static candidate and existing synthetic fixtures. Original browser drivers keep their business assertions; output roots and previous-build metadata are supplied explicitly.
 
-- [ ] Run fresh all-stage capture at 320×568 and 390×844, four themes, 100/200% root text; desktop and 430px controls. Inspect actual PNGs/contact sheets, not just geometry.
-- [ ] Verify native keyboard disclosures, axe/contrast, offline guide, first-screen meaning and no unintended horizontal clipping.
-- [ ] Run selected original tree/path/journal/review/core/backup/integration regression programmes and backup-lifecycle test. Record exact commands and exits.
-- [ ] Verify unchanged thresholds, non-progress activities, historical sources, content/store files and backup compatibility; actual isolated HTTPS update from frozen MOBILE2 with unchanged personal bytes.
-- [ ] Obtain one independent read-only whole-change review. Fix only reproduced module blockers with RED→GREEN; record other limits.
-- [ ] Build twice from exact committed source, verify every file and create deterministic Netlify-QA ZIP; verify extraction and SHA-256.
-- [ ] Deliver German report, numbered flow audit, before/after screenshots, exact source/build hashes, manual device checklist and separate QA files. Stop for user approval; no deployment or merge.
+- [x] Run fresh all-stage capture at 320×568 and 390×844, four themes, 100/200% root text; desktop and 430px controls. Inspect actual PNGs/contact sheets, not just geometry.
+- [x] Verify native keyboard disclosures, axe/contrast, offline guide, first-screen meaning and no unintended horizontal clipping.
+- [x] Run selected original tree/path/journal/review/core/backup/integration regression programmes and backup-lifecycle test. Record exact commands and exits.
+- [x] Verify unchanged thresholds, non-progress activities, historical sources, content/store files and backup compatibility; actual isolated HTTPS update from frozen MOBILE2 with unchanged personal bytes.
+- [x] Obtain one independent read-only whole-change review. Fix only reproduced module blockers with RED→GREEN; record other limits.
+- [x] Build twice from exact committed source, verify every file and create deterministic Netlify-QA ZIP; verify extraction and SHA-256.
+- [x] Prepare German report, numbered flow audit, before/after screenshots, exact source/build hashes, manual device checklist and separate QA files. Delivery must stop for user approval; no deployment or merge.
 
 ## Ledger
 
@@ -64,3 +64,8 @@
 - Initial biblical statements are not proven false. Context clarification addresses interpretive ambiguity; seven existing meaning texts remain unchanged.
 
 - Task1: two node criteria and both targeted browser states failed before correction. Six guide unit tests now pass; full npm test197/197 passes. Targeted390px night meaning is at y232–344 rather than y1040/y1218. The initial 32-case before set is preserved. Broader typography/keyboard verification follows in Task2.
+
+- Task2 verification: 112 final layout cases, 16 keyboard/axe cases (four offline), all 15 selected original browser programmes, backup lifecycle and five actual HTTPS update checks passed. One independent reviewer repeated 197 tests and four bounded browser states without reproduced findings. App source remains 2b48ae0; two builds have 367 identical files and hash150c015e… .
+- The first HTTPS attempt failed before old MOBILE2 could install its worker. A causal same-certificate probe established that page-only TLS trust does not cover this Chromium worker; scoped ephemeral browser trust allowed the genuine five-check update test. Failed attempt and probe are retained, not counted as passes; no app change.
+- Scope decision: the old title “Fruchttragender” wraps inside the word at320px/200% in both fresh baseline and candidate captures. Keep the MOBILE2 title hierarchy under the new-module-only constraint; record the less polished but fully readable title as an existing P3 finding.
+- Delivery galleries passed 16 additional smoke checks. The complete367-file Netlify ZIP was packaged twice identically and every extracted byte checked. No deployment or merge.

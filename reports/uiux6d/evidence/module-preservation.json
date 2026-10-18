@@ -1,0 +1,672 @@
+{
+  "baseline": "491acf33c409be37781073d2d831c16c56192241",
+  "sourceCommit": "2b48ae037deeb05100d550522623ecf75ff07224",
+  "protectedSource": [
+    {
+      "file": "src/app.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/backup-model.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/backup-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/bible-journey.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/bible-notes.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/chapter-questions.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/content.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/continuity.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/core-experience.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/discover-model.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/discover-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/domain.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/drafts.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/experience-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/import-validation.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/journal-management.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/journal-model.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/journal-reviews-backup.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/journal-search.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/journal-storage.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/journal-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/journey-sword.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/journey-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/menu.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/navigation-discovery.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/navigation-model.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/navigation-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/onboarding-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/path-review-context.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/paths-model.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/paths-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/personal-journey.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/reader-stories.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/reader-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/reminders-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/reviews-model.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/reviews-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/runtime-model.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/store.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/story-flow-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/themes.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/today-model.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/today-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/today.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/tree-branches.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/assets/brand-sprig.svg",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/assets/fonts/DMSans.ttf",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/assets/fonts/Newsreader-Italic.ttf",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/assets/fonts/Newsreader.ttf",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/assets/licenses/dmsans-OFL.txt",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/assets/licenses/newsreader-OFL.txt",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/assets/sword-seal.svg",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/dialog-view.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/discover.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/foundation.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/interaction.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/reader-flow.js",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/reader.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/system.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/today.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/verbunden/tokens.css",
+      "unchanged": true
+    },
+    {
+      "file": "src/view-html.js",
+      "unchanged": true
+    }
+  ],
+  "sevenMeaningsUnchanged": true,
+  "priorMOBILE2PersonalCSSUnchanged": true,
+  "historicalSourceSelectorUnchanged": true,
+  "thresholds": [
+    {
+      "count": 0,
+      "stage": 0
+    },
+    {
+      "count": 1,
+      "stage": 1
+    },
+    {
+      "count": 2,
+      "stage": 2
+    },
+    {
+      "count": 3,
+      "stage": 3
+    },
+    {
+      "count": 4,
+      "stage": 3
+    },
+    {
+      "count": 5,
+      "stage": 4
+    },
+    {
+      "count": 6,
+      "stage": 4
+    },
+    {
+      "count": 7,
+      "stage": 5
+    },
+    {
+      "count": 8,
+      "stage": 5
+    },
+    {
+      "count": 9,
+      "stage": 5
+    },
+    {
+      "count": 10,
+      "stage": 6
+    },
+    {
+      "count": 11,
+      "stage": 6
+    },
+    {
+      "count": 12,
+      "stage": 6
+    },
+    {
+      "count": 13,
+      "stage": 6
+    },
+    {
+      "count": 14,
+      "stage": 6
+    },
+    {
+      "count": 15,
+      "stage": 6
+    },
+    {
+      "count": 16,
+      "stage": 6
+    },
+    {
+      "count": 17,
+      "stage": 6
+    },
+    {
+      "count": 18,
+      "stage": 6
+    },
+    {
+      "count": 19,
+      "stage": 6
+    },
+    {
+      "count": 20,
+      "stage": 6
+    },
+    {
+      "count": 21,
+      "stage": 6
+    },
+    {
+      "count": 22,
+      "stage": 6
+    },
+    {
+      "count": 23,
+      "stage": 6
+    },
+    {
+      "count": 24,
+      "stage": 6
+    },
+    {
+      "count": 25,
+      "stage": 6
+    },
+    {
+      "count": 26,
+      "stage": 6
+    },
+    {
+      "count": 27,
+      "stage": 6
+    },
+    {
+      "count": 28,
+      "stage": 6
+    },
+    {
+      "count": 29,
+      "stage": 6
+    },
+    {
+      "count": 30,
+      "stage": 6
+    },
+    {
+      "count": 31,
+      "stage": 6
+    },
+    {
+      "count": 32,
+      "stage": 6
+    },
+    {
+      "count": 33,
+      "stage": 6
+    },
+    {
+      "count": 34,
+      "stage": 6
+    },
+    {
+      "count": 35,
+      "stage": 6
+    },
+    {
+      "count": 36,
+      "stage": 6
+    },
+    {
+      "count": 37,
+      "stage": 6
+    },
+    {
+      "count": 38,
+      "stage": 6
+    },
+    {
+      "count": 39,
+      "stage": 6
+    },
+    {
+      "count": 40,
+      "stage": 6
+    },
+    {
+      "count": 41,
+      "stage": 6
+    },
+    {
+      "count": 42,
+      "stage": 6
+    },
+    {
+      "count": 43,
+      "stage": 6
+    },
+    {
+      "count": 44,
+      "stage": 6
+    },
+    {
+      "count": 45,
+      "stage": 6
+    },
+    {
+      "count": 46,
+      "stage": 6
+    },
+    {
+      "count": 47,
+      "stage": 6
+    },
+    {
+      "count": 48,
+      "stage": 6
+    },
+    {
+      "count": 49,
+      "stage": 6
+    },
+    {
+      "count": 50,
+      "stage": 6
+    },
+    {
+      "count": 51,
+      "stage": 6
+    },
+    {
+      "count": 52,
+      "stage": 6
+    },
+    {
+      "count": 53,
+      "stage": 6
+    },
+    {
+      "count": 54,
+      "stage": 6
+    },
+    {
+      "count": 55,
+      "stage": 6
+    },
+    {
+      "count": 56,
+      "stage": 6
+    },
+    {
+      "count": 57,
+      "stage": 6
+    },
+    {
+      "count": 58,
+      "stage": 6
+    },
+    {
+      "count": 59,
+      "stage": 6
+    },
+    {
+      "count": 60,
+      "stage": 6
+    },
+    {
+      "count": 61,
+      "stage": 6
+    },
+    {
+      "count": 62,
+      "stage": 6
+    },
+    {
+      "count": 63,
+      "stage": 6
+    },
+    {
+      "count": 64,
+      "stage": 6
+    },
+    {
+      "count": 65,
+      "stage": 6
+    },
+    {
+      "count": 66,
+      "stage": 6
+    },
+    {
+      "count": 67,
+      "stage": 6
+    },
+    {
+      "count": 68,
+      "stage": 6
+    },
+    {
+      "count": 69,
+      "stage": 6
+    },
+    {
+      "count": 70,
+      "stage": 6
+    },
+    {
+      "count": 71,
+      "stage": 6
+    },
+    {
+      "count": 72,
+      "stage": 6
+    },
+    {
+      "count": 73,
+      "stage": 6
+    },
+    {
+      "count": 74,
+      "stage": 6
+    },
+    {
+      "count": 75,
+      "stage": 6
+    },
+    {
+      "count": 76,
+      "stage": 6
+    },
+    {
+      "count": 77,
+      "stage": 6
+    },
+    {
+      "count": 78,
+      "stage": 6
+    },
+    {
+      "count": 79,
+      "stage": 6
+    },
+    {
+      "count": 80,
+      "stage": 6
+    },
+    {
+      "count": 81,
+      "stage": 6
+    },
+    {
+      "count": 82,
+      "stage": 6
+    },
+    {
+      "count": 83,
+      "stage": 6
+    },
+    {
+      "count": 84,
+      "stage": 6
+    },
+    {
+      "count": 85,
+      "stage": 6
+    },
+    {
+      "count": 86,
+      "stage": 6
+    },
+    {
+      "count": 87,
+      "stage": 6
+    },
+    {
+      "count": 88,
+      "stage": 6
+    },
+    {
+      "count": 89,
+      "stage": 6
+    },
+    {
+      "count": 90,
+      "stage": 6
+    },
+    {
+      "count": 91,
+      "stage": 6
+    },
+    {
+      "count": 92,
+      "stage": 6
+    },
+    {
+      "count": 93,
+      "stage": 6
+    },
+    {
+      "count": 94,
+      "stage": 6
+    },
+    {
+      "count": 95,
+      "stage": 6
+    },
+    {
+      "count": 96,
+      "stage": 6
+    },
+    {
+      "count": 97,
+      "stage": 6
+    },
+    {
+      "count": 98,
+      "stage": 6
+    },
+    {
+      "count": 99,
+      "stage": 6
+    },
+    {
+      "count": 100,
+      "stage": 6
+    }
+  ],
+  "contentHash": "8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309",
+  "schemaChange": false,
+  "newDependency": false,
+  "personalDataRead": false,
+  "status": "PASS"
+}

@@ -1,0 +1,13 @@
+{
+  "previousBuild": "FP4-20261017-G-STABLE1-UIUX6B-MOBILE2",
+  "previousHash": "d1fd4804aaaeefc19b018776714b9607d92d404ab733b0e1a0619a6f083c6db0",
+  "candidateBuild": "FP4-20261018-G-STABLE1-UIUX6D-TREEGUIDE2",
+  "candidateHash": "150c015ebb36ea50b1e4c3379eca583f3cf5e73ca963de56ea6f0910aebf5598",
+  "transport": "isolated loopback HTTPS only; test certificate trusted by this Chromium context",
+  "results": [],
+  "errors": [
+    "locator.waitFor: Timeout 90000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#offline-state').filter({ hasText: 'Beide Bibeln und die App sind für dieses Gerät offline bereit.' }) to be visible\u001b[22m\n\n    at ready (/workspace/Faithpath-tree6d/tests/uiux6d/update.mjs:45:123)\n    at async file:///workspace/Faithpath-tree6d/tests/uiux6d/update.mjs:47:67"
+  ],
+  "physicalIOS": "OFFEN",
+  "noDeploy": true
+}

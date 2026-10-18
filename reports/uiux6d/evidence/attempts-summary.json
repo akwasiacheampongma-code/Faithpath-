@@ -1,0 +1,18 @@
+{
+  "attempts": [
+    {
+      "name": "baseline build without subprocess-capable sandbox",
+      "result": "spawnSync git EPERM; same source succeeds with supported runtime permissions",
+      "productBug": false
+    },
+    {
+      "name": "first local HTTPS update",
+      "result": "Altfassung MOBILE2 worker failed TLS certificate check; context ignoreHTTPSErrors alone did not apply to worker",
+      "proof": "tls-probe.json: same certificate/root, context-only -> SSL error/controllerfalse; ephemeral browser launch trust -> controllertrue and offline ready",
+      "resolution": "QA browser launch only; no application or shared-user/browser configuration change",
+      "productBug": false,
+      "retained": "attempts/update-without-worker-certificate-trust/results.json"
+    }
+  ],
+  "finalTestsUse": "actual committed TREEGUIDE2 source and unchanged MOBILE2 baseline"
+}

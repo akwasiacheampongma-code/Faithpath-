@@ -1,0 +1,64 @@
+✔ seven existing names receive complete, distinct explanations (0.906232ms)
+✖ current meaning precedes the image and path list without opening details (2.453999ms)
+✖ explanation distinguishes imagery from biblical commandments and faith ranking (0.662396ms)
+✔ reading, quiz and checked tasks do not advance the tree through its guide (0.407083ms)
+✔ invalid presentation levels fall back without inventing an eighth stage (0.207722ms)
+✔ display guide does not change existing confirmed-development thresholds (0.265219ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 4
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67.947246
+
+✖ failing tests:
+
+test at tests/tree-stage-guide.test.mjs:21:1
+✖ current meaning precedes the image and path list without opening details (2.453999ms)
+  AssertionError [ERR_ASSERTION]: Current meaning must appear before the tree image
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/tree-stage-guide.test.mjs:25:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/tree-stage-guide.test.mjs:33:1
+✖ explanation distinguishes imagery from biblical commandments and faith ranking (0.662396ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Nähe zu Gott/. Input:
+  
+  '<h1>Samen</h1>\n' +
+    '  <p class="tree-personal-meaning">Dieses Bild erzählt von Entwicklung, die du selbst festgehalten hast. Es bewertet weder deinen Glauben noch deinen Wert.</p>\n' +
+    '  <figure class="tree-figure interactive-tree"><div class="tree-branch-scene branch-stage-0"><img src="trees/tree-stage-1.webp" alt="Olivenbaum" width="1086" height="1448"></div><figcaption>Ruhende Wege und schwierige Zeiten nehmen deiner Geschichte nichts weg.</figcaption></figure><section class="tree-other-paths"><h2>Weitere Wege</h2><ul><li><a class="branch-path-link" href="#path/personal-path" >In Ruhe zuhören</a><span class="meta">Rückblick festgehalten</span></li></ul></section>\n' +
+    '  <section class="section tree-stage-guide" aria-labelledby="tree-stage-guide-title"><span class="overline">Deinen Olivenbaum verstehen</span><h2 id="tree-stage-guide-title">Samen: Was dieses Bild bedeutet</h2><p class="tree-stage-current-meaning">Ein Anfang darf klein sein: eine Frage, ein Gedanke oder ein neuer Wunsch. Deine Geschichte zählt auch dann, wenn du noch keine Entwicklung ausdrücklich bestätigt hast.</p><p class="meta">Dein Baum erzählt von selbst festgehaltenen Entwicklungen. Er misst nicht deinen Glauben oder deinen Wert.</p><details class="tree-stage-details"><summary>Alle sieben Stufen und ihre Bedeutung</summary><ol><li class="tree-stage-card" aria-current="step"><strong>Samen</strong><span class="meta">Deine aktuelle Darstellung</span><p>Ein Anfang darf klein sein: eine Frage, ein Gedanke oder ein neuer Wunsch. Deine Geschichte zählt auch dann, wenn du noch keine Entwicklung ausdrücklich bestätigt hast.</p></li><li class="tree-stage-card"><strong>Keimling</strong><p>Du hast einen ersten Moment persönlicher Veränderung bewusst festgehalten. Etwas wird sichtbar, auch wenn längst nicht alles geklärt ist.</p></li><li class="tree-stage-card"><strong>Junger Olivenbaum</strong><p>Weitere bewusst bestätigte Erfahrungen verbinden sich zu deiner Geschichte. Neue Schritte, offene Fragen und Umwege dürfen nebeneinanderstehen.</p></li><li class="tree-stage-card"><strong>Wachsender Olivenbaum</strong><p>Wie ein Olivenbaum Zeit braucht, darf auch deine Geschichte langsam und ungerade wachsen. Veränderung ist kein Wettlauf.</p></li><li class="tree-stage-card"><strong>Starker Olivenbaum</strong><p>Ein Baum mit tieferen Wurzeln erinnert an Halt und Ausdauer. Dieses Bild bedeutet nicht, dass du immer stark sein musst.</p></li><li class="tree-stage-card"><strong>Erste Früchte</strong><p>Die ersten Früchte erinnern an Liebe, Geduld und Versöhnung. FaithPath bewertet diese Eigenschaften nicht, sondern bewahrt, was du selbst als Entwicklung festgehalten hast.</p></li><li class="tree-stage-card"><strong>Fruchttragender Olivenbaum</strong><p>Viele bewusst bestätigte Entwicklungen gehören zu deiner Geschichte. Das ist weder eine Auszeichnung für perfekten Glauben noch das Ende deines Weges.</p></li></ol></details><details class="tree-stage-why"><summary>Warum genau sieben?</summary><div class="tree-stage-why-body"><p>Die Zahl Sieben ist in vielen biblischen Bildern mit Vollständigkeit verbunden. Die Bibel schreibt jedoch keine sieben Stufen vor, die ein Christ durchlaufen muss. FaithPath verwendet sieben Bilder als gestalterischen Rahmen für deine persönliche Geschichte.</p><p>Der Olivenbaum erinnert an Psalm 52 und an das Bild eines verwurzelten Baumes in Jeremia 17,7–8. Die Frucht-Symbolik erinnert an Galater 5,22–23. Diese Bibelstellen geben keine geistliche Rangliste vor.</p><p>Die Darstellung verändert sich ausschließlich durch ausdrücklich festgehaltene Entwicklungs-Momente. Ein gelesenes Kapitel, eine erledigte Aufgabe oder eine Quizantwort zählen dafür nicht automatisch. Auch nach der siebten Stufe geht dein Weg weiter.</p></div></details></section>\n' +
+    '  \n' +
+    '  <section class="section tree-evidence"><h2>Was hinter dem Baum steht</h2>\n' +
+    '   <p>Deine Gedanken und Schritte haben hier ihren Platz. Wenn du später selbst eine Entwicklung bestätigst, wird sie sichtbar.</p>\n' +
+    '   <details class="tree-explanation"><summary>Wie sich das Bild verändert</summary><p>Die sieben vorhandenen Bilder folgen deiner dokumentierten Entwicklung: 0, 1, 2, 3–4, 5–6, 7–9 und ab 10 ausdrücklich festgehaltenen Entwicklungen. Ein abgehakter Schritt, ein Quiz oder ein gelesenes Kapitel verändert den Baum nicht automatisch.</p><p>Die nummerierten Zweige öffnen ausschließlich echte Wege mit deinen eigenen Aufzeichnungen. Ruhende Wege und schwierige Zeiten bleiben Teil deiner Geschichte.</p><p>Der Olivenbaum zeigt deine persönliche Glaubensgeschichte. Das Schwert zeigt deine Beschäftigung mit der Bibel.</p><a href="#bible-journey">Deine Bibelreise ansehen</a></details>\n' +
+    '   <a href="#paths">Meine Wege öffnen</a>\n' +
+    '  </section>'
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/tree-stage-guide.test.mjs:40:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<h1>Samen</h1>\n  <p class="tree-personal-meaning">Dieses Bild erzählt von Entwicklung, die du selbst festgehalten hast. Es bewertet weder deinen Glauben noch deinen Wert.</p>\n  <figure class="tree-figure interactive-tree"><div class="tree-branch-scene branch-stage-0"><img src="trees/tree-stage-1.webp" alt="Olivenbaum" width="1086" height="1448"></div><figcaption>Ruhende Wege und schwierige Zeiten nehmen deiner Geschichte nichts weg.</figcaption></figure><section class="tree-other-paths"><h2>Weitere Wege</h2><ul><li><a class="branch-path-link" href="#path/personal-path" >In Ruhe zuhören</a><span class="meta">Rückblick festgehalten</span></li></ul></section>\n  <section class="section tree-stage-guide" aria-labelledby="tree-stage-guide-title"><span class="overline">Deinen Olivenbaum verstehen</span><h2 id="tree-stage-guide-title">Samen: Was dieses Bild bedeutet</h2><p class="tree-stage-current-meaning">Ein Anfang darf klein sein: eine Frage, ein Gedanke oder ein neuer Wunsch. Deine Geschichte zählt auch dann, wenn du noch keine Entwicklung ausdrücklich bestätigt hast.</p><p class="meta">Dein Baum erzählt von selbst festgehaltenen Entwicklungen. Er misst nicht deinen Glauben oder deinen Wert.</p><details class="tree-stage-details"><summary>Alle sieben Stufen und ihre Bedeutung</summary><ol><li class="tree-stage-card" aria-current="step"><strong>Samen</strong><span class="meta">Deine aktuelle Darstellung</span><p>Ein Anfang darf klein sein: eine Frage, ein Gedanke oder ein neuer Wunsch. Deine Geschichte zählt auch dann, wenn du noch keine Entwicklung ausdrücklich bestätigt hast.</p></li><li class="tree-stage-card"><strong>Keimling</strong><p>Du hast einen ersten Moment persönlicher Veränderung bewusst festgehalten. Etwas wird sichtbar, auch wenn längst nicht alles geklärt ist.</p></li><li class="tree-stage-card"><strong>Junger Olivenbaum</strong><p>Weitere bewusst bestätigte Erfahrungen verbinden sich zu deiner Geschichte. Neue Schritte, offene Fragen und Umwege dürfen nebeneinanderstehen.</p></li><li class="tree-stage-card"><strong>Wachsender Olivenbaum</strong><p>Wie ein Olivenbaum Zeit braucht, darf auch deine Geschichte langsam und ungerade wachsen. Veränderung ist kein Wettlauf.</p></li><li class="tree-stage-card"><strong>Starker Olivenbaum</strong><p>Ein Baum mit tieferen Wurzeln erinnert an Halt und Ausdauer. Dieses Bild bedeutet nicht, dass du immer stark sein musst.</p></li><li class="tree-stage-card"><strong>Erste Früchte</strong><p>Die ersten Früchte erinnern an Liebe, Geduld und Versöhnung. FaithPath bewertet diese Eigenschaften nicht, sondern bewahrt, was du selbst als Entwicklung festgehalten hast.</p></li><li class="tree-stage-card"><strong>Fruchttragender Olivenbaum</strong><p>Viele bewusst bestätigte Entwicklungen gehören zu deiner Geschichte. Das ist weder eine Auszeichnung für perfekten Glauben noch das Ende deines Weges.</p></li></ol></details><details class="tree-stage-why"><summary>Warum genau sieben?</summary><div class="tree-stage-why-body"><p>Die Zahl Sieben ist in vielen biblischen Bildern mit Vollständigkeit verbunden. Die Bibel schreibt jedoch keine sieben Stufen vor, die ein Christ durchlaufen muss. FaithPath verwendet sieben Bilder als gestalterischen Rahmen für deine persönliche Geschichte.</p><p>Der Olivenbaum erinnert an Psalm 52 und an das Bild eines verwurzelten Baumes in Jeremia 17,7–8. Die Frucht-Symbolik erinnert an Galater 5,22–23. Diese Bibelstellen geben keine geistliche Rangliste vor.</p><p>Die Darstellung verändert sich ausschließlich durch ausdrücklich festgehaltene Entwicklungs-Momente. Ein gelesenes Kapitel, eine erledigte Aufgabe oder eine Quizantwort zählen dafür nicht automatisch. Auch nach der siebten Stufe geht dein Weg weiter.</p></div></details></section>\n  \n  <section class="section tree-evidence"><h2>Was hinter dem Baum steht</h2>\n   <p>Deine Gedanken und Schritte haben hier ihren Platz. Wenn du später selbst eine Entwicklung bestätigst, wird sie sichtbar.</p>\n   <details class="tree-explanation"><summary>Wie sich das Bild verändert</summary><p>Die sieben vorhandenen Bilder folgen deiner dokumentierten Entwicklung: 0, 1, 2, 3–4, 5–6, 7–9 und ab 10 ausdrücklich festgehaltenen Entwicklungen. Ein abgehakter Schritt, ein Quiz oder ein gelesenes Kapitel verändert den Baum nicht automatisch.</p><p>Die nummerierten Zweige öffnen ausschließlich echte Wege mit deinen eigenen Aufzeichnungen. Ruhende Wege und schwierige Zeiten bleiben Teil deiner Geschichte.</p><p>Der Olivenbaum zeigt deine persönliche Glaubensgeschichte. Das Schwert zeigt deine Beschäftigung mit der Bibel.</p><a href="#bible-journey">Deine Bibelreise ansehen</a></details>\n   <a href="#paths">Meine Wege öffnen</a>\n  </section>',
+    expected: /Nähe zu Gott/,
+    operator: 'match',
+    diff: 'simple'
+  }
