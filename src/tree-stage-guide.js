@@ -29,8 +29,17 @@ export const TREE_STAGE_MEANINGS = Object.freeze([
   }
 ].map(Object.freeze));
 
+// Presentation fallback only. The domain's treeLevel still selects real stages.
+const stageIndex = level => Number.isInteger(level) && level >= 0 && level < stageNames.length ? level : 0;
+
+/** The current meaning belongs beside the title, before the image/path list. */
+export function renderTreeStageMeaning(level = 0) {
+ return '<p class="tree-stage-current-meaning">'+e(TREE_STAGE_MEANINGS[stageIndex(level)].meaning)+'</p>'+
+  '<p class="tree-personal-meaning">Dein Baum misst nicht deinen Glauben, deine Nähe zu Gott oder deinen Wert.</p>';
+}
+
 export function renderTreeStageGuide(level = 0) {
- const stage = Number.isInteger(level) && level >= 0 && level < stageNames.length ? level : 0;
+ const stage = stageIndex(level);
  const rows = stageNames.map((name, i) => [
   '<li class="tree-stage-card"'+(i === stage ? ' aria-current="step"' : '')+'>',
   '<strong>'+e(name)+'</strong>',
@@ -40,10 +49,7 @@ export function renderTreeStageGuide(level = 0) {
  ].join('')).join('');
  return [
   '<section class="section tree-stage-guide" aria-labelledby="tree-stage-guide-title">',
-  '<span class="overline">Deinen Olivenbaum verstehen</span>',
-  '<h2 id="tree-stage-guide-title">'+e(stageNames[stage])+': Was dieses Bild bedeutet</h2>',
-  '<p class="tree-stage-current-meaning">'+e(TREE_STAGE_MEANINGS[stage].meaning)+'</p>',
-  '<p class="meta">Dein Baum erzählt von selbst festgehaltenen Entwicklungen. Er misst nicht deinen Glauben oder deinen Wert.</p>',
+  '<h2 id="tree-stage-guide-title">Deinen Olivenbaum verstehen</h2>',
   '<details class="tree-stage-details"><summary>Alle sieben Stufen und ihre Bedeutung</summary>',
   '<ol>'+rows+'</ol></details>',
   '<details class="tree-stage-why"><summary>Warum genau sieben?</summary>',
@@ -51,9 +57,12 @@ export function renderTreeStageGuide(level = 0) {
   '<p>Die Zahl Sieben ist in vielen biblischen Bildern mit Vollständigkeit verbunden. ',
   'Die Bibel schreibt jedoch keine sieben Stufen vor, die ein Christ durchlaufen muss. ',
   'FaithPath verwendet sieben Bilder als gestalterischen Rahmen für deine persönliche Geschichte.</p>',
-  '<p>Der Olivenbaum erinnert an Psalm 52 und an das Bild eines verwurzelten Baumes in Jeremia 17,7–8. ',
-  'Die Frucht-Symbolik erinnert an Galater 5,22–23. ',
-  'Diese Bibelstellen geben keine geistliche Rangliste vor.</p>',
+  '<p>Psalm 52 beschreibt Vertrauen auf Gottes Güte und Treue: ',
+  'Der Beter vergleicht sich mit einem grünen Ölbaum im Haus Gottes.</p>',
+  '<p>Jeremia 17,7–8 beschreibt einen Baum am Wasser als Bild für Vertrauen auf den Herrn, ',
+  'auch in Dürrezeiten.</p>',
+  '<p>Galater 5,22–23 spricht von der Frucht des Geistes, etwa Liebe, Friede und Geduld. ',
+  'Diese Bilder sind keine geistliche Rangliste. FaithPath zählt oder bewertet die Frucht des Geistes nicht.</p>',
   '<p>Die Darstellung verändert sich ausschließlich durch ausdrücklich festgehaltene Entwicklungs-Momente. ',
   'Ein gelesenes Kapitel, eine erledigte Aufgabe oder eine Quizantwort zählen dafür nicht automatisch. ',
   'Auch nach der siebten Stufe geht dein Weg weiter.</p>',

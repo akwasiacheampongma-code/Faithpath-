@@ -2,7 +2,7 @@ import {treeLevel,developmentCount,time} from './domain.js';
 import {treeBranches} from './tree-branches.js';
 import {allReviews} from './continuity.js';
 import {escapeHtml as e} from './view-html.js';
-import {renderTreeStageGuide} from './tree-stage-guide.js';
+import {renderTreeStageMeaning,renderTreeStageGuide} from './tree-stage-guide.js';
 
 /** Source rows follow the unchanged counting rule, including retained development
  * after a path deletion. Unknown dates/text stay unknown; never manufacture evidence. */
@@ -23,7 +23,7 @@ export function selectTreeHistory(data) {
 export function renderTreeJourney(model,{back,heading,stageName,branchMarkup,link,date}) {
  const sources=model.sources.map(source=>`<li><span class="meta">${e(date(source.date))}${source.pathTitle?' · '+e(source.pathTitle):' · In deiner Geschichte erhalten'}${source.archived?' · archiviert':''}</span><blockquote class="preserve">${e(source.text||'Der damalige Wortlaut ist nicht gespeichert.')}</blockquote>${source.route?link('Ursprünglichen Moment öffnen',source.route,'text-link'):'<p class="meta">Die ursprüngliche Quelle ist nicht mehr eindeutig verfügbar.</p>'}</li>`).join('');
  return `${back('Mein Weg','paths')}${heading('Dein Olivenbaum',stageName)}
-  <p class="tree-personal-meaning">Dieses Bild erzählt von Entwicklung, die du selbst festgehalten hast. Es bewertet weder deinen Glauben noch deinen Wert.</p>
+  ${renderTreeStageMeaning(model.stage)}
   ${branchMarkup}
   ${renderTreeStageGuide(model.stage)}
   ${model.unplaced.length?`<section class="tree-unplaced"><h2>Wege noch ohne verbundene Momente</h2><p class="meta">Auch diese Wege gehören zu dir. Du brauchst keinen Zweig, um sie zu öffnen.</p><ul>${model.unplaced.map(path=>`<li>${link(e(path.title),'path/'+encodeURIComponent(path.id),'branch-path-link')}${path.archived?'<span class="meta">archiviert</span>':''}</li>`).join('')}</ul></section>`:''}
