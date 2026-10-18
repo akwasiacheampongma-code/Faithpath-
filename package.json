@@ -22,7 +22,11 @@
     "test:nachlese-mc:fixtures": "node tests/nachlese-mc-browser.mjs",
     "test:nachlese-mc:update": "node tests/nachlese-mc-update.mjs",
     "pretest": "npm run validate",
-    "lint": "eslint src scripts tests/*.test.mjs eslint.config.js"
+    "lint": "eslint src scripts tests/*.test.mjs eslint.config.js",
+    "check:modules": "node scripts/check-modules.mjs",
+    "check:contracts": "node scripts/check-contracts.mjs",
+    "check:build": "node scripts/check-build.mjs",
+    "quality": "node scripts/quality-gate.mjs"
   },
   "engines": {
     "node": ">=20"

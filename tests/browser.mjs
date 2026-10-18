@@ -11,7 +11,7 @@ import { empty, KEYS } from "../src/store.js";
 const require = createRequire(import.meta.url),
   { chromium } = require("playwright");
 const root = process.cwd(),
-  out = path.join(root, "qa-output");
+  out = path.resolve(process.env.QA_OUT || path.join(root, "qa-output"));
 fs.mkdirSync(out, { recursive: true });
 const server = spawn(process.execPath, ["scripts/serve.mjs", process.env.FAITHPATH_TEST_ROOT || "dist"], {
   stdio: ["ignore", "pipe", "inherit"],

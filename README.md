@@ -5,7 +5,7 @@
 FaithPath ist eine offline-first PWA. Der Kern ist nicht das Sammeln von Punkten, sondern der Kreislauf: Situation/Bibel → verstehen → reflektieren → persönlicher Weg → kleiner Schritt → späterer Rückblick → selbst dokumentierte Entwicklung.
 
 ## Deployment auf Netlify
-Der Quellstand benötigt Node >=20. `npm run build` erzeugt den vollständigen,
+Für die vollständige Entwicklung und QA wird Node24.19.0 verwendet. `npm run build` erzeugt den vollständigen,
 versionierten Publish-Ordner `dist`; genau diesen Ordner verwendet `netlify.toml`.
 Alte eingecheckte Root-/dist-Artefakte sind kein verlässlicher aktueller Build.
 Keine Produktionsveröffentlichung erfolgt automatisch durch diese Anleitung.
@@ -35,6 +35,14 @@ OTB Deutsch und Luther 1912 sind vollständig lokal enthalten. V4 normalisiert �
 - Stabilisierungskandidat: `FP4-20261015-G-STABLE1`, Branch `fix/production-stabilization-20261015`.
 - [Rekonstruktion und exakte Reproduktion](docs/PRODUCTION_RECOVERY.md)
 - [Architektur, Datenregeln und Testabläufe](docs/MAINTENANCE.md)
+- [Aktuelle Architektur](ARCHITECTURE.md), [Entwicklung](DEVELOPMENT.md),
+  [Datenverträge](DATA_CONTRACTS.md), [Release-Checkliste](RELEASE_CHECKLIST.md)
+
+Der Phase7-Wartungskandidat baut auf dem vollständig integrierten TREEFINAL-Stand
+auf. Er behält „Verbunden“, alle Inhalte und Schema V5 bei. Der aktuelle
+[Wartungsbericht](MAINTENANCE_REPORT.md) trennt ausgeführte Prüfungen von offener
+physischer Geräteabnahme. `npm run quality` führt die rein lesende Qualitätspipeline
+aus; es gibt dabei keinen Merge oder Deploy.
 
 Der Integrationskandidat `FP4-20261016-G-STABLE1-NTFINAL1` auf
 `integration/quiz-final-on-stable1` übernimmt die 1.300 freigegebenen NT-Fragen
