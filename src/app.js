@@ -1,9 +1,10 @@
+import {createBackupController} from './backup-controller.js';
 import {createAppRouter} from './app-router.js';
 import {writingDialog} from './verbunden/dialog-view.js';
 import {prepareWritingArea} from './verbunden/interaction.js';
 import {renderReaderFlow,readingTools} from './verbunden/reader-flow.js';
-import {backupSummary,inspectBackupFile,createRestoreSession,assertRestoreSession} from './backup-model.js';
-import {renderBackupPage,backupPreview,backupConfirmation} from './backup-view.js';
+import {backupSummary} from './backup-model.js';
+import {renderBackupPage} from './backup-view.js';
 import {selectReminderControls,renderReminderControls,reminderWhy} from './reminders-view.js';
 import {selectReviews} from './reviews-model.js';
 import {renderReviewDetail,renderCompletedReviews,renderPendingReviews} from './reviews-view.js';
@@ -117,9 +118,6 @@ const ui = {
   reviewsLimit: 40,
   quiz: null,
   form: null,
-  import: null,
-  importRequest: 0,
-  backupMode: "import",
   offline: false,
   waiting: null,
   archive: false,
@@ -806,7 +804,7 @@ async function finishForm(draftSession = ui.draftSession) {
   document.body.classList.remove("modal-open");
 }
 function closeModal() {
-  ui.importRequest++;ui.import=null;
+  backupController.invalidate();
   const journalFocus=ui.journalDeletion;
   ui.noteDeletion=null;
   ui.journalDeletion=null;
@@ -1197,36 +1195,7 @@ function download(object, name) {
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 3000);
 }
-function importRefs(next) {
-  const refs = [
-    ...next.highlights,
-    ...next.journal.map((x) => x.ref),
-    ...next.reflections.map((x) => x.ref),
-    ...next.reviews.map((x) => x.ref),
-    ...next.events.map((x) => x.ref),
-    ...next.paths.flatMap((p) => p.links.map((x) => x.ref)),
-    ...next.paths.flatMap((p) => p.reviews.map((x) => x.ref)),
-    next.reading,
-  ].filter(Boolean);
-  for (const r of refs) validRef(r, ui.refs);
-  return next;
-}
-function showBackupPreview(next,{mode="import",exported=null}={}) {
- ui.importRequest++; // Any newer recovery/check flow supersedes outstanding file reads.
- if(!store.error)store.backup(); // Reuse existing stale-tab guard before describing the current state.
- const session=createRestoreSession(next,localStorage);
- modal(mode==="check"?"Backup geprüft":"Bestand vor Wiederherstellung vergleichen",backupPreview({current:backupSummary(s()),incoming:backupSummary(next),mode,exported,date,hasDraft:session.draftRaw!==null,button}));
- ui.import=mode==="check"?null:session;
-}
-async function importFile(file,mode="import") {
- if(!file)return;
- const request=++ui.importRequest,route=location.hash,main=localStorage.getItem(KEYS.main),draft=localStorage.getItem(KEYS.draft);
- ui.import=null;
- const result=await inspectBackupFile(file,{store,validateRefs:importRefs});
- if(request!==ui.importRequest||route!==location.hash)return;
- if(main!==localStorage.getItem(KEYS.main)||draft!==localStorage.getItem(KEYS.draft))throw new Error("Daten oder Entwurf wurden während der Dateiprüfung geändert. Bitte prüfe erneut.");
- showBackupPreview(result.next,{mode,exported:result.exported});
-}
+
 function onboarding() {
   modal("Willkommen bei FaithPath",onboardingContent({button}));
   ui.onboardingOpen=true;
@@ -1716,49 +1685,7 @@ async function action(a, d, el) {
     if(d.path){const first=$$(".path-story .timeline li")[previousLimit],target=first?.querySelector("a")||first;if(target){target.tabIndex=-1;target.focus();}}
     return;
   }
-  if (a === "export") {
-    download(
-      store.backup(),
-      "FaithPath-Backup-" + now().slice(0, 10) + ".json",
-    );
-    if($("#backup-export-help"))$("#backup-export-help").textContent="Download angefordert. Bitte prüfe im Download-Ordner bzw. in Dateien, ob die JSON-Datei vorhanden ist. FaithPath kann die dauerhafte Speicherung nicht bestätigen.";
-    return;
-  }
-  if (a === "raw-backup") {
-    download(
-      store.rawBackup(),
-      "FaithPath-Originaldaten-" + now().slice(0, 10) + ".json",
-    );
-    return;
-  }
-  if (a === "import"||a === "check-backup") {
-    ui.backupMode=a==="check-backup"?"check":"import";$("#import-file").click();return;
-  }
-  if(a === "review-import") {
-    assertRestoreSession(ui.import,localStorage);ui.import.stage="confirm";
-    modal("Backup wirklich wiederherstellen?",backupConfirmation(button));return;
-  }
-  if (a === "confirm-import") {
-    if(!ui.import||ui.import.stage!=="confirm")return;
-    const session=ui.import;
-    const restore=()=>{
-      // Re-check ownership after waiting: closing, navigating or a newer preview cancels this authorization.
-      if(ui.import!==session||session.stage!=="confirm"||!$("#dialog").open)return false;
-      assertRestoreSession(session,localStorage);store.restore(session.next);session.stage="done";return true;
-    };
-    el.disabled=true;
-    let restored;
-    try{restored=navigator.locks?await navigator.locks.request("faithpath-journal-write",restore):restore();}
-    finally{if(el.isConnected)el.disabled=false;}
-    if(!restored)return;
-    closeModal();go("more?section=data");notify("Backup wiederhergestellt. Ein offener Entwurf bleibt erhalten.");return;
-  }
-  if (a === "undo-import") {
-    const old=JSON.parse(localStorage.getItem(KEYS.restore)||"null");
-    if(!old)throw new Error("Kein früherer Stand gefunden.");
-    const restored=old.raw?JSON.parse(old.raw):{paths:[],journal:[],highlights:[]};
-    showBackupPreview(importRefs(store.prepareImport({data:restored,guidedPlans:JSON.parse(old.guidedPlansRaw||"{}")})));return;
-  }
+  if(backupController.handles(a)) {await backupController.handle(a,d,el);return;}
   if (a === "onboard") {
     onboarding();
     return;
@@ -1791,6 +1718,10 @@ async function action(a, d, el) {
     return;
   }
 }
+const backupController=createBackupController({
+ store,storage:deviceStorage,getRoute:()=>location.hash,getReferences:()=>ui.refs,locks:navigator.locks,find:$,
+ view:{modal,closeModal,go,notify,download,button,date}
+});
 const render=createAppRouter({
  ui,getState:s,canonicalStoryForLegacy,go,storage:deviceStorage,document,window,location,
  helpers:{shell,heading,back,button},
@@ -1867,7 +1798,7 @@ document.addEventListener("change", (ev) => {
     if (el.name === "status") updateDevelopment();
     if (el.closest("#editor-form")) persistDraft();
     if (el.id === "import-file") {
-      importFile(el.files[0],ui.backupMode).catch((err) =>
+      backupController.inspectFile(el.files[0]).catch((err) =>
         notify("Import abgebrochen: " + err.message, true),
       );
       el.value = "";
@@ -1923,13 +1854,12 @@ document.addEventListener("change", (ev) => {
 $("#dialog").addEventListener("cancel",ev=>{if(ui.onboardingOpen){ev.preventDefault();finishOnboarding();return;}if(ui.saving){ev.preventDefault();return;}if(ui.noteDeletion){ev.preventDefault();cancelNoteDeletion();}else if(ui.journalDeletion){ev.preventDefault();closeModal();}});
 $("#dialog").addEventListener("close", () => {
   if (!$("#dialog").open) {
-    ui.form = null;ui.importRequest++;ui.import=null;
+    ui.form = null;backupController.invalidate();
     document.body.classList.remove("modal-open");
   }
 });
 window.addEventListener("hashchange", () => {
-  ui.importRequest++; // Every navigation invalidates pending File.text(), even a later return to the same hash.
-  ui.import=null;
+  backupController.invalidate(); // Invalidate even a later return to the same hash.
   if(ui.onboardingOpen&&ui.dialogRoute!==location.hash.slice(1))finishOnboarding();
   if ($("#dialog").open && ui.dialogRoute !== location.hash.slice(1))
     closeModal();

@@ -40,8 +40,8 @@
 **Files:** src/backup-controller.js, src/app.js, tests/backup-controller.test.mjs.
 **Interfaces:** controller owns only transient request/mode/session; inspectFile(file), invalidate(), handles(action), handle(action,data,element). Existing store and view callbacks are dependencies. Invalidate on close/hash/new flow before async continuation.
 
-- [ ] Characterize late read and restore-lock cancellation; RED→implement small extraction→GREEN.
-- [ ] Run backup lifecycle/races/roundtrip and all units; preserve editor's actual submit handler regression. Inspect diff and commit.
+- [x] Characterize late read and restore-lock cancellation; RED→implement small extraction→GREEN.
+- [x] Run backup lifecycle/races/roundtrip and all units; preserve editor's actual submit handler regression. Inspect diff and commit.
 
 ## Task3: Platform boundaries and measured payload reduction
 
@@ -79,3 +79,5 @@
 - Tooling prerequisite advanced from Task4: initial ESLint9 was explicitly reported unsupported by npm, so use verified current10.13.0 with Node24 tooling. This worktree has its own node_modules; sibling dependencies were not modified.
 - The first combined unit run had four content-validator failures because historical manifests also freeze package-lock.json. All content manifests stay untouched. A new exact old→new lock hash compatibility record is limited to package-lock.json; its RED→GREEN test proves every previous package record unchanged, all77 added packages development-only, no runtime dependency and no exemption for any content file or future arbitrary hash. Full212 tests now pass. This is an authorized CI-tooling change, not a content reapproval.
 - First ESLint correctness pass: one missing platform declaration (TextEncoder) in lint configuration, corrected there; zero application lint errors. Fourteen unused-binding warnings were measured, including nine in app.js (two newly redundant imports after route extraction). Remove only proved dead app bindings in a later cleanup; preserve byte-locked Store code.
+
+- Task2 complete: seven backup lifecycle contracts pass; full212/212 suite passes. Existing backup, backup-races and backup-dialogs browser programmes each exit0 against isolated step-backup; dedicated backup-lifecycle also passes. Only transient request/mode/session ownership moved. Store, drafts, validation, restore format and editor submit code stay unchanged.
