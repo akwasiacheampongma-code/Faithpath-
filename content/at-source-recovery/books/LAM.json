@@ -1,0 +1,563 @@
+{
+  "schema": "faithpath.at.airtable-source.v1",
+  "book": {
+    "name": "Klagelieder",
+    "code": "LAM",
+    "chapters": 5
+  },
+  "source": "Airtable FaithPath",
+  "unit_count": 5,
+  "question_count": 25,
+  "units": [
+    {
+      "source_record_id": "rec0U8JjVsUMHKOAd",
+      "created_at": "2026-10-02T03:12:39.000Z",
+      "number": 1980,
+      "source_id": "AT-1980",
+      "book": "Klagelieder",
+      "verse_range": "Klgl 1,1-22",
+      "title": "Jerusalems Einsamkeit, Schuld und tiefe Klage",
+      "context": "Jerusalem wird als verlassene, weinende Stadt beschrieben. Das Lied verbindet äußeres Leid mit dem Bekenntnis eigener Übertretung und bringt die Not offen vor den HERRN.",
+      "reflection": "Welche schmerzliche Folge oder eigene Verantwortung sollte ich ehrlich benennen, statt sie zu verdrängen oder nur anderen zuzuschreiben?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "rechpNhU905sXNf6o",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1980-Q1",
+          "unit_number": 1980,
+          "question": "Wie wird die einst volkvolle Stadt zu Beginn beschrieben?",
+          "options": [
+            "Wie eine Witwe, einsam sitzend",
+            "Wie eine siegreiche Königin",
+            "Wie eine blühende Stadt ohne Not",
+            "Wie ein Heer im Aufbruch"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 1,1",
+          "explanation": "Die große, einst volkvolle Stadt wird als einsam und wie eine Witwe beschrieben.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec3oWUFdta64DfvH",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1980-Q2",
+          "unit_number": 1980,
+          "question": "Warum ist Juda nach dem Lied gefangen weggeführt worden?",
+          "options": [
+            "Wegen Überflusses und Friedens",
+            "Vor Elend und großer Dienstbarkeit",
+            "Nur wegen einer Hungersnot in Ägypten",
+            "Weil der Tempel zu klein war"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 1,3",
+          "explanation": "Das Lied beschreibt Judas Wegführung in Verbindung mit Elend und großer Dienstbarkeit.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recrAHFZoDYZP0qNK",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1980-Q3",
+          "unit_number": 1980,
+          "question": "Wie bewertet Jerusalem selbst das Handeln des HERRN an ihr?",
+          "options": [
+            "Der HERR ist gerecht, denn ich bin seinem Wort ungehorsam gewesen",
+            "Der HERR habe nichts mit ihrer Not zu tun",
+            "Nur die Nachbarvölker seien verantwortlich",
+            "Jerusalem habe keinerlei Schuld"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 1,18",
+          "explanation": "Die Klage verbindet die Anerkennung von Gottes Gerechtigkeit mit dem Bekenntnis des eigenen Ungehorsams.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recWbbpR5nMDDn2uL",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1980-Q4",
+          "unit_number": 1980,
+          "question": "Was geschah mit den Liebhabern, die Jerusalem um Hilfe rief?",
+          "options": [
+            "Sie retteten die Stadt",
+            "Sie täuschten Jerusalem",
+            "Sie bauten den Tempel wieder auf",
+            "Sie brachten Nahrung"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 1,19",
+          "explanation": "Jerusalem sagt, dass die von ihr angerufenen Liebhaber sie getäuscht hätten.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec1xlZnwXRp5eCi0",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1980-Q5",
+          "unit_number": 1980,
+          "question": "An wen richtet Jerusalem ihre Not am Ende ausdrücklich?",
+          "options": [
+            "An den Pharao",
+            "An den HERRN",
+            "An die Könige von Tyrus",
+            "An die Priester Babels"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 1,20",
+          "explanation": "Mit 'Ach HERR, siehe doch' bringt die Stadt ihre Bedrängnis direkt vor Gott.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    },
+    {
+      "source_record_id": "rec2YNupDp2vsfuWg",
+      "created_at": "2026-10-02T03:12:39.000Z",
+      "number": 1981,
+      "source_id": "AT-1981",
+      "book": "Klagelieder",
+      "verse_range": "Klgl 2,1-22",
+      "title": "Jerusalems Verwüstung und der Ruf, das Herz vor Gott auszuschütten",
+      "context": "Das zweite Klagelied beschreibt die Verwüstung Zions als Gericht, das Versagen falscher Propheten und die Not der Bevölkerung. Inmitten der Klage steht der Aufruf, Tag und Nacht zu Gott zu rufen und das Herz vor ihm auszuschütten.",
+      "reflection": "Welche Not sollte ich nicht nur innerlich tragen, sondern ohne Beschönigung vor Gott aussprechen?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "recpIXhti68lssj5X",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1981-Q1",
+          "unit_number": 1981,
+          "question": "Was geschah nach dem Bild des Anfangs mit der Herrlichkeit Israels?",
+          "options": [
+            "Sie wurde vom Himmel auf die Erde geworfen",
+            "Sie wurde nach Ägypten getragen",
+            "Sie wurde verdoppelt",
+            "Sie wurde in Babel gekrönt"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 2,1",
+          "explanation": "Der Anfang beschreibt, wie der Herr die Herrlichkeit Israels vom Himmel auf die Erde geworfen habe.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recjjYI9yK5K4HRUt",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1981-Q2",
+          "unit_number": 1981,
+          "question": "Was hatten die Propheten Zions nach der Klage geschaut?",
+          "options": [
+            "Eitelkeit und Torheit",
+            "Nur genaue Zeitangaben",
+            "Den Bau eines neuen Palastes",
+            "Den Sieg Ägyptens"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 2,14",
+          "explanation": "Die Propheten werden dafür kritisiert, Eitelkeit und Torheit geschaut und die Missetat nicht aufgedeckt zu haben.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recJPKKAhdh0ouETP",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1981-Q3",
+          "unit_number": 1981,
+          "question": "Was sollen die Mauern der Tochter Zion nach dem Aufruf tun?",
+          "options": [
+            "Tag und Nacht Tränen wie einen Bach herabfließen lassen",
+            "Sich sofort neu errichten",
+            "Den Feinden die Tore öffnen",
+            "Schweigen und nicht mehr klagen"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 2,18",
+          "explanation": "Die Klage ruft zu unablässigem Weinen und Rufen zum Herrn auf.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recWhpAiha8XrBX4M",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1981-Q4",
+          "unit_number": 1981,
+          "question": "Was soll das Volk vor dem Angesicht des Herrn ausschütten?",
+          "options": [
+            "Sein Herz wie Wasser",
+            "Öl aus dem Tempel",
+            "Gold aus den Häusern",
+            "Wasser aus dem Jordan"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 2,19",
+          "explanation": "Der Text fordert dazu auf, das Herz wie Wasser vor dem Angesicht des Herrn auszuschütten.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recFwkMhxHbGDNKPv",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1981-Q5",
+          "unit_number": 1981,
+          "question": "Für wen sollen die Hände im Gebet aufgehoben werden?",
+          "options": [
+            "Für die jungen Kinder, die vor Hunger verschmachten",
+            "Nur für die Könige",
+            "Für die Händler von Tyrus",
+            "Für die Soldaten Babels"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 2,19",
+          "explanation": "Der Aufruf verbindet das Gebet ausdrücklich mit der Not der Kinder, die vor Hunger an den Straßenecken verschmachten.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    },
+    {
+      "source_record_id": "recjzLNSnkUEp55JA",
+      "created_at": "2026-10-02T03:12:39.000Z",
+      "number": 1982,
+      "source_id": "AT-1982",
+      "book": "Klagelieder",
+      "verse_range": "Klgl 3,1-66",
+      "title": "Klage, Hoffnung auf Gottes Barmherzigkeit und Ruf zur Selbstprüfung",
+      "context": "Aus persönlicher tiefer Not heraus erinnert sich der Sprecher an Gottes Güte und täglich neue Barmherzigkeit. Das Lied ruft zur Prüfung der eigenen Wege, zur Umkehr und zum Gebet in Bedrängnis.",
+      "reflection": "Welchen eigenen Weg sollte ich ehrlich prüfen und wo brauche ich zugleich die Hoffnung, dass Gottes Barmherzigkeit nicht aufgebraucht ist?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "recOJimVPr7GRBli6",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1982-Q1",
+          "unit_number": 1982,
+          "question": "Was ruft sich der Sprecher mitten in seiner Not ins Herz, sodass er Hoffnung gewinnt?",
+          "options": [
+            "Dass menschliche Macht niemals endet",
+            "Dass die Güte des HERRN nicht aus ist und seine Barmherzigkeit kein Ende hat",
+            "Dass Babel ihn retten wird",
+            "Dass er selbst ohne Hilfe auskommt"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 3,21-22",
+          "explanation": "Die Erinnerung an Gottes nicht endende Güte und Barmherzigkeit bildet den Wendepunkt zur Hoffnung.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec4X7x2AGrhDuokg",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1982-Q2",
+          "unit_number": 1982,
+          "question": "Wie oft wird Gottes Barmherzigkeit in diesem Abschnitt als neu beschrieben?",
+          "options": [
+            "Alle sieben Jahre",
+            "Jeden Morgen",
+            "Nur am Sabbat",
+            "Einmal im Leben"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 3,23",
+          "explanation": "Die Barmherzigkeit wird als jeden Morgen neu beschrieben; zugleich wird Gottes Treue groß genannt.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recuKYcELItyFtCHc",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1982-Q3",
+          "unit_number": 1982,
+          "question": "Was sollen Menschen nach Vers 40 tun?",
+          "options": [
+            "Ihre Wege prüfen und erforschen und sich zum HERRN bekehren",
+            "Nur die Wege anderer beurteilen",
+            "Nach Ägypten fliehen",
+            "Auf menschliche Hilfe warten"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 3,40",
+          "explanation": "Das Lied ruft ausdrücklich zur Selbstprüfung und zur Umkehr zum HERRN auf.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "reciGpoFwq5U3qSQi",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1982-Q4",
+          "unit_number": 1982,
+          "question": "Was soll zusammen mit den Händen zu Gott im Himmel erhoben werden?",
+          "options": [
+            "Das Herz",
+            "Ein Schwert",
+            "Ein Opferstein",
+            "Die Krone des Königs"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 3,41",
+          "explanation": "Nach der Selbstprüfung folgt der Aufruf, Herz und Hände zu Gott im Himmel zu erheben.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recolZI2lr6Mg9fe2",
+          "created_at": "2026-10-02T03:13:30.000Z",
+          "id": "AT-1982-Q5",
+          "unit_number": 1982,
+          "question": "Wie reagierte Gott nach dem Zeugnis des Sprechers, als dieser aus der Grube seinen Namen anrief?",
+          "options": [
+            "Er hörte seine Stimme und sprach: Fürchte dich nicht",
+            "Er schwieg vollständig",
+            "Er schickte ihn nach Ägypten",
+            "Er befahl ihm, nicht mehr zu beten"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 3,55-57",
+          "explanation": "Der Sprecher bezeugt, dass Gott seine Stimme hörte, sich näherte und ihm zusprach, sich nicht zu fürchten.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    },
+    {
+      "source_record_id": "recjJ4T8YP7LWJteL",
+      "created_at": "2026-10-02T04:15:55.000Z",
+      "number": 1983,
+      "source_id": "AT-1983",
+      "book": "Klagelieder",
+      "verse_range": "Klgl 4,1-22",
+      "title": "Zions Elend, die Folgen der Schuld und das angekündigte Ende der Strafe",
+      "context": null,
+      "reflection": "Wo sollte ich die Folgen falscher Entscheidungen nüchtern ansehen, ohne deshalb jede Hoffnung auf Veränderung aufzugeben?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "recRwX90uYIH63AO7",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1983-Q1",
+          "unit_number": 1983,
+          "question": "Wie beschreibt das Lied zu Beginn die Veränderung des Goldes?",
+          "options": [
+            "Es ist dunkel geworden und das feine Gold hat sich verändert",
+            "Es ist heller geworden",
+            "Es wurde nach Ägypten gebracht",
+            "Es wurde im Tempel vermehrt"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 4,1",
+          "explanation": "Der Vers eröffnet die Klage mit dem Bild, dass das Gold dunkel geworden und das feine Gold verändert ist.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec11t376he7x7ndN",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1983-Q2",
+          "unit_number": 1983,
+          "question": "Womit werden die Kinder Zions verglichen, die zuvor wie feines Gold geachtet waren?",
+          "options": [
+            "Mit silbernen Schilden",
+            "Mit irdenen Krügen, einem Werk von Töpferhänden",
+            "Mit Zedern vom Libanon",
+            "Mit königlichen Kronen"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 4,2",
+          "explanation": "Die einst kostbar geachteten Kinder Zions werden nun mit irdenen Krügen verglichen.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec9jk4nlx1YPTUx4",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1983-Q3",
+          "unit_number": 1983,
+          "question": "Wessen Sünden werden als Grund dafür genannt, dass in Jerusalem Blut der Gerechten vergossen wurde?",
+          "options": [
+            "Nur die Sünden fremder Könige",
+            "Die Sünden der Propheten und Missetaten der Priester",
+            "Nur die Sünden der Händler",
+            "Nur die Sünden der Soldaten"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 4,13",
+          "explanation": "Vers 13 nennt ausdrücklich die Sünden der Propheten und die Missetaten der Priester im Zusammenhang mit dem vergossenen Blut der Gerechten.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recCAm7N3bSUaTd23",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1983-Q4",
+          "unit_number": 1983,
+          "question": "Worauf hatten die Menschen vergeblich gewartet, als ihre Augen darüber verschmachteten?",
+          "options": [
+            "Auf eine neue Stadtmauer",
+            "Auf Hilfe von einem Volk, das nicht helfen konnte",
+            "Auf Gold aus Ophir",
+            "Auf Regen vom Meer"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 4,17",
+          "explanation": "Die Klage beschreibt ein vergebliches Ausschauen nach Hilfe von einem Volk, das nicht helfen konnte.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recPTfrTlO9yj9UaF",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1983-Q5",
+          "unit_number": 1983,
+          "question": "Welche Zusage erhält die Tochter Zion am Ende des Kapitels?",
+          "options": [
+            "Ihre Strafe werde kein Ende haben",
+            "Ihre Missetat werde nie mehr erwähnt",
+            "Ihre Strafe habe ein Ende und sie werde nicht weiter weggeführt",
+            "Sie werde sofort über alle Völker herrschen"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Klgl 4,22",
+          "explanation": "Der Schluss erklärt die Strafe der Tochter Zion für beendet und kündigt an, dass sie nicht weiter weggeführt werden soll.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    },
+    {
+      "source_record_id": "recifFDMooEouNXEL",
+      "created_at": "2026-10-02T04:15:55.000Z",
+      "number": 1984,
+      "source_id": "AT-1984",
+      "book": "Klagelieder",
+      "verse_range": "Klgl 5,1-22",
+      "title": "Gebet um Erinnerung, Erneuerung und Wiederherstellung",
+      "context": null,
+      "reflection": "Welche Not sollte ich Gott konkret nennen, und wo brauche ich nicht nur Entlastung, sondern echte Erneuerung?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "recIcMiMR2KX7OFj0",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1984-Q1",
+          "unit_number": 1984,
+          "question": "Worum bittet das Volk den HERRN gleich zu Beginn des Gebets?",
+          "options": [
+            "Er solle ihrer Lage gedenken und ihre Schmach ansehen",
+            "Er solle ihnen einen neuen König aus Ägypten geben",
+            "Er solle Babel sofort zerstören",
+            "Er solle den Tempel mit Gold füllen"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 5,1",
+          "explanation": "Das Gebet beginnt mit der Bitte, der erlittenen Lage zu gedenken und die Schmach anzusehen.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recktCr88mGpbTgCD",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1984-Q2",
+          "unit_number": 1984,
+          "question": "Was ist nach dem Gebet mit dem Erbe und den Häusern des Volkes geschehen?",
+          "options": [
+            "Sie wurden vergrößert",
+            "Sie wurden Fremden und Ausländern zuteil",
+            "Sie blieben vollständig unangetastet",
+            "Sie wurden den Priestern übergeben"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 5,2",
+          "explanation": "Das Volk beklagt, dass sein Erbe Fremden und seine Häuser Ausländern zugefallen sind.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recKttuyt4xO4YhXx",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1984-Q3",
+          "unit_number": 1984,
+          "question": "Welche Aussage macht das Gebet über den HERRN trotz der erlebten Not?",
+          "options": [
+            "Er habe Zion vergessen",
+            "Er bleibe ewig und sein Thron für und für",
+            "Seine Herrschaft ende mit Babel",
+            "Er wohne nur noch in Ägypten"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 5,19",
+          "explanation": "Mitten in der Klage bekennt das Gebet Gottes bleibende Herrschaft: Der HERR bleibt ewig, sein Thron für und für.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec5WgWN1k47KjbwS",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1984-Q4",
+          "unit_number": 1984,
+          "question": "Worum bittet das Volk den HERRN in Vers 21?",
+          "options": [
+            "Um Reichtum und militärische Stärke",
+            "Um Rückkehr zu ihm und Erneuerung ihrer Tage wie zuvor",
+            "Um eine Flucht nach Tyrus",
+            "Um einen neuen Tempelschatz"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Klgl 5,21",
+          "explanation": "Die zentrale Bitte lautet, dass der HERR das Volk zu sich zurückbringen und seine Tage wie zuvor erneuern möge.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recYI25ZxVADHjW1a",
+          "created_at": "2026-10-02T04:16:21.000Z",
+          "id": "AT-1984-Q5",
+          "unit_number": 1984,
+          "question": "Welche offene Spannung steht am Ende des Buches nach der Bitte um Erneuerung?",
+          "options": [
+            "Die Frage, ob Gott das Volk ganz verworfen hat und sehr über es erzürnt ist",
+            "Die Frage, ob Ägypten Jerusalem regieren wird",
+            "Die Frage, wer den Tempelschatz bewacht",
+            "Die Frage, wann Salomo zurückkehrt"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Klgl 5,22",
+          "explanation": "Der Schluss lässt die Klage in der ernsten Frage beziehungsweise Aussage ausklingen, ob Gott das Volk ganz verworfen und sehr über es gezürnt habe.",
+          "difficulty": "Schwer",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    }
+  ]
+}
