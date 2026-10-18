@@ -20,7 +20,9 @@ const contentHash=hash(JSON.stringify(candidateFiles));
 const out=process.env.FAITHPATH_OUT||'dist', release=`releases/${BUILD}`;
 if(!/^FP4-\d{8}-[A-Z][A-Z0-9-]*$/.test(BUILD)||BUILD==='FP4-20260916-F')throw new Error('New build ID required');
 fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(`${out}/${release}`,{recursive:true});
-fs.cpSync('data',`${out}/${release}/data`,{recursive:true,filter:p=>!p.startsWith('data/audit')});
+// Bible loader URLs are canonical /data/bibles paths. Do not cache a second,
+// unused versioned copy; source content and both canonical translations remain.
+fs.cpSync('data',`${out}/${release}/data`,{recursive:true,filter:p=>!p.startsWith('data/audit')&&p!=='data/bibles'&&!p.startsWith('data/bibles/')});
 fs.writeFileSync(`${out}/${release}/data/reference-index.json`,JSON.stringify(index));
 fs.writeFileSync(`${out}/${release}/data/content-report.json`,JSON.stringify(report,null,2));
 fs.cpSync('src',`${out}/${release}/src`,{recursive:true});
