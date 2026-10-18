@@ -1,0 +1,100 @@
+{
+  "schema": "faithpath.at.editorial-proposals.v1",
+  "created": "2026-10-18",
+  "source": "Drafted from the actual repo-local Luther 1912 MAL chapters 3 and 4; NOT existing Airtable rows",
+  "status": "NEU_ZWEITPRUEFUNG_ERFORDERLICH",
+  "mapping_rule_file": "../reference-mapping.json",
+  "questions": [
+    {
+      "id": "AT-NEW-MAL-03-01",
+      "book": "MAL",
+      "app_chapter": 3,
+      "source_reference": "Mal 3,10",
+      "app_reference": "Maleachi 3,10",
+      "question": "Was sollen die Menschen nach Maleachi 3,10 ganz in Gottes Kornhaus bringen?",
+      "options": [
+        "Ihre Kriegsgeräte",
+        "Einen Brief an die Priester",
+        "Den Zehnten",
+        "Alles Silber aus den Tempeln"
+      ],
+      "correct_index": 2,
+      "explanation": "Der HERR fordert, den Zehnten ganz in sein Kornhaus zu bringen, damit in seinem Haus Speise sei. Die Stelle spricht zugleich von Gottes zugesagtem Segen.",
+      "review_status": "NEU_QA_OFFEN"
+    },
+    {
+      "id": "AT-NEW-MAL-04-01",
+      "book": "MAL",
+      "app_chapter": 4,
+      "source_reference": "Mal 3,19",
+      "app_reference": "Maleachi 4,1",
+      "question": "Womit vergleicht Maleachi die Verächter und Gottlosen am kommenden Tag?",
+      "options": [
+        "Mit fruchtbaren Bäumen",
+        "Mit Steinen auf einem Feld",
+        "Mit einem ruhigen Strom",
+        "Mit Stroh, das verbrannt wird"
+      ],
+      "correct_index": 3,
+      "explanation": "Der angekündigte Tag wird mit einem brennenden Ofen verglichen. Die Verächter und Gottlosen werden dabei als Stroh beschrieben.",
+      "review_status": "NEU_QA_OFFEN"
+    },
+    {
+      "id": "AT-NEW-MAL-04-02",
+      "book": "MAL",
+      "app_chapter": 4,
+      "source_reference": "Mal 3,20",
+      "app_reference": "Maleachi 4,2",
+      "question": "Welche Zusage gilt den Menschen, die den Namen des HERRN fürchten?",
+      "options": [
+        "Sie werden zu Königen aller Völker",
+        "Sie werden nie mehr Entscheidungen treffen",
+        "Ihnen geht die Sonne der Gerechtigkeit mit Heil auf",
+        "Sie erhalten eine neue Stadt als Lohn"
+      ],
+      "correct_index": 2,
+      "explanation": "Der Vers verheißt den Gottesfürchtigen die aufgehende Sonne der Gerechtigkeit und Heil unter ihren Flügeln.",
+      "review_status": "NEU_QA_OFFEN"
+    },
+    {
+      "id": "AT-NEW-MAL-04-03",
+      "book": "MAL",
+      "app_chapter": 4,
+      "source_reference": "Mal 3,22",
+      "app_reference": "Maleachi 4,4",
+      "question": "Woran erinnert Gott sein Volk gegen Ende des Buches Maleachi?",
+      "options": [
+        "An den Bau des Turms von Babel",
+        "An das Gesetz des Mose mit den Geboten vom Horeb",
+        "An die Reise nach Ninive",
+        "An den Tempelbau des Salomo"
+      ],
+      "correct_index": 1,
+      "explanation": "Maleachi erinnert ausdrücklich an das Gesetz des Mose, das Gott auf dem Berg Horeb für Israel geboten hatte.",
+      "review_status": "NEU_QA_OFFEN"
+    },
+    {
+      "id": "AT-NEW-MAL-04-04",
+      "book": "MAL",
+      "app_chapter": 4,
+      "source_reference": "Mal 3,24",
+      "app_reference": "Maleachi 4,6",
+      "question": "Welche Veränderung soll der angekündigte Prophet zwischen Eltern und Kindern bewirken?",
+      "options": [
+        "Ihre Herzen sollen sich einander zuwenden",
+        "Alle Familien sollen Jerusalem verlassen",
+        "Die Kinder sollen die Priester ersetzen",
+        "Eltern und Kinder sollen einander nicht mehr begegnen"
+      ],
+      "correct_index": 0,
+      "explanation": "Der Schlussvers beschreibt die Hinwendung der Herzen von Vätern zu Kindern und von Kindern zu Vätern.",
+      "review_status": "NEU_QA_OFFEN"
+    }
+  ],
+  "qa_requirements": [
+    "Confirm accuracy against both repo-local Bible translations and original Luther verse numbers",
+    "Verify uniqueness and reasonable distractors",
+    "Rebalance correct-answer positions through a reproducible presentation rule, not by silently altering original Airtable rows",
+    "Approve every newly drafted question before publication"
+  ]
+}
