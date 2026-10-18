@@ -1,0 +1,449 @@
+{
+  "schema": "faithpath.at.source-recovery.v1",
+  "snapshot_date": "2026-10-18",
+  "source": {
+    "provider": "Airtable",
+    "base_name": "FaithPath",
+    "base_id": "appolFXm1sS6OBpYA",
+    "unit_table": "Einheiten",
+    "question_table": "Fragen",
+    "unit_numbers": "824–2112",
+    "source_qa_label": "Gegen LU1912 geprüft"
+  },
+  "target": {
+    "repository": "akwasiacheampongma-code/Faithpath-",
+    "branch": "content/at-source-recovery-20261018",
+    "base_commit": "7d4441caf5112c04b8b6af7ddec8c4ee49d0c63a",
+    "source_preserved": true,
+    "application_code_changed": false,
+    "production_deployed": false
+  },
+  "totals": {
+    "books": 39,
+    "chapters": 929,
+    "units": 1289,
+    "questions": 7009,
+    "bytes": 6439937,
+    "questions_per_unit": {
+      "5": 725,
+      "6": 564
+    },
+    "unique_question_ids": 7009,
+    "missing_required_question_fields": 0,
+    "questions_with_duplicate_options": 0,
+    "unlinked_at_questions": 0
+  },
+  "answers": {
+    "A": 3066,
+    "B": 2702,
+    "C": 1103,
+    "D": 138
+  },
+  "editorial_status": "SOURCE_RESTORED; INDEPENDENT_VERSE_AND_EDITORIAL_QA_PENDING",
+  "chapter_coverage": {
+    "app_chapters": 929,
+    "chapters_with_at_least_five_source_questions_after_explicit_mapping": 927,
+    "chapters_below_five": [
+      "MAL 3 (4 source)",
+      "MAL 4 (1 source)"
+    ],
+    "draft_new_questions": 5,
+    "reference_exceptions": [
+      "JOL source ch3:1–5 -> app ch2:28–32",
+      "JOL source ch4:1–21 -> app ch3:1–21",
+      "MAL source ch3:19–24 -> app ch4:1–6"
+    ]
+  },
+  "books": [
+    {
+      "code": "GEN",
+      "name": "1. Mose",
+      "app_chapters": 50,
+      "original_units": 66,
+      "original_questions": 396,
+      "path": "content/at-source-recovery/books/GEN.json",
+      "git_blob_sha": "8fcba51933d97710fc42ebe1e65cefcfbeb40963",
+      "bytes": 361363
+    },
+    {
+      "code": "EXO",
+      "name": "2. Mose",
+      "app_chapters": 40,
+      "original_units": 56,
+      "original_questions": 336,
+      "path": "content/at-source-recovery/books/EXO.json",
+      "git_blob_sha": "3b9641089db518301166b25d2622b0948d891ace",
+      "bytes": 314065
+    },
+    {
+      "code": "LEV",
+      "name": "3. Mose",
+      "app_chapters": 27,
+      "original_units": 28,
+      "original_questions": 168,
+      "path": "content/at-source-recovery/books/LEV.json",
+      "git_blob_sha": "8e69220589c3525e5b628aa026f05671e974d47c",
+      "bytes": 159973
+    },
+    {
+      "code": "NUM",
+      "name": "4. Mose",
+      "app_chapters": 36,
+      "original_units": 51,
+      "original_questions": 306,
+      "path": "content/at-source-recovery/books/NUM.json",
+      "git_blob_sha": "1d8fad914e849658cc4871d8ab58e0fefc954f7c",
+      "bytes": 283670
+    },
+    {
+      "code": "DEU",
+      "name": "5. Mose",
+      "app_chapters": 34,
+      "original_units": 82,
+      "original_questions": 492,
+      "path": "content/at-source-recovery/books/DEU.json",
+      "git_blob_sha": "1559a816d5328204e1a6adbf5820c223c83864a6",
+      "bytes": 456125
+    },
+    {
+      "code": "JOS",
+      "name": "Josua",
+      "app_chapters": 24,
+      "original_units": 34,
+      "original_questions": 204,
+      "path": "content/at-source-recovery/books/JOS.json",
+      "git_blob_sha": "e99072083419eda6b3e1b0476ddfa62ab9d13a64",
+      "bytes": 183600
+    },
+    {
+      "code": "JDG",
+      "name": "Richter",
+      "app_chapters": 21,
+      "original_units": 30,
+      "original_questions": 180,
+      "path": "content/at-source-recovery/books/JDG.json",
+      "git_blob_sha": "96ee75b0cdcaf58b1e590f5195893893549ec879",
+      "bytes": 165768
+    },
+    {
+      "code": "RUT",
+      "name": "Ruth",
+      "app_chapters": 4,
+      "original_units": 4,
+      "original_questions": 24,
+      "path": "content/at-source-recovery/books/RUT.json",
+      "git_blob_sha": "fa9abea6736e6800ca897af6c1b306a5cd2b7c69",
+      "bytes": 22341
+    },
+    {
+      "code": "1SA",
+      "name": "1. Samuel",
+      "app_chapters": 31,
+      "original_units": 39,
+      "original_questions": 234,
+      "path": "content/at-source-recovery/books/1SA.json",
+      "git_blob_sha": "7537ad562150d2494f1c1827e2c694e10e047761",
+      "bytes": 219104
+    },
+    {
+      "code": "2SA",
+      "name": "2. Samuel",
+      "app_chapters": 24,
+      "original_units": 40,
+      "original_questions": 228,
+      "path": "content/at-source-recovery/books/2SA.json",
+      "git_blob_sha": "8a796774a8ce2289c684dd01448888e7ec7bbaf4",
+      "bytes": 211584
+    },
+    {
+      "code": "1KI",
+      "name": "1. Könige",
+      "app_chapters": 22,
+      "original_units": 60,
+      "original_questions": 349,
+      "path": "content/at-source-recovery/books/1KI.json",
+      "git_blob_sha": "0cbb82886f5cbc1aa25710ea676d70886e078abb",
+      "bytes": 318624
+    },
+    {
+      "code": "2KI",
+      "name": "2. Könige",
+      "app_chapters": 25,
+      "original_units": 70,
+      "original_questions": 390,
+      "path": "content/at-source-recovery/books/2KI.json",
+      "git_blob_sha": "189d9b07c197c81b7e02ba47b7d27e03c222c507",
+      "bytes": 359236
+    },
+    {
+      "code": "1CH",
+      "name": "1. Chronik",
+      "app_chapters": 29,
+      "original_units": 75,
+      "original_questions": 412,
+      "path": "content/at-source-recovery/books/1CH.json",
+      "git_blob_sha": "3b5f7a168a73382077a0f8b02949856c002b4e1c",
+      "bytes": 369228
+    },
+    {
+      "code": "2CH",
+      "name": "2. Chronik",
+      "app_chapters": 36,
+      "original_units": 93,
+      "original_questions": 477,
+      "path": "content/at-source-recovery/books/2CH.json",
+      "git_blob_sha": "bc6d556b0469e1d315100057c7b0bc9c857e0285",
+      "bytes": 429834
+    },
+    {
+      "code": "EZR",
+      "name": "Esra",
+      "app_chapters": 10,
+      "original_units": 24,
+      "original_questions": 120,
+      "path": "content/at-source-recovery/books/EZR.json",
+      "git_blob_sha": "2100a7a1fb47f1958c9d7d9fcef70056cfcd0a4a",
+      "bytes": 108714
+    },
+    {
+      "code": "NEH",
+      "name": "Nehemia",
+      "app_chapters": 13,
+      "original_units": 33,
+      "original_questions": 165,
+      "path": "content/at-source-recovery/books/NEH.json",
+      "git_blob_sha": "4bb8fe1e7f02f5b95511ebd5f66ef7eac7f859c6",
+      "bytes": 152999
+    },
+    {
+      "code": "EST",
+      "name": "Esther",
+      "app_chapters": 10,
+      "original_units": 10,
+      "original_questions": 50,
+      "path": "content/at-source-recovery/books/EST.json",
+      "git_blob_sha": "35bb9c852e1e0e833e9854e6a009f013c4bfc72c",
+      "bytes": 45384
+    },
+    {
+      "code": "JOB",
+      "name": "Hiob",
+      "app_chapters": 42,
+      "original_units": 42,
+      "original_questions": 210,
+      "path": "content/at-source-recovery/books/JOB.json",
+      "git_blob_sha": "9dd267799ccbed0c8cbe353c5ec01a2697bb6954",
+      "bytes": 196077
+    },
+    {
+      "code": "PSA",
+      "name": "Psalm",
+      "app_chapters": 150,
+      "original_units": 150,
+      "original_questions": 750,
+      "path": "content/at-source-recovery/books/PSA.json",
+      "git_blob_sha": "d037177a6368c650fc0e1c8b8623d42d1c0182e8",
+      "bytes": 676221
+    },
+    {
+      "code": "PRO",
+      "name": "Sprüche",
+      "app_chapters": 31,
+      "original_units": 31,
+      "original_questions": 155,
+      "path": "content/at-source-recovery/books/PRO.json",
+      "git_blob_sha": "358c3a7598306f20106e31dbce13f9e4f16423f9",
+      "bytes": 141694
+    },
+    {
+      "code": "ECC",
+      "name": "Prediger",
+      "app_chapters": 12,
+      "original_units": 12,
+      "original_questions": 60,
+      "path": "content/at-source-recovery/books/ECC.json",
+      "git_blob_sha": "4e66dd94d55cd095ea0774f8f41e0d0946cb211f",
+      "bytes": 54960
+    },
+    {
+      "code": "SNG",
+      "name": "Hoheslied",
+      "app_chapters": 8,
+      "original_units": 8,
+      "original_questions": 40,
+      "path": "content/at-source-recovery/books/SNG.json",
+      "git_blob_sha": "d6379257aa5c9efe0315089408b034610b5b0d08",
+      "bytes": 35926
+    },
+    {
+      "code": "ISA",
+      "name": "Jesaja",
+      "app_chapters": 66,
+      "original_units": 66,
+      "original_questions": 331,
+      "path": "content/at-source-recovery/books/ISA.json",
+      "git_blob_sha": "cea2b88b40d71b5f231b2a1ff6cf2e8911be7486",
+      "bytes": 315149
+    },
+    {
+      "code": "JER",
+      "name": "Jeremia",
+      "app_chapters": 52,
+      "original_units": 52,
+      "original_questions": 260,
+      "path": "content/at-source-recovery/books/JER.json",
+      "git_blob_sha": "79c6c6a1e5cc8644cc01669b0c0e50b9d559f6c5",
+      "bytes": 251462
+    },
+    {
+      "code": "LAM",
+      "name": "Klagelieder",
+      "app_chapters": 5,
+      "original_units": 5,
+      "original_questions": 25,
+      "path": "content/at-source-recovery/books/LAM.json",
+      "git_blob_sha": "6d096c0f3e593925da3c9a4d7c86b9639000d826",
+      "bytes": 24370
+    },
+    {
+      "code": "EZK",
+      "name": "Hesekiel",
+      "app_chapters": 48,
+      "original_units": 49,
+      "original_questions": 245,
+      "path": "content/at-source-recovery/books/EZK.json",
+      "git_blob_sha": "1cef557a36cb13fa08dc0b745b619ddfb54e0956",
+      "bytes": 228825
+    },
+    {
+      "code": "DAN",
+      "name": "Daniel",
+      "app_chapters": 12,
+      "original_units": 12,
+      "original_questions": 60,
+      "path": "content/at-source-recovery/books/DAN.json",
+      "git_blob_sha": "e1e5d1608d59113c0fa530370aacac472c89c0d0",
+      "bytes": 55948
+    },
+    {
+      "code": "HOS",
+      "name": "Hosea",
+      "app_chapters": 14,
+      "original_units": 14,
+      "original_questions": 70,
+      "path": "content/at-source-recovery/books/HOS.json",
+      "git_blob_sha": "5be40b380d9f2ef882dbbfe81639c6891ec11958",
+      "bytes": 61403
+    },
+    {
+      "code": "JOL",
+      "name": "Joel",
+      "app_chapters": 3,
+      "original_units": 4,
+      "original_questions": 24,
+      "path": "content/at-source-recovery/books/JOL.json",
+      "git_blob_sha": "6c22683f1bde8e29093c80e4849b7caa9051ae84",
+      "bytes": 21368
+    },
+    {
+      "code": "AMO",
+      "name": "Amos",
+      "app_chapters": 9,
+      "original_units": 9,
+      "original_questions": 48,
+      "path": "content/at-source-recovery/books/AMO.json",
+      "git_blob_sha": "da38a0f98d9ddd70a1654859205f40c01416c2ee",
+      "bytes": 45026
+    },
+    {
+      "code": "OBA",
+      "name": "Obadja",
+      "app_chapters": 1,
+      "original_units": 1,
+      "original_questions": 5,
+      "path": "content/at-source-recovery/books/OBA.json",
+      "git_blob_sha": "36a33ecc94b21d6fe9b061a10f2612d0db9cccc8",
+      "bytes": 4481
+    },
+    {
+      "code": "JON",
+      "name": "Jona",
+      "app_chapters": 4,
+      "original_units": 4,
+      "original_questions": 20,
+      "path": "content/at-source-recovery/books/JON.json",
+      "git_blob_sha": "f88343ca857faa2e4589aff9a5ac2054d14b2e0b",
+      "bytes": 16573
+    },
+    {
+      "code": "MIC",
+      "name": "Micha",
+      "app_chapters": 7,
+      "original_units": 7,
+      "original_questions": 35,
+      "path": "content/at-source-recovery/books/MIC.json",
+      "git_blob_sha": "c1be5c9f6fe4745283a47add498132353d676526",
+      "bytes": 29467
+    },
+    {
+      "code": "NAM",
+      "name": "Nahum",
+      "app_chapters": 3,
+      "original_units": 3,
+      "original_questions": 15,
+      "path": "content/at-source-recovery/books/NAM.json",
+      "git_blob_sha": "3175b1feb60e5cba7225da7fb2fc9b8a1d0a5a11",
+      "bytes": 12911
+    },
+    {
+      "code": "HAB",
+      "name": "Habakuk",
+      "app_chapters": 3,
+      "original_units": 3,
+      "original_questions": 15,
+      "path": "content/at-source-recovery/books/HAB.json",
+      "git_blob_sha": "dd5a2a71c723a1cc98408f36975e6cd678300be2",
+      "bytes": 13209
+    },
+    {
+      "code": "ZEP",
+      "name": "Zephanja",
+      "app_chapters": 3,
+      "original_units": 3,
+      "original_questions": 15,
+      "path": "content/at-source-recovery/books/ZEP.json",
+      "git_blob_sha": "fc14e6e6ed93801bd132b046abee610fcdeb469d",
+      "bytes": 13921
+    },
+    {
+      "code": "HAG",
+      "name": "Haggai",
+      "app_chapters": 2,
+      "original_units": 2,
+      "original_questions": 10,
+      "path": "content/at-source-recovery/books/HAG.json",
+      "git_blob_sha": "673f8f500aa8c7eb6dd6c9b1417ce0c0a67949f0",
+      "bytes": 9527
+    },
+    {
+      "code": "ZEC",
+      "name": "Sacharja",
+      "app_chapters": 14,
+      "original_units": 14,
+      "original_questions": 70,
+      "path": "content/at-source-recovery/books/ZEC.json",
+      "git_blob_sha": "19aa74745f673f8ab969e0c04306dd2da9ebb402",
+      "bytes": 57154
+    },
+    {
+      "code": "MAL",
+      "name": "Maleachi",
+      "app_chapters": 4,
+      "original_units": 3,
+      "original_questions": 15,
+      "path": "content/at-source-recovery/books/MAL.json",
+      "git_blob_sha": "f4ea6a72132a91da749603b6d20e4c1035eaed68",
+      "bytes": 12653
+    }
+  ]
+}
