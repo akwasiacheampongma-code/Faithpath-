@@ -22,4 +22,6 @@ jobs:
         with:
           node-version: '24.19.0'
       - name: Verify all original AT data and draft chapter mapping
-        run: node scripts/audit-at-source.mjs
+        run: |
+          node scripts/audit-at-source.mjs
+          node scripts/audit-at-verses.mjs
