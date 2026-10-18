@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "base": "7d24aea30bec5b0b8d43e199f3cadfc6305c1e3e",
+  "protectedFiles": 198,
+  "schema": 5,
+  "keys": {
+    "main": "faithpath.v1.rebuild",
+    "plans": "faithpath.guidedPlans.v1",
+    "onboard": "faithpath.onboarding.v4",
+    "legacyOnboard": "faithpath.onboarding.v3",
+    "migration": "faithpath.backup.pre-v5",
+    "restore": "faithpath.backup.before-import",
+    "draft": "faithpath.draft.v4"
+  },
+  "allContentAndStylesUnchanged": true
+}

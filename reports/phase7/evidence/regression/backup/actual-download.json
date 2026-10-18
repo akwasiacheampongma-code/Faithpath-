@@ -1,0 +1,497 @@
+{
+  "app": "FaithPath",
+  "version": 4,
+  "schemaVersion": 5,
+  "exported": "2026-10-18T09:46:26.612Z",
+  "data": {
+    "version": 5,
+    "translation": "otb",
+    "paths": [
+      {
+        "id": "personal-path",
+        "title": "In Ruhe zuhören",
+        "why": "Ich möchte Menschen aufmerksam begegnen.",
+        "category": "sonstiges",
+        "started": "2026-08-01T12:00:00.000Z",
+        "archived": false,
+        "steps": [
+          {
+            "id": "step-0",
+            "text": "Im nächsten Gespräch ausreden lassen.",
+            "done": false,
+            "createdAt": "2026-08-01T12:00:00.000Z"
+          },
+          {
+            "id": "later-0",
+            "text": "Eine offene Frage stellen.",
+            "done": false,
+            "createdAt": "2026-08-01T12:00:00.000Z"
+          },
+          {
+            "id": "past-0",
+            "text": "Vor der Antwort innehalten.",
+            "done": true,
+            "createdAt": "2026-08-01T12:00:00.000Z",
+            "completedAt": "2026-08-02T12:00:00.000Z"
+          }
+        ],
+        "links": [
+          {
+            "id": "verse-link",
+            "kind": "verse",
+            "label": "Johannes 3,1",
+            "ref": {
+              "book": "JHN",
+              "chapter": 3,
+              "from": 1,
+              "to": 1,
+              "translation": "otb"
+            },
+            "date": "2026-08-01T12:00:00.000Z"
+          }
+        ],
+        "reviews": [],
+        "milestones": []
+      }
+    ],
+    "journal": [
+      {
+        "id": "j-0",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 0",
+        "date": "2026-07-01T12:00:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-1",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 1",
+        "date": "2026-07-01T14:24:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-2",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 2",
+        "date": "2026-07-01T16:48:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-3",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 3",
+        "date": "2026-07-01T19:12:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-4",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 4",
+        "date": "2026-07-01T21:36:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-5",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 5",
+        "date": "2026-07-02T00:00:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-6",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 6",
+        "date": "2026-07-02T02:24:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-7",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 7",
+        "date": "2026-07-02T04:48:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-8",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 8",
+        "date": "2026-07-02T07:12:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-9",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 9",
+        "date": "2026-07-02T09:36:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-10",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 10",
+        "date": "2026-07-02T12:00:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-11",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 11",
+        "date": "2026-07-02T14:24:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-12",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 12",
+        "date": "2026-07-02T16:48:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-13",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 13",
+        "date": "2026-07-02T19:12:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-14",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 14",
+        "date": "2026-07-02T21:36:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-15",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 15",
+        "date": "2026-07-03T00:00:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-16",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 16",
+        "date": "2026-07-03T02:24:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-17",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 17",
+        "date": "2026-07-03T04:48:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-18",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 18",
+        "date": "2026-07-03T07:12:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-19",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 19",
+        "date": "2026-07-03T09:36:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-20",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 20",
+        "date": "2026-07-03T12:00:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-21",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 21",
+        "date": "2026-07-03T14:24:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-22",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 22",
+        "date": "2026-07-03T16:48:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-23",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 23",
+        "date": "2026-07-03T19:12:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-24",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 24",
+        "date": "2026-07-03T21:36:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-25",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 25",
+        "date": "2026-07-04T00:00:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-26",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 26",
+        "date": "2026-07-04T02:24:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-27",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 27",
+        "date": "2026-07-04T04:48:00.000Z",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "pathIds": [
+          "personal-path"
+        ]
+      },
+      {
+        "id": "j-28",
+        "text": "Ein Gedanke über Zuhören und Vertrauen. 28",
+        "date": "2026-07-04T07:12:00.000Z",
+        "type": "Journal",
+        "subtype": "Gedanken",
+        "pathIds": [
+          "personal-path"
+        ],
+        "ref": {
+          "book": "JHN",
+          "chapter": 3,
+          "from": 1,
+          "to": 1,
+          "translation": "otb"
+        }
+      },
+      {
+        "id": "j-29",
+        "text": "Eine offene Frage über Geduld und Hoffnung. 29",
+        "date": "2026-07-04T09:36:00.000Z",
+        "type": "Journal",
+        "subtype": "Frage",
+        "pathIds": [
+          "personal-path"
+        ]
+      }
+    ],
+    "highlights": [],
+    "reflections": [],
+    "quiz": {
+      "1": {
+        "done": "2026-08-01T12:00:00.000Z",
+        "legacy": "story"
+      },
+      "10070": {
+        "done": "2026-08-01T12:00:00.000Z",
+        "legacy": "preserve"
+      }
+    },
+    "events": [
+      {
+        "id": "explored",
+        "kind": "chapter-explored",
+        "at": "2026-08-01T12:00:00.000Z",
+        "ref": {
+          "book": "JHN",
+          "chapter": 3
+        }
+      }
+    ],
+    "reading": null,
+    "reminderSnoozes": {},
+    "dismissedGaps": {},
+    "reviews": [],
+    "guidedPlans": {},
+    "settings": {
+      "theme": "light"
+    }
+  },
+  "guidedPlans": {}
+}

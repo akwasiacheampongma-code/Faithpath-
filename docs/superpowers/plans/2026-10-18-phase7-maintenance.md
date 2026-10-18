@@ -48,18 +48,18 @@
 **Files:** src/pwa-controller.js, src/bible-loader.js, src/app.js, scripts/build.mjs, focused Node tests.
 **Interfaces:** worker status/activation have explicit platform callbacks, no data writes; cached Bible loader returns original JSON, evicts failures. Build retains root Bibles and removes only the duplicate generated versioned set.
 
-- [ ] Write worker timeout/send/error and Bible retry/coalescing contracts; observe RED, implement, run full units and relevant browser checks.
-- [ ] Write full generated-layout/integrity test; observe duplicate payload failure before changing build. Remove duplicate only; verify132 canonical source-equal Bibles, full hash map and offline worker fallback. Separate commits.
+- [x] Write worker timeout/send/error and Bible retry/coalescing contracts; observe RED, implement, run full units and relevant browser checks.
+- [x] Write full generated-layout/integrity test; observe duplicate payload failure before changing build. Remove duplicate only; verify132 canonical source-equal Bibles, full hash map and offline worker fallback. Separate commits.
 
 ## Task4: CI, contracts, documentation and final gate
 
 **Files:** .github/workflows/, eslint.config.js, package/lock, scripts/phase7 checks, tests/phase7/, five canonical Markdown files and reports/phase7/.
 **Interfaces:** read-only CI consumes committed source and immutable TREEFINAL; all outputs/profiles synthetic. No remote write/merge/deploy step. Candidate BUILD FP4-20261018-G-STABLE1-PHASE7-MAINT1.
 
-- [ ] Pin development lint tool, run static audit; remove only proved dead code. Add portable CI without weakening original tests; archive destructive one-shot import workflow.
-- [ ] Document architecture/risks, data contracts, development/release/rollback; update old maintenance index.
-- [ ] Freeze final source; all units/content/static checks, relevant original browser programmes, functional/axe routes, storage faults, actual old→new/offline/failed-update tests and two complete byte-equal builds.
-- [ ] Obtain independent whole-change review; fix reproduced blockers with RED→GREEN and a green suite. Document all limitations.
+- [x] Pin development lint tool, run static audit; remove only proved dead code. Add portable CI without weakening original tests; archive destructive one-shot import workflow.
+- [x] Document architecture/risks, data contracts, development/release/rollback; update old maintenance index.
+- [x] Freeze final source; all units/content/static checks, relevant original browser programmes, functional/axe routes, storage faults, actual old→new/offline/failed-update tests and two complete byte-equal builds.
+- [x] Obtain independent whole-change review; fix reproduced blockers with RED→GREEN and a green suite. Document all limitations.
 - [ ] Deliver exact source/delivery commits, hashes, build/QA ZIPs and clear device-gate GO/NO-GO. No merge or deployment.
 
 ## Ledger
@@ -81,3 +81,9 @@
 - First ESLint correctness pass: one missing platform declaration (TextEncoder) in lint configuration, corrected there; zero application lint errors. Fourteen unused-binding warnings were measured, including nine in app.js (two newly redundant imports after route extraction). Remove only proved dead app bindings in a later cleanup; preserve byte-locked Store code.
 
 - Task2 complete: seven backup lifecycle contracts pass; full212/212 suite passes. Existing backup, backup-races and backup-dialogs browser programmes each exit0 against isolated step-backup; dedicated backup-lifecycle also passes. Only transient request/mode/session ownership moved. Store, drafts, validation, restore format and editor submit code stay unchanged.
+
+- Task3 complete: actual baseline VM probes reproduce malformed-book cache poisoning and unclosed message ports. Eight current platform contracts include all132 real books, failed/malformed retry, channel cleanup, denied access, status races and deliberate activation. New nested fixtures were strengthened after independent review; RED→GREEN captured. Canonical132 books plus two license notices are byte-identical; only134 redundant generated files removed.
+- Frozen candidate source398f22f;220/220units,13 local quality steps and hosted GitHub Actions run39115772257 all pass. Twenty-four additional original browser programs exit0. Actual TREEFINAL is independently reconstructed with hash5390ec0a; failed update retains it offline, then deliberate complete update preserves personal/draft/safety bytes. No new schema/IDs/CSS.
+- Independent review found and resolved nested-verse validation, browser portability, evidence isolation and test-fixture specificity. No unresolved code findings. Remaining general Store CAS/CSS/app-action debt and physical-device limits remain documented.
+- Initial blocked-worker comparison was diagnostic; final56 normal PNGs are produced with fully prepared workers. All28 before/after pairs are byte-identical. The visual harness change after source freeze only enables that normal capture path and does not change the packaged runtime.
+- Final candidate hash600683f69c4ecb0350a3d3e8bae2e51a1136169c5d6847f5b3422970f2211441; content8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309. Source and later evidence-only delivery commits are explicitly distinguished.

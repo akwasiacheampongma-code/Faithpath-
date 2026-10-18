@@ -1,0 +1,183 @@
+✖ Bible loader coalesces concurrent reads and keeps translation caches separate (1.517583ms)
+✖ failed and malformed Bible responses are never cached as a successful retry (0.281433ms)
+✖ worker status success closes both ports and preserves the protocol payload (0.957421ms)
+✖ worker timeout and send failure settle safely and close both ports (0.250748ms)
+✖ unavailable or denied worker registrations report not ready without an unhandled rejection (0.354513ms)
+✖ a late old worker status cannot overwrite a newer readiness result (0.326441ms)
+✖ update activation is deliberate, blocks open editors and clears only presentation when no update exists (0.238308ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 64.836869
+
+✖ failing tests:
+
+test at tests/platform-boundaries.test.mjs:9:1
+✖ Bible loader coalesces concurrent reads and keeps translation caches separate (1.517583ms)
+  AssertionError [ERR_ASSERTION]: Bible resource boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at loader (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:6:31)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:10:25)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/platform-boundaries.test.mjs:12:1
+✖ failed and malformed Bible responses are never cached as a successful retry (0.281433ms)
+  AssertionError [ERR_ASSERTION]: Bible resource boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at loader (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:6:31)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:13:186)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/platform-boundaries.test.mjs:15:1
+✖ worker status success closes both ports and preserves the protocol payload (0.957421ms)
+  AssertionError [ERR_ASSERTION]: Worker protocol boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at workerQuery (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:8:31)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:16:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/platform-boundaries.test.mjs:18:1
+✖ worker timeout and send failure settle safely and close both ports (0.250748ms)
+  AssertionError [ERR_ASSERTION]: Worker protocol boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at workerQuery (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:8:31)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:19:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/platform-boundaries.test.mjs:22:1
+✖ unavailable or denied worker registrations report not ready without an unhandled rejection (0.354513ms)
+  AssertionError [ERR_ASSERTION]: PWA lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at monitor (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:21:39)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:23:118)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/platform-boundaries.test.mjs:25:1
+✖ a late old worker status cannot overwrite a newer readiness result (0.326441ms)
+  AssertionError [ERR_ASSERTION]: PWA lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at monitor (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:21:39)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:26:27)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/platform-boundaries.test.mjs:28:1
+✖ update activation is deliberate, blocks open editors and clears only presentation when no update exists (0.238308ms)
+  AssertionError [ERR_ASSERTION]: PWA lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at monitor (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:21:39)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:29:150)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

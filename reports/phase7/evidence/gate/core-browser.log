@@ -1,0 +1,12 @@
+PASS Neuer Nutzer: Onboarding → Situation → Bibel → Reflexion → Weg → Schritt
+PASS Erfahren: Buch/Kapitel, markieren, Notiz, Wegverbindung, Übersetzung, Kopieren
+PASS Weg: Schritt ist keine Entwicklung; Reflexion, bestätigter Rückblick, Archiv
+PASS Erinnerungslücke: alte Aktivität → später erinnern → Rückblick ohne Bewertung
+PASS Journal: Predigtnotiz, Filter, Suche, Öffnen und chronologischer Verlauf
+PASS Kapitelquiz: fünf Fragen → Erklärungen → Reflexion ohne Punktzahl (Story-Merge separat geprüft)
+PASS Geführter Weg: Abschnitt lesen → Reflexion → Fortschritt bleibt nach Reload
+PASS Backup: Export → Importvorschau → Restore; beschädigte Datei verändert nichts
+PASS PWA: vollständige Offline-Vorbereitung → offline Reload → beide Bibeln
+PASS Fehlerzustände: ungültiger Vers, beschädigter Speicher, fehlende Datei
+PASS Responsive, lange Texte, viele Einträge, Zoom, Fokus und Reduced Motion
+PASS Direkte Adresse und Browser-Reload starten mit richtigen Asset-Pfaden

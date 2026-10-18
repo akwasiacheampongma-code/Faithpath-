@@ -1,0 +1,15 @@
+✔ Bible loader coalesces concurrent reads and keeps translation caches separate (1.478083ms)
+✔ failed and malformed Bible responses are never cached as a successful retry (1.547207ms)
+✔ worker status success closes both ports and preserves the protocol payload (22.417119ms)
+✔ worker timeout and send failure settle safely and close both ports (6.223181ms)
+✔ unavailable or denied worker registrations report not ready without an unhandled rejection (0.427794ms)
+✔ a late old worker status cannot overwrite a newer readiness result (0.2331ms)
+✔ update activation is deliberate, blocks open editors and clears only presentation when no update exists (0.456136ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.051302

@@ -1,0 +1,289 @@
+
+> faithpath@4.0.0 pretest
+> npm run validate
+
+
+> faithpath@4.0.0 validate
+> node scripts/validate-content.mjs
+
+{
+  "bibles": {
+    "otb": {
+      "books": 66,
+      "chapters": 1189,
+      "verses": 31103
+    },
+    "l1912": {
+      "books": 66,
+      "chapters": 1189,
+      "verses": 31102
+    }
+  },
+  "stories": 312,
+  "questions": 1560,
+  "books": 27,
+  "reflections": 312,
+  "uniqueReflections": 312,
+  "existingVerification": 100,
+  "editorialPending": 0,
+  "approvedNtMaster": 1300,
+  "missingVerification": 160,
+  "situationPlanReferences": 84,
+  "errors": [],
+  "warnings": [
+    "Altes Ganzkapitel-Sentinel: 21",
+    "Altes Ganzkapitel-Sentinel: 22",
+    "Altes Ganzkapitel-Sentinel: 23",
+    "Altes Ganzkapitel-Sentinel: 24",
+    "Altes Ganzkapitel-Sentinel: 25",
+    "Altes Ganzkapitel-Sentinel: 26",
+    "Altes Ganzkapitel-Sentinel: 27",
+    "Altes Ganzkapitel-Sentinel: 28",
+    "Altes Ganzkapitel-Sentinel: 29",
+    "Altes Ganzkapitel-Sentinel: 30",
+    "Altes Ganzkapitel-Sentinel: 31",
+    "Altes Ganzkapitel-Sentinel: 32"
+  ]
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> faithpath@4.0.0 test
+> node --test tests/*.test.mjs
+
+✔ hash parsing preserves encoded IDs, queries and malformed-URI rejection (1.739642ms)
+✔ existing route names dispatch to their exact adapters without data mutation (2.653359ms)
+✔ a stale reader completion cannot steal focus from the newer route (0.27867ms)
+✔ quiz return identity, unfinished state and explicit completion keep existing keys (0.60354ms)
+✔ compose resumes the exact existing draft without writes and invalid links show the existing error view (0.373854ms)
+✔ step deep links open the existing disclosure and focus the exact encoded step (0.269897ms)
+✔ inspection is read-only and check mode cannot authorize restore (3.735301ms)
+✔ late file read cannot reopen a preview after leaving and returning to the same route (0.722128ms)
+✔ a newer preview retains ownership when an older file finishes later (2.090051ms)
+✔ changed draft during inspection rejects without writing or presenting stale state (0.553264ms)
+✔ closing while restore waits for its lock cancels authority before any write (0.405751ms)
+✔ explicit confirmed restore and undo preview retain original safety bytes and draft (0.549759ms)
+✔ malformed backup, missing Bible reference and stale export cannot mutate current records (0.636089ms)
+✔ Export from a stale tab fails instead of offering the older state as current backup (3.147595ms)
+✔ Failed main write preserves previous restore copy and active personal state (0.588998ms)
+✔ Backup check uses existing import and reference validators without any storage write (1.252889ms)
+✔ A restore preview binds both existing main and draft bytes and rejects later edits (0.313793ms)
+✔ Historical content protection permits only the exact reviewed UIUX5 store digest (5.483086ms)
+✔ chapter collection covers all 260 original units and all 1300 exact source IDs without story content (3.846454ms)
+✔ every one-based reader chapter maps to exactly its original zero-based unit object (0.860946ms)
+✔ chapters without actual quiz data and invalid chapters have no unit (0.450799ms)
+✔ future chapter metadata indexes without an NT-only list or copying questions (0.701617ms)
+✔ a future chapter unit without actual questions cannot create an empty quiz entry (0.647855ms)
+✔ ambiguous chapter mappings and invalid unit metadata are rejected rather than picking a wrong chapter (0.88384ms)
+✔ reader and collection entry routes use the same canonical existing numeric quiz ID (0.543509ms)
+✔ reader return preserves translation, range and explicit context while next chapter is the correct chapter (0.517008ms)
+✔ collection, old story and direct routes have a useful book return without requiring an origin (0.713164ms)
+✔ foreign chapter, foreign unit and external or malformed origins safely fall back to the correct collection (0.525822ms)
+✔ Range color edits preserve old ID, metadata and unselected verse colors (1.027637ms)
+✔ Existing overlaps plus new verses are all colored without losing original IDs (0.193642ms)
+✔ Legacy highlight has safe default; optional colors round-trip in unchanged V5 backup (1.803996ms)
+✔ Path deletion retains personal content, review/milestone IDs and tree stage (0.907527ms)
+✔ Conflicting review IDs refuse deletion rather than overwrite a record (0.405721ms)
+✔ Removing part of a range preserves outside verses and original ID (0.226321ms)
+✔ Migration erhält lange Texte, unbekannte Felder, IDs und alle Sammlungen (2.748579ms)
+✔ Vor Migration wird der exakte Originaltext gesichert; wiederholter Start verändert IDs nicht (1.906982ms)
+✔ Beschädigtes JSON und zukünftiges Schema werden niemals durch leere Daten ersetzt (0.364339ms)
+✔ Speicherfehler lässt alten Zustand und Original unverändert (0.536828ms)
+✔ Migration ohne Platz für Sicherung schreibt nichts ins Original (1.316713ms)
+✔ Konkurrierender Tab wird erkannt statt überschrieben (0.419271ms)
+✔ Backup-Rundreise erhält alle Daten und Planfortschritt (4.068797ms)
+✔ Ungültige Importdaten, Duplikate und Prototype-Keys verändern keinen Datenstand (0.3384ms)
+✔ Vor Import wird ein wiederherstellbarer vorheriger Stand gesichert (0.344138ms)
+✔ Angehakte Schritte verändern den Olivenbaum nicht; Archiv löscht keine Entwicklung (0.527675ms)
+✔ Nur explizit bestätigte globale Entwicklungen zählen (0.263567ms)
+✔ Frische Aktivitäten ergeben keine Erinnerung; alte Notizen schon (0.440704ms)
+✔ Snooze, Abschluss und ungültige Datumswerte werden respektiert (0.123005ms)
+✔ Neue Wegreflexion verschiebt abgeleitete Erinnerung statt alte Aktivität zu behaupten (0.588736ms)
+✔ Verknüpfte Markierungen erzeugen keine doppelte Erinnerung (1.031863ms)
+✔ Reflexion und Journal werden nur bei exakt sicherer Legacy-Verbindung zusammengeführt (0.615747ms)
+✔ Wegverbindung bewahrt Bibel, Journal und Reflexion in einer Chronologie (0.589057ms)
+✔ Rückblick und zugehöriger Meilenstein erscheinen nicht doppelt (0.53074ms)
+✔ Alle tatsächlichen Inhalte, Codes und Referenzen in beiden Übersetzungen validieren (208.706386ms)
+✔ Nur belegte Migrationen verändern Inhalte; IDs, Quiz, Bibel und Baumassets bleiben erhalten (227.490021ms)
+✔ Erledigter Schritt und letzter Legacy-Rückblick verschieben eine veraltete Erinnerung (1.037682ms)
+✔ Frisch bearbeiteter Gedanke wird nicht sofort als vergessen angezeigt (0.126731ms)
+✔ full immutable corpus is reachable in bounded deterministic pages with exact IDs and legacy routes (23.903735ms)
+✔ kind and book filters preserve all436stories and260NT chapters without phantom AT units (5.402255ms)
+✔ search handles German case/umlauts/normalized whitespace with honest empty results and bounded previews (0.246261ms)
+✔ result rendering escapes source text and offers real continuation without hidden duplicate items (0.312911ms)
+✔ Opening a different form cannot take ownership of an existing legacy draft (4.853538ms)
+✔ Resumed legacy draft preserves its shape and can be updated and cleared by its owner (2.027694ms)
+✔ Two forms/tabs never overwrite or clear a newer draft they did not read (0.501194ms)
+✔ An explicit discard compares the confirmed bytes and preserves concurrent changes (0.257147ms)
+✔ Storage refusal preserves original draft and session ownership for retry (0.343227ms)
+✔ Pending journal recovery prevents a draft-only write (0.189716ms)
+✔ Journal save and owned draft cleanup are atomic, including storage failure (10.560913ms)
+✔ Editing replaces A with B and synchronizes the exact mirror (4.976504ms)
+✔ Editing replaces A with no path and synchronizes the exact mirror (1.635503ms)
+PASS factual journey, branches, themes, backward-compatible storage
+✔ tests/final-experience.test.mjs (41.171257ms)
+✔ Bible note deletion preserves journal, reference, paths, reviews, highlight and color (1.921313ms)
+✔ Unhighlighted and legacy reflection-only notes remain independently deletable (0.226341ms)
+✔ Only the explicit selected note is deleted; unrelated note stays active (0.275284ms)
+✔ Undo retains unrelated later reading but refuses to overwrite an edited note (0.525131ms)
+✔ Unrelated legacy reflection with same ID or text must not be marked deleted (0.277368ms)
+✔ Deletion and undo roundtrip through existing V5 store and backups without migration (3.150584ms)
+✔ reviewed merge covers exact source IDs once, preserves 2479 items and excludes chapter quiz (78.37542ms)
+✔ old label-free note searchable through structured name, alias, code and chapter (1.201719ms)
+✔ reference numeric boundaries prevent verse 1 matching verse 10, with range normalization (0.507644ms)
+✔ saved labels, Unicode user text, path titles and reference-free entries remain searchable (0.363117ms)
+✔ Import rejects pathIds object before any storage mutation (3.485289ms)
+✔ Import rejects global review text before any storage mutation (0.434274ms)
+✔ Import rejects missing path before any storage mutation (0.505541ms)
+✔ Import rejects missing mirror before any storage mutation (0.527835ms)
+✔ Import rejects missing journal link before any storage mutation (0.479903ms)
+✔ Import rejects duplicate nested ID before any storage mutation (0.938714ms)
+✔ Import rejects invalid ref object before any storage mutation (0.388985ms)
+✔ Import rejects invalid quiz state before any storage mutation (0.242956ms)
+✔ Import rejects invalid reading before any storage mutation (0.362105ms)
+✔ Import rejects invalid default translation before any storage mutation (0.302275ms)
+✔ Import rejects null default translation before any storage mutation (0.241514ms)
+✔ Valid legacy IDs, unknown fields and detached historical review sources survive import/export/reload (3.710817ms)
+✔ Journal projects every original ID with bounded stable pagination and no data mutation (7.33129ms)
+✔ Journal keeps unknown original dates last, real categories and all actual path links (0.308144ms)
+✔ Journal combines existing search and type filter without rewriting Bible or path links (2.357871ms)
+✔ All 2314 active Nachlese questions have four options after verified editorial completion (247.231978ms)
+✔ Editorial successor rejects unapproved text and lost story links even if a published hash is refreshed (770.187711ms)
+✔ Supplied Excel/JSON package and all original fields match the exact prior installed release (236.94236ms)
+✔ Verified editorial corrections can repair a wrong original answer with both translations (6.274859ms)
+✔ Editorial review rejects missing translations, fabricated evidence and changes to identity fields (4.125373ms)
+✔ Heuristic KEEP decisions cannot silently change existing options (4.695991ms)
+✔ Segmented John reference must include the actual supporting verse in each translation (4.226745ms)
+✔ Reviewed MC additions cover only active story questions and preserve all protected source fields (557.202291ms)
+✔ Corpus gate rejects published data drift and protected flow changes (527.16807ms)
+✔ Nachlese audit checks preserve the exact original answer and complete evidence (1.678297ms)
+✔ Nachlese audit rejects incomplete options, answer drift and fabricated evidence (2.399683ms)
+✔ Nachlese manual and reflection decisions need a reason and cannot silently add choices (0.287243ms)
+✔ Nachlese optional MC accepts four choices and keeps the original correct answer (72.183776ms)
+✔ Nachlese optional MC rejects malformed or ambiguous option structures (295.550368ms)
+✔ Nachlese original open answers remain supported without changing IDs or story links (34.894375ms)
+✔ task-based drawer has nine unique existing targets and retains the four main areas (0.927757ms)
+✔ deep routes select their actual hub without interpreting private text (1.632088ms)
+✔ More exposes settings, backup and introduction without duplicating primary tabs (0.237417ms)
+✔ approved multi-range and single-chapter references keep every specified verse (2.944614ms)
+✔ every imported question exactly equals the approved source and other content is preserved (121.382911ms)
+✔ import check is reproducible and rejects malformed master without mutating data (7223.101043ms)
+✔ one neutral first screen offers both existing actions and optional explanation without a belief classification (0.844211ms)
+✔ path projection uses canonical evidence and existing current step without mutation (3.431127ms)
+✔ path history retains global linked reviews and original entry routes exactly once (0.493854ms)
+✔ large histories expose true continuation, completed and reopened steps stay factual (8.600972ms)
+✔ legacy text/date mirrors remain one thought and one historical moment without rewriting records (0.732614ms)
+✔ path review freezes the exact current step without changing the store or source ID (1.531626ms)
+✔ legacy path source never invents its old wording from the current first step (0.175504ms)
+✔ original journal review is exact; edited, missing and ambiguous originals have honest fallbacks (0.490549ms)
+✔ frozen invitation preserves its displayed text when the current step changes (0.177117ms)
+✔ optional path snapshot roundtrips through V5 backup without migration or ID changes (3.36683ms)
+✔ source snapshot rejects mismatched/future metadata, escapes text and never trusts imported routes (0.379051ms)
+✔ journal edits between a frozen invitation and review save never become the old quoted text (0.165599ms)
+✔ real highlight sources retain a truthful exact-ID reference without invented historical wording (0.201233ms)
+✔ overview keeps Today priority, all paths and stable order without touching personal data (6.329432ms)
+✔ overview shows exact existing next step, voluntary start and safe unique links (0.944783ms)
+✔ empty state does not invent reading history (1.156571ms)
+✔ reading resumes exact range and translation without mutating storage (0.887867ms)
+✔ invalid reading has no continuation link (0.148944ms)
+✔ older linked thought is found by exact context, not text similarity (0.404289ms)
+✔ deleted path cannot create false links (0.331899ms)
+✔ archived path stays addressable and done step is never current (0.292861ms)
+✔ explicit review source yields both dates and real content (0.662548ms)
+✔ changed historical content after a review is not presented as its original source (0.277217ms)
+✔ path reviews retain existing route IDs and ambiguous IDs are suppressed (0.342165ms)
+✔ highlight context uses exact references and existing paths only (4.63566ms)
+✔ edited current thought never carries its original date into a historical pair (0.231869ms)
+✔ review context does not assert reflection on text edited after that review (0.153532ms)
+✔ legacy reflection with same text/date but different reference is not deduplicated (0.196966ms)
+✔ unknown edit timestamps suppress historical attribution (0.252179ms)
+✔ Bible loader coalesces concurrent reads and keeps translation caches separate (1.58729ms)
+✔ failed and malformed Bible responses are never cached as a successful retry (2.340875ms)
+✔ worker status success closes both ports and preserves the protocol payload (28.176773ms)
+✔ worker timeout and send failure settle safely and close both ports (5.727985ms)
+✔ unavailable or denied worker registrations report not ready without an unhandled rejection (0.513853ms)
+✔ a late old worker status cannot overwrite a newer readiness result (0.363177ms)
+✔ update activation is deliberate, blocks open editors and clears only presentation when no update exists (0.409436ms)
+✔ Journal and exact draft deletion/Undo commit together without changing schema (11.350553ms)
+✔ Selective draft read/remove and recovery-log write failures retain saved data and draft (3.463156ms)
+✔ Main write failure rolls the draft back; no partial saved deletion (1.904879ms)
+✔ Undo draft write failure leaves deletion intact and supports safe retry (2.352702ms)
+✔ Interrupted failed write recovers exact draft on next load from durable recovery record (1.62689ms)
+✔ Interrupted committed cleanup recovers without resurrecting deleted data (1.282631ms)
+✔ Recovery never overwrites a newer unrelated draft (2.723571ms)
+✔ Journal deletion physically removes exactly the entry and explicit mirror, preserving personal data (2.55618ms)
+✔ Deletion cleans typed direct links, review sources and reminder metadata without dead pairs (1.187568ms)
+✔ No-reference journal path link disappears but standalone verse and independent same-ID reflection stay (1.004593ms)
+✔ Ambiguous, changed and shared mirrors are never silently removed (0.872273ms)
+✔ Undo restores all entry data and valid references, retaining unrelated newer records and settings (0.732533ms)
+✔ Undo detects changed references or reused IDs atomically without overwriting newer data (1.221289ms)
+✔ Only the exact journal or matching mirrored-note draft is selected for cleanup (0.348775ms)
+✔ Physical deletion and Undo roundtrip through V5 backup without migration or zombie records (2.427225ms)
+✔ Changing journal path only changes chosen entry association, preserving unrelated notes and verse link (0.528797ms)
+✔ Path management leaves an inconsistent independent reflection intact (0.218689ms)
+✔ Path draft cleanup, reconnect IDs and missing dependency Undo remain safe (0.753605ms)
+✔ optional chapter offer preserves canonical unit, count and escaped return route (0.835238ms)
+✔ chapter navigation has explicit accessible landmark and optional boundary links (0.193822ms)
+✔ a chapter end already visible on opening requires explicit exploration (0.266591ms)
+✔ Reminder explanation keeps exact current gaps and persisted suppressed original IDs (2.433624ms)
+✔ Deleted and archived source controls never imply an active reminder (0.224438ms)
+✔ Due calculation remains exact at UTC boundary and snooze persists until its date (0.359962ms)
+✔ Read reference and latest linked reference stay distinct and do not mutate data (1.541371ms)
+✔ Unrelated reading keeps newest linked reference without a read claim (0.482697ms)
+✔ Reminder quotes the first unfinished current step rather than the last open step (0.492572ms)
+✔ Reprioritizing unfinished steps changes reminder copy without changing due date (0.260542ms)
+✔ Review projection uses exact original source and never writes development (1.797106ms)
+✔ Review snapshot preserves then wording after actual step changed, edited/missing originals remain honest (0.516668ms)
+✔ Every completed review remains reachable with bounded chronological pagination (44.166732ms)
+✔ only a bottom dock reduces the initial reading viewport, never a side navigation (0.713485ms)
+✔ scrolled initial layout still requires consent for a short chapter on desktop (0.178178ms)
+✔ all canonical story questions and aliases retain their active story, order and content (29.44363ms)
+✔ reflection keeps exact source prompt, is voluntary and uses existing editor action (0.388374ms)
+✔ all sword states preserve exact historic reveal, counts, one SVG and immutable data (41.379254ms)
+✔ chapter acknowledgement requires canonical exploration and leads to the global sword (0.367073ms)
+✔ spiritual explanation distinguishes reading from faith, tree and violence; local quotes verified (0.479602ms)
+✔ Today distinguishes app history from faith experience and offers two honest entry routes (1.788153ms)
+✔ Today prioritizes an unfinished active path and never selects an archived one (0.741217ms)
+✔ Today keeps completed paths and archived history distinct without inventing an open step (0.184438ms)
+✔ Today recognizes reading-only, journal-only and guided history as returning use (0.387163ms)
+✔ Today preserves exact journal/reflection IDs and selects the latest thought without mutating storage (0.320893ms)
+✔ Today exposes only a genuinely due reminder and caps the preview instead of creating a task dashboard (1.29509ms)
+✔ Today surfaces a saved draft before the tree and other continuity links without consuming it (0.355416ms)
+✔ Today preserves all seven existing olive stages and never treats a checked step as growth (0.518832ms)
+✔ Today provides one primary link to the current path and lists only other paths (0.385691ms)
+✔ Today escapes personal prose and retains complete long texts without creating executable markup (0.279061ms)
+✔ An unsaved first draft does not move the two new-user entry routes below secondary sections (0.208414ms)
+✔ Archived-only entry names the existing overview honestly instead of promising an already-open archive filter (0.105919ms)
+✔ Today heading remains programmatically focusable for the existing route focus handoff (0.232891ms)
+✔ reviewed lint tooling preserves every pre-existing package and does not exempt content or future lockfiles (2.127654ms)
+✔ tree presentation preserves canonical path order, caps, further paths and user data at every stage (5.348064ms)
+✔ branch names and IDs remain safe and accessible independently of the visible number (0.283006ms)
+✔ seven stages retain exact development authority and original graphic, never task or Bible points (7.983682ms)
+✔ undocumented and archived paths stay addressable without invented branch markers (0.371099ms)
+✔ archive/deletion preserve counted historical source text, undo restores the original (0.845983ms)
+✔ seven existing names receive complete, distinct explanations (1.459117ms)
+✔ long tree title offers a German compound boundary without changing its stored name (1.860692ms)
+✔ current meaning precedes the image and path list without opening details (1.468ms)
+✔ explanation distinguishes imagery from biblical commandments and faith ranking (0.349707ms)
+✔ reading, quiz and checked tasks do not advance the tree through its guide (0.557069ms)
+✔ invalid presentation levels fall back without inventing an eighth stage (0.209966ms)
+✔ display guide does not change existing confirmed-development thresholds (0.302045ms)
+✔ writing header moves the original submit inside its original form without changing fields (0.861047ms)
+✔ continuous reader preserves every verse number/text in order, including long chapter (1.42774ms)
+✔ reading tools expose keyboard-friendly named actions without persistence (0.144197ms)
+ℹ tests 219
+ℹ suites 0
+ℹ pass 219
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13465.602235
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

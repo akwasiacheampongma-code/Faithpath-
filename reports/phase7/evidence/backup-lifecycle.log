@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "base": "http://127.0.0.1:4563",
+  "checks": [
+    "No stale preview after navigating away and returning",
+    "Main, draft and restore bytes unchanged",
+    "No runtime error"
+  ]
+}

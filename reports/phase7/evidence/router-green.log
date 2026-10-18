@@ -1,0 +1,14 @@
+✔ hash parsing preserves encoded IDs, queries and malformed-URI rejection (1.734529ms)
+✔ existing route names dispatch to their exact adapters without data mutation (1.499185ms)
+✔ a stale reader completion cannot steal focus from the newer route (0.25283ms)
+✔ quiz return identity, unfinished state and explicit completion keep existing keys (0.66521ms)
+✔ compose resumes the exact existing draft without writes and invalid links show the existing error view (0.694876ms)
+✔ step deep links open the existing disclosure and focus the exact encoded step (0.30567ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 76.196698

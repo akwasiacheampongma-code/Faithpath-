@@ -1,0 +1,3179 @@
+diff --git a/.github/workflows/import-faithpath.yml b/.github/workflows/import-faithpath.yml
+deleted file mode 100644
+index 01bba04..0000000
+--- a/.github/workflows/import-faithpath.yml
++++ /dev/null
+@@ -1,51 +0,0 @@
+-name: Import FaithPath source ZIP
+-
+-on:
+-  workflow_dispatch:
+-
+-permissions:
+-  contents: write
+-
+-jobs:
+-  import:
+-    runs-on: ubuntu-latest
+-    steps:
+-      - name: Repository auschecken
+-        uses: actions/checkout@v7
+-        with:
+-          fetch-depth: 0
+-
+-      - name: FaithPath ZIP entpacken
+-        shell: bash
+-        run: |
+-          set -euo pipefail
+-          archive="FaithPath-V4-F-GitHub.zip"
+-          test -f "$archive"
+-          mkdir -p .faithpath-import
+-          unzip -q "$archive" -d .faithpath-import
+-          test -f .faithpath-import/FaithPath/package.json
+-          test -f .faithpath-import/FaithPath/index.html
+-
+-          # Die ZIP enthält den vollständigen Stand. Der temporäre Importordner,
+-          # die ZIP und .git bleiben erhalten, bis die neuen Dateien kopiert sind.
+-          find . -mindepth 1 -maxdepth 1 \
+-            ! -name .git \
+-            ! -name .faithpath-import \
+-            ! -name "$archive" \
+-            -exec rm -rf {} +
+-          cp -a .faithpath-import/FaithPath/. .
+-          rm -rf .faithpath-import "$archive"
+-
+-      - name: FaithPath V4 committen
+-        shell: bash
+-        run: |
+-          set -euo pipefail
+-          git config user.name "github-actions[bot]"
+-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+-          git add -A
+-          if git diff --cached --quiet; then
+-            echo "Keine Änderungen zu committen."
+-          else
+-            git commit -m "Import FaithPath V4 F source"
+-            git push
+-          fi
+diff --git a/.github/workflows/quality.yml b/.github/workflows/quality.yml
+new file mode 100644
+index 0000000..39b1e7e
+--- /dev/null
++++ b/.github/workflows/quality.yml
+@@ -0,0 +1,37 @@
++name: Read-only quality gate
++on:
++  push:
++    branches: [maintenance/stability-phase7-20261018]
++  pull_request:
++  workflow_dispatch:
++permissions:
++  contents: read
++concurrency:
++  group: quality-${{ github.workflow }}-${{ github.ref }}
++  cancel-in-progress: true
++jobs:
++  verify:
++    runs-on: ubuntu-latest
++    timeout-minutes: 35
++    steps:
++      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, verified tag 2026-10-18
++        with:
++          fetch-depth: 0
++          persist-credentials: false
++      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
++        with:
++          node-version: 24.19.0
++          cache: npm
++      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
++        with:
++          python-version: '3.12'
++      - run: npm ci
++      - run: python -m pip install -r requirements-nt-import.txt
++      - run: npx playwright install --with-deps chromium
++      - run: npm run quality
++      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
++        if: always()
++        with:
++          name: quality-evidence-${{ github.sha }}
++          path: qa-output/phase7/gate
++          retention-days: 14
+diff --git a/ARCHITECTURE.md b/ARCHITECTURE.md
+new file mode 100644
+index 0000000..f1a6063
+--- /dev/null
++++ b/ARCHITECTURE.md
+@@ -0,0 +1,83 @@
++# FaithPath architecture
++
++Current maintenance baseline: `7d24aea30bec5b0b8d43e199f3cadfc6305c1e3e`
++(TREEFINAL). Phase7 changes orchestration and tooling, not the product model.
++
++## Runtime and boundaries
++
++FaithPath is a static Vanilla JavaScript ES-module PWA. There is no application
++server, runtime package dependency, account, mandatory cloud or telemetry.
++
++```mermaid
++flowchart TD
++  DOM[Hash links and DOM events] --> APP[app.js composition and existing actions]
++  APP --> ROUTER[app-router: dispatch and route focus]
++  ROUTER --> VIEW[Existing feature views and selectors]
++  APP --> BACKUP[backup-controller: transient import ownership]
++  BACKUP --> STORE[Store V5]
++  APP --> DOMAIN[Domain and feature mutations]
++  DOMAIN --> STORE
++  APP --> JOURNAL[journal-storage and drafts: shared lock and recovery]
++  JOURNAL --> STORE
++  STORE --> LOCAL[Existing LocalStorage keys]
++  APP --> BIBLE[bible-loader: transient request cache]
++  BIBLE --> JSON[Canonical offline Bible JSON]
++  APP --> PWA[pwa-controller: explicit activation and status]
++  PWA --> WORKER[Complete-release service worker cache]
++```
++
++| Boundary | Responsibility / contract |
++| --- | --- |
++| `app.js` | Compose dependencies, shared shell/dialogs, existing feature actions and editor orchestration. Does not define a second store. Still the largest maintenance risk; split only the next changed feature. |
++| `app-router.js` | Parse the existing hash grammar; dispatch the existing views; retain quiz/legacy entry identity, async render token and encoded step focus. Receives views/helpers explicitly. No persistence. |
++| `backup-controller.js` | Own transient file request, import/check mode and restore session. Invalidate on close/navigation; check again after a Web Lock wait. Mutate only through existing Store. |
++| `pwa-controller.js` | Own optional worker registration/status and deliberate update. Last status request owns UI; channel ports close on success/failure/timeout. No data writes. |
++| `bible-loader.js` | Coalesce book requests per translation. Return original JSON; evict failed/malformed responses for retry. No storage/progress changes. |
++| `store.js`, `import-validation.js` | Schema V5, legacy loading, stricter import validation, persist-before-publish, exact-byte stale-state guard, backup/restore. Existing authority is unchanged. |
++| `journal-storage.js`, `drafts.js` | Shared `faithpath-journal-write` lock and durable recovery record for main/draft coordination. Deterministic mutation callbacks; preserve other tabs' drafts. |
++| `journal-management.js`, `bible-notes.js` | Distinct deletion/undo semantics for personal entries versus Bible-note role. Preserve historical sources and independent reflections. |
++| `domain.js`, `continuity.js`, `review-*`, `paths-*` | References, chronology, path selections and correct original/after relationships. No inferred development or faith score. |
++| `bible-journey.js`, `chapter-questions.js` | Unique explored-chapter events; stable book/chapter/question identity shared by reader and collection. Merely opening a chapter does not complete it. |
++| `runtime-model.js`, `story-*`, `discover-*` | Validate namespaces and canonical story/question mappings; indexed bounded discovery, story and quiz projections. No editorial rewriting. |
++| `today-*`, feature `*-view.js`, `experience-view.js` | HTML presentation using escaped user content and shared UI primitives. Preserve the four themes and all existing destinations. |
++
++## CSS and assets
++
++Root `styles.css` and earlier feature styles remain layered beneath
++`src/verbunden/{tokens,foundation,today,reader,personal,discover,system}.css`.
++The build flattens these seven premium parts into one coherent stylesheet with
++correct relative local-font URLs. Phase7 changes no CSS or illustration.
++Global selectors and historical overrides remain technical debt; scope the next
++actual visual change and verify computed styles rather than adding broad overrides.
++
++## Build and offline data flow
++
++`scripts/build.mjs` validates approved content and constructs the runtime model
++before emitting `releases/<BUILD>/{src,data,styles.css}` plus root app/manifest,
++icons, seven tree assets and **one canonical `data/bibles` copy**. Both complete
++translations remain. Catalog modules use versioned data URLs; the Bible loader
++uses canonical book URLs. Versioned duplicate Bibles had no reader consumer.
++
++`candidate-integrity.json` hashes source JSON, excluding editorial audit records.
++`release-integrity.json` hashes every emitted file except itself. The worker
++prepares the entire release before its readiness marker, waits for explicit
++activation and keeps one prior complete cache for already-open tabs. It does
++not delete unrelated applications' caches. A missing mandatory resource rejects
++installation and removes the partial new cache; it does not repair user data.
++
++## Extension rules
++
++1. Add a behavior contract/failing test before moving or changing that behavior.
++2. Prefer a small feature controller or pure selector/view with explicit inputs.
++3. Keep persistent invariants in the current Store/domain authorities.
++4. Check reverse dependencies with `npm run check:modules`; runtime import cycles
++   and unresolved imports fail. Avoid generic service locators and new frameworks.
++5. Keep source commits separate from generated QA evidence. Changed runtime needs
++   a unique BUILD and a fresh complete candidate.
++
++React/Vue/Svelte or TypeScript can be evaluated against a concrete future need;
++none solves the current storage and content contracts by itself. Phase7 provides
++no evidence justifying a migration.
++
++See [DATA_CONTRACTS.md](DATA_CONTRACTS.md), [DEVELOPMENT.md](DEVELOPMENT.md) and
++[MAINTENANCE_REPORT.md](MAINTENANCE_REPORT.md) for exact protection and evidence.
+diff --git a/DATA_CONTRACTS.md b/DATA_CONTRACTS.md
+new file mode 100644
+index 0000000..d090b97
+--- /dev/null
++++ b/DATA_CONTRACTS.md
+@@ -0,0 +1,73 @@
++# Persistent and content contracts
++
++Phase7 does not change a persistent key, schema, migration or backup format.
++`scripts/check-contracts.mjs` compares source authorities, all data/tree files
++and all styles with exact accepted commit `7d24aea...`. Historical content
++validators independently compare editorial evidence and approved masters.
++
++| Key | Existing purpose |
++| --- | --- |
++| `faithpath.v1.rebuild` | Main Schema V5 JSON, including settings, quiz, reading, paths and guided plans |
++| `faithpath.guidedPlans.v1` | Legacy plan source, retained for existing migration |
++| `faithpath.onboarding.v4` | Current onboarding marker |
++| `faithpath.onboarding.v3` | Legacy marker |
++| `faithpath.backup.pre-v5` | Existing migration safety copy |
++| `faithpath.backup.before-import` | Pre-restore main/plan safety copy |
++| `faithpath.draft.v4` | Existing single draft `{type,args,values,saved}` |
++| `faithpath_journal_write_pending` | Existing durable journal/draft coordination record, not a new Phase7 key |
++
++## Mutation and failure rules
++
++- `createStore` preserves unknown fields. Local legacy normalization and strict
++  imported-data validation are different contracts. Do not make import permissive
++  just to accept a corrupt source; never silently drop entries.
++- Store transactions clone, compare original persisted bytes, persist successfully
++  and only then publish new in-memory state. A quota/access failure must not claim
++  success. Stale tabs must reload before exporting or writing.
++- Restore validates first and preserves a safety copy before replacing main data.
++  The UI performs file preview and a separate explicit confirmation. The preview
++  is bound to exact main/draft bytes and invalidated by close/navigation/new files.
++  Restore rechecks after the asynchronous lock wait. A read-only backup check
++  never gains restore authority.
++- `journalTransaction` uses the shared Web Lock plus a durable recovery record.
++  Its mutation callback is evaluated twice: allocate UUIDs/timestamps **before**
++  it, and make it deterministic. Interrupted writes recover exact known bytes;
++  an unrelated newer draft blocks recovery rather than being overwritten.
++- Missing/corrupt/denied storage displays the existing recovery/error UI and offers
++  explicit raw backup. It does not authorize automatic reset or repair.
++- Web Locks serialize cooperating journal/draft writers where available. Generic
++  Store transactions use synchronous compare-before-write. LocalStorage has no
++  multi-key or cross-process CAS; truly simultaneous independent writers cannot
++  receive a universal serializability guarantee. This residual risk is explicit.
++- Personal data stays local and unencrypted. Browser eviction/device loss cannot
++  be recovered without an external backup. A download request does not prove that
++  the operating system saved the file.
++
++## Identity and history
++
++Preserve all record and question IDs, stable quiz completion keys, path links,
++archived records, journal/reflection mirror identity and original snapshots.
++Do not recreate a historical source by matching prose. Live links are validated;
++detached historical `sourceKey` references may legitimately outlive their source.
++Bible-note-role deletion and physical journal deletion are distinct operations.
++
++Tree development uses only the existing explicitly confirmed records and seven
++thresholds. Reading, quizzes and completed steps do not award development. The
++sword shows documented unique explored chapters, never spiritual worth.
++
++## Content and export
++
++Both offline Bibles, stories, 2,314 Nachlese questions and 1,300 approved NT chapter
++questions are unchanged. No final AT source is inferred or added. Source content
++hash stays `8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309`.
++The build removes only an unused generated duplicate of the same Bibles.
++
++Main exports retain the existing application/schema/data/guided-plan envelope;
++raw recovery and draft exports remain distinct documents. No demo backup model
++or replacement storage system is introduced.
++
++The only new historical-digest compatibility record is the exact old/new
++`package-lock.json` pair for development-only ESLint10. The accompanying test
++proves every prior package record unchanged and all77 additions development-only.
++It does not exempt content or arbitrary future lock changes. Editorial manifests
++remain byte-identical; pre-existing Store compatibility remains unchanged.
+diff --git a/DEVELOPMENT.md b/DEVELOPMENT.md
+new file mode 100644
+index 0000000..310f19b
+--- /dev/null
++++ b/DEVELOPMENT.md
+@@ -0,0 +1,77 @@
++# Development and verification
++
++Use Node **24.19.0**, npm from that distribution, Python 3.12 and the pinned
++`openpyxl==3.1.5` requirement for full QA. The historical Node >=20 package engine
++describes the application build; it is not the complete lint/test toolchain floor.
++ESLint10 requires a supported recent Node release. Do not use an old Node20 image
++for the full maintenance gate.
++
++```sh
++npm ci
++python3 -m pip install -r requirements-nt-import.txt
++npx playwright install --with-deps chromium
++npm run quality
++```
++
++On restricted hosts use `npm ci --cache /tmp/faithpath-npm-cache`. Do not change
++HOME or share a writable dependency-directory symlink with another worktree.
++An already installed browser can be selected with `FAITHPATH_CHROMIUM=/usr/bin/chromium`.
++
++## Individual checks
++
++```sh
++npm test
++npm run validate:nt-quiz
++npm run validate:nachlese-editorial
++npm run lint -- --max-warnings 5
++npm run check:modules
++npm run check:contracts
++FAITHPATH_OUT=qa-output/local-a npm run build
++FAITHPATH_OUT=qa-output/local-b npm run build
++node scripts/check-build.mjs qa-output/local-a qa-output/local-b
++node scripts/serve.mjs qa-output/local-a
++```
++
++Open the generated output at `http://127.0.0.1:4174`. Root and tracked legacy
++`dist` artifacts may be stale; they are not the candidate. New outputs belong in
++`qa-output`, never over historical QA or another branch's candidate.
++
++The lint gate checks correctness and strictly rejects unused bindings in the four
++new controllers. Five pre-existing unused-binding warnings remain in byte-protected
++Store/legacy validation/tests. They are explicit debt, not errors or new exceptions.
++No formatter or autofix is run.
++
++## Full gate and provenance
++
++`npm run quality` runs both approved-master validators, all units, lint, the import
++graph, protected contracts, two complete builds and byte comparison, the original
++core browser/axe program, the 43-route responsive audit, platform fault boundaries
++and an actual failed/successful worker update with synthetic persisted data.
++Evidence is under `qa-output/phase7/gate` (override `QA_GATE_OUT`).
++
++The update baseline is the exact TREEFINAL build. Supply an immutable
++`FAITHPATH_PREVIOUS_ROOT`, or the gate archives exact Git commit `7d24aea...` into
++a disposable directory and builds it with its original source/branch metadata.
++No worktree/ref or remote is altered. Full Git history is needed for this and
++contract comparisons. Builds normally record actual HEAD and branch. Metadata
++overrides `FAITHPATH_BUILD_COMMIT` / `FAITHPATH_BUILD_BRANCH` are for verified
++historical reconstruction only; never label uncommitted code as a tested commit.
++
++Browser tests use isolated profiles and synthetic entries. The full gate passes
++an isolated `QA_OUT` to the original core program and captures its log and artifacts.
++Axe contexts allow diagnostic injection; the route audit checks the unmodified CSP.
++Chromium automation is not a physical iPhone/Safari/VoiceOver test.
++
++## CI
++
++`.github/workflows/quality.yml` uses pinned official action commits, Node24,
++Python3.12 and Playwright Chromium. It has `contents: read`, no persisted checkout
++credential, secrets, merge, publish or deployment steps. It uploads QA evidence on
++success or failure. Push triggering is restricted to this maintenance branch;
++pull requests and manual dispatch can run the same checks. Netlify must remain
++separately controlled; maintenance commits use `[skip netlify]`.
++
++The obsolete write-capable ZIP importer is retired here; see
++[the historical record](docs/LEGACY_IMPORT_WORKFLOW.md). Other branches remain
++untouched. A configured workflow is not evidence of a completed hosted run; see
++the report for actual local/hosted status.
+diff --git a/MAINTENANCE_REPORT.md b/MAINTENANCE_REPORT.md
+new file mode 100644
+index 0000000..06d94b9
+--- /dev/null
++++ b/MAINTENANCE_REPORT.md
+@@ -0,0 +1,63 @@
++# FaithPath Phase7 – Maintainability & Stability
++
++Basis: `7d24aea30bec5b0b8d43e199f3cadfc6305c1e3e` auf
++`fix/treeguide2-mobile-final-20261018`. Arbeitsbranch:
++`maintenance/stability-phase7-20261018`. Ausschließlich synthetische QA-Daten.
++Dieser Bericht wird nach der eingefrorenen Gesamtprüfung um die exakten
++Kandidaten- und Testergebnisse ergänzt. Bis dahin besteht keine Freigabe.
++
++## Audit und umgesetzte Grenzen
++
++Die bestehende Vanilla-PWA bleibt die richtige Grundlage. Kein Rewrite,
++Frameworkwechsel, neues Speichersystem oder UI-Redesign ist begründet.
++Store, Datenmigrationen, Journaltransaktionen, Entwürfe, Inhalte, Baumregeln,
++Styles und Service-Worker-Cacheprotokoll bleiben unverändert.
++
++`app.js` hatte 2.076 Zeilen, 121.363 Bytes und 100 Funktionsdeklarationen.
++Vier eng begrenzte Zuständigkeiten liegen jetzt in expliziten ES-Modulen:
++Routing/Fokus, Import-Lebenszyklus, PWA-Lebenszyklus und Bibelressourcen.
++Die verbleibende App-Komposition hat 1.823 Zeilen. Das Ziel war klare
++Verantwortung; die Gesamtzeilenzahl allein ist kein Qualitätsmaß.
++
++## Priorisierte Risiken
++
++| Prio / Eintritt | Konkreter Befund und Auswirkung | Ergebnis / Grenze |
++| --- | --- | --- |
++| P1 / manuell auslösbar | Alter einmaliger GitHub-Importer hatte `contents: write`, rekursive Root-Löschung und `git push`. Für normale Wartung ungeeignet. | Auf diesem Branch entfernt, historisch dokumentiert; neue CI nur lesend. Andere Branches unverändert. |
++| P2 / mittel | `app.js` bündelte Dispatch, Fokus, Dateiprüfung, Worker und Reader-Ressourcen; versteckte UI-Sitzungsabhängigkeiten erschwerten isolierte Tests. | Vier kleine Controller mit expliziten Abhängigkeiten; bestehende Feature-Aktionen bleiben bewusst erhalten. |
++| P2 / bei defekter Ressource | Baseline akzeptierte `{chapters:null}` als erfolgreiches Promise und hielt es im Cache. Erneutes Öffnen konnte ohne Reload nicht helfen. | Struktur bis zu geordneten Versnummern/Texten prüfen, fehlgeschlagenes Promise entfernen; tatsächlicher Browser-Retry und 132 Originalbücher geprüft. |
++| P2 / bei Plattformfehler | Alte Worker-Statusabfrage ließ beide Nachrichtenports offen; abgelehntes `getRegistration` konnte ein unbehandeltes Promise erzeugen. | Abschluss auf Antwort/Timeout/Fehler, Ports schließen, optionalen Plattformzugriff abfangen, nur jüngster Status aktualisiert UI. |
++| P2 / bei konkurrierenden Tabs | LocalStorage bietet keine prozessübergreifende CAS-Transaktion; reine Store-Schreibvorgänge sind nicht universell serialisierbar. | Bestehende Byteprüfung, Web Locks und Journal-Recovery unverändert; keine unehrliche Garantie oder neue Migration. Restschuld. |
++| P2 / bei Geräteverlust | Persönliche Daten sind lokal und unverschlüsselt; Eviction/Browserdatenlöschung ohne externes Backup nicht wiederherstellbar. | Vorhandener transparenter Backup-/Rohdatenweg bleibt; keine neue Cloudpflicht. Physische Sicherungsabnahme offen. |
++| P3 / sicher bei jedem alten Build | 132 Bibeldateien lagen root und versioniert bytegleich im Build: 8.759.230 redundante Nutzdatenbytes und132 zusätzliche Offline-Downloads. | Nur ungenutzte generierte Kopie entfernt, kanonische Offline-Dateien erhalten und vollständig gehasht. Keine unbelegte Geschwindigkeitsbehauptung. |
++| P3 / bei künftiger UI-Arbeit | Mehrere historische CSS-Schichten und großer verbleibender Action-/Editorbereich. | Keine spekulative CSS-Säuberung. Nächste tatsächlich geänderte Funktion mit Verhaltensvertrag herauslösen. |
++| P3 / bestehend | Fünf ungenutzte Bindungen in geschütztem Store, altem Validator und alten Tests. | Sichtbare Lint-Warnungen; neue Controller streng ohne ungenutzte Bindungen. Kein Umformatieren geschützter Module. |
++
++Es wurde kein P0-Datenverlustbefund nachgewiesen. Ein grüner Build beweist
++weder vollständige Gerätekompatibilität noch die Beseitigung aller Restschulden.
++
++## Unabhängiges Review
++
++Ein separater Reviewer verglich die komplette Änderung mit der exakten Basis.
++Er bestätigte die unveränderten Store-/Content-/CSS-Autoritäten und fand:
++unvollständige Prüfung verschachtelter Bibelverse, einen systemabhängigen
++Chromiumpfad und fehlende Isolation der Core-QA-Ausgabe. Alle drei Befunde
++wurden korrigiert. Die neuen Fehlerszenarien prüfen ihre eigentliche Ursache
++mit ansonsten gültigen Testdaten. Der abschließende Reviewnachweis wird mit
++den QA-Dateien geliefert.
++
++## Weiterführende Wartung
++
++1. Den nächsten fachlich betroffenen Action-/Editorabschnitt separat kapseln;
++   vorab den tatsächlichen Ablauf testen, keine pauschale Dateizerlegung.
++2. CSS nur an nachgewiesenen Konflikten bereinigen; alle vier Themes und
++   tatsächliche berechnete Eigenschaften vergleichen.
++3. Eine stärkere allgemeine Mehrtab-Schreibkoordination nur separat entwerfen:
++   gleiche Speicher-/Exportverträge, nachvollziehbare Fallbacks und Fehlertests.
++4. Abhängigkeiten und Action-SHAs kontrolliert aktualisieren; den exakten
++   Tooling-Hashvertrag nicht durch eine pauschale Ausnahme ersetzen.
++
++Die aktuelle Entwicklerdokumentation ist [ARCHITECTURE.md](ARCHITECTURE.md),
++[DEVELOPMENT.md](DEVELOPMENT.md), [DATA_CONTRACTS.md](DATA_CONTRACTS.md) und
++[RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md). Historische Phasenberichte bleiben
++als historische Belege erhalten.
+diff --git a/README.md b/README.md
+index 965bee7..485730a 100644
+--- a/README.md
++++ b/README.md
+@@ -5,7 +5,7 @@
+ FaithPath ist eine offline-first PWA. Der Kern ist nicht das Sammeln von Punkten, sondern der Kreislauf: Situation/Bibel → verstehen → reflektieren → persönlicher Weg → kleiner Schritt → späterer Rückblick → selbst dokumentierte Entwicklung.
+ 
+ ## Deployment auf Netlify
+-Der Quellstand benötigt Node >=20. `npm run build` erzeugt den vollständigen,
++Für die vollständige Entwicklung und QA wird Node24.19.0 verwendet. `npm run build` erzeugt den vollständigen,
+ versionierten Publish-Ordner `dist`; genau diesen Ordner verwendet `netlify.toml`.
+ Alte eingecheckte Root-/dist-Artefakte sind kein verlässlicher aktueller Build.
+ Keine Produktionsveröffentlichung erfolgt automatisch durch diese Anleitung.
+@@ -35,6 +35,14 @@ OTB Deutsch und Luther 1912 sind vollständig lokal enthalten. V4 normalisiert 
+ - Stabilisierungskandidat: `FP4-20261015-G-STABLE1`, Branch `fix/production-stabilization-20261015`.
+ - [Rekonstruktion und exakte Reproduktion](docs/PRODUCTION_RECOVERY.md)
+ - [Architektur, Datenregeln und Testabläufe](docs/MAINTENANCE.md)
++- [Aktuelle Architektur](ARCHITECTURE.md), [Entwicklung](DEVELOPMENT.md),
++  [Datenverträge](DATA_CONTRACTS.md), [Release-Checkliste](RELEASE_CHECKLIST.md)
++
++Der Phase7-Wartungskandidat baut auf dem vollständig integrierten TREEFINAL-Stand
++auf. Er behält „Verbunden“, alle Inhalte und Schema V5 bei. Der aktuelle
++[Wartungsbericht](MAINTENANCE_REPORT.md) trennt ausgeführte Prüfungen von offener
++physischer Geräteabnahme. `npm run quality` führt die rein lesende Qualitätspipeline
++aus; es gibt dabei keinen Merge oder Deploy.
+ 
+ Der Integrationskandidat `FP4-20261016-G-STABLE1-NTFINAL1` auf
+ `integration/quiz-final-on-stable1` übernimmt die 1.300 freigegebenen NT-Fragen
+diff --git a/RELEASE_CHECKLIST.md b/RELEASE_CHECKLIST.md
+new file mode 100644
+index 0000000..e0ada6c
+--- /dev/null
++++ b/RELEASE_CHECKLIST.md
+@@ -0,0 +1,55 @@
++# Candidate, device gate and rollback
++
++Phase7 is a maintenance candidate, not production authorization.
++
++## Before a candidate is accepted
++
++- [ ] Record actual branch/clean source HEAD, immutable baseline and unique BUILD.
++- [ ] `npm ci`, both content master validators, all unit/regression tests pass.
++- [ ] Lint, ESM graph and protected content/data contract checks pass.
++- [ ] Build twice from the same frozen source and compare all emitted file bytes.
++- [ ] Check all132 canonical Bible files, complete worker asset list and receipts.
++- [ ] Run original browser flows/axe and responsive deep-link navigation.
++- [ ] Exercise reader/quiz/path/journal/review/tree and backup restore/cancellation.
++- [ ] Inject denied/quota/corrupt storage and late requests; retain exact data.
++- [ ] Install immutable old app, reject a missing-asset update, reload old offline,
++  then deliberately activate complete candidate on the **same isolated origin**.
++- [ ] Verify draft, migration/safety keys, personal history and foreign cache.
++- [ ] Inspect actual before/after screenshots. Maintenance must not redesign UI.
++- [ ] Independent review complete; no unresolved mandatory-check failure.
++- [ ] Archive logs, source/build/content hashes, source/delivery SHAs and ZIP hash.
++
++## Physical iPhone / Safari / VoiceOver — OPEN until actually performed
++
++Use a separately authorized isolated QA origin, never overwrite an existing QA
++site as part of this task. Back up synthetic test data to Files first.
++
++1. In iPhone Safari and an installed PWA, check320/390-width equivalents, all four
++   themes, portrait/landscape, 150/200% text, safe areas and keyboard scroll.
++2. Navigate Today/Bible/My Path/Journal/Discover/More and deep links; VoiceOver
++   headings, landmarks, forms, error messages, focus and modal close/return.
++3. Read long/short chapters in both translations, mark a verse, save a note,
++   link it to a path, answer correct/incorrect quiz options and return later.
++4. Create/edit/archive/restore a path; save/reopen a draft, add a historical
++   review, verify original snapshot and unchanged tree count for ordinary tasks.
++5. Export to Files; read-only check, explicit restore and restore Undo with a
++   separate synthetic profile. Invalid file/cancel must not replace data.
++6. Install old/new complete candidates on that same authorized QA origin. While
++   an editor is open, preserve its draft. Deliberately update, restart the PWA,
++   enable airplane mode and reload both translations and personal views.
++7. Record iOS/device/Safari versions, installed/standalone mode, exact BUILD,
++   expected/actual result, screenshots and any failure. Chromium is not this gate.
++
++## Rollback without destructive data changes
++
++Keep TREEFINAL source and complete artifact (`5390ec0a...`) plus candidate receipts.
++Before any separately approved release, export synthetic and then real user data
++through their owners. A later approved rollback must rebuild the compatible old
++source under a **new unique rollback BUILD**, test it on the same isolated origin
++and preserve Schema V5/keys. Reusing an old cache name or overwriting a live cache
++with different bytes is unsafe. Do not clear LocalStorage/caches as a repair.
++
++A failed installation should retain the old active complete worker. If the device
++has lost its entire browser storage, only the owner's external backup can restore
++entries. Reverting Git does not recover evicted personal data. No merge or publish
++is included in the maintenance commands or CI.
+diff --git a/docs/LEGACY_IMPORT_WORKFLOW.md b/docs/LEGACY_IMPORT_WORKFLOW.md
+new file mode 100644
+index 0000000..f53fa33
+--- /dev/null
++++ b/docs/LEGACY_IMPORT_WORKFLOW.md
+@@ -0,0 +1,12 @@
++# Retired one-shot import workflow
++
++The former `.github/workflows/import-faithpath.yml` is retired on the Phase7
++maintenance branch. It was a manual, repository-wide ZIP import with
++`contents: write`, deletion of root files and `git push`. It is inappropriate
++for ongoing maintenance. Its exact historical text remains in Git at
++`7d24aea30bec5b0b8d43e199f3cadfc6305c1e3e:.github/workflows/import-faithpath.yml`.
++
++The replacement `quality.yml` has read-only contents access, no retained Git
++credential and no publish, repository write, merge or deployment step. Editorial
++imports continue to require their separate reviewed content process. No change
++to another branch's workflow or existing deployment is authorized here.
+diff --git a/docs/MAINTENANCE.md b/docs/MAINTENANCE.md
+index 9c806fc..a8e5f7b 100644
+--- a/docs/MAINTENANCE.md
++++ b/docs/MAINTENANCE.md
+@@ -1,110 +1,18 @@
+-# FaithPath maintenance guide
++# Maintenance documentation index
+ 
+-## Start here
++The current canonical documents are maintained at repository root:
+ 
+-FaithPath is a static, offline-first ES module application, with no runtime framework
+-or backend dependency. Node >=20 runs the build, validators and unit tests.
+-`package-lock.json` pins Playwright and axe for development checks only.
++- [Architecture and module ownership](../ARCHITECTURE.md)
++- [Development, tests and complete quality gate](../DEVELOPMENT.md)
++- [Persistent data and content contracts](../DATA_CONTRACTS.md)
++- [Release/device gate and rollback](../RELEASE_CHECKLIST.md)
++- [Phase7 findings and actual verification](../MAINTENANCE_REPORT.md)
+ 
+-```sh
+-npm ci
+-npm test
+-npm run build
+-node scripts/serve.mjs dist
+-```
++This index replaces the earlier duplicated maintenance description, including
++its obsolete statement that the final NT questions were not integrated. The
++current app already contains the approved 1,300 NT and 2,314 Nachlese questions.
++Do not rerun an old merge/import to prepare a maintenance build.
+ 
+-If the execution environment restricts the default npm cache, pass
+-`--cache /path/to/writable/cache` to npm ci. No lockfile change is needed.
+-On runners that prohibit child-process Git discovery, set `FAITHPATH_BUILD_BRANCH`
+-to the actual branch name when building. Never silently mislabel a release.
+-
+-Only serve generated build output. Existing root/dist legacy artifacts are not
+-the source of truth. A build regenerates dist from src, data and the SW template.
+-The recovered generated reference/content indices are tracked so a fresh checkout
+-can run tests and reproduce POLISH1 without an undocumented pre-step.
+-
+-## Module ownership and contracts
+-
+-| Module | Responsibility | Mutation contract |
+-|---|---|---|
+-| src/store.js | V5 storage, legacy migration, transactions, export and restore | All main-state writes go through transact/restore; persist before publishing state |
+-| src/import-validation.js | Known-field and live-link validation at backup boundary | Reject invalid imports before writing; never silently repair/drop content; preserve unknown fields |
+-| src/journal-storage.js | Durable journal/draft coordination and crash recovery | Shared Web Lock, write-ahead recovery record, deterministic mutation callbacks |
+-| src/drafts.js | Ownership of the existing single draft | Compare exact prior bytes; share journal lock; never clear someone else's draft |
+-| src/journal-management.js | Journal deletion/undo and path reassignment | Typed relationships, explicit mirror checks, preserve standalone Bible links |
+-| src/bible-notes.js | Bible-note role deletion and undo | Keep personal text and history when removing the Bible-note role |
+-| src/domain.js | References, chronology, reminders and documented development | Pure selectors/helpers except explicit attach; no inferred faith rating |
+-| src/continuity.js | Previous thoughts and before/after review relationships | Read-only; do not invent historical links from similar prose |
+-| src/core-experience.js | Highlight ranges and path detachment | Preserve unaffected verses and personal records |
+-| src/bible-journey.js | Unique chapter-end events and summary | Opening a chapter or quiz is not chapter completion |
+-| src/chapter-questions.js | Book/chapter catalog and reader/collection routing | Stable IDs; same completion keys for both entries |
+-| src/runtime-model.js | Canonical story/question models | Validate namespaces and mappings; fail clearly on missing required data |
+-| src/experience-view.js, journey-sword.js, tree-branches.js, themes.js | Product presentation and derived projections | No independent scores or new storage authority |
+-| src/app.js | Routing, DOM rendering, UI events and orchestration | Delegate data invariants to the modules above |
+-| scripts/build.mjs, scripts/sw-template.js | Versioned complete release and offline caching | New BUILD for changed runtime; deterministic manifests; explicit update activation |
+-
+-## Data rules that must survive future work
+-
+-- Keep `faithpath.v1.rebuild`, the existing draft key, schema V5 and backup shape.
+-- A journal entry and its exact reflection mirror are separate existing records.
+-  Update only the explicit matching mirror; preserve independent reflections.
+-- Physical journal deletion and Bible-note-role deletion are distinct operations.
+-- `pathIds` and live journal/reflection links must point to existing records at import.
+-  Historical `sourceKey` and `highlightId` may refer to a deliberately deleted source.
+-- Import validates more strictly than local legacy loading. Existing V5 data is not
+-  rewritten by an update; malformed backups are rejected without swapping the store.
+-- Old numeric/missing record IDs are handled only by the existing migration.
+-- `journalTransaction` evaluates its mutation twice. Allocate UUIDs/timestamps
+-  before the callback; do not generate random IDs inside it.
+-- Input controls are disabled while an asynchronous editor save is pending.
+-- The draft JSON shape stays `{type,args,values,saved}`. A conflict offers resume,
+-  export or explicit discard. Draft exports are recovery documents, not main backups.
+-- Web Locks serialize draft and journal writers where supported. Without Web Locks,
+-  synchronous byte comparison remains the fallback; truly simultaneous cross-process
+-  writes cannot be given the same atomicity guarantee. Do not claim otherwise.
+-- User data is local and unencrypted; device loss requires an external backup.
+-- Editorial JSON and Excel data must use their own validated approval workflow.
+-  The separately revised 1300-question content branch is not included here.
+-
+-## Safe extension strategy
+-
+-The architecture is maintainable by human developers without a rewrite. The main
+-pressure point is app.js (routing, markup and actions); styles.css also carries
+-several generations of overrides. Do not split them all at once.
+-
+-When a feature is actually changed, extract that feature's view and action boundary
+-into one small module with explicit arguments. Keep the store and data relationships
+-central, and cover the existing UI flow before moving code. Suitable later slices:
+-editor orchestration, import/export UI, reader view, then route dispatch. Each should
+-be independently reviewable, with no schema/content change in the same commit.
+-
+-Do not adopt a framework merely to reduce file length. A framework migration needs
+-a concrete maintenance or platform requirement, a measured benefit and a separate
+-migration/rollback plan. The current build does not need one.
+-
+-## Verification and release
+-
+-1. Preserve an immutable backup commit and its production manifest.
+-2. Run npm test and the content/runtime validators.
+-3. Build twice; compare complete artifact manifests and protected content hashes.
+-4. Run tests/browser.mjs against the generated candidate, not stale dist.
+-5. Run tests/stabilization-browser.mjs against a local served candidate.
+-6. Run tests/stabilization-update.mjs with the reproduced POLISH1 output as the
+-   previous root and the new candidate as the current root. This tests a real
+-   local Service Worker update, with migration, draft preservation and offline reload.
+-7. Record exact source commit, BUILD, content/build hashes and tested deployment.
+-8. Complete real iPhone/Safari, installed PWA, keyboard and VoiceOver checks before
+-   commercial release. Chromium simulations do not replace them.
+-
+-Example Chromium commands (requires an installed Chromium executable):
+-
+-```sh
+-FAITHPATH_TEST_ROOT=qa-output/stabilization FAITHPATH_CHROMIUM=/usr/bin/chromium node tests/browser.mjs
+-node scripts/serve.mjs qa-output/stabilization
+-QA_URL=http://127.0.0.1:4174 node tests/stabilization-browser.mjs
+-FAITHPATH_PREVIOUS_ROOT=qa-output/production-reproduction-a FAITHPATH_CANDIDATE_ROOT=qa-output/stabilization node tests/stabilization-update.mjs
+-```
+-
+-All browser scripts use isolated synthetic local data. No production deploy is part
+-of these commands. A preview and any production publication need their own release
+-decision. Cache deduplication and Today reordering are intentionally deferred.
++Historical reconstruction remains documented in
++[PRODUCTION_RECOVERY.md](PRODUCTION_RECOVERY.md). Earlier phase reports describe
++their own immutable builds; they are evidence, not current implementation guides.
+diff --git a/docs/superpowers/plans/2026-10-18-phase7-maintenance.md b/docs/superpowers/plans/2026-10-18-phase7-maintenance.md
+new file mode 100644
+index 0000000..23a5f35
+--- /dev/null
++++ b/docs/superpowers/plans/2026-10-18-phase7-maintenance.md
+@@ -0,0 +1,83 @@
++# Phase7 maintenance implementation plan
++
++> **For agentic workers:** Execute inline with superpowers:executing-plans; one independent final review. Checkboxes are the execution ledger.
++
++**Goal:** Fewer maintenance risks through small explicit orchestration boundaries, fault coverage, reliable CI and current documentation.
++
++**Architecture:** See the written design; preserve Store V5, existing domain/content/views and appearance. Extract routing, backup session ownership, worker status and Bible loading; remove only measured generated duplication.
++
++**Tech Stack:** Vanilla ESM PWA, Node24 development, existing Playwright/axe, one ESLint development tool, Python/openpyxl for existing import checks.
++
++**Spec:** docs/superpowers/specs/2026-10-18-phase7-maintenance.md and the user's complete Phase7 instruction.
++
++## Global constraints
++
++- Only maintenance/stability-phase7-20261018 from7d24aea. No main/QA/production/content branch change, deployment or merge.
++- No content IDs/texts, LocalStorage keys, SchemaV5, historical relationships, tree count or backup-format change. No automatic data reset/repair.
++- No CSS redesign, runtime dependency or framework/TypeScript migration.
++- Retain old reports/artifacts. Generate candidates under qa-output/phase7, never overwrite tracked dist.
++- Any failed mandatory gate is NO-GO. Physical iPhone/Safari/VoiceOver stay OPEN.
++
++## Review focus
++
++- Encoded/invalid deep links, quiz return-route identity and stale reader promises.
++- Late file results, newer previews, modal/route cancellation and pending restore locks.
++- Denied storage, corrupt data and deterministic journal recovery retain exact original bytes.
++- Worker status send/timeout failures close ports; failed updates retain the complete old offline version.
++- Deduplicated generated Bibles retain all132 canonical files and old/current app access; CI has no write/publish authority.
++
++## Task1: Audit and routing boundary
++
++**Files:** src/app-router.js, src/app.js, tests/app-router.test.mjs, architecture/spec/plan and baseline evidence.
++**Interfaces:** createAppRouter receives explicit views/helpers/state/DOM dependencies and returns render(); parseHashRoute preserves existing route parsing. No Store mutation.
++
++- [x] Record clean branch/remote refs, immutable TREEFINAL,198 baseline tests and measured module/build metrics.
++- [x] Capture baseline product routes; write parse/dispatch/race/focus contracts and observe RED for the new boundary before extraction.
++- [x] Extract route rendering without changing behavior; run focused contracts, baseline-equivalent browser check and all units, inspect diff, commit.
++
++## Task2: Backup session ownership
++
++**Files:** src/backup-controller.js, src/app.js, tests/backup-controller.test.mjs.
++**Interfaces:** controller owns only transient request/mode/session; inspectFile(file), invalidate(), handles(action), handle(action,data,element). Existing store and view callbacks are dependencies. Invalidate on close/hash/new flow before async continuation.
++
++- [x] Characterize late read and restore-lock cancellation; RED→implement small extraction→GREEN.
++- [x] Run backup lifecycle/races/roundtrip and all units; preserve editor's actual submit handler regression. Inspect diff and commit.
++
++## Task3: Platform boundaries and measured payload reduction
++
++**Files:** src/pwa-controller.js, src/bible-loader.js, src/app.js, scripts/build.mjs, focused Node tests.
++**Interfaces:** worker status/activation have explicit platform callbacks, no data writes; cached Bible loader returns original JSON, evicts failures. Build retains root Bibles and removes only the duplicate generated versioned set.
++
++- [ ] Write worker timeout/send/error and Bible retry/coalescing contracts; observe RED, implement, run full units and relevant browser checks.
++- [ ] Write full generated-layout/integrity test; observe duplicate payload failure before changing build. Remove duplicate only; verify132 canonical source-equal Bibles, full hash map and offline worker fallback. Separate commits.
++
++## Task4: CI, contracts, documentation and final gate
++
++**Files:** .github/workflows/, eslint.config.js, package/lock, scripts/phase7 checks, tests/phase7/, five canonical Markdown files and reports/phase7/.
++**Interfaces:** read-only CI consumes committed source and immutable TREEFINAL; all outputs/profiles synthetic. No remote write/merge/deploy step. Candidate BUILD FP4-20261018-G-STABLE1-PHASE7-MAINT1.
++
++- [ ] Pin development lint tool, run static audit; remove only proved dead code. Add portable CI without weakening original tests; archive destructive one-shot import workflow.
++- [ ] Document architecture/risks, data contracts, development/release/rollback; update old maintenance index.
++- [ ] Freeze final source; all units/content/static checks, relevant original browser programmes, functional/axe routes, storage faults, actual old→new/offline/failed-update tests and two complete byte-equal builds.
++- [ ] Obtain independent whole-change review; fix reproduced blockers with RED→GREEN and a green suite. Document all limitations.
++- [ ] Deliver exact source/delivery commits, hashes, build/QA ZIPs and clear device-gate GO/NO-GO. No merge or deployment.
++
++## Ledger
++
++- Native inline implementation is authorized by the user's explicit audit-then-implement instruction. No new product choice, framework or storage redesign is needed, so do not stop for redundant design/plan authorization.
++- Existing linked worktree reused; only new maintenance branch created. Previous remote refs and artifacts are retained.
++- Audit: app2076 lines/121363 bytes/100 functions; nine document and six window listeners. Store/draft recovery modules already have substantive fault tests. Preserve their authority.
++- Generated duplicate Bible payload:132 files,8759230 identical bytes beyond the canonical root copy. Performance claims will be limited to measured bytes/requests, not invented phone speedups.
++- Default npm cache is unavailable in this workspace. Use /tmp/faithpath-phase7-npm-cache; never change HOME or read credential values.
++- Existing node_modules is a shared symlink. Before installing the lint dependency, replace only this worktree's symlink with an independent install; do not mutate another branch's dependency directory.
++- No skill helper script is available as a filesystem executable here; this plan is the persistent ledger. Independent review remains mandatory as explicitly requested by the user.
++
++- Task1 complete: six route contracts pass (including encoded step focus and stale async reader). All204 unit tests pass. Existing core browser programme passed against immutable TREEFINAL before the refactor; original43-route programme plus onboarding storage-failure checks passed against the intermediate router build at390/night. Original business assertions retained; new test environment/output options prevent overwriting historical QA.
++- The first mechanical routing transfer wrongly replaced suffix s() inside marks/focus. The new dispatch and focus contracts caught it; regenerate with a word-boundary-only state accessor substitution. No failing intermediate implementation was committed.
++- Intermediate router build tests use an isolated working-tree build, not the final claimed release. The final source/build gets fresh full evidence later.
++
++- Tooling prerequisite advanced from Task4: initial ESLint9 was explicitly reported unsupported by npm, so use verified current10.13.0 with Node24 tooling. This worktree has its own node_modules; sibling dependencies were not modified.
++- The first combined unit run had four content-validator failures because historical manifests also freeze package-lock.json. All content manifests stay untouched. A new exact old→new lock hash compatibility record is limited to package-lock.json; its RED→GREEN test proves every previous package record unchanged, all77 added packages development-only, no runtime dependency and no exemption for any content file or future arbitrary hash. Full212 tests now pass. This is an authorized CI-tooling change, not a content reapproval.
++- First ESLint correctness pass: one missing platform declaration (TextEncoder) in lint configuration, corrected there; zero application lint errors. Fourteen unused-binding warnings were measured, including nine in app.js (two newly redundant imports after route extraction). Remove only proved dead app bindings in a later cleanup; preserve byte-locked Store code.
++
++- Task2 complete: seven backup lifecycle contracts pass; full212/212 suite passes. Existing backup, backup-races and backup-dialogs browser programmes each exit0 against isolated step-backup; dedicated backup-lifecycle also passes. Only transient request/mode/session ownership moved. Store, drafts, validation, restore format and editor submit code stay unchanged.
+diff --git a/docs/superpowers/specs/2026-10-18-phase7-maintenance.md b/docs/superpowers/specs/2026-10-18-phase7-maintenance.md
+new file mode 100644
+index 0000000..1aa9356
+--- /dev/null
++++ b/docs/superpowers/specs/2026-10-18-phase7-maintenance.md
+@@ -0,0 +1,40 @@
++# Phase7 maintenance design
++
++Authority: user request “FaithPath – Phase7: Maintainability & Stability”, 18.10.2026. Purpose: a human-maintainable existing Vanilla PWA, not a rewrite or new product. The user explicitly authorizes audit followed by small implementation units, with no deployment/merge or content/schema change.
++
++## Baseline and measured findings
++
++Start at fix/treeguide2-mobile-final-20261018, commit7d24aea30bec5b0b8d43e199f3cadfc6305c1e3e; immutable appce89422411ec3382c62ba7683167cf1b6db4a457 and TREEFINAL/hash5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa. The maintenance branch is maintenance/stability-phase7-20261018. All21 preexisting remote refs are recorded before work. Baseline198 unit tests pass.
++
++app.js has2076 lines/121363 bytes,100 function declarations and15 document/window listeners. Many actual views/domain functions already live in modules. Its remaining routing, backup-session lifetime and worker messaging are the narrow orchestration seams to improve. Store/journal/draft recovery already persist before publishing and reject stale ownership; preserve them.
++
++The build currently includes identical132-file offline Bible sets twice: root data/bibles and releases/BUILD/data/bibles. The redundant payload is8759230 bytes. getBook fetches the root paths; the versioned runtime catalog loads seven other JSON files. Remove only a proven unused generated duplicate, retain every source file and root Bible path, then test both translations and old/new worker generations.
++
++The only existing Actions workflow is an obsolete manual source-ZIP import with contents:write, root-file deletion and git push. Archive it as inert historical documentation and replace it with read-only validation jobs. No new CI job may deploy, push commits or merge.
++
++## Selected boundaries
++
++1. **app-router.js:** own hash parsing, dispatch, async-route token checks and route-specific focus restoration. Receive explicit view callbacks, state getter and DOM/location boundaries. Keep paths, query semantics, legacy canonical-story redirection, quiz keys, compose drafts and navigation focus unchanged. No data writes.
++2. **backup-controller.js:** own transient import request tokens, selected mode and restore session. Expose inspectFile/invalidate/action handling. Keep store.prepareImport/restore, exact-byte ownership, explicit two-step confirmation, Web Lock recheck and undo preparation. Closing, navigating and newer inspections cancel older asynchronous reads. No new persistence.
++3. **pwa-controller.js and bible-loader.js:** move worker lifecycle/status and Bible request caching out of app.js. Preserve manual activation and old-reader race guards. Close MessagePorts on success/timeout/send failure; handle unavailable registrations without unhandled event rejections or stale ready state. Bible failures evict failed promises so retry works; never fabricate missing text.
++4. **Application coordinator:** compose these boundaries and keep the existing editor/action/domain adapters. Do not split every view or rewrite its markup. Remove only statically verified dead declarations/imports.
++
++ES modules and focused JSDoc contracts are sufficient. React/Vue/Svelte would add a second rendering/lifecycle system and broad regression exposure without solving the current data authority; TypeScript migration is not part of this task. ESLint is a justified development-only dependency for undeclared bindings, unreachable branches and safe new-module boundaries, not a runtime dependency. Existing visual CSS and all seven tree rules stay intact.
++
++## Stability scope and limits
++
++Exercise denied reads/writes, quota failures, malformed/legacy data, journal write-ahead recovery, restore cancellation after lock waits, failed Bible requests, unavailable worker messaging and failed incomplete worker updates. Reuse existing core transaction tests rather than invent a new storage layer.
++
++LocalStorage is not a cross-process transaction engine. Existing exact-byte stale checks remain; journal/draft writers share Web Locks where available. Truly simultaneous generic writes without a shared asynchronous lock cannot be claimed serializable. Preserve the sync Store API and document this remaining boundary; do not silently add a lock key/schema or an async-store migration.
++
++## CI and verification
++
++Read-only workflow: content/master validators, all unit tests, ESLint/static module graph, data-contract checks, two deterministic production-format builds, portable Chromium/axe product checks and a real worker update with synthetic existing data and a failed-update fallback. Use isolated output/profile directories. No Netlify commands, write-scoped token, pull_request_target or automatic merge.
++
++Baseline and candidate browser flows cover reader/both translations, chapter and story questions, paths, journal, reviews/tree, navigation and backups. Preserve original business assertions; supplement them with focused new regressions and measured before/after screenshots. Each refactor is committed only after its relevant tests and full unit suite pass.
++
++Final source is frozen before final browser/build evidence. Compare two complete build maps, unchanged content hash8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309, source/contracts and raw personal bytes. A failed mandatory gate means NO-GO. Independent code review is required; real iPhone/Safari/VoiceOver remain OPEN.
++
++## Documentation
++
++Use root ARCHITECTURE.md, DEVELOPMENT.md, DATA_CONTRACTS.md, RELEASE_CHECKLIST.md and MAINTENANCE_REPORT.md as current canonical documents. Replace stale advice in docs/MAINTENANCE.md with links to them; keep historical reports as dated evidence. Explain module responsibilities, exact APIs, data authority, reproducible commands, failure/rollback boundaries and measured remaining debt.
+diff --git a/eslint.config.js b/eslint.config.js
+new file mode 100644
+index 0000000..080c073
+--- /dev/null
++++ b/eslint.config.js
+@@ -0,0 +1,11 @@
++// Development-only correctness checks. No formatting/autofix or runtime framework.
++const browser='document window navigator localStorage location self fetch caches Request Response URL URLSearchParams Blob File FileReader FormData MessageChannel ResizeObserver IntersectionObserver MutationObserver AbortController AbortSignal Event CustomEvent HTMLElement Element Storage CSS Image requestAnimationFrame cancelAnimationFrame matchMedia getComputedStyle innerWidth innerHeight scrollX scrollY devicePixelRatio setTimeout clearTimeout setInterval clearInterval console crypto TextEncoder TextDecoder structuredClone atob btoa performance'.split(' ');
++const platform=Object.fromEntries([...browser,'process','Buffer','__ASSETS__'].map(name=>[name,'readonly']));
++export default [
++ {ignores:['node_modules/**','dist/**','qa-output/**','reports/**','prototypes/**']},
++ {files:['src/**/*.js','scripts/**/*.mjs','scripts/sw-template.js','tests/*.test.mjs','tests/phase7/**/*.mjs','eslint.config.js'],languageOptions:{ecmaVersion:'latest',sourceType:'module',globals:platform},rules:{
++  'no-undef':'error','no-unreachable':'error','no-dupe-args':'error','no-dupe-keys':'error','no-duplicate-case':'error','valid-typeof':'error','no-async-promise-executor':'error','no-debugger':'error','no-eval':'error','no-global-assign':'error','no-unsafe-finally':'error',
++  'no-unused-vars':['warn',{args:'none',ignoreRestSiblings:true,varsIgnorePattern:'^_'}]
++ }},
++ {files:['src/app-router.js','src/backup-controller.js','src/pwa-controller.js','src/bible-loader.js'],rules:{'no-unused-vars':['error',{args:'none',ignoreRestSiblings:true}]}}
++];
+diff --git a/package-lock.json b/package-lock.json
+index f7a0cdd..08d9649 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -9,12 +9,295 @@
+       "version": "4.0.0",
+       "devDependencies": {
+         "axe-core": "^4.13.0",
++        "eslint": "10.13.0",
+         "playwright": "^1.62.1"
+       },
+       "engines": {
+         "node": ">=20"
+       }
+     },
++    "node_modules/@cacheable/memory": {
++      "version": "2.2.0",
++      "resolved": "https://registry.npmjs.org/@cacheable/memory/-/memory-2.2.0.tgz",
++      "integrity": "sha512-CTLKqLItRCEixEAewD3/j9DB3/o96gpTPD4eJ1v+DGOlxZRZncRQkGYqqnAGCscYd6RNeXfGeiuCphsPtqyIfQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@cacheable/utils": "^2.5.0",
++        "@keyv/bigmap": "^1.3.1",
++        "hookified": "^1.15.1",
++        "keyv": "^5.6.0"
++      }
++    },
++    "node_modules/@cacheable/utils": {
++      "version": "2.5.0",
++      "resolved": "https://registry.npmjs.org/@cacheable/utils/-/utils-2.5.0.tgz",
++      "integrity": "sha512-buipgOVDkkPXNR5+xBpDw7Zk2n1EvU7qBJCNUcL7rhQ//kfpOXPAvQ511Os0vpLYJ1pZnvudNytkQt2hst3wqA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "hashery": "^1.5.1",
++        "keyv": "^5.6.0"
++      }
++    },
++    "node_modules/@eslint-community/eslint-utils": {
++      "version": "4.10.1",
++      "resolved": "https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.10.1.tgz",
++      "integrity": "sha512-cuadcxVFE8sDK6iWJbs8Sn0av2Nrh2QSGQhVlBW9AaAHqHwjWsZHT8LJ4hFGPh7ASBV2deFdM7H/DPjulmh8rg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "eslint-visitor-keys": "^3.4.3"
++      },
++      "engines": {
++        "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/eslint"
++      },
++      "peerDependencies": {
++        "eslint": "^6.0.0 || ^7.0.0 || >=8.0.0"
++      }
++    },
++    "node_modules/@eslint-community/eslint-utils/node_modules/eslint-visitor-keys": {
++      "version": "3.4.3",
++      "resolved": "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz",
++      "integrity": "sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "engines": {
++        "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
++      },
++      "funding": {
++        "url": "https://opencollective.com/eslint"
++      }
++    },
++    "node_modules/@eslint-community/regexpp": {
++      "version": "4.12.2",
++      "resolved": "https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.12.2.tgz",
++      "integrity": "sha512-EriSTlt5OC9/7SXkRSCAhfSxxoSUgBm33OH+IkwbdpgoqsSsUg7y3uh+IICI/Qg4BBWr3U2i39RpmycbxMq4ew==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": "^12.0.0 || ^14.0.0 || >=16.0.0"
++      }
++    },
++    "node_modules/@eslint/config-array": {
++      "version": "0.23.5",
++      "resolved": "https://registry.npmjs.org/@eslint/config-array/-/config-array-0.23.5.tgz",
++      "integrity": "sha512-Y3kKLvC1dvTOT+oGlqNQ1XLqK6D1HU2YXPc52NmAlJZbMMWDzGYXMiPRJ8TYD39muD/OTjlZmNJ4ib7dvSrMBA==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@eslint/object-schema": "^3.0.5",
++        "debug": "^4.3.1",
++        "minimatch": "^10.2.4"
++      },
++      "engines": {
++        "node": "^20.19.0 || ^22.13.0 || >=24"
++      }
++    },
++    "node_modules/@eslint/config-helpers": {
++      "version": "0.7.0",
++      "resolved": "https://registry.npmjs.org/@eslint/config-helpers/-/config-helpers-0.7.0.tgz",
++      "integrity": "sha512-DObd/KKUsU+FaFv4PLxSRenpXfQWmPXXP3pPZ6/K1PCrMu2vQpMDMuQe/BqYeoLcz8ro0bVDF1RxOJgfVEdhUw==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@eslint/core": "^1.2.1"
++      },
++      "engines": {
++        "node": "^20.19.0 || ^22.13.0 || >=24"
++      }
++    },
++    "node_modules/@eslint/core": {
++      "version": "1.2.1",
++      "resolved": "https://registry.npmjs.org/@eslint/core/-/core-1.2.1.tgz",
++      "integrity": "sha512-MwcE1P+AZ4C6DWlpin/OmOA54mmIZ/+xZuJiQd4SyB29oAJjN30UW9wkKNptW2ctp4cEsvhlLY/CsQ1uoHDloQ==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@types/json-schema": "^7.0.15"
++      },
++      "engines": {
++        "node": "^20.19.0 || ^22.13.0 || >=24"
++      }
++    },
++    "node_modules/@eslint/object-schema": {
++      "version": "3.0.5",
++      "resolved": "https://registry.npmjs.org/@eslint/object-schema/-/object-schema-3.0.5.tgz",
++      "integrity": "sha512-vqTaUEgxzm+YDSdElad6PiRoX4t8VGDjCtt05zn4nU810UIx/uNEV7/lZJ6KwFThKZOzOxzXy48da+No7HZaMw==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "engines": {
++        "node": "^20.19.0 || ^22.13.0 || >=24"
++      }
++    },
++    "node_modules/@eslint/plugin-kit": {
++      "version": "0.7.3",
++      "resolved": "https://registry.npmjs.org/@eslint/plugin-kit/-/plugin-kit-0.7.3.tgz",
++      "integrity": "sha512-IkO+/KEUvwbVpiURZg+P7zF74z5Jxe0UgJxVni+RtoHQ6IZieXaO02kmadomap/q+l6bc/jdPGGqTjhuZnuz1Q==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@eslint/core": "^1.2.1",
++        "levn": "^0.4.1"
++      },
++      "engines": {
++        "node": "^20.19.0 || ^22.13.0 || >=24"
++      }
++    },
++    "node_modules/@humanfs/core": {
++      "version": "0.19.2",
++      "resolved": "https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz",
++      "integrity": "sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@humanfs/types": "^0.15.0"
++      },
++      "engines": {
++        "node": ">=18.18.0"
++      }
++    },
++    "node_modules/@humanfs/node": {
++      "version": "0.16.8",
++      "resolved": "https://registry.npmjs.org/@humanfs/node/-/node-0.16.8.tgz",
++      "integrity": "sha512-gE1eQNZ3R++kTzFUpdGlpmy8kDZD/MLyHqDwqjkVQI0JMdI1D51sy1H958PNXYkM2rAac7e5/CnIKZrHtPh3BQ==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "@humanfs/core": "^0.19.2",
++        "@humanfs/types": "^0.15.0",
++        "@humanwhocodes/retry": "^0.4.0"
++      },
++      "engines": {
++        "node": ">=18.18.0"
++      }
++    },
++    "node_modules/@humanfs/types": {
++      "version": "0.15.0",
++      "resolved": "https://registry.npmjs.org/@humanfs/types/-/types-0.15.0.tgz",
++      "integrity": "sha512-ZZ1w0aoQkwuUuC7Yf+7sdeaNfqQiiLcSRbfI08oAxqLtpXQr9AIVX7Ay7HLDuiLYAaFPu8oBYNq/QIi9URHJ3Q==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "engines": {
++        "node": ">=18.18.0"
++      }
++    },
++    "node_modules/@humanwhocodes/module-importer": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz",
++      "integrity": "sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "engines": {
++        "node": ">=12.22"
++      },
++      "funding": {
++        "type": "github",
++        "url": "https://github.com/sponsors/nzakas"
++      }
++    },
++    "node_modules/@humanwhocodes/retry": {
++      "version": "0.4.3",
++      "resolved": "https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.4.3.tgz",
++      "integrity": "sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "engines": {
++        "node": ">=18.18"
++      },
++      "funding": {
++        "type": "github",
++        "url": "https://github.com/sponsors/nzakas"
++      }
++    },
++    "node_modules/@keyv/bigmap": {
++      "version": "1.3.1",
++      "resolved": "https://registry.npmjs.org/@keyv/bigmap/-/bigmap-1.3.1.tgz",
++      "integrity": "sha512-WbzE9sdmQtKy8vrNPa9BRnwZh5UF4s1KTmSK0KUVLo3eff5BlQNNWDnFOouNpKfPKDnms9xynJjsMYjMaT/aFQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "hashery": "^1.4.0",
++        "hookified": "^1.15.0"
++      },
++      "engines": {
++        "node": ">= 18"
++      },
++      "peerDependencies": {
++        "keyv": "^5.6.0"
++      }
++    },
++    "node_modules/@keyv/serialize": {
++      "version": "1.1.1",
++      "resolved": "https://registry.npmjs.org/@keyv/serialize/-/serialize-1.1.1.tgz",
++      "integrity": "sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/@types/esrecurse": {
++      "version": "4.3.1",
++      "resolved": "https://registry.npmjs.org/@types/esrecurse/-/esrecurse-4.3.1.tgz",
++      "integrity": "sha512-xJBAbDifo5hpffDBuHl0Y8ywswbiAp/Wi7Y/GtAgSlZyIABppyurxVueOPE8LUQOxdlgi6Zqce7uoEpqNTeiUw==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/@types/estree": {
++      "version": "1.0.9",
++      "resolved": "https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz",
++      "integrity": "sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/@types/json-schema": {
++      "version": "7.0.15",
++      "resolved": "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz",
++      "integrity": "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/acorn": {
++      "version": "8.19.0",
++      "resolved": "https://registry.npmjs.org/acorn/-/acorn-8.19.0.tgz",
++      "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
++      "dev": true,
++      "license": "MIT",
++      "bin": {
++        "acorn": "bin/acorn"
++      },
++      "engines": {
++        "node": ">=0.4.0"
++      }
++    },
++    "node_modules/acorn-jsx": {
++      "version": "5.3.2",
++      "resolved": "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz",
++      "integrity": "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==",
++      "dev": true,
++      "license": "MIT",
++      "peerDependencies": {
++        "acorn": "^6.0.0 || ^7.0.0 || ^8.0.0"
++      }
++    },
++    "node_modules/ajv": {
++      "version": "6.15.0",
++      "resolved": "https://registry.npmjs.org/ajv/-/ajv-6.15.0.tgz",
++      "integrity": "sha512-fgFx7Hfoq60ytK2c7DhnF8jIvzYgOMxfugjLOSMHjLIPgenqa7S7oaagATUq99mV6IYvN2tRmC0wnTYX6iPbMw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "fast-deep-equal": "^3.1.1",
++        "fast-json-stable-stringify": "^2.0.0",
++        "json-schema-traverse": "^0.4.1",
++        "uri-js": "^4.2.2"
++      },
++      "funding": {
++        "type": "github",
++        "url": "https://github.com/sponsors/epoberezkin"
++      }
++    },
+     "node_modules/axe-core": {
+       "version": "4.13.0",
+       "resolved": "https://registry.npmjs.org/axe-core/-/axe-core-4.13.0.tgz",
+@@ -25,6 +308,318 @@
+         "node": ">=4"
+       }
+     },
++    "node_modules/balanced-match": {
++      "version": "4.0.4",
++      "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.4.tgz",
++      "integrity": "sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": "18 || 20 || >=22"
++      }
++    },
++    "node_modules/brace-expansion": {
++      "version": "5.0.12",
++      "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz",
++      "integrity": "sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "balanced-match": "^4.0.2"
++      },
++      "engines": {
++        "node": "20 || >=22"
++      }
++    },
++    "node_modules/cacheable": {
++      "version": "2.5.0",
++      "resolved": "https://registry.npmjs.org/cacheable/-/cacheable-2.5.0.tgz",
++      "integrity": "sha512-60cyAOytib/OzBw1JNSoSV/boK1AtHryDIjvVBk7XbN4ugfkM3+Sry7fEjNgPMGgOjuaZPAp8ruZ0Cxafwyq9g==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@cacheable/memory": "^2.2.0",
++        "@cacheable/utils": "^2.5.0",
++        "hookified": "^1.15.0",
++        "keyv": "^5.6.0",
++        "qified": "^0.10.1"
++      }
++    },
++    "node_modules/cross-spawn": {
++      "version": "7.0.6",
++      "resolved": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz",
++      "integrity": "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "path-key": "^3.1.0",
++        "shebang-command": "^2.0.0",
++        "which": "^2.0.1"
++      },
++      "engines": {
++        "node": ">= 8"
++      }
++    },
++    "node_modules/debug": {
++      "version": "4.4.3",
++      "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz",
++      "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "ms": "^2.1.3"
++      },
++      "engines": {
++        "node": ">=6.0"
++      },
++      "peerDependenciesMeta": {
++        "supports-color": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/deep-is": {
++      "version": "0.1.4",
++      "resolved": "https://registry.npmjs.org/deep-is/-/deep-is-0.1.4.tgz",
++      "integrity": "sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/escape-string-regexp": {
++      "version": "4.0.0",
++      "resolved": "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz",
++      "integrity": "sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=10"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/eslint": {
++      "version": "10.13.0",
++      "resolved": "https://registry.npmjs.org/eslint/-/eslint-10.13.0.tgz",
++      "integrity": "sha512-UohDjD4zSzEwhf58M3O7vc/ycc8O1I7dNlhtD0WxE8Px8EHNJKtUwzBqrzeGhisRuv2ag4sAYswszCJRgKXYUg==",
++      "dev": true,
++      "license": "MIT",
++      "workspaces": [
++        "packages/*"
++      ],
++      "dependencies": {
++        "@eslint-community/eslint-utils": "^4.8.0",
++        "@eslint-community/regexpp": "^4.12.2",
++        "@eslint/config-array": "^0.23.5",
++        "@eslint/config-helpers": "^0.7.0",
++        "@eslint/core": "^1.2.1",
++        "@eslint/plugin-kit": "^0.7.3",
++        "@humanfs/node": "^0.16.6",
++        "@humanwhocodes/module-importer": "^1.0.1",
++        "@humanwhocodes/retry": "^0.4.2",
++        "@types/estree": "^1.0.6",
++        "ajv": "^6.14.0",
++        "cross-spawn": "^7.0.6",
++        "debug": "^4.3.2",
++        "escape-string-regexp": "^4.0.0",
++        "eslint-scope": "^9.1.2",
++        "eslint-visitor-keys": "^5.0.1",
++        "espree": "^11.2.0",
++        "esquery": "^1.7.0",
++        "esutils": "^2.0.2",
++        "fast-deep-equal": "^3.1.3",
++        "file-entry-cache": "11.1.5 || >11.1.6 <12",
++        "find-up": "^5.0.0",
++        "glob-parent": "^6.0.2",
++        "ignore": "^5.2.0",
++        "imurmurhash": "^0.1.4",
++        "is-glob": "^4.0.0",
++        "json-stable-stringify-without-jsonify": "^1.0.1",
++        "minimatch": "^10.2.5",
++        "natural-compare": "^1.4.0",
++        "optionator": "^0.9.3"
++      },
++      "bin": {
++        "eslint": "bin/eslint.js"
++      },
++      "engines": {
++        "node": "^20.19.0 || ^22.13.0 || >=24"
++      },
++      "funding": {
++        "url": "https://eslint.org/donate"
++      },
++      "peerDependencies": {
++        "jiti": "*"
++      },
++      "peerDependenciesMeta": {
++        "jiti": {
++          "optional": true
++        }
++      }
++    },
++    "node_modules/eslint-scope": {
++      "version": "9.1.2",
++      "resolved": "https://registry.npmjs.org/eslint-scope/-/eslint-scope-9.1.2.tgz",
++      "integrity": "sha512-xS90H51cKw0jltxmvmHy2Iai1LIqrfbw57b79w/J7MfvDfkIkFZ+kj6zC3BjtUwh150HsSSdxXZcsuv72miDFQ==",
++      "dev": true,
++      "license": "BSD-2-Clause",
++      "dependencies": {
++        "@types/esrecurse": "^4.3.1",
++        "@types/estree": "^1.0.8",
++        "esrecurse": "^4.3.0",
++        "estraverse": "^5.2.0"
++      },
++      "engines": {
++        "node": "^20.19.0 || ^22.13.0 || >=24"
++      },
++      "funding": {
++        "url": "https://opencollective.com/eslint"
++      }
++    },
++    "node_modules/eslint-visitor-keys": {
++      "version": "5.0.1",
++      "resolved": "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-5.0.1.tgz",
++      "integrity": "sha512-tD40eHxA35h0PEIZNeIjkHoDR4YjjJp34biM0mDvplBe//mB+IHCqHDGV7pxF+7MklTvighcCPPZC7ynWyjdTA==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "engines": {
++        "node": "^20.19.0 || ^22.13.0 || >=24"
++      },
++      "funding": {
++        "url": "https://opencollective.com/eslint"
++      }
++    },
++    "node_modules/espree": {
++      "version": "11.2.0",
++      "resolved": "https://registry.npmjs.org/espree/-/espree-11.2.0.tgz",
++      "integrity": "sha512-7p3DrVEIopW1B1avAGLuCSh1jubc01H2JHc8B4qqGblmg5gI9yumBgACjWo4JlIc04ufug4xJ3SQI8HkS/Rgzw==",
++      "dev": true,
++      "license": "BSD-2-Clause",
++      "dependencies": {
++        "acorn": "^8.16.0",
++        "acorn-jsx": "^5.3.2",
++        "eslint-visitor-keys": "^5.0.1"
++      },
++      "engines": {
++        "node": "^20.19.0 || ^22.13.0 || >=24"
++      },
++      "funding": {
++        "url": "https://opencollective.com/eslint"
++      }
++    },
++    "node_modules/esquery": {
++      "version": "1.7.0",
++      "resolved": "https://registry.npmjs.org/esquery/-/esquery-1.7.0.tgz",
++      "integrity": "sha512-Ap6G0WQwcU/LHsvLwON1fAQX9Zp0A2Y6Y/cJBl9r/JbW90Zyg4/zbG6zzKa2OTALELarYHmKu0GhpM5EO+7T0g==",
++      "dev": true,
++      "license": "BSD-3-Clause",
++      "dependencies": {
++        "estraverse": "^5.1.0"
++      },
++      "engines": {
++        "node": ">=0.10"
++      }
++    },
++    "node_modules/esrecurse": {
++      "version": "4.3.0",
++      "resolved": "https://registry.npmjs.org/esrecurse/-/esrecurse-4.3.0.tgz",
++      "integrity": "sha512-KmfKL3b6G+RXvP8N1vr3Tq1kL/oCFgn2NYXEtqP8/L3pKapUA4G8cFVaoF3SU323CD4XypR/ffioHmkti6/Tag==",
++      "dev": true,
++      "license": "BSD-2-Clause",
++      "dependencies": {
++        "estraverse": "^5.2.0"
++      },
++      "engines": {
++        "node": ">=4.0"
++      }
++    },
++    "node_modules/estraverse": {
++      "version": "5.3.0",
++      "resolved": "https://registry.npmjs.org/estraverse/-/estraverse-5.3.0.tgz",
++      "integrity": "sha512-MMdARuVEQziNTeJD8DgMqmhwR11BRQ/cBP+pLtYdSTnf3MIO8fFeiINEbX36ZdNlfU/7A9f3gUw49B3oQsvwBA==",
++      "dev": true,
++      "license": "BSD-2-Clause",
++      "engines": {
++        "node": ">=4.0"
++      }
++    },
++    "node_modules/esutils": {
++      "version": "2.0.3",
++      "resolved": "https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz",
++      "integrity": "sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==",
++      "dev": true,
++      "license": "BSD-2-Clause",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/fast-deep-equal": {
++      "version": "3.1.3",
++      "resolved": "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz",
++      "integrity": "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/fast-json-stable-stringify": {
++      "version": "2.1.0",
++      "resolved": "https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz",
++      "integrity": "sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/fast-levenshtein": {
++      "version": "2.0.6",
++      "resolved": "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz",
++      "integrity": "sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/file-entry-cache": {
++      "version": "11.1.5",
++      "resolved": "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-11.1.5.tgz",
++      "integrity": "sha512-+PFTHITI08JIGhnNpGNI8T8inUpgZfk3GNEqfT9R2zZV2iFXg3CvqzSl/uEhs7TSGujYRELEANyDvS8Fj7+S7Q==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "flat-cache": "^6.1.23"
++      }
++    },
++    "node_modules/find-up": {
++      "version": "5.0.0",
++      "resolved": "https://registry.npmjs.org/find-up/-/find-up-5.0.0.tgz",
++      "integrity": "sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "locate-path": "^6.0.0",
++        "path-exists": "^4.0.0"
++      },
++      "engines": {
++        "node": ">=10"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/flat-cache": {
++      "version": "6.1.23",
++      "resolved": "https://registry.npmjs.org/flat-cache/-/flat-cache-6.1.23.tgz",
++      "integrity": "sha512-f++BY9pTk+983xK1FLzlLpmM0i0z+jHmx3QESGkURMXujQZz1k5wzwX6hjnQ8goaD0B+sYnDK1yZ6MTyZfUaqA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "cacheable": "^2.5.0",
++        "flatted": "^3.4.2",
++        "hookified": "^1.15.0"
++      }
++    },
++    "node_modules/flatted": {
++      "version": "3.4.4",
++      "resolved": "https://registry.npmjs.org/flatted/-/flatted-3.4.4.tgz",
++      "integrity": "sha512-5+ybhBZANEJxaH3X5evAFatUxLfEHSr7n6kYJ+1Qd0mUqr4eu9gIf6GDbWHf8RJijHrjjO8G+la14SlL2SeS1Q==",
++      "dev": true,
++      "license": "ISC"
++    },
+     "node_modules/fsevents": {
+       "version": "2.3.2",
+       "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz",
+@@ -40,6 +635,243 @@
+         "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
+       }
+     },
++    "node_modules/glob-parent": {
++      "version": "6.0.2",
++      "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz",
++      "integrity": "sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==",
++      "dev": true,
++      "license": "ISC",
++      "dependencies": {
++        "is-glob": "^4.0.3"
++      },
++      "engines": {
++        "node": ">=10.13.0"
++      }
++    },
++    "node_modules/hashery": {
++      "version": "1.5.1",
++      "resolved": "https://registry.npmjs.org/hashery/-/hashery-1.5.1.tgz",
++      "integrity": "sha512-iZyKG96/JwPz1N55vj2Ie2vXbhu440zfUfJvSwEqEbeLluk7NnapfGqa7LH0mOsnDxTF85Mx8/dyR6HfqcbmbQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "hookified": "^1.15.0"
++      },
++      "engines": {
++        "node": ">=20"
++      }
++    },
++    "node_modules/hookified": {
++      "version": "1.15.1",
++      "resolved": "https://registry.npmjs.org/hookified/-/hookified-1.15.1.tgz",
++      "integrity": "sha512-MvG/clsADq1GPM2KGo2nyfaWVyn9naPiXrqIe4jYjXNZQt238kWyOGrsyc/DmRAQ+Re6yeo6yX/yoNCG5KAEVg==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/ignore": {
++      "version": "5.3.2",
++      "resolved": "https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz",
++      "integrity": "sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 4"
++      }
++    },
++    "node_modules/imurmurhash": {
++      "version": "0.1.4",
++      "resolved": "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz",
++      "integrity": "sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.8.19"
++      }
++    },
++    "node_modules/is-extglob": {
++      "version": "2.1.1",
++      "resolved": "https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz",
++      "integrity": "sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/is-glob": {
++      "version": "4.0.3",
++      "resolved": "https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz",
++      "integrity": "sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "is-extglob": "^2.1.1"
++      },
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/isexe": {
++      "version": "2.0.0",
++      "resolved": "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz",
++      "integrity": "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==",
++      "dev": true,
++      "license": "ISC"
++    },
++    "node_modules/json-schema-traverse": {
++      "version": "0.4.1",
++      "resolved": "https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz",
++      "integrity": "sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/json-stable-stringify-without-jsonify": {
++      "version": "1.0.1",
++      "resolved": "https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz",
++      "integrity": "sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/keyv": {
++      "version": "5.6.0",
++      "resolved": "https://registry.npmjs.org/keyv/-/keyv-5.6.0.tgz",
++      "integrity": "sha512-CYDD3SOtsHtyXeEORYRx2qBtpDJFjRTGXUtmNEMGyzYOKj1TE3tycdlho7kA1Ufx9OYWZzg52QFBGALTirzDSw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@keyv/serialize": "^1.1.1"
++      }
++    },
++    "node_modules/levn": {
++      "version": "0.4.1",
++      "resolved": "https://registry.npmjs.org/levn/-/levn-0.4.1.tgz",
++      "integrity": "sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "prelude-ls": "^1.2.1",
++        "type-check": "~0.4.0"
++      },
++      "engines": {
++        "node": ">= 0.8.0"
++      }
++    },
++    "node_modules/locate-path": {
++      "version": "6.0.0",
++      "resolved": "https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz",
++      "integrity": "sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "p-locate": "^5.0.0"
++      },
++      "engines": {
++        "node": ">=10"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/minimatch": {
++      "version": "10.2.6",
++      "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-10.2.6.tgz",
++      "integrity": "sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==",
++      "dev": true,
++      "license": "BlueOak-1.0.0",
++      "dependencies": {
++        "brace-expansion": "^5.0.8"
++      },
++      "engines": {
++        "node": "18 || 20 || >=22"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/isaacs"
++      }
++    },
++    "node_modules/ms": {
++      "version": "2.1.3",
++      "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
++      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/natural-compare": {
++      "version": "1.4.0",
++      "resolved": "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz",
++      "integrity": "sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/optionator": {
++      "version": "0.9.4",
++      "resolved": "https://registry.npmjs.org/optionator/-/optionator-0.9.4.tgz",
++      "integrity": "sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "deep-is": "^0.1.3",
++        "fast-levenshtein": "^2.0.6",
++        "levn": "^0.4.1",
++        "prelude-ls": "^1.2.1",
++        "type-check": "^0.4.0",
++        "word-wrap": "^1.2.5"
++      },
++      "engines": {
++        "node": ">= 0.8.0"
++      }
++    },
++    "node_modules/p-limit": {
++      "version": "3.1.0",
++      "resolved": "https://registry.npmjs.org/p-limit/-/p-limit-3.1.0.tgz",
++      "integrity": "sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "yocto-queue": "^0.1.0"
++      },
++      "engines": {
++        "node": ">=10"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/p-locate": {
++      "version": "5.0.0",
++      "resolved": "https://registry.npmjs.org/p-locate/-/p-locate-5.0.0.tgz",
++      "integrity": "sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "p-limit": "^3.0.2"
++      },
++      "engines": {
++        "node": ">=10"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
++    },
++    "node_modules/path-exists": {
++      "version": "4.0.0",
++      "resolved": "https://registry.npmjs.org/path-exists/-/path-exists-4.0.0.tgz",
++      "integrity": "sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=8"
++      }
++    },
++    "node_modules/path-key": {
++      "version": "3.1.1",
++      "resolved": "https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz",
++      "integrity": "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=8"
++      }
++    },
+     "node_modules/playwright": {
+       "version": "1.62.1",
+       "resolved": "https://registry.npmjs.org/playwright/-/playwright-1.62.1.tgz",
+@@ -71,6 +903,131 @@
+       "engines": {
+         "node": ">=20"
+       }
++    },
++    "node_modules/prelude-ls": {
++      "version": "1.2.1",
++      "resolved": "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz",
++      "integrity": "sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">= 0.8.0"
++      }
++    },
++    "node_modules/punycode": {
++      "version": "2.3.1",
++      "resolved": "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz",
++      "integrity": "sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=6"
++      }
++    },
++    "node_modules/qified": {
++      "version": "0.10.1",
++      "resolved": "https://registry.npmjs.org/qified/-/qified-0.10.1.tgz",
++      "integrity": "sha512-+Owyggi9IxT1ePKGafcI87ubSmxol6smwJ+RAHDQlx9+9cPwFWDiKFFCPuWhr9ignlGpZ9vDQLw67N4dcTVFEA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "hookified": "^2.1.1"
++      },
++      "engines": {
++        "node": ">=20"
++      }
++    },
++    "node_modules/qified/node_modules/hookified": {
++      "version": "2.2.0",
++      "resolved": "https://registry.npmjs.org/hookified/-/hookified-2.2.0.tgz",
++      "integrity": "sha512-p/LgFzRN5FeoD3DLS6bkUapeye6E4SI6yJs6KetENd18S+FBthqYq2amJUWpt5z0EQwwHemidjY5OqJGEKm5uA==",
++      "dev": true,
++      "license": "MIT"
++    },
++    "node_modules/shebang-command": {
++      "version": "2.0.0",
++      "resolved": "https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz",
++      "integrity": "sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "shebang-regex": "^3.0.0"
++      },
++      "engines": {
++        "node": ">=8"
++      }
++    },
++    "node_modules/shebang-regex": {
++      "version": "3.0.0",
++      "resolved": "https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz",
++      "integrity": "sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=8"
++      }
++    },
++    "node_modules/type-check": {
++      "version": "0.4.0",
++      "resolved": "https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz",
++      "integrity": "sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "prelude-ls": "^1.2.1"
++      },
++      "engines": {
++        "node": ">= 0.8.0"
++      }
++    },
++    "node_modules/uri-js": {
++      "version": "4.4.1",
++      "resolved": "https://registry.npmjs.org/uri-js/-/uri-js-4.4.1.tgz",
++      "integrity": "sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==",
++      "dev": true,
++      "license": "BSD-2-Clause",
++      "dependencies": {
++        "punycode": "^2.1.0"
++      }
++    },
++    "node_modules/which": {
++      "version": "2.0.2",
++      "resolved": "https://registry.npmjs.org/which/-/which-2.0.2.tgz",
++      "integrity": "sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==",
++      "dev": true,
++      "license": "ISC",
++      "dependencies": {
++        "isexe": "^2.0.0"
++      },
++      "bin": {
++        "node-which": "bin/node-which"
++      },
++      "engines": {
++        "node": ">= 8"
++      }
++    },
++    "node_modules/word-wrap": {
++      "version": "1.2.5",
++      "resolved": "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.5.tgz",
++      "integrity": "sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=0.10.0"
++      }
++    },
++    "node_modules/yocto-queue": {
++      "version": "0.1.0",
++      "resolved": "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz",
++      "integrity": "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==",
++      "dev": true,
++      "license": "MIT",
++      "engines": {
++        "node": ">=10"
++      },
++      "funding": {
++        "url": "https://github.com/sponsors/sindresorhus"
++      }
+     }
+   }
+ }
+diff --git a/package.json b/package.json
+index 65fbb2f..2ee099c 100644
+--- a/package.json
++++ b/package.json
+@@ -21,13 +21,19 @@
+     "test:nachlese-mc:browser": "node tests/nachlese-mc-corpus-browser.mjs",
+     "test:nachlese-mc:fixtures": "node tests/nachlese-mc-browser.mjs",
+     "test:nachlese-mc:update": "node tests/nachlese-mc-update.mjs",
+-    "pretest": "npm run validate"
++    "pretest": "npm run validate",
++    "lint": "eslint src scripts tests/*.test.mjs eslint.config.js",
++    "check:modules": "node scripts/check-modules.mjs",
++    "check:contracts": "node scripts/check-contracts.mjs",
++    "check:build": "node scripts/check-build.mjs",
++    "quality": "node scripts/quality-gate.mjs"
+   },
+   "engines": {
+     "node": ">=20"
+   },
+   "devDependencies": {
+     "axe-core": "^4.13.0",
++    "eslint": "10.13.0",
+     "playwright": "^1.62.1"
+   }
+ }
+diff --git a/scripts/build.mjs b/scripts/build.mjs
+index 0ba6d26..c3b7cd4 100644
+--- a/scripts/build.mjs
++++ b/scripts/build.mjs
+@@ -20,7 +20,9 @@ const contentHash=hash(JSON.stringify(candidateFiles));
+ const out=process.env.FAITHPATH_OUT||'dist', release=`releases/${BUILD}`;
+ if(!/^FP4-\d{8}-[A-Z][A-Z0-9-]*$/.test(BUILD)||BUILD==='FP4-20260916-F')throw new Error('New build ID required');
+ fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(`${out}/${release}`,{recursive:true});
+-fs.cpSync('data',`${out}/${release}/data`,{recursive:true,filter:p=>!p.startsWith('data/audit')});
++// Bible loader URLs are canonical /data/bibles paths. Do not cache a second,
++// unused versioned copy; source content and both canonical translations remain.
++fs.cpSync('data',`${out}/${release}/data`,{recursive:true,filter:p=>!p.startsWith('data/audit')&&p!=='data/bibles'&&!p.startsWith('data/bibles/')});
+ fs.writeFileSync(`${out}/${release}/data/reference-index.json`,JSON.stringify(index));
+ fs.writeFileSync(`${out}/${release}/data/content-report.json`,JSON.stringify(report,null,2));
+ fs.cpSync('src',`${out}/${release}/src`,{recursive:true});
+diff --git a/scripts/check-build.mjs b/scripts/check-build.mjs
+new file mode 100644
+index 0000000..fa2aec2
+--- /dev/null
++++ b/scripts/check-build.mjs
+@@ -0,0 +1,32 @@
++/** Verify the actual generated release, including every canonical offline Bible. */
++import fs from 'node:fs';
++import path from 'node:path';
++import assert from 'node:assert/strict';
++import crypto from 'node:crypto';
++const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
++const files=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(path.join(dir,e.name)):[path.join(dir,e.name)]).sort();
++export function checkBuild(root) {
++ const receipt=JSON.parse(fs.readFileSync(path.join(root,'release-integrity.json')));
++ const actual=Object.fromEntries(files(root).filter(f=>path.relative(root,f)!=='release-integrity.json').map(f=>[path.relative(root,f),sha(fs.readFileSync(f))]));
++ assert.deepEqual(actual,receipt.files,'Every emitted file must be in the integrity map');
++ assert.equal(sha(JSON.stringify(actual)),receipt.build_hash);
++ const source=JSON.parse(fs.readFileSync(path.join(root,'candidate-integrity.json')));
++ for(const [file,digest]of Object.entries(source.files))assert.equal(sha(fs.readFileSync(file)),digest,file);
++ assert.equal(sha(JSON.stringify(source.files)),receipt.content_hash);
++ const bibles=files('data/bibles').filter(f=>f.endsWith('.json'));
++ assert.equal(bibles.length,132);
++ for(const file of bibles)assert.equal(sha(fs.readFileSync(path.join(root,file))),sha(fs.readFileSync(file)),file);
++ const duplicate=path.join(root,'releases',receipt.build,'data/bibles');
++ assert(!fs.existsSync(duplicate),'Versioned Bible copy duplicates 132 canonical offline resources');
++ const worker=fs.readFileSync(path.join(root,'sw.js'),'utf8');
++ const assets=JSON.parse(worker.match(/const ASSETS = (\[[^\n]+\]);/)[1]);
++ const expected=Object.keys(actual).filter(f=>!['sw.js','_headers','_redirects'].includes(f)).map(f=>'./'+f).sort();
++ assert.deepEqual(assets,expected,'Worker must cache the complete release exactly once');
++ const allBibles=bibles.reduce((n,f)=>n+fs.statSync(f).size,0);
++ return {status:'PASS',build:receipt.build,commit:receipt.source_commit,buildHash:receipt.build_hash,contentHash:receipt.content_hash,files:Object.keys(actual).length+1,bibleFiles:132,bibleBytes:allBibles,workerAssets:assets.length};
++}
++if(process.argv[1]&&path.resolve(process.argv[1])===path.resolve(new URL(import.meta.url).pathname)) {
++ const result=checkBuild(process.argv[2]||'dist');
++ if(process.argv[3]){const second=checkBuild(process.argv[3]);assert.deepEqual(second,result);assert.deepEqual(fs.readFileSync(path.join(process.argv[2],'release-integrity.json')),fs.readFileSync(path.join(process.argv[3],'release-integrity.json')));result.twoBuildsByteIdentical=true;}
++ console.log(JSON.stringify(result,null,2));
++}
+diff --git a/scripts/check-contracts.mjs b/scripts/check-contracts.mjs
+new file mode 100644
+index 0000000..600c622
+--- /dev/null
++++ b/scripts/check-contracts.mjs
+@@ -0,0 +1,13 @@
++/** Compare source authorities with the exact accepted base, never with a moving branch. */
++import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';
++import {KEYS,empty} from '../src/store.js';
++const base='7d24aea30bec5b0b8d43e199f3cadfc6305c1e3e';
++const git=(...args)=>execFileSync('git',args,{maxBuffer:64*1024*1024});
++const hash=v=>crypto.createHash('sha256').update(v).digest('hex');
++const authorities=['src/store.js','src/drafts.js','src/journal-storage.js','src/import-validation.js','src/backup-model.js','src/domain.js','src/tree-view.js','src/tree-stage-guide.js','src/bible-journey.js','scripts/sw-template.js','styles.css'];
++const names=git('ls-tree','-r','--name-only',base).toString().trim().split('\n');
++const protectedFiles=names.filter(name=>name.startsWith('data/')||name.startsWith('trees/')||name.startsWith('src/verbunden/')||name.endsWith('.css')||authorities.includes(name));
++for(const file of protectedFiles)assert.equal(hash(fs.readFileSync(file)),hash(git('show',base+':'+file)),file+' changed protected authority/content');
++assert.equal(empty().version,5);
++assert.deepEqual(KEYS,{main:'faithpath.v1.rebuild',plans:'faithpath.guidedPlans.v1',onboard:'faithpath.onboarding.v4',legacyOnboard:'faithpath.onboarding.v3',migration:'faithpath.backup.pre-v5',restore:'faithpath.backup.before-import',draft:'faithpath.draft.v4'});
++console.log(JSON.stringify({status:'PASS',base,protectedFiles:protectedFiles.length,schema:5,keys:KEYS,allContentAndStylesUnchanged:true},null,2));
+diff --git a/scripts/check-modules.mjs b/scripts/check-modules.mjs
+new file mode 100644
+index 0000000..9a5bb68
+--- /dev/null
++++ b/scripts/check-modules.mjs
+@@ -0,0 +1,15 @@
++/** Resolve runtime ESM edges from ESLint's parser, rather than guessing with regex. */
++import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {Linter} from 'eslint';
++const list=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?list(path.join(dir,e.name)):[path.join(dir,e.name)]).filter(f=>f.endsWith('.js')).sort();
++const graph={},linter=new Linter();
++for(const file of list('src')) {
++ const edges=[];
++ const rule={create:()=>({ImportDeclaration:node=>edges.push(node.source.value),ExportNamedDeclaration:node=>{if(node.source)edges.push(node.source.value)},ExportAllDeclaration:node=>edges.push(node.source.value)})};
++ const diagnostics=linter.verify(fs.readFileSync(file,'utf8'),[{plugins:{graph:{rules:{edges:rule}}},rules:{'graph/edges':'error'}}]);
++ assert(!diagnostics.some(d=>d.fatal),file+' has invalid JavaScript');
++ graph[file]=edges.map(edge=>{assert(edge.startsWith('.'),file+': no unbundled runtime dependencies');const target=path.normalize(path.join(path.dirname(file),edge));assert(fs.existsSync(target),file+' imports missing '+target);return target});
++}
++const visiting=new Set(),done=new Set();
++function visit(file,chain=[]){assert(!visiting.has(file),'Runtime import cycle: '+[...chain,file].join(' -> '));if(done.has(file))return;visiting.add(file);for(const next of graph[file]||[])visit(next,[...chain,file]);visiting.delete(file);done.add(file)}
++for(const file of Object.keys(graph))visit(file);
++console.log(JSON.stringify({status:'PASS',modules:Object.keys(graph).length,edges:Object.values(graph).reduce((n,x)=>n+x.length,0),cycles:0,graph},null,2));
+diff --git a/scripts/protected-runtime.mjs b/scripts/protected-runtime.mjs
+index fc23551..9dcca26 100644
+--- a/scripts/protected-runtime.mjs
++++ b/scripts/protected-runtime.mjs
+@@ -2,4 +2,10 @@
+ // Exact source digests only; no content file or arbitrary future runtime is exempted.
+ const BASELINE_STORE='c6d5dd08b2f2144b594c63a7014baa9877a52406ef950b18855681cd355c7d6d';
+ const UIUX5_STORE='6ab0de7812b78a25f50f05f55963a19a5991843e56889e73e7fb67dc6c4b76db';
+-export function matchesProtectedRuntime(file,actual,expected){return actual===expected||(file==='src/store.js'&&expected===BASELINE_STORE&&actual===UIUX5_STORE);}
++// Phase7 adds a pinned development-only lint tool. The tooling contract test
++// preserves every old package byte-for-byte and rejects runtime dependencies.
++const BASELINE_LOCK='157027107db85d2890e77dcf8250ee844f43c477ff55e8437780050efca6621d';
++const PHASE7_LINT_LOCK='ad5ec2b9b5390f254bd32520ccce389f4d2c61c6869c471499c9aca50fe72ee8';
++export function matchesProtectedRuntime(file,actual,expected){return actual===expected||
++ (file==='src/store.js'&&expected===BASELINE_STORE&&actual===UIUX5_STORE)||
++ (file==='package-lock.json'&&expected===BASELINE_LOCK&&actual===PHASE7_LINT_LOCK);}
+diff --git a/scripts/quality-gate.mjs b/scripts/quality-gate.mjs
+new file mode 100644
+index 0000000..2415f32
+--- /dev/null
++++ b/scripts/quality-gate.mjs
+@@ -0,0 +1,36 @@
++/** Read-only quality gate. Outputs are disposable; it cannot publish or alter refs. */
++import fs from 'node:fs';import path from 'node:path';import {spawn,execFileSync} from 'node:child_process';import {once} from 'node:events';
++const root=path.resolve(process.env.QA_GATE_OUT||'qa-output/phase7/gate');fs.mkdirSync(root,{recursive:true});
++const results=[];
++async function run(name,command,args,env={}){
++ const log=fs.openSync(root+'/'+name+'.log','w'),started=new Date().toISOString();
++ const child=spawn(command,args,{env:{...process.env,...env},stdio:['ignore',log,log]});
++ const [code]=await once(child,'exit');fs.closeSync(log);results.push({name,code,started,ended:new Date().toISOString()});
++ fs.writeFileSync(root+'/results.json',JSON.stringify({results},null,2));console.log(name+': '+code);
++ if(code!==0)throw new Error(name+' failed; see '+root+'/'+name+'.log');
++}
++let server;
++try{
++ await run('nt-master','npm',['run','validate:nt-quiz']);
++ await run('nachlese-master','npm',['run','validate:nachlese-editorial']);
++ await run('unit','npm',['test']);
++ await run('lint','npm',['run','lint','--','--max-warnings','5','--format','json','--output-file',root+'/lint.json']);
++ await run('module-graph',process.execPath,['scripts/check-modules.mjs']);
++ await run('contracts',process.execPath,['scripts/check-contracts.mjs']);
++ for(const suffix of ['a','b'])await run('build-'+suffix,'npm',['run','build'],{FAITHPATH_OUT:root+'/build-'+suffix});
++ await run('build-integrity',process.execPath,['scripts/check-build.mjs',root+'/build-a',root+'/build-b']);
++ let previous=process.env.FAITHPATH_PREVIOUS_ROOT;
++ if(!previous){
++  const source=root+'/baseline-source';fs.mkdirSync(source,{recursive:true});
++  execFileSync('git',['archive','--format=tar','--output='+root+'/baseline.tar','7d24aea30bec5b0b8d43e199f3cadfc6305c1e3e']);
++  execFileSync('tar',['-xf',root+'/baseline.tar','-C',source]);
++  previous=root+'/baseline';
++  execFileSync(process.execPath,['scripts/build.mjs'],{cwd:source,env:{...process.env,FAITHPATH_OUT:previous,FAITHPATH_BUILD_COMMIT:'ce89422411ec3382c62ba7683167cf1b6db4a457',FAITHPATH_BUILD_BRANCH:'fix/treeguide2-mobile-final-20261018'},stdio:'pipe'});
++ }
++ const candidate=root+'/build-a';
++ await run('core-browser',process.execPath,['tests/browser.mjs'],{FAITHPATH_TEST_ROOT:candidate,FAITHPATH_PORT:'4574',QA_OUT:root+'/core-browser'});
++ server=spawn(process.execPath,['scripts/serve.mjs',candidate],{env:{...process.env,PORT:'4575'},stdio:['ignore','pipe','inherit']});await once(server.stdout,'data');
++ await run('route-browser',process.execPath,['tests/phase4-routes-browser.mjs'],{QA_URL:'http://127.0.0.1:4575',QA_OUT:root+'/routes'});
++ await run('platform-browser',process.execPath,['tests/phase7/platform-browser.mjs'],{QA_URL:'http://127.0.0.1:4575',QA_OUT:root+'/platform-browser',FAITHPATH_CANDIDATE_ROOT:candidate});
++ await run('offline-update',process.execPath,['tests/phase7/update.mjs'],{FAITHPATH_PREVIOUS_ROOT:previous,FAITHPATH_CANDIDATE_ROOT:candidate,QA_OUT:root+'/update'});
++}finally{server?.kill();fs.writeFileSync(root+'/results.json',JSON.stringify({results,physicalIOS:'OFFEN',noDeployment:true},null,2))}
+diff --git a/src/app-router.js b/src/app-router.js
+new file mode 100644
+index 0000000..653aba9
+--- /dev/null
++++ b/src/app-router.js
+@@ -0,0 +1,112 @@
++import {KEYS} from './store.js';
++import {chapterQuizNavigation} from './chapter-questions.js';
++import {journeyView} from './experience-view.js';
++
++/** Existing hash grammar. Decode each path component, never the query as a path.
++ * @param {string} hash window.location.hash
++ * @returns {{route:string,name:string,query:string,parts:string[],kind:string,key:string|undefined}}
++ */
++export function parseHashRoute(hash='') {
++    const route = hash.slice(1) || "today",
++      [name, query = ""] = route.split("?"),
++      parts = name.split("/").map(decodeURIComponent),
++      [kind, key] = parts;
++  return {route,name,query,parts,kind,key};
++}
++
++/** Own route dispatch and post-route focus, never persistent data.
++ * `views` are the existing app adapters; `getState` is read-only.
++ * The only ui mutations are route/token, quiz navigation and return-focus state.
++ * Inject platform objects to test route races without starting the whole PWA.
++ * @param {{ui:object,getState:Function,views:Object<string,Function>,helpers:object,
++ * canonicalStoryForLegacy:Function,go:Function,storage:Storage,
++ * document:Document,window:Window,location:Location}} dependencies
++ * @returns {() => Promise<void>}
++ */
++export function createAppRouter({ui,getState,views,helpers,canonicalStoryForLegacy,go,storage,document,window,location}) {
++ const {shell,heading,back,button}=helpers;
++ const $=selector=>document.querySelector(selector),$$=selector=>[...document.querySelectorAll(selector)];
++ return async function render() {
++  const token = ++ui.token;
++  try {
++    const {route,name,query,parts,kind,key}=parseHashRoute(location.hash);
++    const previousRoute = ui.route;
++    ui.route = route;
++    if (kind === "merged-story") views.mergedStory(key);
++    else if (kind === "question") views.sourceQuestion(key);
++    else if (kind === "today") views.home();
++    else if (kind === "guidance") views.guidance();
++    else if (kind === "topic") views.topic(key);
++    else if (kind === "bible") views.bible();
++    else if (kind === "bible-journey") {
++      const view=journeyView(getState(),ui.books,key);if(!view)return views.notFound();shell(`${back(key?"Deine Bibelreise":"Bibel",key?"bible-journey":"bible")}${heading("Bibelreise",view.title)}${view.body}`,"bible","journey-page editorial-page depth-page");if(!key)views.fillJourneyScripture($("#main"));
++    }
++    else if (kind === "chapters") views.chapters(key);
++    else if (kind === "chapter-quizzes") views.chapterCollection(key);
++    else if (kind === "read") {
++      shell(
++        `${heading("Bibel", "Der Text wird geöffnet.")}<p role="status">Ein Moment …</p>`,
++        "bible",
++        "reader-page",
++      );
++      await views.reader(parts, new URLSearchParams(query), token);
++    } else if (kind === "marks") views.marks();
++    else if (kind === "mark") views.markDetail(key);
++    else if (kind === "discover") views.discover();
++    else if (kind === "story") views.story(key);
++    else if (kind === "quizzes") views.quizIndex();
++    else if (kind === "quiz") {
++      const x = ui.stories.find((x) => String(x.id) === key);
++      if (!x) return views.notFound();
++      const canonical=canonicalStoryForLegacy(x);
++      if(canonical){go("question/"+canonical.flow_items[0].primary_question_id);return;}
++      const params = new URLSearchParams(query), returnRoute = params.get("return") || "";
++      if (!ui.quiz || String(ui.quiz.story.id) !== key || previousRoute.split("?")[0] !== name || ui.quiz.returnRoute !== returnRoute)
++        ui.quiz = {story:x, index:0, answer:null, returnRoute};
++      ui.quiz.navigation = chapterQuizNavigation(x, ui.books, getState().translation, returnRoute);
++      if (params.get("complete") === "1" && getState().quiz[x.id]?.done) views.chapterQuizComplete(x, ui.quiz.navigation);
++      else views.quiz();
++    } else if (kind === "paths") views.paths();
++    else if (kind === "path") views.path(key);
++    else if (kind === "tree") views.tree();
++    else if (kind === "plans") views.plans();
++    else if (kind === "plan" || kind === "guide") views.plan(kind, key);
++    else if (kind === "journal") views.journal();
++    else if (["entry", "reflection", "review"].includes(kind)) views.entry(key, kind);
++    else if (kind === "history") views.history();
++    else if (kind === "reviews") views.reviews();
++    else if (kind === "more") views.more();
++    else if (kind === "content-status") views.contentStatus();
++    else if (kind === "licenses") views.licenses();
++    else if (kind === "compose") {
++      views.journal();
++      let draft;
++      try {
++        draft = JSON.parse(storage.getItem(KEYS.draft));
++      } catch {}
++      if (draft?.type && draft.values)
++        views.openForm(draft.type, draft.args, draft.values);
++      else views.openForm("entry");
++    } else views.notFound();
++    if (token !== ui.token) return;
++    window.scrollTo({ top: 0, behavior: "instant" });
++    $("h1")?.focus({ preventScroll: true });
++    if(kind==="journal"&&ui.journalReturn){const previous=ui.journalReturn;ui.journalReturn=null;const target=$$("[data-journal-id]").find(el=>el.dataset.journalId===previous.id)?.querySelector("h3 a");if(target){target.focus({preventScroll:true});window.scrollTo({top:previous.scroll,behavior:"instant"});}}
++    if(kind==="path"&&new URLSearchParams(query).has("step")){
++      const stepId=new URLSearchParams(query).get("step"),input=$$(".path-step input").find(el=>el.dataset.id===stepId);
++      if(input){const disclosure=input.closest("details");if(disclosure)disclosure.open=true;input.focus();input.scrollIntoView({block:"center",behavior:"instant"});}
++    }
++    if(kind==="path"&&new URLSearchParams(query).get("section")==="story"){
++      const story=$(".path-story");if(story){story.focus();story.scrollIntoView({block:"start",behavior:"instant"});}
++    }
++    if(kind==="merged-story"&&new URLSearchParams(query).get("reflection")==="1"){
++      const invitation=$(".reflection-invite");if(invitation){invitation.tabIndex=-1;invitation.focus();invitation.scrollIntoView({block:"start",behavior:"instant"});}
++    }
++  } catch (err) {
++    if (token === ui.token)
++      shell(
++        `${back("Heute", "today")}${heading("Das hat nicht geklappt", "Dieser Inhalt ist gerade nicht verfügbar.", err.message)}${button("Erneut versuchen", "retry", {}, "button primary")}`,
++      );
++  }
++}
++}
+diff --git a/src/app.js b/src/app.js
+index fdcee00..95057b7 100644
+--- a/src/app.js
++++ b/src/app.js
+@@ -1,8 +1,13 @@
++import {createPwaController} from './pwa-controller.js';
++import {createBibleLoader} from './bible-loader.js';
++import {escapeHtml as e} from './view-html.js';
++import {createBackupController} from './backup-controller.js';
++import {createAppRouter} from './app-router.js';
+ import {writingDialog} from './verbunden/dialog-view.js';
+ import {prepareWritingArea} from './verbunden/interaction.js';
+ import {renderReaderFlow,readingTools} from './verbunden/reader-flow.js';
+-import {backupSummary,inspectBackupFile,createRestoreSession,assertRestoreSession} from './backup-model.js';
+-import {renderBackupPage,backupPreview,backupConfirmation} from './backup-view.js';
++import {backupSummary} from './backup-model.js';
++import {renderBackupPage} from './backup-view.js';
+ import {selectReminderControls,renderReminderControls,reminderWhy} from './reminders-view.js';
+ import {selectReviews} from './reviews-model.js';
+ import {renderReviewDetail,renderCompletedReviews,renderPendingReviews} from './reviews-view.js';
+@@ -11,7 +16,7 @@ import {renderJournal,renderJournalResults,journalCount} from './journal-view.js
+ import {onboardingContent} from './onboarding-view.js';
+ import {createDiscoveryIndex,selectDiscovery,DISCOVERY_PAGE_SIZE} from './discover-model.js';
+ import {renderDiscovery,renderDiscoveryResults,discoveryCount} from './discover-view.js';
+-import {renderMore,discoveryShortcuts} from './navigation-view.js';
++import {renderMore} from './navigation-view.js';
+ import {capturePathReviewSource,reviewSourceContext,renderReviewSource} from './path-review-context.js';
+ import {selectTreeHistory,renderTreeJourney} from './tree-view.js';
+ import {selectPathsOverview,selectPathDetail} from './paths-model.js';
+@@ -22,16 +27,15 @@ import {chapterOffer,chapterNavigation,initiallyVisibleChapterEnd,chapterOpening
+ import {selectToday} from './today-model.js';
+ import {renderToday} from './today-view.js';
+ import {beginDraftSession,saveDraft,clearDraft,discardDraft,completedDraft} from './drafts.js';
+-import {groupOriginPairs,countLabel} from './journey-sword.js';
++import {groupOriginPairs} from './journey-sword.js';
+ import {recordExploredChapter,observeChapterEnd} from './bible-journey.js';
+-import {journeyView,journeyAcknowledgement,treeBranchView,pathFacts,themePicker} from './experience-view.js';
++import {journeyAcknowledgement,treeBranchView,pathFacts,themePicker} from './experience-view.js';
+ import {themeId,applyTheme,THEMES} from './themes.js';
+-import {createChapterCatalog,chapterUnit,chapterQuizRoute,chapterQuizNavigation} from "./chapter-questions.js";
+-import {journalMatches} from "./journal-search.js";
++import {createChapterCatalog,chapterUnit,chapterQuizRoute} from "./chapter-questions.js";
+ import {deleteJournalEntry,restoreJournalEntry,journalDraftMatches,setJournalPath} from "./journal-management.js";
+ import {journalTransaction,recoverJournalWrite,JOURNAL_WRITE_KEY,journalWriteActive} from "./journal-storage.js";
+ import {isBibleNote,bibleNotes,deleteBibleNote,restoreBibleNote} from "./bible-notes.js";
+-import {readingContext,previousThought,allReviews,reviewsFor,reviewPairs,pathContext,highlightContext} from "./continuity.js";
++import {readingContext,previousThought,allReviews,reviewsFor,reviewPairs,highlightContext} from "./continuity.js";
+ import { HIGHLIGHT_COLORS, highlightColor, overlapsRef, paintRange, clearRange, detachPath } from "./core-experience.js";
+ import { closeMenu, menuMarkup } from "./menu.js";
+ import { createStore, KEYS, id, now } from "./store.js";
+@@ -42,7 +46,6 @@ import {
+   gaps,
+   timeline,
+   treeLevel,
+-  developmentCount,
+   attach,
+   time,
+ } from "./domain.js";
+@@ -61,14 +64,6 @@ const CONTENT_BASE = new URL("../data/", import.meta.url);
+ 
+ const $ = (s, r = document) => r.querySelector(s),
+   $$ = (s, r = document) => [...r.querySelectorAll(s)];
+-const e = (v) =>
+-  String(v ?? "").replace(
+-    /[&<>"']/g,
+-    (c) =>
+-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+-        c
+-      ],
+-  );
+ const date = (d) =>
+   time(d) == null
+     ? "Datum unbekannt"
+@@ -100,7 +95,6 @@ const ui = {
+   stories: [],
+   refs: {},
+   contentStatus: {},
+-  cache: new Map(),
+   route: "today",
+   token: 0,
+   selection: new Set(),
+@@ -116,9 +110,6 @@ const ui = {
+   reviewsLimit: 40,
+   quiz: null,
+   form: null,
+-  import: null,
+-  importRequest: 0,
+-  backupMode: "import",
+   offline: false,
+   waiting: null,
+   archive: false,
+@@ -314,9 +305,7 @@ function safeReading() {
+   const x=readingContext(s());if(!x)return null;
+   try {return {...x,ref:validRef(x.ref,ui.refs)};}catch{return null;}
+ }
+-function continuityPairHTML(pair) {
+-  return `<article class="continuity-pair" data-pair-kind="${e(pair.kind)}"><span class="overline">Damals → Heute</span><div class="continuity-before"><span class="meta">Damals · ${date(pair.before.date)}</span><blockquote>${e(pair.before.text)}</blockquote></div><div class="continuity-after"><span class="meta">Heute · ${date(pair.after.date)}</span><blockquote>${e(pair.after.text)}</blockquote></div>${storyConnections(pair.before)}${link(pair.review ? "Rückblick öffnen" : "Gedanken ansehen",pair.after.route,"text-link")}</article>`;
+-}
++
+ function continuityGroupsHTML(pairs,limit=Infinity) {
+  return groupOriginPairs(pairs).slice(0,limit).map(group=>`<article class="continuity-pair" data-pair-kind="${e(group.pairs[0].kind)}"><span class="overline">Damals → Heute</span><div class="continuity-before"><span class="meta">Damals · ${date(group.before.date)}</span><blockquote>${e(group.before.text)}</blockquote></div>${group.pairs.map(pair=>`<div class="continuity-after continuity-today"><span class="meta">Heute · ${date(pair.after.date)}</span><blockquote>${e(pair.after.text)}</blockquote>${link(pair.review?"Rückblick öffnen":"Gedanken ansehen",pair.after.route,"text-link")}</div>`).join("")}${storyConnections(group.before)}</article>`).join("");
+ }
+@@ -400,26 +389,8 @@ function chapters(code) {
+     "bible",
+   );
+ }
+-async function getBook(code, tr) {
+-  const key = tr + ":" + code;
+-  if (!ui.cache.has(key))
+-    ui.cache.set(
+-      key,
+-      fetch(`data/bibles/${tr}/${code}.json`)
+-        .then((r) => {
+-          if (!r.ok)
+-            throw new Error(
+-              "Der Bibeltext konnte nicht geladen werden. Sobald du wieder online bist, versuche es erneut.",
+-            );
+-          return r.json();
+-        })
+-        .catch((err) => {
+-          ui.cache.delete(key);
+-          throw err;
+-        }),
+-    );
+-  return ui.cache.get(key);
+-}
++const getBook=createBibleLoader();
++
+ function contextOf(origin) {
+   const [kind, pid, i] = origin.split("/");
+   if (kind === "topic") {
+@@ -626,7 +597,6 @@ function discover(legacyQuiz=false) {
+  shell(renderDiscovery({model:discoverySelection(),books:ui.books.filter(b=>ui.discoveryBooks.has(b.code)),filters:{query:ui.storySearch,book:ui.storyBook,kind:ui.storyKind},editorial:runtimeModel.flow.stories.slice(0,3),legacyQuiz},{heading,link,button}),"bible","discover-page discovery-phase4 depth-page");
+ }
+ function quizIndex(){discover(true);}
+-function storyResults(){return renderDiscoveryResults(discoverySelection(),{button},ui.discoveryLegacy);}
+ function refreshDiscovery({focusNew=false,previousCount=0}={}) {
+  const target=$("#story-results");if(!target)return;
+  const model=discoverySelection();
+@@ -805,7 +775,7 @@ async function finishForm(draftSession = ui.draftSession) {
+   document.body.classList.remove("modal-open");
+ }
+ function closeModal() {
+-  ui.importRequest++;ui.import=null;
++  backupController.invalidate();
+   const journalFocus=ui.journalDeletion;
+   ui.noteDeletion=null;
+   ui.journalDeletion=null;
+@@ -1196,36 +1166,7 @@ function download(object, name) {
+   a.remove();
+   setTimeout(() => URL.revokeObjectURL(url), 3000);
+ }
+-function importRefs(next) {
+-  const refs = [
+-    ...next.highlights,
+-    ...next.journal.map((x) => x.ref),
+-    ...next.reflections.map((x) => x.ref),
+-    ...next.reviews.map((x) => x.ref),
+-    ...next.events.map((x) => x.ref),
+-    ...next.paths.flatMap((p) => p.links.map((x) => x.ref)),
+-    ...next.paths.flatMap((p) => p.reviews.map((x) => x.ref)),
+-    next.reading,
+-  ].filter(Boolean);
+-  for (const r of refs) validRef(r, ui.refs);
+-  return next;
+-}
+-function showBackupPreview(next,{mode="import",exported=null}={}) {
+- ui.importRequest++; // Any newer recovery/check flow supersedes outstanding file reads.
+- if(!store.error)store.backup(); // Reuse existing stale-tab guard before describing the current state.
+- const session=createRestoreSession(next,localStorage);
+- modal(mode==="check"?"Backup geprüft":"Bestand vor Wiederherstellung vergleichen",backupPreview({current:backupSummary(s()),incoming:backupSummary(next),mode,exported,date,hasDraft:session.draftRaw!==null,button}));
+- ui.import=mode==="check"?null:session;
+-}
+-async function importFile(file,mode="import") {
+- if(!file)return;
+- const request=++ui.importRequest,route=location.hash,main=localStorage.getItem(KEYS.main),draft=localStorage.getItem(KEYS.draft);
+- ui.import=null;
+- const result=await inspectBackupFile(file,{store,validateRefs:importRefs});
+- if(request!==ui.importRequest||route!==location.hash)return;
+- if(main!==localStorage.getItem(KEYS.main)||draft!==localStorage.getItem(KEYS.draft))throw new Error("Daten oder Entwurf wurden während der Dateiprüfung geändert. Bitte prüfe erneut.");
+- showBackupPreview(result.next,{mode,exported:result.exported});
+-}
++
+ function onboarding() {
+   modal("Willkommen bei FaithPath",onboardingContent({button}));
+   ui.onboardingOpen=true;
+@@ -1238,75 +1179,9 @@ function finishOnboarding(destination=null) {
+   closeModal();
+   if(destination)go(destination);else $("h1")?.focus({preventScroll:true});
+ }
+-async function offlineStatus() {
+-  if (!("serviceWorker" in navigator)) return false;
+-  const reg = await navigator.serviceWorker.getRegistration();
+-  if (
+-    !reg?.active ||
+-    reg.active.state !== "activated" ||
+-    !navigator.serviceWorker.controller
+-  )
+-    return false;
+-  const info = await new Promise((resolve) => {
+-    const channel = new MessageChannel(),
+-      timer = setTimeout(() => resolve(null), 2000);
+-    channel.port1.onmessage = (e) => {
+-      clearTimeout(timer);
+-      resolve(e.data);
+-    };
+-    reg.active.postMessage({ type: "STATUS" }, [channel.port2]);
+-  });
+-  ui.offline = !!info?.ready && info.build === BUILD;
+-  if ($("#offline-state"))
+-    $("#offline-state").textContent = ui.offline
+-      ? "Beide Bibeln und die App sind für dieses Gerät offline bereit."
+-      : "Noch nicht offline bereit. Bleibe online und lade die App bei Bedarf neu.";
+-  return ui.offline;
+-}
+-async function pwa() {
+-  if (!("serviceWorker" in navigator)) return;
+-  try {
+-    const reg = await navigator.serviceWorker.register("./sw.js", {
+-      updateViaCache: "none",
+-    });
+-    const check = () => {
+-      if (reg.waiting && navigator.serviceWorker.controller) {
+-        ui.waiting = reg.waiting;
+-        if (!$(".update-notice"))
+-          $(".page")?.insertAdjacentHTML(
+-            "afterbegin",
+-            `<aside class="update-notice" role="status">Eine neue Version ist bereit. ${button("Jetzt aktualisieren", "update", {}, "text-button")}</aside>`,
+-          );
+-      }
+-    };
+-    check();
+-    reg.addEventListener("updatefound", () =>
+-      reg.installing?.addEventListener("statechange", () => {
+-        setTimeout(check, 0);
+-        offlineStatus();
+-      }),
+-    );
+-    navigator.serviceWorker.addEventListener("controllerchange", () => {
+-      if (ui.updating) location.reload();
+-      else {
+-        ui.waiting = null;
+-        $(".update-notice")?.remove();
+-        offlineStatus();
+-      }
+-    });
+-    await navigator.serviceWorker.ready;
+-    await offlineStatus();
+-    window.addEventListener("focus", () => {
+-      reg.update().catch(() => {});
+-      offlineStatus();
+-    });
+-  } catch {
+-    notify(
+-      "Offline-Vorbereitung konnte nicht abgeschlossen werden. Du kannst die App online weiter nutzen.",
+-      true,
+-    );
+-  }
+-}
++const offlineStatus=()=>pwaController.status();
++const pwa=()=>pwaController.start();
++
+ async function fillJourneyScripture(root) {
+  try {
+   const book=await getBook('EPH','l1912'),text=book.chapters[5].find(v=>v[0]===17)?.[1];
+@@ -1715,49 +1590,7 @@ async function action(a, d, el) {
+     if(d.path){const first=$$(".path-story .timeline li")[previousLimit],target=first?.querySelector("a")||first;if(target){target.tabIndex=-1;target.focus();}}
+     return;
+   }
+-  if (a === "export") {
+-    download(
+-      store.backup(),
+-      "FaithPath-Backup-" + now().slice(0, 10) + ".json",
+-    );
+-    if($("#backup-export-help"))$("#backup-export-help").textContent="Download angefordert. Bitte prüfe im Download-Ordner bzw. in Dateien, ob die JSON-Datei vorhanden ist. FaithPath kann die dauerhafte Speicherung nicht bestätigen.";
+-    return;
+-  }
+-  if (a === "raw-backup") {
+-    download(
+-      store.rawBackup(),
+-      "FaithPath-Originaldaten-" + now().slice(0, 10) + ".json",
+-    );
+-    return;
+-  }
+-  if (a === "import"||a === "check-backup") {
+-    ui.backupMode=a==="check-backup"?"check":"import";$("#import-file").click();return;
+-  }
+-  if(a === "review-import") {
+-    assertRestoreSession(ui.import,localStorage);ui.import.stage="confirm";
+-    modal("Backup wirklich wiederherstellen?",backupConfirmation(button));return;
+-  }
+-  if (a === "confirm-import") {
+-    if(!ui.import||ui.import.stage!=="confirm")return;
+-    const session=ui.import;
+-    const restore=()=>{
+-      // Re-check ownership after waiting: closing, navigating or a newer preview cancels this authorization.
+-      if(ui.import!==session||session.stage!=="confirm"||!$("#dialog").open)return false;
+-      assertRestoreSession(session,localStorage);store.restore(session.next);session.stage="done";return true;
+-    };
+-    el.disabled=true;
+-    let restored;
+-    try{restored=navigator.locks?await navigator.locks.request("faithpath-journal-write",restore):restore();}
+-    finally{if(el.isConnected)el.disabled=false;}
+-    if(!restored)return;
+-    closeModal();go("more?section=data");notify("Backup wiederhergestellt. Ein offener Entwurf bleibt erhalten.");return;
+-  }
+-  if (a === "undo-import") {
+-    const old=JSON.parse(localStorage.getItem(KEYS.restore)||"null");
+-    if(!old)throw new Error("Kein früherer Stand gefunden.");
+-    const restored=old.raw?JSON.parse(old.raw):{paths:[],journal:[],highlights:[]};
+-    showBackupPreview(importRefs(store.prepareImport({data:restored,guidedPlans:JSON.parse(old.guidedPlansRaw||"{}")})));return;
+-  }
++  if(backupController.handles(a)) {await backupController.handle(a,d,el);return;}
+   if (a === "onboard") {
+     onboarding();
+     return;
+@@ -1772,110 +1605,25 @@ async function action(a, d, el) {
+     );
+     return;
+   }
+-  if (a === "update") {
+-    if ($("#dialog").open) {
+-      notify("Speichere oder schließe zuerst deinen Entwurf.");
+-      return;
+-    }
+-    const reg = await navigator.serviceWorker.getRegistration(),
+-      waiting = reg?.waiting;
+-    if (!waiting) {
+-      ui.waiting = null;
+-      $(".update-notice")?.remove();
+-      notify("Deine Version ist aktuell.");
+-      return;
+-    }
+-    ui.updating = true;
+-    waiting.postMessage({ type: "SKIP_WAITING" });
+-    return;
+-  }
+-}
+-async function render() {
+-  const token = ++ui.token;
+-  try {
+-    const route = location.hash.slice(1) || "today",
+-      [name, query = ""] = route.split("?"),
+-      parts = name.split("/").map(decodeURIComponent),
+-      [kind, key] = parts;
+-    const previousRoute = ui.route;
+-    ui.route = route;
+-    if (kind === "merged-story") mergedStory(key);
+-    else if (kind === "question") sourceQuestion(key);
+-    else if (kind === "today") home();
+-    else if (kind === "guidance") guidance();
+-    else if (kind === "topic") topic(key);
+-    else if (kind === "bible") bible();
+-    else if (kind === "bible-journey") {
+-      const view=journeyView(s(),ui.books,key);if(!view)return notFound();shell(`${back(key?"Deine Bibelreise":"Bibel",key?"bible-journey":"bible")}${heading("Bibelreise",view.title)}${view.body}`,"bible","journey-page editorial-page depth-page");if(!key)fillJourneyScripture($("#main"));
+-    }
+-    else if (kind === "chapters") chapters(key);
+-    else if (kind === "chapter-quizzes") chapterCollection(key);
+-    else if (kind === "read") {
+-      shell(
+-        `${heading("Bibel", "Der Text wird geöffnet.")}<p role="status">Ein Moment …</p>`,
+-        "bible",
+-        "reader-page",
+-      );
+-      await reader(parts, new URLSearchParams(query), token);
+-    } else if (kind === "marks") marks();
+-    else if (kind === "mark") markDetail(key);
+-    else if (kind === "discover") discover();
+-    else if (kind === "story") story(key);
+-    else if (kind === "quizzes") quizIndex();
+-    else if (kind === "quiz") {
+-      const x = ui.stories.find((x) => String(x.id) === key);
+-      if (!x) return notFound();
+-      const canonical=canonicalStoryForLegacy(x);
+-      if(canonical){go("question/"+canonical.flow_items[0].primary_question_id);return;}
+-      const params = new URLSearchParams(query), returnRoute = params.get("return") || "";
+-      if (!ui.quiz || String(ui.quiz.story.id) !== key || previousRoute.split("?")[0] !== name || ui.quiz.returnRoute !== returnRoute)
+-        ui.quiz = {story:x, index:0, answer:null, returnRoute};
+-      ui.quiz.navigation = chapterQuizNavigation(x, ui.books, s().translation, returnRoute);
+-      if (params.get("complete") === "1" && s().quiz[x.id]?.done) chapterQuizComplete(x, ui.quiz.navigation);
+-      else quiz();
+-    } else if (kind === "paths") paths();
+-    else if (kind === "path") path(key);
+-    else if (kind === "tree") tree();
+-    else if (kind === "plans") plans();
+-    else if (kind === "plan" || kind === "guide") plan(kind, key);
+-    else if (kind === "journal") journal();
+-    else if (["entry", "reflection", "review"].includes(kind)) entry(key, kind);
+-    else if (kind === "history") history();
+-    else if (kind === "reviews") reviews();
+-    else if (kind === "more") more();
+-    else if (kind === "content-status") contentStatus();
+-    else if (kind === "licenses") licenses();
+-    else if (kind === "compose") {
+-      journal();
+-      let draft;
+-      try {
+-        draft = JSON.parse(localStorage.getItem(KEYS.draft));
+-      } catch {}
+-      if (draft?.type && draft.values)
+-        openForm(draft.type, draft.args, draft.values);
+-      else openForm("entry");
+-    } else notFound();
+-    if (token !== ui.token) return;
+-    window.scrollTo({ top: 0, behavior: "instant" });
+-    $("h1")?.focus({ preventScroll: true });
+-    if(kind==="journal"&&ui.journalReturn){const previous=ui.journalReturn;ui.journalReturn=null;const target=$$("[data-journal-id]").find(el=>el.dataset.journalId===previous.id)?.querySelector("h3 a");if(target){target.focus({preventScroll:true});window.scrollTo({top:previous.scroll,behavior:"instant"});}}
+-    if(kind==="path"&&new URLSearchParams(query).has("step")){
+-      const stepId=new URLSearchParams(query).get("step"),input=$$(".path-step input").find(el=>el.dataset.id===stepId);
+-      if(input){const disclosure=input.closest("details");if(disclosure)disclosure.open=true;input.focus();input.scrollIntoView({block:"center",behavior:"instant"});}
+-    }
+-    if(kind==="path"&&new URLSearchParams(query).get("section")==="story"){
+-      const story=$(".path-story");if(story){story.focus();story.scrollIntoView({block:"start",behavior:"instant"});}
+-    }
+-    if(kind==="merged-story"&&new URLSearchParams(query).get("reflection")==="1"){
+-      const invitation=$(".reflection-invite");if(invitation){invitation.tabIndex=-1;invitation.focus();invitation.scrollIntoView({block:"start",behavior:"instant"});}
+-    }
+-  } catch (err) {
+-    if (token === ui.token)
+-      shell(
+-        `${back("Heute", "today")}${heading("Das hat nicht geklappt", "Dieser Inhalt ist gerade nicht verfügbar.", err.message)}${button("Erneut versuchen", "retry", {}, "button primary")}`,
+-      );
+-  }
++  if (a === "update") {await pwaController.activateUpdate();return;}
+ }
++
++const pwaController=createPwaController({
++ build:BUILD,getServiceWorker:()=>navigator.serviceWorker,
++ onStatus:ready=>{ui.offline=ready;const field=$("#offline-state");if(field)field.textContent=ready?"Beide Bibeln und die App sind für dieses Gerät offline bereit.":"Noch nicht offline bereit. Bleibe online und lade die App bei Bedarf neu.";},
++ onWaiting:worker=>{ui.waiting=worker;if(!worker){$(".update-notice")?.remove();return;}if(!$(".update-notice"))$(".page")?.insertAdjacentHTML("afterbegin",`<aside class="update-notice" role="status">Eine neue Version ist bereit. ${button("Jetzt aktualisieren","update",{},"text-button")}</aside>`);},
++ onNotice:notify,reload:()=>location.reload(),isDialogOpen:()=>$("#dialog").open,
++ addFocusListener:listener=>window.addEventListener("focus",listener)
++});
++const backupController=createBackupController({
++ store,storage:deviceStorage,getRoute:()=>location.hash,getReferences:()=>ui.refs,locks:navigator.locks,find:$,
++ view:{modal,closeModal,go,notify,download,button,date}
++});
++const render=createAppRouter({
++ ui,getState:s,canonicalStoryForLegacy,go,storage:deviceStorage,document,window,location,
++ helpers:{shell,heading,back,button},
++ views:{mergedStory,sourceQuestion,home,guidance,topic,bible,chapters,chapterCollection,reader,marks,markDetail,discover,story,quizIndex,quiz,chapterQuizComplete,paths,path,tree,plans,plan,journal,entry,history,reviews,more,contentStatus,licenses,openForm,notFound,fillJourneyScripture}
++});
+ document.addEventListener("focusin",event=>{
+   const tab=event.target.closest?.(".segmented a");if(!tab)return;
+   const container=tab.parentElement,box=container.getBoundingClientRect(),r=tab.getBoundingClientRect();
+@@ -1947,7 +1695,7 @@ document.addEventListener("change", (ev) => {
+     if (el.name === "status") updateDevelopment();
+     if (el.closest("#editor-form")) persistDraft();
+     if (el.id === "import-file") {
+-      importFile(el.files[0],ui.backupMode).catch((err) =>
++      backupController.inspectFile(el.files[0]).catch((err) =>
+         notify("Import abgebrochen: " + err.message, true),
+       );
+       el.value = "";
+@@ -2003,13 +1751,12 @@ document.addEventListener("change", (ev) => {
+ $("#dialog").addEventListener("cancel",ev=>{if(ui.onboardingOpen){ev.preventDefault();finishOnboarding();return;}if(ui.saving){ev.preventDefault();return;}if(ui.noteDeletion){ev.preventDefault();cancelNoteDeletion();}else if(ui.journalDeletion){ev.preventDefault();closeModal();}});
+ $("#dialog").addEventListener("close", () => {
+   if (!$("#dialog").open) {
+-    ui.form = null;ui.importRequest++;ui.import=null;
++    ui.form = null;backupController.invalidate();
+     document.body.classList.remove("modal-open");
+   }
+ });
+ window.addEventListener("hashchange", () => {
+-  ui.importRequest++; // Every navigation invalidates pending File.text(), even a later return to the same hash.
+-  ui.import=null;
++  backupController.invalidate(); // Invalidate even a later return to the same hash.
+   if(ui.onboardingOpen&&ui.dialogRoute!==location.hash.slice(1))finishOnboarding();
+   if ($("#dialog").open && ui.dialogRoute !== location.hash.slice(1))
+     closeModal();
+diff --git a/src/backup-controller.js b/src/backup-controller.js
+new file mode 100644
+index 0000000..5d35c17
+--- /dev/null
++++ b/src/backup-controller.js
+@@ -0,0 +1,74 @@
++import {KEYS,now} from './store.js';
++import {validRef} from './domain.js';
++import {backupSummary,inspectBackupFile,createRestoreSession,assertRestoreSession} from './backup-model.js';
++import {backupPreview,backupConfirmation} from './backup-view.js';
++
++export const BACKUP_ACTIONS=Object.freeze(['export','raw-backup','import','check-backup','review-import','confirm-import','undo-import']);
++const actions=new Set(BACKUP_ACTIONS);
++
++/** Own the transient import lifecycle; persist exclusively through the existing Store.
++ * Closing/navigating must call invalidate() before a pending file/lock resumes.
++ * `view` supplies the existing shared dialog, formatting and notification adapters.
++ * @param {{store:object,storage:Storage,getRoute:()=>string,getReferences:()=>object,
++ * locks:LockManager|undefined,find:(selector:string)=>Element|null,view:object}} dependencies
++ */
++export function createBackupController({store,storage,getRoute,getReferences,locks,find,view}) {
++ const {modal,closeModal,go,notify,download,button,date}=view;
++ let request=0,selectedMode='import',session=null;
++ const invalidate=()=>{request++;session=null;};
++ function validateRefs(next) {
++  const refs=[...next.highlights,...next.journal.map(x=>x.ref),...next.reflections.map(x=>x.ref),...next.reviews.map(x=>x.ref),...next.events.map(x=>x.ref),...next.paths.flatMap(p=>p.links.map(x=>x.ref)),...next.paths.flatMap(p=>p.reviews.map(x=>x.ref)),next.reading].filter(Boolean);
++  for(const ref of refs)validRef(ref,getReferences());
++  return next;
++ }
++ function preview(next,{mode='import',exported=null}={}) {
++  invalidate();
++  if(!store.error)store.backup();
++  const nextSession=createRestoreSession(next,storage);
++  modal(mode==='check'?'Backup geprüft':'Bestand vor Wiederherstellung vergleichen',backupPreview({current:backupSummary(store.state),incoming:backupSummary(next),mode,exported,date,hasDraft:nextSession.draftRaw!==null,button}));
++  session=mode==='check'?null:nextSession;
++ }
++ async function inspectFile(file) {
++  if(!file)return;
++  const expected=++request,route=getRoute(),main=storage.getItem(KEYS.main),draft=storage.getItem(KEYS.draft),mode=selectedMode;
++  session=null;
++  const result=await inspectBackupFile(file,{store,validateRefs});
++  if(expected!==request||route!==getRoute())return;
++  if(main!==storage.getItem(KEYS.main)||draft!==storage.getItem(KEYS.draft))throw new Error('Daten oder Entwurf wurden während der Dateiprüfung geändert. Bitte prüfe erneut.');
++  preview(result.next,{mode,exported:result.exported});
++ }
++ async function handle(action,data,element) {
++  if(!actions.has(action))return false;
++  if(action==='export') {
++   download(store.backup(),'FaithPath-Backup-'+now().slice(0,10)+'.json');
++   const help=find('#backup-export-help');if(help)help.textContent='Download angefordert. Bitte prüfe im Download-Ordner bzw. in Dateien, ob die JSON-Datei vorhanden ist. FaithPath kann die dauerhafte Speicherung nicht bestätigen.';
++  } else if(action==='raw-backup') {
++   download(store.rawBackup(),'FaithPath-Originaldaten-'+now().slice(0,10)+'.json');
++  } else if(action==='import'||action==='check-backup') {
++   selectedMode=action==='check-backup'?'check':'import';find('#import-file').click();
++  } else if(action==='review-import') {
++   assertRestoreSession(session,storage);session.stage='confirm';
++   modal('Backup wirklich wiederherstellen?',backupConfirmation(button));
++  } else if(action==='confirm-import') {
++   if(!session||session.stage!=='confirm')return;
++   const authorization=session;
++   const restore=()=>{
++    if(session!==authorization||authorization.stage!=='confirm'||!find('#dialog').open)return false;
++    assertRestoreSession(authorization,storage);store.restore(authorization.next);authorization.stage='done';return true;
++   };
++   element.disabled=true;
++   let restored;
++   try{restored=locks?await locks.request('faithpath-journal-write',restore):restore();}
++   finally{if(element.isConnected)element.disabled=false;}
++   if(!restored)return;
++   closeModal();go('more?section=data');notify('Backup wiederhergestellt. Ein offener Entwurf bleibt erhalten.');
++  } else if(action==='undo-import') {
++   const old=JSON.parse(storage.getItem(KEYS.restore)||'null');
++   if(!old)throw new Error('Kein früherer Stand gefunden.');
++   const restored=old.raw?JSON.parse(old.raw):{paths:[],journal:[],highlights:[]};
++   preview(validateRefs(store.prepareImport({data:restored,guidedPlans:JSON.parse(old.guidedPlansRaw||'{}')})));
++  }
++  return true;
++ }
++ return Object.freeze({inspectFile,invalidate,handles:action=>actions.has(action),handle});
++}
+diff --git a/src/bible-loader.js b/src/bible-loader.js
+new file mode 100644
+index 0000000..9b441f0
+--- /dev/null
++++ b/src/bible-loader.js
+@@ -0,0 +1,25 @@
++const failure='Der Bibeltext konnte nicht geladen werden. Sobald du wieder online bist, versuche es erneut.';
++/** A per-app cache of original book responses, not a source of reference authority.
++ * Callers supply canonical book/translation IDs already checked by validRef.
++ * Concurrent requests share a promise. Every failed/malformed result is evicted.
++ * @param {{fetch?:typeof globalThis.fetch}} options
++ */
++export function createBibleLoader({fetch:fetchBook=globalThis.fetch}={}) {
++ const cache=new Map();
++ return function getBook(code,translation) {
++  const key=translation+':'+code;
++  if(!cache.has(key)) {
++   const pending=Promise.resolve().then(()=>fetchBook(`data/bibles/${translation}/${code}.json`)).then(async response=>{
++    if(!response.ok)throw new Error(failure);
++    const book=await response.json();
++    const validChapter=chapter=>Array.isArray(chapter)&&chapter.length>0&&chapter.every((verse,index)=>
++     Array.isArray(verse)&&verse.length===2&&Number.isInteger(verse[0])&&verse[0]>0&&typeof verse[1]==='string'&&verse[1].trim().length>0&&
++     (index===0||verse[0]>chapter[index-1][0]));
++    if(!book||typeof book.name!=='string'||!Array.isArray(book.chapters)||!book.chapters.length||!book.chapters.every(validChapter))throw new Error(failure);
++    return book;
++   }).catch(error=>{cache.delete(key);throw error;});
++   cache.set(key,pending);
++  }
++  return cache.get(key);
++ };
++}
+diff --git a/src/pwa-controller.js b/src/pwa-controller.js
+new file mode 100644
+index 0000000..d64d917
+--- /dev/null
++++ b/src/pwa-controller.js
+@@ -0,0 +1,67 @@
++/** Read-only worker protocol. Always settle and release both message ports.
++ * @returns {Promise<{ready:boolean,build:string}|null>}
++ */
++export function requestWorkerStatus(worker,{MessageChannel:Channel=globalThis.MessageChannel,timeoutMs=2000}={}) {
++ return new Promise(resolve=>{
++  let channel,timer,settled=false;
++  const finish=value=>{
++   if(settled)return;settled=true;clearTimeout(timer);
++   if(channel){channel.port1.onmessage=null;for(const port of [channel.port1,channel.port2])try{port.close();}catch{/* A transferred port may already be detached. */}}
++   resolve(value);
++  };
++  try {
++   channel=new Channel();channel.port1.onmessage=event=>finish(event.data);
++   timer=setTimeout(()=>finish(null),timeoutMs);
++   worker.postMessage({type:'STATUS'},[channel.port2]);
++  } catch {finish(null);}
++ });
++}
++
++/** Own worker lifecycle; no storage, data migration or automatic activation.
++ * Hooks update existing presentation only. Call start once during app startup.
++ * @param {{build:string,getServiceWorker:()=>ServiceWorkerContainer|undefined,
++ * onStatus:(ready:boolean)=>void,onWaiting:(worker:ServiceWorker|null)=>void,
++ * onNotice:Function,reload:()=>void,isDialogOpen:()=>boolean,
++ * addFocusListener:Function,requestStatus?:Function}} dependencies
++ */
++export function createPwaController({build,getServiceWorker,onStatus,onWaiting,onNotice,reload,isDialogOpen,addFocusListener,requestStatus=requestWorkerStatus}) {
++ let sequence=0,updating=false,started=false;
++ async function status() {
++  const current=++sequence;let ready=false;
++  try {
++   const serviceWorker=getServiceWorker(),registration=await serviceWorker?.getRegistration();
++   if(registration?.active?.state==='activated'&&serviceWorker.controller){
++    const info=await requestStatus(registration.active);ready=!!info?.ready&&info.build===build;
++   }
++  } catch {/* Optional platform access must not break the online application. */}
++  if(current===sequence)onStatus(ready);
++  return ready;
++ }
++ const refresh=()=>{void status().catch(error=>onNotice(error.message,true));};
++ async function start() {
++  if(started)return;
++  try {
++   const serviceWorker=getServiceWorker();if(!serviceWorker)return;started=true;
++   const registration=await serviceWorker.register('./sw.js',{updateViaCache:'none'});
++   const check=()=>onWaiting(registration.waiting&&serviceWorker.controller?registration.waiting:null);
++   check();
++   registration.addEventListener('updatefound',()=>registration.installing?.addEventListener('statechange',()=>{setTimeout(check,0);refresh();}));
++   serviceWorker.addEventListener('controllerchange',()=>{
++    if(updating)reload();else{onWaiting(null);refresh();}
++   });
++   await serviceWorker.ready;await status();
++   addFocusListener(()=>{registration.update().catch(()=>{});refresh();});
++  } catch {
++   started=false;
++   onNotice('Offline-Vorbereitung konnte nicht abgeschlossen werden. Du kannst die App online weiter nutzen.',true);
++  }
++ }
++ async function activateUpdate() {
++  if(isDialogOpen()){onNotice('Speichere oder schließe zuerst deinen Entwurf.');return;}
++  const registration=await getServiceWorker()?.getRegistration(),waiting=registration?.waiting;
++  if(!waiting){onWaiting(null);onNotice('Deine Version ist aktuell.');return;}
++  updating=true;
++  try{waiting.postMessage({type:'SKIP_WAITING'});}catch(error){updating=false;throw error;}
++ }
++ return Object.freeze({status,start,activateUpdate});
++}
+diff --git a/src/version.js b/src/version.js
+index e714255..3c9edf1 100644
+--- a/src/version.js
++++ b/src/version.js
+@@ -1 +1 @@
+-export const BUILD = "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL";
++export const BUILD = "FP4-20261018-G-STABLE1-PHASE7-MAINT1";
+diff --git a/tests/app-router.test.mjs b/tests/app-router.test.mjs
+new file mode 100644
+index 0000000..194df26
+--- /dev/null
++++ b/tests/app-router.test.mjs
+@@ -0,0 +1,54 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import fs from 'node:fs';
++import {empty,KEYS} from '../src/store.js';
++const module=await import('../src/app-router.js').catch(e=>{if(e.code==='ERR_MODULE_NOT_FOUND'&&e.message.includes('app-router.js'))return {};throw e;});
++const books=JSON.parse(fs.readFileSync('data/index.json'));
++const unit=JSON.parse(fs.readFileSync('data/stories.json')).find(x=>x.kind==='chapter-quiz');
++function harness(hash='#today'){
++ assert.equal(typeof module.createAppRouter,'function','Routing boundary is not exposed yet');
++ const calls=[],data=empty(),ui={route:'today',token:0,stories:[unit],books,quiz:null},location={hash};
++ const names=['mergedStory','sourceQuestion','home','guidance','topic','bible','chapters','chapterCollection','reader','marks','markDetail','discover','story','quizIndex','quiz','chapterQuizComplete','paths','path','tree','plans','plan','journal','entry','history','reviews','more','contentStatus','licenses','openForm','notFound','fillJourneyScripture'];
++ const views=Object.fromEntries(names.map(name=>[name,(...args)=>calls.push({name,args})]));
++ const h1={focus:()=>calls.push({name:'focus'})},document={querySelector:selector=>selector==='h1'?h1:null,querySelectorAll:()=>[]};
++ const storage={getItem:()=>null};
++ const helpers={shell:(...args)=>calls.push({name:'shell',args}),heading:(...x)=>x.join(' / '),back:()=>'',button:()=>''};
++ const render=module.createAppRouter({ui,getState:()=>data,views,helpers,canonicalStoryForLegacy:()=>null,go:route=>calls.push({name:'go',args:[route]}),storage,document,window:{scrollTo:()=>calls.push({name:'scroll'})},location});
++ return {render,calls,data,ui,location,views,storage,document};
++}
++test('hash parsing preserves encoded IDs, queries and malformed-URI rejection',()=>{
++ assert.equal(typeof module.parseHashRoute,'function','Hash parser is not exposed yet');
++ assert.equal(module.parseHashRoute('').kind,'today');
++ const r=module.parseHashRoute('#entry/a%2Fb?source=hello%20world');
++ assert.deepEqual(r.parts,['entry','a/b']);assert.equal(r.key,'a/b');assert.equal(r.query,'source=hello%20world');
++ assert.throws(()=>module.parseHashRoute('#path/%E0%A4'),URIError);
++});
++test('existing route names dispatch to their exact adapters without data mutation',async()=>{
++ for(const [route,name,args] of [
++  ['today','home',[]],['guidance','guidance',[]],['topic/angst','topic',['angst']],['bible','bible',[]],['chapters/JHN','chapters',['JHN']],['chapter-quizzes/JHN','chapterCollection',['JHN']],['marks','marks',[]],['mark/m1','markDetail',['m1']],['discover','discover',[]],['story/7','story',['7']],['quizzes','quizIndex',[]],['paths','paths',[]],['path/p1','path',['p1']],['tree','tree',[]],['plans','plans',[]],['plan/start7','plan',['plan','start7']],['guide/start','plan',['guide','start']],['journal','journal',[]],['entry/j1','entry',['j1','entry']],['reflection/r1','entry',['r1','reflection']],['review/r1','entry',['r1','review']],['history','history',[]],['reviews','reviews',[]],['more?section=data','more',[]],['content-status','contentStatus',[]],['licenses','licenses',[]],['merged-story/N-1','mergedStory',['N-1']],['question/N-0001','sourceQuestion',['N-0001']],['unknown','notFound',[]]
++ ]){const h=harness('#'+route),before=JSON.stringify(h.data);await h.render();assert.deepEqual(h.calls.find(x=>x.name===name)?.args,args,route);assert.equal(JSON.stringify(h.data),before);assert.equal(h.ui.route,route);}
++});
++test('a stale reader completion cannot steal focus from the newer route',async()=>{
++ const h=harness('#read/JHN/3/otb?from=1&to=2');let resolve;
++ h.views.reader=(parts,params,token)=>{assert.deepEqual(parts,['read','JHN','3','otb']);assert.equal(params.get('from'),'1');assert.equal(token,1);return new Promise(r=>resolve=r)};
++ const pending=h.render();h.location.hash='#journal';await h.render();resolve();await pending;
++ assert.equal(h.ui.route,'journal');assert.equal(h.calls.filter(x=>x.name==='focus').length,1);
++});
++test('quiz return identity, unfinished state and explicit completion keep existing keys',async()=>{
++ const h=harness('#quiz/'+unit.id+'?return=chapter-quizzes%2F'+unit.book);await h.render();
++ h.ui.quiz.index=2;h.ui.quiz.answer=1;await h.render();assert.equal(h.ui.quiz.index,2);assert.equal(h.ui.quiz.answer,1);
++ h.location.hash='#quiz/'+unit.id+'?return=bible';await h.render();assert.equal(h.ui.quiz.index,0);assert.equal(h.ui.quiz.returnRoute,'bible');
++ h.data.quiz[unit.id]={done:'2026-10-18'};h.location.hash+="&complete=1";await h.render();assert(h.calls.some(x=>x.name==='chapterQuizComplete'));assert.deepEqual(Object.keys(h.data.quiz),[String(unit.id)]);
++});
++test('compose resumes the exact existing draft without writes and invalid links show the existing error view',async()=>{
++ const h=harness('#compose'),draft={type:'entry',args:{id:'j1'},values:{text:'Meine unveränderten Worte'}};
++ h.storage.getItem=key=>key===KEYS.draft?JSON.stringify(draft):null;await h.render();assert.deepEqual(h.calls.find(x=>x.name==='openForm').args,[draft.type,draft.args,draft.values]);
++ h.location.hash='#path/%E0%A4';await h.render();assert(h.calls.some(x=>x.name==='shell'&&x.args[0].includes('Dieser Inhalt ist gerade nicht verfügbar.')));
++});
++
++test('step deep links open the existing disclosure and focus the exact encoded step',async()=>{
++ const h=harness('#path/p1?step=s%2F1'),disclosure={open:false};let focused=false,scroll;
++ const input={dataset:{id:'s/1'},closest:()=>disclosure,focus:()=>focused=true,scrollIntoView:args=>scroll=args};
++ h.document.querySelectorAll=selector=>selector==='.path-step input'?[input]:[];
++ await h.render();assert.equal(disclosure.open,true);assert.equal(focused,true);assert.equal(scroll.block,'center');
++});
+diff --git a/tests/backup-controller.test.mjs b/tests/backup-controller.test.mjs
+new file mode 100644
+index 0000000..251a668
+--- /dev/null
++++ b/tests/backup-controller.test.mjs
+@@ -0,0 +1,39 @@
++import test from 'node:test';import assert from 'node:assert/strict';
++import {createStore,empty,KEYS} from '../src/store.js';
++const module=await import('../src/backup-controller.js').catch(e=>{if(e.code==='ERR_MODULE_NOT_FOUND'&&e.message.includes('backup-controller.js'))return {};throw e;});
++const file=data=>({size:JSON.stringify(data).length,text:async()=>JSON.stringify(data)});
++function setup(){
++ assert.equal(typeof module.createBackupController,'function','Backup lifecycle boundary is not exposed yet');
++ const initial=empty();initial.journal=[{id:'old',text:'Mein Original',date:'2026-10-01'}];
++ const draft=JSON.stringify({type:'entry',args:{},values:{text:'Mein Entwurf'},saved:'2026-10-18'}),map=new Map([[KEYS.main,JSON.stringify(initial)],[KEYS.draft,draft],[KEYS.restore,JSON.stringify({raw:null,guidedPlansRaw:null,saved:'2026-10-01'})]]);
++ const storage={getItem:k=>map.get(k)??null,setItem:(k,v)=>map.set(k,v),removeItem:k=>map.delete(k)},store=createStore(storage),dialog={open:true},calls=[],locks={request:async(_,fn)=>fn()},route={hash:'#more?section=data'};let controller;
++ const find=selector=>selector==='#dialog'?dialog:selector==='#import-file'?{click:()=>calls.push(['picker'])}:null;
++ controller=module.createBackupController({store,storage,getRoute:()=>route.hash,getReferences:()=>({}),locks,find,view:{modal:(title,body)=>{dialog.open=true;calls.push(['modal',title,body])},closeModal:()=>{dialog.open=false;controller.invalidate()},go:r=>calls.push(['go',r]),notify:(...x)=>calls.push(['notify',...x]),download:(...x)=>calls.push(['download',...x]),button:()=>'',date:x=>x}});
++ const incoming=empty();incoming.journal=[{id:'new',text:'Geprüfter neuer Gedanke',date:'2026-10-18'}];
++ return {controller,map,store,storage,dialog,calls,locks,route,incoming,snapshot:()=>JSON.stringify([...map])};
++}
++test('inspection is read-only and check mode cannot authorize restore',async()=>{
++ const h=setup(),before=h.snapshot();await h.controller.handle('check-backup',{},{});await h.controller.inspectFile(file(h.incoming));assert.equal(h.snapshot(),before);assert.equal(h.calls.at(-1)[1],'Backup geprüft');await assert.rejects(h.controller.handle('review-import',{},{}));assert.equal(h.snapshot(),before);
++});
++test('late file read cannot reopen a preview after leaving and returning to the same route',async()=>{
++ const h=setup(),before=h.snapshot();let release;const pending=h.controller.inspectFile({size:20,text:()=>new Promise(r=>release=r)});h.controller.invalidate();h.route.hash='#journal';h.route.hash='#more?section=data';release(JSON.stringify(h.incoming));await pending;assert.equal(h.calls.filter(x=>x[0]==='modal').length,0);assert.equal(h.snapshot(),before);
++});
++test('a newer preview retains ownership when an older file finishes later',async()=>{
++ const h=setup();let release;const first=h.controller.inspectFile({size:20,text:()=>new Promise(r=>release=r)});await h.controller.inspectFile(file(h.incoming));const modalCount=h.calls.filter(x=>x[0]==='modal').length;release(JSON.stringify(empty()));await first;assert.equal(h.calls.filter(x=>x[0]==='modal').length,modalCount);
++ await h.controller.handle('review-import',{},{});await h.controller.handle('confirm-import',{}, {disabled:false,isConnected:true});assert.equal(h.store.state.journal[0].text,h.incoming.journal[0].text);
++});
++test('changed draft during inspection rejects without writing or presenting stale state',async()=>{
++ const h=setup();let release;const pending=h.controller.inspectFile({size:20,text:()=>new Promise(r=>release=r)});h.map.set(KEYS.draft,'newer draft');const before=h.snapshot();release(JSON.stringify(h.incoming));await assert.rejects(pending,/Entwurf/);assert.equal(h.snapshot(),before);assert.equal(h.calls.length,0);
++});
++test('closing while restore waits for its lock cancels authority before any write',async()=>{
++ const h=setup();await h.controller.inspectFile(file(h.incoming));await h.controller.handle('review-import',{},{});let release;
++ h.locks.request=(_,fn)=>new Promise(resolve=>release=()=>resolve(fn()));const before=h.snapshot(),el={disabled:false,isConnected:true};const pending=h.controller.handle('confirm-import',{},el);assert.equal(el.disabled,true);h.controller.invalidate();h.dialog.open=false;release();await pending;assert.equal(h.snapshot(),before);assert.equal(el.disabled,false);
++});
++test('explicit confirmed restore and undo preview retain original safety bytes and draft',async()=>{
++ const h=setup(),oldRaw=h.map.get(KEYS.main),oldDraft=h.map.get(KEYS.draft);await h.controller.inspectFile(file(h.incoming));assert.equal(h.map.get(KEYS.main),oldRaw);await h.controller.handle('review-import',{},{});await h.controller.handle('confirm-import',{}, {disabled:false,isConnected:true});assert.equal(h.store.state.journal[0].id,'new');assert.equal(h.map.get(KEYS.draft),oldDraft);assert.equal(JSON.parse(h.map.get(KEYS.restore)).raw,oldRaw);
++ const before=h.snapshot();await h.controller.handle('undo-import',{},{});assert.equal(h.snapshot(),before);await h.controller.handle('review-import',{},{});await h.controller.handle('confirm-import',{}, {disabled:false,isConnected:true});assert.equal(h.store.state.journal[0].id,'old');assert.equal(h.map.get(KEYS.draft),oldDraft);
++});
++test('malformed backup, missing Bible reference and stale export cannot mutate current records',async()=>{
++ const h=setup(),before=h.snapshot();await assert.rejects(h.controller.inspectFile({size:5,text:async()=>'{bad'}));const invalid=empty();invalid.reading={book:'JHN',chapter:3,translation:'otb'};await assert.rejects(h.controller.inspectFile(file(invalid)),/Bibelstelle/);assert.equal(h.snapshot(),before);
++ h.map.set(KEYS.main,JSON.stringify(empty()));const changed=h.snapshot();await assert.rejects(h.controller.handle('export',{},{}),/anderen Tab/);assert.equal(h.snapshot(),changed);assert(!h.calls.some(x=>x[0]==='download'));
++});
+diff --git a/tests/browser.mjs b/tests/browser.mjs
+index 16b8d77..cfa2ceb 100644
+--- a/tests/browser.mjs
++++ b/tests/browser.mjs
+@@ -11,7 +11,7 @@ import { empty, KEYS } from "../src/store.js";
+ const require = createRequire(import.meta.url),
+   { chromium } = require("playwright");
+ const root = process.cwd(),
+-  out = path.join(root, "qa-output");
++  out = path.resolve(process.env.QA_OUT || path.join(root, "qa-output"));
+ fs.mkdirSync(out, { recursive: true });
+ const server = spawn(process.execPath, ["scripts/serve.mjs", process.env.FAITHPATH_TEST_ROOT || "dist"], {
+   stdio: ["ignore", "pipe", "inherit"],
+diff --git a/tests/fixtures/phase7-tooling-lock-baseline.json b/tests/fixtures/phase7-tooling-lock-baseline.json
+new file mode 100644
+index 0000000..f7a0cdd
+--- /dev/null
++++ b/tests/fixtures/phase7-tooling-lock-baseline.json
+@@ -0,0 +1,76 @@
++{
++  "name": "faithpath",
++  "version": "4.0.0",
++  "lockfileVersion": 3,
++  "requires": true,
++  "packages": {
++    "": {
++      "name": "faithpath",
++      "version": "4.0.0",
++      "devDependencies": {
++        "axe-core": "^4.13.0",
++        "playwright": "^1.62.1"
++      },
++      "engines": {
++        "node": ">=20"
++      }
++    },
++    "node_modules/axe-core": {
++      "version": "4.13.0",
++      "resolved": "https://registry.npmjs.org/axe-core/-/axe-core-4.13.0.tgz",
++      "integrity": "sha512-UzGt8zg7Ny8djbYMhxl2zuEevVa7r2gJjYY5Lwr1xM7+XU2nd6CkIWFTVcCIbAP63vSz71NaVyyuSk9lHKcy0A==",
++      "dev": true,
++      "license": "MPL-2.0",
++      "engines": {
++        "node": ">=4"
++      }
++    },
++    "node_modules/fsevents": {
++      "version": "2.3.2",
++      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz",
++      "integrity": "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==",
++      "dev": true,
++      "hasInstallScript": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
++      }
++    },
++    "node_modules/playwright": {
++      "version": "1.62.1",
++      "resolved": "https://registry.npmjs.org/playwright/-/playwright-1.62.1.tgz",
++      "integrity": "sha512-0M+L3LAD8/nm554LOla9Ayx0j0tmFZ0FBcoQ7F1VuVHpM/XpiC8RcDzBQB8W5+hA8L22THxELzeF+2WcUzvcLg==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "dependencies": {
++        "playwright-core": "1.62.1"
++      },
++      "bin": {
++        "playwright": "cli.js"
++      },
++      "engines": {
++        "node": ">=20"
++      },
++      "optionalDependencies": {
++        "fsevents": "2.3.2"
++      }
++    },
++    "node_modules/playwright-core": {
++      "version": "1.62.1",
++      "resolved": "https://registry.npmjs.org/playwright-core/-/playwright-core-1.62.1.tgz",
++      "integrity": "sha512-wPYSwEBJY9GHraISXqyqtx0na0LpO3XEX7jNDhntbex7tzUS7kLnZsOlFruFJB4Hi/rhDMjXGqHewDZ68nYZVw==",
++      "dev": true,
++      "license": "Apache-2.0",
++      "bin": {
++        "playwright-core": "cli.js"
++      },
++      "engines": {
++        "node": ">=20"
++      }
++    }
++  }
++}
+diff --git a/tests/phase4-routes-browser.mjs b/tests/phase4-routes-browser.mjs
+index 32b38c1..e9dc1ea 100644
+--- a/tests/phase4-routes-browser.mjs
++++ b/tests/phase4-routes-browser.mjs
+@@ -1,8 +1,8 @@
+ import fs from 'node:fs';import assert from 'node:assert/strict';import {chromium} from 'playwright';import {KEYS,empty} from '../src/store.js';import {phase3Fixture} from './phase3-fixtures.mjs';import {GUIDED_PLANS,BEGINNER_GUIDES} from '../src/content.js';import {navigationTarget} from '../src/navigation-model.js';
+-const base=process.env.QA_URL||'http://127.0.0.1:4404',out='qa-output/uiux-phase4/routes',results=[],errors=[],coverage=[];fs.mkdirSync(out,{recursive:true});const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
++const base=process.env.QA_URL||'http://127.0.0.1:4404',out=process.env.QA_OUT||'qa-output/uiux-phase4/routes',results=[],errors=[],coverage=[];fs.mkdirSync(out,{recursive:true});const b=await chromium.launch({...(process.env.FAITHPATH_CHROMIUM?{executablePath:process.env.FAITHPATH_CHROMIUM}:{}),args:['--no-sandbox']});
+ const routes=['today','guidance','topic/angst','bible','chapters/JHN','read/JHN/3/otb?from=1&to=3&origin=path%2Fpersonal-path','read/JHN/3/l1912','bible-journey','bible-journey/JHN','marks','mark/highlight-existing','discover','chapter-quizzes','chapter-quizzes/JHN','quizzes','quiz/10070','quiz/10070?complete=1','story/10070','story/1','merged-story/NS-0001','merged-story/NS-0001?reflection=1','question/N-0001','question/FP-0001','paths','path/personal-path','path/personal-path?section=story','path/personal-path?step=past-0','tree','plans','plan/'+GUIDED_PLANS[0].id,'guide/'+BEGINNER_GUIDES[0].id,'journal','compose','entry/thought-old','reflection/mirror-old','reviews','review/review-old','history','more','more?section=settings','more?section=data','licenses','content-status'];
+ async function check(name,fn){try{await fn();results.push({name,status:'PASS'});}catch(e){results.push({name,status:'FAIL',error:e.stack});}console.log(results.at(-1).status,name,results.at(-1).error||'');}
+-try{for(const[width,height]of[[320,568],[390,844],[430,932],[1440,900]])for(const theme of['light','night'])await check(`All43route variants / ${theme} / ${width}`,async()=>{
++try{for(const[width,height]of(process.env.QA_ROUTE_QUICK==='1'?[[390,844]]:[[320,568],[390,844],[430,932],[1440,900]]))for(const theme of(process.env.QA_ROUTE_QUICK==='1'?['night']:['light','night']))await check(`All43route variants / ${theme} / ${width}`,async()=>{
+  const data=phase3Fixture('active',theme);data.highlights=[{id:'highlight-existing',book:'JHN',chapter:3,from:1,to:1,translation:'otb',at:'2026-09-01'}];const c=await b.newContext({viewport:{width,height},reducedMotion:'reduce'});try{await c.addInitScript(({KEYS,data})=>{if(!sessionStorage.getItem('routes-seeded')){localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');sessionStorage.setItem('routes-seeded','1');}},{KEYS,data});const p=await c.newPage();p.setDefaultTimeout(12000);p.on('pageerror',e=>errors.push(e.message));let before;
+  for(const route of routes){await p.goto(base+'/#'+route);await p.locator('#main h1').waitFor();assert(!/nicht verfügbar|nicht gefunden|Das hat nicht geklappt/i.test(await p.locator('#main h1').innerText()),route);if(route.startsWith('read/'))await p.locator('.verse').first().waitFor();const raw=await p.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEYS.main);if(!before)before=raw;for(const k of Object.keys(before).filter(k=>!['reading','events'].includes(k)))assert.deepEqual(raw[k],before[k],route+' '+k);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),route);if(await p.locator('dialog[open]').count())await p.locator('dialog [data-action=close]').click();await p.locator('#menu-toggle').click();const expected=navigationTarget(new URL(p.url()).hash.slice(1));assert.equal(await p.locator('#main-menu [aria-current=page]').getAttribute('href'),'#'+expected);await p.keyboard.press('Escape');coverage.push({route,width,theme,status:'PASS'});}
+  }finally{await c.close();}
+diff --git a/tests/phase7/platform-browser.mjs b/tests/phase7/platform-browser.mjs
+new file mode 100644
+index 0000000..0f0bc17
+--- /dev/null
++++ b/tests/phase7/platform-browser.mjs
+@@ -0,0 +1,21 @@
++/** Browser fault boundaries: use the actual app and its actual packaged modules. */
++import fs from 'node:fs';import assert from 'node:assert/strict';import {chromium} from 'playwright';import {KEYS} from '../../src/store.js';
++const base=process.env.QA_URL||'http://127.0.0.1:4575',out=process.env.QA_OUT||'qa-output/phase7/platform-browser';fs.mkdirSync(out,{recursive:true});
++const browser=await chromium.launch({...(process.env.FAITHPATH_CHROMIUM?{executablePath:process.env.FAITHPATH_CHROMIUM}:{}),args:['--no-sandbox']}),results=[],errors=[];
++async function check(name,fn){try{await fn();results.push({name,status:'PASS'})}catch(e){results.push({name,status:'FAIL',error:e.stack})}console.log(results.at(-1).status,name)}
++async function context(init){const c=await browser.newContext({serviceWorkers:'block',viewport:{width:390,height:844}});await c.addInitScript(KEYS=>localStorage.setItem(KEYS.onboard,'done'),KEYS);if(init)await c.addInitScript(init);const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));return {c,p}}
++try{
++ await check('Malformed Bible response fails visibly and retries successfully without reloading the app',async()=>{
++  const {c,p}=await context();try{let count=0;await p.route('**/data/bibles/otb/PSA.json',route=>{count++;return count===1?route.fulfill({contentType:'application/json',body:'{"chapters":null}'}):route.continue()});
++   await p.goto(base+'/#read/PSA/52/otb');await p.getByRole('heading',{name:'Dieser Inhalt ist gerade nicht verfügbar.',exact:true}).waitFor();
++   assert.match(await p.locator('#main').innerText(),/Bibeltext konnte nicht geladen werden/);
++   await p.goto(base+'/#bible');await p.locator('.bible-page').waitFor();await p.goto(base+'/#read/PSA/52/otb');await p.locator('.verse[data-v="8"]').waitFor();assert.match(await p.locator('.verse[data-v="8"]').innerText(),/Ölbaum/);assert.equal(count,2);
++  }finally{await c.close()}
++ });
++ await check('Denied optional worker registration/status leaves navigation usable without unhandled rejection',async()=>{
++  const {c,p}=await context(()=>{if(navigator.serviceWorker){navigator.serviceWorker.register=async()=>{throw new DOMException('Synthetic denial','SecurityError')};navigator.serviceWorker.getRegistration=async()=>{throw new DOMException('Synthetic denial','SecurityError')}}});
++  try{await p.goto(base+'/#bible');await p.locator('.bible-page').waitFor();await p.goto(base+'/#more?section=settings');await p.locator('[data-action=offline-check]').click();await p.locator('#offline-state').filter({hasText:'Noch nicht offline bereit'}).waitFor();await p.goto(base+'/#journal');await p.locator('.journal-page').waitFor()}finally{await c.close()}
++ });
++ assert.deepEqual(errors,[]);
++}finally{await browser.close();fs.writeFileSync(out+'/results.json',JSON.stringify({results,errors,syntheticFaults:true,physicalIOS:'OFFEN'},null,2))}
++if(errors.length||results.some(x=>x.status!=='PASS'))process.exitCode=1;
+diff --git a/tests/phase7/probe-platform-baseline.mjs b/tests/phase7/probe-platform-baseline.mjs
+new file mode 100644
+index 0000000..14ea57e
+--- /dev/null
++++ b/tests/phase7/probe-platform-baseline.mjs
+@@ -0,0 +1,14 @@
++// Read-only fault injection into the exact baseline functions; no browser/user data.
++import fs from 'node:fs';import vm from 'node:vm';import {execFileSync} from 'node:child_process';
++const source=execFileSync('git',['show','7d24aea:src/app.js'],{encoding:'utf8'}),build='FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL';
++const getBook=source.slice(source.indexOf('async function getBook('),source.indexOf('\nfunction contextOf('));let fetches=0;
++const bookContext=vm.createContext({ui:{cache:new Map()},fetch:async()=>({ok:true,json:async()=>{fetches++;return {chapters:null}}})});
++const first=await vm.runInContext(getBook+';getBook("JHN","otb")',bookContext),second=await vm.runInContext('getBook("JHN","otb")',bookContext);
++const offline=source.slice(source.indexOf('async function offlineStatus()'),source.indexOf('\nasync function pwa()',source.indexOf('async function offlineStatus()')));
++let channel,closed=0;
++class Channel{constructor(){channel=this;this.port1={close:()=>closed++};this.port2={close:()=>closed++};}}
++const worker={state:'activated',postMessage:()=>channel.port1.onmessage({data:{ready:true,build}})},context=vm.createContext({BUILD:build,ui:{offline:false},navigator:{serviceWorker:{controller:{},getRegistration:async()=>({active:worker})}},MessageChannel:Channel,setTimeout:()=>1,clearTimeout:()=>{},$:()=>null});
++const ready=await vm.runInContext(offline+';offlineStatus()',context);context.navigator.serviceWorker.getRegistration=async()=>{throw new Error('Injected registration denial')};let rejected;
++try{await vm.runInContext('offlineStatus()',context)}catch(e){rejected=e.message}
++const result={baseline:'7d24aea30bec5b0b8d43e199f3cadfc6305c1e3e',method:'Injected platform responses executing actual baseline function bodies in a VM; not observed real-device failures',malformedBible:{first,second,fetches,poisonedFulfilledCache:fetches===1},workerStatus:{ready,closedPorts:closed,registrationErrorRejected:rejected}};
++fs.writeFileSync('qa-output/phase7/platform-baseline-faults.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+diff --git a/tests/phase7/update.mjs b/tests/phase7/update.mjs
+new file mode 100644
+index 0000000..5064f45
+--- /dev/null
++++ b/tests/phase7/update.mjs
+@@ -0,0 +1,65 @@
++/** Real old -> failed install -> complete new worker on one isolated loopback origin. */
++import fs from 'node:fs';
++import http from 'node:http';
++import path from 'node:path';
++import assert from 'node:assert/strict';
++import {chromium} from 'playwright';
++import {KEYS} from '../../src/store.js';
++import {phase3Fixture} from '../phase3-fixtures.mjs';
++const previous=process.env.FAITHPATH_PREVIOUS_ROOT||'qa-output/uiux6d-final/candidate';
++const candidate=process.env.FAITHPATH_CANDIDATE_ROOT||'qa-output/phase7/candidate';
++const out=process.env.QA_OUT||'qa-output/phase7/update';fs.mkdirSync(out,{recursive:true});
++const old=JSON.parse(fs.readFileSync(previous+'/release-integrity.json')),next=JSON.parse(fs.readFileSync(candidate+'/release-integrity.json'));
++assert.equal(old.build,'FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL');
++assert.equal(old.build_hash,'5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa');
++assert.equal(next.content_hash,old.content_hash);
++let root=previous,fail=false;
++const types={'.js':'text/javascript','.html':'text/html','.css':'text/css','.json':'application/json','.webmanifest':'application/manifest+json','.webp':'image/webp','.svg':'image/svg+xml','.png':'image/png','.ttf':'font/ttf'};
++const server=http.createServer((req,res)=>{
++ const url=new URL(req.url,'http://localhost'),file=path.resolve(root,'.'+(url.pathname==='/'?'/index.html':url.pathname));
++ if(!file.startsWith(path.resolve(root)+'/')||!fs.existsSync(file)||!fs.statSync(file).isFile()){res.writeHead(404);res.end('missing test asset');return;}
++ res.writeHead(200,{'content-type':types[path.extname(file)]||'text/plain','cache-control':'no-store'});
++ let bytes=fs.readFileSync(file);
++ if(fail&&url.pathname==='/sw.js')bytes=bytes.toString().replace(/const BUILD = "[^"]+";/,'const BUILD = "FP4-20261018-G-PHASE7-FAILED-INSTALL";').replace('const ASSETS = [','const ASSETS = ["./phase7-deliberately-missing.js",');
++ res.end(bytes);
++});
++await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
++const base='http://127.0.0.1:'+server.address().port;
++const results=[],errors=[];let browser;
++try{
++ browser=await chromium.launch({...(process.env.FAITHPATH_CHROMIUM?{executablePath:process.env.FAITHPATH_CHROMIUM}:{}),args:['--no-sandbox']});
++ const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
++ const data=phase3Fixture('tree-6','night');data.paths[0].archived=true;
++ const draft=JSON.stringify({type:'entry',args:{id:'thought-new'},values:{text:'Synthetischer offener Phase7-Entwurf',kind:'Gedanken',pathId:'personal-path'},saved:'2026-10-18'});
++ const safety=JSON.stringify({raw:JSON.stringify(data),guidedPlansRaw:'{}',saved:'2026-10-17'});
++ await context.addInitScript(({KEYS,data,draft,safety})=>{if(!sessionStorage.getItem('phase7-seeded')){localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.draft,draft);localStorage.setItem(KEYS.restore,safety);localStorage.setItem(KEYS.onboard,'done');sessionStorage.setItem('phase7-seeded','yes')}},{KEYS,data,draft,safety});
++ const snapshot=()=>page.evaluate(KEYS=>Object.fromEntries(Object.entries(KEYS).map(([name,key])=>[name,localStorage.getItem(key)])),KEYS);
++ async function ready(build){await page.goto(base+'/#more?section=settings');await page.locator('.build-id').filter({hasText:build}).waitFor({timeout:90000});await page.locator('#offline-state').filter({hasText:'Beide Bibeln und die App sind für dieses Gerät offline bereit.'}).waitFor({timeout:90000});}
++ await ready(old.build);const before=await snapshot();
++ await page.evaluate(async()=>{const cache=await caches.open('another-app:keep');await cache.put('/foreign-proof',new Response('keep'))});
++ results.push('Exact immutable TREEFINAL installed, all seven storage contracts snapshotted, foreign cache created');
++ root=candidate;fail=true;
++ const rejected=await page.evaluate(async()=>{
++  const reg=await navigator.serviceWorker.getRegistration();
++  const result=new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error('No failed worker install observed')),90000);reg.addEventListener('updatefound',()=>{const worker=reg.installing;worker.addEventListener('statechange',()=>{if(worker.state==='redundant'){clearTimeout(timer);resolve(true)}})},{once:true})});
++  await reg.update();return result;
++ });assert(rejected);
++ await context.setOffline(true);await page.reload();await ready(old.build);assert.deepEqual(await snapshot(),before);
++ assert(await page.evaluate(async()=>{const names=await caches.keys();return names.includes('another-app:keep')&&!names.some(n=>n.includes('FAILED-INSTALL'))}));
++ results.push('Missing mandatory update asset rejects install, deletes partial cache and retains old complete offline app and every storage byte');
++ await context.setOffline(false);fail=false;
++ await page.evaluate(async()=>{const reg=await navigator.serviceWorker.getRegistration();await reg.update()});
++ await page.getByRole('button',{name:'Jetzt aktualisieren',exact:true}).waitFor({timeout:90000});assert.deepEqual(await snapshot(),before);
++ await page.getByRole('button',{name:'Jetzt aktualisieren',exact:true}).click();await ready(next.build);assert.deepEqual(await snapshot(),before);
++ results.push('Successful new install waits for explicit activation; controller change reloads into exact new build without data changes');
++ await context.setOffline(true);await page.goto(base+'/#tree');await page.reload();await page.locator('.tree-branch-scene img').evaluate(img=>img.decode());assert.deepEqual(await snapshot(),before);await page.screenshot({path:out+'/tree-after-update-offline.png'});
++ for(const translation of ['otb','l1912']){await page.goto(base+'/#read/PSA/52/'+translation);await page.locator('.verse[data-v="8"]').waitFor();assert.match(await page.locator('.verse[data-v="8"]').innerText(),/Ölbaum/)}
++ const after=await snapshot(),parsed=JSON.parse(after.main),original=JSON.parse(before.main);
++ for(const key of Object.keys(original).filter(k=>!['reading','events'].includes(k)))assert.deepEqual(parsed[key],original[key]);
++ for(const key of Object.keys(before).filter(k=>k!=='main'))assert.equal(after[key],before[key]);
++ assert(await page.evaluate(async()=>!!await(await caches.open('another-app:keep')).match('/foreign-proof')));
++ results.push('Both canonical Bible translations, tree image and new ESM modules work offline; only intentional reader history changes');
++ await context.close();assert.deepEqual(errors,[]);
++}catch(error){errors.push(error.stack)}finally{await browser?.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve))}
++fs.writeFileSync(out+'/results.json',JSON.stringify({baseline:old,candidate:{build:next.build,commit:next.source_commit,hash:next.build_hash},results,errors,physicalIOS:'OFFEN',transport:'Actual Chromium service-worker install on a dedicated loopback secure-context origin; synthetic data only'},null,2));
++console.log(JSON.stringify({checks:results.length,errors}));process.exitCode=errors.length?1:0;
+diff --git a/tests/phase7/visual.mjs b/tests/phase7/visual.mjs
+new file mode 100644
+index 0000000..0fb132a
+--- /dev/null
++++ b/tests/phase7/visual.mjs
+@@ -0,0 +1,11 @@
++/** Honest before/after captures of the real baseline and candidate, with identical data. */
++import fs from 'node:fs';import assert from 'node:assert/strict';import {chromium} from 'playwright';import {KEYS} from '../../src/store.js';import {phase3Fixture} from '../phase3-fixtures.mjs';
++const before=process.env.QA_BASELINE_URL,after=process.env.QA_URL,out=process.env.QA_OUT||'qa-output/phase7/visual';assert(before&&after);fs.mkdirSync(out,{recursive:true});
++const b=await chromium.launch({...(process.env.FAITHPATH_CHROMIUM?{executablePath:process.env.FAITHPATH_CHROMIUM}:{}),args:['--no-sandbox']}),results=[],errors=[];
++const routes={today:'today',reader:'read/JHN/3/otb',quiz:'quiz/10070',paths:'paths',journal:'journal',reviews:'reviews',tree:'tree'};
++try{for(const theme of ['light','night'])for(const width of [320,390])for(const [version,base]of [['before',before],['after',after]]){
++ const c=await b.newContext({viewport:{width,height:width===320?568:844},reducedMotion:'reduce',serviceWorkers:'block'});await c.addInitScript(({KEYS,data})=>{if(!sessionStorage.getItem('visual-seed')){localStorage.setItem(KEYS.main,JSON.stringify(data));localStorage.setItem(KEYS.onboard,'done');sessionStorage.setItem('visual-seed','yes')}},{KEYS,data:phase3Fixture('tree-6',theme)});const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));
++ for(const [name,route]of Object.entries(routes)){await p.goto(base+'/#'+route);await p.locator('#main h1').waitFor();if(name==='reader')await p.locator('.verse').first().waitFor();if(name==='tree')await p.locator('.tree-branch-scene img').evaluate(img=>img.decode());await p.evaluate(()=>document.fonts.ready);await p.screenshot({path:`${out}/${name}-${theme}-${width}-${version}.png`});assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));results.push({name,route,theme,width,version,status:'PASS'})}
++ await c.close();
++}}finally{await b.close();fs.writeFileSync(out+'/results.json',JSON.stringify({results,errors,baseline:before,candidate:after,syntheticData:true,physicalIOS:'OFFEN'},null,2))}
++assert.deepEqual(errors,[]);
+diff --git a/tests/platform-boundaries.test.mjs b/tests/platform-boundaries.test.mjs
+new file mode 100644
+index 0000000..ec25986
+--- /dev/null
++++ b/tests/platform-boundaries.test.mjs
+@@ -0,0 +1,44 @@
++import test from 'node:test';import assert from 'node:assert/strict';
++import fs from 'node:fs';
++const optional=path=>import(path).catch(e=>{if(e.code==='ERR_MODULE_NOT_FOUND'&&e.message.includes(path.slice(3)))return {};throw e});
++const bible=await optional('../src/bible-loader.js'),pwa=await optional('../src/pwa-controller.js');
++const book={name:'Synthetisches Testbuch',chapters:[[[1,'Synthetischer Text']]]};
++const response=value=>({ok:true,json:async()=>value});
++function loader(fetch){assert.equal(typeof bible.createBibleLoader,'function','Bible resource boundary is not exposed yet');return bible.createBibleLoader({fetch});}
++function channelTracker(){const channels=[];class TrackedChannel{constructor(){const real=new MessageChannel();this.port1=real.port1;this.port2=real.port2;this.closed=[false,false];for(const[index,p]of[real.port1,real.port2].entries()){const close=p.close.bind(p);p.close=()=>{this.closed[index]=true;close()}}channels.push(this)}}return {channels,MessageChannel:TrackedChannel};}
++function workerQuery(){assert.equal(typeof pwa.requestWorkerStatus,'function','Worker protocol boundary is not exposed yet');return pwa.requestWorkerStatus;}
++test('Bible loader coalesces concurrent reads and keeps translation caches separate',async()=>{
++ const requests=[],load=loader(async url=>{requests.push(url);return response(book)});const [a,b]=await Promise.all([load('JHN','otb'),load('JHN','otb')]);assert.equal(a,b);await load('JHN','l1912');assert.deepEqual(requests,['data/bibles/otb/JHN.json','data/bibles/l1912/JHN.json']);assert.deepEqual(a,book);
++});
++test('failed and malformed Bible responses are never cached as a successful retry',async()=>{
++ for(const bad of [()=>({ok:false}),()=>({ok:true,json:async()=>{throw new SyntaxError('bad JSON')}}),...[
++  {chapters:null},{chapters:[]},{chapters:[[]]},{chapters:[[null]]},
++  {chapters:[[[1,null]]]},{chapters:[[[0,'bad']]]},{chapters:[[[1,'a'],[1,'duplicate']]]}
++ ].map(value=>()=>response({name:'Synthetisches Testbuch',...value}))]){let count=0;const load=loader(async()=>++count===1?bad():response(book));await assert.rejects(load('JHN','otb'));assert.deepEqual(await load('JHN','otb'),book);assert.equal(count,2)}
++});
++test('all 132 original offline Bible books pass the boundary without changing any verse',async()=>{
++ const load=loader(async url=>response(JSON.parse(fs.readFileSync(url,'utf8'))));let count=0;
++ for(const tr of ['otb','l1912'])for(const file of fs.readdirSync('data/bibles/'+tr)){
++  const original=JSON.parse(fs.readFileSync('data/bibles/'+tr+'/'+file,'utf8'));
++  assert.deepEqual(await load(file.replace('.json',''),tr),original);count++;
++ }
++ assert.equal(count,132);
++});
++test('worker status success closes both ports and preserves the protocol payload',async()=>{
++ const query=workerQuery(),track=channelTracker();const value=await query({postMessage:(message,ports)=>{assert.deepEqual(message,{type:'STATUS'});ports[0].postMessage({ready:true,build:'test'})}},{MessageChannel:track.MessageChannel,timeoutMs:100});assert.deepEqual(value,{ready:true,build:'test'});assert.deepEqual(track.channels[0].closed,[true,true]);
++});
++test('worker timeout and send failure settle safely and close both ports',async()=>{
++ const query=workerQuery();for(const worker of [{postMessage:()=>{}},{postMessage:()=>{throw new Error('revoked worker')}}]){const track=channelTracker();assert.equal(await query(worker,{MessageChannel:track.MessageChannel,timeoutMs:5}),null);assert.deepEqual(track.channels[0].closed,[true,true]);}
++});
++function monitor(overrides={}){assert.equal(typeof pwa.createPwaController,'function','PWA lifecycle boundary is not exposed yet');const statuses=[],waiting=[],notices=[];const api=pwa.createPwaController({build:'current',getServiceWorker:()=>({controller:{},getRegistration:async()=>({active:{state:'activated'}})}),onStatus:v=>statuses.push(v),onWaiting:v=>waiting.push(v),onNotice:(...v)=>notices.push(v),reload:()=>{},isDialogOpen:()=>false,addFocusListener:()=>{},...overrides});return {api,statuses,waiting,notices};}
++test('unavailable or denied worker registrations report not ready without an unhandled rejection',async()=>{
++ for(const getServiceWorker of [()=>undefined,()=>({getRegistration:async()=>{throw new Error('denied')}})]){const h=monitor({getServiceWorker});assert.equal(await h.api.status(),false);assert.deepEqual(h.statuses,[false]);}
++});
++test('a late old worker status cannot overwrite a newer readiness result',async()=>{
++ const replies=[];const h=monitor({requestStatus:()=>new Promise(resolve=>replies.push(resolve))});const first=h.api.status(),second=h.api.status();await Promise.resolve();assert.equal(replies.length,2);replies[1]({ready:true,build:'current'});await second;replies[0](null);await first;assert.deepEqual(h.statuses,[true]);
++});
++test('update activation is deliberate, blocks open editors and clears only presentation when no update exists',async()=>{
++ let posts=0;const sw={getRegistration:async()=>({waiting:{postMessage:message=>{assert.equal(message.type,'SKIP_WAITING');posts++}}})};const closed=monitor({getServiceWorker:()=>sw});await closed.api.activateUpdate();assert.equal(posts,1);
++ const open=monitor({getServiceWorker:()=>sw,isDialogOpen:()=>true});await open.api.activateUpdate();assert.equal(posts,1);assert.match(open.notices[0][0],/Entwurf/);
++ const none=monitor({getServiceWorker:()=>({getRegistration:async()=>({})})});await none.api.activateUpdate();assert.deepEqual(none.waiting,[null]);assert.match(none.notices[0][0],/aktuell/);
++});
+diff --git a/tests/tooling-contract.test.mjs b/tests/tooling-contract.test.mjs
+new file mode 100644
+index 0000000..2ff0ca1
+--- /dev/null
++++ b/tests/tooling-contract.test.mjs
+@@ -0,0 +1,15 @@
++import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import crypto from 'node:crypto';
++import {matchesProtectedRuntime} from '../scripts/protected-runtime.mjs';
++const hash=x=>crypto.createHash('sha256').update(x).digest('hex');
++test('reviewed lint tooling preserves every pre-existing package and does not exempt content or future lockfiles',()=>{
++ const before=fs.readFileSync('tests/fixtures/phase7-tooling-lock-baseline.json'),after=fs.readFileSync('package-lock.json'),old=JSON.parse(before),next=JSON.parse(after);
++ assert.equal(hash(before),'157027107db85d2890e77dcf8250ee844f43c477ff55e8437780050efca6621d');
++ for(const[name,value]of Object.entries(old.packages))if(name)assert.deepEqual(next.packages[name],value,name);
++ for(const[name,value]of Object.entries(next.packages))if(name&&!old.packages[name])assert.equal(value.dev,true,name);
++ assert.deepEqual(next.packages[''].devDependencies,{...old.packages[''].devDependencies,eslint:'10.13.0'});
++ assert.equal(next.packages[''].dependencies,old.packages[''].dependencies);
++ assert(matchesProtectedRuntime('package-lock.json',hash(after),hash(before)),'The exact reviewed development-tool lock needs its own bounded compatibility record');
++ assert(!matchesProtectedRuntime('package-lock.json','0'.repeat(64),hash(before)));
++ assert(!matchesProtectedRuntime('package-lock.json',hash(after),'0'.repeat(64)));
++ assert(!matchesProtectedRuntime('data/stories.json',hash(after),hash(before)));
++});

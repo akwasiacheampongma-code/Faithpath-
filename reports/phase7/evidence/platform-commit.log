@@ -1,0 +1,6 @@
+[maintenance/stability-phase7-20261018 bb7e31b] refactor(platform): isolate worker lifecycle and retry malformed Bible loads [skip netlify] [skip ci]
+ 5 files changed, 158 insertions(+), 126 deletions(-)
+ create mode 100644 src/bible-loader.js
+ create mode 100644 src/pwa-controller.js
+ create mode 100644 tests/phase7/probe-platform-baseline.mjs
+ create mode 100644 tests/platform-boundaries.test.mjs

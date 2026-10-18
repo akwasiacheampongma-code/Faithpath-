@@ -1,0 +1,132 @@
+✖ hash parsing preserves encoded IDs, queries and malformed-URI rejection (1.466015ms)
+✖ existing route names dispatch to their exact adapters without data mutation (0.539261ms)
+✖ a stale reader completion cannot steal focus from the newer route (0.230667ms)
+✖ quiz return identity, unfinished state and explicit completion keep existing keys (0.210387ms)
+✖ compose resumes the exact existing draft without writes and invalid links show the existing error view (0.283547ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69.793763
+
+✖ failing tests:
+
+test at tests/app-router.test.mjs:19:1
+✖ hash parsing preserves encoded IDs, queries and malformed-URI rejection (1.466015ms)
+  AssertionError [ERR_ASSERTION]: Hash parser is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:20:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/app-router.test.mjs:26:1
+✖ existing route names dispatch to their exact adapters without data mutation (0.539261ms)
+  AssertionError [ERR_ASSERTION]: Routing boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at harness (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:9:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:29:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/app-router.test.mjs:31:1
+✖ a stale reader completion cannot steal focus from the newer route (0.230667ms)
+  AssertionError [ERR_ASSERTION]: Routing boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at harness (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:9:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:32:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/app-router.test.mjs:37:1
+✖ quiz return identity, unfinished state and explicit completion keep existing keys (0.210387ms)
+  AssertionError [ERR_ASSERTION]: Routing boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at harness (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:9:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:38:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/app-router.test.mjs:43:1
+✖ compose resumes the exact existing draft without writes and invalid links show the existing error view (0.283547ms)
+  AssertionError [ERR_ASSERTION]: Routing boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at harness (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:9:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:44:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

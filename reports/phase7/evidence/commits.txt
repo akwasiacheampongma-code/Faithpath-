@@ -1,0 +1,8 @@
+c1bc27c03957befded1372bc8f4ff0618eef588f docs(maintenance): record baseline audit and scoped Phase7 design [skip netlify] [skip ci]
+90eabcebe84093eb0409f8968a082179a49cdf63 refactor(router): isolate existing route dispatch and focus contracts [skip netlify] [skip ci]
+c8e125eb27c0d35cdcaa4dc90fd5c8146a2ed628 build(quality): pin development lint and narrowly verify tooling lock compatibility [skip netlify] [skip ci]
+631cceeba1856b0022ec23bacdee913ab41851b5 refactor(backup): own import lifecycle and cancellation in one controller [skip netlify] [skip ci]
+bb7e31b7c68aae07c88310597ee23d37b68f827e refactor(platform): isolate worker lifecycle and retry malformed Bible loads [skip netlify] [skip ci]
+0486ee375f8ef8f5769a99e2eaa0ed9afb76fcca perf(build): remove measured duplicate offline Bible payload and verify complete releases [skip netlify] [skip ci]
+4ce10663af2d9515d4cba2cfce87652a988133bd fix(reader): reject malformed nested verses before caching book responses [skip netlify] [skip ci]
+398f22f4809bfa7647181b17ba5b2fc5d780c44a ci(quality): add read-only reproducible browser and data-contract gate [skip netlify]

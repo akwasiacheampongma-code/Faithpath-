@@ -1,0 +1,5 @@
+[maintenance/stability-phase7-20261018 0486ee3] perf(build): remove measured duplicate offline Bible payload and verify complete releases [skip netlify] [skip ci]
+ 4 files changed, 113 insertions(+), 1 deletion(-)
+ create mode 100644 scripts/check-build.mjs
+ create mode 100644 scripts/check-contracts.mjs
+ create mode 100644 tests/phase7/update.mjs

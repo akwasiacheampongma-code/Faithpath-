@@ -1,0 +1,183 @@
+✖ inspection is read-only and check mode cannot authorize restore (1.787819ms)
+✖ late file read cannot reopen a preview after leaving and returning to the same route (4.034958ms)
+✖ a newer preview retains ownership when an older file finishes later (0.244748ms)
+✖ changed draft during inspection rejects without writing or presenting stale state (0.227392ms)
+✖ closing while restore waits for its lock cancels authority before any write (0.245459ms)
+✖ explicit confirmed restore and undo preview retain original safety bytes and draft (0.239069ms)
+✖ malformed backup, missing Bible reference and stale export cannot mutate current records (0.262064ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67.671457
+
+✖ failing tests:
+
+test at tests/backup-controller.test.mjs:15:1
+✖ inspection is read-only and check mode cannot authorize restore (1.787819ms)
+  AssertionError [ERR_ASSERTION]: Backup lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:16:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/backup-controller.test.mjs:18:1
+✖ late file read cannot reopen a preview after leaving and returning to the same route (4.034958ms)
+  AssertionError [ERR_ASSERTION]: Backup lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:19:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/backup-controller.test.mjs:21:1
+✖ a newer preview retains ownership when an older file finishes later (0.244748ms)
+  AssertionError [ERR_ASSERTION]: Backup lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:22:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/backup-controller.test.mjs:25:1
+✖ changed draft during inspection rejects without writing or presenting stale state (0.227392ms)
+  AssertionError [ERR_ASSERTION]: Backup lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:26:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/backup-controller.test.mjs:28:1
+✖ closing while restore waits for its lock cancels authority before any write (0.245459ms)
+  AssertionError [ERR_ASSERTION]: Backup lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:29:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/backup-controller.test.mjs:32:1
+✖ explicit confirmed restore and undo preview retain original safety bytes and draft (0.239069ms)
+  AssertionError [ERR_ASSERTION]: Backup lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:33:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/backup-controller.test.mjs:36:1
+✖ malformed backup, missing Bible reference and stale export cannot mutate current records (0.262064ms)
+  AssertionError [ERR_ASSERTION]: Backup lifecycle boundary is not exposed yet
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at setup (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:6:9)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/backup-controller.test.mjs:37:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

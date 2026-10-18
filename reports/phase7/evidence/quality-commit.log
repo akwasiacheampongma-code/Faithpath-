@@ -1,0 +1,14 @@
+[maintenance/stability-phase7-20261018 398f22f] ci(quality): add read-only reproducible browser and data-contract gate [skip netlify]
+ 17 files changed, 513 insertions(+), 161 deletions(-)
+ delete mode 100644 .github/workflows/import-faithpath.yml
+ create mode 100644 .github/workflows/quality.yml
+ create mode 100644 ARCHITECTURE.md
+ create mode 100644 DATA_CONTRACTS.md
+ create mode 100644 DEVELOPMENT.md
+ create mode 100644 MAINTENANCE_REPORT.md
+ create mode 100644 RELEASE_CHECKLIST.md
+ create mode 100644 docs/LEGACY_IMPORT_WORKFLOW.md
+ create mode 100644 scripts/check-modules.mjs
+ create mode 100644 scripts/quality-gate.mjs
+ create mode 100644 tests/phase7/platform-browser.mjs
+ create mode 100644 tests/phase7/visual.mjs

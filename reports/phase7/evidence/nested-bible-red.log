@@ -1,0 +1,31 @@
+✔ Bible loader coalesces concurrent reads and keeps translation caches separate (1.333999ms)
+✖ failed and malformed Bible responses are never cached as a successful retry (1.82649ms)
+✔ worker status success closes both ports and preserves the protocol payload (27.826988ms)
+✔ worker timeout and send failure settle safely and close both ports (5.365288ms)
+✔ unavailable or denied worker registrations report not ready without an unhandled rejection (0.456698ms)
+✔ a late old worker status cannot overwrite a newer readiness result (0.221313ms)
+✔ update activation is deliberate, blocks open editors and clears only presentation when no update exists (0.383528ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 93.354802
+
+✖ failing tests:
+
+test at tests/platform-boundaries.test.mjs:12:1
+✖ failed and malformed Bible responses are never cached as a successful retry (1.82649ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/platform-boundaries.test.mjs:16:111)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }

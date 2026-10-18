@@ -1,0 +1,4 @@
+[maintenance/stability-phase7-20261018 90eabce] refactor(router): isolate existing route dispatch and focus contracts [skip netlify] [skip ci]
+ 6 files changed, 181 insertions(+), 91 deletions(-)
+ create mode 100644 src/app-router.js
+ create mode 100644 tests/app-router.test.mjs

@@ -1,0 +1,5 @@
+[maintenance/stability-phase7-20261018 c8e125e] build(quality): pin development lint and narrowly verify tooling lock compatibility [skip netlify] [skip ci]
+ 7 files changed, 1073 insertions(+), 2 deletions(-)
+ create mode 100644 eslint.config.js
+ create mode 100644 tests/fixtures/phase7-tooling-lock-baseline.json
+ create mode 100644 tests/tooling-contract.test.mjs

@@ -1,0 +1,15 @@
+✔ inspection is read-only and check mode cannot authorize restore (2.887832ms)
+✔ late file read cannot reopen a preview after leaving and returning to the same route (0.34583ms)
+✔ a newer preview retains ownership when an older file finishes later (1.713256ms)
+✔ changed draft during inspection rejects without writing or presenting stale state (0.473392ms)
+✔ closing while restore waits for its lock cancels authority before any write (0.448575ms)
+✔ explicit confirmed restore and undo preview retain original safety bytes and draft (0.617729ms)
+✔ malformed backup, missing Bible reference and stale export cannot mutate current records (0.575506ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69.58644

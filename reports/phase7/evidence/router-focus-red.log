@@ -1,0 +1,50 @@
+✔ hash parsing preserves encoded IDs, queries and malformed-URI rejection (1.416919ms)
+✖ existing route names dispatch to their exact adapters without data mutation (2.185013ms)
+✔ a stale reader completion cannot steal focus from the newer route (0.311488ms)
+✔ quiz return identity, unfinished state and explicit completion keep existing keys (1.117399ms)
+✔ compose resumes the exact existing draft without writes and invalid links show the existing error view (0.3395ms)
+✖ step deep links open the existing disclosure and focus the exact encoded step (0.52606ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 4
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 76.252549
+
+✖ failing tests:
+
+test at tests/app-router.test.mjs:26:1
+✖ existing route names dispatch to their exact adapters without data mutation (2.185013ms)
+  AssertionError [ERR_ASSERTION]: marks
+  
+  undefined !== []
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:29:86)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/app-router.test.mjs:49:1
+✖ step deep links open the existing disclosure and focus the exact encoded step (0.52606ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/app-router.test.mjs:53:61)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
