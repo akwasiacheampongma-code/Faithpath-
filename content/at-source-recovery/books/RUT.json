@@ -1,0 +1,529 @@
+{
+  "schema": "faithpath.at.airtable-source.v1",
+  "book": {
+    "name": "Ruth",
+    "code": "RUT",
+    "chapters": 4
+  },
+  "source": "Airtable FaithPath",
+  "unit_count": 4,
+  "question_count": 24,
+  "units": [
+    {
+      "source_record_id": "recrvYIH1RvozrfpO",
+      "created_at": "2026-09-19T23:15:19.000Z",
+      "number": 1171,
+      "source_id": "1171 — Ruth 1,1-22",
+      "book": "Ruth",
+      "verse_range": "Ruth 1,1-22",
+      "title": "Naemi kehrt mit Ruth nach Bethlehem zurück",
+      "context": "Hungersnot, Verlust, Ruths Treue zu Naemi und Rückkehr nach Bethlehem.",
+      "reflection": "Wo fordert dich Treue dazu heraus, bei einem Menschen zu bleiben, obwohl der weitere Weg unsicher ist?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "recs2ByDaRw4AWLek",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1171-Q1",
+          "unit_number": 1171,
+          "question": "Warum zog Elimelech mit seiner Familie nach Moab?",
+          "options": [
+            "Wegen einer Hungersnot",
+            "Wegen eines Krieges",
+            "Wegen einer Volkszählung",
+            "Wegen einer Pilgerreise"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Ruth 1,1-2",
+          "explanation": "Im Land herrschte eine Teuerung; deshalb zog die Familie aus Bethlehem-Juda nach Moab.",
+          "difficulty": "Leicht",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec2txE5AI6Tz8AIl",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1171-Q2",
+          "unit_number": 1171,
+          "question": "Welche beiden Schwiegertöchter hatte Naemi?",
+          "options": [
+            "Debora und Jael",
+            "Orpa und Ruth",
+            "Rahel und Lea",
+            "Mirjam und Hanna"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 1,4",
+          "explanation": "Mahlon und Chiljon nahmen moabitische Frauen; sie hießen Orpa und Ruth.",
+          "difficulty": "Leicht",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec0x032jKfnfFLI6",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1171-Q3",
+          "unit_number": 1171,
+          "question": "Welche Nachricht veranlasste Naemi, Moab zu verlassen?",
+          "options": [
+            "Bethlehem sei zerstört worden",
+            "Ihre Verwandten hätten nach ihr geschickt",
+            "Der HERR habe sein Volk heimgesucht und ihm Brot gegeben",
+            "In Moab sei ein neuer König eingesetzt worden"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Ruth 1,6",
+          "explanation": "Naemi hatte erfahren, dass der HERR sein Volk heimgesucht und ihm wieder Brot gegeben hatte.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recKh9Xu849EmBkEf",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1171-Q4",
+          "unit_number": 1171,
+          "question": "Was unterschied Ruths Entscheidung von Orpas Entscheidung?",
+          "options": [
+            "Ruth kehrte nach Moab zurück, Orpa blieb bei Naemi",
+            "Beide gingen nach Bethlehem, aber auf verschiedenen Wegen",
+            "Orpa kehrte zu ihrem Volk zurück, Ruth blieb bei Naemi",
+            "Orpa ging allein nach Bethlehem, Ruth blieb in Moab"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Ruth 1,14-18",
+          "explanation": "Orpa nahm Abschied; Ruth hielt an Naemi fest und entschied sich, mit ihr zu gehen.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recxbm8sIWefWFzWB",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1171-Q5",
+          "unit_number": 1171,
+          "question": "Welche umfassende Bindung drückte Ruth gegenüber Naemi aus?",
+          "options": [
+            "Nur am selben Ort zu wohnen",
+            "Naemis Volk und Gott als ihr Volk und Gott anzunehmen",
+            "Naemis Besitz zu verwalten",
+            "Nach einem Jahr nach Moab zurückzukehren"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 1,16-17",
+          "explanation": "Ruth verband ihren weiteren Lebensweg, ihr Volk und ihren Gott ausdrücklich mit Naemis Weg.",
+          "difficulty": "Tief",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recS9WLcGD63YwYcw",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1171-Q6",
+          "unit_number": 1171,
+          "question": "Zu welchem Zeitpunkt kamen Naemi und Ruth nach Bethlehem?",
+          "options": [
+            "Zu Beginn der Gerstenernte",
+            "Zur Weinlese",
+            "Mitten im Winter",
+            "Nach Abschluss der Weizenernte"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Ruth 1,22",
+          "explanation": "Der Schluss des Kapitels nennt ausdrücklich den Anfang der Gerstenernte als Zeitpunkt ihrer Ankunft.",
+          "difficulty": "Tief",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    },
+    {
+      "source_record_id": "recPOoGdXM6vFfGkE",
+      "created_at": "2026-09-19T23:15:19.000Z",
+      "number": 1172,
+      "source_id": "1172 — Ruth 2,1-23",
+      "book": "Ruth",
+      "verse_range": "Ruth 2,1-23",
+      "title": "Ruth liest Ähren auf dem Feld des Boas",
+      "context": "Ruth sammelt Ähren, begegnet Boas und erfährt Schutz und Großzügigkeit.",
+      "reflection": "Wie kannst du einem Menschen praktisch Schutz oder Unterstützung geben, ohne ihn dabei kleinzumachen?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "recCYCGAUsRZGCqZW",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1172-Q1",
+          "unit_number": 1172,
+          "question": "Wie hieß der Verwandte aus Elimelechs Geschlecht, auf dessen Feld Ruth gelangte?",
+          "options": [
+            "Boas",
+            "Obed",
+            "Isai",
+            "Mahlon"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Ruth 2,1-3",
+          "explanation": "Das Feld gehörte Boas, einem Verwandten aus dem Geschlecht Elimelechs.",
+          "difficulty": "Leicht",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recjOTJBKtmhb6Bxo",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1172-Q2",
+          "unit_number": 1172,
+          "question": "Was wollte Ruth auf dem Feld tun?",
+          "options": [
+            "Trauben lesen",
+            "Ähren hinter den Schnittern auflesen",
+            "Schafe hüten",
+            "Saatgut kaufen"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 2,2-3",
+          "explanation": "Ruth bat Naemi darum, auf ein Feld gehen und Ähren hinter den Schnittern auflesen zu dürfen.",
+          "difficulty": "Leicht",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recGU55TZP0jukOgW",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1172-Q3",
+          "unit_number": 1172,
+          "question": "Welche Schutzanweisung gab Boas Ruth?",
+          "options": [
+            "Sie solle nur nachts sammeln",
+            "Sie solle das Feld sofort verlassen",
+            "Sie solle bei seinen Mägden bleiben; den Knechten sei geboten, sie nicht anzutasten",
+            "Sie solle einen eigenen Wächter bezahlen"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Ruth 2,8-9",
+          "explanation": "Boas ließ Ruth auf seinem Feld bleiben und hatte seinen Knechten befohlen, sie nicht anzutasten.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recdb7PP9hzKcn9mb",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1172-Q4",
+          "unit_number": 1172,
+          "question": "Warum kannte Boas Ruths Geschichte bereits?",
+          "options": [
+            "Naemi hatte ihn persönlich geschickt",
+            "Ihm war berichtet worden, was Ruth für ihre Schwiegermutter getan hatte",
+            "Ruth hatte ihm einen Brief geschrieben",
+            "Er hatte Ruth schon in Moab gekannt"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 2,11-12",
+          "explanation": "Boas sagte, ihm sei berichtet worden, wie Ruth nach dem Tod ihres Mannes für Naemi gehandelt und ihre Heimat verlassen hatte.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recZClTQtEgAYGCQp",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1172-Q5",
+          "unit_number": 1172,
+          "question": "Wie ging Boas über bloße Erlaubnis zum Ährenlesen hinaus?",
+          "options": [
+            "Er verbot Ruth, etwas mitzunehmen",
+            "Er ließ absichtlich Ähren für sie aus den Garben fallen und verbot, sie zu schelten",
+            "Er schickte sie zu einem anderen Feld",
+            "Er verlangte die Hälfte ihrer Ernte"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 2,14-16",
+          "explanation": "Boas versorgte Ruth beim Essen und ordnete zusätzlich an, dass seine Leute ihr bewusst etwas zum Auflesen liegen lassen sollten.",
+          "difficulty": "Tief",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recpK38qCp89uCRhp",
+          "created_at": "2026-09-19T23:15:43.000Z",
+          "id": "1172-Q6",
+          "unit_number": 1172,
+          "question": "Welche Bedeutung erkannte Naemi in Boas' Beziehung zu ihrer Familie?",
+          "options": [
+            "Er war ein Priester",
+            "Er war einer ihrer Erben beziehungsweise Löser",
+            "Er war ein Richter Israels",
+            "Er war Mahlons Bruder"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 2,19-20",
+          "explanation": "Naemi bezeichnete Boas als nahen Verwandten und als einen ihrer Erben.",
+          "difficulty": "Tief",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    },
+    {
+      "source_record_id": "recugTMmhLIHmyWPg",
+      "created_at": "2026-09-19T23:15:19.000Z",
+      "number": 1173,
+      "source_id": "1173 — Ruth 3,1-18",
+      "book": "Ruth",
+      "verse_range": "Ruth 3,1-18",
+      "title": "Ruth bittet Boas auf der Tenne um sein Erbrecht",
+      "context": "Naemis Plan, Ruths Bitte an Boas und Boas' Zusage unter Beachtung des näheren Erben.",
+      "reflection": "Wo ist es wichtig, ein gutes Ziel nicht einfach durchzusetzen, sondern bestehende Verpflichtungen und die Rechte anderer zu achten?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "receGRSjAbYby9HN0",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1173-Q1",
+          "unit_number": 1173,
+          "question": "Wo worfelte Boas in dieser Nacht Gerste?",
+          "options": [
+            "Im Stadttor",
+            "Auf seiner Tenne",
+            "Im Tempelhof",
+            "Auf Naemis Feld"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 3,1-2",
+          "explanation": "Naemi sagte Ruth, dass Boas in dieser Nacht Gerste auf seiner Tenne worfeln werde.",
+          "difficulty": "Leicht",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recKbxnZhgDNa6Nad",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1173-Q2",
+          "unit_number": 1173,
+          "question": "Was tat Ruth mit Boas' Füßen, nachdem er sich schlafen gelegt hatte?",
+          "options": [
+            "Sie wusch sie",
+            "Sie deckte sie auf und legte sich dort hin",
+            "Sie salbte sie mit Öl",
+            "Sie band seine Schuhe zusammen"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 3,4-7",
+          "explanation": "Ruth folgte Naemis Anweisung, deckte Boas zu den Füßen auf und legte sich dort nieder.",
+          "difficulty": "Leicht",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recHquMm0xmk5Xd2z",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1173-Q3",
+          "unit_number": 1173,
+          "question": "Mit welcher Begründung bat Ruth Boas, seine Decke über sie zu breiten?",
+          "options": [
+            "Weil er der Erbe war",
+            "Weil die Nacht kalt war",
+            "Weil Naemi ihm Geld schuldete",
+            "Weil Ruth am nächsten Tag abreisen wollte"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Ruth 3,8-9",
+          "explanation": "Ruth nannte sich seine Magd und begründete ihre Bitte ausdrücklich damit, dass Boas der Erbe sei.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recIIM10WMBVj10lw",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1173-Q4",
+          "unit_number": 1173,
+          "question": "Welches Hindernis nannte Boas, bevor er Ruth seine Zusage gab?",
+          "options": [
+            "Er musste zuerst Naemi fragen",
+            "Es gab einen näheren Erben als ihn",
+            "Er wollte Bethlehem verlassen",
+            "Ruth gehörte bereits einem anderen Haushalt an"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 3,10-13",
+          "explanation": "Boas erklärte, dass zwar auch er Erbe sei, aber ein anderer Mann ein näheres Erbrecht habe.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recgLHgrHP7yy5e9h",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1173-Q5",
+          "unit_number": 1173,
+          "question": "Wie verband Boas seine Bereitschaft mit dem Recht des näheren Erben?",
+          "options": [
+            "Er ignorierte den näheren Erben vollständig",
+            "Er wollte Ruth nur heiraten, wenn Naemi Moab verließ",
+            "Wenn der nähere Erbe Ruth nicht nehmen wollte, wollte Boas es tun",
+            "Er überließ Ruth die Entscheidung, wer Erbe sein sollte"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Ruth 3,12-13",
+          "explanation": "Boas versprach zu handeln, ordnete seine eigene Bereitschaft aber dem bestehenden Vorrang des näheren Erben unter.",
+          "difficulty": "Tief",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recLnbiu1J4bDjylH",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1173-Q6",
+          "unit_number": 1173,
+          "question": "Warum erwartete Naemi am Ende des Kapitels eine schnelle Klärung?",
+          "options": [
+            "Weil Boas noch am selben Tag abreisen musste",
+            "Weil Ruth bereits einen Vertrag unterschrieben hatte",
+            "Weil Boas nach Naemis Einschätzung nicht ruhen würde, bis er die Sache zu Ende gebracht hätte",
+            "Weil die Ernte am nächsten Morgen endete"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Ruth 3,15-18",
+          "explanation": "Nach Boas' Gabe von sechs Maß Gerste sagte Naemi, er werde nicht ruhen, bis die Angelegenheit an diesem Tag geklärt sei.",
+          "difficulty": "Tief",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    },
+    {
+      "source_record_id": "recQh08XQXuB5IpHj",
+      "created_at": "2026-09-19T23:15:19.000Z",
+      "number": 1174,
+      "source_id": "1174 — Ruth 4,1-22",
+      "book": "Ruth",
+      "verse_range": "Ruth 4,1-22",
+      "title": "Boas löst das Erbe ein, heiratet Ruth und Obed wird geboren",
+      "context": "Boas regelt das Erbrecht öffentlich, heiratet Ruth; Obed wird geboren und die Linie bis David genannt.",
+      "reflection": "Was zeigt dir dieser Abschluss darüber, wie verlässliches Handeln langfristig Folgen für andere Menschen haben kann?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "recOIytWCMKQnGT3J",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1174-Q1",
+          "unit_number": 1174,
+          "question": "Wo setzte sich Boas hin, um die Erbangelegenheit zu klären?",
+          "options": [
+            "Im Tor",
+            "Auf der Tenne",
+            "Im Haus Naemis",
+            "Auf dem Feld"
+          ],
+          "correct_answer": "A",
+          "correct_index": 0,
+          "verse_reference": "Ruth 4,1",
+          "explanation": "Boas ging zum Tor und setzte sich dort, bis der nähere Erbe vorbeikam.",
+          "difficulty": "Leicht",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec0ls2T3SWkTHOT7",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1174-Q2",
+          "unit_number": 1174,
+          "question": "Wie viele Älteste nahm Boas als Zeugen hinzu?",
+          "options": [
+            "Sieben",
+            "Zehn",
+            "Zwölf",
+            "Vierzig"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 4,2",
+          "explanation": "Boas nahm zehn Männer von den Ältesten der Stadt hinzu.",
+          "difficulty": "Leicht",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec8zlGaUdVsxsKH7",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1174-Q3",
+          "unit_number": 1174,
+          "question": "Warum lehnte der nähere Erbe schließlich ab, das Erbe einzulösen?",
+          "options": [
+            "Er hatte Bethlehem bereits verlassen",
+            "Er fürchtete, dadurch sein eigenes Erbteil zu verderben",
+            "Er kannte Elimelech nicht",
+            "Die Ältesten verboten es ihm"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 4,3-6",
+          "explanation": "Nachdem Boas die Verbindung des Feldkaufs mit Ruth erläutert hatte, erklärte der nähere Erbe, er könne es nicht einlösen, damit sein eigenes Erbteil nicht Schaden nehme.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rec8Ch0kvG5dEeDPU",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1174-Q4",
+          "unit_number": 1174,
+          "question": "Welches Zeichen bestätigte nach der beschriebenen alten Gewohnheit die Übertragung des Rechts?",
+          "options": [
+            "Ein Ring wurde übergeben",
+            "Ein Stab wurde zerbrochen",
+            "Der Erbe zog seinen Schuh aus und gab ihn dem anderen",
+            "Ein Tier wurde geopfert"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Ruth 4,7-8",
+          "explanation": "Der Text erklärt das Ausziehen und Übergeben des Schuhs als damaliges Zeugnis zur Bestätigung einer solchen Sache.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "reczJa3YF8U9fVva2",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1174-Q5",
+          "unit_number": 1174,
+          "question": "Welchen Zweck nannte Boas dafür, Ruth zur Frau zu nehmen?",
+          "options": [
+            "Seinen eigenen Besitz zu vergrößern",
+            "Dem Verstorbenen einen Namen auf seinem Erbteil zu erhalten",
+            "Naemi nach Moab zurückzubringen",
+            "Ältester der Stadt zu werden"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Ruth 4,9-10",
+          "explanation": "Boas erklärte öffentlich, Ruth zu erwerben, damit der Name des Verstorbenen auf seinem Erbteil nicht ausgerottet werde.",
+          "difficulty": "Tief",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recdTIv1UjJKpS8xB",
+          "created_at": "2026-09-19T23:16:08.000Z",
+          "id": "1174-Q6",
+          "unit_number": 1174,
+          "question": "Welche Verbindung stellt der Schluss des Buches zwischen Ruths Sohn und David her?",
+          "options": [
+            "Obed war Davids Bruder",
+            "Obed war Davids Vater",
+            "Obed war der Vater Isais, der Davids Vater war",
+            "Obed war Davids Sohn"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Ruth 4,13-22",
+          "explanation": "Ruth gebar Obed; Obed wurde Vater Isais und Isai Vater Davids. Das anschließende Geschlechtsregister bestätigt diese Linie.",
+          "difficulty": "Tief",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    }
+  ]
+}
