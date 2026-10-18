@@ -32,8 +32,8 @@
 **Interfaces:** createAppRouter receives explicit views/helpers/state/DOM dependencies and returns render(); parseHashRoute preserves existing route parsing. No Store mutation.
 
 - [x] Record clean branch/remote refs, immutable TREEFINAL,198 baseline tests and measured module/build metrics.
-- [ ] Capture baseline product routes; write parse/dispatch/race/focus contracts and observe RED for the new boundary before extraction.
-- [ ] Extract route rendering without changing behavior; run focused contracts, baseline-equivalent browser check and all units, inspect diff, commit.
+- [x] Capture baseline product routes; write parse/dispatch/race/focus contracts and observe RED for the new boundary before extraction.
+- [x] Extract route rendering without changing behavior; run focused contracts, baseline-equivalent browser check and all units, inspect diff, commit.
 
 ## Task2: Backup session ownership
 
@@ -71,3 +71,7 @@
 - Default npm cache is unavailable in this workspace. Use /tmp/faithpath-phase7-npm-cache; never change HOME or read credential values.
 - Existing node_modules is a shared symlink. Before installing the lint dependency, replace only this worktree's symlink with an independent install; do not mutate another branch's dependency directory.
 - No skill helper script is available as a filesystem executable here; this plan is the persistent ledger. Independent review remains mandatory as explicitly requested by the user.
+
+- Task1 complete: six route contracts pass (including encoded step focus and stale async reader). All204 unit tests pass. Existing core browser programme passed against immutable TREEFINAL before the refactor; original43-route programme plus onboarding storage-failure checks passed against the intermediate router build at390/night. Original business assertions retained; new test environment/output options prevent overwriting historical QA.
+- The first mechanical routing transfer wrongly replaced suffix s() inside marks/focus. The new dispatch and focus contracts caught it; regenerate with a word-boundary-only state accessor substitution. No failing intermediate implementation was committed.
+- Intermediate router build tests use an isolated working-tree build, not the final claimed release. The final source/build gets fresh full evidence later.

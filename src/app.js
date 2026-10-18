@@ -1,3 +1,4 @@
+import {createAppRouter} from './app-router.js';
 import {writingDialog} from './verbunden/dialog-view.js';
 import {prepareWritingArea} from './verbunden/interaction.js';
 import {renderReaderFlow,readingTools} from './verbunden/reader-flow.js';
@@ -1790,92 +1791,11 @@ async function action(a, d, el) {
     return;
   }
 }
-async function render() {
-  const token = ++ui.token;
-  try {
-    const route = location.hash.slice(1) || "today",
-      [name, query = ""] = route.split("?"),
-      parts = name.split("/").map(decodeURIComponent),
-      [kind, key] = parts;
-    const previousRoute = ui.route;
-    ui.route = route;
-    if (kind === "merged-story") mergedStory(key);
-    else if (kind === "question") sourceQuestion(key);
-    else if (kind === "today") home();
-    else if (kind === "guidance") guidance();
-    else if (kind === "topic") topic(key);
-    else if (kind === "bible") bible();
-    else if (kind === "bible-journey") {
-      const view=journeyView(s(),ui.books,key);if(!view)return notFound();shell(`${back(key?"Deine Bibelreise":"Bibel",key?"bible-journey":"bible")}${heading("Bibelreise",view.title)}${view.body}`,"bible","journey-page editorial-page depth-page");if(!key)fillJourneyScripture($("#main"));
-    }
-    else if (kind === "chapters") chapters(key);
-    else if (kind === "chapter-quizzes") chapterCollection(key);
-    else if (kind === "read") {
-      shell(
-        `${heading("Bibel", "Der Text wird geöffnet.")}<p role="status">Ein Moment …</p>`,
-        "bible",
-        "reader-page",
-      );
-      await reader(parts, new URLSearchParams(query), token);
-    } else if (kind === "marks") marks();
-    else if (kind === "mark") markDetail(key);
-    else if (kind === "discover") discover();
-    else if (kind === "story") story(key);
-    else if (kind === "quizzes") quizIndex();
-    else if (kind === "quiz") {
-      const x = ui.stories.find((x) => String(x.id) === key);
-      if (!x) return notFound();
-      const canonical=canonicalStoryForLegacy(x);
-      if(canonical){go("question/"+canonical.flow_items[0].primary_question_id);return;}
-      const params = new URLSearchParams(query), returnRoute = params.get("return") || "";
-      if (!ui.quiz || String(ui.quiz.story.id) !== key || previousRoute.split("?")[0] !== name || ui.quiz.returnRoute !== returnRoute)
-        ui.quiz = {story:x, index:0, answer:null, returnRoute};
-      ui.quiz.navigation = chapterQuizNavigation(x, ui.books, s().translation, returnRoute);
-      if (params.get("complete") === "1" && s().quiz[x.id]?.done) chapterQuizComplete(x, ui.quiz.navigation);
-      else quiz();
-    } else if (kind === "paths") paths();
-    else if (kind === "path") path(key);
-    else if (kind === "tree") tree();
-    else if (kind === "plans") plans();
-    else if (kind === "plan" || kind === "guide") plan(kind, key);
-    else if (kind === "journal") journal();
-    else if (["entry", "reflection", "review"].includes(kind)) entry(key, kind);
-    else if (kind === "history") history();
-    else if (kind === "reviews") reviews();
-    else if (kind === "more") more();
-    else if (kind === "content-status") contentStatus();
-    else if (kind === "licenses") licenses();
-    else if (kind === "compose") {
-      journal();
-      let draft;
-      try {
-        draft = JSON.parse(localStorage.getItem(KEYS.draft));
-      } catch {}
-      if (draft?.type && draft.values)
-        openForm(draft.type, draft.args, draft.values);
-      else openForm("entry");
-    } else notFound();
-    if (token !== ui.token) return;
-    window.scrollTo({ top: 0, behavior: "instant" });
-    $("h1")?.focus({ preventScroll: true });
-    if(kind==="journal"&&ui.journalReturn){const previous=ui.journalReturn;ui.journalReturn=null;const target=$$("[data-journal-id]").find(el=>el.dataset.journalId===previous.id)?.querySelector("h3 a");if(target){target.focus({preventScroll:true});window.scrollTo({top:previous.scroll,behavior:"instant"});}}
-    if(kind==="path"&&new URLSearchParams(query).has("step")){
-      const stepId=new URLSearchParams(query).get("step"),input=$$(".path-step input").find(el=>el.dataset.id===stepId);
-      if(input){const disclosure=input.closest("details");if(disclosure)disclosure.open=true;input.focus();input.scrollIntoView({block:"center",behavior:"instant"});}
-    }
-    if(kind==="path"&&new URLSearchParams(query).get("section")==="story"){
-      const story=$(".path-story");if(story){story.focus();story.scrollIntoView({block:"start",behavior:"instant"});}
-    }
-    if(kind==="merged-story"&&new URLSearchParams(query).get("reflection")==="1"){
-      const invitation=$(".reflection-invite");if(invitation){invitation.tabIndex=-1;invitation.focus();invitation.scrollIntoView({block:"start",behavior:"instant"});}
-    }
-  } catch (err) {
-    if (token === ui.token)
-      shell(
-        `${back("Heute", "today")}${heading("Das hat nicht geklappt", "Dieser Inhalt ist gerade nicht verfügbar.", err.message)}${button("Erneut versuchen", "retry", {}, "button primary")}`,
-      );
-  }
-}
+const render=createAppRouter({
+ ui,getState:s,canonicalStoryForLegacy,go,storage:deviceStorage,document,window,location,
+ helpers:{shell,heading,back,button},
+ views:{mergedStory,sourceQuestion,home,guidance,topic,bible,chapters,chapterCollection,reader,marks,markDetail,discover,story,quizIndex,quiz,chapterQuizComplete,paths,path,tree,plans,plan,journal,entry,history,reviews,more,contentStatus,licenses,openForm,notFound,fillJourneyScripture}
+});
 document.addEventListener("focusin",event=>{
   const tab=event.target.closest?.(".segmented a");if(!tab)return;
   const container=tab.parentElement,box=container.getBoundingClientRect(),r=tab.getBoundingClientRect();
