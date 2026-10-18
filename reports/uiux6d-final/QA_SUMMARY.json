@@ -1,0 +1,174 @@
+{
+  "status": "PASS",
+  "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457",
+  "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+  "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+  "contentHash": "8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309",
+  "unitTests": 198,
+  "layoutCases": 112,
+  "beforeCases": 32,
+  "keyboardAxeCases": 16,
+  "offlineThemeCases": 4,
+  "actualHTTPSUpdateChecks": 5,
+  "originalBrowserPrograms": [
+    {
+      "name": "core",
+      "script": "browser",
+      "exit": 0,
+      "started": 1792307179.182608,
+      "ended": 1792307292.081779,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "core-axe",
+      "script": "core-depth-accessibility",
+      "exit": 0,
+      "started": 1792307179.1851196,
+      "ended": 1792307205.1437008,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "continuity",
+      "script": "continuity-browser",
+      "exit": 0,
+      "started": 1792307205.1440341,
+      "ended": 1792307347.697018,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "branches",
+      "script": "tree-branch-visual-browser",
+      "exit": 0,
+      "started": 1792307292.0821955,
+      "ended": 1792307495.038435,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "overview",
+      "script": "phase3-overview-browser",
+      "exit": 0,
+      "started": 1792307347.69738,
+      "ended": 1792307400.0568323,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "detail",
+      "script": "phase3-detail-browser",
+      "exit": 0,
+      "started": 1792307400.0570939,
+      "ended": 1792307440.9322855,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "tree",
+      "script": "phase3-tree-browser",
+      "exit": 0,
+      "started": 1792307440.9326487,
+      "ended": 1792307518.598614,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "reviews-original",
+      "script": "phase3-review-browser",
+      "exit": 0,
+      "started": 1792307495.0388691,
+      "ended": 1792307602.9410665,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "phase3-stress",
+      "script": "phase3-stress",
+      "exit": 0,
+      "started": 1792307518.5989432,
+      "ended": 1792307552.5935855,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "journal",
+      "script": "phase5-journal-browser",
+      "exit": 0,
+      "started": 1792307552.5938804,
+      "ended": 1792307662.0349803,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "reviews",
+      "script": "phase5-reviews-browser",
+      "exit": 0,
+      "started": 1792307602.9413784,
+      "ended": 1792307754.9502857,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "backup",
+      "script": "phase5-backup-browser",
+      "exit": 0,
+      "started": 1792307662.0354145,
+      "ended": 1792307743.5047696,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "backup-races",
+      "script": "phase5-backup-races-browser",
+      "exit": 0,
+      "started": 1792307743.505076,
+      "ended": 1792307753.1462197,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "backup-dialogs",
+      "script": "phase5-backup-dialogs-browser",
+      "exit": 0,
+      "started": 1792307753.1465838,
+      "ended": 1792307790.2571692,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    },
+    {
+      "name": "integration",
+      "script": "uiux45-integration-browser",
+      "exit": 0,
+      "started": 1792307754.950664,
+      "ended": 1792307788.54115,
+      "build": "FP4-20261018-G-STABLE1-UIUX6D-TREEFINAL",
+      "buildHash": "5390ec0a00ba171bc0f997a5fd5c8ba11b7e58b508a3085c488c21d95add84aa",
+      "sourceCommit": "ce89422411ec3382c62ba7683167cf1b6db4a457"
+    }
+  ],
+  "protectedContentCoreFiles": 175,
+  "protectedSourceFiles": 64,
+  "thresholdCases": 101,
+  "independentReviewCases": 8,
+  "reproducibleFiles": 367,
+  "fullScreenshotPNGCount": 471,
+  "physicalIOS_Safari_VoiceOver": "OFFEN",
+  "deployments": [],
+  "merges": []
+}

@@ -1,0 +1,41 @@
+✔ seven existing names receive complete, distinct explanations (3.669148ms)
+✖ long tree title offers a German compound boundary without changing its stored name (2.84547ms)
+✔ current meaning precedes the image and path list without opening details (5.101302ms)
+✔ explanation distinguishes imagery from biblical commandments and faith ranking (0.572221ms)
+✔ reading, quiz and checked tasks do not advance the tree through its guide (0.602225ms)
+✔ invalid presentation levels fall back without inventing an eighth stage (0.226491ms)
+✔ display guide does not change existing confirmed-development thresholds (0.384699ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 86.681529
+
+✖ failing tests:
+
+test at tests/tree-stage-guide.test.mjs:21:1
+✖ long tree title offers a German compound boundary without changing its stored name (2.84547ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Fruchttragender Olivenbaum'
+  - 'Frucht­tragender Olivenbaum'
+           ^
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-tree6d/tests/tree-stage-guide.test.mjs:25:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Fruchttragender Olivenbaum',
+    expected: 'Frucht­tragender Olivenbaum',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
