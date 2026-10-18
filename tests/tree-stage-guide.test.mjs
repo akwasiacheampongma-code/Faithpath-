@@ -18,10 +18,18 @@ test('seven existing names receive complete, distinct explanations',()=>{
  for(const entry of TREE_STAGE_MEANINGS)assert.ok(entry.meaning.length>85);
  assert.equal(new Set(TREE_STAGE_MEANINGS.map(x=>x.meaning)).size,7);
 });
+test('long tree title offers a German compound boundary without changing its stored name',()=>{
+ const data=phase3Fixture('tree-6'),before=JSON.stringify(data),html=treePage(data);
+ const title=html.match(/<h1>(.*?)<\/h1>/)[1];
+ assert.equal(title.replaceAll('\u00ad',''),stageNames[6]);
+ assert.equal(title,'Frucht\u00adtragender Olivenbaum');
+ assert.equal(stageNames[6],'Fruchttragender Olivenbaum');
+ assert.equal(JSON.stringify(data),before);
+});
 test('current meaning precedes the image and path list without opening details',()=>{
  for(let i=0;i<7;i++){
   const data=phase3Fixture('tree-'+i),before=JSON.stringify(data),html=treePage(data);
-  assert.ok(html.includes('<h1>'+stageNames[i]+'</h1>'));
+  assert.ok(html.replaceAll('\u00ad','').includes('<h1>'+stageNames[i]+'</h1>'));
   assert.ok(html.indexOf('tree-stage-current-meaning')<html.indexOf('tree-branch-scene'),'Current meaning must appear before the tree image');
   assert.ok(html.includes(TREE_STAGE_MEANINGS[i].meaning));
   assert.equal((html.match(/class="tree-stage-card"/g)||[]).length,7);

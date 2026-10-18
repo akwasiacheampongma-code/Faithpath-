@@ -21,8 +21,10 @@ export function selectTreeHistory(data) {
  return {stage,count:developmentCount(data),sources,unplaced:data.paths.filter(p=>!branches.all.some(entry=>entry.path.id===p.id))};
 }
 export function renderTreeJourney(model,{back,heading,stageName,branchMarkup,link,date}) {
+ // Optional compound boundary for narrow/enlarged type; the stored name is intact.
+ const displayName=stageName.replace('Fruchttragender','Frucht\u00adtragender');
  const sources=model.sources.map(source=>`<li><span class="meta">${e(date(source.date))}${source.pathTitle?' · '+e(source.pathTitle):' · In deiner Geschichte erhalten'}${source.archived?' · archiviert':''}</span><blockquote class="preserve">${e(source.text||'Der damalige Wortlaut ist nicht gespeichert.')}</blockquote>${source.route?link('Ursprünglichen Moment öffnen',source.route,'text-link'):'<p class="meta">Die ursprüngliche Quelle ist nicht mehr eindeutig verfügbar.</p>'}</li>`).join('');
- return `${back('Mein Weg','paths')}${heading('Dein Olivenbaum',stageName)}
+ return `${back('Mein Weg','paths')}${heading('Dein Olivenbaum',displayName)}
   ${renderTreeStageMeaning(model.stage)}
   ${branchMarkup}
   ${renderTreeStageGuide(model.stage)}

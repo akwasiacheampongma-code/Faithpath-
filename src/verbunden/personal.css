@@ -540,14 +540,22 @@ dialog.writing-dialog {
   padding-bottom: 0;
   margin-bottom: 16px;
 }
-.tree-page > .tree-stage-current-meaning {
+.tree-page > #main > .tree-stage-current-meaning {
   font-size: .95rem;
   line-height: 1.65;
   margin: 0 0 10px;
 }
-.tree-page > .tree-personal-meaning {
+.tree-page > #main > .tree-personal-meaning {
   margin: 0 0 20px;
   line-height: 1.65;
+}
+/* Keep the inherited type size. The title renderer supplies a German compound
+   boundary, so even browsers without automatic dictionaries never split anywhere. */
+.page.tree-page .page-heading h1 {
+  overflow-wrap: normal;
+  word-break: normal;
+  -webkit-hyphens: manual;
+  hyphens: manual;
 }
 .tree-stage-guide {
   margin: 28px 0 32px;
