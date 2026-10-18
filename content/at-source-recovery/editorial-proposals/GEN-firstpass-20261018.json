@@ -1,0 +1,32 @@
+{
+  "schema": "faithpath.at.editorial-review.v1",
+  "date": "2026-10-18",
+  "book": "GEN",
+  "scope": "All 396 question stems, selected answers and explanations read for an initial plausibility pass; no independent verse-by-verse or final theological approval asserted",
+  "first_pass": {
+    "questions": 396,
+    "units": 66,
+    "concrete_wording_correction": 1,
+    "open_verse_concordance_cases": 12,
+    "open_length_distractor_flags": 30,
+    "final_approved": 0
+  },
+  "editorial_proposals": [
+    {
+      "id": "829-Q5",
+      "source_reference": "1 Mose 6,17–18",
+      "original_question": "Was wollte Gott mit Noah aufrichten, bevor die Flut angekündigt wird?",
+      "proposed_question": "Was kündigte Gott Noah nach der Ankündigung der Sintflut in 1. Mose 6,17 an?",
+      "original_correct_answer": "Einen Bund",
+      "reason": "Original 6,17 announces the flood; 6,18 subsequently announces the covenant. The adverb 'bevor' in the source question reverses the order.",
+      "editorial_status": "DRAFT_NOT_APPROVED",
+      "modify_original": false
+    }
+  ],
+  "qa_pending": [
+    "Independently verify all 396 responses, explanations, alternative options and verse citations against both repo Bible translations",
+    "Resolve 12 Genesis source-vs-app verse mapping items in units 868 and 869",
+    "Rework 30 unusually long correct-answer distractor cases without changing canonical IDs",
+    "Require explicit editorial and integration authorization prior to production"
+  ]
+}
