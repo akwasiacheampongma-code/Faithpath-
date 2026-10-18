@@ -1,3 +1,6 @@
+import {createPwaController} from './pwa-controller.js';
+import {createBibleLoader} from './bible-loader.js';
+import {escapeHtml as e} from './view-html.js';
 import {createBackupController} from './backup-controller.js';
 import {createAppRouter} from './app-router.js';
 import {writingDialog} from './verbunden/dialog-view.js';
@@ -13,7 +16,7 @@ import {renderJournal,renderJournalResults,journalCount} from './journal-view.js
 import {onboardingContent} from './onboarding-view.js';
 import {createDiscoveryIndex,selectDiscovery,DISCOVERY_PAGE_SIZE} from './discover-model.js';
 import {renderDiscovery,renderDiscoveryResults,discoveryCount} from './discover-view.js';
-import {renderMore,discoveryShortcuts} from './navigation-view.js';
+import {renderMore} from './navigation-view.js';
 import {capturePathReviewSource,reviewSourceContext,renderReviewSource} from './path-review-context.js';
 import {selectTreeHistory,renderTreeJourney} from './tree-view.js';
 import {selectPathsOverview,selectPathDetail} from './paths-model.js';
@@ -24,16 +27,15 @@ import {chapterOffer,chapterNavigation,initiallyVisibleChapterEnd,chapterOpening
 import {selectToday} from './today-model.js';
 import {renderToday} from './today-view.js';
 import {beginDraftSession,saveDraft,clearDraft,discardDraft,completedDraft} from './drafts.js';
-import {groupOriginPairs,countLabel} from './journey-sword.js';
+import {groupOriginPairs} from './journey-sword.js';
 import {recordExploredChapter,observeChapterEnd} from './bible-journey.js';
-import {journeyView,journeyAcknowledgement,treeBranchView,pathFacts,themePicker} from './experience-view.js';
+import {journeyAcknowledgement,treeBranchView,pathFacts,themePicker} from './experience-view.js';
 import {themeId,applyTheme,THEMES} from './themes.js';
-import {createChapterCatalog,chapterUnit,chapterQuizRoute,chapterQuizNavigation} from "./chapter-questions.js";
-import {journalMatches} from "./journal-search.js";
+import {createChapterCatalog,chapterUnit,chapterQuizRoute} from "./chapter-questions.js";
 import {deleteJournalEntry,restoreJournalEntry,journalDraftMatches,setJournalPath} from "./journal-management.js";
 import {journalTransaction,recoverJournalWrite,JOURNAL_WRITE_KEY,journalWriteActive} from "./journal-storage.js";
 import {isBibleNote,bibleNotes,deleteBibleNote,restoreBibleNote} from "./bible-notes.js";
-import {readingContext,previousThought,allReviews,reviewsFor,reviewPairs,pathContext,highlightContext} from "./continuity.js";
+import {readingContext,previousThought,allReviews,reviewsFor,reviewPairs,highlightContext} from "./continuity.js";
 import { HIGHLIGHT_COLORS, highlightColor, overlapsRef, paintRange, clearRange, detachPath } from "./core-experience.js";
 import { closeMenu, menuMarkup } from "./menu.js";
 import { createStore, KEYS, id, now } from "./store.js";
@@ -44,7 +46,6 @@ import {
   gaps,
   timeline,
   treeLevel,
-  developmentCount,
   attach,
   time,
 } from "./domain.js";
@@ -63,14 +64,6 @@ const CONTENT_BASE = new URL("../data/", import.meta.url);
 
 const $ = (s, r = document) => r.querySelector(s),
   $$ = (s, r = document) => [...r.querySelectorAll(s)];
-const e = (v) =>
-  String(v ?? "").replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        c
-      ],
-  );
 const date = (d) =>
   time(d) == null
     ? "Datum unbekannt"
@@ -102,7 +95,6 @@ const ui = {
   stories: [],
   refs: {},
   contentStatus: {},
-  cache: new Map(),
   route: "today",
   token: 0,
   selection: new Set(),
@@ -313,9 +305,7 @@ function safeReading() {
   const x=readingContext(s());if(!x)return null;
   try {return {...x,ref:validRef(x.ref,ui.refs)};}catch{return null;}
 }
-function continuityPairHTML(pair) {
-  return `<article class="continuity-pair" data-pair-kind="${e(pair.kind)}"><span class="overline">Damals → Heute</span><div class="continuity-before"><span class="meta">Damals · ${date(pair.before.date)}</span><blockquote>${e(pair.before.text)}</blockquote></div><div class="continuity-after"><span class="meta">Heute · ${date(pair.after.date)}</span><blockquote>${e(pair.after.text)}</blockquote></div>${storyConnections(pair.before)}${link(pair.review ? "Rückblick öffnen" : "Gedanken ansehen",pair.after.route,"text-link")}</article>`;
-}
+
 function continuityGroupsHTML(pairs,limit=Infinity) {
  return groupOriginPairs(pairs).slice(0,limit).map(group=>`<article class="continuity-pair" data-pair-kind="${e(group.pairs[0].kind)}"><span class="overline">Damals → Heute</span><div class="continuity-before"><span class="meta">Damals · ${date(group.before.date)}</span><blockquote>${e(group.before.text)}</blockquote></div>${group.pairs.map(pair=>`<div class="continuity-after continuity-today"><span class="meta">Heute · ${date(pair.after.date)}</span><blockquote>${e(pair.after.text)}</blockquote>${link(pair.review?"Rückblick öffnen":"Gedanken ansehen",pair.after.route,"text-link")}</div>`).join("")}${storyConnections(group.before)}</article>`).join("");
 }
@@ -399,26 +389,8 @@ function chapters(code) {
     "bible",
   );
 }
-async function getBook(code, tr) {
-  const key = tr + ":" + code;
-  if (!ui.cache.has(key))
-    ui.cache.set(
-      key,
-      fetch(`data/bibles/${tr}/${code}.json`)
-        .then((r) => {
-          if (!r.ok)
-            throw new Error(
-              "Der Bibeltext konnte nicht geladen werden. Sobald du wieder online bist, versuche es erneut.",
-            );
-          return r.json();
-        })
-        .catch((err) => {
-          ui.cache.delete(key);
-          throw err;
-        }),
-    );
-  return ui.cache.get(key);
-}
+const getBook=createBibleLoader();
+
 function contextOf(origin) {
   const [kind, pid, i] = origin.split("/");
   if (kind === "topic") {
@@ -625,7 +597,6 @@ function discover(legacyQuiz=false) {
  shell(renderDiscovery({model:discoverySelection(),books:ui.books.filter(b=>ui.discoveryBooks.has(b.code)),filters:{query:ui.storySearch,book:ui.storyBook,kind:ui.storyKind},editorial:runtimeModel.flow.stories.slice(0,3),legacyQuiz},{heading,link,button}),"bible","discover-page discovery-phase4 depth-page");
 }
 function quizIndex(){discover(true);}
-function storyResults(){return renderDiscoveryResults(discoverySelection(),{button},ui.discoveryLegacy);}
 function refreshDiscovery({focusNew=false,previousCount=0}={}) {
  const target=$("#story-results");if(!target)return;
  const model=discoverySelection();
@@ -1208,75 +1179,9 @@ function finishOnboarding(destination=null) {
   closeModal();
   if(destination)go(destination);else $("h1")?.focus({preventScroll:true});
 }
-async function offlineStatus() {
-  if (!("serviceWorker" in navigator)) return false;
-  const reg = await navigator.serviceWorker.getRegistration();
-  if (
-    !reg?.active ||
-    reg.active.state !== "activated" ||
-    !navigator.serviceWorker.controller
-  )
-    return false;
-  const info = await new Promise((resolve) => {
-    const channel = new MessageChannel(),
-      timer = setTimeout(() => resolve(null), 2000);
-    channel.port1.onmessage = (e) => {
-      clearTimeout(timer);
-      resolve(e.data);
-    };
-    reg.active.postMessage({ type: "STATUS" }, [channel.port2]);
-  });
-  ui.offline = !!info?.ready && info.build === BUILD;
-  if ($("#offline-state"))
-    $("#offline-state").textContent = ui.offline
-      ? "Beide Bibeln und die App sind für dieses Gerät offline bereit."
-      : "Noch nicht offline bereit. Bleibe online und lade die App bei Bedarf neu.";
-  return ui.offline;
-}
-async function pwa() {
-  if (!("serviceWorker" in navigator)) return;
-  try {
-    const reg = await navigator.serviceWorker.register("./sw.js", {
-      updateViaCache: "none",
-    });
-    const check = () => {
-      if (reg.waiting && navigator.serviceWorker.controller) {
-        ui.waiting = reg.waiting;
-        if (!$(".update-notice"))
-          $(".page")?.insertAdjacentHTML(
-            "afterbegin",
-            `<aside class="update-notice" role="status">Eine neue Version ist bereit. ${button("Jetzt aktualisieren", "update", {}, "text-button")}</aside>`,
-          );
-      }
-    };
-    check();
-    reg.addEventListener("updatefound", () =>
-      reg.installing?.addEventListener("statechange", () => {
-        setTimeout(check, 0);
-        offlineStatus();
-      }),
-    );
-    navigator.serviceWorker.addEventListener("controllerchange", () => {
-      if (ui.updating) location.reload();
-      else {
-        ui.waiting = null;
-        $(".update-notice")?.remove();
-        offlineStatus();
-      }
-    });
-    await navigator.serviceWorker.ready;
-    await offlineStatus();
-    window.addEventListener("focus", () => {
-      reg.update().catch(() => {});
-      offlineStatus();
-    });
-  } catch {
-    notify(
-      "Offline-Vorbereitung konnte nicht abgeschlossen werden. Du kannst die App online weiter nutzen.",
-      true,
-    );
-  }
-}
+const offlineStatus=()=>pwaController.status();
+const pwa=()=>pwaController.start();
+
 async function fillJourneyScripture(root) {
  try {
   const book=await getBook('EPH','l1912'),text=book.chapters[5].find(v=>v[0]===17)?.[1];
@@ -1700,24 +1605,16 @@ async function action(a, d, el) {
     );
     return;
   }
-  if (a === "update") {
-    if ($("#dialog").open) {
-      notify("Speichere oder schließe zuerst deinen Entwurf.");
-      return;
-    }
-    const reg = await navigator.serviceWorker.getRegistration(),
-      waiting = reg?.waiting;
-    if (!waiting) {
-      ui.waiting = null;
-      $(".update-notice")?.remove();
-      notify("Deine Version ist aktuell.");
-      return;
-    }
-    ui.updating = true;
-    waiting.postMessage({ type: "SKIP_WAITING" });
-    return;
-  }
+  if (a === "update") {await pwaController.activateUpdate();return;}
 }
+
+const pwaController=createPwaController({
+ build:BUILD,getServiceWorker:()=>navigator.serviceWorker,
+ onStatus:ready=>{ui.offline=ready;const field=$("#offline-state");if(field)field.textContent=ready?"Beide Bibeln und die App sind für dieses Gerät offline bereit.":"Noch nicht offline bereit. Bleibe online und lade die App bei Bedarf neu.";},
+ onWaiting:worker=>{ui.waiting=worker;if(!worker){$(".update-notice")?.remove();return;}if(!$(".update-notice"))$(".page")?.insertAdjacentHTML("afterbegin",`<aside class="update-notice" role="status">Eine neue Version ist bereit. ${button("Jetzt aktualisieren","update",{},"text-button")}</aside>`);},
+ onNotice:notify,reload:()=>location.reload(),isDialogOpen:()=>$("#dialog").open,
+ addFocusListener:listener=>window.addEventListener("focus",listener)
+});
 const backupController=createBackupController({
  store,storage:deviceStorage,getRoute:()=>location.hash,getReferences:()=>ui.refs,locks:navigator.locks,find:$,
  view:{modal,closeModal,go,notify,download,button,date}
