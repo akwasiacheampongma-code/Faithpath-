@@ -1,0 +1,45 @@
+{
+  "schema": "faithpath.at.reference-mapping.v1",
+  "purpose": "Read-only projection of original Luther 1912 source refs onto EXISTING FaithPath app chapter/verse coordinates. Do not rewrite Airtable records.",
+  "default_rule": "Same book, chapter and verse unless one of the explicit rules applies.",
+  "rules": [
+    {
+      "book": "JOL",
+      "source_translation": "LU1912",
+      "source_chapter": 3,
+      "source_verse_start": 1,
+      "source_verse_end": 5,
+      "app_chapter": 2,
+      "app_verse_offset": 27,
+      "reason": "App stored source Joel 3,1–5 as chapter 2, verses 28–32, with [3:x] prefixes in Luther text."
+    },
+    {
+      "book": "JOL",
+      "source_translation": "LU1912",
+      "source_chapter": 4,
+      "source_verse_start": 1,
+      "source_verse_end": 21,
+      "app_chapter": 3,
+      "app_verse_offset": 0,
+      "reason": "App stored source Joel 4,1–21 as chapter 3, verses 1–21, with [4:x] prefixes."
+    },
+    {
+      "book": "MAL",
+      "source_translation": "LU1912",
+      "source_chapter": 3,
+      "source_verse_start": 19,
+      "source_verse_end": 24,
+      "app_chapter": 4,
+      "app_verse_offset": -18,
+      "reason": "App stored source Mal 3,19–24 as chapter 4, verses 1–6, with [3:x] prefixes."
+    }
+  ],
+  "checks": [
+    "Reject references crossing mapped and unmapped ranges unless split and verified",
+    "For each source ref preserve the original text and show mapped app coordinates separately",
+    "Reject mapped references outside canonical app chapter/verse bounds",
+    "Validate Bible text and chapter labels in BOTH offline translations before final integration",
+    "Never change original source IDs, options or stored progress as a side effect"
+  ],
+  "qa_status": "IMPLEMENTATION_REVIEW_REQUIRED"
+}
