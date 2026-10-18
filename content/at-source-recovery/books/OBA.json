@@ -1,0 +1,123 @@
+{
+  "schema": "faithpath.at.airtable-source.v1",
+  "book": {
+    "name": "Obadja",
+    "code": "OBA",
+    "chapters": 1
+  },
+  "source": "Airtable FaithPath",
+  "unit_count": 1,
+  "question_count": 5,
+  "units": [
+    {
+      "source_record_id": "rec4ZcTTsjApGJqXj",
+      "created_at": "2026-10-03T05:10:24.000Z",
+      "number": 2073,
+      "source_id": "AT-2073",
+      "book": "Obadja",
+      "verse_range": "Obadja 1,1-21",
+      "title": "Edoms Hochmut, Schuld an Jakob und der Tag des HERRN",
+      "context": null,
+      "reflection": "Wo könnte Stolz oder Gleichgültigkeit gegenüber dem Leid anderer mein Handeln verzerren?",
+      "source_qa_status": "Gegen LU1912 geprüft",
+      "critical_note": null,
+      "questions": [
+        {
+          "source_record_id": "recGfqJ7y1FPYYdTV",
+          "created_at": "2026-10-03T05:10:46.000Z",
+          "id": "AT-2073-Q1",
+          "unit_number": 2073,
+          "question": "Wodurch ließ sich Edom nach dem Text täuschen?",
+          "options": [
+            "Durch seinen Reichtum",
+            "Durch den Übermut seines Herzens",
+            "Durch fremde Propheten",
+            "Durch eine Hungersnot"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Obadja 1,3",
+          "explanation": "Der Text nennt ausdrücklich den Übermut des Herzens als Ursache der Täuschung.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recDgUqRF7Y6CqRI0",
+          "created_at": "2026-10-03T05:10:46.000Z",
+          "id": "AT-2073-Q2",
+          "unit_number": 2073,
+          "question": "Wie verhielt sich Edom am Tag des Unglücks Jakobs?",
+          "options": [
+            "Es half den Flüchtenden",
+            "Es blieb völlig unbeteiligt",
+            "Es freute sich über Judas Verderben",
+            "Es sandte Priester nach Jerusalem"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Obadja 1,12",
+          "explanation": "Edom wird gewarnt, sich über Judas Verderben und Not nicht zu freuen.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "rect7kxBHqSMRWYrw",
+          "created_at": "2026-10-03T05:10:46.000Z",
+          "id": "AT-2073-Q3",
+          "unit_number": 2073,
+          "question": "Was sollte Edom an den Kreuzwegen nicht tun?",
+          "options": [
+            "Handel treiben",
+            "Die Entronnenen erschlagen",
+            "Opfer bringen",
+            "Boten aussenden"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Obadja 1,14",
+          "explanation": "Edom wird angeklagt, an den Kreuzwegen Flüchtende zu erschlagen und Ausgelieferte preiszugeben.",
+          "difficulty": "Mittel",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recERLSUNt85OVTpv",
+          "created_at": "2026-10-03T05:10:46.000Z",
+          "id": "AT-2073-Q4",
+          "unit_number": 2073,
+          "question": "Welcher Grundsatz wird für den Tag des HERRN genannt?",
+          "options": [
+            "Jeder bleibt ohne Folgen",
+            "Wie du getan hast, soll dir wieder geschehen",
+            "Nur Könige werden gerichtet",
+            "Edom wird verschont"
+          ],
+          "correct_answer": "B",
+          "correct_index": 1,
+          "verse_reference": "Obadja 1,15",
+          "explanation": "Der Text formuliert Vergeltung entsprechend dem eigenen Tun.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        },
+        {
+          "source_record_id": "recMJRyFahGT77yV8",
+          "created_at": "2026-10-03T05:10:46.000Z",
+          "id": "AT-2073-Q5",
+          "unit_number": 2073,
+          "question": "Wem soll am Ende das Königreich gehören?",
+          "options": [
+            "Edom",
+            "Assur",
+            "Dem HERRN",
+            "Ägypten"
+          ],
+          "correct_answer": "C",
+          "correct_index": 2,
+          "verse_reference": "Obadja 1,21",
+          "explanation": "Der Schluss des Buches erklärt, dass das Königreich dem HERRN gehören wird.",
+          "difficulty": "Einfach",
+          "source_qa_status": "Gegen LU1912 geprüft"
+        }
+      ]
+    }
+  ]
+}
