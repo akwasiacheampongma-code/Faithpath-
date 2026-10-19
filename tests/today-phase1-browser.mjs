@@ -7,10 +7,10 @@ const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['-
 const check=async(name,fn)=>{try{await fn();results.push({name,status:'PASS'});console.log('PASS',name)}catch(error){results.push({name,status:'FAIL',error:error.stack});console.log('FAIL',name,error.message)}};
 const states=['new','returning','draft','draft-only','review','many-reviews','archived','no-step','reading-only','journal-only','guided-only','many-paths','long'];
 const route=async(p,hash)=>{await p.goto(base+'/#'+hash);await p.locator('#main h1').waitFor();};
-async function measure(p){return p.evaluate(()=>{const box=s=>{const el=document.querySelector(s);if(!el)return null;const r=el.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom}};return{width:innerWidth,height:innerHeight,nav:box('.primary-nav'),tree:box('.today-tree img'),primary:box('.today-path-action'),draft:box('.draft-strip'),overflow:document.documentElement.scrollWidth>innerWidth}})}
+async function measure(p){return p.evaluate(()=>{const box=s=>{const el=document.querySelector(s);if(!el)return null;const r=el.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom}};return{width:innerWidth,height:innerHeight,nav:box('.primary-nav'),tree:box('.today-tree .olive-art'),primary:box('.today-path-action'),draft:box('.draft-strip'),overflow:document.documentElement.scrollWidth>innerWidth}})}
 async function layout(p){
  assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow');
- const tree=p.locator('.today-tree img');assert(await tree.evaluate(el=>el.complete&&el.naturalWidth>0&&getComputedStyle(el).objectFit==='contain'),'Complete tree image');
+ const tree=p.locator('.today-tree .olive-art');assert(await tree.evaluate(el=>el.viewBox.baseVal.width>0&&el.getBBox().width>0),'Complete tree image');
  assert.equal(await p.locator('#main h1').count(),1);
  for(const el of await p.locator('#main a,#main button').all()){
   await el.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));const r=await el.boundingBox();assert(r&&r.height>=43.5,'Touch target below 44px: '+await el.innerText());
@@ -28,7 +28,7 @@ try{
   if(await p.locator('dialog[open]').count())await p.locator('dialog [data-action="onboard-skip"]').click().catch(async()=>{await p.evaluate(()=>document.querySelector('dialog').close())});
   for(const name of states)await check(`${name} / ${theme} / ${width}`,async()=>{
    const seed=todayFixture(name,theme);await p.evaluate(({seed,KEYS})=>{localStorage.setItem(KEYS.main,JSON.stringify(seed.data));localStorage.setItem(KEYS.onboard,'done');localStorage.removeItem(KEYS.draft);if(seed.draft)localStorage.setItem(KEYS.draft,JSON.stringify(seed.draft));},{seed,KEYS});
-   await p.reload();await route(p,'today');await p.locator('.today-tree img').evaluate(el=>el.decode());await p.locator('.toast.visible').waitFor({state:'hidden',timeout:8000});
+   await p.reload();await route(p,'today');await p.locator('.today-tree .olive-art').waitFor();await p.locator('.toast.visible').waitFor({state:'hidden',timeout:8000});
    assert.equal(await p.locator('html').getAttribute('data-theme'),theme);assert.equal(await p.locator('.today-phase1').count(),1);assert.equal(await p.locator('#main').getByText('Neu im Glauben',{exact:true}).count(),0);
    const raw=await p.evaluate(KEYS=>({main:localStorage.getItem(KEYS.main),draft:localStorage.getItem(KEYS.draft)}),KEYS);
    await layout(p);const m=await measure(p);measurements.push({name,theme,...m});
@@ -68,7 +68,7 @@ try{
  for(const [name,width,font,safe]of [...Array.from({length:7},(_,i)=>['stage-'+i,390,100,false]),['long',320,200,false],['returning',390,200,true],['new',320,200,true]])await check(`Stress ${name} / ${width} / text ${font}% / safe ${safe}`,async()=>{
   const c=await browser.newContext({bypassCSP:true,viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});const seed=todayFixture(name,'night');
   await c.addInitScript(({seed,KEYS,font,safe})=>{if(!localStorage.getItem(KEYS.main)){localStorage.setItem(KEYS.main,JSON.stringify(seed.data));localStorage.setItem(KEYS.onboard,'done');}document.addEventListener('DOMContentLoaded',()=>{document.documentElement.style.fontSize=font+'%';if(safe){document.documentElement.style.setProperty('--safe-top','44px');document.documentElement.style.setProperty('--safe-bottom','34px');}})},{seed,KEYS,font,safe});
-  const p=await c.newPage();await route(p,'today');await p.locator('.today-tree img').evaluate(el=>el.decode());await layout(p);if(name.startsWith('stage-'))assert((await p.locator('.today-tree img').getAttribute('src')).includes('tree-stage-'+(+name.at(-1)+1)));
+  const p=await c.newPage();await route(p,'today');await p.locator('.today-tree .olive-art').waitFor();await layout(p);if(name.startsWith('stage-'))assert.equal(await p.locator('.today-tree .olive-art').getAttribute('data-tree-stage'),name.at(-1));
   await p.screenshot({path:`${out}/stress-${name}-${width}-${font}-${safe}.png`,fullPage:true});await c.close();
  });
 }finally{await browser.close();fs.writeFileSync(out+'/results.json',JSON.stringify({build:BUILD,base,results,errors,measurements,accessibility,physicalDeviceGate:'OFFEN',syntheticDataOnly:true},null,2));}

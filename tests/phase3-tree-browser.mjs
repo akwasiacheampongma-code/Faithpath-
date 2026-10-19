@@ -4,9 +4,9 @@ const base=process.env.QA_URL||'http://127.0.0.1:4393',out=process.env.QA_OUT||'
 const check=async(name,fn)=>{try{await fn();results.push({name,status:'PASS'});}catch(e){results.push({name,status:'FAIL',error:e.stack});}console.log(results.at(-1).status,name,results.at(-1).error||'')};const state=p=>p.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEYS.main);
 try{for(const width of [320,390])for(const theme of ['light','atmospheric','paper','night']){
  const c=await b.newContext({bypassCSP:true,viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'}),p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await c.addInitScript(KEYS=>localStorage.setItem(KEYS.onboard,'done'),KEYS);await p.goto(base+'/#tree');await p.locator('#main h1').waitFor();
- async function seed(data){await p.evaluate(({KEYS,data})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{KEYS,data});await p.reload();await p.goto(base+'/#tree');await p.locator('.tree-branch-scene img').evaluate(img=>img.decode());}
+ async function seed(data){await p.evaluate(({KEYS,data})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{KEYS,data});await p.reload();await p.goto(base+'/#tree');await p.locator('.tree-branch-scene .olive-art').waitFor();}
  for(let stage=0;stage<7;stage++)await check(`Original tree stage ${stage} / ${theme} / ${width}`,async()=>{
-  const data=phase3Fixture('tree-'+stage,theme);await seed(data);const before=await state(p);assert((await p.locator('.tree-branch-scene img').getAttribute('src')).endsWith(`tree-stage-${stage+1}.webp`));assert.equal(await p.locator('.tree-branch-scene img').evaluate(img=>getComputedStyle(img).objectFit),'contain');
+  const data=phase3Fixture('tree-'+stage,theme);await seed(data);const before=await state(p);assert.equal(await p.locator('.tree-branch-scene .olive-art').getAttribute('data-tree-stage'),String(stage));
   assert.equal(await p.locator('.tree-branch-hit').count(),stage<2?0:1);assert.equal(await p.locator('.tree-source-list li').count(),data.paths[0].milestones.length);
   if(stage<2)assert.equal(await p.locator('.tree-other-paths a[href="#path/personal-path"]').count(),1);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(await state(p),before);
  });
