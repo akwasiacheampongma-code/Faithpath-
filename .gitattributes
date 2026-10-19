@@ -1,1 +1,3 @@
 reports/sources/* binary
+# Generated PDF evidence must never undergo text/newline conversion.
+reports/first-seed/*.pdf binary

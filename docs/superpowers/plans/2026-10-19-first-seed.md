@@ -27,8 +27,8 @@ Files: src/first-seed/model.js, tests/first-seed-model.test.mjs, baseline captur
 API: newSeedDraft(ids,at), seedPassage(values,refs), validateSeed(values),
 commitSeed(data,draft,ref) deterministic returns pathId. No storage in model.
 
-- [ ] Capture baseline welcome/Today/path/tree and payload/performance.
-- [ ] RED missing model behavior; GREEN exact relationships, no growth, duplicate
+- [x] Capture baseline welcome/Today/path/tree and payload/performance.
+- [x] RED missing model behavior; GREEN exact relationships, no growth, duplicate
   save, XSS strings, invalid/empty/long inputs, source mappings in both Bibles.
 
 ## Task2: Real introduction
@@ -37,11 +37,11 @@ Files: src/first-seed/controller.js, view.js, src/app.js, app-router.js, onboard
 API: controller.render(), handle(action,data), input(event), leave(), resume(),
 hasUnsavedWork. Dependencies: existing store/storage/refs/getBook/UI adapters.
 
-- [ ] RED controller ownership/restore/queued save/cancellation cases.
-- [ ] Implement seven scenes and exact owned-draft journalTransaction commit.
-- [ ] Preserve old shortcuts; first-seed resume interception and navigation guard.
-- [ ] Browser flow, reload, multi-tap, quota/denied/other-draft/late fetch; full units.
-- [ ] Commit introduction package after green checks.
+- [x] RED controller ownership/restore/queued save/cancellation cases.
+- [x] Implement seven scenes and exact owned-draft journalTransaction commit.
+- [x] Preserve old shortcuts; first-seed resume interception and navigation guard.
+- [x] Browser flow, reload, multi-tap, quota/denied/other-draft/late fetch; full units.
+- [x] Commit introduction package after green checks.
 
 ## Task3: Tree, paths, Today and motion
 
@@ -49,23 +49,23 @@ Files: src/olive-tree.js, src/living-motion.js, src/verbunden/seed.css,
 today-view.js, paths-view.js, experience-view.js, build.mjs and targeted tests.
 API: renderOliveTree(level,{context,label}), setupLivingMotion(root) -> cleanup.
 
-- [ ] RED all7 stage mappings/no mutations/unique SVG IDs/accessibility.
-- [ ] Implement original layered art, finite motion, visibility/reduced-motion
+- [x] RED all7 stage mappings/no mutations/unique SVG IDs/accessibility.
+- [x] Implement original layered art, finite motion, visibility/reduced-motion
   controls and growth transition only from domain level changes.
-- [ ] Integrate prominent Today/tree/paths and clear contextual path help.
-- [ ] Real screenshots, inspect/refine, all themes/widths/font scales; full units.
-- [ ] Commit visual package after green checks.
+- [x] Integrate prominent Today/tree/paths and clear contextual path help.
+- [x] Real screenshots, inspect/refine, all themes/widths/font scales; full units.
+- [x] Commit visual package after green checks.
 
 ## Task4: Full QA and delivery
 
 Files: tests/first-seed/, scripts/check-contracts.mjs, reports/first-seed/,
 UX-study templates, developer/release documents, unique version.js.
 
-- [ ] Keep frozen data/domain hashes; allow only reviewed UI files.
-- [ ] Run lint/units/content/reproducible builds/core and original regression,
+- [x] Keep frozen data/domain hashes; allow only reviewed UI files.
+- [x] Run lint/units/content/reproducible builds/core and original regression,
   first-seed E2E, axe, privacy/no-logs, offline/update/failure and performance.
-- [ ] Execute available Chromium/Firefox/WebKit; record actual environments.
-- [ ] Prepare ten blank participant sheets and aggregate UX acceptance scoring.
-- [ ] Fresh independent review; fix demonstrated blockers and rerun affected gates.
-- [ ] Deliver exact source/evidence commits, screenshots/animation, full reports,
+- [x] Execute available Chromium/Firefox/WebKit; record actual environments.
+- [x] Prepare ten blank participant sheets and aggregate UX acceptance scoring.
+- [x] Fresh independent review; fix demonstrated blockers and rerun affected gates.
+- [x] Deliver exact source/evidence commits, screenshots/animation, full reports,
   hashes and deterministic Netlify QA ZIP. No publication; physical/human OPEN.

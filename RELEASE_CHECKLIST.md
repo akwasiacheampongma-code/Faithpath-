@@ -53,3 +53,19 @@ A failed installation should retain the old active complete worker. If the devic
 has lost its entire browser storage, only the owner's external backup can restore
 entries. Reverting Git does not recover evicted personal data. No merge or publish
 is included in the maintenance commands or CI.
+
+## First-seed UX gate
+
+- [ ] Confirm exact application commit, build receipt, unchanged content hash and
+  byte-identical repeated build; distinguish later evidence-only commits.
+- [ ] Recheck draft interruption/other editor/corrupt raw/quota/explicit discard,
+  delayed final save, rapid tapping and navigation. No falsely saved late text.
+- [ ] Actual backup restore includes the new path, prayer, reflection, verse and
+  step with unchanged IDs; planting leaves development count unchanged.
+- [ ] All seven art states, real branch targets, four themes,320/375/390/430/tablet,
+ 200% text, touch hit tests and finite/reduced/hidden motion checked.
+- [ ] Hosted WebKit offline result resolved or explicitly blocks release; do not
+  equate WebKit on Linux or Chromium zoom with physical iPhone Safari.
+- [ ] UX-01/02/04 goals8of10 and UX-05 mean4of5 validated by ten actual people.
+- [ ] Real iPhone Safari, installed PWA, VoiceOver and energy behavior recorded.
+- [ ] No automatic release: merge/deployment needs separate user authorization.

@@ -1,0 +1,21 @@
+Pruefung;Ergebnis;Nachweis
+Unit/Integration;BESTANDEN;"245 Node-Tests; vollständiges Protokoll unit.log"
+Historische UIUX1–5-Regression;BESTANDEN;"41 Browserprogramme; accepted-exits.json, Original-exits.json und dokumentierte Notiz-Wiederholung"
+Geführter Nutzerweg;BESTANDEN;"7 Prüfabschnitte plus tatsächliche Wiederherstellung in leerem unabhängigem Browserprofil; beide Übersetzungen, Gebet, Back/Reload, Offline-Neustart"
+Fehlerfälle;BESTANDEN;4 Browserfehler-Szenarien plus Unitfälle zu Quota, Konflikt und Commit-Rennen
+Animation;BESTANDEN;2 echte Browserprüfungen, verzögerter Commit, Replay, Reduced Motion und konstante Grafikgröße
+PWA-Update;BESTANDEN;"4 Prüfabschnitte MAINT1 → fehlgeschlagene Installation → neuer Kandidat; unveränderte Speicherbytes"
+Plattformfehler;BESTANDEN;"Bibelantwort beschädigt und Workerzugriff verweigert; sichtbare Fehler und Wiederholung"
+Responsive Baum/Heute/Wege;BESTANDEN;"240 Ansichten; fünf Größen, vier Themes,100/200% Text;16 axe-Audits"
+Alle Einführungsschritte;BESTANDEN;"144 Zustände; drei Mobilgrößen, vier Themes,100/200%;24 axe-Audits"
+Kontraste im neuen Modul;BESTANDEN;"28 berechnete Farbpaare einschließlich Formfeldränder; keine vollständige WCAG-Zertifizierung"
+Chromium/Firefox/WebKit;BESTANDEN;"Tatsächlich ausgeführte GitHub-Actions-Jobs; TCP-Verbindung zum Testserver getrennt"
+Lint;BESTANDEN;"0 Fehler, höchstens5 bestehende Warnungen; keine TypeScript-Konfiguration vorhanden"
+Datenverträge;BESTANDEN;174 geschützte Quellen, SchemaV5/sieben Schlüssel sowie sieben im echten Browser exportierte und wiederhergestellte Testprofile
+ES-Modulgraph;BESTANDEN;"Auflösbare Runtime-Imports; keine neuen Frameworks oder Runtime-Abhängigkeiten"
+Performancevergleich;BESTANDEN;"Gemessener Headless-Vergleich; reale Smartphone-FPS/Akku weiterhin offen"
+Reproduzierbarer Build;BESTANDEN;"Zwei vollständige byte-identische Builds einschließlich Dateimanifest; reproducibility.json"
+Contentquellen;BESTANDEN;"NT-Excel/JSON und installierter Nachlese-Master geprüft; keine neuen redaktionellen Änderungen"
+UX-01 bis UX-06, zehn echte Personen;OFFEN;UX_TESTPLAN.md und 60 nicht ausgefüllte Teilnehmeraufgaben
+Physisches iPhone/Safari/VoiceOver;OFFEN;"IPHONE_ABNAHME.md; Linux-WebKit ist kein echtes Gerät"
+Datenschutz des neuen Ablaufs;BESTANDEN;"Keine externen Requests und keine persönlichen Konsolenlogs in flow/results.json; nur synthetische Daten"

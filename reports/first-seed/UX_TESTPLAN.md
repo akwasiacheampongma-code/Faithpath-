@@ -31,7 +31,11 @@ Verständnisurteil. Zehn Personen getrennt testen, ohne Vorführung oder Erklär
 
 1 sehr schwach / störend, 2 eher schwach, 3 mittel, 4 gut, 5 sehr gut.
 Nach jeder Aufgabe Erfolg, Hilfe, Zeit, Verständnisproblem, anonymen Kommentar
-und Bewertung in `UX_TEILNEHMER.csv` eintragen. Zwölf Bewertungsfragen nicht aus
+und Bewertung in `UX_TEILNEHMER.csv` beziehungsweise im XLSX eintragen.
+Statuswerte sind OFFEN, BESTANDEN und NICHT BESTANDEN. Für UX-01/02/04 nur
+ohne Hilfe BESTANDEN eintragen. UX-03/06 werden fachlich manuell beurteilt;
+Datenverlust kann nicht durch andere Erfolge ausgeglichen werden. Das XLSX
+berechnet die beiden UX-05-Mittelwerte erst nach zehn gültigen Bewertungen. Bewertungen niemals aus
 technischen Tests ableiten. `UX_ZUSAMMENFASSUNG.csv` bleibt bis zur Studie leer.
 
 Scheitert ein Verständnisziel oder meldet jemand glaubensbewertende Wirkung,

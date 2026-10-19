@@ -81,3 +81,26 @@ no evidence justifying a migration.
 
 See [DATA_CONTRACTS.md](DATA_CONTRACTS.md), [DEVELOPMENT.md](DEVELOPMENT.md) and
 [MAINTENANCE_REPORT.md](MAINTENANCE_REPORT.md) for exact protection and evidence.
+
+## First-seed UX extension (2026-10-19)
+
+The optional `#first-seed` route reuses the real application, not the old design
+prototype. `src/first-seed/model.js` constructs existing V5 path, mirrored
+Journal/reflection, Scripture links and one ordinary step. Stable IDs are created
+once outside the transaction. `controller.js` owns this editor's session, queued
+writes, action lock and Bible request sequence; `view.js` escapes and renders
+markup. Choosing a catalog topic is enough to supply the selected concern;
+custom personal prose survives later topic changes. The shared Store, journal transaction and exact-byte draft owner remain
+the sole persistent authorities. `#compose` and the existing resume action route
+this draft type back to its real editor.
+
+`src/olive-tree.js` renders original shared vector art from the unchanged domain
+level. Local `<use>` shapes reduce repeated SVG nodes. `living-motion.js` owns
+IntersectionObserver, reduced-motion and visibility listeners and returns a
+cleanup function used on every shell render. There is no animation timer or
+frame loop in production. Short planting and stage transitions never write a
+milestone. All movement is finite; hidden/offscreen scenes pause.
+
+Presentation lives in scoped `verbunden/seed.css`. Tree attachment coordinates
+are visual only; `treeBranches` still owns actual path IDs, order and limits.
+See `reports/first-seed/IMPLEMENTIERUNG.md` for failure behavior and QA evidence.

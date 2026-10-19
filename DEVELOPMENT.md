@@ -75,3 +75,28 @@ The obsolete write-capable ZIP importer is retired here; see
 [the historical record](docs/LEGACY_IMPORT_WORKFLOW.md). Other branches remain
 untouched. A configured workflow is not evidence of a completed hosted run; see
 the report for actual local/hosted status.
+
+## First-seed candidate checks
+
+Feature branch: `feature/ux-first-seed-living-tree-20261019`.
+Run the existing npm validation/test/lint/build checks first. Start a built app on
+loopback with `PORT=4590 node scripts/serve.mjs <build-root>`. Then use
+`QA_SELF_HOST=<build-root> node tests/first-seed/flow.mjs` (actual backup restore
+and offline resume with the TCP listener disconnected). Other programs use
+`QA_URL=http://127.0.0.1:4590`: `faults.mjs`, `motion-browser.mjs` and `visual.mjs`.
+`motion-browser.mjs` records WebM when Playwright's ffmpeg is installed.
+`performance.mjs` expects both immutable baseline4580 and candidate origins.
+`update.mjs` hosts an isolated same-origin old→failed→new worker experiment.
+
+`.github/workflows/first-seed-qa.yml` runs read-only Chromium/Firefox/WebKit jobs
+on this feature branch. It never deploys or merges. Hosted engine identity and
+results must be read from actual runs; configured jobs do not imply success.
+The full UIUX1–5 browser runner accepts QA_URL, QA_RESTORE_URL and QA_DEST.
+Historical photo selectors were changed only where original SVG replaced photos;
+path order, touch geometry, histories and data assertions remain in place.
+
+Human understanding cannot be asserted by Playwright. Ten blank participant
+sheets and neutral tasks live in `reports/first-seed/`; physical Safari/PWA/
+VoiceOver and battery/performance checks remain separate gates.
+Exact source metadata, repeatable build commands and browser prerequisites are
+in `reports/first-seed/REPRODUZIEREN.md`.

@@ -3,6 +3,16 @@
 Codex hat kein reales iPhone, Safari oder VoiceOver benutzt. Chromium-Textskalierung
 und CI-WebKit sind keine Geräteabnahme. Keine aktuelle QA-Site überschreiben.
 Ein neu freigegebener isolierter Test-Origin darf nur synthetische Daten enthalten.
+Für eine installierbare iPhone-PWA muss diese Origin HTTPS verwenden. Eine
+unverschlüsselte LAN-Adresse ist kein gleichwertiger PWA-Test; `localhost` auf
+dem iPhone bezeichnet das iPhone selbst, nicht den Entwicklungsrechner.
+
+Im Ordner `Testdaten/` liegen sieben ausdrücklich synthetische Sicherungen,
+erstellt und wiederhergestellt über die tatsächliche App. Ausschließlich im
+isolierten Testprofil unter Mehr → Daten & Backup wiederherstellen: Ein Import
+ersetzt dessen Datenstand. Jede Datei zeigt eine der sieben Stufen. Danach die
+vier Themes jeweils in Einstellungen wechseln. Diese Testdateien niemals im
+persönlichen Alltagsprofil oder in der Produktionsinstallation importieren.
 
 - Build-ID und SHA aus dem gelieferten Manifest prüfen; vorhandene Installation
   auf derselben isolierten Origin von MAINT1 aktualisieren. Alte synthetische

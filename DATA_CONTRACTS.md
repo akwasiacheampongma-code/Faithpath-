@@ -71,3 +71,26 @@ The only new historical-digest compatibility record is the exact old/new
 proves every prior package record unchanged and all77 additions development-only.
 It does not exempt content or arbitrary future lock changes. Editorial manifests
 remain byte-identical; pre-existing Store compatibility remains unchanged.
+
+## Optional first personal story (2026-10-19)
+
+No key, schema migration, content ID or threshold changes. The existing draft
+envelope adds one editor discriminator `type: "first-seed"`. `args` holds stable
+pathId/journalId/reflectionId/stepId/thoughtLinkId/scriptureLinkId strings;
+`values` holds scene0–5, topic, concern, thought, kind(Gedanken/Gebet), next, title
+and translation(otb/l1912). `saved` is the existing timestamp. Unknown/unreadable
+original drafts remain unchanged and can be downloaded as raw recovery text.
+An unrelated draft blocks a new first-seed editor instead of being overwritten.
+
+Final save uses the existing journalTransaction under the shared lock, including
+its pending-write recovery record. The exact owned draft is cleared only in that
+transaction. New path/mirrored thought/verse/step records use ordinary existing
+V5 fields and pass existing backup restore. No milestone, historical snapshot,
+quiz, reading event or development is created by planting. Explicit discard
+checks exact ownership again and affects only the current draft.
+
+A recovery download of unsaved words is distinct from an importable app backup.
+It preserves the editor envelope (or original raw string) for manual recovery;
+it is never silently interpreted as a normal backup. Before returning to an
+older app that cannot edit `first-seed`, export/finish the draft on this candidate
+or retain its recovery file. Do not clear storage during rollback.
