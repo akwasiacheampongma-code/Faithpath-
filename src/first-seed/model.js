@@ -5,6 +5,13 @@ import {validRef} from '../domain.js';
 export function newSeedDraft(ids,at) {
  return {type:'first-seed',args:{...ids},values:{scene:0,topic:'',concern:'',thought:'',kind:'Gedanken',next:'',title:'',translation:'otb'},saved:at};
 }
+/** Choosing an existing concern is sufficient; never replace someone's own prose. */
+export function chooseSeedTopic(values,topicId) {
+ const topic=LIFE_TOPICS.find(item=>item.id===topicId),previous=LIFE_TOPICS.find(item=>item.id===values.topic);
+ if(topicId&&!topic)throw new Error('Wähle ein vorhandenes Thema.');
+ const concern=!values.concern.trim()||values.concern===previous?.title?topic?.title||'':values.concern;
+ return {...values,topic:topicId,concern};
+}
 export function seedPassage(values,refs) {
  const topic=LIFE_TOPICS.find(item=>item.id===values.topic);
  if(!topic)throw new Error('Wähle ein Thema für deinen Bibelgedanken.');

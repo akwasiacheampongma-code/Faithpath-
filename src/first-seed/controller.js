@@ -1,7 +1,7 @@
 import {KEYS} from '../store.js';
 import {beginDraftSession,saveDraft,discardDraft} from '../drafts.js';
 import {journalTransaction} from '../journal-storage.js';
-import {newSeedDraft,seedPassage,validateSeed,commitSeed} from './model.js';
+import {newSeedDraft,chooseSeedTopic,seedPassage,validateSeed,commitSeed} from './model.js';
 import {renderFirstSeed} from './view.js';
 
 const fields=new Set(['topic','concern','thought','kind','next','title','translation']);
@@ -44,7 +44,9 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
  }
  function input(target){
   if(!active||conflict||corrupt||complete||busy||!fields.has(target.name))return false;
-  draft.values[target.name]=target.value;dirty=true;
+  if(target.name==='topic'){draft.values=chooseSeedTopic(draft.values,target.value);const concern=view.find('#seed-concern');if(concern)concern.value=draft.values.concern;}
+  else draft.values[target.name]=target.value;
+  dirty=true;
   void persist().catch(report);
   if(target.name==='translation'&&draft.values.scene===2){loadedKey='';void render();}
   return true;
