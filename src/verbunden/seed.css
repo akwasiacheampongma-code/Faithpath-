@@ -102,3 +102,6 @@
 
 .personal-tree-ribbon>span{min-width:0;overflow-wrap:break-word;hyphens:auto}
 @media(max-width:350px){.personal-tree-ribbon{gap:14px}.personal-tree-ribbon .olive-art{width:82px;height:110px;flex-basis:82px}}
+
+/* A saved-draft strip must leave both first-use actions above the320px nav. */
+@media(max-width:350px){.today-phase1 .today-draft + .today-header{padding-block:0}}

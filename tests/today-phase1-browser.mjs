@@ -32,7 +32,7 @@ try{
    assert.equal(await p.locator('html').getAttribute('data-theme'),theme);assert.equal(await p.locator('.today-phase1').count(),1);assert.equal(await p.locator('#main').getByText('Neu im Glauben',{exact:true}).count(),0);
    const raw=await p.evaluate(KEYS=>({main:localStorage.getItem(KEYS.main),draft:localStorage.getItem(KEYS.draft)}),KEYS);
    await layout(p);const m=await measure(p);measurements.push({name,theme,...m});
-   if(name==='new'||name==='draft-only')for(const a of await p.locator('.today-entry-actions a').all())assert((await a.boundingBox()).y+(await a.boundingBox()).height<=m.nav.y+1,'New-user entry below navigation');
+   if(name==='new'||name==='draft-only')for(const a of await p.locator('.today-entry-actions .button').all())assert((await a.boundingBox()).y+(await a.boundingBox()).height<=m.nav.y+1,'New-user entry below navigation');
    if(name==='returning'||name==='draft'){
     if(width===390){assert(m.primary.bottom<=m.nav.y+1,'Primary action outside first viewport');assert(m.tree.bottom<=m.nav.y+1,'Tree outside first viewport');}
     assert.equal(await p.locator('#main a[href="#path/today-path"]').count(),1);
@@ -57,7 +57,7 @@ try{
   });
   await check(`Entry navigation and first-path creation / ${theme} / ${width}`,async()=>{
    const seed=todayFixture('new',theme);await p.evaluate(({seed,KEYS})=>{localStorage.setItem(KEYS.main,JSON.stringify(seed.data));localStorage.removeItem(KEYS.draft);},{seed,KEYS});await p.reload();await route(p,'today');
-   await p.getByRole('link',{name:'Ich brauche Orientierung',exact:true}).click();await p.getByRole('heading',{name:'Was beschäftigt dich?',exact:true}).waitFor();
+   await p.getByRole('link',{name:'Themen und Orientierung entdecken',exact:true}).click();await p.getByRole('heading',{name:'Was beschäftigt dich?',exact:true}).waitFor();
    await p.locator('.beginner-entry a[href="#guide/start"]').click();await p.locator('#main h1').waitFor();assert(p.url().includes('#guide/start'));
    await route(p,'today');await p.getByRole('link',{name:'Direkt zur Bibel',exact:true}).click();await p.locator('.bible-page').waitFor();assert(p.url().endsWith('#bible'));
    await route(p,'today');await p.getByRole('button',{name:'Einen Weg beginnen',exact:true}).click();assert(await p.getByRole('dialog').isVisible());await p.getByRole('dialog').getByRole('button',{name:'Schließen',exact:true}).click();assert.equal(await p.evaluate(k=>JSON.parse(localStorage.getItem(k)).paths.length,KEYS.main),0);
