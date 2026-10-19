@@ -12,7 +12,12 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
  let sequence=0,scripture=null,verses=[],loading=false,loadedKey='';
  const model=()=>({draft,error,conflict,corrupt,complete,scripture,verses,loading,busy});
  function lockInputs(value){const editor=view.find('.seed-editor');editor?.setAttribute('aria-busy',String(value));for(const control of editor?.querySelectorAll('input,textarea,select,button')||[])control.disabled=value;}
- const paint=focus=>{view.shell(renderFirstSeed(model(),view),'paths','first-seed-page');lockInputs(busy);if(focus)view.find('#main h1')?.focus({preventScroll:true})};
+ const paint=focus=>{
+  const field=!focus&&view.find('.seed-editor :focus')?.id,headingFocused=!focus&&view.find('#main h1:focus');
+  view.shell(renderFirstSeed(model(),view),'paths','first-seed-page');lockInputs(busy);
+  if(focus||headingFocused)view.find('#main h1')?.focus({preventScroll:true});
+  else if(field&&/^seed-[a-z-]+$/.test(field))view.find('#'+field)?.focus({preventScroll:true});
+ };
  function report(problem){error='Nicht gesichert: '+problem.message+' Deine Eingaben bleiben hier erhalten.';const el=view.find('#seed-error');if(el){el.hidden=false;el.textContent=error;}else view.notify(error,true);}
  function persist(){
   if(!draft||conflict||complete)return Promise.resolve();
@@ -27,7 +32,7 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
   catch{if(!active||request!==sequence)return;verses=[];}
   finally{if(active&&request===sequence){loading=false;if(draft.values.scene===2&&!complete)paint(false);}}
  }
- async function render(){
+ async function render(focus=true){
   if(!active){
    // A discarded/finished editor must not carry a rejected queue into a new session.
    queue=Promise.resolve();pending=0;
@@ -39,7 +44,7 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
    active=true;dirty=false;
   }
   if(draft?.values.topic)scripture=seedPassage(draft.values,getReferences());
-  paint(true);
+  paint(focus);
   if(draft?.values.scene===2&&!conflict){const key=draft.values.topic+':'+draft.values.translation;if(key!==loadedKey){loadedKey=key;loading=true;paint(false);void loadScripture();}}
  }
  function input(target){
@@ -48,7 +53,7 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
   else draft.values[target.name]=target.value;
   dirty=true;
   void persist().catch(report);
-  if(target.name==='translation'&&draft.values.scene===2){loadedKey='';void render();}
+  if(target.name==='translation'&&draft.values.scene===2){loadedKey='';void render(false);}
   return true;
  }
  async function finishLeave(){await flush();active=false;sequence++;loading=false;}
