@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+const api=await import('../src/living-motion.js').catch(e=>{if(e.code==='ERR_MODULE_NOT_FOUND')return {};throw e});
+test('hidden/reduced/offscreen motion pauses and disposal removes observers/listeners',()=>{
+ assert.equal(typeof api.setupLivingMotion,'function');const listeners=new Map(),mediaListeners=new Map();const document={hidden:false,addEventListener:(n,fn)=>listeners.set(n,fn),removeEventListener:n=>listeners.delete(n)};
+ const media={matches:false,addEventListener:(n,fn)=>mediaListeners.set(n,fn),removeEventListener:n=>mediaListeners.delete(n)};let observer,disconnected=false;
+ const art={dataset:{},addEventListener(){},removeEventListener(){},querySelectorAll:()=>[],classList:{add(){},remove(){}},getAnimations:()=>[]},root={querySelectorAll:()=>[art]};
+ class Observer{constructor(fn){observer=fn}observe(){}disconnect(){disconnected=true}}
+ const stop=api.setupLivingMotion(root,{document,matchMedia:()=>media,IntersectionObserver:Observer});observer([{target:art,isIntersecting:true}]);assert.equal(art.dataset.motion,'running');document.hidden=true;listeners.get('visibilitychange')();assert.equal(art.dataset.motion,'paused');document.hidden=false;media.matches=true;mediaListeners.get('change')();assert.equal(art.dataset.motion,'reduced');stop();assert(disconnected);assert.equal(listeners.size,0);assert.equal(mediaListeners.size,0);
+});
+
+test('growth transition follows an increased domain stage only; first visit and lower stage award nothing',()=>{const levels=new Map(),doc={hidden:false,addEventListener(){},removeEventListener(){}},media={matches:false,addEventListener(){},removeEventListener(){}};const render=level=>{const scene={dataset:{treeContext:'today',treeStage:String(level)},addEventListener(){},removeEventListener(){},getAnimations:()=>[]};api.setupLivingMotion({querySelectorAll:()=>[scene]},{previousStages:levels,document:doc,matchMedia:()=>media,IntersectionObserver:null});return scene};assert.equal(render(0).dataset.grown,undefined);assert.equal(render(0).dataset.grown,undefined);assert.equal(render(1).dataset.grown,'true');assert.equal(render(1).dataset.grown,undefined);assert.equal(render(0).dataset.grown,undefined)});

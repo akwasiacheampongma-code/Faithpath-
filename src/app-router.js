@@ -32,7 +32,8 @@ export function createAppRouter({ui,getState,views,helpers,canonicalStoryForLega
     const {route,name,query,parts,kind,key}=parseHashRoute(location.hash);
     const previousRoute = ui.route;
     ui.route = route;
-    if (kind === "merged-story") views.mergedStory(key);
+    if (kind === "first-seed") await views.firstSeed();
+    else if (kind === "merged-story") views.mergedStory(key);
     else if (kind === "question") views.sourceQuestion(key);
     else if (kind === "today") views.home();
     else if (kind === "guidance") views.guidance();

@@ -12,7 +12,7 @@ test('tree presentation preserves canonical path order, caps, further paths and 
   assert.deepEqual(ids,selection.visible.map(v=>v.path.id));
   assert.equal((html.match(/class="tree-branch-hit"/g)||[]).length,[0,0,1,3,5,5,5][stage]);
   for(const entry of selection.all)assert(html.includes('#path/'+encodeURIComponent(entry.path.id)));
-  assert(html.includes(`trees/tree-stage-${stage+1}.webp`));
+  assert(html.includes(`data-tree-stage="${stage}"`));
  }
  assert.equal(JSON.stringify(data),before);
 });

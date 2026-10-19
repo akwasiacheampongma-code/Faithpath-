@@ -35,7 +35,7 @@ test('Today surfaces a saved draft before the tree and other continuity links wi
  assert(m.hasDraft);assert.equal((html.match(/data-action="resume"/g)||[]).length,1);assert(html.indexOf('data-action="resume"')<html.indexOf('olive-hero'));assert.equal(JSON.stringify({data,draft}),raw);
 });
 test('Today preserves all seven existing olive stages and never treats a checked step as growth',()=>{
- for(let i=0;i<7;i++){const m=model('stage-'+i);assert.equal(m.level,i);const html=renderToday(m,adapter);assert(html.includes(`trees/tree-stage-${i+1}.webp`));}
+ for(let i=0;i<7;i++){const m=model('stage-'+i);assert.equal(m.level,i);const html=renderToday(m,adapter);assert(html.includes(`data-tree-stage="${i}"`));}
  assert.equal(model('no-step').level,0);
 });
 test('Today provides one primary link to the current path and lists only other paths',()=>{

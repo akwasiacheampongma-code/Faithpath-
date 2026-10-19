@@ -1,4 +1,5 @@
 import {stageNames} from './content.js';
+import {renderOliveTree} from './olive-tree.js';
 
 /** Pure Today markup; no DOM, storage, listeners or state changes.
  * The app supplies its existing UI adapter: e, link, button, icon, refLabel,
@@ -9,8 +10,9 @@ export function renderToday(model,ui){
  const {returning,currentPath,nextStep,level,reading,lastThought,pending}=model;
  const entry=(primary=false)=>`
   <nav class="today-entry-actions${primary?' today-entry-actions--first':''}" aria-label="Deinen Einstieg wählen">
-   ${link('Ich brauche Orientierung','guidance','button '+(primary?'primary':'quiet'))}
+   ${primary?link('Gemeinsam den ersten Samen säen','first-seed','button primary'):link('Ich brauche Orientierung','guidance','button quiet')}
    ${link('Direkt zur Bibel','bible','button quiet')}
+   ${primary?link('Themen und Orientierung entdecken','guidance','text-link'):''}
   </nav>`;
 
  const path=currentPath?`
@@ -30,7 +32,7 @@ export function renderToday(model,ui){
    ${button('Entwurf fortsetzen','resume',{},'text-button')}
   </aside>`:'';
 
- const tree=`<a class="olive-hero today-tree" href="#tree" aria-label="Deinen Olivenbaum ansehen: ${e(stageNames[level])}"><img src="trees/tree-stage-${level+1}.webp" alt="Olivenbaum – ${e(stageNames[level])}" width="1086" height="1448"><small>${e(stageNames[level])}</small></a>`;
+ const tree=`<a class="olive-hero today-tree" href="#tree" aria-label="Deinen Olivenbaum ansehen: ${e(stageNames[level])}">${renderOliveTree(level,{context:'today',decorative:true})}<small>${e(stageNames[level])}</small></a>`;
 
  const continuity=reading||lastThought?`
   <section class="personal-recent today-continuity" aria-label="Zu deiner Geschichte zurückkehren">
@@ -65,6 +67,7 @@ export function renderToday(model,ui){
    <span class="overline">${model.archivedCount?'Ein neuer Abschnitt':'Dein persönlicher Weg'}</span>
    <h2 id="today-start-title">Was dich beschäftigt, darf dich begleiten.</h2>
    <p>Halte einen Gedanken fest, verbinde ihn mit einem kleinen Schritt und schau später darauf zurück.</p>
+   ${returning?link('Gemeinsam den ersten Samen säen','first-seed','button primary'):''}
    ${button('Einen Weg beginnen','new-path',{},'text-button')}
    ${model.archivedCount?link('Wege und Archiv öffnen','paths','text-link'):''}
   </section>`:'';

@@ -1,3 +1,6 @@
+import {createFirstSeedController} from './first-seed/controller.js';
+import {renderOliveTree} from './olive-tree.js';
+import {setupLivingMotion} from './living-motion.js';
 import {createPwaController} from './pwa-controller.js';
 import {createBibleLoader} from './bible-loader.js';
 import {escapeHtml as e} from './view-html.js';
@@ -197,6 +200,7 @@ function go(route) {
   else location.hash = route;
 }
 function shell(body, active = "today", cls = "") {
+  ui.motionStop?.();
   ui.journeyStop?.(); ui.journeyStop=null;
   document.body.classList.remove("has-verse-selection");
   applyTheme(document,themeId(s()));
@@ -224,6 +228,8 @@ function shell(body, active = "today", cls = "") {
   ui.tabsObserver=new ResizeObserver(()=>updateTabCues());
   for(const tabs of $$(".segmented")){ui.tabsObserver.observe(tabs);tabs.addEventListener('scroll',()=>updateTabCues(),{passive:true});}
   updateTabCues();
+  ui.treeStages ||= new Map();
+  ui.motionStop=setupLivingMotion($('#main'),{previousStages:ui.treeStages});
   document.title = `FaithPath · ${$("h1")?.textContent || "Deine persönliche Glaubensgeschichte"}`;
 }
 function updateTabCues() {
@@ -642,7 +648,7 @@ function quiz() {
   );
 }
 function paths() {
-  shell(renderPathsOverview(selectPathsOverview(s(),{archived:ui.archive}),{heading,button,row,date,treePreview:`<a class="personal-tree-ribbon" href="#tree"><img src="trees/tree-stage-${treeLevel(s())+1}.webp" width="1086" height="1448" alt="Olivenbaum – ${e(stageNames[treeLevel(s())])}"><span><strong>Was in deinem Leben Wurzeln schlägt.</strong><span>Deinen Olivenbaum ansehen →</span></span></a>`}),"paths","paths-page depth-page");
+  shell(renderPathsOverview(selectPathsOverview(s(),{archived:ui.archive}),{heading,button,row,date,treePreview:`<a class="personal-tree-ribbon" href="#tree">${renderOliveTree(treeLevel(s()),{context:'paths',decorative:true})}<span><strong>Was in deinem Leben Wurzeln schlägt.</strong><span>Deinen Olivenbaum ansehen →</span></span></a>`}),"paths","paths-page depth-page");
 }
 function path(pid) {
   const model=selectPathDetail(s(),pid,{limit:ui.historyLimit});if(!model)return notFound();
@@ -852,7 +858,7 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
   } else if (type === "path") {
     const old = args.id ? s().paths.find((p) => p.id === args.id) : null;
     title = old ? "Deinen Weg bearbeiten" : "Ein persönlicher Weg";
-    body = `<p>Woran möchtest du dranbleiben? Ein Thema, das dich wirklich beschäftigt.</p>${input("Name deines Weges", "title", old?.title || args.title || "", "Zum Beispiel: In Ruhe zuhören")}${select(
+    body = `<p>Ein Weg begleitet ein Anliegen aus deinem Leben. Hier bleiben deine Bibelstellen, Gedanken, Gebete, kleinen Schritte und späteren Rückblicke zusammen. Beginne mit dem, was dich gerade beschäftigt.</p>${input("Name deines Weges", "title", old?.title || args.title || "", "Zum Beispiel: In Ruhe zuhören")}${select(
       "Bereich",
       "category",
       PATH_CATEGORIES.map((c) => [c.id, c.label]),
@@ -1217,6 +1223,8 @@ function confirmJournalDeletion(id) {
   const title=$("#dialog-title");title.tabIndex=-1;title.focus({preventScroll:true});$("#dialog").scrollTop=0;
 }
 async function action(a, d, el) {
+  if(a==='seed-start'){finishOnboarding('first-seed');return;}
+  if(a.startsWith('seed-')){await firstSeedController.handle(a,d);return;}
   if(a==='sword-info'){
     modal("Warum ein Schwert?",`${swordExplanation()}${button("Schließen","close",{},"button quiet")}`);fillJourneyScripture($("#dialog"));return;
   }
@@ -1292,6 +1300,7 @@ async function action(a, d, el) {
   }
   if (a === "resume") {
     const raw=localStorage.getItem(KEYS.draft),x = JSON.parse(raw || "null");
+    if(x?.type==='first-seed'){if(ui.onboardingOpen)finishOnboarding('first-seed');else{closeModal();go('first-seed');}return;}
     if (x) openForm(x.type, x.args, x.values,raw);
     return;
   }
@@ -1612,17 +1621,18 @@ const pwaController=createPwaController({
  build:BUILD,getServiceWorker:()=>navigator.serviceWorker,
  onStatus:ready=>{ui.offline=ready;const field=$("#offline-state");if(field)field.textContent=ready?"Beide Bibeln und die App sind für dieses Gerät offline bereit.":"Noch nicht offline bereit. Bleibe online und lade die App bei Bedarf neu.";},
  onWaiting:worker=>{ui.waiting=worker;if(!worker){$(".update-notice")?.remove();return;}if(!$(".update-notice"))$(".page")?.insertAdjacentHTML("afterbegin",`<aside class="update-notice" role="status">Eine neue Version ist bereit. ${button("Jetzt aktualisieren","update",{},"text-button")}</aside>`);},
- onNotice:notify,reload:()=>location.reload(),isDialogOpen:()=>$("#dialog").open,
+ onNotice:notify,reload:()=>location.reload(),isDialogOpen:()=>$("#dialog").open||firstSeedController.hasUnsavedWork(),
  addFocusListener:listener=>window.addEventListener("focus",listener)
 });
 const backupController=createBackupController({
  store,storage:deviceStorage,getRoute:()=>location.hash,getReferences:()=>ui.refs,locks:navigator.locks,find:$,
  view:{modal,closeModal,go,notify,download,button,date}
 });
+const firstSeedController=createFirstSeedController({store,storage:deviceStorage,getReferences:()=>ui.refs,getBook,id,now,view:{shell,button,link,go,notify,download,modal,closeModal,find:$}});
 const render=createAppRouter({
  ui,getState:s,canonicalStoryForLegacy,go,storage:deviceStorage,document,window,location,
  helpers:{shell,heading,back,button},
- views:{mergedStory,sourceQuestion,home,guidance,topic,bible,chapters,chapterCollection,reader,marks,markDetail,discover,story,quizIndex,quiz,chapterQuizComplete,paths,path,tree,plans,plan,journal,entry,history,reviews,more,contentStatus,licenses,openForm,notFound,fillJourneyScripture}
+ views:{firstSeed:()=>firstSeedController.render(),mergedStory,sourceQuestion,home,guidance,topic,bible,chapters,chapterCollection,reader,marks,markDetail,discover,story,quizIndex,quiz,chapterQuizComplete,paths,path,tree,plans,plan,journal,entry,history,reviews,more,contentStatus,licenses,openForm,notFound,fillJourneyScripture}
 });
 document.addEventListener("focusin",event=>{
   const tab=event.target.closest?.(".segmented a");if(!tab)return;
@@ -1676,6 +1686,7 @@ document.addEventListener("submit", (ev) => {
 });
 document.addEventListener("input", (ev) => {
   const el = ev.target;
+  if(el.closest('.seed-editor')){firstSeedController.input(el);return;}
   if (el.closest("#editor-form")) persistDraft();
   if (el.dataset.input === "books")
     $("#book-list").innerHTML = bookList(el.value);
@@ -1691,6 +1702,7 @@ document.addEventListener("input", (ev) => {
 });
 document.addEventListener("change", (ev) => {
   const el = ev.target;
+  if(el.closest('.seed-editor')){firstSeedController.input(el);return;}
   try {
     if (el.name === "status") updateDevelopment();
     if (el.closest("#editor-form")) persistDraft();
@@ -1755,7 +1767,10 @@ $("#dialog").addEventListener("close", () => {
     document.body.classList.remove("modal-open");
   }
 });
-window.addEventListener("hashchange", () => {
+window.addEventListener("hashchange", async () => {
+  if(firstSeedController.isActive()&&location.hash.split('?')[0]!=='#first-seed'){
+    try{await firstSeedController.leave();}catch(error){notify('Dein Entwurf ist noch nicht gesichert. '+error.message,true);location.replace('#first-seed');return;}
+  }
   backupController.invalidate(); // Invalidate even a later return to the same hash.
   if(ui.onboardingOpen&&ui.dialogRoute!==location.hash.slice(1))finishOnboarding();
   if ($("#dialog").open && ui.dialogRoute !== location.hash.slice(1))
@@ -1763,6 +1778,7 @@ window.addEventListener("hashchange", () => {
   render();
 });
 window.addEventListener("online", () => offlineStatus());
+window.addEventListener('beforeunload',event=>{if(firstSeedController.hasUnsavedWork()){event.preventDefault();event.returnValue='';}});
 window.addEventListener("offline", () =>
   notify("Du bist offline. Bereits vorbereitete Inhalte bleiben verfügbar."),
 );
@@ -1786,7 +1802,7 @@ async function init() {
     if(journalRecoveryError)notify(journalRecoveryError.message,true);
     pwa();
     if (
-      !store.error &&
+      !store.error && ui.route!=='first-seed' &&
       !localStorage.getItem(KEYS.onboard) &&
       !localStorage.getItem(KEYS.legacyOnboard)
     )

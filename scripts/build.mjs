@@ -28,7 +28,7 @@ fs.writeFileSync(`${out}/${release}/data/content-report.json`,JSON.stringify(rep
 fs.cpSync('src',`${out}/${release}/src`,{recursive:true});
 // Flatten the presentation imports for one cache-coherent stylesheet. Keep local
 // font URLs relative to the emitted src/verbunden.css, never the document base.
-const designParts=['tokens','foundation','today','reader','personal','discover','system'];
+const designParts=['tokens','foundation','today','reader','personal','discover','system','seed'];
 fs.writeFileSync(`${out}/${release}/src/verbunden.css`,designParts.map(name=>fs.readFileSync(`src/verbunden/${name}.css`,'utf8').replace(/url\(assets\//g,'url(verbunden/assets/')).join('\n'));
 fs.copyFileSync('styles.css',`${out}/${release}/styles.css`);
 for(const d of ['data/bibles','trees','icons'])fs.cpSync(d,`${out}/${d}`,{recursive:true});

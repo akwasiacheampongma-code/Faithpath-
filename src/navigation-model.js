@@ -7,7 +7,7 @@ const GROUPS = [
  {label:'Einstellungen & Daten',items:[['more','Mehr']]},
 ];
 const FAMILIES = {
- today:['today'],bible:['bible','chapters','read','bible-journey'],paths:['paths','path','tree'],journal:['journal','entry','reflection','compose'],
+ today:['today'],bible:['bible','chapters','read','bible-journey'],paths:['paths','path','tree','first-seed'],journal:['journal','entry','reflection','compose'],
  discover:['discover','guidance','topic','plans','plan','guide','story','merged-story','question','quizzes','quiz','chapter-quizzes'],
  marks:['marks','mark'],history:['history'],reviews:['reviews','review'],more:['more','licenses','content-status'],
 };
