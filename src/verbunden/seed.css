@@ -1,5 +1,5 @@
 /* Dein erster Samen. Scoped additions to Verbunden; finite compositor motion. */
-.olive-art {display:block;width:100%;height:auto;overflow:visible;color:var(--ink);isolation:isolate;}
+.olive-art {display:block;width:100%;height:auto;overflow:hidden;pointer-events:none;color:var(--ink);isolation:isolate;}
 [data-living-tree] .tree-bough {transform-box:fill-box;transform-origin:center bottom;animation:olive-breathe 5s ease-in-out 2 alternate both;animation-play-state:paused;}
 [data-living-tree] .tree-bough:nth-of-type(3n) {animation-delay:-1.8s;}
 [data-living-tree] .tree-light {transform-origin:center;animation:olive-light 7s ease-in-out 2 alternate both;animation-play-state:paused;}

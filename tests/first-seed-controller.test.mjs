@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+import {setImmediate} from 'node:timers';import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
 import {KEYS,createStore,empty} from '../src/store.js';import {treeLevel} from '../src/domain.js';
 const api=await import('../src/first-seed/controller.js').catch(e=>{if(e.code==='ERR_MODULE_NOT_FOUND')return {};throw e});
 const refs=JSON.parse(fs.readFileSync('data/reference-index.json'));
