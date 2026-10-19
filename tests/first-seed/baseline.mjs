@@ -1,0 +1,8 @@
+import fs from 'node:fs';import {chromium} from 'playwright';import {KEYS} from '../../src/store.js';import {phase3Fixture} from '../phase3-fixtures.mjs';
+const out='qa-output/first-seed/baseline';fs.mkdirSync(out,{recursive:true});
+const b=await chromium.launch({executablePath:process.env.FAITHPATH_CHROMIUM||'/usr/bin/chromium',args:['--no-sandbox']});const results=[];
+try{for(const width of [320,390]){
+ const c=await b.newContext({viewport:{width,height:width===320?568:844},reducedMotion:'reduce'}),p=await c.newPage();await p.goto('http://127.0.0.1:4580/#today');await p.locator('dialog[open]').waitFor();await p.screenshot({path:`${out}/welcome-${width}.png`});await p.getByRole('button',{name:'Direkt zur Bibel',exact:true}).click();await p.goto('http://127.0.0.1:4580/#more?section=settings');await p.locator('#offline-state').filter({hasText:'Beide Bibeln und die App sind für dieses Gerät offline bereit.'}).waitFor({timeout:90000});
+ for(const route of ['today','paths','tree']){await p.goto('http://127.0.0.1:4580/#'+route);await p.locator('#main h1').waitFor();await p.evaluate(()=>document.fonts.ready);await p.screenshot({path:`${out}/${route}-empty-${width}.png`});results.push({route,width,view:'empty',status:'captured'})}
+ await p.evaluate(({KEYS,data})=>localStorage.setItem(KEYS.main,JSON.stringify(data)),{KEYS,data:phase3Fixture('tree-6','night')});await p.reload();for(const route of ['today','paths','tree']){await p.goto('http://127.0.0.1:4580/#'+route);await p.locator('#main h1').waitFor();await p.screenshot({path:`${out}/${route}-full-night-${width}.png`});results.push({route,width,view:'full/night',status:'captured'})}await c.close();
+}}finally{await b.close();fs.writeFileSync(out+'/results.json',JSON.stringify(results,null,2))}
