@@ -20,7 +20,7 @@
 .seed-editor h1,.seed-confirmation h1,.seed-heading h1 {font:450 clamp(1.8rem,5.5vw,2.65rem)/1.1 var(--serif);letter-spacing:-.035em;margin:12px 0 18px;overflow-wrap:break-word;hyphens:auto;}
 .seed-editor>p,.seed-confirmation>p {line-height:1.65;max-width:60ch;}
 .seed-field {display:flex;flex-direction:column;gap:9px;margin:24px 0;color:var(--ink);font-size:.93rem;font-weight:550;}
-.seed-field input,.seed-field textarea,.seed-field select {width:100%;max-width:100%;min-width:0;box-sizing:border-box;font:400 max(1rem,16px)/1.6 var(--sans);border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--surface);color:var(--ink);}
+.seed-field input,.seed-field textarea,.seed-field select {width:100%;max-width:100%;min-width:0;box-sizing:border-box;font:400 max(1rem,16px)/1.6 var(--sans);border:1px solid var(--input-border);border-radius:14px;padding:14px 16px;background:var(--surface);color:var(--ink);}
 .seed-field textarea {min-height:150px;resize:vertical;scroll-margin-block:100px;}
 .seed-field textarea:focus,.seed-field input:focus,.seed-field select:focus {outline:2px solid var(--focus);outline-offset:3px;}
 .seed-actions {display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 20px;}
