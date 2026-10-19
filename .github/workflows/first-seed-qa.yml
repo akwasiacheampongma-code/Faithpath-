@@ -58,6 +58,7 @@ jobs:
           QA_ENGINE: ${{ matrix.engine }}
           QA_URL: http://127.0.0.1:4585
           QA_OUT: qa-output/first-seed/ci-${{ matrix.engine }}
+          QA_SELF_HOST: dist
           PORT: 4585
         run: |
           if ! curl -fsS http://127.0.0.1:4585/ > /dev/null; then node scripts/serve.mjs dist > /tmp/faithpath-qa-server.log 2>&1 & fi
