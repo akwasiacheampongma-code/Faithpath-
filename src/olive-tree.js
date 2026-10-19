@@ -8,6 +8,9 @@ import {escapeHtml as e} from './view-html.js';
 export function renderOliveTree(level=0,{context='main',label='Olivenbaum',decorative=false}={}) {
  const stage=Number.isInteger(level)&&level>=0&&level<7?level:0;
  const key='olive-'+context.replace(/[^a-z0-9-]/gi,'')+'-'+stage;
+ // Close-up seed/sprout viewports need their own fully fading halo. Cropping
+ // the mature tree's light would leave a rectangular edge, especially at night.
+ const halo=stage===0?{cy:320,rx:110,ry:72}:stage===1?{cy:290,rx:110,ry:100}:{cy:205,rx:185,ry:185};
  const leaf=(x,y,angle,scale=1,tone=0)=>`<use href="#${key}-leaf-shape-${tone?1:0}" transform="translate(${x} ${y}) rotate(${angle}) scale(${scale})"/>`;
  const leafShapes=[0,1].map(tone=>`<g id="${key}-leaf-shape-${tone}"><path d="M0 0C7-17 23-23 37-17C28-3 15 3 0 0Z" fill="url(#${key}-${tone?'silver':'leaf'})"/><path d="M2-1L32-16" stroke="#e2d8a6" stroke-width=".7" opacity=".55"/></g>`).join('');
  const clusters=[[-80,172,-35],[-46,123,-55],[0,100,-75],[49,121,-105],[89,164,-135],[-105,213,-20],[100,214,-160],[-48,203,-55],[43,198,-120],[-13,159,-75],[22,240,-105],[-64,260,-40],[70,270,-140]];
@@ -28,7 +31,7 @@ export function renderOliveTree(level=0,{context='main',label='Olivenbaum',decor
  <linearGradient id="${key}-bark"><stop stop-color="#746348"/><stop offset=".48" stop-color="#ac9170"/><stop offset=".7" stop-color="#6d6048"/><stop offset="1" stop-color="#b59a75"/></linearGradient>
  <linearGradient id="${key}-seed" x2=".8" y2="1"><stop stop-color="#d7b27a"/><stop offset=".5" stop-color="#997247"/><stop offset="1" stop-color="#604d38"/></linearGradient>
  <radialGradient id="${key}-fruit" cx=".3" cy=".2"><stop stop-color="#aeb184"/><stop offset="1" stop-color="#485944"/></radialGradient></defs>
- <ellipse class="tree-light" cx="200" cy="205" rx="185" ry="185" fill="url(#${key}-halo)"/>
+ <ellipse class="tree-light" cx="200" cy="${halo.cy}" rx="${halo.rx}" ry="${halo.ry}" fill="url(#${key}-halo)"/>
  <path class="tree-horizon" d="M34 358Q190 333 366 358" fill="none" stroke="currentColor" opacity=".12"/>
  <ellipse cx="205" cy="363" rx="${stage<2?50:105}" ry="12" fill="#7f7852" opacity=".13"/>
  ${stage===0?seed:stage===1?sprout:trunk+foliage}

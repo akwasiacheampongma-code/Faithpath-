@@ -4,7 +4,7 @@ import {KEYS,empty} from '../src/store.js';
 const base='7d24aea30bec5b0b8d43e199f3cadfc6305c1e3e';
 const git=(...args)=>execFileSync('git',args,{maxBuffer:64*1024*1024});
 const hash=v=>crypto.createHash('sha256').update(v).digest('hex');
-const authorities=['src/store.js','src/drafts.js','src/journal-storage.js','src/import-validation.js','src/backup-model.js','src/domain.js','src/tree-view.js','src/tree-stage-guide.js','src/bible-journey.js','scripts/sw-template.js','styles.css'];
+const authorities=['src/content.js','src/store.js','src/drafts.js','src/journal-storage.js','src/import-validation.js','src/backup-model.js','src/domain.js','src/tree-view.js','src/tree-stage-guide.js','src/bible-journey.js','scripts/sw-template.js','styles.css'];
 const names=git('ls-tree','-r','--name-only',base).toString().trim().split('\n');
 const protectedFiles=names.filter(name=>name.startsWith('data/')||name.startsWith('trees/')||authorities.includes(name));
 for(const file of protectedFiles)assert.equal(hash(fs.readFileSync(file)),hash(git('show',base+':'+file)),file+' changed protected authority/content');
