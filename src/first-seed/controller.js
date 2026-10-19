@@ -11,7 +11,8 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
  let draft=null,session=null,active=false,dirty=false,pending=0,busy=false,queue=Promise.resolve(),error='',conflict=false,corrupt=false,rawDraft=null,complete=null;
  let sequence=0,scripture=null,verses=[],loading=false,loadedKey='';
  const model=()=>({draft,error,conflict,corrupt,complete,scripture,verses,loading,busy});
- const paint=focus=>{view.shell(renderFirstSeed(model(),view),'paths','first-seed-page');if(focus)view.find('#main h1')?.focus({preventScroll:true})};
+ function lockInputs(value){const editor=view.find('.seed-editor');editor?.setAttribute('aria-busy',String(value));for(const control of editor?.querySelectorAll('input,textarea,select,button')||[])control.disabled=value;}
+ const paint=focus=>{view.shell(renderFirstSeed(model(),view),'paths','first-seed-page');lockInputs(busy);if(focus)view.find('#main h1')?.focus({preventScroll:true})};
  function report(problem){error='Nicht gesichert: '+problem.message+' Deine Eingaben bleiben hier erhalten.';const el=view.find('#seed-error');if(el){el.hidden=false;el.textContent=error;}else view.notify(error,true);}
  function persist(){
   if(!draft||conflict||complete)return Promise.resolve();
@@ -24,7 +25,7 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
   const request=++sequence;loading=true;verses=[];
   try{scripture=seedPassage(draft.values,getReferences());const book=await getBook(scripture.ref.book,scripture.ref.translation);if(!active||request!==sequence)return;const ref=scripture.ref;verses=book.chapters[ref.chapter-1].filter(([n])=>n>=ref.from&&n<=(ref.to||ref.from));if(!verses.length)throw new Error('Diese Verse sind gerade nicht verfügbar.');}
   catch{if(!active||request!==sequence)return;verses=[];}
-  finally{if(active&&request===sequence){loading=false;paint(false);}}
+  finally{if(active&&request===sequence){loading=false;if(draft.values.scene===2&&!complete)paint(false);}}
  }
  async function render(){
   if(!active){
@@ -42,13 +43,14 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
   if(draft?.values.scene===2&&!conflict){const key=draft.values.topic+':'+draft.values.translation;if(key!==loadedKey){loadedKey=key;loading=true;paint(false);void loadScripture();}}
  }
  function input(target){
-  if(!active||conflict||complete||!fields.has(target.name))return false;
+  if(!active||conflict||corrupt||complete||busy||!fields.has(target.name))return false;
   draft.values[target.name]=target.value;dirty=true;
   void persist().catch(report);
   if(target.name==='translation'&&draft.values.scene===2){loadedKey='';void render();}
   return true;
  }
- async function leave(){await flush();active=false;sequence++;loading=false;}
+ async function finishLeave(){await flush();active=false;sequence++;loading=false;}
+ async function leave(){if(busy)throw new Error('Bitte warte einen Moment, bis dieser Schritt gesichert ist.');await finishLeave();}
  async function handle(action){
   if(!actions.has(action))return false;
   if(action==='seed-export-raw'&&corrupt){view.download({app:'FaithPath-Entwurf-Original',raw:rawDraft},'FaithPath-Entwurf-Original.json');return true;}
@@ -56,11 +58,11 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
   if(action==='seed-export'){view.download({app:'FaithPath-Entwurf',draft:structuredClone(draft)},'FaithPath-Erster-Samen-Entwurf.json');return true;}
   if(action==='seed-discard'){view.modal('Diesen Anfang verwerfen?',`<p>Nur dieser Entwurf wird entfernt. Deine gespeicherten Wege und Gedanken bleiben erhalten. Sichere deine Eingaben vorher als Datei, wenn du sie behalten möchtest.</p><div class="actions">${view.button('Eingaben als Datei sichern','seed-export',{},'button quiet')}${view.button('Diesen Entwurf verwerfen','seed-confirm-discard',{},'button danger')}</div>`);return true;}
   if(action==='seed-replay'){const scene=view.find('[data-seed-planted] [data-living-tree]');if(scene){scene.dispatchEvent(new Event('faithpath-replay',{bubbles:true}));}return true;}
-  busy=true;
+  busy=true;lockInputs(true);
   try{
    if(action==='seed-confirm-discard'){await queue.catch(()=>{});await discardDraft(storage,session.expectedRaw);session.expectedRaw=null;dirty=false;active=false;sequence++;view.closeModal();view.go('today');return true;}
    await flush();error='';
-   if(action==='seed-pause'){await leave();view.go('today');return true;}
+   if(action==='seed-pause'){await finishLeave();view.go('today');return true;}
    if(action==='seed-retry'){loadedKey='';await render();return true;}
    if(action==='seed-save'){
     validateSeed(draft.values);const ref=seedPassage(draft.values,getReferences()).ref,owned=structuredClone(draft);
@@ -79,7 +81,7 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
    }
    dirty=true;await persist();await render();
   }catch(problem){report(problem);view.find('#seed-error')?.focus({preventScroll:true});}
-  finally{busy=false;}
+  finally{busy=false;lockInputs(false);}
   return true;
  }
  return Object.freeze({render,input,handle,leave,flush,snapshot:()=>structuredClone(draft),isActive:()=>active,hasUnsavedWork:()=>dirty||pending>0});
