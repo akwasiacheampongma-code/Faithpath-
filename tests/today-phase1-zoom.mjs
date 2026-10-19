@@ -1,6 +1,6 @@
 import fs from 'node:fs';import assert from 'node:assert/strict';import {chromium} from 'playwright';
 import {KEYS} from '../src/store.js';import {todayFixture} from './today-phase1-fixtures.mjs';import {BUILD} from '../src/version.js';
-const out='qa-output/uiux-phase1/zoom',base=process.env.QA_URL||'http://127.0.0.1:4361';fs.mkdirSync(out,{recursive:true});
+const out=process.env.QA_OUT||'qa-output/uiux-phase1/zoom',base=process.env.QA_URL||'http://127.0.0.1:4361';fs.mkdirSync(out,{recursive:true});
 const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']}),results=[];
 try{for(const width of [320,390]){
  const seed=todayFixture('returning','paper'),c=await b.newContext({viewport:{width,height:width===320?568:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
