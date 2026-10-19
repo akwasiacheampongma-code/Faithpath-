@@ -33,14 +33,34 @@ jobs:
       - run: npm run check:contracts
       - run: npm run check:modules
       - run: npm run build
+      - name: Build unchanged MAINT1 control
+        if: matrix.engine == 'webkit'
+        run: |
+          mkdir -p /tmp/faithpath-maint1
+          git archive 7d4441caf5112c04b8b6af7ddec8c4ee49d0c63a | tar -x -C /tmp/faithpath-maint1
+          cd /tmp/faithpath-maint1
+          FAITHPATH_OUT=/tmp/faithpath-maint1-build node scripts/build.mjs
+      - name: WebKit offline control experiment
+        if: matrix.engine == 'webkit'
+        env:
+          QA_ENGINE: webkit
+          QA_URL: http://127.0.0.1:4585
+          QA_BASELINE_URL: http://127.0.0.1:4587
+          QA_OUT: qa-output/first-seed/webkit-control
+        run: |
+          PORT=4585 node scripts/serve.mjs dist > /tmp/faithpath-qa-server.log 2>&1 &
+          PORT=4587 node scripts/serve.mjs /tmp/faithpath-maint1-build > /tmp/faithpath-maint1-server.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4587/ > /dev/null && break || sleep 1; done
+          node tests/first-seed/webkit-offline-probe.mjs
       - name: Real first personal story in selected engine
+        if: success() || failure()
         env:
           QA_ENGINE: ${{ matrix.engine }}
           QA_URL: http://127.0.0.1:4585
           QA_OUT: qa-output/first-seed/ci-${{ matrix.engine }}
           PORT: 4585
         run: |
-          node scripts/serve.mjs dist > /tmp/faithpath-qa-server.log 2>&1 &
+          if ! curl -fsS http://127.0.0.1:4585/ > /dev/null; then node scripts/serve.mjs dist > /tmp/faithpath-qa-server.log 2>&1 & fi
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4585/ > /dev/null && break || sleep 1; done
           node tests/first-seed/flow.mjs
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
