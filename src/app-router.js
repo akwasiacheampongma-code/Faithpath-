@@ -85,7 +85,8 @@ export function createAppRouter({ui,getState,views,helpers,canonicalStoryForLega
       try {
         draft = JSON.parse(storage.getItem(KEYS.draft));
       } catch {}
-      if (draft?.type && draft.values)
+      if (draft?.type === 'first-seed' && draft.values) go('first-seed');
+      else if (draft?.type && draft.values)
         views.openForm(draft.type, draft.args, draft.values);
       else views.openForm("entry");
     } else views.notFound();

@@ -52,3 +52,5 @@ test('step deep links open the existing disclosure and focus the exact encoded s
  h.document.querySelectorAll=selector=>selector==='.path-step input'?[input]:[];
  await h.render();assert.equal(disclosure.open,true);assert.equal(focused,true);assert.equal(scroll.block,'center');
 });
+
+test('compose continues an owned first-seed draft through its real route without opening an unsupported editor',async()=>{const h=harness('#compose'),raw=JSON.stringify({type:'first-seed',args:{},values:{scene:3,thought:'Meine Worte'}});h.storage.getItem=key=>key===KEYS.draft?raw:null;await h.render();assert.deepEqual(h.calls.find(x=>x.name==='go')?.args,['first-seed']);assert(!h.calls.some(x=>x.name==='openForm'));assert.equal(h.storage.getItem(KEYS.draft),raw)});

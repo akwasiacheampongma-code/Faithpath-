@@ -28,6 +28,8 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
  }
  async function render(){
   if(!active){
+   // A discarded/finished editor must not carry a rejected queue into a new session.
+   queue=Promise.resolve();pending=0;
    const raw=storage.getItem(KEYS.draft);rawDraft=raw;conflict=false;corrupt=false;complete=null;error='';verses=[];loadedKey='';
    if(raw){try{const saved=JSON.parse(raw);if(saved.type!=='first-seed'){conflict=true;draft=null;}else{
     if(!saved.args||!saved.values||!Number.isInteger(saved.values.scene)||saved.values.scene<0||saved.values.scene>5||[...fields].some(name=>typeof saved.values[name]!=='string')||!['otb','l1912'].includes(saved.values.translation))throw new Error('Dieser Entwurf kann nicht sicher geöffnet werden. Bitte sichere zuerst seine Originaldatei.');
