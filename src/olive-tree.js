@@ -8,7 +8,7 @@ import {escapeHtml as e} from './view-html.js';
 export function renderOliveTree(level=0,{context='main',label='Olivenbaum',decorative=false}={}) {
  const stage=Number.isInteger(level)&&level>=0&&level<7?level:0;
  const key='olive-'+context.replace(/[^a-z0-9-]/gi,'')+'-'+stage;
- const leaf=(x,y,angle,scale=1,tone=0)=>`<use href="#${key}-leaf-shape-${tone}" transform="translate(${x} ${y}) rotate(${angle}) scale(${scale})"/>`;
+ const leaf=(x,y,angle,scale=1,tone=0)=>`<use href="#${key}-leaf-shape-${tone?1:0}" transform="translate(${x} ${y}) rotate(${angle}) scale(${scale})"/>`;
  const leafShapes=[0,1].map(tone=>`<g id="${key}-leaf-shape-${tone}"><path d="M0 0C7-17 23-23 37-17C28-3 15 3 0 0Z" fill="url(#${key}-${tone?'silver':'leaf'})"/><path d="M2-1L32-16" stroke="#e2d8a6" stroke-width=".7" opacity=".55"/></g>`).join('');
  const clusters=[[-80,172,-35],[-46,123,-55],[0,100,-75],[49,121,-105],[89,164,-135],[-105,213,-20],[100,214,-160],[-48,203,-55],[43,198,-120],[-13,159,-75],[22,240,-105],[-64,260,-40],[70,270,-140]];
  const foliage=stage<2?'':clusters.slice(0,[0,0,4,8,11,12,13][stage]).map(([dx,y,angle],i)=>{

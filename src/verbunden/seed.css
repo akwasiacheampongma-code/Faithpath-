@@ -38,8 +38,8 @@
 .seed-summary {margin:24px 0;border-top:1px solid var(--line);}
 .seed-summary dt {font:600 .72rem/1.5 var(--sans);text-transform:uppercase;letter-spacing:.09em;color:var(--muted);padding-top:18px;}
 .seed-summary dd {margin:8px 0 0;padding-bottom:18px;border-bottom:1px solid var(--line);font:430 1.15rem/1.6 var(--serif);white-space:pre-wrap;overflow-wrap:anywhere;}
-.seed-welcome-art {width:min(100%,320px);height:180px;margin:0 auto 30px;position:relative;border-radius:48% 48% 20px 20px;background:radial-gradient(ellipse at 50% 90%,var(--v-warm),transparent 72%);}
-.seed-welcome-art .olive-art {height:180px;}
+.seed-welcome-art {width:min(100%,320px);height:120px;margin:0 auto 24px;position:relative;border-radius:48% 48% 20px 20px;background:radial-gradient(ellipse at 50% 90%,var(--v-warm),transparent 72%);}
+.seed-welcome-art .olive-art {height:120px;}
 .seed-art-caption {display:block;text-align:center;font-size:.7rem;color:var(--muted);margin-top:-4px;}
 .seed-example,.path-howto {border:1px solid var(--line);border-radius:16px;padding:0 18px;margin-block:24px;background:var(--surface);}
 .seed-example summary,.path-howto summary {min-height:48px;display:flex;align-items:center;font-weight:550;cursor:pointer;padding-block:10px;}
@@ -71,7 +71,7 @@
 }
 [data-motion="reduced"]>.sowing-ring {opacity:0;}
 [data-motion="reduced"]>.sowing-seed,[data-motion="reduced"]>.sowing-shoot {animation:none;}
-@media(max-width:350px){.seed-scripture{padding:16px}.seed-welcome-art{height:140px;margin-bottom:24px}.seed-welcome-art .olive-art{height:140px}.seed-actions .button{flex-basis:100%}.onboarding-dialog .onboarding-seed-art{height:64px}.onboarding-seed-art .olive-art{height:64px}}
+@media(max-width:350px){.seed-scripture{padding:16px}.seed-welcome-art{height:100px;margin-bottom:20px}.seed-welcome-art .olive-art{height:100px}.seed-actions .button{flex-basis:100%}.onboarding-dialog .onboarding-seed-art{height:64px}.onboarding-seed-art .olive-art{height:64px}}
 
 /* The living illustration shares the first screen with meaningful actions. */
 .today-phase1 .today-header {grid-template-columns:minmax(0,1fr) minmax(130px,44%);gap:12px;padding-top:8px;}
