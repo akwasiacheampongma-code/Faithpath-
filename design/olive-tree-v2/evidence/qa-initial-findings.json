@@ -1,0 +1,326 @@
+{
+  "scope": "Initial failed design-study run, retained for red/green evidence; final result is qa-results.json.",
+  "summary": {
+    "checks": 471,
+    "passed": 439,
+    "failed": 32,
+    "screenshots": 55
+  },
+  "failures": [
+    {
+      "name": "tree-layout",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "stage": 3,
+      "documentWidth": 334,
+      "bodyWidth": 334,
+      "images": true
+    },
+    {
+      "name": "content-clear-of-navigation",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "today",
+      "lastContentBottom": 479.015625,
+      "navTop": 451.78125
+    },
+    {
+      "name": "view-layout",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "paths",
+      "documentWidth": 353,
+      "bodyWidth": 353
+    },
+    {
+      "name": "view-layout",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "guide",
+      "documentWidth": 327,
+      "bodyWidth": 327
+    },
+    {
+      "name": "content-clear-of-navigation",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "text": 100,
+      "view": "today",
+      "lastContentBottom": 843.5625,
+      "navTop": 778.203125
+    },
+    {
+      "name": "tree-layout",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "text": 200,
+      "stage": 3,
+      "documentWidth": 407,
+      "bodyWidth": 407,
+      "images": true
+    },
+    {
+      "name": "tree-layout",
+      "theme": "paper",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "stage": 3,
+      "documentWidth": 334,
+      "bodyWidth": 334,
+      "images": true
+    },
+    {
+      "name": "content-clear-of-navigation",
+      "theme": "paper",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "today",
+      "lastContentBottom": 479.015625,
+      "navTop": 451.78125
+    },
+    {
+      "name": "view-layout",
+      "theme": "paper",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "paths",
+      "documentWidth": 353,
+      "bodyWidth": 353
+    },
+    {
+      "name": "view-layout",
+      "theme": "paper",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "guide",
+      "documentWidth": 327,
+      "bodyWidth": 327
+    },
+    {
+      "name": "content-clear-of-navigation",
+      "theme": "paper",
+      "width": 390,
+      "height": 844,
+      "text": 100,
+      "view": "today",
+      "lastContentBottom": 843.5625,
+      "navTop": 778.203125
+    },
+    {
+      "name": "tree-layout",
+      "theme": "paper",
+      "width": 390,
+      "height": 844,
+      "text": 200,
+      "stage": 3,
+      "documentWidth": 407,
+      "bodyWidth": 407,
+      "images": true
+    },
+    {
+      "name": "tree-layout",
+      "theme": "atmospheric",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "stage": 3,
+      "documentWidth": 334,
+      "bodyWidth": 334,
+      "images": true
+    },
+    {
+      "name": "content-clear-of-navigation",
+      "theme": "atmospheric",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "today",
+      "lastContentBottom": 479.015625,
+      "navTop": 451.78125
+    },
+    {
+      "name": "view-layout",
+      "theme": "atmospheric",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "paths",
+      "documentWidth": 353,
+      "bodyWidth": 353
+    },
+    {
+      "name": "view-layout",
+      "theme": "atmospheric",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "guide",
+      "documentWidth": 327,
+      "bodyWidth": 327
+    },
+    {
+      "name": "content-clear-of-navigation",
+      "theme": "atmospheric",
+      "width": 390,
+      "height": 844,
+      "text": 100,
+      "view": "today",
+      "lastContentBottom": 843.5625,
+      "navTop": 778.203125
+    },
+    {
+      "name": "tree-layout",
+      "theme": "atmospheric",
+      "width": 390,
+      "height": 844,
+      "text": 200,
+      "stage": 3,
+      "documentWidth": 407,
+      "bodyWidth": 407,
+      "images": true
+    },
+    {
+      "name": "tree-layout",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "stage": 3,
+      "documentWidth": 334,
+      "bodyWidth": 334,
+      "images": true
+    },
+    {
+      "name": "content-clear-of-navigation",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "today",
+      "lastContentBottom": 479.015625,
+      "navTop": 451.78125
+    },
+    {
+      "name": "view-layout",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "paths",
+      "documentWidth": 353,
+      "bodyWidth": 353
+    },
+    {
+      "name": "view-layout",
+      "theme": "night",
+      "width": 320,
+      "height": 568,
+      "text": 200,
+      "view": "guide",
+      "documentWidth": 327,
+      "bodyWidth": 327
+    },
+    {
+      "name": "content-clear-of-navigation",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "text": 100,
+      "view": "today",
+      "lastContentBottom": 843.5625,
+      "navTop": 778.203125
+    },
+    {
+      "name": "tree-layout",
+      "theme": "night",
+      "width": 390,
+      "height": 844,
+      "text": 200,
+      "stage": 3,
+      "documentWidth": 407,
+      "bodyWidth": 407,
+      "images": true
+    },
+    {
+      "name": "gallery-layout",
+      "theme": "light",
+      "width": 320,
+      "text": 200,
+      "documentWidth": 520,
+      "bodyWidth": 520
+    },
+    {
+      "name": "gallery-layout",
+      "theme": "light",
+      "width": 390,
+      "text": 200,
+      "documentWidth": 520,
+      "bodyWidth": 520
+    },
+    {
+      "name": "gallery-layout",
+      "theme": "paper",
+      "width": 320,
+      "text": 200,
+      "documentWidth": 520,
+      "bodyWidth": 520
+    },
+    {
+      "name": "gallery-layout",
+      "theme": "paper",
+      "width": 390,
+      "text": 200,
+      "documentWidth": 520,
+      "bodyWidth": 520
+    },
+    {
+      "name": "gallery-layout",
+      "theme": "atmospheric",
+      "width": 320,
+      "text": 200,
+      "documentWidth": 520,
+      "bodyWidth": 520
+    },
+    {
+      "name": "gallery-layout",
+      "theme": "atmospheric",
+      "width": 390,
+      "text": 200,
+      "documentWidth": 520,
+      "bodyWidth": 520
+    },
+    {
+      "name": "gallery-layout",
+      "theme": "night",
+      "width": 320,
+      "text": 200,
+      "documentWidth": 520,
+      "bodyWidth": 520
+    },
+    {
+      "name": "gallery-layout",
+      "theme": "night",
+      "width": 390,
+      "text": 200,
+      "documentWidth": 520,
+      "bodyWidth": 520
+    }
+  ],
+  "environmentError": [
+    "page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/Faithpath-olive-v2/design/olive-tree-v2/index.html\nCall log:\n\u001b[2m  - navigating to \"file:///workspace/Faithpath-olive-v2/design/olive-tree-v2/index.html\", waiting until \"load\"\u001b[22m\n\n    at /workspace/Faithpath-olive-v2/design/olive-tree-v2/qa.mjs:104:13"
+  ]
+}

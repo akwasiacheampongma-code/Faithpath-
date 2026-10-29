@@ -1,0 +1,26 @@
+{
+  "scope": "Phase A asset and contract assertions, not Phase B integration.",
+  "pass": true,
+  "checks": [
+    {
+      "name": "seven-existing-stage-names-and-meanings",
+      "pass": true
+    },
+    {
+      "name": "source-and-export-hashes",
+      "pass": true
+    },
+    {
+      "name": "unchanged-application-tree-from-selected-base",
+      "pass": true
+    },
+    {
+      "name": "all-growth-boundaries-no-data-mutation",
+      "pass": true
+    },
+    {
+      "name": "study-does-not-write-personal-storage-or-register-workers",
+      "pass": true
+    }
+  ]
+}
