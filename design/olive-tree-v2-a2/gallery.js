@@ -1,0 +1,29 @@
+/* Isolated visual study: local assets only; no app imports or persistence. */
+(() => {
+ 'use strict';
+ const m=window.OLIVE_STUDY,s=m.stages,p=new URLSearchParams(location.search),q=x=>document.querySelector(x);
+ const themes=['light','paper','atmospheric','night'];
+ const theme=themes.includes(p.get('theme'))?p.get('theme'):'light';document.documentElement.dataset.theme=theme;
+ const img=(src,alt,cls='')=>`<img class="${cls}" src="${src}" alt="${alt}" width="1024" height="1024">`;
+ const art=(i,cls='')=>img(s[i].exports['1024'].path,s[i].name,cls);
+ const name=n=>n.replace('Fruchttragender','Frucht&shy;tra&shy;gen&shy;der').replace('Wachsender','Wach&shy;sen&shy;der').replace('Olivenbaum','Oli&shy;ven&shy;baum');
+ function masters(){return `<div class="master-pair"><figure>${img(m.masters.windform.exports['1024'].path,'Master Windform')}<figcaption><span class="eyebrow">Master 1</span><h3>Windform</h3><p>Breit, windgeprägt, nach links ausladend. Mehr Bewegung in der Silhouette, mehr Platzbedarf auf dem Handy.</p></figcaption></figure><figure>${img(m.masters.lichtkrone.exports['1024'].path,'Master Lichtkrone')}<figcaption><span class="eyebrow">Master 2 · Arbeitsrichtung</span><h3>Lichtkrone</h3><p>Aufrechter Stamm, tiefe rechte Astkurve, höhere linke Krone. Die Grundlage dieser Siebenerreihe, noch nicht freigegeben.</p></figcaption></figure></div>`;}
+ function stages(){return `<div class="stage-row">${s.map(x=>`<figure>${art(x.index)}<figcaption><small>0${x.index+1}${x.opticalCloseUp?' · Nahansicht':''}</small><h3>${name(x.name)}</h3></figcaption></figure>`).join('')}</div>`;}
+ function small(size=200){return `<div class="small-row" style="--art-size:${size}px">${[4,5,6].map(i=>`<figure>${art(i)}<figcaption><small>Stufe ${i+1} · ${size} × ${size} CSS-px</small><h3>${name(s[i].name)}</h3></figcaption></figure>`).join('')}</div>`;}
+ function overlays(){return `<div class="overlay-grid">${[2,3,4,5].map(i=>`<figure><div class="overlay-scene">${art(i,'younger')}${art(6,'master')}<span class="canvas-label">${i+1} + 7</span></div><figcaption><h3>Stufe ${i+1} und Stufe 7</h3><p>50 % + 50 % · gemeinsame Canvas · keine nachträgliche Verformung</p></figcaption></figure>`).join('')}</div>`;}
+ function compare(){return `<div class="master-pair"><figure>${img('reference-a1/master.png','Unveränderte Masterillustration Phase A.1')}<figcaption><h3>Phase A.1</h3><p>Dichtes, ähnlich gruppiertes Laub. Gleichmäßiger verflochtener Stamm. Späte Stufen fast identisch.</p></figcaption></figure><figure>${art(6)}<figcaption><h3>Phase A.2 · Lichtkrone</h3><p>Offenere Hauptastführung, mattere Farben, silbrigeres Laub. Abweichungen der Stammgeometrie bleiben in den Überlagerungen sichtbar.</p></figcaption></figure></div>`;}
+ function evolution(){return `<h2>Phase A.1 · unveränderte Dateien</h2><div class="stage-row">${s.map(x=>`<figure>${img('reference-a1/web/'+x.exports['1024'].path.split('/').at(-1),x.name+' aus A.1')}<figcaption><small>Stufe ${x.index+1}</small></figcaption></figure>`).join('')}</div><h2>Phase A.2 · gemeinsame Bildfläche ab Stufe 3</h2>${stages()}`;}
+ function layers(){return `<div class="layer-plan"><figure>${art(6)}<figcaption>Geliefert: gerendertes Gesamtbild</figcaption></figure><ol><li><strong>W · Stamm und Wurzeln</strong><p>Feste registrierte Unterlage; sichtbare Holzflächen und verdeckte Astfortsetzungen sauber ausarbeiten.</p></li><li><strong>C1–C3 · Kronenbereiche</strong><p>Linke hohe Krone, linke äußere Blattsprays, rechte Krone. Mit Überlappung und rekonstruierten verdeckten Flächen.</p></li><li><strong>F · Fruchtgruppen</strong><p>Separate lokale Gruppen, an festen Zweigansätzen. Hintere und vordere Gruppen bei Bedarf trennen.</p></li><li><strong>G · Boden</strong><p>Statische gemeinsame Basis. Unveränderte Wurzelanker in allen Exportgrößen.</p></li></ol></div><p class="note">Geplante Produktionsaufteilung. Keine dieser Ebenen ist aus dem Gesamtbild bereits verlustfrei als animierbarer Ast verfügbar.</p>`;}
+ const board=q('#artboard');
+ if(board){const kind=p.get('board')||'masters',size=[180,200,220].includes(Number(p.get('size')))?Number(p.get('size')):200;
+  const parts={masters:['Zwei Master. Zwei Haltungen.',masters],stages:['Ein Baum. Sieben Bilder.',stages],small:[`Stufen 5–7 bei ${size} CSS-Pixeln.`,()=>small(size)],overlays:['Stammgeometrie offenlegen.',overlays],comparison:['Phase A.1 / Phase A.2.',compare],evolution:['Die ganze Reihe im Vergleich.',evolution],layers:['Geplanter Aufbau für Animation.',layers]};
+  const [title,render]=parts[kind]||parts.masters;board.innerHTML=`<p class="eyebrow">FaithPath · Olivenbaum V2 · Phase A.2</p><h1>${title}</h1><p class="board-note">Isolierte Designstudie · keine App-Integration · keine Designfreigabe</p>${render()}<p class="board-footer">FP-DESIGN-20261029-OLIVE-V2-A2 · echte Browserdarstellung · ${theme}</p>`;return;
+ }
+ q('#theme').value=theme;
+ q('#masters-art').innerHTML=masters();q('#stage-art').innerHTML=stages();q('#small-art').innerHTML=small();q('#overlay-art').innerHTML=overlays();q('#comparison-art').innerHTML=compare();q('#layer-art').innerHTML=layers();
+ q('#stage').innerHTML=s.map(x=>`<option value="${x.index}">Stufe ${x.index+1}</option>`).join('');q('#stage').value='6';
+ function preview(){const url=`preview.html?view=${q('#view').value}&theme=${q('#theme').value}&stage=${q('#stage').value}`;q('#preview').src=url;q('#preview').style.width=q('#width').value+'px';q('#preview').style.height=q('#width').value==='320'?'568px':'844px';q('#separate').href=url;}
+ q('#theme').addEventListener('change',()=>{document.documentElement.dataset.theme=q('#theme').value;preview();});
+ q('#size').addEventListener('change',()=>q('#small-art').innerHTML=small(Number(q('#size').value)));
+ for(const id of ['view','width','stage'])q('#'+id).addEventListener('change',preview);preview();
+})();
