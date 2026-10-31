@@ -1,0 +1,852 @@
+{
+  "study": "FP-DESIGN-20261031-OLIVE-V2-A3",
+  "browser": "Chromium",
+  "physicalIOS": "OPEN",
+  "artApproval": "NOT_GRANTED",
+  "cases": [
+    {
+      "name": "7 stages, actual transparent files and exact recomposition",
+      "status": "PASS",
+      "detail": [
+        {
+          "stage": 1,
+          "flat": true
+        },
+        {
+          "stage": 2,
+          "flat": true
+        },
+        {
+          "stage": 3,
+          "maxChannelDifference": 0,
+          "differentChannels": 0,
+          "transparentPixels": 1254492
+        },
+        {
+          "stage": 4,
+          "maxChannelDifference": 0,
+          "differentChannels": 0,
+          "transparentPixels": 1223942
+        },
+        {
+          "stage": 5,
+          "maxChannelDifference": 0,
+          "differentChannels": 0,
+          "transparentPixels": 1170667
+        },
+        {
+          "stage": 6,
+          "maxChannelDifference": 0,
+          "differentChannels": 0,
+          "transparentPixels": 1134863
+        },
+        {
+          "stage": 7,
+          "maxChannelDifference": 0,
+          "differentChannels": 0,
+          "transparentPixels": 1107293
+        }
+      ]
+    },
+    {
+      "name": "Source and destination anchor opacity is measured",
+      "status": "PASS",
+      "detail": [
+        {
+          "wood": "young",
+          "anchor": "rootContact",
+          "coordinate": [
+            650,
+            1100
+          ],
+          "alpha": 0
+        },
+        {
+          "wood": "young",
+          "anchor": "futureHollow",
+          "coordinate": [
+            670,
+            855
+          ],
+          "alpha": 253
+        },
+        {
+          "wood": "young",
+          "anchor": "leftFork",
+          "coordinate": [
+            532,
+            658
+          ],
+          "alpha": 252
+        },
+        {
+          "wood": "young",
+          "anchor": "lowerLeft",
+          "coordinate": [
+            353,
+            528
+          ],
+          "alpha": 250
+        },
+        {
+          "wood": "young",
+          "anchor": "rightElbow",
+          "coordinate": [
+            815,
+            795
+          ],
+          "alpha": 253
+        },
+        {
+          "wood": "young",
+          "anchor": "highAttach",
+          "coordinate": [
+            432,
+            363
+          ],
+          "alpha": 248
+        },
+        {
+          "wood": "young",
+          "anchor": "rightAttach",
+          "coordinate": [
+            1042,
+            542
+          ],
+          "alpha": 231
+        },
+        {
+          "wood": "mature",
+          "anchor": "rootContact",
+          "coordinate": [
+            650,
+            1100
+          ],
+          "alpha": 0
+        },
+        {
+          "wood": "mature",
+          "anchor": "futureHollow",
+          "coordinate": [
+            670,
+            855
+          ],
+          "alpha": 253
+        },
+        {
+          "wood": "mature",
+          "anchor": "leftFork",
+          "coordinate": [
+            532,
+            658
+          ],
+          "alpha": 253
+        },
+        {
+          "wood": "mature",
+          "anchor": "lowerLeft",
+          "coordinate": [
+            353,
+            528
+          ],
+          "alpha": 239
+        },
+        {
+          "wood": "mature",
+          "anchor": "rightElbow",
+          "coordinate": [
+            815,
+            795
+          ],
+          "alpha": 253
+        },
+        {
+          "wood": "mature",
+          "anchor": "highAttach",
+          "coordinate": [
+            432,
+            363
+          ],
+          "alpha": 237
+        },
+        {
+          "wood": "mature",
+          "anchor": "rightAttach",
+          "coordinate": [
+            1042,
+            542
+          ],
+          "alpha": 241
+        },
+        {
+          "component": "C1",
+          "sourceAnchor": [
+            750,
+            1100
+          ],
+          "rgba": [
+            109,
+            76,
+            47,
+            250
+          ]
+        },
+        {
+          "component": "C2",
+          "sourceAnchor": [
+            1230,
+            84
+          ],
+          "rgba": [
+            165,
+            144,
+            113,
+            250
+          ]
+        },
+        {
+          "component": "C3",
+          "sourceAnchor": [
+            1210,
+            1200
+          ],
+          "rgba": [
+            160,
+            118,
+            79,
+            251
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Master, 7 stages, 6 adjacent overlays, layers: browser evidence",
+      "status": "PASS",
+      "detail": {
+        "boards": 4
+      }
+    },
+    {
+      "name": "Stages 5–7 really render at 180 / 200 / 220 CSS pixels",
+      "status": "PASS",
+      "detail": [
+        {
+          "size": 180,
+          "sizes": [
+            {
+              "w": 180,
+              "h": 180
+            },
+            {
+              "w": 180,
+              "h": 180
+            },
+            {
+              "w": 180,
+              "h": 180
+            }
+          ]
+        },
+        {
+          "size": 200,
+          "sizes": [
+            {
+              "w": 200,
+              "h": 200
+            },
+            {
+              "w": 200,
+              "h": 200
+            },
+            {
+              "w": 200,
+              "h": 200
+            }
+          ]
+        },
+        {
+          "size": 220,
+          "sizes": [
+            {
+              "w": 220,
+              "h": 220
+            },
+            {
+              "w": 220,
+              "h": 220
+            },
+            {
+              "w": 220,
+              "h": 220
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "32 mobile layouts, 4 themes × 2 widths × 4 contexts",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "today",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "paths",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "tree",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "seed",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "today",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "paths",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "tree",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "seed",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "today",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "paths",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "tree",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "seed",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "today",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "paths",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "tree",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "seed",
+          "scrollWidth": 320,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "today",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "paths",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "tree",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "seed",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "today",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "paths",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "tree",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "seed",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "today",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "paths",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "tree",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "seed",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "today",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "paths",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "tree",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "seed",
+          "scrollWidth": 390,
+          "images": true,
+          "stored": 0
+        }
+      ]
+    },
+    {
+      "name": "200% root text: 320/390, every theme, guide and tree",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "tree",
+          "scroll": 320
+        },
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "guide",
+          "scroll": 320
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "tree",
+          "scroll": 320
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "guide",
+          "scroll": 320
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "tree",
+          "scroll": 320
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "guide",
+          "scroll": 320
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "tree",
+          "scroll": 320
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "guide",
+          "scroll": 320
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "tree",
+          "scroll": 390
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "guide",
+          "scroll": 390
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "tree",
+          "scroll": 390
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "guide",
+          "scroll": 390
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "tree",
+          "scroll": 390
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "guide",
+          "scroll": 390
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "tree",
+          "scroll": 390
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "guide",
+          "scroll": 390
+        }
+      ]
+    },
+    {
+      "name": "Guide details, keyboard dialog, all stages reachable",
+      "status": "PASS",
+      "detail": {
+        "stages": 7,
+        "detailsKeyboard": true,
+        "dialogEscape": true
+      }
+    },
+    {
+      "name": "Finite independent motion; wood/ground static; fruit attached to parents",
+      "status": "PASS",
+      "detail": {
+        "running": true,
+        "static": [
+          "none",
+          "none"
+        ],
+        "crowns": [
+          {
+            "id": "C1",
+            "transform": "matrix(0.999999, 0.00158354, -0.00158354, 0.999999, 0, 0)",
+            "origin": "123.33px 103.632px"
+          },
+          {
+            "id": "C2",
+            "transform": "matrix(0.999995, -0.00330848, 0.00330848, 0.999995, 0, 0)",
+            "origin": "100.777px 150.737px"
+          },
+          {
+            "id": "C3",
+            "transform": "matrix(1, -0.000724763, 0.000724763, 1, 0, 0)",
+            "origin": "297.477px 154.734px"
+          }
+        ],
+        "f1": "C1",
+        "f2": "C3"
+      }
+    },
+    {
+      "name": "Reset during decode cancels transition (reproduced RED before fix)",
+      "status": "PASS",
+      "detail": {
+        "stage": 5,
+        "pending": false,
+        "completed": false
+      }
+    },
+    {
+      "name": "6→7 crossfade keeps wood node and coordinate unchanged",
+      "status": "PASS",
+      "detail": {
+        "stage": 6,
+        "same": true,
+        "dy": 0,
+        "duplicate": false,
+        "canopies": 1
+      }
+    },
+    {
+      "name": "Missing incoming layer retains old stage, exposes error, allows retry",
+      "status": "PASS",
+      "detail": {
+        "caught": true,
+        "stage": 5,
+        "pending": false,
+        "canopies": 1
+      }
+    },
+    {
+      "name": "Reduced motion: no CSS animations and immediate transition",
+      "status": "PASS",
+      "detail": {
+        "running": false,
+        "animations": 0,
+        "stage": 6
+      }
+    },
+    {
+      "name": "Out-of-view and hidden document stop decorative motion",
+      "status": "PASS",
+      "detail": {
+        "running": false,
+        "simulation": "document.hidden injected; not a physical browser background measurement"
+      }
+    },
+    {
+      "name": "Axe WCAG 2.2 AA: isolated preview and demo, all themes",
+      "status": "PASS",
+      "detail": [
+        {
+          "target": "preview.html?view=tree&theme=light",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "target": "demo.html?theme=light",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "target": "preview.html?view=tree&theme=paper",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "target": "demo.html?theme=paper",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "target": "preview.html?view=tree&theme=atmospheric",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "target": "demo.html?theme=atmospheric",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "target": "preview.html?view=tree&theme=night",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "target": "demo.html?theme=night",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "name": "No JS exceptions, no external requests, no personal storage writes",
+      "status": "PASS",
+      "detail": {
+        "errors": [],
+        "external": [],
+        "storage": {
+          "local": 0,
+          "session": 0
+        }
+      }
+    }
+  ],
+  "screenshots": [
+    "master.png",
+    "stages.png",
+    "overlays.png",
+    "layers.png",
+    "small-180.png",
+    "small-200.png",
+    "small-220.png",
+    "mobile-320-light-today.png",
+    "mobile-320-light-paths.png",
+    "mobile-320-light-tree.png",
+    "mobile-320-light-seed.png",
+    "mobile-320-paper-today.png",
+    "mobile-320-paper-paths.png",
+    "mobile-320-paper-tree.png",
+    "mobile-320-paper-seed.png",
+    "mobile-320-atmospheric-today.png",
+    "mobile-320-atmospheric-paths.png",
+    "mobile-320-atmospheric-tree.png",
+    "mobile-320-atmospheric-seed.png",
+    "mobile-320-night-today.png",
+    "mobile-320-night-paths.png",
+    "mobile-320-night-tree.png",
+    "mobile-320-night-seed.png",
+    "mobile-390-light-today.png",
+    "mobile-390-light-paths.png",
+    "mobile-390-light-tree.png",
+    "mobile-390-light-seed.png",
+    "mobile-390-paper-today.png",
+    "mobile-390-paper-paths.png",
+    "mobile-390-paper-tree.png",
+    "mobile-390-paper-seed.png",
+    "mobile-390-atmospheric-today.png",
+    "mobile-390-atmospheric-paths.png",
+    "mobile-390-atmospheric-tree.png",
+    "mobile-390-atmospheric-seed.png",
+    "mobile-390-night-today.png",
+    "mobile-390-night-paths.png",
+    "mobile-390-night-tree.png",
+    "mobile-390-night-seed.png",
+    "large-text-320-night-guide.png",
+    "large-text-390-night-guide.png",
+    "stage-detail-1.png",
+    "stage-detail-2.png",
+    "stage-detail-3.png",
+    "stage-detail-4.png",
+    "stage-detail-5.png",
+    "stage-detail-6.png",
+    "stage-detail-7.png",
+    "demo-stage-7.png",
+    "demo-reduced-motion.png"
+  ],
+  "browserVersion": "151.0.7922.173",
+  "summary": {
+    "pass": 15,
+    "fail": 0
+  }
+}

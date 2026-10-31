@@ -1,0 +1,105 @@
+{
+  "sources": [
+    {
+      "file": "assets/sources/crown-broad-left.png",
+      "sha256": "eca0f447ce5b758a295b1e20a36efdbce231384f61399c5c902a89c31aeb9fcd",
+      "usedInFinalRig": true,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/crown-broad-right.png",
+      "sha256": "e00f44832a07dce9f8252e73485aebd91b72f6580f9da3811722c11943f194a2",
+      "usedInFinalRig": true,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/crown-high-left.png",
+      "sha256": "264539335ff8f1ecac2d1153f116fad2c39a1b34237e8907683cc1771425117d",
+      "usedInFinalRig": false,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/crown-left-inner.png",
+      "sha256": "f59462917bb1bbe5b5646bd0ea83e359127a6c671f3db52483235607f3d596f6",
+      "usedInFinalRig": false,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/crown-outer-lower.png",
+      "sha256": "d9fe607f5b7f3707aec4a224427dd23b5cff708b503d4b31f9e5080120f41a64",
+      "usedInFinalRig": true,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/crown-right-inner.png",
+      "sha256": "afaf24b276f8437d23ef4fb672d2cc36615d887af9a83ec23e008e47eede2607",
+      "usedInFinalRig": false,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/crown-right.png",
+      "sha256": "dd2ca2a4cf4c9fd0baa7c97f523baa45997fca11b04e8bf539bb2f25040cb270",
+      "usedInFinalRig": false,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/olive-cluster.png",
+      "sha256": "0f672058698826b984f26e863a6979c45d18d798c034d5c35bf6085d79677a60",
+      "usedInFinalRig": true,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/wood-ground.png",
+      "sha256": "9c7392f6d9817952d5cb7c44b0bbfb235dd4f0b9e3a09a569c1a190b0a41e98d",
+      "usedInFinalRig": false,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/wood-structural-ground.png",
+      "sha256": "92a8ed26f74c892d2025b95b5e0fdfb7c767c0a4a0fd66ca948c611dc5777b6a",
+      "usedInFinalRig": true,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/wood-structural-young.png",
+      "sha256": "3f6f82ac2b6855272a1793abc2f75e76612de4f6d6ce0969c13b899a1b072108",
+      "usedInFinalRig": true,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    },
+    {
+      "file": "assets/sources/wood-young-ground.png",
+      "sha256": "c00837dfba87e16429d2a69d47ae9e43a31514cfdfe24c7912113ed424eeb7b4",
+      "usedInFinalRig": false,
+      "origin": "ImageGen targeted component painting/editing, original output preserved in execution workspace"
+    }
+  ],
+  "references": [
+    {
+      "file": "reference-a2/01-samen.png",
+      "sha256": "e94303f39b06aee69229e414a4adfadd20558063c86f79a16f28aab5da51a243",
+      "origin": "unchanged A.2 reference"
+    },
+    {
+      "file": "reference-a2/02-keimling.png",
+      "sha256": "8e5556320f8d34bc55d431f185acf5b5a34ccdff0c23e5625d873911da3b944e",
+      "origin": "unchanged A.2 reference"
+    },
+    {
+      "file": "reference-a2/master-lichtkrone.png",
+      "sha256": "ea770e600fc7c4250960789c10c18f45264ee09e566ec07da594a0067d0ebef0",
+      "origin": "unchanged A.2 reference"
+    },
+    {
+      "file": "reference-a2/master-windform.png",
+      "sha256": "d443233100867b316a3d751a6389ade056d28aaf4658b144592037bfe8cfa39b",
+      "origin": "unchanged A.2 reference"
+    }
+  ],
+  "generationPrompts": [
+    "prompts.json",
+    "prompts-final-components.json"
+  ],
+  "newWholeTreeFamilyGenerated": false,
+  "seedAndSproutReusedByteIdentically": true,
+  "newStockImagesUsed": false
+}

@@ -1,0 +1,40 @@
+✔ All 2314 active Nachlese questions have four options after verified editorial completion (248.470585ms)
+✔ Editorial successor rejects unapproved text and lost story links even if a published hash is refreshed (760.965822ms)
+✖ Supplied Excel/JSON package and all original fields match the exact prior installed release (273.905482ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1288.973327
+
+✖ failing tests:
+
+test at tests/nachlese-editorial-corpus.test.mjs:29:1
+✖ Supplied Excel/JSON package and all original fields match the exact prior installed release (273.905482ms)
+  <ref *1> Error: spawnSync python3 EPERM
+      at Object.spawnSync (node:internal/child_process:1160:20)
+      at spawnSync (node:child_process:928:24)
+      at execFileSync (node:child_process:971:15)
+      at TestContext.<anonymous> (file:///workspace/Faithpath-olive-v2/tests/nachlese-editorial-corpus.test.mjs:30:26)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -1,
+    code: 'EPERM',
+    syscall: 'spawnSync python3',
+    path: 'python3',
+    spawnargs: [ 'scripts/validate-nachlese-editorial-source.py', '--check' ],
+    error: [Circular *1],
+    status: 0,
+    signal: null,
+    output: [ null, '{"status": "PASS", "proposal_rows": 56, "heuristic_pairs": 227, "marked_questions": 150, "excel_json_match": true, "original_fields_match_installed_baseline": true, "input_status": "DRAFT; not a prior human approval", "writes": 0}\n', '' ],
+    pid: 5066,
+    stdout: '{"status": "PASS", "proposal_rows": 56, "heuristic_pairs": 227, "marked_questions": 150, "excel_json_match": true, "original_fields_match_installed_baseline": true, "input_status": "DRAFT; not a prior human approval", "writes": 0}\n',
+    stderr: ''
+  }

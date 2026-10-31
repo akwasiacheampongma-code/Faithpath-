@@ -1,0 +1,58 @@
+/* Technical layer assembly. New botanical paint comes from ImageGen sources.
+ * Masks are authored registration/support contours, not image deformation.
+ * No source pixels are retouched or nonuniformly stretched here.
+ */
+(() => {
+ 'use strict';
+ const g=window.OLIVE_GEOMETRY,n=g.canvas,canvas=()=>Object.assign(document.createElement('canvas'),{width:n,height:n});
+ async function load(src){const im=new Image();im.src=src;await im.decode();return im;}
+ function smoothPolygon(ctx,pts){
+  const mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+  const start=mid(pts.at(-1),pts[0]);ctx.beginPath();ctx.moveTo(...start);
+  for(let i=0;i<pts.length;i++)ctx.quadraticCurveTo(...pts[i],...mid(pts[i],pts[(i+1)%pts.length]));ctx.closePath();ctx.fill();
+ }
+ function supportMask(widthFactor=1){const c=canvas(),ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,1050,n,n-1050);
+  for(const authoredLine of g.supports){const line=authoredLine.map(([x,y,w])=>[x,y,w*widthFactor]);const end=line.at(-1),prev=line.at(-2),len=Math.hypot(end[0]-prev[0],end[1]-prev[1]);line.push([end[0]+(end[0]-prev[0])/len*30,end[1]+(end[1]-prev[1])/len*30,1]);const left=[],right=[];
+   for(let i=0;i<line.length;i++){const a=line[Math.max(0,i-1)],b=line[Math.min(line.length-1,i+1)],len=Math.hypot(b[0]-a[0],b[1]-a[1]),nx=-(b[1]-a[1])/len,ny=(b[0]-a[0])/len,[x,y,w]=line[i];left.push([x+nx*w/2,y+ny*w/2]);right.push([x-nx*w/2,y-ny*w/2]);}
+   smoothPolygon(ctx,[...left,...right.reverse()]);
+  }return c;
+ }
+ function place(ctx,image,anchor,target,scale,rotation=0){ctx.save();ctx.translate(...target);ctx.rotate(rotation*Math.PI/180);ctx.scale(scale,scale);ctx.translate(-anchor[0],-anchor[1]);ctx.drawImage(image,0,0);ctx.restore();}
+ function parentTransform(ctx,key,stage){const c=g.components[key];ctx.translate(...c.target);ctx.rotate(c.rotation*Math.PI/180);ctx.scale(c.scale*stage.growth[key],c.scale*stage.growth[key]);ctx.translate(-c.sourceAnchor[0],-c.sourceAnchor[1]);}
+ function keepConnectedWood(c){
+  const ctx=c.getContext('2d'),data=ctx.getImageData(0,0,n,n),d=data.data,seen=new Uint8Array(n*n),queue=new Int32Array(n*n);let head=0,tail=0,removed=0;
+  const seed=1090*n+650;if(d[seed*4+3]<16)throw Error('Wood registration root is not opaque');queue[tail++]=seed;seen[seed]=1;
+  while(head<tail){const p=queue[head++],x=p%n,y=Math.floor(p/n);for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){if(!dx&&!dy)continue;const xx=x+dx,yy=y+dy;if(xx<0||xx>=n||yy<0||yy>=n)continue;const k=yy*n+xx;if(!seen[k]&&d[k*4+3]>8){seen[k]=1;queue[tail++]=k;}}}
+  for(let i=0;i<n*n;i++)if(!seen[i]&&d[i*4+3]){const x=i%n,y=Math.floor(i/n);let edge=false;if(d[i*4+3]<=8)for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const xx=x+dx,yy=y+dy;if(xx>=0&&xx<n&&yy>=0&&yy<n&&seen[yy*n+xx])edge=true;}if(!edge){if(d[i*4+3]>8)removed++;d[i*4+3]=0;}}
+  ctx.putImageData(data,0,0);return{canvas:c,removedOpaquePixels:removed,seed:[650,1090]};
+ }
+ function woodLayer(source,mask){const c=canvas(),ctx=c.getContext('2d');ctx.drawImage(source,0,0);ctx.globalCompositeOperation='destination-in';ctx.drawImage(mask,0,0);ctx.globalCompositeOperation='destination-out';ctx.fillRect(0,g.groundBoundary,n,n-g.groundBoundary);ctx.globalCompositeOperation='source-over';return keepConnectedWood(c);}
+ async function run(){
+  const names=['wood-ground.png','wood-young-ground.png','crown-high-left.png','crown-left-inner.png','crown-outer-lower.png','crown-right.png','crown-right-inner.png','olive-cluster.png'];
+  const images=Object.fromEntries(await Promise.all(names.map(async s=>[s,await load('assets/sources/'+s)])));
+  const mask=supportMask(),ground=canvas(),gc=ground.getContext('2d');gc.drawImage(images['wood-ground.png'],0,0);gc.clearRect(0,0,n,g.groundBoundary);
+  const woodMats={young3:woodLayer(images['wood-young-ground.png'],supportMask(.68)),young4:woodLayer(images['wood-young-ground.png'],supportMask(.82)),mature:woodLayer(images['wood-ground.png'],mask)},wood=Object.fromEntries(Object.entries(woodMats).map(([k,v])=>[k,v.canvas]));
+  const stages=[];let layerFiles=0;
+  async function save(name,c){const data=c.toDataURL('image/png').split(',')[1];await window.saveAsset(name,data);layerFiles++;return name;}
+  const sharedG=await save('assets/layers/G-ground-contact.png',ground),woodFiles={young3:await save('assets/layers/W-young-stage3.png',wood.young3),young4:await save('assets/layers/W-young-stage4.png',wood.young4),mature:await save('assets/layers/W-mature.png',wood.mature)},empty=await save('assets/layers/inactive-transparent.png',canvas());
+  for(const s of g.stages){
+   if(s.flat){const source=await load('reference-a2/'+s.flat),c=canvas();c.getContext('2d').drawImage(source,0,0);const flat=await save(`assets/composites/stage-${s.index+1}.png`,c);stages.push({...s,composite:flat,rigged:false,reason:'Preserved A.2 seed/seedling close-up; no canopy/fruit layers applicable.'});continue;}
+   const parts={G:ground,W:wood[s.wood]},files={G:sharedG,W:woodFiles[s.wood]};
+   for(const key of ['C1','C2','C3']){const c=canvas(),ctx=c.getContext('2d'),component=g.components[key];parentTransform(ctx,key,s);if(component.underlay){const u=component.underlay;place(ctx,images[u.source],u.sourceAnchor,component.sourceAnchor,u.scale/component.scale,u.rotation);}ctx.drawImage(images[component.source],0,0);parts[key]=c;files[key]=await save(`assets/layers/stage-${s.index+1}-${key}.png`,c);}
+   for(const [key,parent,list,count] of [['F1','C1',g.fruit.back,s.fruitBack],['F2','C3',g.fruit.front,s.fruitFront]]){
+    const c=canvas(),ctx=c.getContext('2d');parentTransform(ctx,parent,s);
+    for(const f of list.slice(0,count))place(ctx,images[g.fruit.source],g.fruit.sourceAnchor,f.point,f.scale,f.rotation);
+    parts[key]=c;files[key]=count?await save(`assets/layers/stage-${s.index+1}-${key}.png`,c):empty;
+   }
+   // Compose only DECODED exported PNG layers, so the published reference is
+   // exactly the same material that the isolated runtime will display.
+   const composed=canvas(),cx=composed.getContext('2d');
+   for(const key of g.layerOrder)cx.drawImage(await load(files[key]+'?exported=1'),0,0);
+   const composite=await save(`assets/composites/stage-${s.index+1}.png`,composed);
+   stages.push({...s,rigged:true,layers:files,composite});
+  }
+  const manifest={study:'FP-DESIGN-20261031-OLIVE-V2-A3',baseCommit:'62c33c6dbe5ecfd93f34def39b19d7f3ff1b11e4',designApproval:'PENDING',canvas:n,geometry:g,stages,woodMatteCleanup:Object.fromEntries(Object.entries(woodMats).map(([k,v])=>[k,{removedOpaquePixels:v.removedOpaquePixels,seed:v.seed}])),notes:['Whole source images are never independently fitted by age.','Local crown placement/growth uses documented source and destination attachments.','G includes the lowest root-contact surfaces; W/G are static together.','The published A3 rest master is a new working composite, not an already approved illustration.']};
+  await window.saveManifest(manifest);return{stageCount:stages.length,layerExports:layerFiles};
+ }
+ window.OLIVE_COMPILER={run};
+})();

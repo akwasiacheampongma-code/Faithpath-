@@ -1,0 +1,34 @@
+/* Authored rig coordinates, in the common 1254 × 1254 source canvas.
+ * A component's source attachment is mapped rigidly onto its wood attachment.
+ * Growth is LOCAL twig growth, never an independently fitted whole-tree image.
+ */
+window.OLIVE_GEOMETRY = {
+ canvas:1254,groundBoundary:1100,
+ anchors:{rootContact:[650,1100],futureHollow:[670,855],leftFork:[532,658],lowerLeft:[532,658],rightElbow:[815,795],highAttach:[437,413],rightAttach:[974,572]},
+ components:{
+  C1:{source:'crown-high-left.png',sourceAnchor:[852,1210],target:[437,413],scale:.29,rotation:0,underlay:{source:'crown-left-inner.png',sourceAnchor:[619,1210],scale:.30,rotation:0}},
+  C2:{source:'crown-outer-lower.png',sourceAnchor:[1230,84],target:[532,658],scale:.22,rotation:0},
+  C3:{source:'crown-right.png',sourceAnchor:[470,1215],target:[974,572],scale:.29,rotation:-8,underlay:{source:'crown-right-inner.png',sourceAnchor:[1190,1200],scale:.33,rotation:8}},
+ },
+ fruit:{source:'olive-cluster.png',sourceAnchor:[625,51],
+  back:[{point:[588,796],scale:.13,rotation:10},{point:[396,453],scale:.11,rotation:-12}],
+  front:[{point:[717,963],scale:.13,rotation:-8},{point:[904,411],scale:.11,rotation:12},{point:[782,735],scale:.12,rotation:2}],
+ },
+ // Hand-authored support contours select the repainted wood plate. They retain
+ // the trunk and load-bearing axes, and taper ends under the crown stems.
+ supports:[
+  [[650,1100,400],[666,1040,210],[642,980,185],[636,923,180],[650,864,166],[650,818,166],[611,764,174],[568,710,140],[532,658,110],[490,600,85],[458,530,70],[442,470,46],[437,413,13]],
+  [[650,868,160],[720,822,126],[790,794,115],[850,800,92],[902,787,75],[933,755,62],[946,690,55],[961,630,35],[974,572,12]],
+ ],
+ stages:[
+  {index:0,name:'Samen',flat:'01-samen.png'},
+  {index:1,name:'Keimling',flat:'02-keimling.png'},
+  {index:2,name:'Junger Olivenbaum',wood:'young3',woodContourWidth:.68,growth:{C1:.74,C2:.58,C3:.73},fruitBack:0,fruitFront:0},
+  {index:3,name:'Wachsender Olivenbaum',wood:'young4',woodContourWidth:.82,growth:{C1:.84,C2:.66,C3:.81},fruitBack:0,fruitFront:0},
+  {index:4,name:'Starker Olivenbaum',wood:'mature',growth:{C1:.90,C2:.70,C3:.88},fruitBack:0,fruitFront:0},
+  {index:5,name:'Erste Früchte',wood:'mature',growth:{C1:.97,C2:.86,C3:.95},fruitBack:0,fruitFront:1},
+  {index:6,name:'Fruchttragender Olivenbaum',wood:'mature',growth:{C1:1,C2:1,C3:1},fruitBack:2,fruitFront:3},
+ ],
+ layerOrder:['G','W','F1','C1','C2','C3','F2'],
+ layerParents:{G:null,W:null,F1:'C1',C1:'C1',C2:'C2',C3:'C3',F2:'C3'},
+};

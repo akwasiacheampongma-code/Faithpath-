@@ -1,0 +1,379 @@
+{
+  "study": "FP-DESIGN-20261031-OLIVE-V2-A3",
+  "baseCommit": "62c33c6dbe5ecfd93f34def39b19d7f3ff1b11e4",
+  "designApproval": "NOT_GRANTED",
+  "productionReady": false,
+  "artDirectionRecommendation": "NO_GO: crown composition and botanical age need further illustration work",
+  "canvas": 1254,
+  "geometry": {
+    "canvas": 1254,
+    "groundBoundary": 1100,
+    "anchors": {
+      "rootContact": [
+        650,
+        1100
+      ],
+      "futureHollow": [
+        670,
+        855
+      ],
+      "leftFork": [
+        532,
+        658
+      ],
+      "lowerLeft": [
+        353,
+        528
+      ],
+      "rightElbow": [
+        815,
+        795
+      ],
+      "highAttach": [
+        432,
+        363
+      ],
+      "rightAttach": [
+        1042,
+        542
+      ]
+    },
+    "components": {
+      "C1": {
+        "source": "crown-broad-left.png",
+        "sourceAnchor": [
+          750,
+          1100
+        ],
+        "target": [
+          432,
+          363
+        ],
+        "scale": 0.31,
+        "rotation": 0
+      },
+      "C2": {
+        "source": "crown-outer-lower.png",
+        "sourceAnchor": [
+          1230,
+          84
+        ],
+        "target": [
+          353,
+          528
+        ],
+        "scale": 0.25,
+        "rotation": 15
+      },
+      "C3": {
+        "source": "crown-broad-right.png",
+        "sourceAnchor": [
+          1210,
+          1200
+        ],
+        "target": [
+          1042,
+          542
+        ],
+        "scale": 0.36,
+        "rotation": 0
+      }
+    },
+    "fruit": {
+      "source": "olive-cluster.png",
+      "sourceAnchor": [
+        625,
+        51
+      ],
+      "back": [
+        {
+          "point": [
+            631,
+            930
+          ],
+          "scale": 0.26,
+          "rotation": 10
+        },
+        {
+          "point": [
+            899,
+            722
+          ],
+          "scale": 0.24,
+          "rotation": -12
+        }
+      ],
+      "front": [
+        {
+          "point": [
+            1040,
+            950
+          ],
+          "scale": 0.26,
+          "rotation": -8
+        },
+        {
+          "point": [
+            610,
+            590
+          ],
+          "scale": 0.24,
+          "rotation": 12
+        },
+        {
+          "point": [
+            800,
+            820
+          ],
+          "scale": 0.25,
+          "rotation": 2
+        }
+      ]
+    },
+    "stages": [
+      {
+        "index": 0,
+        "name": "Samen",
+        "flat": "01-samen.png"
+      },
+      {
+        "index": 1,
+        "name": "Keimling",
+        "flat": "02-keimling.png"
+      },
+      {
+        "index": 2,
+        "name": "Junger Olivenbaum",
+        "wood": "young",
+        "growth": {
+          "C1": 0.74,
+          "C2": 0.58,
+          "C3": 0.73
+        },
+        "fruitBack": 0,
+        "fruitFront": 0
+      },
+      {
+        "index": 3,
+        "name": "Wachsender Olivenbaum",
+        "wood": "young",
+        "growth": {
+          "C1": 0.84,
+          "C2": 0.66,
+          "C3": 0.81
+        },
+        "fruitBack": 0,
+        "fruitFront": 0
+      },
+      {
+        "index": 4,
+        "name": "Starker Olivenbaum",
+        "wood": "mature",
+        "growth": {
+          "C1": 0.9,
+          "C2": 0.7,
+          "C3": 0.88
+        },
+        "fruitBack": 0,
+        "fruitFront": 0
+      },
+      {
+        "index": 5,
+        "name": "Erste Früchte",
+        "wood": "mature",
+        "growth": {
+          "C1": 0.97,
+          "C2": 0.86,
+          "C3": 0.95
+        },
+        "fruitBack": 0,
+        "fruitFront": 1
+      },
+      {
+        "index": 6,
+        "name": "Fruchttragender Olivenbaum",
+        "wood": "mature",
+        "growth": {
+          "C1": 1,
+          "C2": 1,
+          "C3": 1
+        },
+        "fruitBack": 2,
+        "fruitFront": 3
+      }
+    ],
+    "layerOrder": [
+      "G",
+      "W",
+      "F1",
+      "C1",
+      "C2",
+      "C3",
+      "F2"
+    ],
+    "layerParents": {
+      "G": null,
+      "W": null,
+      "F1": "C1",
+      "C1": "C1",
+      "C2": "C2",
+      "C3": "C3",
+      "F2": "C3"
+    }
+  },
+  "stages": [
+    {
+      "index": 0,
+      "name": "Samen",
+      "flat": "01-samen.png",
+      "composite": "assets/composites/stage-1.png",
+      "rigged": false,
+      "reason": "Preserved A.2 seed/seedling close-up; no canopy/fruit layers applicable."
+    },
+    {
+      "index": 1,
+      "name": "Keimling",
+      "flat": "02-keimling.png",
+      "composite": "assets/composites/stage-2.png",
+      "rigged": false,
+      "reason": "Preserved A.2 seed/seedling close-up; no canopy/fruit layers applicable."
+    },
+    {
+      "index": 2,
+      "name": "Junger Olivenbaum",
+      "wood": "young",
+      "growth": {
+        "C1": 0.74,
+        "C2": 0.58,
+        "C3": 0.73
+      },
+      "fruitBack": 0,
+      "fruitFront": 0,
+      "rigged": true,
+      "layers": {
+        "G": "assets/layers/G-ground-contact.png",
+        "W": "assets/layers/W-young.png",
+        "C1": "assets/layers/stage-3-C1.png",
+        "C2": "assets/layers/stage-3-C2.png",
+        "C3": "assets/layers/stage-3-C3.png",
+        "F1": "assets/layers/inactive-transparent.png",
+        "F2": "assets/layers/inactive-transparent.png"
+      },
+      "composite": "assets/composites/stage-3.png"
+    },
+    {
+      "index": 3,
+      "name": "Wachsender Olivenbaum",
+      "wood": "young",
+      "growth": {
+        "C1": 0.84,
+        "C2": 0.66,
+        "C3": 0.81
+      },
+      "fruitBack": 0,
+      "fruitFront": 0,
+      "rigged": true,
+      "layers": {
+        "G": "assets/layers/G-ground-contact.png",
+        "W": "assets/layers/W-young.png",
+        "C1": "assets/layers/stage-4-C1.png",
+        "C2": "assets/layers/stage-4-C2.png",
+        "C3": "assets/layers/stage-4-C3.png",
+        "F1": "assets/layers/inactive-transparent.png",
+        "F2": "assets/layers/inactive-transparent.png"
+      },
+      "composite": "assets/composites/stage-4.png"
+    },
+    {
+      "index": 4,
+      "name": "Starker Olivenbaum",
+      "wood": "mature",
+      "growth": {
+        "C1": 0.9,
+        "C2": 0.7,
+        "C3": 0.88
+      },
+      "fruitBack": 0,
+      "fruitFront": 0,
+      "rigged": true,
+      "layers": {
+        "G": "assets/layers/G-ground-contact.png",
+        "W": "assets/layers/W-mature.png",
+        "C1": "assets/layers/stage-5-C1.png",
+        "C2": "assets/layers/stage-5-C2.png",
+        "C3": "assets/layers/stage-5-C3.png",
+        "F1": "assets/layers/inactive-transparent.png",
+        "F2": "assets/layers/inactive-transparent.png"
+      },
+      "composite": "assets/composites/stage-5.png"
+    },
+    {
+      "index": 5,
+      "name": "Erste Früchte",
+      "wood": "mature",
+      "growth": {
+        "C1": 0.97,
+        "C2": 0.86,
+        "C3": 0.95
+      },
+      "fruitBack": 0,
+      "fruitFront": 1,
+      "rigged": true,
+      "layers": {
+        "G": "assets/layers/G-ground-contact.png",
+        "W": "assets/layers/W-mature.png",
+        "C1": "assets/layers/stage-6-C1.png",
+        "C2": "assets/layers/stage-6-C2.png",
+        "C3": "assets/layers/stage-6-C3.png",
+        "F1": "assets/layers/inactive-transparent.png",
+        "F2": "assets/layers/stage-6-F2.png"
+      },
+      "composite": "assets/composites/stage-6.png"
+    },
+    {
+      "index": 6,
+      "name": "Fruchttragender Olivenbaum",
+      "wood": "mature",
+      "growth": {
+        "C1": 1,
+        "C2": 1,
+        "C3": 1
+      },
+      "fruitBack": 2,
+      "fruitFront": 3,
+      "rigged": true,
+      "layers": {
+        "G": "assets/layers/G-ground-contact.png",
+        "W": "assets/layers/W-mature.png",
+        "C1": "assets/layers/stage-7-C1.png",
+        "C2": "assets/layers/stage-7-C2.png",
+        "C3": "assets/layers/stage-7-C3.png",
+        "F1": "assets/layers/stage-7-F1.png",
+        "F2": "assets/layers/stage-7-F2.png"
+      },
+      "composite": "assets/composites/stage-7.png"
+    }
+  ],
+  "woodMatteCleanup": {
+    "young": {
+      "removedOpaquePixels": 12,
+      "seed": [
+        650,
+        1090
+      ]
+    },
+    "mature": {
+      "removedOpaquePixels": 1,
+      "seed": [
+        650,
+        1090
+      ]
+    }
+  },
+  "notes": [
+    "Whole source images are never independently fitted by age.",
+    "Local crown placement/growth uses documented source and destination attachments.",
+    "G includes the lowest root-contact surfaces; W/G are static together.",
+    "The published A3 rest master is a working composite, not an approved premium illustration."
+  ]
+}
