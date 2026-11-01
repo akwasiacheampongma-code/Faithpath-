@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="de" data-theme="paper">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <title>FaithPath · Der lebendige Olivenbaum · A5.1</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="tree.css" />
+    <link rel="stylesheet" href="gallery.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Zum Inhalt</a>
+    <header class="studio-header">
+      <a href="index.html" class="brand"
+        >FaithPath <span>Der lebendige Olivenbaum · A5.1</span></a
+      >
+      <p>Isolierte Vorschau · keine App-Integration</p>
+    </header>
+    <main id="main">
+      <div class="studio-intro">
+        <p class="eyebrow">Lichtkrone · Die vollständige Studie</p>
+        <h1>Ver&shy;wur&shy;zelt. Und lebendig.</h1>
+        <p>
+          Sieben Lebensbilder eines Olivenbaums. Ein ruhender Stamm.
+          Unterschiedliche Windphasen im Laub. Die freigegebene A4-Lichtkrone
+          bleibt die Grundlage.
+        </p>
+      </div>
+      <nav class="studio-nav" aria-label="Designvorschau">
+        <button data-view="preview" aria-pressed="true">
+          In FaithPath ansehen</button
+        ><button data-view="family" aria-pressed="false">Sieben Stufen</button
+        ><button data-view="compare" aria-pressed="false">
+          A5 / A5.1 bewegen</button
+        ><a href="BERICHT.html">Bericht und Nachweise</a>
+      </nav>
+      <div class="toolbar">
+        <label
+          >Theme<select id="theme">
+            <option value="light">Hell</option>
+            <option value="paper" selected>Papier</option>
+            <option value="atmospheric">Atmosphärisch</option>
+            <option value="night">Nacht</option>
+          </select></label
+        ><label id="context-control"
+          >Bereich<select id="context">
+            <option value="today">Heute</option>
+            <option value="journey">Mein Weg</option>
+            <option value="detail">Baumdetail</option>
+            <option value="seed">Erster persönlicher Weg</option>
+          </select></label
+        ><label id="stage-control"
+          >Motiv testen<select id="stage"></select
+        ></label>
+      </div>
+      <section id="preview" class="view preview-layout">
+        <article class="phone">
+          <header class="phone-header">
+            <div>
+              <strong>FaithPath</strong
+              ><span>Deine persönliche Glaubens&shy;geschichte</span>
+            </div>
+            <button class="quick-bible" data-demo="bible">Bibel</button>
+          </header>
+          <div class="phone-content">
+            <p class="eyebrow" id="area">Heute</p>
+            <h2 id="screen-title">Was dich heute begleitet.</h2>
+            <p class="screen-intro" id="screen-intro">
+              Ein Anliegen, eigene Worte, ein nächster Schritt. Daraus wird
+              deine Geschichte.
+            </p>
+            <section
+              class="next-step"
+              id="next-step"
+              aria-label="Dein nächster Schritt"
+            >
+              <div>
+                <p class="eyebrow">Dein nächster Schritt · Beispiel</p>
+                <p>Vor einer Antwort kurz innehalten.</p>
+              </div>
+              <button class="primary" data-demo="journey">
+                Weg fortsetzen
+              </button>
+            </section>
+            <figure class="tree-figure">
+              <div id="live-tree" class="hero-tree"></div>
+              <figcaption id="stage-name">Dein Olivenbaum</figcaption>
+            </figure>
+            <details class="meaning">
+              <summary>Warum verändert sich mein Baum?</summary>
+              <p>
+                Er macht persönliche Entwicklungen sichtbar, die du selbst
+                ausdrücklich bestätigt hast. Eine erledigte Aufgabe, Bibellesen
+                oder Quizfragen erhöhen keine Stufe.
+              </p>
+              <p id="stage-meaning"></p>
+              <p>
+                Er bewertet weder deinen Glauben noch Gottes Nähe oder deinen
+                Wert.
+              </p>
+            </details>
+            <details id="stages-guide">
+              <summary>Sieben Bilder für deinen Weg</summary>
+              <p>
+                Die sieben Darstellungen sind eine gestalterische Entscheidung,
+                keine biblisch vorgeschriebene Entwicklungsleiter.
+              </p>
+              <ol id="stage-meanings"></ol>
+            </details>
+          </div>
+          <nav class="phone-nav" aria-label="Vorschaubereiche">
+            <button data-context="today" aria-pressed="true">Heute</button
+            ><button data-demo="bible">Bibel</button
+            ><button data-context="journey" aria-pressed="false">
+              Mein Weg</button
+            ><button data-demo="journal">Journal</button>
+          </nav>
+        </article>
+        <aside class="notes">
+          <p class="eyebrow">Bewegung und Übergänge prüfen</p>
+          <h2>Das Laub bewegt sich.<br />Der Halt bleibt.</h2>
+          <p>
+            Außen reagiert die Krone stärker, innen ruhiger. Tragende Äste,
+            Stamm und Wurzeln bleiben fest. Oliven bewegen sich mit ihren
+            Zweigen.
+          </p>
+          <p class="scene-status" id="status" role="status">
+            Die sichtbare Darstellung wird geladen …
+          </p>
+          <div class="controls">
+            <button id="pause">Pausieren</button
+            ><button id="play">Fortsetzen</button
+            ><button id="next-stage">Nächstes Motiv testen</button
+            ><button id="retry">Grafik erneut prüfen</button>
+          </div>
+          <p class="small">
+            Die Motivwahl führt nur eine Gestaltung vor. Sie bestätigt keine
+            persönliche Entwicklung und speichert keine Nutzerdaten.
+          </p>
+          <details>
+            <summary>Aktuelle Prüfwerte</summary>
+            <button id="read-metrics">Werte lesen</button>
+            <pre id="metrics">Keine laufende Diagnoseabfrage.</pre>
+          </details>
+          <p class="small">
+            Reduced Motion zeigt das vollständige ruhende Bild. Unsichtbare und
+            deaktivierte Szenen rechnen nicht weiter. Echte iPhone-, Safari-,
+            VoiceOver- und Akkutests bleiben offen.
+          </p>
+        </aside>
+      </section>
+      <section id="family" class="view" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Sieben Lebensbilder</p>
+          <h2>Ein Anfang. Und eine Geschichte, die wächst.</h2>
+          <p>
+            Jedes Motiv steht in einem gleich großen 200-Pixel-Rahmen. Die
+            registrierte Darstellung verbindet veränderte Größe mit tatsächlich
+            neuen Stämmen, Ästen und Kronen. Die Quellansicht zeigt die
+            Illustrationen ohne diese Platzierung.
+          </p>
+          <div class="controls">
+            <button id="registered" aria-pressed="true">
+              Registrierte Darstellung</button
+            ><button id="raw" aria-pressed="false">
+              Quellbilder vergleichen
+            </button>
+          </div>
+        </div>
+        <div id="family-grid" class="family-grid"></div>
+        <p class="principle">
+          Unveränderte Schwellen: 0 · 1 · 2 · 3–4 · 5–6 · 7–9 · ab10
+          ausdrücklich bestätigte persönliche Entwicklungen. Der Baum misst
+          keine geistliche Reife.
+        </p>
+      </section>
+      <section id="compare" class="view" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Gleiche Zeichnung · gleiche Bedingungen</p>
+          <h2>Den Unterschied wirklich sehen.</h2>
+          <p>
+            Links: das A5-Windprofil. Rechts: A5.1 mit sechs lokalen
+            Blattfeldern. Beide verwenden denselben Renderer, dieselbe
+            optimierte A4-Zeichnung und dieselbe Darstellungsgröße. Es wird kein
+            zweiter konkurrierender Baum-Renderer eingebaut.
+          </p>
+          <label
+            >Baumgröße<select id="compare-size">
+              <option value="200">200 CSS-Pixel</option>
+              <option value="280" selected>280 CSS-Pixel</option>
+            </select></label
+          ><button id="compare-restart">Beide Bewegungen fortsetzen</button>
+        </div>
+        <div class="compare-pair capture-shell">
+          <article>
+            <p class="eyebrow">A5 · bisher</p>
+            <h3>Zurück&shy;haltender Wind</h3>
+            <div id="old-tree" class="compare-tree"></div>
+            <p id="old-status" class="scene-status"></p>
+          </article>
+          <article>
+            <p class="eyebrow">A5.1 · neu</p>
+            <h3>Lebendige Blatt&shy;felder</h3>
+            <div id="new-tree" class="compare-tree"></div>
+            <p id="new-status" class="scene-status"></p>
+          </article>
+        </div>
+      </section>
+      <footer>
+        <p>FP-DESIGN-20261101-A51-FINAL-LIVING-TREE</p>
+        <p>
+          Eine gemeinsame Designabnahme. Kein Produktbuild, kein Merge und kein
+          Deployment. Die bestehende FaithPath-App bleibt unverändert.
+        </p>
+      </footer>
+    </main>
+    <dialog id="demo-dialog" aria-labelledby="dialog-title">
+      <h2 id="dialog-title">Diese Vorschau</h2>
+      <p id="dialog-text"></p>
+      <form method="dialog"><button>Zurück zur Vorschau</button></form>
+    </dialog>
+    <script type="module" src="gallery.js"></script>
+  </body>
+</html>
