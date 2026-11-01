@@ -1,0 +1,28 @@
+{
+  "hidden": {
+    "resolution": 2,
+    "cssWidth": 1,
+    "visible": false,
+    "paused": true,
+    "frames": 1
+  },
+  "shown": {
+    "resolution": 2,
+    "cssWidth": 1,
+    "visible": true,
+    "paused": true,
+    "frames": 1
+  },
+  "storedBlockROI": [
+    110,
+    472,
+    670,
+    875
+  ],
+  "storedVsReproducedBlockMeanAbsoluteRGB": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "cause": "Hidden paused scene allocates a2x2buffer because clientWidth0 is clampedto1; ResizeObserver skips while visiblefalse, then reconcile returnsforpausedbefore resizing when shown."
+}
