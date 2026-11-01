@@ -427,8 +427,12 @@ export function createTreeScene(
       windowElement.append(canvas);
       canvas.hidden = true;
       paused = false;
-      if ((!current || desired.index !== current.index) && !loading)
+      if ((!current || desired.index !== current.index) && !loading) {
+        // Offscreen/deactivated loading may also own an unsettled request.
+        // Settle that caller before replacing the readiness handle.
+        resolveReady(false);
         readyPromise = new Promise((resolve) => (resolveReady = resolve));
+      }
       reconcile();
       return readyPromise;
     },

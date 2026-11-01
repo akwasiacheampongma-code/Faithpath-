@@ -510,7 +510,38 @@ try {
           ]);
         });
         assert.deepEqual(values, [true, true]);
-        return { failedThenRetried: true, pendingRetry: values };
+        const deferred = [];
+        for (const mode of ['hidden', 'disabled']) {
+          await p.goto(
+            origin +
+              '/tests/fixture.html' +
+              (mode === 'hidden' ? '?hidden=1' : ''),
+          );
+          await p.waitForFunction(() => window.scene);
+          if (mode === 'disabled')
+            await p.waitForFunction(() => scene.metrics.loading);
+          const result = await p.evaluate(async (mode) => {
+            const original = scene.ready;
+            if (mode === 'disabled') scene.setEnabled(false);
+            const again = scene.retry();
+            if (mode === 'hidden')
+              document.querySelector('#tree').hidden = false;
+            else scene.setEnabled(true);
+            return Promise.all([
+              Promise.race([
+                original,
+                new Promise((r) => setTimeout(() => r('orphaned'), 1800)),
+              ]),
+              again,
+            ]);
+          }, mode);
+          deferred.push({ mode, result });
+        }
+        assert(
+          deferred.every((x) => x.result[0] === false && x.result[1] === true),
+          JSON.stringify(deferred),
+        );
+        return { failedThenRetried: true, pendingRetry: values, deferred };
       } finally {
         await c.close();
       }
