@@ -1,6 +1,7 @@
 /** Visible-only lifecycle. Every listener/observer/RAF belongs to this scene.
  * Stage loads are generation-guarded; no storage, app state or timers involved. */
 import {
+  SIZE,
   STAGES,
   windPose,
   referencePose,
@@ -192,6 +193,12 @@ export function createTreeScene(
     lastPose = restPose();
     stage = STAGES[index];
     if (!stage) throw Error('Unbekannte Baumstufe.');
+    root.dataset.cropped = String(stage.cropTop > 0);
+    root.style.aspectRatio = `${SIZE} / ${SIZE - stage.cropTop}`;
+    root.style.setProperty(
+      '--art-offset',
+      `${(-100 * stage.cropTop) / (SIZE - stage.cropTop)}%`,
+    );
     policy = createPerformancePolicy(index === 0);
     changes = [];
     renderTimes = [];

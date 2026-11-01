@@ -57,6 +57,9 @@ export function createPerformancePolicy(seed = false) {
         fps = ((count - 1) * 1000) / elapsed,
         previous = level;
       samples.push({ milliseconds: now, fps, target, level, submitMs });
+      // Continuous scenes may live for hours. Diagnostics must not grow for
+      // the lifetime of a tab; keep nine minutes of three-second windows.
+      if (samples.length > 180) samples.shift();
       if (fps < target * 0.65) {
         if (level === 'high') level = 'medium';
         else if (level === 'medium') level = 'low';

@@ -34,3 +34,10 @@ test('weak performance degrades quality and then stops, without scaling motion a
 test('paused time does not count as a low-FPS performance sample',()=>{
  const p=createPerformancePolicy(false);p.resume(0);for(let i=1;i<=60;i++)p.frame(i*33.5,1);p.pause();p.resume(60000);for(let i=1;i<=60;i++)p.frame(60000+i*33.5,1);assert.equal(p.level,'high');
 });
+test('continuous operation keeps only a bounded rolling performance history',()=>{
+ const p=createPerformancePolicy(false);p.resume(0);
+ for(let frame=1;frame<=60000;frame++)p.frame(frame*1000/30,.1);
+ assert(p.samples.length<=180,'Diagnostics grew without a bound: '+p.samples.length);
+ assert.equal(p.level,'high');
+ assert(p.samples.at(-1).milliseconds>1900000);
+});

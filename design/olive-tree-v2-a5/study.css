@@ -684,3 +684,13 @@ footer p {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
   }
 }
+/* Crop only unused source space above the seed, never text or botanical parts. */
+.tree-scene[data-cropped='true'] {
+  overflow: clip;
+}
+.tree-scene[data-cropped='true'] img,
+.tree-scene[data-cropped='true'] canvas {
+  height: auto;
+  aspect-ratio: 1;
+  top: var(--art-offset);
+}

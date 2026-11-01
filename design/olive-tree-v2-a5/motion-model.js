@@ -148,6 +148,9 @@ const amplitudes = [0, 0.65, 0.78, 0.9, 1, 1, 1];
 export const STAGES = STUDY.stages.map((s) => ({
   ...s,
   amplitude: amplitudes[s.index],
+  // The seed is drawn low in its source canvas. Frame the actual subject,
+  // without rescaling it or changing the shared source-space motion geometry.
+  cropTop: s.index === 0 ? 480 : 0,
   regions:
     s.index === 0
       ? seedRegions
