@@ -1,16 +1,196 @@
 <!doctype html>
-<html lang="de" data-theme="paper"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light dark"><title>Lichtkrone · Lebendige Baumfamilie · FaithPath</title><link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="study.css"></head>
-<body><a class="skip" href="#main">Zum Inhalt</a>
-<header class="studio-header"><a class="wordmark" href="index.html">FaithPath <span>Botanisches Atelier</span></a><span class="study-tag">Freigabevorschau · keine App-Integration</span></header>
-<main id="main">
- <div class="intro"><p class="eyebrow">Lichtkrone / Lebendige Geschichte</p><h1>Ein Baum.<br>Deine Geschichte.</h1><p>Sieben Bilder derselben Baumidentität. Ein ruhender Stamm, lebendiges Laub. Die künstlerisch freigegebene A.4-Lichtkrone bleibt unverändert.</p></div>
- <nav class="studio-nav" aria-label="Designprüfung"><button data-view="preview" aria-pressed="true">Mobile Vorschau</button><button data-view="family" aria-pressed="false">Sieben Stufen</button><button data-view="compare" aria-pressed="false">Bewegung vergleichen</button><a href="BERICHT.html">Prüfbericht</a></nav>
- <div class="toolbar"><label>Darstellung<select id="theme"><option value="light">Hell</option><option value="paper" selected>Papier</option><option value="atmospheric">Atmosphärisch</option><option value="night">Nacht</option></select></label><label id="context-label">Bereich<select id="context"><option value="today">Heute</option><option value="journey">Mein Weg</option><option value="detail">Baumdetail</option><option value="seed">Erster persönlicher Weg</option></select></label><label id="stage-label">Baumstufe<select id="stage"></select></label></div>
- <section id="preview" class="view preview-layout" aria-label="Mobile Gestaltungsvorschau">
-  <article class="phone"><div class="phone-header"><div><strong>FaithPath</strong><span>Deine persönliche Glaubensgeschichte</span></div><button id="quick-bible">Bibel</button></div><div class="phone-content"><p class="eyebrow" id="area">HEUTE</p><h2 id="screen-title">Was in dir wächst.</h2><p class="screen-intro" id="screen-intro">Deine Gedanken und bewusst festgehaltenen Entwicklungen verbinden sich zu deiner Geschichte.</p><div id="live-tree" class="hero-tree"></div><div class="tree-caption"><h3 id="stage-name"></h3></div><div class="next-step" id="next-step"><span>Dein nächster Schritt · Beispiel</span><h3>Ein Gespräch in Ruhe beginnen.</h3><p>Heute einer Person aufmerksam zuhören, ohne sofort zu antworten.</p></div><div class="phone-actions"><button id="bible" class="primary">Direkt zur Bibel</button><button id="continue">Weg fortsetzen</button></div><p class="demo-message" id="demo-message" aria-live="polite"></p><details class="meaning"><summary>Was dieses Baumbild bedeutet</summary><p id="stage-meaning"></p><p class="principle">Der Baum zeigt deine dokumentierte Geschichte. Er bewertet weder deinen Glauben noch deinen Wert.</p></details></div><nav class="phone-nav" aria-label="Vorschaubereiche"><button data-context="today" aria-pressed="true">Heute</button><button id="bible-nav">Bibel</button><button data-context="journey" aria-pressed="false">Mein Weg</button><button id="journal-nav">Journal</button></nav></article>
-  <aside class="notes"><p class="eyebrow">Bewegungsprüfung</p><h2>Still verwurzelt.<br>Leise lebendig.</h2><p>Unterschiedlich phasige Blattfelder und sanfte Windimpulse bewegen die zusammenhängende Illustration. Der Stamm schwenkt nicht mit.</p><p class="status" id="status" role="status">Illustration lädt …</p><div class="control-row"><button id="pause">Pausieren</button><button id="play">Fortsetzen</button><button id="retry">Qualität neu prüfen</button></div><details><summary>Technische Prüfwerte</summary><pre id="metrics">Werte werden auf Anforderung gelesen.</pre><button id="read-metrics">Werte aktualisieren</button></details><p>Keine automatische Beendigung nach acht Sekunden. Unsichtbare Szenen und Hintergrund-Tabs rechnen nicht weiter. Reduced Motion zeigt die ruhende Illustration.</p><p class="small">Synthetische Inhalte. Die Bereichsschaltflächen zeigen nur Gestaltung und vorhandene Zugänge; sie öffnen keine echte Bibel und speichern keine Wege.</p></aside>
- </section>
- <section id="family" class="view" hidden><div class="section-heading"><p class="eyebrow">Die vollständige Familie</p><h2>Ein Anfang. Viele persönliche Momente.</h2><p>Die ersten beiden Motive sind botanische Nahansichten. Die späteren Stufen bewahren den S-förmigen Stamm, die linke Hauptgabel und den tiefen rechten Ast. Sie sind keine geometrisch identischen 3D-Altersmodelle.</p></div><div class="family-grid" id="family-grid"></div><p class="principle">Unveränderte Zuordnung: 0 · 1 · 2 · 3–4 · 5–6 · 7–9 · ab 10 ausdrücklich bestätigte Entwicklungen. Animation, Bibellesen, Quiz oder erledigte Aufgaben erhöhen keine Stufe.</p></section>
- <section id="compare" class="view" hidden><div class="section-heading"><p class="eyebrow">Direkter Bewegungsvergleich</p><h2>Gleiche Zeichnung. Spürbar mehr Leben.</h2><p>Beide Szenen verwenden denselben weiterentwickelten A.4-WebGL-Renderer. Links läuft das ursprüngliche A.4-Bewegungsprofil einmal acht Sekunden, rechts kontinuierlicher Wind. Beide werden bei Unsichtbarkeit angehalten.</p></div><button id="restart-comparison">Vergleich gemeinsam starten</button><div class="comparison capture-shell"><article><p class="eyebrow">Bisher · A.4</p><h3>Acht Sekunden</h3><div id="old-tree" class="comparison-tree"></div><p id="old-status" class="status"></p></article><article><p class="eyebrow">Neu · Dauerwind</p><h3>Solange sichtbar</h3><div id="new-tree" class="comparison-tree"></div><p id="new-status" class="status"></p></article></div><p>Bei 200–300 CSS-Pixeln bleibt die sichtbare Auslenkung in derselben Größenordnung. Die Auflösung darf sinken; die Bewegungsstärke bleibt erhalten.</p></section>
- <footer><p>FP-DESIGN-20261101-OLIVE-LIVING-SEVEN · Isolierte Studie</p><p>Kein Produktbuild, keine persönlichen Daten, kein Deployment. Echte iPhone-/Safari-/VoiceOver- und Akkutests bleiben offen.</p></footer>
-</main><script type="module" src="gallery.js"></script></body></html>
+<html lang="de" data-theme="paper">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <title>Lichtkrone · Lebendige Baumfamilie · FaithPath</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="study.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Zum Inhalt</a>
+    <header class="studio-header">
+      <a class="wordmark" href="index.html"
+        >FaithPath <span>Botanisches Atelier</span></a
+      ><span class="study-tag">Freigabevorschau · keine App-Integration</span>
+    </header>
+    <main id="main">
+      <div class="intro">
+        <p class="eyebrow">Lichtkrone / Lebendige Geschichte</p>
+        <h1>Ein Baum.<br />Deine Ge&shy;schich&shy;te.</h1>
+        <p>
+          Sieben Bilder derselben Baumidentität. Ein ruhender Stamm, lebendiges
+          Laub. Die künstlerisch freigegebene A.4-Lichtkrone bleibt unverändert.
+        </p>
+      </div>
+      <nav class="studio-nav" aria-label="Designprüfung">
+        <button data-view="preview" aria-pressed="true">Mobile Vorschau</button
+        ><button data-view="family" aria-pressed="false">Sieben Stufen</button
+        ><button data-view="compare" aria-pressed="false">
+          Bewegung vergleichen</button
+        ><a href="BERICHT.html">Prüfbericht</a>
+      </nav>
+      <div class="toolbar">
+        <label
+          >Darstellung<select id="theme">
+            <option value="light">Hell</option>
+            <option value="paper" selected>Papier</option>
+            <option value="atmospheric">Atmosphärisch</option>
+            <option value="night">Nacht</option>
+          </select></label
+        ><label id="context-label"
+          >Bereich<select id="context">
+            <option value="today">Heute</option>
+            <option value="journey">Mein Weg</option>
+            <option value="detail">Baumdetail</option>
+            <option value="seed">Erster persönlicher Weg</option>
+          </select></label
+        ><label id="stage-label">Baumstufe<select id="stage"></select></label>
+      </div>
+      <section
+        id="preview"
+        class="view preview-layout"
+        aria-label="Mobile Gestaltungsvorschau"
+      >
+        <article class="phone">
+          <div class="phone-header">
+            <div>
+              <strong>FaithPath</strong
+              ><span>Deine persönliche Glaubens&shy;geschichte</span>
+            </div>
+            <button id="quick-bible">Bibel</button>
+          </div>
+          <div class="phone-content">
+            <p class="eyebrow" id="area">HEUTE</p>
+            <h2 id="screen-title">Was in dir wächst.</h2>
+            <p class="screen-intro" id="screen-intro">
+              Deine Gedanken und bewusst festgehaltenen Entwicklungen verbinden
+              sich zu deiner Geschichte.
+            </p>
+            <div id="live-tree" class="hero-tree"></div>
+            <div class="tree-caption"><h3 id="stage-name"></h3></div>
+            <div class="next-step" id="next-step">
+              <span>Dein nächster Schritt · Beispiel</span>
+              <h3>Ein Gespräch in Ruhe beginnen.</h3>
+              <p>
+                Heute einer Person aufmerksam zuhören, ohne sofort zu antworten.
+              </p>
+            </div>
+            <div class="phone-actions">
+              <button id="bible" class="primary">Direkt zur Bibel</button
+              ><button id="continue">Weg fortsetzen</button>
+            </div>
+            <p class="demo-message" id="demo-message" aria-live="polite"></p>
+            <details class="meaning">
+              <summary>Was dieses Baumbild bedeutet</summary>
+              <p id="stage-meaning"></p>
+              <p class="principle">
+                Der Baum zeigt deine dokumentierte Geschichte. Er bewertet weder
+                deinen Glauben noch deinen Wert.
+              </p>
+            </details>
+          </div>
+          <nav class="phone-nav" aria-label="Vorschaubereiche">
+            <button data-context="today" aria-pressed="true">Heute</button
+            ><button id="bible-nav">Bibel</button
+            ><button data-context="journey" aria-pressed="false">
+              Mein Weg</button
+            ><button id="journal-nav">Journal</button>
+          </nav>
+        </article>
+        <aside class="notes">
+          <p class="eyebrow">Bewegungs&shy;prüfung</p>
+          <h2>Still ver&shy;wur&shy;zelt.<br />Leise lebendig.</h2>
+          <p>
+            Unterschiedlich phasige Blattfelder und sanfte Windimpulse bewegen
+            die zusammen&shy;hängende Illustration. Der Stamm schwenkt nicht
+            mit.
+          </p>
+          <p class="status" id="status" role="status">Illustration lädt …</p>
+          <div class="control-row">
+            <button id="pause">Pausieren</button
+            ><button id="play">Fortsetzen</button
+            ><button id="retry">Qualität neu prüfen</button>
+          </div>
+          <details>
+            <summary>Technische Prüfwerte</summary>
+            <pre id="metrics">Werte werden auf Anforderung gelesen.</pre>
+            <button id="read-metrics">Werte aktualisieren</button>
+          </details>
+          <p>
+            Keine automatische Beendigung nach acht Sekunden. Unsichtbare Szenen
+            und Hintergrund-Tabs rechnen nicht weiter. Reduced Motion zeigt die
+            ruhende Illustration.
+          </p>
+          <p class="small">
+            Synthetische Inhalte. Die Bereichsschaltflächen zeigen nur
+            Gestaltung und vorhandene Zugänge; sie öffnen keine echte Bibel und
+            speichern keine Wege.
+          </p>
+        </aside>
+      </section>
+      <section id="family" class="view" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Die vollständige Familie</p>
+          <h2>Ein Anfang. Viele persön&shy;liche Momente.</h2>
+          <p>
+            Die ersten beiden Motive sind botanische Nahansichten. Die späteren
+            Stufen bewahren den S-förmigen Stamm, die linke Hauptgabel und den
+            tiefen rechten Ast. Sie sind keine geometrisch identischen
+            3D-Altersmodelle.
+          </p>
+        </div>
+        <div class="family-grid" id="family-grid"></div>
+        <p class="principle">
+          Unveränderte Zuordnung: 0 · 1 · 2 · 3–4 · 5–6 · 7–9 · ab 10
+          ausdrücklich bestätigte Entwicklungen. Animation, Bibellesen, Quiz
+          oder erledigte Aufgaben erhöhen keine Stufe.
+        </p>
+      </section>
+      <section id="compare" class="view" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Direkter Bewegungs&shy;vergleich</p>
+          <h2>Gleiche Zeich&shy;nung. Spürbar mehr Leben.</h2>
+          <p>
+            Beide Szenen verwenden denselben weiterentwickelten
+            A.4-WebGL-Renderer. Links läuft das ursprüngliche
+            A.4-Bewegungsprofil einmal acht Sekunden, rechts kontinuierlicher
+            Wind. Beide werden bei Unsichtbarkeit angehalten.
+          </p>
+        </div>
+        <button id="restart-comparison">Vergleich gemeinsam starten</button>
+        <div class="comparison capture-shell">
+          <article>
+            <p class="eyebrow">Bisher · A.4</p>
+            <h3>Acht Sekunden</h3>
+            <div id="old-tree" class="comparison-tree"></div>
+            <p id="old-status" class="status"></p>
+          </article>
+          <article>
+            <p class="eyebrow">Neu · Dauerwind</p>
+            <h3>Solange sichtbar</h3>
+            <div id="new-tree" class="comparison-tree"></div>
+            <p id="new-status" class="status"></p>
+          </article>
+        </div>
+        <p>
+          Bei 200–300 CSS-Pixeln bleibt die sichtbare Auslenkung in derselben
+          Größenordnung. Die Auflösung darf sinken; die Bewegungsstärke bleibt
+          erhalten.
+        </p>
+      </section>
+      <footer>
+        <p>FP-DESIGN-20261101-OLIVE-LIVING-SEVEN · Isolierte Studie</p>
+        <p>
+          Kein Produktbuild, keine persönlichen Daten, kein Deployment. Echte
+          iPhone-, Safari-, VoiceOver- und Akkutests bleiben offen.
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="gallery.js"></script>
+  </body>
+</html>
