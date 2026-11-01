@@ -1,0 +1,48 @@
+✖ mature outer leaves reach a visible 5–7 CSS-pixel local excursion (17.708396ms)
+✖ inner leaves have their own 2–4 CSS-pixel movement instead of following the outer crown (9.322675ms)
+✔ wind remains active at 10,30,120 seconds and returns smoothly rather than jumping (7.202098ms)
+✔ the seed never moves spatially and younger crowns respond more gently (6.525825ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 100.744679
+
+✖ failing tests:
+
+test at design/olive-tree-a5-1/tests/motion.test.mjs:12:1
+✖ mature outer leaves reach a visible 5–7 CSS-pixel local excursion (17.708396ms)
+  AssertionError [ERR_ASSERTION]: Outer leaf excursion 2.3132615721508123 CSSpx
+      at TestContext.<anonymous> (file:///workspace/Faithpath-olive-v2/design/olive-tree-a5-1/tests/motion.test.mjs:13:27)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at design/olive-tree-a5-1/tests/motion.test.mjs:15:1
+✖ inner leaves have their own 2–4 CSS-pixel movement instead of following the outer crown (9.322675ms)
+  AssertionError [ERR_ASSERTION]: Inner leaf excursion 1.4802005612733788 CSSpx
+      at TestContext.<anonymous> (file:///workspace/Faithpath-olive-v2/design/olive-tree-a5-1/tests/motion.test.mjs:16:27)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

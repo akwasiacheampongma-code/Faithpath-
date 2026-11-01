@@ -1,0 +1,18 @@
+✔ mature outer leaves reach a visible 5–7 CSS-pixel local excursion (24.238811ms)
+✔ inner leaves have their own 2–4 CSS-pixel movement instead of following the outer crown (13.77843ms)
+✔ wind remains active at 10,30,120 seconds and returns smoothly rather than jumping (13.207775ms)
+✔ the seed never moves spatially and younger crowns respond more gently (11.076855ms)
+✔ registered wood axes and roots remain exactly still at every stage (1.248159ms)
+✔ stronger local wind does not fold the shared mesh in any quality or stage (4557.205529ms)
+✔ variant selection is pure and never selects source masters or QA files (1.262921ms)
+✔ weak delivered frames lower quality then stop without changing a stage response (0.555472ms)
+✔ paused time cannot be counted as a slow active window (0.153851ms)
+✔ continuous diagnostics retain a bounded history over60000 frames (3.618187ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4759.289789

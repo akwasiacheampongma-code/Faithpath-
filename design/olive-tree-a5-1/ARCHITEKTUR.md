@@ -39,6 +39,8 @@ tree.dispose(); // beim Abbau zwingend
 
 `ready` ist ein Getter auf das Promise der **aktuellen** Anforderung. Unsichtbare Szenen laden absichtlich nichts; dieses Promise kann bis zum Sichtbarwerden offen bleiben. Daher keine Seiteninitialisierung an das Laden unsichtbarer Bereiche koppeln. Ein neuer Auftrag löst das vorherige Promise mit `false` auf. Fehler oder Abbau liefern ebenfalls `false`.
 
+`retry()` behält eine bereits laufende Bildanforderung samt Promise bei. Muss eine nicht mehr laufende Anforderung ersetzt werden – etwa nach einem Fehler, bei einer unsichtbaren Szene oder nach Deaktivierung – wird das vorherige Promise zuerst mit `false` beendet. Ein Darstellungsauftrag nach `dispose()` liefert sofort `false`. So bleiben keine wartenden Aufrufer ohne Abschluss zurück.
+
 `setStage` ist ausschließlich eine Darstellungsanforderung. Sie bestätigt keine persönliche Entwicklung und erhöht keinen Fortschritt. In einer zukünftigen Integration muss die **bestehende** App-Logik den Index liefern. Schwellen und gespeicherte Ereignisse dürfen nicht aus Galerie-Auswahlen hergeleitet werden.
 
 `inspect(ms)` ist eine pausierende Diagnosefunktion für reproduzierbare Bildprüfungen. Sie ist **kein** Nachweis echter Laufzeit. Die 10-/30-/120-Sekunden-Nachweise stammen getrennt aus `tests/measure-live.mjs`, das diese Funktion nicht aufruft.
@@ -81,6 +83,10 @@ node --test design/olive-tree-a5-1/tests/*.test.mjs
 python3 -m http.server 4751 --bind 127.0.0.1 --directory design/olive-tree-a5-1
 # In einer zweiten Shell:
 node design/olive-tree-a5-1/tests/browser.mjs
+node design/olive-tree-a5-1/tests/verify-preview.mjs
+python3 design/olive-tree-a5-1/tests/verify-integrity.py
 ```
 
 Galerie: `http://127.0.0.1:4751/`. ES-Module benötigen einen lokalen HTTP-Server; `file://` ist kein verlässlicher Browserbetrieb. Für die serielle Performanceprüfung muss zusätzlich der unveränderte A5-Ordner auf Port 4750 bereitstehen. Währenddessen keine Browser-QA oder Videoaufnahme parallel starten. Die mitgelieferten PNG/MP4/PDF-Dateien lassen sich auch ohne Server öffnen.
+
+Performance: `node design/olive-tree-a5-1/tests/measure-live.mjs`. Echte Videos: `node design/olive-tree-a5-1/tests/record-motion.mjs` (vorhandenes Playwright und FFmpeg nötig). Bericht und PDF: `python3 design/olive-tree-a5-1/tests/build-delivery.py` (Pillow/ReportLab). Reproduzierbares ZIP auf dem vorgegebenen Branch: derselbe Python-Aufruf mit `--archive /tmp/faithpath-a51-paket`. Diese Werkzeuge sind Entwicklungswerkzeuge und werden nicht zur App-Runtime hinzugefügt.

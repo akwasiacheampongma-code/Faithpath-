@@ -1,0 +1,3 @@
+FAIL Initial image failure can retry; retry during a pending load preserves its ready promise
+FAIL Dispose during loading cannot attach later images or restart rendering
+{"pass":0,"fail":2}

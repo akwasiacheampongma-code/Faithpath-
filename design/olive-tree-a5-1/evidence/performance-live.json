@@ -1,0 +1,358 @@
+{
+  "timestamp": "2026-11-01T13:42:02.988Z",
+  "scope": "Linux headless Chromium / ANGLE SwiftShader software. Serial single scene. Actual elapsed time, not inspected poses. No physical Safari, iPhone, battery, temperature or display presentation measurement.",
+  "cases": [
+    {
+      "name": "A5.1-280-120s",
+      "origin": 4751,
+      "size": 280,
+      "seconds": 120,
+      "candidate": true,
+      "elapsedSeconds": 120.119797863,
+      "checkpoints": [
+        {
+          "seconds": 10,
+          "observedMs": 10166.909485,
+          "frames": 300,
+          "activeMs": 11404.60000000149,
+          "running": true,
+          "quality": "high"
+        },
+        {
+          "seconds": 30,
+          "observedMs": 30162.908407,
+          "frames": 900,
+          "activeMs": 31399.400000002235,
+          "running": true,
+          "quality": "high"
+        },
+        {
+          "seconds": 120,
+          "observedMs": 120119.691093,
+          "frames": 3600,
+          "activeMs": 121399.80000000075,
+          "running": true,
+          "quality": "high"
+        }
+      ],
+      "frames": 3604,
+      "submittedFramesPerSecond": 30.003380492784903,
+      "frameIntervalsMs": {
+        "p50": 33.30000000000291,
+        "p95": 33.40000000000873
+      },
+      "jsSubmissionMs": {
+        "p50": 0,
+        "p95": 0.10000000149011612
+      },
+      "taskSeconds": 26.895215,
+      "scriptSeconds": 0.75104,
+      "heapBytes": {
+        "before": 4985776,
+        "after": 4189916
+      },
+      "processCPU": [
+        {
+          "type": "browser",
+          "cpuSeconds": 0.19999999999999996
+        },
+        {
+          "type": "renderer",
+          "cpuSeconds": 0
+        },
+        {
+          "type": "renderer",
+          "cpuSeconds": 6.96
+        },
+        {
+          "type": "renderer",
+          "cpuSeconds": 0.12
+        },
+        {
+          "type": "GPU",
+          "cpuSeconds": 62.82
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "cpuSeconds": 0.010000000000000009
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "cpuSeconds": 0
+        }
+      ],
+      "quality": "high",
+      "changes": [],
+      "framebuffer": 456,
+      "updatedArea": 0.7982456140350878,
+      "asset": {
+        "width": 640,
+        "src": "assets/runtime/stage-7-640-c9b6a16a1bf4.webp",
+        "bytes": 251300,
+        "sha256": "c9b6a16a1bf44fbbbc4c4298a609922ee5b40c6a74c0f5f244f48c2669fac5eb"
+      },
+      "offscreen": {
+        "framesAdded": 0,
+        "rafPending": false,
+        "processCPU": [
+          {
+            "type": "browser",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "cpuSeconds": 0.009999999999999787
+          },
+          {
+            "type": "renderer",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "GPU",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "storage.mojom.StorageService",
+            "cpuSeconds": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "A5.1-200-30s",
+      "origin": 4751,
+      "size": 200,
+      "seconds": 30,
+      "candidate": true,
+      "elapsedSeconds": 30.135943539,
+      "checkpoints": [
+        {
+          "seconds": 10,
+          "observedMs": 10124.110931000003,
+          "frames": 300,
+          "activeMs": 11359,
+          "running": true,
+          "quality": "high"
+        },
+        {
+          "seconds": 30,
+          "observedMs": 30135.541796999983,
+          "frames": 900,
+          "activeMs": 31362.70000000298,
+          "running": true,
+          "quality": "high"
+        }
+      ],
+      "frames": 904,
+      "submittedFramesPerSecond": 29.99740156899688,
+      "frameIntervalsMs": {
+        "p50": 33.30000000000018,
+        "p95": 33.400000000001455
+      },
+      "jsSubmissionMs": {
+        "p50": 0,
+        "p95": 0.19999999925494194
+      },
+      "taskSeconds": 5.430021,
+      "scriptSeconds": 0.198369,
+      "heapBytes": {
+        "before": 5151072,
+        "after": 3888656
+      },
+      "processCPU": [
+        {
+          "type": "browser",
+          "cpuSeconds": 0.1200000000000001
+        },
+        {
+          "type": "renderer",
+          "cpuSeconds": 0
+        },
+        {
+          "type": "renderer",
+          "cpuSeconds": 1.6300000000000001
+        },
+        {
+          "type": "renderer",
+          "cpuSeconds": 0.10999999999999999
+        },
+        {
+          "type": "GPU",
+          "cpuSeconds": 12.75
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "cpuSeconds": 0
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "cpuSeconds": 0
+        }
+      ],
+      "quality": "high",
+      "changes": [],
+      "framebuffer": 336,
+      "updatedArea": 0.8005952380952381,
+      "asset": {
+        "width": 384,
+        "src": "assets/runtime/stage-7-384-1325b09c8f58.webp",
+        "bytes": 101764,
+        "sha256": "1325b09c8f58b476d93aa8b09a2888898c4b5e38be97276f85b06fb3faee447f"
+      },
+      "offscreen": {
+        "framesAdded": 0,
+        "rafPending": false,
+        "processCPU": [
+          {
+            "type": "browser",
+            "cpuSeconds": 0.009999999999999898
+          },
+          {
+            "type": "renderer",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "GPU",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "storage.mojom.StorageService",
+            "cpuSeconds": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "A5-280-30s",
+      "origin": 4750,
+      "size": 280,
+      "seconds": 30,
+      "candidate": false,
+      "elapsedSeconds": 30.132523248000012,
+      "checkpoints": [
+        {
+          "seconds": 10,
+          "observedMs": 10137.008952000004,
+          "frames": 300,
+          "activeMs": 11408.89999999851,
+          "running": true,
+          "quality": "high"
+        },
+        {
+          "seconds": 30,
+          "observedMs": 30132.434204999998,
+          "frames": 900,
+          "activeMs": 31403.89999999851,
+          "running": true,
+          "quality": "high"
+        }
+      ],
+      "frames": 904,
+      "submittedFramesPerSecond": 30.000806522566982,
+      "frameIntervalsMs": {
+        "p50": 33.30000000000018,
+        "p95": 33.400000000001455
+      },
+      "jsSubmissionMs": {
+        "p50": 0,
+        "p95": 0.10000000149011612
+      },
+      "taskSeconds": 6.565179,
+      "scriptSeconds": 0.187017,
+      "heapBytes": {
+        "before": 5098044,
+        "after": 3529840
+      },
+      "processCPU": [
+        {
+          "type": "browser",
+          "cpuSeconds": 0.13
+        },
+        {
+          "type": "renderer",
+          "cpuSeconds": 0
+        },
+        {
+          "type": "renderer",
+          "cpuSeconds": 2.05
+        },
+        {
+          "type": "renderer",
+          "cpuSeconds": 0.10999999999999999
+        },
+        {
+          "type": "GPU",
+          "cpuSeconds": 15.480000000000002
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "cpuSeconds": 0.020000000000000004
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "cpuSeconds": 0
+        }
+      ],
+      "quality": "high",
+      "changes": [],
+      "framebuffer": 490,
+      "updatedArea": 0.7040816326530612,
+      "asset": null,
+      "offscreen": {
+        "framesAdded": 0,
+        "rafPending": false,
+        "processCPU": [
+          {
+            "type": "browser",
+            "cpuSeconds": 0.010000000000000009
+          },
+          {
+            "type": "renderer",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "renderer",
+            "cpuSeconds": 0.009999999999999787
+          },
+          {
+            "type": "renderer",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "GPU",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "network.mojom.NetworkService",
+            "cpuSeconds": 0
+          },
+          {
+            "type": "storage.mojom.StorageService",
+            "cpuSeconds": 0
+          }
+        ]
+      }
+    }
+  ],
+  "browser": "151.0.7922.173"
+}

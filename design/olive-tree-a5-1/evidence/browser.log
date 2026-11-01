@@ -1,0 +1,23 @@
+PASS A5 rectangle regression: hidden paused startup allocates no tiny canvas and displays the full image when shown
+PASS Paused scenes resize correctly after hidden width changes
+PASS Only one responsive file of the visible stage is requested, no masters or QA media
+PASS All seven stages: partial redraw equals complete redraw at three qualities and strong poses
+PASS Actual rendered protected wood patches stay unchanged through strong wind
+PASS A5 rectangle cannot hide in readPixels: resting compositor screenshots match the complete fallback
+PASS Adjacent-stage change uses one temporary snapshot and leaves one renderer, no ghost layers
+PASS Rapid requests are latest-wins and a failed next stage keeps the previous complete picture and label
+PASS Offscreen, disabled and synthetic document-background events leave no wind or transition loop
+PASS Dynamic Reduced Motion cancels wind and stage changes immediately, then resumes softly
+PASS Context loss during a running change preserves the full image and retry recreates the GPU scene
+PASS No WebGL and a missing preferred variant retain a complete same-stage static picture
+PASS Initial image failure can retry; retry during a pending load preserves its ready promise
+PASS Dispose during loading cannot attach later images or restart rendering
+PASS GPU objects are released after normal teardown and fragment compiler failure
+PASS Pause wins over a delayed stage load and paused selections never start a crossfade
+PASS Reduced Motion resumes from the actual resting picture without a displaced first frame
+PASS 224 stage layouts and128 context layouts have no overflow
+PASS Full gallery controls, family and comparison reflow at200percent; desktop and200px family captured
+PASS Axe and keyboard on all gallery views in all four themes
+PASS Untrusted gallery context parameters fall back to Today instead of prototype properties
+PASS No script exceptions, external services or personal storage writes
+{"pass":22,"fail":0}

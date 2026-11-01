@@ -1,0 +1,60 @@
+{
+  "method": "Actual Playwright Chromium browser recording. No screenshot replay. Comparison uses preserved A5 wind model and corrected A51 renderer on both sides, same approved A4 image, theme and CSS size.",
+  "encodingFPS": 25,
+  "notPhysicalDeviceFPS": true,
+  "physicalIPhone": "OPEN",
+  "recordings": [
+    {
+      "file": "A5_A51_VERGLEICH_35s.mp4",
+      "actualObservedSeconds": 35.002927824,
+      "viewport": [
+        800,
+        620
+      ],
+      "crop": [
+        800,
+        442,
+        0,
+        0
+      ],
+      "ending": {
+        "old": {
+          "running": true,
+          "quality": "high",
+          "frames": 1059,
+          "activeMs": 35264.5
+        },
+        "new": {
+          "running": true,
+          "quality": "high",
+          "frames": 1057,
+          "activeMs": 35324.5
+        }
+      },
+      "colorRange": "full/pc SPS metadata corrected only; image colours not retouched"
+    },
+    {
+      "file": "SIEBEN_STUFEN_UND_UEBERGAENGE.mp4",
+      "actualObservedSeconds": 40.476498838,
+      "viewport": [
+        390,
+        844
+      ],
+      "crop": [
+        390,
+        844,
+        0,
+        0
+      ],
+      "ending": {
+        "live": {
+          "running": true,
+          "quality": "high",
+          "frames": 1106,
+          "activeMs": 40484.199999999255
+        }
+      },
+      "colorRange": "full/pc SPS metadata corrected only; image colours not retouched"
+    }
+  ]
+}
