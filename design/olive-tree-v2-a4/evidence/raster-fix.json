@@ -1,0 +1,15 @@
+{
+  "problem": "fractional native grid vertex coordinates changed rest texture sampling in tested rasterizer",
+  "diagnosis": {
+    "cpuPlateRecompositionError": 0,
+    "fractionalGridGpuPremultipliedError": 5,
+    "fractionalGridGpuAlphaError": 5,
+    "higherFragmentPrecisionAloneChangedResult": false
+  },
+  "fix": "Register connected mesh nodes on integer source-pixel coordinates; no source artwork is stretched to fit",
+  "after": {
+    "premultipliedError": 0,
+    "alphaError": 0
+  },
+  "test": "qa-structure.mjs failed before, passes after"
+}

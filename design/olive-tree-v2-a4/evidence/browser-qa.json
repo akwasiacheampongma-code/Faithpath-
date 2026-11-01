@@ -1,0 +1,719 @@
+{
+  "study": "FP-DESIGN-20261031-OLIVE-V2-A4",
+  "timestamp": "2026-11-01T00:03:10.648Z",
+  "browser": "151.0.7922.173",
+  "physicalIOS": "OPEN",
+  "artisticApproval": "PENDING_USER_DECISION",
+  "cases": [
+    {
+      "name": "A2/A3/A4 have equal full-canvas display scale",
+      "status": "PASS",
+      "detail": [
+        {
+          "w": 566.65625,
+          "h": 580,
+          "native": [
+            1254,
+            1254
+          ]
+        },
+        {
+          "w": 566.671875,
+          "h": 580,
+          "native": [
+            1254,
+            1254
+          ]
+        },
+        {
+          "w": 566.671875,
+          "h": 580,
+          "native": [
+            1254,
+            1254
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Six anatomical detail triplets from actual registered crops",
+      "status": "PASS",
+      "detail": {
+        "crops": 6,
+        "sources": [
+          "A2",
+          "A3",
+          "A4"
+        ]
+      }
+    },
+    {
+      "name": "Exact 200 CSS-pixel comparison and actual transparent plates",
+      "status": "PASS",
+      "detail": {
+        "widths": [
+          200,
+          200,
+          200
+        ],
+        "actualPlates": 2
+      }
+    },
+    {
+      "name": "24 mobile contexts in 4 themes at 320/390; large Today tree and visible next action",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "today",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "treeHeight": 220,
+          "nextBottom": 497.28125,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "tree",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "paths",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "nextBottom": 849.4375,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "today",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "treeHeight": 220,
+          "nextBottom": 497.28125,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "tree",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "paths",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "nextBottom": 849.4375,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "today",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "treeHeight": 220,
+          "nextBottom": 497.28125,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "tree",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "paths",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "nextBottom": 849.4375,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "today",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "treeHeight": 220,
+          "nextBottom": 497.28125,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "tree",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "storage": 0
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "paths",
+          "scrollWidth": 320,
+          "navTop": 502.6875,
+          "nextBottom": 849.4375,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "today",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "treeHeight": 300,
+          "nextBottom": 612.25,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "tree",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "paths",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "nextBottom": 815.125,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "today",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "treeHeight": 300,
+          "nextBottom": 612.25,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "tree",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "paths",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "nextBottom": 815.125,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "today",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "treeHeight": 300,
+          "nextBottom": 612.25,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "tree",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "paths",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "nextBottom": 815.125,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "today",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "treeHeight": 300,
+          "nextBottom": 612.25,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "tree",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "storage": 0
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "paths",
+          "scrollWidth": 390,
+          "navTop": 778.6875,
+          "nextBottom": 815.125,
+          "storage": 0
+        }
+      ]
+    },
+    {
+      "name": "200% text at 320/390 in all themes, Today and tree",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "today",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "light",
+          "view": "tree",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "today",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "view": "tree",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "today",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "view": "tree",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "today",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "view": "tree",
+          "scrollWidth": 320
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "today",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "view": "tree",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "today",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "view": "tree",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "today",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "view": "tree",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "today",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "view": "tree",
+          "scrollWidth": 390
+        }
+      ]
+    },
+    {
+      "name": "Gallery at 200% has no horizontal overflow in either mobile width",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "theme": "light",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "paper",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "atmospheric",
+          "scrollWidth": 320
+        },
+        {
+          "width": 320,
+          "theme": "night",
+          "scrollWidth": 320
+        },
+        {
+          "width": 390,
+          "theme": "light",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "paper",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "atmospheric",
+          "scrollWidth": 390
+        },
+        {
+          "width": 390,
+          "theme": "night",
+          "scrollWidth": 390
+        }
+      ]
+    },
+    {
+      "name": "Actual mobile motion views: rest, middle, maximum, end at 320/390 and 200px tree",
+      "status": "PASS",
+      "detail": [
+        {
+          "width": 320,
+          "name": "rest",
+          "time": 0
+        },
+        {
+          "width": 320,
+          "name": "middle",
+          "time": 4000
+        },
+        {
+          "width": 320,
+          "name": "maximum",
+          "time": 3720
+        },
+        {
+          "width": 320,
+          "name": "end",
+          "time": 8000
+        },
+        {
+          "width": 390,
+          "name": "rest",
+          "time": 0
+        },
+        {
+          "width": 390,
+          "name": "middle",
+          "time": 4000
+        },
+        {
+          "width": 390,
+          "name": "maximum",
+          "time": 3720
+        },
+        {
+          "width": 390,
+          "name": "end",
+          "time": 8000
+        }
+      ]
+    },
+    {
+      "name": "Idle render stops and playing is finite with no duplicate loops",
+      "status": "PASS",
+      "detail": {
+        "idleFramesAdded": 0,
+        "active": {
+          "running": true,
+          "frames": 19
+        },
+        "end": {
+          "running": false,
+          "time": 0,
+          "frames": 186
+        }
+      }
+    },
+    {
+      "name": "Manual inspection pose survives scrolling out of view (RED before fix)",
+      "status": "PASS",
+      "detail": {
+        "retainedMilliseconds": 3720
+      }
+    },
+    {
+      "name": "Running motion stops offscreen and on synthetic document-hidden event",
+      "status": "PASS",
+      "detail": {
+        "offscreen": "IntersectionObserver exercised",
+        "background": "document.hidden injected, not physical iOS background testing"
+      }
+    },
+    {
+      "name": "Reduced Motion forbids autoplay, playback and displaced manual poses",
+      "status": "PASS",
+      "detail": {
+        "reduced": true,
+        "running": false,
+        "time": 0
+      }
+    },
+    {
+      "name": "Actual WebGL context loss retains complete static illustration",
+      "status": "PASS",
+      "detail": {
+        "fallback": true,
+        "masterVisible": true,
+        "complete": true,
+        "playDisabled": true
+      }
+    },
+    {
+      "name": "No WebGL and missing upper plate both fall back to the complete master",
+      "status": "PASS",
+      "detail": [
+        {
+          "kind": "no-webgl",
+          "fallback": true,
+          "visible": true,
+          "complete": true,
+          "disabled": true
+        },
+        {
+          "kind": "missing-plate",
+          "fallback": true,
+          "visible": true,
+          "complete": true,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "name": "Keyboard next-step dialog, close and tree navigation",
+      "status": "PASS",
+      "detail": {
+        "keyboard": true,
+        "focusReturned": true
+      }
+    },
+    {
+      "name": "Axe WCAG A/AA on Today, tree and demo across four themes",
+      "status": "PASS",
+      "detail": [
+        {
+          "theme": "light",
+          "view": "today",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "theme": "light",
+          "view": "tree",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "theme": "light",
+          "view": "demo",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "theme": "paper",
+          "view": "today",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "theme": "paper",
+          "view": "tree",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "theme": "paper",
+          "view": "demo",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "theme": "atmospheric",
+          "view": "today",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "theme": "atmospheric",
+          "view": "tree",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "theme": "atmospheric",
+          "view": "demo",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "theme": "night",
+          "view": "today",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "theme": "night",
+          "view": "tree",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "theme": "night",
+          "view": "demo",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "name": "No JS exceptions, external services or personal storage writes",
+      "status": "PASS",
+      "detail": {
+        "errors": [],
+        "external": [],
+        "stored": 0
+      }
+    }
+  ],
+  "screenshots": [
+    "comparison.png",
+    "detail-1.png",
+    "detail-2.png",
+    "detail-3.png",
+    "detail-4.png",
+    "detail-5.png",
+    "detail-6.png",
+    "small-200.png",
+    "layers.png",
+    "motion-phases.png",
+    "mobile-320-light-today.png",
+    "mobile-320-light-tree.png",
+    "mobile-320-light-paths.png",
+    "mobile-320-paper-today.png",
+    "mobile-320-paper-tree.png",
+    "mobile-320-paper-paths.png",
+    "mobile-320-atmospheric-today.png",
+    "mobile-320-atmospheric-tree.png",
+    "mobile-320-atmospheric-paths.png",
+    "mobile-320-night-today.png",
+    "mobile-320-night-tree.png",
+    "mobile-320-night-paths.png",
+    "mobile-390-light-today.png",
+    "mobile-390-light-tree.png",
+    "mobile-390-light-paths.png",
+    "mobile-390-paper-today.png",
+    "mobile-390-paper-tree.png",
+    "mobile-390-paper-paths.png",
+    "mobile-390-atmospheric-today.png",
+    "mobile-390-atmospheric-tree.png",
+    "mobile-390-atmospheric-paths.png",
+    "mobile-390-night-today.png",
+    "mobile-390-night-tree.png",
+    "mobile-390-night-paths.png",
+    "large-text-320-today.png",
+    "large-text-320-tree.png",
+    "large-text-390-today.png",
+    "large-text-390-tree.png",
+    "motion-320-rest.png",
+    "motion-320-middle.png",
+    "motion-320-maximum.png",
+    "motion-320-end.png",
+    "motion-390-rest.png",
+    "motion-390-middle.png",
+    "motion-390-maximum.png",
+    "motion-390-end.png",
+    "motion-200-maximum.png",
+    "motion-reduced.png",
+    "context-loss-fallback.png"
+  ],
+  "summary": {
+    "pass": 16,
+    "fail": 0
+  }
+}

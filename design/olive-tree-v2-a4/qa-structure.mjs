@@ -1,0 +1,22 @@
+/** Native-resolution evidence from the real renderer, not a simulated storyboard. */
+import fs from'node:fs/promises';import path from'node:path';import assert from'node:assert/strict';import{fileURLToPath}from'node:url';import{chromium}from'playwright';
+const root=path.dirname(fileURLToPath(import.meta.url)),browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']}),page=await browser.newPage({viewport:{width:390,height:844}});
+try{await page.goto((process.env.OLIVE_A4_ORIGIN||'http://127.0.0.1:4734')+'/demo.html');await page.waitForFunction(()=>window.A4_DEMO);assert.equal(await page.evaluate(()=>A4_DEMO.ready),true);
+await page.exposeFunction('savePose',async(name,data)=>{assert(['rest','middle','maximum','end','reduced'].includes(name));await fs.writeFile(path.join(root,'evidence/poses',name+'.png'),Buffer.from(data,'base64'));});
+const result=await page.evaluate(async()=>{
+ const renderer=A4_DEMO.renderer,n=1254,canvas=document.createElement('canvas');canvas.width=canvas.height=n;const cx=canvas.getContext('2d',{willReadFrequently:true});renderer.resize(n);
+ const source=document.querySelector('#rest-master'),lower=document.querySelector('#lower');cx.drawImage(source,0,0);const original=cx.getImageData(0,0,n,n).data;
+ function capture(t){renderer.draw(t);cx.clearRect(0,0,n,n);cx.drawImage(lower,0,0);cx.drawImage(document.querySelector('#crown'),0,0);return{data:cx.getImageData(0,0,n,n).data,png:canvas.toDataURL('image/png').split(',')[1]};}
+ const rest=capture(0),d=new Uint16Array(n*n);for(let i=0;i<d.length;i++)d[i]=original[i*4+3]>=245?5000:0;
+ // Chebyshev distance from source transparency, conservative 7px inner reserve.
+ for(let y=0;y<n;y++)for(let x=0;x<n;x++){const i=y*n+x;if(x)d[i]=Math.min(d[i],d[i-1]+1);if(y){d[i]=Math.min(d[i],d[i-n]+1);if(x)d[i]=Math.min(d[i],d[i-n-1]+1);if(x<n-1)d[i]=Math.min(d[i],d[i-n+1]+1);}}
+ for(let y=n-1;y>=0;y--)for(let x=n-1;x>=0;x--){const i=y*n+x;if(x<n-1)d[i]=Math.min(d[i],d[i+1]+1);if(y<n-1){d[i]=Math.min(d[i],d[i+n]+1);if(x)d[i]=Math.min(d[i],d[i+n-1]+1);if(x<n-1)d[i]=Math.min(d[i],d[i+n+1]+1);}}
+ let maxRestPremultipliedError=0,maxRestAlphaError=0,stableInterior=0;for(let i=0;i<d.length;i++){if(d[i]>=7)stableInterior++;const j=i*4;maxRestAlphaError=Math.max(maxRestAlphaError,Math.abs(original[j+3]-rest.data[j+3]));for(let k=0;k<3;k++)maxRestPremultipliedError=Math.max(maxRestPremultipliedError,Math.abs(Math.round(original[j+k]*original[j+3]/255)-Math.round(rest.data[j+k]*rest.data[j+3]/255)));}
+ const woodRects=[[620,1050,50,40],[600,940,40,40],[640,820,30,40],[510,630,30,30],[450,440,20,30],[810,780,45,20],[945,690,20,30],[600,540,15,30],[420,290,15,20]],phases=[];
+ for(const[name,t]of[['rest',0],['middle',4000],['maximum',A4_DEMO.peakTime],['end',8000]]){const c=capture(t);let interiorHoles=0,woodMaxDifference=0,changedWoodPixels=0,seamMaxDifference=0;for(let i=0;i<d.length;i++)if(d[i]>=7&&c.data[i*4+3]<200)interiorHoles++;
+ for(const[x,y,w,h]of woodRects)for(let yy=y;yy<y+h;yy++)for(let xx=x;xx<x+w;xx++){const j=(yy*n+xx)*4;if(original[j+3]<245)continue;let delta=0;for(let k=0;k<4;k++)delta=Math.max(delta,Math.abs(c.data[j+k]-rest.data[j+k]));woodMaxDifference=Math.max(woodMaxDifference,delta);if(delta)changedWoodPixels++;}
+ for(let y=895;y<=905;y++)for(let x=0;x<n;x++){const j=(y*n+x)*4;for(let k=0;k<4;k++)seamMaxDifference=Math.max(seamMaxDifference,Math.abs(c.data[j+k]-rest.data[j+k]));}
+ await window.savePose(name,c.png);phases.push({name,milliseconds:t,interiorHoles,woodMaxDifference,changedWoodPixels,seamMaxDifference});}
+ const debug=renderer.gl.getExtension('WEBGL_debug_renderer_info');return{canvas:n,renderer:debug?renderer.gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):'unspecified',stableInteriorPixels:stableInterior,woodRects,maxRestPremultipliedError,maxRestAlphaError,phases,qualification:'Interior means source opacity >=245 with 7px edge reserve; natural gaps/leaf silhouettes can move. This is a structural image test, not an artistic-quality score.'};
+});
+await fs.writeFile(path.join(root,'evidence/structure.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));assert(result.maxRestPremultipliedError<=2,'rest appearance drift');assert(result.maxRestAlphaError<=1,'rest alpha mismatch');assert(result.phases.every(x=>x.interiorHoles===0&&x.woodMaxDifference===0&&x.seamMaxDifference===0));}finally{await browser.close();}

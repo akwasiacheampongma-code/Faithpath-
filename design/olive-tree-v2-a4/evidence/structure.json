@@ -1,0 +1,98 @@
+{
+  "canvas": 1254,
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "stableInteriorPixels": 434148,
+  "woodRects": [
+    [
+      620,
+      1050,
+      50,
+      40
+    ],
+    [
+      600,
+      940,
+      40,
+      40
+    ],
+    [
+      640,
+      820,
+      30,
+      40
+    ],
+    [
+      510,
+      630,
+      30,
+      30
+    ],
+    [
+      450,
+      440,
+      20,
+      30
+    ],
+    [
+      810,
+      780,
+      45,
+      20
+    ],
+    [
+      945,
+      690,
+      20,
+      30
+    ],
+    [
+      600,
+      540,
+      15,
+      30
+    ],
+    [
+      420,
+      290,
+      15,
+      20
+    ]
+  ],
+  "maxRestPremultipliedError": 0,
+  "maxRestAlphaError": 0,
+  "phases": [
+    {
+      "name": "rest",
+      "milliseconds": 0,
+      "interiorHoles": 0,
+      "woodMaxDifference": 0,
+      "changedWoodPixels": 0,
+      "seamMaxDifference": 0
+    },
+    {
+      "name": "middle",
+      "milliseconds": 4000,
+      "interiorHoles": 0,
+      "woodMaxDifference": 0,
+      "changedWoodPixels": 0,
+      "seamMaxDifference": 0
+    },
+    {
+      "name": "maximum",
+      "milliseconds": 3720,
+      "interiorHoles": 0,
+      "woodMaxDifference": 0,
+      "changedWoodPixels": 0,
+      "seamMaxDifference": 0
+    },
+    {
+      "name": "end",
+      "milliseconds": 8000,
+      "interiorHoles": 0,
+      "woodMaxDifference": 0,
+      "changedWoodPixels": 0,
+      "seamMaxDifference": 0
+    }
+  ],
+  "qualification": "Interior means source opacity >=245 with 7px edge reserve; natural gaps/leaf silhouettes can move. This is a structural image test, not an artistic-quality score."
+}

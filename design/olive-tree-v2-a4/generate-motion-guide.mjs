@@ -1,0 +1,8 @@
+import fs from'node:fs';import path from'node:path';import{fileURLToPath}from'node:url';import{CONFIG,createMesh,pose,STATIC_PROBES}from'./motion-model.js';
+const root=path.dirname(fileURLToPath(import.meta.url)),mesh=createMesh();let peak={milliseconds:0,sourcePixels:0};
+for(let t=0;t<=CONFIG.duration;t+=40){const p=pose(t).phase;for(const w of mesh.weights){const dx=w.reduce((s,v,i)=>s+v*CONFIG.dx[i]*p[i],0),dy=w.reduce((s,v,i)=>s+v*CONFIG.dy[i]*p[(i+1)%3],0),d=Math.hypot(dx,dy);if(d>peak.sourcePixels)peak={milliseconds:t,sourcePixels:d};}}
+const info={config:CONFIG,maximum:peak,sampledEveryMilliseconds:40,protectedProbes:STATIC_PROBES,principle:'one connected mesh, shared vertices, no independent crown sprites'};
+fs.writeFileSync(path.join(root,'motion-info.json'),JSON.stringify(info,null,2)+'\n');fs.writeFileSync(path.join(root,'motion-info.js'),'export const PEAK_TIME='+peak.milliseconds+';\n');
+const patches=mesh.points.map(([x,y],i)=>{const w=mesh.weights[i].reduce((a,b)=>a+b,0);return w>.01?`<rect x="${x-9}" y="${y-9}" width="18" height="18" fill="#66a889" opacity="${w*.7}"/>`:'';}).join('');
+const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254" viewBox="0 0 1254 1254"><title>Technische Bewegungszonen, keine zusätzliche Baumillustration</title><image href="assets/masters/lichtkrone-a4.png" width="1254" height="1254"/>${patches}<path d="M0 900H1254" stroke="#b65a43" stroke-width="3" stroke-dasharray="14 10"/>${STATIC_PROBES.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="11" fill="#fffefa" stroke="#6d4538" stroke-width="4"/>`).join('')}</svg>`;
+fs.writeFileSync(path.join(root,'motion-guide.svg'),svg);console.log(JSON.stringify({meshVertices:mesh.points.length,triangles:mesh.indices.length/3,peak}));

@@ -1,0 +1,1 @@
+Erste technische Sichtprüfungen, vor Abschluss der Raster-/Bedienungskorrekturen. Keine alternativen Baumgenerationen und keine finalen Abnahmebeweise. Aktuelle Aufnahmen stehen unter evidence/screenshots/ und evidence/poses/.
