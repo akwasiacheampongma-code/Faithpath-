@@ -1,0 +1,39 @@
+{
+  "method": "Actual Chromium, local-only HTTP. file:// blocked by managed browser policy and marked OPEN. No PWA/Safari claim",
+  "cases": [
+    {
+      "name": "Direct file navigation",
+      "status": "OPEN",
+      "reason": "Managed Chromium policy blocks file://; not bypassed. Local HTTP tested instead."
+    },
+    {
+      "name": "Local HTTP start with external Internet requests blocked: images and both video metadata",
+      "status": "PASS",
+      "media": [
+        {
+          "width": 800,
+          "height": 438,
+          "duration": 24.2,
+          "error": null
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "duration": 15.36,
+          "error": null
+        }
+      ]
+    },
+    {
+      "name": "Local HTTP report opens with external requests blocked",
+      "status": "PASS"
+    },
+    {
+      "name": "Interactive local HTTP gallery with every nonlocal request blocked",
+      "status": "PASS",
+      "externalRequests": []
+    }
+  ],
+  "errors": [],
+  "external": []
+}

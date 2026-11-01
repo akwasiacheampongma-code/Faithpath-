@@ -1,0 +1,51 @@
+{
+  "method": "Actual Playwright browser screencast; system FFmpeg; no image replay",
+  "encodingFPS": 25,
+  "encodingFPSIsNotDeviceFPS": true,
+  "physicalIPhone": "OPEN",
+  "recordings": [
+    {
+      "file": "VERGLEICH_BEWEGUNG.mp4",
+      "viewport": {
+        "width": 800,
+        "height": 620
+      },
+      "captureCrop": [
+        800,
+        438,
+        0,
+        0
+      ],
+      "observationSeconds": 24.504717364999998,
+      "endingState": {
+        "running": true,
+        "activeMs": 22488.700000000186,
+        "frames": 673,
+        "quality": "high",
+        "oldRunning": false
+      },
+      "colorRange": "pc/full, corrected metadata only"
+    },
+    {
+      "file": "MOBIL_LEBENDIG.mp4",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureCrop": [
+        390,
+        844,
+        0,
+        0
+      ],
+      "observationSeconds": 15.501077957999998,
+      "endingState": {
+        "running": true,
+        "activeMs": 14140.100000000559,
+        "frames": 425,
+        "quality": "high"
+      },
+      "colorRange": "pc/full, corrected metadata only"
+    }
+  ]
+}

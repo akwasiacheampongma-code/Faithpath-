@@ -1,0 +1,39 @@
+{
+  "reproducible": true,
+  "comparedFiles": 23,
+  "method": "Second lossless runtime export from fixed PNG masters compared byte-for-byte by SHA-256 with first export. Image generation itself is not claimed deterministic.",
+  "python": "3.12.14",
+  "pillow": "12.3.0",
+  "libwebp": "1.6.0",
+  "sha256": {
+    "assets/runtime/stage-1-base.webp": "0a58cda252f1211f12c663e26a62b47589159907e35253bea156d1752e53f4cd",
+    "assets/runtime/stage-1-full.webp": "d68067305ccf82f016f4cda6a8f125f377984ae1a2ad23546ff21d852b7ab46a",
+    "assets/runtime/stage-1-upper.webp": "d489902ac18695c00d103b04d8a643c24723450a956a72fedf245e127ad221a8",
+    "assets/runtime/stage-2-base.webp": "41f101c2246c98ef0ca8783ad64375a6718595a85bf614a8f76fd752e234ddaa",
+    "assets/runtime/stage-2-full.webp": "05233ec66538675765e02ac5393aa584f9dd2eb8d7c9d23977199ebb72a84d0d",
+    "assets/runtime/stage-2-upper.webp": "36c520328d7d97e6c6fa5dbedf7695a5632d09aff8a500ab47efbc09d8d2b0a3",
+    "assets/runtime/stage-3-base.webp": "ff80cf7d234ab481ac4be256f6e6716e89e346a60f2e29c09b19d170eb26b863",
+    "assets/runtime/stage-3-full.webp": "af92e41e68f835f495d40602e188f1e7560755832e260ae9008a65388fa2e4cb",
+    "assets/runtime/stage-3-upper.webp": "68272687ac2b3a243db1f8889879874bc9f4f38a5c9877313eadd8e186c70225",
+    "assets/runtime/stage-4-base.webp": "b0d520ee65804bcaa0ebc3246cff4022d4154dd2a6782eab593f67dd7357c658",
+    "assets/runtime/stage-4-full.webp": "7a9832878b3d58591c0b48840c2bde59b3b2f34f13d0cd43363240d24e91b072",
+    "assets/runtime/stage-4-upper.webp": "c6c13d7372626b3b5ac4a9f46150522f9f2adb64ee2ed31c45129698e8c56b79",
+    "assets/runtime/stage-5-base.webp": "de8d35dccda3abb01504cb2610656858ec67896abfe08062c4c5f4c280470b75",
+    "assets/runtime/stage-5-full.webp": "e62b5f8f101156177f7bc706769af89e7e2108488ab472c38cdf96fad937b9bb",
+    "assets/runtime/stage-5-upper.webp": "37a2d97b48b1c6490127d701fc77cfcd611c1246a81604ecf6a5b6d4a9c0079e",
+    "assets/runtime/stage-6-base.webp": "b44c0d5ef4e3eeb876c32f51a4b2436ac93a30c66f09f9c089b46a366075436d",
+    "assets/runtime/stage-6-full.webp": "81b166179d3e381e34e45578456e6c01433a245e1daf8541165c18d31407c64b",
+    "assets/runtime/stage-6-upper.webp": "26afb7193020f8b2266d24ba98ded096c0554c4c5d03f4a3615c953f1965d6e9",
+    "assets/runtime/stage-7-base.webp": "f221f1801158f8939a604121d6e88a148d0415bb879d652912c357558b0f6d6a",
+    "assets/runtime/stage-7-full.webp": "e4daf5b1560329f89c3fece9b2c40d5d4a14db7005136972e0a04295d88aa0bc",
+    "assets/runtime/stage-7-upper.webp": "d5d2d57b2c3abf0829fc536ed40f73e1d9ec566a5ec1aad1b4e920d1e89c1ac8",
+    "manifest.json": "f86788e2de808b70c9f6bdf796a146ccef2f8ddbb1877c94d56c0d6fd5be2515",
+    "stage-data.js": "3f27f1d2544e3b07ad7a50eeeedaba595a2633799188c5c4bf8fb94bafc77b97"
+  },
+  "exportSummary": {
+    "stages": 7,
+    "master7ByteIdentical": true,
+    "originalPNGBytes": 15755316,
+    "losslessRuntimeBytesIncludingFallbacks": 20770084
+  }
+}

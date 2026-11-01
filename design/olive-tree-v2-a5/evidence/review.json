@@ -1,0 +1,19 @@
+{
+  "method": "Independent read-only code review plus independent Chromium reproduction by reviewer; separate focused red/green regressions by implementer",
+  "findings": [
+    {
+      "severity": "P2",
+      "problem": "Context loss during base.decode hid the full fallback after loading completed",
+      "resolution": "After decoding, keep full fallback when fatal/lost. Reproduced failing before and passing after."
+    },
+    {
+      "severity": "P2",
+      "problem": "Restarting A4 profile while running retained its previous clock",
+      "resolution": "Stop the prior loop before resetting active time and restarting. Reproduced failing before and passing after."
+    }
+  ],
+  "remainingMaterialFindings": [],
+  "reviewerVerifiedCorrections": true,
+  "physicalDeviceClaims": false,
+  "finalFollowup": "Reviewer verified seed framing and bounded180-sample diagnostics; no new material findings."
+}

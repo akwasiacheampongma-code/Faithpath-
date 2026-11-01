@@ -1,0 +1,14 @@
+✔ continuous wind remains active after eight seconds and has no eight-second repeat (5.199857ms)
+✔ roots and structural wood remain static in all seven stages (255.243123ms)
+✔ stronger motion stays within visible mobile bounds without folding the connected mesh (143.121181ms)
+✔ weak performance degrades quality and then stops, without scaling motion amplitude (0.664536ms)
+✔ paused time does not count as a low-FPS performance sample (0.17338ms)
+✔ continuous operation keeps only a bounded rolling performance history (2.858296ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 469.061616

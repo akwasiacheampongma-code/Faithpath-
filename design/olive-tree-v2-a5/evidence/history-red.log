@@ -1,0 +1,34 @@
+✔ continuous wind remains active after eight seconds and has no eight-second repeat (3.005556ms)
+✔ roots and structural wood remain static in all seven stages (288.350546ms)
+✔ stronger motion stays within visible mobile bounds without folding the connected mesh (156.745992ms)
+✔ weak performance degrades quality and then stops, without scaling motion amplitude (0.536034ms)
+✔ paused time does not count as a low-FPS performance sample (0.223926ms)
+✖ continuous operation keeps only a bounded rolling performance history (3.080779ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 516.168502
+
+✖ failing tests:
+
+test at design/olive-tree-v2-a5/motion.test.mjs:37:1
+✖ continuous operation keeps only a bounded rolling performance history (3.080779ms)
+  AssertionError [ERR_ASSERTION]: Diagnostics grew without a bound: 666
+      at TestContext.<anonymous> (file:///workspace/Faithpath-olive-v2/design/olive-tree-v2-a5/motion.test.mjs:40:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,145 @@
+{
+  "timestamp": "2026-11-01T09:17:18.829Z",
+  "browser": "151.0.7922.173",
+  "scope": "Linux headless Chromium, ANGLE SwiftShader software; viewport390x844/DPR2; single active page; no video recording. NOT real iPhone/GPU/battery results.",
+  "durationMillisecondsPerCase": 30000,
+  "results": [
+    {
+      "sizeCss": 200,
+      "elapsedSeconds": 30.001413617,
+      "frames": 900,
+      "deliveredFPS": 29.998586449607295,
+      "frameIntervalMs": {
+        "p50": 33.30000000000018,
+        "p95": 33.400000000001455
+      },
+      "jsSubmissionMs": {
+        "p50": 0,
+        "p95": 0.10000000055879354
+      },
+      "mainThreadTaskDurationSeconds": 4.87284,
+      "scriptDurationSeconds": 0.15989199999999998,
+      "jsHeapBytes": {
+        "before": 2970960,
+        "after": 2541360
+      },
+      "processCPU": [
+        {
+          "type": "browser",
+          "pid": 11723,
+          "cpuSeconds": 0.040000000000000036
+        },
+        {
+          "type": "renderer",
+          "pid": 11813,
+          "cpuSeconds": 0
+        },
+        {
+          "type": "renderer",
+          "pid": 11814,
+          "cpuSeconds": 1.65
+        },
+        {
+          "type": "renderer",
+          "pid": 11804,
+          "cpuSeconds": 0.08999999999999997
+        },
+        {
+          "type": "GPU",
+          "pid": 11761,
+          "cpuSeconds": 11.15
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "pid": 11774,
+          "cpuSeconds": 0.009999999999999995
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "pid": 11775,
+          "cpuSeconds": 0
+        }
+      ],
+      "quality": "high",
+      "qualityChanges": [],
+      "resolution": 350,
+      "updatedAreaFraction": 0.7057142857142857,
+      "gain": 1.0031999999999999,
+      "disabled": {
+        "seconds": 4.0169719960000005,
+        "framesAdded": 0,
+        "rafPending": false,
+        "mainThreadTaskDurationSeconds": 0.0021979999999999222
+      }
+    },
+    {
+      "sizeCss": 300,
+      "elapsedSeconds": 30.002421132999995,
+      "frames": 900,
+      "deliveredFPS": 29.997579062380403,
+      "frameIntervalMs": {
+        "p50": 33.30000000000018,
+        "p95": 33.400000000001455
+      },
+      "jsSubmissionMs": {
+        "p50": 0,
+        "p95": 0.10000000055879354
+      },
+      "mainThreadTaskDurationSeconds": 6.09603,
+      "scriptDurationSeconds": 0.13673300000000002,
+      "jsHeapBytes": {
+        "before": 5531848,
+        "after": 2933080
+      },
+      "processCPU": [
+        {
+          "type": "browser",
+          "pid": 11723,
+          "cpuSeconds": 0.010000000000000009
+        },
+        {
+          "type": "renderer",
+          "pid": 11813,
+          "cpuSeconds": 0
+        },
+        {
+          "type": "renderer",
+          "pid": 11814,
+          "cpuSeconds": 1.69
+        },
+        {
+          "type": "renderer",
+          "pid": 11804,
+          "cpuSeconds": 0
+        },
+        {
+          "type": "GPU",
+          "pid": 11761,
+          "cpuSeconds": 14.26
+        },
+        {
+          "type": "network.mojom.NetworkService",
+          "pid": 11774,
+          "cpuSeconds": 0.009999999999999981
+        },
+        {
+          "type": "storage.mojom.StorageService",
+          "pid": 11775,
+          "cpuSeconds": 0
+        }
+      ],
+      "quality": "high",
+      "qualityChanges": [],
+      "resolution": 525,
+      "updatedAreaFraction": 0.7047619047619048,
+      "gain": 0.6688,
+      "disabled": {
+        "seconds": 4.017080646000002,
+        "framesAdded": 0,
+        "rafPending": false,
+        "mainThreadTaskDurationSeconds": 0.0021079999999997767
+      }
+    }
+  ],
+  "measuredCodeCommit": "1e53a1292ba7d1cea135ac56e59e2803b3782ceb"
+}

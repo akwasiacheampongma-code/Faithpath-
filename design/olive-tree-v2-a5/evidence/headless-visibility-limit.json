@@ -1,0 +1,10 @@
+{
+  "method": "Actual two-page Chromium bringToFront probe",
+  "sourcePage": {
+    "hidden": false,
+    "visibilityState": "visible",
+    "running": true
+  },
+  "secondPageVisibility": "visible",
+  "conclusion": "This headless environment keeps both pages visible. Real background tab/PWA transitions are not claimed; synthetic handler tests and physical gate are recorded separately."
+}

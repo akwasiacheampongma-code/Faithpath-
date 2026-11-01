@@ -1,0 +1,87 @@
+{
+  "scope": "Deterministic mesh displacement, 0–120seconds sampled250ms; 40x40 lowest grid; originalA4 profile sampled40ms. These are local excursions from rest, not peak-to-peak sway, and not FPS measurements.",
+  "stages": [
+    {
+      "stage": 0,
+      "name": "Samen",
+      "maxVectorExcursionCSSPixelsAt200": 0,
+      "maxVectorExcursionCSSPixelsAt300": 0,
+      "peakMs": 0,
+      "peakPoint": null,
+      "minDoubleTriangleAreaSourcePixels": 961
+    },
+    {
+      "stage": 1,
+      "name": "Keimling",
+      "maxVectorExcursionCSSPixelsAt200": 1.5665123385769066,
+      "maxVectorExcursionCSSPixelsAt300": 1.5665123385769066,
+      "peakMs": 10250,
+      "peakPoint": [
+        815,
+        627
+      ],
+      "minDoubleTriangleAreaSourcePixels": 750.7698222227995
+    },
+    {
+      "stage": 2,
+      "name": "Junger Olivenbaum",
+      "maxVectorExcursionCSSPixelsAt200": 1.8709447639334291,
+      "maxVectorExcursionCSSPixelsAt300": 1.8709447639334291,
+      "peakMs": 10250,
+      "peakPoint": [
+        1035,
+        439
+      ],
+      "minDoubleTriangleAreaSourcePixels": 633.8966558947859
+    },
+    {
+      "stage": 3,
+      "name": "Wachsender Olivenbaum",
+      "maxVectorExcursionCSSPixelsAt200": 2.1587824199231975,
+      "maxVectorExcursionCSSPixelsAt300": 2.1587824199231975,
+      "peakMs": 10250,
+      "peakPoint": [
+        1035,
+        439
+      ],
+      "minDoubleTriangleAreaSourcePixels": 583.5730644939862
+    },
+    {
+      "stage": 4,
+      "name": "Starker Olivenbaum",
+      "maxVectorExcursionCSSPixelsAt200": 2.3843830933293577,
+      "maxVectorExcursionCSSPixelsAt300": 2.3843830933293577,
+      "peakMs": 10250,
+      "peakPoint": [
+        1097,
+        502
+      ],
+      "minDoubleTriangleAreaSourcePixels": 537.4180696432333
+    },
+    {
+      "stage": 5,
+      "name": "Erste Früchte",
+      "maxVectorExcursionCSSPixelsAt200": 2.3843830933293577,
+      "maxVectorExcursionCSSPixelsAt300": 2.3843830933293577,
+      "peakMs": 10250,
+      "peakPoint": [
+        1097,
+        502
+      ],
+      "minDoubleTriangleAreaSourcePixels": 537.4180696432333
+    },
+    {
+      "stage": 6,
+      "name": "Fruchttragender Olivenbaum",
+      "maxVectorExcursionCSSPixelsAt200": 2.3843830933293577,
+      "maxVectorExcursionCSSPixelsAt300": 2.3843830933293577,
+      "peakMs": 10250,
+      "peakPoint": [
+        1097,
+        502
+      ],
+      "minDoubleTriangleAreaSourcePixels": 537.4180696432333
+    }
+  ],
+  "referenceA4MaxCSSAt200": 0.4971892807453491
+}
