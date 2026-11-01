@@ -338,7 +338,7 @@ export function createTreeScene(
     loading = false;
   }
   function setStage(index) {
-    if (!Number.isInteger(index) || !STAGES[index])
+    if (disposed || !Number.isInteger(index) || !STAGES[index])
       return Promise.resolve(false);
     cancelLoad();
     resolveReady(false);
@@ -427,7 +427,7 @@ export function createTreeScene(
       windowElement.append(canvas);
       canvas.hidden = true;
       paused = false;
-      if (!current || desired.index !== current.index)
+      if ((!current || desired.index !== current.index) && !loading)
         readyPromise = new Promise((resolve) => (resolveReady = resolve));
       reconcile();
       return readyPromise;

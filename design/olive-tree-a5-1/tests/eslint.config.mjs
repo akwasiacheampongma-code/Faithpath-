@@ -1,5 +1,5 @@
 const names =
-  'Event localStorage sessionStorage process Buffer console URL URLSearchParams performance setTimeout clearTimeout document window navigator location requestAnimationFrame cancelAnimationFrame devicePixelRatio Image AbortController DOMException matchMedia ResizeObserver IntersectionObserver CSS HTMLCanvasElement OLIVE_A51 OLIVE_A5 scene fixture pendingStage gpuObjects trackedGL axe';
+  'innerWidth Event localStorage sessionStorage process Buffer console URL URLSearchParams performance setTimeout clearTimeout document window navigator location requestAnimationFrame cancelAnimationFrame devicePixelRatio Image AbortController DOMException matchMedia ResizeObserver IntersectionObserver CSS HTMLCanvasElement OLIVE_A51 OLIVE_A5 scene fixture pendingStage gpuObjects trackedGL axe';
 export default [
   {
     ignores: ['**/reference/**', '**/stage-data.js'],

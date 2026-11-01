@@ -478,6 +478,45 @@ try {
     },
   );
   await check(
+    'Initial image failure can retry; retry during a pending load preserves its ready promise',
+    async () => {
+      const c = await browser.newContext({
+          viewport: { width: 390, height: 844 },
+        }),
+        p = await c.newPage();
+      try {
+        await c.route('**/stage-7-*.webp', (route) => route.abort());
+        await p.goto(origin + '/tests/fixture.html');
+        await p.waitForFunction(() => window.scene);
+        assert.equal(await p.evaluate(() => scene.ready), false);
+        assert((await p.evaluate(() => scene.metrics)).error);
+        await c.unroute('**/stage-7-*.webp');
+        assert.equal(await p.evaluate(() => scene.retry()), true);
+        await c.route('**/stage-7-*.webp', async (route) => {
+          await new Promise((r) => setTimeout(r, 350));
+          await route.continue();
+        });
+        await p.goto(origin + '/tests/fixture.html');
+        await p.waitForFunction(() => window.scene && scene.metrics.loading);
+        const values = await p.evaluate(async () => {
+          const original = scene.ready,
+            again = scene.retry();
+          return Promise.all([
+            Promise.race([
+              original,
+              new Promise((r) => setTimeout(() => r('orphaned'), 1800)),
+            ]),
+            again,
+          ]);
+        });
+        assert.deepEqual(values, [true, true]);
+        return { failedThenRetried: true, pendingRetry: values };
+      } finally {
+        await c.close();
+      }
+    },
+  );
+  await check(
     'Dispose during loading cannot attach later images or restart rendering',
     async () => {
       await fixture();
@@ -493,6 +532,16 @@ try {
       const m = await page.evaluate(() => scene.metrics);
       assert(m.disposed && !m.running && !m.rafPending);
       assert.equal(await page.locator('#tree>*').count(), 0);
+      assert.equal(
+        await page.evaluate(() =>
+          Promise.race([
+            scene.setStage(2),
+            new Promise((r) => setTimeout(() => r('orphaned'), 300)),
+          ]),
+        ),
+        false,
+      );
+
       await page.unroute('**/stage-6-*.webp');
       return { disposed: m.disposed, rafPending: m.rafPending };
     },
