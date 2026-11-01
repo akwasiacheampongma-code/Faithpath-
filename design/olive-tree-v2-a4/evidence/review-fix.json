@@ -1,0 +1,14 @@
+{
+  "reviewedCandidate": "8c3adf06c5fc3815fbfd8814274277d948c905c4",
+  "finding": "inspection readout stale after playback/stop",
+  "red": {
+    "rendererMilliseconds": 0,
+    "displayMilliseconds": 3720
+  },
+  "green": {
+    "rendererMilliseconds": 0,
+    "displayMilliseconds": 0
+  },
+  "verification": "new browser regression in qa-browser.mjs; all 17 browser groups pass",
+  "artworkChangedByFix": false
+}

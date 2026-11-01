@@ -29,8 +29,8 @@ Dateien: `motion-model.js` für Koordinaten, Holzschutzzonen und Phasen; `leaf-r
 - [x] A.2/A.3/A.4-Direktvergleich, Detailbilder und echte Videoaufnahme.
 - [x] 200-CSS-px-Vorschau sowie 320/390-px-Ansichten in vier Themes; Heute priorisieren. Synthetische Inhalte und erklärte Platzhalteraktionen.
 - [x] Große Schrift, Tastatur, Fokus und zugängliche Bedienelemente prüfen. Physische iPhone-/Safari-/VoiceOver-Prüfungen offen lassen.
-- [ ] Alle vorhandenen Dateien gegen Basiscommit prüfen, abschließende Nachweise bündeln, nachvollziehbaren Git-Commit ausschließlich auf A.4 erstellen.
-- [ ] Künstlerische Empfehlung getrennt von technischen Ergebnissen dokumentieren. Keine Qualitätsnoten. Kein Produktbuild, Merge oder Deployment. STOP vor übrigen sechs Stufen und Phase B.
+- [x] Alle vorhandenen Dateien gegen Basiscommit prüfen, abschließende Nachweise bündeln, nachvollziehbaren Git-Commit ausschließlich auf A.4 erstellen.
+- [x] Künstlerische Empfehlung getrennt von technischen Ergebnissen dokumentieren. Keine Qualitätsnoten. Kein Produktbuild, Merge oder Deployment. STOP vor übrigen sechs Stufen und Phase B.
 
 ## Besondere Fehlerrisiken
 

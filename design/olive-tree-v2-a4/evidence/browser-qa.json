@@ -1,6 +1,6 @@
 {
   "study": "FP-DESIGN-20261031-OLIVE-V2-A4",
-  "timestamp": "2026-11-01T00:03:10.648Z",
+  "timestamp": "2026-11-01T00:12:15.787Z",
   "browser": "151.0.7922.173",
   "physicalIOS": "OPEN",
   "artisticApproval": "PENDING_USER_DECISION",
@@ -487,8 +487,17 @@
         "end": {
           "running": false,
           "time": 0,
-          "frames": 186
+          "frames": 185
         }
+      }
+    },
+    {
+      "name": "Inspection time follows play/stop/reset instead of becoming stale",
+      "status": "PASS",
+      "detail": {
+        "pose": 0,
+        "readout": 0,
+        "disabled": false
       }
     },
     {
@@ -713,7 +722,7 @@
     "context-loss-fallback.png"
   ],
   "summary": {
-    "pass": 16,
+    "pass": 17,
     "fail": 0
   }
 }

@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "method": "identical Acorn syntax trees before/after formatting; source locations and raw literal quoting excluded",
+  "files": [
+    {
+      "file": "demo.js",
+      "astUnchanged": true,
+      "astSha256": "0cfe408fb2ed526e61f8c93b28aeff12a2b43c763ad514de985729b9c3c44efc"
+    },
+    {
+      "file": "motion-player.js",
+      "astUnchanged": true,
+      "astSha256": "52c748f9011f664d8949863be145a9fdd2152c57d7c6cd3d0f4dd1e02c40cdb1"
+    }
+  ]
+}
