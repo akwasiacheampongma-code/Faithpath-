@@ -1,0 +1,87 @@
+{
+  "branch": "feature/simplified-step-experience-20261104",
+  "baselineCommit": "501f24909ed984c2edf5a8b05e5ffb8d0dc5b990",
+  "runtimeCommit": "f193318b07db46d3362c0145fa4628b576d2a330",
+  "build": {
+    "status": "PASS",
+    "build": "FP4-20261104-G-SIMPLE-STEPS-QA1",
+    "commit": "f193318b07db46d3362c0145fa4628b576d2a330",
+    "buildHash": "61b3c2aef52a01e0cf8e3e8c0a0e532ce238f4568b11ec089e1170ce10be7f7f",
+    "contentHash": "8630cf25034cbd8ee28060b2318addc25d26611317439d08ac2fa5cae938e309",
+    "files": 282,
+    "bibleFiles": 132,
+    "bibleBytes": 8759230,
+    "workerAssets": 278,
+    "twoBuildsByteIdentical": true
+  },
+  "unitTests": {
+    "tests": 264,
+    "pass": 264,
+    "fail": 0,
+    "skipped": 0
+  },
+  "targetedFunctionCases": 7,
+  "targetedMobileStates": 32,
+  "guidedA51RegressionGroups": 7,
+  "guidedLayoutRouteCombinations": 200,
+  "generalBrowserCases": 12,
+  "firstSeedOfflineBackupChecks": 7,
+  "pwaUpdateChecks": 4,
+  "faultChecks": 4,
+  "realIPhoneSafariVoiceOver": "OPEN",
+  "accessibility": {
+    "scans": 20,
+    "automatedViolations": 0,
+    "incompleteRuleViewGroups": 24,
+    "dialogTitleContrast": {
+      "status": "PASS",
+      "method": "WCAG relative luminance; conservative header/background endpoints",
+      "rows": [
+        {
+          "theme": "light",
+          "title": "rgb(32, 56, 47)",
+          "headerBackground": "rgb(255, 254, 250)",
+          "headerImage": "none",
+          "dialogBackground": "rgb(247, 247, 242)",
+          "fontSize": "28px",
+          "minimumContrast": 11.714481062997939,
+          "scope": "Computed opaque dialog/header gradient endpoints; not physical display sampling."
+        },
+        {
+          "theme": "paper",
+          "title": "rgb(61, 59, 46)",
+          "headerBackground": "rgb(251, 245, 233)",
+          "headerImage": "none",
+          "dialogBackground": "rgb(243, 237, 223)",
+          "fontSize": "28px",
+          "minimumContrast": 9.654181960180136,
+          "scope": "Computed opaque dialog/header gradient endpoints; not physical display sampling."
+        },
+        {
+          "theme": "atmospheric",
+          "title": "rgb(240, 240, 228)",
+          "headerBackground": "rgb(27, 53, 47)",
+          "headerImage": "none",
+          "dialogBackground": "rgb(20, 44, 39)",
+          "fontSize": "28px",
+          "minimumContrast": 11.453116495718392,
+          "scope": "Computed opaque dialog/header gradient endpoints; not physical display sampling."
+        },
+        {
+          "theme": "night",
+          "title": "rgb(233, 237, 240)",
+          "headerBackground": "rgb(29, 39, 49)",
+          "headerImage": "none",
+          "dialogBackground": "rgb(20, 27, 35)",
+          "fontSize": "28px",
+          "minimumContrast": 12.86173699919637,
+          "scope": "Computed opaque dialog/header gradient endpoints; not physical display sampling."
+        }
+      ]
+    },
+    "remainingManualRuleViewGroups": 20
+  },
+  "verdict": "CONDITIONAL GO: isolated preview/user test; physical iPhone/Safari/VoiceOver and remaining manual checks OPEN",
+  "targetedExecutedChecks": 39,
+  "supplementalContrastRange": "9.65:1\u201312.86:1 (dialog title, four themes)"
+}

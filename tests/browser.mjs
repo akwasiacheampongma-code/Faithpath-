@@ -154,7 +154,7 @@ try {
       await p.getByRole("button", { name: "Einen neuen Weg beginnen" }).click();
       await p.getByLabel("Name deines Weges").fill("Geduld im Alltag");
       await p
-        .getByLabel("Ein kleiner Schritt (optional)")
+        .locator('#editor-form [name="step"]')
         .fill("Im nächsten Gespräch zuerst zuhören.");
       await p
         .getByRole("button", { name: "Weg beginnen", exact: true })
@@ -239,7 +239,7 @@ try {
       await p
         .getByLabel("Dein Schritt", { exact: true })
         .fill("Eine Pause einlegen, bevor ich antworte.");
-      await p.getByRole("button", { name: "Schritt festhalten" }).click();
+      await p.locator('#editor-form button[type="submit"]').click();
       await p
         .getByRole("button", { name: "Gedanken festhalten", exact: true })
         .click();

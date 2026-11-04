@@ -1,0 +1,113 @@
+{
+  "app": "FaithPath",
+  "version": 4,
+  "schemaVersion": 5,
+  "exported": "2026-11-04T20:58:36.791Z",
+  "data": {
+    "version": 5,
+    "translation": "otb",
+    "paths": [
+      {
+        "id": "cfc536ab-6a09-4824-8652-27d556272b0b",
+        "title": "Aufmerksam zuhören",
+        "why": "In Gesprächen ruhiger bleiben",
+        "category": "vertrauen",
+        "started": "2026-11-04T20:58:32.726Z",
+        "lastReview": null,
+        "archived": false,
+        "steps": [
+          {
+            "id": "918cb9e4-82d8-4269-9581-54d5706edff6",
+            "text": "Morgen zuerst eine offene Frage stellen.",
+            "done": false,
+            "createdAt": "2026-11-04T20:58:32.726Z"
+          }
+        ],
+        "links": [
+          {
+            "id": "24c96c9b-07d9-43f5-ad29-fa7fb9681fde",
+            "kind": "verse",
+            "label": "Philipper 4,6–7",
+            "ref": {
+              "book": "PHP",
+              "chapter": 4,
+              "from": 6,
+              "to": 7,
+              "label": "Philipper 4,6–7",
+              "context": "Paulus verbindet Sorgen mit Gebet, Dank und Gottes Frieden.",
+              "question": "Welche Sorge möchtest du heute konkret vor Gott bringen?",
+              "translation": "l1912"
+            },
+            "date": "2026-11-04T20:58:32.726Z"
+          },
+          {
+            "id": "46eeff0f-0261-4cac-a955-00a7b6e59d99",
+            "kind": "reflection",
+            "journalId": "34b3453f-d6ad-4737-b131-bac400d45d07",
+            "reflectionId": "23a00b21-55a3-4aa3-afe4-bd07060d1a8a",
+            "label": "Gebet",
+            "date": "2026-11-04T20:58:32.726Z"
+          }
+        ],
+        "reviews": [],
+        "milestones": []
+      }
+    ],
+    "journal": [
+      {
+        "id": "34b3453f-d6ad-4737-b131-bac400d45d07",
+        "type": "Journal",
+        "subtype": "Gebet",
+        "text": "PRIVATE_SEED_SYNTHETIC · Ich möchte zuhören, bevor ich antworte.",
+        "date": "2026-11-04T20:58:32.726Z",
+        "ref": {
+          "book": "PHP",
+          "chapter": 4,
+          "from": 6,
+          "to": 7,
+          "label": "Philipper 4,6–7",
+          "context": "Paulus verbindet Sorgen mit Gebet, Dank und Gottes Frieden.",
+          "question": "Welche Sorge möchtest du heute konkret vor Gott bringen?",
+          "translation": "l1912"
+        },
+        "pathIds": [
+          "cfc536ab-6a09-4824-8652-27d556272b0b"
+        ],
+        "reflectionId": "23a00b21-55a3-4aa3-afe4-bd07060d1a8a",
+        "storyId": null
+      }
+    ],
+    "highlights": [],
+    "reflections": [
+      {
+        "id": "23a00b21-55a3-4aa3-afe4-bd07060d1a8a",
+        "text": "PRIVATE_SEED_SYNTHETIC · Ich möchte zuhören, bevor ich antworte.",
+        "date": "2026-11-04T20:58:32.726Z",
+        "label": "Gebet",
+        "ref": {
+          "book": "PHP",
+          "chapter": 4,
+          "from": 6,
+          "to": 7,
+          "label": "Philipper 4,6–7",
+          "context": "Paulus verbindet Sorgen mit Gebet, Dank und Gottes Frieden.",
+          "question": "Welche Sorge möchtest du heute konkret vor Gott bringen?",
+          "translation": "l1912"
+        },
+        "pathIds": [
+          "cfc536ab-6a09-4824-8652-27d556272b0b"
+        ],
+        "storyId": null
+      }
+    ],
+    "quiz": {},
+    "events": [],
+    "reading": null,
+    "reminderSnoozes": {},
+    "dismissedGaps": {},
+    "reviews": [],
+    "guidedPlans": {},
+    "settings": {}
+  },
+  "guidedPlans": {}
+}

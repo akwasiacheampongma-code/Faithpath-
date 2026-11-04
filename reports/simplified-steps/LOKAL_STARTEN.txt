@@ -1,0 +1,8 @@
+Preview-ZIP entpacken. Im entpackten App-Ordner:
+python3 -m http.server 4760 --bind 127.0.0.1
+
+Dann http://127.0.0.1:4760/ in einem neuen Browserprofil öffnen. Nicht durch direkte Dateiöffnung starten. Keine vorhandene QA- oder Produktions-Origin überschreiben.
+
+QA_INDEX.html zeigt echte Vorher/Nachher-Aufnahmen; BERICHT.pdf enthält Tests und offene Grenzen.
+
+Die Bild-/PDF-Dokumentation kann mit python3 reports/simplified-steps/build-review.py wiederholt werden (optionale Entwicklungswerkzeuge Pillow/ReportLab). Die App selbst erhält keine neuen Abhängigkeiten.

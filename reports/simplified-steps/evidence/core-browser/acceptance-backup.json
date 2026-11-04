@@ -1,0 +1,392 @@
+{
+  "app": "FaithPath",
+  "version": 4,
+  "schemaVersion": 5,
+  "exported": "2026-11-04T21:09:22.779Z",
+  "data": {
+    "version": 5,
+    "translation": "l1912",
+    "paths": [
+      {
+        "id": "1913681a-6c43-40ce-a617-88657e61c72d",
+        "title": "Geduld im Alltag",
+        "why": "",
+        "category": "vertrauen",
+        "started": "2026-11-04T21:09:08.000Z",
+        "lastReview": "2026-11-04T21:09:12.662Z",
+        "steps": [
+          {
+            "id": "b9b1d2c0-10af-402a-ac60-b8716ada7037",
+            "text": "Im nächsten Gespräch zuerst zuhören.",
+            "done": true,
+            "createdAt": "2026-11-04T21:09:08.000Z",
+            "completedAt": "2026-11-04T21:09:11.508Z"
+          },
+          {
+            "id": "4732fc47-eb9e-43a2-8095-8cc79005394e",
+            "text": "Eine Pause einlegen, bevor ich antworte.",
+            "done": false,
+            "createdAt": "2026-11-04T21:09:11.750Z"
+          }
+        ],
+        "links": [
+          {
+            "id": "entry-ad885ecc-e8cc-4f64-9623-683527835673",
+            "kind": "reflection",
+            "journalId": "ad885ecc-e8cc-4f64-9623-683527835673",
+            "reflectionId": "23a28603-55f5-4c2f-a7c1-1312fc058f51",
+            "ref": {
+              "book": "PHP",
+              "chapter": 4,
+              "from": 6,
+              "to": 7,
+              "translation": "otb",
+              "label": "Philipper 4,6–7"
+            },
+            "label": "Philipper 4,6–7",
+            "date": "2026-11-04T21:09:07.833Z"
+          },
+          {
+            "id": "entry-ffbbcbbe-dae4-40aa-9de0-aaa18e419dd1",
+            "kind": "reflection",
+            "journalId": "ffbbcbbe-dae4-40aa-9de0-aaa18e419dd1",
+            "reflectionId": "0f774aee-264c-4701-82d6-589566a38498",
+            "ref": {
+              "book": "ROM",
+              "chapter": 12,
+              "from": 12,
+              "to": 12,
+              "translation": "otb",
+              "label": "Römer 12,12"
+            },
+            "label": "Römer 12,12",
+            "date": "2026-11-04T21:09:10.258Z"
+          },
+          {
+            "id": "entry-eb158959-9f35-4ef3-bec7-2d5993de73ab",
+            "kind": "reflection",
+            "journalId": "eb158959-9f35-4ef3-bec7-2d5993de73ab",
+            "reflectionId": "2135ed71-0dd9-4581-95eb-a2fbbc38607d",
+            "ref": null,
+            "label": "Reflexion",
+            "date": "2026-11-04T21:09:11.985Z"
+          }
+        ],
+        "milestones": [
+          {
+            "id": "78b17fe1-160b-4cf9-9827-b71c7c808d02",
+            "date": "2026-11-04T21:09:12.662Z",
+            "text": "Ich reagiere in schwierigen Gesprächen ruhiger.",
+            "reviewId": "e5bb782c-db0b-499d-89b3-341b87d2a0b9"
+          }
+        ],
+        "reviews": [
+          {
+            "id": "e5bb782c-db0b-499d-89b3-341b87d2a0b9",
+            "date": "2026-11-04T21:09:12.662Z",
+            "text": "Ich reagiere in schwierigen Gesprächen ruhiger.",
+            "status": "changed",
+            "confirmedDevelopment": true,
+            "sourceKey": "path:1913681a-6c43-40ce-a617-88657e61c72d",
+            "ref": null,
+            "sourceSnapshot": {
+              "key": "path:1913681a-6c43-40ce-a617-88657e61c72d",
+              "title": "Geduld im Alltag",
+              "text": "Eine Pause einlegen, bevor ich antworte.",
+              "at": "2026-11-04T21:09:12.138Z",
+              "stepId": "4732fc47-eb9e-43a2-8095-8cc79005394e"
+            }
+          }
+        ],
+        "archived": true
+      }
+    ],
+    "journal": [
+      {
+        "id": "a38007da-4740-4bd9-890c-a030fc40ed72",
+        "type": "Bibel",
+        "subtype": "Reflexion",
+        "text": "Diesen Gedanken aus dem begleiteten Weg nehme ich mit.",
+        "date": "2026-11-04T21:09:20.867Z",
+        "ref": {
+          "book": "PHP",
+          "chapter": 4,
+          "from": 6,
+          "to": 7,
+          "translation": "l1912",
+          "label": "Philipper 4,6–7"
+        },
+        "pathIds": [],
+        "reflectionId": "a523816f-2d23-4290-91a3-f526552f3bd7",
+        "storyId": null
+      },
+      {
+        "id": "ed99cfc5-7052-4926-a2fd-b35d5c086dbc",
+        "type": "Bibel",
+        "subtype": "Reflexion",
+        "text": "Ich möchte den Zusammenhang noch einmal lesen.",
+        "date": "2026-11-04T21:09:19.149Z",
+        "ref": {
+          "book": "MAT",
+          "chapter": 1,
+          "from": 1,
+          "to": 25,
+          "label": "Matthäus 1",
+          "translation": "l1912"
+        },
+        "pathIds": [],
+        "reflectionId": "82f7983e-3b74-4b57-8a96-f0b8068cff6c",
+        "storyId": 10000
+      },
+      {
+        "id": "c7c94523-6316-49bc-bfa2-2da81271e41d",
+        "type": "Predigt",
+        "subtype": "Predigt",
+        "text": "Predigt am Sonntag: Einander zuhören.",
+        "date": "2026-11-04T21:09:15.917Z",
+        "ref": null,
+        "pathIds": [],
+        "reflectionId": "26dae492-7707-4b98-afe3-677985463edf",
+        "storyId": null
+      },
+      {
+        "id": "eb158959-9f35-4ef3-bec7-2d5993de73ab",
+        "type": "Journal",
+        "subtype": "Reflexion",
+        "text": "Heute habe ich wirklich zugehört.",
+        "date": "2026-11-04T21:09:11.985Z",
+        "ref": null,
+        "pathIds": [
+          "1913681a-6c43-40ce-a617-88657e61c72d"
+        ],
+        "reflectionId": "2135ed71-0dd9-4581-95eb-a2fbbc38607d",
+        "storyId": null
+      },
+      {
+        "id": "ffbbcbbe-dae4-40aa-9de0-aaa18e419dd1",
+        "type": "Bibel",
+        "subtype": "Reflexion",
+        "text": "Geduldig bleiben heißt für mich, erst einmal zuzuhören.",
+        "date": "2026-11-04T21:09:10.258Z",
+        "ref": {
+          "book": "ROM",
+          "chapter": 12,
+          "from": 12,
+          "to": 12,
+          "translation": "otb",
+          "label": "Römer 12,12"
+        },
+        "pathIds": [
+          "1913681a-6c43-40ce-a617-88657e61c72d"
+        ],
+        "reflectionId": "0f774aee-264c-4701-82d6-589566a38498",
+        "storyId": null
+      },
+      {
+        "id": "ad885ecc-e8cc-4f64-9623-683527835673",
+        "type": "Bibel",
+        "subtype": "Reflexion",
+        "text": "In meiner Sorge möchte ich den nächsten kleinen Schritt sehen.",
+        "date": "2026-11-04T21:09:07.833Z",
+        "ref": {
+          "book": "PHP",
+          "chapter": 4,
+          "from": 6,
+          "to": 7,
+          "translation": "otb",
+          "label": "Philipper 4,6–7"
+        },
+        "pathIds": [
+          "1913681a-6c43-40ce-a617-88657e61c72d"
+        ],
+        "reflectionId": "23a28603-55f5-4c2f-a7c1-1312fc058f51",
+        "storyId": null
+      }
+    ],
+    "highlights": [
+      {
+        "book": "ROM",
+        "chapter": 12,
+        "from": 12,
+        "to": 12,
+        "translation": "otb",
+        "label": "",
+        "color": "olive",
+        "id": "d4850b1d-f733-43fa-a3d9-46f024366ac3",
+        "at": "2026-11-04T21:09:09.885Z",
+        "snippet": "Seid fröhlich in Hoffnung, geduldig in Bedrängnis, beharrlich im Gebet."
+      }
+    ],
+    "reflections": [
+      {
+        "id": "a523816f-2d23-4290-91a3-f526552f3bd7",
+        "text": "Diesen Gedanken aus dem begleiteten Weg nehme ich mit.",
+        "date": "2026-11-04T21:09:20.867Z",
+        "label": "Philipper 4,6–7",
+        "ref": {
+          "book": "PHP",
+          "chapter": 4,
+          "from": 6,
+          "to": 7,
+          "translation": "l1912",
+          "label": "Philipper 4,6–7"
+        },
+        "pathIds": [],
+        "storyId": null
+      },
+      {
+        "id": "82f7983e-3b74-4b57-8a96-f0b8068cff6c",
+        "text": "Ich möchte den Zusammenhang noch einmal lesen.",
+        "date": "2026-11-04T21:09:19.149Z",
+        "label": "Matthäus 1",
+        "ref": {
+          "book": "MAT",
+          "chapter": 1,
+          "from": 1,
+          "to": 25,
+          "label": "Matthäus 1",
+          "translation": "l1912"
+        },
+        "pathIds": [],
+        "storyId": 10000
+      },
+      {
+        "id": "26dae492-7707-4b98-afe3-677985463edf",
+        "text": "Predigt am Sonntag: Einander zuhören.",
+        "date": "2026-11-04T21:09:15.917Z",
+        "label": "Predigt",
+        "ref": null,
+        "pathIds": [],
+        "storyId": null
+      },
+      {
+        "id": "2135ed71-0dd9-4581-95eb-a2fbbc38607d",
+        "text": "Heute habe ich wirklich zugehört.",
+        "date": "2026-11-04T21:09:11.985Z",
+        "label": "Reflexion",
+        "ref": null,
+        "pathIds": [
+          "1913681a-6c43-40ce-a617-88657e61c72d"
+        ],
+        "storyId": null
+      },
+      {
+        "id": "0f774aee-264c-4701-82d6-589566a38498",
+        "text": "Geduldig bleiben heißt für mich, erst einmal zuzuhören.",
+        "date": "2026-11-04T21:09:10.258Z",
+        "label": "Römer 12,12",
+        "ref": {
+          "book": "ROM",
+          "chapter": 12,
+          "from": 12,
+          "to": 12,
+          "translation": "otb",
+          "label": "Römer 12,12"
+        },
+        "pathIds": [
+          "1913681a-6c43-40ce-a617-88657e61c72d"
+        ],
+        "storyId": null
+      },
+      {
+        "id": "23a28603-55f5-4c2f-a7c1-1312fc058f51",
+        "text": "In meiner Sorge möchte ich den nächsten kleinen Schritt sehen.",
+        "date": "2026-11-04T21:09:07.833Z",
+        "label": "Philipper 4,6–7",
+        "ref": {
+          "book": "PHP",
+          "chapter": 4,
+          "from": 6,
+          "to": 7,
+          "translation": "otb",
+          "label": "Philipper 4,6–7"
+        },
+        "pathIds": [
+          "1913681a-6c43-40ce-a617-88657e61c72d"
+        ],
+        "storyId": null
+      }
+    ],
+    "quiz": {
+      "10000": {
+        "done": "2026-11-04T21:09:19.022Z"
+      }
+    },
+    "events": [
+      {
+        "id": "d217f328-8057-47a4-865e-1b5ed55c4976",
+        "kind": "chapter-explored",
+        "at": "2026-11-04T21:09:20.660Z",
+        "ref": {
+          "book": "PHP",
+          "chapter": 4
+        }
+      },
+      {
+        "id": "6b773145-5b5d-4b06-ad70-844105433bb6",
+        "kind": "reading",
+        "at": "2026-11-04T21:09:20.528Z",
+        "text": "Philipper 4,6–7",
+        "ref": {
+          "book": "PHP",
+          "chapter": 4,
+          "from": 6,
+          "to": 7,
+          "translation": "l1912"
+        },
+        "route": "read/PHP/4/l1912?from=6&to=7"
+      },
+      {
+        "id": "2127e0e7-3643-47b3-95c1-7c881b53eb3a",
+        "kind": "reading",
+        "at": "2026-11-04T21:09:09.516Z",
+        "text": "Römer 12",
+        "ref": {
+          "book": "ROM",
+          "chapter": 12,
+          "from": null,
+          "to": null,
+          "translation": "otb"
+        },
+        "route": "read/ROM/12/otb"
+      },
+      {
+        "id": "f6a47ad7-289c-4b0f-acd7-a1c7f2471324",
+        "kind": "reading",
+        "at": "2026-11-04T21:09:06.897Z",
+        "text": "Philipper 4,6–7",
+        "ref": {
+          "book": "PHP",
+          "chapter": 4,
+          "from": 6,
+          "to": 7,
+          "translation": "otb"
+        },
+        "route": "read/PHP/4/otb?from=6&to=7"
+      }
+    ],
+    "reading": {
+      "book": "PHP",
+      "chapter": 4,
+      "from": 6,
+      "to": 7,
+      "translation": "l1912"
+    },
+    "reminderSnoozes": {},
+    "dismissedGaps": {
+      "path:1913681a-6c43-40ce-a617-88657e61c72d": "2026-11-04T21:09:12.662Z"
+    },
+    "reviews": [],
+    "guidedPlans": {
+      "sorge7": {
+        "0": true
+      }
+    },
+    "settings": {}
+  },
+  "guidedPlans": {
+    "sorge7": {
+      "0": true
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "method": "WCAG relative luminance; conservative header/background endpoints",
+  "rows": [
+    {
+      "theme": "light",
+      "title": "rgb(32, 56, 47)",
+      "headerBackground": "rgb(255, 254, 250)",
+      "headerImage": "none",
+      "dialogBackground": "rgb(247, 247, 242)",
+      "fontSize": "28px",
+      "minimumContrast": 11.714481062997939,
+      "scope": "Computed opaque dialog/header gradient endpoints; not physical display sampling."
+    },
+    {
+      "theme": "paper",
+      "title": "rgb(61, 59, 46)",
+      "headerBackground": "rgb(251, 245, 233)",
+      "headerImage": "none",
+      "dialogBackground": "rgb(243, 237, 223)",
+      "fontSize": "28px",
+      "minimumContrast": 9.654181960180136,
+      "scope": "Computed opaque dialog/header gradient endpoints; not physical display sampling."
+    },
+    {
+      "theme": "atmospheric",
+      "title": "rgb(240, 240, 228)",
+      "headerBackground": "rgb(27, 53, 47)",
+      "headerImage": "none",
+      "dialogBackground": "rgb(20, 44, 39)",
+      "fontSize": "28px",
+      "minimumContrast": 11.453116495718392,
+      "scope": "Computed opaque dialog/header gradient endpoints; not physical display sampling."
+    },
+    {
+      "theme": "night",
+      "title": "rgb(233, 237, 240)",
+      "headerBackground": "rgb(29, 39, 49)",
+      "headerImage": "none",
+      "dialogBackground": "rgb(20, 27, 35)",
+      "fontSize": "28px",
+      "minimumContrast": 12.86173699919637,
+      "scope": "Computed opaque dialog/header gradient endpoints; not physical display sampling."
+    }
+  ]
+}

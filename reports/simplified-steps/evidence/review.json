@@ -1,0 +1,19 @@
+{
+  "reviewer": "Independent read-only code review (simple_steps_review)",
+  "reviewedCommit": "2d28f404c97be1948c53993bba692ff222ea2082",
+  "findings": [
+    {
+      "severity": "important",
+      "issue": "Explicit guidedTopic dropped on saving a resumed draft",
+      "resolutionCommit": "f193318b07db46d3362c0145fa4628b576d2a330",
+      "proof": [
+        "topic-red.log",
+        "topic-green.log"
+      ],
+      "fix": "Preserve existing guidedTopic as a hidden named draft control and clear only on actual category change."
+    }
+  ],
+  "critical": [],
+  "deferredMinor": [],
+  "scope": "Source and focused units; broad browser/offline results executed by implementing agent. No physical-device approval."
+}

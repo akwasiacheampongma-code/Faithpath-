@@ -1,0 +1,14 @@
+✔ a proposal fills an empty editor directly and another proposal replaces only the untouched proposal (0.719047ms)
+✔ personal words remain untouched until replacement is expressly confirmed and remain recoverable afterwards (0.142373ms)
+✔ typing exactly a catalog phrase is still personal input and does not authorize automatic replacement (0.144737ms)
+✔ editing a suggestion protects the latest personal wording across repeated proposal changes (0.106139ms)
+✔ choosing identical text is a no-op and does not relabel personal wording as a proposal (0.673009ms)
+✔ recovering a legacy personal candidate retains the current personal words for restoration (0.130515ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54.085408

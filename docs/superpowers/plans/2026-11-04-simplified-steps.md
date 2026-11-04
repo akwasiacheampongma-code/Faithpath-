@@ -32,14 +32,14 @@
 
 ### 1. Baseline und gemeinsame Auswahl
 - [x] Saubere Basis und Baseline-Tests/Build prüfen; echte Vorher-Bilder aufnehmen.
-- [ ] Browser-Regressionen zuerst rot: direkter Eintrag statt Vorschau; Wechsel, eigener Text und Entwurf.
-- [ ] src/step-help.js: ein Editor, höchstens drei Vorschläge mit kurzen Kategorien, optionale Hilfen, expliziter Ersetzungsschutz, Draft-Metadaten.
-- [ ] src/first-seed/view.js, controller.js und src/app.js: bestehenden Feld-/Speichervertrag anbinden; alte Preview-Aktionen entfernen.
-- [ ] src/verbunden/seed.css: kompakte, erreichbare Auswahl und Textfeld; alle Themes.
+- [x] Browser-Regressionen zuerst rot: direkter Eintrag statt Vorschau; Wechsel, eigener Text und Entwurf.
+- [x] src/step-help.js: ein Editor, höchstens drei Vorschläge mit kurzen Kategorien, optionale Hilfen, expliziter Ersetzungsschutz, Draft-Metadaten.
+- [x] src/first-seed/view.js, controller.js und src/app.js: bestehenden Feld-/Speichervertrag anbinden; alte Preview-Aktionen entfernen.
+- [x] src/verbunden/seed.css: kompakte, erreichbare Auswahl und Textfeld; alle Themes.
 
 ### 2. Regression und Lieferung
-- [ ] Alte Tests nur dort anpassen, wo sie absichtlich die entfernte Zweifeld-Bedienung festschreiben; fachliche Schutzprüfungen erhalten.
-- [ ] Unit-/Browserprüfungen: Vorschlag → eigene Worte → Wechsel/Abbruch/Bestätigung → Pause/Neustart → Speichern; First Seed und späterer Schritt; alte Drafts und Themen.
-- [ ] 375/390 Pixel, vier Themes, große Schrift, Keyboard/Axe, Offline/Update und bestehende Regressionen prüfen.
-- [ ] Geschützte Inhalte und Baumdateien per Hashvergleich nachweisen; reproduzierbarer Preview-Build; echte Nachher-Bilder und Vergleich.
-- [ ] Gesamt-Review, Bericht, Commits und Vorschaupaket. Anhalten vor Merge/Veröffentlichung.
+- [x] Alte Tests nur dort anpassen, wo sie absichtlich die entfernte Zweifeld-Bedienung festschreiben; fachliche Schutzprüfungen erhalten.
+- [x] Unit-/Browserprüfungen: Vorschlag → eigene Worte → Wechsel/Abbruch/Bestätigung → Pause/Neustart → Speichern; First Seed und späterer Schritt; alte Drafts und Themen.
+- [x] 375/390 Pixel, vier Themes, große Schrift, Keyboard/Axe, Offline/Update und bestehende Regressionen prüfen.
+- [x] Geschützte Inhalte und Baumdateien per Hashvergleich nachweisen; reproduzierbarer Preview-Build; echte Nachher-Bilder und Vergleich.
+- [x] Gesamt-Review, Bericht, Commits und Vorschaupaket. Anhalten vor Merge/Veröffentlichung.

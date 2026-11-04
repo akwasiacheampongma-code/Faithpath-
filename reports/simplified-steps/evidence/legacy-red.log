@@ -1,0 +1,40 @@
+✔ a proposal fills an empty editor directly and another proposal replaces only the untouched proposal (1.863893ms)
+✔ personal words remain untouched until replacement is expressly confirmed and remain recoverable afterwards (0.243735ms)
+✔ typing exactly a catalog phrase is still personal input and does not authorize automatic replacement (0.209524ms)
+✔ editing a suggestion protects the latest personal wording across repeated proposal changes (0.253631ms)
+✔ choosing identical text is a no-op and does not relabel personal wording as a proposal (1.43109ms)
+✖ recovering a legacy personal candidate retains the current personal words for restoration (1.48818ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 255.292769
+
+✖ failing tests:
+
+test at tests/step-selection.test.mjs:31:1
+✖ recovering a legacy personal candidate retains the current personal words for restoration (1.48818ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Mein früherer bearbeiteter Entwurf.'
+  - 'Meine bisherigen Worte.'
+         ^
+  
+      at TestContext.<anonymous> (file:///workspace/Faithpath-olive-v2/tests/step-selection.test.mjs:35:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Mein früherer bearbeiteter Entwurf.',
+    expected: 'Meine bisherigen Worte.',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

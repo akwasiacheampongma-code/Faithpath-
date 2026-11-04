@@ -1,0 +1,487 @@
+{
+  "reports": [
+    {
+      "theme": "light",
+      "state": "step",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#dialog-title"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+              "html": "<h2 id=\"dialog-title\" aria-label=\"Was möchtest du ausprobieren?\">Was möchtest du ausprobieren?</h2>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "state": "review",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                ".writing-prompt"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element",
+              "html": "<p class=\"writing-prompt\">In Ruhe zuhören</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "state": "tree",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "state": "first-seed",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "nodes": 2,
+          "targets": [
+            {
+              "target": [
+                ".seed-progress > .meta"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<p class=\"meta\">Schritt 1 von 6 · Ankommen</p>"
+            },
+            {
+              "target": [
+                ".seed-art-caption"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<span class=\"seed-art-caption\">Ein Wort. Dein Gedanke. Deine Geschichte.</span>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "light",
+      "state": "first-seed-step",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "atmospheric",
+      "state": "step",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#dialog-title"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+              "html": "<h2 id=\"dialog-title\" aria-label=\"Was möchtest du ausprobieren?\">Was möchtest du ausprobieren?</h2>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "atmospheric",
+      "state": "review",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                ".writing-prompt"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element",
+              "html": "<p class=\"writing-prompt\">In Ruhe zuhören</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "atmospheric",
+      "state": "tree",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "atmospheric",
+      "state": "first-seed",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "nodes": 2,
+          "targets": [
+            {
+              "target": [
+                ".seed-progress > .meta"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<p class=\"meta\">Schritt 1 von 6 · Ankommen</p>"
+            },
+            {
+              "target": [
+                ".seed-art-caption"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<span class=\"seed-art-caption\">Ein Wort. Dein Gedanke. Deine Geschichte.</span>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "atmospheric",
+      "state": "first-seed-step",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "paper",
+      "state": "step",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#dialog-title"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+              "html": "<h2 id=\"dialog-title\" aria-label=\"Was möchtest du ausprobieren?\">Was möchtest du ausprobieren?</h2>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "paper",
+      "state": "review",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                ".writing-prompt"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element",
+              "html": "<p class=\"writing-prompt\">In Ruhe zuhören</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "paper",
+      "state": "tree",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "paper",
+      "state": "first-seed",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "nodes": 2,
+          "targets": [
+            {
+              "target": [
+                ".seed-progress > .meta"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<p class=\"meta\">Schritt 1 von 6 · Ankommen</p>"
+            },
+            {
+              "target": [
+                ".seed-art-caption"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<span class=\"seed-art-caption\">Ein Wort. Dein Gedanke. Deine Geschichte.</span>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "paper",
+      "state": "first-seed-step",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "night",
+      "state": "step",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#dialog-title"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+              "html": "<h2 id=\"dialog-title\" aria-label=\"Was möchtest du ausprobieren?\">Was möchtest du ausprobieren?</h2>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "night",
+      "state": "review",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                ".writing-prompt"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element",
+              "html": "<p class=\"writing-prompt\">In Ruhe zuhören</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "night",
+      "state": "tree",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "night",
+      "state": "first-seed",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "nodes": 2,
+          "targets": [
+            {
+              "target": [
+                ".seed-progress > .meta"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<p class=\"meta\">Schritt 1 von 6 · Ankommen</p>"
+            },
+            {
+              "target": [
+                ".seed-art-caption"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element",
+              "html": "<span class=\"seed-art-caption\">Ein Wort. Dein Gedanke. Deine Geschichte.</span>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "theme": "night",
+      "state": "first-seed-step",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "nodes": 1,
+          "targets": [
+            {
+              "target": [
+                "#menu-toggle"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"main-menu\"",
+              "html": "<button type=\"button\" id=\"menu-toggle\" class=\"icon-button\" aria-label=\"Hauptmenü öffnen oder schließen\" aria-expanded=\"false\" aria-controls=\"main-menu\" aria-haspopup=\"dialog\">"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "CSP": "Axe-only diagnostic context bypasses CSP; main browser and full-flow contexts retain production CSP",
+  "physicalVoiceOver": "OPEN"
+}
