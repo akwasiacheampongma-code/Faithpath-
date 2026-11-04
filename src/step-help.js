@@ -70,7 +70,7 @@ export function renderStepHelp({
       <p>Satzanfänge, wenn du sie brauchst:</p><div class="actions">${SENTENCE_STARTS.map((text) => proposalButton(text, text)).join('')}</div>
       <button type="button" class="text-button" data-action="guided-smaller">Schritt kleiner machen</button>
     </details>
-    <input type="hidden" name="stepSuggestion" value="${e(suggestion)}"><input type="hidden" name="stepOwnText" value="${e(ownText)}"><input type="hidden" name="stepCandidate" value="${e(candidate)}">
+    <input type="hidden" name="stepSuggestion" value="${e(suggestion)}"><input type="hidden" name="stepOwnText" value="${e(ownText)}"><input type="hidden" name="stepCandidate" value="${e(candidate)}">${scope === 'form' ? `<input type="hidden" name="guidedTopic" value="${e(topic)}">` : ''}
   </section>`;
 }
 
@@ -130,6 +130,8 @@ export function stepHelpInput(target) {
 export function updateStepHelpCategory(help, category) {
   help.dataset.category = category;
   help.dataset.topic = '';
+  const savedTopic = help.querySelector('[name="guidedTopic"]');
+  if (savedTopic) savedTopic.value = '';
   help.querySelector('[data-guided-options]').innerHTML = options({
     category,
     topic: '',

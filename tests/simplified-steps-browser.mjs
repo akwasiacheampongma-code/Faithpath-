@@ -277,6 +277,53 @@ try {
       }
     },
   );
+  await check(
+    'step: explicit legacy topic survives editing and second resume',
+    async () => {
+      const c = await setup('step');
+      try {
+        await p.locator('dialog [data-action=close]').click();
+        await p.evaluate(
+          (KEYS) =>
+            localStorage.setItem(
+              KEYS.draft,
+              JSON.stringify({
+                type: 'step',
+                args: { pathId: 'personal-path' },
+                values: {
+                  text: 'Meine persönlichen Worte.',
+                  guidedTopic: 'schuld',
+                  stepCandidate: 'Frühere Anregung.',
+                },
+                saved: '2026-11-04',
+              }),
+            ),
+          KEYS,
+        );
+        await p.goto(server.url + '/#today');
+        await p.locator('[data-action=resume]').click();
+        assert.equal(
+          await p.locator('[data-step-help]').getAttribute('data-topic'),
+          'schuld',
+        );
+        const proposal = await choices().first().getAttribute('data-text');
+        await field('step').fill('Meine persönlichen Worte mit Ergänzung.');
+        await p.locator('dialog [data-action=close]').click();
+        await p.goto(server.url + '/#today');
+        await p.locator('[data-action=resume]').click();
+        assert.equal(
+          await choices().first().getAttribute('data-text'),
+          proposal,
+        );
+        assert.equal(
+          await p.locator('[data-step-help]').getAttribute('data-topic'),
+          'schuld',
+        );
+      } finally {
+        await c.close();
+      }
+    },
+  );
   let layouts = 0;
   for (const flow of ['seed', 'step'])
     for (const width of [375, 390])
