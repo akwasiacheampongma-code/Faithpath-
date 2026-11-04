@@ -100,3 +100,7 @@ sheets and neutral tasks live in `reports/first-seed/`; physical Safari/PWA/
 VoiceOver and battery/performance checks remain separate gates.
 Exact source metadata, repeatable build commands and browser prerequisites are
 in `reports/first-seed/REPRODUZIEREN.md`.
+
+## Guided Steps + A5.1 QA
+
+See `reports/guided-a51/ARCHITEKTUR.md` for maintenance boundaries and `reports/guided-a51/NUTZERTEST.md` for the pending human/device gates. Build with a new release ID, then run `node tests/guided-a51-browser.mjs` (self-hosted loopback), `node tests/guided-a51-a11y.mjs`, the existing first-seed full flow and fault suite. `tests/guided-a51-update.mjs` takes `FAITHPATH_PREVIOUS_ROOT` and `FAITHPATH_CANDIDATE_ROOT`; use a build of the exact First-Seed base for the former. No deployment is part of these tests.

@@ -35,6 +35,7 @@ export function renderPathDetail(model,helpers) {
  const moreThoughts=thoughts.slice(1,3);
  return `${back('Meine Wege','paths')}<div class="path-titlebar">${heading(categoryLabel,p.title)}${controls}</div>
   <p class="meta">Begonnen am ${e(date(p.started))}${p.archived?' · archiviert':''}</p>${facts}
+  <details class="path-return"><summary>Deinen bisherigen Weg wiederfinden</summary>${p.why?`<h2>Das hat dich damals beschäftigt.</h2><p class="preserve">${e(p.why)}</p>`:''}${p.steps[0]?`<h3>Diesen Schritt wolltest du ausprobieren.</h3><p class="preserve">${e(p.steps[0].text)}</p>`:''}${p.reviews.at(-1)?`<h3>Das hast du später dazu festgehalten.</h3><p class="preserve">${e(p.reviews.at(-1).text)}</p>`:''}<p>Möchtest du dazu heute einen neuen Gedanken ergänzen?</p>${button('Heute einen Gedanken ergänzen','reflect-path',{id:pid},'text-button')}</details>
   <details class="path-purpose"${p.why&&p.why.length<180?' open':''}><summary>Warum dieser Weg?</summary><p class="preserve">${e(p.why||'Du hast noch keinen Anlass dazu festgehalten.')}</p></details>
   ${p.archived?'<p class="path-archive-note meta">Dieser Weg ruht. Seine Gedanken und Schritte bleiben erhalten.</p>':''}
   <section class="next-step" aria-labelledby="path-next-step-title"><div class="section-heading"><h2 id="path-next-step-title">${nextStep?'Mein nächster Schritt':'Ein kleiner nächster Schritt'}</h2>${nextStep?button('<span aria-hidden="true">+</span><span class="sr-only">Schritt hinzufügen</span>','step',{id:pid},'icon-button'):''}</div>

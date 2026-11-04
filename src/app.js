@@ -1,3 +1,5 @@
+import {reconcileOliveTrees} from './olive-adapter.js';
+import {renderStepHelp,handleStepHelp} from './step-help.js';
 import {createFirstSeedController} from './first-seed/controller.js';
 import {renderOliveTree} from './olive-tree.js';
 import {setupLivingMotion} from './living-motion.js';
@@ -230,6 +232,7 @@ function shell(body, active = "today", cls = "") {
   updateTabCues();
   ui.treeStages ||= new Map();
   ui.motionStop=setupLivingMotion($('#main'),{previousStages:ui.treeStages});
+  reconcileOliveTrees(document);
   document.title = `FaithPath · ${$("h1")?.textContent || "Deine persönliche Glaubensgeschichte"}`;
 }
 function updateTabCues() {
@@ -865,10 +868,11 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
       old?.category || args.category || "sonstiges",
     )}${textarea("Warum ist dir das wichtig? (optional)", "why", old?.why || "")}${
       !old
-        ? `${input("Ein kleiner Schritt (optional)", "step", "", "Zum Beispiel: Im nächsten Gespräch ausreden lassen")}${select(
+        ? `${renderStepHelp({category:old?.category||args.category||"sonstiges",field:"step",topic:restored?.guidedTopic||'',candidate:restored?.stepCandidate||''})}${input("Ein kleiner Schritt (optional)", "step", "", "Zum Beispiel: Im nächsten Gespräch ausreden lassen")}${select(
             "Zum ersten Rückblick einladen",
             "days",
             [
+              ["0", "Vorerst nicht erinnern"],
               ["7", "In einer Woche"],
               ["21", "In drei Wochen"],
               ["42", "In sechs Wochen"],
@@ -884,10 +888,7 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
     const oldStep = args.stepId ? p.steps.find(x=>x.id===args.stepId && !x.done) : null;
     if (args.stepId && !oldStep) throw new Error("Bereits ausprobierte Schritte werden nicht überschrieben.");
     title = oldStep ? "Schritt bearbeiten" : "Ein kleiner nächster Schritt";
-    const suggestions = category(p.category).steps.filter(
-      (t) => !p.steps.some((x) => x.text === t),
-    );
-    body = `<p>Was wäre für „${e(p.title)}“ gerade machbar?</p>${suggestions.length ? `<details><summary>Ein paar Anregungen</summary><div class="suggestions">${suggestions.map((text) => button(e(text), "use-suggestion", { text }, "suggestion")).join("")}</div></details>` : ""}${textarea("Dein Schritt", "text", oldStep?.text || "", "Beschreibe eine konkrete, kleine Handlung.")}<p class="meta">Du probierst etwas aus. Ob daraus Entwicklung entsteht, hältst du später selbst fest.</p>`;
+    body = `<p>Was wäre für „${e(p.title)}“ gerade machbar?</p>${renderStepHelp({topic:restored?.guidedTopic||'',category:p.category,used:p.steps.map(x=>x.text),candidate:restored?.stepCandidate||''})}${textarea("Dein Schritt", "text", oldStep?.text || "", "Eigene Worte sind jederzeit möglich.")}<p class="meta">Du probierst etwas aus. Ein Schrittabschluss bestätigt keine Entwicklung.</p>`;
     cta = oldStep ? "Änderungen speichern" : "Schritt festhalten";
   } else if (type === "review") {
     const sourceSnapshot=capturePathReviewSource(s(),args,now());
@@ -899,14 +900,14 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
       "Wo stehst du gerade?",
       "status",
       [
-        ["thought", "Ich möchte einen Gedanken festhalten"],
+        ["thought", "Ich bin mir noch nicht sicher"],
         ["changed", "Etwas hat sich verändert"],
         ["working", "Ich arbeite noch daran"],
         ["unchanged", "Es hat sich nichts verändert"],
-        ["notnow", "Im Moment nicht"],
+        ["notnow", "Ich möchte es vorerst ruhen lassen"],
       ],
       "thought",
-    )}${textarea("Was möchtest du dazu festhalten?", "text", "", "Was war damals — und wie siehst du es heute?")}<label class="checkbox-row" id="confirm-development" hidden><input type="checkbox" name="development"> Das ist für mich eine echte Entwicklung.</label>${select(
+    )}<details class="review-prompts"><summary>Fragen für deinen freiwilligen Rückblick</summary><p><strong>Damals:</strong> Was war für dich zu Beginn besonders schwierig?</p><p><strong>Versuch:</strong> Was hast du tatsächlich ausprobiert?</p><p><strong>Heute:</strong> Was ist heute anders oder gleich geblieben?</p><p><strong>Nächster Schritt:</strong> Möchtest du etwas fortsetzen, ändern oder erst einmal ruhen lassen?</p><p>Du musst nicht alle Fragen beantworten.</p></details>${textarea("Was möchtest du dazu festhalten?", "text", "", "Damals … Ich habe ausprobiert … Heute … Als Nächstes …")}<label class="checkbox-row" id="confirm-development" hidden><input type="checkbox" name="development"> Das ist für mich eine echte Entwicklung.</label>${select(
       "Wann möchtest du wieder hinsehen?",
       "days",
       [
@@ -1073,9 +1074,10 @@ async function submitForm() {
             createdAt: at,
           });
         d.paths.unshift(p);
-        d.reminderSnoozes["path:" + pid] = new Date(
-          Date.now() + Number(v.days || 21) * 86400000,
+        if(Number(v.days)>0)d.reminderSnoozes["path:" + pid] = new Date(
+          Date.now() + Number(v.days) * 86400000,
         ).toISOString();
+        else d.dismissedGaps["path:"+pid]=at;
       }
       if (args.entryId) attach(d, pid, args.entryId);
       if (args.ref) addRef(d, pid, args.ref);
@@ -1099,13 +1101,10 @@ async function submitForm() {
     const status = v.status,
       confirmed = status === "changed" && v.development;
     let text = v.text.trim();
-    if (["changed", "thought"].includes(status) && !text)
-      throw new Error(
-        status === "changed"
-          ? "Beschreibe kurz, was sich verändert hat."
-          : "Schreibe den Gedanken auf, den du festhalten möchtest.",
-      );
+    if (status === "changed" && !text)
+      throw new Error("Beschreibe kurz, was sich verändert hat.");
     text ||= {
+      thought: "Ich bin mir noch nicht sicher.",
       working: "Ich arbeite noch daran.",
       unchanged: "Es hat sich nichts verändert.",
       notnow: "Im Moment nicht.",
@@ -1294,7 +1293,9 @@ async function action(a, d, el) {
     return;
   }
   if (a === "use-suggestion") {
-    $("[name=text]", $("#dialog")).value = d.text;
+    const field=$("[name=text]", $("#dialog"));
+    if(field.value.trim()){notify("Deine Worte bleiben erhalten. Nutze die bearbeitbare Schritt-Hilfe.");return;}
+    field.value = d.text;
     persistDraft();
     return;
   }
@@ -1701,6 +1702,15 @@ document.addEventListener("input", (ev) => {
   }
 });
 document.addEventListener("change", (ev) => {
+  if(ev.target.matches('[data-guided-topic]')){
+    const help=ev.target.closest('[data-step-help]'),field=help.dataset.field,category=help.dataset.category,candidate=help.querySelector('[data-guided-candidate]').value;
+    const wrapper=document.createElement('div');wrapper.innerHTML=renderStepHelp({topic:ev.target.value,category,field,candidate,used:JSON.parse(help.dataset.used||'[]')});help.replaceWith(wrapper.firstElementChild);return;
+  }
+  if(ev.target.name==='category'&&ev.target.closest('#editor-form')){
+    const help=document.querySelector('#editor-form [data-step-help]');
+    if(help){const wrapper=document.createElement('div');wrapper.innerHTML=renderStepHelp({category:ev.target.value,field:help.dataset.field,candidate:help.querySelector('[data-guided-candidate]').value});help.replaceWith(wrapper.firstElementChild);}
+  }
+
   const el = ev.target;
   if(el.closest('.seed-editor')){firstSeedController.input(el);return;}
   try {
@@ -1837,3 +1847,9 @@ document.addEventListener("keydown",event=>{
  const tile=event.target.closest?.(".theme-tile");if(!tile||!["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Home","End"].includes(event.key))return;event.preventDefault();const ids=THEMES.map(t=>t.id),i=ids.indexOf(tile.dataset.themeId),next=event.key==="Home"?0:event.key==="End"?ids.length-1:(i+(["ArrowRight","ArrowDown"].includes(event.key)?1:-1)+ids.length)%ids.length;
  Promise.resolve(action("set-theme",{themeId:ids[next]},tile)).catch(showError);
 });
+
+// Capture optional helper actions before the normal application router.
+document.addEventListener('click',event=>{const button=event.target.closest('[data-action^="guided-"]');if(button){event.preventDefault();event.stopImmediatePropagation();handleStepHelp(button.dataset.action,button);}},true);
+
+let oliveScheduled=false;
+new MutationObserver(()=>{if(!oliveScheduled){oliveScheduled=true;globalThis.queueMicrotask(()=>{oliveScheduled=false;reconcileOliveTrees(document);});}}).observe(document.querySelector('#dialog'),{childList:true,subtree:false,attributes:true,attributeFilter:['open']});

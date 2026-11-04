@@ -104,3 +104,7 @@ milestone. All movement is finite; hidden/offscreen scenes pause.
 Presentation lives in scoped `verbunden/seed.css`. Tree attachment coordinates
 are visual only; `treeBranches` still owns actual path IDs, order and limits.
 See `reports/first-seed/IMPLEMENTIERUNG.md` for failure behavior and QA evidence.
+
+## Guided Steps / A5.1 integration (2026-11-04)
+
+The shared optional editor helper, curated topic/category mapping, unchanged V5/draft contracts and the single A5.1 lifecycle adapter are documented in [reports/guided-a51/ARCHITEKTUR.md](reports/guided-a51/ARCHITEKTUR.md). Personal progress still requires an explicitly confirmed review. The ten-person acceptance protocol and physical device gates are separate from automated QA.

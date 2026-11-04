@@ -48,7 +48,7 @@ export function createFirstSeedController({store,storage,getReferences,getBook,i
   if(draft?.values.scene===2&&!conflict){const key=draft.values.topic+':'+draft.values.translation;if(key!==loadedKey){loadedKey=key;loading=true;paint(false);void loadScripture();}}
  }
  function input(target){
-  if(!active||conflict||corrupt||complete||busy||!fields.has(target.name))return false;
+  if(!active||conflict||corrupt||complete||busy||(!fields.has(target.name)&&target.name!=='stepCandidate'))return false;
   if(target.name==='topic'){draft.values=chooseSeedTopic(draft.values,target.value);const concern=view.find('#seed-concern');if(concern)concern.value=draft.values.concern;}
   else draft.values[target.name]=target.value;
   dirty=true;

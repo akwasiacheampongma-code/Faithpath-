@@ -105,3 +105,60 @@
 
 /* A saved-draft strip must leave both first-use actions above the320px nav. */
 @media(max-width:350px){.today-phase1 .today-draft + .today-header{padding-block:0}}
+
+/* Optional assistance lives beside the actual editor. */
+.step-help {margin-block:20px;padding:16px;border:1px solid var(--line);border-radius:16px;min-width:0;}
+.step-help h2 {font-size:1.25rem}.step-help h3 {font-size:1rem;margin-bottom:8px;}
+.step-help article {margin-block:16px}.step-help button {white-space:normal;text-align:left;max-width:100%;overflow-wrap:anywhere;min-height:44px;}
+.step-help label {display:block}.step-help select,.step-help textarea {width:100%;min-width:0;max-width:100%;}
+.step-help [data-guided-preview] {margin-top:16px}.step-help [data-guided-confirm] {border-top:1px solid var(--line);margin-top:12px;}
+.path-return {margin-block:16px}.path-return p,.seed-summary dd,.step-row span,.entry-text {overflow-wrap:anywhere;white-space:pre-wrap;}
+
+/* Runtime component only. No fonts, gallery assets, content or app routing. */
+.tree-scene {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 1;
+  max-width: 100%;
+}
+.tree-art-window {
+  position: absolute;
+  inset: calc(-1 * var(--tree-motion-pad, 12px));
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+}
+.tree-art-window > canvas {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  max-width: none;
+}
+.tree-art-window > img {
+  position: absolute;
+  left: var(--tree-motion-pad, 12px);
+  bottom: var(--tree-motion-pad, 12px);
+  display: block;
+  max-width: none;
+}
+.tree-art-window [hidden] {
+  display: none !important;
+}
+.tree-transition-layer {
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tree-scene,
+  .tree-art-window * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* A5.1 frame is square/cropped by runtime, never stretches the illustration. */
+.olive-a51 {position:relative;display:block;width:min(100%,280px);height:auto!important;margin-inline:auto;overflow:visible;pointer-events:auto;}
+.olive-a51 .a51-emergency {display:block;width:100%;height:auto;object-fit:contain;}
+.personal-tree-ribbon .olive-a51 {width:100px;flex:0 0 100px;}
+.today-tree .olive-a51 {width:100%;}.seed-welcome-art .olive-a51,.onboarding-seed-art .olive-a51 {width:160px;}
+.olive-a51[data-grown] {animation:none!important;}
