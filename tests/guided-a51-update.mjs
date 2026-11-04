@@ -10,8 +10,8 @@ const previous=process.env.FAITHPATH_PREVIOUS_ROOT||'/workspace/faithpath-previo
 const candidate=process.env.FAITHPATH_CANDIDATE_ROOT||'dist';
 const out=process.env.QA_OUT||'reports/guided-a51/evidence/update';fs.mkdirSync(out,{recursive:true});
 const old=JSON.parse(fs.readFileSync(previous+'/release-integrity.json')),next=JSON.parse(fs.readFileSync(candidate+'/release-integrity.json'));
-assert.equal(old.build,'FP4-20261019-G-STABLE1-FIRSTSEED1');
-assert.equal(old.source_commit,'ef8d96d7126fb79661467feaaa17044874471d4d');
+assert.equal(old.build,process.env.FAITHPATH_EXPECTED_PREVIOUS_BUILD||'FP4-20261019-G-STABLE1-FIRSTSEED1');
+assert.equal(old.source_commit,process.env.FAITHPATH_EXPECTED_PREVIOUS_COMMIT||'ef8d96d7126fb79661467feaaa17044874471d4d');
 assert.equal(next.content_hash,old.content_hash);
 let root=previous,fail=false;
 const types={'.js':'text/javascript','.html':'text/html','.css':'text/css','.json':'application/json','.webmanifest':'application/manifest+json','.webp':'image/webp','.svg':'image/svg+xml','.png':'image/png','.ttf':'font/ttf'};
@@ -37,7 +37,7 @@ try{
  async function ready(build){await page.goto(base+'/#more?section=settings');await page.locator('.build-id').filter({hasText:build}).waitFor({timeout:90000});await page.locator('#offline-state').filter({hasText:'Beide Bibeln und die App sind für dieses Gerät offline bereit.'}).waitFor({timeout:90000});}
  await ready(old.build);const before=await snapshot();
  await page.evaluate(async()=>{const cache=await caches.open('another-app:keep');await cache.put('/foreign-proof',new Response('keep'))});
- results.push('Exact immutable FIRSTSEED1 installed, all seven storage contracts snapshotted, foreign cache created');
+ results.push('Exact verified previous build installed, all seven storage contracts snapshotted, foreign cache created');
  root=candidate;fail=true;
  const rejected=await page.evaluate(async()=>{
   const reg=await navigator.serviceWorker.getRegistration();

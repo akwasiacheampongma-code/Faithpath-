@@ -106,12 +106,24 @@
 /* A saved-draft strip must leave both first-use actions above the320px nav. */
 @media(max-width:350px){.today-phase1 .today-draft + .today-header{padding-block:0}}
 
-/* Optional assistance lives beside the actual editor. */
-.step-help {margin-block:20px;padding:16px;border:1px solid var(--line);border-radius:16px;min-width:0;}
-.step-help h2 {font-size:1.25rem}.step-help h3 {font-size:1rem;margin-bottom:8px;}
-.step-help article {margin-block:16px}.step-help button {white-space:normal;text-align:left;max-width:100%;overflow-wrap:anywhere;min-height:44px;}
-.step-help label {display:block}.step-help select,.step-help textarea {width:100%;min-width:0;max-width:100%;}
-.step-help [data-guided-preview] {margin-top:16px}.step-help [data-guided-confirm] {border-top:1px solid var(--line);margin-top:12px;}
+/* One compact step editor; optional aids never precede the writing field. */
+.step-help{margin-block:12px 20px;min-width:0}
+.step-help h2{font-size:1.3rem;margin-bottom:12px}
+.step-choices{display:grid;gap:8px;margin-bottom:18px}
+.step-choice{display:grid;gap:3px;width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);text-align:left;font:inherit;line-height:1.4;cursor:pointer}
+.step-choice[aria-pressed=true]{border-color:var(--accent);background:var(--v-selected)}
+.step-option-kind{font-size:.75rem;font-weight:600;color:var(--muted)}
+.step-choice>span:last-child{font-size:.92rem}
+.step-help button{white-space:normal;max-width:100%;min-height:44px;overflow-wrap:break-word;hyphens:auto}
+.step-help .field{margin-bottom:12px}
+.step-help textarea{width:100%;min-width:0;min-height:100px;max-width:100%}
+.step-more-help{font-size:.87rem;margin-block:8px 0;color:var(--muted)}
+.step-more-help summary{min-height:44px;align-content:center}
+.step-more-help blockquote{margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.step-help [data-guided-confirm]{padding:12px;border:1px solid var(--accent);border-radius:12px;margin-block:12px}
+.step-help [data-guided-confirm] p{font-size:.9rem;margin-top:0}
+.step-context{font-size:.9rem;color:var(--muted);margin-bottom:8px}
+.step-help [hidden]{display:none!important}
 .path-return {margin-block:16px}.path-return p,.seed-summary dd,.step-row span,.entry-text {overflow-wrap:anywhere;white-space:pre-wrap;}
 
 /* Runtime component only. No fonts, gallery assets, content or app routing. */

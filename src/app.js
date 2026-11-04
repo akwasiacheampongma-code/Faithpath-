@@ -1,5 +1,5 @@
 import {reconcileOliveTrees} from './olive-adapter.js';
-import {renderStepHelp,handleStepHelp} from './step-help.js';
+import {renderStepHelp,handleStepHelp,stepHelpInput,updateStepHelpCategory,topicForStep} from './step-help.js';
 import {createFirstSeedController} from './first-seed/controller.js';
 import {renderOliveTree} from './olive-tree.js';
 import {setupLivingMotion} from './living-motion.js';
@@ -769,7 +769,7 @@ function modal(title, content, form = null, values = null) {
   document.body.classList.add("modal-open");
   if(writing)prepareWritingArea(d);
   // Focus once while opening; a later timer must not override keyboard navigation.
-  const initialControl = $("input:not([type=checkbox]),textarea,select",d) || $(".color-choice[tabindex=\"0\"]",d) || $("button",d);
+  const initialControl = (form?.type === "step" ? $("[data-guided-options] button",d) : null) || $("input:not([type=checkbox]):not([type=hidden]),textarea,select",d) || $(".color-choice[tabindex=\"0\"]",d) || $("button",d);
   initialControl?.focus();
   if (writing) initialControl?.scrollIntoView({block:"start",behavior:"instant"});
 }
@@ -868,7 +868,7 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
       old?.category || args.category || "sonstiges",
     )}${textarea("Warum ist dir das wichtig? (optional)", "why", old?.why || "")}${
       !old
-        ? `${renderStepHelp({category:old?.category||args.category||"sonstiges",field:"step",topic:restored?.guidedTopic||'',candidate:restored?.stepCandidate||''})}${input("Ein kleiner Schritt (optional)", "step", "", "Zum Beispiel: Im nächsten Gespräch ausreden lassen")}${select(
+        ? `${renderStepHelp({category:restored?.category||args.category||"sonstiges",field:"step",value:restored?.step||"",topic:restored?.guidedTopic||"",candidate:restored?.stepCandidate||"",suggestion:restored?.stepSuggestion||"",ownText:restored?.stepOwnText||""})}${select(
             "Zum ersten Rückblick einladen",
             "days",
             [
@@ -887,9 +887,9 @@ function openForm(type, args = {}, restored = null, draftRaw = undefined) {
     if (!p) return;
     const oldStep = args.stepId ? p.steps.find(x=>x.id===args.stepId && !x.done) : null;
     if (args.stepId && !oldStep) throw new Error("Bereits ausprobierte Schritte werden nicht überschrieben.");
-    title = oldStep ? "Schritt bearbeiten" : "Ein kleiner nächster Schritt";
-    body = `<p>Was wäre für „${e(p.title)}“ gerade machbar?</p>${renderStepHelp({topic:restored?.guidedTopic||'',category:p.category,used:p.steps.map(x=>x.text),candidate:restored?.stepCandidate||''})}${textarea("Dein Schritt", "text", oldStep?.text || "", "Eigene Worte sind jederzeit möglich.")}<p class="meta">Du probierst etwas aus. Ein Schrittabschluss bestätigt keine Entwicklung.</p>`;
-    cta = oldStep ? "Änderungen speichern" : "Schritt festhalten";
+    title = "Was möchtest du ausprobieren?";
+    body = `<p class="step-context">Für „${e(p.title)}“</p>${renderStepHelp({topic:topicForStep(p,restored?.guidedTopic||''),category:p.category,used:p.steps.map(x=>x.text),value:restored?.text??oldStep?.text??'',candidate:restored?.stepCandidate||'',suggestion:restored?.stepSuggestion||'',ownText:restored?.stepOwnText||'',heading:false})}`;
+    cta = oldStep ? "Änderungen speichern" : "Schritt speichern";
   } else if (type === "review") {
     const sourceSnapshot=capturePathReviewSource(s(),args,now());
     if(sourceSnapshot)args={...args,sourceSnapshot};
@@ -1687,7 +1687,8 @@ document.addEventListener("submit", (ev) => {
 });
 document.addEventListener("input", (ev) => {
   const el = ev.target;
-  if(el.closest('.seed-editor')){firstSeedController.input(el);return;}
+  const stepValues=stepHelpInput(el);
+  if(el.closest('.seed-editor')){firstSeedController.input(el,stepValues);return;}
   if (el.closest("#editor-form")) persistDraft();
   if (el.dataset.input === "books")
     $("#book-list").innerHTML = bookList(el.value);
@@ -1702,13 +1703,9 @@ document.addEventListener("input", (ev) => {
   }
 });
 document.addEventListener("change", (ev) => {
-  if(ev.target.matches('[data-guided-topic]')){
-    const help=ev.target.closest('[data-step-help]'),field=help.dataset.field,category=help.dataset.category,candidate=help.querySelector('[data-guided-candidate]').value;
-    const wrapper=document.createElement('div');wrapper.innerHTML=renderStepHelp({topic:ev.target.value,category,field,candidate,used:JSON.parse(help.dataset.used||'[]')});help.replaceWith(wrapper.firstElementChild);return;
-  }
   if(ev.target.name==='category'&&ev.target.closest('#editor-form')){
     const help=document.querySelector('#editor-form [data-step-help]');
-    if(help){const wrapper=document.createElement('div');wrapper.innerHTML=renderStepHelp({category:ev.target.value,field:help.dataset.field,candidate:help.querySelector('[data-guided-candidate]').value});help.replaceWith(wrapper.firstElementChild);}
+    if(help)updateStepHelpCategory(help,ev.target.value);
   }
 
   const el = ev.target;
