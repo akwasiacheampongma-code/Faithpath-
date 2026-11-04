@@ -1,0 +1,4 @@
+PASS empty input stays on the same step and announces a readable error
+PASS quota denial protects unsaved words during navigation, permits export and explicit discard
+PASS foreign draft and malformed original remain byte-for-byte recoverable
+PASS unavailable Scripture offers retry/continue; late response cannot repaint a different route

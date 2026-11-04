@@ -1,0 +1,57 @@
+{
+  "branches": [
+    {
+      "branch": "feature/ux-first-seed-living-tree-20261019",
+      "sha": "ef8d96d7126fb79661467feaaa17044874471d4d",
+      "authorDate": "2026-10-19T20:07:17Z",
+      "subject": "docs(qa): deliver verified first-seed candidate and human test kit [skip netlify] [skip ci]",
+      "ancestorOfAppBase": true,
+      "usage": "audit"
+    },
+    {
+      "branch": "feature/olive-tree-a5-1-final-living-tree",
+      "sha": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "authorDate": "2026-11-01T14:18:56Z",
+      "subject": "docs(olive): package final living-tree study and verified QA evidence [skip ci] [skip netlify]",
+      "ancestorOfAppBase": false,
+      "usage": "audit"
+    },
+    {
+      "branch": "integration/quiz-final-on-stable1",
+      "sha": "6f96ec8be376af3b0de03094a5052ae909054658",
+      "authorDate": "2026-10-16T03:24:04Z",
+      "subject": "Document final NT integration evidence and release gates [skip netlify]",
+      "ancestorOfAppBase": true,
+      "usage": "audit"
+    },
+    {
+      "branch": "maintenance/stability-phase7-20261018",
+      "sha": "7d4441caf5112c04b8b6af7ddec8c4ee49d0c63a",
+      "authorDate": "2026-10-18T09:50:34Z",
+      "subject": "test(maintenance): deliver verified Phase7 candidate, independent review and QA evidence [skip netlify] [skip ci]",
+      "ancestorOfAppBase": true,
+      "usage": "audit"
+    },
+    {
+      "branch": "content/at-source-recovery-20261018",
+      "sha": "dcfd5adb447b5adc1f93e3347f57ca386197c22f",
+      "authorDate": "2026-10-18T18:02:24+02:00",
+      "subject": "content(at): record Genesis 396-question editorial first pass and 829-Q5 correction proposal [skip netlify] [skip ci]",
+      "ancestorOfAppBase": false,
+      "usage": "read-only metadata; no content integration"
+    },
+    {
+      "branch": "main",
+      "sha": "d3f0c01adc8f1a67da79e4f0b4cbe5d99ca895b3",
+      "authorDate": "2026-09-17T21:47:05+02:00",
+      "subject": "Add files via upload",
+      "ancestorOfAppBase": false,
+      "usage": "audit"
+    }
+  ],
+  "base": "ef8d96d7126fb79661467feaaa17044874471d4d",
+  "runtimeCommit": "ea734d5431b1b6069d7302efdc6574fcfeb95191",
+  "protectedFilesByteIdentical": true,
+  "changes": "",
+  "selectiveImport": "Runtime and 21 optimized WebPs only; no blanket merges; no AT import"
+}

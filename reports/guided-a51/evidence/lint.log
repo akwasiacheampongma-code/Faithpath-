@@ -1,0 +1,22 @@
+
+> faithpath@4.0.0 lint
+> eslint src scripts tests/*.test.mjs eslint.config.js
+
+
+/workspace/faithpath/scripts/validate-content.mjs
+  6:10  warning  'normBook' is defined but never used. Allowed unused vars must match /^_/u  no-unused-vars
+
+/workspace/faithpath/src/store.js
+  84:15  warning  'plan' is assigned a value but never used. Allowed unused vars must match /^_/u  no-unused-vars
+
+/workspace/faithpath/tests/final-note.test.mjs
+  9:315  warning  'undo' is assigned a value but never used. Allowed unused vars must match /^_/u  no-unused-vars
+
+/workspace/faithpath/tests/path-review-phase3.test.mjs
+  1:239  warning  'empty' is defined but never used. Allowed unused vars must match /^_/u  no-unused-vars
+
+/workspace/faithpath/tests/premium-journal.test.mjs
+  11:279  warning  'undo' is assigned a value but never used. Allowed unused vars must match /^_/u  no-unused-vars
+
+✖ 5 problems (0 errors, 5 warnings)
+

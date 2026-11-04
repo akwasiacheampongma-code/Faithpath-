@@ -1,0 +1,6 @@
+
+> faithpath@4.0.0 validate:nt-quiz
+> python3 scripts/import-nt-quiz.py --check && node scripts/validate-nt-quiz.mjs
+
+{"status": "PASS", "questions": 1300, "chapters": 260, "books": 27, "changed_fields": 6151, "mode": "check"}
+{"status":"PASS","questions":1300,"chapters":260,"books":27,"content_preserved":true,"changed_fields":6151,"source_sha256":"ddb5e9c5832a1aa60e5329621c6a0c92002cd1b879177c5b39027344cce5c199"}
