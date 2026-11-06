@@ -1,0 +1,1567 @@
+{
+  "reference_commit": "a519ce898fa33907b07d5ac7a585595127556183",
+  "materialized_files_checked": 390,
+  "all_unchanged": true,
+  "files": [
+    {
+      "file": "404.html",
+      "matches_snapshot": true
+    },
+    {
+      "file": "ARCHITECTURE.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "AUDIT_AND_PLAN.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "CHANGELOG.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "CONTENT_STATUS.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "DATA_CONTRACTS.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "DEVELOPMENT.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "KNOWN_ISSUES.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "MAINTENANCE_REPORT.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "NT_QUIZ_FINAL_IMPORT_REPORT.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "PRODUCT_RESEARCH.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "QA_REPORT.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "README.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "RELEASE_CHECKLIST.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "app.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "docs/UI_PREMIUM_DESIGN_SYSTEM.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "eslint.config.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "index.html",
+      "matches_snapshot": true
+    },
+    {
+      "file": "package.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/ABSCHLUSSBERICHT.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/ARCHITEKTUR.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/NUTZERTEST.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/QA_INDEX.html",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/QA_PACKAGE.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/REPRODUZIEREN.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/accessibility.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/accessibility.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/baseline-build.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/01-protected-step-editor.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/02-voluntary-review.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/03-personal-history.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/04-first-seed-guided.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/editor-atmospheric-200.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/editor-light-200.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/editor-night-200.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/editor-paper-200.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/tree-stage-0.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/tree-stage-1.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/tree-stage-2.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/tree-stage-3.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/tree-stage-4.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/tree-stage-5.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/browser/tree-stage-6.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/build-integrity.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/build.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/contracts.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/faults.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/faults/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/faults/unsaved-recovery.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/01-welcome.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/02-own-story.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/03-concern.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/04-scripture.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/05-prayer.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/06-next-step.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/07-review.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/08-planting.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/09-sprout.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/10-real-path.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/first-seed/synthetic-backup.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/integration-audit.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/lifecycle.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/lifecycle.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/lint.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/modules.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/nt-browser.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/nt-browser.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/nt-quiz.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/package-smoke.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/rebuild.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/regression.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/screenshots.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/update.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/update/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/update/tree-after-update-offline.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/atmospheric-first-seed.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/atmospheric-history.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/atmospheric-review.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/atmospheric-step-help.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/atmospheric-tree.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/index.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/light-first-seed.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/light-history.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/light-review.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/light-step-help.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/light-tree.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/night-first-seed.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/night-history.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/night-review.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/night-step-help.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/night-tree.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/paper-first-seed.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/paper-history.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/paper-review.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/paper-step-help.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/screenshots/paper-tree.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/phase7/FUNCTION_INVENTORY.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/.gitattributes",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/BERICHT.md",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/BERICHT.pdf",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/LOKAL_STARTEN.txt",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/QA_INDEX.html",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/build-review.py",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/accessibility.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/accessibility.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/baseline-unit.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-375-atmospheric-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-375-atmospheric-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-375-light-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-375-light-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-375-night-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-375-night-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-375-paper-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-375-paper-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-390-atmospheric-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-390-atmospheric-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-390-light-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-390-light-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-390-night-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-390-night-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-390-paper-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/seed-390-paper-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-375-atmospheric-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-375-atmospheric-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-375-light-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-375-light-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-375-night-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-375-night-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-375-paper-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-375-paper-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-390-atmospheric-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-390-atmospheric-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-390-light-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-390-light-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-390-night-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-390-night-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-390-paper-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/browser/step-390-paper-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/build-integrity.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/build-repeat.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/build.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/contracts.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/acceptance-backup.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/browser-results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/history-axe.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/history-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/home-1440.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/home-320.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/home-390.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/home-768.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/home-axe.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/home-final-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/journal-history-axe.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/more-axe.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/offline-bible-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/onboarding-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/path-axe.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/path-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/quiz-axe.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/quiz-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/reader-axe.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/reader-context-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/reader-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/recovery-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/returning-home-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/review-dialog-axe.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/core-browser/tree-mobile.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/dialog-title-contrast.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/faults/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/faults/unsaved-recovery.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/01-welcome.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/02-own-story.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/03-concern.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/04-scripture.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/05-prayer.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/06-next-step.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/07-review.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/08-planting.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/09-sprout.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/10-real-path.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed/synthetic-backup.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/integrity.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/legacy-green.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/legacy-red.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/lint.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/model-red.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/modules.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/qa-summary.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-green/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-375-atmospheric-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-375-atmospheric-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-375-light-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-375-light-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-375-night-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-375-night-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-375-paper-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-375-paper-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-390-atmospheric-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-390-atmospheric-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-390-light-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-390-light-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-390-night-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-390-night-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-390-paper-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/seed-390-paper-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-375-atmospheric-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-375-atmospheric-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-375-light-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-375-light-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-375-night-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-375-night-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-375-paper-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-375-paper-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-390-atmospheric-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-390-atmospheric-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-390-light-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-390-light-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-390-night-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-390-night-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-390-paper-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/reachability-red/step-390-paper-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/red/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/01-protected-step-editor.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/02-voluntary-review.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/03-personal-history.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/04-first-seed-guided.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/editor-atmospheric-200.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/editor-light-200.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/editor-night-200.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/editor-paper-200.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/tree-stage-0.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/tree-stage-1.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/tree-stage-2.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/tree-stage-3.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/tree-stage-4.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/tree-stage-5.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/regression-browser/tree-stage-6.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/report-files.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/report-reproducibility.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/review.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/topic-green.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/topic-green/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/topic-red.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/topic-red/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/unit.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/update.log",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/update/results.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/update/tree-after-update-offline.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/package-qa.py",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/before/seed-375-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/before/seed-375-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/before/seed-390-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/before/seed-390-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/before/step-375-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/before/step-375-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/before/step-390-initial.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/before/step-390-selected.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/comparisons/seed-375-comparison.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/comparisons/seed-390-comparison.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/comparisons/step-375-comparison.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/screenshots/comparisons/step-390-comparison.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/app-router.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/app.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/backup-controller.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/backup-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/backup-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/bible-journey.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/bible-loader.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/bible-notes.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/chapter-questions.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/content.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/continuity.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/core-experience.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/discover-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/discover-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/domain.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/drafts.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/experience-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/first-seed/controller.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/first-seed/model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/first-seed/view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/import-validation.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/journal-management.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/journal-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/journal-reviews-backup.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/journal-search.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/journal-storage.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/journal-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/journey-sword.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/journey-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/living-motion.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/menu.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/navigation-discovery.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/navigation-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/navigation-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/asset-loader.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-1-1024-09d0f0e48b45.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-1-384-938d65fabbea.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-1-640-61bf0ea0364c.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-2-1024-5faf7d8bacae.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-2-384-83c9e1b068c2.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-2-640-657d676673c5.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-3-1024-dd3447ecfc31.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-3-384-67a026427a62.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-3-640-daed3e069ebb.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-4-1024-b694c875ac25.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-4-384-7fdbd6abfc70.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-4-640-6cd93c9040c1.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-5-1024-9662127e6782.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-5-384-1f45acdc445c.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-5-640-c725f8e572eb.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-6-1024-d332e48c635b.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-6-384-18e5329006bc.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-6-640-db5395a982ed.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-7-1024-8d580a524725.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-7-384-1325b09c8f58.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/assets/runtime/stage-7-640-c9b6a16a1bf4.webp",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/config.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/geometry.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/leaf-renderer.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/motion-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/performance-policy.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/reference/a5/motion-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/reference/a5/reference/a4-motion-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/reference/a5/stage-data.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/stage-data.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/stage-transition.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/tree-scene.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/tree.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-a51/wind-player.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-adapter.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/olive-tree.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/onboarding-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/path-review-context.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/paths-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/paths-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/personal-journey.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/pwa-controller.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/reader-stories.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/reader-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/reminders-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/reviews-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/reviews-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/runtime-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/step-help.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/step-selection.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/step-suggestions.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/store.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/story-flow-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/themes.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/today-model.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/today-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/today.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/tree-branches.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/tree-stage-guide.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/tree-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/assets/brand-sprig.svg",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/assets/fonts/DMSans.ttf",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/assets/fonts/Newsreader-Italic.ttf",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/assets/fonts/Newsreader.ttf",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/assets/licenses/dmsans-OFL.txt",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/assets/licenses/newsreader-OFL.txt",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/assets/sword-seal.svg",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/dialog-view.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/discover.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/foundation.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/interaction.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/personal.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/reader-flow.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/reader.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/seed.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/system.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/today.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden/tokens.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/version.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/view-html.js",
+      "matches_snapshot": true
+    },
+    {
+      "file": "styles.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "sw.js",
+      "matches_snapshot": true
+    }
+  ]
+}

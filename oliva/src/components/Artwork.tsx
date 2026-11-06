@@ -1,0 +1,308 @@
+import { useEffect, useRef } from "react";
+import { Animated, AccessibilityInfo, View } from "react-native";
+import Svg, {
+  Path,
+  Ellipse,
+  Circle,
+  G,
+  Defs,
+  LinearGradient,
+  Stop,
+  Line,
+} from "react-native-svg";
+import { useTheme } from "../design-system/theme";
+import { useApp } from "../state/store";
+import { bookByCode } from "../features/bible/repository";
+import { STAGES } from "../features/garden/model";
+
+export function OliveTree({
+  stage,
+  size = 280,
+  animate = true,
+}: {
+  stage: number;
+  size?: number;
+  animate?: boolean;
+}) {
+  const t = useTheme(),
+    reduce = useApp((s) => s.data.settings.reducedMotion),
+    opacity = useRef(new Animated.Value(1)).current;
+  useEffect(() => {
+    let alive = true;
+    AccessibilityInfo.isReduceMotionEnabled().then((system) => {
+      if (!alive || reduce || system || !animate) return;
+      opacity.setValue(0.35);
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: true,
+      }).start();
+    });
+    return () => {
+      alive = false;
+      opacity.stopAnimation();
+    };
+  }, [stage, reduce, animate, opacity]);
+  const foliage = ["#55704b", "#70825a", "#8c9b70", "#a6af82"];
+  const branches =
+    stage < 2
+      ? []
+      : [
+          { x: 144, y: 180, s: 0.7 },
+          { x: 210, y: 168, s: 0.8 },
+          ...(stage >= 3
+            ? [
+                { x: 109, y: 150, s: 0.9 },
+                { x: 233, y: 137, s: 0.85 },
+                { x: 175, y: 112, s: 0.9 },
+              ]
+            : []),
+          ...(stage >= 4
+            ? [
+                { x: 83, y: 106, s: 0.85 },
+                { x: 260, y: 95, s: 0.9 },
+                { x: 128, y: 73, s: 0.95 },
+                { x: 211, y: 66, s: 1 },
+              ]
+            : []),
+          ...(stage >= 5
+            ? [
+                { x: 64, y: 148, s: 0.6 },
+                { x: 280, y: 144, s: 0.75 },
+                { x: 168, y: 53, s: 0.85 },
+              ]
+            : []),
+        ];
+  return (
+    <Animated.View
+      accessibilityRole="image"
+      accessibilityLabel={`Olivenbaum: ${STAGES[stage]?.name}`}
+      style={{ width: size, height: size * 0.84, opacity, alignSelf: "center" }}
+    >
+      <Svg width="100%" height="100%" viewBox="0 0 360 300">
+        <Defs>
+          <LinearGradient id="earth" x1="0" y1="0" x2="1" y2="0">
+            <Stop offset="0" stopColor={t.soft} stopOpacity="0" />
+            <Stop offset=".5" stopColor="#b3ab86" stopOpacity=".34" />
+            <Stop offset="1" stopColor={t.soft} stopOpacity="0" />
+          </LinearGradient>
+          <LinearGradient id="wood" x1="0" y1="0" x2="1" y2="0">
+            <Stop offset="0" stopColor="#6e6346" />
+            <Stop offset=".5" stopColor="#ad9570" />
+            <Stop offset="1" stopColor="#7f7150" />
+          </LinearGradient>
+        </Defs>
+        <Circle cx="180" cy="149" r="117" fill={t.goldSoft} opacity=".6" />
+        <Circle
+          cx="180"
+          cy="149"
+          r="134"
+          fill="none"
+          stroke={t.line}
+          strokeWidth=".8"
+          strokeDasharray="2 8"
+        />
+        <Ellipse cx="180" cy="269" rx="149" ry="15" fill="url(#earth)" />
+        <Path
+          d="M51 269Q177 255 309 269"
+          stroke={t.gold}
+          strokeWidth=".7"
+          opacity=".5"
+          fill="none"
+        />
+        {stage === 0 ? (
+          <G>
+            <Ellipse
+              cx="180"
+              cy="263"
+              rx="12"
+              ry="7"
+              rotation="-18"
+              origin="180,263"
+              fill="#8b7551"
+            />
+            <Path d="m174 265 11-6" stroke="#c2aa76" strokeWidth="1.2" />
+          </G>
+        ) : stage === 1 ? (
+          <G>
+            <Path
+              d="M182 265Q174 243 181 221M179 263l-9 10m11-7 10 8"
+              stroke="#8b7754"
+              strokeWidth="3"
+              fill="none"
+            />
+            <Path
+              d="M180 237Q150 215 162 209Q183 211 180 237M181 225Q204 201 210 214Q200 230 181 225"
+              fill="#708559"
+            />
+          </G>
+        ) : (
+          <G>
+            <Path
+              d={`M162 267Q183 231 172 196Q164 164 181 112L191 110Q181 168 190 192Q190 234 203 267L186 263 179 271Z`}
+              fill="url(#wood)"
+            />
+            <Path
+              d="M178 259Q185 225 179 201Q173 165 184 121M178 234l-13 22m22-13 10 13"
+              fill="none"
+              stroke="#d0bb8c"
+              strokeWidth="1.4"
+              opacity=".7"
+            />
+            {branches.map((b, i) => (
+              <G key={i}>
+                <Path
+                  d={`M182 ${stage >= 4 ? 219 : 234}Q${b.x} ${b.y + 65} ${b.x} ${b.y}`}
+                  fill="none"
+                  stroke={i % 2 ? "#8a7956" : "#9c8862"}
+                  strokeWidth={i < 2 ? 6 : 4}
+                />
+                {Array.from({ length: stage >= 4 ? 13 : 9 }, (_, j) => {
+                  const a = j * 2.399 + i * 0.5,
+                    r = 10 + Math.sqrt(j) * 11,
+                    x = b.x + Math.cos(a) * r * b.s,
+                    y = b.y + Math.sin(a) * r * b.s;
+                  return (
+                    <G key={j}>
+                      <Line
+                        x1={b.x}
+                        y1={b.y + 12}
+                        x2={x}
+                        y2={y}
+                        stroke="#7c8157"
+                        strokeWidth=".8"
+                      />
+                      <Ellipse
+                        cx={x}
+                        cy={y}
+                        rx={5.4 * b.s}
+                        ry={11.7 * b.s}
+                        rotation={a * 65}
+                        origin={`${x},${y}`}
+                        fill={foliage[(i + j) % 4]}
+                      />
+                      <Line
+                        x1={x - 2}
+                        y1={y - 5}
+                        x2={x + 2}
+                        y2={y + 5}
+                        stroke="#d4d8aa"
+                        strokeWidth=".45"
+                        opacity=".55"
+                      />
+                      {stage === 6 && j % 6 === 0 && (
+                        <Ellipse
+                          cx={x + 5}
+                          cy={y + 11}
+                          rx="3.2"
+                          ry="4.6"
+                          fill="#4e4d30"
+                        />
+                      )}
+                    </G>
+                  );
+                })}
+              </G>
+            ))}
+          </G>
+        )}
+      </Svg>
+    </Animated.View>
+  );
+}
+
+export function SwordArt({
+  book = "MRK",
+  progress = 0,
+  size = 140,
+}: {
+  book?: string;
+  progress?: number;
+  size?: number;
+}) {
+  const t = useTheme(),
+    b = bookByCode(book),
+    i = b?.index ?? 0,
+    w = 8 + (i % 4),
+    guard = 25 + (i % 5) * 2;
+  const glyphs = [
+    <Path key="a" d="M50 47q-14-16-12-23 14 0 12 23 14-16 12-23-14 0-12 23" />,
+    <Path key="b" d="M37 29q13-12 26 0M37 37q13-12 26 0M37 45q13-12 26 0" />,
+    <Path key="c" d="m50 22 5 12 13 1-10 8 3 13-11-7-11 7 3-13-10-8 13-1Z" />,
+    <Path key="d" d="M39 22h22v31H39Zm5 7h12m-12 8h12m-12 8h7" />,
+    <Path key="e" d="M50 23q-18 20-3 30-5-10 6-16-2 10 2 16 12-12-5-30Z" />,
+    <Path key="f" d="M50 24c-23-12-23 10 0 28 23-18 23-40 0-28Z" />,
+    <Path key="g" d="m33 47 5-20 12 11 12-11 5 20Zm4 6h26" />,
+    <Path key="h" d="M50 24v29M39 34q11-15 22 0M36 43q14-14 28 0" />,
+    <Path key="j" d="M34 37q16-22 32 0-16 22-32 0Zm16-7v14" />,
+  ];
+  return (
+    <View
+      accessibilityRole="image"
+      accessibilityLabel={`${b?.sword ?? "Schwert"} · ${Math.round(progress * 100)} Prozent gelesen`}
+      style={{ width: size, height: size * 1.5, alignSelf: "center" }}
+    >
+      <Svg viewBox="0 0 100 150" width="100%" height="100%">
+        <Defs>
+          <LinearGradient id={`blade${i}`} x1="0" y1="0" x2="1" y2="0">
+            <Stop offset="0" stopColor="#829187" />
+            <Stop offset=".48" stopColor="#f0efe2" />
+            <Stop offset="1" stopColor="#b0b9a7" />
+          </LinearGradient>
+        </Defs>
+        <Circle cx="50" cy="59" r="40" fill={t.goldSoft} opacity=".6" />
+        <Circle
+          cx="50"
+          cy="59"
+          r="44"
+          fill="none"
+          stroke={t.gold}
+          strokeWidth=".5"
+          opacity=".4"
+        />
+        <G
+          stroke={t.gold}
+          strokeWidth=".7"
+          fill="none"
+          opacity=".55"
+          transform="translate(14 -1) scale(.72)"
+        >
+          {glyphs[i % glyphs.length]}
+        </G>
+        <Path
+          d={`M50 14  ${50 + w} 33  ${50 + w - 2} 99 50 105 ${50 - w + 2} 99 ${50 - w} 33Z`}
+          fill={`url(#blade${i})`}
+          stroke="#839080"
+          strokeWidth=".65"
+        />
+        <Path d="M50 24v71" stroke="#f6f1d1" strokeWidth="1.4" />
+        <Path
+          d="M50 95V24"
+          stroke={t.gold}
+          strokeWidth="2.2"
+          strokeDasharray={`${Math.min(1, progress) * 71} 71`}
+        />
+        <Path
+          d={`M${50 - guard} 99Q50 108 ${50 + guard} 99l-2 6Q50 113 ${52 - guard} 105Z`}
+          fill="#ac9058"
+        />
+        <Path d="M46 110h8v22h-8Z" fill={t.primary} />
+        <Path
+          d="m46 114 8 3m-8 3 8 3m-8 3 8 3"
+          stroke={t.gold}
+          strokeWidth="1"
+        />
+        <Circle cx="50" cy="137" r="5" fill="#ad9055" />
+        {Array.from({ length: 1 + (i % 7) }, (_, n) => (
+          <Circle key={n} cx={37 + n * 4} cy="103" r=".7" fill="#e8d19a" />
+        ))}
+        <Path
+          d={`M${50 - w + 3} 39l${w - 3} ${(i % 5) + 3} ${w - 3} -${(i % 5) + 3}`}
+          fill="none"
+          stroke={t.gold}
+          strokeWidth=".65"
+        />
+      </Svg>
+    </View>
+  );
+}

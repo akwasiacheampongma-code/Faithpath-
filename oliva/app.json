@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "OLIVA",
+    "slug": "oliva-faith-companion",
+    "version": "0.2.0",
+    "scheme": "oliva",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.oliva.companion"
+    },
+    "android": {
+      "package": "app.oliva.companion"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "name": "OLIVA · Raum für deinen Glauben",
+      "themeColor": "#314c3b"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-sqlite"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

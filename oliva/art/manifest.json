@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "galilee",
+      "book": null,
+      "chapter": null,
+      "scene": "Landschaft von Galiläa bei Sonnenaufgang; atmosphärische Einstimmung, keine konkrete biblische Szene.",
+      "generator": "OpenAI image_gen tool",
+      "generated_on": "2026-11-05",
+      "prompt_version": "oliva-cinema-v1-galilee-01",
+      "style_version": "oliva-cinema-v1",
+      "master": "art/masters/galilee.png",
+      "master_sha256": "c8060e0f219a0bdfc75588b9a1abf319a689cb8eed5041ad319ceb167d222f25",
+      "license_status": "Generated for this project under provider terms; public-release rights review pending",
+      "approval": {
+        "visual_pilot": "reviewed by implementing agent",
+        "historical": "pending specialist review",
+        "theological": "pending specialist review",
+        "public_release": "not approved"
+      },
+      "variants": [
+        {
+          "file": "assets/images/galilee-1280.webp",
+          "bytes": 262550,
+          "sha256": "27d9c1554d49187528cbd9d40da1f9b1146e909573af01aa838e425921c75f46"
+        },
+        {
+          "file": "assets/images/galilee-640.webp",
+          "bytes": 72960,
+          "sha256": "5d47bba60ae8f0ad4a121f3f61ef382ae6cdac5e6bb5dd3cf84d2420086cf2ef"
+        }
+      ]
+    },
+    {
+      "id": "storm",
+      "book": "MRK",
+      "chapter": 4,
+      "scene": "Das Boot nach dem gestillten Sturm; künstlerische Interpretation zu Markus 4,35–41.",
+      "generator": "OpenAI image_gen tool",
+      "generated_on": "2026-11-05",
+      "prompt_version": "oliva-cinema-v1-storm-01",
+      "style_version": "oliva-cinema-v1",
+      "master": "art/masters/storm.png",
+      "master_sha256": "39b2d7f0b7c1bfd3cc10074fc4b9a9cc55fa019ce7442a9e9def2396da144a19",
+      "license_status": "Generated for this project under provider terms; public-release rights review pending",
+      "approval": {
+        "visual_pilot": "reviewed by implementing agent",
+        "historical": "pending specialist review",
+        "theological": "pending specialist review",
+        "public_release": "not approved"
+      },
+      "variants": [
+        {
+          "file": "assets/images/storm-1280.webp",
+          "bytes": 134952,
+          "sha256": "e445c3d87d6830b93fe4f674bed2b8a8bf2ff3021e7a61a1ce1c4fc221dea7e2"
+        },
+        {
+          "file": "assets/images/storm-640.webp",
+          "bytes": 37842,
+          "sha256": "5ebb97320a29eefe1323e2ac3957e6429fc2b4814f3810383ca418b5a0b07afc"
+        }
+      ]
+    },
+    {
+      "id": "garden",
+      "book": "GEN",
+      "chapter": 1,
+      "scene": "Garten und erstes Licht als freie künstlerische Deutung; keine behauptete geografische Rekonstruktion.",
+      "generator": "OpenAI image_gen tool",
+      "generated_on": "2026-11-05",
+      "prompt_version": "oliva-cinema-v1-garden-01",
+      "style_version": "oliva-cinema-v1",
+      "master": "art/masters/garden.png",
+      "master_sha256": "1dfbc709e566bebd08715fb2f2132e2bfcd4885f5931f5685d83fa7c5ad0f0ec",
+      "license_status": "Generated for this project under provider terms; public-release rights review pending",
+      "approval": {
+        "visual_pilot": "reviewed by implementing agent",
+        "historical": "pending specialist review",
+        "theological": "pending specialist review",
+        "public_release": "not approved"
+      },
+      "variants": [
+        {
+          "file": "assets/images/garden-1280.webp",
+          "bytes": 306490,
+          "sha256": "34f1558b965e3d72741d5aacb57c7940661e3a4b3a7e62b294bf456bf5c7c483"
+        },
+        {
+          "file": "assets/images/garden-640.webp",
+          "bytes": 86314,
+          "sha256": "46a740a0939f66917e68d445895dc37927b0d28cac649437a377546ef143b3ff"
+        }
+      ]
+    }
+  ]
+}

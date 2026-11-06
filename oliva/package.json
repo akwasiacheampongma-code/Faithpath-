@@ -1,0 +1,53 @@
+{
+  "name": "oliva-faith-companion",
+  "description": "OLIVA – Lesen, verstehen, wachsen. Unabhängige lokale Bibel-App.",
+  "license": "MIT",
+  "version": "0.2.0",
+  "main": "expo-router/entry",
+  "dependencies": {
+    "expo": "~58.0.23",
+    "expo-status-bar": "~58.0.4",
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "zod": "^4.6.7",
+    "zustand": "^5.0.16",
+    "expo-router": "~58.0.30",
+    "expo-font": "~58.0.11",
+    "expo-sqlite": "~58.0.15",
+    "expo-linear-gradient": "~58.0.3",
+    "react-native-svg": "15.16.0",
+    "@expo/metro-runtime": "~58.0.17",
+    "react-dom": "19.3.0",
+    "react-native-web": "~0.21.4",
+    "react-native-screens": "~4.30.1",
+    "react-native-safe-area-context": "~5.11.1",
+    "expo-linking": "~58.0.16",
+    "expo-constants": "~58.0.15"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.0",
+    "@types/react": "~19.3.0",
+    "typescript": "~6.0.3",
+    "vitest": "^5.1.0",
+    "@types/node": "26.6.6"
+  },
+  "scripts": {
+    "start": "node scripts/expo.mjs start",
+    "web": "node scripts/expo.mjs start --web --port 8081",
+    "android": "node scripts/expo.mjs start --android",
+    "ios": "node scripts/expo.mjs start --ios",
+    "build": "node scripts/expo.mjs export --platform web && node scripts/offline.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "content:import": "python3 scripts/import-bible.py",
+    "content:check": "python3 scripts/import-bible.py --check",
+    "preview": "node scripts/serve.mjs"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "type": "module"
+}
