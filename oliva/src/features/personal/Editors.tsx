@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { View, Switch } from "react-native";
 import { T, Field, Button, Card, Tag } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
@@ -9,37 +9,41 @@ import { useDraft } from "./useDraft";
 import { DraftStatus } from "./DraftStatus";
 import { referenceLabel } from "../bible/repository";
 
-function Footer({
+export function EditorFooter({
   status,
   working,
   canSave,
   label,
   onSave,
   onDiscard,
+  canDiscard = true,
 }: {
-  status: "saved" | "saving" | "error";
+  status?: "saved" | "saving" | "error";
   working: boolean;
   canSave: boolean;
   label: string;
   onSave: () => void;
   onDiscard: () => void;
+  canDiscard?: boolean;
 }) {
   const [confirm, setConfirm] = useState(false);
   return (
     <View style={{ gap: 12 }}>
-      <DraftStatus status={status} />
+      {status && <DraftStatus status={status} />}
       <Button icon="check" disabled={!canSave || working} onPress={onSave}>
         {label}
       </Button>
-      <Button
-        kind="ghost"
-        icon="close"
-        disabled={working}
-        onPress={() => setConfirm(!confirm)}
-      >
-        Entwurf verwerfen
-      </Button>
-      {confirm && (
+      {canDiscard && (
+        <Button
+          kind="ghost"
+          icon="close"
+          disabled={working}
+          onPress={() => setConfirm(!confirm)}
+        >
+          Entwurf verwerfen
+        </Button>
+      )}
+      {confirm && canDiscard && (
         <Card style={{ gap: 10 }}>
           <T style={{ fontSize: 12 }}>
             Diesen Entwurf mit deinen bisherigen Eingaben wirklich verwerfen?
@@ -60,29 +64,44 @@ function Footer({
     </View>
   );
 }
-function useActions<T extends Draft["type"]>(
+export function useEditorActions<T extends Draft["type"]>(
   draft: DraftOf<T>,
   onDone: (result?: string) => void,
 ) {
   const editor = useDraft<T>(draft),
+    notified = useRef(false),
     mutate = useApp((s) => s.mutate),
     busy = useApp((s) => s.busy),
     [working, setWorking] = useState(false);
-  async function finish(discard = false) {
+  function notify(result?: string) {
+    if (!notified.current) {
+      notified.current = true;
+      onDone(result);
+    }
+  }
+  useEffect(() => {
+    if (editor.obsolete) {
+      editor.close();
+      notify();
+    }
+  }, [editor.obsolete]);
+  async function finish(discard = false, completeGuided = true) {
     if (working) return;
     setWorking(true);
     try {
-      const saved = await editor.flush();
+      const saved = await editor.flush(true);
       if (!saved) return;
       let result: string | undefined;
       const ok = await mutate((d) => {
         if (discard) removeDraft(d, saved.key, saved);
         else
-          result = commitDraft(d, saved.key, saved, new Date().toISOString());
+          result = commitDraft(d, saved.key, saved, new Date().toISOString(), {
+            completeGuided,
+          });
       });
       if (ok) {
         editor.close();
-        onDone(result);
+        notify(result);
       }
     } finally {
       setWorking(false);
@@ -90,9 +109,10 @@ function useActions<T extends Draft["type"]>(
   }
   return {
     ...editor,
-    working: working || busy,
+    working: working || busy || editor.obsolete,
     save: () => void finish(),
     discard: () => void finish(true),
+    preserve: () => void finish(false, false),
   };
 }
 export function JournalEditor({
@@ -102,7 +122,7 @@ export function JournalEditor({
   draft: DraftOf<"journal">;
   onDone: () => void;
 }) {
-  const e = useActions<"journal">(draft, onDone),
+  const e = useEditorActions<"journal">(draft, onDone),
     v = e.values,
     labels = { note: "Gedanke", reflection: "Reflexion", action: "Erfahrung" };
   return (
@@ -133,7 +153,7 @@ export function JournalEditor({
         multiline
         maxLength={10000}
       />
-      <Footer
+      <EditorFooter
         status={e.status}
         working={e.working}
         canSave={!!v.text.trim()}
@@ -151,7 +171,7 @@ export function GoalEditor({
   draft: DraftOf<"goal">;
   onDone: (id?: string) => void;
 }) {
-  const e = useActions<"goal">(draft, onDone),
+  const e = useEditorActions<"goal">(draft, onDone),
     v = e.values,
     t = useTheme();
   return (
@@ -210,7 +230,7 @@ export function GoalEditor({
           </Button>
         </View>
       )}
-      <Footer
+      <EditorFooter
         status={e.status}
         working={e.working}
         canSave={!!v.title.trim()}
@@ -230,7 +250,7 @@ export function StepEditor({
   draft: DraftOf<"step">;
   onDone: () => void;
 }) {
-  const e = useActions<"step">(draft, onDone),
+  const e = useEditorActions<"step">(draft, onDone),
     v = e.values;
   return (
     <Card style={{ gap: 17 }}>
@@ -248,7 +268,7 @@ export function StepEditor({
         maxLength={1000}
         placeholder="Was möchtest du ausprobieren?"
       />
-      <Footer
+      <EditorFooter
         status={e.status}
         working={e.working}
         canSave={!!v.text.trim()}
@@ -266,7 +286,7 @@ export function ReviewEditor({
   draft: DraftOf<"review">;
   onDone: () => void;
 }) {
-  const e = useActions<"review">(draft, onDone),
+  const e = useEditorActions<"review">(draft, onDone),
     v = e.values,
     t = useTheme();
   return (
@@ -303,7 +323,7 @@ export function ReviewEditor({
           trackColor={{ false: t.line, true: t.primary }}
         />
       </View>
-      <Footer
+      <EditorFooter
         status={e.status}
         working={e.working}
         canSave={!!v.text.trim()}

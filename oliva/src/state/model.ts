@@ -16,6 +16,7 @@ import {
 import { parseFaithpath } from "../features/imports/source";
 import { highlightColor } from "../features/bible/highlights";
 import { utf8Length } from "../lib/hash";
+import { captureSourceSchema } from "../features/personal/capture-schema";
 const chapterKey = z.string().refine((value) => {
   const [book, c] = value.split(":");
   return (
@@ -66,6 +67,7 @@ export const noteSchema = z
       .max(500)
       .refine(unique)
       .optional(),
+    captureSource: captureSourceSchema.optional(),
   })
   .strict();
 const baseSchema = z
@@ -123,7 +125,7 @@ const v2Fields = {
 export const v2DataSchema = baseSchema
   .extend({ version: z.literal(2), ...v2Fields })
   .refine(completeStepsValid);
-export const dataSchema = baseSchema
+export const v3DataSchema = baseSchema
   .extend({
     version: z.literal(3),
     ...v2Fields,
@@ -132,6 +134,17 @@ export const dataSchema = baseSchema
       .max(100)
       .refine((items) => unique(items.map((x) => x.id))),
   })
+  .refine(completeStepsValid, "Ungültiger Wegfortschritt")
+  .refine(
+    (d) =>
+      [...d.goals, ...d.notes].every(
+        (x) => !x.origin || d.imports.some((r) => r.id === x.origin!.importId),
+      ),
+    "Importquelle fehlt",
+  );
+export const dataSchema = z
+  .object({ ...v3DataSchema.shape, version: z.literal(4) })
+  .strict()
   .refine(completeStepsValid, "Ungültiger Wegfortschritt")
   .refine(
     (d) =>
@@ -150,7 +163,7 @@ export function decodeData(input: unknown): AppData {
     const old = legacyDataSchema.parse(input);
     return dataSchema.parse({
       ...old,
-      version: 3,
+      version: 4,
       goals: [],
       drafts: [],
       imports: [],
@@ -164,11 +177,17 @@ export function decodeData(input: unknown): AppData {
   ) {
     return dataSchema.parse({
       ...v2DataSchema.parse(input),
-      version: 3,
+      version: 4,
       imports: [],
     });
   }
-  const data = dataSchema.parse(input);
+  const data =
+    input &&
+    typeof input === "object" &&
+    "version" in input &&
+    input.version === 3
+      ? dataSchema.parse({ ...v3DataSchema.parse(input), version: 4 })
+      : dataSchema.parse(input);
   for (const receipt of data.imports) {
     const parsed = parseFaithpath(receipt.sourceText);
     if (
@@ -182,7 +201,7 @@ export function decodeData(input: unknown): AppData {
 export type AppData = z.infer<typeof dataSchema>;
 export type Note = z.infer<typeof noteSchema>;
 export const initialData = (): AppData => ({
-  version: 3,
+  version: 4,
   imports: [],
   goals: [],
   drafts: [],
@@ -271,10 +290,44 @@ export function parseBackup(text: string): AppData {
   }
 }
 export function assertStorageBudget(data: AppData) {
-  if (utf8Length(JSON.stringify(data, null, 2)) > MAX_BACKUP_BYTES)
+  if (backupByteLength(data) > MAX_BACKUP_BYTES)
     throw new Error(
       "Der Datenstand überschreitet die Sicherungsgrenze von 64 MB. Exportiere zuerst deine bisherigen Daten. Es wurde nichts gespeichert.",
     );
+}
+// Source strings are immutable. Clone mutable metadata without repeatedly
+// encoding and parsing the complete imported JSON files during text entry.
+function skeleton(data: AppData) {
+  return {
+    ...data,
+    imports: data.imports.map((r) => ({ ...r, sourceText: "" })),
+  };
+}
+export function cloneData(data: AppData): AppData {
+  const next = JSON.parse(JSON.stringify(skeleton(data))) as AppData;
+  for (let i = 0; i < next.imports.length; i++)
+    next.imports[i]!.sourceText = data.imports[i]!.sourceText;
+  return next;
+}
+const sourceSizes = new Map<string, { text: string; bytes: number }>();
+export function backupByteLength(data: AppData) {
+  let total = utf8Length(JSON.stringify(skeleton(data), null, 2));
+  const active = new Set<string>();
+  for (const receipt of data.imports) {
+    active.add(receipt.sourceHash);
+    let item = sourceSizes.get(receipt.sourceHash);
+    if (!item || item.text !== receipt.sourceText) {
+      item = {
+        text: receipt.sourceText,
+        bytes: utf8Length(JSON.stringify(receipt.sourceText)) - 2,
+      };
+      sourceSizes.set(receipt.sourceHash, item);
+    }
+    total += item.bytes;
+  }
+  for (const key of sourceSizes.keys())
+    if (!active.has(key)) sourceSizes.delete(key);
+  return total;
 }
 export function countBookRead(data: AppData, code: string) {
   return data.readChapters.filter((key) => key.startsWith(code + ":")).length;

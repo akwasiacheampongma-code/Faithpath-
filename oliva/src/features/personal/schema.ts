@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { referenceSchema } from "../bible/schema";
 import { originSchema } from "../imports/schema";
+import { captureValuesSchema } from "./capture-schema";
 
 const id = z.string().min(1).max(100),
   date = z.string().datetime();
@@ -119,6 +120,13 @@ export const draftSchema = z.discriminatedUnion("type", [
     .strict(),
   z
     .object({ ...envelope, type: z.literal("review"), values: reviewValues })
+    .strict(),
+  z
+    .object({
+      ...envelope,
+      type: z.literal("capture"),
+      values: captureValuesSchema,
+    })
     .strict(),
 ]);
 export type Goal = z.infer<typeof goalSchema>;

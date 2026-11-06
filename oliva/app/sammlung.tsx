@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { View, Pressable, useWindowDimensions } from "react-native";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { T, Button, Card, Field, Tag, Progress } from "../src/components/ui";
 import { SwordArt } from "../src/components/Artwork";
@@ -16,20 +16,45 @@ import { countBookRead, type Note } from "../src/state/model";
 import { JournalEditor } from "../src/features/personal/Editors";
 import { journalDraft } from "../src/features/personal/model";
 import { highlightBackground } from "../src/features/bible/highlights";
+import { DraftLinks } from "../src/features/personal/DraftLinks";
+import { CaptureContext } from "../src/features/personal/CaptureContext";
 export default function Collection() {
+  const { tab: requestedTab, note: requestedNote } = useLocalSearchParams<{
+    tab?: string;
+    note?: string;
+  }>();
+  const handledNote = useRef<string | undefined>(undefined);
   const t = useTheme(),
     data = useApp((s) => s.data),
     mutate = useApp((s) => s.mutate),
     busy = useApp((s) => s.busy),
     { width } = useWindowDimensions(),
-    [tab, setTab] = useState("Gedanken"),
+    [tab, setTab] = useState(
+      requestedTab === "Entwürfe" ? "Entwürfe" : "Gedanken",
+    ),
     [query, setQuery] = useState(""),
     [deleting, setDeleting] = useState<string | null>(null),
     [lastDeleted, setLastDeleted] = useState<Note | null>(null),
     [showForm, setShowForm] = useState(false);
+  useEffect(() => {
+    if (requestedTab === "Entwürfe") {
+      setTab("Entwürfe");
+      setQuery("");
+    }
+  }, [requestedTab]);
   const [editorMessage, setEditorMessage] = useState("");
   const pendingDraft = data.drafts.find((d) => d.key === "journal");
   const draft = pendingDraft?.type === "journal" ? pendingDraft : undefined;
+  useEffect(() => {
+    if (requestedNote && requestedNote !== handledNote.current) {
+      const note = data.notes.find((n) => n.id === requestedNote);
+      if (note) {
+        handledNote.current = requestedNote;
+        setTab("Gedanken");
+        void openEditor(note);
+      }
+    }
+  }, [requestedNote, data.notes]);
   async function openEditor(note?: Note) {
     if (draft) {
       if (note && draft.values.targetId !== note.id) {
@@ -99,50 +124,65 @@ export default function Collection() {
           marginBottom: 24,
         }}
       >
-        {["Gedanken", "Lesezeichen", "Markierungen", "Buchschwerter"].map(
-          (label) => (
-            <Pressable
-              key={label}
-              accessibilityRole="button"
-              accessibilityState={{ selected: tab === label }}
-              onPress={() => {
-                setTab(label);
-                setQuery("");
-              }}
+        {[
+          "Gedanken",
+          "Entwürfe",
+          "Lesezeichen",
+          "Markierungen",
+          "Buchschwerter",
+        ].map((label) => (
+          <Pressable
+            key={label}
+            accessibilityRole="button"
+            accessibilityState={{ selected: tab === label }}
+            onPress={() => {
+              setTab(label);
+              setQuery("");
+            }}
+            style={{
+              minHeight: 44,
+              paddingHorizontal: 16,
+              paddingVertical: 11,
+              borderRadius: 25,
+              backgroundColor: tab === label ? t.primary : t.soft,
+            }}
+          >
+            <T
               style={{
-                minHeight: 44,
-                paddingHorizontal: 16,
-                paddingVertical: 11,
-                borderRadius: 25,
-                backgroundColor: tab === label ? t.primary : t.soft,
+                fontSize: 12,
+                color: tab === label ? t.onPrimary : t.text,
               }}
             >
-              <T
-                style={{
-                  fontSize: 12,
-                  color: tab === label ? t.onPrimary : t.text,
-                }}
-              >
-                {label}
-              </T>
-            </Pressable>
-          ),
-        )}
+              {label}
+            </T>
+          </Pressable>
+        ))}
       </View>
-      <Field
-        label={
-          tab === "Buchschwerter" ? "Buch suchen" : "Deine Sammlung durchsuchen"
-        }
-        value={query}
-        onChangeText={setQuery}
-        placeholder={
-          tab === "Buchschwerter"
-            ? "Zum Beispiel Johannes"
-            : "Deine Suchwörter …"
-        }
-      />
+      {tab !== "Entwürfe" && (
+        <Field
+          label={
+            tab === "Buchschwerter"
+              ? "Buch suchen"
+              : "Deine Sammlung durchsuchen"
+          }
+          value={query}
+          onChangeText={setQuery}
+          placeholder={
+            tab === "Buchschwerter"
+              ? "Zum Beispiel Johannes"
+              : "Deine Suchwörter …"
+          }
+        />
+      )}
       <View style={{ height: 20 }} />
-      {tab === "Gedanken" ? (
+      {tab === "Entwürfe" ? (
+        <DraftLinks
+          onJournal={() => {
+            setTab("Gedanken");
+            void openEditor();
+          }}
+        />
+      ) : tab === "Gedanken" ? (
         <View style={{ gap: 17 }}>
           <View style={{ alignItems: "flex-start" }}>
             <Button
@@ -247,6 +287,9 @@ export default function Collection() {
                   >
                     {referenceLabel(note.ref)}
                   </Button>
+                )}
+                {note.captureSource && (
+                  <CaptureContext source={note.captureSource} />
                 )}
                 {note.origin && (
                   <View style={{ gap: 8 }}>

@@ -9,9 +9,11 @@ import { parseBackup, type AppData } from "../src/state/model";
 import { exportData } from "../src/services/storage";
 import { MAX_BACKUP_BYTES } from "../src/features/imports/schema";
 import { pickBackup } from "../src/services/pick-backup";
+import { useVolatileDrafts } from "../src/features/personal/volatile-drafts";
 export default function Settings() {
   const t = useTheme(),
     data = useApp((s) => s.data),
+    pending = useVolatileDrafts((s) => Object.keys(s.items).length),
     mutate = useApp((s) => s.mutate),
     restore = useApp((s) => s.restore),
     busy = useApp((s) => s.busy),
@@ -143,15 +145,20 @@ export default function Settings() {
                 .then(() =>
                   setMessage("Sicherung zum Speichern oder Teilen übergeben."),
                 )
-                .catch(() =>
-                  setMessage(
-                    "Die Sicherung konnte nicht übergeben werden. Bitte versuche es erneut.",
-                  ),
-                )
+                .catch((error) => setMessage((error as Error).message))
             }
           >
             Sicherung exportieren
           </Button>
+          {pending > 0 && (
+            <Button
+              kind="secondary"
+              icon="pen"
+              onPress={() => router.push("/sammlung?tab=Entwürfe")}
+            >
+              Ungesicherte Entwürfe bewahren
+            </Button>
+          )}
           <Button
             kind="secondary"
             icon="back"
@@ -208,7 +215,7 @@ export default function Settings() {
                   setBackup(value);
                   setCandidate(null);
                 }}
-                placeholder={'{"version":3, …}'}
+                placeholder={'{"version":4, …}'}
               />
               <Button
                 kind="secondary"
@@ -284,7 +291,7 @@ export default function Settings() {
             Den Einstieg noch einmal ansehen
           </Button>
           <T style={{ fontSize: 10, color: t.muted }}>
-            OLIVA · lokale Entwicklungsausgabe 0.3.0
+            OLIVA · lokale Entwicklungsausgabe 0.4.0
           </T>
         </Card>
       </View>

@@ -12,6 +12,7 @@ import {
 } from "../src/features/bible/repository";
 import { useApp } from "../src/state/store";
 import { countBookRead } from "../src/state/model";
+import { StoryLibrary } from "../src/features/bible/StoryCard";
 export default function Bible() {
   const t = useTheme(),
     data = useApp((s) => s.data),
@@ -20,7 +21,8 @@ export default function Bible() {
     [query, setQuery] = useState(""),
     [mode, setMode] = useState<"books" | "text">("books"),
     [expanded, setExpanded] = useState<string | null>(null),
-    [debounced, setDebounced] = useState("");
+    [debounced, setDebounced] = useState(""),
+    [showStory, setShowStory] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => setDebounced(query), 250);
     return () => clearTimeout(timer);
@@ -80,6 +82,8 @@ export default function Bible() {
                 params: {
                   book: data.reading.book,
                   chapter: data.reading.chapter,
+                  from: data.reading.from,
+                  to: data.reading.to,
                 },
               })
             }
@@ -88,6 +92,18 @@ export default function Bible() {
           </Button>
         </View>
       </Card>
+      <View style={{ gap: 14, marginBottom: 20, alignItems: "flex-start" }}>
+        <Button
+          kind="secondary"
+          icon="book"
+          onPress={() => setShowStory(!showStory)}
+        >
+          {showStory
+            ? "Geschichtenvorschlag schließen"
+            : "Eine Geschichte entdecken"}
+        </Button>
+        {showStory && <StoryLibrary />}
+      </View>
       <View style={{ flexDirection: "row", gap: 8, marginBottom: 15 }}>
         {[
           ["books", "Bücher finden"],

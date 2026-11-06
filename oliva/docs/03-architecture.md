@@ -21,7 +21,7 @@ flowchart LR
 
 ## Verzeichnisgrenzen
 
-- `app/`: Routen, Bildschirmkomposition und jeweils kurzfristiger Eingabe-/Auswahlzustand.
+- `app/`: Routen, Bildschirmkomposition und kurzfristiger Auswahlzustand. Persönliche Texte verwenden dauerhafte Feature-Entwürfe.
 - `src/features/bible`: Kanon, validierte Referenzen, Kapitel-/Abschnittsauswahl, Suchprojektion, Tagesvers.
 - `src/features/paths`: eigene Lerninhalte und Quellenbezüge.
 - `src/features/garden`: Bedeutungen der sieben Bildstufen.
@@ -52,7 +52,7 @@ Die Webversion verwendet IndexedDB statt `expo-sqlite`-WASM: Letzteres erfordert
 
 Eine lokale Revision wird in einer Datenbanktransaktion mit dem gespeicherten Wert verglichen. Ein zweites Fenster darf einen veralteten Stand nicht überschreiben. Der Store publiziert erst nach erfolgreichem Commit. Ein globaler Mutationslock verhindert Doppeltippen; er ist klein und enthält keine UI-Navigation. Nach einer fehlerhaften Hydrierung blockieren neue Schreibvorgänge. Es gibt keine automatische Rücksetzung auf leere Daten.
 
-SQLite-Schema 1 ist in `src/services/local-migrations.ts` definiert. Ein neueres `PRAGMA user_version` wird abgelehnt statt zurückgestuft. Neue Migrationen müssen transaktional sein und einen realen Upgrade-/Abbruchtest erhalten. Web-Schema 1 verwendet den Object Store `state`, Eintrag `main`.
+Die aufeinander aufbauenden SQLite-Schemata bis Version 3 sind in `src/services/local-migrations.ts` definiert. Ein neueres `PRAGMA user_version` wird abgelehnt statt zurückgestuft. Neue Migrationen müssen transaktional sein und einen realen Upgrade-/Abbruchtest erhalten. Web-Schema 1 verwendet den Object Store `state`: `main`, Archiv-Blobs und Rückkehrsicherung werden dort gemeinsam transaktional verwaltet.
 
 Das JSON-Nutzdatenmodell ist für einen kleinen persönlichen Bestand geeignet und Zod-validiert. Für große Archive und inkrementellen Sync wird es in einzelne Entitätstabellen zerlegt. Kein pauschaler Skalierungsanspruch für den lokalen Snapshot-Ansatz.
 
@@ -91,4 +91,10 @@ Version 0.2 ergänzt persönliche Vorhaben und Entwürfe. `src/features/personal
 
 Version 0.3 hebt das Nutzdatenformat auf 3 und die native SQLite-Struktur auf 2; IndexedDB bleibt physisch Version 1. `src/features/imports/` trennt Quellvertrag, reine Vorschau/Zuordnung, Herkunft und historische Anzeige. Quell-IDs und belegte Spiegelaliase bleiben stabil. Hash-Indizes und Verknüpfungsindizes vermeiden paarweise Suchen durch alle Gedanken. Lokale Bearbeitungen werden nicht durch spätere Exporte ersetzt. Die Originaldatei bleibt unverändert als Teil des eigenen Backups erhalten. Import und Rückkehrsicherung teilen eine Transaktion; beim Rollback werden Token, Revision und Verbrauch ebenfalls gemeinsam geprüft. Beide Plattformadapter sind gegen tatsächliche Transaktionsspeicher geprüft (Web-IndexedDB bzw. Node-SQLite mit nativer Adapterlogik); die Expo-Gerätelaufzeit bleibt offen. Ausführliches Mapping und Kompromisse: [Iteration 0.3](07-faithpath-import.md).
 
-Die zunächst gewählte Archivierung im Gesamtpayload vereinfacht atomare Sicherung und Restore, erhöht aber Kopier-/Serialisierungskosten jedes Commits. Separate unveränderliche Archiv-Blobs und inkrementelles Speichern sind vor großen realen Datenbeständen zu messen und umzusetzen. Es gibt bislang keine Laufzeitmessung auf schwachen nativen Geräten.
+Die in 0.3 zunächst gewählte Inline-Archivierung erhöhte Kopier-/Serialisierungskosten kleiner Commits. Seit 0.4 liegen unveränderliche Quellen in separaten lokalen Blobs; der öffentliche Backupvertrag enthält sie weiterhin vollständig. Es gibt bislang keine Laufzeitmessung auf schwachen nativen Geräten.
+
+## ADR-009 · Quellbezogene Entwürfe, private Archiv-Blobs und sichere Updates
+
+Version 0.4 verwendet AppData/Backup V4, privates Speicherdokument V1, SQLite physisch V3 und IndexedDB physisch V1. Capture-Entwürfe bewahren Originalfrage und Quellen-Snapshot; Abschluss und Entfernung erfolgen atomar. Noch ungesicherte Worte bleiben mit Besitzer-/Abschlusskennung in der Sitzung und werden nie als dauerhaft gespeichert ausgegeben. Beschädigte Daten führen zu einem gesperrten Reparaturbildschirm mit Rohdatenexport.
+
+Inhaltsadressierte Archiv-Blobs entlasten kleine Commits. Hauptstand, Rückkehrsicherung, Revisionsvergleich und Blob-Bereinigung teilen eine Transaktion; die Sicherung hält ihre Quellbezüge bis zum Verbrauch. Der Webworker prüft exakte Build-Identität, hält einen Vorgänger-Cache für alte Clients und erzwingt keinen Reload. Der echte 0.3→0.4-Offlinewechsel wird mit einem getrennten Kontrollbuild geprüft. Verträge, Migrationen und Grenzen: [Iteration 0.4](08-continuity-and-offline.md).

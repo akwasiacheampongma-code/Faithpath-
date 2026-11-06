@@ -3,21 +3,7 @@ import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import type { AppData } from "../../src/state/model";
 import { readFile } from "node:fs/promises";
-async function local(page: Page): Promise<AppData> {
-  return page.evaluate(
-    () =>
-      new Promise((resolve) => {
-        const request = indexedDB.open("oliva-local-v1", 1);
-        request.onsuccess = () => {
-          const q = request.result
-            .transaction("state", "readonly")
-            .objectStore("state")
-            .get("main");
-          q.onsuccess = () => resolve(q.result);
-        };
-      }),
-  ) as Promise<AppData>;
-}
+import { localData as local } from "./persistence";
 async function saved(page: Page) {
   await expect(
     page.getByText("Entwurf auf diesem Gerät gesichert.", { exact: true }),
@@ -293,7 +279,7 @@ test("Eine installierte V1-Datenbank wird ohne Verlust weitergeführt", async ({
   await page
     .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
     .click();
-  expect((await local(page)).version).toBe(3);
+  expect((await local(page)).version).toBe(4);
   expect((await local(page)).readChapters).toEqual(["MRK:4"]);
   expect((await local(page)).growthStage).toBe(3);
   expect((await local(page)).notes[0]?.text).toBe("Meine alten eigenen Worte.");

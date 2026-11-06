@@ -8,7 +8,7 @@ Erhoben am 05.11.2026. Die Bestandsanwendung bleibt unverändert. Das neue Proje
 - Alle 33 verfügbaren Remote-Branch-Spitzen lokal abgerufen und nach **Commit-Zeit** sortiert. Neuester verfügbarer Branch: `feature/simplified-step-experience-20261104`.
 - Analysierter Snapshot: **a519ce898fa33907b07d5ac7a585595127556183**, 04.11.2026, 21:22:43 UTC. Dies ist der neueste Commit-Zeitpunkt unter den abgerufenen Branch-Spitzen, keine Behauptung über den produktiv veröffentlichten Stand.
 - Vorherige Integrationsbasis: `501f24909ed984c2edf5a8b05e5ffb8d0dc5b990`, 04.11.2026. Default-Branch `main` ist älter und enthält die Anwendung unter `develop/`; er ist deshalb keine geeignete aktuelle Laufzeitbasis.
-- Separate, partiell ausgecheckte Referenz: `/workspace/faithpath-reference`. Keine Schreibzugriffe auf GitHub, kein Merge, kein Deploy.
+- Separate, partiell ausgecheckte Referenz: `/workspace/faithpath-reference`. Die Analyse liest diese Kopie. Die unabhängige neue App wird inzwischen auf einem separaten GitHub-Branch unter `oliva/` gesichert; kein Merge oder Deploy. Ein zusätzlicher OLIVA-Root-Workflow wird neu angelegt; bestehende FaithPath-Dateien bleiben unverändert.
 - Kein Root-/Unterordner-`AGENTS.md` im analysierten Git-Baum gefunden.
 
 ## Belegklassen
@@ -57,7 +57,7 @@ P0 = lokaler Kern der ersten Umsetzung; P1 = weiterer Ausbau; P2 = nach Rechte-,
 | Vier Themes · C `themes.js` | Individuelle Leseatmosphäre | Hell/Dunkel zuerst | Konsequente Tokens statt gestapelter CSS-Overrides | P0 | Themeprovider | Alle Kernansichten in Hell/Dunkel lesbar |
 | Freiwillige Erinnerungen · C `reminders-view.js` | Selbst gewählte Routine | Später | Keine Schuldtexte oder Verlustwarnungen | P1 | OS-Berechtigungen | Ohne Einwilligung keine Benachrichtigung |
 | JSON-Export / Prüfen / Restore · C `backup-*`, `import-validation.js` | Datenhoheit und Geräteverlust | Ja | Separates neues Format, klare Bestätigung vor Ersetzung | P0 | Zod, Exportadapter | Valider Roundtrip; kaputte Datei verändert keinen Bestand |
-| V5- und Legacy-Migration · C `store.js` | Alte FaithPath-Daten schützen | V5 mit ausdrücklicher Bestätigung | Seit 0.3 additive Vorschau, Originalarchiv und atomare Rückkehrsicherung; Quellen niemals überschreiben | P1 | Belegter V5-Vertrag → OLIVA-Format 3, lokale DB-Transaktion | Vorschau schreibt nichts; Wiederholung erzeugt keine Dubletten; Fehler erhalten Bestand und Sicherung. Ältere Nicht-V5-Formate bleiben offen. |
+| V5- und Legacy-Migration · C `store.js` | Alte FaithPath-Daten schützen | V5 mit ausdrücklicher Bestätigung | Seit 0.3 additive Vorschau, Originalarchiv und atomare Rückkehrsicherung; Quellen niemals überschreiben | P1 | Belegter V5-Vertrag → OLIVA-Format 4 (seit 0.4), lokale DB-Transaktion | Vorschau schreibt nichts; Wiederholung erzeugt keine Dubletten; Fehler erhalten Bestand und Sicherung. Ältere Nicht-V5-Formate bleiben offen. |
 | PWA Offline-/Update-Lifecycle · C `pwa-controller.js`, D Architektur | Lesen ohne Verbindung, sichere Updates | Ziel übernehmen | Native Offline-Bundles; Web-Vorschau mit eigenem Cache | P0/P1 | Expo-Build / Service Worker | Installierter Kern ohne Netz lesbar; Web gesondert geprüft |
 | Lizenz-/Inhaltsstatusseiten · C Navigation, D Notices | Rechte und Qualität verstehen | Ja | In-App-Quellen mit getrenntem Bibel-/Erklärung-/Bildstatus | P0 | Provenienzdateien | Rechteangabe aus Einstellungen erreichbar |
 | Hash-Deep-Links, Fokus, Tastatur · C `app-router.js`, `navigation-model.js` | Direkte Ziele und zugängliche Bedienung | Ziel übernehmen | Expo Router, eindeutiges Zurück-Verhalten | P0 | Router, Semantik | Detail-Zurück führt zum vorherigen Bereich, keine Sackgasse |
@@ -92,3 +92,7 @@ Für das neue Produkt werden deshalb die Aufgabenstruktur und Begriffserklärung
 ## Quellen im unveränderten Snapshot
 
 `README.md`, `ARCHITECTURE.md`, `CONTENT_STATUS.md`, `KNOWN_ISSUES.md`, `reports/phase7/FUNCTION_INVENTORY.md`, `reports/simplified-steps/BERICHT.md`, `reports/guided-a51/ARCHITEKTUR.md`; Implementierungen unter `src/` wie oben referenziert. Verbindlicher Snapshot-Link: https://github.com/akwasiacheampongma-code/Faithpath-/tree/a519ce898fa33907b07d5ac7a585595127556183
+
+## Umsetzungsabgleich 0.4
+
+Die Matrix oben beschreibt den analysierten Bestand und die Übernahmeentscheidung. Der neue Lieferstand ergänzt nun dauerhafte Entwürfe für Hub, Garten, einzelne Verse und geführte Schritte, eine Entwurfsübersicht, gezielte Versnavigation, neun eigene freiwillige Textfragen, vier weitere illustrierte Erzählpiloten und einen tatsächlichen Offline-Update-Test. Der große Quelltext wird bei kleinen Speicheränderungen nicht erneut geschrieben. Keine Bestands-Quizfragen oder vorhandenen Illustrationen wurden übernommen. Vollständige Erinnerungs-/Historienparität und reale Geräteabnahme bleiben offen; maßgeblich ist `delivery-status.md`.

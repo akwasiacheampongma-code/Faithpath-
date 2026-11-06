@@ -2,40 +2,20 @@ import { useState } from "react";
 import { View, Pressable, useWindowDimensions } from "react-native";
 import { router } from "expo-router";
 import { Shell } from "../src/components/Shell";
-import { T, Card, Button, Tag, Field } from "../src/components/ui";
+import { T, Card, Button, Tag } from "../src/components/ui";
 import { OliveTree } from "../src/components/Artwork";
 import { Icon } from "../src/components/Icon";
 import { STAGES } from "../src/features/garden/model";
 import { useApp } from "../src/state/store";
 import { useTheme } from "../src/design-system/theme";
+import { CaptureInput } from "../src/features/personal/CaptureInput";
+import { EXPERIENCE_QUESTION } from "../src/features/personal/capture-model";
 export default function Garden() {
   const t = useTheme(),
     { width } = useWindowDimensions(),
     data = useApp((s) => s.data),
-    mutate = useApp((s) => s.mutate),
-    busy = useApp((s) => s.busy),
     [preview, setPreview] = useState<number | null>(null),
-    [action, setAction] = useState(""),
-    [saved, setSaved] = useState(false),
     stage = preview ?? data.growthStage;
-  async function save() {
-    if (!action.trim()) return;
-    const now = new Date().toISOString();
-    if (
-      await mutate((d) => {
-        d.notes.unshift({
-          id: `action-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-          text: action.trim(),
-          kind: "action",
-          createdAt: now,
-          updatedAt: now,
-        });
-      })
-    ) {
-      setAction("");
-      setSaved(true);
-    }
-  }
   return (
     <Shell>
       <Tag icon="leaf">Dein persönlicher Garten</Tag>
@@ -188,29 +168,11 @@ export default function Garden() {
           gesucht? Wenn du möchtest, halte deine Erfahrung fest. Die App
           entscheidet nicht, ob sie „gut genug“ war.
         </T>
-        <Field
+        <CaptureInput
+          source={{ type: "experience", question: EXPERIENCE_QUESTION }}
           label="Eine freiwillig gelebte Erfahrung"
-          multiline
-          maxLength={10000}
-          value={action}
-          onChangeText={(v) => {
-            setAction(v);
-            setSaved(false);
-          }}
           placeholder="Was hast du erlebt?"
         />
-        <Button
-          disabled={!action.trim() || busy}
-          icon="check"
-          onPress={() => void save()}
-        >
-          Erfahrung festhalten
-        </Button>
-        {saved && (
-          <T accessibilityRole="alert" style={{ fontSize: 12 }}>
-            Deine Erfahrung wurde lokal in der Sammlung gespeichert.
-          </T>
-        )}
       </Card>
       <View style={{ marginTop: 25, alignItems: "flex-start" }}>
         <Button kind="ghost" onPress={() => router.replace("/wege")}>

@@ -10,4 +10,4 @@ Full notices: `assets/fonts/DMSans-OFL.txt`, `assets/fonts/CormorantGaramond-OFL
 
 Expo and React Native ecosystem: individual package licenses remain in their installed packages and lockfile-resolved distributions. Initial package metadata was based on the official Expo blank TypeScript template (0BSD); all application code is newly authored here.
 
-Generated art: three OpenAI image generation outputs; provenance and release-review status are in `art/manifest.json` and `docs/04-art-direction-and-rights.md`.
+Generated art: seven OpenAI image generation outputs; provenance and release-review status are in `art/manifest.json` and `docs/04-art-direction-and-rights.md`.

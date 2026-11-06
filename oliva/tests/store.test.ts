@@ -10,7 +10,12 @@ import { initialData } from "../src/state/model";
 import { journalDraft, commitDraft } from "../src/features/personal/model";
 import { prepareImport } from "../src/features/imports/model";
 import { faithpathFixture } from "./fixtures/faithpath-v5";
+import {
+  useVolatileDrafts,
+  holdDraft,
+} from "../src/features/personal/volatile-drafts";
 beforeEach(() => {
+  useVolatileDrafts.setState({ items: {} });
   vi.resetAllMocks();
   useApp.setState({
     data: initialData(),
@@ -22,6 +27,22 @@ beforeEach(() => {
   adapter.writeData.mockResolvedValue(undefined);
 });
 describe("Persistieren vor Bestätigung", () => {
+  it("exportiert weder einen unlesbaren Ersatzstand noch eine angeblich vollständige Sicherung bei ungesicherten Worten", async () => {
+    useApp.setState({ healthy: false });
+    await expect(useApp.getState().waitForWrites()).rejects.toThrow(
+      /Reparatursicherung/,
+    );
+    useApp.setState({ healthy: true });
+    const draft = journalDraft();
+    draft.values.text = "Meine letzten Worte.";
+    holdDraft({ draft, savedBytes: "", owner: "test", reason: "error" });
+    await expect(useApp.getState().waitForWrites()).rejects.toThrow(/Entwürfe/);
+    await useApp.getState().saveEditorDraft(draft, null);
+    expect(
+      (await useApp.getState().waitForWrites()).drafts[0]?.values,
+    ).toMatchObject({ text: draft.values.text });
+    expect(useVolatileDrafts.getState().items).toEqual({});
+  });
   it("beauftragt Import und Rückkehrsicherung in demselben Schreibvorgang und publiziert nichts bei Fehlern", async () => {
     const data = initialData(),
       plan = prepareImport(JSON.stringify(faithpathFixture()), data);

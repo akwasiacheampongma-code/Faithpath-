@@ -48,6 +48,7 @@ export default function GoalDetail() {
   const stale =
     pending &&
     pending.type !== "journal" &&
+    pending.type !== "capture" &&
     pending.values.baseRevision !== goal.revision;
   async function begin(type: "goal" | "step" | "review", stepId?: string) {
     if (!goal) return;
@@ -103,7 +104,13 @@ export default function GoalDetail() {
     if (await useApp.getState().saveEditorDraft(draft, null)) setOpen(true);
   }
   async function reconnect() {
-    if (!pending || pending.type === "journal" || !goal) return;
+    if (
+      !pending ||
+      pending.type === "journal" ||
+      pending.type === "capture" ||
+      !goal
+    )
+      return;
     const updated = {
       ...pending,
       values: { ...pending.values, baseRevision: goal.revision },

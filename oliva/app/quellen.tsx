@@ -58,7 +58,8 @@ export default function Sources() {
           </T>
           <T style={{ fontSize: 12, color: t.muted }}>
             Landschaft von Galiläa · Boot nach dem Sturm (Markus 4,35–41) · ein
-            Garten als Deutung zu Genesis. Visuelle Pilotprüfung erfolgt;
+            Garten als Deutung zu Genesis · Noah · Abraham · Jesu Geburt nach
+            Lukas · Ostermorgen nach Markus. Visuelle Pilotprüfung erfolgt;
             historische und theologische Veröffentlichungsgates sind offen.
           </T>
         </Card>

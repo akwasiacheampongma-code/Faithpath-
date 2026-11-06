@@ -2,14 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { View, Pressable, ScrollView, useWindowDimensions } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Shell } from "../../src/components/Shell";
-import {
-  T,
-  Button,
-  Card,
-  Field,
-  IconButton,
-  Tag,
-} from "../../src/components/ui";
+import { T, Button, Card, IconButton, Tag } from "../../src/components/ui";
 import { Icon } from "../../src/components/Icon";
 import { SwordArt } from "../../src/components/Artwork";
 import { useTheme } from "../../src/design-system/theme";
@@ -25,6 +18,10 @@ import {
 import { PATHS, pathById } from "../../src/features/paths/catalog";
 import { markRead, chapterId, countBookRead } from "../../src/state/model";
 import { highlightBackground } from "../../src/features/bible/highlights";
+import { CaptureInput } from "../../src/features/personal/CaptureInput";
+import { TextCheck } from "../../src/features/paths/TextCheck";
+import { StoryCard } from "../../src/features/bible/StoryCard";
+import { sceneFor } from "../../src/features/bible/scenes";
 export default function Reader() {
   const params = useLocalSearchParams<{
       book: string;
@@ -73,16 +70,37 @@ export default function Reader() {
     [selected, setSelected] = useState<number | null>(
       params.verse ? Number(params.verse) : null,
     ),
-    [note, setNote] = useState(""),
-    [saved, setSaved] = useState(false),
     [ack, setAck] = useState(false);
   const lastOpened = useRef("");
+  const scroll = useRef<React.ComponentRef<typeof ScrollView>>(null),
+    offset = useRef(0),
+    verseViews = useRef(new Map<number, React.ComponentRef<typeof View>>()),
+    pendingJump = useRef<number | null>(null),
+    jumpRequest = useRef(0);
+  function jumpToVerse(verse: number) {
+    const request = ++jumpRequest.current;
+    const target = verseViews.current.get(verse);
+    if (!target || !scroll.current) {
+      pendingJump.current = verse;
+      return;
+    }
+    target.measureInWindow((_x, y) =>
+      scroll.current?.measureInWindow((_sx, sy) => {
+        if (request !== jumpRequest.current) return;
+        const nextOffset = Math.max(0, offset.current + y - sy - 24);
+        offset.current = nextOffset;
+        scroll.current?.scrollTo({
+          y: nextOffset,
+          animated: false,
+        });
+        pendingJump.current = null;
+      }),
+    );
+  }
   const openKey = JSON.stringify(ref);
   useEffect(() => {
     setAck(false);
     setSelected(params.verse ? Number(params.verse) : null);
-    setSaved(false);
-    setNote("");
     setMode(params.mode === "deep" ? "deep" : "read");
     if (valid && lastOpened.current !== openKey) {
       lastOpened.current = openKey;
@@ -90,7 +108,20 @@ export default function Reader() {
         d.reading = ref;
       });
     }
+    if (params.verse) pendingJump.current = Number(params.verse);
+    else {
+      pendingJump.current = null;
+      offset.current = 0;
+      scroll.current?.scrollTo({ y: 0, animated: false });
+    }
   }, [openKey]);
+  useEffect(() => {
+    if (params.verse) {
+      setSelected(Number(params.verse));
+      pendingJump.current = Number(params.verse);
+      requestAnimationFrame(() => jumpToVerse(Number(params.verse)));
+    }
+  }, [params.verse, openKey]);
   const back = () => {
     if (stepKey && path)
       router.dismissTo({ pathname: "/weg/[id]", params: { id: path.id } });
@@ -105,31 +136,6 @@ export default function Reader() {
       })
     )
       setAck(true);
-  }
-  async function saveNote() {
-    if (!note.trim() || selected === null) return;
-    const now = new Date().toISOString(),
-      id = `note-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-    if (
-      await mutate((d) => {
-        d.notes.unshift({
-          id,
-          text: note.trim(),
-          kind: "note",
-          ref: {
-            book: ref.book,
-            chapter: ref.chapter,
-            from: selected,
-            to: selected,
-          },
-          createdAt: now,
-          updatedAt: now,
-        });
-      })
-    ) {
-      setNote("");
-      setSaved(true);
-    }
   }
   const verseId =
       selected !== null ? `${ref.book}:${ref.chapter}:${selected}` : "",
@@ -153,7 +159,13 @@ export default function Reader() {
       });
   }
   return (
-    <Shell reader>
+    <Shell
+      reader
+      scrollRef={scroll}
+      onScroll={(e) => {
+        offset.current = e.nativeEvent.contentOffset.y;
+      }}
+    >
       <View
         style={{ maxWidth: 860, width: "100%", alignSelf: "center", gap: 22 }}
       >
@@ -393,7 +405,11 @@ export default function Reader() {
                     vor. Der Bibeltext ist vollständig lesbar.
                   </T>
                 )}
+                {context && <TextCheck reference={context.ref} />}
               </Card>
+            )}
+            {mode === "deep" && sceneFor(ref) && (
+              <StoryCard scene={sceneFor(ref)!} context />
             )}
             <View
               style={{
@@ -411,19 +427,56 @@ export default function Reader() {
                 Tippe auf einen Vers, um ihn zu markieren, zu merken oder eine
                 Notiz zu schreiben.
               </T>
+              {data.drafts
+                .filter(
+                  (d) =>
+                    d.type === "capture" &&
+                    d.values.source.type === "verse" &&
+                    d.values.source.ref.book === ref.book &&
+                    d.values.source.ref.chapter === ref.chapter,
+                )
+                .map((d) => {
+                  if (d.type !== "capture" || d.values.source.type !== "verse")
+                    return null;
+                  const source = d.values.source;
+                  return (
+                    <Button
+                      key={d.id}
+                      kind="secondary"
+                      icon="pen"
+                      onPress={() => {
+                        setSelected(source.ref.from!);
+                        requestAnimationFrame(() =>
+                          jumpToVerse(source.ref.from!),
+                        );
+                      }}
+                    >
+                      Notizentwurf zu {referenceLabel(source.ref)} fortsetzen
+                    </Button>
+                  );
+                })}
               {verses.map((v) => {
                 const key = `${ref.book}:${ref.chapter}:${v.n}`,
                   color = data.highlights[key];
                 return (
-                  <View key={v.n}>
+                  <View
+                    key={v.n}
+                    collapsable={false}
+                    ref={(node) => {
+                      if (node) verseViews.current.set(v.n, node);
+                      else verseViews.current.delete(v.n);
+                    }}
+                    onLayout={() => {
+                      if (pendingJump.current === v.n)
+                        requestAnimationFrame(() => jumpToVerse(v.n));
+                    }}
+                  >
                     <Pressable
                       accessibilityRole="button"
                       accessibilityLabel={`Vers ${v.n}: ${v.text}`}
                       accessibilityState={{ selected: selected === v.n }}
                       onPress={() => {
                         setSelected(selected === v.n ? null : v.n);
-                        setNote("");
-                        setSaved(false);
                       }}
                       style={{
                         paddingVertical: 5,
@@ -550,26 +603,61 @@ export default function Reader() {
                         >
                           Mit einem Vorhaben verbinden
                         </Button>
-                        <Field
+                        <CaptureInput
+                          key={key}
+                          source={{
+                            type: "verse",
+                            ref: {
+                              book: ref.book,
+                              chapter: ref.chapter,
+                              from: v.n,
+                              to: v.n,
+                            },
+                          }}
                           label={`Notiz zu Vers ${v.n}`}
-                          value={note}
-                          onChangeText={setNote}
-                          multiline
-                          maxLength={10000}
                           placeholder="Was möchtest du festhalten?"
                         />
-                        <Button
-                          icon="check"
-                          disabled={!note.trim() || busy}
-                          onPress={() => void saveNote()}
-                        >
-                          Notiz speichern
-                        </Button>
-                        {saved && (
-                          <T accessibilityRole="alert" style={{ fontSize: 11 }}>
-                            Deine Notiz wurde auf diesem Gerät gespeichert.
-                          </T>
-                        )}
+                        {data.notes
+                          .filter(
+                            (n) =>
+                              n.ref?.book === ref.book &&
+                              n.ref.chapter === ref.chapter &&
+                              (!n.ref.from || n.ref.from <= v.n) &&
+                              (!n.ref.to || n.ref.to >= v.n),
+                          )
+                          .map((n) => (
+                            <View
+                              key={n.id}
+                              style={{
+                                gap: 9,
+                                paddingTop: 14,
+                                borderTopWidth: 1,
+                                borderColor: t.line,
+                              }}
+                            >
+                              <T
+                                variant="label"
+                                style={{ fontSize: 9, color: t.muted }}
+                              >
+                                DEINE GESPEICHERTEN WORTE
+                              </T>
+                              <T selectable style={{ fontSize: 14 }}>
+                                {n.text}
+                              </T>
+                              <Button
+                                kind="ghost"
+                                icon="pen"
+                                onPress={() =>
+                                  router.push({
+                                    pathname: "/sammlung",
+                                    params: { note: n.id },
+                                  })
+                                }
+                              >
+                                Diesen Eintrag in der Sammlung bearbeiten
+                              </Button>
+                            </View>
+                          ))}
                       </Card>
                     )}
                   </View>

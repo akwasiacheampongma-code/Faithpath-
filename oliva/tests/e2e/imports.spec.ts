@@ -3,24 +3,7 @@ import { readFile } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
 import { faithpathFixture } from "../fixtures/faithpath-v5";
 import type { AppData } from "../../src/state/model";
-async function stored(page: Page, key = "main"): Promise<any> {
-  return page.evaluate(
-    (key) =>
-      new Promise((resolve, reject) => {
-        const r = indexedDB.open("oliva-local-v1", 1);
-        r.onsuccess = () => {
-          const db = r.result,
-            tx = db.transaction("state", "readonly"),
-            q = tx.objectStore("state").get(key);
-          q.onsuccess = () => resolve(q.result);
-          q.onerror = () => reject(q.error);
-          tx.oncomplete = () => db.close();
-        };
-        r.onerror = () => reject(r.error);
-      }),
-    key,
-  );
-}
+import { storedData as stored } from "./persistence";
 async function choose(page: Page, text: string) {
   const chooser = page.waitForEvent("filechooser");
   await page

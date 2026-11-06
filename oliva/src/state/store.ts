@@ -5,6 +5,7 @@ import {
   grow,
   initialData,
   assertStorageBudget,
+  cloneData,
   type AppData,
 } from "./model";
 import {
@@ -15,6 +16,10 @@ import {
 import type { WriteOptions } from "../features/imports/schema";
 import { saveDraft as updateDraft } from "../features/personal/model";
 import type { Draft, DraftStamp } from "../features/personal/schema";
+import {
+  useVolatileDrafts,
+  acknowledgeDrafts,
+} from "../features/personal/volatile-drafts";
 
 export type Store = {
   data: AppData;
@@ -60,7 +65,7 @@ export const useApp = create<Store>((set, get) => {
       if (!get().ready || !get().healthy) return false;
       try {
         const current = get().data,
-          next = JSON.parse(JSON.stringify(current)) as AppData;
+          next = cloneData(current);
         fn(next);
         if (updateGrowth) grow(next);
         next.revision = current.revision + 1;
@@ -68,6 +73,7 @@ export const useApp = create<Store>((set, get) => {
         assertStorageBudget(next);
         await writeData(next, current.revision, options);
         set({ data: next, error: null });
+        acknowledgeDrafts(next.drafts);
         return true;
       } catch (error) {
         set({ error: message(error) });
@@ -117,6 +123,16 @@ export const useApp = create<Store>((set, get) => {
     clearError: () => set({ error: null }),
     waitForWrites: async () => {
       while (tail) await tail;
+      await new Promise<void>((resolve) => setTimeout(resolve, 0));
+      while (tail) await tail;
+      if (!get().ready || !get().healthy)
+        throw new Error(
+          "Die lokalen Daten konnten nicht sicher gelesen werden. Verwende die Reparatursicherung.",
+        );
+      if (Object.keys(useVolatileDrafts.getState().items).length)
+        throw new Error(
+          "Einige Entwürfe sind noch nicht dauerhaft gesichert. Bewahre sie zuerst unter Sammlung → Entwürfe.",
+        );
       return get().data;
     },
     refresh: async () => {

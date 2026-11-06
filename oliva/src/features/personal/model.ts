@@ -1,4 +1,6 @@
 import type { AppData, Note } from "../../state/model";
+import { commitCapture } from "./capture-model";
+import { captureKey } from "./capture-schema";
 import {
   draftSchema,
   goalSchema,
@@ -28,6 +30,8 @@ export function saveDraft(
 ) {
   const current = data.drafts.find((d) => d.key === next.key);
   expectStamp(current, expected);
+  if (next.type === "capture" && next.key !== captureKey(next.values.source))
+    throw new Error("Entwurf und Quelle passen nicht zusammen.");
   const parsed = draftSchema.parse({
     ...next,
     revision: (current?.revision ?? 0) + 1,
@@ -69,12 +73,15 @@ export function commitDraft(
   key: string,
   expected: DraftStamp,
   at: string,
+  options: { completeGuided?: boolean } = {},
 ) {
   const draft = data.drafts.find((d) => d.key === key);
   expectStamp(draft, expected);
   if (!draft) throw new Error("Entwurf fehlt.");
   let result = "";
-  if (draft.type === "journal") {
+  if (draft.type === "capture") {
+    result = commitCapture(data, draft, at, options.completeGuided ?? true);
+  } else if (draft.type === "journal") {
     const v = draft.values,
       text = v.text.trim();
     if (!text) throw new Error("Schreibe zuerst einen Gedanken.");

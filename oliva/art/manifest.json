@@ -93,6 +93,225 @@
           "sha256": "46a740a0939f66917e68d445895dc37927b0d28cac649437a377546ef143b3ff"
         }
       ]
+    },
+    {
+      "id": "easter-dawn",
+      "book": "MRK",
+      "chapter": 16,
+      "verses": [
+        1,
+        8
+      ],
+      "scene": "Drei Frauen vor einem geöffneten Felsgrab im Morgenlicht. Künstlerische Interpretation zu Markus 16,1–8; kein nachgewiesener Ort oder historisches Porträt.",
+      "generator": "OpenAI image_gen tool",
+      "generated_on": "2026-11-06",
+      "prompt_version": "oliva-cinema-v1-easter-dawn-01",
+      "style_version": "oliva-cinema-v1",
+      "master": "art/masters/easter-dawn.png",
+      "master_sha256": "552e45f813824ad813066e62614023ddee8d8eff71d68e1567b62792e938166b",
+      "generation_original": "/workspace/generated_images/exec-533c2ce1-9315-4322-81ba-3984ee9cf55b.png",
+      "license_status": "Generated for this project under provider terms; public-release rights review pending",
+      "approval": {
+        "visual_pilot": "reviewed by implementing agent: three back-view figures, dawn light, no modern objects or graphic violence; local prototype use",
+        "historical": "Primary-source material vocabulary researched; specific reconstruction not claimed; independent specialist review pending",
+        "theological": "pending specialist review",
+        "public_release": "not approved"
+      },
+      "sources": [
+        {
+          "title": "Markus 16,1–8, Luther 1912",
+          "kind": "narrative source; bundled public-domain Bible"
+        },
+        {
+          "title": "Israel Antiquities Authority, Jerusalem, Emeq Lavan, preliminary report (2015)",
+          "url": "https://hadashot.iaa.org.il/Report_Detail_Eng.aspx?id=23793",
+          "use": "General Second Temple burial architecture only; not evidence of the depicted location"
+        },
+        {
+          "title": "Avni and Greenhut, The Akeldama Tombs (IAA Reports, 1996)",
+          "url": "https://publications.iaa.org.il/iaareports/74/",
+          "use": "General burial-context research; no illustration or photograph copied"
+        }
+      ],
+      "variants": [
+        {
+          "file": "assets/images/easter-dawn-1280.webp",
+          "purpose": "hero",
+          "width": 1280,
+          "height": 853,
+          "bytes": 194274,
+          "sha256": "9a4a93dd0798fedf66d0bad96e3ada32cf108b2a127cfabfd9d08f8fe3266af3"
+        },
+        {
+          "file": "assets/images/easter-dawn-1024.webp",
+          "purpose": "story",
+          "width": 1024,
+          "height": 683,
+          "bytes": 138806,
+          "sha256": "f90a2e9b27a301c7f774670bd720cf6b661fc82dbd71a96dc95b60ed1efde885"
+        },
+        {
+          "file": "assets/images/easter-dawn-640.webp",
+          "purpose": "card",
+          "width": 640,
+          "height": 427,
+          "bytes": 58428,
+          "sha256": "f4d44b2018030d521f397d6338adad362198d1557e0e4e081d16701d08e9547d"
+        }
+      ]
+    },
+    {
+      "id": "noah",
+      "book": "GEN",
+      "chapter": 8,
+      "verses": [
+        6,
+        12
+      ],
+      "scene": "Die Taube mit einem Olivenzweig bei zurückgehendem Wasser. Freie Interpretation zu Genesis 8,6–12; Bauform der Arche und Landschaft nicht rekonstruiert.",
+      "generator": "OpenAI image_gen tool",
+      "generated_on": "2026-11-06",
+      "prompt_version": "oliva-cinema-v1-noah-01",
+      "prompt_record": "art/jobs/noah.json",
+      "style_version": "oliva-cinema-v1",
+      "master": "art/masters/noah.png",
+      "master_sha256": "ccaaa0f40dc17a5d932d798618b210b7069df91dc71fd6057118d74d76846121",
+      "generation_original": "/workspace/generated_images/exec-f9503c53-30d6-494d-8724-4bad69cf8894.png",
+      "license_status": "Generated for this project under provider terms; public-release rights review pending",
+      "approval": {
+        "visual_pilot": "Viewed: calm receding water, plain timber form, dove and olive motif, no human suffering or modern objects. Ark shape and vegetation are interpretation.",
+        "historical": "Not a reconstruction; independent specialist review pending",
+        "theological": "pending specialist review",
+        "public_release": "not approved"
+      },
+      "variants": [
+        {
+          "file": "assets/images/noah-1280.webp",
+          "purpose": "hero",
+          "width": 1280,
+          "height": 853,
+          "bytes": 174706,
+          "sha256": "2f353d3495b4017d13d8f82b6461f295929bfa9ab41408375614c05857f7ef7e"
+        },
+        {
+          "file": "assets/images/noah-1024.webp",
+          "purpose": "story",
+          "width": 1024,
+          "height": 683,
+          "bytes": 126202,
+          "sha256": "0c5faff234bbb6907e4caa2485744b7448ee71ac73d38cf209fa01e140c91f6e"
+        },
+        {
+          "file": "assets/images/noah-640.webp",
+          "purpose": "card",
+          "width": 640,
+          "height": 427,
+          "bytes": 54448,
+          "sha256": "94d711765575c9dc299415060b90201adf72e4fc072b7f2a0b0abe4f563dbdf5"
+        }
+      ]
+    },
+    {
+      "id": "abraham",
+      "book": "GEN",
+      "chapter": 15,
+      "verses": [
+        1,
+        6
+      ],
+      "scene": "Abraham unter den Sternen. Freie Interpretation zu Genesis 15,1–6; Aussehen, Zelt, Kleidung und Landschaft sind frei gestaltet.",
+      "generator": "OpenAI image_gen tool",
+      "generated_on": "2026-11-06",
+      "prompt_version": "oliva-cinema-v1-abraham-01",
+      "prompt_record": "art/jobs/abraham.json",
+      "style_version": "oliva-cinema-v1",
+      "master": "art/masters/abraham.png",
+      "master_sha256": "5b6211434b29b704d9f24add502d06d11f1b5ca3d7049a39e5ca491df5c1b67a",
+      "generation_original": "/workspace/generated_images/exec-c8f862c8-28e7-42bc-995a-078f880648f7.png",
+      "license_status": "Generated for this project under provider terms; public-release rights review pending",
+      "approval": {
+        "visual_pilot": "Viewed: modest back-view figure, simple tent, natural stars and landscape, no visible God or portrait claim. No figure continuity claim across scenes.",
+        "historical": "Not a reconstruction; independent specialist review pending",
+        "theological": "pending specialist review",
+        "public_release": "not approved"
+      },
+      "variants": [
+        {
+          "file": "assets/images/abraham-1280.webp",
+          "purpose": "hero",
+          "width": 1280,
+          "height": 853,
+          "bytes": 176406,
+          "sha256": "28538c2ab988d3a65c8629cdc4974a4e85ae627ef2ffa8ba7106da252e7c4ef4"
+        },
+        {
+          "file": "assets/images/abraham-1024.webp",
+          "purpose": "story",
+          "width": 1024,
+          "height": 683,
+          "bytes": 118658,
+          "sha256": "8a3147a71975be7ddef6036a3eb2ddd00d35e54299de19fe640cccc725eaabf5"
+        },
+        {
+          "file": "assets/images/abraham-640.webp",
+          "purpose": "card",
+          "width": 640,
+          "height": 427,
+          "bytes": 48078,
+          "sha256": "6cc393ef2f8e0a2996fa29455681b452ed0847043ed4bb275c293009fb667a1e"
+        }
+      ]
+    },
+    {
+      "id": "nativity",
+      "book": "LUK",
+      "chapter": 2,
+      "verses": [
+        1,
+        20
+      ],
+      "scene": "Maria, Josef und das gewickelte Kind an einer Krippe mit Hirten im Hintergrund. Interpretation nur zum Lukasbericht; keine Sterndeuter oder leitender Stern ergänzt.",
+      "generator": "OpenAI image_gen tool",
+      "generated_on": "2026-11-06",
+      "prompt_version": "oliva-cinema-v1-nativity-01",
+      "prompt_record": "art/jobs/nativity.json",
+      "style_version": "oliva-cinema-v1",
+      "master": "art/masters/nativity.png",
+      "master_sha256": "e8d01600a7f676b6d5da7fd5c82fd1fa51e172f2fb44e147b28856c17d285121",
+      "generation_original": "/workspace/generated_images/exec-94e3f1d0-45e3-4fc1-a2db-4a455ac0eb3c.png",
+      "license_status": "Generated for this project under provider terms; public-release rights review pending",
+      "approval": {
+        "visual_pilot": "Viewed: fully wrapped infant, modest natural garments, no obvious anatomy defects, simple sheltered room, no Magi/star/modern Christmas objects. Faces, room and number of shepherds are interpretation.",
+        "historical": "Not a reconstruction; independent specialist review pending",
+        "theological": "pending specialist review",
+        "public_release": "not approved"
+      },
+      "variants": [
+        {
+          "file": "assets/images/nativity-1280.webp",
+          "purpose": "hero",
+          "width": 1280,
+          "height": 853,
+          "bytes": 189730,
+          "sha256": "89398026262327099b6c07682693af29138e8d8f4a49cb1221b005d7ec69bfe3"
+        },
+        {
+          "file": "assets/images/nativity-1024.webp",
+          "purpose": "story",
+          "width": 1024,
+          "height": 683,
+          "bytes": 132990,
+          "sha256": "e01b3aba5cb414afb30a766f73392ebcad19d70cf8dde92eba0e32ae10f355a1"
+        },
+        {
+          "file": "assets/images/nativity-640.webp",
+          "purpose": "card",
+          "width": 640,
+          "height": 427,
+          "bytes": 59176,
+          "sha256": "7c4309b24483064048b68d073e2b983dbf3b5a1390905e7c5d144f14c685be21"
+        }
+      ]
     }
   ]
 }

@@ -1,28 +1,30 @@
 {
-  "version": "0.3.0",
-  "generated_on": "2026-11-06T10:11:00.556697+00:00",
+  "version": "0.4.0",
+  "generated_on": "2026-11-06T14:50:15.361174+00:00",
   "hash_method": "SHA256(sorted(relative_path + NUL + SHA256(file) + LF))",
   "artifacts": [
     {
       "directory": "dist",
-      "file_count": 48,
-      "total_bytes": 8663981,
-      "aggregate_sha256": "2809efcaaf635b42367066c0f0139161571268024a08e1c43e180564dc2486a9",
+      "file_count": 60,
+      "total_bytes": 10181292,
+      "aggregate_sha256": "04ce2a4225ab89d3c5cde8c41423907903a21321200ee1e4fd71db20f65212b0",
       "kind": "web export"
     },
     {
       "directory": "dist-android",
-      "file_count": 35,
-      "total_bytes": 14023117,
-      "aggregate_sha256": "6378b92f08aaae279464425d048949b108a68aacfd5c98652f7c1ae3aca79f65",
-      "kind": "native JS/assets export; not APK"
+      "file_count": 47,
+      "total_bytes": 15563192,
+      "aggregate_sha256": "463aed6ec85089081509c197dc55f474912fab7edcf5453a0b7c5bd452075a0e",
+      "kind": "native JS/assets/Hermes export; not APK",
+      "source_limit": "Export before final context-image aspect correction; final JS/assets export follows separately."
     },
     {
       "directory": "dist-ios",
-      "file_count": 32,
-      "total_bytes": 14037988,
-      "aggregate_sha256": "396ad0b0efd431dbe010b7410c3a5aee27c946aa368a74477f6652bce60d1269",
-      "kind": "native JS/assets export; not IPA"
+      "file_count": 44,
+      "total_bytes": 15578118,
+      "aggregate_sha256": "8b5d39d752b592f8f27775200adb5cfe802f8febe7821d5ca135a3105146b3f4",
+      "kind": "native JS/assets/Hermes export; not IPA",
+      "source_limit": "Export before final context-image aspect correction; final JS/assets export follows separately."
     }
   ]
 }

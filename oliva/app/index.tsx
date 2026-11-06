@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { View, Image, useWindowDimensions, Pressable } from "react-native";
 import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
@@ -10,7 +9,6 @@ import {
   Tag,
   SectionTitle,
   Progress,
-  Field,
 } from "../src/components/ui";
 import { Icon } from "../src/components/Icon";
 import { OliveTree, SwordArt } from "../src/components/Artwork";
@@ -26,16 +24,22 @@ import {
 import { countBookRead } from "../src/state/model";
 import { dailyVerse } from "../src/features/bible/daily";
 import { STAGES } from "../src/features/garden/model";
+import { CaptureInput } from "../src/features/personal/CaptureInput";
+import { dailySource } from "../src/features/personal/capture-model";
+import { useVolatileDrafts } from "../src/features/personal/volatile-drafts";
 export default function Home() {
   const t = useTheme(),
     { width } = useWindowDimensions(),
     columns = width >= 1180,
     data = useApp((s) => s.data),
-    mutate = useApp((s) => s.mutate),
-    busy = useApp((s) => s.busy);
-  const [thought, setThought] = useState(""),
-    [saved, setSaved] = useState(false),
-    active = pathById(data.activePath ?? ""),
+    volatileKeys = useVolatileDrafts((s) =>
+      JSON.stringify(Object.keys(s.items)),
+    );
+  const draftCount = new Set([
+    ...data.drafts.map((d) => d.key),
+    ...(JSON.parse(volatileKeys) as string[]),
+  ]).size;
+  const active = pathById(data.activePath ?? ""),
     book = bookByCode(data.reading.book),
     read = countBookRead(data, data.reading.book);
   const date = new Date(),
@@ -46,25 +50,6 @@ export default function Home() {
           ? "Schön, dass du da bist"
           : "Guten Abend";
   const { ref: verseRef, text: verse } = dailyVerse(date);
-  async function save() {
-    if (!thought.trim()) return;
-    const now = new Date().toISOString(),
-      id = `thought-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-    if (
-      await mutate((d) => {
-        d.notes.unshift({
-          id,
-          text: thought.trim(),
-          kind: "reflection",
-          createdAt: now,
-          updatedAt: now,
-        });
-      })
-    ) {
-      setThought("");
-      setSaved(true);
-    }
-  }
   return (
     <Shell wide>
       <View
@@ -215,6 +200,8 @@ export default function Home() {
                         params: {
                           book: data.reading.book,
                           chapter: data.reading.chapter,
+                          from: data.reading.from,
+                          to: data.reading.to,
                         },
                       })
                     : router.push("/start")
@@ -369,40 +356,29 @@ export default function Home() {
             <T style={{ color: t.muted, fontSize: 12 }}>
               Wofür möchtest du heute einen Moment dankbar sein?
             </T>
-            <Field
+            <CaptureInput
+              source={dailySource()}
               label="Deine freiwillige Tagesreflexion"
               placeholder="Hier ist Platz für deine Worte …"
-              value={thought}
-              onChangeText={(v) => {
-                setThought(v);
-                setSaved(false);
-              }}
-              multiline
-              maxLength={10000}
             />
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 10,
-              }}
-            >
-              <T variant="small" style={{ color: t.muted, fontSize: 10 }}>
-                {saved
-                  ? "Dein Gedanke wurde lokal gespeichert."
-                  : "Privat auf diesem Gerät."}
+          </Card>
+          {draftCount > 0 && (
+            <Card style={{ gap: 12 }}>
+              <T variant="heading">Deine angefangenen Worte.</T>
+              <T variant="small" style={{ color: t.muted }}>
+                {draftCount}{" "}
+                {draftCount === 1 ? "Entwurf wartet" : "Entwürfe warten"} auf
+                dich. Du kannst jederzeit in Ruhe weitermachen.
               </T>
               <Button
                 kind="secondary"
-                icon="check"
-                disabled={!thought.trim() || busy}
-                onPress={() => void save()}
+                icon="pen"
+                onPress={() => router.push("/sammlung?tab=Entwürfe")}
               >
-                Festhalten
+                Deine Entwürfe ansehen
               </Button>
-            </View>
-          </Card>
+            </Card>
+          )}
         </View>
         <View style={{ width: columns ? 264 : "100%", gap: 20 }}>
           <Card

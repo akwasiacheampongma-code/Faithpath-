@@ -1,0 +1,21 @@
+{
+  "baseline_version": "0.3.0",
+  "target_version": "0.4.0",
+  "synthetic_data": true,
+  "passed": false,
+  "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true }) with timeout 30000ms\n  - waiting for getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true })\n",
+  "worker_diagnostic": {
+    "expected": "oliva-22a4034bda16f461",
+    "controller": "http://127.0.0.1:41247/sw.js",
+    "active": "activated",
+    "waiting": "installed",
+    "reported": "message timeout",
+    "caches": [
+      "oliva-442c80676e4443d6",
+      "oliva-22a4034bda16f461"
+    ]
+  },
+  "checkedAt": "2026-11-06T12:17:40.185Z",
+  "historical": true,
+  "resolution": "Explicit build-matched activation handshake; see final offline-upgrade.json for actual rerun."
+}

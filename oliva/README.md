@@ -2,9 +2,13 @@
 
 Eigenständige lokale Bibel- und Glaubens-App auf Expo / React Native / TypeScript. Entwickelt in einem separaten Projekt; die bestehende FaithPath-App wurde nicht verändert.
 
-**Stand: ausführbarer lokaler Kern 0.3, keine abgeschlossene Gesamtfreigabe.** 66 Bibelbücher, Reader, neun geführte Wege, sieben Baumstadien, 66 Buchschwert-Identitäten, Sammlung und Sicherungen sind implementiert. Persönliche Vorhaben haben eigene Schritte, Archiv, bewahrte Rückblicke und dauerhafte Entwürfe. Version 0.3 ergänzt den ausdrücklich bestätigten FaithPath-V5-Import mit Vorschau, Originalarchiv und atomarer Rückkehrsicherung. Cloud-Sync, KI-Begleiter, Audio, vollständige FaithPath-Parität und fachlich freigegebene Kapitelredaktion bleiben offen. Maßgeblich ist [docs/delivery-status.md](docs/delivery-status.md).
+**Stand: ausführbarer lokaler Kern 0.4.0, keine abgeschlossene Gesamtfreigabe.** 66 Bibelbücher, Reader, neun geführte Wege, sieben Baumstadien, 66 Buchschwert-Identitäten, Sammlung und Sicherungen sind implementiert. Persönliche Vorhaben haben eigene Schritte, Archiv, bewahrte Rückblicke und dauerhafte Entwürfe. Der bestätigte FaithPath-V5-Import bietet Vorschau, Originalarchiv und atomare Rückkehrsicherung. Version 0.4 bewahrt zusätzlich die kleinen Eingaben im Hub, Garten, Reader und Lernweg, trennt große Originalarchive vom Speicherdokument und ergänzt freiwillige Textfragen sowie vier illustrierte Erzählpiloten. Cloud-Sync, KI-Begleiter, Audio, vollständige FaithPath-Parität und fachlich freigegebene Kapitelredaktion bleiben offen. Maßgeblich ist [docs/delivery-status.md](docs/delivery-status.md).
 
-## Version 0.3 ausprobieren
+## Version 0.4 ausprobieren
+
+Eine Tagesreflexion, Gartenerfahrung, Versnotiz oder Weg-Reflexion beginnen und den Bereich wechseln: **Sammlung → Entwürfe** führt zur richtigen Quelle zurück. Erst die ausdrückliche Aktion erzeugt einen fertigen Eintrag. Bei Speicherfehlern bleiben letzte Worte innerhalb der Sitzung erreichbar und gesondert exportierbar; dieser RAM-Puffer überlebt keinen Prozessabbruch. Details: [Iteration 0.4](docs/08-continuity-and-offline.md).
+
+Unter **Tiefer verstehen** gibt es freiwillige Textfragen mit Originalversen als Beleg, ohne Punkte oder Einfluss auf den Fortschritt. **Bibel → Eine Geschichte entdecken** öffnet vier neue Erzählpiloten. Illustration, Einordnung und Bibeltext bleiben unterscheidbar.
 
 **Einstellungen → FaithPath-Daten mitnehmen:** V5-Datei auswählen, Ergänzungen und Konflikte prüfen, ausdrücklich übernehmen. Die Originalquelle bleibt einsehbar und exportierbar. Historische Quellen erscheinen am importierten Vorhaben. Die Rückkehr zum Stand vor dem letzten Import wird separat bestätigt. OTB-Stellen werden nicht als Lutherbibel ausgegeben. Limits: 10 MiB Quelle, 64 MiB gesamte OLIVA-Sicherung. Details: [Importvertrag und Grenzen](docs/07-faithpath-import.md).
 
@@ -13,7 +17,7 @@ Im Bereich **Wege → Deine persönlichen Vorhaben** kannst du ein eigenes Anlie
 Im lokalen Arbeitsbereich liegt ein fertiger Webexport. Nach einem GitHub-Checkout zuerst wie unten bauen:
 
 ```sh
-cd faithpath-next
+cd oliva
 node scripts/serve.mjs dist
 ```
 
@@ -21,16 +25,16 @@ Danach http://localhost:4173 öffnen.
 
 ## Lokal starten
 
-Getestete Umgebung: Node 24.22.1, npm 11.9.0, Python 3 für die optionale Korpusprüfung. Kein Konto und keine API-Schlüssel nötig.
+Nach Checkout liegt die App im Unterordner `oliva/`; im Arbeitsbereich dieser Sitzung unter `/workspace/faithpath-next`. Getestete Umgebung: Node 24.22.1, npm 11.9.0, Python 3 für die optionale Korpusprüfung. Kein Konto und keine API-Schlüssel nötig.
 
 ```sh
-cd faithpath-next
+cd oliva
 npm ci
 npm run build
 npm run preview
 ```
 
-Öffnen: http://localhost:4173. Der Web-Build wird für Offline-Nutzung vollständig vorgeladen; der erste Aufruf braucht den lokalen Server. Nach abgeschlossener Service-Worker-Installation funktioniert der Kern auch bei abgeschaltetem Netz. Ein Web-Service-Worker benötigt HTTPS oder localhost, nicht `file://`.
+Öffnen: http://localhost:4173. Der Web-Build wird für Offline-Nutzung vollständig vorgeladen; der erste Aufruf braucht den lokalen Server. Sobald „Für den Offline-Neustart bereit.“ erscheint, ist das vollständige Paket für genau diesen Build installiert und der Kern funktioniert bei abgeschaltetem Netz. Ein Web-Service-Worker benötigt HTTPS oder localhost, nicht `file://`.
 
 Entwicklungsmodus:
 
@@ -38,7 +42,7 @@ Entwicklungsmodus:
 npm run web
 ```
 
-Web-Entwicklung unter http://localhost:8081. Der Service Worker wird nur im Produktionsbuild registriert. Bei Wechseln zwischen alten lokalen Builds ggf. einen frischen Browserkontext verwenden. Niemals echte persönliche Daten für technische Experimente löschen.
+Web-Entwicklung unter http://localhost:8081. Der Service Worker wird nur im Produktionsbuild registriert. Ein echter Update-Test mit getrenntem 0.3-Kontrollbuild ist über `npm run test:upgrade -- /absoluter/pfad/zum/v0.3/dist` reproduzierbar. Für isolierte technische Experimente einen frischen Browserkontext verwenden. Niemals echte persönliche Daten für technische Experimente löschen.
 
 Für dieses eingeschränkte Arbeitsumfeld kann npm einen Cache unter `/tmp` verwenden:
 
@@ -50,6 +54,7 @@ npm --cache /tmp/faithpath-npm ci
 
 ```sh
 npm run content:check
+npm run content:art
 npm run typecheck
 npm test
 npm run build
@@ -104,8 +109,9 @@ Die Cloud-Migrationen unter `database/migrations/` sind **Vorbereitung für eine
 6. [Prüfungen und offene Abnahmen](docs/05-validation.md)
 7. [Persönliche Vorhaben und gesicherte Entwürfe](docs/06-personal-and-drafts.md)
 8. [FaithPath-V5-Import, Quellen und Rückkehr](docs/07-faithpath-import.md)
-9. [Lieferstand und nächste Schritte](docs/delivery-status.md)
+9. [Entwürfe, Archiv-Blobs und Offline-Updates](docs/08-continuity-and-offline.md)
+10. [Lieferstand und nächste Schritte](docs/delivery-status.md)
 
 Screenshots: `docs/evidence/screens/`. Art-Provenienz: `art/manifest.json`. Schriften und Bibelrechte: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-Persönliche Texte bleiben lokal und sind nicht zusätzlich verschlüsselt. Ein OLIVA-Restore ersetzt den lokalen Bestand erst nach ausdrücklicher Bestätigung. Der gesonderte FaithPath-V5-Import ergänzt ihn und bewahrt die Originalquelle. **Repository-Checkpoint:** Branch `feature/oliva-next-v02-20261106`, eigenständige Anwendung in `oliva/`. Dort `npm ci`, `npm run build`, `npm run preview` ausführen. Der Fortsetzungsstand steht in [RESUME.md](RESUME.md). Der CI-Workflow unter `oliva/.github/` ist als Vorlage enthalten und wird in dieser Monorepo-Unterstruktur nicht automatisch von GitHub ausgeführt; bestehende Root-Workflows wurden nicht verändert.
+Persönliche Texte bleiben lokal und sind nicht zusätzlich verschlüsselt. Ein OLIVA-Restore ersetzt den lokalen Bestand erst nach ausdrücklicher Bestätigung. Der gesonderte FaithPath-V5-Import ergänzt ihn und bewahrt die Originalquelle. **Repository-Checkpoint:** Branch `feature/oliva-next-v02-20261106`, eigenständige Anwendung in `oliva/`. Dort `npm ci`, `npm run build`, `npm run preview` ausführen. Der Fortsetzungsstand steht in [RESUME.md](RESUME.md). Der zusätzliche Root-Workflow `.github/workflows/oliva-quality.yml` ruft die gemeinsame OLIVA-Qualitätsaction auf dem Sicherungsbranch auf. Bestehende FaithPath-Workflows bleiben unverändert. Der enthaltene Standalone-Workflow funktioniert in einem eigenen Repository. Ein tatsächlicher GitHub-Lauf wird gesondert im Prüfbericht belegt; kein automatisches Deployment.

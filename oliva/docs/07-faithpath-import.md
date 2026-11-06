@@ -1,6 +1,6 @@
 # Iteration 0.3 · Sicherer FaithPath-V5-Import
 
-06.11.2026. Eigenständige lokale Umsetzung auf Grundlage des belegten Exportvertrags aus dem unveränderten Snapshot `a519ce8`. Keine Übernahme von FaithPath-Quellcode oder redaktionellen Bibelerklärungen. Synthetische Testdaten, kein Export einer echten Person.
+06.11.2026. Historischer Implementierungsbericht für 0.3. Seit 0.4 gelten Payload V4 und separate lokale Archiv-Blobs; der additive Importvertrag bleibt bestehen. Aktueller Speichervertrag: [Iteration 0.4](08-continuity-and-offline.md). Eigenständige lokale Umsetzung auf Grundlage des belegten Exportvertrags aus dem unveränderten Snapshot `a519ce8`. Keine Übernahme von FaithPath-Quellcode oder redaktionellen Bibelerklärungen. Synthetische Testdaten, kein Export einer echten Person.
 
 ## In der App ausprobieren
 
@@ -45,7 +45,7 @@ Die Vorschau ist an die aktuelle OLIVA-Revision gebunden. Entwurfsänderungen od
 - Nativ verwenden Import/Export Expo DocumentPicker, FileSystem und Sharing. Die Quelle bleibt erhalten; nur die ausgewählte Cache-Kopie wird aufgeräumt. Die OS-Dateifreigabe bestätigt keine tatsächlich angelegte externe Datei. Auf echten Geräten steht diese Prüfung aus.
 - Kein Netzwerktransfer persönlicher Daten, keine Cloudmigration, keine zusätzliche Verschlüsselung und kein Telemetrie-/Fehlerlog persönlicher Texte.
 
-Bewusster technischer Kompromiss: Die unveränderten Quellen liegen derzeit im lokalen Gesamtpayload. Auch ein kleiner Entwurfs-Commit kopiert und serialisiert diesen Bestand; große Archive können deshalb die Eingabe-/Speicherlatenz erhöhen. Vor breitem Einsatz mit großen Sicherungen sind separate unveränderliche Archiv-Blobs, inkrementelle Schreibvorgänge und Messungen auf schwachen Geräten erforderlich. Der Größenrahmen ist eine Sicherheitsgrenze, kein nachgewiesenes Leistungsversprechen.
+Historischer Kompromiss in 0.3 (in 0.4 durch separate Archiv-Blobs ersetzt): Die unveränderten Quellen lagen im lokalen Gesamtpayload. Auch ein kleiner Entwurfs-Commit kopiert und serialisiert diesen Bestand; große Archive können deshalb die Eingabe-/Speicherlatenz erhöhen. Vor breitem Einsatz mit großen Sicherungen sind separate unveränderliche Archiv-Blobs, inkrementelle Schreibvorgänge und Messungen auf schwachen Geräten erforderlich. Der Größenrahmen ist eine Sicherheitsgrenze, kein nachgewiesenes Leistungsversprechen.
 
 ## Abnahmekriterien und Nachweise
 

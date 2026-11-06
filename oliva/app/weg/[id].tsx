@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Pressable, Image } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Shell } from "../../src/components/Shell";
@@ -8,7 +8,6 @@ import {
   Card,
   Tag,
   Progress,
-  Field,
   IconButton,
 } from "../../src/components/ui";
 import { Icon } from "../../src/components/Icon";
@@ -17,9 +16,14 @@ import { useTheme } from "../../src/design-system/theme";
 import { useApp } from "../../src/state/store";
 import { PATHS, pathById } from "../../src/features/paths/catalog";
 import { referenceLabel } from "../../src/features/bible/repository";
-import { finishStep } from "../../src/state/model";
+import { CaptureInput } from "../../src/features/personal/CaptureInput";
+import { guidedSource } from "../../src/features/personal/capture-model";
+import { TextCheck } from "../../src/features/paths/TextCheck";
 export default function PathDetail() {
-  const { id } = useLocalSearchParams<{ id: string }>(),
+  const { id, step: requestedStep } = useLocalSearchParams<{
+      id: string;
+      step?: string;
+    }>(),
     path = pathById(id),
     t = useTheme(),
     data = useApp((s) => s.data),
@@ -29,10 +33,18 @@ export default function PathDetail() {
     path?.steps.findIndex(
       (_, i) => !data.completedSteps.includes(`${id}:${i}`),
     ) ?? 0;
-  const [selected, setSelected] = useState(Math.max(0, first)),
-    [thought, setThought] = useState(""),
+  const initialIndex = () =>
+    requestedStep !== undefined && path?.steps[Number(requestedStep)]
+      ? Number(requestedStep)
+      : Math.max(0, first);
+  const [selected, setSelected] = useState(initialIndex),
     [prayer, setPrayer] = useState(false),
     [justFinished, setJustFinished] = useState(false);
+  useEffect(() => {
+    setSelected(initialIndex());
+    setPrayer(false);
+    setJustFinished(false);
+  }, [id, requestedStep]);
   if (!path)
     return (
       <Shell>
@@ -70,28 +82,6 @@ export default function PathDetail() {
           step: selected,
         },
       });
-  }
-  async function complete() {
-    const now = new Date().toISOString(),
-      noteId = `reflection-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-    if (
-      await mutate((d) => {
-        finishStep(d, key);
-        d.activePath = id;
-        if (thought.trim())
-          d.notes.unshift({
-            id: noteId,
-            text: thought.trim(),
-            kind: "reflection",
-            ref: step.ref,
-            createdAt: now,
-            updatedAt: now,
-          });
-      })
-    ) {
-      setThought("");
-      setJustFinished(true);
-    }
   }
   return (
     <Shell>
@@ -160,7 +150,6 @@ export default function PathDetail() {
               accessibilityState={{ selected: i === selected }}
               onPress={() => {
                 setSelected(i);
-                setThought("");
                 setPrayer(false);
                 setJustFinished(false);
               }}
@@ -267,18 +256,21 @@ export default function PathDetail() {
                   <T style={{ fontSize: 12, color: t.muted }}>{step.word[1]}</T>
                 </View>
               )}
+              <TextCheck reference={step.ref} />
               <T variant="heading" style={{ fontSize: 26, marginTop: 3 }}>
                 Was bleibt bei dir?
               </T>
               <T style={{ fontSize: 13 }}>{step.question}</T>
-              {!done && (
-                <Field
+              {(!done ||
+                data.drafts.some(
+                  (d) => d.key === `capture:guided:${id}:${selected}`,
+                )) && (
+                <CaptureInput
+                  key={key}
+                  source={guidedSource(id, selected)}
+                  onSaved={() => setJustFinished(true)}
                   label="Deine Reflexion (freiwillig)"
                   placeholder="Deine Worte dürfen unvollkommen sein …"
-                  multiline
-                  maxLength={10000}
-                  value={thought}
-                  onChangeText={setThought}
                 />
               )}
               <Button
@@ -312,15 +304,6 @@ export default function PathDetail() {
               )}
               {!done ? (
                 <>
-                  <Button
-                    disabled={busy}
-                    icon="check"
-                    onPress={() => void complete()}
-                  >
-                    {thought.trim()
-                      ? "Reflexion speichern & Schritt abschließen"
-                      : "Ohne Reflexion abschließen"}
-                  </Button>
                   <T
                     style={{
                       fontSize: 10,

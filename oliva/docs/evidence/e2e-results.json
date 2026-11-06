@@ -104,6 +104,418 @@
   },
   "suites": [
     {
+      "title": "archives.spec.ts",
+      "file": "archives.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ein großer Originalblob wird bei Entwurfsänderungen nicht erneut geschrieben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32186,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:30:50.878Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-75d9bcb8e04a3a8dd121",
+          "file": "archives.spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "verwaiste Blobs werden entfernt und Quellen der Rückkehrsicherung bleiben erhalten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22885,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:31:30.744Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-61f7bf393e923f1cb32e",
+          "file": "archives.spec.ts",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unverändert",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10915,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:31:53.776Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-c721dfe99536aae3ddf1",
+          "file": "archives.spec.ts",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13522,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:32:04.788Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-5d5b0b1b57b9de94dbf2",
+          "file": "archives.spec.ts",
+          "line": 149,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "captures.spec.ts",
+      "file": "captures.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22664,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:32:18.463Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-278e5468e84b8c9b28f1",
+          "file": "captures.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17015,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:32:41.252Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-17cb484429c0de9235f6",
+          "file": "captures.spec.ts",
+          "line": 60,
+          "column": 1
+        },
+        {
+          "title": "Reflexionsentwurf im Lernweg überlebt Neustart und schließt nur auf ausdrücklichen Klick ab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10996,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:32:58.473Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-e617214181b9cf476e77",
+          "file": "captures.spec.ts",
+          "line": 131,
+          "column": 1
+        },
+        {
+          "title": "ein Entwurf wird erst nach ausdrücklichem Verwerfen gelöscht und bestätigt dabei keine Erfahrung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6997,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:33:09.548Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-4a664a6fc3d81f688ca8",
+          "file": "captures.spec.ts",
+          "line": 183,
+          "column": 1
+        },
+        {
+          "title": "der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexionsentwurf",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6963,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:33:16.778Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-050462b30b48e0d8fb3d",
+          "file": "captures.spec.ts",
+          "line": 215,
+          "column": 1
+        },
+        {
+          "title": "ein Speicherfehler lässt den Kontextentwurf sichtbar und erzeugt keinen fertigen Eintrag",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6297,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:33:23.859Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-3c5d5a06f89907c015a7",
+          "file": "captures.spec.ts",
+          "line": 239,
+          "column": 1
+        },
+        {
+          "title": "ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 99817,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/captures.spec.ts",
+                        "column": 6,
+                        "line": 299
+                      },
+                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Sicherung exportieren', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button tabindex=\"0\" role=\"button\" type=\"button\" class=\"css-g5y9jx r-1loqt21 r-1otgn73\">…</button>\u001b[22m\n\n\n  297 |   await page\n  298 |     .getByRole(\"button\", { name: \"Sicherung exportieren\", exact: true })\n> 299 |     .click();\n      |      ^\n  300 |   await expect(\n  301 |     page.getByText(/Einige Entwürfe sind noch nicht dauerhaft gesichert/),\n  302 |   ).toBeVisible();\n    at /workspace/faithpath-next/tests/e2e/captures.spec.ts:299:6"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:33:30.325Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/captures-ungesicherte-Wort-a185d-s-Sitzungskopie-exportieren/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-bb4d2da6c82f3765bd1c",
+          "file": "captures.spec.ts",
+          "line": 271,
+          "column": 1
+        }
+      ]
+    },
+    {
       "title": "core.spec.ts",
       "file": "core.spec.ts",
       "column": 0,
@@ -122,15 +534,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11082,
+                  "duration": 20783,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:06:40.593Z",
+                  "startTime": "2026-11-06T14:37:00.065Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -140,7 +552,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-d970a8e5935eea1f748a",
           "file": "core.spec.ts",
-          "line": 28,
+          "line": 13,
           "column": 1
         },
         {
@@ -156,15 +568,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8052,
+                  "duration": 18881,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:06:52.446Z",
+                  "startTime": "2026-11-06T14:37:21.650Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -174,7 +586,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-a8433de3b51e7fa72466",
           "file": "core.spec.ts",
-          "line": 112,
+          "line": 97,
           "column": 1
         },
         {
@@ -190,15 +602,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5953,
+                  "duration": 15921,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:07:00.624Z",
+                  "startTime": "2026-11-06T14:37:40.867Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -208,7 +620,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-95acf7ea740056abdb9c",
           "file": "core.spec.ts",
-          "line": 168,
+          "line": 153,
           "column": 1
         },
         {
@@ -224,15 +636,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4952,
+                  "duration": 7806,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:07:06.659Z",
+                  "startTime": "2026-11-06T14:37:57.079Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -242,7 +654,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-812383179af31eb1ff41",
           "file": "core.spec.ts",
-          "line": 208,
+          "line": 193,
           "column": 1
         },
         {
@@ -258,15 +670,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7569,
+                  "duration": 10220,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:07:11.730Z",
+                  "startTime": "2026-11-06T14:38:05.048Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -276,7 +688,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-fefb60b6eb2b77a3b8ad",
           "file": "core.spec.ts",
-          "line": 255,
+          "line": 240,
           "column": 1
         },
         {
@@ -292,15 +704,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7546,
+                  "duration": 10536,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:07:19.387Z",
+                  "startTime": "2026-11-06T14:38:15.363Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -310,7 +722,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-4152289a2d74138005ff",
           "file": "core.spec.ts",
-          "line": 284,
+          "line": 269,
           "column": 1
         },
         {
@@ -326,15 +738,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6130,
+                  "duration": 5860,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:07:26.985Z",
+                  "startTime": "2026-11-06T14:38:25.937Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -344,7 +756,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-619d08b0af9895658a20",
           "file": "core.spec.ts",
-          "line": 314,
+          "line": 302,
           "column": 1
         },
         {
@@ -360,15 +772,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3956,
+                  "duration": 4499,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:07:33.177Z",
+                  "startTime": "2026-11-06T14:38:31.865Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -378,7 +790,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-6da73fae664ea548511c",
           "file": "core.spec.ts",
-          "line": 346,
+          "line": 334,
           "column": 1
         },
         {
@@ -394,15 +806,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 34739,
+                  "duration": 51030,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:07:37.241Z",
+                  "startTime": "2026-11-06T14:38:36.522Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -412,7 +824,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-a8de33c6eb4b3e77b4c6",
           "file": "core.spec.ts",
-          "line": 375,
+          "line": 363,
           "column": 1
         }
       ]
@@ -436,15 +848,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4514,
+                  "duration": 8029,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:08:12.051Z",
+                  "startTime": "2026-11-06T14:39:27.763Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -454,7 +866,7 @@
           ],
           "id": "c9d84957164db689fbd2-cef3d5d24b2ca3cbdb48",
           "file": "imports.spec.ts",
-          "line": 64,
+          "line": 47,
           "column": 1
         },
         {
@@ -470,15 +882,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8507,
+                  "duration": 12135,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:08:16.587Z",
+                  "startTime": "2026-11-06T14:39:35.881Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -488,7 +900,7 @@
           ],
           "id": "c9d84957164db689fbd2-d570660b3542a7810f86",
           "file": "imports.spec.ts",
-          "line": 87,
+          "line": 70,
           "column": 1
         },
         {
@@ -504,15 +916,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8379,
+                  "duration": 13076,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:08:25.143Z",
+                  "startTime": "2026-11-06T14:39:48.063Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -522,7 +934,7 @@
           ],
           "id": "c9d84957164db689fbd2-f8a8dd864727e22a8eb0",
           "file": "imports.spec.ts",
-          "line": 149,
+          "line": 132,
           "column": 1
         },
         {
@@ -538,15 +950,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6625,
+                  "duration": 10602,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:08:33.554Z",
+                  "startTime": "2026-11-06T14:40:01.226Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -556,7 +968,7 @@
           ],
           "id": "c9d84957164db689fbd2-a58886b29e3200b0d4d7",
           "file": "imports.spec.ts",
-          "line": 179,
+          "line": 162,
           "column": 1
         },
         {
@@ -572,15 +984,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7488,
+                  "duration": 16064,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:08:40.218Z",
+                  "startTime": "2026-11-06T14:40:11.948Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -590,7 +1002,7 @@
           ],
           "id": "c9d84957164db689fbd2-f01754983158c5900e2b",
           "file": "imports.spec.ts",
-          "line": 212,
+          "line": 195,
           "column": 1
         },
         {
@@ -606,15 +1018,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6545,
+                  "duration": 16029,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:08:47.741Z",
+                  "startTime": "2026-11-06T14:40:28.055Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -624,7 +1036,83 @@
           ],
           "id": "c9d84957164db689fbd2-b9e1844fe620d964dde3",
           "file": "imports.spec.ts",
-          "line": 247,
+          "line": 230,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "learning.spec.ts",
+      "file": "learning.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Textfragen zeigen belegte Rückmeldung und verändern keinen Fortschritt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11046,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:40:44.319Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0ec79b0c4f511f16424-ae74360e31a41608185e",
+          "file": "learning.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zählt nur den Abschnitt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7362,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:40:55.442Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0ec79b0c4f511f16424-a89c60d5cd44a8bb8e37",
+          "file": "learning.spec.ts",
+          "line": 56,
           "column": 1
         }
       ]
@@ -648,15 +1136,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2987,
+                  "duration": 4453,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:08:54.333Z",
+                  "startTime": "2026-11-06T14:41:02.868Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -666,7 +1154,7 @@
           ],
           "id": "f8ecc30bfaf67218a8c4-200629544db7bcbfaf92",
           "file": "personal.spec.ts",
-          "line": 26,
+          "line": 12,
           "column": 1
         },
         {
@@ -682,15 +1170,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5680,
+                  "duration": 8551,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:08:57.353Z",
+                  "startTime": "2026-11-06T14:41:07.356Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -700,7 +1188,7 @@
           ],
           "id": "f8ecc30bfaf67218a8c4-30d042b1d3e77088eb69",
           "file": "personal.spec.ts",
-          "line": 52,
+          "line": 38,
           "column": 1
         },
         {
@@ -716,15 +1204,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8503,
+                  "duration": 10614,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:09:03.066Z",
+                  "startTime": "2026-11-06T14:41:15.994Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -734,7 +1222,7 @@
           ],
           "id": "f8ecc30bfaf67218a8c4-87f2e53e1cdd94813e0b",
           "file": "personal.spec.ts",
-          "line": 98,
+          "line": 84,
           "column": 1
         },
         {
@@ -750,15 +1238,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4240,
+                  "duration": 6420,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:09:11.618Z",
+                  "startTime": "2026-11-06T14:41:26.698Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -768,7 +1256,7 @@
           ],
           "id": "f8ecc30bfaf67218a8c4-14b2d305bbfa77ac2043",
           "file": "personal.spec.ts",
-          "line": 215,
+          "line": 201,
           "column": 1
         },
         {
@@ -784,15 +1272,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3939,
+                  "duration": 5299,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:09:15.893Z",
+                  "startTime": "2026-11-06T14:41:33.160Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -802,7 +1290,7 @@
           ],
           "id": "f8ecc30bfaf67218a8c4-15511b860caead0fe720",
           "file": "personal.spec.ts",
-          "line": 248,
+          "line": 234,
           "column": 1
         },
         {
@@ -818,15 +1306,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4028,
+                  "duration": 6613,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:09:19.872Z",
+                  "startTime": "2026-11-06T14:41:38.535Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -836,7 +1324,7 @@
           ],
           "id": "f8ecc30bfaf67218a8c4-7ce3793863bf7b51c536",
           "file": "personal.spec.ts",
-          "line": 301,
+          "line": 287,
           "column": 1
         },
         {
@@ -852,15 +1340,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10396,
+                  "duration": 13640,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T10:09:23.939Z",
+                  "startTime": "2026-11-06T14:41:45.197Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -870,7 +1358,7 @@
           ],
           "id": "f8ecc30bfaf67218a8c4-9537a654eb0dbf000217",
           "file": "personal.spec.ts",
-          "line": 324,
+          "line": 310,
           "column": 1
         }
       ]
@@ -878,11 +1366,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-06T10:06:38.870Z",
-    "duration": 175774.239,
-    "expected": 22,
+    "startTime": "2026-11-06T14:30:39.057Z",
+    "duration": 680109.671,
+    "expected": 34,
     "skipped": 0,
-    "unexpected": 0,
+    "unexpected": 1,
     "flaky": 0
   }
 }

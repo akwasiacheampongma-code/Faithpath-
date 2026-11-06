@@ -4,6 +4,7 @@ import {
   Pressable,
   useWindowDimensions,
   Platform,
+  type ScrollViewProps,
 } from "react-native";
 import { router, usePathname, type Href } from "expo-router";
 import { useTheme } from "../design-system/theme";
@@ -56,10 +57,14 @@ export function Shell({
   children,
   wide = false,
   reader = false,
+  scrollRef,
+  onScroll,
 }: {
   children: React.ReactNode;
   wide?: boolean;
   reader?: boolean;
+  scrollRef?: React.Ref<React.ComponentRef<typeof ScrollView>>;
+  onScroll?: ScrollViewProps["onScroll"];
 }) {
   const t = useTheme(),
     { width } = useWindowDimensions(),
@@ -283,6 +288,9 @@ export function Shell({
           </View>
         )}
         <ScrollView
+          ref={scrollRef}
+          onScroll={onScroll}
+          scrollEventThrottle={100}
           contentContainerStyle={{
             paddingHorizontal: reader ? 20 : desktop ? 42 : 22,
             paddingTop: reader ? 20 : desktop ? 30 : 16,

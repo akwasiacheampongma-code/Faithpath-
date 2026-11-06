@@ -1,22 +1,7 @@
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import type { AppData } from "../../src/state/model";
-async function local(page: Page): Promise<AppData> {
-  return page.evaluate(
-    () =>
-      new Promise((resolve, reject) => {
-        const request = indexedDB.open("oliva-local-v1", 1);
-        request.onsuccess = () => {
-          const q = request.result
-            .transaction("state", "readonly")
-            .objectStore("state")
-            .get("main");
-          q.onsuccess = () => resolve(q.result);
-          q.onerror = () => reject(q.error);
-        };
-      }),
-  ) as Promise<AppData>;
-}
+import { localData as local } from "./persistence";
 async function noOverflow(page: Page) {
   expect(
     await page.evaluate(
@@ -291,6 +276,9 @@ test("Offline-Neustart öffnet auch einen noch nicht besuchten Reader", async ({
   await expect
     .poll(() => page.evaluate(() => !!navigator.serviceWorker.controller))
     .toBe(true);
+  await expect(
+    page.getByText("Für den Offline-Neustart bereit.", { exact: true }),
+  ).toBeVisible({ timeout: 30000 });
   await context.setOffline(true);
   await page.goto("/lesen/REV?chapter=22");
   await expect(
@@ -416,11 +404,23 @@ test("Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung", a
           .evaluate((button) => {
             const text = button.querySelector('[dir="auto"]')!;
             const luminance = (value: string) => {
-              const channels = value.match(/[\d.]+/g)!.slice(0, 3).map(Number).map(v => v / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4);
-              return channels[0]! * .2126 + channels[1]! * .7152 + channels[2]! * .0722;
+              const channels = value
+                .match(/[\d.]+/g)!
+                .slice(0, 3)
+                .map(Number)
+                .map((v) => v / 255)
+                .map((v) =>
+                  v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4,
+                );
+              return (
+                channels[0]! * 0.2126 +
+                channels[1]! * 0.7152 +
+                channels[2]! * 0.0722
+              );
             };
-            const a=luminance(getComputedStyle(text).color),b=luminance(getComputedStyle(button).backgroundColor);
-            return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+            const a = luminance(getComputedStyle(text).color),
+              b = luminance(getComputedStyle(button).backgroundColor);
+            return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
           });
         expect(ratio).toBeGreaterThanOrEqual(4.5);
       }

@@ -1,49 +1,48 @@
 # Fortsetzen · OLIVA / FaithPath Next Generation
 
-Checkpoint: 06.11.2026 · OLIVA 0.3.0 · Nutzdatenformat 3.
+Checkpoint: 06.11.2026 · OLIVA 0.4.0 · Nutzdatenformat 4 · SQLite physisch 3 · IndexedDB physisch 1.
 
 ## Repository und Arbeitsbereich
 
 - Repository: https://github.com/akwasiacheampongma-code/Faithpath-
-- Sicherungsbranch: `feature/oliva-next-v02-20261106` (enthält inzwischen 0.3).
+- Sicherungsbranch: `feature/oliva-next-v02-20261106` (enthält inzwischen 0.4).
 - Eigenständiges Projekt im Branch: `oliva/`.
-- Vorheriger Quellcheckpoint: `d05ba5cd98036f3c2fb639c9026ffb86b2a899bd`.
+- Vorheriger Quellcheckpoint: `f90fcfb8176b5f793c4c51b7360fdc1e67112e13` (0.3).
 - Unveränderte FaithPath-Basis: `a519ce898fa33907b07d5ac7a585595127556183`, ursprünglicher Branch `feature/simplified-step-experience-20261104`.
 - Lokales neues Projekt: `/workspace/faithpath-next`; lokale Referenz: `/workspace/faithpath-reference`.
-- Bestehende FaithPath-Dateien bleiben unverändert. Kein Merge, Deployment oder Schreiben persönlicher Daten in fremde Dienste.
+- Bestehende FaithPath-Dateien bleiben unverändert. Neu hinzu kommt ausschließlich ein OLIVA-Root-Workflow; kein Merge oder Deployment.
 
-## Ziel und verbindliche Vorgaben
+## Ziel und Vorgaben
 
-Eigenständige deutschsprachige Bibel- und Glaubens-App: Lesen → Verstehen → freiwillige Reflexion → Anwendung im Alltag. Keine kopierten Designs oder Quelltexte, keine Glaubensränge und manipulativen Streaks. Bibeltext, KI-unterstützte redaktionelle Entwürfe und künstlerische Interpretation unterscheiden. Persönliche Daten bleiben lokal, bis späterem Sync bewusst zugestimmt wird. Keine abgeschlossene Gesamtfreigabe behaupten.
+Den ursprünglichen Master-Prompt weiter ausführen: Lesen → Verstehen → freiwillige Reflexion → Anwendung im Alltag. Keine kopierten Designs/Quelltexte, keine Glaubensränge oder manipulativen Streaks. Bibeltext, KI-unterstützte redaktionelle Entwürfe und künstlerische Interpretation unterscheiden. Persönliche Daten bleiben lokal. Innerhalb einer Sitzung selbstständig weiterarbeiten; nicht nach jeder Phase eine Bestätigung verlangen oder das Gesamtziel als abgeschlossen ausgeben.
 
-Audit und Feature-Matrix: `docs/00-faithpath-audit.md`. Roadmap und Einschränkungen: `docs/delivery-status.md`. Aktuelle Iteration: `docs/07-faithpath-import.md`.
+Audit: `docs/00-faithpath-audit.md`. Lieferstand: `docs/delivery-status.md`. Aktuelle Iteration: `docs/08-continuity-and-offline.md`. GitHub-/CI-Nachweis wird nach dem tatsächlichen Push separat unter `docs/evidence/` geführt.
 
-## Tatsächlich umgesetzt
+## Tatsächlich implementiert
 
 - Expo 58 / React Native / TypeScript, Expo Router, Zustand, Zod; SQLite nativ, IndexedDB im Web.
-- Vollständige gemeinfreie Lutherbibel 1912: 66 Bücher, 1.189 Kapitel, 31.102 Verse. Original-USFM und reproduzierbarer Import enthalten.
-- Reader mit Buch-/Kapitelwahl, Suche, zwei Modi, Schrift-/Abstandseinstellungen, Notizen, Lesezeichen, fünf darstellbaren Markierungsfarben und bestätigtem Fortschritt. Im Editor werden Olive und Gold angeboten; die drei weiteren Farben bewahren FaithPath-Importe.
-- Neun geführte Wege mit je drei Schritten, neun thematisch wiederverwendeten redaktionellen Pilot-Einordnungen und freiwilliger Reflexion/Gebet. Fachliche Freigabe offen.
-- Persönlicher Hub, sieben Olivenbaumstadien, 66 Themenidentitäten der Buchschwerter als parametrisierte Vektorfamilie.
-- Journal, bestätigtes Löschen/Undo, JSON-Export und geprüfter ausdrücklich bestätigter OLIVA-Restore.
-- Persönliche Vorhaben, eigene Schritte, Bibelbezug, Archiv/Wiederaufnahme und Rückblicke mit unveränderten Snapshots.
-- Dauerhafte Entwürfe für Journal, Vorhaben, eigene Schritte und Rückblicke. Commit-Warteschlange, Entwurfsstempel, Quellrevision und atomarer Abschluss schützen den Bestand.
-- Seit 0.3: additiver FaithPath-V5-Import über Datei oder JSON, lesende Vorschau, stabile IDs/Spiegelaliase, Konflikt-/Löschschutz, Originalarchiv mit unverändertem Export, historische Rückblicke und Quellen am Vorhaben, lokale atomare Rückkehrsicherung mit separater Bestätigung.
-- OTB-Bezüge werden gekennzeichnet und nicht dem Luther-Reader untergeschoben. Importierte Vergangenheit erzeugt keine neue Baumstufe oder freiwillige Anwendung.
-- Nutzdaten V1/V2→V3. Native physische DB 1→2 (`local_recovery`); Web-DB bleibt physisch 1, zusätzlicher Sicherungsschlüssel im vorhandenen Store.
-- Drei generierte Pilotbilder mit Provenienz; weitere Motive und externe Fachfreigaben offen.
+- Vollständige gemeinfreie Lutherbibel 1912: 66 Bücher, 1.189 Kapitel, 31.102 Verse; Original-USFM und reproduzierbarer Import.
+- Reader mit Navigation/Suche, zwei Modi, Schrift/Abstand, Versnotizen, Lesezeichen, fünf darstellbaren Markierungsfarben (Editor: Olive/Gold), explizitem Kapitel-/Abschnittsfortschritt und gezieltem Verssprung.
+- Neun geführte Wege mit je drei Schritten; neun thematisch wiederverwendete Einordnungen und neun eigene freiwillige Textfragen mit tatsächlichen Versen als Beleg. Fachfreigabe offen.
+- Hub, sieben Olivenbaumstadien und 66 parametrisierte Buchschwert-Identitäten ohne spirituelle Rangliste.
+- Journal, bestätigtes Löschen/Undo, normale Sicherung/Restore; persönliche Vorhaben, eigene Schritte, Archiv/Wiederaufnahme und Rückblicke mit bewahrten Snapshots.
+- Dauerhafte Entwürfe auch für Hub, Garten, Vers und geführten Schritt. Sammlung → Entwürfe führt zur Quelle zurück. Tippen erzeugt keinen Lernabschluss oder bestätigte Alltagserfahrung.
+- RAM-Puffer schützt noch ungesicherte Worte nach Speicherfehlern innerhalb der Sitzung; Besitzer-/Abschlusskennung verhindert alte Editorüberschreibungen und Geisterentwürfe. Separater Export ungesicherter Worte. Kein Schutz gegen Prozessabbruch ohne dauerhafte Speicherung.
+- Additiver FaithPath-V5-Import mit Dateiauswahl/JSON, Vorschau, stabilen IDs/Spiegelaliasen, Schutz lokaler Änderungen, Originalarchiv und atomarer Rückkehrsicherung. OTB bleibt als fremde Übersetzung gekennzeichnet. Importierte Vergangenheit erzeugt keinen neuen Fortschritt.
+- Private Archiv-Blobs entkoppeln große Quelltexte vom kleinen Speicherdokument; Originalquellen bleiben Bestandteil vollständiger Backups. Schreibvorgang, Revision, Sicherung und Blobbereinigung sind atomar.
+- Beschädigte Daten blockieren normale Routen statt leeren Bestand zu erzeugen. Unveränderter Rohdatenexport zur technischen Reparatur; native Dateifreigabe noch nicht auf einem Expo-Gerät geprüft.
+- Sieben generierte/angesehene Bildmaster, 18 WebP-Varianten, Provenienz und getrennte Freigabestände. Neue Erzählpiloten Noah, Abraham, Geburt und Ostermorgen im optionalen Geschichtenbereich und vertieften Reader.
+- Vollständiges Offline-Paket mit genauer Build-ID, sichtbarer Bereitschaft und Vorgänger-Assetcache. Tatsächlicher 0.3→0.4-Offlinewechsel geprüft, kein erzwungener Reload.
 
-## Belegter Prüfstand für 0.3
+## Belegter lokaler Prüfstand
 
-- 46 Fach-/Persistenztests bestanden: `docs/evidence/unit-results.json`.
-- 22 Browser-Szenarien bestanden, 0 Fehler/übersprungen: `docs/evidence/e2e-results.json`.
-- Strikte TypeScript-Prüfung erfolgreich; Expo-Paketkompatibilität geprüft.
-- Web-, Android- und iOS-JavaScript-/Asset-Exporte erfolgreich: `docs/evidence/builds.json`. Keine APK/IPA oder echten Geräte getestet.
-- Neue V5-Fälle: tatsächlicher Dateidialog, Abbruch ohne Mutation, eindeutige Spiegel, OTB-Grenze, exakter Originaldownload, historischer Snapshot, Offline-Neustart, Wiederholung, zwei Fenster, Speicherfehler und Rückkehr nach späteren Änderungen.
-- Native Adapterlogik gegen Nodes echte SQLite-Engine geprüft: physische Migration, Revision/Token und Rollback bei Fehler nach dem Sicherungsschreibvorgang. Kein Expo-Gerätenachweis.
-- Zehn neue Import-Screens mobil/groß: `docs/evidence/import-screens/`; frühere Screens bleiben erhalten.
-- 390 materialisierte Referenzdateien erneut mit unveränderten Original-Git-Blobs verglichen: `docs/evidence/reference-integrity.json`.
-- Erster 0.3-Browserlauf: 21/22. Veraltete Testannahme zum identischen Zweitimport korrigiert. Abschließender Lauf: 22/22.
+- 64 Fach-/Persistenztests erfolgreich. 35 Browser-Szenarien: erster stabiler Lauf 35/35, zusätzlicher paralleler Lastlauf 34/35 mit Export-Zeitlimit; gezielte Wiederholung unter `final-regression-results.json`. Unveränderter Lastbericht bleibt erhalten; Remote-Gesamtlauf wird nach dem Push dokumentiert.
+- Strikte TypeScript-Prüfung, Korpusreproduzierbarkeit und Bildhashes erfolgreich.
+- Web-, Android- und iOS-JS-/Asset-Exporte. Keine APK/IPA und keine physischen Geräte getestet.
+- Native Adapterlogik gegen Nodes echte SQLite-Engine geprüft; kein Expo-Gerätenachweis.
+- Getrennt gebauter 0.3-Kontrollstand → 0.4 → Netz aus → Neustart: Profil, Notizen, Vorhaben, offener Journalentwurf und genaue Originalquelle bewahrt (`offline-upgrade.json`).
+- Neue Hauptzustände werden mobil/groß unter `docs/evidence/session-04-screens/` dokumentiert; frühere Screens erhalten.
+- Referenzintegrität und GitHub-Checkpoint werden vor der Sicherung erneut geprüft. Der echte GitHub-Actions-Status zählt erst nach beobachtetem Lauf.
 
 ## Starten nach Checkout
 
@@ -55,22 +54,24 @@ npm run build
 npm run preview
 ```
 
-http://localhost:4173 öffnen. Lokaler Arbeitsbereich dieser Sitzung: `/workspace/faithpath-next`; fertiger Webexport unter `dist/`. Tests: `npm test`, `npm run typecheck`, `npm run test:e2e`. Native Bundleexports: `node scripts/expo.mjs export --platform android --output-dir dist-android`, entsprechend `ios`.
+http://localhost:4173 öffnen. Lokale Projektkopie: `/workspace/faithpath-next`. Tests: `npm run typecheck`, `npm test`, `npm run test:e2e`. Inhaltsprüfungen: `npm run content:check`, `npm run content:art`. Native Bundleexports: `node scripts/expo.mjs export --platform android --output-dir dist-android`, entsprechend `ios`.
 
-Exportdateien, `node_modules`, ZIP-Pakete und lokale Umgebungsdateien werden nicht im GitHub-Quellcheckpoint gespeichert. Der CI-Workflow in `oliva/.github/` ist eine Vorlage für ein eigenständiges Repository und wird unter diesem Unterverzeichnis nicht automatisch ausgeführt. Bestehende Root-Workflows bleiben unverändert.
+Der neue Root-Workflow `.github/workflows/oliva-quality.yml` ruft die gemeinsame Qualitätsaction in `oliva/.github/actions/quality/` auf. Der Standalone-Workflow unter `oliva/.github/workflows/` funktioniert in einem eigenen Repository. Bestehende FaithPath-Workflows bleiben unverändert. Keine Deployment-Schritte.
 
-## Nächste sinnvolle Iteration
+## Nächste überprüfbare Arbeit
 
-1. Dauerhafte Entwürfe und Speicherfehler-Verhalten auf die kleinen Eingabefelder im Hub, Garten, Reader und geführten Weg erweitern. Bestehende Entwurfsstempel/Quellschutz wiederverwenden, getippte Worte bei Navigation/Neustart bewahren, keine ungefragte Bestätigung von Anwendung.
-2. V5-Import zusätzlich an einem anonymisierten echten Export prüfen, falls verfügbar. Die bestehende Implementierung benötigt ihn nicht zum Weiterarbeiten. Kein persönlicher Export ins Repository oder in Logs.
-3. Native Geräteabnahme: Dateiauswahl, externe Dateifreigabe, Expo-SQLite-Transaktionen, Prozessabbruch, Low-Disk, Hardware-Zurück, Tastatur, VoiceOver/TalkBack und große Schrift.
-4. Vor großen realen Datenbeständen unveränderliche Archiv-Blobs vom Gesamtpayload trennen und inkrementelles Speichern messen. Heute wird bei kleinen Entwurfs-Commits auch die archivierte Quelle kopiert/serialisiert; 64 MiB ist eine Sicherheitsgrenze, kein Leistungsnachweis.
+1. GitHub-Lauf und Quellencheckpoint beobachten, Fehler korrigieren und Nachweis sichern. Kein erfolgreicher Remote-Lauf allein aus YAML ableiten.
+2. Präzise Lesefortsetzung, freiwillige Erinnerungen und Rückblickbearbeitung ausbauen; die vorhandenen Entwurfs-/Quellschutzverträge weiterverwenden.
+3. Weitere eigenständige Kapitelredaktion und Anfänger-Usability prüfen. Die neun Pilottexte sind keine 27 unabhängigen Kapitelredaktionen. Bildwelt erst nach unabhängiger Fachprüfung breit skalieren.
+4. Native Geräteabnahme: Dateidialoge, SQLite, Prozessabbruch/Low-Disk, Hardware-Zurück, Tastatur, VoiceOver/TalkBack, große Schrift und reduzierte Bewegung.
+5. V5-Import zusätzlich an einem anonymisierten echten Export prüfen, falls verfügbar. Kein persönlicher Export ins Repository oder in Logs.
+6. Optionalen Sync/KI erst mit tatsächlichem Dienst und vollständigen Daten-/Quellenverträgen anschließen. Supabase-DDL ist Vorbereitung und benötigt weitere Migrationen.
 
-## Verbleibende Grenzen
+## Grenzen
 
-FaithPath-Quelle bis 10 MiB UTF-8 (altes System bis 20 MiB), Gesamtbackup bis 64 MiB. Nicht zuordenbare Inhalte bleiben einsehbar im Originalarchiv. Nur eine lokale Rückkehrsicherung; der nächste Import ersetzt sie, eine erfolgreiche Rückkehr verbraucht sie. Rückkehr ersetzt auch spätere Texte und verlangt eine eindeutige Bestätigung. Daten/Exporte sind nicht zusätzlich verschlüsselt.
+FaithPath-Quelle bis 10 MiB UTF-8, vollständiges Backup bis 64 MiB. Kleine Commits schreiben bestehende Quell-Blobs nicht erneut; erstes Laden/Export bleibt speicherintensiv und ist nicht auf schwachen Geräten vermessen. Eine Rückkehrsicherung; nächster Import ersetzt sie, erfolgreiche Rückkehr verbraucht sie. Daten/Exporte unverschlüsselt. Rohdatenrettung und ungesicherte Sitzungskopie sind keine normalen automatisch wiederherstellbaren Backups.
 
-Cloud-Sync/Auth, Live-KI und Audio sind nicht angeschlossen. Optionales Supabase-DDL ist nicht live abgenommen und benötigt für spätere neue Funktionen weitere Migrationen. Reale Anfänger-Usability, fachliche Inhalts-/Bildfreigaben, Store-Signing und öffentliche Veröffentlichung bleiben offen. Die Gesamt-Definition-of-Done des Master-Prompts ist nicht erreicht.
+Auth/Sync, Live-KI und Audio nicht angeschlossen. Reale Anfänger-Studie, unabhängige Inhalts-/Bildfreigaben, Store-Signing und öffentliche Veröffentlichung offen. Die Gesamt-Definition-of-Done ist nicht erreicht.
 
 ## Umgang mit `/resume`
 

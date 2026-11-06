@@ -1,0 +1,30 @@
+{
+  "version": "0.4.0",
+  "generated_on": "2026-11-06T14:50:15.361174+00:00",
+  "hash_method": "SHA256(sorted(relative_path + NUL + SHA256(file) + LF))",
+  "artifacts": [
+    {
+      "directory": "dist",
+      "file_count": 60,
+      "total_bytes": 10181292,
+      "aggregate_sha256": "04ce2a4225ab89d3c5cde8c41423907903a21321200ee1e4fd71db20f65212b0",
+      "kind": "web export"
+    },
+    {
+      "directory": "dist-android",
+      "file_count": 47,
+      "total_bytes": 15563192,
+      "aggregate_sha256": "463aed6ec85089081509c197dc55f474912fab7edcf5453a0b7c5bd452075a0e",
+      "kind": "native JS/assets/Hermes export; not APK",
+      "source_limit": "Export before final context-image aspect correction; final JS/assets export follows separately."
+    },
+    {
+      "directory": "dist-ios",
+      "file_count": 44,
+      "total_bytes": 15578118,
+      "aggregate_sha256": "8b5d39d752b592f8f27775200adb5cfe802f8febe7821d5ca135a3105146b3f4",
+      "kind": "native JS/assets/Hermes export; not IPA",
+      "source_limit": "Export before final context-image aspect correction; final JS/assets export follows separately."
+    }
+  ]
+}
