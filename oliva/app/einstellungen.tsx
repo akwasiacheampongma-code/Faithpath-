@@ -7,6 +7,8 @@ import { useTheme } from "../src/design-system/theme";
 import { useApp } from "../src/state/store";
 import { parseBackup, type AppData } from "../src/state/model";
 import { exportData } from "../src/services/storage";
+import { MAX_BACKUP_BYTES } from "../src/features/imports/schema";
+import { pickBackup } from "../src/services/pick-backup";
 export default function Settings() {
   const t = useTheme(),
     data = useApp((s) => s.data),
@@ -160,23 +162,53 @@ export default function Settings() {
           >
             Sicherung wiederherstellen
           </Button>
+          <Button
+            kind="secondary"
+            icon="bookmark"
+            onPress={() => router.push("/importieren")}
+          >
+            FaithPath-Daten mitnehmen
+          </Button>
           {showImport && (
             <View style={{ gap: 14 }}>
               <T style={{ fontSize: 11, color: t.muted }}>
-                Füge den Inhalt einer OLIVA-JSON-Sicherung ein.
-                FaithPath-V5-Sicherungen benötigen einen gesonderten, noch nicht
-                verfügbaren Import.
+                Wähle eine OLIVA-JSON-Sicherung oder füge ihren Inhalt ein
+                (maximal 64 MB). Für FaithPath nutze „FaithPath-Daten
+                mitnehmen“.
               </T>
+              <Button
+                kind="secondary"
+                icon="download"
+                disabled={busy}
+                onPress={() =>
+                  void pickBackup(MAX_BACKUP_BYTES)
+                    .then((value) => {
+                      if (value !== null) {
+                        setBackup(value);
+                        setCandidate(parseBackup(value));
+                        setMessage(
+                          "Sicherung geprüft. Bitte prüfe die Übersicht vor der Wiederherstellung.",
+                        );
+                      }
+                    })
+                    .catch((e) => {
+                      setCandidate(null);
+                      setMessage((e as Error).message);
+                    })
+                }
+              >
+                OLIVA-Sicherungsdatei auswählen
+              </Button>
               <Field
                 label="Inhalt deiner OLIVA-Sicherung"
                 multiline
                 value={backup}
-                maxLength={2_000_000}
+                maxLength={MAX_BACKUP_BYTES}
                 onChangeText={(value) => {
                   setBackup(value);
                   setCandidate(null);
                 }}
-                placeholder={'{"version":2, …}'}
+                placeholder={'{"version":3, …}'}
               />
               <Button
                 kind="secondary"
@@ -252,7 +284,7 @@ export default function Settings() {
             Den Einstieg noch einmal ansehen
           </Button>
           <T style={{ fontSize: 10, color: t.muted }}>
-            OLIVA · lokale Entwicklungsausgabe 0.2.0
+            OLIVA · lokale Entwicklungsausgabe 0.3.0
           </T>
         </Card>
       </View>

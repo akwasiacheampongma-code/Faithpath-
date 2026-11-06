@@ -1,27 +1,28 @@
 {
-  "version": "0.2.0",
-  "generated_on": "2026-11-06",
+  "version": "0.3.0",
+  "generated_on": "2026-11-06T10:11:00.556697+00:00",
+  "hash_method": "SHA256(sorted(relative_path + NUL + SHA256(file) + LF))",
   "artifacts": [
     {
       "directory": "dist",
-      "file_count": 46,
-      "total_bytes": 8621181,
-      "aggregate_sha256": "527916a6f9c6dba72a3f92c6fb8d787e2292dafa953b9470f815133141fa04d0",
+      "file_count": 48,
+      "total_bytes": 8663981,
+      "aggregate_sha256": "2809efcaaf635b42367066c0f0139161571268024a08e1c43e180564dc2486a9",
       "kind": "web export"
     },
     {
       "directory": "dist-android",
       "file_count": 35,
-      "total_bytes": 13880598,
-      "aggregate_sha256": "ceb33a850fe26023a90fdd50dae884d896b8bf3413980af895c8a4f2e6e4217e",
-      "kind": "native JS/assets export; not IPA/APK"
+      "total_bytes": 14023117,
+      "aggregate_sha256": "6378b92f08aaae279464425d048949b108a68aacfd5c98652f7c1ae3aca79f65",
+      "kind": "native JS/assets export; not APK"
     },
     {
       "directory": "dist-ios",
       "file_count": 32,
-      "total_bytes": 13894453,
-      "aggregate_sha256": "a181f966567c48ae9d5b12fc142dbd355737ca68ffd246dfedee6b9d0cf38e05",
-      "kind": "native JS/assets export; not IPA/APK"
+      "total_bytes": 14037988,
+      "aggregate_sha256": "396ad0b0efd431dbe010b7410c3a5aee27c946aa368a74477f6652bce60d1269",
+      "kind": "native JS/assets export; not IPA"
     }
   ]
 }

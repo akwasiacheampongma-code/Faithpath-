@@ -8,8 +8,8 @@ Prüfumgebung: 06.11.2026, Linux, Node 24.22.1, npm 11.9.0, systemweiter Headles
 |---|---|---|
 | Bibelimport und Reproduzierbarkeit des Korpus | 66 Bücher, 1.189 Kapitel, 31.102 Verse; Bundle erneut aus Originalarchiv ableitbar | `npm run content:check`, Import-SHA unten |
 | TypeScript | Fehlerfreie strikte Typprüfung | `npm run typecheck` |
-| Fach-/Persistenzsuite | 30 Tests bestanden | `tests/domain.test.ts`, `tests/store.test.ts`, `tests/personal.test.ts`, `docs/evidence/unit-results.json` |
-| Browser-Hauptabläufe | 16 Szenarien bestanden, 0 Fehler, 0 übersprungen; aktuelles Ergebnis im JSON-Bericht | `docs/evidence/e2e-results.json` |
+| Fach-/Persistenzsuite | 46 Tests bestanden, einschließlich V5-Import, Migration und echter SQLite-Transaktionen | `tests/*.test.ts`, `docs/evidence/unit-results.json` |
+| Browser-Hauptabläufe | 22 Szenarien bestanden, 0 Fehler, 0 übersprungen; aktuelles Ergebnis im JSON-Bericht | `docs/evidence/e2e-results.json` |
 | Erster Weg | Gast → Geschichte → Versaktion/Notiz → drei Schritte → freiwillige Reflexion → Abschluss → Neustart; Abschnitt zählt kein Kapitel | Browser-Szenario 1 |
 | Reader | Buch-/Kapitelwahl, Volltextsuche, Schrift/Abstand/Dunkel, bestätigter Kapitelabschluss und Reload | Browser-Szenario 2 |
 | Journal | Anlegen, Bearbeiten, explizites Löschen, Undo und Neustart | Browser-Szenario 3 |
@@ -56,3 +56,7 @@ Keine dieser offenen Prüfungen wird durch einen grünen TypeScript-, Node- oder
 ## Ergänzung 0.2 · Vorhaben und Entwürfe
 
 Die sieben zusätzlichen Browser-Szenarien prüfen Export nach einem Bereichswechsel, Journalentwürfe nach Neustart und Bearbeitung, Vorhaben mit Schritten/Rückblick/Archiv, ausdrückliches Verwerfen, eine bestehende V1-Datenbank, Bibelbezug aus dem Reader und Reflow/Axe für neue Editoren. Die elf zusätzlichen fachlichen Prüfungen ergänzen Migration, Quellschutz, Entwurfsstempel, Warteschlange und Snapshots. Screens liegen unter `docs/evidence/personal-screens/`; die synthetischen Beispieltexte sind als solche im Manifest gekennzeichnet. Details in [Iteration 0.2](06-personal-and-drafts.md).
+
+## Ergänzung 0.3 · V5-Import und atomare Rückkehr
+
+16 zusätzliche Fach-/Persistenztests und sechs zusätzliche Browser-Szenarien sind erfolgreich. Native Adapterlogik wird mit Nodes echter SQLite-Engine geprüft: physische Migration 1→2, Nutzdatenmigration 2→3, Fehler nach dem Sicherungsschreibvorgang, Revisionsschutz und Token-Verbrauch. Das frühere Python-Schemaergebnis bleibt als historischer Nachweis erhalten; es ersetzt nicht diese neuen Adaptertests oder einen Expo-Gerätetest. Im Browser wurden Dateidialog, Abbruch, Originaldownload, Offline-Neustart, Quellen-Snapshot, wiederholter Import, zwei Fenster, Quota-Fehler und Rückkehr nach späteren Änderungen geprüft. Zwei zusätzliche Axe-Scans prüfen Vorschau und Originalarchiv im Dark Mode. Zehn neue Screens zeigen die Importansichten mobil und groß. Details und anfängliche Testkorrektur: [Iteration 0.3](07-faithpath-import.md).

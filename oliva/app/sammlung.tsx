@@ -15,6 +15,7 @@ import {
 import { countBookRead, type Note } from "../src/state/model";
 import { JournalEditor } from "../src/features/personal/Editors";
 import { journalDraft } from "../src/features/personal/model";
+import { highlightBackground } from "../src/features/bible/highlights";
 export default function Collection() {
   const t = useTheme(),
     data = useApp((s) => s.data),
@@ -247,6 +248,44 @@ export default function Collection() {
                     {referenceLabel(note.ref)}
                   </Button>
                 )}
+                {note.origin && (
+                  <View style={{ gap: 8 }}>
+                    <T variant="small" style={{ color: t.muted }}>
+                      Aus FaithPath ·{" "}
+                      {note.origin.referenceLabel ?? "eigene Worte"}
+                    </T>
+                    {note.goalIds?.map((id) => {
+                      const goal = data.goals.find((g) => g.id === id);
+                      return goal ? (
+                        <Button
+                          key={id}
+                          kind="ghost"
+                          icon="path"
+                          onPress={() =>
+                            router.push({
+                              pathname: "/vorhaben/[id]",
+                              params: { id },
+                            })
+                          }
+                        >
+                          {goal.title}
+                        </Button>
+                      ) : null;
+                    })}
+                    <Button
+                      kind="ghost"
+                      icon="info"
+                      onPress={() =>
+                        router.push({
+                          pathname: "/importarchiv/[id]",
+                          params: { id: note.origin!.importId },
+                        })
+                      }
+                    >
+                      Originalquelle dieses Gedankens
+                    </Button>
+                  </View>
+                )}
                 <View
                   style={{ flexDirection: "row", gap: 7, flexWrap: "wrap" }}
                 >
@@ -436,9 +475,7 @@ export default function Collection() {
                     gap: 12,
                     backgroundColor:
                       tab === "Markierungen"
-                        ? data.highlights[key] === "gold"
-                          ? t.goldSoft
-                          : t.highlight
+                        ? highlightBackground(data.highlights[key], t.dark)
                         : t.surface,
                   }}
                 >

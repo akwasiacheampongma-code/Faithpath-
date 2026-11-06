@@ -2,13 +2,15 @@
 
 Eigenständige lokale Bibel- und Glaubens-App auf Expo / React Native / TypeScript. Entwickelt in einem separaten Projekt; die bestehende FaithPath-App wurde nicht verändert.
 
-**Stand: ausführbarer lokaler Kern, keine abgeschlossene Gesamtfreigabe.** 66 Bibelbücher, Reader, neun geführte Wege, sieben Baumstadien, 66 Buchschwert-Identitäten, Sammlung und Sicherungen sind implementiert. Version 0.2 ergänzt persönliche Vorhaben mit eigenen Schritten, Archiv und bewahrten Rückblicken sowie gesicherte Entwürfe für Journal und Vorhaben. Cloud-Sync, KI-Begleiter, Audio, vollständige FaithPath-V5-Parität und fachlich freigegebene Kapitelredaktion sind noch offen. Der maßgebliche Lieferstand steht in [docs/delivery-status.md](docs/delivery-status.md).
+**Stand: ausführbarer lokaler Kern 0.3, keine abgeschlossene Gesamtfreigabe.** 66 Bibelbücher, Reader, neun geführte Wege, sieben Baumstadien, 66 Buchschwert-Identitäten, Sammlung und Sicherungen sind implementiert. Persönliche Vorhaben haben eigene Schritte, Archiv, bewahrte Rückblicke und dauerhafte Entwürfe. Version 0.3 ergänzt den ausdrücklich bestätigten FaithPath-V5-Import mit Vorschau, Originalarchiv und atomarer Rückkehrsicherung. Cloud-Sync, KI-Begleiter, Audio, vollständige FaithPath-Parität und fachlich freigegebene Kapitelredaktion bleiben offen. Maßgeblich ist [docs/delivery-status.md](docs/delivery-status.md).
 
-## Version 0.2 ausprobieren
+## Version 0.3 ausprobieren
+
+**Einstellungen → FaithPath-Daten mitnehmen:** V5-Datei auswählen, Ergänzungen und Konflikte prüfen, ausdrücklich übernehmen. Die Originalquelle bleibt einsehbar und exportierbar. Historische Quellen erscheinen am importierten Vorhaben. Die Rückkehr zum Stand vor dem letzten Import wird separat bestätigt. OTB-Stellen werden nicht als Lutherbibel ausgegeben. Limits: 10 MiB Quelle, 64 MiB gesamte OLIVA-Sicherung. Details: [Importvertrag und Grenzen](docs/07-faithpath-import.md).
 
 Im Bereich **Wege → Deine persönlichen Vorhaben** kannst du ein eigenes Anliegen anlegen, kleine Schritte ergänzen und später darauf zurückblicken. In der **Sammlung** bleiben Journalentwürfe auch nach einem Neustart erreichbar. Der [Iterationsbericht](docs/06-personal-and-drafts.md) erklärt Umfang, Datenmigration und Grenzen.
 
-Für die bereits enthaltene Webvorschau genügt Node; eine Installation der Entwicklungsabhängigkeiten ist zum bloßen Ansehen nicht nötig:
+Im lokalen Arbeitsbereich liegt ein fertiger Webexport. Nach einem GitHub-Checkout zuerst wie unten bauen:
 
 ```sh
 cd faithpath-next
@@ -101,8 +103,9 @@ Die Cloud-Migrationen unter `database/migrations/` sind **Vorbereitung für eine
 5. [Bildwelt und Rechte](docs/04-art-direction-and-rights.md)
 6. [Prüfungen und offene Abnahmen](docs/05-validation.md)
 7. [Persönliche Vorhaben und gesicherte Entwürfe](docs/06-personal-and-drafts.md)
-8. [Lieferstand und nächste Schritte](docs/delivery-status.md)
+8. [FaithPath-V5-Import, Quellen und Rückkehr](docs/07-faithpath-import.md)
+9. [Lieferstand und nächste Schritte](docs/delivery-status.md)
 
 Screenshots: `docs/evidence/screens/`. Art-Provenienz: `art/manifest.json`. Schriften und Bibelrechte: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-Persönliche Texte bleiben lokal und sind nicht zusätzlich verschlüsselt. Die App bietet Export und geprüfte Wiederherstellung; ein Restore ersetzt den lokalen Bestand erst nach einer ausdrücklichen Aktion. Der neue Sicherungstyp ist nicht automatisch kompatibel mit FaithPath V5.
+Persönliche Texte bleiben lokal und sind nicht zusätzlich verschlüsselt. Ein OLIVA-Restore ersetzt den lokalen Bestand erst nach ausdrücklicher Bestätigung. Der gesonderte FaithPath-V5-Import ergänzt ihn und bewahrt die Originalquelle. **Repository-Checkpoint:** Branch `feature/oliva-next-v02-20261106`, eigenständige Anwendung in `oliva/`. Dort `npm ci`, `npm run build`, `npm run preview` ausführen. Der Fortsetzungsstand steht in [RESUME.md](RESUME.md). Der CI-Workflow unter `oliva/.github/` ist als Vorlage enthalten und wird in dieser Monorepo-Unterstruktur nicht automatisch von GitHub ausgeführt; bestehende Root-Workflows wurden nicht verändert.

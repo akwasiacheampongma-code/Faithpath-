@@ -24,6 +24,7 @@ import {
 } from "../../src/features/bible/repository";
 import { PATHS, pathById } from "../../src/features/paths/catalog";
 import { markRead, chapterId, countBookRead } from "../../src/state/model";
+import { highlightBackground } from "../../src/features/bible/highlights";
 export default function Reader() {
   const params = useLocalSearchParams<{
       book: string;
@@ -432,11 +433,7 @@ export default function Reader() {
                         backgroundColor:
                           selected === v.n
                             ? t.soft
-                            : color === "gold"
-                              ? t.goldSoft
-                              : color === "olive"
-                                ? t.highlight
-                                : "transparent",
+                            : highlightBackground(color, t.dark),
                       }}
                     >
                       <T

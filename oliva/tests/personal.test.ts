@@ -41,7 +41,7 @@ function makeGoal() {
 describe("Verlustfreie Payload-Migration", () => {
   it("übernimmt V1-Daten mit Notizen, Fortschritt und Einstellungen ohne Veränderung der Quelle", () => {
     const current = initialData();
-    const { goals, drafts, ...rest } = current;
+    const { goals, drafts, imports, ...rest } = current;
     const old = {
       ...rest,
       version: 1,
@@ -61,16 +61,22 @@ describe("Verlustfreie Payload-Migration", () => {
     };
     const bytes = JSON.stringify(old),
       migrated = decodeData(old);
-    expect(migrated).toEqual({ ...old, version: 2, goals: [], drafts: [] });
+    expect(migrated).toEqual({
+      ...old,
+      version: 3,
+      goals: [],
+      drafts: [],
+      imports: [],
+    });
     expect(JSON.stringify(old)).toBe(bytes);
     expect(parseBackup(bytes)).toEqual(migrated);
   });
   it("weist beschädigte alte Daten und unbekannte Versionen zurück", () => {
-    const { goals, drafts, ...rest } = initialData();
+    const { goals, drafts, imports, ...rest } = initialData();
     expect(() =>
       decodeData({ ...rest, version: 1, readChapters: ["GEN:99"] }),
     ).toThrow();
-    expect(() => decodeData({ ...rest, version: 3 })).toThrow();
+    expect(() => decodeData({ ...rest, version: 999 })).toThrow();
   });
   it("bewahrt Entwurfsworte einschließlich Leerzeichen und Zeilenumbrüchen im Backup", () => {
     const data = initialData(),

@@ -256,7 +256,7 @@ test("Eine installierte V1-Datenbank wird ohne Verlust weitergeführt", async ({
     .getByRole("button", { name: "Namen speichern", exact: true })
     .click();
   await expect.poll(async () => (await local(page))?.name).toBe("Ada");
-  const { goals, drafts, ...rest } = await local(page);
+  const { goals, drafts, imports, ...rest } = await local(page);
   const old = {
     ...rest,
     version: 1,
@@ -293,7 +293,7 @@ test("Eine installierte V1-Datenbank wird ohne Verlust weitergeführt", async ({
   await page
     .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
     .click();
-  expect((await local(page)).version).toBe(2);
+  expect((await local(page)).version).toBe(3);
   expect((await local(page)).readChapters).toEqual(["MRK:4"]);
   expect((await local(page)).growthStage).toBe(3);
   expect((await local(page)).notes[0]?.text).toBe("Meine alten eigenen Worte.");

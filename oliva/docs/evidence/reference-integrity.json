@@ -1,5 +1,6 @@
 {
   "reference_commit": "a519ce898fa33907b07d5ac7a585595127556183",
+  "checked_at": "2026-11-06T10:11:01.021103+00:00",
   "materialized_files_checked": 390,
   "all_unchanged": true,
   "files": [
@@ -116,10 +117,6 @@
       "matches_snapshot": true
     },
     {
-      "file": "reports/guided-a51/evidence/browser.log",
-      "matches_snapshot": true
-    },
-    {
       "file": "reports/guided-a51/evidence/browser/01-protected-step-editor.png",
       "matches_snapshot": true
     },
@@ -184,6 +181,10 @@
       "matches_snapshot": true
     },
     {
+      "file": "reports/guided-a51/evidence/browser.log",
+      "matches_snapshot": true
+    },
+    {
       "file": "reports/guided-a51/evidence/build-integrity.log",
       "matches_snapshot": true
     },
@@ -196,10 +197,6 @@
       "matches_snapshot": true
     },
     {
-      "file": "reports/guided-a51/evidence/faults.log",
-      "matches_snapshot": true
-    },
-    {
       "file": "reports/guided-a51/evidence/faults/results.json",
       "matches_snapshot": true
     },
@@ -208,7 +205,7 @@
       "matches_snapshot": true
     },
     {
-      "file": "reports/guided-a51/evidence/first-seed.log",
+      "file": "reports/guided-a51/evidence/faults.log",
       "matches_snapshot": true
     },
     {
@@ -260,6 +257,10 @@
       "matches_snapshot": true
     },
     {
+      "file": "reports/guided-a51/evidence/first-seed.log",
+      "matches_snapshot": true
+    },
+    {
       "file": "reports/guided-a51/evidence/integration-audit.json",
       "matches_snapshot": true
     },
@@ -308,15 +309,15 @@
       "matches_snapshot": true
     },
     {
-      "file": "reports/guided-a51/evidence/update.log",
-      "matches_snapshot": true
-    },
-    {
       "file": "reports/guided-a51/evidence/update/results.json",
       "matches_snapshot": true
     },
     {
       "file": "reports/guided-a51/evidence/update/tree-after-update-offline.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/guided-a51/evidence/update.log",
       "matches_snapshot": true
     },
     {
@@ -441,10 +442,6 @@
     },
     {
       "file": "reports/simplified-steps/evidence/baseline-unit.log",
-      "matches_snapshot": true
-    },
-    {
-      "file": "reports/simplified-steps/evidence/browser.log",
       "matches_snapshot": true
     },
     {
@@ -580,6 +577,10 @@
       "matches_snapshot": true
     },
     {
+      "file": "reports/simplified-steps/evidence/browser.log",
+      "matches_snapshot": true
+    },
+    {
       "file": "reports/simplified-steps/evidence/build-integrity.json",
       "matches_snapshot": true
     },
@@ -593,10 +594,6 @@
     },
     {
       "file": "reports/simplified-steps/evidence/contracts.log",
-      "matches_snapshot": true
-    },
-    {
-      "file": "reports/simplified-steps/evidence/core-browser.log",
       "matches_snapshot": true
     },
     {
@@ -700,6 +697,10 @@
       "matches_snapshot": true
     },
     {
+      "file": "reports/simplified-steps/evidence/core-browser.log",
+      "matches_snapshot": true
+    },
+    {
       "file": "reports/simplified-steps/evidence/dialog-title-contrast.json",
       "matches_snapshot": true
     },
@@ -709,10 +710,6 @@
     },
     {
       "file": "reports/simplified-steps/evidence/faults/unsaved-recovery.json",
-      "matches_snapshot": true
-    },
-    {
-      "file": "reports/simplified-steps/evidence/first-seed.log",
       "matches_snapshot": true
     },
     {
@@ -761,6 +758,10 @@
     },
     {
       "file": "reports/simplified-steps/evidence/first-seed/synthetic-backup.json",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/first-seed.log",
       "matches_snapshot": true
     },
     {
@@ -1008,15 +1009,11 @@
       "matches_snapshot": true
     },
     {
-      "file": "reports/simplified-steps/evidence/topic-green.log",
-      "matches_snapshot": true
-    },
-    {
       "file": "reports/simplified-steps/evidence/topic-green/results.json",
       "matches_snapshot": true
     },
     {
-      "file": "reports/simplified-steps/evidence/topic-red.log",
+      "file": "reports/simplified-steps/evidence/topic-green.log",
       "matches_snapshot": true
     },
     {
@@ -1024,11 +1021,11 @@
       "matches_snapshot": true
     },
     {
-      "file": "reports/simplified-steps/evidence/unit.log",
+      "file": "reports/simplified-steps/evidence/topic-red.log",
       "matches_snapshot": true
     },
     {
-      "file": "reports/simplified-steps/evidence/update.log",
+      "file": "reports/simplified-steps/evidence/unit.log",
       "matches_snapshot": true
     },
     {
@@ -1037,6 +1034,10 @@
     },
     {
       "file": "reports/simplified-steps/evidence/update/tree-after-update-offline.png",
+      "matches_snapshot": true
+    },
+    {
+      "file": "reports/simplified-steps/evidence/update.log",
       "matches_snapshot": true
     },
     {
@@ -1472,10 +1473,6 @@
       "matches_snapshot": true
     },
     {
-      "file": "src/verbunden.css",
-      "matches_snapshot": true
-    },
-    {
       "file": "src/verbunden/assets/brand-sprig.svg",
       "matches_snapshot": true
     },
@@ -1545,6 +1542,10 @@
     },
     {
       "file": "src/verbunden/tokens.css",
+      "matches_snapshot": true
+    },
+    {
+      "file": "src/verbunden.css",
       "matches_snapshot": true
     },
     {

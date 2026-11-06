@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { referenceSchema } from "../bible/schema";
+import { originSchema } from "../imports/schema";
 
 const id = z.string().min(1).max(100),
   date = z.string().datetime();
@@ -51,6 +52,7 @@ export const goalSchema = z
     revision: z.number().int().positive(),
     steps: z.array(stepSchema).max(100),
     reviews: z.array(reviewSchema).max(500),
+    origin: originSchema.optional(),
   })
   .strict()
   .refine(

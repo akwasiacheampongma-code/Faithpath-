@@ -1,0 +1,85 @@
+{
+  "capturedAt": "2026-11-06T10:11:13.140Z",
+  "screens": [
+    {
+      "file": "import-start-mobile.png",
+      "width": 390,
+      "height": 844,
+      "scenario": "Read-only file choice and explanation",
+      "route": "/importieren",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    },
+    {
+      "file": "import-preview-mobile.png",
+      "width": 390,
+      "height": 844,
+      "scenario": "Validated preview before mutation",
+      "route": "/importieren",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    },
+    {
+      "file": "import-archive-mobile.png",
+      "width": 390,
+      "height": 844,
+      "scenario": "Immutable original source and exact export",
+      "route": "/importarchiv/fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    },
+    {
+      "file": "import-history-mobile.png",
+      "width": 390,
+      "height": 844,
+      "scenario": "Historic source snapshot, distinct from new OLIVA reviews",
+      "route": "/vorhaben/fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    },
+    {
+      "file": "import-rollback-mobile.png",
+      "width": 390,
+      "height": 844,
+      "scenario": "Explicit replacement warning before rollback",
+      "route": "/importieren",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    },
+    {
+      "file": "import-start-desktop.png",
+      "width": 1440,
+      "height": 1080,
+      "scenario": "Read-only file choice and explanation",
+      "route": "/importieren",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    },
+    {
+      "file": "import-preview-desktop.png",
+      "width": 1440,
+      "height": 1080,
+      "scenario": "Validated preview before mutation",
+      "route": "/importieren",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    },
+    {
+      "file": "import-archive-desktop.png",
+      "width": 1440,
+      "height": 1080,
+      "scenario": "Immutable original source and exact export",
+      "route": "/importarchiv/fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    },
+    {
+      "file": "import-history-desktop.png",
+      "width": 1440,
+      "height": 1080,
+      "scenario": "Historic source snapshot, distinct from new OLIVA reviews",
+      "route": "/vorhaben/fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    },
+    {
+      "file": "import-rollback-desktop.png",
+      "width": 1440,
+      "height": 1080,
+      "scenario": "Explicit replacement warning before rollback",
+      "route": "/importieren",
+      "kind": "Chromium simulated viewport; synthetic V5 source, no personal user data"
+    }
+  ]
+}

@@ -17,6 +17,7 @@ import {
   ReviewEditor,
 } from "../../src/features/personal/Editors";
 import { referenceLabel } from "../../src/features/bible/repository";
+import { LegacyHistory } from "../../src/features/imports/LegacyHistory";
 
 export default function GoalDetail() {
   const { id } = useLocalSearchParams<{ id: string }>(),
@@ -319,6 +320,7 @@ export default function GoalDetail() {
             </Card>
           )}
         </View>
+        {goal.origin && <LegacyHistory goal={goal} />}
         <View style={{ gap: 14 }}>
           <T variant="heading">Deine Rückblicke</T>
           {goal.reviews.map((review) => (

@@ -8,6 +8,14 @@ import { pathById } from "../features/paths/catalog";
 
 import { referenceSchema as ref } from "../features/bible/schema";
 import { goalSchema, draftSchema } from "../features/personal/schema";
+import {
+  originSchema,
+  receiptSchema,
+  MAX_BACKUP_BYTES,
+} from "../features/imports/schema";
+import { parseFaithpath } from "../features/imports/source";
+import { highlightColor } from "../features/bible/highlights";
+import { utf8Length } from "../lib/hash";
 const chapterKey = z.string().refine((value) => {
   const [book, c] = value.split(":");
   return (
@@ -52,6 +60,12 @@ export const noteSchema = z
     ref: ref.optional(),
     createdAt: z.string().datetime(),
     updatedAt: z.string().datetime(),
+    origin: originSchema.optional(),
+    goalIds: z
+      .array(z.string().min(1).max(100))
+      .max(500)
+      .refine(unique)
+      .optional(),
   })
   .strict();
 const baseSchema = z
@@ -70,7 +84,7 @@ const baseSchema = z
       .nullable()
       .refine((v) => v === null || !!pathById(v)),
     bookmarks: z.array(verseKey).max(31102).refine(unique),
-    highlights: z.record(verseKey, z.enum(["olive", "gold"])),
+    highlights: z.record(verseKey, highlightColor),
     notes: z
       .array(noteSchema)
       .max(5000)
@@ -93,22 +107,39 @@ const completeStepsValid = (d: {
 export const legacyDataSchema = baseSchema
   .extend({ version: z.literal(1) })
   .refine(completeStepsValid, "Ungültiger Wegfortschritt");
+const v2Fields = {
+  goals: z
+    .array(goalSchema)
+    .max(500)
+    .refine((items) => unique(items.map((g) => g.id))),
+  drafts: z
+    .array(draftSchema)
+    .max(100)
+    .refine(
+      (items) =>
+        unique(items.map((d) => d.key)) && unique(items.map((d) => d.id)),
+    ),
+};
+export const v2DataSchema = baseSchema
+  .extend({ version: z.literal(2), ...v2Fields })
+  .refine(completeStepsValid);
 export const dataSchema = baseSchema
   .extend({
-    version: z.literal(2),
-    goals: z
-      .array(goalSchema)
-      .max(500)
-      .refine((items) => unique(items.map((g) => g.id))),
-    drafts: z
-      .array(draftSchema)
+    version: z.literal(3),
+    ...v2Fields,
+    imports: z
+      .array(receiptSchema)
       .max(100)
-      .refine(
-        (items) =>
-          unique(items.map((d) => d.key)) && unique(items.map((d) => d.id)),
-      ),
+      .refine((items) => unique(items.map((x) => x.id))),
   })
-  .refine(completeStepsValid, "Ungültiger Wegfortschritt");
+  .refine(completeStepsValid, "Ungültiger Wegfortschritt")
+  .refine(
+    (d) =>
+      [...d.goals, ...d.notes].every(
+        (x) => !x.origin || d.imports.some((r) => r.id === x.origin!.importId),
+      ),
+    "Importquelle fehlt",
+  );
 export function decodeData(input: unknown): AppData {
   if (
     input &&
@@ -117,14 +148,42 @@ export function decodeData(input: unknown): AppData {
     input.version === 1
   ) {
     const old = legacyDataSchema.parse(input);
-    return dataSchema.parse({ ...old, version: 2, goals: [], drafts: [] });
+    return dataSchema.parse({
+      ...old,
+      version: 3,
+      goals: [],
+      drafts: [],
+      imports: [],
+    });
   }
-  return dataSchema.parse(input);
+  if (
+    input &&
+    typeof input === "object" &&
+    "version" in input &&
+    input.version === 2
+  ) {
+    return dataSchema.parse({
+      ...v2DataSchema.parse(input),
+      version: 3,
+      imports: [],
+    });
+  }
+  const data = dataSchema.parse(input);
+  for (const receipt of data.imports) {
+    const parsed = parseFaithpath(receipt.sourceText);
+    if (
+      parsed.sourceHash !== receipt.sourceHash ||
+      parsed.fingerprint !== receipt.fingerprint
+    )
+      throw new Error("Eine archivierte Importquelle ist beschädigt.");
+  }
+  return data;
 }
 export type AppData = z.infer<typeof dataSchema>;
 export type Note = z.infer<typeof noteSchema>;
 export const initialData = (): AppData => ({
-  version: 2,
+  version: 3,
+  imports: [],
   goals: [],
   drafts: [],
   revision: 0,
@@ -178,15 +237,18 @@ export function finishStep(data: AppData, key: string) {
 }
 export function grow(data: AppData) {
   const reads =
-      data.readChapters.length +
+      data.readChapters.filter(
+        (k) => !data.imports.some((i) => i.addedChapters.includes(k)),
+      ).length +
       data.readSteps.length +
       data.readPassages.length,
     understood = data.completedSteps.length;
   const reviews = data.goals.flatMap((g) => g.reviews);
   const reflections =
-      data.notes.filter((n) => n.kind === "reflection").length + reviews.length,
+      data.notes.filter((n) => n.kind === "reflection" && !n.origin).length +
+      reviews.length,
     actions =
-      data.notes.filter((n) => n.kind === "action").length +
+      data.notes.filter((n) => n.kind === "action" && !n.origin).length +
       reviews.filter((r) => r.applied).length;
   let next = reads > 0 ? 1 : 0;
   if (reads >= 2 && understood >= 1) next = 2;
@@ -198,8 +260,8 @@ export function grow(data: AppData) {
   data.growthStage = Math.max(data.growthStage, next);
 }
 export function parseBackup(text: string): AppData {
-  if (text.length > 2_000_000)
-    throw new Error("Die Sicherung ist zu groß (maximal 2 MB).");
+  if (utf8Length(text) > MAX_BACKUP_BYTES)
+    throw new Error("Die Sicherung ist zu groß (maximal 64 MB).");
   try {
     return decodeData(JSON.parse(text));
   } catch {
@@ -207,6 +269,12 @@ export function parseBackup(text: string): AppData {
       "Diese Datei ist keine gültige OLIVA-Sicherung. Deine bisherigen Daten bleiben erhalten.",
     );
   }
+}
+export function assertStorageBudget(data: AppData) {
+  if (utf8Length(JSON.stringify(data, null, 2)) > MAX_BACKUP_BYTES)
+    throw new Error(
+      "Der Datenstand überschreitet die Sicherungsgrenze von 64 MB. Exportiere zuerst deine bisherigen Daten. Es wurde nichts gespeichert.",
+    );
 }
 export function countBookRead(data: AppData, code: string) {
   return data.readChapters.filter((key) => key.startsWith(code + ":")).length;

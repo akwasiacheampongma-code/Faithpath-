@@ -1,6 +1,18 @@
 import { create } from "zustand";
-import { readData, writeData } from "../services/storage";
-import { dataSchema, grow, initialData, type AppData } from "./model";
+import { readData, writeData, readRecovery } from "../services/storage";
+import {
+  dataSchema,
+  grow,
+  initialData,
+  assertStorageBudget,
+  type AppData,
+} from "./model";
+import {
+  applyImport,
+  prepareImport,
+  type ImportPlan,
+} from "../features/imports/model";
+import type { WriteOptions } from "../features/imports/schema";
 import { saveDraft as updateDraft } from "../features/personal/model";
 import type { Draft, DraftStamp } from "../features/personal/schema";
 
@@ -19,6 +31,9 @@ export type Store = {
   restore: (d: AppData) => Promise<boolean>;
   clearError: () => void;
   waitForWrites: () => Promise<AppData>;
+  refresh: () => Promise<AppData | null>;
+  importFaithpath: (plan: ImportPlan) => Promise<boolean>;
+  rollbackImport: (token: string, expectedRevision: number) => Promise<boolean>;
 };
 // Background draft writes and explicit actions share one ordered transaction queue.
 // The visible action lock still rejects a second tap on the same pending action.
@@ -36,17 +51,22 @@ function enqueue<T>(work: () => Promise<T>): Promise<T> {
   return result;
 }
 export const useApp = create<Store>((set, get) => {
-  const persist = (fn: (d: AppData) => void) =>
+  const persist = (
+    fn: (d: AppData) => void,
+    options: WriteOptions = {},
+    updateGrowth = true,
+  ) =>
     enqueue(async () => {
       if (!get().ready || !get().healthy) return false;
       try {
         const current = get().data,
           next = JSON.parse(JSON.stringify(current)) as AppData;
         fn(next);
-        grow(next);
+        if (updateGrowth) grow(next);
         next.revision = current.revision + 1;
         dataSchema.parse(next);
-        await writeData(next, current.revision);
+        assertStorageBudget(next);
+        await writeData(next, current.revision, options);
         set({ data: next, error: null });
         return true;
       } catch (error) {
@@ -98,6 +118,79 @@ export const useApp = create<Store>((set, get) => {
     waitForWrites: async () => {
       while (tail) await tail;
       return get().data;
+    },
+    refresh: async () => {
+      if (get().busy) return null;
+      set({ busy: true });
+      try {
+        return await enqueue(async () => {
+          const data = await readData();
+          set({ data, ready: true, healthy: true, error: null });
+          return data;
+        });
+      } catch (error) {
+        set({ error: message(error), healthy: false });
+        return null;
+      } finally {
+        set({ busy: false });
+      }
+    },
+    importFaithpath: async (plan) => {
+      if (get().busy || !get().ready || !get().healthy) return false;
+      set({ busy: true, error: null });
+      try {
+        return await persist(
+          (d) => {
+            if (d.revision !== plan.baseRevision)
+              throw new Error(
+                "Der lokale Stand hat sich seit der Vorschau verändert. Bitte prüfe die Datei erneut.",
+              );
+            const checked = prepareImport(
+              plan.receipt.sourceText,
+              d,
+              plan.receipt.importedAt,
+            );
+            applyImport(d, checked);
+          },
+          {
+            createRecovery: {
+              token: plan.receipt.id + ":" + plan.baseRevision,
+              createdAt: new Date().toISOString(),
+            },
+          },
+          false,
+        );
+      } finally {
+        set({ busy: false });
+      }
+    },
+    rollbackImport: async (token, expectedRevision) => {
+      if (get().busy || !get().ready || !get().healthy) return false;
+      set({ busy: true, error: null });
+      try {
+        const copy = await readRecovery();
+        if (!copy || copy.token !== token)
+          throw new Error(
+            "Die Rückkehrsicherung wurde verändert. Bitte prüfe sie erneut.",
+          );
+        return await persist(
+          (d) => {
+            if (d.revision !== expectedRevision)
+              throw new Error(
+                "Der lokale Stand hat sich verändert. Bitte prüfe die Rückkehr erneut.",
+              );
+            const revision = d.revision;
+            Object.assign(d, copy.data, { revision });
+          },
+          { consumeRecoveryToken: token },
+          false,
+        );
+      } catch (error) {
+        set({ error: message(error) });
+        return false;
+      } finally {
+        set({ busy: false });
+      }
     },
   };
 });

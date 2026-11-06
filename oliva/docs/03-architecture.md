@@ -72,7 +72,7 @@ Jede Referenz muss existieren. Unbelegte Antworten bzw. fehlende Quellen führen
 
 ## Sicherheit und Datenschutz
 
-RN-Textausgabe statt HTML-Injektion; keine Interpretation persönlicher Texte als Markup. Backup maximal 2 MB, striktes Schema, kanonische Referenzen, keine Ersetzung vor expliziter UI-Aktion. Keine Secrets im Quellcode oder im öffentlichen Bundle. Keine Analyse- oder Werbe-SDKs. Native Datenbank und Webbestand sind nicht zusätzlich verschlüsselt; OS-/Browser-/Export-Sicherheit bleibt relevant. Cloud-Sync, Telemetrie, Push und Audio sind nicht versteckt aktiviert.
+RN-Textausgabe statt HTML-Injektion; keine Interpretation persönlicher Texte als Markup. Ab 0.3: OLIVA-Backup und schreibbarer Gesamtbestand maximal 64 MiB, FaithPath-V5-Quelle maximal 10 MiB UTF-8, begrenzte JSON-Tiefe/Knoten und strikte Schema-/Referenzprüfung. Keine Ersetzung oder Übernahme vor expliziter UI-Aktion. Keine Secrets im Quellcode oder im öffentlichen Bundle. Keine Analyse- oder Werbe-SDKs. Native Datenbank und Webbestand sind nicht zusätzlich verschlüsselt; OS-/Browser-/Export-Sicherheit bleibt relevant. Cloud-Sync, Telemetrie, Push und Audio sind nicht versteckt aktiviert.
 
 Logging in Tests und Build enthält ausschließlich technische Ergebnisse. Für Produktion ist optionales Fehler-Monitoring mit Datenminimierung vorzusehen: keine Notizen, Gebete, Fragen oder Exportinhalte in Logs; pseudonyme Ereignisse nur mit passender Rechtsgrundlage. Ein Datenschutztext für einen konkret betriebenen öffentlichen Dienst ist noch nicht rechtlich freigegeben.
 
@@ -86,3 +86,9 @@ Der vollständige Bibelkorpus erhöht die Erstgröße des JavaScript-Bundles. De
 ## ADR-007 · Dauerhafte Entwürfe und Payload-Version 2
 
 Version 0.2 ergänzt persönliche Vorhaben und Entwürfe. `src/features/personal/` enthält getrennte Schemas, reine Übergangsfunktionen, einen gemeinsamen Draft-Hook und UI-Editoren. Die bestehende SQLite-/IndexedDB-Struktur bleibt bestehen; `decodeData()` migriert validierte V1-Payloads ohne Veränderung der bisherigen Inhalte. Hintergrundsicherungen und explizite Aktionen teilen eine Commit-Warteschlange; stabile Entwurfs-ID und Revision schützen zusätzlich gegen veraltete Editorstände. Details und bekannte Grenzen stehen in [Iteration 0.2](06-personal-and-drafts.md).
+
+## ADR-008 · Additiver V5-Import und unverändertes Originalarchiv
+
+Version 0.3 hebt das Nutzdatenformat auf 3 und die native SQLite-Struktur auf 2; IndexedDB bleibt physisch Version 1. `src/features/imports/` trennt Quellvertrag, reine Vorschau/Zuordnung, Herkunft und historische Anzeige. Quell-IDs und belegte Spiegelaliase bleiben stabil. Hash-Indizes und Verknüpfungsindizes vermeiden paarweise Suchen durch alle Gedanken. Lokale Bearbeitungen werden nicht durch spätere Exporte ersetzt. Die Originaldatei bleibt unverändert als Teil des eigenen Backups erhalten. Import und Rückkehrsicherung teilen eine Transaktion; beim Rollback werden Token, Revision und Verbrauch ebenfalls gemeinsam geprüft. Beide Plattformadapter sind gegen tatsächliche Transaktionsspeicher geprüft (Web-IndexedDB bzw. Node-SQLite mit nativer Adapterlogik); die Expo-Gerätelaufzeit bleibt offen. Ausführliches Mapping und Kompromisse: [Iteration 0.3](07-faithpath-import.md).
+
+Die zunächst gewählte Archivierung im Gesamtpayload vereinfacht atomare Sicherung und Restore, erhöht aber Kopier-/Serialisierungskosten jedes Commits. Separate unveränderliche Archiv-Blobs und inkrementelles Speichern sind vor großen realen Datenbeständen zu messen und umzusetzen. Es gibt bislang keine Laufzeitmessung auf schwachen nativen Geräten.

@@ -1,4 +1,10 @@
-import { decodeData, initialData, type AppData } from "../state/model";
+import {
+  decodeData,
+  initialData,
+  assertStorageBudget,
+  type AppData,
+} from "../state/model";
+import type { RecoveryCopy, WriteOptions } from "../features/imports/schema";
 let connection: Promise<IDBDatabase> | null = null;
 function open() {
   return (connection ??= new Promise((resolve, reject) => {
@@ -35,7 +41,9 @@ export async function readData(): Promise<AppData> {
 export async function writeData(
   next: AppData,
   expectedRevision: number,
+  options: WriteOptions = {},
 ): Promise<void> {
+  assertStorageBudget(next);
   const db = await open();
   return new Promise((resolve, reject) => {
     const tx = db.transaction("state", "readwrite"),
@@ -48,7 +56,25 @@ export async function writeData(
         tx.abort();
         return;
       }
-      store.put(next, "main");
+      if (options.consumeRecoveryToken) {
+        const recovery = store.get("before-faithpath-import");
+        recovery.onsuccess = () => {
+          if (recovery.result?.token !== options.consumeRecoveryToken) {
+            conflict = true;
+            tx.abort();
+            return;
+          }
+          store.delete("before-faithpath-import");
+          store.put(next, "main");
+        };
+      } else {
+        if (options.createRecovery)
+          store.put(
+            { ...options.createRecovery, data: req.result ?? initialData() },
+            "before-faithpath-import",
+          );
+        store.put(next, "main");
+      }
     };
     tx.oncomplete = () => resolve();
     tx.onabort = () =>
@@ -67,14 +93,46 @@ export async function writeData(
       );
   });
 }
+export async function readRecovery(): Promise<RecoveryCopy | null> {
+  const db = await open();
+  return new Promise((resolve, reject) => {
+    const req = db
+      .transaction("state", "readonly")
+      .objectStore("state")
+      .get("before-faithpath-import");
+    req.onsuccess = () => {
+      try {
+        resolve(
+          req.result
+            ? { ...req.result, data: decodeData(req.result.data) }
+            : null,
+        );
+      } catch {
+        reject(
+          new Error(
+            "Die lokale Rückkehrsicherung konnte nicht gelesen werden.",
+          ),
+        );
+      }
+    };
+    req.onerror = () =>
+      reject(new Error("Die lokale Rückkehrsicherung ist nicht verfügbar."));
+  });
+}
 export async function exportData(data: AppData) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], {
+  return exportText(
+    JSON.stringify(data, null, 2),
+    `oliva-sicherung-${new Date().toISOString().slice(0, 10)}.json`,
+  );
+}
+export async function exportText(text: string, filename: string) {
+  const blob = new Blob([text], {
       type: "application/json",
     }),
     url = URL.createObjectURL(blob),
     a = document.createElement("a");
   a.href = url;
-  a.download = `oliva-sicherung-${new Date().toISOString().slice(0, 10)}.json`;
+  a.download = filename;
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

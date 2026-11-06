@@ -1,9 +1,15 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-const adapter = vi.hoisted(() => ({ readData: vi.fn(), writeData: vi.fn() }));
+const adapter = vi.hoisted(() => ({
+  readData: vi.fn(),
+  writeData: vi.fn(),
+  readRecovery: vi.fn(),
+}));
 vi.mock("../src/services/storage", () => adapter);
 import { useApp } from "../src/state/store";
 import { initialData } from "../src/state/model";
 import { journalDraft, commitDraft } from "../src/features/personal/model";
+import { prepareImport } from "../src/features/imports/model";
+import { faithpathFixture } from "./fixtures/faithpath-v5";
 beforeEach(() => {
   vi.resetAllMocks();
   useApp.setState({
@@ -16,6 +22,55 @@ beforeEach(() => {
   adapter.writeData.mockResolvedValue(undefined);
 });
 describe("Persistieren vor Bestätigung", () => {
+  it("beauftragt Import und Rückkehrsicherung in demselben Schreibvorgang und publiziert nichts bei Fehlern", async () => {
+    const data = initialData(),
+      plan = prepareImport(JSON.stringify(faithpathFixture()), data);
+    adapter.writeData.mockRejectedValueOnce(new Error("Speicher voll"));
+    expect(await useApp.getState().importFaithpath(plan)).toBe(false);
+    expect(useApp.getState().data.imports).toHaveLength(0);
+    expect(adapter.writeData.mock.calls[0]?.[2]).toMatchObject({
+      createRecovery: { token: plan.receipt.id + ":0" },
+    });
+    expect(await useApp.getState().importFaithpath(plan)).toBe(true);
+    expect(useApp.getState().data.notes).toHaveLength(2);
+    expect(useApp.getState().data.growthStage).toBe(0);
+  });
+  it("weist eine inzwischen veränderte Importvorschau zurück, bevor eine Sicherung geschrieben wird", async () => {
+    const plan = prepareImport(
+      JSON.stringify(faithpathFixture()),
+      initialData(),
+    );
+    await useApp.getState().mutate((d) => {
+      d.name = "Ada";
+    });
+    adapter.writeData.mockClear();
+    expect(await useApp.getState().importFaithpath(plan)).toBe(false);
+    expect(adapter.writeData).not.toHaveBeenCalled();
+    expect(useApp.getState().data.name).toBe("Ada");
+  });
+  it("verbraucht eine Rückkehrsicherung erst beim erfolgreichen Commit und benutzt die aktuelle Revision", async () => {
+    const before = { ...initialData(), name: "Vorher" },
+      plan = prepareImport(
+        JSON.stringify(faithpathFixture()),
+        useApp.getState().data,
+      );
+    await useApp.getState().importFaithpath(plan);
+    const token = "recovery-token";
+    adapter.readRecovery.mockResolvedValue({
+      token,
+      createdAt: new Date().toISOString(),
+      data: before,
+    });
+    adapter.writeData.mockRejectedValueOnce(new Error("Speicherfehler"));
+    expect(await useApp.getState().rollbackImport(token, 1)).toBe(false);
+    expect(useApp.getState().data.imports).toHaveLength(1);
+    expect(await useApp.getState().rollbackImport(token, 1)).toBe(true);
+    expect(useApp.getState().data.name).toBe("Vorher");
+    expect(useApp.getState().data.revision).toBe(2);
+    expect(adapter.writeData.mock.lastCall?.[2]).toEqual({
+      consumeRecoveryToken: token,
+    });
+  });
   it("ordnet Hintergrundentwurf und explizite Aktion ohne Überschreiben", async () => {
     let release: () => void = () => {};
     adapter.writeData.mockImplementationOnce(
