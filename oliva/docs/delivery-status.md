@@ -23,7 +23,7 @@
 | Bildwelt | 7 generierte und visuell geprüfte Pilotmotive, 18 WebP-Varianten, Originale, SHA-256, Provenienz und Freigabestatus; 4 neue Erzählpiloten im Reader | Weitere angefragte Geschichten fehlen; historische/theologische und öffentliche Rechtefreigabe offen |
 | Datenbank | SQLite physisch V3, IndexedDB V1, private Archiv-Blobs mit atomarer Sicherung/Bereinigung, Rohdatenrettung; optionale Supabase-DDL/RLS | Cloudmigration nicht gegen Live-Supabase ausgeführt; kein aktiver Sync |
 | Tests / Build | Fach-/Persistenztests, Browserabläufe, Offline-Neustart und echter 0.3→0.4-Updatewechsel, Konflikte, Speicherfehler, Reflow und Axe; Web-/Android-/iOS-Bundleexport | Kein signiertes APK/IPA, kein physischer Test, keine vollständige WCAG-Freigabe |
-| Dokumentation | Audit, Markt, UX, Architektur, Bild-/Rechtekonzept, lokale Start-/Build-/Deploymentanleitung, CI-Workflow | Zusätzlicher Root-Workflow ruft die gemeinsame Qualitätsaction auf; tatsächlichen Remote-Lauf gesondert im Prüfbericht belegen |
+| Dokumentation | Audit, Markt, UX, Architektur, Bild-/Rechtekonzept, lokale Start-/Build-/Deploymentanleitung, CI-Workflow | Tatsächlicher GitHub-Lauf 42240609694 erfolgreich: 64 Fach-/Persistenztests und 35 Browserfälle; Artefakt-/Hashnachweis in `ci-run.json` |
 
 ## Was für die Gesamt-Definition-of-Done noch fehlt
 

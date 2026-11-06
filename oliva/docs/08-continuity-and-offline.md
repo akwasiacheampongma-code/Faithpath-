@@ -60,7 +60,7 @@ Der Build-Hash umfasst Assets, HTML-Basis, App-Version und Service-Worker-Verhal
 
 `scripts/offline-upgrade.mjs <v0.3-dist> [current-dist]` führt auf einer isolierten lokalen Herkunft einen echten Versionswechsel aus. Der Kontrollbuild stammt aus dem gesicherten 0.3-Quellarchiv, verwendet dessen ursprünglichen Worker und schreibt zunächst Nutzdaten V3. Der Bericht `docs/evidence/offline-upgrade.json` protokolliert das Ergebnis. Die Kontrolle ist kein künstlich als 0.3 umbenannter 0.4-Build.
 
-Die gemeinsame Composite Action unter `.github/actions/quality/` prüft Korpus, Bildhashes, Typen, Fachlogik, Webbuild und Browserabläufe. Im bestehenden Repository wird dafür ausschließlich `.github/workflows/oliva-quality.yml` neu hinzugefügt; bestehende FaithPath-Workflows bleiben unverändert. Der Workflow verwendet ausschließlich Leserechte für Repository-Inhalte, fest gepinnte Actions und enthält kein Deployment. Ergebnisse eines tatsächlichen GitHub-Laufs werden gesondert dokumentiert.
+Die gemeinsame Composite Action unter `.github/actions/quality/` prüft Korpus, Bildhashes, Typen, Fachlogik, Webbuild und Browserabläufe. Im bestehenden Repository wird dafür ausschließlich `.github/workflows/oliva-quality.yml` neu hinzugefügt; bestehende FaithPath-Workflows bleiben unverändert. Der Workflow verwendet ausschließlich Leserechte für Repository-Inhalte, fest gepinnte Actions und enthält kein Deployment. Der tatsächliche vollständige GitHub-Lauf 42240609694 besteht mit 64 Fach-/Persistenztests und 35 Browserfällen; Nachweis in `docs/evidence/ci-run.json`.
 
 ## Noch offen
 

@@ -62,7 +62,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-Playwright verwendet einen vorhandenen Chromium unter `/usr/bin/chromium` oder seinen installierten Browser. `CHROMIUM_PATH` kann einen anderen lokalen Browserpfad angeben. Der Testserver startet automatisch, wenn Port 4173 nicht bereits durch die Vorschau belegt ist. Aktuelle Messergebnisse stehen in [docs/05-validation.md](docs/05-validation.md).
+Playwright verwendet einen vorhandenen Chromium unter `/usr/bin/chromium` oder seinen installierten Browser. `CHROMIUM_PATH` kann einen anderen lokalen Browserpfad angeben. Der Testserver startet automatisch, wenn Port 4173 nicht bereits durch die Vorschau belegt ist. Aktuelle Messergebnisse stehen in [docs/05-validation.md](docs/05-validation.md). Der tatsächliche [GitHub-Lauf](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694) besteht mit 64 Fach-/Persistenztests und 35 Browser-Szenarien (0 Fehler/übersprungen).
 
 Der Bibelimport ist deterministisch und ohne Netz wiederholbar:
 
@@ -91,7 +91,7 @@ node scripts/expo.mjs export --platform android --output-dir dist-android
 node scripts/expo.mjs export --platform ios --output-dir dist-ios
 ```
 
-Für tatsächliche Installationspakete: Xcode bzw. Android SDK/JDK konfigurieren, App-IDs prüfen, `npx expo prebuild` in einer Arbeitskopie ausführen und anschließend die nativen Projekte lokal bauen. Alternativ EAS-Projekt mit eigenen Konten konfigurieren (`eas build:configure`, `eas build --platform ...`). Signing, Store-Metadaten, Datenschutzangaben, Rechtefreigaben und Geräteabnahme müssen vor Veröffentlichung abgeschlossen sein. Es gibt in diesem Projekt keinen automatischen Produktions-Deploy.
+Die abschließende native Resolverprüfung dieser Iteration verwendet zusätzlich `--no-minify --no-bytecode` und ist ausdrücklich ein Debugexport. Frühere Hermes-Exporte sind gesondert dokumentiert. Für tatsächliche Installationspakete: Xcode bzw. Android SDK/JDK konfigurieren, App-IDs prüfen, `npx expo prebuild` in einer Arbeitskopie ausführen und anschließend die nativen Projekte lokal bauen. Alternativ EAS-Projekt mit eigenen Konten konfigurieren (`eas build:configure`, `eas build --platform ...`). Signing, Store-Metadaten, Datenschutzangaben, Rechtefreigaben und Geräteabnahme müssen vor Veröffentlichung abgeschlossen sein. Es gibt in diesem Projekt keinen automatischen Produktions-Deploy.
 
 ## Web bereitstellen
 

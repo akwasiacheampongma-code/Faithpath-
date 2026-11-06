@@ -9,7 +9,7 @@ Prüfumgebung: 06.11.2026, Linux, Node 24.22.1, npm 11.9.0, systemweiter Headles
 | Bibelimport und Reproduzierbarkeit des Korpus | 66 Bücher, 1.189 Kapitel, 31.102 Verse; Bundle erneut aus Originalarchiv ableitbar | `npm run content:check`, Import-SHA unten |
 | TypeScript | Fehlerfreie strikte Typprüfung | `npm run typecheck` |
 | Fach-/Persistenzsuite | 64 Tests bestanden, einschließlich V5-Import, Migration und echter SQLite-Transaktionen | `tests/*.test.ts`, `docs/evidence/unit-results.json` |
-| Browser-Hauptabläufe | 35 Szenarien; erster stabiler Lauf 35/35, späterer paralleler Lastlauf 34/35 mit Zeitlimit; gezielte Wiederholung und Remote-Gesamtlauf separat belegt | `docs/evidence/e2e-results.json` |
+| Browser-Hauptabläufe | 35/35 im vollständigen GitHub-Lauf bestanden, 0 Fehler/übersprungen/flaky; früherer Lastlauf und erster CI-Fehlerbericht bleiben separat erhalten | `docs/evidence/e2e-results.json` |
 | Erster Weg | Gast → Geschichte → Versaktion/Notiz → drei Schritte → freiwillige Reflexion → Abschluss → Neustart; Abschnitt zählt kein Kapitel | Browser-Szenario 1 |
 | Reader | Buch-/Kapitelwahl, Volltextsuche, Schrift/Abstand/Dunkel, bestätigter Kapitelabschluss und Reload | Browser-Szenario 2 |
 | Journal | Anlegen, Bearbeiten, explizites Löschen, Undo und Neustart | Browser-Szenario 3 |
@@ -23,8 +23,8 @@ Prüfumgebung: 06.11.2026, Linux, Node 24.22.1, npm 11.9.0, systemweiter Headles
 | SQLite-Schema | SQL tatsächlich mit Python SQLite ausgeführt; Create/Insert/Read sowie Singleton-/Revisionsconstraints geprüft | `docs/evidence/sqlite-schema.json`; kein nativer Runtime-Test |
 | Paketkompatibilität | Expo-Paketprüfung meldet „Dependencies are up to date“ | `node scripts/expo.mjs install --check` |
 | Web | Export mit Offline-Manifest erzeugt | `dist/`, `docs/evidence/builds.json` |
-| Android | JavaScript-/Asset-/Hermes-Bundle exportiert | `dist-android/`; kein installiertes APK |
-| iOS | JavaScript-/Asset-/Hermes-Bundle exportiert | `dist-ios/`; kein signiertes IPA |
+| Android | Aktueller JS-/Asset-Debugexport; frühere Hermes-Exporte gesondert belegt | `dist-android/`; kein installiertes APK |
+| iOS | Aktueller JS-/Asset-Debugexport; frühere Hermes-Exporte gesondert belegt | `dist-ios/`; kein signiertes IPA |
 | Bestandsintegrität | 390 materialisierte Referenzdateien stimmen mit Original-Git-Blobs überein | `docs/evidence/reference-integrity.json` |
 | Visuelle Prüfung | Hauptansichten mobil/groß, Dark Mode, Reader und Baumvorschau angesehen | `docs/evidence/screens/` |
 
@@ -76,3 +76,11 @@ GitHub Actions: Die zusätzliche Root-Workflowdatei führt die gemeinsame OLIVA-
 Der erste tatsächliche GitHub-Lauf (`e7f7a49`, Run 42237726593) bestand die Typ-/Korpus-/Bildprüfung und 64 Fachtests. 33 von 35 Browserfällen bestanden. Zwei Fälle lösten unmittelbar nach Undo bzw. Entwurfsverwerfen einen Neustart aus, bevor der bestätigte Speicherabschluss erreicht war. Die Tests warten nun auf den tatsächlich gespeicherten Rückkehrzustand bzw. entfernten Entwurf, bevor sie neu laden. Alle fachlichen Aussagen bleiben bestehen. Fünf betroffene Szenarien bestehen in der gezielten lokalen Wiederholung. Der unveränderte erste CI-Bericht bleibt unter `ci-initial-e2e.json` erhalten; der vollständige neue Remote-Lauf wird separat dokumentiert.
 
 Die Kontextillustration verwendet einen Container im ursprünglichen 3:2-Verhältnis mit vollständig füllendem Image. So überschreibt eine intrinsische Web-Assethöhe nicht die beabsichtigte responsive Darstellung. Der Browserfall prüft das tatsächlich gerenderte Verhältnis.
+
+Die finalen nativen Resolver-/Assetprüfungen des Runtime-Commits `dbde76f` verwenden ausdrücklich `--no-minify --no-bytecode`. Sie sind Debugexports und kein Performance- oder Release-Nachweis. Frühere tatsächliche Hermes-Exporte dieser Iteration bleiben unter `builds-prior-hermes.json` dokumentiert; sie entstanden vor der letzten Bildlayoutkorrektur. Ein signierter nativer Releasebuild und physische Geräteprüfung bleiben offen. Der Produktions-Webexport ist regulär optimiert.
+
+## Abschließender Remote-Nachweis 0.4
+
+[GitHub Actions, Run 42240609694](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694) ist erfolgreich. Geprüfter Runtime-Commit: `dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c`. Das unveränderte heruntergeladene Artefakt belegt **64/64 Fach-/Persistenztests und 35/35 Browserfälle**, jeweils ohne Fehler; Browserfälle ohne Wiederholungsautomatik, Flaky-Ergebnis oder Überspringen. Korpus-/Bildprüfung, TypeScript und Produktions-Webbuild sind ebenfalls erfolgreiche Schritte dieses Laufs.
+
+`ci-run.json` enthält Run-/Job-/Artefakt-ID, ZIP-SHA-256 und die Hashes der unverändert übernommenen JSON-Berichte. `e2e-results.json` und `unit-results.json` stammen aus diesem tatsächlichen GitHub-Artefakt. Die früheren Fehlerberichte werden nicht als finales Ergebnis ausgegeben. Der folgende Quellencheckpoint ändert ausschließlich Dokumentation und Evidenz; der geprüfte Runtime-Stand bleibt gleich. Keine Aussage über physische Geräte oder öffentliche Inhaltsfreigabe wird daraus abgeleitet.

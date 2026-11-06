@@ -1,30 +1,34 @@
 {
   "version": "0.4.0",
-  "generated_on": "2026-11-06T14:50:15.361174+00:00",
+  "runtime_commit": "dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+  "generated_on": "2026-11-06T15:17:21.931818+00:00",
   "hash_method": "SHA256(sorted(relative_path + NUL + SHA256(file) + LF))",
   "artifacts": [
     {
       "directory": "dist",
       "file_count": 60,
-      "total_bytes": 10181292,
-      "aggregate_sha256": "04ce2a4225ab89d3c5cde8c41423907903a21321200ee1e4fd71db20f65212b0",
-      "kind": "web export"
+      "total_bytes": 10181359,
+      "aggregate_sha256": "4be0504066ddffccf61d33c5bcf6201d97fe407d64fa2bdf9562b4c0ddbaadd5",
+      "kind": "production web export",
+      "command": "npm run build"
     },
     {
       "directory": "dist-android",
       "file_count": 47,
-      "total_bytes": 15563192,
-      "aggregate_sha256": "463aed6ec85089081509c197dc55f474912fab7edcf5453a0b7c5bd452075a0e",
-      "kind": "native JS/assets/Hermes export; not APK",
-      "source_limit": "Export before final context-image aspect correction; final JS/assets export follows separately."
+      "total_bytes": 13936242,
+      "aggregate_sha256": "46fc18d06304b8ab15f25d17417df5fa1b507b92293408c7a5ba4d915d14ab17",
+      "kind": "native debugging JS/assets export; not APK; no minification or Hermes bytecode",
+      "command": "node scripts/expo.mjs export --platform android --no-minify --no-bytecode --output-dir dist-android"
     },
     {
       "directory": "dist-ios",
       "file_count": 44,
-      "total_bytes": 15578118,
-      "aggregate_sha256": "8b5d39d752b592f8f27775200adb5cfe802f8febe7821d5ca135a3105146b3f4",
-      "kind": "native JS/assets/Hermes export; not IPA",
-      "source_limit": "Export before final context-image aspect correction; final JS/assets export follows separately."
+      "total_bytes": 13952872,
+      "aggregate_sha256": "53bfb66d6727c3d32b218a6b8af5a144de880eb84b8dd0cf80e941fffe931708",
+      "kind": "native debugging JS/assets export; not IPA; no minification or Hermes bytecode",
+      "command": "node scripts/expo.mjs export --platform ios --no-minify --no-bytecode --output-dir dist-ios"
     }
-  ]
+  ],
+  "native_release_build": false,
+  "prior_hermes_exports": "builds-prior-hermes.json (before final context-image layout correction)"
 }

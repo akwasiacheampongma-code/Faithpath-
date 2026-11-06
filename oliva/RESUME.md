@@ -7,6 +7,8 @@ Checkpoint: 06.11.2026 · OLIVA 0.4.0 · Nutzdatenformat 4 · SQLite physisch 3 
 - Repository: https://github.com/akwasiacheampongma-code/Faithpath-
 - Sicherungsbranch: `feature/oliva-next-v02-20261106` (enthält inzwischen 0.4).
 - Eigenständiges Projekt im Branch: `oliva/`.
+- Geprüfter Runtime-Commit: `dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c`.
+- Erfolgreicher CI-Lauf: https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694 (64 Fachtests, 35 Browserfälle, keine Fehler/übersprungen).
 - Vorheriger Quellcheckpoint: `f90fcfb8176b5f793c4c51b7360fdc1e67112e13` (0.3).
 - Unveränderte FaithPath-Basis: `a519ce898fa33907b07d5ac7a585595127556183`, ursprünglicher Branch `feature/simplified-step-experience-20261104`.
 - Lokales neues Projekt: `/workspace/faithpath-next`; lokale Referenz: `/workspace/faithpath-reference`.
@@ -16,7 +18,7 @@ Checkpoint: 06.11.2026 · OLIVA 0.4.0 · Nutzdatenformat 4 · SQLite physisch 3 
 
 Den ursprünglichen Master-Prompt weiter ausführen: Lesen → Verstehen → freiwillige Reflexion → Anwendung im Alltag. Keine kopierten Designs/Quelltexte, keine Glaubensränge oder manipulativen Streaks. Bibeltext, KI-unterstützte redaktionelle Entwürfe und künstlerische Interpretation unterscheiden. Persönliche Daten bleiben lokal. Innerhalb einer Sitzung selbstständig weiterarbeiten; nicht nach jeder Phase eine Bestätigung verlangen oder das Gesamtziel als abgeschlossen ausgeben.
 
-Audit: `docs/00-faithpath-audit.md`. Lieferstand: `docs/delivery-status.md`. Aktuelle Iteration: `docs/08-continuity-and-offline.md`. GitHub-/CI-Nachweis wird nach dem tatsächlichen Push separat unter `docs/evidence/` geführt.
+Audit: `docs/00-faithpath-audit.md`. Lieferstand: `docs/delivery-status.md`. Aktuelle Iteration: `docs/08-continuity-and-offline.md`. GitHub-/CI-Nachweis: `docs/evidence/ci-run.json`; Berichte unverändert aus dem erfolgreichen Artefakt übernommen.
 
 ## Tatsächlich implementiert
 
@@ -36,13 +38,13 @@ Audit: `docs/00-faithpath-audit.md`. Lieferstand: `docs/delivery-status.md`. Akt
 
 ## Belegter lokaler Prüfstand
 
-- 64 Fach-/Persistenztests erfolgreich. 35 Browser-Szenarien: erster stabiler Lauf 35/35, zusätzlicher paralleler Lastlauf 34/35 mit Export-Zeitlimit; fünf gezielte Browserfälle einschließlich Undo und Entwurfsverwerfen erfolgreich unter `final-regression-results.json`. Unveränderter Lastbericht bleibt erhalten; Der erste tatsächliche CI-Lauf bestand 64 Fachtests und 33/35 Browserfälle. Die beiden Tests warten nun vor Neustart auf den tatsächlichen Speicherabschluss; vollständiger Remote-Lauf wird erneut ausgeführt.
+- 64/64 Fach-/Persistenztests und 35/35 Browserfälle im tatsächlichen GitHub-Lauf erfolgreich, keine Browserfehler/übersprungen/flaky. Fünf gezielte lokale Regressionen bestanden. Früherer Lastlauf (34/35) und erster CI-Lauf (33/35) sind als historische Fehlernachweise erhalten. Die zwei CI-Testabläufe warten vor Neustart nun auf den tatsächlichen Speicherabschluss.
 - Strikte TypeScript-Prüfung, Korpusreproduzierbarkeit und Bildhashes erfolgreich.
-- Web-, Android- und iOS-JS-/Asset-Exporte. Keine APK/IPA und keine physischen Geräte getestet.
+- Regulärer Produktions-Webexport und finale native Debug-JS-/Asset-Exporte mit `--no-minify --no-bytecode`. Frühere Hermes-Exporte sind gesondert belegt; keine APK/IPA und keine physischen Geräte getestet.
 - Native Adapterlogik gegen Nodes echte SQLite-Engine geprüft; kein Expo-Gerätenachweis.
 - Getrennt gebauter 0.3-Kontrollstand → 0.4 → Netz aus → Neustart: Profil, Notizen, Vorhaben, offener Journalentwurf und genaue Originalquelle bewahrt (`offline-upgrade.json`).
 - Neue Hauptzustände werden mobil/groß unter `docs/evidence/session-04-screens/` dokumentiert; frühere Screens erhalten.
-- Referenzintegrität und GitHub-Checkpoint werden vor der Sicherung erneut geprüft. Der echte GitHub-Actions-Status zählt erst nach beobachtetem Lauf.
+- Referenzintegrität und Quellhashes werden vor dem finalen Sicherungscheckpoint erneut geprüft. Der tatsächliche CI-Lauf ist erfolgreich; der abschließende Folgecommit enthält nur Dokumentation und Evidenz.
 
 ## Starten nach Checkout
 
@@ -60,8 +62,8 @@ Der neue Root-Workflow `.github/workflows/oliva-quality.yml` ruft die gemeinsame
 
 ## Nächste überprüfbare Arbeit
 
-1. GitHub-Lauf und Quellencheckpoint beobachten, Fehler korrigieren und Nachweis sichern. Kein erfolgreicher Remote-Lauf allein aus YAML ableiten.
-2. Präzise Lesefortsetzung, freiwillige Erinnerungen und Rückblickbearbeitung ausbauen; die vorhandenen Entwurfs-/Quellschutzverträge weiterverwenden.
+1. Präzise Lesefortsetzung ausbauen: sichtbaren Vers als Anker bewahren und nach Neustart bzw. Schriftgrößenwechsel sinnvoll fortsetzen; daraus keine zusätzliche Lesebestätigung erzeugen.
+2. Freiwillige Erinnerungen und Rückblickbearbeitung ergänzen; die vorhandenen Entwurfs-/Quellschutzverträge weiterverwenden.
 3. Weitere eigenständige Kapitelredaktion und Anfänger-Usability prüfen. Die neun Pilottexte sind keine 27 unabhängigen Kapitelredaktionen. Bildwelt erst nach unabhängiger Fachprüfung breit skalieren.
 4. Native Geräteabnahme: Dateidialoge, SQLite, Prozessabbruch/Low-Disk, Hardware-Zurück, Tastatur, VoiceOver/TalkBack, große Schrift und reduzierte Bewegung.
 5. V5-Import zusätzlich an einem anonymisierten echten Export prüfen, falls verfügbar. Kein persönlicher Export ins Repository oder in Logs.

@@ -1,12 +1,12 @@
 {
   "config": {
     "argv": [
-      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
-      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "/opt/hostedtoolcache/node/24.22.2/x64/bin/node",
+      "/home/runner/work/Faithpath-/Faithpath-/oliva/node_modules/.bin/playwright",
       "test"
     ],
-    "configFile": "/workspace/faithpath-next/playwright.config.ts",
-    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "configFile": "/home/runner/work/Faithpath-/Faithpath-/oliva/playwright.config.ts",
+    "rootDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -17,43 +17,109 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/akwasiacheampongma-code/Faithpath-/commit/dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+        "commitHash": "dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+        "buildHref": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694"
+      },
+      "gitCommit": {
+        "shortHash": "dbde76f",
+        "hash": "dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+        "subject": "fix(oliva): preserve story frames and await durable test actions",
+        "body": "fix(oliva): preserve story frames and await durable test actions\n\nUse an aspect-ratio container and a filling Image to override intrinsic web image dimensions. Verify the rendered 3:2 frame. Wait for journal undo and goal draft discard to finish persisting before reloading or switching viewport; retain all functional assertions. Isolate screenshot scenarios.\n\nValidation: five focused browser flows pass, including the two initial CI failures; TypeScript and the real offline upgrade pass. Rerun the full GitHub quality workflow for this correction. Preserve the initial CI evidence.\n\n[skip netlify]\n",
+        "author": {
+          "name": "Codex",
+          "email": "codex@localhost",
+          "time": 1793977844000
+        },
+        "committer": {
+          "name": "Codex",
+          "email": "codex@localhost",
+          "time": 1793977844000
+        },
+        "branch": "feature/oliva-next-v02-20261106"
+      },
       "actualWorkers": 1
     },
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/workspace/faithpath-next/test-results",
+        "outputDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/akwasiacheampongma-code/Faithpath-/commit/dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+            "commitHash": "dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+            "buildHref": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694"
+          },
+          "gitCommit": {
+            "shortHash": "dbde76f",
+            "hash": "dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+            "subject": "fix(oliva): preserve story frames and await durable test actions",
+            "body": "fix(oliva): preserve story frames and await durable test actions\n\nUse an aspect-ratio container and a filling Image to override intrinsic web image dimensions. Verify the rendered 3:2 frame. Wait for journal undo and goal draft discard to finish persisting before reloading or switching viewport; retain all functional assertions. Isolate screenshot scenarios.\n\nValidation: five focused browser flows pass, including the two initial CI failures; TypeScript and the real offline upgrade pass. Rerun the full GitHub quality workflow for this correction. Preserve the initial CI evidence.\n\n[skip netlify]\n",
+            "author": {
+              "name": "Codex",
+              "email": "codex@localhost",
+              "time": 1793977844000
+            },
+            "committer": {
+              "name": "Codex",
+              "email": "codex@localhost",
+              "time": 1793977844000
+            },
+            "branch": "feature/oliva-next-v02-20261106"
+          },
           "actualWorkers": 1
         },
         "id": "",
         "name": "",
-        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 60000
+        "timeout": 120000
       }
     ],
     "filteredProjects": [
       {
         "grep": {},
         "grepInvert": null,
-        "outputDir": "/workspace/faithpath-next/test-results",
+        "outputDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/akwasiacheampongma-code/Faithpath-/commit/dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+            "commitHash": "dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+            "buildHref": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694"
+          },
+          "gitCommit": {
+            "shortHash": "dbde76f",
+            "hash": "dbde76fcc7ab155cc5acabfd7f2a1ba996ab121c",
+            "subject": "fix(oliva): preserve story frames and await durable test actions",
+            "body": "fix(oliva): preserve story frames and await durable test actions\n\nUse an aspect-ratio container and a filling Image to override intrinsic web image dimensions. Verify the rendered 3:2 frame. Wait for journal undo and goal draft discard to finish persisting before reloading or switching viewport; retain all functional assertions. Isolate screenshot scenarios.\n\nValidation: five focused browser flows pass, including the two initial CI failures; TypeScript and the real offline upgrade pass. Rerun the full GitHub quality workflow for this correction. Preserve the initial CI evidence.\n\n[skip netlify]\n",
+            "author": {
+              "name": "Codex",
+              "email": "codex@localhost",
+              "time": 1793977844000
+            },
+            "committer": {
+              "name": "Codex",
+              "email": "codex@localhost",
+              "time": 1793977844000
+            },
+            "branch": "feature/oliva-next-v02-20261106"
+          },
           "actualWorkers": 1
         },
         "name": "",
-        "testDir": "/workspace/faithpath-next/tests/e2e",
-        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e",
+        "snapshotDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e",
         "testIgnore": [],
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
-        "timeout": 60000,
+        "timeout": 120000,
         "use": {
           "baseURL": "http://localhost:4173",
           "viewport": {
@@ -115,7 +181,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -125,12 +191,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 32186,
+                  "duration": 8093,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:30:50.878Z",
+                  "startTime": "2026-11-06T15:12:07.316Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -149,7 +215,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -159,12 +225,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 22885,
+                  "duration": 7850,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:31:30.744Z",
+                  "startTime": "2026-11-06T15:12:25.693Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -183,7 +249,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -193,12 +259,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10915,
+                  "duration": 3094,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:31:53.776Z",
+                  "startTime": "2026-11-06T15:12:33.568Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -217,7 +283,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -227,12 +293,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 13522,
+                  "duration": 3470,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:32:04.788Z",
+                  "startTime": "2026-11-06T15:12:36.695Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -259,7 +325,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -269,12 +335,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 22664,
+                  "duration": 4358,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:32:18.463Z",
+                  "startTime": "2026-11-06T15:12:40.204Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -293,7 +359,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -303,12 +369,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 17015,
+                  "duration": 5063,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:32:41.252Z",
+                  "startTime": "2026-11-06T15:12:44.579Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -327,7 +393,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -337,12 +403,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10996,
+                  "duration": 4904,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:32:58.473Z",
+                  "startTime": "2026-11-06T15:12:49.663Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -361,7 +427,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -371,12 +437,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6997,
+                  "duration": 2175,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:33:09.548Z",
+                  "startTime": "2026-11-06T15:12:54.591Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -395,7 +461,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -405,12 +471,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6963,
+                  "duration": 2549,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:33:16.778Z",
+                  "startTime": "2026-11-06T15:12:56.782Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -429,7 +495,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -439,12 +505,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6297,
+                  "duration": 1982,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:33:23.859Z",
+                  "startTime": "2026-11-06T15:12:59.350Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -459,11 +525,11 @@
         },
         {
           "title": "ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -472,40 +538,18 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "timedOut",
-                  "duration": 99817,
-                  "error": {
-                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
-                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
-                  },
-                  "errors": [
-                    {
-                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
-                    },
-                    {
-                      "location": {
-                        "file": "/workspace/faithpath-next/tests/e2e/captures.spec.ts",
-                        "column": 6,
-                        "line": 299
-                      },
-                      "message": "Error: locator.click: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Sicherung exportieren', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button tabindex=\"0\" role=\"button\" type=\"button\" class=\"css-g5y9jx r-1loqt21 r-1otgn73\">…</button>\u001b[22m\n\n\n  297 |   await page\n  298 |     .getByRole(\"button\", { name: \"Sicherung exportieren\", exact: true })\n> 299 |     .click();\n      |      ^\n  300 |   await expect(\n  301 |     page.getByText(/Einige Entwürfe sind noch nicht dauerhaft gesichert/),\n  302 |   ).toBeVisible();\n    at /workspace/faithpath-next/tests/e2e/captures.spec.ts:299:6"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 3553,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:33:30.325Z",
+                  "startTime": "2026-11-06T15:13:01.348Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "/workspace/faithpath-next/test-results/captures-ungesicherte-Wort-a185d-s-Sitzungskopie-exportieren/error-context.md"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "40959956e96c4f3720b3-bb4d2da6c82f3765bd1c",
@@ -527,22 +571,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 20783,
+                  "duration": 6072,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:37:00.065Z",
+                  "startTime": "2026-11-06T15:13:04.991Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -561,22 +605,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 18881,
+                  "duration": 6006,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:37:21.650Z",
+                  "startTime": "2026-11-06T15:13:11.083Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -595,22 +639,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 15921,
+                  "duration": 3079,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:37:40.867Z",
+                  "startTime": "2026-11-06T15:13:17.105Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -629,22 +673,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7806,
+                  "duration": 2087,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:37:57.079Z",
+                  "startTime": "2026-11-06T15:13:20.195Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -654,7 +698,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-812383179af31eb1ff41",
           "file": "core.spec.ts",
-          "line": 193,
+          "line": 203,
           "column": 1
         },
         {
@@ -663,22 +707,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10220,
+                  "duration": 3973,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:38:05.048Z",
+                  "startTime": "2026-11-06T15:13:22.297Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -688,7 +732,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-fefb60b6eb2b77a3b8ad",
           "file": "core.spec.ts",
-          "line": 240,
+          "line": 250,
           "column": 1
         },
         {
@@ -697,22 +741,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10536,
+                  "duration": 3776,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:38:15.363Z",
+                  "startTime": "2026-11-06T15:13:26.287Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -722,7 +766,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-4152289a2d74138005ff",
           "file": "core.spec.ts",
-          "line": 269,
+          "line": 279,
           "column": 1
         },
         {
@@ -731,22 +775,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5860,
+                  "duration": 4046,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:38:25.937Z",
+                  "startTime": "2026-11-06T15:13:30.080Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -756,7 +800,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-619d08b0af9895658a20",
           "file": "core.spec.ts",
-          "line": 302,
+          "line": 312,
           "column": 1
         },
         {
@@ -765,22 +809,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4499,
+                  "duration": 1773,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:38:31.865Z",
+                  "startTime": "2026-11-06T15:13:34.149Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -790,7 +834,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-6da73fae664ea548511c",
           "file": "core.spec.ts",
-          "line": 334,
+          "line": 344,
           "column": 1
         },
         {
@@ -806,15 +850,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 51030,
+                  "duration": 24177,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:38:36.522Z",
+                  "startTime": "2026-11-06T15:13:35.948Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -824,7 +868,7 @@
           ],
           "id": "d064c8ac994e44e7c99b-a8de33c6eb4b3e77b4c6",
           "file": "core.spec.ts",
-          "line": 363,
+          "line": 373,
           "column": 1
         }
       ]
@@ -841,22 +885,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8029,
+                  "duration": 3144,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:39:27.763Z",
+                  "startTime": "2026-11-06T15:14:00.154Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -875,22 +919,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12135,
+                  "duration": 6946,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:39:35.881Z",
+                  "startTime": "2026-11-06T15:14:03.314Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -909,22 +953,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 13076,
+                  "duration": 6441,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:39:48.063Z",
+                  "startTime": "2026-11-06T15:14:10.277Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -943,22 +987,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10602,
+                  "duration": 4319,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:40:01.226Z",
+                  "startTime": "2026-11-06T15:14:16.743Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -977,22 +1021,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 16064,
+                  "duration": 5368,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:40:11.948Z",
+                  "startTime": "2026-11-06T15:14:21.082Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1011,22 +1055,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 16029,
+                  "duration": 5327,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:40:28.055Z",
+                  "startTime": "2026-11-06T15:14:26.472Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1053,22 +1097,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11046,
+                  "duration": 2921,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:40:44.319Z",
+                  "startTime": "2026-11-06T15:14:31.832Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1087,22 +1131,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7362,
+                  "duration": 3225,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:40:55.442Z",
+                  "startTime": "2026-11-06T15:14:34.776Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1129,22 +1173,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4453,
+                  "duration": 2614,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:41:02.868Z",
+                  "startTime": "2026-11-06T15:14:38.036Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1163,22 +1207,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 8551,
+                  "duration": 4476,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:41:07.356Z",
+                  "startTime": "2026-11-06T15:14:40.666Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1197,22 +1241,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10614,
+                  "duration": 7746,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:41:15.994Z",
+                  "startTime": "2026-11-06T15:14:45.158Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1231,22 +1275,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6420,
+                  "duration": 3173,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:41:26.698Z",
+                  "startTime": "2026-11-06T15:14:52.920Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1265,22 +1309,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5299,
+                  "duration": 2979,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:41:33.160Z",
+                  "startTime": "2026-11-06T15:14:56.110Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1299,22 +1343,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6613,
+                  "duration": 3498,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:41:38.535Z",
+                  "startTime": "2026-11-06T15:14:59.107Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1333,22 +1377,22 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 60000,
+              "timeout": 120000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 13640,
+                  "duration": 6985,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:41:45.197Z",
+                  "startTime": "2026-11-06T15:15:02.622Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1366,11 +1410,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-06T14:30:39.057Z",
-    "duration": 680109.671,
-    "expected": 34,
+    "startTime": "2026-11-06T15:12:06.471Z",
+    "duration": 183269.25999999998,
+    "expected": 35,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }

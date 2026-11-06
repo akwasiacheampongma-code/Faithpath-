@@ -38,7 +38,7 @@ Vor einer Figurenserie sind ein separates Figurenblatt und fachliche Beratung er
 
 ## Skalierungsplan nach Qualitätsgate
 
-| Weitere Szene | Bibelgrundlage | Vor der Generierung prüfen |
+| Motive im Katalog | Bibelgrundlage | Vor breiter Kapitelproduktion fachlich prüfen |
 |---|---|---|
 | Noah und Arche | Genesis 6–9 | Flutdarstellung sensibel; Bauform/Umgebung als Interpretation |
 | Abraham und Verheißung | Genesis 12 / 15 | Kleidung, Landschaft, sichtbare Sterne als Erzählmotiv |
