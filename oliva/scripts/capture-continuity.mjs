@@ -16,11 +16,11 @@ try {
     ["mobile", 390, 844],
     ["desktop", 1440, 1080],
   ]) {
-    const context = await browser.newContext({
+    let context = await browser.newContext({
       viewport: { width, height },
       reducedMotion: "reduce",
     });
-    const page = await context.newPage();
+    let page = await context.newPage();
     async function capture(title, scenario) {
       const file = `${title}-${name}.png`;
       await page.evaluate(() => document.fonts.ready);
@@ -106,6 +106,13 @@ try {
       "text-question",
       "Voluntary question with feedback and actual Bible verse evidence",
     );
+    // Independent story views must not depend on a prior editor's lifecycle.
+    await context.close();
+    context = await browser.newContext({
+      viewport: { width, height },
+      reducedMotion: "reduce",
+    });
+    page = await context.newPage();
     await page.goto("http://localhost:4173/bibel");
     await page
       .getByRole("button", { name: "Eine Geschichte entdecken", exact: true })
@@ -125,7 +132,25 @@ try {
       .getByText("Ein kleiner Anfang in Bethlehem.", { exact: true })
       .last();
     await expect(nativityTitle).toBeVisible();
-    await nativityTitle.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() =>
+        page.evaluate(() => {
+          const images = Array.from(document.images).filter((img) =>
+            img.src.includes("nativity"),
+          );
+          return (
+            images.length > 0 &&
+            images.every((img) => img.complete && img.naturalWidth > 0)
+          );
+        }),
+      )
+      .toBe(true);
+    await page
+      .getByRole("img", {
+        name: /^Künstlerische Interpretation: Ein kleiner Anfang in Bethlehem/,
+      })
+      .last()
+      .evaluate((el) => el.scrollIntoView({ block: "start" }));
     await capture(
       "nativity-context",
       "Lukan nativity pilot with interpretation label and separate explanation",

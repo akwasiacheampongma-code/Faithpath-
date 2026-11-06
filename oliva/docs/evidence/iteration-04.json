@@ -10,7 +10,7 @@
   "local_full_suite_scenarios": 35,
   "local_load_run_passed": 34,
   "local_load_run_timed_out": 1,
-  "focused_final_regressions_passed": 3,
+  "focused_final_regressions_passed": 5,
   "focused_final_regressions_failed": 0,
   "typecheck_passed": true,
   "corpus_check_passed": true,
@@ -21,6 +21,12 @@
   "new_screens": 16,
   "native_device_tests": false,
   "source_kind": "Synthetic fixtures only; no real personal export",
-  "github_ci": "pending actual push and observed run",
-  "full_master_definition_of_done": false
+  "github_ci": "Full rerun follows image-frame and test synchronization corrections",
+  "full_master_definition_of_done": false,
+  "initial_github_ci": {
+    "run_id": 42237726593,
+    "unit_passed": 64,
+    "browser_passed": 33,
+    "browser_failed": 2
+  }
 }

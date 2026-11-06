@@ -44,22 +44,26 @@ export function StoryCard({
     <Card
       style={{ padding: 0, overflow: "hidden", width: "100%", maxWidth: 780 }}
     >
-      <Image
-        source={image}
-        resizeMode="cover"
+      <View
         style={{
           width: "100%",
           ...(context ? { aspectRatio: 3 / 2 } : { height: 180 }),
         }}
-        accessibilityLabel={
-          "Künstlerische Interpretation: " +
-          (scene.id === "easter-dawn"
-            ? "drei Frauen vor einem geöffneten Felsgrab im Morgenlicht."
-            : scene.title) +
-          " " +
-          scene.interpretation
-        }
-      />
+      >
+        <Image
+          source={image}
+          resizeMode="cover"
+          style={{ width: "100%", height: "100%" }}
+          accessibilityLabel={
+            "Künstlerische Interpretation: " +
+            (scene.id === "easter-dawn"
+              ? "drei Frauen vor einem geöffneten Felsgrab im Morgenlicht."
+              : scene.title) +
+            " " +
+            scene.interpretation
+          }
+        />
+      </View>
       <View style={{ padding: 22, gap: 13 }}>
         <Tag icon="book">
           {referenceLabel(scene.ref)} · etwa {scene.minutes} Min.

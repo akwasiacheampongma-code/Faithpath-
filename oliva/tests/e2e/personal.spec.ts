@@ -335,5 +335,10 @@ test("Neue Vorhaben- und Entwurfsansichten bleiben auf kleinen Displays zugängl
     await page
       .getByRole("button", { name: "Entwurf endgültig verwerfen", exact: true })
       .click();
+    await expect
+      .poll(async () =>
+        (await local(page)).drafts.some((draft) => draft.key === "goal:new"),
+      )
+      .toBe(false);
   }
 });

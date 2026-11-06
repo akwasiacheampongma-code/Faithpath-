@@ -174,6 +174,9 @@ test("Journal bearbeiten, löschen und rückgängig machen", async ({ page }) =>
   await page
     .getByRole("button", { name: "Gedanken speichern", exact: true })
     .click();
+  await expect(
+    page.getByText("Ein Anfang darf langsam wachsen.", { exact: true }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "Löschen", exact: true }).click();
   await page
     .getByRole("button", { name: "Eintrag jetzt löschen", exact: true })
@@ -184,6 +187,13 @@ test("Journal bearbeiten, löschen und rückgängig machen", async ({ page }) =>
   await page
     .getByRole("button", { name: "Rückgängig machen", exact: true })
     .click();
+  await expect
+    .poll(async () =>
+      (await local(page)).notes.some(
+        (note) => note.text === "Ein Anfang darf langsam wachsen.",
+      ),
+    )
+    .toBe(true);
   await page.reload();
   await expect(
     page.getByText("Ein Anfang darf langsam wachsen.", { exact: true }),

@@ -1,0 +1,1472 @@
+{
+  "config": {
+    "argv": [
+      "/opt/hostedtoolcache/node/24.22.2/x64/bin/node",
+      "/home/runner/work/Faithpath-/Faithpath-/oliva/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/runner/work/Faithpath-/Faithpath-/oliva/playwright.config.ts",
+    "rootDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/akwasiacheampongma-code/Faithpath-/commit/e7f7a4942b09565da801e58e9c417483f7062502",
+        "commitHash": "e7f7a4942b09565da801e58e9c417483f7062502",
+        "buildHref": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42237726593"
+      },
+      "gitCommit": {
+        "shortHash": "e7f7a49",
+        "hash": "e7f7a4942b09565da801e58e9c417483f7062502",
+        "subject": "feat(oliva): preserve contextual drafts and safe offline continuity",
+        "body": "feat(oliva): preserve contextual drafts and safe offline continuity\n\nProtect hub, garden, verse and guided-step inputs with durable drafts, immutable source snapshots, session rescue and exact-verse recovery. Store import originals as immutable archive blobs with atomic recovery references and cleanup. Block corrupt storage from replacement and offer raw rescue exports. Add nine voluntary text questions, four illustrated narrative pilots, and build-matched offline activation.\n\nValidation: 64 domain/persistence tests pass. The 35 browser scenarios include quota and conflict failures; a run concurrent with native compilation had one timeout. All three affected RAM/question/story regression flows pass in the focused final rerun. The new CI workflow performs the isolated full suite. TypeScript, corpus and seven-master/eighteen-variant art integrity checks pass. Web and Android/iOS JS/assets exports succeed; real 0.3-to-0.4 offline upgrade preserves data and original source bytes. Physical-device and independent content approval remain open.\n\nAdd an isolated OLIVA quality workflow. Existing FaithPath files and main remain unchanged; no merge or deployment. Update documentation and RESUME.md.\n\n[skip netlify]\n",
+        "author": {
+          "name": "Codex",
+          "email": "codex@localhost",
+          "time": 1793976706000
+        },
+        "committer": {
+          "name": "Codex",
+          "email": "codex@localhost",
+          "time": 1793976706000
+        },
+        "branch": "feature/oliva-next-v02-20261106"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/akwasiacheampongma-code/Faithpath-/commit/e7f7a4942b09565da801e58e9c417483f7062502",
+            "commitHash": "e7f7a4942b09565da801e58e9c417483f7062502",
+            "buildHref": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42237726593"
+          },
+          "gitCommit": {
+            "shortHash": "e7f7a49",
+            "hash": "e7f7a4942b09565da801e58e9c417483f7062502",
+            "subject": "feat(oliva): preserve contextual drafts and safe offline continuity",
+            "body": "feat(oliva): preserve contextual drafts and safe offline continuity\n\nProtect hub, garden, verse and guided-step inputs with durable drafts, immutable source snapshots, session rescue and exact-verse recovery. Store import originals as immutable archive blobs with atomic recovery references and cleanup. Block corrupt storage from replacement and offer raw rescue exports. Add nine voluntary text questions, four illustrated narrative pilots, and build-matched offline activation.\n\nValidation: 64 domain/persistence tests pass. The 35 browser scenarios include quota and conflict failures; a run concurrent with native compilation had one timeout. All three affected RAM/question/story regression flows pass in the focused final rerun. The new CI workflow performs the isolated full suite. TypeScript, corpus and seven-master/eighteen-variant art integrity checks pass. Web and Android/iOS JS/assets exports succeed; real 0.3-to-0.4 offline upgrade preserves data and original source bytes. Physical-device and independent content approval remain open.\n\nAdd an isolated OLIVA quality workflow. Existing FaithPath files and main remain unchanged; no merge or deployment. Update documentation and RESUME.md.\n\n[skip netlify]\n",
+            "author": {
+              "name": "Codex",
+              "email": "codex@localhost",
+              "time": 1793976706000
+            },
+            "committer": {
+              "name": "Codex",
+              "email": "codex@localhost",
+              "time": 1793976706000
+            },
+            "branch": "feature/oliva-next-v02-20261106"
+          },
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/akwasiacheampongma-code/Faithpath-/commit/e7f7a4942b09565da801e58e9c417483f7062502",
+            "commitHash": "e7f7a4942b09565da801e58e9c417483f7062502",
+            "buildHref": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42237726593"
+          },
+          "gitCommit": {
+            "shortHash": "e7f7a49",
+            "hash": "e7f7a4942b09565da801e58e9c417483f7062502",
+            "subject": "feat(oliva): preserve contextual drafts and safe offline continuity",
+            "body": "feat(oliva): preserve contextual drafts and safe offline continuity\n\nProtect hub, garden, verse and guided-step inputs with durable drafts, immutable source snapshots, session rescue and exact-verse recovery. Store import originals as immutable archive blobs with atomic recovery references and cleanup. Block corrupt storage from replacement and offer raw rescue exports. Add nine voluntary text questions, four illustrated narrative pilots, and build-matched offline activation.\n\nValidation: 64 domain/persistence tests pass. The 35 browser scenarios include quota and conflict failures; a run concurrent with native compilation had one timeout. All three affected RAM/question/story regression flows pass in the focused final rerun. The new CI workflow performs the isolated full suite. TypeScript, corpus and seven-master/eighteen-variant art integrity checks pass. Web and Android/iOS JS/assets exports succeed; real 0.3-to-0.4 offline upgrade preserves data and original source bytes. Physical-device and independent content approval remain open.\n\nAdd an isolated OLIVA quality workflow. Existing FaithPath files and main remain unchanged; no merge or deployment. Update documentation and RESUME.md.\n\n[skip netlify]\n",
+            "author": {
+              "name": "Codex",
+              "email": "codex@localhost",
+              "time": 1793976706000
+            },
+            "committer": {
+              "name": "Codex",
+              "email": "codex@localhost",
+              "time": 1793976706000
+            },
+            "branch": "feature/oliva-next-v02-20261106"
+          },
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e",
+        "snapshotDir": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/e2e-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "archives.spec.ts",
+      "file": "archives.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ein gro\u00dfer Originalblob wird bei Entwurfs\u00e4nderungen nicht erneut geschrieben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18615,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:52:44.713Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-75d9bcb8e04a3a8dd121",
+          "file": "archives.spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "verwaiste Blobs werden entfernt und Quellen der R\u00fcckkehrsicherung bleiben erhalten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6713,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:53:28.987Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-61f7bf393e923f1cb32e",
+          "file": "archives.spec.ts",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unver\u00e4ndert",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2449,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:53:35.713Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-c721dfe99536aae3ddf1",
+          "file": "archives.spec.ts",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "besch\u00e4digte Daten sperren Schreibaktionen und lassen sich unver\u00e4ndert zur Reparatur sichern",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3305,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:53:38.174Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-5d5b0b1b57b9de94dbf2",
+          "file": "archives.spec.ts",
+          "line": 149,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "captures.spec.ts",
+      "file": "captures.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4954,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:53:41.497Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-278e5468e84b8c9b28f1",
+          "file": "captures.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "zwei Versentw\u00fcrfe bleiben beim Wechsel getrennt und werden \u00fcber die \u00dcbersicht fortgesetzt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4811,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:53:46.462Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-17cb484429c0de9235f6",
+          "file": "captures.spec.ts",
+          "line": 60,
+          "column": 1
+        },
+        {
+          "title": "Reflexionsentwurf im Lernweg \u00fcberlebt Neustart und schlie\u00dft nur auf ausdr\u00fccklichen Klick ab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4864,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:53:51.283Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-e617214181b9cf476e77",
+          "file": "captures.spec.ts",
+          "line": 131,
+          "column": 1
+        },
+        {
+          "title": "ein Entwurf wird erst nach ausdr\u00fccklichem Verwerfen gel\u00f6scht und best\u00e4tigt dabei keine Erfahrung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2296,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:53:56.157Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-4a664a6fc3d81f688ca8",
+          "file": "captures.spec.ts",
+          "line": 183,
+          "column": 1
+        },
+        {
+          "title": "der Export nach Navigation enth\u00e4lt den noch nicht abgeschlossenen Reflexionsentwurf",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2220,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:53:58.461Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-050462b30b48e0d8fb3d",
+          "file": "captures.spec.ts",
+          "line": 215,
+          "column": 1
+        },
+        {
+          "title": "ein Speicherfehler l\u00e4sst den Kontextentwurf sichtbar und erzeugt keinen fertigen Eintrag",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2165,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:00.689Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-3c5d5a06f89907c015a7",
+          "file": "captures.spec.ts",
+          "line": 239,
+          "column": 1
+        },
+        {
+          "title": "ungesicherte Worte \u00fcberleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4073,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:02.869Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-bb4d2da6c82f3765bd1c",
+          "file": "captures.spec.ts",
+          "line": 271,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "core.spec.ts",
+      "file": "core.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Gast erlebt einen vollst\u00e4ndigen Weg; Abschnitte bleiben von Kapiteln getrennt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5742,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:07.002Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-d970a8e5935eea1f748a",
+          "file": "core.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "Buchnavigation, Suche, Leserpr\u00e4ferenzen und idempotenter Kapitelabschluss",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5321,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:12.756Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-a8433de3b51e7fa72466",
+          "file": "core.spec.ts",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "Journal bearbeiten, l\u00f6schen und r\u00fcckg\u00e4ngig machen",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16719,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Ein Anfang darf langsam wachsen.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Ein Anfang darf langsam wachsen.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Ein Anfang darf langsam wachsen.', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Ein Anfang darf langsam wachsen.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Ein Anfang darf langsam wachsen.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Ein Anfang darf langsam wachsen.', { exact: true })\u001b[22m\n\n    at /home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/core.spec.ts:190:5",
+                    "location": {
+                      "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/core.spec.ts",
+                      "column": 5,
+                      "line": 190
+                    },
+                    "snippet": "  188 |   await expect(\n  189 |     page.getByText(\"Ein Anfang darf langsam wachsen.\", { exact: true }),\n> 190 |   ).toBeVisible();\n      |     ^\n  191 | });\n  192 |\n  193 | test(\"Sicherung exportieren, validieren und mit ausdr\u00fccklicher Ersetzung wiederherstellen\", async ({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/core.spec.ts",
+                        "column": 5,
+                        "line": 190
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Ein Anfang darf langsam wachsen.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Ein Anfang darf langsam wachsen.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Ein Anfang darf langsam wachsen.', { exact: true })\u001b[22m\n\n\n  188 |   await expect(\n  189 |     page.getByText(\"Ein Anfang darf langsam wachsen.\", { exact: true }),\n> 190 |   ).toBeVisible();\n      |     ^\n  191 | });\n  192 |\n  193 | test(\"Sicherung exportieren, validieren und mit ausdr\u00fccklicher Ersetzung wiederherstellen\", async ({\n    at /home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/core.spec.ts:190:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:18.086Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Faithpath-/Faithpath-/oliva/test-results/core-Journal-bearbeiten-l\u00f6schen-und-r\u00fcckg\u00e4ngig-machen/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/core.spec.ts",
+                    "column": 5,
+                    "line": 190
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-95acf7ea740056abdb9c",
+          "file": "core.spec.ts",
+          "line": 153,
+          "column": 1
+        },
+        {
+          "title": "Sicherung exportieren, validieren und mit ausdr\u00fccklicher Ersetzung wiederherstellen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1676,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:35.323Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-812383179af31eb1ff41",
+          "file": "core.spec.ts",
+          "line": 193,
+          "column": 1
+        },
+        {
+          "title": "Baumvorschau ver\u00e4ndert keine Daten; reduzierte Bewegung bleibt gespeichert",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3227,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:37.187Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-fefb60b6eb2b77a3b8ad",
+          "file": "core.spec.ts",
+          "line": 240,
+          "column": 1
+        },
+        {
+          "title": "Offline-Neustart \u00f6ffnet auch einen noch nicht besuchten Reader",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:40.432Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-4152289a2d74138005ff",
+          "file": "core.spec.ts",
+          "line": 269,
+          "column": 1
+        },
+        {
+          "title": "Gleichzeitige Fenster \u00fcberschreiben keine fremden \u00c4nderungen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2254,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:43.627Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-619d08b0af9895658a20",
+          "file": "core.spec.ts",
+          "line": 302,
+          "column": 1
+        },
+        {
+          "title": "Speicherfehler best\u00e4tigt keine Notiz und erh\u00e4lt den getippten Text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1424,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:45.894Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-6da73fae664ea548511c",
+          "file": "core.spec.ts",
+          "line": 334,
+          "column": 1
+        },
+        {
+          "title": "Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Pr\u00fcfung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17828,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:54:47.329Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-a8de33c6eb4b3e77b4c6",
+          "file": "core.spec.ts",
+          "line": 363,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "imports.spec.ts",
+      "file": "imports.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Dateiauswahl ist eine reine Vorschau; Abbrechen ver\u00e4ndert keine Daten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2424,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:05.179Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-cef3d5d24b2ca3cbdb48",
+          "file": "imports.spec.ts",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5919,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:07.615Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-d570660b3542a7810f86",
+          "file": "imports.spec.ts",
+          "line": 70,
+          "column": 1
+        },
+        {
+          "title": "zwei Fenster sch\u00fctzen \u00c4nderungen und erlauben eine erneute Vorschau",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4546,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:13.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-f8a8dd864727e22a8eb0",
+          "file": "imports.spec.ts",
+          "line": 132,
+          "column": 1
+        },
+        {
+          "title": "Schreibfehler lassen Bestand und vorherige R\u00fcckkehrsicherung atomar erhalten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3355,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:18.098Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-a58886b29e3200b0d4d7",
+          "file": "imports.spec.ts",
+          "line": 162,
+          "column": 1
+        },
+        {
+          "title": "R\u00fcckkehr zeigt Folgen ausdr\u00fccklich und stellt den echten vorherigen Stand wieder her",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4368,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:21.461Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-f01754983158c5900e2b",
+          "file": "imports.spec.ts",
+          "line": 195,
+          "column": 1
+        },
+        {
+          "title": "Importansichten sind mobil, dunkel und per Tastatur zug\u00e4nglich",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3959,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:25.837Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-b9e1844fe620d964dde3",
+          "file": "imports.spec.ts",
+          "line": 230,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "learning.spec.ts",
+      "file": "learning.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Textfragen zeigen belegte R\u00fcckmeldung und ver\u00e4ndern keinen Fortschritt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2072,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:29.812Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0ec79b0c4f511f16424-ae74360e31a41608185e",
+          "file": "learning.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und z\u00e4hlt nur den Abschnitt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3156,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:31.893Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0ec79b0c4f511f16424-a89c60d5cd44a8bb8e37",
+          "file": "learning.spec.ts",
+          "line": 56,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "personal.spec.ts",
+      "file": "personal.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Sicherung nach einem Bereichswechsel enth\u00e4lt den letzten Journalentwurf",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2174,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:35.065Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-200629544db7bcbfaf92",
+          "file": "personal.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "Journalentwurf \u00fcberlebt Neustart, Bearbeitung und anschlie\u00dfendes Speichern",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4894,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:37.246Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-30d042b1d3e77088eb69",
+          "file": "personal.spec.ts",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "Vorhaben, Schritte, R\u00fcckblick-Snapshot und Archiv funktionieren zusammen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7876,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:42.151Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-87f2e53e1cdd94813e0b",
+          "file": "personal.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "Ungespeicherte Entwurfsworte werden erst nach ausdr\u00fccklichem Verwerfen gel\u00f6scht",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3171,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:50.037Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-14b2d305bbfa77ac2043",
+          "file": "personal.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "Eine installierte V1-Datenbank wird ohne Verlust weitergef\u00fchrt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2278,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:53.218Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-15511b860caead0fe720",
+          "file": "personal.spec.ts",
+          "line": 234,
+          "column": 1
+        },
+        {
+          "title": "Bibelbezug wird aus einer Versaktion an ein Vorhaben \u00fcbergeben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3043,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:55.505Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-7ce3793863bf7b51c536",
+          "file": "personal.spec.ts",
+          "line": 287,
+          "column": 1
+        },
+        {
+          "title": "Neue Vorhaben- und Entwurfsansichten bleiben auf kleinen Displays zug\u00e4nglich",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 120018,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/personal.spec.ts",
+                        "column": 8,
+                        "line": 318
+                      },
+                      "message": "Error: locator.click: Test timeout of 120000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Ein Vorhaben anlegen', exact: true })\u001b[22m\n\n\n  316 |     await page\n  317 |       .getByRole(\"button\", { name: \"Ein Vorhaben anlegen\", exact: true })\n> 318 |       .click();\n      |        ^\n  319 |     await page\n  320 |       .getByRole(\"textbox\", { name: \"Name deines Vorhabens\" })\n  321 |       .fill(\"Ein ruhiger Anfang\");\n    at /home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/personal.spec.ts:318:8"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T14:55:58.555Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/runner/work/Faithpath-/Faithpath-/oliva/test-results/personal-Neue-Vorhaben--un-5b1f4-kleinen-Displays-zug\u00e4nglich/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-9537a654eb0dbf000217",
+          "file": "personal.spec.ts",
+          "line": 310,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T14:52:44.191Z",
+    "duration": 314499.315,
+    "expected": 33,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

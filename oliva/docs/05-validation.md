@@ -72,3 +72,7 @@ Der Zwischenlauf fand einen veralteten, noch montierten Editor, der nach einem e
 Sieben Bildmaster und 18 Varianten bestehen die Hash-/Metadatenprüfung (`npm run content:art`). Neue Aufnahmen: `docs/evidence/session-04-screens/`. Native Exporte sind weiterhin JS-/Hermes-/Asset-Bundles, keine installierten Apps. Detaillierter Vertrag: [Iteration 0.4](08-continuity-and-offline.md).
 
 GitHub Actions: Die zusätzliche Root-Workflowdatei führt die gemeinsame OLIVA-Qualitätsaction aus. Ein echter Remote-Lauf wird im gesonderten CI-Nachweis aufgeführt; eine vorhandene YAML-Datei allein zählt nicht als erfolgreicher Lauf.
+
+Der erste tatsächliche GitHub-Lauf (`e7f7a49`, Run 42237726593) bestand die Typ-/Korpus-/Bildprüfung und 64 Fachtests. 33 von 35 Browserfällen bestanden. Zwei Fälle lösten unmittelbar nach Undo bzw. Entwurfsverwerfen einen Neustart aus, bevor der bestätigte Speicherabschluss erreicht war. Die Tests warten nun auf den tatsächlich gespeicherten Rückkehrzustand bzw. entfernten Entwurf, bevor sie neu laden. Alle fachlichen Aussagen bleiben bestehen. Fünf betroffene Szenarien bestehen in der gezielten lokalen Wiederholung. Der unveränderte erste CI-Bericht bleibt unter `ci-initial-e2e.json` erhalten; der vollständige neue Remote-Lauf wird separat dokumentiert.
+
+Die Kontextillustration verwendet einen Container im ursprünglichen 3:2-Verhältnis mit vollständig füllendem Image. So überschreibt eine intrinsische Web-Assethöhe nicht die beabsichtigte responsive Darstellung. Der Browserfall prüft das tatsächlich gerenderte Verhältnis.

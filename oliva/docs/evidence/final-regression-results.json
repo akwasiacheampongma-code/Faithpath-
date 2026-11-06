@@ -4,10 +4,8 @@
       "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
       "/workspace/faithpath-next/node_modules/@playwright/test/cli.js",
       "test",
-      "tests/e2e/learning.spec.ts",
-      "tests/e2e/captures.spec.ts",
       "--grep",
-      "ungesicherte Worte|Textfragen|Ostergeschichte",
+      "Journal bearbeiten|Neue Vorhaben- und Entwurfsansichten|ungesicherte Worte|Textfragen|Ostergeschichte",
       "--reporter=json"
     ],
     "configFile": "/workspace/faithpath-next/playwright.config.ts",
@@ -123,12 +121,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5845,
+                  "duration": 6726,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:48:04.352Z",
+                  "startTime": "2026-11-06T15:03:40.224Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -139,6 +137,48 @@
           "id": "40959956e96c4f3720b3-bb4d2da6c82f3765bd1c",
           "file": "captures.spec.ts",
           "line": 271,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "core.spec.ts",
+      "file": "core.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Journal bearbeiten, löschen und rückgängig machen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6876,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T15:03:48.055Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-95acf7ea740056abdb9c",
+          "file": "core.spec.ts",
+          "line": 153,
           "column": 1
         }
       ]
@@ -165,12 +205,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7051,
+                  "duration": 8003,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:48:11.040Z",
+                  "startTime": "2026-11-06T15:03:55.022Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -199,12 +239,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7251,
+                  "duration": 8976,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-06T14:48:18.132Z",
+                  "startTime": "2026-11-06T15:04:03.065Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -218,13 +258,55 @@
           "column": 1
         }
       ]
+    },
+    {
+      "title": "personal.spec.ts",
+      "file": "personal.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Neue Vorhaben- und Entwurfsansichten bleiben auf kleinen Displays zugänglich",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 34112,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T15:04:12.261Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-9537a654eb0dbf000217",
+          "file": "personal.spec.ts",
+          "line": 310,
+          "column": 1
+        }
+      ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-06T14:48:03.210Z",
-    "duration": 22355.744,
-    "expected": 3,
+    "startTime": "2026-11-06T15:03:38.573Z",
+    "duration": 68149.186,
+    "expected": 5,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

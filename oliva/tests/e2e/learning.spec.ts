@@ -76,6 +76,12 @@ test("Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zähl
       .getByRole("img", { name: /Künstlerische Interpretation: drei Frauen/ })
       .last(),
   ).toBeVisible();
+  const frame = await page
+    .getByRole("img", { name: /Künstlerische Interpretation: drei Frauen/ })
+    .last()
+    .boundingBox();
+  expect(frame).not.toBeNull();
+  expect(frame!.width / frame!.height).toBeCloseTo(1.5, 2);
   await page
     .getByRole("button", {
       name: "Abschnitt als gelesen bestätigen",

@@ -36,7 +36,7 @@ Audit: `docs/00-faithpath-audit.md`. Lieferstand: `docs/delivery-status.md`. Akt
 
 ## Belegter lokaler Prüfstand
 
-- 64 Fach-/Persistenztests erfolgreich. 35 Browser-Szenarien: erster stabiler Lauf 35/35, zusätzlicher paralleler Lastlauf 34/35 mit Export-Zeitlimit; gezielte Wiederholung unter `final-regression-results.json`. Unveränderter Lastbericht bleibt erhalten; Remote-Gesamtlauf wird nach dem Push dokumentiert.
+- 64 Fach-/Persistenztests erfolgreich. 35 Browser-Szenarien: erster stabiler Lauf 35/35, zusätzlicher paralleler Lastlauf 34/35 mit Export-Zeitlimit; fünf gezielte Browserfälle einschließlich Undo und Entwurfsverwerfen erfolgreich unter `final-regression-results.json`. Unveränderter Lastbericht bleibt erhalten; Der erste tatsächliche CI-Lauf bestand 64 Fachtests und 33/35 Browserfälle. Die beiden Tests warten nun vor Neustart auf den tatsächlichen Speicherabschluss; vollständiger Remote-Lauf wird erneut ausgeführt.
 - Strikte TypeScript-Prüfung, Korpusreproduzierbarkeit und Bildhashes erfolgreich.
 - Web-, Android- und iOS-JS-/Asset-Exporte. Keine APK/IPA und keine physischen Geräte getestet.
 - Native Adapterlogik gegen Nodes echte SQLite-Engine geprüft; kein Expo-Gerätenachweis.
