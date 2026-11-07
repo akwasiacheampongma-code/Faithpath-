@@ -80,7 +80,7 @@ def verified_report(folder: Path, identity: str, expected_files: list[str]):
         if not isinstance(outputs, dict) or set(outputs) != set(expected_files):
             return None
         for name, info in outputs.items():
-            if Path(name).name != name or sha256(folder/name) != info['sha256']:
+            if not (folder/name).resolve().is_relative_to(folder.resolve()) or sha256(folder/name) != info['sha256']:
                 return None
         return value
     except (OSError, ValueError, KeyError, TypeError):

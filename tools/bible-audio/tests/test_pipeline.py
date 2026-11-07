@@ -90,6 +90,23 @@ class JobTests(unittest.TestCase):
             report.write_text(json.dumps({'identity_sha256':'job','outputs':{'audio.mp3':{'sha256':sha256(root/'audio.mp3')}}}))
             self.assertIsNotNone(verified_report(root,'job',['audio.mp3']))
 
+    def test_nested_qa_outputs_are_verified_and_missing_verse_is_not_a_hit(self):
+        from jobs import verified_report, sha256
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);(root/'verses').mkdir()
+            verse=root/'verses/verse-01.wav';verse.write_bytes(b'known QA output')
+            (root/'generation-report.json').write_text(json.dumps({'identity_sha256':'job','outputs':{'verses/verse-01.wav':{'sha256':sha256(verse)}}}))
+            self.assertIsNotNone(verified_report(root,'job',['verses/verse-01.wav']))
+            verse.unlink()
+            self.assertIsNone(verified_report(root,'job',['verses/verse-01.wav']))
+
+    def test_player_rejects_partial_audio_instead_of_showing_25_playable_verses(self):
+        from build_player import validate_player_job
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);(root/'generation-report.json').write_text('{"complete":false}')
+            with self.assertRaisesRegex(ValueError,'complete'):
+                validate_player_job(root)
+
     def test_text_is_never_silently_renumbered_or_repaired(self):
         with tempfile.TemporaryDirectory() as folder:
             d = Path(folder)/'l1912';d.mkdir()

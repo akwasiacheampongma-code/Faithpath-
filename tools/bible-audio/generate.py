@@ -76,7 +76,11 @@ def run(args):
     with job_lock(folder/'generation.lock'):
         report_path = folder/'generation-report.json'
         stem = f"{args.book.lower()}-{args.chapter:03d}-luther1912-thorsten-optimiert"
-        if verified_report(folder, key, [stem+'.wav',stem+'.mp3','source.json','verse-timeline.json']):
+        segment_keys = [f'{number:03d}-{index:03d}' for number,text in source['verses'] if number in selected for index,_ in enumerate(split_text(text))]
+        required_files = [stem+'.wav',stem+'.mp3','source.json','verse-timeline.json']
+        required_files += [f'verses/verse-{number:02d}.wav' for number in sorted(selected)]
+        required_files += [f'segments/{segment_key}.{suffix}' for segment_key in segment_keys for suffix in ('wav','json')]
+        if verified_report(folder, key, required_files):
             print(json.dumps({'status':'verified-output-cache-hit','directory':str(folder),'identity_sha256':key}), flush=True)
             return folder
         cache = SegmentCache(folder/'segments')
@@ -156,7 +160,7 @@ def run(args):
                   'cache_hits':cache_hits,'segment_count':sum(len(v['segments']) for v in verses),
                   'gain':gain,'loudness_before':measured,'loudness_after':measure_loudness(wav),
                   'elapsed_seconds':time.monotonic()-tick,
-                  'outputs':{p.name:{'sha256':sha256(p),'bytes':p.stat().st_size} for p in [wav,mp3,folder/'source.json',folder/'verse-timeline.json']}}
+                  'outputs':{name:{'sha256':sha256(folder/name),'bytes':(folder/name).stat().st_size} for name in required_files}}
         atomic_json(report_path, report)
         print(json.dumps({'status':report['status'],'complete':complete,'directory':str(folder),
                           'duration_seconds':report['duration_seconds'],'cache_hits':cache_hits}), flush=True)

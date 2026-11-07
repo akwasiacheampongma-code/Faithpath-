@@ -11,17 +11,19 @@ Constraints: Kein Piper-Export; kein Training, Cloud-TTS, Massengenerieren, Depl
 Review Focus: Cachekorruption; Unterbrechung während Schreiben; falsche Kapitel-/Übersetzungszuordnung; Wortgrenzen und Genitive im Lexikon; asynchroner Kapitelwechsel während Audio lädt.
 
 ## 1. Baseline und Rechte
-- [ ] App-Baseline ausführen, Quellen und Referenzdateien erfassen.
-- [ ] Modell/Engine/Datensatz/Text mit konkreten Hashes und offiziellen Quellen dokumentieren; Unbekanntes offen halten.
+- [x] App-Baseline ausführen, Quellen und Referenzdateien erfassen.
+- [x] Modell/Engine/Datensatz/Text mit konkreten Hashes und offiziellen Quellen dokumentieren; Unbekanntes offen halten.
 
 ## 2. Lokale Synthese
-- [ ] Nachgewiesene Namensfehler erst als fehlschlagende Tests sichern, dann Gruut-kompatibles Wortlexikon implementieren.
-- [ ] Pausentrimmung, Übersteuerungsschutz und identische Textabdeckung mit synthetischen Signalen prüfen.
-- [ ] Einzelkapitel-CLI, verifizierten Segmentcache, Dateisperre und atomare Ausgaben implementieren; Unterbrechung/Korruption testen.
-- [ ] Mehrere Profile an echten kurzen Abschnitten vergleichen, anschließend alle 25 Verse erzeugen und Originaltext/ASR/Messwerte prüfen.
+- [x] Nachgewiesene Namensfehler erst als fehlschlagende Tests sichern, dann Gruut-kompatibles Wortlexikon implementieren.
+- [x] Pausentrimmung, Übersteuerungsschutz und identische Textabdeckung mit synthetischen Signalen prüfen.
+- [x] Einzelkapitel-CLI, verifizierten Segmentcache, Dateisperre und atomare Ausgaben implementieren; Unterbrechung/Korruption testen.
+- [x] Mehrere Profile an echten kurzen Abschnitten vergleichen, anschließend alle 25 Verse erzeugen und Originaltext/ASR/Messwerte prüfen.
 
 ## 3. Reader-Vorbereitung und Lieferung
-- [ ] Lebenszyklusfesten Audio-Adapter mit Geschwindigkeit, Fortsetzen und Kapitelwechsel testen; keine automatische Wiedergabe oder Fortschrittsänderung.
-- [ ] Player mit vollständigem Text, Originalvergleich und Download im Browser prüfen.
-- [ ] Bestehende Tests, Lint und Build; Inhaltsintegrität vergleichen.
-- [ ] Abschlussprüfung, Lizenzbericht, QA-Ergebnisse, MP3 und reproduzierbares ZIP liefern; Hör- und Gerätegates offen ausweisen.
+- [x] Lebenszyklusfesten Audio-Adapter mit Geschwindigkeit, Fortsetzen und Kapitelwechsel testen; keine automatische Wiedergabe oder Fortschrittsänderung.
+- [x] Player mit vollständigem Text, Originalvergleich und Download im Browser prüfen.
+- [x] Bestehende Tests, Lint und Build; Inhaltsintegrität vergleichen.
+- [x] Abschlussprüfung, Lizenzbericht, QA-Ergebnisse, MP3 und reproduzierbares ZIP liefern; Hör- und Gerätegates offen ausweisen.
+
+Technische Lieferung abgeschlossen. Menschliche Hörabnahme und physische Geräteprüfung bleiben ausdrücklich OFFEN; kein Veröffentlichungs-GO.

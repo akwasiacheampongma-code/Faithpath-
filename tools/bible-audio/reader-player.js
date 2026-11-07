@@ -34,7 +34,7 @@ export function createChapterAudio({audio,resolve,onState=()=>{}}){
     emit('ready');
    }catch{if(!destroyed&&token===serial)emit('error','Audio ist gerade nicht verfügbar. Der Bibeltext bleibt lesbar.');}
   },
-  async play(){if(destroyed||!audio.src)return;try{await audio.play();}catch{emit('error','Tippe auf Wiedergabe, um das Kapitel zu starten.');}},
+  async play(){if(destroyed||!audio.src)return;const token=serial;try{await audio.play();}catch{if(!destroyed&&token===serial)emit('error','Tippe auf Wiedergabe, um das Kapitel zu starten.');}},
   pause(){if(!destroyed){stop();emit('paused');}},
   setRate(value){if(!Number.isFinite(value)||value<.5||value>2)throw new RangeError('Unsupported playback rate');if(!destroyed){rate=value;audio.defaultPlaybackRate=value;audio.playbackRate=value;}},
   destroy(){if(destroyed)return;clearPendingPosition();stop();destroyed=true;serial++;for(const [name,handler]of listeners)audio.removeEventListener(name,handler);clear();positions.clear();}

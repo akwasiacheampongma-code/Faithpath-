@@ -48,3 +48,11 @@ test('repeated chapter changes keep one pending position listener and the chosen
  assert(getEventListeners(audio,'loadedmetadata').length<=1);
  p.destroy();assert.equal(getEventListeners(audio,'loadedmetadata').length,0);
 });
+test('an obsolete play rejection cannot replace the current unavailable chapter state',async()=>{
+ const audio=new AudioStub();const states=[];let rejectPlay;
+ audio.play=()=>new Promise((_,reject)=>{rejectPlay=reject;});
+ const p=createChapterAudio({audio,resolve:async r=>r.chapter===1?{url:'/1.mp3'}:null,onState:s=>states.push(s.status)});
+ await p.load(ref(1));const oldPlay=p.play();await p.load(ref(2));
+ rejectPlay(new Error('Aborted old source'));await oldPlay;
+ assert.equal(states.at(-1),'unavailable');assert.equal(audio.src,'');p.destroy();
+});
