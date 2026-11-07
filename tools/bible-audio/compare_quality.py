@@ -33,11 +33,12 @@ def analyze(folder):
     x,sr=sf.read(next(folder.glob('*optimiert.wav')),dtype='float32')
     step=round(sr*.01)
     rms=np.array([np.sqrt(np.mean(x[i:i+step]**2))for i in range(0,len(x),step)])
+    durations=np.minimum(step,len(x)-np.arange(len(rms))*step)/sr
     quiet=rms<.003;stretches=[];run=0
-    for value in quiet:
-        if value:run+=1
-        elif run:stretches.append(run*.01);run=0
-    if run:stretches.append(run*.01)
+    for value,duration in zip(quiet,durations):
+        if value:run+=float(duration)
+        elif run:stretches.append(run);run=0
+    if run:stretches.append(run)
     boundaries=[round(row[key]*sr)for row in timeline for key in ['start_seconds','end_seconds']]
     jumps=[float(abs(x[n]-x[n-1]))for n in boundaries if 0<n<len(x)]
     asr=folder/'qa/asr-results.json'
@@ -49,7 +50,7 @@ def analyze(folder):
             'words_per_minute':sum(len(row['text'].split())for row in timeline)*60/(len(x)/sr),
             'segment_count':report['segment_count'],'sample_peak':float(abs(x).max()),
             'measured_lufs':float(report['loudness_after']['input_i']),
-            'quiet_seconds_rms_below_0_003':float(quiet.sum()*.01),
+            'quiet_seconds_rms_below_0_003':float(durations[quiet].sum()),
             'longest_quiet_seconds':max(stretches,default=0),
             'quiet_stretches_above_1_5_seconds':[s for s in stretches if s>1.5],
             'maximum_verse_boundary_sample_jump':max(jumps,default=0),

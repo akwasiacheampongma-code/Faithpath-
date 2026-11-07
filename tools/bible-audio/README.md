@@ -2,6 +2,28 @@
 
 Dieses Werkzeug erzeugt **ein ausdrücklich ausgewähltes Kapitel** aus dem vorhandenen Luther-1912-Bestand. Es startet keine Massengenerierung. Modelle, Audiojobs und Vorschau sind vom App-Router und sämtlichen persönlichen Daten getrennt.
 
+## Lukas-15-Vergleich und wiederverwendbare Rhythmusprofile
+
+Die bisherige Matthäus-Konfiguration bleibt in `settings.json` unverändert und zusätzlich unter `profiles/matthaeus1-reference.json` erhalten. Die neuen Profile sind ausdrückliche Hörkandidaten, keine Freigabe für eine vollständige Bibel. Sie funktionieren mit derselben Einzelkapitel-CLI auch bei anderen Büchern:
+
+```sh
+.venv-audio/bin/python tools/bible-audio/generate.py --book LUK --chapter 15 --settings tools/bible-audio/profiles/A-natuerlich.json
+.venv-audio/bin/python tools/bible-audio/generate.py --book LUK --chapter 15 --settings tools/bible-audio/profiles/B-lebendig.json
+.venv-audio/bin/python tools/bible-audio/generate.py --book LUK --chapter 15 --settings tools/bible-audio/profiles/C-hoerbuch.json
+```
+
+`rhythm.py` bewahrt vollständige Satzgruppen und bevorzugt bei langen Sätzen Klauselgrenzen. Ein Doppelpunkt erhält eine erkennbare Pause; ein ohne Satzende fortgeführter Vers bekommt eine kürzere Pause. Der kurze Dauerfaktor nach einem Doppelpunkt ist keine garantierte Sprechererkennung oder Emotions-/Tonhöhensteuerung. Bekannte Absatzanfänge können explizit im Profil hinterlegt werden; für Lukas 15 stehen dort Verse 8 und 11, außerhalb des Bibeltexts. Ohne solche Metadaten wird keine Absatzstruktur erfunden.
+
+Die neuen Profile behalten **90 ms** Schutzrand und verwenden eine vorsichtigere Erkennungsschwelle; die unten beschriebene historische Konfiguration behält **60 ms**. Das ASR-Werkzeug verarbeitet jetzt standardmäßig das gesamte gewählte Kapitel, statt nach 25 Versen aufzuhören. `compare_quality.py` normalisiert für den reinen Erkennungsvergleich Ziffern und ß/ss; das verändert weder die Stimme noch den sichtbaren Bibeltext. WER ist kein Hörqualitätswert.
+
+Eine Vergleichsseite mit identischem Originaltext und mehreren vollständigen Aufnahmen lässt sich so bauen:
+
+```sh
+.venv-audio/bin/python tools/bible-audio/build_comparison.py --jobs PFAD_A PFAD_B PFAD_C PFAD_REFERENZ --out /tmp/faithpath-vergleich
+```
+
+Die HTML-Datei bettet die MP3s zur lokalen Hörprüfung ein. Das braucht mehr Speicher als die später vorgesehene gezielte Einzelkapitel-Auslieferung in der App. Es ist eine isolierte Vorschau und kein PWA-Audio-Release. Aktuelle Befunde: `LUKAS15_REPORT.md` und die QA-Dateien im Hörpaket.
+
 Die MP3 ist ein Hörprüfkandidat. Erfolgreiche Synthese, Bytegleichheit und Spracherkennung beweisen weder eine angenehme Stimme noch die vollständige korrekte Aussprache. Siehe `LICENSE_REVIEW.md` und den mitgelieferten Prüfbericht.
 
 ## Aufbau
