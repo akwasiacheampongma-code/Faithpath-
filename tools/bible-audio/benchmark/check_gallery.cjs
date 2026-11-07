@@ -30,6 +30,12 @@ const assert = require('node:assert/strict');
     await page.goto(origin+'/index.html');
     const audio=page.locator('audio');
     assert.equal(await audio.count(),4);
+    const downloads=await page.locator('a[href]').evaluateAll(links=>links.map(a=>a.getAttribute('href')));
+    for(const href of downloads){
+      const target=path.resolve(root,href);
+      assert(target.startsWith(root+path.sep)&&fs.statSync(target).isFile());
+    }
+    results.push({check:'all-report-and-download-links-resolve',status:'PASS',links:downloads.length});
     for(let i=0;i<4;i++){
       const result=await audio.nth(i).evaluate(async a=>{
         await a.play();

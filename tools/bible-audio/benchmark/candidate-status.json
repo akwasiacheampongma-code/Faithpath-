@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-07",
+  "benchmark_status": "PARTIAL_BLOCKED_MODEL_DOWNLOADS",
+  "subjective_ranking": null,
+  "models": [
+    {
+      "id": "thorsten-cosyvoice3",
+      "hf_id": "Thorsten-Voice/CosyVoice3",
+      "observed_short_revision": "5a34fb1",
+      "software_code_reference": "FunAudioLLM/CosyVoice@ace7c47",
+      "weights_installed": false,
+      "inference_run": false,
+      "audio_files": [],
+      "license_status": "Noch offene Fragen"
+    },
+    {
+      "id": "qwen3-voicedesign",
+      "hf_id": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+      "observed_short_revision": "5ecdb67",
+      "pypi_version": "qwen-tts==0.1.1",
+      "wheel_statically_inspected": true,
+      "package_installed": false,
+      "weights_installed": false,
+      "inference_run": false,
+      "audio_files": [],
+      "license_status": "Noch offene Fragen"
+    },
+    {
+      "id": "chatterbox-multilingual",
+      "hf_id": "ResembleAI/chatterbox",
+      "observed_short_revision": "5bb1f6e",
+      "pypi_version": "chatterbox-tts==0.1.7",
+      "wheel_statically_inspected": true,
+      "package_installed": false,
+      "wheel_uses": "V2",
+      "current_source_supports": "V3",
+      "weights_installed": false,
+      "inference_run": false,
+      "audio_files": [],
+      "license_status": "Noch offene Fragen"
+    },
+    {
+      "id": "coqui-thorsten-vits",
+      "model": "tts_models/de/thorsten/vits",
+      "release": "v0.7.0_models",
+      "software": "coqui-tts==0.28.0",
+      "weights_installed": true,
+      "inference_run": true,
+      "profiles": [
+        "C-hoerbuch",
+        "D-benchmark-balanced"
+      ],
+      "license_status": "Kommerzielle Nutzung nachvollziehbar erlaubt (published grants; release obligations remain)"
+    }
+  ]
+}

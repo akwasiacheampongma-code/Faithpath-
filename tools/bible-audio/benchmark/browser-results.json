@@ -1,0 +1,94 @@
+{
+  "browser": "Chromium/Linux",
+  "human_hearing": "NOT PERFORMED",
+  "iphone_safari": "OPEN",
+  "results": [
+    {
+      "check": "all-report-and-download-links-resolve",
+      "status": "PASS",
+      "links": 7
+    },
+    {
+      "check": "audio-1-decode-and-clock",
+      "status": "PASS",
+      "duration": 45.193968,
+      "currentTime": 0.189363,
+      "readyState": 4,
+      "error": null
+    },
+    {
+      "check": "audio-2-decode-and-clock",
+      "status": "PASS",
+      "duration": 35.040272,
+      "currentTime": 0.176556,
+      "readyState": 4,
+      "error": null
+    },
+    {
+      "check": "audio-3-decode-and-clock",
+      "status": "PASS",
+      "duration": 47.675601,
+      "currentTime": 0.188402,
+      "readyState": 4,
+      "error": null
+    },
+    {
+      "check": "audio-4-decode-and-clock",
+      "status": "PASS",
+      "duration": 36.70195,
+      "currentTime": 0.176133,
+      "readyState": 4,
+      "error": null
+    },
+    {
+      "check": "only-one-audio-playing",
+      "status": "PASS"
+    },
+    {
+      "check": "embedded-audio-offline",
+      "status": "PASS"
+    },
+    {
+      "check": "layout-320-100percent",
+      "status": "PASS"
+    },
+    {
+      "check": "layout-320-200percent",
+      "status": "PASS"
+    },
+    {
+      "check": "layout-375-100percent",
+      "status": "PASS"
+    },
+    {
+      "check": "layout-375-200percent",
+      "status": "PASS"
+    },
+    {
+      "check": "layout-390-100percent",
+      "status": "PASS"
+    },
+    {
+      "check": "layout-390-200percent",
+      "status": "PASS"
+    },
+    {
+      "check": "layout-430-100percent",
+      "status": "PASS"
+    },
+    {
+      "check": "layout-430-200percent",
+      "status": "PASS"
+    },
+    {
+      "check": "axe-wcag-AA",
+      "status": "PASS",
+      "violations": 0,
+      "incomplete": 0
+    },
+    {
+      "check": "no-external-requests",
+      "status": "PASS"
+    }
+  ]
+}
