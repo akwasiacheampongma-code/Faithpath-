@@ -1,0 +1,136 @@
+{
+  "method": "FFmpeg delivered-MP3 decode; optional Sherpa Whisper base int8 German, 1 thread",
+  "limitations": "ASR disagreements are review flags, not verified omissions or pronunciation errors. No human hearing or long-listening acceptance.",
+  "results": [
+    {
+      "candidate": "css10-neon",
+      "file": "css10-neon-58ed220c4a5a/css10-neon-luk-15-20-24.mp3",
+      "sha256": "0abfc2c6c354fbb0c9338690ef258058861ea5a45fa4fbbe1bc68c78c16e3a9e",
+      "first_verse": 20,
+      "last_verse": 24,
+      "verse_count": 5,
+      "duration_seconds": 50.2631875,
+      "sample_peak_16k_mono": 0.7500576376914978,
+      "loudness": {
+        "input_i": "-20.66",
+        "input_tp": "-2.23",
+        "input_lra": "3.70",
+        "input_thresh": "-31.51",
+        "output_i": "-19.65",
+        "output_tp": "-1.50",
+        "output_lra": "3.70",
+        "output_thresh": "-30.42",
+        "normalization_type": "dynamic",
+        "target_offset": "-0.35"
+      },
+      "longest_quiet_seconds_rms_below_0_003": 0.5100000000000002,
+      "quiet_seconds_rms_below_0_003": 5.8831875,
+      "technical_analysis_seconds": 1.0389031340018846,
+      "asr": [
+        {
+          "verse": 20,
+          "reference": "Und er machte sich auf und kam zu seinem Vater. Da er aber noch ferne von dannen war, sah ihn sein Vater, und es jammerte ihn, lief und fiel ihm um seinen Hals und küßte ihn.",
+          "recognition": "und er machte sich auf und kam zu seinem Vater. Da er aber noch fernet von dannen war, sah in sein Vater, und es jamade ihn lief und viel ihm um seinen Hals und Küste ihn.",
+          "normalized_word_edits": 5,
+          "normalized_reference_words": 36,
+          "elapsed_seconds": 3.2888525320013287
+        },
+        {
+          "verse": 21,
+          "reference": "Der Sohn aber sprach zu ihm: Vater, ich habe gesündigt gegen den Himmel und vor dir; ich bin hinfort nicht mehr wert, daß ich dein Sohn heiße.",
+          "recognition": "der Sohn aber sprach zu ihm, Vater, ich habe gesündigt gegen den Himmel und vor dir. Ich bin hinfahrt nicht mehr werdet, dass ich dein Sohn heiße.",
+          "normalized_word_edits": 2,
+          "normalized_reference_words": 27,
+          "elapsed_seconds": 2.3371147739962908
+        },
+        {
+          "verse": 22,
+          "reference": "Aber der Vater sprach zu seinen Knechten: Bringet das beste Kleid hervor und tut es ihm an, und gebet ihm einen Fingerreif an seine Hand und Schuhe an seine Füße,",
+          "recognition": "aber der Vater sprach zu seinen Knächten. Bringe das beste Kleider vor und tut es ihm an und gebet ihm einen Finger reif an seiner Hand und Schuhe an seine Füße.",
+          "normalized_word_edits": 7,
+          "normalized_reference_words": 30,
+          "elapsed_seconds": 2.473564888998226
+        },
+        {
+          "verse": 23,
+          "reference": "und bringet ein gemästet Kalb her und schlachtet's; lasset uns essen und fröhlich sein!",
+          "recognition": "und bringt ein Gemästetkalpier und Schlachtez, lasse uns essen und fröhlich sein.",
+          "normalized_word_edits": 7,
+          "normalized_reference_words": 15,
+          "elapsed_seconds": 1.6676031769966357
+        },
+        {
+          "verse": 24,
+          "reference": "denn dieser mein Sohn war tot und ist wieder lebendig geworden; er war verloren und ist gefunden worden. Und sie fingen an fröhlich zu sein.",
+          "recognition": "Denn dieser Mein Sohn war tot und ist wieder lebendig geworden. Er war verloren und ist gefunden worden. Und sie finden anfröhlich zu sein.",
+          "normalized_word_edits": 3,
+          "normalized_reference_words": 25,
+          "elapsed_seconds": 2.3783918999979505
+        }
+      ],
+      "human_listening": "OPEN",
+      "asr_word_error_rate": 0.18045112781954886
+    },
+    {
+      "candidate": "css10-neon",
+      "file": "css10-neon-58ed220c4a5a/css10-neon-luk-15-29-32.mp3",
+      "sha256": "f9cbade7fd40cc49652b43ce360350951d651080be45edbcbb1667daccf3c40b",
+      "first_verse": 29,
+      "last_verse": 32,
+      "verse_count": 4,
+      "duration_seconds": 41.4168125,
+      "sample_peak_16k_mono": 0.7186293005943298,
+      "loudness": {
+        "input_i": "-20.46",
+        "input_tp": "-2.81",
+        "input_lra": "4.50",
+        "input_thresh": "-31.28",
+        "output_i": "-19.50",
+        "output_tp": "-1.50",
+        "output_lra": "3.10",
+        "output_thresh": "-30.23",
+        "normalization_type": "dynamic",
+        "target_offset": "-0.50"
+      },
+      "longest_quiet_seconds_rms_below_0_003": 0.7200000000000004,
+      "quiet_seconds_rms_below_0_003": 5.9468125,
+      "technical_analysis_seconds": 1.0570408680068795,
+      "asr": [
+        {
+          "verse": 29,
+          "reference": "Er aber antwortete und sprach zum Vater: Siehe, so viel Jahre diene ich dir und habe dein Gebot noch nie übertreten; und du hast mir nie einen Bock gegeben, daß ich mit meinen Freunden fröhlich wäre.",
+          "recognition": "Er beantwortete und sprach zum Vater. Sie hier, soviel Jahre diene ich dir und habe dein Gebot noch nie überträgen. Und du hast mir nie einen Bock gegeben, dass ich mit meinen Freunden fröhlich wäre.",
+          "normalized_word_edits": 6,
+          "normalized_reference_words": 36,
+          "elapsed_seconds": 3.1982820370030822
+        },
+        {
+          "verse": 30,
+          "reference": "Nun aber dieser dein Sohn gekommen ist, der sein Gut mit Huren verschlungen hat, hast du ihm ein gemästet Kalb geschlachtet.",
+          "recognition": "Nun aber dieser Dein Sohn gekommen ist, der sein Gut mit Toren verschlungen hat, hast du ihm ein Gemästet kalt geschlachtet.",
+          "normalized_word_edits": 2,
+          "normalized_reference_words": 21,
+          "elapsed_seconds": 1.7607152180062258
+        },
+        {
+          "verse": 31,
+          "reference": "Er aber sprach zu ihm: Mein Sohn, du bist allezeit bei mir, und alles, was mein ist, das ist dein.",
+          "recognition": "Er er aber sprach zu ihm, mein Sohn, du bist alle Zeit bei mir und alles was mein ist, das ist dein.",
+          "normalized_word_edits": 3,
+          "normalized_reference_words": 20,
+          "elapsed_seconds": 1.6273093579948181
+        },
+        {
+          "verse": 32,
+          "reference": "Du solltest aber fröhlich und gutes Muts sein; denn dieser dein Bruder war tot und ist wieder lebendig geworden; er war verloren und ist wieder gefunden.",
+          "recognition": "Du solltest aber fröhlich und gutes Mut sein, denn dieser Dein Bruder war tot und ist wieder lebendig geworden. Er war verloren und ist wieder gefunden.",
+          "normalized_word_edits": 1,
+          "normalized_reference_words": 26,
+          "elapsed_seconds": 2.1012694550008746
+        }
+      ],
+      "human_listening": "OPEN",
+      "asr_word_error_rate": 0.11650485436893204
+    }
+  ]
+}

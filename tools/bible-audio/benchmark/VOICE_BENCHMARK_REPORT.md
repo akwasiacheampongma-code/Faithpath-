@@ -1,5 +1,7 @@
 # FaithPath – Ergebnis des Stimmen-Benchmarks
 
+**Historischer erster Paketstand (Commit 5990b43).** Die spätere tatsächliche zusätzliche CSS10/Neon-Stimme ist separat in `CSS10_FOLLOWUP.md` dokumentiert. Das ursprüngliche ZIP und seine Prüfwerte bleiben unverändert.
+
 **7. November 2026 · Teilbenchmark mit echtem Audio; keine abschließende Stimmenauswahl.**
 
 Die drei gewünschten neuen Modelle konnten in dieser Umgebung nicht ausgeführt werden. Der verwaltete Proxy verweigert Hugging-Face-Verbindungen mit HTTP 403; Modellgewichte sind hier nicht vorhanden. Deshalb gibt es **keinen nachgewiesenen Klanggewinner zwischen CosyVoice3, Qwen3-TTS, Chatterbox und Coqui**. Dokumentationsversprechen oder fremde Modell-Benchmarks werden nicht als eigene Hörresultate ausgegeben.

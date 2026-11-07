@@ -1,5 +1,7 @@
 # FaithPath – Rechteprüfung deutscher TTS-Stimmen
 
+Nachtrag zur zusätzlich ausgeführten CSS10/Neon-Stimme: siehe `CSS10_FOLLOWUP.md`. Deren Modellfreigabe ist als BSD-3-Clause dokumentiert; die deutsche kommerzielle Stimmrechtekette bleibt ausdrücklich offen. Diese Aussage ändert die folgenden Bewertungen der ursprünglichen Kandidaten nicht.
+
 Stand: **7. November 2026**. Quellenbasierte technische Prüfung, keine verbindliche juristische Begutachtung. Geprüft werden die bezeichneten Veröffentlichungen, nicht beliebige gleichnamige Modelle. Keine Veröffentlichung freigegeben.
 
 ## Entscheidungsmatrix

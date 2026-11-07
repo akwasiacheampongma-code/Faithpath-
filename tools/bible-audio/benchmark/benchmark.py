@@ -159,8 +159,10 @@ def gallery(out):
     """Embed playable clips; never create players for an unexecuted model."""
     import base64
     cards = []
+    has_css10 = False
     for manifest in sorted(out.glob('*/manifest.json')):
         data = json.loads(manifest.read_text())
+        has_css10 = has_css10 or data['candidate'] == 'css10-neon'
         sections = []
         for p in data['passages']:
             filename = next(name for name in p['files'] if name.endswith('.mp3'))
@@ -173,7 +175,8 @@ def gallery(out):
                             f'<audio controls preload="none" src="data:audio/mpeg;base64,{encoded}"></audio>'
                             f'<p><a href="{manifest.parent.name}/{filename}" download>MP3 herunterladen</a> · {p["duration_seconds"]:.1f} Sekunden</p>'
                             f'<details><summary>Bibeltext anzeigen</summary>{text}</details>')
-        label = {'coqui-c': 'Coqui C · Hörbuch', 'coqui-balanced': 'Coqui · kürzerer Rhythmus'}.get(data['candidate'], data['candidate'])
+        label = {'coqui-c': 'Thorsten VITS · C', 'coqui-balanced': 'Thorsten · kürzerer Rhythmus',
+                 'css10-neon': 'CSS10 / Neon · weitere Stimme'}.get(data['candidate'], data['candidate'])
         cards.append(f'<section><h2>{html.escape(label)}</h2>' + ''.join(sections) + '</section>')
     document = '''<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FaithPath · Stimmenprüfung</title><style>
@@ -186,6 +189,9 @@ audio{width:100%;min-width:0;max-width:100%}a{color:#184b3e;display:inline-block
 <p class="notice"><strong>Teilprüfung · Auswahl offen.</strong> Beide hörbaren Fassungen verwenden Coqui Thorsten VITS. CosyVoice3, Qwen3-TTS und Chatterbox sind wegen gesperrter Modelldownloads noch nicht getestet.</p>
 <p>KI-generierte Vorlesung · keine menschliche Aufnahme. Originaltext: Luther 1912. Kein Autoplay, keine externe Verbindung. Erst hören, dann bewerten.</p>
 <p><a href="VOICE_BENCHMARK_REPORT.md">Prüfbericht</a> · <a href="VOICE_LICENSE_REVIEW.md">Rechteprüfung</a> · <a href="LISTENING_SHEET.csv" download>Hörbogen</a></p>'''
+    if has_css10:
+        document = document.replace('Beide hörbaren Fassungen verwenden Coqui Thorsten VITS.',
+                                    'Hier sind zwei unterschiedliche Stimmen hörbar: Thorsten VITS und CSS10/Neon. Die kommerziellen Sprecherrechte von CSS10 bleiben offen.')
     document += ''.join(cards) + '''<h2>Was noch offen ist</h2><p>Natürlichkeit, Aussprache, Dialogwirkung und angenehmes Zuhören über 20–30 Minuten benötigen echte Hörprüfungen. Aus ASR oder Pegeln wird kein Klangurteil berechnet.</p></main>
 <script>document.addEventListener('play',e=>{if(e.target.tagName==='AUDIO')document.querySelectorAll('audio').forEach(a=>{if(a!==e.target)a.pause()})},true)</script></html>'''
     (out / 'index.html').write_text(document)

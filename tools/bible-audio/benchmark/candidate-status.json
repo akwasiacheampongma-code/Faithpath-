@@ -1,6 +1,6 @@
 {
   "date": "2026-11-07",
-  "benchmark_status": "PARTIAL_BLOCKED_MODEL_DOWNLOADS",
+  "benchmark_status": "PARTIAL_TWO_ACTUAL_VOICES_THREE_REQUESTED_MODELS_BLOCKED",
   "subjective_ranking": null,
   "models": [
     {
@@ -51,6 +51,23 @@
         "D-benchmark-balanced"
       ],
       "license_status": "Kommerzielle Nutzung nachvollziehbar erlaubt (published grants; release obligations remain)"
+    },
+    {
+      "id": "css10-neon",
+      "model": "tts_models/de/css10/vits-neon",
+      "release": "v0.8.0_models",
+      "official_download": "https://github.com/coqui-ai/TTS/releases/download/v0.8.0_models/tts_models--de--css10--vits.zip",
+      "archive_sha256": "b6da8a18dd122fab0783ed4ef343e29a8f09d39311b99b8eab80b0ea8dffe316",
+      "weights_sha256": "5b4fcb17da97ebfda929ccd503344bbe5f351dcfd97c8637c804fc7ffc72e8cd",
+      "software": "coqui-tts==0.28.0",
+      "weights_installed": true,
+      "inference_run": true,
+      "model_license": "BSD-3-Clause according to official catalogue",
+      "license_status": "Noch offene Fragen: regional recording/voice rights; not commercially cleared",
+      "default_duration_scale": 1.0,
+      "optional_test_duration_scale": 1.08,
+      "cloning_or_reference_audio_used": false,
+      "human_listening": "OPEN"
     }
   ]
 }

@@ -1,5 +1,7 @@
 # FaithPath – isolierter Stimmenvergleich
 
+**Fortsetzung nach dem ersten Paket:** `CSS10_FOLLOWUP.md` dokumentiert die zusätzlich tatsächlich erzeugte CSS10/Neon-Stimme. Die folgenden Angaben zu C/Balanced beschreiben den unveränderten ersten Paketstand; die drei gewünschten Hugging-Face-Modelle sind weiterhin blockiert.
+
 **Teilweise ausgeführt, Auswahlentscheidung offen.** Coqui C und die neue Balanced-Probe sind dieselbe VITS-Stimme mit unterschiedlichen Rhythmuseinstellungen. Für CosyVoice3, Qwen3-TTS und Chatterbox liegen **keine** hier generierten Audios vor: Der verwaltete Downloadproxy verweigert Hugging Face mit HTTP 403. Keine Ersatzstimme wird als eines dieser Modelle ausgegeben.
 
 Ergebnisse: `VOICE_BENCHMARK_REPORT.md`, `VOICE_LICENSE_REVIEW.md`, `qa/audio-results.json` im Hörpaket. Die App und ihre Inhalte bleiben unverändert.
