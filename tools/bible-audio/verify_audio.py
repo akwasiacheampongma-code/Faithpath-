@@ -11,6 +11,11 @@ from jobs import sha256, atomic_json, chapter_source, SegmentCache
 from generate import measure_loudness
 
 
+def timeline_samples_valid(rows, sample_count, sr):
+    ranges=[(round(row['start_seconds']*sr),round(row['end_seconds']*sr))for row in rows]
+    return bool(ranges) and all(0<=start<end<=sample_count for start,end in ranges) and all(a[1]<=b[0]for a,b in zip(ranges,ranges[1:]))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--job', type=Path, required=True)
@@ -39,7 +44,7 @@ def main():
     check('Mono PCM16 22.05kHz, finite audio',sr==22050 and info.channels==1 and info.subtype=='PCM_16' and np.isfinite(x).all(),{'sample_rate':sr,'frames':len(x),'subtype':info.subtype})
     peak = float(np.max(np.abs(x)))
     check('No PCM clipping',0.01<peak<1 and not np.any(np.abs(x)>=.9999),{'peak':peak,'rms':float(np.sqrt(np.mean(x*x)))})
-    check('Exact sample count and timeline',abs(len(x)/sr-report['duration_seconds'])<1/sr and all(a['end_seconds']<=b['start_seconds'] for a,b in zip(rows,rows[1:])) and rows[-1]['end_seconds']<=len(x)/sr,{'duration_seconds':len(x)/sr,'last_verse_end':rows[-1]['end_seconds']})
+    check('Exact sample count and timeline',abs(len(x)/sr-report['duration_seconds'])<1/sr and timeline_samples_valid(rows,len(x),sr),{'duration_seconds':len(x)/sr,'last_verse_end':rows[-1]['end_seconds'],'method':'Integer sample boundaries; no floating-point ordering false positives'})
     cache = SegmentCache(folder/'segments')
     keys=[f"{r['verse']:03d}-{i:03d}"for r in rows for i,_ in enumerate(r['segments'])]
     check('All synthesized segments have verified audio',all(cache.get(key) is not None for key in keys),{'segments':len(keys)})

@@ -23,6 +23,7 @@ import numpy as np
 import soundfile as sf
 from audio_processing import split_text, trim_edges, join_clips, parse_loudness
 from jobs import SegmentCache, chapter_source, digest, sha256, atomic_json, job_lock, verified_report
+from rhythm import segment_plan, boundary_pause, length_scale_for
 
 
 def load_voice(model_dir, settings, lexicon):
@@ -67,7 +68,7 @@ def run(args):
     versions = {name:importlib.metadata.version(name) for name in ('coqui-tts','torch','torchaudio','gruut','gruut-lang-de','numpy','soundfile')}
     identity = {'source':source, 'selected':sorted(selected), 'settings':settings,
                 'lexicon_sha256':sha256(lexicon), 'model_config_sha256':config_hash, 'versions':versions,
-                'code':{name:sha256(TOOL/name) for name in ('generate.py','pronunciation.py','audio_processing.py','jobs.py')}}
+                'code':{name:sha256(TOOL/name) for name in ('generate.py','pronunciation.py','audio_processing.py','jobs.py','rhythm.py')}}
     key = digest(identity)
     folder = args.out/f"l1912-{args.book}-{args.chapter:03d}-{'full' if complete else 'probe'}-{key[:12]}"
     folder.mkdir(parents=True, exist_ok=True)
@@ -76,7 +77,7 @@ def run(args):
     with job_lock(folder/'generation.lock'):
         report_path = folder/'generation-report.json'
         stem = f"{args.book.lower()}-{args.chapter:03d}-luther1912-thorsten-optimiert"
-        segment_keys = [f'{number:03d}-{index:03d}' for number,text in source['verses'] if number in selected for index,_ in enumerate(split_text(text))]
+        segment_keys = [f'{number:03d}-{index:03d}' for number,text in source['verses'] if number in selected for index,_ in enumerate(segment_plan(text,settings))]
         required_files = [stem+'.wav',stem+'.mp3','source.json','verse-timeline.json']
         required_files += [f'verses/verse-{number:02d}.wav' for number in sorted(selected)]
         required_files += [f'segments/{segment_key}.{suffix}' for segment_key in segment_keys for suffix in ('wav','json')]
@@ -90,7 +91,7 @@ def run(args):
             if number not in selected:
                 continue
             pieces, records = [], []
-            segments = split_text(text)
+            segments = segment_plan(text,settings)
             for index, segment in enumerate(segments):
                 segment_key = f'{number:03d}-{index:03d}'
                 cached = cache.get(segment_key)
@@ -105,25 +106,31 @@ def run(args):
                     torch.manual_seed(seed); np.random.seed(seed)
                     phonemizer = voice.synthesizer.tts_model.tokenizer.phonemizer
                     phonemizer.applied.clear()
+                    follows_colon = index>0 and segments[index-1].endswith(':')
+                    scale = length_scale_for(segment,follows_colon,settings)
+                    voice.synthesizer.tts_model.length_scale = scale
                     started = time.monotonic()
                     raw = np.asarray(voice.tts(text=segment, split_sentences=False), dtype=np.float32)
                     rate = voice.synthesizer.output_sample_rate
                     samples, trim = trim_edges(raw, rate, settings['edge_guard_seconds'], settings['edge_threshold'])
                     info = {'identity_sha256':key, 'verse':number, 'segment':index, 'text':segment,
                             'seed':seed, 'raw_duration_seconds':len(raw)/rate, 'trim':trim,
-                            'pronunciations':list(phonemizer.applied), 'generation_seconds':time.monotonic()-started}
+                            'pronunciations':list(phonemizer.applied),'length_scale':scale,
+                            'generation_seconds':time.monotonic()-started}
                     cache.save(segment_key, samples, rate, info)
                 if sr is not None and sr != rate:
                     raise ValueError('Sample rate changed')
                 sr = rate; pieces.append(samples); records.append(info)
-            gaps = [settings['clause_pause_seconds'] if text_piece[-1:] in ';:' else settings['sentence_pause_seconds'] for text_piece in segments[:-1]]
+            gaps = [boundary_pause(text_piece,'phrase',settings) for text_piece in segments[:-1]]
             samples, _ = join_clips(pieces, sr, gaps, settings['edge_guard_seconds'])
             verse_clips.append(samples)
             row = {'verse':number, 'text':text, 'text_sha256':digest(text), 'segments':records,
                    'sample_count':len(samples), 'duration_seconds':len(samples)/sr}
             verses.append(row)
             print(f'{args.book} {args.chapter}:{number} – {len(samples)/sr:.2f}s', flush=True)
-        chapter, starts = join_clips(verse_clips, sr, [settings['verse_pause_seconds']]*(len(verse_clips)-1), settings['edge_guard_seconds'])
+        paragraph_starts = settings.get('paragraph_starts',{}).get(f'{args.book}:{args.chapter}',[])
+        verse_gaps = [boundary_pause(row['text'],'paragraph' if verses[i+1]['verse'] in paragraph_starts else 'verse',settings) for i,row in enumerate(verses[:-1])]
+        chapter, starts = join_clips(verse_clips, sr, verse_gaps, settings['edge_guard_seconds'])
         silence = lambda sec:np.zeros(round(sr*sec), dtype=np.float32)
         intro = silence(settings['initial_silence_seconds'])
         chapter = np.concatenate([intro, chapter, silence(settings['final_silence_seconds'])])
@@ -157,7 +164,7 @@ def run(args):
         atomic_json(folder/'verse-timeline.json', verses)
         report = {'status':'generated-for-review','complete':complete,'identity_sha256':key,'identity':identity,
                   'verse_count':len(verses),'sample_rate':sr,'duration_seconds':len(chapter)/sr,
-                  'cache_hits':cache_hits,'segment_count':sum(len(v['segments']) for v in verses),
+                  'cache_hits':cache_hits,'segment_count':sum(len(v['segments']) for v in verses),'verse_boundary_pauses':verse_gaps,
                   'gain':gain,'loudness_before':measured,'loudness_after':measure_loudness(wav),
                   'elapsed_seconds':time.monotonic()-tick,
                   'outputs':{name:{'sha256':sha256(folder/name),'bytes':(folder/name).stat().st_size} for name in required_files}}

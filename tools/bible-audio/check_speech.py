@@ -20,7 +20,7 @@ def words(text):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=25)
+    parser.add_argument("--limit", type=int, default=None, help='Optional explicit probe limit; default is the entire chapter')
     parser.add_argument("--job", type=Path, required=True)
     parser.add_argument("--models", type=Path, required=True)
     args = parser.parse_args()
@@ -60,7 +60,7 @@ def main():
                "asr_elapsed_seconds": time.monotonic() - tick}
         results.append(row)
         print(f"{number:02d}: {heard}\n  review flags: {differences}", flush=True)
-        name = "asr-results.json" if args.limit == 25 else "asr-probe.json"
+        name = "asr-results.json" if args.limit is None else "asr-probe.json"
         (args.job / "qa" / name).write_text(json.dumps({
             "method": "sherpa-onnx Whisper base multilingual int8, de, greedy_search",
             "limitations": "Automated recognition only; rare names and historical forms can be misrecognized. No human listening is claimed.",
