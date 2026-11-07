@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>FaithPath · Bibel hören</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f2e9;color:#243d30;font:1rem/1.65 system-ui,-apple-system,sans-serif}main{max-width:45rem;margin:auto;padding:1.4rem max(1.1rem,env(safe-area-inset-left)) 3rem}header{margin:1rem 0 1.6rem}.brand{font-size:.85rem;letter-spacing:.08em}h1{font:500 clamp(2rem,7vw,3rem)/1.15 Georgia,serif;margin:.5rem 0}h2{font:500 1.6rem/1.25 Georgia,serif}p{margin:.6rem 0}.muted,small{color:#526351}.player{background:#fffdf8;border:1px solid #bfccba;border-radius:1.2rem;padding:1.1rem}audio{width:100%;min-height:54px;margin:.7rem 0}.status{min-height:1.65em}button,select{font:inherit;min-height:44px;touch-action:manipulation}button{border:1px solid #8c9f87;background:transparent;color:inherit;border-radius:.55rem;padding:.5rem .8rem;cursor:pointer}select{background:transparent;color:inherit;border:1px solid #8c9f87;border-radius:.4rem;max-width:100%;padding:.3rem}label{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}a{color:#315e40;text-underline-offset:.2em}a,button{overflow-wrap:break-word}a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #a66c2a;outline-offset:3px}.downloads{display:flex;flex-wrap:wrap;gap:.7rem 1.2rem}.downloads a{display:inline-flex;align-items:center;min-height:44px}.note{border-left:3px solid #a38347;padding-left:1rem;margin:1.5rem 0}ol{padding:0;list-style:none}li{display:flex;align-items:flex-start;gap:.7rem;border-top:1px solid #c8d0c1;padding:.7rem 0}li p{font:1.15rem/1.8 Georgia,serif;margin:.2rem 0;min-width:0;overflow-wrap:break-word}.verse{flex:0 0 44px;padding:.3rem;border-radius:50%}li.current p{background:#e0e8d8;border-radius:.2rem}footer{border-top:1px solid #c8d0c1;margin-top:2rem;padding-top:1rem}summary{cursor:pointer;min-height:44px;padding:.4rem 0}.comparison{border-top:1px solid #c8d0c1;margin-top:1rem;padding-top:.6rem}[hidden]{display:none!important}@media(prefers-color-scheme:dark){body{background:#14221c;color:#efeadf}.player{background:#1c3025;border-color:#61715c}.muted,small{color:#c0cbbb}a{color:#c4d6b3}li.current p{background:#304d35}li,footer,.comparison{border-color:#5f7059}}
+/* Insets follow the screen rather than doubled text size. Text stays scalable. */
+main{padding-inline:max(clamp(16px,4vw,28px),env(safe-area-inset-left)) max(clamp(16px,4vw,28px),env(safe-area-inset-right))}
+.player{padding:clamp(14px,3vw,20px)}
+body{overflow-wrap:break-word;hyphens:auto}
+.note{padding-left:14px}
+.actions button,.downloads a{min-width:0;max-width:100%}
+</style>
+<main>
+ <header><div class="brand">FAITHPATH · LOKAL ERZEUGTE HÖRFASSUNG</div><h1 id="title">__TITLE__</h1><p class="muted" id="subtitle">Lutherbibel 1912 · 25 Verse</p></header>
+ <section class="player" aria-label="Bibelkapitel hören">
+  <strong>Coqui Thorsten VITS · optimierter Prüfkandidat</strong>
+  <audio id="audio" controls preload="metadata">Bitte lade die MP3 herunter, falls dein Browser kein Audio unterstützt.</audio>
+  <p id="status" class="status muted" role="status" aria-live="polite">Audio wird vorbereitet.</p>
+  <label for="rate">Abspieltempo <select id="rate"><option value=".85">0,85 ×</option><option value=".95">0,95 ×</option><option value="1" selected>1 × – Original</option><option value="1.1">1,1 ×</option><option value="1.25">1,25 ×</option></select></label>
+  <div class="actions"><button id="original" type="button">Zurück zur Hörfassung</button><button id="next" type="button">Nächstes Kapitel lesen</button></div>
+  <div class="downloads"><a id="download-mp3" download="Matthaeus_1_Luther1912_Thorsten_optimiert.mp3">Neue MP3 herunterladen</a><a href="output/Matthaeus_1_Luther1912_Thorsten_optimiert.wav" download>WAV herunterladen</a></div>
+  <small>Die neue MP3 ist vollständig in dieser HTML-Datei enthalten. Keine Cloud, kein Tracking, keine persönlichen Daten.</small>
+ </section>
+ <p class="note">Kürzere Pausen, reproduzierbare Synthese und ein separates Aussprachelexikon. Die technische Prüfung ersetzt keine Hörabnahme: seltene Namen und markierte Textstellen bitte vor einer Veröffentlichung gegenhören.</p>
+ <details id="transcript" open><summary>Originaltext mitlesen · Vers antippen zum Anhören</summary><ol id="verses"></ol></details>
+ <details class="comparison"><summary>Vorherige Coqui-Fassung vergleichen</summary><p>Vorhandene Referenz, unverändert. Kein eigener menschlicher Hörvergleich behauptet.</p><audio id="previous" controls preload="none" src="comparison/Matthaeus_1_Coqui_vorher.mp3"></audio><small>Die Referenzdatei liegt im ZIP. Die alleinstehende HTML-Datei enthält nur die neue Hörfassung.</small></details>
+ <footer><small>Gemeinfreier Bibeltext: Luther 1912 / eBible.org. Synthetische Stimme, keine persönliche Aufnahme oder Empfehlung des Stimmgebers. Alle 25 Verse des erzeugten Kapitels bleiben unverändert.</small><p><a href="REPORT.md">Prüfbericht</a> · <a href="LICENSE_REVIEW.md">Lizenznachweise</a></p></footer>
+</main>
+<script>
+__ADAPTER__
+const dataset=__DATA__;
+const audio=document.querySelector('#audio'),status=document.querySelector('#status');
+let current=dataset.source.chapter;
+const controller=createChapterAudio({audio,resolve:async ref=>ref.translation==='l1912'&&ref.book===dataset.source.book&&ref.chapter===dataset.source.chapter?{url:dataset.audio}:null,onState:state=>{
+ if(state.status==='ready')status.textContent='Zum Anhören auf Wiedergabe tippen.';
+ else if(state.message)status.textContent=state.message;
+ audio.hidden=state.status==='unavailable';
+}});
+function show(chapter){
+ current=chapter;
+ const original=current===dataset.source.chapter;
+ const verses=original?dataset.source.verses:dataset.next.verses;
+ document.querySelector('#title').textContent=dataset.source.name+' '+chapter;
+ document.querySelector('#subtitle').textContent='Lutherbibel 1912 · '+verses.length+' Verse';
+ const list=document.querySelector('#verses');list.replaceChildren();
+ verses.forEach(([n,text])=>{
+  const li=document.createElement('li');li.dataset.verse=n;
+  const button=document.createElement('button');button.className='verse';button.type='button';button.textContent=n;
+  button.setAttribute('aria-label',original?'Ab Vers '+n+' anhören':'Vers '+n+' – Audio noch nicht vorhanden');
+  button.addEventListener('click',async()=>{
+   if(!original){status.textContent='Für dieses Kapitel gibt es noch keine geprüfte Aufnahme.';return;}
+   if(audio.readyState<1){status.textContent='Bitte warte kurz, bis das Audio geladen ist.';return;}
+   audio.currentTime=dataset.timeline.find(v=>v.verse===n).start_seconds;
+   await controller.play();
+  });
+  const p=document.createElement('p');p.textContent=text;li.append(button,p);list.append(li);
+ });
+ document.querySelector('#next').disabled=!original||!dataset.next;
+ document.querySelector('#original').hidden=original;
+ controller.load({translation:'l1912',book:dataset.source.book,chapter});
+}
+document.querySelector('#rate').addEventListener('change',e=>controller.setRate(Number(e.target.value)));
+document.querySelector('#next').addEventListener('click',()=>show(dataset.next.chapter));
+document.querySelector('#original').addEventListener('click',()=>show(dataset.source.chapter));
+document.querySelector('#download-mp3').href=dataset.audio;
+document.querySelector('#previous').addEventListener('play',()=>controller.pause());
+audio.addEventListener('play',()=>document.querySelector('#previous').pause());
+audio.addEventListener('timeupdate',()=>{
+ if(current!==dataset.source.chapter)return;
+ const row=dataset.timeline.find(v=>audio.currentTime>=v.start_seconds&&audio.currentTime<v.end_seconds);
+ document.querySelectorAll('#verses li').forEach(li=>li.classList.toggle('current',Number(li.dataset.verse)===row?.verse));
+});
+window.addEventListener('pagehide',()=>{controller.pause();document.querySelector('#previous').pause();});
+show(dataset.source.chapter);
+</script>
+</html>

@@ -1,0 +1,28 @@
+{
+  "version": "2026-11-07.2",
+  "language": "de-de",
+  "convention": "Deutsche kirchliche Lesung; keine Rekonstruktion des antiken Hebräisch. Keine Änderung des gedruckten Bibeltextes. Ohne Stresszeichen passend zum trainierten Gruut-Frontend; Vokallängen sind Näherungen und benötigen Hörabnahme.",
+  "sources": [
+    "https://www.die-bibel.de/loccumer-richtlinien",
+    "https://www.geku.uni-passau.de/fileadmin/dokumente/fakultaeten/geku/lehrstuehle/huebenthal/Dateien/02_Studium_und_Lehre/Loccumer_Richtlinien_komplett.pdf",
+    "https://www.bibelwerk.at/dl/urumJmoJLoOJqx4KJKJmMJKlnmo/Aussprache_biblischer_N",
+    "https://de.wiktionary.org/wiki/Abraham",
+    "https://de.wiktionary.org/wiki/Isaak"
+  ],
+  "entries": [
+    {"word":"Abraham","ipa":"ʔaːbʁaham","reason":"Gruut erzeugt p und lässt h aus; deutsche dreisilbige Lesung mit b und h."},
+    {"word":"Abrahams","ipa":"ʔaːbʁahams","reason":"Genitivform separat; keine Ersetzung von Wortteilen."},
+    {"word":"Isaak","ipa":"ʔiːzaːk","reason":"Unbegründetes l aus Gruut entfernen. Deutsche Namensaussprache hat Varianten; gewählt ist I-saak, nicht exklusiv verbindlich."},
+    {"word":"Perez","ipa":"peːʁɛts","reason":"Gruut verliert die klaren Vokale. Traditionelle Luther-Schreibweise bleibt Perez."},
+    {"word":"Nahesson","ipa":"naːhɛsɔn","reason":"h wiederherstellen; keine Modernisierung zu Nachschon im Quelltext."},
+    {"word":"Rahab","ipa":"ʁaːhap","reason":"Ausgefallenes h wiederherstellen; deutsche Auslautverhärtung."},
+    {"word":"Jesse","ipa":"jɛsə","reason":"Keine zusätzliche stimmhafte z-Folge nach ss."},
+    {"word":"Rehabeam","ipa":"ʁehaːbəʔam","reason":"h wiederherstellen; Re-ha-be-am, Bezug Loccumer Rehạbeam (ha)."},
+    {"word":"Sealthiel","ipa":"zeʔaːltiɛl","reason":"Se-al-ti-el; Endung el nicht zu langem i:l verschmelzen. Luther-Schreibweise erhalten; Vergleich Schealtiël."},
+    {"word":"Serubabel","ipa":"zeʁubaːbɛl","reason":"Vier Silben Se-ru-ba-bel; Bezug Loccumer Serubbạbel. Keine Umbenennung im Text."},
+    {"word":"Eliud","ipa":"ʔeːliʊt","reason":"Gruut erzeugt o statt u; Endung i-ud erhalten."},
+    {"word":"Immanuel","ipa":"ʔɪmaːnuʔeːl","reason":"Im-ma-nu-el, getrennter Vokalansatz vor el; keine Verschmelzung zu nu:l. Hörprüfung offen."},
+    {"word":"zeugte","ipa":"tsɔʏktə","kind":"common-word","reason":"Nachgewiesene verdoppelte ɔ-Folge des automatischen Frontends entfernen; historisches Wort unverändert."},
+    {"word":"heißen","ipa":"haɪsən","kind":"common-word","reason":"Gruut normalisiert ß zu ss und erzeugt danach hae:szən; deutscher ei-Diphthong und stimmloses s wiederhergestellt. Unicode-casefold deckt heissen ebenfalls ab."}
+  ]
+}
