@@ -12,4 +12,6 @@ Expo and React Native ecosystem: individual package licenses remain in their ins
 
 Generated art: seven OpenAI image generation outputs; provenance and release-review status are in `art/manifest.json` and `docs/04-art-direction-and-rights.md`.
 
+Book-sword pilot: an additional original OpenAI image generation output for the Gospel of John. The unchanged master, complete prompt, SHA-256, technical derivatives and review status are in `art/swords/`. This is artistic symbolism, not an archaeological reconstruction. Provider terms and public-release review apply; no general release approval is implied.
+
 A51 olive tree: seven original PNG masters, 21 original WebPs and the reviewed mathematical/WebGL engine from the project owner's FaithPath work. Reuse in OLIVA is explicitly authorized by the project owner's instruction of 2026-11-06. Exact commits, original files/hashes, original prompts, adapted files and PNG derivatives are recorded in `art/a51/` and `docs/09-a51-integration.md`. No separate open-source license for this inherited material was found; it is excluded from OLIVA's MIT grant. Public redistribution and inherited image-generation rights review remain pending. No FaithPath user data, navigation, storage or progression code is included.

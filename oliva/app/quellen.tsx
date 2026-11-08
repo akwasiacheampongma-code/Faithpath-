@@ -72,15 +72,34 @@ export default function Sources() {
             Waffenrekonstruktion.
           </T>
           <T style={{ fontSize: 12, color: t.muted }}>
+            Für Johannes gibt es zusätzlich eine große, mit
+            OpenAI-Bildgenerierung erstellte Buchillustration. Ihr Pflanzentrieb
+            deutet das Bild vom Weinstock in Johannes 15. Die kompakte
+            Darstellung bleibt eine Vektorgrafik. Die goldene Materialeinlage
+            ist Gestaltung; Lesespuren werden getrennt aus bestätigten Kapiteln
+            berechnet.
+          </T>
+          <T style={{ fontSize: 12, color: t.muted }}>
             Epheser 6,17 ist die biblische Anregung für das Schwert als Symbol
             des Wortes Gottes. Der Baum stellt Lernmomente dar – keinen
             geistlichen Rang.
           </T>
         </Card>
-        <Card style={{gap:13}}>
+        <Card style={{ gap: 13 }}>
           <T variant="heading">Der lebendige Olivenbaum</T>
-          <T>Die sieben A51-Illustrationen stammen aus der eigenen FaithPath-Vorarbeit „Final Living Tree“. Sie wurden auf ausdrücklichen Projektauftrag übernommen. Die Originale bleiben erhalten; WebP- und PNG-Dateien ermöglichen die Darstellung auf den verschiedenen Plattformen.</T>
-          <T style={{fontSize:12,color:t.muted}}>Der Baum zeigt deine OLIVA-Lerngeschichte. Eine Bildvorschau verändert keinen Fortschritt. Die Rechtekette der übernommenen Bildgenerierung ist vor einer öffentlichen Veröffentlichung gesondert zu prüfen.</T>
+          <T>
+            Die sieben A51-Illustrationen stammen aus der eigenen
+            FaithPath-Vorarbeit „Final Living Tree“. Sie wurden auf
+            ausdrücklichen Projektauftrag übernommen. Die Originale bleiben
+            erhalten; WebP- und PNG-Dateien ermöglichen die Darstellung auf den
+            verschiedenen Plattformen.
+          </T>
+          <T style={{ fontSize: 12, color: t.muted }}>
+            Der Baum zeigt deine OLIVA-Lerngeschichte. Eine Bildvorschau
+            verändert keinen Fortschritt. Die Rechtekette der übernommenen
+            Bildgenerierung ist vor einer öffentlichen Veröffentlichung
+            gesondert zu prüfen.
+          </T>
         </Card>
         <Card style={{ gap: 13 }}>
           <T variant="heading">Schriften und Datenschutz</T>

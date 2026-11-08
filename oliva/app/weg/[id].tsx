@@ -148,6 +148,7 @@ export default function PathDetail() {
               key={i}
               accessibilityRole="button"
               accessibilityState={{ selected: i === selected }}
+              aria-current={i === selected ? "step" : undefined}
               onPress={() => {
                 setSelected(i);
                 setPrayer(false);

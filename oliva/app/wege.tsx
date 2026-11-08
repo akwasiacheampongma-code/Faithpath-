@@ -67,6 +67,7 @@ export default function Paths() {
             key={c}
             accessibilityRole="button"
             accessibilityState={{ selected: c === filter }}
+            aria-pressed={c === filter}
             onPress={() => setFilter(c)}
             style={{
               minHeight: 44,

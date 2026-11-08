@@ -131,6 +131,7 @@ export function IconButton({
       accessibilityLabel={label}
       accessibilityRole="button"
       accessibilityState={{ selected }}
+      aria-pressed={selected}
       onPress={onPress}
       style={({ pressed }) => ({
         minHeight: 44,
@@ -231,12 +232,17 @@ export function Tag({
   );
 }
 export function Progress({ value, label }: { value: number; label: string }) {
-  const t = useTheme();
+  const t = useTheme(),
+    ratio = Number.isFinite(value) ? Math.max(0, Math.min(1, value)) : 0,
+    percent = Math.round(ratio * 100);
   return (
     <View
       accessibilityRole="progressbar"
       accessibilityLabel={label}
-      accessibilityValue={{ min: 0, max: 100, now: Math.round(value * 100) }}
+      accessibilityValue={{ min: 0, max: 100, now: percent }}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={percent}
       style={{
         height: 4,
         backgroundColor: t.line,
@@ -246,7 +252,7 @@ export function Progress({ value, label }: { value: number; label: string }) {
     >
       <View
         style={{
-          width: `${Math.max(0, Math.min(100, value * 100))}%`,
+          width: `${ratio * 100}%`,
           height: 4,
           backgroundColor: t.gold,
           borderRadius: 4,

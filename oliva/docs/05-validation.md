@@ -1,8 +1,32 @@
 # Qualität und Abnahme
 
-Dokumentationsstand: 07.11.2026. Prüfungen vom 06.11.2026 unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
+Dokumentationsstand: 07.11.2026. Prüfungen vom 06./07.11.2026 unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
 
-## Aktueller Nachweis 0.5 · A51 und Versfortsetzung
+## Aktueller Nachweis 0.6 · Buchidentitäten und Johannes-Bildpilot
+
+Private Bereitstellung seit 07.11.2026, 12:59:18 UTC. Kernbuild **`oliva-a542b7009551a2a2`**, Hostpaket **`oliva-524e381f7222abe8`**. Eigentümerzugriff unverändert; keine öffentliche Veröffentlichung. [Deployment](evidence/session-06/private-deployment.json), [Paketprüfung](evidence/session-06/private-package-check.json) und [Quellcheckpoint](evidence/session-06/private-source-checkpoint.json) sind gespeichert.
+
+| Prüfung | Tatsächliches Ergebnis | Beleg |
+| --- | --- | --- |
+| Fach-/Persistenzsuite | 75 bestanden, keine Fehler | [unit-results.json](evidence/session-06/unit-results.json) |
+| Fokussierte Buchschwertfälle | 7/7 bestanden; dieselben sieben Fälle später im Gesamtlauf ebenfalls erfolgreich | [swords-e2e.json](evidence/session-06/swords-e2e.json) |
+| Vollständiger Browserlauf nach Layoutkorrektur | 51/52 bestanden; ein zu früh gemessener Versanker, keine übersprungenen oder flaky Fälle | [e2e-first-full.json](evidence/session-06/e2e-first-full.json) |
+| Betroffene Capture-/Readerfälle nach Testsynchronisierung | 11/11 bestanden; Produktbuild unverändert, kein Überspringen oder Flaky-Ergebnis | [reader-regression.json](evidence/session-06/reader-regression.json) |
+| SVG-/PNG-Fortschritt und Navigation | 0/1/11/21 Kapitel, Hell/Dunkel, 320/390/1.440 CSS-Pixel; genauer Zähler/ARIA-Wert, Quellen, unveränderte Daten, endlicher Impuls und Reduktionsvorgaben | Buchschwertfälle und [Screens](evidence/session-06/screens/) |
+| Johannes-Bildassets | Master unverändert; drei PNGs in 256/512/768 Pixeln, zusammen 388.515 Byte; Fallback, drei Ladefehler, Retry und verspätete Antwort geprüft | [sword-assets.json](evidence/session-06/sword-assets.json), Browserberichte |
+| Android-/iOS-Debugexports | Je alle 98 A51- und drei Johannes-PNGs bytegenau; Webrenderer, großer Schwertmaster und Promptmaterial ausgeschlossen | [native-builds.json](evidence/session-06/native-builds.json) |
+| Echter 0.5→0.6-Updatewechsel | Alle Zustandsdatensätze unverändert; V5 ohne Migration; neue Buchroute/PNG und sieben A51-Stadien offline; alter exklusiver Chunk verfügbar | [offline-upgrade.json](evidence/session-06/offline-upgrade.json) |
+| Private Hostingausgabe | 15 App-Routen mit Shell, 98 App- und 42 Review-Dateien bytegenau geprüft; Manifest/Worker korrekt, anonym HTTP 401 | [private-http-check.json](evidence/session-06/private-http-check.json) |
+
+**Die vereinigten erfolgreichen Berichte decken alle 52 unterschiedlichen Szenarien ab. Es gab keinen neuen einzelnen grünen 52/52-Gesamtlauf.** [validation-summary.json](evidence/session-06/validation-summary.json) enthält ausdrücklich `isSingleGreenFullRun=false` und die Rohberichtshashes.
+
+Der eine Fehler des vollständigen Laufs betraf eine Momentaufnahme vor dem Ende der asynchronen Reader-Wiederherstellung. Am unveränderten Build wurde zuerst `y=6379`, danach ohne Testscroll `y=24` gemessen. Die Prüfung wartet nun im bisherigen Zeitlimit auf ein tatsächlich vorhandenes Rechteck mit unveränderter Anforderung `0 ≤ y < 200`. Es wurden ausschließlich Testsynchronisierung und Diagnose ergänzt, weder Produktscrollen noch Schwellenwert verändert. [reader-anchor-synchronization.json](evidence/session-06/reader-anchor-synchronization.json) belegt die Messung.
+
+Der frühere ARIA-Rotlauf bleibt als [Fehlernachweis](evidence/session-06/swords-e2e-red-aria.json) erhalten. Explizite Webattribute ergänzen die auf React Native Web 0.21 nicht zuverlässig übergebenen nativen Zustandsobjekte; die nativen Angaben bleiben bestehen. Ein automatisierter Axe-Scan ist keine manuelle Screenreader-/WCAG-Gesamtfreigabe.
+
+Native Exporte sind unsignierte JS-/Asset-Debugbundles ohne Bytecode; es wurden keine APK/AAB/IPA, Simulatoren oder Geräte geprüft. Die lokale App wurde tatsächlich mit Playwright geprüft. Eine zusätzliche Browser-/Handyprüfung des gehosteten Links wird nicht behauptet. Der erfolgreiche Remote-CI-Lauf von 0.4 bleibt historisch und ist kein 0.6-CI-Nachweis. Öffentliche Rechte- und unabhängige Inhalts-/Designfreigaben bleiben offen.
+
+## Historischer Nachweis 0.5 · A51 und Versfortsetzung
 
 Die private 0.5-Vorschau ist seit 06.11., 18:10:52 UTC bereitgestellt. Kernbuild: `oliva-f9aa29af9f863cf9`; Hostpaket: `oliva-e0fde474fcc06f7c`. Die folgenden Ergebnisse wurden tatsächlich ausgeführt. Historische Ergebnisse für 0.4 stehen getrennt weiter unten.
 
@@ -39,7 +63,7 @@ Die lokale Kern-App wurde tatsächlich mit Playwright geprüft. Eine zusätzlich
 
 ## Historischer Prüfstand bis 0.4
 
-Die folgenden Tabellen und Iterationsberichte betreffen die vorangegangenen Versionen. Sie werden als Entwicklungs- und CI-Historie bewahrt und sind keine zusätzliche 0.5-Abnahme.
+Die folgenden Tabellen und Iterationsberichte betreffen die vorangegangenen Versionen. Sie werden als Entwicklungs- und CI-Historie bewahrt und sind keine zusätzliche aktuelle 0.6-Abnahme.
 
 ### Tatsächlich ausgeführte Prüfungen bis 0.4
 

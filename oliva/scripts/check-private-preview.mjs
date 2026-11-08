@@ -35,7 +35,7 @@ assert.ok(urls.includes("/manifest.webmanifest"));assert.ok(urls.includes("/icon
 assert.ok(!urls.some(x=>x.includes("_headers")||x.includes("_redirects")));
 for(const url of urls){assert.ok(url.startsWith("/")&&!url.includes(".."));assert.ok((await stat("dist"+url)).isFile());}
 const rules=await readFile("dist/_redirects","utf8");
-for(const route of ["/bibel","/garten","/sammlung","/wege","/einstellungen","/lesen/*","/weg/*","/vorhaben/*","/importarchiv/*"])assert.ok(rules.includes(route+" /index.html 200"));
+for(const route of ["/bibel","/garten","/sammlung","/wege","/einstellungen","/lesen/*","/buch/*","/weg/*","/vorhaben/*","/importarchiv/*"])assert.ok(rules.includes(route+" /index.html 200"));
 const result={version:baseline.version ?? "0.4.0",checkedAt:new Date().toISOString(),runtime_files_verified:baseline.files.length, unchanged_runtime_asset_bytes:baseline.files.filter(f => !f.rewritten_asset_urls).length, rewritten_uri_files:baseline.files.filter(f => f.rewritten_asset_urls).length,all_runtime_hashes_match:true,pwa_manifest_valid:true,icons_valid:true,cache_files_verified:urls.length,build_id:id,app_routes_rewritten:true,source_build:baseline.source_build, source_validation:baseline.validation ?? null,managed_sites_browser_qa:"unavailable: cua_repl.js not exposed",physical_phone_test:false};
 await writeFile("preview-validation.json",JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify(result));

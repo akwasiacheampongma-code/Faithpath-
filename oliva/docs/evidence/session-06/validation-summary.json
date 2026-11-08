@@ -1,0 +1,178 @@
+{
+  "checkedAt": "2026-11-07T12:57:22.401893+00:00",
+  "version": "0.6.0",
+  "sourceBuild": "oliva-a542b7009551a2a2",
+  "scope": "Local core-app evidence; private hosting deployment is recorded separately. No public-release approval.",
+  "unit": {
+    "total": 75,
+    "passed": 75,
+    "failed": 0,
+    "report": "unit-results.json"
+  },
+  "browser": {
+    "uniqueScenariosVerified": 52,
+    "fullRunBeforeTestSynchronization": {
+      "report": "e2e-first-full.json",
+      "startTime": "2026-11-07T12:26:48.954Z",
+      "duration": 346442.886,
+      "expected": 51,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "targetedAfterTestSynchronization": {
+      "report": "reader-regression.json",
+      "startTime": "2026-11-07T12:37:37.580Z",
+      "duration": 61716.225,
+      "expected": 11,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "earlierFocusedSwordRun": {
+      "report": "swords-e2e.json",
+      "startTime": "2026-11-07T07:48:16.796Z",
+      "duration": 63179.042,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0,
+      "timing": "Before final book-heading layout polish; the same seven sword scenarios passed in the later full run."
+    },
+    "isSingleGreenFullRun": false,
+    "productCodeChangedForTargetedRun": false,
+    "explanation": "51/52 in the complete run after layout polish; the single verse-draft geometry assertion ran before asynchronous restoration settled. Only test synchronization and measurement were changed; all 11 capture/reader scenarios then passed. The union verifies all 52 unique scenarios, not a fresh single green full run.",
+    "fullRunFailure": [
+      {
+        "file": "captures.spec.ts",
+        "title": "zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt"
+      }
+    ],
+    "synchronization": {
+      "file": "tests/e2e/captures.spec.ts",
+      "criterion": "A real, non-null verse rectangle with 0 <= y < 200, within the standard 15-second assertion timeout",
+      "measuredWithoutTestScroll": true,
+      "measurements": [
+        {
+          "elapsed_ms": 147,
+          "y": 6379
+        },
+        {
+          "elapsed_ms": 263,
+          "y": 24
+        }
+      ],
+      "productBuildUnchanged": true
+    }
+  },
+  "native": {
+    "allPassed": true,
+    "exports": [
+      {
+        "platform": "android",
+        "exitCode": 0,
+        "a51PngCount": 98,
+        "a51PngByteExact": true,
+        "swordPngCount": 3,
+        "swordPngByteExact": true,
+        "swordMasterCount": 0,
+        "a51OriginalWebpFilesIncluded": 0,
+        "webRendererMarkersAbsent": [
+          "tree-art-window",
+          "tree-canvas",
+          "uniform vec3 u_x0",
+          "createTreeScene",
+          "createLeafRenderer"
+        ]
+      },
+      {
+        "platform": "ios",
+        "exitCode": 0,
+        "a51PngCount": 98,
+        "a51PngByteExact": true,
+        "swordPngCount": 3,
+        "swordPngByteExact": true,
+        "swordMasterCount": 0,
+        "a51OriginalWebpFilesIncluded": 0,
+        "webRendererMarkersAbsent": [
+          "tree-art-window",
+          "tree-canvas",
+          "uniform vec3 u_x0",
+          "createTreeScene",
+          "createLeafRenderer"
+        ]
+      }
+    ],
+    "kind": "Unminified Android/iOS JavaScript and asset debug exports only; no Hermes bytecode, APK, AAB, IPA, signing, simulator or physical-device execution.",
+    "simulatorTest": false,
+    "physicalDeviceTest": false,
+    "limitations": [
+      "Confirms Metro platform resolution, JavaScript bundling and byte-exact inclusion of the required local assets only.",
+      "Does not verify native image decoding, SVG/canvas output, motion, screen readers, application lifecycle, actual memory, battery, performance or installation.",
+      "Browser verification is recorded separately; it is not a native-device or simulator result."
+    ]
+  },
+  "upgrade": {
+    "report": "offline-upgrade.json",
+    "baselineVersion": "0.5.0",
+    "targetVersion": "0.6.0",
+    "passed": true,
+    "allStateRecordsUnchanged": true,
+    "noDataMigrationRequired": true,
+    "appDataVersion": 5,
+    "offlineA51Stages": 7,
+    "offlineNewBookRoute": true,
+    "offlineNewPngDecoded": true,
+    "bookViewWritesNoData": true,
+    "oldExclusiveCachedAssetVerified": true,
+    "physicalDeviceTest": false
+  },
+  "art": {
+    "pilot": "john-life-pilot",
+    "masters": 1,
+    "variants": 3,
+    "variantBytes": 388515,
+    "masterUnmodified": true,
+    "runtimeIntegrated": true,
+    "publicRelease": "not approved"
+  },
+  "hostedBrowserQa": "Not part of this local core evidence; no hosted-browser or physical-device result claimed.",
+  "rawReports": [
+    {
+      "file": "unit-results.json",
+      "sha256": "e6372dcf9719b26d293054029ef34c1b502885afaaecb9c6c41ec7aef74533a0"
+    },
+    {
+      "file": "e2e-first-full.json",
+      "sha256": "28749ba442268876e6bb9a09bdc701888416d0983f1a01c7b353b917aa0f0595"
+    },
+    {
+      "file": "reader-regression.json",
+      "sha256": "2751dd234f2812e41a4caaf844dd809ec8ef06258845fb5276f9a239fdbe809f"
+    },
+    {
+      "file": "reader-anchor-synchronization.json",
+      "sha256": "1520e30d615169f4dcb6e1b419e497b4b816930ab9b2ed760c7a577840723f90"
+    },
+    {
+      "file": "swords-e2e.json",
+      "sha256": "1d528101b8ecec527c15f47220cee562cbc80592ccad3454b0a6ffd9f063ff8b"
+    },
+    {
+      "file": "swords-e2e-red-aria.json",
+      "sha256": "83fd767cbd996ea8a5b80c24d8cb1533251fb9974428769cfa2815c7ca8b47c8"
+    },
+    {
+      "file": "native-builds.json",
+      "sha256": "aa6395e9ae3d1fe37b83253a1625faabffefb12c8204b9a7ed863831fee690b7"
+    },
+    {
+      "file": "offline-upgrade.json",
+      "sha256": "81520615e3a46428c7e22f07f18441d2781e4c90d08d0d106b6eef2767188d2d"
+    },
+    {
+      "file": "sword-assets.json",
+      "sha256": "da834d80732094f0b817f21efc4c9d741ca791c3b8615d715300dc1646fb4fb9"
+    }
+  ]
+}

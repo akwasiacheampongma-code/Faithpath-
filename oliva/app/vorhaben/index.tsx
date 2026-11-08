@@ -130,6 +130,7 @@ export default function Goals() {
               key={String(value)}
               accessibilityRole="button"
               accessibilityState={{ selected: archived === value }}
+              aria-pressed={archived === value}
               onPress={() => setArchived(Boolean(value))}
               style={{
                 padding: 13,

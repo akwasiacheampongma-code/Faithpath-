@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "john-life-pilot",
+  "book": "JHN",
+  "master": "art/swords/masters/john-life-pilot.png",
+  "masterSHA": "67aef437a0cd7239b10339143f96993ff7bd2bacbd938f017e0801bc6c2a4c33",
+  "masterWidth": 1024,
+  "masterHeight": 1536,
+  "hashAlgorithm": "sha256",
+  "license": "Generated under provider terms for the project; public release rights review pending",
+  "status": {
+    "internalRuntime": "Authorized by the project instruction for OLIVA 0.6; runtime and visual acceptance remain separate checks.",
+    "publicRelease": "not approved"
+  },
+  "sourceMetadata": "art/swords/pilot.json",
+  "derivation": {
+    "generator": "scripts/prepare-sword-pilot.py",
+    "version": 1,
+    "operation": "Full-canvas RGBA resize only; original 2:3 aspect ratio retained.",
+    "resampler": "Pillow Image.Resampling.LANCZOS",
+    "pillowVersion": "13.0.0",
+    "masterUnmodified": true,
+    "crop": false,
+    "retouch": false,
+    "encodedPixelCheck": "Each output was decoded and compared byte-for-byte with its resized RGBA pixel buffer."
+  },
+  "variants": [
+    {
+      "width": 256,
+      "height": 384,
+      "path": "assets/swords/john-life-pilot-256.png",
+      "sha256": "cb97b22fa571bcbed877cd67147916c4a25880e5d73af97e3808be7a8a14793b",
+      "bytes": 33022
+    },
+    {
+      "width": 512,
+      "height": 768,
+      "path": "assets/swords/john-life-pilot-512.png",
+      "sha256": "5a1d60873ac2263608ef74047208c7d76b79334c8339a0fd62d3a1d2c1f34629",
+      "bytes": 111513
+    },
+    {
+      "width": 768,
+      "height": 1152,
+      "path": "assets/swords/john-life-pilot-768.png",
+      "sha256": "ba11e288b55e7d161b81c335740a30f827b6d27b3c1a4da115d278429b72431e",
+      "bytes": 243980
+    }
+  ]
+}

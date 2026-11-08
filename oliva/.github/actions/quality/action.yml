@@ -32,6 +32,7 @@ runs:
         npm run content:check
         npm run content:art
         npm run content:tree
+        npm run content:swords
     - name: Types and domain/persistence tests
       shell: bash
       working-directory: ${{ env.OLIVA_PROJECT }}

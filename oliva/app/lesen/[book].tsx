@@ -79,7 +79,7 @@ export default function Reader() {
     [selected, setSelected] = useState<number | null>(
       params.verse ? Number(params.verse) : null,
     ),
-    [ack, setAck] = useState(false);
+    [ack, setAck] = useState<string | null>(null);
   const scroll = useRef<React.ComponentRef<typeof ScrollView>>(null);
   const position = useReaderPosition({
     reference: ref,
@@ -92,7 +92,7 @@ export default function Reader() {
   const jumpToVerse = position.restore;
   const openKey = JSON.stringify(ref);
   useEffect(() => {
-    setAck(false);
+    setAck(null);
     setSelected(params.verse ? Number(params.verse) : null);
     const saved = useApp.getState().data.readingPosition;
     setMode(
@@ -126,14 +126,15 @@ export default function Reader() {
         markRead(d, ref, stepKey);
       })
     )
-      setAck(true);
+      setAck(completionScope);
   }
+  const completionScope = JSON.stringify([ref, stepKey ?? null]);
   const verseId =
       selected !== null ? `${ref.book}:${ref.chapter}:${selected}` : "",
     read = data.readChapters.includes(chapterId(ref)),
     passage = !!(ref.from || ref.to),
     done =
-      ack ||
+      ack === completionScope ||
       (stepKey
         ? data.readSteps.includes(stepKey)
         : passage
@@ -337,6 +338,7 @@ export default function Reader() {
                     key={id}
                     accessibilityRole="button"
                     accessibilityState={{ selected: mode === id }}
+                    aria-pressed={mode === id}
                     onPress={() => {
                       setMode(id as "read");
                       router.setParams({ mode: id });
@@ -464,7 +466,7 @@ export default function Reader() {
                 return (
                   <View
                     key={`${openKey}:${v.n}`}
-                    ref={node => position.verseRef(v.n,node)}
+                    ref={(node) => position.verseRef(v.n, node)}
                     collapsable={false}
                     onLayout={(e) => position.verseLayout(v.n, e)}
                   >
@@ -472,6 +474,7 @@ export default function Reader() {
                       accessibilityRole="button"
                       accessibilityLabel={`Vers ${v.n}: ${v.text}`}
                       accessibilityState={{ selected: selected === v.n }}
+                      aria-pressed={selected === v.n}
                       onPress={() => {
                         setSelected(selected === v.n ? null : v.n);
                       }}
@@ -757,6 +760,7 @@ export default function Reader() {
                 <SwordArt
                   book={ref.book}
                   size={70}
+                  celebrate={ack === completionScope && read}
                   progress={
                     countBookRead(data, ref.book) / (book?.chapters ?? 1)
                   }
@@ -769,6 +773,18 @@ export default function Reader() {
                     {countBookRead(data, ref.book)} von {book?.chapters}{" "}
                     Kapiteln gelesen. Die Lichtlinie erinnert daran.
                   </T>
+                  <Button
+                    kind="ghost"
+                    icon="sword"
+                    onPress={() =>
+                      router.push({
+                        pathname: "/buch/[book]",
+                        params: { book: ref.book },
+                      })
+                    }
+                  >
+                    Buchschwert ansehen
+                  </Button>
                 </View>
               </View>
             )}

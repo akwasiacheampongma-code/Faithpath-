@@ -111,13 +111,16 @@ export function Shell({
     clearError = useApp((s) => s.clearError);
   const item = (n: (typeof nav)[number], compact = false) => {
     const active =
-      path === n.path || (n.path === "/wege" && path.startsWith("/vorhaben"));
+      path === n.path ||
+      (n.path === "/wege" && path.startsWith("/vorhaben")) ||
+      (n.path === "/bibel" && path.startsWith("/buch/"));
     return (
       <Pressable
         key={String(n.path)}
         accessibilityRole="button"
         accessibilityLabel={n.label}
         accessibilityState={{ selected: active }}
+        aria-current={active ? "page" : undefined}
         onPress={() => router.replace(n.path)}
         style={({ pressed }) => ({
           minHeight: compact ? 60 : 49,

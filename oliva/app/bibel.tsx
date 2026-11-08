@@ -71,7 +71,11 @@ export default function Bible() {
         >
           <View>
             <T variant="heading">{referenceLabel(data.reading)}</T>
-            {data.readingPosition && <T variant="small" style={{color:t.muted}}>Zuletzt bei Vers {data.readingPosition.verse}</T>}
+            {data.readingPosition && (
+              <T variant="small" style={{ color: t.muted }}>
+                Zuletzt bei Vers {data.readingPosition.verse}
+              </T>
+            )}
             <T style={{ fontSize: 11, color: t.muted }}>
               {data.readChapters.length} Kapitel bewusst als gelesen bestätigt
             </T>
@@ -115,6 +119,7 @@ export default function Bible() {
             key={id}
             accessibilityRole="button"
             accessibilityState={{ selected: mode === id }}
+            aria-pressed={mode === id}
             onPress={() => {
               setMode(id as "books");
               setQuery("");
@@ -167,6 +172,7 @@ export default function Bible() {
                 key={id}
                 accessibilityRole="button"
                 accessibilityState={{ selected: group === id }}
+                aria-pressed={group === id}
                 onPress={() => setGroup(id!)}
                 style={{
                   borderBottomWidth: 2,
@@ -200,6 +206,7 @@ export default function Bible() {
                   accessibilityRole="button"
                   accessibilityLabel={`${book.name}, ${book.chapters} Kapitel`}
                   accessibilityState={{ expanded: expanded === book.code }}
+                  aria-expanded={expanded === book.code}
                   onPress={() =>
                     setExpanded(expanded === book.code ? null : book.code)
                   }
@@ -243,6 +250,20 @@ export default function Bible() {
                     <T style={{ fontSize: 12, color: t.muted }}>
                       {book.description}
                     </T>
+                    <View style={{ alignItems: "flex-start" }}>
+                      <Button
+                        kind="ghost"
+                        icon="sword"
+                        onPress={() =>
+                          router.push({
+                            pathname: "/buch/[book]",
+                            params: { book: book.code },
+                          })
+                        }
+                      >
+                        Buchschwert ansehen
+                      </Button>
+                    </View>
                     <T variant="label" style={{ fontSize: 9 }}>
                       Wähle ein Kapitel
                     </T>

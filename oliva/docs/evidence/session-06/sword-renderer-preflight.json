@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-11-07T07:39:12.917872+00:00",
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0,
+    "rawLog": "docs/evidence/session-06/sword-renderer-types.txt"
+  },
+  "assetCheck": {
+    "command": "node scripts/check-sword-art.mjs",
+    "exitCode": 0,
+    "variantCount": 3,
+    "variantBytes": 388515,
+    "masterUnmodified": true
+  },
+  "sourceFiles": [
+    {
+      "path": "src/components/Artwork.tsx",
+      "sha256": "6bf2b45129f70d036bbedb78f46bb78ad219f0b2f867131295ea78178da72d4c"
+    },
+    {
+      "path": "src/features/swords/BookSwordArtwork.tsx",
+      "sha256": "1937b884c3d692bcae556b0bd290d43e33c968517a41b00ce785079c7e60f7d6"
+    },
+    {
+      "path": "src/features/swords/JohnLightTrack.tsx",
+      "sha256": "fae1c1252e0846a184dd5b90c9d7f2c887a469a560b6a12b976dd58d077ab658"
+    },
+    {
+      "path": "src/features/swords/SwordArt.tsx",
+      "sha256": "7bb51a3605f1a4606ecacf558694dfe43ea876f04228711662c544360b16130f"
+    },
+    {
+      "path": "src/features/swords/SwordPulse.tsx",
+      "sha256": "18a863a6fc7c73438bdfcbc360cda8ed6ab62fd06e8092b1d2f869bcf58636b2"
+    },
+    {
+      "path": "src/features/swords/VectorSwordDrawing.tsx",
+      "sha256": "01e6e7c1ef9dc9c7c29862de11e8375c68aaf9b27c1abcca79179b58c60e81d0"
+    },
+    {
+      "path": "src/features/swords/layout.ts",
+      "sha256": "3deb08a3ff5910597991180f35590953d8328d2bf6a30e018e9308c0a3de468f"
+    },
+    {
+      "path": "src/features/swords/pilot-assets.ts",
+      "sha256": "44f308e102a118a85b2a27a5a7266184da18e948693f28f87b2323aa85a3d2b8"
+    }
+  ],
+  "browserBuildRunByThisAgent": false,
+  "browserTestRunByThisAgent": false,
+  "nativeDeviceTest": false,
+  "simulatorTest": false,
+  "limitations": [
+    "Runtime/visual checks and pulse behavior await the coordinated browser build.",
+    "No public-release rights, theological or design approval claimed."
+  ]
+}

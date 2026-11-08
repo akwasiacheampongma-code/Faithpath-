@@ -1,0 +1,492 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/swords.spec.ts",
+      "--reporter=list,json"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "swords.spec.ts",
+      "file": "swords.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "das Buchschwert öffnet aus der Bibel, zeigt Johannes groß und verändert keine Lesespuren",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23248,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\nExpected: \u001b[32m\"0\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <div role=\"progressbar\" class=\"css-g5y9jx\" aria-label=\"Lesefortschritt in Johannes\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\nExpected: \u001b[32m\"0\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <div role=\"progressbar\" class=\"css-g5y9jx\" aria-label=\"Lesefortschritt in Johannes\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at progress (/workspace/faithpath-next/tests/e2e/swords.spec.ts:64:21)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:103:3",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                      "column": 21,
+                      "line": 64
+                    },
+                    "snippet": " \u001b[90m 62 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m`${chapters} von 21 Kapiteln gelesen`\u001b[39m\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 63 |\u001b[39m   \u001b[36mconst\u001b[39m bar \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"progressbar\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Lesefortschritt in Johannes\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m   \u001b[36mawait\u001b[39m expect(bar)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-valuemin\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"0\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 65 |\u001b[39m   \u001b[36mawait\u001b[39m expect(bar)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-valuemax\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"100\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 66 |\u001b[39m   \u001b[36mawait\u001b[39m expect(bar)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-valuenow\"\u001b[39m\u001b[33m,\u001b[39m \u001b[33mString\u001b[39m(\u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(chapters \u001b[33m/\u001b[39m \u001b[35m21\u001b[39m \u001b[33m*\u001b[39m \u001b[35m100\u001b[39m)))\u001b[33m;\u001b[39m\n \u001b[90m 67 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                        "column": 21,
+                        "line": 64
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\nExpected: \u001b[32m\"0\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <div role=\"progressbar\" class=\"css-g5y9jx\" aria-label=\"Lesefortschritt in Johannes\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  62 |   await expect(page.getByText(`${chapters} von 21 Kapiteln gelesen`, { exact: true })).toBeVisible();\n  63 |   const bar = page.getByRole(\"progressbar\", { name: \"Lesefortschritt in Johannes\", exact: true });\n> 64 |   await expect(bar).toHaveAttribute(\"aria-valuemin\", \"0\");\n     |                     ^\n  65 |   await expect(bar).toHaveAttribute(\"aria-valuemax\", \"100\");\n  66 |   await expect(bar).toHaveAttribute(\"aria-valuenow\", String(Math.round(chapters / 21 * 100)));\n  67 | }\n    at progress (/workspace/faithpath-next/tests/e2e/swords.spec.ts:64:21)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:103:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T07:41:27.246Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/swords-das-Buchschwert-öff-b4879--verändert-keine-Lesespuren/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                    "column": 21,
+                    "line": 64
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-88b6c8b8735e276443fd",
+          "file": "swords.spec.ts",
+          "line": 93,
+          "column": 1
+        },
+        {
+          "title": "eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21023,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\nExpected: \u001b[32m\"0\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"progressbar\" class=\"css-g5y9jx\" aria-label=\"Lesefortschritt in Johannes\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\nExpected: \u001b[32m\"0\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"progressbar\" class=\"css-g5y9jx\" aria-label=\"Lesefortschritt in Johannes\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at progress (/workspace/faithpath-next/tests/e2e/swords.spec.ts:64:21)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:120:3",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                      "column": 21,
+                      "line": 64
+                    },
+                    "snippet": " \u001b[90m 62 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m`${chapters} von 21 Kapiteln gelesen`\u001b[39m\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 63 |\u001b[39m   \u001b[36mconst\u001b[39m bar \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"progressbar\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Lesefortschritt in Johannes\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m   \u001b[36mawait\u001b[39m expect(bar)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-valuemin\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"0\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 65 |\u001b[39m   \u001b[36mawait\u001b[39m expect(bar)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-valuemax\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"100\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 66 |\u001b[39m   \u001b[36mawait\u001b[39m expect(bar)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-valuenow\"\u001b[39m\u001b[33m,\u001b[39m \u001b[33mString\u001b[39m(\u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(chapters \u001b[33m/\u001b[39m \u001b[35m21\u001b[39m \u001b[33m*\u001b[39m \u001b[35m100\u001b[39m)))\u001b[33m;\u001b[39m\n \u001b[90m 67 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                        "column": 21,
+                        "line": 64
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\nExpected: \u001b[32m\"0\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"progressbar\" class=\"css-g5y9jx\" aria-label=\"Lesefortschritt in Johannes\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  62 |   await expect(page.getByText(`${chapters} von 21 Kapiteln gelesen`, { exact: true })).toBeVisible();\n  63 |   const bar = page.getByRole(\"progressbar\", { name: \"Lesefortschritt in Johannes\", exact: true });\n> 64 |   await expect(bar).toHaveAttribute(\"aria-valuemin\", \"0\");\n     |                     ^\n  65 |   await expect(bar).toHaveAttribute(\"aria-valuemax\", \"100\");\n  66 |   await expect(bar).toHaveAttribute(\"aria-valuenow\", String(Math.round(chapters / 21 * 100)));\n  67 | }\n    at progress (/workspace/faithpath-next/tests/e2e/swords.spec.ts:64:21)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:120:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T07:41:52.414Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/swords-eine-echte-Kapitelb-c5f1e-leiben-voneinander-getrennt/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                    "column": 21,
+                    "line": 64
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-b6c3c3061cec7c9b0178",
+          "file": "swords.spec.ts",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20924,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\nExpected: \u001b[32m\"0\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"progressbar\" class=\"css-g5y9jx\" aria-label=\"Lesefortschritt in Johannes\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\nExpected: \u001b[32m\"0\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"progressbar\" class=\"css-g5y9jx\" aria-label=\"Lesefortschritt in Johannes\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at progress (/workspace/faithpath-next/tests/e2e/swords.spec.ts:64:21)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:146:7",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                      "column": 21,
+                      "line": 64
+                    },
+                    "snippet": " \u001b[90m 62 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m`${chapters} von 21 Kapiteln gelesen`\u001b[39m\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 63 |\u001b[39m   \u001b[36mconst\u001b[39m bar \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"progressbar\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Lesefortschritt in Johannes\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 64 |\u001b[39m   \u001b[36mawait\u001b[39m expect(bar)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-valuemin\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"0\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 65 |\u001b[39m   \u001b[36mawait\u001b[39m expect(bar)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-valuemax\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"100\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 66 |\u001b[39m   \u001b[36mawait\u001b[39m expect(bar)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-valuenow\"\u001b[39m\u001b[33m,\u001b[39m \u001b[33mString\u001b[39m(\u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(chapters \u001b[33m/\u001b[39m \u001b[35m21\u001b[39m \u001b[33m*\u001b[39m \u001b[35m100\u001b[39m)))\u001b[33m;\u001b[39m\n \u001b[90m 67 |\u001b[39m }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                        "column": 21,
+                        "line": 64
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\nExpected: \u001b[32m\"0\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })\u001b[22m\n\u001b[2m    34 × locator resolved to <div role=\"progressbar\" class=\"css-g5y9jx\" aria-label=\"Lesefortschritt in Johannes\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  62 |   await expect(page.getByText(`${chapters} von 21 Kapiteln gelesen`, { exact: true })).toBeVisible();\n  63 |   const bar = page.getByRole(\"progressbar\", { name: \"Lesefortschritt in Johannes\", exact: true });\n> 64 |   await expect(bar).toHaveAttribute(\"aria-valuemin\", \"0\");\n     |                     ^\n  65 |   await expect(bar).toHaveAttribute(\"aria-valuemax\", \"100\");\n  66 |   await expect(bar).toHaveAttribute(\"aria-valuenow\", String(Math.round(chapters / 21 * 100)));\n  67 | }\n    at progress (/workspace/faithpath-next/tests/e2e/swords.spec.ts:64:21)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:146:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T07:42:14.889Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/swords-synthetische-0--1---c4374-tschritt-in-Hell-und-Dunkel/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                    "column": 21,
+                    "line": 64
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-51c7f436270f7d40e8d7",
+          "file": "swords.spec.ts",
+          "line": 139,
+          "column": 1
+        },
+        {
+          "title": "die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18308,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('book-sword-artwork')\nExpected: \u001b[32m\"false\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByTestId('book-sword-artwork') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('book-sword-artwork')\u001b[22m\n\u001b[2m    28 × locator resolved to <div role=\"img\" class=\"css-g5y9jx\" data-testid=\"book-sword-artwork\" aria-label=\"Schwert des Lebens · 0 Prozent gelesen\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('book-sword-artwork')\nExpected: \u001b[32m\"false\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByTestId('book-sword-artwork') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('book-sword-artwork')\u001b[22m\n\u001b[2m    28 × locator resolved to <div role=\"img\" class=\"css-g5y9jx\" data-testid=\"book-sword-artwork\" aria-label=\"Schwert des Lebens · 0 Prozent gelesen\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at artworkReady (/workspace/faithpath-next/tests/e2e/swords.spec.ts:18:25)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:170:9",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                      "column": 25,
+                      "line": 18
+                    },
+                    "snippet": " \u001b[90m 16 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m artworkReady(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m) {\n \u001b[90m 17 |\u001b[39m   \u001b[36mconst\u001b[39m artwork \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m\"book-sword-artwork\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m expect(artwork)\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-busy\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"false\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m\"book-sword-vector\"\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m\"book-sword-image\"\u001b[39m)\u001b[33m.\u001b[39mevaluate(node \u001b[33m=>\u001b[39m {\n \u001b[90m 21 |\u001b[39m     \u001b[36mconst\u001b[39m image \u001b[33m=\u001b[39m node \u001b[36minstanceof\u001b[39m \u001b[33mHTMLImageElement\u001b[39m \u001b[33m?\u001b[39m node \u001b[33m:\u001b[39m node\u001b[33m.\u001b[39mquerySelector(\u001b[32m\"img\"\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                        "column": 25,
+                        "line": 18
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('book-sword-artwork')\nExpected: \u001b[32m\"false\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByTestId('book-sword-artwork') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('book-sword-artwork')\u001b[22m\n\u001b[2m    28 × locator resolved to <div role=\"img\" class=\"css-g5y9jx\" data-testid=\"book-sword-artwork\" aria-label=\"Schwert des Lebens · 0 Prozent gelesen\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  16 | async function artworkReady(page: Page) {\n  17 |   const artwork = page.getByTestId(\"book-sword-artwork\");\n> 18 |   await expect(artwork).toHaveAttribute(\"aria-busy\", \"false\");\n     |                         ^\n  19 |   await expect(page.getByTestId(\"book-sword-vector\")).toHaveCount(0);\n  20 |   await expect.poll(() => page.getByTestId(\"book-sword-image\").evaluate(node => {\n  21 |     const image = node instanceof HTMLImageElement ? node : node.querySelector(\"img\");\n    at artworkReady (/workspace/faithpath-next/tests/e2e/swords.spec.ts:18:25)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:170:9"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T07:42:37.022Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/swords-die-Buchansichten-b-bd898-h-führt-verständlich-zurück/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                    "column": 25,
+                    "line": 18
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-2057e2f42869c14283ec",
+          "file": "swords.spec.ts",
+          "line": 166,
+          "column": 1
+        },
+        {
+          "title": "nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "interrupted",
+                  "duration": 74269,
+                  "error": {
+                    "message": "Error: locator.waitFor: Test ended.\nCall log:\n\u001b[2m  - waiting for getByTestId('sword-confirmation')\u001b[22m\n",
+                    "stack": "Error: locator.waitFor: Test ended.\nCall log:\n\u001b[2m  - waiting for getByTestId('sword-confirmation')\u001b[22m\n\n    at samplePulse (/workspace/faithpath-next/tests/e2e/swords.spec.ts:32:48)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:196:22",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                      "column": 48,
+                      "line": 32
+                    },
+                    "snippet": " \u001b[90m 30 |\u001b[39m \u001b[90m/** Observe real compositor output from the actual click, without product sleeps. */\u001b[39m\n \u001b[90m 31 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m samplePulse(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m confirm \u001b[33m=\u001b[39m \u001b[36mfalse\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 32 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m\"sword-confirmation\"\u001b[39m)\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m\"attached\"\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 33 |\u001b[39m   \u001b[36mconst\u001b[39m confirmation \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Kapitel als gelesen bestätigen\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 34 |\u001b[39m   \u001b[36mconst\u001b[39m button \u001b[33m=\u001b[39m confirm \u001b[33m?\u001b[39m \u001b[36mawait\u001b[39m confirmation\u001b[33m.\u001b[39melementHandle() \u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 35 |\u001b[39m   \u001b[36mconst\u001b[39m observer \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluateHandle(({ button }) \u001b[33m=>\u001b[39m ({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                        "column": 48,
+                        "line": 32
+                      },
+                      "message": "Error: locator.waitFor: Test ended.\nCall log:\n\u001b[2m  - waiting for getByTestId('sword-confirmation')\u001b[22m\n\n\n  30 | /** Observe real compositor output from the actual click, without product sleeps. */\n  31 | async function samplePulse(page: Page, confirm = false) {\n> 32 |   await page.getByTestId(\"sword-confirmation\").waitFor({ state: \"attached\" });\n     |                                                ^\n  33 |   const confirmation = page.getByRole(\"button\", { name: \"Kapitel als gelesen bestätigen\", exact: true });\n  34 |   const button = confirm ? await confirmation.elementHandle() : null;\n  35 |   const observer = await page.evaluateHandle(({ button }) => ({\n    at samplePulse (/workspace/faithpath-next/tests/e2e/swords.spec.ts:32:48)\n    at /workspace/faithpath-next/tests/e2e/swords.spec.ts:196:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-07T07:42:56.618Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/swords-nur-eine-echte-Lese-a0f81-präferenzen-werden-beachtet/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/swords.spec.ts",
+                    "column": 48,
+                    "line": 32
+                  }
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-78d1178e5d44cf12cc46",
+          "file": "swords.spec.ts",
+          "line": 194,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "Bildfehler und verzögerte Antwort ohne Service-Worker",
+          "file": "swords.spec.ts",
+          "line": 229,
+          "column": 6,
+          "specs": [
+            {
+              "title": "drei fehlgeschlagene PNG-Varianten lassen das Buchsymbol bestehen; erneutes Laden gelingt",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ee3e4816a8557cd91adc-2a6125072a01c9259043",
+              "file": "swords.spec.ts",
+              "line": 231,
+              "column": 3
+            },
+            {
+              "title": "ein Buchwechsel während des Ladens übernimmt kein verspätetes Johannes-Bild",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ee3e4816a8557cd91adc-d3c66c19b30e3654cff6",
+              "file": "swords.spec.ts",
+              "line": 247,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-07T07:41:25.685Z",
+    "duration": 166211.203,
+    "expected": 0,
+    "skipped": 3,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

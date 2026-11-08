@@ -35,13 +35,19 @@ for(const original of originals) {
 }
 await writeFile(path.join(dist,"robots.txt"),"User-agent: *\nDisallow: /\n");
 await writeFile(path.join(dist,"_headers"),"/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n/index.html\n  Cache-Control: private, no-cache\n/sw.js\n  Cache-Control: private, no-cache\n/manifest.webmanifest\n  Cache-Control: private, no-cache\n");
-const routes=["/bibel","/einstellungen","/garten","/importieren","/quellen","/sammlung","/start","/vorhaben","/wege","/lesen/*","/weg/*","/vorhaben/*","/importarchiv/*"];
+const routes=["/bibel","/einstellungen","/garten","/importieren","/quellen","/sammlung","/start","/vorhaben","/wege","/lesen/*","/buch/*","/weg/*","/vorhaben/*","/importarchiv/*"];
 await writeFile(path.join(dist,"_redirects"),routes.map(r=>`${r} /index.html 200`).join("\n")+"\n");
 await writeFile(path.join(dist,"preview-package.json"),JSON.stringify({version:config.expo.version,source_build:originalBuild,asset_namespace:namespace,private_only:true,a51:true},null,2)+"\n");
 // Review material stays outside the product navigation and offline payload.
 await mkdir(path.join(dist,"review/a51"),{recursive:true});
 await cp("docs/evidence/a51/comparison.svg",path.join(dist,"review/a51/comparison.svg"));
 await cp("docs/evidence/a51/screens",path.join(dist,"review/a51/screens"),{recursive:true});
+await mkdir(path.join(dist,"review/swords"),{recursive:true});
+await cp("docs/evidence/session-06/screens/comparison.svg",path.join(dist,"review/swords/comparison.svg"));
+for(const progress of [0,1,11,21]) for(const mode of ["light","dark"]) {
+  const name=`john-art-${progress}-${mode}.png`;
+  await cp(`docs/evidence/session-06/screens/${name}`,path.join(dist,"review/swords",name));
+}
 await writeFile(path.join(target,"app.json"),JSON.stringify(config,null,2)+"\n");
 await mkdir(path.join(target,"scripts"),{recursive:true});
 let worker=await readFile("scripts/offline.mjs","utf8");

@@ -135,6 +135,7 @@ export default function Collection() {
             key={label}
             accessibilityRole="button"
             accessibilityState={{ selected: tab === label }}
+            aria-pressed={tab === label}
             onPress={() => {
               setTab(label);
               setQuery("");
@@ -425,8 +426,8 @@ export default function Collection() {
                 accessibilityLabel={`${book.name}: ${book.sword}`}
                 onPress={() =>
                   router.push({
-                    pathname: "/lesen/[book]",
-                    params: { book: book.code, chapter: 1 },
+                    pathname: "/buch/[book]",
+                    params: { book: book.code },
                   })
                 }
                 style={{
