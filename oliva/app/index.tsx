@@ -12,6 +12,8 @@ import {
 } from "../src/components/ui";
 import { Icon } from "../src/components/Icon";
 import { OliveTree, SwordArt } from "../src/components/Artwork";
+import { BookSwordArtwork } from "../src/features/swords/BookSwordArtwork";
+import { swordIllustration } from "../src/features/swords/illustrations";
 import { PathCard } from "../src/components/PathCard";
 import { useTheme } from "../src/design-system/theme";
 import { useApp } from "../src/state/store";
@@ -39,10 +41,15 @@ export default function Home() {
     ...data.drafts.map((d) => d.key),
     ...(JSON.parse(volatileKeys) as string[]),
   ]).size;
-  const canResume = data.onboarded || !!data.readingPosition || data.readChapters.length > 0 || data.readPassages.length > 0;
+  const canResume =
+    data.onboarded ||
+    !!data.readingPosition ||
+    data.readChapters.length > 0 ||
+    data.readPassages.length > 0;
   const active = pathById(data.activePath ?? ""),
     book = bookByCode(data.reading.book),
-    read = countBookRead(data, data.reading.book);
+    read = countBookRead(data, data.reading.book),
+    illustration = swordIllustration(data.reading.book);
   const date = new Date(),
     greeting =
       date.getHours() < 11
@@ -437,19 +444,34 @@ export default function Home() {
               Gottes Liebe ist ein Geschenk. Du musst sie dir nicht verdienen.
             </T>
           </Card>
-          <Card style={{ padding: 21, gap: 8 }}>
+          <Card testID="home-current-book" style={{ padding: 21, gap: 10 }}>
             <T variant="label" style={{ color: t.muted, fontSize: 8 }}>
               DEIN AKTUELLES BUCH
             </T>
             <View
-              style={{ flexDirection: "row", alignItems: "center", gap: 7 }}
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: illustration ? 12 : 7,
+              }}
             >
-              <SwordArt
-                book={data.reading.book}
-                progress={read / (book?.chapters ?? 1)}
-                size={67}
-              />
-              <View style={{ flex: 1, gap: 7 }}>
+              {illustration ? (
+                <View style={{ width: 100, flexShrink: 0 }}>
+                  <BookSwordArtwork
+                    book={data.reading.book}
+                    progress={read / (book?.chapters ?? 1)}
+                    size={100}
+                    compact
+                  />
+                </View>
+              ) : (
+                <SwordArt
+                  book={data.reading.book}
+                  progress={read / (book?.chapters ?? 1)}
+                  size={67}
+                />
+              )}
+              <View style={{ flex: 1, minWidth: 0, gap: 7 }}>
                 <T variant="heading" style={{ fontSize: 26 }}>
                   {book?.name}
                 </T>
@@ -473,12 +495,27 @@ export default function Home() {
                   params: {
                     book: data.reading.book,
                     chapter: data.reading.chapter,
-                    from: data.reading.from, to: data.reading.to, mode: data.readingPosition?.mode,
+                    from: data.reading.from,
+                    to: data.reading.to,
+                    mode: data.readingPosition?.mode,
                   },
                 })
               }
             >
               {referenceLabel(data.reading)} lesen
+            </Button>
+            <Button
+              kind="secondary"
+              icon="arrow"
+              style={{ paddingHorizontal: 8 }}
+              onPress={() =>
+                router.push({
+                  pathname: "/buch/[book]",
+                  params: { book: data.reading.book },
+                })
+              }
+            >
+              Dein Buchschwert entdecken
             </Button>
           </Card>
           <View style={{ padding: 16, gap: 9, alignItems: "center" }}>

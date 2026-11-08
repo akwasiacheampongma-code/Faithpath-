@@ -58,7 +58,7 @@ export default function Sources() {
           </T>
           <T style={{ fontSize: 12, color: t.muted }}>
             Landschaft von Galiläa · Boot nach dem Sturm (Markus 4,35–41) · ein
-            Garten als Deutung zu Genesis · Noah · Abraham · Jesu Geburt nach
+            Garten als Deutung zu Genesis · Noah · Abraham · David vor Goliath · Jesu Geburt nach
             Lukas · Ostermorgen nach Markus. Visuelle Pilotprüfung erfolgt;
             historische und theologische Veröffentlichungsgates sind offen.
           </T>
@@ -72,12 +72,15 @@ export default function Sources() {
             Waffenrekonstruktion.
           </T>
           <T style={{ fontSize: 12, color: t.muted }}>
-            Für Johannes gibt es zusätzlich eine große, mit
-            OpenAI-Bildgenerierung erstellte Buchillustration. Ihr Pflanzentrieb
-            deutet das Bild vom Weinstock in Johannes 15. Die kompakte
-            Darstellung bleibt eine Vektorgrafik. Die goldene Materialeinlage
-            ist Gestaltung; Lesespuren werden getrennt aus bestätigten Kapiteln
-            berechnet.
+            Für Johannes und Römer gibt es zusätzlich zwei große, mit
+            OpenAI-Bildgenerierung erstellte Buchillustrationen. Der
+            Johannes-Trieb deutet das Bild vom Weinstock in Johannes 15. Bei
+            Römer sind der Bogen als Brücke und der Olivenzweig freie
+            künstlerische Deutungen von Verbindung und Frieden; die verlinkten
+            Verse beschreiben diese Gegenstände nicht. Die kompakte
+            Vektorfamilie bleibt erhalten. Goldene Materialeinlagen und
+            Pflanzen sind Gestaltung; Lesespuren werden getrennt aus
+            bestätigten Kapiteln berechnet. Unabhängige Fachfreigaben stehen aus.
           </T>
           <T style={{ fontSize: 12, color: t.muted }}>
             Epheser 6,17 ist die biblische Anregung für das Schwert als Symbol

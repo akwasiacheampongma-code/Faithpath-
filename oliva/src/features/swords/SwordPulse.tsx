@@ -4,7 +4,7 @@ import Svg, { Path } from "react-native-svg";
 import { useApp } from "../../state/store";
 import { useTheme } from "../../design-system/theme";
 import { normalizeSwordProgress } from "./model";
-import { JOHN_LIGHT_LENGTH, JOHN_LIGHT_PATH } from "./layout";
+import { swordIllustration } from "./illustrations";
 
 /** A short optional confirmation, never a loop or a data/progress event. */
 export function SwordPulse({
@@ -25,6 +25,7 @@ export function SwordPulse({
   const opacity = useRef(new Animated.Value(0)).current;
   const previous = useRef({ book, active: false });
   const [target, setTarget] = useState({
+    book,
     illustrated,
     progress: normalizeSwordProgress(progress),
   });
@@ -41,7 +42,7 @@ export function SwordPulse({
       AppState.currentState !== "active"
     )
       return;
-    setTarget({ illustrated, progress: normalizeSwordProgress(progress) });
+    setTarget({ book, illustrated, progress: normalizeSwordProgress(progress) });
     let alive = true,
       animation: Animated.CompositeAnimation | null = null;
     const subscriptions: { remove(): void }[] = [];
@@ -94,7 +95,10 @@ export function SwordPulse({
     // Progress is sampled at this explicit confirmation edge. A later import,
     // image load or preference change must never replay the confirmation.
   }, [active, book, reduced, opacity]);
-  const length = target.illustrated ? JOHN_LIGHT_LENGTH : 71;
+  const light = target.illustrated
+    ? swordIllustration(target.book)?.light
+    : undefined;
+  const length = light?.length ?? 71;
   return (
     <Animated.View
       testID="sword-confirmation"
@@ -108,7 +112,7 @@ export function SwordPulse({
         left: 0,
         width: frameSize,
         height: frameSize * 1.5,
-        opacity,
+        opacity: target.book === book ? opacity : 0,
       }}
     >
       <Svg
@@ -119,9 +123,9 @@ export function SwordPulse({
         height="100%"
       >
         <Path
-          d={target.illustrated ? JOHN_LIGHT_PATH : "M50 95V24"}
+          d={light?.path ?? "M50 95V24"}
           stroke={t.dark ? "#fff3c7" : "#f9e8ad"}
-          strokeWidth={target.illustrated ? 0.7 : 2.7}
+          strokeWidth={light ? 0.7 : 2.7}
           fill="none"
           strokeDasharray={[target.progress * length, length]}
           opacity={target.progress > 0 ? 1 : 0}

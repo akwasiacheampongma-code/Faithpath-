@@ -34,8 +34,9 @@ describe("Buchidentitäten und echte Lesespuren", () => {
     expect(identity.references.every((r) => validReference(r.ref))).toBe(true);
     expect(identity.illustrated).toBe(true);
     expect(
-      BOOKS.filter((b) => swordIdentity(b.code)!.illustrated),
-    ).toHaveLength(1);
+      BOOKS.filter((b) => swordIdentity(b.code)!.illustrated)
+        .map((b) => b.code).sort(),
+    ).toEqual(["JHN", "ROM"]);
   });
   it("zählt nur eindeutige bestätigte Kapitel dieses Buches und schlägt ein ungelesenes Kapitel vor", () => {
     const data = initialData();

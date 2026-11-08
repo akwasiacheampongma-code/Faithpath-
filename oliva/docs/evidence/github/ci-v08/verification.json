@@ -1,0 +1,85 @@
+{
+  "version": "0.8.0",
+  "checkedAt": "2026-11-08T19:19:16.039506+00:00",
+  "repository": "akwasiacheampongma-code/Faithpath-",
+  "runId": 42487317354,
+  "runUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42487317354",
+  "event": "push",
+  "headBranch": "feature/oliva-v08-stories-offline-20261108",
+  "headSha": "dc4477b01dcd78f278e5dbf82408b26c83837ec1",
+  "expectedHeadSha": "dc4477b01dcd78f278e5dbf82408b26c83837ec1",
+  "headMatchesVersionBackup": true,
+  "runStatus": "completed",
+  "runConclusion": "success",
+  "createdAt": "2026-11-08T13:56:17Z",
+  "completedAt": "2026-11-08T14:04:09Z",
+  "jobIds": [
+    128751909166
+  ],
+  "allJobsSuccessful": true,
+  "artifact": {
+    "id": 13620585577,
+    "name": "oliva-quality-dc4477b01dcd78f278e5dbf82408b26c83837ec1",
+    "bytes": 8179373,
+    "githubDigest": "sha256:a5739f6dde394f463fa179c19480e3d83053fa1024b12100d430fa670ff28248",
+    "downloadSha256": "a5739f6dde394f463fa179c19480e3d83053fa1024b12100d430fa670ff28248",
+    "digestMatches": true,
+    "archiveCrcVerified": true,
+    "headMatches": true,
+    "zipStoredOutsideSource": true
+  },
+  "unit": {
+    "total": 117,
+    "passed": 117,
+    "failed": 0,
+    "pending": 0,
+    "freshForRun": true,
+    "startTime": "2026-11-08T13:56:51.969000+00:00",
+    "sha256": "c1506f2ab7384c8b3eca2c1de3aed5f9e05ca727f4e76c771ee5c899e5103eed",
+    "report": "unit-results.json"
+  },
+  "browser": {
+    "total": 67,
+    "passed": 67,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "singleFullGreenRun": true,
+    "freshForRun": true,
+    "durationMs": 386129.605,
+    "startTime": "2026-11-08T13:57:37.168Z",
+    "testStatuses": {
+      "expected": 67
+    },
+    "resultStatuses": {
+      "passed": 67
+    },
+    "errors": [],
+    "sha256": "b70be6f5896742f714dc952d72754d51af184dd92b1762517b129262d01bb8c9",
+    "report": "e2e-results.json"
+  },
+  "buildAndValidation": {
+    "typecheck": true,
+    "publicDomainCorpus": true,
+    "artProvenance": true,
+    "webPwaBuild": true,
+    "explicitDependencyAuditRan": true,
+    "auditVulnerabilities": 0,
+    "auditThreshold": "moderate",
+    "actionPinsObserved": {
+      "checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "setup-node": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "setup-python": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "upload-artifact": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+    },
+    "oldNode20DeprecationWarningPresent": false,
+    "evidence": "job.log; complete verify job succeeded"
+  },
+  "qualityVerified": true,
+  "limitations": [
+    "This is remote GitHub Actions Linux web/domain/persistence evidence, not a native device or simulator test.",
+    "No hosted private Site browser or physical-phone QA is established by this run.",
+    "Historical 0.5/0.6/0.7 tags, reports and protected refs were not changed or rerun.",
+    "No deployment, release, merge or comment was performed for this verification."
+  ]
+}

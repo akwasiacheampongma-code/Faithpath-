@@ -1,0 +1,189 @@
+{
+  "baseline_version": "0.8.0",
+  "target_version": "0.9.0",
+  "synthetic_data": true,
+  "passed": true,
+  "physical_device_test": false,
+  "hosted_qa": false,
+  "evidence_scope": "Local automated Chromium; one persistent profile and origin throughout the worker update",
+  "byte_comparison": "Exact UTF-8 JSON serialization of raw IndexedDB values, not database-file bytes",
+  "phase": "complete",
+  "browser_version": "155.0.8059.79",
+  "origin": "http://127.0.0.1:42137",
+  "baseline_private_storage_version": 1,
+  "baseline_data_version": 6,
+  "baseline_build_id": "oliva-618ddeeb77388032",
+  "baseline_worker": {
+    "expected": "oliva-618ddeeb77388032",
+    "controller": {
+      "id": "oliva-618ddeeb77388032",
+      "version": "0.8.0"
+    },
+    "active": {
+      "id": "oliva-618ddeeb77388032",
+      "version": "0.8.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-618ddeeb77388032"
+    ]
+  },
+  "baseline_review_id": "draft-1794166558867-l4eql1p7",
+  "baseline_goal_revision": 2,
+  "baseline_main_json_sha256": "2ec128c659d3a505bc49581c9a798788f5611deff0d2448d0e3c8e2c54a6ee46",
+  "baseline_records": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 592,
+      "json_sha256": "195ec7ec0cc30120f0d0380c9e735ec17519b057d91f669528498bb2fe49aeec"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 4617,
+      "json_sha256": "2ec128c659d3a505bc49581c9a798788f5611deff0d2448d0e3c8e2c54a6ee46"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "original_archive_blob_sha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "baseline_cached_asset_sha256": "5ec593705e48948d7922d568ec7ce8d30e588166a46349892feac50025ee6079",
+  "new_worker": {
+    "expected": "oliva-6428cb5965119e02",
+    "controller": {
+      "id": "oliva-6428cb5965119e02",
+      "version": "0.9.0"
+    },
+    "active": {
+      "id": "oliva-6428cb5965119e02",
+      "version": "0.9.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-618ddeeb77388032",
+      "oliva-6428cb5965119e02"
+    ]
+  },
+  "worker_activation_verified": true,
+  "same_origin_and_persistent_profile": true,
+  "old_cache_retained": true,
+  "data_version_before_and_after": 6,
+  "private_storage_version_before_and_after": 1,
+  "schema_migration_needed": false,
+  "durable_v6_main_unchanged_after_hydration": true,
+  "all_raw_records_unchanged_after_update": true,
+  "profile_preserved": true,
+  "name_preserved": true,
+  "offline_reload_passed": true,
+  "pre_existing_review_preserved": true,
+  "offline_story_count": 5,
+  "offline_story_images": [
+    {
+      "id": "noah",
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/noah-640.4206b12f0aacc4967bc68ae417589a1a.webp"
+    },
+    {
+      "id": "abraham",
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/abraham-640.445c3c3b7fa98839659af0a8e0b417e8.webp"
+    },
+    {
+      "id": "david-before-goliath",
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/david-before-goliath-640.579763367b6d7d59109419ee264ec889.webp"
+    },
+    {
+      "id": "nativity",
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/nativity-640.cb61b77b3f68bcda8087c973221230f9.webp"
+    },
+    {
+      "id": "easter-dawn",
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/easter-dawn-640.879d2495a829c5dd832ad687edce5e6c.webp"
+    }
+  ],
+  "offline_david_first_visit_and_reload_decoded": true,
+  "story_views_do_not_write_data": true,
+  "offline_notes_goals_and_old_journal_draft_verified": true,
+  "offline_a51_stages_verified": 7,
+  "tree_previews_do_not_write_data": true,
+  "offline_book_route_verified": true,
+  "offline_john_png_decoded": true,
+  "offline_romans_first_visit_and_reload_decoded": true,
+  "offline_new_home_portrait_and_book_link_verified": true,
+  "offline_book_route_reload_passed": true,
+  "book_view_does_not_write_data": true,
+  "original_archive_blob_preserved": true,
+  "final_original_archive_blob_sha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "unchanged_recovery_copy_and_original_archives": true,
+  "all_records_unchanged_through_update_and_all_artwork_views": true,
+  "final_main_json_sha256": "2ec128c659d3a505bc49581c9a798788f5611deff0d2448d0e3c8e2c54a6ee46",
+  "final_records": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 592,
+      "json_sha256": "195ec7ec0cc30120f0d0380c9e735ec17519b057d91f669528498bb2fe49aeec"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 4617,
+      "json_sha256": "2ec128c659d3a505bc49581c9a798788f5611deff0d2448d0e3c8e2c54a6ee46"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "old_cached_asset_verified": true,
+  "old_asset_present_in_old_cache": true,
+  "old_asset_absent_from_new_cache": true,
+  "old_cached_asset_path": "/_expo/static/js/web/__common-31d24de7f698df728f2bde2b7155fee9.js",
+  "old_cached_asset_sha256": "5ec593705e48948d7922d568ec7ce8d30e588166a46349892feac50025ee6079",
+  "current_build_id": "oliva-6428cb5965119e02",
+  "offline_worker": {
+    "expected": "oliva-6428cb5965119e02",
+    "controller": {
+      "id": "oliva-6428cb5965119e02",
+      "version": "0.9.0"
+    },
+    "active": {
+      "id": "oliva-6428cb5965119e02",
+      "version": "0.9.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-618ddeeb77388032",
+      "oliva-6428cb5965119e02"
+    ]
+  },
+  "update_and_offline_check_ms": 32228,
+  "checkedAt": "2026-11-08T19:36:36.076Z"
+}

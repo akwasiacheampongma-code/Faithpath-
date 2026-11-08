@@ -1,6 +1,8 @@
-# Lieferstand · OLIVA 0.8.0 · getestet und privat bereitgestellt
+# Lieferstand · OLIVA 0.9 · geprüft und privat bereitgestellt
 
-08.11.2026. **OLIVA 0.8 mit David vor Goliath und robustem Story-/Offlinebetrieb ist mit 117 Fachtests und einem vollständigen 67/67-Browserlauf geprüft und seit 08.11.2026, 13:50:48 UTC privat bereitgestellt. Die gesamte im Master-Prompt definierte Produktfreigabe ist noch nicht abgeschlossen.** A51, 66 Buchansichten und großes Johannes-Schwertbild bleiben enthalten. Vollständige Bestandsparität, Cloudbetrieb, inhaltliche Fachfreigabe und native Geräteabnahme bleiben offen.
+08.11.2026. **0.9 ist mit 120 Fachtests, einem vollständigen 76/76-Browserlauf, 16 gezielten Buchbildfällen und Updateprüfung 0.8→0.9 abgenommen. Die private URL liefert seit 19:49:19 UTC 0.9.**
+
+Historischer bestätigter 0.8-Stand: **OLIVA 0.8 mit David vor Goliath und robustem Story-/Offlinebetrieb ist mit 117 Fachtests und einem vollständigen 67/67-Browserlauf geprüft und seit 08.11.2026, 13:50:48 UTC privat bereitgestellt. Die gesamte im Master-Prompt definierte Produktfreigabe ist noch nicht abgeschlossen.** A51, 66 Buchansichten und großes Johannes-Schwertbild bleiben enthalten. Vollständige Bestandsparität, Cloudbetrieb, inhaltliche Fachfreigabe und native Geräteabnahme bleiben offen.
 
 [Private Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site) · [Privater A51-Screenshotvergleich](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/a51/comparison.svg). Die unveränderte URL enthält weiterhin `v04`, ausgeliefert wird 0.8.0. Zugriff bleibt auf das Eigentümerkonto begrenzt; kein öffentlicher Deploy. David öffnen: **Bibel → Eine Geschichte entdecken → Davids Vorbereitung lesen**. Rückblick öffnen: **Wege → Persönliche Vorhaben → eigener Rückblick**. Johannes: **Bibel → Johannes → Buchschwert ansehen**.
 
@@ -24,7 +26,7 @@
 | Datenhoheit | Strikte V1–V5→V6-Migration, eingefrorene alte Schemas, Export/Restore; additiver FaithPath-V5-Import mit Vorschau, Quellarchiv, atomarer Rückkehrsicherung und Fensterkonfliktschutz; zwei anonyme Zähler bewahren Beiträge gelöschter Rückblicke | Lokale Daten/Exporte unverschlüsselt. FaithPath-V5-Quelle max. 10 MiB; Gesamtbackup 64 MiB. Nicht zuordenbare Inhalte bleiben im Originalarchiv. Kein echter Personenexport abgenommen |
 | Bildwelt | 8 generierte biblische Bildmaster, 21 WebP-Varianten, Originale, SHA-256, Provenienz und Freigabestatus; 5 Erzählpiloten im Reader einschließlich David zu 1. Samuel 17,38–45. Gemeinsamer Renderer mit endlichen Varianten-Fallbacks und echtem Retry | Weitere angefragte Geschichten fehlen; historische/theologische und öffentliche Rechtefreigabe offen |
 | Datenbank | SQLite physisch V3, IndexedDB V1, private Archiv-Blobs mit atomarer Sicherung/Bereinigung, Rohdatenrettung; optionale Supabase-DDL/RLS | Cloudmigration nicht gegen Live-Supabase ausgeführt; kein aktiver Sync |
-| Tests / Build | **0.8: 117/117 Fachtests**, Typecheck und Webbuild erfolgreich; echter 0.7→0.8-Offlinewechsel mit unveränderten V6-Daten bestanden; native Debugexports mit je 98 A51-/3 Johannes-PNGs und drei David-WebPs. Ein einzelner vollständiger **67/67-Browserlauf** ohne übersprungene/Flaky-Fälle bestanden. Historisch 0.7: 116/116 und einzelner 59/59-Lauf | Native Nachweise betreffen JavaScript und Assetbytes, keine APK/AAB/IPA, Simulator-/Gerätetests oder vollständige WCAG-Freigabe |
+| Tests / Build · bestätigte 0.8 | **0.8: 117/117 Fachtests**, Typecheck und Webbuild erfolgreich; echter 0.7→0.8-Offlinewechsel mit unveränderten V6-Daten bestanden; native Debugexports mit je 98 A51-/3 Johannes-PNGs und drei David-WebPs. Ein einzelner vollständiger **67/67-Browserlauf** ohne übersprungene/Flaky-Fälle bestanden. Historisch 0.7: 116/116 und einzelner 59/59-Lauf | Native Nachweise betreffen JavaScript und Assetbytes, keine APK/AAB/IPA, Simulator-/Gerätetests oder vollständige WCAG-Freigabe |
 | Private PWA | Manifest, Icons, Offlineworker; 0.8-Deployment erfolgreich; 16 App-Routen, 101 App-/42 Review-Dateien per HTTP geprüft; anonym 401, Eigentümerzugriff unverändert | Keine zusätzliche gehostete CUA-Browserprüfung und keine physische PWA-Installation |
 | Dokumentation | Audit, Markt, UX, Architektur, A51-/Schwertpilot-Berichte, Buchidentitäten, Rückblickverträge, Rechte, Start-/Build-/Deploymentanleitung und Rohberichte; GitHub-Nachsicherung und Buildtool-Entscheidung dokumentiert | Lokale und Remote-Prüfungen bleiben versioniert getrennt; offene Inhalts-/Geräteabnahmen werden nicht als abgeschlossen ausgegeben |
 
@@ -68,7 +70,7 @@ Ein dritter vollständiger Lauf bestand **66/67**. Eine zweite echte Workerprüf
 
 **Private 0.8-Bereitstellung abgeschlossen:** Quelle `5b3a1afcc6800b18f8f81adc54c57c883f9f6b6b`, Deployment `appgdep_6af07e2c546c81919bc69b551a74e979` erfolgreich am **08.11.2026, 13:50:48.918899 UTC**. Kern `oliva-618ddeeb77388032`, Hostpaket `oliva-6baa9eda299dea7a`, Version `appgprj_6aedf77e5ce0819180c10eb799447018~appgver_d0f98ac24a1481918c540595014685ee`. [Deployment](evidence/session-08/private-deployment.json), [Quellcheckpoint](evidence/session-08/private-source-checkpoint.json), [Paketprüfung](evidence/session-08/private-package-check.json) und [HTTP-Abgleich](evidence/session-08/private-http-check.json) bestätigen dieselbe eigentümerprivate URL, **16 Routen sowie 101 App-/42 Review-Dateien bytegenau**, anonym 401. Ein Eigentümer, keine weiteren Betrachter/Gruppen/Editoren. Keine zusätzliche gehostete CUA- oder Geräteprüfung.
 
-**Anschließend noch separat zu sichern:** unabhängiger lokaler 0.8-Quellcheckpoint mit Tag/ZIP/äußerem Manifest, tatsächlicher GitHub-Upload und dessen Remote-CI. Diese Schritte werden nach der Abnahme ausgeführt und erst nach Remoteprüfung im äußeren Arbeitsmanifest sowie nächsten Lieferstand bestätigt. [0.8-Vertrag](15-stories-and-offline-v08.md).
+**Nach dieser historischen Abnahme inzwischen gesichert:** lokaler 0.8-Quellcheckpoint und GitHub-Upload sind im aktuellen Checkpointbeleg bestätigt; der Remote-CI-Lauf bestand 117/117 und 67/67. Die älteren Abnahmeberichte bleiben unverändert. [0.8-Vertrag](15-stories-and-offline-v08.md).
 
 ## Tatsächlich bestätigte GitHub-Sicherungen 0.5–0.7
 
@@ -113,3 +115,17 @@ Der vollständige lokale Browserlauf bestand vor der letzten isolierten Webkorre
 Die native Bundleprüfung belegt Metro-Plattformtrennung und exakte PNG-Auslieferung. Der spätere Fix betrifft allein den nachweislich nicht in diesen Bundles enthaltenen Webrenderer; [native-builds.json](evidence/session-05/native-builds.json) nennt diesen zeitlichen Unterschied. Die [Updateprüfung](evidence/session-05/offline-upgrade.json) wurde gegen den finalen Kernbuild ausgeführt. Keine dieser Prüfungen ersetzt echte Geräte.
 
 GitHub-Quellenablage und private Webbereitstellung sind getrennt: Der aktuelle Auftrag vom08.11 erlaubt GitHub-Backups im bestehenden öffentlichen Repository, während die PWA beim bisherigen Eigentümerpublikum bleibt. Allgemeine Inhalts-/Storefreigabe wird daraus nicht abgeleitet.
+
+## Abgeschlossene lokale 0.9-Abnahme
+
+Römer-Bild, gemeinsame Bildregistrierung und Startseitenzugang sind integriert. 120/120 Fachtests und 16/16 gezielte Buchbildfälle sowie native JS-/Assetexporte bestanden; der vollständige 76/76-Lauf, die Updateprüfung und private 0.9-Bereitstellung sind erfolgreich. Der nachgelagerte Quellcheckpoint und GitHub-Upload folgen separat. Keine native Geräteprüfung behaupten. Quellen und klare Bestandslücken: [aktueller Plan und Parität](16-current-plan-and-parity.md).
+
+GitHub 0.8 ist ebenfalls vollständig geprüft: Lauf42487317354, exakter Head dc4477b01dcd78f278e5dbf82408b26c83837ec1, 117/117 und67/67 grün; Artefaktdigest bestätigt. [Remote-Nachweis](evidence/github/ci-v08/verification.json).
+
+## Tatsächliche Abnahme und Bereitstellung 0.9
+
+[Abnahme](evidence/session-09/validation-summary.json): **120/120 Fachtests und 76/76 Browserfälle**, ohne Skip oder Flaky-Ergebnis. Auch die 16 Buchbildfälle, nativen JS-/Assetexporte, 13 Kopie-Fehlerprüfungen und der echte Offline-Wechsel 0.8→0.9 sind erfolgreich. Runtime-Digest `6ec21d74a393b3ece34e1b4fe40ea441e4c8fd347543b89c16b8569e9b00b110` über 284 Inputs. Zwei große Buchmaster mit sechs PNG-Varianten; alle 66 kompakten Vektoren bleiben erhalten. Keine Geräteabnahme.
+
+Die [private Bereitstellung](evidence/session-09/private-deployment.json) ist seit **08.11.2026, 19:49:19 UTC** erfolgreich. Quelle `ccf9bbee496b64779583fd39101a59f2f30761b9`, Deployment `appgdep_6af0d232484c8191a6bc975b8d3ac093`. Kern `oliva-6428cb5965119e02`, Host `oliva-d355762061b4fbe6`. Die [HTTP-Prüfung](evidence/session-09/private-http-check.json) bestätigt 17 Routen sowie 104 App- und 42 Review-Dateien bytegenau, anonym 401 und unveränderten Eigentümerzugriff.
+
+Nächster gesonderter Schritt ist der unveränderliche 0.9-Quellcheckpoint samt GitHub-Sicherung; den späteren Remote-CI-Lauf separat prüfen. Der Master und die Paritätslücken aus [dem Planungsabgleich](16-current-plan-and-parity.md) bleiben offen.

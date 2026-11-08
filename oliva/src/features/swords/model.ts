@@ -1,5 +1,7 @@
 import { BOOKS, bookByCode, type Reference } from "../bible/repository";
 
+import { swordIllustration } from "./illustrations";
+
 type Book = (typeof BOOKS)[number];
 export type SwordIdentity = {
   book: Book;
@@ -18,27 +20,17 @@ export function normalizeSwordProgress(progress: number): number {
 export function swordIdentity(code: string): SwordIdentity | null {
   const book = bookByCode(code);
   if (!book) return null;
-  if (book.code === "JHN") {
+  const illustration = swordIllustration(book.code);
+  if (illustration) {
     return {
       book,
       title: book.sword,
-      motif: "Quelle und Weinstock",
-      explanation:
-        "Johannes erzählt von Jesus als Leben und als Quelle lebendigen Wassers. Das Bild vom Weinstock beschreibt Verbundenheit. Der zarte Trieb am Buchschwert nimmt dieses Bild auf – als künstlerisches Symbol für Leben und Verstehen.",
-      references: [
-        {
-          label: "Johannes 1,4 lesen",
-          ref: { book: "JHN", chapter: 1, from: 4, to: 4 },
-        },
-        {
-          label: "Johannes 4,14 lesen",
-          ref: { book: "JHN", chapter: 4, from: 14, to: 14 },
-        },
-        {
-          label: "Johannes 15,1–5 lesen",
-          ref: { book: "JHN", chapter: 15, from: 1, to: 5 },
-        },
-      ],
+      motif: illustration.motif,
+      explanation: illustration.explanation,
+      references: illustration.references.map((reference) => ({
+        label: reference.label,
+        ref: { ...reference.ref },
+      })),
       illustrated: true,
     };
   }

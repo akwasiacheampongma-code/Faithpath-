@@ -1,0 +1,32 @@
+
+> oliva-faith-companion@0.9.0 test:e2e
+> playwright test tests/e2e/romans-sword.spec.ts tests/e2e/swords.spec.ts
+
+
+Running 16 tests using 1 worker
+
+(node:3357) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/romans-sword.spec.ts:111:1 › Römer zeigt die eigene Illustration und öffnet seine drei belegten Quellen ohne Lesefortschritt zu erfinden (11.0s)
+  ✓   2 tests/e2e/romans-sword.spec.ts:149:1 › Römers 16 Kapitel bleiben in Hell und Dunkel sowie bei kleinen und großen Ansichten eindeutig (21.3s)
+  ✓   3 tests/e2e/romans-sword.spec.ts:181:1 › die Startseite bewahrt Lesen und Daten und öffnet illustrierte sowie bisherige Buchschwerter (10.8s)
+  ✓   4 tests/e2e/romans-sword.spec.ts:214:1 › nur ausdrücklich bestätigtes Römerlesen erzeugt Kapitellicht und einen endlichen Impuls (12.9s)
+  ✓   5 tests/e2e/romans-sword.spec.ts:241:1 › Römer und Johannes öffnen beim ersten Offlinebesuch und nach Neustart mit unveränderten Daten (10.7s)
+  ✓   6 tests/e2e/romans-sword.spec.ts:263:3 › echte Römer-Bildfehler ohne Service-Worker › drei fehlgeschlagene Varianten erhalten das Römer-Symbol; ein Wiederholungsversuch dekodiert das echte Bild (4.6s)
+  ✓   7 tests/e2e/romans-sword.spec.ts:280:3 › echte Römer-Bildfehler ohne Service-Worker › der schmale Startseiten-Fallback bleibt bei 320 Pixeln lesbar und der echte Retry erhält alle Daten (6.2s)
+  ✓   8 tests/e2e/romans-sword.spec.ts:306:3 › echte Römer-Bildfehler ohne Service-Worker › eine verspätete Römerantwort übernimmt nach Buchwechsel kein Bild und keinen Fortschritt (4.9s)
+  ✓   9 tests/e2e/romans-sword.spec.ts:335:3 › Römer auf einem hochauflösenden Browserdisplay › die große Ansicht dekodiert 768 Pixel und die Startseite ihre passende kleinere Variante (6.5s)
+  ✓  10 tests/e2e/swords.spec.ts:96:1 › das Buchschwert öffnet aus Bibel und Sammlung, zeigt Johannes groß und verändert keine Lesespuren (8.5s)
+  ✓  11 tests/e2e/swords.spec.ts:130:1 › eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt (13.6s)
+  ✓  12 tests/e2e/swords.spec.ts:156:1 › synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel (17.9s)
+  ✓  13 tests/e2e/swords.spec.ts:183:1 › die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück (11.4s)
+  ✓  14 tests/e2e/swords.spec.ts:211:1 › nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet (13.3s)
+  ✓  15 tests/e2e/swords.spec.ts:249:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › drei fehlgeschlagene PNG-Varianten lassen das Buchsymbol bestehen; erneutes Laden gelingt (3.8s)
+  ✓  16 tests/e2e/swords.spec.ts:265:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › ein Buchwechsel während des Ladens übernimmt kein verspätetes Johannes-Bild (4.9s)
+
+  16 passed (2.8m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

@@ -1,0 +1,96 @@
+{
+  "id": "romans-grace-pilot",
+  "book": "ROM",
+  "title": "Schwert der Gnade",
+  "stage": "0.9 preparation only; no runtime integration",
+  "prompt_version": "oliva-sword-naturalist-v1-romans-01",
+  "style_version": "oliva-sword-naturalist-v1",
+  "prompt": "Create one original premium botanical-metal book illustration for OLIVA, a calm Christian Bible reading companion. Use the attached project-owned Gospel-of-John image ONLY as a reference for the refined painterly realism, warm silver / pale aged brass / muted olive-grey linen materials, restrained Mediterranean light, full-object upright portrait composition and consistent illustrated family. Develop a DISTINCT new symbolic book-sword for Paul's Letter to the Romans, titled in our metadata “Sword of Grace”. Do not add any text to the image.\n\nOne single elegant slender ceremonial sword stands upright vertically, pointed blade above and handle below. Entire object clearly visible, with generous transparent margins above its tip and below its rounded pommel; centered portrait canvas, ideally1024x1536. This is a quiet artistic symbol for understanding and orientation, never violence or a weapon trophy. The Romans-specific design is a refined BRIDGE: the aged pale-brass crossguard is one beautifully crafted shallow open arch that visually bridges two ends with a continuous smooth curve, with a very small simple open oval at its center. It should read as plausible subtle metal craftsmanship, not architecture attached to a weapon. The grip is wrapped in warm grey-olive linen with a few very restrained pale gold joins; its small rounded pommel is plain and softly worn. The clean warm brushed-silver blade has a narrow warm-gold central inlay and a very fine modest lengthwise engraved line, no glowing magical effects. A single slender olive twig, with naturally elongated silver-green leaves, gently drapes along the LOWER crossguard and rises a little beside the lower blade, creating a quiet connected arc. No grapevine leaves, no grape clusters, no flowers or fruit: distinguish it from the John reference. The top two thirds of the blade remain mostly clear, with an extremely fine, legible silhouette and tactile painted metal texture.\n\nThe theme comes from Romans3:23–24 (grace without merit) and Romans5:1 (peace with God), with Romans8:1 as an additional reading reference. The bridge-shaped craft detail and olive twig are our free artistic interpretation, not objects described in those verses. Do not depict a biblical scene, God, a human, religious authority or a historical reconstruction. We are not implying achievement earns grace. Mature premium consumer-app art direction: warm cream / olive / sand / restrained gold, meticulous botanical naturalist detail, quiet dimensionality, sophisticated material highlights readable on a phone. Cohesive with the provided John project art but an individual Roman book identity. No blood, battle, armour, hands, people, trophies, combat poses, aggression, gemstones, ranks, neon, fantasy game effects, halos, wings, crowns, religious emblems, inscriptions, lettering, numbers, pseudo-scripture, frame, pedestal, ground plane or dropped cast shadow. Preserve a TRUE transparent background and isolated RGBA-style appearance. Do not paint a dark, cream, gradient or checkerboard background. Soft modelling belongs inside the painted object, not a large external glow.\n",
+  "generator": "OpenAI image_gen tool",
+  "reference_image": {
+    "path": "/workspace/faithpath-next/art/swords/masters/john-life-pilot.png",
+    "sha256": "67aef437a0cd7239b10339143f96993ff7bd2bacbd938f017e0801bc6c2a4c33",
+    "scope": "Materials, quality and upright family composition only; this project-owned reference is preserved."
+  },
+  "bible_source": {
+    "translation": "Lutherbibel1912",
+    "source_file": "src/data/bible.json",
+    "sha256": "6dd74b74fa67033976536939521df6417ab9c41579fee8c6cbeffd94016e6ce8",
+    "rights": "Source declared Public Domain by eBible.org; no modernisation of these quoted source verses."
+  },
+  "references": [
+    {
+      "book": "ROM",
+      "chapter": 3,
+      "verses": [
+        {
+          "n": 23,
+          "text": "Denn es ist hier kein Unterschied: sie sind allzumal Sünder und mangeln des Ruhmes, den sie bei Gott haben sollten,"
+        },
+        {
+          "n": 24,
+          "text": "und werden ohne Verdienst gerecht aus seiner Gnade durch die Erlösung, so durch Jesum Christum geschehen ist,"
+        }
+      ]
+    },
+    {
+      "book": "ROM",
+      "chapter": 5,
+      "verses": [
+        {
+          "n": 1,
+          "text": "Nun wir denn sind gerecht geworden durch den Glauben, so haben wir Frieden mit Gott durch unsern HERRN Jesus Christus,"
+        }
+      ]
+    },
+    {
+      "book": "ROM",
+      "chapter": 8,
+      "verses": [
+        {
+          "n": 1,
+          "text": "So ist nun nichts Verdammliches an denen, die in Christo Jesu sind, die nicht nach dem Fleisch wandeln, sondern nach dem Geist."
+        }
+      ]
+    }
+  ],
+  "motif": "Brücke: shallow open brass arch and olive twig; freely designed symbol of connection/peace, not an object named in Romans",
+  "interpretation_boundary": "This is an artistic book identity, not a historical weapon reconstruction or claim that Romans describes a sword. Grace is not earned by activity. General sword inspiration Ephesians6:17 is separate from the Romans thematic references.",
+  "license_status": "Generated under provider terms for this project; public product-release rights review pending. GitHub source backups of future versions explicitly authorized2026-11-08; no public web/store release authorized.",
+  "approval": {
+    "internal_visual": "Original generated master and actual local Chromium cream/dark renderings reviewed by the implementing agent2026-11-08. Distinct shallow arched guard with open central oval and olive twig, no grape leaves, lettering, blood, person, battle or active use. Entire object is visible with margins. Alpha channel includes normal semitransparency/antialiasing, transparent corners and no painted background. This is not an independent design or specialist approval.",
+    "historical": "pending independent specialist review; symbolic illustration",
+    "theological": "pending independent specialist review",
+    "runtime_integration": false,
+    "public_release": "not approved"
+  },
+  "prepared_at": "2026-11-08T13:07:53.897060+00:00",
+  "generated_on": "2026-11-08",
+  "generated_at": "2026-11-08T13:09:04.779322+00:00",
+  "original_output": "/workspace/generated_images/exec-0304c4e6-f361-45a6-b432-aa502f2b1cc5.png",
+  "master": "masters/romans-grace-pilot.png",
+  "master_sha256": "3a4b4c77c322972310198e94971c0bec81dd09d0dea8ef3038fdac8a6fe49839",
+  "master_bytes": 1258433,
+  "width": 1024,
+  "height": 1536,
+  "mode": "RGBA",
+  "transparent_background_requested": true,
+  "actual_alpha_extrema": [
+    0,
+    254
+  ],
+  "zero_alpha_pixel_count": 1412596,
+  "semi_transparent_pixel_count": 160268,
+  "fully_opaque_pixel_count": 0,
+  "imagegen_invocation_count": 1,
+  "reference_preserved": true,
+  "prompt_sha256": "c7dd9f9ca81cc89b0626370239079ac0de61f01f5657a2e8591de615d8c345b2",
+  "background_review": {
+    "screenshot": "background-review.png",
+    "evidence": "background-review.json",
+    "method": "Actual Chromium rendering of unchanged RGBA PNGs over CSS cream/dark backgrounds; no master retouching/compositing or product UI mockup",
+    "physical_device_test": false,
+    "runtime_integration": false
+  },
+  "technical_variants": "technical-variants.json"
+}

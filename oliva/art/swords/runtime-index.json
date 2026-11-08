@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "hashAlgorithm": "sha256",
+  "scope": "Runtime delivery provenance for the two illustrated books. Original generation and technical preparation records remain unchanged; no public-release or device approval is granted.",
+  "illustrations": [
+    {
+      "id": "john-life-pilot",
+      "book": "JHN",
+      "manifest": "art/swords/runtime.json",
+      "sourceMetadata": "art/swords/pilot.json",
+      "sourceRoot": ".",
+      "expectedMasterSHA": "67aef437a0cd7239b10339143f96993ff7bd2bacbd938f017e0801bc6c2a4c33"
+    },
+    {
+      "id": "romans-grace-pilot",
+      "book": "ROM",
+      "manifest": "art/swords/romans-runtime.json",
+      "sourceMetadata": "art/swords/romans-grace/pilot.json",
+      "sourceRoot": "art/swords/romans-grace",
+      "expectedMasterSHA": "3a4b4c77c322972310198e94971c0bec81dd09d0dea8ef3038fdac8a6fe49839"
+    }
+  ]
+}

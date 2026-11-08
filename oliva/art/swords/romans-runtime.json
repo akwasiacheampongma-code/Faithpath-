@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "id": "romans-grace-pilot",
+  "book": "ROM",
+  "master": "art/swords/romans-grace/masters/romans-grace-pilot.png",
+  "masterSHA": "3a4b4c77c322972310198e94971c0bec81dd09d0dea8ef3038fdac8a6fe49839",
+  "masterWidth": 1024,
+  "masterHeight": 1536,
+  "hashAlgorithm": "sha256",
+  "license": "Generated under provider terms for this project; public product-release rights review pending. GitHub source backups of future versions explicitly authorized2026-11-08; no public web/store release authorized.",
+  "status": {
+    "internalRuntime": "Integrated in the local OLIVA 0.9 source on the project instruction; application, offline, visual and native acceptance are separate pending checks.",
+    "publicRelease": "not approved",
+    "historical": "pending independent specialist review; symbolic illustration",
+    "theological": "pending independent specialist review"
+  },
+  "sourceMetadata": "art/swords/romans-grace/pilot.json",
+  "sourceVariantsMetadata": "art/swords/romans-grace/technical-variants.json",
+  "derivation": {
+    "generator": "art/swords/romans-grace/scripts/prepare-variants.py",
+    "version": 1,
+    "operation": "Full-canvas RGBA resize only; original2:3aspect retained",
+    "resampler": "Pillow.Image.Resampling.LANCZOS",
+    "pillowVersion": "13.0.0",
+    "masterUnmodified": true,
+    "crop": false,
+    "retouch": false,
+    "backgroundRemoval": false,
+    "pixelVerification": "Every actual PNG decoded to the exact resized RGBA buffer"
+  },
+  "references": [
+    {
+      "book": "ROM",
+      "chapter": 3,
+      "from": 23,
+      "to": 24
+    },
+    {
+      "book": "ROM",
+      "chapter": 5,
+      "from": 1,
+      "to": 1
+    },
+    {
+      "book": "ROM",
+      "chapter": 8,
+      "from": 1,
+      "to": 1
+    }
+  ],
+  "variants": [
+    {
+      "width": 256,
+      "height": 384,
+      "path": "assets/swords/romans-grace-pilot-256.png",
+      "sha256": "a5d4e69f7cd6eadcda137dd58ea0438fdbadc906dcf8022aaaa99fb12fa46a9a",
+      "bytes": 32197
+    },
+    {
+      "width": 512,
+      "height": 768,
+      "path": "assets/swords/romans-grace-pilot-512.png",
+      "sha256": "bb54b718734835e1b7970833ce5139b16dd84a253308e685de3105129d884552",
+      "bytes": 108959
+    },
+    {
+      "width": 768,
+      "height": 1152,
+      "path": "assets/swords/romans-grace-pilot-768.png",
+      "sha256": "ff3e4123c438c5606256d5133982078879671ba7e339038b4396001ed319b4de",
+      "bytes": 232760
+    }
+  ]
+}

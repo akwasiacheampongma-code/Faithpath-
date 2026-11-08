@@ -7,7 +7,8 @@ import { normalizeSwordProgress } from "./model";
 import { swordSize } from "./layout";
 import { VectorSwordDrawing } from "./VectorSwordDrawing";
 import { SwordPulse } from "./SwordPulse";
-import { JohnLightTrack } from "./JohnLightTrack";
+import { BookLightTrack } from "./BookLightTrack";
+import { swordIllustration, type IllustratedBook } from "./illustrations";
 import { pilotSource, pilotVariants } from "./pilot-assets";
 
 export function BookSwordArtwork({
@@ -15,15 +16,18 @@ export function BookSwordArtwork({
   progress,
   size = 220,
   celebrate = false,
+  compact = false,
 }: {
   book: string;
   progress: number;
   size?: number;
   celebrate?: boolean;
+  compact?: boolean;
 }) {
   const width = swordSize(size, 220),
     value = normalizeSwordProgress(progress),
-    identity = bookByCode(book);
+    identity = bookByCode(book),
+    illustration = swordIllustration(book);
   const [attempt, setAttempt] = useState(0);
   const requestKey = `${book}:${width}:${PixelRatio.get()}:${attempt}`;
   const currentRequest = useRef(requestKey);
@@ -31,10 +35,12 @@ export function BookSwordArtwork({
   const [decoded, setDecoded] = useState({ key: "", ready: false });
   const illustrated = decoded.key === requestKey && decoded.ready;
   const label = `${identity?.sword ?? "Buchschwert"} · ${Math.round(value * 100)} Prozent gelesen`;
-  return book === "JHN" ? (
+  return illustration ? (
     <View style={{ alignSelf: "center", width, maxWidth: "100%" }}>
-      <JohnArtwork
+      <IllustratedArtwork
         key={requestKey}
+        book={illustration.book}
+        compact={compact}
         width={width}
         progress={value}
         label={label}
@@ -83,13 +89,17 @@ export function BookSwordArtwork({
 
 /** Keyed per book/size/density/retry. Late decoder callbacks can only affect
  * their original keyed instance; candidates also have an inner generation. */
-function JohnArtwork({
+function IllustratedArtwork({
+  book,
+  compact,
   width,
   progress,
   label,
   retry,
   onDecoded,
 }: {
+  book: IllustratedBook;
+  compact: boolean;
   width: number;
   progress: number;
   label: string;
@@ -100,8 +110,7 @@ function JohnArtwork({
     variants = pilotVariants(width, PixelRatio.get()),
     alive = useRef(true);
   const [image, setImage] = useState({ candidate: 0, loaded: false });
-  const current = useRef(image.candidate);
-  current.current = image.candidate;
+  const candidateGeneration = useRef(0);
   useLayoutEffect(() => {
     alive.current = true;
     return () => {
@@ -109,6 +118,7 @@ function JohnArtwork({
     };
   }, []);
   const candidate = variants[image.candidate],
+    generation = image.candidate,
     failed = !candidate;
   return (
     <View
@@ -132,7 +142,7 @@ function JohnArtwork({
             testID="book-sword-vector"
             style={{ position: "absolute", inset: 0 }}
           >
-            <VectorSwordDrawing book="JHN" progress={progress} />
+            <VectorSwordDrawing book={book} progress={progress} />
           </View>
         )}
         {candidate && (
@@ -141,7 +151,7 @@ function JohnArtwork({
             testID="book-sword-image"
             accessible={false}
             aria-hidden={true}
-            source={pilotSource(candidate.width)}
+            source={pilotSource(candidate.width, book)}
             resizeMode="contain"
             fadeDuration={0}
             style={{
@@ -152,9 +162,10 @@ function JohnArtwork({
               opacity: image.loaded ? 1 : 0,
             }}
             onLoad={() => {
-              if (alive.current && current.current === image.candidate) {
+              if (alive.current && candidateGeneration.current === generation) {
+                candidateGeneration.current += 1;
                 setImage((previous) =>
-                  previous.candidate === image.candidate
+                  previous.candidate === generation
                     ? { ...previous, loaded: true }
                     : previous,
                 );
@@ -162,9 +173,10 @@ function JohnArtwork({
               }
             }}
             onError={() => {
-              if (alive.current && current.current === image.candidate) {
+              if (alive.current && candidateGeneration.current === generation) {
+                candidateGeneration.current += 1;
                 setImage((previous) =>
-                  previous.candidate === image.candidate
+                  previous.candidate === generation
                     ? { candidate: previous.candidate + 1, loaded: false }
                     : previous,
                 );
@@ -173,19 +185,36 @@ function JohnArtwork({
             }}
           />
         )}
-        {image.loaded && <JohnLightTrack progress={progress} />}
+        {image.loaded && <BookLightTrack book={book} progress={progress} />}
       </View>
       {failed && (
         <View style={{ maxWidth: width, gap: 4 }}>
           <T
             accessibilityRole="status"
-            style={{ fontSize: 12, color: t.muted }}
+            style={[
+              { fontSize: 12, color: t.muted },
+              compact && {
+                fontSize: 11,
+                lineHeight: 17,
+                textAlign: "center",
+              },
+            ]}
           >
-            Die Bildansicht ist gerade nicht verfügbar. Dein Buchsymbol bleibt
-            sichtbar.
+            {compact
+              ? "Bild nicht verfügbar."
+              : "Die Bildansicht ist gerade nicht verfügbar. Dein Buchsymbol bleibt sichtbar."}
           </T>
-          <Button kind="ghost" onPress={retry}>
-            Bild erneut laden
+          <Button
+            kind="ghost"
+            onPress={retry}
+            icon={compact ? null : "arrow"}
+            style={
+              compact
+                ? { paddingHorizontal: 4, paddingVertical: 7, minHeight: 44 }
+                : undefined
+            }
+          >
+            {compact ? "Erneut laden" : "Bild erneut laden"}
           </Button>
         </View>
       )}

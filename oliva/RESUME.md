@@ -1,20 +1,21 @@
 # Fortsetzen · OLIVA / FaithPath Next Generation
 
-Stand: 08.11.2026. **OLIVA 0.8.0 mit David-Geschichte und robustem Story-/Offlinebetrieb ist getestet und privat bereitgestellt.** Lokaler Quellcheckpoint und anschließende GitHub-Sicherung werden nach dieser Abnahme separat erzeugt und zurückgelesen; hier noch kein behaupteter 0.8-Upload oder Remote-CI-Erfolg. Der ursprüngliche Master-Prompt bleibt offen und maßgeblich. Nutzdatenformat V6 mit strikter Migration aus V1–V5; privates Speicherdokument V1; SQLite physisch V3; IndexedDB physisch V1. A51, 66 Buchansichten und großes Johannes-Schwertbild bleiben enthalten.
+Stand: 08.11.2026. **OLIVA 0.9.0 mit Römer-Bild, gemeinsamer Buchbildregistrierung und neuer Startseitenansicht ist geprüft und privat bereitgestellt.** 120/120 Fachtests, ein einzelner vollständiger 76/76-Browserlauf, native JS-/Assetexporte und echter 0.8→0.9-Updateversuch sind erfolgreich. Die separate lokale Quellensicherung und anschließende GitHub-Sicherung folgen nach diesem Dokumentcheckpoint; keine unbekannten Commit- oder Archivhashes vorwegnehmen. Der ursprüngliche Master-Prompt bleibt offen. Nutzdaten V6, privates Dokument V1, SQLite physisch V3 und IndexedDB V1 bleiben unverändert.
 
 ## Sofort ausprobieren
 
 - Private App: https://oliva-v04-private-preview.purplebean128.chatgpt.site
-- Mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **08.11.2026, 13:50:48 UTC** wird dort **0.8.0** ausgeliefert.
+- Mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **08.11.2026, 19:49:19 UTC** wird dort **0.9.0** ausgeliefert.
 - **Bibel → Eine Geschichte entdecken → Davids Vorbereitung lesen:** neue Illustration und exakter Abschnitt 1. Samuel 17,38–45 mit getrennter Einordnung.
 - **Wege → Persönliche Vorhaben → eigener Rückblick:** Text bearbeiten, den gesicherten Entwurf über Sammlung fortsetzen, bestätigt löschen und innerhalb derselben geöffneten Ansicht einmal zurückholen. Identität, damalige Quelle und Erfahrungsbestätigung bleiben beim Edit erhalten; daraus entsteht kein neues Wachstum.
 - Der A51-Baum steht auf **Heute** und **Mein Garten**; **„Alle sieben Lebensbilder ansehen“** öffnet die Galerie. Privater Vergleich: https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/a51/comparison.svg
+- **Bibel → Römer → „Buchschwert ansehen“** öffnet das Schwert der Gnade. Nach bewusstem Öffnen eines Römer-Leseabschnitts zeigt auch die Startseite das aktuelle Buchbild; daraus entsteht kein bestätigtes Lesen. Direkt: https://oliva-v04-private-preview.purplebean128.chatgpt.site/buch/ROM
 - **Bibel → Johannes → „Buchschwert ansehen“** oder **Sammlung → Buchschwerter** öffnet Illustration, Kapitellichtspur und Quellen. Alle 66 kompakten Vektoren bleiben erhalten.
 - Eigentümerzugriff unverändert: keine Änderung des Publikums, keine öffentliche Web-Veröffentlichung. Anonyme HTTP-Anfrage: 401, kein App-HTML.
 
 ## Arbeitsbereiche und Quellschutz
 
-Unabhängige OLIVA-Quelle: `/workspace/faithpath-next`. Aktiver lokaler Gitbranch: `feature/oliva-v08-biblical-stories-20261108`, ohne Remote. Der unabhängige 0.7-Checkpoint ist bereits abgeschlossen: Commit `f0e8db6b2847d5bfc8361e8f617b8caf0c860787`, Tag `oliva-v0.7-review-continuity-private`, Quell-ZIP `/workspace/oliva-next-v0.7-review-continuity-source.zip`, 107.691.030 Byte, SHA-256 `6f2e71667fec1f02abe3d4fc1cdae5799faf0f915ca5ff408a8f8bd1831f4821`; äußeres Manifest `/workspace/oliva-v07-local-checkpoint.json`. FaithPath-Referenz: `/workspace/faithpath-reference`; alle 390 materialisierten Referenzdateien stimmen mit ihren ursprünglichen Git-Blobs überein. Vorhandene 0.7-Web-/native Kontrollausgaben und historische Belege bleiben erhalten.
+Unabhängige OLIVA-Quelle: `/workspace/faithpath-next`. Aktiver lokaler Gitbranch: `feature/oliva-v09-book-gallery-20261108`, ohne Remote. Der unabhängige 0.7-Checkpoint ist bereits abgeschlossen: Commit `f0e8db6b2847d5bfc8361e8f617b8caf0c860787`, Tag `oliva-v0.7-review-continuity-private`, Quell-ZIP `/workspace/oliva-next-v0.7-review-continuity-source.zip`, 107.691.030 Byte, SHA-256 `6f2e71667fec1f02abe3d4fc1cdae5799faf0f915ca5ff408a8f8bd1831f4821`; äußeres Manifest `/workspace/oliva-v07-local-checkpoint.json`. FaithPath-Referenz: `/workspace/faithpath-reference`; alle 390 materialisierten Referenzdateien stimmen mit ihren ursprünglichen Git-Blobs überein. Vorhandene 0.7-Web-/native Kontrollausgaben und historische Belege bleiben erhalten.
 
 Der unabhängige Vorgänger 0.6 bleibt gesichert: Commit `9b28f586574a380ef40419b02fccb68301c8287c`, Tag `oliva-v0.6-book-identities-private`, Quell-ZIP `/workspace/oliva-next-v0.6-book-identities-source.zip`; äußeres Manifest `/workspace/oliva-v06-local-checkpoint.json`. Die 0.6-Quellen und Belege unter `docs/evidence/session-06/` bleiben erhalten.
 
@@ -70,7 +71,24 @@ Web verwendet den geprüften A51-Kern hinter einem typisierten React-Adapter. Na
 
 Ein echter ursprünglicher Webfehler wurde reproduziert und im OLIVA-Adapterkern behoben: Der IntersectionObserver lieferte für dieselbe Wurzel in einem Callback zuerst `false`, dann `true`. `entries[0]` hielt die Szene fälschlich unsichtbar. Jetzt zählt die letzte passende Meldung. Ein deterministischer Replay prüft beide Reihenfolgen. Die unveränderte Originalreferenz bleibt erhalten. Eine frühere Hintergrundtab-Vermutung war keine bestätigte Ursache dieses Produktfehlers.
 
-## Tatsächliche 0.8-Abnahme und anschließende Quellensicherung
+## Tatsächliche 0.9-Abnahme
+
+- Buchbilder für Johannes und Römer, 21 beziehungsweise 16 Kapitel, eigene Motivquellen und getrennte Lichtspur; alle 66 kompakten Vektoren bleiben erhalten. Kein neuer persönlicher Fortschritt durch Bildladen oder Navigation.
+- Neue Startseitenbilder (100 × 150) für die beiden illustrierten Bücher; alle 66 Bücher erhalten einen direkten Buchschwertzugang. Der Lesezugang bleibt erhalten; schmaler Fehlerzustand besitzt echten Retry.
+- Tatsächlicher erster Webbuild `oliva-6428cb5965119e02`, 101 Cachedateien. 120/120 Fachtests und 16/16 gezielte Römer-/Johannesfälle bestanden; vollständiger einzelner 76/76-Lauf ohne Skip oder Flaky erfolgreich. Belege `docs/evidence/session-09/`.
+- Android-/iOS-JS-/Assetdebugexports bestanden: je 98 A51-PNGs, sechs Buch-PNGs und drei David-WebPs; portable Prüfung über `node scripts/check-native-export.mjs`. Runtime-Digest `6ec21d74a393b3ece34e1b4fe40ea441e4c8fd347543b89c16b8569e9b00b110` über 284 Inputs, nun einschließlich Römermanifest und Runtimeindex. Keine Geräte-/Simulator-/Decoder-/Energieprüfung.
+- Originale Generation und technische Römer-Vorbereitung bleiben unter `art/swords/romans-grace/`; aktive Herkunft unter `romans-runtime.json` und `runtime-index.json`. Keine öffentliche Produktfreigabe.
+- Paritätsabgleich aus der Planungsfrage: [aktueller Plan](docs/16-current-plan-and-parity.md). Fertiger Original-NT-Katalog (1.300 Fragen/260 Kapitel/27 Bücher) und Original-Fließtext fehlen als aktive OLIVA-Funktionen. Keine zugeordnete Version oder Termin; keine Prioritätsänderung aus der Planungsfrage ableiten. OTB hat im Bestand CC BY-SA 4.0, Erinnerungen dort sind In-App-Einladungen.
+
+## Bestätigte Sicherung und Remote-CI 0.8
+
+0.8 ist tatsächlich gesichert: lokaler Commit `e6aa7f5ab552bb983264c1b4cc253c72728d5740`, Tag `oliva-v0.8-stories-offline-private`; ZIP `/workspace/oliva-next-v0.8-stories-offline-source.zip`, 120.935.687 Byte, SHA-256 `82c564902e453b638a84c6487098abe769fb828094c8bdb1c4b772b81cde40ca`. Äußeres Manifest `/workspace/oliva-v08-local-checkpoint.json`, Kontrollbuild `/workspace/oliva-v08-stories-control-dist`.
+
+GitHub-Commit `dc4477b01dcd78f278e5dbf82408b26c83837ec1`, Branch `feature/oliva-v08-stories-offline-20261108`, Tag `oliva-v0.8.0`; alle acht Versionsrefs sowie ursprüngliche FaithPath-Pfade, `main` und alter 0.4-Branch unverändert bestätigt. Dauerhafter Checkpoint unter `docs/evidence/session-09/checkpoints/`.
+
+Der tatsächliche GitHub-Lauf **42487317354** ist erfolgreich: 117/117 Fachtests und 67/67 Browserfälle, keine Skips/Flaky-Fälle. Artefakt 13620585577 mit 8.179.373 Byte, SHA-256 `a5739f6dde394f463fa179c19480e3d83053fa1024b12100d430fa670ff28248`, stimmt mit GitHub überein. Audit 0; die vier eigenen Node-24-Actionpins sind im Log bestätigt. Rohbelege: `docs/evidence/github/ci-v08/verification.json` und zugehörige Reports. Diese Ergebnisse gelten für 0.8, nicht für die laufende 0.9-Quelle.
+
+## Historische 0.8-Abnahme und anschließende Quellensicherung
 
 - David ist tatsächlich in der Runtime integriert: **Bibel → Eine Geschichte entdecken → Davids Vorbereitung lesen**. Exakter Abschnitt 1. Samuel 17,38–45; KI-unterstützte Einordnung, Worterklärung und künstlerische Interpretation bleiben vom Originalbibeltext getrennt. Keine Sieg- oder Selbstoptimierungszusage aus dem abgeschnittenen Erzählverlauf.
 - Gemeinsamer Storyrenderer mit gemessenem Bildrahmen, passenden 640/1024/1280-WebPs, echter Decode-Bestätigung, drei endlichen Fallbackvarianten, erreichbarem Retry und unverändertem Leselink. Bibliotheksbilder verwenden 8:5 statt fester 180-Pixel-Höhe; Readerkontext 3:2. Keine Fortschritts-/Nutzdatenänderung durch Bilder.
@@ -134,13 +152,9 @@ Prüfungen: `npm run content:check`, `npm run content:art`, `npm run content:tre
 
 ## Nächste überprüfbare Arbeit am ursprünglichen Master
 
-1. **Geprüften 0.8-Quellcheckpoint sichern:** unveränderten Quellstand committen, lokalen Tag `oliva-v0.8-stories-offline-private`, ZIP `/workspace/oliva-next-v0.8-stories-offline-source.zip` und äußeres Manifest `/workspace/oliva-v08-local-checkpoint.json` erstellen. Bestätigte Abnahme und private Bereitstellung nicht erneut als offen behandeln; vorhandene Rohbelege/0.5–0.7-Checkpoints bewahren.
-2. **Anschließend den separaten GitHub-Versionsbranch und Versions-Tag tatsächlich pushen und zurücklesen:** `feature/oliva-v08-stories-offline-20261108` / `oliva-v0.8.0`, exakter `oliva/`-Teilbaum, unveränderte ursprüngliche FaithPath-Pfade, `main` und 0.4-Branch. Tatsächlichen CI-Lauf gesondert prüfen und im nächsten Lieferstand festhalten. Kein Merge nach `main`, kein öffentlicher Web-/Storedeploy. Keine erneute Bestätigung für den bereits erteilten GitHub-Auftrag verlangen.
-3. Anschließend die vorbereitete 0.9-Arbeit an einem Römer-Bildpilot und skalierbarer Pilotregistrierung prüfen und integrieren. Vorarbeit liegt ausschließlich außerhalb des aktuellen Projekts unter `/workspace/oliva-v09-art-preparation` und `/workspace/oliva-v09-runtime-preparation`; drei neue sinnvolle Domänenprüfungen und isolierter Typecheck sind bestanden, aber noch keine 0.9-Runtimeintegration oder Bereitstellung. Weitere hochwertige Buchillustrationen nach Prüfung des Johannes-Piloten, freiwillige Erinnerungen und zusätzliche eigenständige Kapitelredaktion bearbeiten. Alle 66 kompakten Vektorschwerter und bestehende Funktionen bewahren.
-4. Weitere eigenständige Kapitelredaktion, echte Anfänger-Usability und unabhängige theologische/historische Prüfung organisieren. Neun Pilottexte sind keine 27 eigenen Kapitelredaktionen.
-5. Native Geräteabnahme einschließlich Baumbewegung, Speicher/Energie, SQLite, Dateidialogen, Abbruch/Low-Disk, Zurück-Taste, Tastatur, VoiceOver/TalkBack und großer Schrift.
-6. FaithPath-V5-Import zusätzlich an einem anonymisierten echten Export prüfen, falls verfügbar. Keine persönlichen Exporte im Repository oder in Logs.
-7. Auth/Sync und KI erst mit realem Dienst, sicheren Datenverträgen und tatsächlich prüfbaren Quellen anbinden. Vorbereitete Supabase-DDL ist kein aktiver Sync.
+1. Abgenommenen 0.9-Quellstand separat committen/taggen, ZIP samt SHA-256 und äußerem Manifest erzeugen. Danach eigener GitHub-Versionsbranch/Tag unter `oliva/`, exakten Teilbaum und geschützte Ursprungsrefs zurücklesen; tatsächlichen CI-Lauf separat abnehmen. Keine erneute Abnahme des bereits bestandenen lokalen 120/76-Standes ohne neue Änderung/Fehler.
+2. Anschließend bestehende Master-Aufgaben weiterbearbeiten: Bestandsparität, weitere Buchbilder, freiwillige Erinnerungen und Kapitelredaktion. Bestätigte Fließtext-/NT-Lücken bleiben offen und werden nicht durch bloßes Benennen als fertig behandelt. Der Planungsabgleich hat keine neue Folgeversion und keinen Termin erfunden: `docs/16-current-plan-and-parity.md`.
+3. Echte Anfänger-/Geräteabnahme, unabhängige Inhaltsprüfung und reale Dienste fehlen weiter. Auth/Sync, Live-KI und Audio sind nicht aktiv. Keine Personenexporte im Repository/Logs. Unabhängige FaithPath-Referenz, historische Quellstände und Kontrollbuilds bewahren.
 
 ## Bleibende Grenzen und Vorgaben
 
@@ -151,3 +165,20 @@ A51-Wiederverwendung ist ausdrücklich vom Projektauftrag autorisiert; eine allg
 Diese Datei ist der dauerhafte Fortsetzungsstand. Nach Wiederaufnahme Lieferstand und Tests lesen, erreichte Arbeit bewahren und am nächsten Teilziel weiterarbeiten. Kein ausgeführtes UI-`/resume` und keine selbstständig im Hintergrund laufende Entwicklung behaupten. Die Gesamt-Definition-of-Done bleibt offen.
 
 GitHub-Nachsicherung **0.5/0.6/0.7 abgeschlossen**: Ergebnis-/Remoteprüfung unter `/workspace/oliva-github-backups.json`, dauerhaft kopiert nach `docs/evidence/github/backups-2026-11-08.json`. Vorbereitungsplan `/workspace/oliva-github-backup-plan.json`; lokaler Helper `/tmp/prepare-oliva-history.py`. Für folgende Versionen diesen Ablauf erweitern, historische Workflowblobs/Refs nicht rückwirkend verändern und stets den exakten `oliva/`-Teilbaum sowie alle ursprünglichen FaithPath-Pfade prüfen. Ausschließlich explizite Versionsrefs pushen; keine Standalone-Tags direkt ins FaithPath-Repo und kein pauschales `--tags`.
+
+## Bestätigte private Bereitstellung 0.9 und nächster Quellcheckpoint
+
+Erfolgreich am **08.11.2026, 19:49:19.769698 UTC**:
+
+| Kennung | Wert |
+| --- | --- |
+| Private Quelle | `ccf9bbee496b64779583fd39101a59f2f30761b9` |
+| Deployment | `appgdep_6af0d232484c8191a6bc975b8d3ac093` |
+| Version | `appgprj_6aedf77e5ce0819180c10eb799447018~appgver_f013bcf30d348191b11c9dda4ff0ac20` |
+| Kernbuild | `oliva-6428cb5965119e02` |
+| Hostpaket | `oliva-d355762061b4fbe6` |
+| Runtime-Digest | `6ec21d74a393b3ece34e1b4fe40ea441e4c8fd347543b89c16b8569e9b00b110` · 284 Inputs |
+
+HTTP: **17 Routen, 104 App- und 42 Review-Dateien bytegenau**, anonym 401, weiterhin nur Eigentümerzugriff. Belege unter `docs/evidence/session-09/`. Keine zusätzliche gehostete CUA- oder Handyprüfung.
+
+Unmittelbar folgender Sicherungsschritt: lokaler Tag `oliva-v0.9-book-gallery-private`, ZIP `/workspace/oliva-next-v0.9-book-gallery-source.zip`, äußeres Manifest `/workspace/oliva-v09-local-checkpoint.json`; GitHub-Branch `feature/oliva-v09-book-gallery-20261108`, Tag `oliva-v0.9.0`. Erst nach tatsächlichem Push und Remote-Abgleich als gesichert melden und im nächsten Arbeitsstand festhalten. Der 0.9-Remote-CI-Lauf ist noch nicht ausgeführt; die lokalen 120/76 sind dafür kein Nachweis.

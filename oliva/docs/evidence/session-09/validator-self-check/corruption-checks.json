@@ -1,0 +1,204 @@
+{
+  "checkedAt": "2026-11-08T19:36:53.638Z",
+  "allPassed": true,
+  "cases": 13,
+  "temporaryCopy": "/tmp/oliva-native-checker-xmXuYn/copied-android",
+  "actualExportInputsUnchanged": {
+    "metadata": true,
+    "bundle": true,
+    "firstAsset": true,
+    "requiredA51Asset": true
+  },
+  "allOriginalMetadataInputsVerifiedUnchanged": 154,
+  "simulatorTest": false,
+  "deviceTest": false,
+  "results": [
+    {
+      "name": "copied-valid",
+      "expected": "accept",
+      "exitCode": 0,
+      "summary": {
+        "ok": true,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [
+          {
+            "platform": "android",
+            "metadataReferences": 153,
+            "a51Pngs": 98,
+            "swordPngs": 6,
+            "davidWebps": 3,
+            "javascriptSyntaxValid": true,
+            "hermesBytecode": false
+          }
+        ],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only."
+      }
+    },
+    {
+      "name": "missing-metadata-asset",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "Missing android metadata reference: assets/0a328cd9c1afd0afe8e3b1ec5165b1b4"
+      }
+    },
+    {
+      "name": "changed-required-asset",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "android required a51 asset missing or changed: assets/a51/native/stage-1-640-full.png"
+      }
+    },
+    {
+      "name": "unreferenced-master-leak",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "Forbidden sword-master delivered as assets/accidental-master (source: art/swords/masters/john-life-pilot.png)"
+      }
+    },
+    {
+      "name": "unreferenced-prompt-leak",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "Provenance prompt embedded in assets/internal-prompt.txt (source: art/swords/pilot.json)"
+      }
+    },
+    {
+      "name": "unreferenced-webgl-leak",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "A51 web renderer marker in assets/accidental-web-renderer.js: createTreeScene"
+      }
+    },
+    {
+      "name": "hermes-bytecode",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "Unexpected Hermes bytecode: _expo/static/js/android/entry-cf52057d9048b87b5e15365c8b03b784.js"
+      }
+    },
+    {
+      "name": "invalid-javascript",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "Unexpected end of input"
+      }
+    },
+    {
+      "name": "metadata-traversal",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "Nonlocal android metadata reference path: ../outside.png"
+      }
+    },
+    {
+      "name": "required-metadata-format",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "android required asset has wrong metadata format: assets/a51/native/stage-1-640-full.png"
+      }
+    },
+    {
+      "name": "missing-declared-manifest-hash",
+      "expected": "reject",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "Missing/invalid declared A51 SHA-256: assets/a51/native/stage-1-640-full.png"
+      }
+    },
+    {
+      "name": "report-output-cannot-mutate-export",
+      "expected": "reject-without-writing",
+      "exitCode": 1,
+      "summary": {
+        "ok": false,
+        "completeNativePair": false,
+        "platforms": [],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only.",
+        "error": "Report must be outside every inspected export directory"
+      }
+    },
+    {
+      "name": "restored-valid-copy",
+      "expected": "accept",
+      "exitCode": 0,
+      "summary": {
+        "ok": true,
+        "appVersion": "0.9.0",
+        "completeNativePair": false,
+        "platforms": [
+          {
+            "platform": "android",
+            "metadataReferences": 153,
+            "a51Pngs": 98,
+            "swordPngs": 6,
+            "davidWebps": 3,
+            "javascriptSyntaxValid": true,
+            "hermesBytecode": false
+          }
+        ],
+        "scope": "Static JavaScript syntax, Expo metadata and byte-exact source/asset checks only."
+      }
+    }
+  ],
+  "temporaryCopyRemovedAfterChecks": true
+}

@@ -1,0 +1,128 @@
+{
+  "version": "0.9.0",
+  "checkedAt": "2026-11-08T19:47:15.001Z",
+  "runtime_files_verified": 100,
+  "unchanged_runtime_asset_bytes": 99,
+  "rewritten_uri_files": 1,
+  "all_runtime_hashes_match": true,
+  "pwa_manifest_valid": true,
+  "icons_valid": true,
+  "cache_files_verified": 103,
+  "build_id": "oliva-d355762061b4fbe6",
+  "app_routes_rewritten": true,
+  "source_build": "oliva-6428cb5965119e02",
+  "source_validation": {
+    "version": "0.9.0",
+    "checkedAt": "2026-11-08T19:46:38.280893+00:00",
+    "sourceBuild": "oliva-6428cb5965119e02",
+    "runtimeSourceDigest": {
+      "algorithm": "SHA256(sorted path + NUL + bytes + NUL); app/src/assets plus app/package/lock and A51/sword runtime manifests, now including the Romans manifest and index",
+      "fileCount": 284,
+      "sha256": "6ec21d74a393b3ece34e1b4fe40ea441e4c8fd347543b89c16b8569e9b00b110"
+    },
+    "unit": {
+      "total": 120,
+      "passed": 120,
+      "failed": 0,
+      "report": "unit-results.json"
+    },
+    "browser": {
+      "total": 76,
+      "passed": 76,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "isSingleGreenFullRun": true,
+      "durationMs": 587412.2999999999,
+      "report": "e2e-results.json",
+      "targetedBooks": {
+        "total": 16,
+        "passed": 16,
+        "report": "swords-first.json"
+      }
+    },
+    "native": {
+      "allPassed": true,
+      "kind": "Unminified native JavaScript/asset debug exports; no Hermes bytecode, APK/AAB/IPA, signing, simulator, device, native image decoder, performance, memory or energy test.",
+      "platforms": [
+        "android",
+        "ios"
+      ],
+      "a51PngPerPlatform": 98,
+      "bookPngPerPlatform": 6,
+      "davidWebpPerPlatform": 3,
+      "sourceVerified": true,
+      "simulatorTest": false,
+      "physicalDeviceTest": false,
+      "report": "native-builds.json",
+      "portableAssetCheck": "native-export-check.json",
+      "negativeCopyChecks": 13
+    },
+    "upgrade": {
+      "passed": true,
+      "baselineVersion": "0.8.0",
+      "targetVersion": "0.9.0",
+      "dataVersion": 6,
+      "storageVersion": 1,
+      "migrationNeeded": false,
+      "allRawRecordsPreserved": true,
+      "offlineStories": 5,
+      "offlineA51Stages": 7,
+      "offlineJohnPng": true,
+      "offlineRomansFirstVisitAndReload": true,
+      "offlineHomePortraitAndBookLink": true,
+      "previousCachedAssetAvailable": true,
+      "report": "offline-upgrade.json"
+    },
+    "dependencyAudit": {
+      "total": 0,
+      "report": "dependency-audit.json"
+    },
+    "hostedBrowserQa": "Unavailable: supported CUA tool not exposed; independent local Expo-core Chromium evidence is separate.",
+    "physicalPhoneTest": false,
+    "publicRelease": false,
+    "githubSourceBackupAuthorized": true,
+    "masterPromptComplete": false,
+    "knownParityGaps": "Original flowing reader and complete NT question catalog remain absent; see docs16.",
+    "rawReports": [
+      {
+        "file": "unit-results.json",
+        "sha256": "5aad2e6426f227c5cde44f43ffa3d82c81e774441fdf44fe813be1dd85ff77ad"
+      },
+      {
+        "file": "e2e-results.json",
+        "sha256": "0d857083ff01bfc6a40dc2362ad52d4e5ff7e32d520841041fa081eedffe6700"
+      },
+      {
+        "file": "swords-first.json",
+        "sha256": "72ac1f6e8929c887cbd275ef68763af722b016c5839dfdc848af36f9799253c4"
+      },
+      {
+        "file": "native-builds.json",
+        "sha256": "79dcc235e27714ab43749d8b38768de7bba12f7b7c9e26b5eb5483476376d9a1"
+      },
+      {
+        "file": "native-export-check.json",
+        "sha256": "3158fa44cc27e1434d458110f779e9ab96a3f681a695dd4a1c2d653c16b2e0a6"
+      },
+      {
+        "file": "validator-self-check/corruption-checks.json",
+        "sha256": "f4212e72f3cd16c3cf5b340fe57955be09884f12e7952caba376290c5e663fbb"
+      },
+      {
+        "file": "offline-upgrade.json",
+        "sha256": "9ebed6c27a26a9af8b6133efcd69854abfd6f82078e7f1707eaf6d008422e7fb"
+      },
+      {
+        "file": "original-reference-integrity.json",
+        "sha256": "318fbbd3977b586480556d0afc7f8316bfd9dd830151e7eb8792a4feb3f0f399"
+      },
+      {
+        "file": "dependency-audit.json",
+        "sha256": "1ac93a0244d14197a57a329c9bdde55cac94b166c6651d4d9a385d1398332197"
+      }
+    ]
+  },
+  "managed_sites_browser_qa": "unavailable: cua_repl.js not exposed",
+  "physical_phone_test": false
+}
