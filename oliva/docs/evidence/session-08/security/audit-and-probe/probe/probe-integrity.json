@@ -1,0 +1,41 @@
+{
+  "nativeExports": {
+    "android": {
+      "metadataAssetRefs": 146,
+      "missingAssetRefs": [],
+      "bundle": "/workspace/oliva-dependency-probe/dist-android/_expo/static/js/android/entry-e3e005c357f400aca3cb33705efa353e.js",
+      "bundleBytes": 10620493,
+      "bundleSyntaxExitCode": 0,
+      "a51NativeFilesInAssetmap": 98,
+      "exportedFiles": 149
+    },
+    "ios": {
+      "metadataAssetRefs": 143,
+      "missingAssetRefs": [],
+      "bundle": "/workspace/oliva-dependency-probe/dist-ios/_expo/static/js/ios/entry-75fd913b4717f390b89de050d693f8f0.js",
+      "bundleBytes": 10636934,
+      "bundleSyntaxExitCode": 0,
+      "a51NativeFilesInAssetmap": 98,
+      "exportedFiles": 146
+    }
+  },
+  "immutableArchiveComparison": {
+    "trackedFilesCompared": 727,
+    "changedFilesInProbe": [
+      "package-lock.json",
+      "package.json"
+    ],
+    "assetFilesCompared": 169,
+    "changedAssetFiles": []
+  },
+  "rootManifestsMatchBeforeProbe": {
+    "package.json": true,
+    "package-lock.json": true,
+    "app.json": true
+  },
+  "rootManifestHashesAfter": {
+    "package.json": "c7874c0a1c675ab7d51ed27c1003dea54b5a9aefd7f3ccd3683f1da051bc76ec",
+    "package-lock.json": "17062c6a2b3c2fcec6b37b9bebe3a379d8ed4bf25329a2a132094b9b39f0279c",
+    "app.json": "3f79f663bb9706454958b03fe614e57dfa63a5750f5fc6f5e3d3f4a0d8a4a237"
+  }
+}

@@ -1,0 +1,470 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/david-story.spec.ts",
+      "tests/e2e/offline-readiness.spec.ts"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/session-08/story-offline-targeted-fixed.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "david-story.spec.ts",
+      "file": "david-story.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "fünf Geschichten bewahren den Bestand; David öffnet exakt acht Verse und zählt nur nach ausdrücklicher Bestätigung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5730,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('story-artwork-david-before-goliath')\nExpected: \u001b[32m\"false\"\u001b[39m\nError: strict mode violation: getByTestId('story-artwork-david-before-goliath') resolved to 2 elements:\n    1) <div role=\"img\" aria-busy=\"false\" data-testid=\"story-artwork-david-before-goliath\" class=\"css-g5y9jx r-1pi2tsx r-2kxcpj r-u8s1d r-13qz1uu\" aria-label=\"Künstlerische Interpretation: David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen. Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.\">…</div> aka locator('main').filter({ hasText: 'Luther 1912 · vollständig' }).getByTestId('story-artwork-david-before-goliath')\n    2) <div role=\"img\" aria-busy=\"false\" data-testid=\"story-artwork-david-before-goliath\" class=\"css-g5y9jx r-1pi2tsx r-2kxcpj r-u8s1d r-13qz1uu\" aria-label=\"Künstlerische Interpretation: David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen. Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.\">…</div> aka getByRole('img', { name: 'Künstlerische Interpretation' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByTestId('story-artwork-david-before-goliath') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('story-artwork-david-before-goliath')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('story-artwork-david-before-goliath')\nExpected: \u001b[32m\"false\"\u001b[39m\nError: strict mode violation: getByTestId('story-artwork-david-before-goliath') resolved to 2 elements:\n    1) <div role=\"img\" aria-busy=\"false\" data-testid=\"story-artwork-david-before-goliath\" class=\"css-g5y9jx r-1pi2tsx r-2kxcpj r-u8s1d r-13qz1uu\" aria-label=\"Künstlerische Interpretation: David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen. Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.\">…</div> aka locator('main').filter({ hasText: 'Luther 1912 · vollständig' }).getByTestId('story-artwork-david-before-goliath')\n    2) <div role=\"img\" aria-busy=\"false\" data-testid=\"story-artwork-david-before-goliath\" class=\"css-g5y9jx r-1pi2tsx r-2kxcpj r-u8s1d r-13qz1uu\" aria-label=\"Künstlerische Interpretation: David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen. Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.\">…</div> aka getByRole('img', { name: 'Künstlerische Interpretation' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByTestId('story-artwork-david-before-goliath') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('story-artwork-david-before-goliath')\u001b[22m\n\n    at artworkReady (/workspace/faithpath-next/tests/e2e/david-story.spec.ts:25:57)\n    at /workspace/faithpath-next/tests/e2e/david-story.spec.ts:61:9",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/david-story.spec.ts",
+                      "column": 57,
+                      "line": 25
+                    },
+                    "snippet": " \u001b[90m 23 |\u001b[39m\n \u001b[90m 24 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m artworkReady(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m id \u001b[33m=\u001b[39m david) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m`story-artwork-${id}`\u001b[39m))\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-busy\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"false\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m`story-error-${id}`\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(() \u001b[33m=>\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m`story-image-${id}`\u001b[39m)\u001b[33m.\u001b[39mevaluate(node \u001b[33m=>\u001b[39m {\n \u001b[90m 28 |\u001b[39m     \u001b[36mconst\u001b[39m image \u001b[33m=\u001b[39m node \u001b[36minstanceof\u001b[39m \u001b[33mHTMLImageElement\u001b[39m \u001b[33m?\u001b[39m node \u001b[33m:\u001b[39m node\u001b[33m.\u001b[39mquerySelector(\u001b[32m\"img\"\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/david-story.spec.ts",
+                        "column": 57,
+                        "line": 25
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('story-artwork-david-before-goliath')\nExpected: \u001b[32m\"false\"\u001b[39m\nError: strict mode violation: getByTestId('story-artwork-david-before-goliath') resolved to 2 elements:\n    1) <div role=\"img\" aria-busy=\"false\" data-testid=\"story-artwork-david-before-goliath\" class=\"css-g5y9jx r-1pi2tsx r-2kxcpj r-u8s1d r-13qz1uu\" aria-label=\"Künstlerische Interpretation: David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen. Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.\">…</div> aka locator('main').filter({ hasText: 'Luther 1912 · vollständig' }).getByTestId('story-artwork-david-before-goliath')\n    2) <div role=\"img\" aria-busy=\"false\" data-testid=\"story-artwork-david-before-goliath\" class=\"css-g5y9jx r-1pi2tsx r-2kxcpj r-u8s1d r-13qz1uu\" aria-label=\"Künstlerische Interpretation: David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen. Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.\">…</div> aka getByRole('img', { name: 'Künstlerische Interpretation' })\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByTestId('story-artwork-david-before-goliath') with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('story-artwork-david-before-goliath')\u001b[22m\n\n\n  23 |\n  24 | async function artworkReady(page: Page, id = david) {\n> 25 |   await expect(page.getByTestId(`story-artwork-${id}`)).toHaveAttribute(\"aria-busy\", \"false\");\n     |                                                         ^\n  26 |   await expect(page.getByTestId(`story-error-${id}`)).toHaveCount(0);\n  27 |   await expect.poll(() => page.getByTestId(`story-image-${id}`).evaluate(node => {\n  28 |     const image = node instanceof HTMLImageElement ? node : node.querySelector(\"img\");\n    at artworkReady (/workspace/faithpath-next/tests/e2e/david-story.spec.ts:25:57)\n    at /workspace/faithpath-next/tests/e2e/david-story.spec.ts:61:9"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:00:04.784Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/test-results/david-story-fünf-Geschicht-d6e5a--ausdrücklicher-Bestätigung/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/david-story-fünf-Geschicht-d6e5a--ausdrücklicher-Bestätigung/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/david-story.spec.ts",
+                    "column": 57,
+                    "line": 25
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "abb8d51b500aabbae3cf-228e7fc86936111bf9d5",
+          "file": "david-story.spec.ts",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "das vollständige Offlinepaket öffnet David und alle bisherigen Bilder erstmals offline und nach Neustart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6205,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:00:11.519Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "abb8d51b500aabbae3cf-be1cff6c6b9ba1a6b7fa",
+          "file": "david-story.spec.ts",
+          "line": 76,
+          "column": 1
+        },
+        {
+          "title": "Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21067,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"dark\"\u001b[39m\nReceived: \u001b[31m\"light\"\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"dark\"\u001b[39m\nReceived: \u001b[31m\"light\"\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at /workspace/faithpath-next/tests/e2e/david-story.spec.ts:108:75",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/david-story.spec.ts",
+                      "column": 75,
+                      "line": 108
+                    },
+                    "snippet": " \u001b[90m 106 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 107 |\u001b[39m     \u001b[36mif\u001b[39m (\u001b[36mawait\u001b[39m toggle\u001b[33m.\u001b[39mcount()) \u001b[36mawait\u001b[39m toggle\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 108 |\u001b[39m     \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m (\u001b[36mawait\u001b[39m localData(page))\u001b[33m.\u001b[39msettings\u001b[33m.\u001b[39mtheme)\u001b[33m.\u001b[39mtoBe(theme)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 109 |\u001b[39m     \u001b[36mconst\u001b[39m before \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m rawData(page)\u001b[33m;\u001b[39m\n \u001b[90m 110 |\u001b[39m     \u001b[36mawait\u001b[39m openLibrary(page)\u001b[33m;\u001b[39m\n \u001b[90m 111 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m id \u001b[36mof\u001b[39m stories) \u001b[36mawait\u001b[39m artworkReady(page\u001b[33m,\u001b[39m id)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/david-story.spec.ts",
+                        "column": 75,
+                        "line": 108
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"dark\"\u001b[39m\nReceived: \u001b[31m\"light\"\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  106 |     });\n  107 |     if (await toggle.count()) await toggle.click();\n> 108 |     await expect.poll(async () => (await localData(page)).settings.theme).toBe(theme);\n      |                                                                           ^\n  109 |     const before = await rawData(page);\n  110 |     await openLibrary(page);\n  111 |     for (const id of stories) await artworkReady(page, id);\n    at /workspace/faithpath-next/tests/e2e/david-story.spec.ts:108:75"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:00:18.118Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/test-results/david-story-Geschichten-un-869cd-s-in-Hell-und-Dunkel-lesbar/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/david-story-Geschichten-un-869cd-s-in-Hell-und-Dunkel-lesbar/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/david-story.spec.ts",
+                    "column": 75,
+                    "line": 108
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "abb8d51b500aabbae3cf-3e520227fbc00c347409",
+          "file": "david-story.spec.ts",
+          "line": 96,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "echte Bildfehler ohne Service-Worker",
+          "file": "david-story.spec.ts",
+          "line": 136,
+          "column": 6,
+          "specs": [
+            {
+              "title": "drei ausgefallene Bildvarianten zeigen einen erreichbaren Wiederholungsbutton und laden danach wirklich",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4190,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-08T13:00:39.999Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "abb8d51b500aabbae3cf-914b12ec29739b88def7",
+              "file": "david-story.spec.ts",
+              "line": 138,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "offline-readiness.spec.ts",
+      "file": "offline-readiness.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11285,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:00:45.323Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "verified-transient-timeout",
+                      "contentType": "application/json",
+                      "body": "eyJ2ZXJpZmllZCI6eyJleHBlY3RlZCI6Im9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiLCJjb250cm9sbGVyIjp7ImlkIjoib2xpdmEtNTZmNmZlM2ExMmYwNWE1YyIsInZlcnNpb24iOiIwLjguMCJ9LCJjb250cm9sbGVyU3RhdGUiOiJhY3RpdmF0ZWQiLCJhY3RpdmUiOnsiaWQiOiJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIiwidmVyc2lvbiI6IjAuOC4wIn0sImNhY2hlcyI6WyJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIl19LCJvYnNlcnZhdGlvbiI6eyJyZW1haW5pbmciOjAsImRlbGF5TXMiOjExMDAsInJlcGxpZXMiOlt7ImlkIjoib2xpdmEtNTZmNmZlM2ExMmYwNWE1YyIsInZlcnNpb24iOiIwLjguMCJ9LHsiaWQiOiJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIiwidmVyc2lvbiI6IjAuOC4wIn1dLCJkZWxheWVkIjoxLCJkZWxpdmVyZWQiOjEsImNsb3NlZFJlY2VpdmluZ1BvcnRzIjoyLCJjbG9zZWRTZW5kaW5nUG9ydHMiOjIsIm9ubGluZUV2ZW50cyI6MCwiY29udHJvbGxlckNoYW5nZXMiOjB9LCJwcml2YXRlUmVjb3Jkc1VuY2hhbmdlZCI6dHJ1ZX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "42a019434bccf2d4c8fa-514297328af00d8943e2",
+          "file": "offline-readiness.spec.ts",
+          "line": 166,
+          "column": 1
+        },
+        {
+          "title": "wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:00:56.976Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "verified-finite-timeouts",
+                      "contentType": "application/json",
+                      "body": "eyJ2ZXJpZmllZCI6eyJleHBlY3RlZCI6Im9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiLCJjb250cm9sbGVyIjp7ImlkIjoib2xpdmEtNTZmNmZlM2ExMmYwNWE1YyIsInZlcnNpb24iOiIwLjguMCJ9LCJjb250cm9sbGVyU3RhdGUiOiJhY3RpdmF0ZWQiLCJhY3RpdmUiOnsiaWQiOiJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIiwidmVyc2lvbiI6IjAuOC4wIn0sImNhY2hlcyI6WyJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIl19LCJxdWlldCI6eyJyZW1haW5pbmciOi0xLCJkZWxheU1zIjoxMTAwLCJyZXBsaWVzIjpbeyJpZCI6Im9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiLCJ2ZXJzaW9uIjoiMC44LjAifSx7ImlkIjoib2xpdmEtNTZmNmZlM2ExMmYwNWE1YyIsInZlcnNpb24iOiIwLjguMCJ9LHsiaWQiOiJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIiwidmVyc2lvbiI6IjAuOC4wIn0seyJpZCI6Im9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiLCJ2ZXJzaW9uIjoiMC44LjAifV0sImRlbGF5ZWQiOjQsImRlbGl2ZXJlZCI6NCwiY2xvc2VkUmVjZWl2aW5nUG9ydHMiOjQsImNsb3NlZFNlbmRpbmdQb3J0cyI6NCwib25saW5lRXZlbnRzIjowLCJjb250cm9sbGVyQ2hhbmdlcyI6MH0sInByaXZhdGVSZWNvcmRzVW5jaGFuZ2VkIjp0cnVlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "42a019434bccf2d4c8fa-5e6fade12eb0e064de6b",
+          "file": "offline-readiness.spec.ts",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "eine ältere echte Antwort überschreibt keinen neueren Buildkonflikt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4433,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:01:15.326Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "verified-stale-reply-guard",
+                      "contentType": "application/json",
+                      "body": "eyJhY3R1YWwiOnsiZXhwZWN0ZWQiOiJvbGl2YS1uZXdlci1kb2N1bWVudC1yZXF1aXJlZCIsImNvbnRyb2xsZXIiOnsiaWQiOiJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIiwidmVyc2lvbiI6IjAuOC4wIn0sImNvbnRyb2xsZXJTdGF0ZSI6ImFjdGl2YXRlZCIsImFjdGl2ZSI6eyJpZCI6Im9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiLCJ2ZXJzaW9uIjoiMC44LjAifSwiY2FjaGVzIjpbIm9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiXX0sIm9ic2VydmF0aW9uIjp7InJlbWFpbmluZyI6MCwiZGVsYXlNcyI6NTAwLCJyZXBsaWVzIjpbeyJpZCI6Im9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiLCJ2ZXJzaW9uIjoiMC44LjAifSx7ImlkIjoib2xpdmEtNTZmNmZlM2ExMmYwNWE1YyIsInZlcnNpb24iOiIwLjguMCJ9XSwiZGVsYXllZCI6MSwiZGVsaXZlcmVkIjoxLCJjbG9zZWRSZWNlaXZpbmdQb3J0cyI6MiwiY2xvc2VkU2VuZGluZ1BvcnRzIjoyLCJvbmxpbmVFdmVudHMiOjEsImNvbnRyb2xsZXJDaGFuZ2VzIjowfSwicHJpdmF0ZVJlY29yZHNVbmNoYW5nZWQiOnRydWV9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "42a019434bccf2d4c8fa-faff8591f3137526708e",
+          "file": "offline-readiness.spec.ts",
+          "line": 214,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-08T13:00:03.736Z",
+    "duration": 76175.617,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

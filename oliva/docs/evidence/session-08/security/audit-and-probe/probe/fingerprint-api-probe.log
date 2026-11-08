@@ -1,0 +1,8 @@
+PASS real project default fingerprint and deterministic repetition
+PASS old dependency APIs and candidate produce identical real project fingerprint
+PASS fingerprint directory hashing honors ignores and included-file changes
+PASS Expo fingerprint exact dot, extglob, ignore and negation matcher contracts
+PASS glob async, sync and stream API return identical extglob and dot matches
+PASS documented minimatch10 to11 edge changes are explicit
+PASS bounded glob and globStream AbortSignal regressions stop further directory reads
+{"passed":7,"failed":0,"reportPath":"/workspace/oliva-security-audit/reports/dependencies-0.8/probe/fingerprint-api-probe-results.json"}

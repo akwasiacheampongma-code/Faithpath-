@@ -312,6 +312,44 @@
           "sha256": "7c4309b24483064048b68d073e2b983dbf3b5a1390905e7c5d144f14c685be21"
         }
       ]
+    },
+    {
+      "id": "david-before-goliath",
+      "book": "1SA",
+      "chapter": 17,
+      "scene": "David geht Goliath vor dem Schleuderwurf entgegen; ruhige künstlerische Interpretation.",
+      "generator": "OpenAI image_gen tool",
+      "generated_on": "2026-11-07",
+      "prompt_version": "oliva-cinema-v1-david-before-goliath-01",
+      "style_version": "oliva-cinema-v1",
+      "master": "art/biblical-next/masters/david-before-goliath.png",
+      "master_sha256": "aec9c5366147142b052ad66098a59be607abc72c0e3a6da5e12035f58b052452",
+      "prompt_record": "art/biblical-next/david-before-goliath.json",
+      "license_status": "Generated for this project under provider terms; public product-release rights review pending. GitHub source backup authorized 2026-11-08.",
+      "approval": {
+        "visual_pilot": "Original and derivative inspected internally; local Chromium runtime screenshots at 320/390/1440 CSS px, light/dark, reviewed 2026-11-08. Not a physical-device or independent specialist review.",
+        "historical": "pending specialist review",
+        "theological": "pending specialist review",
+        "public_release": "not approved",
+        "github_source_backup": "explicitly authorized by project instruction 2026-11-08"
+      },
+      "variants": [
+        {
+          "file": "assets/images/david-before-goliath-640.webp",
+          "bytes": 62648,
+          "sha256": "58481a9761d1ad0b8b773994342b26dd076227e4f524d48edeb4fa609a854591"
+        },
+        {
+          "file": "assets/images/david-before-goliath-1024.webp",
+          "bytes": 154442,
+          "sha256": "c137f0fa77a268b311cb20a7802ced00946cf4ca15c4285521487db5199b3a8d"
+        },
+        {
+          "file": "assets/images/david-before-goliath-1280.webp",
+          "bytes": 231848,
+          "sha256": "7bd0f9fc480b21a9c96b384ee48e167061019317b334ca24c3385b398baceeef"
+        }
+      ]
     }
   ]
 }

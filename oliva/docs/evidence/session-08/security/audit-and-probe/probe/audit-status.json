@@ -1,0 +1,17 @@
+{
+  "name": "audit",
+  "command": [
+    "npm",
+    "audit",
+    "--json",
+    "--registry",
+    "https://registry.npmjs.org",
+    "--cache",
+    "/tmp/oliva-npm-probe-cache"
+  ],
+  "cwd": "/workspace/oliva-dependency-probe",
+  "startedAtUtc": "2026-11-08T08:32:13.020262+00:00",
+  "durationSeconds": 0.989,
+  "exitCode": 0,
+  "log": "/workspace/oliva-security-audit/reports/dependencies-0.8/probe/audit.log"
+}

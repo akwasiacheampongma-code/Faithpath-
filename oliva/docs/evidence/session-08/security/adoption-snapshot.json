@@ -1,0 +1,48 @@
+{
+  "capturedAtUtc": "2026-11-08T08:56:00.563773+00:00",
+  "packageVersion": "0.8.0",
+  "overrides": {
+    "@expo/cli": {
+      "glob": "14.0.4"
+    },
+    "@expo/fingerprint": {
+      "glob": "14.0.4",
+      "minimatch": "11.0.5"
+    }
+  },
+  "manifestSha256": {
+    "package.json": "0a8a8135aa26f01d8e359394bc2f0304acce4b21dfda97b465921bf83e467eb6",
+    "package-lock.json": "2da33321e5b41690e69a0d6671f98c2b2dde1119cceb3e6b2e63fb705cfe9705"
+  },
+  "resolvedPackages": {
+    "node_modules/@isaacs/nonrecursive-glob-match": "1.1.0",
+    "node_modules/glob": "14.0.4",
+    "node_modules/minimatch": "11.0.5",
+    "node_modules/path-scurry": "3.0.0"
+  },
+  "currentAuditEvidence": "../dependency-audit-after.json",
+  "currentAuditSha256": "1ac93a0244d14197a57a329c9bdde55cac94b166c6651d4d9a385d1398332197",
+  "currentAuditMetadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 534,
+      "dev": 44,
+      "optional": 39,
+      "peer": 39,
+      "peerOptional": 0,
+      "total": 618
+    }
+  },
+  "limits": [
+    "Current source installation and npm audit performed by root; this record only reads and hashes that result.",
+    "Isolated probe used immutable 0.7 source f0e8db6b2847d5bfc8361e8f617b8caf0c860787.",
+    "Final current-0.8 browser, offline, export and remote-CI results are separate evidence; no completion claimed here."
+  ]
+}

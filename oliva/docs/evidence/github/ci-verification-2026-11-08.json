@@ -1,0 +1,354 @@
+{
+  "repository": "akwasiacheampongma-code/Faithpath-",
+  "checked_at": "2026-11-08T08:13:27.076899+00:00",
+  "workflow": ".github/workflows/oliva-quality.yml",
+  "versions": [
+    {
+      "version": "0.5.0",
+      "run": {
+        "conclusion": "failure",
+        "createdAt": "2026-11-08T08:05:32Z",
+        "databaseId": 42461436132,
+        "event": "workflow_dispatch",
+        "headBranch": "feature/oliva-v05-a51-20261108",
+        "headSha": "76ae5ec49a03cd670925a75893c67cbb228bf9d1",
+        "status": "completed",
+        "updatedAt": "2026-11-08T08:11:47Z",
+        "url": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42461436132"
+      },
+      "expected_commit": "76ae5ec49a03cd670925a75893c67cbb228bf9d1",
+      "head_matches_mirror": true,
+      "zip": "/workspace/oliva-github-ci/42461436132/quality-artifact.zip",
+      "zip_sha256": "a1ced94b9e510af83cd24aba45576fd872328cde056d44ef08d8d7f8fe910257",
+      "artifact_id": 13610425953,
+      "artifact_digest_matches": true,
+      "artifact_head_matches_mirror": true,
+      "quality_verified": false,
+      "zip_members": [
+        "docs/evidence/unit-results.json",
+        "docs/evidence/e2e-results.json",
+        "test-results/a51-tree-alle-sieben-Origi-974dc-en-keine-persönlichen-Daten/error-context.md",
+        "test-results/captures-zwei-Versentwürfe-c3b4d-r-die-Übersicht-fortgesetzt/error-context.md"
+      ],
+      "evidence": [
+        {
+          "file": "/workspace/oliva-github-ci/42461436132/artifact/docs/evidence/e2e-results.json",
+          "sha256": "a030dfdf5801515eecb79bb6c72f78d2b9ac52b59f125d1a4644483d4957b1c0",
+          "kind": "browser",
+          "start_time": "2026-11-08T08:06:55.264000+00:00",
+          "fresh_for_run": true,
+          "stats": {
+            "startTime": "2026-11-08T08:06:55.264Z",
+            "duration": 287001.59,
+            "expected": 43,
+            "skipped": 0,
+            "unexpected": 2,
+            "flaky": 0
+          },
+          "total_tests": 45,
+          "test_statuses": {
+            "unexpected": 2,
+            "expected": 43
+          },
+          "result_statuses": {
+            "failed": 2,
+            "passed": 43
+          },
+          "failures": [
+            {
+              "title": "alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten",
+              "file": "a51-tree.spec.ts",
+              "errors": [
+                [
+                  {
+                    "location": {
+                      "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/a51-tree.spec.ts",
+                      "column": 81,
+                      "line": 94
+                    },
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Für den Offline-Neustart bereit.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Für den Offline-Neustart bereit.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Für den Offline-Neustart bereit.', { exact: true })\u001b[22m\n\n\n  92 |   expect(await rawData(page)).toEqual(darkBefore);\n  93 |   await page.getByRole(\"button\",{name:\"Zurück zu deinem Baum\",exact:true}).click();await ready(page,0);\n> 94 |   await expect(page.getByText(\"Für den Offline-Neustart bereit.\",{exact:true})).toBeVisible();\n     |                                                                                 ^\n  95 |   await context.setOffline(true);await page.reload();await ready(page,0);\n  96 |   for(const stage of A51_STAGES) {await page.getByRole(\"button\",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);}\n  97 |   expect(await rawData(page)).toEqual(darkBefore);\n    at /home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/a51-tree.spec.ts:94:81"
+                  }
+                ]
+              ]
+            },
+            {
+              "title": "zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt",
+              "file": "captures.spec.ts",
+              "errors": [
+                [
+                  {
+                    "location": {
+                      "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/captures.spec.ts",
+                      "column": 18,
+                      "line": 89
+                    },
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m200\u001b[39m\nReceived:   \u001b[31m6379\u001b[39m\n\n  87 |   expect(box).not.toBeNull();\n  88 |   expect(box!.y).toBeGreaterThanOrEqual(0);\n> 89 |   expect(box!.y).toBeLessThan(200);\n     |                  ^\n  90 |   await page\n  91 |     .getByRole(\"button\", { name: \"Notiz speichern\", exact: true })\n  92 |     .click();\n    at /home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/captures.spec.ts:89:18"
+                  }
+                ]
+              ]
+            }
+          ],
+          "errors": []
+        },
+        {
+          "file": "/workspace/oliva-github-ci/42461436132/artifact/docs/evidence/unit-results.json",
+          "sha256": "240f09c08ebc2837397766aa068b03b7bd91cb0182b00a7d9fae9a1aff8e51a3",
+          "kind": "unit",
+          "start_time": "2026-11-08T08:06:09.653000+00:00",
+          "fresh_for_run": true,
+          "success": true,
+          "total": 72,
+          "passed": 72,
+          "failed": 0,
+          "pending": 0,
+          "failures": []
+        }
+      ],
+      "verified_at": "2026-11-08T08:12:35.538990+00:00"
+    },
+    {
+      "version": "0.6.0",
+      "run": {
+        "conclusion": "success",
+        "createdAt": "2026-11-08T08:05:34Z",
+        "databaseId": 42461438369,
+        "event": "workflow_dispatch",
+        "headBranch": "feature/oliva-v06-book-identities-20261108",
+        "headSha": "b1c3cb608047f67856e24ec7bb1f4935e27f0f5f",
+        "status": "completed",
+        "updatedAt": "2026-11-08T08:11:06Z",
+        "url": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42461438369"
+      },
+      "expected_commit": "b1c3cb608047f67856e24ec7bb1f4935e27f0f5f",
+      "head_matches_mirror": true,
+      "zip": "/workspace/oliva-github-ci/42461438369/quality-artifact.zip",
+      "zip_sha256": "40ed2c944787b31ccdf2ac6f1cb993669c253f9f27ae0dd1cc07097225f3d646",
+      "artifact_id": 13609682229,
+      "artifact_digest_matches": true,
+      "artifact_head_matches_mirror": true,
+      "quality_verified": true,
+      "zip_members": [
+        "docs/evidence/unit-results.json",
+        "docs/evidence/e2e-results.json"
+      ],
+      "evidence": [
+        {
+          "file": "/workspace/oliva-github-ci/42461438369/artifact/docs/evidence/e2e-results.json",
+          "sha256": "22a6fe5319cffa75bef7bda4359c7903c712016a38d9ecc5734136d1c7a15667",
+          "kind": "browser",
+          "start_time": "2026-11-08T08:06:33.716000+00:00",
+          "fresh_for_run": true,
+          "stats": {
+            "startTime": "2026-11-08T08:06:33.716Z",
+            "duration": 266425.876,
+            "expected": 52,
+            "skipped": 0,
+            "unexpected": 0,
+            "flaky": 0
+          },
+          "total_tests": 52,
+          "test_statuses": {
+            "expected": 52
+          },
+          "result_statuses": {
+            "passed": 52
+          },
+          "failures": [],
+          "errors": []
+        },
+        {
+          "file": "/workspace/oliva-github-ci/42461438369/artifact/docs/evidence/unit-results.json",
+          "sha256": "9477a40a3d3ac8f471a5a1acd7eb01ad68c2cc120594478a75786334727e597d",
+          "kind": "unit",
+          "start_time": "2026-11-08T08:06:03.191000+00:00",
+          "fresh_for_run": true,
+          "success": true,
+          "total": 75,
+          "passed": 75,
+          "failed": 0,
+          "pending": 0,
+          "failures": []
+        }
+      ],
+      "verified_at": "2026-11-08T08:11:58.252048+00:00"
+    },
+    {
+      "version": "0.7.0",
+      "run": {
+        "conclusion": "success",
+        "createdAt": "2026-11-08T08:01:10Z",
+        "databaseId": 42461122842,
+        "event": "push",
+        "headBranch": "feature/oliva-v07-review-history-20261108",
+        "headSha": "a4c266ddc33e2b8041e2f8608cfdf84292c98cb2",
+        "status": "completed",
+        "updatedAt": "2026-11-08T08:07:09Z",
+        "url": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42461122842"
+      },
+      "expected_commit": "a4c266ddc33e2b8041e2f8608cfdf84292c98cb2",
+      "head_matches_mirror": true,
+      "zip": "/workspace/oliva-github-ci/42461122842/quality-artifact.zip",
+      "zip_sha256": "1084cd2fa8c0ff4af2cd4399e9db850851fe0a946d51d1129da7a76123740ff8",
+      "artifact_id": 13610395452,
+      "artifact_digest_matches": true,
+      "artifact_head_matches_mirror": true,
+      "quality_verified": true,
+      "zip_members": [
+        "docs/evidence/latest/a51/screens/after-oliva-2-dark-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-1-dark-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-2-light-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-1-light-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-3-dark-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-3-light-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-4-dark-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-4-light-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-5-dark-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-5-light-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-6-dark-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-6-light-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-7-dark-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-7-light-390.png",
+        "docs/evidence/latest/a51/screens/after-oliva-7-retina3.png",
+        "docs/evidence/latest/a51/screens/after-tree-1.png",
+        "docs/evidence/latest/a51/screens/after-tree-3.png",
+        "docs/evidence/latest/a51/screens/after-tree-4.png",
+        "docs/evidence/latest/a51/screens/after-tree-5.png",
+        "docs/evidence/latest/a51/screens/after-tree-2.png",
+        "docs/evidence/latest/a51/screens/after-tree-6.png",
+        "docs/evidence/latest/a51/screens/after-tree-7.png",
+        "docs/evidence/latest/a51/screens/before-a51-1.png",
+        "docs/evidence/latest/a51/screens/before-a51-2.png",
+        "docs/evidence/latest/a51/screens/before-a51-3.png",
+        "docs/evidence/latest/a51/screens/before-a51-4.png",
+        "docs/evidence/latest/a51/screens/before-a51-5.png",
+        "docs/evidence/latest/a51/screens/before-a51-6.png",
+        "docs/evidence/latest/a51/screens/before-a51-7.png",
+        "docs/evidence/latest/a51/screens/hub-tree-desktop.png",
+        "docs/evidence/latest/a51-asset-integrity.json",
+        "docs/evidence/latest/e2e-results.json",
+        "docs/evidence/latest/a51/screens/hub-tree-mobile.png",
+        "docs/evidence/latest/reader-anchor-synchronization.json",
+        "docs/evidence/latest/screens/review-delete-mobile.png",
+        "docs/evidence/latest/screens/review-edit-desktop.png",
+        "docs/evidence/latest/screens/review-edit-mobile-dark.png",
+        "docs/evidence/latest/screens/review-edit-mobile-light.png",
+        "docs/evidence/latest/swords/screens/john-0-of-21-dark-390.png",
+        "docs/evidence/latest/swords/screens/john-0-of-21-light-390.png",
+        "docs/evidence/latest/swords/screens/john-1-of-21-dark-390.png",
+        "docs/evidence/latest/swords/screens/john-1-of-21-light-390.png",
+        "docs/evidence/latest/swords/screens/john-11-of-21-dark-390.png",
+        "docs/evidence/latest/swords/screens/john-11-of-21-light-390.png",
+        "docs/evidence/latest/swords/screens/john-21-of-21-dark-1440.png",
+        "docs/evidence/latest/swords/screens/john-21-of-21-dark-320.png",
+        "docs/evidence/latest/swords/screens/john-21-of-21-dark-390.png",
+        "docs/evidence/latest/swords/screens/john-21-of-21-light-1440.png",
+        "docs/evidence/latest/swords/screens/john-21-of-21-light-320.png",
+        "docs/evidence/latest/swords/screens/john-21-of-21-light-390.png",
+        "docs/evidence/latest/swords/screens/john-art-0-dark.png",
+        "docs/evidence/latest/swords/screens/john-art-0-light.png",
+        "docs/evidence/latest/swords/screens/john-art-1-dark.png",
+        "docs/evidence/latest/swords/screens/john-art-1-light.png",
+        "docs/evidence/latest/swords/screens/john-art-11-light.png",
+        "docs/evidence/latest/swords/screens/john-art-11-dark.png",
+        "docs/evidence/latest/swords/screens/john-art-21-dark.png",
+        "docs/evidence/latest/swords/screens/john-art-21-light.png",
+        "docs/evidence/latest/unit-results.json"
+      ],
+      "evidence": [
+        {
+          "file": "/workspace/oliva-github-ci/42461122842/artifact/docs/evidence/latest/e2e-results.json",
+          "sha256": "fb74e40f863b94f7ced901dbab3285b328e1857bd74b8ec261bb5ccfacc6ce57",
+          "kind": "browser",
+          "start_time": "2026-11-08T08:02:11.538000+00:00",
+          "fresh_for_run": true,
+          "stats": {
+            "startTime": "2026-11-08T08:02:11.538Z",
+            "duration": 291324.00299999997,
+            "expected": 59,
+            "skipped": 0,
+            "unexpected": 0,
+            "flaky": 0
+          },
+          "total_tests": 59,
+          "test_statuses": {
+            "expected": 59
+          },
+          "result_statuses": {
+            "passed": 59
+          },
+          "failures": [],
+          "errors": []
+        },
+        {
+          "file": "/workspace/oliva-github-ci/42461122842/artifact/docs/evidence/latest/unit-results.json",
+          "sha256": "801184b216dd9cf2b9843b448d62133843096b64d9310587c2e8f0128d0de233",
+          "kind": "unit",
+          "start_time": "2026-11-08T08:01:40.191000+00:00",
+          "fresh_for_run": true,
+          "success": true,
+          "total": 116,
+          "passed": 116,
+          "failed": 0,
+          "pending": 0,
+          "failures": []
+        }
+      ],
+      "verified_at": "2026-11-08T08:08:54.763311+00:00"
+    }
+  ],
+  "remote_refs": {
+    "checked_at": "2026-11-08T08:09:06.609539+00:00",
+    "checks": {
+      "refs/heads/feature/oliva-next-v02-20261106": {
+        "expected": "df6d2f96c2116a817ca2f63bf6bd00c97925b674",
+        "actual": "df6d2f96c2116a817ca2f63bf6bd00c97925b674",
+        "matches": true
+      },
+      "refs/heads/feature/oliva-v05-a51-20261108": {
+        "expected": "76ae5ec49a03cd670925a75893c67cbb228bf9d1",
+        "actual": "76ae5ec49a03cd670925a75893c67cbb228bf9d1",
+        "matches": true
+      },
+      "refs/heads/feature/oliva-v06-book-identities-20261108": {
+        "expected": "b1c3cb608047f67856e24ec7bb1f4935e27f0f5f",
+        "actual": "b1c3cb608047f67856e24ec7bb1f4935e27f0f5f",
+        "matches": true
+      },
+      "refs/heads/feature/oliva-v07-review-history-20261108": {
+        "expected": "a4c266ddc33e2b8041e2f8608cfdf84292c98cb2",
+        "actual": "a4c266ddc33e2b8041e2f8608cfdf84292c98cb2",
+        "matches": true
+      },
+      "refs/heads/main": {
+        "expected": "d3f0c01adc8f1a67da79e4f0b4cbe5d99ca895b3",
+        "actual": "d3f0c01adc8f1a67da79e4f0b4cbe5d99ca895b3",
+        "matches": true
+      },
+      "refs/tags/oliva-v0.5.0": {
+        "expected": "50ffa72ce940eadb82cc5597560bc8028224d639",
+        "actual": "50ffa72ce940eadb82cc5597560bc8028224d639",
+        "matches": true
+      },
+      "refs/tags/oliva-v0.6.0": {
+        "expected": "328297ddf6922bdd06b443abfaed6a413c28f855",
+        "actual": "328297ddf6922bdd06b443abfaed6a413c28f855",
+        "matches": true
+      },
+      "refs/tags/oliva-v0.7.0": {
+        "expected": "33aea5417516fb9721379a4caaeb570c0f6fd201",
+        "actual": "33aea5417516fb9721379a4caaeb570c0f6fd201",
+        "matches": true
+      }
+    },
+    "all_match": true
+  },
+  "all_run_heads_match": true,
+  "all_artifact_digests_match": true,
+  "all_ci_green": false,
+  "source_or_ref_changes_by_verification": false,
+  "deployments_by_verification": false,
+  "workflow_dispatches": [
+    42461436132,
+    42461438369
+  ]
+}

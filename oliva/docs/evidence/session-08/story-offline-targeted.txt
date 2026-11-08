@@ -1,0 +1,27 @@
+
+> oliva-faith-companion@0.8.0 test:e2e
+> playwright test tests/e2e/david-story.spec.ts tests/e2e/offline-readiness.spec.ts
+
+SyntaxError: /workspace/faithpath-next/tests/e2e/david-story.spec.ts: Unexpected token, expected "," (102:87)
+
+   at david-story.spec.ts:102
+
+  100 |   await savedProfile(page);
+  101 |   await page.emulateMedia({ reducedMotion: "reduce" });
+> 102 |   for (const [width, theme] of [[320, "light"], [390, "dark"], [1440, "light"] as const) {
+      |                                                                                        ^
+  103 |     await page.setViewportSize({ width, height: width === 320 ? 568 : 1000 });
+  104 |     await page.goto("/einstellungen");
+  105 |     const toggle = page.getByRole("button", {
+    at eval (<anonymous>:1:1)
+TypeError: Module "file:///workspace/faithpath-next/app.json" needs an import attribute of "type: json"
+    at eval (<anonymous>:1:1)
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

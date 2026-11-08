@@ -1,0 +1,364 @@
+{
+  "hash": "2fcfdb0604c9404081d557045f9426ceafb46cc5",
+  "sources": [
+    {
+      "type": "file",
+      "filePath": ".gitignore",
+      "reasons": [
+        "bareGitIgnore"
+      ],
+      "hash": "a6d3d720f8563fa1c7f4fa1a8fd9f10e28245e7d"
+    },
+    {
+      "type": "contents",
+      "id": "expoAutolinkingConfig:android",
+      "reasons": [
+        "expoAutolinkingAndroid"
+      ],
+      "hash": "4aff5bc07cb3801ea977e2f48047c59761ee9060",
+      "contentsSha256": "58533befeb573fa9f171e5fe5828eb21acae1ed8b53bab629dc928c6a6f7d357"
+    },
+    {
+      "type": "contents",
+      "id": "expoAutolinkingConfig:ios",
+      "reasons": [
+        "expoAutolinkingIos"
+      ],
+      "hash": "1c7697f10600395a890bc572ddd2e96c334c0bc1",
+      "contentsSha256": "dbaced8c64266dd8706106b002eb6606b8bcb9a42a9348c7a70e8c1e40d0c50a"
+    },
+    {
+      "type": "contents",
+      "id": "expoConfig",
+      "reasons": [
+        "expoConfig"
+      ],
+      "hash": "f2ac7de6aa039ceff961b2f6bcb8d050aec33660",
+      "contentsSha256": "e54a3a0a48d58ef1245766ed24647a8c64ab82d9936c9c54322f6a278b16d5a7"
+    },
+    {
+      "type": "contents",
+      "id": "packageJson:scripts",
+      "reasons": [
+        "packageJson:scripts"
+      ],
+      "hash": "de35f6280d09501d5d5eadcc88ad4b43c7bb4432",
+      "contentsSha256": "40d7661ad776f3379873beb7aa935a34928b3b4d8ee70e9cc6daadeb8033a728"
+    },
+    {
+      "type": "contents",
+      "id": "rncoreAutolinkingConfig:android",
+      "reasons": [
+        "rncoreAutolinkingAndroid"
+      ],
+      "hash": "5a66fc9d056bd2eab7ae5b24801c6a095c282158",
+      "contentsSha256": "bd14c0c028545751e31f3e404dda30215da22e6fa296e296609251cd6780c274"
+    },
+    {
+      "type": "contents",
+      "id": "rncoreAutolinkingConfig:ios",
+      "reasons": [
+        "rncoreAutolinkingIos"
+      ],
+      "hash": "5bc79832e2a0532fb7408fabf417399015e0ae7d",
+      "contentsSha256": "e6dbb06303cd4e5578ecff3351fd42b0bedf1918d2285788bbefc974ade13403"
+    },
+    {
+      "type": "package",
+      "name": "@expo/dom-webview",
+      "version": "58.0.2",
+      "filePath": "node_modules/@expo/dom-webview/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "592df346659d7102a9998e7b5c8508f6dab74bf3"
+    },
+    {
+      "type": "package",
+      "name": "@expo/log-box",
+      "version": "58.0.15",
+      "filePath": "node_modules/@expo/log-box/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "7a829699d9363b31a6e475706b30fe66b2076279"
+    },
+    {
+      "type": "package",
+      "name": "@react-native-masked-view/masked-view",
+      "version": "0.3.2",
+      "filePath": "node_modules/@react-native-masked-view/masked-view/package.json",
+      "reasons": [
+        "rncoreAutolinkingAndroid",
+        "rncoreAutolinkingIos"
+      ],
+      "hash": "ba16984526fb4c6315b1da5b3907fca3eaf9d6ae"
+    },
+    {
+      "type": "package",
+      "name": "expo-asset",
+      "version": "58.0.20",
+      "filePath": "node_modules/expo-asset/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "b0f751f341969fb99d921d1dba9e49af711007a8"
+    },
+    {
+      "type": "package",
+      "name": "expo-constants",
+      "version": "58.0.15",
+      "filePath": "node_modules/expo-constants/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "1d1b62a21b1b5f0d317cef6f887ffa671ab2da06"
+    },
+    {
+      "type": "package",
+      "name": "expo-document-picker",
+      "version": "58.0.4",
+      "filePath": "node_modules/expo-document-picker/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "16871471866b8cccc7139c5c5efe5a6e39c3e261"
+    },
+    {
+      "type": "package",
+      "name": "expo-file-system",
+      "version": "58.0.13",
+      "filePath": "node_modules/expo-file-system/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "92746762041490dfbf50df3885c2bd3d708e7742"
+    },
+    {
+      "type": "package",
+      "name": "expo-font",
+      "version": "58.0.11",
+      "filePath": "node_modules/expo-font/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos",
+        "expoConfigPlugins",
+        "expoConfigPlugins",
+        "expoConfigPlugins",
+        "expoConfigPlugins",
+        "expoConfigPlugins"
+      ],
+      "hash": "323576f6a9fff2f2c75bc1643d0e16fcc21a0d9f"
+    },
+    {
+      "type": "package",
+      "name": "expo-glass-effect",
+      "version": "58.0.5",
+      "filePath": "node_modules/expo-glass-effect/package.json",
+      "reasons": [
+        "expoAutolinkingIos"
+      ],
+      "hash": "ef42f66beb2eeec63174cb17ce550899f3e66057"
+    },
+    {
+      "type": "package",
+      "name": "expo-keep-awake",
+      "version": "58.0.3",
+      "filePath": "node_modules/expo/node_modules/expo-keep-awake/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "f5655fc825abad20baafddc92b34ac0dbf844538"
+    },
+    {
+      "type": "package",
+      "name": "expo-linear-gradient",
+      "version": "58.0.3",
+      "filePath": "node_modules/expo-linear-gradient/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "034348b80fe511f32ccf5d00848c854607d22d5b"
+    },
+    {
+      "type": "package",
+      "name": "expo-linking",
+      "version": "58.0.16",
+      "filePath": "node_modules/expo-linking/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "ad6c5fde3e97cf1d2794677bc78abd61c92e5093"
+    },
+    {
+      "type": "package",
+      "name": "expo-modules-core",
+      "version": "58.0.30",
+      "filePath": "node_modules/expo-modules-core/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos",
+        "expoAutolinkingIos"
+      ],
+      "hash": "5c3f204421b9110c809f356925abe7a68748f5a0"
+    },
+    {
+      "type": "package",
+      "name": "expo-modules-jsi",
+      "version": "58.0.22",
+      "filePath": "node_modules/expo-modules-jsi/package.json",
+      "reasons": [
+        "expoAutolinkingIos"
+      ],
+      "hash": "c9f87dece8f7bd8d7b33cf3d7856ba8a2bd0a431"
+    },
+    {
+      "type": "package",
+      "name": "expo-router",
+      "version": "58.0.30",
+      "filePath": "node_modules/expo-router/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos",
+        "expoConfigPlugins",
+        "expoConfigPlugins"
+      ],
+      "hash": "4dccd5a7c5940f2654ca81c70863dc02ee878e11"
+    },
+    {
+      "type": "package",
+      "name": "expo-sharing",
+      "version": "58.0.22",
+      "filePath": "node_modules/expo-sharing/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "e397c7c0f5c556343a247f2bfb8cbee958c64a07"
+    },
+    {
+      "type": "package",
+      "name": "expo-sqlite",
+      "version": "58.0.15",
+      "filePath": "node_modules/expo-sqlite/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos",
+        "expoConfigPlugins",
+        "expoConfigPlugins"
+      ],
+      "hash": "83f8a830a1ae28a54dba5f2f81beeaf3f848864f"
+    },
+    {
+      "type": "package",
+      "name": "expo-status-bar",
+      "version": "58.0.4",
+      "filePath": "node_modules/expo-status-bar/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos"
+      ],
+      "hash": "a38cc2ba1a472786ec55c06d8817def71d54aeb5"
+    },
+    {
+      "type": "package",
+      "name": "expo",
+      "version": "58.0.23",
+      "filePath": "node_modules/expo/package.json",
+      "reasons": [
+        "expoAutolinkingAndroid",
+        "expoAutolinkingIos",
+        "expoConfigPlugins",
+        "rncoreAutolinkingAndroid",
+        "rncoreAutolinkingIos"
+      ],
+      "hash": "2e91af526900327b760f02e9d48e39b724351a40"
+    },
+    {
+      "type": "package",
+      "name": "react-native-gesture-handler",
+      "version": "3.5.0",
+      "filePath": "node_modules/react-native-gesture-handler/package.json",
+      "reasons": [
+        "rncoreAutolinkingAndroid",
+        "rncoreAutolinkingIos"
+      ],
+      "hash": "cb271961082b41726fba50c446dba8e1fb708eef"
+    },
+    {
+      "type": "package",
+      "name": "react-native-reanimated",
+      "version": "4.7.1",
+      "filePath": "node_modules/react-native-reanimated/package.json",
+      "reasons": [
+        "rncoreAutolinkingAndroid",
+        "rncoreAutolinkingIos"
+      ],
+      "hash": "6699bc04bbc9772c6d34f40ffd8ee3bbbe426a93"
+    },
+    {
+      "type": "package",
+      "name": "react-native-safe-area-context",
+      "version": "5.11.1",
+      "filePath": "node_modules/react-native-safe-area-context/package.json",
+      "reasons": [
+        "rncoreAutolinkingAndroid",
+        "rncoreAutolinkingIos"
+      ],
+      "hash": "6c05bedb1a8de43ae99ee3b3ec8d756c1d8a943b"
+    },
+    {
+      "type": "package",
+      "name": "react-native-screens",
+      "version": "4.30.1",
+      "filePath": "node_modules/react-native-screens/package.json",
+      "reasons": [
+        "rncoreAutolinkingAndroid",
+        "rncoreAutolinkingIos"
+      ],
+      "hash": "c08499bd5fce3186fd0044cbf64a5fcedc0a8085"
+    },
+    {
+      "type": "package",
+      "name": "react-native-svg",
+      "version": "15.16.0",
+      "filePath": "node_modules/react-native-svg/package.json",
+      "reasons": [
+        "rncoreAutolinkingAndroid",
+        "rncoreAutolinkingIos"
+      ],
+      "hash": "cfc51f5633731580cb19384a4e0dfef6483d149f"
+    },
+    {
+      "type": "package",
+      "name": "react-native-worklets",
+      "version": "0.13.1",
+      "filePath": "node_modules/react-native-worklets/package.json",
+      "reasons": [
+        "rncoreAutolinkingAndroid",
+        "rncoreAutolinkingIos"
+      ],
+      "hash": "af151f779c6847e09f8cc1ab8fa76b71fc506e66"
+    },
+    {
+      "type": "package",
+      "name": "react-native",
+      "version": "0.88.1",
+      "filePath": "node_modules/react-native/package.json",
+      "reasons": [
+        "package:react-native"
+      ],
+      "hash": "3d79b024d068c716345e84d76f6e2801dcaa2bda"
+    }
+  ]
+}

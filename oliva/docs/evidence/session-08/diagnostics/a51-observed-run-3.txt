@@ -1,0 +1,48 @@
+
+> oliva-faith-companion@0.8.0 test:e2e
+> playwright test tests/e2e/a51-tree.spec.ts --grep alle sieben Originalbilder
+
+
+Running 1 test using 1 worker
+
+(node:17125) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/a51-tree.spec.ts:113:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (42.2s)
+
+
+  1) tests/e2e/a51-tree.spec.ts:113:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Für den Offline-Neustart bereit.', { exact: true })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Für den Offline-Neustart bereit.', { exact: true }) with timeout 15000ms
+      - waiting for getByText('Für den Offline-Neustart bereit.', { exact: true })
+
+
+      184 |   expect(await rawData(page)).toEqual(darkBefore);
+      185 |   await page.getByRole("button",{name:"Zurück zu deinem Baum",exact:true}).click();await ready(page,0);
+    > 186 |   await expect(page.getByText("Für den Offline-Neustart bereit.",{exact:true})).toBeVisible();
+          |                                                                                 ^
+      187 |   await context.setOffline(true);await page.reload();await ready(page,0);
+      188 |   for(const stage of A51_STAGES) {await page.getByRole("button",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);}
+      189 |   expect(await rawData(page)).toEqual(darkBefore);
+        at /workspace/faithpath-next/tests/e2e/a51-tree.spec.ts:186:81
+
+    attachment #1: a51-lifecycle-observer-enabled (text/plain) ─────────────────────────────────────
+    Native APIs observed without changed return values or forged events.
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/a51-tree-alle-sieben-Origi-974dc-en-keine-persönlichen-Daten/error-context.md
+
+  1 failed
+    tests/e2e/a51-tree.spec.ts:113:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

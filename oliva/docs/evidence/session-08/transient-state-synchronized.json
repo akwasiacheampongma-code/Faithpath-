@@ -1,0 +1,285 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/offline-readiness.spec.ts"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/session-08/transient-state-synchronized.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "offline-readiness.spec.ts",
+      "file": "offline-readiness.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:40:04.028Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "verified-transient-timeout",
+                      "contentType": "application/json",
+                      "body": "eyJ2ZXJpZmllZCI6eyJleHBlY3RlZCI6Im9saXZhLTYxOGRkZWViNzczODgwMzIiLCJjb250cm9sbGVyIjp7ImlkIjoib2xpdmEtNjE4ZGRlZWI3NzM4ODAzMiIsInZlcnNpb24iOiIwLjguMCJ9LCJjb250cm9sbGVyU3RhdGUiOiJhY3RpdmF0ZWQiLCJhY3RpdmUiOnsiaWQiOiJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIiwidmVyc2lvbiI6IjAuOC4wIn0sImNhY2hlcyI6WyJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIl19LCJvYnNlcnZhdGlvbiI6eyJyZW1haW5pbmciOjAsImRlbGF5TXMiOjExMDAsInJlcGxpZXMiOlt7ImlkIjoib2xpdmEtNjE4ZGRlZWI3NzM4ODAzMiIsInZlcnNpb24iOiIwLjguMCJ9LHsiaWQiOiJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIiwidmVyc2lvbiI6IjAuOC4wIn1dLCJkZWxheWVkIjoxLCJkZWxpdmVyZWQiOjEsImNsb3NlZFJlY2VpdmluZ1BvcnRzIjoyLCJjbG9zZWRTZW5kaW5nUG9ydHMiOjIsIm9ubGluZUV2ZW50cyI6MCwiY29udHJvbGxlckNoYW5nZXMiOjB9LCJwcml2YXRlUmVjb3Jkc1VuY2hhbmdlZCI6dHJ1ZX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "42a019434bccf2d4c8fa-514297328af00d8943e2",
+          "file": "offline-readiness.spec.ts",
+          "line": 174,
+          "column": 1
+        },
+        {
+          "title": "wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18258,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:40:11.150Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "verified-finite-timeouts",
+                      "contentType": "application/json",
+                      "body": "eyJ2ZXJpZmllZCI6eyJleHBlY3RlZCI6Im9saXZhLTYxOGRkZWViNzczODgwMzIiLCJjb250cm9sbGVyIjp7ImlkIjoib2xpdmEtNjE4ZGRlZWI3NzM4ODAzMiIsInZlcnNpb24iOiIwLjguMCJ9LCJjb250cm9sbGVyU3RhdGUiOiJhY3RpdmF0ZWQiLCJhY3RpdmUiOnsiaWQiOiJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIiwidmVyc2lvbiI6IjAuOC4wIn0sImNhY2hlcyI6WyJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIl19LCJxdWlldCI6eyJyZW1haW5pbmciOi0xLCJkZWxheU1zIjoxMTAwLCJyZXBsaWVzIjpbeyJpZCI6Im9saXZhLTYxOGRkZWViNzczODgwMzIiLCJ2ZXJzaW9uIjoiMC44LjAifSx7ImlkIjoib2xpdmEtNjE4ZGRlZWI3NzM4ODAzMiIsInZlcnNpb24iOiIwLjguMCJ9LHsiaWQiOiJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIiwidmVyc2lvbiI6IjAuOC4wIn0seyJpZCI6Im9saXZhLTYxOGRkZWViNzczODgwMzIiLCJ2ZXJzaW9uIjoiMC44LjAifSx7ImlkIjoib2xpdmEtNjE4ZGRlZWI3NzM4ODAzMiIsInZlcnNpb24iOiIwLjguMCJ9XSwiZGVsYXllZCI6NSwiZGVsaXZlcmVkIjo1LCJjbG9zZWRSZWNlaXZpbmdQb3J0cyI6NSwiY2xvc2VkU2VuZGluZ1BvcnRzIjo1LCJvbmxpbmVFdmVudHMiOjAsImNvbnRyb2xsZXJDaGFuZ2VzIjowfSwicHJpdmF0ZVJlY29yZHNVbmNoYW5nZWQiOnRydWV9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "42a019434bccf2d4c8fa-5e6fade12eb0e064de6b",
+          "file": "offline-readiness.spec.ts",
+          "line": 203,
+          "column": 1
+        },
+        {
+          "title": "eine ältere echte Antwort überschreibt keinen neueren Buildkonflikt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4661,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:40:29.436Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "verified-stale-reply-guard",
+                      "contentType": "application/json",
+                      "body": "eyJhY3R1YWwiOnsiZXhwZWN0ZWQiOiJvbGl2YS1uZXdlci1kb2N1bWVudC1yZXF1aXJlZCIsImNvbnRyb2xsZXIiOnsiaWQiOiJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIiwidmVyc2lvbiI6IjAuOC4wIn0sImNvbnRyb2xsZXJTdGF0ZSI6ImFjdGl2YXRlZCIsImFjdGl2ZSI6eyJpZCI6Im9saXZhLTYxOGRkZWViNzczODgwMzIiLCJ2ZXJzaW9uIjoiMC44LjAifSwiY2FjaGVzIjpbIm9saXZhLTYxOGRkZWViNzczODgwMzIiXX0sIm9ic2VydmF0aW9uIjp7InJlbWFpbmluZyI6MCwiZGVsYXlNcyI6NTAwLCJyZXBsaWVzIjpbeyJpZCI6Im9saXZhLTYxOGRkZWViNzczODgwMzIiLCJ2ZXJzaW9uIjoiMC44LjAifSx7ImlkIjoib2xpdmEtNjE4ZGRlZWI3NzM4ODAzMiIsInZlcnNpb24iOiIwLjguMCJ9LHsiaWQiOiJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIiwidmVyc2lvbiI6IjAuOC4wIn0seyJpZCI6Im9saXZhLTYxOGRkZWViNzczODgwMzIiLCJ2ZXJzaW9uIjoiMC44LjAifV0sImRlbGF5ZWQiOjEsImRlbGl2ZXJlZCI6MSwiY2xvc2VkUmVjZWl2aW5nUG9ydHMiOjQsImNsb3NlZFNlbmRpbmdQb3J0cyI6NCwib25saW5lRXZlbnRzIjoxLCJjb250cm9sbGVyQ2hhbmdlcyI6MH0sInByaXZhdGVSZWNvcmRzVW5jaGFuZ2VkIjp0cnVlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "42a019434bccf2d4c8fa-faff8591f3137526708e",
+          "file": "offline-readiness.spec.ts",
+          "line": 226,
+          "column": 1
+        },
+        {
+          "title": "ein bereits aktiver Worker wird trotz offenbleibender erneuter Registrierung sofort verifiziert",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4040,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:40:34.139Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-controller-verified-before-registration-settles",
+                      "contentType": "application/json",
+                      "body": "eyJ2ZXJpZmllZCI6eyJleHBlY3RlZCI6Im9saXZhLTYxOGRkZWViNzczODgwMzIiLCJjb250cm9sbGVyIjp7ImlkIjoib2xpdmEtNjE4ZGRlZWI3NzM4ODAzMiIsInZlcnNpb24iOiIwLjguMCJ9LCJjb250cm9sbGVyU3RhdGUiOiJhY3RpdmF0ZWQiLCJhY3RpdmUiOnsiaWQiOiJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIiwidmVyc2lvbiI6IjAuOC4wIn0sImNhY2hlcyI6WyJvbGl2YS02MThkZGVlYjc3Mzg4MDMyIl19LCJvYnNlcnZhdGlvbiI6eyJzdGFydGVkIjoxLCJuYXRpdmVSZXNvbHZlZCI6MSwibmF0aXZlUmVqZWN0ZWQiOjAsInJldHVybmVkU2V0dGxlZCI6MCwib25saW5lRXZlbnRzIjowLCJjb250cm9sbGVyQ2hhbmdlcyI6MH0sInByaXZhdGVSZWNvcmRzVW5jaGFuZ2VkIjp0cnVlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "42a019434bccf2d4c8fa-36a3281101118e1213e0",
+          "file": "offline-readiness.spec.ts",
+          "line": 253,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-08T13:40:03.176Z",
+    "duration": 35187.21,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

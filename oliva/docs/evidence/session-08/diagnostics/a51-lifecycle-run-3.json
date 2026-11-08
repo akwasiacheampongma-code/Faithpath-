@@ -1,0 +1,201 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/a51-tree.spec.ts",
+      "--grep",
+      "alle sieben Originalbilder"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/session-08/diagnostics/a51-lifecycle-run-3.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "a51-tree.spec.ts",
+      "file": "a51-tree.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 42179,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Für den Offline-Neustart bereit.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Für den Offline-Neustart bereit.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Für den Offline-Neustart bereit.', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Für den Offline-Neustart bereit.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Für den Offline-Neustart bereit.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Für den Offline-Neustart bereit.', { exact: true })\u001b[22m\n\n    at /workspace/faithpath-next/tests/e2e/a51-tree.spec.ts:186:81",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/a51-tree.spec.ts",
+                      "column": 81,
+                      "line": 186
+                    },
+                    "snippet": " \u001b[90m 184 |\u001b[39m   expect(\u001b[36mawait\u001b[39m rawData(page))\u001b[33m.\u001b[39mtoEqual(darkBefore)\u001b[33m;\u001b[39m\n \u001b[90m 185 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m\"Zurück zu deinem Baum\"\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m ready(page\u001b[33m,\u001b[39m\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 186 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[32m\"Für den Offline-Neustart bereit.\"\u001b[39m\u001b[33m,\u001b[39m{exact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 187 |\u001b[39m   \u001b[36mawait\u001b[39m context\u001b[33m.\u001b[39msetOffline(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mreload()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m ready(page\u001b[33m,\u001b[39m\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 188 |\u001b[39m   \u001b[36mfor\u001b[39m(\u001b[36mconst\u001b[39m stage \u001b[36mof\u001b[39m \u001b[33mA51_STAGES\u001b[39m) {\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m`Stadium ${stage.index+1} ansehen: ${stage.name}`\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m ready(page\u001b[33m,\u001b[39mstage\u001b[33m.\u001b[39mindex)\u001b[33m;\u001b[39m}\n \u001b[90m 189 |\u001b[39m   expect(\u001b[36mawait\u001b[39m rawData(page))\u001b[33m.\u001b[39mtoEqual(darkBefore)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/a51-tree.spec.ts",
+                        "column": 81,
+                        "line": 186
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Für den Offline-Neustart bereit.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Für den Offline-Neustart bereit.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Für den Offline-Neustart bereit.', { exact: true })\u001b[22m\n\n\n  184 |   expect(await rawData(page)).toEqual(darkBefore);\n  185 |   await page.getByRole(\"button\",{name:\"Zurück zu deinem Baum\",exact:true}).click();await ready(page,0);\n> 186 |   await expect(page.getByText(\"Für den Offline-Neustart bereit.\",{exact:true})).toBeVisible();\n      |                                                                                 ^\n  187 |   await context.setOffline(true);await page.reload();await ready(page,0);\n  188 |   for(const stage of A51_STAGES) {await page.getByRole(\"button\",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);}\n  189 |   expect(await rawData(page)).toEqual(darkBefore);\n    at /workspace/faithpath-next/tests/e2e/a51-tree.spec.ts:186:81"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:25:38.626Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "a51-lifecycle-observer-enabled",
+                      "contentType": "text/plain",
+                      "body": "TmF0aXZlIEFQSXMgb2JzZXJ2ZWQgd2l0aG91dCBjaGFuZ2VkIHJldHVybiB2YWx1ZXMgb3IgZm9yZ2VkIGV2ZW50cy4="
+                    },
+                    {
+                      "name": "a51-offline-lifecycle",
+                      "contentType": "application/json",
+                      "body": "ewogICJ0aXRsZSI6ICJhbGxlIHNpZWJlbiBPcmlnaW5hbGJpbGRlciBibGVpYmVuIGVyaGFsdGVuOyBWb3JzY2hhdWVuIHNjaHJlaWJlbiBrZWluZSBwZXJzw7ZubGljaGVuIERhdGVuIiwKICAic3RhdHVzIjogImZhaWxlZCIsCiAgImV4cGVjdGVkU3RhdHVzIjogInBhc3NlZCIsCiAgInF1aWV0V2luZG93TXMiOiAxNjAwMCwKICAiYmVmb3JlUXVpZXRXaW5kb3ciOiB7CiAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICJoaWRkZW4iOiBmYWxzZSwKICAgICJleHBlY3RlZCI6ICJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIiwKICAgICJjb250cm9sbGVyIjogewogICAgICAic3RhdGUiOiAiYWN0aXZhdGVkIiwKICAgICAgInNjcmlwdCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvc3cuanMiLAogICAgICAicmVwbHkiOiB7CiAgICAgICAgImlkIjogIm9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiLAogICAgICAgICJ2ZXJzaW9uIjogIjAuOC4wIgogICAgICB9CiAgICB9LAogICAgInJlZ2lzdHJhdGlvbiI6IHsKICAgICAgInNjb3BlIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My8iLAogICAgICAiYWN0aXZlIjogImFjdGl2YXRlZCIsCiAgICAgICJhY3RpdmVSZXBseSI6IHsKICAgICAgICAiaWQiOiAib2xpdmEtNTZmNmZlM2ExMmYwNWE1YyIsCiAgICAgICAgInZlcnNpb24iOiAiMC44LjAiCiAgICAgIH0KICAgIH0sCiAgICAiY2FjaGVDb3VudHMiOiB7CiAgICAgICJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIjogOTgKICAgIH0sCiAgICAib2ZmbGluZVRleHQiOiBbCiAgICAgICJPZmZsaW5lLVBha2V0IHdpcmQgdm9yYmVyZWl0ZXQg4oCmIgogICAgXSwKICAgICJldmVudHMiOiBbCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJpbml0IiwKICAgICAgICAiYXQiOiA1NS4zOTk5OTk5OTg1MDk4ODQsCiAgICAgICAgImVwb2NoIjogMTc5NDE0NDM0MTQzMSwKICAgICAgICAidXJsIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9nYXJ0ZW4iLAogICAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZQogICAgICB9LAogICAgICB7CiAgICAgICAgInR5cGUiOiAiY29udHJvbGxlcmNoYW5nZSIsCiAgICAgICAgImF0IjogNDY2LjY5OTk5OTk5OTI1NDk0LAogICAgICAgICJlcG9jaCI6IDE3OTQxNDQzNDE4NDIsCiAgICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZ2FydGVuIiwKICAgICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICAgInN0YXRlIjogImFjdGl2YXRpbmciCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJyZWdpc3Rlci1zdGFydCIsCiAgICAgICAgImF0IjogOTQ1LjM5OTk5OTk5ODUwOTksCiAgICAgICAgImVwb2NoIjogMTc5NDE0NDM0MjMyMSwKICAgICAgICAidXJsIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9nYXJ0ZW4iLAogICAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICAgICAic2NyaXB0IjogIi9zdy5qcyIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0eXBlIjogIndvcmtlci1wb3N0IiwKICAgICAgICAiYXQiOiAyMzY5NC41OTk5OTk5OTc3NjUsCiAgICAgICAgImVwb2NoIjogMTc5NDE0NDM2NTA3MCwKICAgICAgICAidXJsIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9nYXJ0ZW4iLAogICAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICAgICAibWVzc2FnZSI6ICJPTElWQV9CVUlMRCIsCiAgICAgICAgInN0YXRlIjogImFjdGl2YXRlZCIsCiAgICAgICAgInNjcmlwdCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvc3cuanMiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJ3b3JrZXItcG9zdCIsCiAgICAgICAgImF0IjogMjM2OTkuMDk5OTk5OTk3NzY1LAogICAgICAgICJlcG9jaCI6IDE3OTQxNDQzNjUwNzUsCiAgICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZ2FydGVuIiwKICAgICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICAgIm1lc3NhZ2UiOiAiT0xJVkFfQlVJTEQiLAogICAgICAgICJzdGF0ZSI6ICJhY3RpdmF0ZWQiLAogICAgICAgICJzY3JpcHQiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL3N3LmpzIgogICAgICB9CiAgICBdCiAgfSwKICAiZXZlbnRzQWNyb3NzTmF2aWdhdGlvbnMiOiBbCiAgICB7CiAgICAgICJ0eXBlIjogImluaXQiLAogICAgICAiYXQiOiA4MS4zMDAwMDAwMDA3NDUwNiwKICAgICAgImVwb2NoIjogMTc5NDE0NDMzOTQ4MCwKICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZWluc3RlbGx1bmdlbiIsCiAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAiZm9jdXNlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogInJlZ2lzdGVyLXN0YXJ0IiwKICAgICAgImF0IjogMTE1MC42MDAwMDAwMDE0OTAxLAogICAgICAiZXBvY2giOiAxNzk0MTQ0MzQwNTUwLAogICAgICAidXJsIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9laW5zdGVsbHVuZ2VuIiwKICAgICAgInZpc2liaWxpdHkiOiAidmlzaWJsZSIsCiAgICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICAgInNjcmlwdCI6ICIvc3cuanMiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJyZWdpc3Rlci1yZXNvbHZlZCIsCiAgICAgICJhdCI6IDExODUuNDAwMDAwMDAyMjM1MiwKICAgICAgImVwb2NoIjogMTc5NDE0NDM0MDU4NSwKICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZWluc3RlbGx1bmdlbiIsCiAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICJpbnN0YWxsaW5nIjogImluc3RhbGxpbmciCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJ1cGRhdGVmb3VuZCIsCiAgICAgICJhdCI6IDExODYuNjAwMDAwMDAxNDkwMSwKICAgICAgImVwb2NoIjogMTc5NDE0NDM0MDU4NiwKICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZWluc3RlbGx1bmdlbiIsCiAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICJpbnN0YWxsaW5nIjogImluc3RhbGxpbmciCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJpbml0IiwKICAgICAgImF0IjogNTUuMzk5OTk5OTk4NTA5ODg0LAogICAgICAiZXBvY2giOiAxNzk0MTQ0MzQxNDMxLAogICAgICAidXJsIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9nYXJ0ZW4iLAogICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgImZvY3VzZWQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJjb250cm9sbGVyY2hhbmdlIiwKICAgICAgImF0IjogNDY2LjY5OTk5OTk5OTI1NDk0LAogICAgICAiZXBvY2giOiAxNzk0MTQ0MzQxODQyLAogICAgICAidXJsIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9nYXJ0ZW4iLAogICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgImZvY3VzZWQiOiB0cnVlLAogICAgICAic3RhdGUiOiAiYWN0aXZhdGluZyIKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogInJlZ2lzdGVyLXN0YXJ0IiwKICAgICAgImF0IjogOTQ1LjM5OTk5OTk5ODUwOTksCiAgICAgICJlcG9jaCI6IDE3OTQxNDQzNDIzMjEsCiAgICAgICJ1cmwiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL2dhcnRlbiIsCiAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICJzY3JpcHQiOiAiL3N3LmpzIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAid29ya2VyLXBvc3QiLAogICAgICAiYXQiOiAyMzY5NC41OTk5OTk5OTc3NjUsCiAgICAgICJlcG9jaCI6IDE3OTQxNDQzNjUwNzAsCiAgICAgICJ1cmwiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL2dhcnRlbiIsCiAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICJtZXNzYWdlIjogIk9MSVZBX0JVSUxEIiwKICAgICAgInN0YXRlIjogImFjdGl2YXRlZCIsCiAgICAgICJzY3JpcHQiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL3N3LmpzIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAid29ya2VyLXBvc3QiLAogICAgICAiYXQiOiAyMzY5OS4wOTk5OTk5OTc3NjUsCiAgICAgICJlcG9jaCI6IDE3OTQxNDQzNjUwNzUsCiAgICAgICJ1cmwiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL2dhcnRlbiIsCiAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICJtZXNzYWdlIjogIk9MSVZBX0JVSUxEIiwKICAgICAgInN0YXRlIjogImFjdGl2YXRlZCIsCiAgICAgICJzY3JpcHQiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL3N3LmpzIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAid29ya2VyLXBvc3QiLAogICAgICAiYXQiOiAzOTcyOC43OTk5OTk5OTcwMiwKICAgICAgImVwb2NoIjogMTc5NDE0NDM4MTEwNCwKICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZ2FydGVuIiwKICAgICAgInZpc2liaWxpdHkiOiAidmlzaWJsZSIsCiAgICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICAgIm1lc3NhZ2UiOiAiT0xJVkFfQlVJTEQiLAogICAgICAic3RhdGUiOiAiYWN0aXZhdGVkIiwKICAgICAgInNjcmlwdCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvc3cuanMiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJ3b3JrZXItcG9zdCIsCiAgICAgICJhdCI6IDM5NzMxLjU5OTk5OTk5Nzc2NSwKICAgICAgImVwb2NoIjogMTc5NDE0NDM4MTEwNywKICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZ2FydGVuIiwKICAgICAgInZpc2liaWxpdHkiOiAidmlzaWJsZSIsCiAgICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICAgIm1lc3NhZ2UiOiAiT0xJVkFfQlVJTEQiLAogICAgICAic3RhdGUiOiAiYWN0aXZhdGVkIiwKICAgICAgInNjcmlwdCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvc3cuanMiCiAgICB9CiAgXSwKICAic25hcHNob3QiOiB7CiAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICJoaWRkZW4iOiBmYWxzZSwKICAgICJleHBlY3RlZCI6ICJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIiwKICAgICJjb250cm9sbGVyIjogewogICAgICAic3RhdGUiOiAiYWN0aXZhdGVkIiwKICAgICAgInNjcmlwdCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvc3cuanMiLAogICAgICAicmVwbHkiOiB7CiAgICAgICAgImlkIjogIm9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiLAogICAgICAgICJ2ZXJzaW9uIjogIjAuOC4wIgogICAgICB9CiAgICB9LAogICAgInJlZ2lzdHJhdGlvbiI6IHsKICAgICAgInNjb3BlIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My8iLAogICAgICAiYWN0aXZlIjogImFjdGl2YXRlZCIsCiAgICAgICJhY3RpdmVSZXBseSI6IHsKICAgICAgICAiaWQiOiAib2xpdmEtNTZmNmZlM2ExMmYwNWE1YyIsCiAgICAgICAgInZlcnNpb24iOiAiMC44LjAiCiAgICAgIH0KICAgIH0sCiAgICAiY2FjaGVDb3VudHMiOiB7CiAgICAgICJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIjogOTgKICAgIH0sCiAgICAib2ZmbGluZVRleHQiOiBbCiAgICAgICJPZmZsaW5lLVBha2V0IHdpcmQgdm9yYmVyZWl0ZXQg4oCmIgogICAgXSwKICAgICJldmVudHMiOiBbCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJpbml0IiwKICAgICAgICAiYXQiOiA1NS4zOTk5OTk5OTg1MDk4ODQsCiAgICAgICAgImVwb2NoIjogMTc5NDE0NDM0MTQzMSwKICAgICAgICAidXJsIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9nYXJ0ZW4iLAogICAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZQogICAgICB9LAogICAgICB7CiAgICAgICAgInR5cGUiOiAiY29udHJvbGxlcmNoYW5nZSIsCiAgICAgICAgImF0IjogNDY2LjY5OTk5OTk5OTI1NDk0LAogICAgICAgICJlcG9jaCI6IDE3OTQxNDQzNDE4NDIsCiAgICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZ2FydGVuIiwKICAgICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICAgInN0YXRlIjogImFjdGl2YXRpbmciCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJyZWdpc3Rlci1zdGFydCIsCiAgICAgICAgImF0IjogOTQ1LjM5OTk5OTk5ODUwOTksCiAgICAgICAgImVwb2NoIjogMTc5NDE0NDM0MjMyMSwKICAgICAgICAidXJsIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9nYXJ0ZW4iLAogICAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICAgICAic2NyaXB0IjogIi9zdy5qcyIKICAgICAgfSwKICAgICAgewogICAgICAgICJ0eXBlIjogIndvcmtlci1wb3N0IiwKICAgICAgICAiYXQiOiAyMzY5NC41OTk5OTk5OTc3NjUsCiAgICAgICAgImVwb2NoIjogMTc5NDE0NDM2NTA3MCwKICAgICAgICAidXJsIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9nYXJ0ZW4iLAogICAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICAgICAibWVzc2FnZSI6ICJPTElWQV9CVUlMRCIsCiAgICAgICAgInN0YXRlIjogImFjdGl2YXRlZCIsCiAgICAgICAgInNjcmlwdCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvc3cuanMiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJ3b3JrZXItcG9zdCIsCiAgICAgICAgImF0IjogMjM2OTkuMDk5OTk5OTk3NzY1LAogICAgICAgICJlcG9jaCI6IDE3OTQxNDQzNjUwNzUsCiAgICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZ2FydGVuIiwKICAgICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICAgIm1lc3NhZ2UiOiAiT0xJVkFfQlVJTEQiLAogICAgICAgICJzdGF0ZSI6ICJhY3RpdmF0ZWQiLAogICAgICAgICJzY3JpcHQiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL3N3LmpzIgogICAgICB9LAogICAgICB7CiAgICAgICAgInR5cGUiOiAid29ya2VyLXBvc3QiLAogICAgICAgICJhdCI6IDM5NzI4Ljc5OTk5OTk5NzAyLAogICAgICAgICJlcG9jaCI6IDE3OTQxNDQzODExMDQsCiAgICAgICAgInVybCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvZ2FydGVuIiwKICAgICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICAgIm1lc3NhZ2UiOiAiT0xJVkFfQlVJTEQiLAogICAgICAgICJzdGF0ZSI6ICJhY3RpdmF0ZWQiLAogICAgICAgICJzY3JpcHQiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL3N3LmpzIgogICAgICB9LAogICAgICB7CiAgICAgICAgInR5cGUiOiAid29ya2VyLXBvc3QiLAogICAgICAgICJhdCI6IDM5NzMxLjU5OTk5OTk5Nzc2NSwKICAgICAgICAiZXBvY2giOiAxNzk0MTQ0MzgxMTA3LAogICAgICAgICJ1cmwiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL2dhcnRlbiIsCiAgICAgICAgInZpc2liaWxpdHkiOiAidmlzaWJsZSIsCiAgICAgICAgImZvY3VzZWQiOiB0cnVlLAogICAgICAgICJtZXNzYWdlIjogIk9MSVZBX0JVSUxEIiwKICAgICAgICAic3RhdGUiOiAiYWN0aXZhdGVkIiwKICAgICAgICAic2NyaXB0IjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9zdy5qcyIKICAgICAgfQogICAgXQogIH0KfQ=="
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/a51-tree-alle-sieben-Origi-974dc-en-keine-persönlichen-Daten/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/a51-tree.spec.ts",
+                    "column": 81,
+                    "line": 186
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7b316d9b8373c1996cfa-682dc2bdaf35a996d13a",
+          "file": "a51-tree.spec.ts",
+          "line": 113,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-08T13:25:37.775Z",
+    "duration": 43546.732,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

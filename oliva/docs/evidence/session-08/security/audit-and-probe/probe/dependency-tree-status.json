@@ -1,0 +1,22 @@
+{
+  "name": "dependency-tree",
+  "command": [
+    "npm",
+    "ls",
+    "expo",
+    "@expo/cli",
+    "@expo/fingerprint",
+    "glob",
+    "minimatch",
+    "path-scurry",
+    "react",
+    "react-native",
+    "--all",
+    "--json"
+  ],
+  "cwd": "/workspace/oliva-dependency-probe",
+  "startedAtUtc": "2026-11-08T08:32:14.080098+00:00",
+  "durationSeconds": 1.667,
+  "exitCode": 0,
+  "log": "/workspace/oliva-security-audit/reports/dependencies-0.8/probe/dependency-tree.log"
+}

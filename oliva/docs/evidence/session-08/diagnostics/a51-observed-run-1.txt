@@ -1,0 +1,17 @@
+
+> oliva-faith-companion@0.8.0 test:e2e
+> playwright test tests/e2e/a51-tree.spec.ts --grep alle sieben Originalbilder
+
+
+Running 1 test using 1 worker
+
+(node:16652) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/a51-tree.spec.ts:98:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (20.6s)
+
+  1 passed (22.0s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

@@ -1,8 +1,8 @@
 {
   "name": "oliva-faith-companion",
-  "description": "OLIVA \u2013 Lesen, verstehen, wachsen. Unabh\u00e4ngige lokale Bibel-App.",
+  "description": "OLIVA – Lesen, verstehen, wachsen. Unabhängige lokale Bibel-App.",
   "license": "MIT",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "main": "expo-router/entry",
   "dependencies": {
     "@expo/metro-runtime": "~58.0.17",
@@ -57,5 +57,14 @@
   "engines": {
     "node": ">=24.0.0 <25"
   },
-  "type": "module"
+  "type": "module",
+  "overrides": {
+    "@expo/cli": {
+      "glob": "14.0.4"
+    },
+    "@expo/fingerprint": {
+      "glob": "14.0.4",
+      "minimatch": "11.0.5"
+    }
+  }
 }

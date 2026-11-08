@@ -1,0 +1,22 @@
+{
+  "name": "android-export",
+  "command": [
+    "node",
+    "scripts/expo.mjs",
+    "export",
+    "--platform",
+    "android",
+    "--output-dir",
+    "/workspace/oliva-dependency-probe/dist-android",
+    "--no-minify",
+    "--no-bytecode",
+    "--max-workers",
+    "2",
+    "--dump-assetmap"
+  ],
+  "cwd": "/workspace/oliva-dependency-probe",
+  "startedAtUtc": "2026-11-08T08:33:46.211543+00:00",
+  "durationSeconds": 31.4,
+  "exitCode": 0,
+  "log": "/workspace/oliva-security-audit/reports/dependencies-0.8/probe/android-export.log"
+}

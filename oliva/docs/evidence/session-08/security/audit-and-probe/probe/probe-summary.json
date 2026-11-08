@@ -1,0 +1,45 @@
+{
+  "completedAtUtc": "2026-11-08T08:37:40.512240+00:00",
+  "probePath": "/workspace/oliva-dependency-probe",
+  "report": "/workspace/oliva-security-audit/reports/dependencies-0.8/probe/OVERRIDE-PROBE-REPORT.md",
+  "auditTotal": 0,
+  "auditOmitDevTotal": 0,
+  "unitPassed": 116,
+  "unitFailed": 0,
+  "apiGroupsPassed": 7,
+  "apiGroupsFailed": 0,
+  "allRecordedCommandExitCodesZero": true,
+  "rootManifestsUnchanged": {
+    "package.json": true,
+    "package-lock.json": true,
+    "app.json": true
+  },
+  "changedTrackedProbeFiles": [
+    "package-lock.json",
+    "package.json"
+  ],
+  "probeHashes": {
+    "package.json": "324d83eeb218dc020afb91a29ee4a7008be2fbd9013bdc276a3622c19ef98918",
+    "package-lock.json": "47c8ac88e018343e2929fd45e4a25fe0bfe89a229e73fb8a2850f2bba506c7b6"
+  },
+  "nativeExports": {
+    "android": {
+      "metadataAssetRefs": 146,
+      "missingAssetRefs": [],
+      "bundle": "/workspace/oliva-dependency-probe/dist-android/_expo/static/js/android/entry-e3e005c357f400aca3cb33705efa353e.js",
+      "bundleBytes": 10620493,
+      "bundleSyntaxExitCode": 0,
+      "a51NativeFilesInAssetmap": 98,
+      "exportedFiles": 149
+    },
+    "ios": {
+      "metadataAssetRefs": 143,
+      "missingAssetRefs": [],
+      "bundle": "/workspace/oliva-dependency-probe/dist-ios/_expo/static/js/ios/entry-75fd913b4717f390b89de050d693f8f0.js",
+      "bundleBytes": 10636934,
+      "bundleSyntaxExitCode": 0,
+      "a51NativeFilesInAssetmap": 98,
+      "exportedFiles": 146
+    }
+  }
+}

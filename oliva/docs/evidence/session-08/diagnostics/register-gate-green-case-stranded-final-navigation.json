@@ -1,0 +1,238 @@
+{
+  "title": "alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten",
+  "status": "passed",
+  "expectedStatus": "passed",
+  "eventsAcrossNavigations": [
+    {
+      "type": "init",
+      "at": 115.39999999850988,
+      "epoch": 1794144201985,
+      "url": "http://localhost:4173/einstellungen",
+      "visibility": "visible",
+      "focused": true
+    },
+    {
+      "type": "register-start",
+      "at": 2419.099999997765,
+      "epoch": 1794144204289,
+      "url": "http://localhost:4173/einstellungen",
+      "visibility": "visible",
+      "focused": true,
+      "script": "/sw.js"
+    },
+    {
+      "type": "register-resolved",
+      "at": 2511.39999999851,
+      "epoch": 1794144204381,
+      "url": "http://localhost:4173/einstellungen",
+      "visibility": "visible",
+      "focused": true,
+      "installing": "installing"
+    },
+    {
+      "type": "updatefound",
+      "at": 2512.800000000745,
+      "epoch": 1794144204383,
+      "url": "http://localhost:4173/einstellungen",
+      "visibility": "visible",
+      "focused": true,
+      "installing": "installing"
+    },
+    {
+      "type": "init",
+      "at": 88,
+      "epoch": 1794144205672,
+      "url": "http://localhost:4173/garten",
+      "visibility": "visible",
+      "focused": true
+    },
+    {
+      "type": "register-start",
+      "at": 1676.9000000022352,
+      "epoch": 1794144207261,
+      "url": "http://localhost:4173/garten",
+      "visibility": "visible",
+      "focused": true,
+      "script": "/sw.js"
+    },
+    {
+      "type": "controllerchange",
+      "at": 2640.60000000149,
+      "epoch": 1794144208225,
+      "url": "http://localhost:4173/garten",
+      "visibility": "visible",
+      "focused": true,
+      "state": "activating"
+    },
+    {
+      "type": "worker-post",
+      "at": 2642.400000002235,
+      "epoch": 1794144208226,
+      "url": "http://localhost:4173/garten",
+      "visibility": "visible",
+      "focused": true,
+      "message": "OLIVA_BUILD",
+      "state": "activating",
+      "script": "http://localhost:4173/sw.js"
+    },
+    {
+      "type": "init",
+      "at": 26.200000002980232,
+      "epoch": 1794144217143,
+      "url": "http://localhost:4173/garten",
+      "visibility": "visible",
+      "focused": true
+    },
+    {
+      "type": "register-start",
+      "at": 509.20000000298023,
+      "epoch": 1794144217627,
+      "url": "http://localhost:4173/garten",
+      "visibility": "visible",
+      "focused": true,
+      "script": "/sw.js"
+    },
+    {
+      "type": "online",
+      "at": 1788.5,
+      "epoch": 1794144218906,
+      "url": "http://localhost:4173/garten",
+      "visibility": "visible",
+      "focused": true
+    },
+    {
+      "type": "register-start",
+      "at": 1788.7000000029802,
+      "epoch": 1794144218906,
+      "url": "http://localhost:4173/garten",
+      "visibility": "visible",
+      "focused": true,
+      "script": "/sw.js"
+    },
+    {
+      "type": "init",
+      "at": 27.199999999254942,
+      "epoch": 1794144218941,
+      "url": "http://localhost:4173/",
+      "visibility": "visible",
+      "focused": true
+    },
+    {
+      "type": "register-start",
+      "at": 496.29999999701977,
+      "epoch": 1794144219410,
+      "url": "http://localhost:4173/",
+      "visibility": "visible",
+      "focused": true,
+      "script": "/sw.js"
+    },
+    {
+      "type": "init",
+      "at": 73.09999999776483,
+      "epoch": 1794144220212,
+      "url": "http://localhost:4173/",
+      "visibility": "visible",
+      "focused": true
+    },
+    {
+      "type": "register-start",
+      "at": 563.8999999985099,
+      "epoch": 1794144220703,
+      "url": "http://localhost:4173/",
+      "visibility": "visible",
+      "focused": true,
+      "script": "/sw.js"
+    },
+    {
+      "type": "worker-post",
+      "at": 1337.8999999985099,
+      "epoch": 1794144221477,
+      "url": "http://localhost:4173/",
+      "visibility": "visible",
+      "focused": true,
+      "message": "OLIVA_BUILD",
+      "state": "activated",
+      "script": "http://localhost:4173/sw.js"
+    },
+    {
+      "type": "worker-post",
+      "at": 1340.800000000745,
+      "epoch": 1794144221480,
+      "url": "http://localhost:4173/",
+      "visibility": "visible",
+      "focused": true,
+      "message": "OLIVA_BUILD",
+      "state": "activated",
+      "script": "http://localhost:4173/sw.js"
+    }
+  ],
+  "snapshot": {
+    "visibility": "visible",
+    "focused": true,
+    "hidden": false,
+    "expected": "oliva-56f6fe3a12f05a5c",
+    "controller": {
+      "state": "activated",
+      "script": "http://localhost:4173/sw.js",
+      "reply": {
+        "id": "oliva-56f6fe3a12f05a5c",
+        "version": "0.8.0"
+      }
+    },
+    "registration": {
+      "scope": "http://localhost:4173/",
+      "active": "activated",
+      "activeReply": {
+        "id": "oliva-56f6fe3a12f05a5c",
+        "version": "0.8.0"
+      }
+    },
+    "cacheCounts": {
+      "oliva-56f6fe3a12f05a5c": 98
+    },
+    "offlineText": [
+      "Offline-Paket wird vorbereitet …"
+    ],
+    "events": [
+      {
+        "type": "init",
+        "at": 73.09999999776483,
+        "epoch": 1794144220212,
+        "url": "http://localhost:4173/",
+        "visibility": "visible",
+        "focused": true
+      },
+      {
+        "type": "register-start",
+        "at": 563.8999999985099,
+        "epoch": 1794144220703,
+        "url": "http://localhost:4173/",
+        "visibility": "visible",
+        "focused": true,
+        "script": "/sw.js"
+      },
+      {
+        "type": "worker-post",
+        "at": 1337.8999999985099,
+        "epoch": 1794144221477,
+        "url": "http://localhost:4173/",
+        "visibility": "visible",
+        "focused": true,
+        "message": "OLIVA_BUILD",
+        "state": "activated",
+        "script": "http://localhost:4173/sw.js"
+      },
+      {
+        "type": "worker-post",
+        "at": 1340.800000000745,
+        "epoch": 1794144221480,
+        "url": "http://localhost:4173/",
+        "visibility": "visible",
+        "focused": true,
+        "message": "OLIVA_BUILD",
+        "state": "activated",
+        "script": "http://localhost:4173/sw.js"
+      }
+    ]
+  }
+}

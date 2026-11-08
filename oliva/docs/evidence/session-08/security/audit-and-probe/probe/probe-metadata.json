@@ -1,0 +1,29 @@
+{
+  "startedAtUtc": "2026-11-08T08:30:41.227156+00:00",
+  "immutableSourceCommit": "f0e8db6b2847d5bfc8361e8f617b8caf0c860787",
+  "probePath": "/workspace/oliva-dependency-probe",
+  "overrides": {
+    "@expo/cli": {
+      "glob": "14.0.4"
+    },
+    "@expo/fingerprint": {
+      "glob": "14.0.4",
+      "minimatch": "11.0.5"
+    }
+  },
+  "rootManifestHashesBefore": {
+    "package.json": "c7874c0a1c675ab7d51ed27c1003dea54b5a9aefd7f3ccd3683f1da051bc76ec",
+    "package-lock.json": "17062c6a2b3c2fcec6b37b9bebe3a379d8ed4bf25329a2a132094b9b39f0279c",
+    "app.json": "3f79f663bb9706454958b03fe614e57dfa63a5750f5fc6f5e3d3f4a0d8a4a237"
+  },
+  "archivedFileCount": 727,
+  "rootCommandCwdMistake": {
+    "command": "npm install --package-lock-only --ignore-scripts --registry https://registry.npmjs.org --cache /tmp/oliva-npm-probe-cache",
+    "outcome": "Command was inadvertently run with root cwd before corrected probe run; all package.json, package-lock.json, app.json SHA256 unchanged immediately afterwards. No corrective source writes performed.",
+    "hashesAfter": {
+      "package.json": "c7874c0a1c675ab7d51ed27c1003dea54b5a9aefd7f3ccd3683f1da051bc76ec",
+      "package-lock.json": "17062c6a2b3c2fcec6b37b9bebe3a379d8ed4bf25329a2a132094b9b39f0279c",
+      "app.json": "3f79f663bb9706454958b03fe614e57dfa63a5750f5fc6f5e3d3f4a0d8a4a237"
+    }
+  }
+}

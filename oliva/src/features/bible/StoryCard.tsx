@@ -1,31 +1,10 @@
-import { Image, View, useWindowDimensions } from "react-native";
+import { View, useWindowDimensions } from "react-native";
 import { router } from "expo-router";
 import { T, Card, Tag, Button } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { SCENES, type Scene } from "./scenes";
 import { referenceLabel } from "./repository";
-const art = {
-  noah: {
-    card: require("../../../assets/images/noah-640.webp"),
-    story: require("../../../assets/images/noah-1024.webp"),
-    hero: require("../../../assets/images/noah-1280.webp"),
-  },
-  abraham: {
-    card: require("../../../assets/images/abraham-640.webp"),
-    story: require("../../../assets/images/abraham-1024.webp"),
-    hero: require("../../../assets/images/abraham-1280.webp"),
-  },
-  nativity: {
-    card: require("../../../assets/images/nativity-640.webp"),
-    story: require("../../../assets/images/nativity-1024.webp"),
-    hero: require("../../../assets/images/nativity-1280.webp"),
-  },
-  "easter-dawn": {
-    card: require("../../../assets/images/easter-dawn-640.webp"),
-    story: require("../../../assets/images/easter-dawn-1024.webp"),
-    hero: require("../../../assets/images/easter-dawn-1280.webp"),
-  },
-};
+import { StoryArtwork } from "./StoryArtwork";
 export function StoryCard({
   scene,
   context = false,
@@ -33,37 +12,13 @@ export function StoryCard({
   scene: Scene;
   context?: boolean;
 }) {
-  const t = useTheme(),
-    { width } = useWindowDimensions(),
-    image = context
-      ? width > 800
-        ? art[scene.id].hero
-        : art[scene.id].story
-      : art[scene.id].card;
+  const t = useTheme();
   return (
     <Card
+      testID={`story-card-${scene.id}`}
       style={{ padding: 0, overflow: "hidden", width: "100%", maxWidth: 780 }}
     >
-      <View
-        style={{
-          width: "100%",
-          ...(context ? { aspectRatio: 3 / 2 } : { height: 180 }),
-        }}
-      >
-        <Image
-          source={image}
-          resizeMode="cover"
-          style={{ width: "100%", height: "100%" }}
-          accessibilityLabel={
-            "Künstlerische Interpretation: " +
-            (scene.id === "easter-dawn"
-              ? "drei Frauen vor einem geöffneten Felsgrab im Morgenlicht."
-              : scene.title) +
-            " " +
-            scene.interpretation
-          }
-        />
-      </View>
+      <StoryArtwork scene={scene} context={context} />
       <View style={{ padding: 22, gap: 13 }}>
         <Tag icon="book">
           {referenceLabel(scene.ref)} · etwa {scene.minutes} Min.

@@ -1,0 +1,215 @@
+{
+  "startedAt": "2026-11-08T08:34:40.654Z",
+  "node": "v24.22.1",
+  "platform": "linux",
+  "projectRoot": "/workspace/oliva-dependency-probe",
+  "fixtureRoot": "/workspace/oliva-security-audit/reports/dependencies-0.8/probe/fingerprint-fixture",
+  "scope": "Actual public createFingerprintAsync API with normal default sources; scratch-only fixture changes; no original project changes or installations.",
+  "cases": [
+    {
+      "name": "real project default fingerprint and deterministic repetition",
+      "status": "passed",
+      "elapsedMs": 9973,
+      "details": {
+        "hash": "2fcfdb0604c9404081d557045f9426ceafb46cc5",
+        "sourceCount": 33,
+        "activeSourceCount": 33,
+        "reasons": [
+          "bareGitIgnore",
+          "expoAutolinkingAndroid",
+          "expoAutolinkingIos",
+          "expoConfig",
+          "expoConfigPlugins",
+          "package:react-native",
+          "packageJson:scripts",
+          "rncoreAutolinkingAndroid",
+          "rncoreAutolinkingIos"
+        ]
+      }
+    },
+    {
+      "name": "old dependency APIs and candidate produce identical real project fingerprint",
+      "status": "passed",
+      "elapsedMs": 3908,
+      "details": {
+        "oldDependencyHash": "2fcfdb0604c9404081d557045f9426ceafb46cc5",
+        "candidateHash": "2fcfdb0604c9404081d557045f9426ceafb46cc5",
+        "sourceCount": 33,
+        "sourceDiffCount": 0
+      }
+    },
+    {
+      "name": "fingerprint directory hashing honors ignores and included-file changes",
+      "status": "passed",
+      "elapsedMs": 3780,
+      "details": {
+        "firstHash": "16e05e25f46987f7c4103e34aa465429686c0bef",
+        "afterIgnoredHash": "16e05e25f46987f7c4103e34aa465429686c0bef",
+        "afterIncludedHash": "10c002e2c0c3dd3837f70d056e6b56c18ef1d5c6",
+        "hashedFixturePaths": [
+          "test-inputs",
+          "test-inputs/.hidden.ts",
+          "test-inputs/keep",
+          "test-inputs/keep/readme.txt",
+          "test-inputs/keep.ts",
+          "test-inputs/nested",
+          "test-inputs/nested/component.tsx"
+        ],
+        "changedSourceCount": 1
+      }
+    },
+    {
+      "name": "Expo fingerprint exact dot, extglob, ignore and negation matcher contracts",
+      "status": "passed",
+      "elapsedMs": 2,
+      "details": [
+        {
+          "patterns": [
+            "**/*.tmp"
+          ],
+          "file": ".cache/session.tmp",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "patterns": [
+            "**/*.@(ts|tsx)"
+          ],
+          "file": "src/.hidden.tsx",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "patterns": [
+            "build"
+          ],
+          "file": "android/build/out.js",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "patterns": [
+            "**/build/**"
+          ],
+          "file": "android/build/out.js",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "patterns": [
+            "**/*.tmp",
+            "!keep/*.tmp"
+          ],
+          "file": "keep/important.tmp",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "patterns": [
+            "**/*.tmp",
+            "!keep/*.tmp"
+          ],
+          "file": "cache/unimportant.tmp",
+          "expected": true,
+          "actual": true
+        }
+      ]
+    },
+    {
+      "name": "glob async, sync and stream API return identical extglob and dot matches",
+      "status": "passed",
+      "elapsedMs": 26,
+      "details": {
+        "expected": [
+          ".hidden.ts",
+          "keep.ts",
+          "nested/component.tsx"
+        ],
+        "asynchronous": [
+          ".hidden.ts",
+          "keep.ts",
+          "nested/component.tsx"
+        ],
+        "synchronous": [
+          ".hidden.ts",
+          "keep.ts",
+          "nested/component.tsx"
+        ],
+        "stream": [
+          ".hidden.ts",
+          "keep.ts",
+          "nested/component.tsx"
+        ]
+      }
+    },
+    {
+      "name": "documented minimatch10 to11 edge changes are explicit",
+      "status": "passed",
+      "elapsedMs": 4,
+      "details": [
+        {
+          "name": "Windows parent traversal retains drive root",
+          "pattern": "C:/a/../../x",
+          "file": "x",
+          "options": {
+            "platform": "win32",
+            "optimizationLevel": 2
+          },
+          "oldExpected": true,
+          "newExpected": false,
+          "before": true,
+          "after": false
+        },
+        {
+          "name": "Empty path portion does not match optional extglob",
+          "pattern": "a/b/?(x)",
+          "file": "a/b/",
+          "options": {},
+          "oldExpected": true,
+          "newExpected": false,
+          "before": true,
+          "after": false
+        }
+      ]
+    },
+    {
+      "name": "bounded glob and globStream AbortSignal regressions stop further directory reads",
+      "status": "passed",
+      "elapsedMs": 235,
+      "details": [
+        {
+          "api": "glob",
+          "readsAtRejection": 1,
+          "readsAfter100ms": 1,
+          "additionalReadsAfterRejection": 0
+        },
+        {
+          "api": "globStream",
+          "readsAtRejection": 1,
+          "readsAfter100ms": 1,
+          "additionalReadsAfterRejection": 0
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Windows checks use minimatch platform:win32 on Linux; they do not establish native Windows filesystem/build compatibility."
+  ],
+  "versions": {
+    "candidate": {
+      "fingerprint": "0.21.9",
+      "glob": "14.0.4",
+      "directMinimatch": "11.0.5",
+      "globMinimatch": "11.0.5"
+    },
+    "baseline": {
+      "fingerprint": "0.21.9",
+      "glob": "13.0.6",
+      "directMinimatch": "10.2.6",
+      "globMinimatch": "10.2.6"
+    }
+  },
+  "finishedAt": "2026-11-08T08:34:58.728Z",
+  "passed": 7,
+  "failed": 0
+}

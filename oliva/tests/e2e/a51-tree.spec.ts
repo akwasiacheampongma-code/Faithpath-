@@ -1,5 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
-import { mkdir } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { readFileSync } from "node:fs";
 import { localData, rawData } from "./persistence";
 import { originalA51 } from "./a51-reference";
@@ -8,6 +8,100 @@ import type { TreeMetrics } from "../../src/features/garden/a51/engine/tree-scen
 type Host = HTMLElement & { olivaTree?: () => TreeMetrics };
 const output = `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/a51/screens`;
 const A51_STAGES: A51Stage[] = JSON.parse(readFileSync("src/features/garden/a51/stage-data.json","utf8")).stages;
+const observedLifetimes = new WeakMap<Page, Record<string, unknown>[]>();
+// Opt-in observers for a real tab/worker lifecycle diagnosis. They preserve the
+// native return values and never synthesize visibility, worker replies or data.
+test.beforeEach(async ({ page }, info) => {
+  if (!process.env.OLIVA_A51_DIAGNOSTICS || !info.title.startsWith("alle sieben Originalbilder")) return;
+  const lifetime: Record<string, unknown>[] = [];
+  observedLifetimes.set(page, lifetime);
+  await page.exposeBinding("a51ObserveNativeLifecycle", (_source, value: Record<string, unknown>) => { lifetime.push(value); });
+  await page.addInitScript(() => {
+    const log: Record<string, unknown>[] = [];
+    (window as Window & { a51OfflineLog?: typeof log }).a51OfflineLog = log;
+    function record(type: string, details: Record<string, unknown> = {}) {
+      const event = { type, at: performance.now(), epoch: Date.now(), url: location.href,
+        visibility: document.visibilityState, focused: document.hasFocus(), ...details };
+      log.push(event);
+      void (window as Window & { a51ObserveNativeLifecycle?: (event: Record<string, unknown>) => Promise<void> })
+        .a51ObserveNativeLifecycle?.(event);
+    }
+    record("init");
+    document.addEventListener("visibilitychange", () => record("visibilitychange"));
+    window.addEventListener("focus", () => record("focus"));
+    window.addEventListener("blur", () => record("blur"));
+    window.addEventListener("online", () => record("online"));
+    if (!("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.addEventListener("controllerchange", () =>
+      record("controllerchange", { state: navigator.serviceWorker.controller?.state }));
+    const nativeRegister = navigator.serviceWorker.register.bind(navigator.serviceWorker);
+    navigator.serviceWorker.register = (...args) => {
+      record("register-start", { script: String(args[0]) });
+      const promise = nativeRegister(...args);
+      void promise.then(registration => {
+        const states = () => ({ active: registration.active?.state, waiting: registration.waiting?.state,
+          installing: registration.installing?.state });
+        record("register-resolved", states());
+        registration.addEventListener("updatefound", () => {
+          record("updatefound", states());
+          registration.installing?.addEventListener("statechange", () => record("worker-statechange", states()));
+        });
+        registration.installing?.addEventListener("statechange", () => record("worker-statechange", states()));
+      }, error => record("register-error", { error: String(error) }));
+      return promise;
+    };
+    const nativePost = ServiceWorker.prototype.postMessage;
+    ServiceWorker.prototype.postMessage = function(this: ServiceWorker, ...args: unknown[]) {
+      const message = args[0] as { type?: unknown } | null | undefined;
+      if (message?.type === "OLIVA_BUILD" || message?.type === "OLIVA_ACTIVATE")
+        record("worker-post", { message: message.type, state: this.state, script: this.scriptURL });
+      return Reflect.apply(nativePost, this, args);
+    } as typeof nativePost;
+  });
+  await info.attach("a51-lifecycle-observer-enabled", { body: "Native APIs observed without changed return values or forged events.", contentType: "text/plain" });
+});
+test.afterEach(async ({ page }, info) => {
+  const tracing = observedLifetimes.has(page), failed = info.status !== info.expectedStatus;
+  if (!info.title.startsWith("alle sieben Originalbilder") || (!tracing && !failed) || page.isClosed()) return;
+  const capture = () => page.evaluate(async () => {
+    const registration = await navigator.serviceWorker.getRegistration();
+    const inspect = (worker: ServiceWorker | null | undefined): Promise<unknown> => !worker ? Promise.resolve(null) :
+      new Promise(resolve => {
+        const channel = new MessageChannel();
+        const finish = (value: unknown) => { clearTimeout(timer); channel.port1.close(); channel.port2.close(); resolve(value); };
+        const timer = setTimeout(() => finish({ timeout: true }), 1500);
+        channel.port1.onmessage = event => finish(event.data);
+        try { worker.postMessage({ type: "OLIVA_BUILD" }, [channel.port2]); }
+        catch (error) { finish({ error: String(error) }); }
+      });
+    const cacheCounts: Record<string, number> = {};
+    for (const key of await caches.keys()) cacheCounts[key] = (await (await caches.open(key)).keys()).length;
+    return {
+      visibility: document.visibilityState, focused: document.hasFocus(), hidden: document.hidden,
+      expected: document.querySelector('meta[name="oliva-build"]')?.getAttribute("content"),
+      controller: navigator.serviceWorker.controller ? { state: navigator.serviceWorker.controller.state,
+        script: navigator.serviceWorker.controller.scriptURL, reply: await inspect(navigator.serviceWorker.controller) } : null,
+      registration: registration ? { scope: registration.scope, active: registration.active?.state,
+        installing: registration.installing?.state, waiting: registration.waiting?.state,
+        activeReply: await inspect(registration.active) } : null,
+      cacheCounts,
+      offlineText: document.body.innerText.split("\n").filter(line => /Offline-Paket|Offline-Neustart|Aktualisierung verfügbar/.test(line)),
+      events: (window as Window & { a51OfflineLog?: Record<string, unknown>[] }).a51OfflineLog,
+    };
+  });
+  const beforeQuietWindow = await capture();
+  const quietWindowMs = tracing && failed && beforeQuietWindow.offlineText.includes("Offline-Paket wird vorbereitet …") ? 16000 : 0;
+  // Observation only, after the case's assertions have already finished. This
+  // distinguishes a normal pending render from a genuinely stranded register.
+  if (quietWindowMs) await page.waitForTimeout(quietWindowMs);
+  const snapshot = quietWindowMs ? await capture() : beforeQuietWindow;
+  const body = JSON.stringify({ title: info.title, status: info.status, expectedStatus: info.expectedStatus,
+    quietWindowMs, beforeQuietWindow, eventsAcrossNavigations: observedLifetimes.get(page), snapshot }, null, 2);
+  const directory = `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/a51/diagnostics`;
+  await mkdir(directory, { recursive: true });
+  await writeFile(`${directory}/worker-lifecycle-${Date.now()}-${info.workerIndex}.json`, body);
+  await info.attach("a51-offline-lifecycle", { body, contentType: "application/json" });
+});
 async function metrics(page: Page) {
   return page.getByTestId("olive-tree").evaluate(el => (el as Host).olivaTree?.());
 }

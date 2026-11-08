@@ -1,0 +1,115 @@
+
+> oliva-faith-companion@0.8.0 test:e2e
+> playwright test
+
+
+Running 67 tests using 1 worker
+
+(node:18142) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (15.1s)
+  ✓   2 tests/e2e/a51-tree.spec.ts:200:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (4.3s)
+  ✓   3 tests/e2e/a51-tree.spec.ts:224:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (4.8s)
+  ✓   4 tests/e2e/a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (3.6s)
+  ✓   5 tests/e2e/a51-tree.spec.ts:250:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (2.7s)
+  ✓   6 tests/e2e/archives.spec.ts:57:1 › ein großer Originalblob wird bei Entwurfsänderungen nicht erneut geschrieben (5.8s)
+  ✓   7 tests/e2e/archives.spec.ts:95:1 › verwaiste Blobs werden entfernt und Quellen der Rückkehrsicherung bleiben erhalten (9.0s)
+  ✓   8 tests/e2e/archives.spec.ts:130:1 › Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unverändert (4.1s)
+  ✓   9 tests/e2e/archives.spec.ts:149:1 › beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern (3.8s)
+  ✓  10 tests/e2e/core.spec.ts:13:1 › Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt (6.9s)
+  ✓  11 tests/e2e/core.spec.ts:97:1 › Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss (6.3s)
+  ✓  12 tests/e2e/core.spec.ts:153:1 › Journal bearbeiten, löschen und rückgängig machen (4.7s)
+  ✓  13 tests/e2e/core.spec.ts:203:1 › Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen (3.3s)
+  ✓  14 tests/e2e/core.spec.ts:250:1 › Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeichert (5.7s)
+  ✓  15 tests/e2e/core.spec.ts:279:1 › Offline-Neustart öffnet auch einen noch nicht besuchten Reader (5.1s)
+  ✓  16 tests/e2e/core.spec.ts:312:1 › Gleichzeitige Fenster überschreiben keine fremden Änderungen (4.4s)
+  ✓  17 tests/e2e/core.spec.ts:344:1 › Speicherfehler bestätigt keine Notiz und erhält den getippten Text (2.4s)
+  ✓  18 tests/e2e/core.spec.ts:373:1 › Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung (32.6s)
+  ✓  19 tests/e2e/imports.spec.ts:47:1 › Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten (4.3s)
+  ✓  20 tests/e2e/imports.spec.ts:70:1 › Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline (8.7s)
+  ✓  21 tests/e2e/imports.spec.ts:132:1 › zwei Fenster schützen Änderungen und erlauben eine erneute Vorschau (7.7s)
+  ✓  22 tests/e2e/imports.spec.ts:162:1 › Schreibfehler lassen Bestand und vorherige Rückkehrsicherung atomar erhalten (5.5s)
+  ✓  23 tests/e2e/imports.spec.ts:195:1 › Rückkehr zeigt Folgen ausdrücklich und stellt den echten vorherigen Stand wieder her (7.3s)
+  ✓  24 tests/e2e/imports.spec.ts:230:1 › Importansichten sind mobil, dunkel und per Tastatur zugänglich (8.5s)
+  ✓  25 tests/e2e/learning.spec.ts:4:1 › Textfragen zeigen belegte Rückmeldung und verändern keinen Fortschritt (8.4s)
+  ✓  26 tests/e2e/learning.spec.ts:56:1 › Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zählt nur den Abschnitt (7.1s)
+  ✘  27 tests/e2e/offline-readiness.spec.ts:174:1 › eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten (20.2s)
+(node:19696) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  28 tests/e2e/offline-readiness.spec.ts:199:1 › wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling (20.0s)
+  ✓  29 tests/e2e/offline-readiness.spec.ts:222:1 › eine ältere echte Antwort überschreibt keinen neueren Buildkonflikt (5.0s)
+  ✓  30 tests/e2e/offline-readiness.spec.ts:249:1 › ein bereits aktiver Worker wird trotz offenbleibender erneuter Registrierung sofort verifiziert (3.9s)
+  ✓  31 tests/e2e/personal.spec.ts:12:1 › Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf (2.9s)
+  ✓  32 tests/e2e/personal.spec.ts:38:1 › Journalentwurf überlebt Neustart, Bearbeitung und anschließendes Speichern (5.8s)
+  ✓  33 tests/e2e/personal.spec.ts:84:1 › Vorhaben, Schritte, Rückblick-Snapshot und Archiv funktionieren zusammen (7.9s)
+  ✓  34 tests/e2e/personal.spec.ts:201:1 › Ungespeicherte Entwurfsworte werden erst nach ausdrücklichem Verwerfen gelöscht (4.3s)
+  ✓  35 tests/e2e/personal.spec.ts:234:1 › Eine installierte V1-Datenbank wird ohne Verlust weitergeführt (4.2s)
+  ✓  36 tests/e2e/personal.spec.ts:287:1 › Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben (3.9s)
+  ✓  37 tests/e2e/personal.spec.ts:310:1 › Neue Vorhaben- und Entwurfsansichten bleiben auf kleinen Displays zugänglich (8.5s)
+  ✓  38 tests/e2e/pwa.spec.ts:2:1 › das installierbare Offlinepaket liefert Manifest, vollständige Icons und Inhaltsrechte (3.2s)
+  ✓  39 tests/e2e/reading-position.spec.ts:12:1 › Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers (6.0s)
+  ✓  40 tests/e2e/reading-position.spec.ts:24:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen (7.8s)
+  ✓  41 tests/e2e/reading-position.spec.ts:41:1 › Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker (7.4s)
+  ✓  42 tests/e2e/reading-position.spec.ts:51:1 › eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust (4.9s)
+(node:20395) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 tests/e2e/captures.spec.ts:11:1 › Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart (5.3s)
+  ✓  44 tests/e2e/captures.spec.ts:61:1 › zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt (6.5s)
+  ✓  45 tests/e2e/captures.spec.ts:146:1 › Reflexionsentwurf im Lernweg überlebt Neustart und schließt nur auf ausdrücklichen Klick ab (5.7s)
+  ✓  46 tests/e2e/captures.spec.ts:198:1 › ein Entwurf wird erst nach ausdrücklichem Verwerfen gelöscht und bestätigt dabei keine Erfahrung (3.0s)
+  ✓  47 tests/e2e/captures.spec.ts:230:1 › der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexionsentwurf (2.9s)
+  ✓  48 tests/e2e/captures.spec.ts:254:1 › ein Speicherfehler lässt den Kontextentwurf sichtbar und erzeugt keinen fertigen Eintrag (2.8s)
+  ✓  49 tests/e2e/captures.spec.ts:286:1 › ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren (4.0s)
+  ✓  50 tests/e2e/david-story.spec.ts:48:1 › fünf Geschichten bewahren den Bestand; David öffnet exakt acht Verse und zählt nur nach ausdrücklicher Bestätigung (5.6s)
+  ✓  51 tests/e2e/david-story.spec.ts:81:1 › das vollständige Offlinepaket öffnet David und alle bisherigen Bilder erstmals offline und nach Neustart (6.2s)
+  ✓  52 tests/e2e/david-story.spec.ts:101:1 › Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar (16.8s)
+  ✓  53 tests/e2e/david-story.spec.ts:145:3 › echte Bildfehler ohne Service-Worker › drei ausgefallene Bildvarianten zeigen einen erreichbaren Wiederholungsbutton und laden danach wirklich (4.0s)
+  ✓  54 tests/e2e/reviews.spec.ts:110:1 › Rückblicktext wird geändert, historischer Stand bleibt; Löschen und Rückgängig bewahren den Baum (4.4s)
+  ✓  55 tests/e2e/reviews.spec.ts:159:1 › Bearbeitungsentwurf erreicht die Sammlung und überlebt Offline-Neustart ohne neuen Rückblick (6.3s)
+  ✓  56 tests/e2e/reviews.spec.ts:210:1 › nur unveränderte Rückblicke werden wieder verbunden; echte Konflikte bewahren beide Wortlaute (6.8s)
+  ✓  57 tests/e2e/reviews.spec.ts:287:1 › Löschen braucht Bestätigung, verwirft Undo beim Verlassen und exportiert keinen gelöschten Rückblick (4.8s)
+  ✓  58 tests/e2e/reviews.spec.ts:332:1 › archivierte und fehlende Ziele lassen eigene Entwurfsworte lesbar, exportierbar und verwerfbar (6.3s)
+  ✓  59 tests/e2e/reviews.spec.ts:391:1 › Rückblickeditor bleibt auf kleinen und großen Displays sowie in Hell und Dunkel lesbar (5.7s)
+  ✓  60 tests/e2e/reviews.spec.ts:449:1 › ein während des Verlassens abgeschlossener Löschvorgang lässt kein Undo zurück (3.6s)
+  ✓  61 tests/e2e/swords.spec.ts:96:1 › das Buchschwert öffnet aus Bibel und Sammlung, zeigt Johannes groß und verändert keine Lesespuren (6.4s)
+  ✓  62 tests/e2e/swords.spec.ts:130:1 › eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt (8.6s)
+  ✓  63 tests/e2e/swords.spec.ts:156:1 › synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel (14.4s)
+  ✓  64 tests/e2e/swords.spec.ts:183:1 › die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück (9.7s)
+  ✓  65 tests/e2e/swords.spec.ts:211:1 › nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet (12.8s)
+  ✓  66 tests/e2e/swords.spec.ts:249:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › drei fehlgeschlagene PNG-Varianten lassen das Buchsymbol bestehen; erneutes Laden gelingt (3.9s)
+  ✓  67 tests/e2e/swords.spec.ts:265:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › ein Buchwechsel während des Ladens übernimmt kein verspätetes Johannes-Bild (4.1s)
+
+
+  1) tests/e2e/offline-readiness.spec.ts:174:1 › eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Offline-Paket wird vorbereitet …', { exact: true })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Offline-Paket wird vorbereitet …', { exact: true }) with timeout 15000ms
+      - waiting for getByText('Offline-Paket wird vorbereitet …', { exact: true })
+
+
+      177 |   await page.reload();
+      178 |   await expect.poll(async () => (await probe(page)).delayed, { timeout: 30000 }).toBe(1);
+    > 179 |   await expect(page.getByText(preparing, { exact: true })).toBeVisible();
+          |                                                            ^
+      180 |   await expect(page.getByText(ready, { exact: true })).toBeVisible();
+      181 |   const verified = await matchingWorker(page), observation = await probe(page);
+      182 |   expect(observation.replies.length).toBeGreaterThan(1);
+        at /workspace/faithpath-next/tests/e2e/offline-readiness.spec.ts:179:60
+
+    Error Context: test-results/offline-readiness-eine-ver-ef842-nd-erhält-die-lokalen-Daten/error-context.md
+
+  1 failed
+    tests/e2e/offline-readiness.spec.ts:174:1 › eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten 
+  66 passed (7.7m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

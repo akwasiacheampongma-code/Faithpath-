@@ -1,6 +1,7 @@
 import type { Reference } from "./repository";
 export type Scene = {
-  id: "noah" | "abraham" | "nativity" | "easter-dawn";
+  id: "noah" | "abraham" | "david-before-goliath" | "nativity" | "easter-dawn";
+  imageDescription?: string;
   ref: Reference;
   title: string;
   intro: string;
@@ -46,6 +47,30 @@ export const SCENES: Scene[] = [
     ],
   },
   {
+    id: "david-before-goliath",
+    ref: {
+      book: "1SA",
+      chapter: 17,
+      from: 38,
+      to: 45,
+    },
+    title: "Vertrauen vor dem ersten Schritt.",
+    intro:
+      "David probiert Rüstung und Helm aus. Dann legt er sie ab und nimmt Vertrautes mit in eine bedrohliche Begegnung.",
+    summary:
+      "Das erste Buch Samuel erzählt hier von einer Begegnung im Krieg. Saul, der König Israels, stattet David mit Helm und Rüstung aus. David legt sie ab, weil er sie nicht gewohnt ist. Er nimmt seinen Stab, fünf Steine und eine Schleuder. Goliath begegnet ihm mit Spott und Drohung. David antwortet, er komme im Namen des Gottes Israels. Der Ausschnitt zeigt Vorbereitung und Vertrauen; vom Ausgang des Kampfes erzählt erst der weitere Text.",
+    minutes: 3,
+    action: "Davids Vorbereitung lesen",
+    interpretation:
+      "Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.",
+    word: [
+      "HERR Zebaoth",
+      "Eine biblische Bezeichnung für Gott, häufig als „Herr der Heerscharen“ wiedergegeben. In Vers 45 drückt Davids Antwort sein Vertrauen auf den Gott Israels aus.",
+    ],
+    imageDescription:
+      "David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen.",
+  },
+  {
     id: "nativity",
     ref: { book: "LUK", chapter: 2, from: 1, to: 20 },
     title: "Ein kleiner Anfang in Bethlehem.",
@@ -64,6 +89,8 @@ export const SCENES: Scene[] = [
   },
   {
     id: "easter-dawn",
+    imageDescription:
+      "drei Frauen vor einem geöffneten Felsgrab im Morgenlicht.",
     ref: { book: "MRK", chapter: 16, from: 1, to: 8 },
     title: "Ein Morgen voller Fragen.",
     intro:

@@ -1,0 +1,25 @@
+
+> oliva-faith-companion@0.8.0 test:e2e
+> playwright test tests/e2e/offline-readiness.spec.ts tests/e2e/a51-tree.spec.ts
+
+
+Running 9 tests using 1 worker
+
+(node:17410) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/a51-tree.spec.ts:113:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (17.7s)
+  ✓  2 tests/e2e/a51-tree.spec.ts:198:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (4.4s)
+  ✓  3 tests/e2e/a51-tree.spec.ts:222:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (4.6s)
+  ✓  4 tests/e2e/a51-tree.spec.ts:235:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (3.4s)
+  ✓  5 tests/e2e/a51-tree.spec.ts:248:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (3.0s)
+  ✓  6 tests/e2e/offline-readiness.spec.ts:174:1 › eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten (7.6s)
+  ✓  7 tests/e2e/offline-readiness.spec.ts:199:1 › wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling (18.2s)
+  ✓  8 tests/e2e/offline-readiness.spec.ts:222:1 › eine ältere echte Antwort überschreibt keinen neueren Buildkonflikt (4.9s)
+  ✓  9 tests/e2e/offline-readiness.spec.ts:249:1 › ein bereits aktiver Worker wird trotz offenbleibender erneuter Registrierung sofort verifiziert (15.6s)
+
+  9 passed (1.4m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

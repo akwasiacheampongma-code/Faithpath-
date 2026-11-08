@@ -1,0 +1,22 @@
+{
+  "name": "ios-export",
+  "command": [
+    "node",
+    "scripts/expo.mjs",
+    "export",
+    "--platform",
+    "ios",
+    "--output-dir",
+    "/workspace/oliva-dependency-probe/dist-ios",
+    "--no-minify",
+    "--no-bytecode",
+    "--max-workers",
+    "2",
+    "--dump-assetmap"
+  ],
+  "cwd": "/workspace/oliva-dependency-probe",
+  "startedAtUtc": "2026-11-08T08:34:30.144387+00:00",
+  "durationSeconds": 39.521,
+  "exitCode": 0,
+  "log": "/workspace/oliva-security-audit/reports/dependencies-0.8/probe/ios-export.log"
+}

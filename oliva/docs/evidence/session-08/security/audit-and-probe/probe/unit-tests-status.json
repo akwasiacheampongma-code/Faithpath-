@@ -1,0 +1,15 @@
+{
+  "name": "unit-tests",
+  "command": [
+    "npm",
+    "test",
+    "--",
+    "--reporter=json",
+    "--outputFile=/workspace/oliva-security-audit/reports/dependencies-0.8/probe/unit-results.json"
+  ],
+  "cwd": "/workspace/oliva-dependency-probe",
+  "startedAtUtc": "2026-11-08T08:32:22.794258+00:00",
+  "durationSeconds": 15.661,
+  "exitCode": 0,
+  "log": "/workspace/oliva-security-audit/reports/dependencies-0.8/probe/unit-tests.log"
+}

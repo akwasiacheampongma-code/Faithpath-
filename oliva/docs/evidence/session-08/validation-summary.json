@@ -1,0 +1,139 @@
+{
+  "version": "0.8.0",
+  "checkedAt": "2026-11-08T13:49:40.119753+00:00",
+  "sourceBuild": "oliva-618ddeeb77388032",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(path + NUL + bytes + NUL), sorted paths under src/, app/, assets/, plus app.json, package.json, package-lock.json, a51/native-derivatives.json and swords/runtime.json",
+    "fileCount": 277,
+    "sha256": "60ab4ab517a1bfe768b62ad76bc6ca359099f56cfaf5d09a7c1e326f0f2cbe58"
+  },
+  "unit": {
+    "total": 117,
+    "passed": 117,
+    "failed": 0,
+    "report": "unit-results.json"
+  },
+  "browser": {
+    "total": 67,
+    "passed": 67,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "isSingleGreenFullRun": true,
+    "durationMs": 453282.33900000004,
+    "report": "e2e-results.json",
+    "priorFullRun": {
+      "report": "e2e-before-navigation-sync.json",
+      "passed": 65,
+      "total": 66,
+      "failure": "New David test read page.url() before asynchronous Expo Router transition completed. Harness now waits for actual destination with expect(page).toHaveURL; no product source or forced navigation changed."
+    },
+    "priorProductFailure": {
+      "report": "e2e-before-visibility-diagnosis.json",
+      "passed": 65,
+      "total": 66,
+      "failure": "Actual browser register() promise remained pending after a controllerchange before the effect. First worker query was incorrectly gated on it. Now independently verifies the real controller before awaiting registration; reproduced old-build proof and held-native-register regression retained. Underlying browser register stall is not diagnosed."
+    },
+    "priorTransientStateFailure": {
+      "report": "e2e-before-transient-state-sync.json",
+      "passed": 66,
+      "total": 67,
+      "failure": "A second genuine verification completed before a mandatory transient preparing paint was inspected. Harness now explicitly waits for delayed callback delivery and verifies readiness remains correct. Product source unchanged."
+    },
+    "earlierTargetedHarnessFailures": "Initial unfinished test syntax/JSON ESM import, hidden Expo stack duplicate locators and premature missing-toggle count before hydration were corrected. Raw reports retained."
+  },
+  "native": {
+    "allPassed": true,
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "a51PngPerPlatform": 98,
+    "swordPngPerPlatform": 3,
+    "davidWebpPerPlatform": 3,
+    "sourceVerified": true,
+    "kind": "Unminified Android/iOS JavaScript and asset debug exports only; no Hermes bytecode, APK, AAB, IPA, signing, simulator or physical-device execution.",
+    "simulatorTest": false,
+    "physicalDeviceTest": false,
+    "report": "native-builds.json"
+  },
+  "upgrade": {
+    "passed": true,
+    "baselineVersion": "0.7.0",
+    "targetVersion": "0.8.0",
+    "dataVersion": 6,
+    "storageVersion": 1,
+    "migrationNeeded": false,
+    "allRawRecordsPreserved": true,
+    "originalArchivesAndRecoveryPreserved": true,
+    "offlineStories": 5,
+    "offlineA51Stages": 7,
+    "offlineJohnPng": true,
+    "previousCachedAssetAvailable": true,
+    "report": "offline-upgrade.json"
+  },
+  "dependencyAudit": {
+    "total": 0,
+    "report": "dependency-audit-after.json",
+    "scope": "Scoped temporary coupled Node build-tool overrides outside Expo58 declared ranges; isolated same-input fingerprint/API comparison separately documented in docs14."
+  },
+  "hostedBrowserQa": "Unavailable: supported CUA tool not exposed. Local Expo-core Chromium tests are separate from hosted Site.",
+  "physicalPhoneTest": false,
+  "publicRelease": false,
+  "publicReleaseScope": "Public web/app-store product release; GitHub source backup is separately authorized.",
+  "githubSourceBackupAuthorized": true,
+  "rawReports": [
+    {
+      "file": "unit-results.json",
+      "sha256": "1ece72dce421ef65387b7ce49b91e5b1c09d975b2a7abb7da3ad6dd5f271bf9c"
+    },
+    {
+      "file": "e2e-results.json",
+      "sha256": "75e034c3ea278047d8cfdc3e4341be1baad61326ba7b3858a135954c27000157"
+    },
+    {
+      "file": "e2e-before-navigation-sync.json",
+      "sha256": "f24cc843252be4d18a942b2aa9e982a243957fcb69e1c31a4d17d2e48cb64794"
+    },
+    {
+      "file": "e2e-before-visibility-diagnosis.json",
+      "sha256": "6382bde24d62712d25bf379cc389b55cac5e896e4338bd067eef9d921d2cf1ed"
+    },
+    {
+      "file": "e2e-before-transient-state-sync.json",
+      "sha256": "b3a59c7d942869fdab8b019a5c15a946364b965a07e67de1125b001cb6022d4c"
+    },
+    {
+      "file": "transient-state-synchronized.json",
+      "sha256": "896c7cd8e222e057881f7191de21d0846ea7b78e22f4d32f746a121a4a549a54"
+    },
+    {
+      "file": "registration-fixed-targeted.json",
+      "sha256": "36ca5578865a85ee9d00c8f8de2c5ea2db6c9ba6f90455bdcccf3a28cd8f47eb"
+    },
+    {
+      "file": "story-offline-targeted-fixed.json",
+      "sha256": "cbcb580d0490cc96ec8a82a6ced7a4b57766cb2ac39bcc11002379e6082b4436"
+    },
+    {
+      "file": "story-offline-targeted-final.json",
+      "sha256": "7023b3d16c8e6885455a8bf2a323bab9dadce72b2438bc1492a1ec81c535e5b3"
+    },
+    {
+      "file": "native-builds.json",
+      "sha256": "78e3b4a1b94d9ed2fd2dadb74aa015eea2efdb5c1ec482e63b1f9c85b5adea23"
+    },
+    {
+      "file": "offline-upgrade.json",
+      "sha256": "6ee0b5671c699cc622abd4e4cbc9be92163ac8cd3e224507db53557849e1c394"
+    },
+    {
+      "file": "original-reference-integrity.json",
+      "sha256": "dbfcd24bde6edc4fe06363670858facd52831670537997157a770b0bd4630eec"
+    },
+    {
+      "file": "dependency-audit-after.json",
+      "sha256": "1ac93a0244d14197a57a329c9bdde55cac94b166c6651d4d9a385d1398332197"
+    }
+  ]
+}

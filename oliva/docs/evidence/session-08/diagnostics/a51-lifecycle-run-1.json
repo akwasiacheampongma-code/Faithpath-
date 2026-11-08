@@ -1,0 +1,172 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/a51-tree.spec.ts",
+      "--grep",
+      "alle sieben Originalbilder"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/session-08/diagnostics/a51-lifecycle-run-1.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "a51-tree.spec.ts",
+      "file": "a51-tree.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20612,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-08T13:21:46.646Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "a51-lifecycle-observer-enabled",
+                      "contentType": "text/plain",
+                      "body": "TmF0aXZlIEFQSXMgb2JzZXJ2ZWQgd2l0aG91dCBjaGFuZ2VkIHJldHVybiB2YWx1ZXMgb3IgZm9yZ2VkIGV2ZW50cy4="
+                    },
+                    {
+                      "name": "a51-offline-lifecycle",
+                      "contentType": "application/json",
+                      "body": "ewogICJ0aXRsZSI6ICJhbGxlIHNpZWJlbiBPcmlnaW5hbGJpbGRlciBibGVpYmVuIGVyaGFsdGVuOyBWb3JzY2hhdWVuIHNjaHJlaWJlbiBrZWluZSBwZXJzw7ZubGljaGVuIERhdGVuIiwKICAic3RhdHVzIjogInBhc3NlZCIsCiAgImV4cGVjdGVkU3RhdHVzIjogInBhc3NlZCIsCiAgInNuYXBzaG90IjogewogICAgInZpc2liaWxpdHkiOiAidmlzaWJsZSIsCiAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAiaGlkZGVuIjogZmFsc2UsCiAgICAiZXhwZWN0ZWQiOiAib2xpdmEtNTZmNmZlM2ExMmYwNWE1YyIsCiAgICAiY29udHJvbGxlciI6IHsKICAgICAgInN0YXRlIjogImFjdGl2YXRlZCIsCiAgICAgICJzY3JpcHQiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL3N3LmpzIiwKICAgICAgInJlcGx5IjogewogICAgICAgICJpZCI6ICJvbGl2YS01NmY2ZmUzYTEyZjA1YTVjIiwKICAgICAgICAidmVyc2lvbiI6ICIwLjguMCIKICAgICAgfQogICAgfSwKICAgICJyZWdpc3RyYXRpb24iOiB7CiAgICAgICJzY29wZSI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvIiwKICAgICAgImFjdGl2ZSI6ICJhY3RpdmF0ZWQiLAogICAgICAiYWN0aXZlUmVwbHkiOiB7CiAgICAgICAgImlkIjogIm9saXZhLTU2ZjZmZTNhMTJmMDVhNWMiLAogICAgICAgICJ2ZXJzaW9uIjogIjAuOC4wIgogICAgICB9CiAgICB9LAogICAgImNhY2hlQ291bnRzIjogewogICAgICAib2xpdmEtNTZmNmZlM2ExMmYwNWE1YyI6IDk4CiAgICB9LAogICAgIm9mZmxpbmVUZXh0IjogWwogICAgICAiRsO8ciBkZW4gT2ZmbGluZS1OZXVzdGFydCBiZXJlaXQuIgogICAgXSwKICAgICJldmVudHMiOiBbCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJpbml0IiwKICAgICAgICAiYXQiOiA5MS42OTk5OTk5OTkyNTQ5NCwKICAgICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgICAiZm9jdXNlZCI6IHRydWUKICAgICAgfSwKICAgICAgewogICAgICAgICJ0eXBlIjogInJlZ2lzdGVyLXN0YXJ0IiwKICAgICAgICAiYXQiOiA1OTAuMDk5OTk5OTk3NzY0OCwKICAgICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICAgInNjcmlwdCI6ICIvc3cuanMiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJyZWdpc3Rlci1yZXNvbHZlZCIsCiAgICAgICAgImF0IjogNTk3LjM5OTk5OTk5ODUwOTksCiAgICAgICAgInZpc2liaWxpdHkiOiAidmlzaWJsZSIsCiAgICAgICAgImZvY3VzZWQiOiB0cnVlLAogICAgICAgICJhY3RpdmUiOiAiYWN0aXZhdGVkIgogICAgICB9LAogICAgICB7CiAgICAgICAgInR5cGUiOiAid29ya2VyLXBvc3QiLAogICAgICAgICJhdCI6IDU5Ny42OTk5OTk5OTkyNTQ5LAogICAgICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgICAgICJmb2N1c2VkIjogdHJ1ZSwKICAgICAgICAibWVzc2FnZSI6ICJPTElWQV9CVUlMRCIsCiAgICAgICAgInN0YXRlIjogImFjdGl2YXRlZCIsCiAgICAgICAgInNjcmlwdCI6ICJodHRwOi8vbG9jYWxob3N0OjQxNzMvc3cuanMiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAidHlwZSI6ICJ3b3JrZXItcG9zdCIsCiAgICAgICAgImF0IjogMTM4MiwKICAgICAgICAidmlzaWJpbGl0eSI6ICJ2aXNpYmxlIiwKICAgICAgICAiZm9jdXNlZCI6IHRydWUsCiAgICAgICAgIm1lc3NhZ2UiOiAiT0xJVkFfQlVJTEQiLAogICAgICAgICJzdGF0ZSI6ICJhY3RpdmF0ZWQiLAogICAgICAgICJzY3JpcHQiOiAiaHR0cDovL2xvY2FsaG9zdDo0MTczL3N3LmpzIgogICAgICB9LAogICAgICB7CiAgICAgICAgInR5cGUiOiAid29ya2VyLXBvc3QiLAogICAgICAgICJhdCI6IDEzODMsCiAgICAgICAgInZpc2liaWxpdHkiOiAidmlzaWJsZSIsCiAgICAgICAgImZvY3VzZWQiOiB0cnVlLAogICAgICAgICJtZXNzYWdlIjogIk9MSVZBX0JVSUxEIiwKICAgICAgICAic3RhdGUiOiAiYWN0aXZhdGVkIiwKICAgICAgICAic2NyaXB0IjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My9zdy5qcyIKICAgICAgfQogICAgXQogIH0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7b316d9b8373c1996cfa-682dc2bdaf35a996d13a",
+          "file": "a51-tree.spec.ts",
+          "line": 98,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-08T13:21:45.876Z",
+    "duration": 22019.103,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

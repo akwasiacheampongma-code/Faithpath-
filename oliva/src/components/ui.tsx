@@ -150,13 +150,16 @@ export function IconButton({
 export function Card({
   children,
   style,
+  testID,
 }: {
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
+  testID?: string;
 }) {
   const t = useTheme();
   return (
     <View
+      testID={testID}
       style={[
         {
           backgroundColor: t.surface,

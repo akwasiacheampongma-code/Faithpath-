@@ -1,0 +1,135 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/david-story.spec.ts",
+      "tests/e2e/offline-readiness.spec.ts"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/session-08/story-offline-targeted.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "SyntaxError: /workspace/faithpath-next/tests/e2e/david-story.spec.ts: Unexpected token, expected \",\" (102:87)",
+      "stack": "SyntaxError: /workspace/faithpath-next/tests/e2e/david-story.spec.ts: Unexpected token, expected \",\" (102:87)\n    at eval (<anonymous>:1:1)",
+      "location": {
+        "file": "/workspace/faithpath-next/tests/e2e/david-story.spec.ts",
+        "line": 102,
+        "column": 88
+      },
+      "snippet": "\u001b[90m   at \u001b[39mdavid-story.spec.ts:102\n\n \u001b[90m 100 |\u001b[39m   \u001b[36mawait\u001b[39m savedProfile(page)\u001b[33m;\u001b[39m\n \u001b[90m 101 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39memulateMedia({ reducedMotion\u001b[33m:\u001b[39m \u001b[32m\"reduce\"\u001b[39m })\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 102 |\u001b[39m   \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m [width\u001b[33m,\u001b[39m theme] \u001b[36mof\u001b[39m [[\u001b[35m320\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"light\"\u001b[39m]\u001b[33m,\u001b[39m [\u001b[35m390\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"dark\"\u001b[39m]\u001b[33m,\u001b[39m [\u001b[35m1440\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"light\"\u001b[39m] \u001b[36mas\u001b[39m \u001b[36mconst\u001b[39m) {\n \u001b[90m     |\u001b[39m                                                                                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 103 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m width \u001b[33m===\u001b[39m \u001b[35m320\u001b[39m \u001b[33m?\u001b[39m \u001b[35m568\u001b[39m \u001b[33m:\u001b[39m \u001b[35m1000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 104 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m\"/einstellungen\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 105 |\u001b[39m     \u001b[36mconst\u001b[39m toggle \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m {"
+    },
+    {
+      "message": "TypeError: Module \"file:///workspace/faithpath-next/app.json\" needs an import attribute of \"type: json\"",
+      "stack": "TypeError: Module \"file:///workspace/faithpath-next/app.json\" needs an import attribute of \"type: json\"\n    at eval (<anonymous>:1:1)",
+      "location": {
+        "file": "<anonymous>",
+        "column": 1,
+        "line": 1
+      }
+    },
+    {
+      "message": "Error: No tests found.\nMake sure that arguments are regular expressions matching test files.\nYou may need to escape symbols like \"$\" or \"*\" and quote the arguments.",
+      "stack": "Error: No tests found.\nMake sure that arguments are regular expressions matching test files.\nYou may need to escape symbols like \"$\" or \"*\" and quote the arguments."
+    }
+  ],
+  "stats": {
+    "startTime": "2026-11-08T12:59:34.277Z",
+    "duration": 871.4050000000002,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-11-08T13:27:53.587015+00:00",
+  "scope": "Local Chromium automated A51 case on unchanged old0.8core oliva-56f6fe3a12f05a5c. No product source/build changes by diagnostic agent.",
+  "reproduced": true,
+  "case": "alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine pers\u00f6nlichen Daten",
+  "targetedRuns": {
+    "run1": "passed20.6s; final-document-onlyobserver was insufficient for cross-navigation diagnosis",
+    "run2": "passed20.6s; finalnavigation visibly strandedpreparing despite valid activatedcontroller",
+    "run3": "failedsame15sofflinefooterassertion; then observedextra16swithoutnewassertiontimeout"
+  },
+  "facts": {
+    "documentVisibleAndFocused": true,
+    "activationBeforeWebOfflineRegistration": {
+      "controllerchangeMs": 466.69999999925494,
+      "registerStartMs": 945.3999999985099,
+      "controllerchangeState": "activating"
+    },
+    "registrationPromiseResolved": false,
+    "registrationPendingAtLeastMs": 38786.199999999255,
+    "noProductBuildQueriesBeforeFailedAssertion": true,
+    "diagnosticBuildQueriesOnlyAtMs": [
+      23694.599999997765,
+      23699.099999997765,
+      39728.79999999702,
+      39731.599999997765
+    ],
+    "realControllerReply": {
+      "id": "oliva-56f6fe3a12f05a5c",
+      "version": "0.8.0"
+    },
+    "realActiveWorkerReply": {
+      "id": "oliva-56f6fe3a12f05a5c",
+      "version": "0.8.0"
+    },
+    "realCacheFiles": 98,
+    "extraQuietObservationMs": 16000,
+    "footerBeforeAndAfter": "Offline-Paket wird vorbereitet \u2026"
+  },
+  "conclusion": "WebOffline waits for navigator.serviceWorker.register() before calling refresh. If controllerchange to activating occurs before its effect subscribes and native register remains pending, there is no initial verification or finite retry. Existing activatedcontroller actually answers correctly; UI remainspreparing.",
+  "proposedFix": "Start realcontroller verification independently of awaiting registration. Later native registration/activation may still refresh normally. Add regression that invokes the realnative register API while holding only its returned promise pending, verifies actualcontroller response and unchanged raw records.",
+  "notProven": [
+    "Why Chromium leaves this register/update job pending across navigation.",
+    "That the historical0.5CI failure had this samecause.",
+    "Any physicaldevice or hostedSite outcome."
+  ],
+  "dataScope": "Existingcase rawData equality assertions passed through allstagepreviews andtheme change before failingreadyfooter. Diagnosticobservers use nativeAPIcalls/readonlycacheinspection and introduce no appState writes; a new fullrawrecord regression belongs to productfixverification.",
+  "proofs": [
+    {
+      "file": "/workspace/oliva-offline-diagnostics/v08-1794144381111-0.json",
+      "bytes": 7828,
+      "sha256": "875ce19cca399ec53e745923ca37204b8f410c1481240e86f47ba49aa2e646a1"
+    },
+    {
+      "file": "/workspace/oliva-offline-diagnostics/v08-run-3.txt",
+      "bytes": 2811,
+      "sha256": "c3eeaa94f383c364520093a1597f25b963be7692959949200e777175bd24ecc3"
+    },
+    {
+      "file": "/workspace/faithpath-next/docs/evidence/session-08/diagnostics/a51-lifecycle-run-3.json",
+      "bytes": 20752,
+      "sha256": "b04cc0a93eeeb68b2f7821fe3c58bf00a1965cf374b994b32c495748eabe5632"
+    },
+    {
+      "file": "/workspace/oliva-offline-diagnostics/v08-diagnostic-typecheck.txt",
+      "bytes": 265,
+      "sha256": "e73ed4ea31fe6497bb67122c59f2ec50a3d68e49ebc034bb7d27444999c98731"
+    }
+  ]
+}

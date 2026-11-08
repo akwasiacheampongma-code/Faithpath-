@@ -1,0 +1,89 @@
+
+> oliva-faith-companion@0.8.0 test:e2e
+> playwright test tests/e2e/david-story.spec.ts tests/e2e/offline-readiness.spec.ts
+
+
+Running 7 tests using 1 worker
+
+(node:7409) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/david-story.spec.ts:46:1 › fünf Geschichten bewahren den Bestand; David öffnet exakt acht Verse und zählt nur nach ausdrücklicher Bestätigung (5.7s)
+(node:7585) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/david-story.spec.ts:76:1 › das vollständige Offlinepaket öffnet David und alle bisherigen Bilder erstmals offline und nach Neustart (6.2s)
+  ✘  3 tests/e2e/david-story.spec.ts:96:1 › Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar (21.1s)
+(node:7849) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/e2e/david-story.spec.ts:138:3 › echte Bildfehler ohne Service-Worker › drei ausgefallene Bildvarianten zeigen einen erreichbaren Wiederholungsbutton und laden danach wirklich (4.2s)
+(node:8006) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/e2e/offline-readiness.spec.ts:166:1 › eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten (11.3s)
+  ✓  6 tests/e2e/offline-readiness.spec.ts:191:1 › wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling (18.3s)
+  ✓  7 tests/e2e/offline-readiness.spec.ts:214:1 › eine ältere echte Antwort überschreibt keinen neueren Buildkonflikt (4.4s)
+
+
+  1) tests/e2e/david-story.spec.ts:46:1 › fünf Geschichten bewahren den Bestand; David öffnet exakt acht Verse und zählt nur nach ausdrücklicher Bestätigung 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByTestId('story-artwork-david-before-goliath')
+    Expected: "false"
+    Error: strict mode violation: getByTestId('story-artwork-david-before-goliath') resolved to 2 elements:
+        1) <div role="img" aria-busy="false" data-testid="story-artwork-david-before-goliath" class="css-g5y9jx r-1pi2tsx r-2kxcpj r-u8s1d r-13qz1uu" aria-label="Künstlerische Interpretation: David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen. Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.">…</div> aka locator('main').filter({ hasText: 'Luther 1912 · vollständig' }).getByTestId('story-artwork-david-before-goliath')
+        2) <div role="img" aria-busy="false" data-testid="story-artwork-david-before-goliath" class="css-g5y9jx r-1pi2tsx r-2kxcpj r-u8s1d r-13qz1uu" aria-label="Künstlerische Interpretation: David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen. Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.">…</div> aka getByRole('img', { name: 'Künstlerische Interpretation' })
+
+    Call log:
+      - Expect "toHaveAttribute" getByTestId('story-artwork-david-before-goliath') with timeout 15000ms
+      - waiting for getByTestId('story-artwork-david-before-goliath')
+
+
+      23 |
+      24 | async function artworkReady(page: Page, id = david) {
+    > 25 |   await expect(page.getByTestId(`story-artwork-${id}`)).toHaveAttribute("aria-busy", "false");
+         |                                                         ^
+      26 |   await expect(page.getByTestId(`story-error-${id}`)).toHaveCount(0);
+      27 |   await expect.poll(() => page.getByTestId(`story-image-${id}`).evaluate(node => {
+      28 |     const image = node instanceof HTMLImageElement ? node : node.querySelector("img");
+        at artworkReady (/workspace/faithpath-next/tests/e2e/david-story.spec.ts:25:57)
+        at /workspace/faithpath-next/tests/e2e/david-story.spec.ts:61:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/david-story-fünf-Geschicht-d6e5a--ausdrücklicher-Bestätigung/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/david-story-fünf-Geschicht-d6e5a--ausdrücklicher-Bestätigung/error-context.md
+
+  2) tests/e2e/david-story.spec.ts:96:1 › Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "dark"
+    Received: "light"
+
+    Call Log:
+    - Timeout 15000ms exceeded while waiting on the predicate
+
+      106 |     });
+      107 |     if (await toggle.count()) await toggle.click();
+    > 108 |     await expect.poll(async () => (await localData(page)).settings.theme).toBe(theme);
+          |                                                                           ^
+      109 |     const before = await rawData(page);
+      110 |     await openLibrary(page);
+      111 |     for (const id of stories) await artworkReady(page, id);
+        at /workspace/faithpath-next/tests/e2e/david-story.spec.ts:108:75
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/david-story-Geschichten-un-869cd-s-in-Hell-und-Dunkel-lesbar/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/david-story-Geschichten-un-869cd-s-in-Hell-und-Dunkel-lesbar/error-context.md
+
+  2 failed
+    tests/e2e/david-story.spec.ts:46:1 › fünf Geschichten bewahren den Bestand; David öffnet exakt acht Verse und zählt nur nach ausdrücklicher Bestätigung 
+    tests/e2e/david-story.spec.ts:96:1 › Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar 
+  5 passed (1.3m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

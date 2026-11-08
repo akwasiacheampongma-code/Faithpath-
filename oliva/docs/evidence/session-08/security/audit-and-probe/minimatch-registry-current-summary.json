@@ -1,0 +1,78 @@
+{
+  "package": "minimatch",
+  "dist-tags": {
+    "legacy-v8": "8.0.7",
+    "legacy-v7": "7.4.9",
+    "legacy-v6": "6.2.3",
+    "legacy-v5": "5.1.9",
+    "legacy-v4": "4.2.6",
+    "legacy-v3": "3.1.5",
+    "legacy-v9": "9.0.9",
+    "latest": "11.0.5"
+  },
+  "versions": {
+    "10.2.4": {
+      "name": "minimatch",
+      "version": "10.2.4",
+      "dependencies": {
+        "brace-expansion": "^5.0.2"
+      },
+      "engines": {
+        "node": "18 || 20 || >=22"
+      }
+    },
+    "10.2.5": {
+      "name": "minimatch",
+      "version": "10.2.5",
+      "dependencies": {
+        "brace-expansion": "^5.0.5"
+      },
+      "engines": {
+        "node": "18 || 20 || >=22"
+      }
+    },
+    "10.2.6": {
+      "name": "minimatch",
+      "version": "10.2.6",
+      "dependencies": {
+        "brace-expansion": "^5.0.8"
+      },
+      "engines": {
+        "node": "18 || 20 || >=22"
+      }
+    },
+    "11.0.3": {
+      "name": "minimatch",
+      "version": "11.0.3",
+      "dependencies": {
+        "brace-expansion": "^5.0.12",
+        "@isaacs/nonrecursive-glob-match": "^1.0.3"
+      },
+      "engines": {
+        "node": "18 || 20 || >=22"
+      }
+    },
+    "11.0.4": {
+      "name": "minimatch",
+      "version": "11.0.4",
+      "dependencies": {
+        "brace-expansion": "^5.0.12",
+        "@isaacs/nonrecursive-glob-match": "^1.0.3"
+      },
+      "engines": {
+        "node": "20 || >=22"
+      }
+    },
+    "11.0.5": {
+      "name": "minimatch",
+      "version": "11.0.5",
+      "dependencies": {
+        "brace-expansion": "^5.0.12",
+        "@isaacs/nonrecursive-glob-match": "^1.1.0"
+      },
+      "engines": {
+        "node": "20 || >=22"
+      }
+    }
+  }
+}

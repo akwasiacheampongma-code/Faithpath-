@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+# Preserve audited originals, frozen schemas and raw evidence byte-for-byte.
+art/a51/** -text
+content/** -text
+src/features/personal/schema-v5.ts -text
+docs/evidence/** -text -whitespace
+
+*.png binary
+*.webp binary
+*.ttf binary
+*.zip binary

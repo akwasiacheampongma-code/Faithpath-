@@ -1,0 +1,497 @@
+{
+  "url": "https://api.github.com/repos/isaacs/node-glob/compare/v13.0.6...v13.0.7",
+  "html_url": "https://github.com/isaacs/node-glob/compare/v13.0.6...v13.0.7",
+  "permalink_url": "https://github.com/isaacs/node-glob/compare/isaacs:e80cb38...isaacs:84709f5",
+  "diff_url": "https://github.com/isaacs/node-glob/compare/v13.0.6...v13.0.7.diff",
+  "patch_url": "https://github.com/isaacs/node-glob/compare/v13.0.6...v13.0.7.patch",
+  "base_commit": {
+    "sha": "e80cb38ae60d6cbff9e75f39032a994858994d35",
+    "node_id": "C_kwDOAAV1MdoAKGU4MGNiMzhhZTYwZDZjYmZmOWU3NWYzOTAzMmE5OTQ4NTg5OTRkMzU",
+    "commit": {
+      "author": {
+        "name": "isaacs",
+        "email": "i@izs.me",
+        "date": "2026-02-19T17:26:16Z"
+      },
+      "committer": {
+        "name": "isaacs",
+        "email": "i@izs.me",
+        "date": "2026-02-19T17:26:16Z"
+      },
+      "message": "13.0.6",
+      "tree": {
+        "sha": "fbbd60d5932ab1c5ec33e77a0c36ff63e463cef4",
+        "url": "https://api.github.com/repos/isaacs/node-glob/git/trees/fbbd60d5932ab1c5ec33e77a0c36ff63e463cef4"
+      },
+      "url": "https://api.github.com/repos/isaacs/node-glob/git/commits/e80cb38ae60d6cbff9e75f39032a994858994d35",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEE21zeUf8MTCfLx5AXk4ByjHl6hPYFAmmXR7gACgkQk4ByjHl6\nhPYfoRAAhHn9H5phzzTqlXPNFEDB7LnyBhJNHVDppVA9riougDaWemzWV2FMhQUb\n3s74XI4EnQ6ZTabN9eGDlhrsjfCK60O7AMlyal/ZyLB+bchZdms9/8GrFS0M5hXZ\n1VlDtS/byii45RWXXTpRJ+II622N8ZDC/vVmysaVuXhhyJi4BGnWqX37n7NRnHPq\nHmgYPJ84PLVjw6Qrlx+g0BhZOsjTFMdPPMCCyNJH23kzEXmMacn+9xE5YX9QTwP3\nHro99JvRLI3TGYNSsB8AtFpgWHrMikW6wjHKYULmjK03WoT0v2psb3sSE4Wm00fr\nF8ywKfcK3f9lYPunsldm3q/z9SwrnlvNE9ucAIqB6V9yPXCJjuBSAv6XQX7XO7CK\nTHPjpItrWd93rUc/NShBefmgI7KYkKj9D9ihozX/1aZzlnkoSxqs0mGTdUPbBEa8\neQprVksmFzYAGqIaDhk4AxW6401uIKh9h/U93p7yn8+6OpZJKa7OhIMhaL8aQhrL\nYF5KvUaHGM61jdebFK0O8FdMV3h5V5v7CaIc0eB8oQKb9uBvL0KCEDseYJz/jlR4\nGYCt0hvjhcMCdTuu2/eWBNbFsM46zHsKrdnzWiEUpIj7ptLmNiy5oHVRXG8/5zW6\ncSog08Vi9pDsSMtE/Sk2+3seeMi/S16ON9ukMGZQc9LWNi85Qig=\n=iOSg\n-----END PGP SIGNATURE-----",
+        "payload": "tree fbbd60d5932ab1c5ec33e77a0c36ff63e463cef4\nparent 9cdbbfff75c64fb158c8842d4d0eb3e908676a41\nauthor isaacs <i@izs.me> 1771521976 -0800\ncommitter isaacs <i@izs.me> 1771521976 -0800\n\n13.0.6\n",
+        "verified_at": "2026-02-19T17:26:22Z"
+      }
+    },
+    "url": "https://api.github.com/repos/isaacs/node-glob/commits/e80cb38ae60d6cbff9e75f39032a994858994d35",
+    "html_url": "https://github.com/isaacs/node-glob/commit/e80cb38ae60d6cbff9e75f39032a994858994d35",
+    "comments_url": "https://api.github.com/repos/isaacs/node-glob/commits/e80cb38ae60d6cbff9e75f39032a994858994d35/comments",
+    "author": {
+      "login": "isaacs",
+      "id": 9287,
+      "node_id": "MDQ6VXNlcjkyODc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/isaacs",
+      "html_url": "https://github.com/isaacs",
+      "followers_url": "https://api.github.com/users/isaacs/followers",
+      "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+      "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+      "organizations_url": "https://api.github.com/users/isaacs/orgs",
+      "repos_url": "https://api.github.com/users/isaacs/repos",
+      "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/isaacs/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "isaacs",
+      "id": 9287,
+      "node_id": "MDQ6VXNlcjkyODc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/isaacs",
+      "html_url": "https://github.com/isaacs",
+      "followers_url": "https://api.github.com/users/isaacs/followers",
+      "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+      "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+      "organizations_url": "https://api.github.com/users/isaacs/orgs",
+      "repos_url": "https://api.github.com/users/isaacs/repos",
+      "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/isaacs/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9cdbbfff75c64fb158c8842d4d0eb3e908676a41",
+        "url": "https://api.github.com/repos/isaacs/node-glob/commits/9cdbbfff75c64fb158c8842d4d0eb3e908676a41",
+        "html_url": "https://github.com/isaacs/node-glob/commit/9cdbbfff75c64fb158c8842d4d0eb3e908676a41"
+      }
+    ]
+  },
+  "merge_base_commit": {
+    "sha": "e80cb38ae60d6cbff9e75f39032a994858994d35",
+    "node_id": "C_kwDOAAV1MdoAKGU4MGNiMzhhZTYwZDZjYmZmOWU3NWYzOTAzMmE5OTQ4NTg5OTRkMzU",
+    "commit": {
+      "author": {
+        "name": "isaacs",
+        "email": "i@izs.me",
+        "date": "2026-02-19T17:26:16Z"
+      },
+      "committer": {
+        "name": "isaacs",
+        "email": "i@izs.me",
+        "date": "2026-02-19T17:26:16Z"
+      },
+      "message": "13.0.6",
+      "tree": {
+        "sha": "fbbd60d5932ab1c5ec33e77a0c36ff63e463cef4",
+        "url": "https://api.github.com/repos/isaacs/node-glob/git/trees/fbbd60d5932ab1c5ec33e77a0c36ff63e463cef4"
+      },
+      "url": "https://api.github.com/repos/isaacs/node-glob/git/commits/e80cb38ae60d6cbff9e75f39032a994858994d35",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\niQIzBAABCAAdFiEE21zeUf8MTCfLx5AXk4ByjHl6hPYFAmmXR7gACgkQk4ByjHl6\nhPYfoRAAhHn9H5phzzTqlXPNFEDB7LnyBhJNHVDppVA9riougDaWemzWV2FMhQUb\n3s74XI4EnQ6ZTabN9eGDlhrsjfCK60O7AMlyal/ZyLB+bchZdms9/8GrFS0M5hXZ\n1VlDtS/byii45RWXXTpRJ+II622N8ZDC/vVmysaVuXhhyJi4BGnWqX37n7NRnHPq\nHmgYPJ84PLVjw6Qrlx+g0BhZOsjTFMdPPMCCyNJH23kzEXmMacn+9xE5YX9QTwP3\nHro99JvRLI3TGYNSsB8AtFpgWHrMikW6wjHKYULmjK03WoT0v2psb3sSE4Wm00fr\nF8ywKfcK3f9lYPunsldm3q/z9SwrnlvNE9ucAIqB6V9yPXCJjuBSAv6XQX7XO7CK\nTHPjpItrWd93rUc/NShBefmgI7KYkKj9D9ihozX/1aZzlnkoSxqs0mGTdUPbBEa8\neQprVksmFzYAGqIaDhk4AxW6401uIKh9h/U93p7yn8+6OpZJKa7OhIMhaL8aQhrL\nYF5KvUaHGM61jdebFK0O8FdMV3h5V5v7CaIc0eB8oQKb9uBvL0KCEDseYJz/jlR4\nGYCt0hvjhcMCdTuu2/eWBNbFsM46zHsKrdnzWiEUpIj7ptLmNiy5oHVRXG8/5zW6\ncSog08Vi9pDsSMtE/Sk2+3seeMi/S16ON9ukMGZQc9LWNi85Qig=\n=iOSg\n-----END PGP SIGNATURE-----",
+        "payload": "tree fbbd60d5932ab1c5ec33e77a0c36ff63e463cef4\nparent 9cdbbfff75c64fb158c8842d4d0eb3e908676a41\nauthor isaacs <i@izs.me> 1771521976 -0800\ncommitter isaacs <i@izs.me> 1771521976 -0800\n\n13.0.6\n",
+        "verified_at": "2026-02-19T17:26:22Z"
+      }
+    },
+    "url": "https://api.github.com/repos/isaacs/node-glob/commits/e80cb38ae60d6cbff9e75f39032a994858994d35",
+    "html_url": "https://github.com/isaacs/node-glob/commit/e80cb38ae60d6cbff9e75f39032a994858994d35",
+    "comments_url": "https://api.github.com/repos/isaacs/node-glob/commits/e80cb38ae60d6cbff9e75f39032a994858994d35/comments",
+    "author": {
+      "login": "isaacs",
+      "id": 9287,
+      "node_id": "MDQ6VXNlcjkyODc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/isaacs",
+      "html_url": "https://github.com/isaacs",
+      "followers_url": "https://api.github.com/users/isaacs/followers",
+      "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+      "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+      "organizations_url": "https://api.github.com/users/isaacs/orgs",
+      "repos_url": "https://api.github.com/users/isaacs/repos",
+      "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/isaacs/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "isaacs",
+      "id": 9287,
+      "node_id": "MDQ6VXNlcjkyODc=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/isaacs",
+      "html_url": "https://github.com/isaacs",
+      "followers_url": "https://api.github.com/users/isaacs/followers",
+      "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+      "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+      "organizations_url": "https://api.github.com/users/isaacs/orgs",
+      "repos_url": "https://api.github.com/users/isaacs/repos",
+      "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/isaacs/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9cdbbfff75c64fb158c8842d4d0eb3e908676a41",
+        "url": "https://api.github.com/repos/isaacs/node-glob/commits/9cdbbfff75c64fb158c8842d4d0eb3e908676a41",
+        "html_url": "https://github.com/isaacs/node-glob/commit/9cdbbfff75c64fb158c8842d4d0eb3e908676a41"
+      }
+    ]
+  },
+  "status": "ahead",
+  "ahead_by": 3,
+  "behind_by": 0,
+  "total_commits": 3,
+  "commits": [
+    {
+      "sha": "529def34916b6dd134da2d3d09b01822184a9caa",
+      "node_id": "C_kwDOAAV1MdoAKDUyOWRlZjM0OTE2YjZkZDEzNGRhMmQzZDA5YjAxODIyMTg0YTljYWE",
+      "commit": {
+        "author": {
+          "name": "isaacs",
+          "email": "i@izs.me",
+          "date": "2026-11-06T03:48:04Z"
+        },
+        "committer": {
+          "name": "isaacs",
+          "email": "i@izs.me",
+          "date": "2026-11-06T03:48:04Z"
+        },
+        "message": "publish to legacy tag",
+        "tree": {
+          "sha": "7607a8e5529e6ce20a3b64ff61db0c55f7019b9f",
+          "url": "https://api.github.com/repos/isaacs/node-glob/git/trees/7607a8e5529e6ce20a3b64ff61db0c55f7019b9f"
+        },
+        "url": "https://api.github.com/repos/isaacs/node-glob/git/commits/529def34916b6dd134da2d3d09b01822184a9caa",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/isaacs/node-glob/commits/529def34916b6dd134da2d3d09b01822184a9caa",
+      "html_url": "https://github.com/isaacs/node-glob/commit/529def34916b6dd134da2d3d09b01822184a9caa",
+      "comments_url": "https://api.github.com/repos/isaacs/node-glob/commits/529def34916b6dd134da2d3d09b01822184a9caa/comments",
+      "author": {
+        "login": "isaacs",
+        "id": 9287,
+        "node_id": "MDQ6VXNlcjkyODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/isaacs",
+        "html_url": "https://github.com/isaacs",
+        "followers_url": "https://api.github.com/users/isaacs/followers",
+        "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+        "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+        "organizations_url": "https://api.github.com/users/isaacs/orgs",
+        "repos_url": "https://api.github.com/users/isaacs/repos",
+        "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/isaacs/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "isaacs",
+        "id": 9287,
+        "node_id": "MDQ6VXNlcjkyODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/isaacs",
+        "html_url": "https://github.com/isaacs",
+        "followers_url": "https://api.github.com/users/isaacs/followers",
+        "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+        "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+        "organizations_url": "https://api.github.com/users/isaacs/orgs",
+        "repos_url": "https://api.github.com/users/isaacs/repos",
+        "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/isaacs/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "e80cb38ae60d6cbff9e75f39032a994858994d35",
+          "url": "https://api.github.com/repos/isaacs/node-glob/commits/e80cb38ae60d6cbff9e75f39032a994858994d35",
+          "html_url": "https://github.com/isaacs/node-glob/commit/e80cb38ae60d6cbff9e75f39032a994858994d35"
+        }
+      ]
+    },
+    {
+      "sha": "d94a8c8d0a89b89436d9612ebea6f9995104e05e",
+      "node_id": "C_kwDOAAV1MdoAKGQ5NGE4YzhkMGE4OWI4OTQzNmQ5NjEyZWJlYTZmOTk5NTEwNGUwNWU",
+      "commit": {
+        "author": {
+          "name": "isaacs",
+          "email": "i@izs.me",
+          "date": "2026-10-27T22:05:17Z"
+        },
+        "committer": {
+          "name": "isaacs",
+          "email": "i@izs.me",
+          "date": "2026-11-06T03:51:53Z"
+        },
+        "message": "fix: do not continue walking after signal abort\n\nfix: #664",
+        "tree": {
+          "sha": "671b576d4887d69554cfc97e0a43e26d8ed5d294",
+          "url": "https://api.github.com/repos/isaacs/node-glob/git/trees/671b576d4887d69554cfc97e0a43e26d8ed5d294"
+        },
+        "url": "https://api.github.com/repos/isaacs/node-glob/git/commits/d94a8c8d0a89b89436d9612ebea6f9995104e05e",
+        "comment_count": 0,
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      },
+      "url": "https://api.github.com/repos/isaacs/node-glob/commits/d94a8c8d0a89b89436d9612ebea6f9995104e05e",
+      "html_url": "https://github.com/isaacs/node-glob/commit/d94a8c8d0a89b89436d9612ebea6f9995104e05e",
+      "comments_url": "https://api.github.com/repos/isaacs/node-glob/commits/d94a8c8d0a89b89436d9612ebea6f9995104e05e/comments",
+      "author": {
+        "login": "isaacs",
+        "id": 9287,
+        "node_id": "MDQ6VXNlcjkyODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/isaacs",
+        "html_url": "https://github.com/isaacs",
+        "followers_url": "https://api.github.com/users/isaacs/followers",
+        "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+        "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+        "organizations_url": "https://api.github.com/users/isaacs/orgs",
+        "repos_url": "https://api.github.com/users/isaacs/repos",
+        "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/isaacs/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "isaacs",
+        "id": 9287,
+        "node_id": "MDQ6VXNlcjkyODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/isaacs",
+        "html_url": "https://github.com/isaacs",
+        "followers_url": "https://api.github.com/users/isaacs/followers",
+        "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+        "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+        "organizations_url": "https://api.github.com/users/isaacs/orgs",
+        "repos_url": "https://api.github.com/users/isaacs/repos",
+        "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/isaacs/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "529def34916b6dd134da2d3d09b01822184a9caa",
+          "url": "https://api.github.com/repos/isaacs/node-glob/commits/529def34916b6dd134da2d3d09b01822184a9caa",
+          "html_url": "https://github.com/isaacs/node-glob/commit/529def34916b6dd134da2d3d09b01822184a9caa"
+        }
+      ]
+    },
+    {
+      "sha": "84709f51a065811e88b61e41532bb9bf717fe15c",
+      "node_id": "C_kwDOAAV1MdoAKDg0NzA5ZjUxYTA2NTgxMWU4OGI2MWU0MTUzMmJiOWJmNzE3ZmUxNWM",
+      "commit": {
+        "author": {
+          "name": "isaacs",
+          "email": "i@izs.me",
+          "date": "2026-11-06T03:52:13Z"
+        },
+        "committer": {
+          "name": "isaacs",
+          "email": "i@izs.me",
+          "date": "2026-11-06T03:52:13Z"
+        },
+        "message": "13.0.7",
+        "tree": {
+          "sha": "34e9f95eb98dc1f7997221280f67b8a76d96313b",
+          "url": "https://api.github.com/repos/isaacs/node-glob/git/trees/34e9f95eb98dc1f7997221280f67b8a76d96313b"
+        },
+        "url": "https://api.github.com/repos/isaacs/node-glob/git/commits/84709f51a065811e88b61e41532bb9bf717fe15c",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\niQJPBAABCAA5FiEE21zeUf8MTCfLx5AXk4ByjHl6hPYFAmrtTu0bFIAAAAAABAAO\nbWFudTIsMi41KzEuMTIsMCwzAAoJEJOAcox5eoT2H9AQAK0p8ryvU8yyiPTyxwOn\nJq2VE+WaerOFdQw3fjJ+dJcEkOE+yFIfTUsg4uFFnkYHiCY1BeoW5qQJOWkTR8/L\nftqgmXtT/HyDePguP3M4r/E94Aanr+epHNk5xtQs4VOnV4WPHcowdK1qyVlhNYpb\nFqt/ukxV0VNkIa+So7RImQTEn4smQLYD3qylXj+2xbyVvRm/ozYd4elBraFfnp24\nJjVce91+7KdB0ieg4XfGwSgjsbzu5DoY9La2rfIpql5readMHvBmmXsOjR6NJ9zB\n4Dh7KJsZX/JfiJsBnmdz1xRcCFfz2rVQ9pIjL649q1EamXoMqJaihQtayMvXwQu/\nLPIZxbdNmbsrOSAv/XlvCXzr46Dt0q4TzUHt0lJ6J/jnv4H5ejcCEM9Qd93Dfjll\nOWa0W47MCMJug7061en4Cf5aXkvHPryGlyokK/10t4QpWYSH/j0jm0a/1LkR4e0q\nNhh3BxOAjwwmoJN5QdQoqGN2XSqYQuDPytpke3LzU8hF9otltoIMYvxJG7X7PG2S\naU2C/7Zk/DEJiUKr+sxwBD3ANrzzEd73zzFF4UhlgLtmf6aSSddng3lBIEi219aL\nYs3igRKu14ExGz8qQZ3m0Lgs4BD21Vy/Fh/GqJdzgDGCrCEIENRCFfvx+0O8kdkh\n3XEqYBa5wZcOdwf1CvWOwGuh\n=PGt7\n-----END PGP SIGNATURE-----",
+          "payload": "tree 34e9f95eb98dc1f7997221280f67b8a76d96313b\nparent d94a8c8d0a89b89436d9612ebea6f9995104e05e\nauthor isaacs <i@izs.me> 1793937133 -0800\ncommitter isaacs <i@izs.me> 1793937133 -0800\n\n13.0.7\n",
+          "verified_at": "2026-11-06T03:52:19Z"
+        }
+      },
+      "url": "https://api.github.com/repos/isaacs/node-glob/commits/84709f51a065811e88b61e41532bb9bf717fe15c",
+      "html_url": "https://github.com/isaacs/node-glob/commit/84709f51a065811e88b61e41532bb9bf717fe15c",
+      "comments_url": "https://api.github.com/repos/isaacs/node-glob/commits/84709f51a065811e88b61e41532bb9bf717fe15c/comments",
+      "author": {
+        "login": "isaacs",
+        "id": 9287,
+        "node_id": "MDQ6VXNlcjkyODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/isaacs",
+        "html_url": "https://github.com/isaacs",
+        "followers_url": "https://api.github.com/users/isaacs/followers",
+        "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+        "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+        "organizations_url": "https://api.github.com/users/isaacs/orgs",
+        "repos_url": "https://api.github.com/users/isaacs/repos",
+        "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/isaacs/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "isaacs",
+        "id": 9287,
+        "node_id": "MDQ6VXNlcjkyODc=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/9287?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/isaacs",
+        "html_url": "https://github.com/isaacs",
+        "followers_url": "https://api.github.com/users/isaacs/followers",
+        "following_url": "https://api.github.com/users/isaacs/following{/other_user}",
+        "gists_url": "https://api.github.com/users/isaacs/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/isaacs/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/isaacs/subscriptions",
+        "organizations_url": "https://api.github.com/users/isaacs/orgs",
+        "repos_url": "https://api.github.com/users/isaacs/repos",
+        "events_url": "https://api.github.com/users/isaacs/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/isaacs/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "d94a8c8d0a89b89436d9612ebea6f9995104e05e",
+          "url": "https://api.github.com/repos/isaacs/node-glob/commits/d94a8c8d0a89b89436d9612ebea6f9995104e05e",
+          "html_url": "https://github.com/isaacs/node-glob/commit/d94a8c8d0a89b89436d9612ebea6f9995104e05e"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "sha": "575b1d745e2a111e4e67f834f80c2b95fbf4e8f5",
+      "filename": "changelog.md",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0,
+      "changes": 1,
+      "blob_url": "https://github.com/isaacs/node-glob/blob/84709f51a065811e88b61e41532bb9bf717fe15c/changelog.md",
+      "raw_url": "https://github.com/isaacs/node-glob/raw/84709f51a065811e88b61e41532bb9bf717fe15c/changelog.md",
+      "contents_url": "https://api.github.com/repos/isaacs/node-glob/contents/changelog.md?ref=84709f51a065811e88b61e41532bb9bf717fe15c",
+      "patch": "@@ -5,6 +5,7 @@\n - Move the CLI program out to a separate package, `glob-bin`.\n   Install that if you'd like to continue using glob from the\n   command line.\n+- Backport fix for walking after abort signal\n \n ## 12\n "
+    },
+    {
+      "sha": "ea6c0ac7d366bf0a49d09e35afa134d7cc5b908d",
+      "filename": "package-lock.json",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 3,
+      "changes": 6,
+      "blob_url": "https://github.com/isaacs/node-glob/blob/84709f51a065811e88b61e41532bb9bf717fe15c/package-lock.json",
+      "raw_url": "https://github.com/isaacs/node-glob/raw/84709f51a065811e88b61e41532bb9bf717fe15c/package-lock.json",
+      "contents_url": "https://api.github.com/repos/isaacs/node-glob/contents/package-lock.json?ref=84709f51a065811e88b61e41532bb9bf717fe15c",
+      "patch": "@@ -1,12 +1,12 @@\n {\n   \"name\": \"glob\",\n-  \"version\": \"13.0.6\",\n+  \"version\": \"13.0.7\",\n   \"lockfileVersion\": 3,\n   \"requires\": true,\n   \"packages\": {\n     \"\": {\n       \"name\": \"glob\",\n-      \"version\": \"13.0.6\",\n+      \"version\": \"13.0.7\",\n       \"license\": \"BlueOak-1.0.0\",\n       \"dependencies\": {\n         \"minimatch\": \"^10.2.2\",\n@@ -25,7 +25,7 @@\n         \"typedoc\": \"^0.28.17\"\n       },\n       \"engines\": {\n-        \"node\": \"20 || >=22\"\n+        \"node\": \"18 || 20 || >=22\"\n       },\n       \"funding\": {\n         \"url\": \"https://github.com/sponsors/isaacs\""
+    },
+    {
+      "sha": "457c8b094f673af7752b4c1c97fca9fb04289fbf",
+      "filename": "package.json",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 1,
+      "changes": 5,
+      "blob_url": "https://github.com/isaacs/node-glob/blob/84709f51a065811e88b61e41532bb9bf717fe15c/package.json",
+      "raw_url": "https://github.com/isaacs/node-glob/raw/84709f51a065811e88b61e41532bb9bf717fe15c/package.json",
+      "contents_url": "https://api.github.com/repos/isaacs/node-glob/contents/package.json?ref=84709f51a065811e88b61e41532bb9bf717fe15c",
+      "patch": "@@ -1,8 +1,11 @@\n {\n   \"author\": \"Isaac Z. Schlueter <i@izs.me> (https://blog.izs.me/)\",\n   \"name\": \"glob\",\n+  \"publishConfig\": {\n+    \"tag\": \"v13-legacy\"\n+  },\n   \"description\": \"the most correct and second fastest glob implementation in JavaScript\",\n-  \"version\": \"13.0.6\",\n+  \"version\": \"13.0.7\",\n   \"type\": \"module\",\n   \"tshy\": {\n     \"exports\": {"
+    },
+    {
+      "sha": "c3610be63a041f1d61060868a5ebfea802fa20d1",
+      "filename": "src/walker.ts",
+      "status": "modified",
+      "additions": 13,
+      "deletions": 14,
+      "changes": 27,
+      "blob_url": "https://github.com/isaacs/node-glob/blob/84709f51a065811e88b61e41532bb9bf717fe15c/src%2Fwalker.ts",
+      "raw_url": "https://github.com/isaacs/node-glob/raw/84709f51a065811e88b61e41532bb9bf717fe15c/src%2Fwalker.ts",
+      "contents_url": "https://api.github.com/repos/isaacs/node-glob/contents/src%2Fwalker.ts?ref=84709f51a065811e88b61e41532bb9bf717fe15c",
+      "patch": "@@ -90,7 +90,7 @@ export abstract class GlobUtil<O extends GlobWalkerOpts = GlobWalkerOpts> {\n   seen: Set<Path> = new Set<Path>()\n   paused: boolean = false\n   aborted: boolean = false\n-  #onResume: (() => any)[] = []\n+  #onResume: (() => unknown)[] = []\n   #ignore?: IgnoreLike\n   #sep: '\\\\' | '/'\n   signal?: AbortSignal\n@@ -143,13 +143,12 @@ export abstract class GlobUtil<O extends GlobWalkerOpts = GlobWalkerOpts> {\n     if (this.signal?.aborted) return\n     /* c8 ignore stop */\n     this.paused = false\n-    let fn: (() => any) | undefined = undefined\n+    let fn: (() => unknown) | undefined = undefined\n     while (!this.paused && (fn = this.#onResume.shift())) {\n       fn()\n     }\n   }\n-  onResume(fn: () => any) {\n-    if (this.signal?.aborted) return\n+  onResume(fn: () => unknown) {\n     /* c8 ignore start */\n     if (!this.paused) {\n       fn()\n@@ -257,9 +256,9 @@ export abstract class GlobUtil<O extends GlobWalkerOpts = GlobWalkerOpts> {\n     if (p) this.matchFinish(p, absolute)\n   }\n \n-  walkCB(target: Path, patterns: Pattern[], cb: () => any) {\n+  walkCB(target: Path, patterns: Pattern[], cb: () => unknown) {\n     /* c8 ignore start */\n-    if (this.signal?.aborted) cb()\n+    if (this.signal?.aborted) return cb()\n     /* c8 ignore stop */\n     this.walkCB2(target, patterns, new Processor(this.opts), cb)\n   }\n@@ -268,10 +267,10 @@ export abstract class GlobUtil<O extends GlobWalkerOpts = GlobWalkerOpts> {\n     target: Path,\n     patterns: Pattern[],\n     processor: Processor,\n-    cb: () => any,\n+    cb: () => unknown,\n   ) {\n     if (this.#childrenIgnored(target)) return cb()\n-    if (this.signal?.aborted) cb()\n+    if (this.signal?.aborted) return cb()\n     if (this.paused) {\n       this.onResume(() => this.walkCB2(target, patterns, processor, cb))\n       return\n@@ -315,7 +314,7 @@ export abstract class GlobUtil<O extends GlobWalkerOpts = GlobWalkerOpts> {\n     target: Path,\n     entries: Path[],\n     processor: Processor,\n-    cb: () => any,\n+    cb: () => unknown,\n   ) {\n     processor = processor.filterEntries(target, entries)\n \n@@ -337,9 +336,9 @@ export abstract class GlobUtil<O extends GlobWalkerOpts = GlobWalkerOpts> {\n     next()\n   }\n \n-  walkCBSync(target: Path, patterns: Pattern[], cb: () => any) {\n+  walkCBSync(target: Path, patterns: Pattern[], cb: () => unknown) {\n     /* c8 ignore start */\n-    if (this.signal?.aborted) cb()\n+    if (this.signal?.aborted) return cb()\n     /* c8 ignore stop */\n     this.walkCB2Sync(target, patterns, new Processor(this.opts), cb)\n   }\n@@ -348,10 +347,10 @@ export abstract class GlobUtil<O extends GlobWalkerOpts = GlobWalkerOpts> {\n     target: Path,\n     patterns: Pattern[],\n     processor: Processor,\n-    cb: () => any,\n+    cb: () => unknown,\n   ) {\n     if (this.#childrenIgnored(target)) return cb()\n-    if (this.signal?.aborted) cb()\n+    if (this.signal?.aborted) return cb()\n     if (this.paused) {\n       this.onResume(() =>\n         this.walkCB2Sync(target, patterns, processor, cb),\n@@ -389,7 +388,7 @@ export abstract class GlobUtil<O extends GlobWalkerOpts = GlobWalkerOpts> {\n     target: Path,\n     entries: Path[],\n     processor: Processor,\n-    cb: () => any,\n+    cb: () => unknown,\n   ) {\n     processor = processor.filterEntries(target, entries)\n "
+    },
+    {
+      "sha": "2e7d0b6fb4b71865d49e2d2bd5e5749b25948155",
+      "filename": "test/signal.ts",
+      "status": "modified",
+      "additions": 45,
+      "deletions": 0,
+      "changes": 45,
+      "blob_url": "https://github.com/isaacs/node-glob/blob/84709f51a065811e88b61e41532bb9bf717fe15c/test%2Fsignal.ts",
+      "raw_url": "https://github.com/isaacs/node-glob/raw/84709f51a065811e88b61e41532bb9bf717fe15c/test%2Fsignal.ts",
+      "contents_url": "https://api.github.com/repos/isaacs/node-glob/contents/test%2Fsignal.ts?ref=84709f51a065811e88b61e41532bb9bf717fe15c",
+      "patch": "@@ -92,3 +92,48 @@ t.test('mid-abort sync stream', t => {\n   })\n   s.on('data', () => ac.abort(yeet))\n })\n+\n+t.test('no more reads after abort', async t => {\n+  const mk = (n: number): Record<string, any> =>\n+    n ? { a: mk(n - 1), b: mk(n - 1), f: '' } : { f: '' }\n+  const cwd = t.testdir(mk(5))\n+  const counted = (ac: AbortController) => {\n+    const c = { calls: 0 }\n+    const abortFirst = () => {\n+      if (++c.calls === 1) ac.abort(yeet)\n+    }\n+    const cfs = {\n+      ...fs,\n+      readdir: (...args: any[]) => {\n+        abortFirst()\n+        return (fs.readdir as any)(...args)\n+      },\n+      readdirSync: (...args: any[]) => {\n+        abortFirst()\n+        return (fs.readdirSync as any)(...args)\n+      },\n+    }\n+    return { c, cfs }\n+  }\n+\n+  t.test('async', async t => {\n+    const ac = new AbortController()\n+    const { c, cfs } = counted(ac)\n+    await t.rejects(glob('**', { cwd, signal: ac.signal, fs: cfs }), yeet)\n+    const atReject = c.calls\n+    await new Promise(r => setTimeout(r, 100))\n+    t.equal(c.calls, atReject)\n+  })\n+\n+  t.test('sync stream', t => {\n+    const ac = new AbortController()\n+    const { c, cfs } = counted(ac)\n+    const s = globStreamSync('**', { cwd, signal: ac.signal, fs: cfs })\n+    s.on('error', er => {\n+      t.equal(er, yeet)\n+      t.equal(c.calls, 1)\n+      t.end()\n+    })\n+    s.resume()\n+  })\n+})"
+    },
+    {
+      "sha": "75583c508a99adf52fed3dbf00b6d63b84b1777a",
+      "filename": "test/stream.ts",
+      "status": "modified",
+      "additions": 12,
+      "deletions": 0,
+      "changes": 12,
+      "blob_url": "https://github.com/isaacs/node-glob/blob/84709f51a065811e88b61e41532bb9bf717fe15c/test%2Fstream.ts",
+      "raw_url": "https://github.com/isaacs/node-glob/raw/84709f51a065811e88b61e41532bb9bf717fe15c/test%2Fstream.ts",
+      "contents_url": "https://api.github.com/repos/isaacs/node-glob/contents/test%2Fstream.ts?ref=84709f51a065811e88b61e41532bb9bf717fe15c",
+      "patch": "@@ -256,3 +256,15 @@ t.test('walkSync', t => {\n   t.same(actual, e)\n   t.end()\n })\n+\n+t.test('stream paused while reads are pending', async t => {\n+  const mk = (n: number): Record<string, any> =>\n+    n ? { a: mk(n - 1), b: mk(n - 1), f: '' } : { f: '' }\n+  const cwd = t.testdir(mk(5))\n+  const s = globStream('**', { cwd })\n+  // do not read until the walk has paused on a full buffer\n+  await new Promise(r => setTimeout(r, 50))\n+  const found: string[] = []\n+  for await (const p of s) found.push(p)\n+  t.same(new Set(found), new Set(globSync('**', { cwd })))\n+})"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "web-build",
+  "command": [
+    "npm",
+    "run",
+    "build",
+    "--",
+    "--max-workers",
+    "2"
+  ],
+  "cwd": "/workspace/oliva-dependency-probe",
+  "startedAtUtc": "2026-11-08T08:32:37.067315+00:00",
+  "durationSeconds": 46.534,
+  "exitCode": 0,
+  "log": "/workspace/oliva-security-audit/reports/dependencies-0.8/probe/web-build.log"
+}
