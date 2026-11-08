@@ -1,0 +1,41 @@
+/* Runtime component only. No fonts, gallery assets, content or app routing. */
+.tree-scene {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 1;
+  max-width: 100%;
+}
+.tree-art-window {
+  position: absolute;
+  inset: calc(-1 * var(--tree-motion-pad, 12px));
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+}
+.tree-art-window > canvas {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  max-width: none;
+}
+.tree-art-window > img {
+  position: absolute;
+  left: var(--tree-motion-pad, 12px);
+  bottom: var(--tree-motion-pad, 12px);
+  display: block;
+  max-width: none;
+}
+.tree-art-window [hidden] {
+  display: none !important;
+}
+.tree-transition-layer {
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tree-scene,
+  .tree-art-window * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -17,6 +17,13 @@ import type { WriteOptions } from "../features/imports/schema";
 import { saveDraft as updateDraft } from "../features/personal/model";
 import type { Draft, DraftStamp } from "../features/personal/schema";
 import {
+  readingPositionSchema,
+  sameReadingScope,
+  samePosition,
+  type ReadingPosition,
+} from "../features/bible/position";
+import type { Reference } from "../features/bible/repository";
+import {
   useVolatileDrafts,
   acknowledgeDrafts,
 } from "../features/personal/volatile-drafts";
@@ -35,6 +42,11 @@ export type Store = {
   ) => Promise<Draft | null>;
   restore: (d: AppData) => Promise<boolean>;
   clearError: () => void;
+  openReading: (reference: Reference) => Promise<boolean>;
+  rememberReadingPosition: (
+    position: ReadingPosition | null,
+    reference: Reference,
+  ) => Promise<boolean>;
   waitForWrites: () => Promise<AppData>;
   refresh: () => Promise<AppData | null>;
   importFaithpath: (plan: ImportPlan) => Promise<boolean>;
@@ -60,9 +72,11 @@ export const useApp = create<Store>((set, get) => {
     fn: (d: AppData) => void,
     options: WriteOptions = {},
     updateGrowth = true,
+    guard: (data: AppData) => boolean = () => true,
   ) =>
     enqueue(async () => {
       if (!get().ready || !get().healthy) return false;
+      if (!guard(get().data)) return false;
       try {
         const current = get().data,
           next = cloneData(current);
@@ -121,6 +135,29 @@ export const useApp = create<Store>((set, get) => {
         Object.assign(d, dataSchema.parse(incoming), { revision });
       }),
     clearError: () => set({ error: null }),
+    openReading: (reference) =>
+      persist(
+        (d) => {
+          d.reading = { ...reference };
+          d.readingPosition = null;
+        },
+        {},
+        false,
+        (d) => d.revision === 0 || !sameReadingScope(d.reading, reference),
+      ),
+    rememberReadingPosition: (position, reference) =>
+      persist(
+        (d) => {
+          d.readingPosition = position
+            ? readingPositionSchema.parse(position)
+            : null;
+        },
+        {},
+        false,
+        (d) =>
+          sameReadingScope(d.reading, reference) &&
+          !samePosition(d.readingPosition, position),
+      ),
     waitForWrites: async () => {
       while (tail) await tail;
       await new Promise<void>((resolve) => setTimeout(resolve, 0));

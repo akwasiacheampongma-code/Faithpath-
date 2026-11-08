@@ -1,0 +1,7 @@
+.oliva-a51.tree-scene { position: relative; isolation: isolate; max-width: 100%; }
+.oliva-a51 .tree-art-window { position: absolute; inset: calc(-1 * var(--tree-motion-pad, 12px)); overflow: hidden; isolation: isolate; pointer-events: none; }
+.oliva-a51 .tree-art-window > canvas { position: absolute; left: 0; bottom: 0; display: block; max-width: none; }
+.oliva-a51 .tree-art-window > img { position: absolute; left: var(--tree-motion-pad, 12px); bottom: var(--tree-motion-pad, 12px); display: block; max-width: none; }
+.oliva-a51 [hidden] { display: none !important; }
+.oliva-a51 .tree-transition-layer { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .oliva-a51, .oliva-a51 * { animation: none !important; transition: none !important; } }

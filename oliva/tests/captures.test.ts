@@ -136,8 +136,8 @@ describe("Entwürfe mit festem Kontext", () => {
     expect(() => commitDraft(data, draft.key, draft, at)).toThrow(/bereits/);
     expect(JSON.stringify(data)).toBe(before);
   });
-  it("migriert echte V3-Bestände auf V4 und hält Tagesdatum und alte Daten stabil", () => {
-    const current = initialData(),
+  it("migriert echte V3-Bestände auf V5 und hält Tagesdatum und alte Daten stabil", () => {
+    const { readingPosition, ...current } = initialData(),
       old = {
         ...current,
         version: 3,
@@ -153,7 +153,11 @@ describe("Entwürfe mit festem Kontext", () => {
         ],
       },
       bytes = JSON.stringify(old);
-    expect(decodeData(old)).toEqual({ ...old, version: 4 });
+    expect(decodeData(old)).toEqual({
+      ...old,
+      version: 5,
+      readingPosition: null,
+    });
     expect(JSON.stringify(old)).toBe(bytes);
     expect(dailySource(new Date(2026, 10, 5, 23)).date).toBe("2026-11-05");
     expect(captureKey(dailySource(new Date(2026, 10, 5)))).toBe(

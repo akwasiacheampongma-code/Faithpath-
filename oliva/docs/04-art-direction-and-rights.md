@@ -60,8 +60,8 @@ Die Motive Noah, Abraham, Geburt und Ostermorgen wurden als Erweiterung des visu
 - **Neue Erklärungstexte / Gebete:** für dieses Projekt mit KI-Unterstützung erstellt; deutlich getrennt vom Bibelwort. Keine unabhängige theologische Freigabe behauptet. Zentrale Nachweise stehen unmittelbar in den Referenzen der Wege.
 - **Bildgenerierung:** sieben eigene Aufträge mit dem verfügbaren OpenAI-Bildwerkzeug. Providerbedingungen und beabsichtigte Veröffentlichung sind vor öffentlichem Vertrieb zu prüfen; keine pauschale Rechtegarantie für beliebige Länder und Nutzungsarten.
 - **Fonts:** DM Sans und Cormorant Garamond aus dem offiziellen [Google-Fonts-Repository](https://github.com/google/fonts). Jeweilige SIL-OFL-Datei liegt bei. Keine Netzwerk-Fontabfrage zur Laufzeit.
-- **Icons / Baum / Schwerter:** neuer Vektorcode dieses Projekts. Keine fremden Icons oder FaithPath-Grafiken kopiert.
-- **Original-FaithPath:** keine deklarierte Repository-Lizenz vorgefunden. Deshalb nur Funktionsanalyse, keine Quellcode-, Bild- oder Quizübernahme.
+- **Icons / Schwerter:** eigener Vektorcode. **Baum ab 0.5:** die ausdrücklich beauftragte A51-Übernahme verwendet Originalillustrationen und einen adaptierten Renderer; Originale, Prompts und Rechtegrenzen sind in [A51-Integration](09-a51-integration.md) und `art/a51/provenance.json` dokumentiert. Die eigene frühere Vektordarstellung bleibt Referenz.
+- **Original-FaithPath:** keine deklarierte Repository-Lizenz vorgefunden. Die explizite A51-Ausnahme beruht auf dem Zusatzauftrag des Projektinhabers, nicht auf einer angenommenen MIT-Lizenz. Kein Transfer der alten Bibelredaktion oder Quizdaten. Öffentliche Rechtefreigabe der A51-Rechtekette bleibt offen.
 - **Audio:** keine Audiodateien enthalten, kein Audio-Button vorgetäuscht. Sprecher-, Aufnahme- und Übersetzungsrechte müssen vor Implementierung geklärt werden.
 
 Die lokale Entwicklung kann mit dieser dokumentierten Grundlage geprüft werden. Eine internationale kommerzielle Veröffentlichung braucht eine abschließende Rechte- und Inhaltsprüfung für die konkret geplante Distribution.

@@ -1,0 +1,1823 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "--reporter=list,json"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "a51-tree.spec.ts",
+      "file": "a51-tree.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 31457,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at ready (/workspace/faithpath-next/tests/e2e/a51-tree.spec.ts:16:96)\n    at /workspace/faithpath-next/tests/e2e/a51-tree.spec.ts:48:114",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/a51-tree.spec.ts",
+                      "column": 96,
+                      "line": 16
+                    },
+                    "snippet": " \u001b[90m 14 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m ready(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m stage\u001b[33m:\u001b[39m number) {\n \u001b[90m 15 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m\"olive-tree\"\u001b[39m)\u001b[33m.\u001b[39mscrollIntoViewIfNeeded()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m   \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m()\u001b[33m=>\u001b[39m {\u001b[36mconst\u001b[39m m\u001b[33m=\u001b[39m\u001b[36mawait\u001b[39m metrics(page)\u001b[33m;\u001b[39m\u001b[36mreturn\u001b[39m m\u001b[33m?.\u001b[39mready\u001b[33m&&\u001b[39mm\u001b[33m.\u001b[39mstage\u001b[33m===\u001b[39mstage\u001b[33m;\u001b[39m})\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m }\n \u001b[90m 18 |\u001b[39m test(\u001b[32m\"alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({page\u001b[33m,\u001b[39mcontext}) \u001b[33m=>\u001b[39m {\n \u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m mkdir(output\u001b[33m,\u001b[39m{recursive\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/a51-tree.spec.ts",
+                        "column": 96,
+                        "line": 16
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  14 | async function ready(page: Page, stage: number) {\n  15 |   await page.getByTestId(\"olive-tree\").scrollIntoViewIfNeeded();\n> 16 |   await expect.poll(async()=> {const m=await metrics(page);return m?.ready&&m.stage===stage;}).toBe(true);\n     |                                                                                                ^\n  17 | }\n  18 | test(\"alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten\", async ({page,context}) => {\n  19 |   await mkdir(output,{recursive:true});\n    at ready (/workspace/faithpath-next/tests/e2e/a51-tree.spec.ts:16:96)\n    at /workspace/faithpath-next/tests/e2e/a51-tree.spec.ts:48:114"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:33:26.093Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/a51-tree-alle-sieben-Origi-974dc-en-keine-persönlichen-Daten/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/a51-tree.spec.ts",
+                    "column": 96,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7b316d9b8373c1996cfa-682dc2bdaf35a996d13a",
+          "file": "a51-tree.spec.ts",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5189,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:33:59.472Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7b316d9b8373c1996cfa-7df9eb3bdad5cf81f608",
+          "file": "a51-tree.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5744,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:34:05.246Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7b316d9b8373c1996cfa-098b2fd28f12fbd3bcd0",
+          "file": "a51-tree.spec.ts",
+          "line": 91,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "Bildladefehler ohne Service-Worker",
+          "file": "a51-tree.spec.ts",
+          "line": 102,
+          "column": 6,
+          "specs": [
+            {
+              "title": "ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4026,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-06T17:34:11.019Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7b316d9b8373c1996cfa-4653935a5c8b0d8ec231",
+              "file": "a51-tree.spec.ts",
+              "line": 104,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "Hochauflösende ruhende Darstellung",
+          "file": "a51-tree.spec.ts",
+          "line": 115,
+          "column": 6,
+          "specs": [
+            {
+              "title": "ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3272,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-06T17:34:15.073Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7b316d9b8373c1996cfa-af2792b105583791eb84",
+              "file": "a51-tree.spec.ts",
+              "line": 117,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "archives.spec.ts",
+      "file": "archives.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ein großer Originalblob wird bei Entwurfsänderungen nicht erneut geschrieben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7276,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:34:18.449Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-75d9bcb8e04a3a8dd121",
+          "file": "archives.spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "verwaiste Blobs werden entfernt und Quellen der Rückkehrsicherung bleiben erhalten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11570,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:34:25.760Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-61f7bf393e923f1cb32e",
+          "file": "archives.spec.ts",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unverändert",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:34:37.382Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-c721dfe99536aae3ddf1",
+          "file": "archives.spec.ts",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4809,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:34:42.800Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4264f0da20c37c46141-5d5b0b1b57b9de94dbf2",
+          "file": "archives.spec.ts",
+          "line": 149,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "captures.spec.ts",
+      "file": "captures.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10383,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:34:47.663Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-278e5468e84b8c9b28f1",
+          "file": "captures.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11435,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:34:58.079Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-17cb484429c0de9235f6",
+          "file": "captures.spec.ts",
+          "line": 60,
+          "column": 1
+        },
+        {
+          "title": "Reflexionsentwurf im Lernweg überlebt Neustart und schließt nur auf ausdrücklichen Klick ab",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6723,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:35:09.601Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-e617214181b9cf476e77",
+          "file": "captures.spec.ts",
+          "line": 131,
+          "column": 1
+        },
+        {
+          "title": "ein Entwurf wird erst nach ausdrücklichem Verwerfen gelöscht und bestätigt dabei keine Erfahrung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3664,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:35:16.370Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-4a664a6fc3d81f688ca8",
+          "file": "captures.spec.ts",
+          "line": 183,
+          "column": 1
+        },
+        {
+          "title": "der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexionsentwurf",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4256,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:35:20.084Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-050462b30b48e0d8fb3d",
+          "file": "captures.spec.ts",
+          "line": 215,
+          "column": 1
+        },
+        {
+          "title": "ein Speicherfehler lässt den Kontextentwurf sichtbar und erzeugt keinen fertigen Eintrag",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3588,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:35:24.396Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-3c5d5a06f89907c015a7",
+          "file": "captures.spec.ts",
+          "line": 239,
+          "column": 1
+        },
+        {
+          "title": "ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7210,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:35:28.045Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "40959956e96c4f3720b3-bb4d2da6c82f3765bd1c",
+          "file": "captures.spec.ts",
+          "line": 271,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "core.spec.ts",
+      "file": "core.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9661,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:35:35.895Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-d970a8e5935eea1f748a",
+          "file": "core.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7681,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:35:45.602Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-a8433de3b51e7fa72466",
+          "file": "core.spec.ts",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "Journal bearbeiten, löschen und rückgängig machen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6110,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:35:53.340Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-95acf7ea740056abdb9c",
+          "file": "core.spec.ts",
+          "line": 153,
+          "column": 1
+        },
+        {
+          "title": "Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5279,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:35:59.470Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-812383179af31eb1ff41",
+          "file": "core.spec.ts",
+          "line": 203,
+          "column": 1
+        },
+        {
+          "title": "Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeichert",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3127,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Samen', { exact: true })\nExpected: visible\nError: strict mode violation: getByText('Samen', { exact: true }) resolved to 2 elements:\n    1) <div dir=\"auto\" class=\"css-146c3p1\">Samen</div> aka getByText('Samen').first()\n    2) <div dir=\"auto\" class=\"css-146c3p1\">Samen</div> aka getByText('Samen').nth(1)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Samen', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Samen', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Samen', { exact: true })\nExpected: visible\nError: strict mode violation: getByText('Samen', { exact: true }) resolved to 2 elements:\n    1) <div dir=\"auto\" class=\"css-146c3p1\">Samen</div> aka getByText('Samen').first()\n    2) <div dir=\"auto\" class=\"css-146c3p1\">Samen</div> aka getByText('Samen').nth(1)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Samen', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Samen', { exact: true })\u001b[22m\n\n    at /workspace/faithpath-next/tests/e2e/core.spec.ts:254:58",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/core.spec.ts",
+                      "column": 58,
+                      "line": 254
+                    },
+                    "snippet": " \u001b[90m 252 |\u001b[39m }) \u001b[33m=>\u001b[39m {\n \u001b[90m 253 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m\"/garten\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 254 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"img\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/^Samen –/\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 255 |\u001b[39m   \u001b[36mawait\u001b[39m page\n \u001b[90m 256 |\u001b[39m     \u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m {\n \u001b[90m 257 |\u001b[39m       name\u001b[33m:\u001b[39m \u001b[32m\"Stadium 7 ansehen: Fruchttragender Olivenbaum\"\u001b[39m\u001b[33m,\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/core.spec.ts",
+                        "column": 58,
+                        "line": 254
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Samen', { exact: true })\nExpected: visible\nError: strict mode violation: getByText('Samen', { exact: true }) resolved to 2 elements:\n    1) <div dir=\"auto\" class=\"css-146c3p1\">Samen</div> aka getByText('Samen').first()\n    2) <div dir=\"auto\" class=\"css-146c3p1\">Samen</div> aka getByText('Samen').nth(1)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Samen', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Samen', { exact: true })\u001b[22m\n\n\n  252 | }) => {\n  253 |   await page.goto(\"/garten\");\n> 254 |   await expect(page.getByRole(\"img\", { name: /^Samen –/ })).toBeVisible();\n      |                                                          ^\n  255 |   await page\n  256 |     .getByRole(\"button\", {\n  257 |       name: \"Stadium 7 ansehen: Fruchttragender Olivenbaum\",\n    at /workspace/faithpath-next/tests/e2e/core.spec.ts:254:58"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:36:04.795Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/core-Baumvorschau-veränder-77443-Bewegung-bleibt-gespeichert/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/core.spec.ts",
+                    "column": 58,
+                    "line": 254
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-fefb60b6eb2b77a3b8ad",
+          "file": "core.spec.ts",
+          "line": 250,
+          "column": 1
+        },
+        {
+          "title": "Offline-Neustart öffnet auch einen noch nicht besuchten Reader",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11432,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:36:10.143Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-4152289a2d74138005ff",
+          "file": "core.spec.ts",
+          "line": 279,
+          "column": 1
+        },
+        {
+          "title": "Gleichzeitige Fenster überschreiben keine fremden Änderungen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:36:23.443Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-619d08b0af9895658a20",
+          "file": "core.spec.ts",
+          "line": 312,
+          "column": 1
+        },
+        {
+          "title": "Speicherfehler bestätigt keine Notiz und erhält den getippten Text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2895,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:36:31.872Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-6da73fae664ea548511c",
+          "file": "core.spec.ts",
+          "line": 344,
+          "column": 1
+        },
+        {
+          "title": "Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 35641,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:36:34.838Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d064c8ac994e44e7c99b-a8de33c6eb4b3e77b4c6",
+          "file": "core.spec.ts",
+          "line": 373,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "imports.spec.ts",
+      "file": "imports.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6499,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:37:10.531Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-cef3d5d24b2ca3cbdb48",
+          "file": "imports.spec.ts",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10237,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:37:17.049Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-d570660b3542a7810f86",
+          "file": "imports.spec.ts",
+          "line": 70,
+          "column": 1
+        },
+        {
+          "title": "zwei Fenster schützen Änderungen und erlauben eine erneute Vorschau",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9990,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:37:27.333Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-f8a8dd864727e22a8eb0",
+          "file": "imports.spec.ts",
+          "line": 132,
+          "column": 1
+        },
+        {
+          "title": "Schreibfehler lassen Bestand und vorherige Rückkehrsicherung atomar erhalten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:37:37.368Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-a58886b29e3200b0d4d7",
+          "file": "imports.spec.ts",
+          "line": 162,
+          "column": 1
+        },
+        {
+          "title": "Rückkehr zeigt Folgen ausdrücklich und stellt den echten vorherigen Stand wieder her",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7321,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:37:43.645Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-f01754983158c5900e2b",
+          "file": "imports.spec.ts",
+          "line": 195,
+          "column": 1
+        },
+        {
+          "title": "Importansichten sind mobil, dunkel und per Tastatur zugänglich",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7145,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:37:50.997Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c9d84957164db689fbd2-b9e1844fe620d964dde3",
+          "file": "imports.spec.ts",
+          "line": 230,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "learning.spec.ts",
+      "file": "learning.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Textfragen zeigen belegte Rückmeldung und verändern keinen Fortschritt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4514,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:37:58.181Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0ec79b0c4f511f16424-ae74360e31a41608185e",
+          "file": "learning.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zählt nur den Abschnitt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5373,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:38:02.725Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e0ec79b0c4f511f16424-a89c60d5cd44a8bb8e37",
+          "file": "learning.spec.ts",
+          "line": 56,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "personal.spec.ts",
+      "file": "personal.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4066,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:38:08.150Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-200629544db7bcbfaf92",
+          "file": "personal.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "Journalentwurf überlebt Neustart, Bearbeitung und anschließendes Speichern",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9771,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:38:12.266Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-30d042b1d3e77088eb69",
+          "file": "personal.spec.ts",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "Vorhaben, Schritte, Rückblick-Snapshot und Archiv funktionieren zusammen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10918,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:38:22.078Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-87f2e53e1cdd94813e0b",
+          "file": "personal.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "Ungespeicherte Entwurfsworte werden erst nach ausdrücklichem Verwerfen gelöscht",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5025,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:38:33.066Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-14b2d305bbfa77ac2043",
+          "file": "personal.spec.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "Eine installierte V1-Datenbank wird ohne Verlust weitergeführt",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18514,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Meine alten eigenen Worte.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Meine alten eigenen Worte.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Meine alten eigenen Worte.', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Meine alten eigenen Worte.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Meine alten eigenen Worte.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Meine alten eigenen Worte.', { exact: true })\u001b[22m\n\n    at /workspace/faithpath-next/tests/e2e/personal.spec.ts:278:5",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/personal.spec.ts",
+                      "column": 5,
+                      "line": 278
+                    },
+                    "snippet": " \u001b[90m 276 |\u001b[39m   \u001b[36mawait\u001b[39m expect(\n \u001b[90m 277 |\u001b[39m     page\u001b[33m.\u001b[39mgetByText(\u001b[32m\"Meine alten eigenen Worte.\"\u001b[39m\u001b[33m,\u001b[39m { exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 278 |\u001b[39m   )\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 279 |\u001b[39m   \u001b[36mawait\u001b[39m page\n \u001b[90m 280 |\u001b[39m     \u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Einen Gedanken festhalten\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\n \u001b[90m 281 |\u001b[39m     \u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/personal.spec.ts",
+                        "column": 5,
+                        "line": 278
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Meine alten eigenen Worte.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Meine alten eigenen Worte.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Meine alten eigenen Worte.', { exact: true })\u001b[22m\n\n\n  276 |   await expect(\n  277 |     page.getByText(\"Meine alten eigenen Worte.\", { exact: true }),\n> 278 |   ).toBeVisible();\n      |     ^\n  279 |   await page\n  280 |     .getByRole(\"button\", { name: \"Einen Gedanken festhalten\", exact: true })\n  281 |     .click();\n    at /workspace/faithpath-next/tests/e2e/personal.spec.ts:278:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:38:38.121Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/personal-Eine-installierte-d16d5--ohne-Verlust-weitergeführt/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/personal.spec.ts",
+                    "column": 5,
+                    "line": 278
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-15511b860caead0fe720",
+          "file": "personal.spec.ts",
+          "line": 234,
+          "column": 1
+        },
+        {
+          "title": "Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5223,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:38:59.401Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-7ce3793863bf7b51c536",
+          "file": "personal.spec.ts",
+          "line": 287,
+          "column": 1
+        },
+        {
+          "title": "Neue Vorhaben- und Entwurfsansichten bleiben auf kleinen Displays zugänglich",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12225,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:39:05.833Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f8ecc30bfaf67218a8c4-9537a654eb0dbf000217",
+          "file": "personal.spec.ts",
+          "line": 310,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "pwa.spec.ts",
+      "file": "pwa.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "das installierbare Offlinepaket liefert Manifest, vollständige Icons und Inhaltsrechte",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3822,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:39:18.125Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30bf0965a0eb07fc9173-9947723b43873f1c3e35",
+          "file": "pwa.spec.ts",
+          "line": 2,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reading-position.spec.ts",
+      "file": "reading-position.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9917,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:39:21.993Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "257b736813de10efd8ff-4c3ce27e055330c3c739",
+          "file": "reading-position.spec.ts",
+          "line": 12,
+          "column": 1
+        },
+        {
+          "title": "ein langer Psalm behält den Vers bei Display- und Schriftänderungen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10407,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:39:31.973Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "257b736813de10efd8ff-6b0377e8c43a890b67c2",
+          "file": "reading-position.spec.ts",
+          "line": 24,
+          "column": 1
+        },
+        {
+          "title": "Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11678,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:39:42.410Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "257b736813de10efd8ff-d2ba2f7427049372e697",
+          "file": "reading-position.spec.ts",
+          "line": 41,
+          "column": 1
+        },
+        {
+          "title": "eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5486,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-06T17:39:54.134Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "257b736813de10efd8ff-584b339f98dc3b837d25",
+          "file": "reading-position.spec.ts",
+          "line": 51,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-06T17:33:24.329Z",
+    "duration": 395475.507,
+    "expected": 42,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

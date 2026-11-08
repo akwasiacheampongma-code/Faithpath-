@@ -17,6 +17,10 @@ import { parseFaithpath } from "../features/imports/source";
 import { highlightColor } from "../features/bible/highlights";
 import { utf8Length } from "../lib/hash";
 import { captureSourceSchema } from "../features/personal/capture-schema";
+import {
+  readingPositionSchema,
+  sameReadingScope,
+} from "../features/bible/position";
 const chapterKey = z.string().refine((value) => {
   const [book, c] = value.split(":");
   return (
@@ -142,7 +146,7 @@ export const v3DataSchema = baseSchema
       ),
     "Importquelle fehlt",
   );
-export const dataSchema = z
+export const v4DataSchema = z
   .object({ ...v3DataSchema.shape, version: z.literal(4) })
   .strict()
   .refine(completeStepsValid, "Ungültiger Wegfortschritt")
@@ -152,6 +156,26 @@ export const dataSchema = z
         (x) => !x.origin || d.imports.some((r) => r.id === x.origin!.importId),
       ),
     "Importquelle fehlt",
+  );
+export const dataSchema = z
+  .object({
+    ...v4DataSchema.shape,
+    version: z.literal(5),
+    readingPosition: readingPositionSchema.nullable(),
+  })
+  .strict()
+  .refine(completeStepsValid, "Ungültiger Wegfortschritt")
+  .refine(
+    (d) =>
+      [...d.goals, ...d.notes].every(
+        (x) => !x.origin || d.imports.some((r) => r.id === x.origin!.importId),
+      ),
+    "Importquelle fehlt",
+  )
+  .refine(
+    (d) =>
+      !d.readingPosition || sameReadingScope(d.readingPosition.ref, d.reading),
+    "Leseposition gehört zu einem anderen Abschnitt",
   );
 export function decodeData(input: unknown): AppData {
   if (
@@ -163,7 +187,8 @@ export function decodeData(input: unknown): AppData {
     const old = legacyDataSchema.parse(input);
     return dataSchema.parse({
       ...old,
-      version: 4,
+      version: 5,
+      readingPosition: null,
       goals: [],
       drafts: [],
       imports: [],
@@ -177,7 +202,8 @@ export function decodeData(input: unknown): AppData {
   ) {
     return dataSchema.parse({
       ...v2DataSchema.parse(input),
-      version: 4,
+      version: 5,
+      readingPosition: null,
       imports: [],
     });
   }
@@ -186,8 +212,21 @@ export function decodeData(input: unknown): AppData {
     typeof input === "object" &&
     "version" in input &&
     input.version === 3
-      ? dataSchema.parse({ ...v3DataSchema.parse(input), version: 4 })
-      : dataSchema.parse(input);
+      ? dataSchema.parse({
+          ...v3DataSchema.parse(input),
+          version: 5,
+          readingPosition: null,
+        })
+      : input &&
+          typeof input === "object" &&
+          "version" in input &&
+          input.version === 4
+        ? dataSchema.parse({
+            ...v4DataSchema.parse(input),
+            version: 5,
+            readingPosition: null,
+          })
+        : dataSchema.parse(input);
   for (const receipt of data.imports) {
     const parsed = parseFaithpath(receipt.sourceText);
     if (
@@ -201,7 +240,8 @@ export function decodeData(input: unknown): AppData {
 export type AppData = z.infer<typeof dataSchema>;
 export type Note = z.infer<typeof noteSchema>;
 export const initialData = (): AppData => ({
-  version: 4,
+  version: 5,
+  readingPosition: null,
   imports: [],
   goals: [],
   drafts: [],

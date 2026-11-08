@@ -1,3 +1,4 @@
+import { useCallback, useLayoutEffect, useRef } from "react";
 import {
   View,
   ScrollView,
@@ -12,6 +13,7 @@ import { useApp } from "../state/store";
 import { T, IconButton } from "./ui";
 import { Icon, type IconName } from "./Icon";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { ViewportSignals, useViewportSignals } from "./viewport";
 const nav: { path: Href; label: string; icon: IconName }[] = [
   { path: "/", label: "Heute", icon: "home" },
   { path: "/bibel", label: "Bibel", icon: "book" },
@@ -66,11 +68,43 @@ export function Shell({
   scrollRef?: React.Ref<React.ComponentRef<typeof ScrollView>>;
   onScroll?: ScrollViewProps["onScroll"];
 }) {
+  const viewport = useViewportSignals(),
+    viewportRef = useRef<React.ComponentRef<typeof ScrollView>>(null);
+  const attachScroll = useCallback(
+    (node: React.ComponentRef<typeof ScrollView> | null) => {
+      viewportRef.current = node;
+      if (typeof scrollRef === "function") {
+        const cleanup = scrollRef(node);
+        if (typeof cleanup === "function")
+          return () => {
+            viewportRef.current = null;
+            cleanup();
+          };
+      } else if (scrollRef) scrollRef.current = node;
+    },
+    [scrollRef],
+  );
+  const measureViewport = useCallback(() => {
+    // The web renderer owns visibility through IntersectionObserver.
+    if (Platform.OS === "web") return;
+    const element = viewportRef.current?.getNativeScrollRef();
+    if (!element) {
+      viewport.setBounds(null);
+      return;
+    }
+    element.measureInWindow((x, y, width, height) =>
+      viewport.setBounds({ x, y, width, height }),
+    );
+  }, [viewport]);
   const t = useTheme(),
-    { width } = useWindowDimensions(),
+    { width, height } = useWindowDimensions(),
     desktop = width >= 1000,
     path = usePathname(),
     insets = useSafeAreaInsets();
+  useLayoutEffect(() => {
+    const frame = requestAnimationFrame(measureViewport);
+    return () => cancelAnimationFrame(frame);
+  }, [measureViewport, width, height, insets.top, insets.bottom]);
   const data = useApp((s) => s.data),
     mutate = useApp((s) => s.mutate),
     error = useApp((s) => s.error),
@@ -288,8 +322,17 @@ export function Shell({
           </View>
         )}
         <ScrollView
-          ref={scrollRef}
-          onScroll={onScroll}
+          ref={attachScroll}
+          onLayout={measureViewport}
+          onContentSizeChange={() => {
+            measureViewport();
+            viewport.notify();
+          }}
+          onScroll={(event) => {
+            onScroll?.(event);
+            measureViewport();
+            viewport.notify();
+          }}
           scrollEventThrottle={100}
           contentContainerStyle={{
             paddingHorizontal: reader ? 20 : desktop ? 42 : 22,
@@ -300,7 +343,9 @@ export function Shell({
           keyboardShouldPersistTaps="handled"
         >
           <View style={{ width: "100%", maxWidth: wide ? 1200 : 1040, gap: 0 }}>
-            {children}
+            <ViewportSignals.Provider value={viewport}>
+              {children}
+            </ViewportSignals.Provider>
           </View>
         </ScrollView>
         {!desktop && !reader && (

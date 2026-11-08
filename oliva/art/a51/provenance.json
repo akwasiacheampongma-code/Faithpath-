@@ -1,0 +1,342 @@
+{
+  "study": "FP-DESIGN-20261101-A51-FINAL-LIVING-TREE",
+  "snapshot_commit": "a519ce898fa33907b07d5ac7a585595127556183",
+  "master_commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+  "source_branch": "feature/simplified-step-experience-20261104",
+  "authorization": "Explicit project-owner integration instruction received 2026-11-06; no separate public redistribution license established.",
+  "original_files": [
+    {
+      "path": "art/a51/reference/runtime/leaf-renderer.js",
+      "source": "src/olive-a51/leaf-renderer.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "effa42404cb5cb693011fbd6e88606a98f28d5fb1c6cf45fa4545c76f51f62c1",
+      "bytes": 9670
+    },
+    {
+      "path": "art/a51/reference/runtime/config.js",
+      "source": "src/olive-a51/config.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "6ca337a9e67b77702890be01abf159328661ca3ce5324c84dde11ffd95fab349",
+      "bytes": 511
+    },
+    {
+      "path": "art/a51/reference/runtime/stage-transition.js",
+      "source": "src/olive-a51/stage-transition.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "6adf581486ccfcf38c45710d71ae493130955f27a1fb0f7abbdaa05301604661",
+      "bytes": 2660
+    },
+    {
+      "path": "art/a51/reference/runtime/wind-player.js",
+      "source": "src/olive-a51/wind-player.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "d82aa5bbd9ac34eedfd71da51590fc76a89d41a17af9d93c9d040607d4fd1886",
+      "bytes": 2586
+    },
+    {
+      "path": "art/a51/reference/runtime/stage-data.js",
+      "source": "src/olive-a51/stage-data.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "27257462464aeb277efea334dec469ac8a166e10e37af8b6c05a06170cb41c3b",
+      "bytes": 10409
+    },
+    {
+      "path": "art/a51/reference/runtime/motion-model.js",
+      "source": "src/olive-a51/motion-model.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "1ea118d89f174b2bdad4d1eac646244981cd5e7bcf3f875750ca768ca7a2a10e",
+      "bytes": 4294
+    },
+    {
+      "path": "art/a51/reference/runtime/performance-policy.js",
+      "source": "src/olive-a51/performance-policy.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "ff9f43c3a7fbcc786acea2f2e9c879bad4aa525a814712e6f0b950546d37027d",
+      "bytes": 1863
+    },
+    {
+      "path": "art/a51/reference/runtime/tree.css",
+      "source": "src/olive-a51/tree.css",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "f451781aaaf50ef5f64f81b9f709083c0ebce9d6a5ef06c0ef3e28420b99c103",
+      "bytes": 874
+    },
+    {
+      "path": "art/a51/reference/runtime/geometry.js",
+      "source": "src/olive-a51/geometry.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "9f442c3d23a29a32aaabf86ac9b7be7cb8d706d1221f596a6d18b8113357fab8",
+      "bytes": 6528
+    },
+    {
+      "path": "art/a51/reference/runtime/tree-scene.js",
+      "source": "src/olive-a51/tree-scene.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "40d499a0e836df70023362f351dd90436e2e0398a4fce22a3b4f2506aefd923c",
+      "bytes": 15127
+    },
+    {
+      "path": "art/a51/reference/runtime/asset-loader.js",
+      "source": "src/olive-a51/asset-loader.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "3edfdf24b73d15179bda6a9b51d98f9b07478c482afa1753b31a947731b15673",
+      "bytes": 2341
+    },
+    {
+      "path": "art/a51/reference/runtime/reference/a5/stage-data.js",
+      "source": "src/olive-a51/reference/a5/stage-data.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "3f27f1d2544e3b07ad7a50eeeedaba595a2633799188c5c4bf8fb94bafc77b97",
+      "bytes": 5101
+    },
+    {
+      "path": "art/a51/reference/runtime/reference/a5/motion-model.js",
+      "source": "src/olive-a51/reference/a5/motion-model.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "df5cc835d90e18d2d28a28935407c2742807744120b210fd84ff3114b1b88b19",
+      "bytes": 7805
+    },
+    {
+      "path": "art/a51/reference/runtime/reference/a5/reference/a4-motion-model.js",
+      "source": "src/olive-a51/reference/a5/reference/a4-motion-model.js",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "c805ddc74b416e8e02f294b4576100ed12badf4621e60cfa1660006e9e3e4138",
+      "bytes": 2562
+    },
+    {
+      "path": "art/a51/masters/stage-1.png",
+      "source": "design/olive-tree-a5-1/assets/masters/stage-1.png",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "9b9216a43b6687f44ebb8c4d07eae4139cd590faf7db3018270036f490f65388",
+      "bytes": 616342
+    },
+    {
+      "path": "assets/a51/stage-1-384-938d65fabbea.webp",
+      "source": "src/olive-a51/assets/runtime/stage-1-384-938d65fabbea.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "938d65fabbea534ceb9a7bc6ee143132e3be59dcb846433bd814ef2bb8ef01a3",
+      "bytes": 21394
+    },
+    {
+      "path": "assets/a51/stage-1-640-61bf0ea0364c.webp",
+      "source": "src/olive-a51/assets/runtime/stage-1-640-61bf0ea0364c.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "61bf0ea0364cf2c87a492d2347bab0ee9fc5b8dfda2c93de2392b3c1fe818623",
+      "bytes": 52974
+    },
+    {
+      "path": "assets/a51/stage-1-1024-09d0f0e48b45.webp",
+      "source": "src/olive-a51/assets/runtime/stage-1-1024-09d0f0e48b45.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "09d0f0e48b45dd98ae6d0d2756b95838da6467aa4391d81432ba81da6fe51ddd",
+      "bytes": 122658
+    },
+    {
+      "path": "art/a51/masters/stage-2.png",
+      "source": "design/olive-tree-a5-1/assets/masters/stage-2.png",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "d5117291600b029ab5c3cf03ed8aa157d61aa749cfe5c127204cce68bc1719cd",
+      "bytes": 715324
+    },
+    {
+      "path": "assets/a51/stage-2-384-83c9e1b068c2.webp",
+      "source": "src/olive-a51/assets/runtime/stage-2-384-83c9e1b068c2.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "83c9e1b068c24d38a6dcc608339a3b8e5af6da4325594fcb285be593639de292",
+      "bytes": 30484
+    },
+    {
+      "path": "assets/a51/stage-2-640-657d676673c5.webp",
+      "source": "src/olive-a51/assets/runtime/stage-2-640-657d676673c5.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "657d676673c51c28b656e7b0507f49a4686ec34bd748a1010aef180999b16c45",
+      "bytes": 70802
+    },
+    {
+      "path": "assets/a51/stage-2-1024-5faf7d8bacae.webp",
+      "source": "src/olive-a51/assets/runtime/stage-2-1024-5faf7d8bacae.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "5faf7d8bacae680d36373624289c3ded33a90be523068c91ce2421416034c680",
+      "bytes": 159078
+    },
+    {
+      "path": "art/a51/masters/stage-3.png",
+      "source": "design/olive-tree-a5-1/assets/masters/stage-3.png",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "9efc6b53c4c3509fdefa79d2ae75e3be65d168c709f8bc7c3b064be431d8d782",
+      "bytes": 1700968
+    },
+    {
+      "path": "assets/a51/stage-3-384-67a026427a62.webp",
+      "source": "src/olive-a51/assets/runtime/stage-3-384-67a026427a62.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "67a026427a62a561919eaf330a9f0068ccfc2b2b3d2bd113d5cf56697865c446",
+      "bytes": 82620
+    },
+    {
+      "path": "assets/a51/stage-3-640-daed3e069ebb.webp",
+      "source": "src/olive-a51/assets/runtime/stage-3-640-daed3e069ebb.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "daed3e069ebbc806fc20798d6ceef5a2a47d712242ef8eacd4149477c69a1976",
+      "bytes": 197140
+    },
+    {
+      "path": "assets/a51/stage-3-1024-dd3447ecfc31.webp",
+      "source": "src/olive-a51/assets/runtime/stage-3-1024-dd3447ecfc31.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "dd3447ecfc310966e51974f8bfa922d3b07bddf76e74e3bfea2e03afc58bc0a5",
+      "bytes": 445506
+    },
+    {
+      "path": "art/a51/masters/stage-4.png",
+      "source": "design/olive-tree-a5-1/assets/masters/stage-4.png",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "d38cbd8b699357f35f922bda84b58d98dd737a6b919e7268cfa650d809cd67a0",
+      "bytes": 2519060
+    },
+    {
+      "path": "assets/a51/stage-4-384-7fdbd6abfc70.webp",
+      "source": "src/olive-a51/assets/runtime/stage-4-384-7fdbd6abfc70.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "7fdbd6abfc70111d8894f446609705573ff995217cfd0c3bb2d08fde925270f5",
+      "bytes": 101728
+    },
+    {
+      "path": "assets/a51/stage-4-640-6cd93c9040c1.webp",
+      "source": "src/olive-a51/assets/runtime/stage-4-640-6cd93c9040c1.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "6cd93c9040c14aa072048134fc24705ac48c76db6c6d27f1334a2fb588f444a5",
+      "bytes": 249914
+    },
+    {
+      "path": "assets/a51/stage-4-1024-b694c875ac25.webp",
+      "source": "src/olive-a51/assets/runtime/stage-4-1024-b694c875ac25.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "b694c875ac25911f4595c1549196df2a682abcdadcf5e31d7f8b717e12891833",
+      "bytes": 580982
+    },
+    {
+      "path": "art/a51/masters/stage-5.png",
+      "source": "design/olive-tree-a5-1/assets/masters/stage-5.png",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "34cee16fade15b9957b2fb718f265ea0ffb2f480095ba1246f0dfadcc9661cf8",
+      "bytes": 2576143
+    },
+    {
+      "path": "assets/a51/stage-5-384-1f45acdc445c.webp",
+      "source": "src/olive-a51/assets/runtime/stage-5-384-1f45acdc445c.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "1f45acdc445c9707e1c673824e7c9e1b8e4fd9d0443902dc73d0c0d75e6afd68",
+      "bytes": 90048
+    },
+    {
+      "path": "assets/a51/stage-5-640-c725f8e572eb.webp",
+      "source": "src/olive-a51/assets/runtime/stage-5-640-c725f8e572eb.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "c725f8e572eb3262a942103f2421f61c80344f618c647c3cb984d356d9c2b42b",
+      "bytes": 228284
+    },
+    {
+      "path": "assets/a51/stage-5-1024-9662127e6782.webp",
+      "source": "src/olive-a51/assets/runtime/stage-5-1024-9662127e6782.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "9662127e6782ec35e3e3923f673b8a4776c292dccf3778420c872b5b603c4388",
+      "bytes": 537828
+    },
+    {
+      "path": "art/a51/masters/stage-6.png",
+      "source": "design/olive-tree-a5-1/assets/masters/stage-6.png",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "2581203155dc0e75886649cfea654020755dbb64034d7f5b31ad3b23f602d5a7",
+      "bytes": 2510145
+    },
+    {
+      "path": "assets/a51/stage-6-384-18e5329006bc.webp",
+      "source": "src/olive-a51/assets/runtime/stage-6-384-18e5329006bc.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "18e5329006bccbd44579755a2c60f6a8dd44709e9f704e7a0d66b4cf1bfaf202",
+      "bytes": 96804
+    },
+    {
+      "path": "assets/a51/stage-6-640-db5395a982ed.webp",
+      "source": "src/olive-a51/assets/runtime/stage-6-640-db5395a982ed.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "db5395a982ed776121bf858ff64bbeeffb73f60e3b9e0ab9d712db39f335d990",
+      "bytes": 238718
+    },
+    {
+      "path": "assets/a51/stage-6-1024-d332e48c635b.webp",
+      "source": "src/olive-a51/assets/runtime/stage-6-1024-d332e48c635b.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "d332e48c635bb088b4bf3eb86c46dcaac9888671a9d55055f7320dbb83a301f2",
+      "bytes": 556588
+    },
+    {
+      "path": "art/a51/masters/stage-7.png",
+      "source": "design/olive-tree-a5-1/assets/masters/stage-7.png",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "eb1294571c0b57c0ae17e7b8064d4b6e428729ea79ddbbae46fcf46578987e3d",
+      "bytes": 2745697
+    },
+    {
+      "path": "assets/a51/stage-7-384-1325b09c8f58.webp",
+      "source": "src/olive-a51/assets/runtime/stage-7-384-1325b09c8f58.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "1325b09c8f58b476d93aa8b09a2888898c4b5e38be97276f85b06fb3faee447f",
+      "bytes": 101764
+    },
+    {
+      "path": "assets/a51/stage-7-640-c9b6a16a1bf4.webp",
+      "source": "src/olive-a51/assets/runtime/stage-7-640-c9b6a16a1bf4.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "c9b6a16a1bf44fbbbc4c4298a609922ee5b40c6a74c0f5f244f48c2669fac5eb",
+      "bytes": 251300
+    },
+    {
+      "path": "assets/a51/stage-7-1024-8d580a524725.webp",
+      "source": "src/olive-a51/assets/runtime/stage-7-1024-8d580a524725.webp",
+      "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+      "sha256": "8d580a52472552e22b98b17ada29393f60992dbf523e21ee891dba15a9582987",
+      "bytes": 578856
+    },
+    {
+      "path": "art/a51/reference/art-direction.json",
+      "source": "design/olive-tree-a5-1/art-direction.json",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "84b1037290efeafa360e9d469b3da271a02be2244c20a6bcaf196728cffb0e98",
+      "bytes": 1236
+    },
+    {
+      "path": "art/a51/reference/prompts.json",
+      "source": "design/olive-tree-a5-1/prompts.json",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "700d554abd9fb47513f338d87a0479d69f9f825e09b5f796dddb09e461c53ec9",
+      "bytes": 11890
+    },
+    {
+      "path": "art/a51/reference/BERICHT.md",
+      "source": "design/olive-tree-a5-1/BERICHT.md",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "3b0410500dc4daf41910fc36fc7ec30dbe8664d423c989bd86899b86cc2fdeff",
+      "bytes": 17105
+    },
+    {
+      "path": "art/a51/reference/ARCHITEKTUR.md",
+      "source": "design/olive-tree-a5-1/ARCHITEKTUR.md",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "090dfc3f53e06778680a8863fc3f64088fe64b7ed75de2f1a29075823cc9a03d",
+      "bytes": 8223
+    },
+    {
+      "path": "art/a51/reference/manifest.json",
+      "source": "design/olive-tree-a5-1/manifest.json",
+      "commit": "0e02d5329a87cdcdfc52694d74c610da2975b357",
+      "sha256": "65f907192032e2d3bb2891a1b31259a80d4f55c648e018b42d4506f913b7f7be",
+      "bytes": 10387
+    }
+  ],
+  "master_count": 7,
+  "webp_count": 21,
+  "third_party_asset_license": "No stand-alone license found; public release requires owner rights review. Originals are kept byte-exact.",
+  "artwork_provenance": "Original prompts and art direction retained; inherited AI artwork, no new image generation claimed."
+}

@@ -1,0 +1,43 @@
+{
+  "baseline_version": "0.4.0",
+  "target_version": "0.5.0",
+  "synthetic_data": true,
+  "passed": false,
+  "physical_device_test": false,
+  "baseline_private_storage_version": 1,
+  "baseline_data_version": 4,
+  "baseline_build_id": "oliva-4e247f465063a3d5",
+  "baseline_worker": {
+    "expected": "oliva-4e247f465063a3d5",
+    "controller": {
+      "id": "oliva-4e247f465063a3d5",
+      "version": "0.4.0"
+    },
+    "active": {
+      "id": "oliva-4e247f465063a3d5",
+      "version": "0.4.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-4e247f465063a3d5"
+    ]
+  },
+  "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('OLIVA · lokale Entwicklungsausgabe 0.5.0', { exact: true })\nExpected: visible\nTimeout: 30000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByText('OLIVA · lokale Entwicklungsausgabe 0.5.0', { exact: true }) with timeout 30000ms\n  - waiting for getByText('OLIVA · lokale Entwicklungsausgabe 0.5.0', { exact: true })\n",
+  "worker_diagnostic": {
+    "expected": "oliva-57dfdc13f73b7d74",
+    "controller": {
+      "id": "oliva-57dfdc13f73b7d74",
+      "version": "0.5.0"
+    },
+    "active": {
+      "id": "oliva-57dfdc13f73b7d74",
+      "version": "0.5.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-4e247f465063a3d5",
+      "oliva-57dfdc13f73b7d74"
+    ]
+  },
+  "checkedAt": "2026-11-06T17:44:02.937Z"
+}

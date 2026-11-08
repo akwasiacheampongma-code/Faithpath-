@@ -1,0 +1,278 @@
+{
+  "observedAt": "2026-11-06T17:57:55.847878+00:00",
+  "kind": "Actual unmodified-core browser failure, before product fix; diagnostic observer records native browser batches without changing entries.",
+  "source": "/tmp/oliva-a51-diagnostic-run.log",
+  "diagnosticTest": "Exact copy of the seven-stage comparison case, same assertions, logging only on failure.",
+  "cause": "A single observer callback delivered false then true for the same root. The engine read entries[0], remained visible=false while the root was actually on screen, and never loaded desired stage 3.",
+  "actualFailure": {
+    "metrics": {
+      "requestedStage": 3,
+      "stage": 2,
+      "ready": false,
+      "loading": false,
+      "error": null,
+      "visible": false,
+      "foreground": true,
+      "enabled": true,
+      "paused": true,
+      "reduced": true,
+      "graphicsFailed": false,
+      "profile": "a51",
+      "reason": "Außerhalb des sichtbaren Bereichs pausiert.",
+      "quality": "high",
+      "qualityChanges": [],
+      "performanceSamples": [],
+      "variant": {
+        "width": 384,
+        "src": "assets/runtime/stage-3-384-67a026427a62.webp",
+        "bytes": 82620,
+        "sha256": "67a026427a62a561919eaf330a9f0068ccfc2b2b3d2bd113d5cf56697865c446"
+      },
+      "transition": {
+        "active": false,
+        "ownedAnimations": 0,
+        "snapshots": 0
+      },
+      "disposed": false,
+      "running": false,
+      "rafPending": false,
+      "activeMs": 0,
+      "renderTimes": [],
+      "submitTimes": []
+    },
+    "hidden": false,
+    "focus": true,
+    "rect": {
+      "x": 45,
+      "y": 73,
+      "width": 230,
+      "height": 163.96875,
+      "top": 73,
+      "right": 275,
+      "bottom": 236.96875,
+      "left": 45
+    },
+    "io": [
+      {
+        "time": 4012.7999999970198,
+        "batchLength": 1,
+        "batchIndex": 0,
+        "intersecting": true,
+        "ratio": 1,
+        "bounds": {
+          "x": 45,
+          "y": 406.53125,
+          "width": 300,
+          "height": 89.46875,
+          "top": 406.53125,
+          "right": 345,
+          "bottom": 496,
+          "left": 45
+        },
+        "intersection": {
+          "x": 45,
+          "y": 406.53125,
+          "width": 300,
+          "height": 89.46875,
+          "top": 406.53125,
+          "right": 345,
+          "bottom": 496,
+          "left": 45
+        }
+      },
+      {
+        "time": 14635.90000000596,
+        "batchLength": 1,
+        "batchIndex": 0,
+        "intersecting": false,
+        "ratio": 0,
+        "bounds": {
+          "x": 45,
+          "y": -43.59375,
+          "width": 230,
+          "height": 68.59375,
+          "top": -43.59375,
+          "right": 275,
+          "bottom": 25,
+          "left": 45
+        },
+        "intersection": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      {
+        "time": 14729.60000000894,
+        "batchLength": 1,
+        "batchIndex": 0,
+        "intersecting": true,
+        "ratio": 1,
+        "bounds": {
+          "x": 45,
+          "y": 239.40625,
+          "width": 230,
+          "height": 68.59375,
+          "top": 239.40625,
+          "right": 275,
+          "bottom": 308,
+          "left": 45
+        },
+        "intersection": {
+          "x": 45,
+          "y": 239.40625,
+          "width": 230,
+          "height": 68.59375,
+          "top": 239.40625,
+          "right": 275,
+          "bottom": 308,
+          "left": 45
+        }
+      },
+      {
+        "time": 14895.10000000894,
+        "batchLength": 1,
+        "batchIndex": 0,
+        "intersecting": false,
+        "ratio": 0,
+        "bounds": {
+          "x": 45,
+          "y": -3.59375,
+          "width": 230,
+          "height": 68.59375,
+          "top": -3.59375,
+          "right": 275,
+          "bottom": 65,
+          "left": 45
+        },
+        "intersection": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      {
+        "time": 14996,
+        "batchLength": 1,
+        "batchIndex": 0,
+        "intersecting": true,
+        "ratio": 1,
+        "bounds": {
+          "x": 45,
+          "y": 238.734375,
+          "width": 230,
+          "height": 68.59375,
+          "top": 238.734375,
+          "right": 275,
+          "bottom": 307.328125,
+          "left": 45
+        },
+        "intersection": {
+          "x": 45,
+          "y": 238.734375,
+          "width": 230,
+          "height": 68.59375,
+          "top": 238.734375,
+          "right": 275,
+          "bottom": 307.328125,
+          "left": 45
+        }
+      },
+      {
+        "time": 15200.20000000298,
+        "batchLength": 2,
+        "batchIndex": 0,
+        "intersecting": false,
+        "ratio": 0,
+        "bounds": {
+          "x": 45,
+          "y": -55,
+          "width": 230,
+          "height": 105.265625,
+          "top": -55,
+          "right": 275,
+          "bottom": 50.265625,
+          "left": 45
+        },
+        "intersection": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      {
+        "time": 15200.20000000298,
+        "batchLength": 2,
+        "batchIndex": 1,
+        "intersecting": true,
+        "ratio": 0.21936345100402832,
+        "bounds": {
+          "x": 45,
+          "y": -55,
+          "width": 230,
+          "height": 163.96875,
+          "top": -55,
+          "right": 275,
+          "bottom": 108.96875,
+          "left": 45
+        },
+        "intersection": {
+          "x": 45,
+          "y": 73,
+          "width": 230,
+          "height": 35.96875,
+          "top": 73,
+          "right": 275,
+          "bottom": 108.96875,
+          "left": 45
+        }
+      }
+    ],
+    "viewport": {
+      "width": 320,
+      "height": 568
+    }
+  },
+  "fix": "Use the last entry for the observed root in each IntersectionObserver callback.",
+  "changedRuntimeFile": "src/features/garden/a51/engine/tree-scene.js",
+  "beforeSha256": "4adabd30762aa8d16e1e5211eb0c61ee4e64d103d8939902efcc87330ac1b70e",
+  "afterSha256": "28283f693ef360e4a74e9a7dc87b36ffb8c58bc27c670d19dfe898bc99ceaa70",
+  "nativeImpact": "Web renderer only; absent from both previously verified native entries. No native source/asset change.",
+  "regressionVerification": {
+    "finishedAt": "2026-11-06T18:00:07.498312+00:00",
+    "kind": "Five targeted real core-app Chromium browser cases, including laboratory replay of the actually observed two-entry batch.",
+    "report": "docs/evidence/session-05/a51-io-fixed-e2e.json",
+    "rawLog": "docs/evidence/session-05/a51-io-fixed-e2e.txt",
+    "stats": {
+      "startTime": "2026-11-06T17:58:28.422Z",
+      "duration": 42445.836,
+      "expected": 5,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "offlineBuildId": "oliva-f9aa29af9f863cf9",
+    "fullSuiteRerun": false,
+    "combinedEvidenceNote": "Do not represent this targeted run as a fresh all-suite green report. Parent full run completed 44/45 before this isolated web-renderer correction.",
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "rawLog": "docs/evidence/session-05/a51-io-fixed-typecheck.txt"
+    }
+  }
+}

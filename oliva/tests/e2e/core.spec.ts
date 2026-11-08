@@ -251,10 +251,10 @@ test("Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeicher
   page,
 }) => {
   await page.goto("/garten");
-  await expect(page.getByText("Der Samen", { exact: true })).toBeVisible();
+  await expect(page.getByRole("img", { name: /^Samen –/ })).toBeVisible();
   await page
     .getByRole("button", {
-      name: "Stadium 7 ansehen: Erste Früchte",
+      name: "Stadium 7 ansehen: Fruchttragender Olivenbaum",
       exact: true,
     })
     .click();
@@ -264,7 +264,7 @@ test("Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeicher
   await page
     .getByRole("button", { name: "Zurück zu deinem Baum", exact: true })
     .click();
-  await expect(page.getByText("Der Samen", { exact: true })).toBeVisible();
+  await expect(page.getByRole("img", { name: /^Samen –/ })).toBeVisible();
   await page.goto("/einstellungen");
   await page.getByRole("switch", { name: "Animationen reduzieren" }).click();
   await expect

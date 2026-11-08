@@ -64,7 +64,7 @@ export default function Sources() {
           </T>
         </Card>
         <Card style={{ gap: 13 }}>
-          <T variant="heading">Schwerter und Baum</T>
+          <T variant="heading">Die Buchschwerter</T>
           <T>
             Eigenständige Vektorgrafiken. Die 66 Buchschwerter bilden eine
             parametrisierte Illustrationsfamilie mit individuellen Themen,
@@ -76,6 +76,11 @@ export default function Sources() {
             des Wortes Gottes. Der Baum stellt Lernmomente dar – keinen
             geistlichen Rang.
           </T>
+        </Card>
+        <Card style={{gap:13}}>
+          <T variant="heading">Der lebendige Olivenbaum</T>
+          <T>Die sieben A51-Illustrationen stammen aus der eigenen FaithPath-Vorarbeit „Final Living Tree“. Sie wurden auf ausdrücklichen Projektauftrag übernommen. Die Originale bleiben erhalten; WebP- und PNG-Dateien ermöglichen die Darstellung auf den verschiedenen Plattformen.</T>
+          <T style={{fontSize:12,color:t.muted}}>Der Baum zeigt deine OLIVA-Lerngeschichte. Eine Bildvorschau verändert keinen Fortschritt. Die Rechtekette der übernommenen Bildgenerierung ist vor einer öffentlichen Veröffentlichung gesondert zu prüfen.</T>
         </Card>
         <Card style={{ gap: 13 }}>
           <T variant="heading">Schriften und Datenschutz</T>

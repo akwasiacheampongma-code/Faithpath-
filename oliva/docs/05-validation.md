@@ -1,8 +1,47 @@
 # Qualität und Abnahme
 
-Prüfumgebung: 06.11.2026, Linux, Node 24.22.1, npm 11.9.0, systemweiter Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
+Dokumentationsstand: 07.11.2026. Prüfungen vom 06.11.2026 unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
 
-## Tatsächlich ausgeführte Prüfungen
+## Aktueller Nachweis 0.5 · A51 und Versfortsetzung
+
+Die private 0.5-Vorschau ist seit 06.11., 18:10:52 UTC bereitgestellt. Kernbuild: `oliva-f9aa29af9f863cf9`; Hostpaket: `oliva-e0fde474fcc06f7c`. Die folgenden Ergebnisse wurden tatsächlich ausgeführt. Historische Ergebnisse für 0.4 stehen getrennt weiter unten.
+
+| Prüfung | Ergebnis | Nachweis |
+| --- | --- | --- |
+| Fach-/Persistenzsuite | 72 bestanden, 0 fehlgeschlagen | [unit-results.json](evidence/session-05/unit-results.json) |
+| TypeScript nach Webkorrektur | Strikte Prüfung erfolgreich | [a51-io-fixed-typecheck.txt](evidence/session-05/a51-io-fixed-typecheck.txt) |
+| Vollständiger Browserlauf vor IO-Fix | 44/45 bestanden, ein tatsächlicher A51-Sichtbarkeitsfehler; nichts übersprungen/flaky | [e2e-full-before-io-fix.json](evidence/session-05/e2e-full-before-io-fix.json) |
+| Betroffene Browserfälle nach IO-Fix | 5/5 A51-Fälle bestanden, nichts übersprungen/flaky | [a51-io-fixed-e2e.json](evidence/session-05/a51-io-fixed-e2e.json) |
+| Reader-Versanker | Vier gezielte Fälle erfolgreich: Verslink, Reflow/Schriftänderung, Bereichs-/Kapitelwechsel und V4-Migration; ebenfalls im späteren Gesamtlauf bestanden | [reader-position-results.json](evidence/session-05/reader-position-results.json) |
+| A51-Dateien | Sieben Master, 21 originale WebPs und 98 native PNGs mit erwarteten Hashes | [asset-integrity.json](evidence/a51/asset-integrity.json) |
+| A51-Browserdarstellung | Sieben Stadien, Galerie, Hell/Dunkel, 320/390/1.440 CSS-Pixel; Vorschau schreibt keine persönlichen Daten; reduzierte Bewegung, Sichtbarkeit, Bildfehler/Retry und Grafikfallbacks | Fünf A51-Nachtests und [Screenshotvergleich](evidence/a51/comparison.html) |
+| Native PNG-Ruhepose | 14 Gruppen tatsächlich dekodiert und zusammengesetzt; maximale Alphaabweichung 0,498032, vormultiplizierte RGB-Abweichung 0,461478 von 255 | [native-rest-fidelity.json](evidence/a51/native-rest-fidelity.json) |
+| Android-/iOS-Debugexport | Beide erfolgreich; je alle 98 A51-PNGs bytegenau enthalten, A51-Webrenderer ausgeschlossen | [native-builds.json](evidence/session-05/native-builds.json) |
+| Echter 0.4→0.5-Workerwechsel | Profil, Notizen, Vorhaben, Entwurf, Fortschritt und Originalarchiv-Blobs erhalten; Neustart und alle sieben Stadien offline; ausschließlich alter JS-Chunk weiterhin aus Vorgängercache verfügbar | [offline-upgrade.json](evidence/session-05/offline-upgrade.json) |
+| FaithPath-Referenz | Alle 390 materialisierten Dateien unverändert | [original-reference-integrity.json](evidence/session-05/original-reference-integrity.json) |
+| Private Hostingausgabe | 13 App-Routen mit Shell, 94 App-Dateien und 33 Review-Dateien bytegenau geprüft; Manifest/Worker korrekt; anonym HTTP 401 | [private-http-check.json](evidence/session-05/private-http-check.json) |
+
+**Die vereinigten Berichte belegen 45 unterschiedliche erfolgreiche Szenarien. Sie sind kein neuer einzelner grüner 45/45-Gesamtlauf nach dem Fix.** Der vollständige Lauf endet mit 44/45; anschließend wurden nur die fünf betroffenen A51-Fälle wiederholt. [validation-summary.json](evidence/session-05/validation-summary.json) hält diese Grenze ausdrücklich fest. Der tatsächlich erfolgreiche GitHub-CI-Lauf 42240609694 gilt ausschließlich für 0.4, nicht für diesen lokalen 0.5-Stand.
+
+### Bestätigte Ursache und Korrektur
+
+Bei 320 × 568 CSS-Pixeln lieferte der Browser in einem IntersectionObserver-Callback zwei Meldungen für dieselbe Baumwurzel: zuerst unsichtbar, danach sichtbar. Der unveränderte A51-Code las nur `entries[0]`. Dadurch blieb `visible=false`, obwohl der Baum auf dem Bildschirm lag, und das gewünschte Stadium wurde nicht geladen. Die OLIVA-Webengine verarbeitet jetzt die letzte zum Root passende Meldung. Der Nachtest spielt beide Reihenfolgen deterministisch nach und prüft das jeweilige Ergebnis. [IO-batch-diagnosis.json](evidence/session-05/IO-batch-diagnosis.json) enthält echte Browsermeldungen, sichtbare Grenzen, Vorher-/Nachher-Hashes und den gezielten Testnachweis. Die Originalreferenz ist unverändert.
+
+Eine frühere Hintergrundtab-Vermutung erklärte diesen Produktfehler nicht und wird nicht als Diagnose ausgegeben. Der erste 42/45-Zwischenlauf und seine damaligen Harness-/Fixtureprobleme bleiben als historische Rohberichte erhalten. Maßgeblich sind der spätere vollständige 44/45-Bericht und die fünf erfolgreichen Nachtests.
+
+Der Readerfehler hatte eine andere Ursache: RN-Web-`onLayout` erfasste reine Positionsverschiebungen nach Reflow nicht zuverlässig. Die Versfortsetzung misst zusammenhängend relativ zum Textcontainer und schützt den bisherigen Anker während Schrift-, Modus- und Notizänderungen. Die Tests prüfen tatsächliche Versposition und dauerhafte Speicherung; fachliche Aussagen wurden nicht abgeschwächt.
+
+### Grenzen der aktuellen Nachweise
+
+Native Exporte entstanden vor dem anschließenden reinen Web-IO-Fix. Der korrigierte Webrenderer war nachweislich in keinem der beiden nativen Exporte enthalten; native Quellen und Assets wurden dadurch nicht verändert. Dieser Unterschied ist im Exportbeleg annotiert. `--no-minify --no-bytecode` erzeugt Debug-JavaScript-/Asset-Bundles, keine Hermes-Bytecodes oder signierten APK/AAB/IPA. Keine Simulatoren und keine physischen Geräte wurden verwendet.
+
+Die lokale Kern-App wurde tatsächlich mit Playwright geprüft. Eine zusätzliche Browserprüfung der gehosteten privaten Sites-Version wurde mangels des vorgesehenen CUA-Werkzeugs nicht durchgeführt. Die authentifizierte HTTP-Prüfung kontrolliert Zugriff, Routing, Assetbytes und PWA-Dateien, jedoch weder Interaktion noch Installation auf einem Handy. Zwei HTML-Dateien hatten im beobachteten Hosting den SPA-Fallback deaktiviert; die finale Ausgabe enthält eine `index.html` und den Reviewvergleich als SVG. Nach dieser Änderung lieferten alle 13 geprüften App-URLs wieder die Shell.
+
+## Historischer Prüfstand bis 0.4
+
+Die folgenden Tabellen und Iterationsberichte betreffen die vorangegangenen Versionen. Sie werden als Entwicklungs- und CI-Historie bewahrt und sind keine zusätzliche 0.5-Abnahme.
+
+### Tatsächlich ausgeführte Prüfungen bis 0.4
 
 | Prüfung | Ergebnis / Umfang | Nachweis |
 |---|---|---|

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import appConfig from "../app.json";
 import { View, Switch } from "react-native";
 import { router } from "expo-router";
 import { Shell } from "../src/components/Shell";
@@ -291,7 +292,7 @@ export default function Settings() {
             Den Einstieg noch einmal ansehen
           </Button>
           <T style={{ fontSize: 10, color: t.muted }}>
-            OLIVA · lokale Entwicklungsausgabe 0.4.0
+            OLIVA · lokale Entwicklungsausgabe {appConfig.expo.version}
           </T>
         </Card>
       </View>

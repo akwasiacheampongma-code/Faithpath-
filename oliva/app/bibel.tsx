@@ -71,6 +71,7 @@ export default function Bible() {
         >
           <View>
             <T variant="heading">{referenceLabel(data.reading)}</T>
+            {data.readingPosition && <T variant="small" style={{color:t.muted}}>Zuletzt bei Vers {data.readingPosition.verse}</T>}
             <T style={{ fontSize: 11, color: t.muted }}>
               {data.readChapters.length} Kapitel bewusst als gelesen bestätigt
             </T>
@@ -84,6 +85,7 @@ export default function Bible() {
                   chapter: data.reading.chapter,
                   from: data.reading.from,
                   to: data.reading.to,
+                  mode: data.readingPosition?.mode,
                 },
               })
             }

@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-11-06T18:01:52.445Z",
+  "version": "0.5.0",
+  "sourceBuild": "oliva-f9aa29af9f863cf9",
+  "unit": {
+    "passed": 72,
+    "failed": 0
+  },
+  "browser": {
+    "uniqueScenariosVerified": 45,
+    "fullRunBeforeFix": {
+      "startTime": "2026-11-06T17:49:13.735Z",
+      "duration": 398505.252,
+      "expected": 44,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "targetedAfterWebOnlyFix": {
+      "startTime": "2026-11-06T17:58:28.422Z",
+      "duration": 42445.836,
+      "expected": 5,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "isSingleGreenFullRun": false,
+    "explanation": "44/45 in full run; real A51 visibility-batch bug fixed; all five affected A51 scenarios then passed. Union verifies all 45 unique scenarios. No new full run after isolated web-only change."
+  },
+  "upgrade": {
+    "passed": true,
+    "allProgressPreserved": true,
+    "offlineStages": 7
+  },
+  "native": "Both platform debug JS/asset exports verified, no simulator or physical devices",
+  "originalReferenceFiles": 390,
+  "hostedBrowserQa": "Not performed: supported Sites CUA unavailable; authenticated HTTP integrity validation follows deploy.",
+  "rawReports": [
+    {
+      "file": "unit-results.json",
+      "sha256": "0b74944d3fafe45dbf92f2edcb45ac24c0a1f95fcd2cd2fa80470480d6740de3"
+    },
+    {
+      "file": "e2e-full-before-io-fix.json",
+      "sha256": "47b296dd7a01e3b06eadb7f90f56d6a7d094d67644ec2943a8e3fa566de2e97f"
+    },
+    {
+      "file": "a51-io-fixed-e2e.json",
+      "sha256": "cc26da4ee2a8f7c67d99cda5cc8c4ffc27e76d1e9eaff6d825a624c710f44030"
+    },
+    {
+      "file": "offline-upgrade.json",
+      "sha256": "b4e0e055e3a24f433d6931155becce3e2f4d04be5a770fb9237ecd6e04b2315e"
+    },
+    {
+      "file": "native-builds.json",
+      "sha256": "6efa945724a9b2cce62e25073198b62940603a3e40366b46c8de201f9b32d385"
+    }
+  ]
+}

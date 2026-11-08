@@ -17,7 +17,7 @@ function workerRuntime() {
       (async () => {
         try {
           const cache = await caches.open(ID);
-          await cache.addAll(URLS);
+          await cache.addAll(URLS.map(url => new Request(url, { cache: "reload" })));
           await self.skipWaiting();
         } catch (error) {
           await caches.delete(ID);
@@ -68,7 +68,8 @@ function workerRuntime() {
         // Old open clients may still ask for a previous build's immutable chunks.
         if (
           url.pathname.startsWith("/_expo/") ||
-          url.pathname.startsWith("/assets/")
+          url.pathname.startsWith("/assets/") ||
+          url.pathname.startsWith("/preview-")
         ) {
           const older = (await caches.keys())
             .filter((k) => k.startsWith("oliva-") && k !== ID)

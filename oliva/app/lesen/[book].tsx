@@ -22,6 +22,8 @@ import { CaptureInput } from "../../src/features/personal/CaptureInput";
 import { TextCheck } from "../../src/features/paths/TextCheck";
 import { StoryCard } from "../../src/features/bible/StoryCard";
 import { sceneFor } from "../../src/features/bible/scenes";
+import { useReaderPosition } from "../../src/features/bible/useReaderPosition";
+import { sameReadingScope } from "../../src/features/bible/position";
 export default function Reader() {
   const params = useLocalSearchParams<{
       book: string;
@@ -64,62 +66,51 @@ export default function Reader() {
       ),
     );
   const [mode, setMode] = useState<"read" | "deep">(
-      params.mode === "deep" ? "deep" : "read",
+      params.mode === "deep"
+        ? "deep"
+        : params.mode === "read"
+          ? "read"
+          : data.readingPosition &&
+              sameReadingScope(data.readingPosition.ref, ref)
+            ? data.readingPosition.mode
+            : "read",
     ),
     [tools, setTools] = useState(false),
     [selected, setSelected] = useState<number | null>(
       params.verse ? Number(params.verse) : null,
     ),
     [ack, setAck] = useState(false);
-  const lastOpened = useRef("");
-  const scroll = useRef<React.ComponentRef<typeof ScrollView>>(null),
-    offset = useRef(0),
-    verseViews = useRef(new Map<number, React.ComponentRef<typeof View>>()),
-    pendingJump = useRef<number | null>(null),
-    jumpRequest = useRef(0);
-  function jumpToVerse(verse: number) {
-    const request = ++jumpRequest.current;
-    const target = verseViews.current.get(verse);
-    if (!target || !scroll.current) {
-      pendingJump.current = verse;
-      return;
-    }
-    target.measureInWindow((_x, y) =>
-      scroll.current?.measureInWindow((_sx, sy) => {
-        if (request !== jumpRequest.current) return;
-        const nextOffset = Math.max(0, offset.current + y - sy - 24);
-        offset.current = nextOffset;
-        scroll.current?.scrollTo({
-          y: nextOffset,
-          animated: false,
-        });
-        pendingJump.current = null;
-      }),
-    );
-  }
+  const scroll = useRef<React.ComponentRef<typeof ScrollView>>(null);
+  const position = useReaderPosition({
+    reference: ref,
+    scroll,
+    explicitVerse: params.verse ? Number(params.verse) : undefined,
+    mode,
+    toolsOpen: tools,
+    layoutKey: `${width}:${data.settings.fontSize}:${data.settings.lineHeight}:${mode}:${selected ?? ""}`,
+  });
+  const jumpToVerse = position.restore;
   const openKey = JSON.stringify(ref);
   useEffect(() => {
     setAck(false);
     setSelected(params.verse ? Number(params.verse) : null);
-    setMode(params.mode === "deep" ? "deep" : "read");
-    if (valid && lastOpened.current !== openKey) {
-      lastOpened.current = openKey;
-      void mutate((d) => {
-        d.reading = ref;
-      });
-    }
-    if (params.verse) pendingJump.current = Number(params.verse);
-    else {
-      pendingJump.current = null;
-      offset.current = 0;
-      scroll.current?.scrollTo({ y: 0, animated: false });
-    }
+    const saved = useApp.getState().data.readingPosition;
+    setMode(
+      params.mode === "deep"
+        ? "deep"
+        : params.mode === "read"
+          ? "read"
+          : saved && sameReadingScope(saved.ref, ref)
+            ? saved.mode
+            : "read",
+    );
   }, [openKey]);
   useEffect(() => {
     if (params.verse) {
       setSelected(Number(params.verse));
-      pendingJump.current = Number(params.verse);
-      requestAnimationFrame(() => jumpToVerse(Number(params.verse)));
+      // Consume the incoming jump once. A reload must resume the subsequently
+      // read verse, while a fresh bookmark/search link still takes precedence.
+      router.setParams({ verse: undefined });
     }
   }, [params.verse, openKey]);
   const back = () => {
@@ -159,14 +150,10 @@ export default function Reader() {
       });
   }
   return (
-    <Shell
-      reader
-      scrollRef={scroll}
-      onScroll={(e) => {
-        offset.current = e.nativeEvent.contentOffset.y;
-      }}
-    >
+    <Shell reader scrollRef={scroll} onScroll={position.onScroll}>
       <View
+        ref={position.rootRef}
+        onLayout={position.rootLayout}
         style={{ maxWidth: 860, width: "100%", alignSelf: "center", gap: 22 }}
       >
         <View
@@ -300,6 +287,13 @@ export default function Reader() {
                     </Button>
                   ))}
                 </View>
+                <Button
+                  kind="ghost"
+                  icon="check"
+                  onPress={() => setTools(false)}
+                >
+                  Leseeinstellungen schließen
+                </Button>
               </Card>
             )}
             <View style={{ alignItems: "center", gap: 14, marginTop: 12 }}>
@@ -323,6 +317,9 @@ export default function Reader() {
               <T style={{ color: t.muted, fontSize: 12 }}>
                 {referenceLabel(ref)} · Bibeltext
               </T>
+              <Button kind="ghost" icon="back" onPress={position.beginning}>
+                {passage ? "Zum Abschnittsanfang" : "Zum Kapitelanfang"}
+              </Button>
               <View
                 style={{
                   flexDirection: "row",
@@ -340,7 +337,10 @@ export default function Reader() {
                     key={id}
                     accessibilityRole="button"
                     accessibilityState={{ selected: mode === id }}
-                    onPress={() => setMode(id as "read")}
+                    onPress={() => {
+                      setMode(id as "read");
+                      router.setParams({ mode: id });
+                    }}
                     style={{
                       paddingHorizontal: 18,
                       paddingVertical: 12,
@@ -412,6 +412,9 @@ export default function Reader() {
               <StoryCard scene={sceneFor(ref)!} context />
             )}
             <View
+              key={openKey}
+              ref={position.listRef}
+              onLayout={position.listLayout}
               style={{
                 maxWidth: 660,
                 width: "100%",
@@ -460,16 +463,10 @@ export default function Reader() {
                   color = data.highlights[key];
                 return (
                   <View
-                    key={v.n}
+                    key={`${openKey}:${v.n}`}
+                    ref={node => position.verseRef(v.n,node)}
                     collapsable={false}
-                    ref={(node) => {
-                      if (node) verseViews.current.set(v.n, node);
-                      else verseViews.current.delete(v.n);
-                    }}
-                    onLayout={() => {
-                      if (pendingJump.current === v.n)
-                        requestAnimationFrame(() => jumpToVerse(v.n));
-                    }}
+                    onLayout={(e) => position.verseLayout(v.n, e)}
                   >
                     <Pressable
                       accessibilityRole="button"

@@ -27,6 +27,26 @@ beforeEach(() => {
   adapter.writeData.mockResolvedValue(undefined);
 });
 describe("Persistieren vor Bestätigung", () => {
+  it("bewahrt den Versanker ohne Lernfortschritt und verwirft verspätete alte Reader-Schreibvorgänge", async () => {
+    const store = useApp.getState();
+    const a = { book: "JHN", chapter: 6 },
+      b = { book: "PSA", chapter: 119 };
+    await store.openReading(a);
+    await store.rememberReadingPosition({ ref: a, verse: 35, mode: "read" }, a);
+    expect(useApp.getState().data.readingPosition?.verse).toBe(35);
+    const revision = useApp.getState().data.revision;
+    await store.rememberReadingPosition({ ref: a, verse: 35, mode: "read" }, a);
+    expect(useApp.getState().data.revision).toBe(revision);
+    await store.openReading(b);
+    await store.rememberReadingPosition({ ref: a, verse: 36, mode: "read" }, a);
+    const data = useApp.getState().data;
+    expect(data.reading).toEqual(b);
+    expect(data.readingPosition).toBeNull();
+    expect(data.readChapters).toEqual([]);
+    expect(data.readPassages).toEqual([]);
+    expect(data.completedSteps).toEqual([]);
+    expect(data.growthStage).toBe(0);
+  });
   it("exportiert weder einen unlesbaren Ersatzstand noch eine angeblich vollständige Sicherung bei ungesicherten Worten", async () => {
     useApp.setState({ healthy: false });
     await expect(useApp.getState().waitForWrites()).rejects.toThrow(

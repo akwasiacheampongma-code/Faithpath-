@@ -1,0 +1,65 @@
+{
+  "baseline_version": "0.4.0",
+  "target_version": "0.5.0",
+  "synthetic_data": true,
+  "passed": true,
+  "physical_device_test": false,
+  "baseline_private_storage_version": 1,
+  "baseline_data_version": 4,
+  "baseline_build_id": "oliva-4e247f465063a3d5",
+  "baseline_worker": {
+    "expected": "oliva-4e247f465063a3d5",
+    "controller": {
+      "id": "oliva-4e247f465063a3d5",
+      "version": "0.4.0"
+    },
+    "active": {
+      "id": "oliva-4e247f465063a3d5",
+      "version": "0.4.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-4e247f465063a3d5"
+    ]
+  },
+  "new_worker": {
+    "expected": "oliva-f9aa29af9f863cf9",
+    "controller": {
+      "id": "oliva-f9aa29af9f863cf9",
+      "version": "0.5.0"
+    },
+    "active": {
+      "id": "oliva-f9aa29af9f863cf9",
+      "version": "0.5.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-4e247f465063a3d5",
+      "oliva-f9aa29af9f863cf9"
+    ]
+  },
+  "worker_activation_verified": true,
+  "lazy_migration_does_not_rewrite_data": true,
+  "old_cache_retained": true,
+  "profile_preserved": true,
+  "journal_draft_preserved": true,
+  "notes_preserved": true,
+  "goals_preserved": true,
+  "all_progress_fields_preserved": true,
+  "original_archive_blob_preserved": true,
+  "all_other_state_records_preserved": true,
+  "only_migration_fields_and_explicit_revision_changed": true,
+  "offline_reload_passed": true,
+  "offline_a51_stages_verified": 7,
+  "tree_previews_do_not_write_data": true,
+  "old_cached_asset_verified": true,
+  "old_asset_present_in_old_cache": true,
+  "old_asset_absent_from_new_cache": true,
+  "old_cached_asset_path": "/_expo/static/js/web/__common-c52dc9f29124b0916a80e9d592af6d81.js",
+  "old_cached_asset_sha256": "c14669189425d1dee0b04858c3821c383be65d3728249813269f0595c6c146a9",
+  "storage_format": 1,
+  "data_version": 5,
+  "current_build_id": "oliva-f9aa29af9f863cf9",
+  "update_and_offline_check_ms": 8204,
+  "checkedAt": "2026-11-06T18:00:59.315Z"
+}

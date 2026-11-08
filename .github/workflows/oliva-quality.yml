@@ -1,7 +1,7 @@
 name: OLIVA quality
 on:
   push:
-    branches: [feature/oliva-next-v02-20261106]
+    branches: ["feature/oliva-*"]
     paths:
       - "oliva/app/**"
       - "oliva/src/**"

@@ -6,6 +6,7 @@ import { T, Card, Button, Tag } from "../src/components/ui";
 import { OliveTree } from "../src/components/Artwork";
 import { Icon } from "../src/components/Icon";
 import { STAGES } from "../src/features/garden/model";
+import { TreeStill } from "../src/features/garden/TreeStill";
 import { useApp } from "../src/state/store";
 import { useTheme } from "../src/design-system/theme";
 import { CaptureInput } from "../src/features/personal/CaptureInput";
@@ -15,6 +16,7 @@ export default function Garden() {
     { width } = useWindowDimensions(),
     data = useApp((s) => s.data),
     [preview, setPreview] = useState<number | null>(null),
+    [gallery, setGallery] = useState(false),
     stage = preview ?? data.growthStage;
   return (
     <Shell>
@@ -80,9 +82,10 @@ export default function Garden() {
           <View
             style={{
               flexDirection: "row",
-              gap: 7,
+              gap: 2,
+              width: "100%",
+              maxWidth: 340,
               marginVertical: 8,
-              flexWrap: "wrap",
               justifyContent: "center",
             }}
           >
@@ -94,7 +97,8 @@ export default function Garden() {
                 accessibilityState={{ selected: i === stage }}
                 onPress={() => setPreview(i)}
                 style={{
-                  width: 34,
+                  flex: 1,
+                  minWidth: 24,
                   height: 44,
                   alignItems: "center",
                   justifyContent: "center",
@@ -115,6 +119,20 @@ export default function Garden() {
             Du kannst die sieben Bilder ansehen, ohne deinen Fortschritt zu
             verändern.
           </T>
+          <Button kind="ghost" icon="leaf" onPress={() => setGallery(v => !v)}>
+            {gallery ? "Lebensbilder schließen" : "Alle sieben Lebensbilder ansehen"}
+          </Button>
+          {gallery && <View style={{width:"100%",gap:12}}>
+            <T style={{fontSize:12,color:t.muted,textAlign:"center"}}>Sieben Bilder einer Geschichte. Jedes hat seinen eigenen Wert.</T>
+            <View style={{flexDirection:"row",flexWrap:"wrap",gap:10,justifyContent:"center"}}>
+              {STAGES.map((s,i) => <Pressable key={i} accessibilityRole="button" accessibilityLabel={`Lebensbild ${i+1}: ${s.name}`} accessibilityState={{selected:i===stage}} onPress={() => setPreview(i)}
+                style={{width:Math.min(145,(width-110)/2),alignItems:"center",padding:12,gap:8,borderRadius:16,borderWidth:1,borderColor:i===stage?t.gold:t.line,backgroundColor:t.surface}}>
+                <TreeStill stage={i} size={Math.min(112,(width-160)/2)} />
+                <T style={{fontSize:11,textAlign:"center",lineHeight:17}}>{s.name}</T>
+                {i===data.growthStage && <T style={{fontSize:9,color:t.gold}}>Dein Baum heute</T>}
+              </Pressable>)}
+            </View>
+          </View>}
         </Card>
         <View style={{ width: width >= 1180 ? 310 : "100%", gap: 18 }}>
           <Card style={{ gap: 15 }}>

@@ -1,5 +1,10 @@
 import { z } from "zod";
-import { dataSchema, decodeData, type AppData } from "../state/model";
+import {
+  dataSchema,
+  v4DataSchema,
+  decodeData,
+  type AppData,
+} from "../state/model";
 import { receiptSchema } from "../features/imports/schema";
 export const ARCHIVE_PREFIX = "archive:";
 const hash = z.string().regex(/^[a-f0-9]{64}$/);
@@ -7,15 +12,19 @@ const metadata = z
   .object({ ...receiptSchema.shape })
   .omit({ sourceText: true })
   .strict();
+const currentStoredData = z.object({ ...dataSchema.shape, imports: z.array(metadata).max(100) }).strict();
 const storedSchema = z
   .object({
     storageVersion: z.literal(1),
-    data: z
-      .object({ ...dataSchema.shape, imports: z.array(metadata).max(100) })
-      .strict(),
+    data: z.discriminatedUnion("version", [
+      z
+        .object({ ...v4DataSchema.shape, imports: z.array(metadata).max(100) })
+        .strict(),
+      currentStoredData,
+    ]),
   })
   .strict();
-export type StoredDocument = z.infer<typeof storedSchema>;
+export type StoredDocument = { storageVersion: 1; data: z.infer<typeof currentStoredData> };
 export function forStorage(data: AppData): StoredDocument {
   return {
     storageVersion: 1,

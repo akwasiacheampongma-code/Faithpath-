@@ -39,6 +39,7 @@ export default function Home() {
     ...data.drafts.map((d) => d.key),
     ...(JSON.parse(volatileKeys) as string[]),
   ]).size;
+  const canResume = data.onboarded || !!data.readingPosition || data.readChapters.length > 0 || data.readPassages.length > 0;
   const active = pathById(data.activePath ?? ""),
     book = bookByCode(data.reading.book),
     read = countBookRead(data, data.reading.book);
@@ -160,7 +161,7 @@ export default function Home() {
                   variant="label"
                   style={{ color: "#e6e2ca", fontSize: 8, letterSpacing: 1.7 }}
                 >
-                  {data.onboarded
+                  {canResume
                     ? "EIN NEUER TAG. EIN NEUER GEDANKE."
                     : "DEIN ANFANG BRAUCHT KEIN VORWISSEN"}
                 </T>
@@ -174,7 +175,7 @@ export default function Home() {
                   lineHeight: width < 600 ? 45 : 49,
                 }}
               >
-                {data.onboarded
+                {canResume
                   ? "Worte, die dich\nbegleiten."
                   : "Hier beginnt\ndein Weg."}
               </T>
@@ -186,7 +187,7 @@ export default function Home() {
                   maxWidth: 260,
                 }}
               >
-                {data.onboarded
+                {canResume
                   ? "Kehre zu deiner Geschichte zurück.\nEin kleiner Abschnitt ist ein guter Anfang."
                   : "Entdecke die Bibel. Verstehe ihre Geschichten.\nUnd finde heraus, was sie dir sagen."}
               </T>
@@ -194,7 +195,7 @@ export default function Home() {
                 kind="secondary"
                 foregroundColor="#263c30"
                 onPress={() =>
-                  data.onboarded
+                  canResume
                     ? router.push({
                         pathname: "/lesen/[book]",
                         params: {
@@ -202,6 +203,7 @@ export default function Home() {
                           chapter: data.reading.chapter,
                           from: data.reading.from,
                           to: data.reading.to,
+                          mode: data.readingPosition?.mode,
                         },
                       })
                     : router.push("/start")
@@ -213,7 +215,7 @@ export default function Home() {
                   marginTop: 3,
                 }}
               >
-                {data.onboarded
+                {canResume
                   ? "In der Bibel weiterlesen"
                   : "Deine erste Geschichte"}
               </Button>
@@ -471,6 +473,7 @@ export default function Home() {
                   params: {
                     book: data.reading.book,
                     chapter: data.reading.chapter,
+                    from: data.reading.from, to: data.reading.to, mode: data.readingPosition?.mode,
                   },
                 })
               }

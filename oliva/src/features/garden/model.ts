@@ -1,4 +1,5 @@
-export const STAGES = [
+import { A51_STAGES } from "./a51/stages";
+const MEANINGS = [
   {
     name: "Der Samen",
     meaning: "Dein Anfang ist wertvoll, auch wenn noch nichts sichtbar ist.",
@@ -36,3 +37,6 @@ export const STAGES = [
     symbol: "Anwendung",
   },
 ];
+// Original A51 names match its seven distinct images. OLIVA's meanings and
+// persisted growth index remain authoritative; this adapter writes no state.
+export const STAGES = MEANINGS.map((stage,index) => ({ ...stage, name: A51_STAGES[index]!.name }));

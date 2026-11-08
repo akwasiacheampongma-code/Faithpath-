@@ -1,60 +1,49 @@
 # OLIVA · Raum für deinen Glauben
 
-Eigenständige lokale Bibel- und Glaubens-App auf Expo / React Native / TypeScript. Entwickelt in einem separaten Projekt; die bestehende FaithPath-App wurde nicht verändert.
+Eigenständige Bibel- und Glaubens-App mit Expo, React Native und TypeScript. **Version 0.5.0 mit dem originalen A51-Olivenbaum ist privat verfügbar.** FaithPath und `main` bleiben unverändert; der vollständige Master-Prompt ist noch nicht abgeschlossen.
 
-**Stand: ausführbarer lokaler Kern 0.4.0, keine abgeschlossene Gesamtfreigabe.** 66 Bibelbücher, Reader, neun geführte Wege, sieben Baumstadien, 66 Buchschwert-Identitäten, Sammlung und Sicherungen sind implementiert. Persönliche Vorhaben haben eigene Schritte, Archiv, bewahrte Rückblicke und dauerhafte Entwürfe. Der bestätigte FaithPath-V5-Import bietet Vorschau, Originalarchiv und atomare Rückkehrsicherung. Version 0.4 bewahrt zusätzlich die kleinen Eingaben im Hub, Garten, Reader und Lernweg, trennt große Originalarchive vom Speicherdokument und ergänzt freiwillige Textfragen sowie vier illustrierte Erzählpiloten. Cloud-Sync, KI-Begleiter, Audio, vollständige FaithPath-Parität und fachlich freigegebene Kapitelredaktion bleiben offen. Maßgeblich ist [docs/delivery-status.md](docs/delivery-status.md).
+## Auf dem Handy ansehen
 
-## Version 0.4 ausprobieren
+[Private OLIVA-Vorschau öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site) und mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit dem 6. November 2026 wird dort **0.5.0** ausgeliefert. Es gibt keine öffentliche Freigabe.
 
-Eine Tagesreflexion, Gartenerfahrung, Versnotiz oder Weg-Reflexion beginnen und den Bereich wechseln: **Sammlung → Entwürfe** führt zur richtigen Quelle zurück. Erst die ausdrückliche Aktion erzeugt einen fertigen Eintrag. Bei Speicherfehlern bleiben letzte Worte innerhalb der Sitzung erreichbar und gesondert exportierbar; dieser RAM-Puffer überlebt keinen Prozessabbruch. Details: [Iteration 0.4](docs/08-continuity-and-offline.md).
+Der A51-Baum steht auf **Heute** und groß unter **Mein Garten**. **„Alle sieben Lebensbilder ansehen“** öffnet die vollständige Reihe, ohne den persönlichen Fortschritt zu ändern. Der [private Vorher-/Nachher-Vergleich](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/a51/comparison.svg) zeigt echte Browseraufnahmen aller sieben Stadien. Manifest, Icons und Offlinepaket sind enthalten; eine Installation auf einem echten Smartphone wurde noch nicht geprüft.
 
-Unter **Tiefer verstehen** gibt es freiwillige Textfragen mit Originalversen als Beleg, ohne Punkte oder Einfluss auf den Fortschritt. **Bibel → Eine Geschichte entdecken** öffnet vier neue Erzählpiloten. Illustration, Einordnung und Bibeltext bleiben unterscheidbar.
+Nach **„Für den Offline-Neustart bereit.“** ist das Paket für den geladenen Build im Browsercache vollständig. Persönliche Einträge bleiben im jeweiligen Browser/Gerät; eine Cloud-Synchronisierung ist nicht aktiviert. Der Hosting-Zugang erfordert das berechtigte Konto, der lokal gestartete App-Kern keine Registrierung.
 
-**Einstellungen → FaithPath-Daten mitnehmen:** V5-Datei auswählen, Ergänzungen und Konflikte prüfen, ausdrücklich übernehmen. Die Originalquelle bleibt einsehbar und exportierbar. Historische Quellen erscheinen am importierten Vorhaben. Die Rückkehr zum Stand vor dem letzten Import wird separat bestätigt. OTB-Stellen werden nicht als Lutherbibel ausgegeben. Limits: 10 MiB Quelle, 64 MiB gesamte OLIVA-Sicherung. Details: [Importvertrag und Grenzen](docs/07-faithpath-import.md).
+## Vorhandene Bereiche
 
-Im Bereich **Wege → Deine persönlichen Vorhaben** kannst du ein eigenes Anliegen anlegen, kleine Schritte ergänzen und später darauf zurückblicken. In der **Sammlung** bleiben Journalentwürfe auch nach einem Neustart erreichbar. Der [Iterationsbericht](docs/06-personal-and-drafts.md) erklärt Umfang, Datenmigration und Grenzen.
+- **Bibel:** gemeinfreie Lutherbibel 1912 mit 66 Büchern, 1.189 Kapiteln und 31.102 Versen; Navigation, Volltextsuche, zwei Lesemodi, Lesezeichen, Markierungen, Notizen, Schrift-/Abstandseinstellungen und präzise Versfortsetzung.
+- **Wege:** neun geführte Reisen mit je drei Schritten, verständlichen Einordnungen, freiwilliger Reflexion und optionalem Gebet. Neun Textfragen nennen tatsächliche Verse als Beleg. Die Pilotredaktion wird thematisch wiederverwendet; eine unabhängige Fachfreigabe steht aus.
+- **Garten:** sieben unveränderte A51-Originalillustrationen, lebendige Webdarstellung, separater nativer PNG-Ebenenadapter, statische Fallbacks, reduzierte Bewegung und eine Galerie. Der Baum bewertet keinen Glauben und verliert in Pausen keine Blätter.
+- **Buchschwerter:** 66 bestehende Themenidentitäten und individuelle parametrische Vektoren mit realem Kapitelverlauf. Ein neuer, tatsächlich generierter Johannes-Bildpilot ist unter `art/swords/` dokumentiert, aber noch nicht in die App integriert.
+- **Sammlung und Vorhaben:** Gedanken, Entwürfe, Versnotizen und Erfahrungen; eigene Anliegen mit kleinen Schritten, Archiv und bewahrten Rückblick-Snapshots. **Sammlung → Entwürfe** führt nach Bereichswechsel oder Neustart zurück zur Quelle.
+- **Sicherungen und Import:** bestätigter Export/Restore sowie additiver FaithPath-V5-Import mit Vorschau, Quellarchiv, Konfliktschutz und atomarer Rückkehrsicherung. OTB wird nicht als Lutherbibel ausgegeben. Grenzen: 10 MiB Importquelle, 64 MiB vollständige Sicherung.
 
-Im lokalen Arbeitsbereich liegt ein fertiger Webexport. Nach einem GitHub-Checkout zuerst wie unten bauen:
-
-```sh
-cd oliva
-node scripts/serve.mjs dist
-```
-
-Danach http://localhost:4173 öffnen.
+Tippen erzeugt keinen Lernabschluss oder bestätigte Alltagserfahrung. Bei einem Schreibfehler schützt ein gesonderter RAM-Puffer Worte innerhalb der laufenden Sitzung; er überlebt keinen Prozessabbruch. Die Bildwelt, redaktionelle Einordnung und der eigentliche Bibeltext bleiben getrennt. Cloud-Sync, KI-Begleiter und Audio sind nicht angeschlossen. Maßgeblich für Umfang und Grenzen ist [der Lieferstand](docs/delivery-status.md).
 
 ## Lokal starten
 
-Nach Checkout liegt die App im Unterordner `oliva/`; im Arbeitsbereich dieser Sitzung unter `/workspace/faithpath-next`. Getestete Umgebung: Node 24.22.1, npm 11.9.0, Python 3 für die optionale Korpusprüfung. Kein Konto und keine API-Schlüssel nötig.
+Die aktuelle Quelle ist ein eigenständiges Projekt. Im Arbeitsbereich dieser Sitzung:
 
 ```sh
-cd oliva
+cd /workspace/faithpath-next
 npm ci
 npm run build
 npm run preview
 ```
 
-Öffnen: http://localhost:4173. Der Web-Build wird für Offline-Nutzung vollständig vorgeladen; der erste Aufruf braucht den lokalen Server. Sobald „Für den Offline-Neustart bereit.“ erscheint, ist das vollständige Paket für genau diesen Build installiert und der Kern funktioniert bei abgeschaltetem Netz. Ein Web-Service-Worker benötigt HTTPS oder localhost, nicht `file://`.
+Danach http://localhost:4173 öffnen. In einem eigenen Checkout dieselben npm-Befehle direkt im Projektverzeichnis ausführen. Nur der ältere öffentliche 0.4-Checkpoint liegt unter `oliva/` im FaithPath-Repository; dessen `cd oliva` ist für dieses Standalone-Projekt nicht erforderlich.
 
-Entwicklungsmodus:
+Geprüfte Umgebung: Node 24.22.1, npm 11.9.0, Expo 58.0.23, React Native 0.88.1 und TypeScript 6.0.3. Der Kern benötigt keine API-Schlüssel. Für dieses eingeschränkte Arbeitsumfeld kann npm mit `npm --cache /tmp/faithpath-npm ci` einen beschreibbaren Cache verwenden.
 
-```sh
-npm run web
-```
-
-Web-Entwicklung unter http://localhost:8081. Der Service Worker wird nur im Produktionsbuild registriert. Ein echter Update-Test mit getrenntem 0.3-Kontrollbuild ist über `npm run test:upgrade -- /absoluter/pfad/zum/v0.3/dist` reproduzierbar. Für isolierte technische Experimente einen frischen Browserkontext verwenden. Niemals echte persönliche Daten für technische Experimente löschen.
-
-Für dieses eingeschränkte Arbeitsumfeld kann npm einen Cache unter `/tmp` verwenden:
-
-```sh
-npm --cache /tmp/faithpath-npm ci
-```
+Entwicklung: `npm run web` startet Expo unter http://localhost:8081. Der Service Worker wird nur im Produktionsbuild registriert. Er benötigt HTTPS oder localhost; ein direkter Aufruf über `file://` genügt nicht.
 
 ## Prüfen
 
 ```sh
 npm run content:check
 npm run content:art
+npm run content:tree
 npm run typecheck
 npm test
 npm run build
@@ -62,16 +51,21 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-Playwright verwendet einen vorhandenen Chromium unter `/usr/bin/chromium` oder seinen installierten Browser. `CHROMIUM_PATH` kann einen anderen lokalen Browserpfad angeben. Der Testserver startet automatisch, wenn Port 4173 nicht bereits durch die Vorschau belegt ist. Aktuelle Messergebnisse stehen in [docs/05-validation.md](docs/05-validation.md). Der tatsächliche [GitHub-Lauf](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694) besteht mit 64 Fach-/Persistenztests und 35 Browser-Szenarien (0 Fehler/übersprungen).
+Playwright nutzt `/usr/bin/chromium`, wenn vorhanden, oder seinen installierten Browser. `CHROMIUM_PATH` kann einen anderen lokalen Pfad angeben. Der Testserver startet auf Port 4173, sofern dort noch kein Vorschauprozess läuft. Während der Tests den gebauten `dist/`-Stand unverändert lassen.
 
-Der Bibelimport ist deterministisch und ohne Netz wiederholbar:
+**Tatsächliche 0.5-Nachweise:** 72 Fach-/Persistenztests bestanden. Der vollständige Browserlauf vor einer isolierten Webkorrektur bestand 44/45 Fälle; danach bestanden alle fünf betroffenen A51-Fälle. Die Vereinigung dieser Belege deckt 45 verschiedene Szenarien ab. Es gab **keinen** neuen einzelnen grünen 45/45-Gesamtlauf nach dem Fix. Details und Rohberichte: [Qualität und Abnahme](docs/05-validation.md), [Zusammenfassung 0.5](docs/evidence/session-05/validation-summary.json).
+
+Der erfolgreiche [GitHub-CI-Lauf 42240609694](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694) mit 64 Fachtests und 35 Browserfällen gehört ausschließlich zum historischen **0.4-Checkpoint**. 0.5 wurde lokal geprüft und nicht öffentlich gepusht.
+
+Der tatsächliche 0.4→0.5-Workerwechsel mit Datenerhalt und sieben Offline-Baumstadien ist reproduzierbar mit einem separat erhaltenen 0.4-Export:
 
 ```sh
-npm run content:import
-npm run content:check
+node scripts/offline-upgrade-v05.mjs /absoluter/pfad/zum/0.4/dist dist
 ```
 
-Die enthaltene Original-USFM-Datei wird dabei geparst; es werden keine Bibeltexte generiert. Abnahme: 66 Bücher, 1.189 Kapitel, 31.102 Verse, keine doppelten Versschlüssel und keine verbliebenen Strong-Markierungen.
+`npm run test:upgrade` bleibt der ältere 0.3→0.4-Prüfablauf. Keine echten persönlichen Browserdaten für technische Experimente löschen.
+
+Der Bibelimport ist mit `npm run content:import` und `npm run content:check` deterministisch aus dem enthaltenen Original-USFM-Archiv wiederholbar; es werden keine Bibeltexte generiert. `npm run content:tree` prüft die A51-Original-/Derivatehashes. Die zusätzliche tatsächliche PNG-Ruheprüfung `python scripts/check-a51-native.py` benötigt Pillow und NumPy; normale Builds verwenden die gespeicherten Dateien und benötigen diese Python-Bildbibliotheken nicht.
 
 ## iOS und Android
 
@@ -82,24 +76,26 @@ npm run android
 npm run ios
 ```
 
-Ein Gerät/Emulator muss zur installierten Expo-SDK-Version passen. Ist die installierte Expo-Go-App nicht kompatibel, einen Development Build mit passender nativer Toolchain erzeugen. In dieser Umgebung wurden keine physischen Geräte, signierten IPA/APK-Dateien oder Store-Uploads vorgetäuscht.
-
-Native JavaScript-/Asset-Bundles ohne Signierung:
+Gerät bzw. Emulator und Expo-SDK-Version müssen zusammenpassen. Bei inkompatiblem Expo Go ist ein passender Development Build nötig. Die beiden tatsächlich geprüften nativen Exporte sind unsignierte Debug-JavaScript-/Asset-Bundles:
 
 ```sh
-node scripts/expo.mjs export --platform android --output-dir dist-android
-node scripts/expo.mjs export --platform ios --output-dir dist-ios
+node scripts/expo.mjs export --platform android --output-dir dist-android --no-minify --no-bytecode
+node scripts/expo.mjs export --platform ios --output-dir dist-ios --no-minify --no-bytecode
 ```
 
-Die abschließende native Resolverprüfung dieser Iteration verwendet zusätzlich `--no-minify --no-bytecode` und ist ausdrücklich ein Debugexport. Frühere Hermes-Exporte sind gesondert dokumentiert. Für tatsächliche Installationspakete: Xcode bzw. Android SDK/JDK konfigurieren, App-IDs prüfen, `npx expo prebuild` in einer Arbeitskopie ausführen und anschließend die nativen Projekte lokal bauen. Alternativ EAS-Projekt mit eigenen Konten konfigurieren (`eas build:configure`, `eas build --platform ...`). Signing, Store-Metadaten, Datenschutzangaben, Rechtefreigaben und Geräteabnahme müssen vor Veröffentlichung abgeschlossen sein. Es gibt in diesem Projekt keinen automatischen Produktions-Deploy.
+In beiden sind alle 98 nativen A51-PNGs bytegenau enthalten und der Webrenderer ausgeschlossen. Das beweist Metro-Auflösung und Assetauslieferung, keine native Installation, Bilddecoderqualität, flüssige Animation oder Akkuleistung. Es wurden weder Simulatoren noch physische Geräte oder signierte APK/AAB/IPA geprüft. Frühere Hermes-Exporte sind separat historisch dokumentiert.
 
-## Web bereitstellen
+Für Installationspakete Xcode bzw. Android SDK/JDK konfigurieren, App-IDs prüfen, `npx expo prebuild` in einer Arbeitskopie ausführen und die nativen Projekte bauen. Alternativ ein eigenes EAS-Projekt mit den eigenen Konten konfigurieren. Signing, Geräteprüfung, Vertriebsrechte und öffentliche Freigabe bleiben erforderlich; dieses Projekt hat keinen automatischen Produktions-Deploy.
 
-`npm run build` erzeugt `dist/`. Diesen Ordner auf einem HTTPS-Static-Host mit SPA-Fallback auf `index.html` bereitstellen. Hash-Dateien mit Kompression ausliefern; `sw.js` und `index.html` dürfen nicht unveränderlich gecacht werden. Unbekannte Asset-Pfade müssen echte 404-Antworten erhalten. Quellen, Fonts, Bibel und Bildvarianten sind lokal enthalten. Der Vorschau-Server ist kein vollständig gehärteter Produktionsserver.
+## Private Web-Paketierung
 
-Die Cloud-Migrationen unter `database/migrations/` sind **Vorbereitung für einen optionalen Dienst**. Sie werden nicht vom App-Start ausgeführt. Kein Supabase-Projekt oder KI-Key wird für den lokalen Kern benötigt. Das Cloud-Schema wurde nicht gegen eine Live-Instanz abgenommen.
+`npm run build` erzeugt `dist/` mit Manifest, Icons, Quellenhinweisen und Offlinepaket. `node scripts/package-private-preview.mjs /absoluter/site-projektpfad` verpackt diesen geprüften Export für einen bereits separat gebundenen privaten Sites-Quellordner. Das Skript veröffentlicht nichts und ändert keine Zugriffsrechte.
 
-## Dokumentation
+Das private Hostpaket benennt Assetpfade für den Dienst um. Es enthält nur eine `index.html`, da zwei HTML-Dateien im beobachteten Hosting den SPA-Fallback deaktivierten. Der Reviewvergleich wird deshalb als SVG ausgeliefert. Die bestehende private Version besteht authentifizierte HTTP-Prüfungen für 13 Routen, 94 App-Dateien und 33 Review-Dateien; anonym wird HTTP 401 geliefert. Diese HTTP-Prüfung ist keine zusätzliche Browser- oder Handyabnahme des gehosteten Links.
+
+Ein eigener HTTPS-Static-Host benötigt SPA-Fallback auf `index.html`, richtige Assettypen und echte 404-Antworten für unbekannte Assetpfade. `index.html` und `sw.js` dürfen nicht unveränderlich gecacht werden. Der lokale Vorschau-Server ist kein vollständig gehärteter Produktionsserver. Ohne ausdrückliche Freigabe keine öffentliche Bereitstellung vornehmen.
+
+## Dokumentation und Fortsetzung
 
 1. [FaithPath-Analyse und Feature-Matrix](docs/00-faithpath-audit.md)
 2. [Konkurrenz, USP und Roadmap](docs/01-product-and-competition.md)
@@ -110,8 +106,10 @@ Die Cloud-Migrationen unter `database/migrations/` sind **Vorbereitung für eine
 7. [Persönliche Vorhaben und gesicherte Entwürfe](docs/06-personal-and-drafts.md)
 8. [FaithPath-V5-Import, Quellen und Rückkehr](docs/07-faithpath-import.md)
 9. [Entwürfe, Archiv-Blobs und Offline-Updates](docs/08-continuity-and-offline.md)
-10. [Lieferstand und nächste Schritte](docs/delivery-status.md)
+10. [A51-Integration und Screenshotvergleich](docs/09-a51-integration.md)
+11. [Lieferstand und nächste Schritte](docs/delivery-status.md)
+12. [Dauerhafter Fortsetzungsstand](RESUME.md)
 
-Screenshots: `docs/evidence/screens/`. Art-Provenienz: `art/manifest.json`. Schriften und Bibelrechte: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Die A51-Originale und die eigene Bildwelt besitzen getrennte Herkunftsnachweise unter `art/a51/provenance.json` und `art/manifest.json`. Übernommener FaithPath-A51-Code und A51-Bilder sind von OLIVAs MIT-Lizenz ausgenommen; die ausdrückliche Integrationserlaubnis ist keine allgemeine öffentliche Weiterveröffentlichungslizenz. Details: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-Persönliche Texte bleiben lokal und sind nicht zusätzlich verschlüsselt. Ein OLIVA-Restore ersetzt den lokalen Bestand erst nach ausdrücklicher Bestätigung. Der gesonderte FaithPath-V5-Import ergänzt ihn und bewahrt die Originalquelle. **Repository-Checkpoint:** Branch `feature/oliva-next-v02-20261106`, eigenständige Anwendung in `oliva/`. Dort `npm ci`, `npm run build`, `npm run preview` ausführen. Der Fortsetzungsstand steht in [RESUME.md](RESUME.md). Der zusätzliche Root-Workflow `.github/workflows/oliva-quality.yml` ruft die gemeinsame OLIVA-Qualitätsaction auf dem Sicherungsbranch auf. Bestehende FaithPath-Workflows bleiben unverändert. Der enthaltene Standalone-Workflow funktioniert in einem eigenen Repository. Ein tatsächlicher GitHub-Lauf wird gesondert im Prüfbericht belegt; kein automatisches Deployment.
+Der aktuelle lokale Entwicklungsbranch heißt `feature/oliva-v05-a51-private-20261106` und hat keinen Remote. Der öffentliche Sicherungsbranch bleibt bei 0.4. Die vorbereiteten Supabase-Migrationen sind kein aktiver Cloudbetrieb. Persönliche Daten und Exporte sind lokal und unverschlüsselt. Native Geräteabnahme, unabhängige Inhalts-/Bildprüfung, Anfänger-Usability, weitere Buchschwertillustrationen, optionale Dienste und die Gesamtfreigabe bleiben offen.

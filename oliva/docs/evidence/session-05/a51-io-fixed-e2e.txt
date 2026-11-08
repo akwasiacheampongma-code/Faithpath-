@@ -1,0 +1,12 @@
+
+Running 5 tests using 1 worker
+
+(node:52671) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/a51-tree.spec.ts:21:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (19.1s)
+  ✓  2 tests/e2e/a51-tree.spec.ts:106:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (4.7s)
+  ✓  3 tests/e2e/a51-tree.spec.ts:130:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (9.1s)
+  ✓  4 tests/e2e/a51-tree.spec.ts:143:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (4.3s)
+  ✓  5 tests/e2e/a51-tree.spec.ts:156:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (3.5s)
+
+  5 passed (42.4s)

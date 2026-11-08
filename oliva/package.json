@@ -2,11 +2,12 @@
   "name": "oliva-faith-companion",
   "description": "OLIVA – Lesen, verstehen, wachsen. Unabhängige lokale Bibel-App.",
   "license": "MIT",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "expo-router/entry",
   "dependencies": {
     "@expo/metro-runtime": "~58.0.17",
     "expo": "~58.0.23",
+    "expo-asset": "~58.0.20",
     "expo-constants": "~58.0.15",
     "expo-document-picker": "~58.0.4",
     "expo-file-system": "~58.0.13",
@@ -40,7 +41,7 @@
     "web": "node scripts/expo.mjs start --web --port 8081",
     "android": "node scripts/expo.mjs start --android",
     "ios": "node scripts/expo.mjs start --ios",
-    "build": "node scripts/expo.mjs export --platform web && node scripts/offline.mjs",
+    "build": "node scripts/expo.mjs export --platform web && node scripts/pwa.mjs && node scripts/offline.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
@@ -48,7 +49,8 @@
     "content:check": "python3 scripts/import-bible.py --check",
     "preview": "node scripts/serve.mjs",
     "content:art": "node scripts/check-art.mjs",
-    "test:upgrade": "node scripts/offline-upgrade.mjs"
+    "test:upgrade": "node scripts/offline-upgrade.mjs",
+    "content:tree": "node scripts/check-a51.mjs"
   },
   "private": true,
   "engines": {

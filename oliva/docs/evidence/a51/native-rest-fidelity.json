@@ -1,0 +1,92 @@
+{
+  "method": "Actual PNG decode and source-over composition against resized original PNG masters; no native simulator/device rendering.",
+  "groups": [
+    {
+      "stage": 0,
+      "resolution": 640,
+      "alphaMaxError8Bit": 0.0,
+      "premultipliedRgbMaxError8Bit": 0.0
+    },
+    {
+      "stage": 0,
+      "resolution": 1024,
+      "alphaMaxError8Bit": 0.0,
+      "premultipliedRgbMaxError8Bit": 0.0
+    },
+    {
+      "stage": 1,
+      "resolution": 640,
+      "alphaMaxError8Bit": 0.49411,
+      "premultipliedRgbMaxError8Bit": 0.435061
+    },
+    {
+      "stage": 1,
+      "resolution": 1024,
+      "alphaMaxError8Bit": 0.490196,
+      "premultipliedRgbMaxError8Bit": 0.410241
+    },
+    {
+      "stage": 2,
+      "resolution": 640,
+      "alphaMaxError8Bit": 0.49411,
+      "premultipliedRgbMaxError8Bit": 0.40784
+    },
+    {
+      "stage": 2,
+      "resolution": 1024,
+      "alphaMaxError8Bit": 0.498032,
+      "premultipliedRgbMaxError8Bit": 0.439864
+    },
+    {
+      "stage": 3,
+      "resolution": 640,
+      "alphaMaxError8Bit": 0.49411,
+      "premultipliedRgbMaxError8Bit": 0.415424
+    },
+    {
+      "stage": 3,
+      "resolution": 1024,
+      "alphaMaxError8Bit": 0.498032,
+      "premultipliedRgbMaxError8Bit": 0.455702
+    },
+    {
+      "stage": 4,
+      "resolution": 640,
+      "alphaMaxError8Bit": 0.495106,
+      "premultipliedRgbMaxError8Bit": 0.415637
+    },
+    {
+      "stage": 4,
+      "resolution": 1024,
+      "alphaMaxError8Bit": 0.498032,
+      "premultipliedRgbMaxError8Bit": 0.440837
+    },
+    {
+      "stage": 5,
+      "resolution": 640,
+      "alphaMaxError8Bit": 0.498032,
+      "premultipliedRgbMaxError8Bit": 0.426292
+    },
+    {
+      "stage": 5,
+      "resolution": 1024,
+      "alphaMaxError8Bit": 0.498032,
+      "premultipliedRgbMaxError8Bit": 0.459517
+    },
+    {
+      "stage": 6,
+      "resolution": 640,
+      "alphaMaxError8Bit": 0.498032,
+      "premultipliedRgbMaxError8Bit": 0.442874
+    },
+    {
+      "stage": 6,
+      "resolution": 1024,
+      "alphaMaxError8Bit": 0.498032,
+      "premultipliedRgbMaxError8Bit": 0.461478
+    }
+  ],
+  "passed": 14,
+  "deviceTest": false,
+  "simulatorTest": false
+}

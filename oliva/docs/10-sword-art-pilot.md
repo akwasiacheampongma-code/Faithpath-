@@ -1,0 +1,9 @@
+# Nächste Master-Iteration: individuelle Buchillustrationen
+
+6. November 2026. Nach dem A51-Arbeitspaket bleibt die Entwicklung der Buchschwerter offen. Die vorhandenen 66 parametrischen Vektoridentitäten funktionieren weiter. Eine neue Bildfamilie wird zunächst anhand eines einzelnen Piloten geprüft; keine vorhandene Illustration wird vor dieser Prüfung ersetzt.
+
+Pilot: **Johannes · Schwert des Lebens**. Anregung: Johannes 1,4 und 15,1–5, künstlerische Symbolik, keine historische Waffe und kein behauptetes biblisches Fundstück. Ruhige botanische Detailtiefe passend zum A51-Baum, schlanke senkrechte Silhouette, gebürstetes warmes Silber, zurückhaltende Oliven-/Goldtöne, lebendiger Trieb als Erkenntnis- und Lebensmotiv. Keine Kampfszene, keine Figur, keine Rüstung, keine Rang- oder Machtsymbole und keine religiöse Leistungsmetrik. Der Bibeltext wird nicht als Ornament erfunden.
+
+Abnahme: bei kleinen Smartphonegrößen erkennbar; heller und dunkler Hintergrund; ruhiger als eine Spielausrüstung; von Genesis/Römer thematisch unterscheidbar; transparent freigestellt; bestehende Kapitellichtlinie bleibt unabhängig vom Bild berechnet. Erst nach tatsächlicher Bildprüfung skalieren. Herkunft, Prompt, Tool-Ausgabe, SHA-256 und Freigabestatus werden am Artefakt dokumentiert. Öffentliche Freigabe und weitere Fachprüfung bleiben offen.
+
+Der erste Pilot ist tatsächlich mit `image_gen` erzeugt: `art/swords/masters/john-life-pilot.png`, 1024 × 1536, RGBA. Originalausgabe unter `/workspace/generated_images/` bleibt erhalten. Vollständiger Prompt und SHA-256 stehen in `art/swords/pilot.json`. Die Material-/Pflanzendetails wurden visuell angesehen; der weiche Hintergrundschein und die Lesbarkeit kleiner Varianten benötigen eine weitere Hell-/Dunkelprüfung. Das Bild ist deshalb noch nicht in die Laufzeit integriert. Es ersetzt keines der 66 vorhandenen Vektorschwerter und zählt nicht als 66 neue Einzelillustrationen.

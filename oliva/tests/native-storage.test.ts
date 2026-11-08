@@ -50,7 +50,7 @@ beforeEach(() => {
 afterEach(() => harness.db?.close());
 describe("Native SQLite-Adapter mit realer SQL-Engine", () => {
   it("migriert eine physische V1-Datenbank und V2-Nutzdaten verlustfrei", async () => {
-    const { imports, ...fields } = initialData(),
+    const { imports, readingPosition, ...fields } = initialData(),
       old = { ...fields, version: 2, name: "Ada", revision: 7 };
     harness.db!.exec(LOCAL_SCHEMA_SQL + "PRAGMA user_version=1;");
     harness
@@ -58,7 +58,12 @@ describe("Native SQLite-Adapter mit realer SQL-Engine", () => {
       .run(7, JSON.stringify(old));
     const storage = await import("../src/services/storage");
     const data = await storage.readData();
-    expect(data).toEqual({ ...old, version: 4, imports: [] });
+    expect(data).toEqual({
+      ...old,
+      version: 5,
+      imports: [],
+      readingPosition: null,
+    });
     expect(harness.db!.prepare("PRAGMA user_version").get()?.user_version).toBe(
       3,
     );

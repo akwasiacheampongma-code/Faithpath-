@@ -32,12 +32,16 @@ describe("Unveränderliche Originalquellen außerhalb des laufenden Payloads", (
     expect(documentRevision(stored)).toBe(data.revision);
   });
   it("liest alte Inline-Bestände ohne Zugriff auf einen Archivblob und weist unbekannte Speicherformate zurück", async () => {
-    const current = initialData(),
+    const { readingPosition, ...current } = initialData(),
       old = { ...current, version: 3, name: "Ada" },
       load = vi.fn(async () => {
         throw new Error("Unerwarteter Zugriff");
       });
-    expect(await decodeStored(old, load)).toEqual({ ...old, version: 4 });
+    expect(await decodeStored(old, load)).toEqual({
+      ...old,
+      version: 5,
+      readingPosition: null,
+    });
     expect(load).not.toHaveBeenCalled();
     await expect(
       decodeStored({ storageVersion: 9, data: current }, load),
