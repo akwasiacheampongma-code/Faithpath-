@@ -137,7 +137,8 @@ describe("Entwürfe mit festem Kontext", () => {
     expect(JSON.stringify(data)).toBe(before);
   });
   it("migriert echte V3-Bestände auf V5 und hält Tagesdatum und alte Daten stabil", () => {
-    const { readingPosition, retainedReviewGrowth, ...current } = initialData(),
+    const { readingPosition, retainedReviewGrowth, invitations, ...current } =
+        initialData(),
       old = {
         ...current,
         version: 3,
@@ -155,7 +156,8 @@ describe("Entwürfe mit festem Kontext", () => {
       bytes = JSON.stringify(old);
     expect(decodeData(old)).toEqual({
       ...old,
-      version: 6,
+      version: 7,
+      invitations: { enabled: false, snoozed: {}, dismissed: {} },
       retainedReviewGrowth: { reflections: 0, actions: 0 },
       readingPosition: null,
     });

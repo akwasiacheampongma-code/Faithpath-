@@ -1,0 +1,19 @@
+src/state/model.ts 571ms
+src/state/store.ts 143ms
+src/services/documents.ts 34ms
+src/features/invitations/InvitationHome.tsx 23ms
+src/features/invitations/InvitationSettings.tsx 13ms
+src/features/invitations/model.ts 114ms (unchanged)
+src/features/invitations/schema.ts 20ms
+src/features/invitations/useInvitations.ts 30ms
+app/einladungen.tsx 99ms
+app/einstellungen.tsx 129ms (unchanged)
+app/index.tsx 186ms (unchanged)
+tests/invitations.test.ts 163ms (unchanged)
+tests/invitation-store.test.ts 152ms
+tests/reading-position.test.ts 48ms
+tests/captures.test.ts 43ms
+tests/documents.test.ts 27ms
+tests/personal.test.ts 83ms
+tests/native-storage.test.ts 69ms
+tests/review-migration.test.ts 54ms

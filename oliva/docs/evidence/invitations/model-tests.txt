@@ -1,0 +1,20 @@
+
+> oliva-faith-companion@0.9.0 test
+> vitest run tests/invitations.test.ts --reporter=default --reporter=json --outputFile=docs/evidence/invitations/model-tests.json
+
+
+ RUN  v5.1.0 /workspace/faithpath-next
+
+ ✓ tests/invitations.test.ts (9 tests) 34ms
+
+ Test Files  1 passed (1)
+      Tests  9 passed (9)
+   Start at  20:05:38
+   Duration  1.42s (import 59%, transform 38%, tests 3%, worker 1%)
+
+JSON report written to /workspace/faithpath-next/docs/evidence/invitations/model-tests.json
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

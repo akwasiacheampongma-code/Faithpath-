@@ -11,6 +11,7 @@ import { exportData } from "../src/services/storage";
 import { MAX_BACKUP_BYTES } from "../src/features/imports/schema";
 import { pickBackup } from "../src/services/pick-backup";
 import { useVolatileDrafts } from "../src/features/personal/volatile-drafts";
+import { InvitationSettings } from "../src/features/invitations/InvitationSettings";
 export default function Settings() {
   const t = useTheme(),
     data = useApp((s) => s.data),
@@ -263,6 +264,7 @@ export default function Settings() {
             </T>
           )}
         </Card>
+        <InvitationSettings />
         <Card style={{ gap: 13 }}>
           <T variant="heading">Einordnungen und KI</T>
           <T style={{ fontSize: 13, color: t.muted }}>

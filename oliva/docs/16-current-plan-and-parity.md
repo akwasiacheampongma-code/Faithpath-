@@ -23,7 +23,7 @@ Verglichen wird der unveränderte FaithPath-Snapshot [`a519ce898fa33907b07d5ac7a
 | Gemeinsamer Katalog mit **436 Geschichten und 2.479 Frageelementen**, mit dokumentierten Ausnahmen | Fünf neue illustrierte Erzählpiloten; kein vollständiger Katalogtransfer. Die Frageelemente überlappen mit dem NT-Katalog und werden nicht zu den 1.300 addiert. |
 | 18 Lebensthemen mit vorhandener Redaktion | Neun eigene geführte Wege; kein vollständiger Inhaltsabgleich. |
 | Belegte persönliche Wege, Gedanken, Rückblicke und Meilensteine sind Baumästen zugeordnet | Die A51-Darstellung mit sieben Stadien ist integriert; die persönliche Astzuordnung fehlt. |
-| Erinnerungen mit Zurückstellen, Wiederaufnahme und Verwerfen | Noch nicht übernommen. Im Original sind dies **In-App-Einladungen**, keine Push-, E-Mail- oder Hintergrundbenachrichtigungen. |
+| Erinnerungen mit Zurückstellen, Wiederaufnahme und Verwerfen | Nach 0.9 im 0.10-Kandidaten als freiwillige **In-App-Einladungen** integriert; lokale Kontrollen, 21/35 Tage und 14 Tage zurückstellen. Markierungen ohne Datierung und automatische Übernahme alter Unterdrückungsentscheidungen fehlen. Keine Push-, E-Mail- oder Hintergrundbenachrichtigungen. |
 | Umfangreiche persönliche Zeitlinie und Vorher-/Nachher-Kontexte | Vorhaben, Archiv, geschützte Rückblicke und Snapshots sind vorhanden; vollständige Historienparität fehlt. |
 | Vier Themes und zwei Übersetzungen | OLIVA bietet Hell/Dunkel und Luther 1912. |
 
@@ -55,3 +55,7 @@ Supabase-Schema und Berechtigungsentwürfe sind Vorbereitung, kein aktiver Auth-
 6. Reproduzierbare native Installationspakete, Signing, Betriebs-/Update-/Rollbackverfahren und die konkrete Veröffentlichung abnehmen.
 
 Die seit 08.11. ausdrücklich beauftragte öffentliche GitHub-Quellensicherung ist von der eigentümerprivaten Web-Vorschau getrennt. FaithPath, `main` und historische Versionstags bleiben unverändert. Ein geprüfter Zwischenrelease erklärt den gesamten Master-Prompt nicht für abgeschlossen.
+
+## Fortschreibung nach der 0.9-Abnahme
+
+Der vorhandene Backlogpunkt freiwillige In-App-Einladungen ist nun im tatsächlichen 0.10-Kandidaten implementiert. 154 Fachtests und sechs gezielte Browserfälle sowie beide nativen JS-/Assetexporte und der echte 0.9→0.10-Updateversuch bestehen. Auch ein einzelner vollständiger 82/82-Browserlauf, der echte PWA-Wechsel und die eigentümerprivate Bereitstellung sind inzwischen erfolgreich; Quelle und HTTP-/Zugriffsbelege stehen im Einladungsbericht. [Vertrag](18-in-app-invitations.md). Das ist eine durchgeführte Iteration, kein nachträglich erfundener Releasekalender. Fließtext und fertiger NT-Katalog bleiben als aktive Funktionen weiterhin offen.

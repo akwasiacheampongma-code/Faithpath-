@@ -8,12 +8,14 @@ import {
 } from "../src/features/bible/position";
 describe("Lesefortsetzung ohne Fortschrittsbestätigung", () => {
   it("migriert tatsächliche V4-Backups und private V1-Dokumente ohne Wortverlust", async () => {
-    const { readingPosition, retainedReviewGrowth, ...fields } = initialData();
+    const { readingPosition, retainedReviewGrowth, invitations, ...fields } =
+      initialData();
     const old = { ...fields, version: 4 as const, name: "Ada", revision: 9 };
     const before = JSON.stringify(old);
     expect(decodeData(old)).toEqual({
       ...old,
-      version: 6,
+      version: 7,
+      invitations: { enabled: false, snoozed: {}, dismissed: {} },
       retainedReviewGrowth: { reflections: 0, actions: 0 },
       readingPosition: null,
     });
@@ -23,7 +25,8 @@ describe("Lesefortsetzung ohne Fortschrittsbestätigung", () => {
       }),
     ).toEqual({
       ...old,
-      version: 6,
+      version: 7,
+      invitations: { enabled: false, snoozed: {}, dismissed: {} },
       retainedReviewGrowth: { reflections: 0, actions: 0 },
       readingPosition: null,
     });

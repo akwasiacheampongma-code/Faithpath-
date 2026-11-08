@@ -1,12 +1,14 @@
 # OLIVA · Raum für deinen Glauben
 
-Eigenständige Bibel- und Glaubens-App mit Expo, React Native und TypeScript. **OLIVA 0.9.0 ist mit 120 Fachtests und einem vollständigen 76/76-Browserlauf geprüft und privat bereitgestellt.** Römer ergänzt Johannes als großes Buchbild; Startseite, Quellen und korrekte Kapitellichtspuren sind integriert. Alle bestehenden Funktionen bleiben erhalten. Vollständige FaithPath-Parität und die Gesamt-Definition-of-Done bleiben offen; insbesondere fehlen der ursprüngliche Fließtext und der vollständige NT-Fragenkatalog. FaithPath und `main` bleiben unverändert.
+Eigenständige Bibel- und Glaubens-App mit Expo, React Native und TypeScript. **OLIVA 0.10.0 ist mit 154 Fachtests und einem einzelnen vollständigen 82/82-Browserlauf geprüft und privat bereitgestellt.** Neu sind freiwillige Einladungen zu älteren Vorhaben und Gedanken: einschalten, für 14 Tage zurückstellen, ausblenden und wieder zulassen. Sie verändern weder Quelltexte noch Baumwachstum. A51, beide großen Buchbilder und alle bestehenden Bereiche bleiben erhalten. Die Gesamt-Definition-of-Done bleibt offen; ursprünglicher Fließtext und vollständiger NT-Katalog fehlen weiterhin. FaithPath und `main` bleiben unverändert. [Vertrag und Nachweise](docs/18-in-app-invitations.md).
 
 ## Auf dem Handy ansehen
 
-[Private OLIVA-Vorschau öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site) und mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **08.11.2026, 19:49:19 UTC** wird dort **0.9.0** ausgeliefert. Der Eigentümerzugriff bleibt unverändert; es gibt keine öffentliche Freigabe.
+[Private OLIVA-Vorschau öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site) und mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **08.11.2026, 20:31:27 UTC** wird dort **0.10.0** ausgeliefert. Der Eigentümerzugriff bleibt unverändert; es gibt keine öffentliche Freigabe.
 
-**Neu:** [Römer – Schwert der Gnade](https://oliva-v04-private-preview.purplebean128.chatgpt.site/buch/ROM). Die Startseite zeigt das Bild des aktuellen illustrierten Buches und öffnet alle 66 Buchschwertansichten direkt. Johannes und alle kompakten Vektoren bleiben erhalten.
+**Neu:** [Freiwillige Einladungen öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/einladungen). Der Schalter ist zunächst aus. Auch unter **Einstellungen → Gedanken wiederbegegnen** erreichbar. Keine Push-Nachrichten und kein Nachholbedarf.
+
+[Römer – Schwert der Gnade](https://oliva-v04-private-preview.purplebean128.chatgpt.site/buch/ROM). Die Startseite zeigt das Bild des aktuellen illustrierten Buches und öffnet alle 66 Buchschwertansichten direkt. Johannes und alle kompakten Vektoren bleiben erhalten.
 
 Der A51-Baum steht auf **Heute** und groß unter **Mein Garten**. **„Alle sieben Lebensbilder ansehen“** öffnet die vollständige Reihe, ohne den persönlichen Fortschritt zu ändern. Der [private Vorher-/Nachher-Vergleich](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/a51/comparison.svg) zeigt echte Browseraufnahmen aller sieben Stadien. Manifest, Icons und Offlinepaket sind enthalten; eine Installation auf einem echten Smartphone wurde noch nicht geprüft.
 
@@ -14,7 +16,7 @@ Unter **Bibel → Johannes → „Buchschwert ansehen“** findest du das große
 
 Nach **„Für den Offline-Neustart bereit.“** ist das Paket für den geladenen Build im Browsercache vollständig. Persönliche Einträge bleiben im jeweiligen Browser/Gerät; eine Cloud-Synchronisierung ist nicht aktiviert. Der Hosting-Zugang erfordert das berechtigte Konto, der lokal gestartete App-Kern keine Registrierung.
 
-## Vorhandene Bereiche im abgenommenen 0.9-Stand
+## Vorhandene Bereiche im abgenommenen 0.10-Stand
 
 - **Bibel:** gemeinfreie Lutherbibel 1912 mit 66 Büchern, 1.189 Kapiteln und 31.102 Versen; Navigation, Volltextsuche, zwei Lesemodi, Lesezeichen, Markierungen, Notizen, Schrift-/Abstandseinstellungen und präzise Versfortsetzung.
 - **Geschichten:** fünf illustrierte Erzählpiloten einschließlich **David vor Goliath, 1. Samuel 17,38–45** im Entwicklungsstand 0.8. Unter **Bibel → Eine Geschichte entdecken** öffnen die Karten exakte Textabschnitte mit getrennter Einordnung. Acht biblische Bildmaster und 21 WebP-Varianten besitzen Herkunfts- und Freigabemetadaten; unabhängige Fach-/Vertriebsfreigaben bleiben offen.
@@ -22,6 +24,7 @@ Nach **„Für den Offline-Neustart bereit.“** ist das Paket für den geladene
 - **Garten:** sieben unveränderte A51-Originalillustrationen, lebendige Webdarstellung, separater nativer PNG-Ebenenadapter, statische Fallbacks, reduzierte Bewegung und eine Galerie. Der Baum bewertet keinen Glauben und verliert in Pausen keine Blätter.
 - **Buchschwerter:** 66 Buchansichten mit Themenidentität, Erklärung, Kapitelzähler und direktem Leseanfang. Johannes und Römer besitzen tatsächlich generierte große Illustrationen mit separaten, buchgenauen Kapitellichtspuren. Ihre Quellen erläutern Leben, Verbundenheit, Gnade und Frieden. Die 66 kompakten Vektorschwerter bleiben verfügbar. Ein kurzer Lichtimpuls folgt ausschließlich einer erfolgreich gespeicherten ausdrücklichen Kapitelbestätigung; reduzierte Bewegung bleibt statisch.
 - **Sammlung und Vorhaben:** Gedanken, Entwürfe, Versnotizen und Erfahrungen; eigene Anliegen mit kleinen Schritten, Archiv und bewahrten Rückblick-Snapshots. Rückblicktexte lassen sich mit dauerhaften, konfliktgeschützten Entwürfen bearbeiten, bestätigt löschen und einmal innerhalb der geöffneten Ansicht zurückholen. Identität, damalige Quelle und Erfahrungsbestätigung bleiben beim Edit erhalten; Verwaltungsaktionen erzeugen kein Wachstum. **Sammlung → Entwürfe** führt nach Bereichswechsel oder Neustart zurück zur Quelle.
+- **Einladungen:** freiwillige Wiederbegegnung mit aktiven Vorhaben nach 21 und eigenständigen Gedanken nach 35 Tagen; 14 Tage zurückstellen, ausblenden, wieder zulassen. Opt-out bewahrt Entscheidungen, schreibfreie Quellenlinks bewahren vorhandene Entwürfe. Steuerung erzeugt kein Wachstum.
 - **Sicherungen und Import:** bestätigter Export/Restore sowie additiver FaithPath-V5-Import mit Vorschau, Quellarchiv, Konfliktschutz und atomarer Rückkehrsicherung. OTB wird nicht als Lutherbibel ausgegeben. Grenzen: 10 MiB Importquelle, 64 MiB vollständige Sicherung.
 
 Tippen erzeugt keinen Lernabschluss oder bestätigte Alltagserfahrung. Bei einem Schreibfehler schützt ein gesonderter RAM-Puffer Worte innerhalb der laufenden Sitzung; er überlebt keinen Prozessabbruch. Die Bildwelt, redaktionelle Einordnung und der eigentliche Bibeltext bleiben getrennt. Cloud-Sync, KI-Begleiter und Audio sind nicht angeschlossen. Maßgeblich für Umfang und Grenzen ist [der Lieferstand](docs/delivery-status.md).
@@ -37,7 +40,7 @@ npm run build
 npm run preview
 ```
 
-Danach http://localhost:4173 öffnen. In einem eigenen Checkout dieselben npm-Befehle direkt im Projektverzeichnis ausführen. Die bestätigten GitHub-Versionsstände 0.4 bis 0.8 liegen unter `oliva/` im FaithPath-Repository. In diesen Checkouts zuerst `cd oliva` ausführen; das separate Standalone-Projekt und seine Quell-ZIPs starten direkt in ihrer Wurzel.
+Danach http://localhost:4173 öffnen. In einem eigenen Checkout dieselben npm-Befehle direkt im Projektverzeichnis ausführen. Die bestätigten GitHub-Versionsstände 0.4 bis 0.9 liegen unter `oliva/` im FaithPath-Repository. In diesen Checkouts zuerst `cd oliva` ausführen; das separate Standalone-Projekt und seine Quell-ZIPs starten direkt in ihrer Wurzel.
 
 Geprüfte Umgebung: Node 24.22.1, npm 11.9.0, Expo 58.0.23, React Native 0.88.1 und TypeScript 6.0.3. Der Kern benötigt keine API-Schlüssel. Für dieses eingeschränkte Arbeitsumfeld kann npm mit `npm --cache /tmp/faithpath-npm ci` einen beschreibbaren Cache verwenden.
 
@@ -127,13 +130,15 @@ Ein eigener HTTPS-Static-Host benötigt SPA-Fallback auf `index.html`, richtige 
 16. [Build-Abhängigkeiten und CI-Laufzeit](docs/14-dependency-security.md)
 17. [Geschichten und Offline-Abnahme 0.8](docs/15-stories-and-offline-v08.md)
 18. [Aktueller Plan und bestätigte Paritätslücken](docs/16-current-plan-and-parity.md)
-19. [Dauerhafter Fortsetzungsstand](RESUME.md)
+19. [Freiwillige In-App-Einladungen](docs/18-in-app-invitations.md)
+20. [Vorbereitung des ursprünglichen Fließtextreaders](docs/19-reader-flow-preparation.md)
+21. [Dauerhafter Fortsetzungsstand](RESUME.md)
 
 Die A51-Originale, die eigene biblische Bildwelt und beide Buchbildpiloten besitzen getrennte Herkunftsnachweise unter `art/a51/provenance.json`, `art/manifest.json` und `art/swords/runtime-index.json`. Übernommener FaithPath-A51-Code und A51-Bilder sind von OLIVAs MIT-Lizenz ausgenommen; die ausdrückliche Integrationserlaubnis ist keine allgemeine öffentliche Weiterveröffentlichungslizenz. Die öffentliche Produktfreigabe beider Buchbildpiloten bleibt offen. Details: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-Der aktuelle lokale Entwicklungsbranch heißt `feature/oliva-v09-book-gallery-20261108` und hat keinen Remote. Der abgeschlossene unabhängige 0.8-Checkpoint ist Commit `e6aa7f5ab552bb983264c1b4cc253c72728d5740`, Tag `oliva-v0.8-stories-offline-private`, ZIP `/workspace/oliva-next-v0.8-stories-offline-source.zip` (120.935.687 Byte, SHA-256 `82c564902e453b638a84c6487098abe769fb828094c8bdb1c4b772b81cde40ca`). [Manifestkopie](docs/evidence/session-09/checkpoints/oliva-v08-local-checkpoint.json). Die GitHub-Kopie unter `oliva/` besitzt Commit `dc4477b01dcd78f278e5dbf82408b26c83837ec1` und exakt denselben OLIVA-Dateibaum. Ältere Checkpoints bleiben erhalten.
+Der aktuelle lokale Entwicklungsbranch heißt `feature/oliva-v010-invitations-20261108` und hat keinen Remote. Der abgeschlossene unabhängige 0.8-Checkpoint ist Commit `e6aa7f5ab552bb983264c1b4cc253c72728d5740`, Tag `oliva-v0.8-stories-offline-private`, ZIP `/workspace/oliva-next-v0.8-stories-offline-source.zip` (120.935.687 Byte, SHA-256 `82c564902e453b638a84c6487098abe769fb828094c8bdb1c4b772b81cde40ca`). [Manifestkopie](docs/evidence/session-09/checkpoints/oliva-v08-local-checkpoint.json). Die GitHub-Kopie unter `oliva/` besitzt Commit `dc4477b01dcd78f278e5dbf82408b26c83837ec1` und exakt denselben OLIVA-Dateibaum. Ältere Checkpoints bleiben erhalten.
 
-**0.9 ist lokal und privat abgenommen.** Römer-Bilder, gemeinsame Registrierung, buchgenaue Lichtspuren und Startseitenzugang sind integriert und mit 120 Fachtests, 76 Browserfällen, beiden nativen JS-/Assetexporten sowie echtem Offline-Update geprüft. Die folgende Quellensicherung erstellt einen eigenen 0.9-Tag, ein ZIP mit SHA-256 und separate GitHub-Versionsrefs. Der getestete 0.8-Kontrollbuild bleibt erhalten. Eine noch nicht ausgeführte Remote-CI-Abnahme wird nicht vorweggenommen.
+**0.9 ist lokal und privat abgenommen.** Römer-Bilder, gemeinsame Registrierung, buchgenaue Lichtspuren und Startseitenzugang sind integriert und mit 120 Fachtests, 76 Browserfällen, beiden nativen JS-/Assetexporten sowie echtem Offline-Update geprüft. Die 0.9-Quellen sind lokal und auf [GitHub unter `oliva/`](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.9.0/oliva) gesichert. Auch der tatsächliche GitHub-Lauf 42517524350 besteht 120/120 Fach- und 76/76 Browserfälle, ohne Skip/Flaky/Wiederholung; [Belege](docs/evidence/github/ci-v09/verification.json). Der Kontrollbuild bleibt erhalten.
 
 Der ursprüngliche Fließtextmodus und die fertigen **1.300 NT-Fragen für 260 Kapitel und 27 Bücher** sind noch nicht vollständig übernommen. „Einfach lesen“ verwendet einzelne Versblöcke; neun eigene Pilotfragen ersetzen den NT-Katalog nicht. Für beide Übernahmen ist bislang keine verbindliche Version, kein Termin und kein konkret abgegrenztes Arbeitspaket festgelegt. Weitere bestätigte Paritätslücken und offene Entscheidungen: [aktueller Plan](docs/16-current-plan-and-parity.md). Diese Feststellung ändert die laufenden Prioritäten nicht.
 
@@ -148,3 +153,9 @@ Die Anweisung vom08.11 erlaubt die Quellenablage im bestehenden öffentlichen Gi
 [Abnahme mit Rohbelegen](docs/evidence/session-09/validation-summary.json) · [Buchbilder und Hub](docs/17-book-gallery-v09.md) · [Plan und offene Bestandsparität](docs/16-current-plan-and-parity.md).
 
 Das private Deployment vom 08.11.2026 um 19:49:19 UTC ist erfolgreich. Die HTTP-Prüfung bestätigt 17 Routen sowie 104 App- und 42 Review-Dateien bytegenau; anonym HTTP 401. Der eigene Quelltag, ZIP mit SHA-256 und GitHub-Versionsrefs werden nach diesem Abnahmecheckpoint gesichert und anschließend zurückgelesen. Die noch unbekannte Commitkennung wird nicht vorweggenommen. Historische Quelltags bleiben unverändert.
+
+## Tatsächliche Abnahme 0.10
+
+**154/154 Fachtests und ein einzelner vollständiger 82/82-Browserlauf bestanden**, ohne Skip, Flaky-Fälle oder Wiederholung; sechs neue Browserfälle auch separat grün. Typecheck, Bibel-/Bild-/A51-/Buchnachweise und Audit (0 Funde) erfolgreich. Echter 0.9→0.10-PWA-Wechsel erhält zunächst alle V6-Rohdaten; der ausdrückliche Opt-in schreibt ausschließlich V7, Revision und Einladungskontrollen. Native JS-/Assetexporte beider Plattformen sind geprüft, ohne Geräte-/Simulatorbehauptung. [Gesamtnachweis](docs/evidence/invitations/validation-summary.json).
+
+Private Bereitstellung am 08.11.2026 um 20:31:27 UTC: 18 App-Routen und 105 App-Dateien geprüft (104 Hashvergleiche, Index-HTML separat als App-Shell); 42 Review-Dateien bytegenau. Anonym HTTP 401, weiterhin nur ein Eigentümer. Gehosteter CUA-Browser und physische Handyinstallation nicht geprüft. Der nachfolgende separate Quellen-/GitHub-Checkpoint wird außerhalb seines eigenen Gitbaums protokolliert; keine unbekannten Commit- oder ZIP-Hashes vorwegnehmen.

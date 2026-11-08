@@ -1,0 +1,76 @@
+{
+  "version": "0.10.0",
+  "checkedAt": "2026-11-08T20:30:25.462516+00:00",
+  "allCoreChecksPassed": true,
+  "coreBuild": "oliva-12c38c9b1a132bff",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(sorted path + NUL + bytes + NUL); app/src/assets plus app/package/lock and A51/sword runtime manifests, including the Romans manifest and index",
+    "fileCount": 291,
+    "sha256": "8e5cb71045313213335428f7ab356b0abbfd03b489bd97c773ce3746f73cefd6"
+  },
+  "unit": {
+    "passed": 154,
+    "total": 154,
+    "failed": 0,
+    "pending": 0
+  },
+  "browser": {
+    "passed": 82,
+    "total": 82,
+    "singleFullGreenRun": true,
+    "skipped": 0,
+    "flaky": 0,
+    "unexpected": 0,
+    "allResultsSingleAttempt": true
+  },
+  "targetedBrowser": {
+    "passed": 6,
+    "total": 6
+  },
+  "dataVersion": 7,
+  "previousV6NestedSchemaByteExact": true,
+  "privateDocumentVersion": 1,
+  "sqliteSchemaVersion": 3,
+  "indexedDbVersion": 1,
+  "realPreviousPwaUpgrade": {
+    "passed": true,
+    "baseline": "0.9.0",
+    "target": "0.10.0",
+    "rawV6UnchangedBeforeOptIn": true,
+    "onlyVersionRevisionInvitationControlsChangedAtOptIn": true,
+    "evidence": "upgrade/offline-upgrade.json"
+  },
+  "nativeJavaScriptAssetExports": {
+    "android": true,
+    "ios": true,
+    "deviceOrSimulator": false,
+    "evidence": "native/native-builds.json"
+  },
+  "dependencyAuditVulnerabilities": 0,
+  "originalFaithpathMaterializedFilesVerified": 390,
+  "privateDeployment": {
+    "status": "succeeded",
+    "id": "appgdep_6af0dc11b9ec8191a2432f5503c5d811",
+    "versionId": "appgprj_6aedf77e5ce0819180c10eb799447018~appgver_385d0d6650a08191ab9269d246ab5e80",
+    "sourceCommit": "b691ba4cf5ef285b97714e0b8b738996e69672e1",
+    "url": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+    "deployedAt": "2026-11-08T20:31:27.880821+00:00",
+    "routesHttpChecked": 18,
+    "appFilesChecked": 105,
+    "appFilesHashCompared": 104,
+    "indexHtmlShellCheckedSeparately": true,
+    "reviewFilesHashCompared": 42,
+    "anonymousStatus": 401,
+    "ownerOnlyPolicyUnchanged": true,
+    "hostBuild": "oliva-51c1fd6137de7f0c"
+  },
+  "githubBackup": {
+    "status": "not yet performed"
+  },
+  "limitations": [
+    "No hosted CUA browser tool is exposed; private HTTP/package checks are separate from local Chromium tests.",
+    "No physical phone, simulator, native image decoder, signed installer, Hermes, energy or memory testing.",
+    "No public web or store deployment; FaithPath/main and historical tags remain unchanged.",
+    "Complete original flow reader and NT quiz catalog, further imagery, human usability/content review and real optional services remain outstanding."
+  ]
+}

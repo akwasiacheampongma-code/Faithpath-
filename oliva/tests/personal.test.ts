@@ -47,6 +47,7 @@ describe("Verlustfreie Payload-Migration", () => {
       imports,
       readingPosition,
       retainedReviewGrowth,
+      invitations,
       ...rest
     } = current;
     const old = {
@@ -70,7 +71,8 @@ describe("Verlustfreie Payload-Migration", () => {
       migrated = decodeData(old);
     expect(migrated).toEqual({
       ...old,
-      version: 6,
+      version: 7,
+      invitations: { enabled: false, snoozed: {}, dismissed: {} },
       retainedReviewGrowth: { reflections: 0, actions: 0 },
       readingPosition: null,
       goals: [],
@@ -87,6 +89,7 @@ describe("Verlustfreie Payload-Migration", () => {
       imports,
       readingPosition,
       retainedReviewGrowth,
+      invitations,
       ...rest
     } = initialData();
     expect(() =>

@@ -1,0 +1,22 @@
+
+> oliva-faith-companion@0.10.0 test:e2e
+> playwright test tests/e2e/invitations.spec.ts
+
+
+Running 6 tests using 1 worker
+
+(node:11621) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/invitations.spec.ts:174:1 › V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt V7 und erschließt die Startseiteneinladung (8.2s)
+  ✓  2 tests/e2e/invitations.spec.ts:210:1 › die tatsächliche Oberfläche beachtet exakt 21 und 35 Tage, neue Belege und archivierte Vorhaben ohne Schreibzugriff (5.3s)
+  ✓  3 tests/e2e/invitations.spec.ts:269:1 › Zurückstellen, Ausblenden und Wiederzulassen überleben Offline-Neustart; Ausschalten bewahrt Entscheidungen und Quellen (5.8s)
+  ✓  4 tests/e2e/invitations.spec.ts:342:1 › Quellenlinks zeigen das richtige Vorhaben und den Gedanken schreibfrei, auch wenn bereits ein anderer Entwurf besteht (7.3s)
+  ✓  5 tests/e2e/invitations.spec.ts:406:1 › Einladungen bleiben bei 320 Pixeln in Hell und Dunkel sowie auf großem Display zugänglich und ohne Überlauf (13.8s)
+  ✓  6 tests/e2e/invitations.spec.ts:466:1 › ein echter konkurrierender IndexedDB-Stand wird beim Ausblenden aus einer alten Ansicht nicht überschrieben (6.1s)
+
+  6 passed (48.7s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

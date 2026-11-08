@@ -35,7 +35,7 @@ for(const original of originals) {
 }
 await writeFile(path.join(dist,"robots.txt"),"User-agent: *\nDisallow: /\n");
 await writeFile(path.join(dist,"_headers"),"/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n/index.html\n  Cache-Control: private, no-cache\n/sw.js\n  Cache-Control: private, no-cache\n/manifest.webmanifest\n  Cache-Control: private, no-cache\n");
-const routes=["/bibel","/einstellungen","/garten","/importieren","/quellen","/sammlung","/start","/vorhaben","/wege","/lesen/*","/buch/*","/weg/*","/vorhaben/*","/importarchiv/*"];
+const routes=["/bibel","/einstellungen","/einladungen","/garten","/importieren","/quellen","/sammlung","/start","/vorhaben","/wege","/lesen/*","/buch/*","/weg/*","/vorhaben/*","/importarchiv/*"];
 await writeFile(path.join(dist,"_redirects"),routes.map(r=>`${r} /index.html 200`).join("\n")+"\n");
 await writeFile(path.join(dist,"preview-package.json"),JSON.stringify({version:config.expo.version,source_build:originalBuild,asset_namespace:namespace,private_only:true,a51:true},null,2)+"\n");
 // Review material stays outside the product navigation and offline payload.

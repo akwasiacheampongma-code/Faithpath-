@@ -3,6 +3,7 @@ import {
   dataSchema,
   v4DataSchema,
   v5DataSchema,
+  v6DataSchema,
   decodeData,
   type AppData,
 } from "../state/model";
@@ -25,6 +26,9 @@ const storedSchema = z
         .strict(),
       z
         .object({ ...v5DataSchema.shape, imports: z.array(metadata).max(100) })
+        .strict(),
+      z
+        .object({ ...v6DataSchema.shape, imports: z.array(metadata).max(100) })
         .strict(),
       currentStoredData,
     ]),

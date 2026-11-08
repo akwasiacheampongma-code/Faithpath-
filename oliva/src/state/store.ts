@@ -38,6 +38,10 @@ import {
   useVolatileDrafts,
   acknowledgeDrafts,
 } from "../features/personal/volatile-drafts";
+import {
+  changeInvitationControl,
+  type Invitation,
+} from "../features/invitations/model";
 
 export type Store = {
   data: AppData;
@@ -67,6 +71,14 @@ export type Store = {
   forgetReviewUndo: (token: string) => void;
   restore: (d: AppData) => Promise<boolean>;
   clearError: () => void;
+  setInvitationsEnabled: (
+    enabled: boolean,
+    expected: boolean,
+  ) => Promise<boolean>;
+  chooseInvitation: (
+    invitation: Pick<Invitation, "key" | "stamp">,
+    action: "snooze" | "dismiss" | "resume",
+  ) => Promise<boolean>;
   openReading: (reference: Reference) => Promise<boolean>;
   rememberReadingPosition: (
     position: ReadingPosition | null,
@@ -279,6 +291,36 @@ export const useApp = create<Store>((set, get) => {
         );
       }),
     clearError: () => set({ error: null }),
+    setInvitationsEnabled: (enabled, expected) =>
+      action(false, async () => {
+        if (get().data.invitations.enabled === enabled) return true;
+        return persist(
+          (d) => {
+            if (d.invitations.enabled !== expected)
+              throw new Error(
+                "Deine Einstellung hat sich inzwischen verändert. Prüfe sie bitte erneut.",
+              );
+            d.invitations.enabled = enabled;
+          },
+          {},
+          false,
+        );
+      }),
+    chooseInvitation: (invitation, choice) =>
+      action(false, () =>
+        persist(
+          (d) => {
+            d.invitations = changeInvitationControl(
+              d,
+              d.invitations,
+              invitation,
+              choice,
+            );
+          },
+          {},
+          false,
+        ),
+      ),
     openReading: (reference) =>
       persist(
         (d) => {

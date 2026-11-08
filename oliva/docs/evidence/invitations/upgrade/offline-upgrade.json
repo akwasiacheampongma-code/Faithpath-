@@ -1,0 +1,282 @@
+{
+  "baseline_version": "0.9.0",
+  "target_version": "0.10.0",
+  "synthetic_data": true,
+  "passed": true,
+  "physical_device_test": false,
+  "hosted_qa": false,
+  "evidence_scope": "Local automated Chromium; one persistent profile and origin throughout the worker update",
+  "byte_comparison": "Exact UTF-8 JSON serialization of raw IndexedDB values, not database-file bytes",
+  "phase": "complete",
+  "browser_version": "155.0.8059.79",
+  "origin": "http://127.0.0.1:43119",
+  "baseline_private_storage_version": 1,
+  "baseline_data_version": 6,
+  "baseline_build_id": "oliva-6428cb5965119e02",
+  "baseline_worker": {
+    "expected": "oliva-6428cb5965119e02",
+    "controller": {
+      "id": "oliva-6428cb5965119e02",
+      "version": "0.9.0"
+    },
+    "active": {
+      "id": "oliva-6428cb5965119e02",
+      "version": "0.9.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-6428cb5965119e02"
+    ]
+  },
+  "baseline_review_id": "draft-1794169170833-ga3ip8t8",
+  "baseline_goal_revision": 2,
+  "baseline_main_json_sha256": "7befb6fe3423596f23acb347220c50cfab5d6574533671aa11fc14686f65a10d",
+  "baseline_records": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 592,
+      "json_sha256": "fd6d65b63ccfa96591afe4915c45c9e3c002817e9b47cf3a115827ea1fc1eb12"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5422,
+      "json_sha256": "7befb6fe3423596f23acb347220c50cfab5d6574533671aa11fc14686f65a10d"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "original_archive_blob_sha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "baseline_cached_asset_sha256": "dfc81fb202369e251087163f84be546fb2cbe4b0eb1e4ffbbb15e198b0b02086",
+  "new_worker": {
+    "expected": "oliva-12c38c9b1a132bff",
+    "controller": {
+      "id": "oliva-12c38c9b1a132bff",
+      "version": "0.10.0"
+    },
+    "active": {
+      "id": "oliva-12c38c9b1a132bff",
+      "version": "0.10.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-6428cb5965119e02",
+      "oliva-12c38c9b1a132bff"
+    ]
+  },
+  "worker_activation_verified": true,
+  "same_origin_and_persistent_profile": true,
+  "old_cache_retained": true,
+  "data_version_before_hydration": 6,
+  "durable_data_version_after_hydration": 6,
+  "ram_migration": "V6 -> V7 with invitations disabled, no durable write",
+  "private_storage_version_before_and_after": 1,
+  "migration_committed_only_by_explicit_action": true,
+  "durable_v6_main_unchanged_after_hydration": true,
+  "all_raw_records_unchanged_after_update": true,
+  "default_opt_out_visible": true,
+  "all_raw_records_exact_before_explicit_opt_in": true,
+  "durable_v6_survives_read_only_invitation_reload": true,
+  "explicit_opt_in_committed_v7": true,
+  "revision_increment": 1,
+  "only_changed_or_added_data_fields": [
+    "version",
+    "revision",
+    "invitations"
+  ],
+  "all_previous_v6_fields_preserved": [
+    {
+      "field": "name",
+      "json_sha256": "a39afeed7d3319213be7a235840b3c6d3f09f2810b9c91779f34572b6b36832a",
+      "json_utf8_bytes": 5
+    },
+    {
+      "field": "onboarded",
+      "json_sha256": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+      "json_utf8_bytes": 5
+    },
+    {
+      "field": "reading",
+      "json_sha256": "cd3767c1d60dca45d2cb2a3ecd5ca7c6c67180575769d87e80767a1b01cf10c6",
+      "json_utf8_bytes": 42
+    },
+    {
+      "field": "readChapters",
+      "json_sha256": "378f8685b34bcdef9771cc22faf8d89f7851aca786cf167502bea1cdd55ef63d",
+      "json_utf8_bytes": 17
+    },
+    {
+      "field": "readPassages",
+      "json_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "json_utf8_bytes": 2
+    },
+    {
+      "field": "readSteps",
+      "json_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "json_utf8_bytes": 2
+    },
+    {
+      "field": "completedSteps",
+      "json_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "json_utf8_bytes": 2
+    },
+    {
+      "field": "activePath",
+      "json_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "json_utf8_bytes": 4
+    },
+    {
+      "field": "bookmarks",
+      "json_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "json_utf8_bytes": 2
+    },
+    {
+      "field": "highlights",
+      "json_sha256": "cfb00e72d3162dedbce195a29ef2618a050934bdd28d17baea67e9ef344c8a57",
+      "json_utf8_bytes": 37
+    },
+    {
+      "field": "notes",
+      "json_sha256": "13d39e7e8a856a9ed2658cd8b7ee34de14e955f326270434fda593e5a63d29c1",
+      "json_utf8_bytes": 1386
+    },
+    {
+      "field": "growthStage",
+      "json_sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "json_utf8_bytes": 1
+    },
+    {
+      "field": "settings",
+      "json_sha256": "06266dd5e817fd25c0789a06d36be600ac920e4c9166892aa352f5b7777d1af2",
+      "json_utf8_bytes": 70
+    },
+    {
+      "field": "goals",
+      "json_sha256": "d2854808d9862db0e2ca127a6587b12234106f0edd2dbdde27127da0d7810e63",
+      "json_utf8_bytes": 1342
+    },
+    {
+      "field": "drafts",
+      "json_sha256": "cb805bf024b123bc5b735c41091a81026e577b5c8126f2dfb1d02d47d85228ca",
+      "json_utf8_bytes": 1140
+    },
+    {
+      "field": "imports",
+      "json_sha256": "46604412cec2ecf7e47d75a33cb45531aaaf98649827f0dc6c6eea579452926b",
+      "json_utf8_bytes": 1032
+    },
+    {
+      "field": "readingPosition",
+      "json_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "json_utf8_bytes": 4
+    },
+    {
+      "field": "retainedReviewGrowth",
+      "json_sha256": "eb9ef64151ab490dc92150686a85ce677fda85739b332109254272bda3643a00",
+      "json_utf8_bytes": 29
+    }
+  ],
+  "recovery_and_archives_exact_after_opt_in": true,
+  "growth_unchanged_by_opt_in": true,
+  "after_opt_in_main_json_sha256": "cc9c1ac01b59ec2f08d0ad8a15673ad7cdcda7b6a1bcb38db0cc7d8b653a36ad",
+  "after_opt_in_records": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 592,
+      "json_sha256": "fd6d65b63ccfa96591afe4915c45c9e3c002817e9b47cf3a115827ea1fc1eb12"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5481,
+      "json_sha256": "cc9c1ac01b59ec2f08d0ad8a15673ad7cdcda7b6a1bcb38db0cc7d8b653a36ad"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "profile_preserved": true,
+  "name_preserved": true,
+  "offline_reload_passed": true,
+  "offline_new_invitation_route_verified": true,
+  "explicit_opt_in_controls_survive_offline_reload": true,
+  "pre_existing_review_preserved": true,
+  "offline_notes_goals_journal_and_review_edit_draft_verified": true,
+  "original_archive_blob_preserved": true,
+  "original_untyped_faithpath_fields_retained_in_exact_archive": true,
+  "final_original_archive_blob_sha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "unchanged_recovery_copy_and_original_archives": true,
+  "all_records_unchanged_after_explicit_opt_in": true,
+  "final_main_json_sha256": "cc9c1ac01b59ec2f08d0ad8a15673ad7cdcda7b6a1bcb38db0cc7d8b653a36ad",
+  "final_records": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 592,
+      "json_sha256": "fd6d65b63ccfa96591afe4915c45c9e3c002817e9b47cf3a115827ea1fc1eb12"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5481,
+      "json_sha256": "cc9c1ac01b59ec2f08d0ad8a15673ad7cdcda7b6a1bcb38db0cc7d8b653a36ad"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "old_cached_asset_verified": true,
+  "old_asset_present_in_old_cache": true,
+  "old_asset_absent_from_new_cache": true,
+  "old_cached_asset_path": "/_expo/static/js/web/__common-2e34433180b10f25c223fd5fcab90405.js",
+  "old_cached_asset_sha256": "dfc81fb202369e251087163f84be546fb2cbe4b0eb1e4ffbbb15e198b0b02086",
+  "current_build_id": "oliva-12c38c9b1a132bff",
+  "offline_worker": {
+    "expected": "oliva-12c38c9b1a132bff",
+    "controller": {
+      "id": "oliva-12c38c9b1a132bff",
+      "version": "0.10.0"
+    },
+    "active": {
+      "id": "oliva-12c38c9b1a132bff",
+      "version": "0.10.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-6428cb5965119e02",
+      "oliva-12c38c9b1a132bff"
+    ]
+  },
+  "update_and_offline_check_ms": 18933,
+  "checkedAt": "2026-11-08T20:19:56.851Z"
+}

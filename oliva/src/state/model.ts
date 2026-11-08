@@ -9,6 +9,12 @@ import { pathById } from "../features/paths/catalog";
 import { referenceSchema as ref } from "../features/bible/schema";
 import { goalSchema, draftSchema } from "../features/personal/schema";
 import {
+  goalSchema as v6GoalSchema,
+  draftSchema as v6DraftSchema,
+} from "../features/personal/schema-v6";
+import { invitationControlsSchema } from "../features/invitations/schema";
+import { emptyInvitationControls } from "../features/invitations/model";
+import {
   goalSchema as v5GoalSchema,
   draftSchema as v5DraftSchema,
 } from "../features/personal/schema-v5";
@@ -193,16 +199,16 @@ export const retainedReviewGrowthSchema = z
     (d) => d.actions <= d.reflections,
     "Ungültige erhaltene Rückblickbeiträge",
   );
-export const dataSchema = z
+export const v6DataSchema = z
   .object({
     ...v5DataSchema.shape,
     version: z.literal(6),
     goals: z
-      .array(goalSchema)
+      .array(v6GoalSchema)
       .max(500)
       .refine((items) => unique(items.map((g) => g.id))),
     drafts: z
-      .array(draftSchema)
+      .array(v6DraftSchema)
       .max(100)
       .refine(
         (items) =>
@@ -227,13 +233,53 @@ export const dataSchema = z
     "Leseposition gehört zu einem anderen Abschnitt",
   );
 
+// Invitations are control metadata, never growth evidence. V6 remains strict
+// and readable; merely opening an older document does not rewrite its bytes.
+export const dataSchema = z
+  .object({
+    ...v6DataSchema.shape,
+    version: z.literal(7),
+    goals: z
+      .array(goalSchema)
+      .max(500)
+      .refine((items) => unique(items.map((g) => g.id))),
+    drafts: z
+      .array(draftSchema)
+      .max(100)
+      .refine(
+        (items) =>
+          unique(items.map((d) => d.key)) && unique(items.map((d) => d.id)),
+      ),
+    invitations: invitationControlsSchema,
+  })
+  .strict()
+  .refine(completeStepsValid, "Ungültiger Wegfortschritt")
+  .refine(
+    (d) =>
+      [...d.goals, ...d.notes].every(
+        (x) => !x.origin || d.imports.some((r) => r.id === x.origin!.importId),
+      ),
+    "Importquelle fehlt",
+  )
+  .refine(
+    (d) =>
+      !d.readingPosition || sameReadingScope(d.readingPosition.ref, d.reading),
+    "Leseposition gehört zu einem anderen Abschnitt",
+  );
+
 export function decodeData(input: unknown): AppData {
   const version =
     input && typeof input === "object" && "version" in input
       ? input.version
       : undefined;
   let data: AppData;
-  if (version === 6) data = dataSchema.parse(input);
+  if (version === 7) data = dataSchema.parse(input);
+  else if (version === 6)
+    data = dataSchema.parse({
+      ...v6DataSchema.parse(input),
+      version: 7,
+      invitations: emptyInvitationControls(),
+    });
   else {
     const old =
       version === 1
@@ -253,7 +299,8 @@ export function decodeData(input: unknown): AppData {
               : v5DataSchema.parse(input);
     data = dataSchema.parse({
       ...old,
-      version: 6,
+      version: 7,
+      invitations: emptyInvitationControls(),
       retainedReviewGrowth: { reflections: 0, actions: 0 },
     });
   }
@@ -270,7 +317,8 @@ export function decodeData(input: unknown): AppData {
 export type AppData = z.infer<typeof dataSchema>;
 export type Note = z.infer<typeof noteSchema>;
 export const initialData = (): AppData => ({
-  version: 6,
+  version: 7,
+  invitations: emptyInvitationControls(),
   retainedReviewGrowth: { reflections: 0, actions: 0 },
   readingPosition: null,
   imports: [],

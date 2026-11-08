@@ -1,0 +1,21 @@
+
+> oliva-faith-companion@0.9.0 typecheck
+> tsc --noEmit
+
+src/state/model.ts(293,3): error TS2322: Type 'InvitationControls' is not assignable to type '{ enabled: boolean; snoozed: Record<string, string>; dismissed: Record<string, string>; }'.
+  Types of property 'snoozed' are incompatible.
+    Type 'Partial<Record<InvitationKey, string>>' is not assignable to type 'Record<string, string>'.
+      '`goal:${string}`' and 'string' index signatures are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+src/state/store.ts(305,11): error TS2322: Type 'InvitationControls' is not assignable to type '{ enabled: boolean; snoozed: Record<string, string>; dismissed: Record<string, string>; }'.
+  Types of property 'snoozed' are incompatible.
+    Type 'Partial<Record<InvitationKey, string>>' is not assignable to type 'Record<string, string>'.
+      '`goal:${string}`' and 'string' index signatures are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

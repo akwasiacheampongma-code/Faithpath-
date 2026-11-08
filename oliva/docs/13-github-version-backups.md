@@ -90,3 +90,13 @@ Die Nutzungs- und MIT-Ausnahmen aus [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTI
 ## Tatsächliche Remote-Abnahme 0.8
 
 Lauf [42487317354](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42487317354) endete am 08.11.2026 um 14:04:09 UTC erfolgreich am exakten Versionshead `dc4477b01dcd78f278e5dbf82408b26c83837ec1`: **117/117 Fachtests und 67/67 Browserfälle**, ohne Skip oder Flaky-Ergebnis. Artefakt `13620585577`, 8.179.373 Byte, SHA-256 `a5739f6dde394f463fa179c19480e3d83053fa1024b12100d430fa670ff28248`, entspricht GitHub. Expliziter npm-Audit mit 0 Funden; alle vier eigenen Node-24-Pins im Log bestätigt. [Prüfdatei und Rohbelege](evidence/github/ci-v08/verification.json). Frühere Angaben zum laufenden Abgleich beschreiben dessen damaligen Zeitpunkt.
+
+## Tatsächlich bestätigte Sicherung und Remote-Abnahme 0.9
+
+Quellcommit `0f4cf3df79dee8d572427cd17db70d98101980ec`, Quelltag `oliva-v0.9-book-gallery-private`, ZIP 133.979.517 Byte, SHA-256 `2f01f3af16c189ee58fa5bdfd4fe08aebd2accb5c691ee7df2094ffa6ce4a1fb`. [Manifest](evidence/invitations/checkpoints/oliva-v09-local-checkpoint.json).
+
+[GitHub-Tag `oliva-v0.9.0`](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.9.0/oliva) und Branch `feature/oliva-v09-book-gallery-20261108` zeigen auf `29e082d0254ccc6754bacebfcc65a6fd09639c17`; der `oliva/`-Teilbaum ist exakt. Alle zehn Versionsrefs sowie unverändertes `main`, alter 0.4-Branch und ursprüngliche FaithPath-Pfade sind im [Remotevergleich](evidence/invitations/checkpoints/oliva-github-backups.json) bestätigt.
+
+[Lauf 42517524350](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42517524350), erster Versuch, endete 08.11.2026 um 20:05:09 UTC erfolgreich: **120/120 Fachtests und 76/76 Browserfälle**, keine Skips, Flaky-Fälle oder Wiederholungen. Artefakt `13631949152`, 8.872.878 Byte, SHA-256 `4b45627dff92d01e5e12d0fa9f6638ddaffc136a82f40ed8c789dbe2763eada4`, entspricht GitHub. Audit 0 und vier eigene Node-24-Pins beobachtet. [Prüfung und Rohbelege](evidence/github/ci-v09/verification.json). Kein Deployment durch CI; kein Merge oder Eingriff in historische Tags.
+
+Der neue 0.10-Kandidat wird erst nach eigener vollständiger Abnahme separat gesichert. Sein Erfolg wird aus 0.9 nicht abgeleitet.

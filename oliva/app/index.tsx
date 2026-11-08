@@ -29,6 +29,7 @@ import { STAGES } from "../src/features/garden/model";
 import { CaptureInput } from "../src/features/personal/CaptureInput";
 import { dailySource } from "../src/features/personal/capture-model";
 import { useVolatileDrafts } from "../src/features/personal/volatile-drafts";
+import { InvitationHome } from "../src/features/invitations/InvitationHome";
 export default function Home() {
   const t = useTheme(),
     { width } = useWindowDimensions(),
@@ -371,6 +372,7 @@ export default function Home() {
               placeholder="Hier ist Platz für deine Worte …"
             />
           </Card>
+          <InvitationHome />
           {draftCount > 0 && (
             <Card style={{ gap: 12 }}>
               <T variant="heading">Deine angefangenen Worte.</T>

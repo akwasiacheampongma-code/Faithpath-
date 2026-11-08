@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { View, Pressable, useWindowDimensions } from "react-native";
-import { router, useLocalSearchParams } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { T, Button, Card, Field, Tag, Progress } from "../src/components/ui";
 import { SwordArt } from "../src/components/Artwork";
@@ -19,9 +19,14 @@ import { highlightBackground } from "../src/features/bible/highlights";
 import { DraftLinks } from "../src/features/personal/DraftLinks";
 import { CaptureContext } from "../src/features/personal/CaptureContext";
 export default function Collection() {
-  const { tab: requestedTab, note: requestedNote } = useLocalSearchParams<{
+  const {
+    tab: requestedTab,
+    note: requestedNote,
+    view: requestedView,
+  } = useLocalSearchParams<{
     tab?: string;
     note?: string;
+    view?: string;
   }>();
   const handledNote = useRef<string | undefined>(undefined);
   const t = useTheme(),
@@ -45,7 +50,20 @@ export default function Collection() {
   const [editorMessage, setEditorMessage] = useState("");
   const pendingDraft = data.drafts.find((d) => d.key === "journal");
   const draft = pendingDraft?.type === "journal" ? pendingDraft : undefined;
+  // Invitation links reveal the existing thought without starting an edit or
+  // replacing another draft. Editing remains a separate, explicit action.
+  useFocusEffect(
+    useCallback(() => {
+      if (requestedNote && requestedView === "read") {
+        setTab("Gedanken");
+        setQuery("");
+        setShowForm(false);
+        setEditorMessage("");
+      }
+    }, [requestedNote, requestedView]),
+  );
   useEffect(() => {
+    if (requestedView === "read") return;
     if (requestedNote && requestedNote !== handledNote.current) {
       const note = data.notes.find((n) => n.id === requestedNote);
       if (note) {
@@ -54,7 +72,7 @@ export default function Collection() {
         void openEditor(note);
       }
     }
-  }, [requestedNote, data.notes]);
+  }, [requestedNote, requestedView, data.notes]);
   async function openEditor(note?: Note) {
     if (draft) {
       if (note && draft.values.targetId !== note.id) {
@@ -185,6 +203,16 @@ export default function Collection() {
         />
       ) : tab === "Gedanken" ? (
         <View style={{ gap: 17 }}>
+          {requestedView === "read" &&
+            requestedNote &&
+            !data.notes.some((note) => note.id === requestedNote) && (
+              <Card>
+                <T>
+                  Dieser Gedanke ist nicht mehr in deiner Sammlung. Deine
+                  übrigen Einträge bleiben hier sichtbar.
+                </T>
+              </Card>
+            )}
           <View style={{ alignItems: "flex-start" }}>
             <Button
               icon="pen"
@@ -246,8 +274,28 @@ export default function Collection() {
                 .toLocaleLowerCase("de")
                 .includes(query.toLocaleLowerCase("de")),
             )
+            .sort((a, b) =>
+              requestedView === "read"
+                ? Number(b.id === requestedNote) -
+                  Number(a.id === requestedNote)
+                : 0,
+            )
             .map((note) => (
-              <Card key={note.id} style={{ gap: 12 }}>
+              <Card
+                key={note.id}
+                testID={`collection-note-${note.id}`}
+                style={{
+                  gap: 12,
+                  ...(requestedView === "read" && note.id === requestedNote
+                    ? { backgroundColor: t.goldSoft }
+                    : {}),
+                }}
+              >
+                {requestedView === "read" && note.id === requestedNote && (
+                  <T variant="small" style={{ color: t.muted }}>
+                    Dein wiederentdeckter Gedanke
+                  </T>
+                )}
                 <View
                   style={{
                     flexDirection: "row",

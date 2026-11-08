@@ -22,7 +22,7 @@ describe("A51 als Darstellung bestehender OLIVA-Daten", () => {
       const before=JSON.stringify(data);
       for(const s of A51_STAGES) { treeLayout(s,320);stageVariant(s,320,3); }
       expect(JSON.stringify(data)).toBe(before);
-      const {readingPosition,retainedReviewGrowth,...legacy}=data;
+      const {readingPosition,retainedReviewGrowth, invitations,...legacy}=data;
       const upgraded=decodeData({...legacy,version:4});
       expect(upgraded.growthStage).toBe(index);expect(upgraded.name).toBe("Ada");
     }

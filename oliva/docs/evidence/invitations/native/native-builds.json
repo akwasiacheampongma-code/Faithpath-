@@ -1,0 +1,78 @@
+{
+  "version": "0.10.0",
+  "checkedAt": "2026-11-08T20:18:39.475217+00:00",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(sorted path + NUL + bytes + NUL); app/src/assets plus app/package/lock and A51/sword runtime manifests, including the Romans manifest and index",
+    "fileCount": 291,
+    "sha256": "8e5cb71045313213335428f7ab356b0abbfd03b489bd97c773ce3746f73cefd6"
+  },
+  "initialRuntimeSourceDigest": {
+    "algorithm": "SHA256(sorted path + NUL + bytes + NUL); app/src/assets plus app/package/lock and A51/sword runtime manifests, including the Romans manifest and index",
+    "fileCount": 291,
+    "sha256": "8e5cb71045313213335428f7ab356b0abbfd03b489bd97c773ce3746f73cefd6"
+  },
+  "sourceUnchangedDuringExports": true,
+  "priorNativeOutputsPreservedAt": "/workspace/oliva-native-v09-before-v010",
+  "preserved09": [
+    {
+      "platform": "android",
+      "metadataSha256": "9e38987f57cca4ed158f6cfb9821b975138063eaf17fde73931591311fa078f8",
+      "bundleSha256": "71243e5def4068a9e9f555a8e2e052095c3bb3d97f22d1e2d32eb8252fee866a",
+      "matchesFrozen09Report": true
+    },
+    {
+      "platform": "ios",
+      "metadataSha256": "8f1fc3f3939fa1c3813ea910db6b3c5ce09f3d4aef58b1e42246272c3da5ce4f",
+      "bundleSha256": "220ee84356e19542e95181a0fa33ef76886be0781463372003210eb1007f7eeb",
+      "matchesFrozen09Report": true
+    }
+  ],
+  "exports": [
+    {
+      "platform": "android",
+      "command": [
+        "node",
+        "scripts/expo.mjs",
+        "export",
+        "--platform",
+        "android",
+        "--output-dir",
+        "dist-android",
+        "--no-minify",
+        "--no-bytecode"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-11-08T20:18:19.666782+00:00",
+      "durationSeconds": 10.277,
+      "rawLog": "docs/evidence/invitations/native/native-android.txt",
+      "rawLogSHA256": "3666c3482ca0f48fd404a04a871a10e37ef2a82f8c76deab018d980f10308186",
+      "nativeDeviceTest": false,
+      "simulatorTest": false
+    },
+    {
+      "platform": "ios",
+      "command": [
+        "node",
+        "scripts/expo.mjs",
+        "export",
+        "--platform",
+        "ios",
+        "--output-dir",
+        "dist-ios",
+        "--no-minify",
+        "--no-bytecode"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-11-08T20:18:29.945019+00:00",
+      "durationSeconds": 7.802,
+      "rawLog": "docs/evidence/invitations/native/native-ios.txt",
+      "rawLogSHA256": "472c6f893f5485f9f23e97d394099353acbb494f1123258155eeaae5716ca820",
+      "nativeDeviceTest": false,
+      "simulatorTest": false
+    }
+  ],
+  "assetCheckExitCode": 0,
+  "assetCheckReport": "native-export-check.json",
+  "allPassed": true,
+  "kind": "Unminified native JavaScript/asset debug exports; no Hermes bytecode, APK/AAB/IPA, signing, simulator, device, native image decoder, performance, memory or energy test."
+}

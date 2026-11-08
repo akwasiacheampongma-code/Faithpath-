@@ -54,7 +54,7 @@ async function progress(page: Page, chapters: number) {
 async function priorHistory(page: Page, book: string, chapters = 0, theme: "light" | "dark" = "light") {
   const raw = structuredClone(await rawData(page));
   expect(raw.storageVersion).toBe(1);
-  expect(raw.data.version).toBe(6);
+  expect(raw.data.version).toBe(7);
   raw.data.reading = { book, chapter: 1 };
   raw.data.readingPosition = null;
   raw.data.onboarded = true;

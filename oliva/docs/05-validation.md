@@ -1,8 +1,14 @@
 # Qualität und Abnahme
 
-Dokumentationsstand: 07.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
+Dokumentationsstand: 08.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
 
-## Aktueller Nachweis 0.7 · Rückblickkontinuität privat bereitgestellt
+## Laufende Abnahme 0.10 und bestätigter Vorgänger
+
+Der aktuelle Kandidat hat **154/154 Fachtests**, Typecheck, Web-/PWA-Build und **6/6 neue Browserfälle** bestanden. Beide nativen JS-/Assetexporte sind geprüft, Quelle über 291 Inputs unverändert. Der echte 0.9→0.10-PWA-Wechsel erhält alle V6-Rohdaten bis zum ausdrücklichen Opt-in und anschließend alle 18 weiteren V6-Felder sowie Archiv-/Rückkehrdatensätze. **Ein einzelner vollständiger 82/82-Browserlauf erfolgreich**, ohne Skip/Flaky/Wiederholung. [Einladungsvertrag](18-in-app-invitations.md), [lokale Belege](evidence/invitations/).
+
+Die private Vorschau liefert seit 08.11.2026 um 20:31:27 UTC 0.10; tatsächliche HTTP-/Publikumsprüfung erfolgreich. Dessen zusätzlicher tatsächlicher GitHub-Lauf 42517524350 besteht **120/120 Fachtests und 76/76 Browserfälle**, ohne Skip/Flaky/Wiederholung. [Verifikation](evidence/github/ci-v09/verification.json). Die folgenden Abschnitte sind historische Prüfungen ihrer jeweiligen Version.
+
+## Historischer Nachweis 0.7 · Rückblickkontinuität privat bereitgestellt
 
 Private Bereitstellung seit **07.11.2026, 20:10:37 UTC**. Kernbuild **`oliva-f5f1df50305ec1e5`**, Hostpaket **`oliva-7173147c3f6d4bca`**. Eigentümerzugriff unverändert; keine öffentliche Veröffentlichung. [Deployment](evidence/session-07/private-deployment.json), [Paketprüfung](evidence/session-07/private-package-check.json) und [privater Quellcheckpoint](evidence/session-07/private-source-checkpoint.json) sind gespeichert.
 
