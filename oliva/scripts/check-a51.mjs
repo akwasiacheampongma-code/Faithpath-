@@ -10,4 +10,5 @@ for(const item of files) {
 }
 if(provenance.master_count!==7||provenance.webp_count!==21||native.groups.length!==14) throw new Error("Incomplete seven-stage family");
 const result={checkedAt:new Date().toISOString(),study:provenance.study,originalsVerified:provenance.original_files.length,masterCount:7,webpCount:21,nativePngCount:native.groups.reduce((n,g)=>n+1+g.layers.length,0),allFileHashesMatch:true,sourceSnapshot:provenance.snapshot_commit,originalsUnmodified:true,nativeDeviceTest:false};
-await mkdir("docs/evidence/a51",{recursive:true});await writeFile("docs/evidence/a51/asset-integrity.json",JSON.stringify(result,null,2)+"\n");console.log(JSON.stringify(result));
+const evidence=process.env.OLIVA_EVIDENCE_DIR??"docs/evidence/latest";
+await mkdir(evidence,{recursive:true});await writeFile(`${evidence}/a51-asset-integrity.json`,JSON.stringify(result,null,2)+"\n");console.log(JSON.stringify(result));

@@ -1,13 +1,16 @@
 import type { AppData, Note } from "../../state/model";
 import { commitCapture } from "./capture-model";
 import { captureKey } from "./capture-schema";
+import { canonicalJson, sha256 } from "../../lib/hash";
 import {
   draftSchema,
   goalSchema,
+  reviewSchema,
   type Draft,
   type DraftOf,
   type DraftStamp,
   type Goal,
+  type Review,
   newId,
 } from "./schema";
 
@@ -171,7 +174,29 @@ export function commitDraft(
     goal.revision++;
     goal.updatedAt = at;
     result = goal.id;
-  } else {
+  } else if (draft.type === "review-edit") {
+    const v = draft.values,
+      goal = editableGoal(data, v.goalId, v.baseRevision),
+      review = goal.reviews.find((r) => r.id === v.reviewId),
+      text = v.text.trim();
+    if (!text) throw new Error("Schreibe zuerst deinen Rückblick.");
+    if (!review || reviewHash(review) !== v.baseReviewHash)
+      throw new Error(
+        "Dieser Rückblick wurde inzwischen verändert oder gelöscht. Dein Entwurf bleibt erhalten.",
+      );
+    if (canonicalStoredJson(v.source) !== canonicalStoredJson(review.source))
+      throw new Error(
+        "Der bewahrte Quellstand passt nicht zu diesem Rückblick. Dein Entwurf bleibt erhalten.",
+      );
+    if (text !== review.text) {
+      const edited = reviewSchema.parse({ ...review, text, updatedAt: at });
+      review.text = edited.text;
+      review.updatedAt = edited.updatedAt;
+      goal.revision++;
+      goal.updatedAt = at;
+    }
+    result = goal.id;
+  } else if (draft.type === "review") {
     const v = draft.values,
       goal = editableGoal(data, v.goalId, v.baseRevision);
     if (!v.text.trim()) throw new Error("Schreibe zuerst deinen Rückblick.");
@@ -185,9 +210,14 @@ export function commitDraft(
     goal.revision++;
     goal.updatedAt = at;
     result = goal.id;
+  } else {
+    return unsupportedDraft(draft);
   }
   removeDraft(data, key, expected);
   return result;
+}
+function unsupportedDraft(_draft: never): never {
+  throw new Error("Dieser Entwurfstyp wird nicht unterstützt.");
 }
 export function setStepDone(
   data: AppData,
@@ -236,4 +266,156 @@ export function journalDraft(note?: Note): DraftOf<"journal"> {
       ...(note?.ref ? { ref: note.ref } : {}),
     },
   };
+}
+
+/** Match the canonical persisted JSON representation, including every review
+ * field and historical source. Optional undefined values are omitted by JSON. */
+function canonicalStoredJson(value: unknown) {
+  return canonicalJson(JSON.parse(JSON.stringify(value)));
+}
+export function reviewHash(review: Review): string {
+  return sha256(canonicalStoredJson(review));
+}
+export function reviewEditDraft(
+  goal: Goal,
+  reviewId: string,
+): DraftOf<"review-edit"> {
+  if (goal.archivedAt)
+    throw new Error("Dieses Vorhaben ist archiviert. Hole es zuerst zurück.");
+  const review = goal.reviews.find((r) => r.id === reviewId);
+  if (!review) throw new Error("Dieser Rückblick ist nicht mehr vorhanden.");
+  return {
+    id: newId("draft"),
+    key: `review-edit:${goal.id}`,
+    revision: 0,
+    type: "review-edit",
+    updatedAt: new Date().toISOString(),
+    values: {
+      goalId: goal.id,
+      reviewId: review.id,
+      baseRevision: goal.revision,
+      baseReviewHash: reviewHash(review),
+      text: review.text,
+      source: JSON.parse(JSON.stringify(review.source)),
+    },
+  };
+}
+
+/** Only retained in the session by the store. Never part of AppData/backups. */
+export type ReviewDeletion = {
+  goalId: string;
+  review: Review;
+  index: number;
+  expectedGoalRevisionAfterDeletion: number;
+  expectedReviewHash: string;
+  growthCredit: { reflections: 1; actions: 0 | 1 };
+};
+export function deleteReview(
+  data: AppData,
+  goalId: string,
+  reviewId: string,
+  expectedGoalRevision: number,
+  expectedHash: string,
+  at: string,
+): ReviewDeletion {
+  const goal = editableGoal(data, goalId, expectedGoalRevision),
+    index = goal.reviews.findIndex((r) => r.id === reviewId),
+    review = goal.reviews[index];
+  if (!review || reviewHash(review) !== expectedHash)
+    throw new Error(
+      "Dieser Rückblick wurde inzwischen verändert oder gelöscht. Bitte prüfe den aktuellen Stand.",
+    );
+  if (
+    data.drafts.some(
+      (d) =>
+        d.type === "review-edit" &&
+        d.values.goalId === goalId &&
+        d.values.reviewId === reviewId,
+    )
+  )
+    throw new Error(
+      "Zu diesem Rückblick ist noch ein Entwurf vorhanden. Schließe ihn zuerst ab oder verwirf ihn ausdrücklich.",
+    );
+  reviewSchema.shape.createdAt.parse(at);
+  const growthCredit = {
+    reflections: 1 as const,
+    actions: review.applied ? (1 as const) : (0 as const),
+  };
+  const retained = {
+    reflections:
+      data.retainedReviewGrowth.reflections + growthCredit.reflections,
+    actions: data.retainedReviewGrowth.actions + growthCredit.actions,
+  };
+  if (
+    !Number.isSafeInteger(retained.reflections) ||
+    !Number.isSafeInteger(retained.actions) ||
+    retained.actions > retained.reflections
+  )
+    throw new Error(
+      "Der bewahrte Entwicklungsstand ist ungültig. Es wurde nichts gelöscht.",
+    );
+  const payload: ReviewDeletion = {
+    goalId,
+    review: JSON.parse(JSON.stringify(review)),
+    index,
+    expectedGoalRevisionAfterDeletion: goal.revision + 1,
+    expectedReviewHash: expectedHash,
+    growthCredit,
+  };
+  goal.reviews.splice(index, 1);
+  goal.revision++;
+  goal.updatedAt = at;
+  data.retainedReviewGrowth = retained;
+  return payload;
+}
+export function undoReviewDeletion(
+  data: AppData,
+  payload: ReviewDeletion,
+  at: string,
+): void {
+  const goal = editableGoal(
+      data,
+      payload.goalId,
+      payload.expectedGoalRevisionAfterDeletion,
+    ),
+    review = reviewSchema.parse(payload.review);
+  if (
+    reviewHash(review) !== payload.expectedReviewHash ||
+    goal.reviews.some((r) => r.id === review.id)
+  )
+    throw new Error(
+      "Der Rückblick kann nicht unverändert zurückgeholt werden. Bitte prüfe den aktuellen Stand.",
+    );
+  if (
+    !Number.isInteger(payload.index) ||
+    payload.index < 0 ||
+    payload.index > goal.reviews.length ||
+    goal.reviews.length >= 500
+  )
+    throw new Error(
+      "Die ursprüngliche Position des Rückblicks ist nicht mehr verfügbar.",
+    );
+  const actions = review.applied ? 1 : 0;
+  if (
+    payload.growthCredit.reflections !== 1 ||
+    payload.growthCredit.actions !== actions ||
+    data.retainedReviewGrowth.reflections < 1 ||
+    data.retainedReviewGrowth.actions < actions
+  )
+    throw new Error(
+      "Der bewahrte Entwicklungsstand passt nicht zu dieser Rückkehr.",
+    );
+  reviewSchema.shape.createdAt.parse(at);
+  const retained = {
+    reflections: data.retainedReviewGrowth.reflections - 1,
+    actions: data.retainedReviewGrowth.actions - actions,
+  };
+  if (retained.actions > retained.reflections)
+    throw new Error(
+      "Der bewahrte Entwicklungsstand passt nicht zu dieser Rückkehr.",
+    );
+  goal.reviews.splice(payload.index, 0, JSON.parse(JSON.stringify(review)));
+  goal.revision++;
+  goal.updatedAt = at;
+  data.retainedReviewGrowth = retained;
 }

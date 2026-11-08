@@ -6,6 +6,9 @@ playwright-report/
 .env*
 !.env.example
 *.log
+!docs/evidence/**/*.log
 
 dist-android/
 dist-ios/
+
+/docs/evidence/latest/

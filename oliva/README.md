@@ -1,10 +1,10 @@
 # OLIVA · Raum für deinen Glauben
 
-Eigenständige Bibel- und Glaubens-App mit Expo, React Native und TypeScript. **Version 0.6.0 mit A51-Olivenbaum, 66 Buchansichten und dem großen Johannes-Schwertbild ist privat verfügbar.** FaithPath und `main` bleiben unverändert; der vollständige Master-Prompt ist noch nicht abgeschlossen.
+Eigenständige Bibel- und Glaubens-App mit Expo, React Native und TypeScript. **Version 0.7.0 mit geschützter Rückblickbearbeitung, bestätigtem Löschen und sitzungsgebundenem Undo ist privat verfügbar.** A51-Olivenbaum, 66 Buchansichten und großes Johannes-Schwertbild bleiben enthalten. FaithPath und `main` bleiben unverändert; der vollständige Master-Prompt ist noch nicht abgeschlossen.
 
 ## Auf dem Handy ansehen
 
-[Private OLIVA-Vorschau öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site) und mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **07.11.2026, 12:59:18 UTC** wird dort **0.6.0** ausgeliefert. Es gibt keine öffentliche Freigabe.
+[Private OLIVA-Vorschau öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site) und mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **07.11.2026, 20:10:37 UTC** wird dort **0.7.0** ausgeliefert. Der Eigentümerzugriff bleibt unverändert; es gibt keine öffentliche Freigabe.
 
 Der A51-Baum steht auf **Heute** und groß unter **Mein Garten**. **„Alle sieben Lebensbilder ansehen“** öffnet die vollständige Reihe, ohne den persönlichen Fortschritt zu ändern. Der [private Vorher-/Nachher-Vergleich](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/a51/comparison.svg) zeigt echte Browseraufnahmen aller sieben Stadien. Manifest, Icons und Offlinepaket sind enthalten; eine Installation auf einem echten Smartphone wurde noch nicht geprüft.
 
@@ -18,7 +18,7 @@ Nach **„Für den Offline-Neustart bereit.“** ist das Paket für den geladene
 - **Wege:** neun geführte Reisen mit je drei Schritten, verständlichen Einordnungen, freiwilliger Reflexion und optionalem Gebet. Neun Textfragen nennen tatsächliche Verse als Beleg. Die Pilotredaktion wird thematisch wiederverwendet; eine unabhängige Fachfreigabe steht aus.
 - **Garten:** sieben unveränderte A51-Originalillustrationen, lebendige Webdarstellung, separater nativer PNG-Ebenenadapter, statische Fallbacks, reduzierte Bewegung und eine Galerie. Der Baum bewertet keinen Glauben und verliert in Pausen keine Blätter.
 - **Buchschwerter:** 66 Buchansichten mit Themenidentität, Erklärung, Kapitelzähler und direktem Leseanfang. Der tatsächlich generierte Johannes-Pilot ist als große Illustration mit separater Kapitellichtspur integriert; drei Quellenlinks erläutern Leben, Quelle und Weinstock. Die 66 kompakten Vektorschwerter bleiben verfügbar. Ein kurzer Lichtimpuls folgt ausschließlich einer erfolgreich gespeicherten ausdrücklichen Kapitelbestätigung; reduzierte Bewegung bleibt statisch.
-- **Sammlung und Vorhaben:** Gedanken, Entwürfe, Versnotizen und Erfahrungen; eigene Anliegen mit kleinen Schritten, Archiv und bewahrten Rückblick-Snapshots. **Sammlung → Entwürfe** führt nach Bereichswechsel oder Neustart zurück zur Quelle.
+- **Sammlung und Vorhaben:** Gedanken, Entwürfe, Versnotizen und Erfahrungen; eigene Anliegen mit kleinen Schritten, Archiv und bewahrten Rückblick-Snapshots. Rückblicktexte lassen sich mit dauerhaften, konfliktgeschützten Entwürfen bearbeiten, bestätigt löschen und einmal innerhalb der geöffneten Ansicht zurückholen. Identität, damalige Quelle und Erfahrungsbestätigung bleiben beim Edit erhalten; Verwaltungsaktionen erzeugen kein Wachstum. **Sammlung → Entwürfe** führt nach Bereichswechsel oder Neustart zurück zur Quelle.
 - **Sicherungen und Import:** bestätigter Export/Restore sowie additiver FaithPath-V5-Import mit Vorschau, Quellarchiv, Konfliktschutz und atomarer Rückkehrsicherung. OTB wird nicht als Lutherbibel ausgegeben. Grenzen: 10 MiB Importquelle, 64 MiB vollständige Sicherung.
 
 Tippen erzeugt keinen Lernabschluss oder bestätigte Alltagserfahrung. Bei einem Schreibfehler schützt ein gesonderter RAM-Puffer Worte innerhalb der laufenden Sitzung; er überlebt keinen Prozessabbruch. Die Bildwelt, redaktionelle Einordnung und der eigentliche Bibeltext bleiben getrennt. Cloud-Sync, KI-Begleiter und Audio sind nicht angeschlossen. Maßgeblich für Umfang und Grenzen ist [der Lieferstand](docs/delivery-status.md).
@@ -56,17 +56,17 @@ npm run test:e2e
 
 Playwright nutzt `/usr/bin/chromium`, wenn vorhanden, oder seinen installierten Browser. `CHROMIUM_PATH` kann einen anderen lokalen Pfad angeben. Der Testserver startet auf Port 4173, sofern dort noch kein Vorschauprozess läuft. Während der Tests den gebauten `dist/`-Stand unverändert lassen.
 
-**Tatsächliche 0.6-Nachweise:** 75 Fach-/Persistenztests bestanden. Der vollständige Browserlauf bestand 51/52 Fälle; nach ausschließlicher Testsynchronisierung bestanden 11/11 betroffene Capture-/Readerfälle am unveränderten Produktbuild. Die Vereinigung deckt alle 52 unterschiedlichen Szenarien ab. Es gab **keinen** neuen einzelnen grünen 52/52-Gesamtlauf. Die sieben Buchschwertfälle bestanden sowohl gezielt als auch im späteren vollständigen Lauf. Details: [Qualität und Abnahme](docs/05-validation.md), [Zusammenfassung 0.6](docs/evidence/session-06/validation-summary.json). Frühere 0.5-Belege bleiben unverändert unter `docs/evidence/session-05/` erhalten.
+**Tatsächliche 0.7-Nachweise:** **116/116 Fach-/Persistenztests** und ein einzelner vollständiger Browserlauf mit **59/59 Fällen**, ohne Überspringen oder Flaky-Ergebnis, bestanden. Ein vorheriger 57/59-Lauf fand einen echten falschen Speicherhinweis nach Verwerfen sowie ein V1-Testfixture mit versehentlichem V6-Feld; beide sind korrigiert und im finalen Lauf enthalten. Frühere rote Berichte bleiben erhalten. Details: [Qualität und Abnahme](docs/05-validation.md), [Zusammenfassung 0.7](docs/evidence/session-07/validation-summary.json) und [Rückblickvertrag](docs/12-review-editing.md). Historische 0.5-/0.6-Belege bleiben unter ihren eigenen Sessionverzeichnissen erhalten.
 
-Der erfolgreiche [GitHub-CI-Lauf 42240609694](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694) mit 64 Fachtests und 35 Browserfällen gehört ausschließlich zum historischen **0.4-Checkpoint**. 0.5 und 0.6 wurden lokal geprüft und nicht öffentlich gepusht.
+Der erfolgreiche [GitHub-CI-Lauf 42240609694](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42240609694) mit 64 Fachtests und 35 Browserfällen gehört ausschließlich zum historischen **0.4-Checkpoint**. Die lokalen Abnahmen von0.5 bis0.7 sind separat belegt. Am08.11 wurde ihre GitHub-Sicherung und die Sicherung folgender Versionen ausdrücklich beauftragt; Zielrefs und Prüfablauf stehen in [GitHub-Versionssicherungen](docs/13-github-version-backups.md). Ein erfolgreicher Upload wird erst nach Remoteprüfung bestätigt und ist kein zusätzlicher CI-Nachweis.
 
-Der tatsächliche 0.5→0.6-Workerwechsel ist mit einem separat erhaltenen 0.5-Export reproduzierbar. Er bewahrt sämtliche Zustandsdatensätze ohne Nutzdatenmigration und prüft die neue Buchroute samt PNG sowie alle sieben A51-Stadien offline:
+Der tatsächliche **0.6→0.7-Workerwechsel** ist mit einem separat erhaltenen 0.6-Export reproduzierbar. V1–V5 werden strikt nach Nutzdaten-V6 migriert; privates Dokument V1, SQLite V3 und IndexedDB V1 bleiben erhalten. Beim geprüften Wechsel bleibt gespeichertes V5 bis zur ausdrücklichen Rückblickbearbeitung exakt bestehen. Danach sind Identität/Quelle des Rückblicks, alte Entwürfe, Fortschritt, Originalblob und Rückkehrsicherung erhalten; sieben A51-Stadien, Johannesbild und exklusiver Vorgängerchunk funktionieren offline:
 
 ```sh
-node scripts/offline-upgrade-v06.mjs /absoluter/pfad/zum/0.5/dist dist
+node scripts/offline-upgrade-v07.mjs /absoluter/pfad/zum/0.6/dist dist
 ```
 
-`scripts/offline-upgrade-v05.mjs` bleibt der historische 0.4→0.5-Versuch; `npm run test:upgrade` der ältere 0.3→0.4-Prüfablauf. Diese alten Skripte benötigen ihre passenden Kontroll-/Zielexporte. Keine echten persönlichen Browserdaten für technische Experimente löschen.
+`scripts/offline-upgrade-v06.mjs` bleibt der historische 0.5→0.6-Versuch, `scripts/offline-upgrade-v05.mjs` der 0.4→0.5-Versuch; `npm run test:upgrade` der ältere 0.3→0.4-Prüfablauf. Diese alten Skripte benötigen ihre passenden Kontroll-/Zielexporte. Keine echten persönlichen Browserdaten für technische Experimente löschen. Ab 0.8 soll der Standardpfad neuer Playwright-Berichte `docs/evidence/latest/` verwenden, damit historische Berichte geschützt bleiben.
 
 Der Bibelimport ist mit `npm run content:import` und `npm run content:check` deterministisch aus dem enthaltenen Original-USFM-Archiv wiederholbar; es werden keine Bibeltexte generiert. `npm run content:tree` prüft die A51-Original-/Derivatehashes. Die zusätzliche tatsächliche PNG-Ruheprüfung `python scripts/check-a51-native.py` benötigt Pillow und NumPy; normale Builds verwenden die gespeicherten Dateien und benötigen diese Python-Bildbibliotheken nicht.
 
@@ -94,7 +94,7 @@ Für Installationspakete Xcode bzw. Android SDK/JDK konfigurieren, App-IDs prüf
 
 `npm run build` erzeugt `dist/` mit Manifest, Icons, Quellenhinweisen und Offlinepaket. `node scripts/package-private-preview.mjs /absoluter/site-projektpfad` verpackt diesen geprüften Export für einen bereits separat gebundenen privaten Sites-Quellordner. Das Skript veröffentlicht nichts und ändert keine Zugriffsrechte.
 
-Das private Hostpaket benennt Assetpfade für den Dienst um. Es enthält nur eine `index.html`, da zwei HTML-Dateien im beobachteten Hosting den SPA-Fallback deaktivierten. Reviewvergleiche werden deshalb als SVG ausgeliefert. Die aktuelle [HTTP-Prüfung](docs/evidence/session-06/private-http-check.json) bestätigt **15 App-Routen sowie 98 App- und 42 Review-Dateien bytegenau**; anonym wird HTTP 401 geliefert. Der Bereitstellungsnachweis steht ebenfalls unter `docs/evidence/session-06/`. Diese HTTP-Prüfung ist keine zusätzliche Browser- oder Handyabnahme des gehosteten Links.
+Das private Hostpaket benennt Assetpfade für den Dienst um. Es enthält nur eine `index.html`, da zwei HTML-Dateien im beobachteten Hosting den SPA-Fallback deaktivierten. Reviewvergleiche werden deshalb als SVG ausgeliefert. Die aktuelle [HTTP-Prüfung](docs/evidence/session-07/private-http-check.json) bestätigt **15 App-Routen sowie 98 App- und 42 Review-Dateien bytegenau**; anonym wird HTTP 401 geliefert. Der [Bereitstellungsnachweis](docs/evidence/session-07/private-deployment.json) verbindet Kernbuild `oliva-f5f1df50305ec1e5` mit Hostpaket `oliva-7173147c3f6d4bca`. Diese HTTP-Prüfung ist keine zusätzliche CUA-Browser- oder Handyabnahme des gehosteten Links; das vorgesehene CUA-Werkzeug war nicht verfügbar.
 
 Ein eigener HTTPS-Static-Host benötigt SPA-Fallback auf `index.html`, richtige Assettypen und echte 404-Antworten für unbekannte Assetpfade. `index.html` und `sw.js` dürfen nicht unveränderlich gecacht werden. Der lokale Vorschau-Server ist kein vollständig gehärteter Produktionsserver. Ohne ausdrückliche Freigabe keine öffentliche Bereitstellung vornehmen.
 
@@ -112,9 +112,16 @@ Ein eigener HTTPS-Static-Host benötigt SPA-Fallback auf `index.html`, richtige 
 10. [A51-Integration und Screenshotvergleich](docs/09-a51-integration.md)
 11. [Johannes-Bildpilot, Lichtspur und Rechte](docs/10-sword-art-pilot.md)
 12. [66 Buchansichten und Lesespuren](docs/11-book-identities.md)
-13. [Lieferstand und nächste Schritte](docs/delivery-status.md)
-14. [Dauerhafter Fortsetzungsstand](RESUME.md)
+13. [Rückblicke bearbeiten, löschen und zurückholen](docs/12-review-editing.md)
+14. [Lieferstand und nächste Schritte](docs/delivery-status.md)
+15. [Dauerhafter Fortsetzungsstand](RESUME.md)
 
 Die A51-Originale, die eigene biblische Bildwelt und der Johannes-Pilot besitzen getrennte Herkunftsnachweise unter `art/a51/provenance.json`, `art/manifest.json` und `art/swords/pilot.json`. Übernommener FaithPath-A51-Code und A51-Bilder sind von OLIVAs MIT-Lizenz ausgenommen; die ausdrückliche Integrationserlaubnis ist keine allgemeine öffentliche Weiterveröffentlichungslizenz. Die öffentliche Bildfreigabe des Johannes-Piloten bleibt offen. Details: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-Der aktuelle lokale Entwicklungsbranch heißt `feature/oliva-v06-book-identities-20261107` und hat keinen Remote. Der öffentliche Sicherungsbranch bleibt bei 0.4. Die nächste Iteration 0.7 zur Bearbeitung/Löschung eigener Vorhaben-Rückblicke mit sicherem sitzungsgebundenem Undo ist analysiert, **noch nicht implementiert**. Die vorbereiteten Supabase-Migrationen sind kein aktiver Cloudbetrieb. Persönliche Daten und Exporte sind lokal und unverschlüsselt. Native Geräteabnahme, unabhängige Inhalts-/Bildprüfung, Anfänger-Usability, weitere Buchschwertillustrationen, optionale Dienste und die Gesamtfreigabe bleiben offen.
+Der aktuelle lokale Entwicklungsbranch heißt `feature/oliva-v07-review-history-20261107` und hat keinen Remote. Für den lokalen Abschluss sind Tag `oliva-v0.7-review-continuity-private` und Quell-ZIP `/workspace/oliva-next-v0.7-review-continuity-source.zip` festgelegt; Commit und ZIP-SHA-256 werden außerhalb des Archivs in `/workspace/oliva-v07-local-checkpoint.json` protokolliert. Der historische0.4-Branch bleibt erhalten; neue GitHub-Sicherungen verwenden eigene Versionsbranches und Tags.
+
+Nächstes Teilziel nach dem 0.7-Checkpoint ist **0.8: David vor Goliath**. Ein tatsächlich generierter Master, drei WebP-Varianten (640/1024/1280, zusammen 448.938 Byte), Quellen/Prompt/Rechtegrenzen und ein Storyentwurf zu 1. Samuel 17,38–45 liegen unter [art/biblical-next/](art/biblical-next/README.md). Sie sind **noch nicht in der Runtime**. Integration, mobile Bildausschnitte, exakte Reader-Verweise, Offlineverhalten und unveränderte Nutzdaten werden separat geprüft.
+
+Die vorbereiteten Supabase-Migrationen sind kein aktiver Cloudbetrieb. Persönliche Daten und Exporte sind lokal und unverschlüsselt. Native Geräteabnahme, unabhängige Inhalts-/Bildprüfung, Anfänger-Usability, weitere Buchschwertillustrationen, optionale Dienste und die Gesamtfreigabe bleiben offen.
+
+Die Anweisung vom08.11 erlaubt die Quellenablage im bestehenden öffentlichen GitHub-Repository für0.5/0.6/0.7 und folgende Versionen. Die Web-Vorschau bleibt eigentümerprivat. GitHub-Checkout: zuerst `cd oliva`, dann die üblichen npm-Befehle. Keine Änderung an FaithPaths Anwendungsdateien oder `main`, kein öffentlicher Web-/Storedeploy. Details: [Versionssicherungen](docs/13-github-version-backups.md).

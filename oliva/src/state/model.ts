@@ -9,6 +9,10 @@ import { pathById } from "../features/paths/catalog";
 import { referenceSchema as ref } from "../features/bible/schema";
 import { goalSchema, draftSchema } from "../features/personal/schema";
 import {
+  goalSchema as v5GoalSchema,
+  draftSchema as v5DraftSchema,
+} from "../features/personal/schema-v5";
+import {
   originSchema,
   receiptSchema,
   MAX_BACKUP_BYTES,
@@ -115,11 +119,11 @@ export const legacyDataSchema = baseSchema
   .refine(completeStepsValid, "Ungültiger Wegfortschritt");
 const v2Fields = {
   goals: z
-    .array(goalSchema)
+    .array(v5GoalSchema)
     .max(500)
     .refine((items) => unique(items.map((g) => g.id))),
   drafts: z
-    .array(draftSchema)
+    .array(v5DraftSchema)
     .max(100)
     .refine(
       (items) =>
@@ -157,7 +161,7 @@ export const v4DataSchema = z
       ),
     "Importquelle fehlt",
   );
-export const dataSchema = z
+export const v5DataSchema = z
   .object({
     ...v4DataSchema.shape,
     version: z.literal(5),
@@ -177,56 +181,82 @@ export const dataSchema = z
       !d.readingPosition || sameReadingScope(d.readingPosition.ref, d.reading),
     "Leseposition gehört zu einem anderen Abschnitt",
   );
+// The previous nested schemas are frozen: a V5 document must never acquire
+// V6 draft types merely because a current UI schema changes.
+export const retainedReviewGrowthSchema = z
+  .object({
+    reflections: z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER),
+    actions: z.number().int().nonnegative().max(Number.MAX_SAFE_INTEGER),
+  })
+  .strict()
+  .refine(
+    (d) => d.actions <= d.reflections,
+    "Ungültige erhaltene Rückblickbeiträge",
+  );
+export const dataSchema = z
+  .object({
+    ...v5DataSchema.shape,
+    version: z.literal(6),
+    goals: z
+      .array(goalSchema)
+      .max(500)
+      .refine((items) => unique(items.map((g) => g.id))),
+    drafts: z
+      .array(draftSchema)
+      .max(100)
+      .refine(
+        (items) =>
+          unique(items.map((d) => d.key)) && unique(items.map((d) => d.id)),
+      ),
+    // Anonymous counts only. Deleted words and snapshots are not retained here.
+    // Replacing a deleted review's contribution preserves future growth thresholds.
+    retainedReviewGrowth: retainedReviewGrowthSchema,
+  })
+  .strict()
+  .refine(completeStepsValid, "Ungültiger Wegfortschritt")
+  .refine(
+    (d) =>
+      [...d.goals, ...d.notes].every(
+        (x) => !x.origin || d.imports.some((r) => r.id === x.origin!.importId),
+      ),
+    "Importquelle fehlt",
+  )
+  .refine(
+    (d) =>
+      !d.readingPosition || sameReadingScope(d.readingPosition.ref, d.reading),
+    "Leseposition gehört zu einem anderen Abschnitt",
+  );
+
 export function decodeData(input: unknown): AppData {
-  if (
-    input &&
-    typeof input === "object" &&
-    "version" in input &&
-    input.version === 1
-  ) {
-    const old = legacyDataSchema.parse(input);
-    return dataSchema.parse({
-      ...old,
-      version: 5,
-      readingPosition: null,
-      goals: [],
-      drafts: [],
-      imports: [],
-    });
-  }
-  if (
-    input &&
-    typeof input === "object" &&
-    "version" in input &&
-    input.version === 2
-  ) {
-    return dataSchema.parse({
-      ...v2DataSchema.parse(input),
-      version: 5,
-      readingPosition: null,
-      imports: [],
-    });
-  }
-  const data =
-    input &&
-    typeof input === "object" &&
-    "version" in input &&
-    input.version === 3
-      ? dataSchema.parse({
-          ...v3DataSchema.parse(input),
-          version: 5,
-          readingPosition: null,
-        })
-      : input &&
-          typeof input === "object" &&
-          "version" in input &&
-          input.version === 4
-        ? dataSchema.parse({
-            ...v4DataSchema.parse(input),
-            version: 5,
+  const version =
+    input && typeof input === "object" && "version" in input
+      ? input.version
+      : undefined;
+  let data: AppData;
+  if (version === 6) data = dataSchema.parse(input);
+  else {
+    const old =
+      version === 1
+        ? {
+            ...legacyDataSchema.parse(input),
+            goals: [],
+            drafts: [],
+            imports: [],
             readingPosition: null,
-          })
-        : dataSchema.parse(input);
+          }
+        : version === 2
+          ? { ...v2DataSchema.parse(input), imports: [], readingPosition: null }
+          : version === 3
+            ? { ...v3DataSchema.parse(input), readingPosition: null }
+            : version === 4
+              ? { ...v4DataSchema.parse(input), readingPosition: null }
+              : v5DataSchema.parse(input);
+    data = dataSchema.parse({
+      ...old,
+      version: 6,
+      retainedReviewGrowth: { reflections: 0, actions: 0 },
+    });
+  }
   for (const receipt of data.imports) {
     const parsed = parseFaithpath(receipt.sourceText);
     if (
@@ -240,7 +270,8 @@ export function decodeData(input: unknown): AppData {
 export type AppData = z.infer<typeof dataSchema>;
 export type Note = z.infer<typeof noteSchema>;
 export const initialData = (): AppData => ({
-  version: 5,
+  version: 6,
+  retainedReviewGrowth: { reflections: 0, actions: 0 },
   readingPosition: null,
   imports: [],
   goals: [],
@@ -305,10 +336,12 @@ export function grow(data: AppData) {
   const reviews = data.goals.flatMap((g) => g.reviews);
   const reflections =
       data.notes.filter((n) => n.kind === "reflection" && !n.origin).length +
-      reviews.length,
+      reviews.length +
+      data.retainedReviewGrowth.reflections,
     actions =
       data.notes.filter((n) => n.kind === "action" && !n.origin).length +
-      reviews.filter((r) => r.applied).length;
+      reviews.filter((r) => r.applied).length +
+      data.retainedReviewGrowth.actions;
   let next = reads > 0 ? 1 : 0;
   if (reads >= 2 && understood >= 1) next = 2;
   if (reads >= 4 && understood >= 2) next = 3;

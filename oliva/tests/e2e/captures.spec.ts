@@ -93,8 +93,9 @@ test("zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übe
       return box !== null && box.y >= 0 && box.y < 200;
     }).toBe(true);
   } finally {
-    await mkdir("docs/evidence/session-06", { recursive: true });
-    await writeFile("docs/evidence/session-06/reader-anchor-synchronization.json", JSON.stringify({
+    const evidence = process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest";
+    await mkdir(evidence, { recursive: true });
+    await writeFile(`${evidence}/reader-anchor-synchronization.json`, JSON.stringify({
       criterion: "A real, non-null verse rectangle with 0 <= y < 200, within the standard 15-second assertion timeout",
       measured_without_test_scroll: true,
       source_build_id: await page.locator('meta[name="oliva-build"]').getAttribute("content"),
@@ -237,7 +238,7 @@ test("der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexi
     })
     .fill("Meine letzten Worte vor dem Export.");
   await page
-    .getByRole("button", { name: "Profil und Einstellungen", exact: true })
+    .getByRole("button", { name: /Profil und Einstellungen$/, exact: true })
     .click();
   const download = page.waitForEvent("download");
   await page
@@ -306,7 +307,7 @@ test("ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Si
     page.getByText(/Entwurf konnte nicht gesichert werden/),
   ).toBeVisible();
   await page
-    .getByRole("button", { name: "Profil und Einstellungen", exact: true })
+    .getByRole("button", { name: /Profil und Einstellungen$/, exact: true })
     .click();
   await page
     .getByRole("button", { name: "Sicherung exportieren", exact: true })

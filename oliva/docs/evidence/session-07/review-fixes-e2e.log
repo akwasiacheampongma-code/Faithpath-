@@ -1,0 +1,85 @@
+[WebServer] (node:12058) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:12066) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/reviews.spec.ts:391:1 › Rückblickeditor bleibt auf kleinen und großen Displays sowie in Hell und Dunkel lesbar (10.8s)
+(node:12241) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/reviews.spec.ts:449:1 › ein während des Verlassens abgeschlossener Löschvorgang lässt kein Undo zurück (6.2s)
+
+
+  1) tests/e2e/reviews.spec.ts:391:1 › Rückblickeditor bleibt auf kleinen und großen Displays sowie in Hell und Dunkel lesbar 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 40
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+    +     "help": "Elements must have their visible text as part of their accessible name",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=playwright",
+    +     "id": "label-content-name-mismatch",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": null,
+    +             "id": "label-content-name-mismatch",
+    +             "impact": "serious",
+    +             "message": "Text inside the element is not included in the accessible name",
+    +             "relatedNodes": Array [],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Text inside the element is not included in the accessible name",
+    +         "html": "<button aria-label=\"Profil und Einstellu...\" role=\"button\" tabindex=\"0\" class=\"css-g5y9jx r-1loqt21...\" type=\"button\" style=\"width: 35px; height:...\">",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".r-1p0dtai.r-1d2f490.r-u8s1d:nth-child(2) > .r-13awgt0.css-g5y9jx > .r-13awgt0.css-g5y9jx > .css-g5y9jx > .css-g5y9jx:nth-child(2) > header > .css-g5y9jx > .r-1loqt21.r-1otgn73[aria-label=\"Profil und Einstellungen\"]",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.semantics",
+    +       "wcag21a",
+    +       "wcag253",
+    +       "EN-301-549",
+    +       "EN-9.2.5.3",
+    +       "RGAAv4",
+    +       "RGAA-6.1.5",
+    +     ],
+    +   },
+    + ]
+
+      429 |   }
+      430 |   const axe = await new AxeBuilder({ page }).analyze();
+    > 431 |   expect(axe.violations).toEqual([]);
+          |                          ^
+      432 |   await page
+      433 |     .getByRole("button", { name: "Rückblickänderung speichern", exact: true })
+      434 |     .click();
+        at /workspace/faithpath-next/tests/e2e/reviews.spec.ts:431:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reviews-Rückblickeditor-bl-bac22-e-in-Hell-und-Dunkel-lesbar/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reviews-Rückblickeditor-bl-bac22-e-in-Hell-und-Dunkel-lesbar/error-context.md
+
+  1 failed
+    tests/e2e/reviews.spec.ts:391:1 › Rückblickeditor bleibt auf kleinen und großen Displays sowie in Hell und Dunkel lesbar 
+  1 passed (21.7s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

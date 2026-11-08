@@ -1,15 +1,15 @@
-# Lieferstand · OLIVA 0.6.0 · Buchidentitäten privat bereitgestellt
+# Lieferstand · OLIVA 0.7.0 · Rückblickkontinuität privat bereitgestellt
 
-07.11.2026. **OLIVA 0.6 mit A51, 66 Buchansichten und großem Johannes-Schwertbild ist seit 12:59:18 UTC privat bereitgestellt. Die gesamte im Master-Prompt definierte Produktfreigabe ist noch nicht abgeschlossen.** Vollständige Bestandsparität, Cloudbetrieb, inhaltliche Fachfreigabe und native Geräteabnahme bleiben offen.
+08.11.2026. **OLIVA 0.7 mit geschützter Rückblickbearbeitung, bestätigtem Löschen und sitzungsgebundenem Undo ist seit 20:10:37 UTC privat bereitgestellt. Die gesamte im Master-Prompt definierte Produktfreigabe ist noch nicht abgeschlossen.** A51, 66 Buchansichten und großes Johannes-Schwertbild bleiben enthalten. Vollständige Bestandsparität, Cloudbetrieb, inhaltliche Fachfreigabe und native Geräteabnahme bleiben offen.
 
-[Private Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site) · [Privater A51-Screenshotvergleich](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/a51/comparison.svg). Die unveränderte URL enthält weiterhin `v04`, ausgeliefert wird 0.6.0. Zugriff ist auf das Eigentümerkonto begrenzt; kein öffentlicher Deploy. Johannes öffnen: **Bibel → Johannes → Buchschwert ansehen**.
+[Private Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site) · [Privater A51-Screenshotvergleich](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/a51/comparison.svg). Die unveränderte URL enthält weiterhin `v04`, ausgeliefert wird 0.7.0. Zugriff bleibt auf das Eigentümerkonto begrenzt; kein öffentlicher Deploy. Rückblick öffnen: **Wege → Persönliche Vorhaben → eigener Rückblick**. Johannes: **Bibel → Johannes → Buchschwert ansehen**.
 
 ## Tatsächlich vorhanden
 
 | Ergebnis | Konkrete Lieferung | Grenze |
 |---|---|---|
 | FaithPath-Analyse | Neuester verfügbarer Branch per Commit-Zeit ermittelt; Snapshot `a519ce8`; Funktionsmatrix, Architektur, zwei Screenshot-Artefakte geprüft | Keine vollständige neue Geräteprüfung der Bestands-App |
-| Schutz des Bestands | Separate Referenzkopie; alle 390 materialisierten Dateien erneut per Git-Blob-Hash verglichen; eigenständiges lokales Projekt ohne Remote | FaithPath und `main` unverändert. Öffentlicher OLIVA-Sicherungsbranch bleibt bei 0.4; keine weiteren öffentlichen Pushes oder Merges |
+| Schutz des Bestands | Separate Referenzkopie; alle 390 materialisierten Dateien erneut per Git-Blob-Hash verglichen; eigenständiges lokales Projekt ohne Remote | FaithPath und `main` unverändert. Historischer0.4-Branch bleibt erhalten; seit08.11 sind GitHub-Versionssicherungen0.5/0.6/0.7 und folgender Stände beauftragt. Separate Branches/Tags unter `oliva/`; noch laufenden Upload erst nach Remoteprüfung bestätigen. Kein Merge oder öffentlicher Webdeploy |
 | Markt / USP | Aktuelle offizielle Quellen, Konkurrenzvergleich, verworfene unbelegte „erste App“-Behauptung, prüfbare Positionierung | Reale Nutzerstudie steht aus |
 | Design / IA | Eigenes OLIVA-System, Tokens, Light/Dark, gemeinsame Komponenten, Hauptscreens, mobile/große Browseraufnahmen | Markenfreigabe und physische OS-Schrift-/Screenreader-Prüfung offen |
 | App-Quellcode | React Native / Expo / TypeScript, Expo Router, Zustand, Zod, SQLite-/IndexedDB-Adapter | Web und native Bundles sind keine Storeveröffentlichung |
@@ -20,13 +20,13 @@
 | Olivenbaum | 7 A51-Originalillustrationen (7 PNG-Master, 21 WebPs), adaptierte WebGL-Windengine, nativer PNG-Ebenenadapter, Galerie, Offline-/Reduced-Motion-Fallback und echte OLIVA-Aktionsprojektion | Keine Fortschrittsänderung durch Vorschau. Native Bewegung und Energie noch nicht auf Geräten abgenommen; [Bericht](09-a51-integration.md) |
 | Buchschwerter | 66 Buchansichten mit Themenidentität, Erklärung, genauer Lesespur und Kapitelwahl; großer Johannes-Bildpilot mit Lichtspur und drei Quellenlinks integriert; alle kompakten Vektoren erhalten | Erst ein neuer gemalter Pilot. Keine 66 separat generierten oder unabhängig künstlerisch freigegebenen Masterbilder |
 | Sammlung | Gedanken/Reflexionen/Erfahrungen, Bearbeiten, bestätigtes Löschen und lokales Undo; Verse/Markierungen wiederfinden | Dauerhafte Entwürfe auch für Hub, Garten, Vers und geführten Schritt; Übersicht und Quelle bleiben erhalten. RAM-Rettung bei Speicherfehlern überlebt keinen Prozessabbruch |
-| Persönliche Vorhaben | Anliegen, eigene Schritte, Bibelbezug aus dem Reader, Archiv/Wiederaufnahme, unveränderte Rückblick-Snapshots | Kein vollständiges Historien-/Bearbeitungs-/Löschmodell aller Rückblicke |
-| Datenhoheit | V1/V2/V3/V4→V5-Migration, Export, bestätigter Restore; additiver V5-Import mit Vorschau, Dublettenschutz, historischen Quellen, Originalarchiv, atomarer Rückkehrsicherung und Fensterkonfliktschutz | Lokale Daten/Exporte unverschlüsselt. V5-Quelle max. 10 MiB; Gesamtbackup 64 MiB. Nicht zuordenbare Inhalte bleiben im Originalarchiv. Kein echter Personenexport abgenommen. |
+| Persönliche Vorhaben | Anliegen, eigene Schritte, Bibelbezug, Archiv/Wiederaufnahme und bewahrte Rückblick-Snapshots; textliche Reviewkorrektur mit dauerhaftem CAS-/Hash-geschütztem Entwurf, bestätigtes Delete und ein RAM-Undo in der geöffneten Ansicht | Edit erhält ID/Quelle/Erstellzeit/Erfahrungsbestätigung; kein Wachstum durch Autosave/Edit/Verwerfen/Delete/Undo. Kein vollständiges persönliches Historienmodell; alte Exporte/Importblobs/Rückkehrsicherungen können Löschkopien enthalten |
+| Datenhoheit | Strikte V1–V5→V6-Migration, eingefrorene alte Schemas, Export/Restore; additiver FaithPath-V5-Import mit Vorschau, Quellarchiv, atomarer Rückkehrsicherung und Fensterkonfliktschutz; zwei anonyme Zähler bewahren Beiträge gelöschter Rückblicke | Lokale Daten/Exporte unverschlüsselt. FaithPath-V5-Quelle max. 10 MiB; Gesamtbackup 64 MiB. Nicht zuordenbare Inhalte bleiben im Originalarchiv. Kein echter Personenexport abgenommen |
 | Bildwelt | 7 generierte und visuell geprüfte Pilotmotive, 18 WebP-Varianten, Originale, SHA-256, Provenienz und Freigabestatus; 4 neue Erzählpiloten im Reader | Weitere angefragte Geschichten fehlen; historische/theologische und öffentliche Rechtefreigabe offen |
 | Datenbank | SQLite physisch V3, IndexedDB V1, private Archiv-Blobs mit atomarer Sicherung/Bereinigung, Rohdatenrettung; optionale Supabase-DDL/RLS | Cloudmigration nicht gegen Live-Supabase ausgeführt; kein aktiver Sync |
-| Tests / Build | 75 Fachtests; vollständiger Browserlauf 51/52, danach 11/11 nach reiner Testsynchronisierung; echter 0.5→0.6-Updatewechsel ohne Datenänderung; beide nativen Debugexports mit je 98 A51-/3 Johannes-PNGs | Kein neuer einzelner grüner 52/52-Gesamtlauf, kein APK/AAB/IPA, kein Simulator-/Gerätetest, keine vollständige WCAG-Freigabe |
-| Private PWA | Manifest, Icons, Offlineworker; 0.6-Deployment erfolgreich; 15 App-Routen, 98 App-/42 Review-Dateien per HTTP geprüft; anonym 401, Eigentümerzugriff unverändert | Keine zusätzliche gehostete CUA-Browserprüfung und keine physische PWA-Installation |
-| Dokumentation | Audit, Markt, UX, Architektur, A51-/Schwertpilot-Berichte, 66 Buchidentitäten, Rechte, Start-/Build-/Deploymentanleitung und Rohberichte | Historischer GitHub-Lauf 42240609694: 64 Fachtests/35 Browserfälle ausschließlich für 0.4; 0.5-/0.6-Nachweise getrennt unter `session-05/` und `session-06/` |
+| Tests / Build | **116/116 Fachtests und einzelner vollständiger 59/59-Browserlauf** ohne Überspringen/Flaky; echter 0.6→0.7-Offlinewechsel mit V5→V6; finale native Debugexports mit je 98 A51-/3 Johannes-PNGs | Native Nachweise betreffen JavaScript und Assetbytes, keine APK/AAB/IPA, Simulator-/Gerätetests oder vollständige WCAG-Freigabe |
+| Private PWA | Manifest, Icons, Offlineworker; 0.7-Deployment erfolgreich; 15 App-Routen, 98 App-/42 Review-Dateien per HTTP geprüft; anonym 401, Eigentümerzugriff unverändert | Keine zusätzliche gehostete CUA-Browserprüfung und keine physische PWA-Installation |
+| Dokumentation | Audit, Markt, UX, Architektur, A51-/Schwertpilot-Berichte, Buchidentitäten, Rückblickverträge, Rechte, Start-/Build-/Deploymentanleitung und Rohberichte | Historischer GitHub-Lauf 42240609694: 64 Fachtests/35 Browserfälle ausschließlich für 0.4; Nachweise 0.5–0.7 bleiben getrennt in ihren Sessions |
 
 ## Was für die Gesamt-Definition-of-Done noch fehlt
 
@@ -39,15 +39,28 @@
 
 ## Nächste überprüfbare Iterationen
 
-1. Pilot fachlich prüfen und fünf bis zehn echte Anfänger den ersten Weg beobachten lassen. Ziel: Nutzen/Begriff „Weg“ in ungefähr 60 Sekunden erklären können; Bibeltext und Einordnung unterscheiden.
-2. Geräteabnahme des vorhandenen Kerns. Fehler in Storage, Tastatur oder Hilfstechnologien zuerst beheben, bevor zusätzliche Funktionen die Prüffläche vergrößern.
-3. Iteration 0.7 vorbereiten: eigene Vorhaben-Rückblicke mit geschützten Entwürfen bearbeiten/löschen und ein sitzungsgebundenes Undo ergänzen. CAS-, Snapshot-, Wachstums- und Archivgrenzen sind analysiert; **noch nicht implementiert**.
-4. Weitere Buchillustrationen nach Prüfung des integrierten Johannes-Piloten, freiwillige Erinnerungen und unabhängige Kapitelredaktion ergänzen. Die 66 funktionierenden kompakten Schwerter bewahren. Den V5-Import zusätzlich mit einem anonymisierten echten Export und auf nativen Geräten prüfen.
-5. Erst danach optionalen Sync und KI anschließen und deren tatsächliche Dienst-/Kontenprüfungen dokumentieren.
+1. Lokalen 0.7-Abschluss mit Tag `oliva-v0.7-review-continuity-private`, ZIP `/workspace/oliva-next-v0.7-review-continuity-source.zip` und äußerem Commit-/SHA-256-Manifest `/workspace/oliva-v07-local-checkpoint.json` sichern; danach 0.8 auf eigenem lokalen Branch beginnen. Danach GitHub-Versionssicherung gemäß [Sicherungsplan](13-github-version-backups.md) durchführen; kein Merge oder öffentliches Webdeployment.
+2. **0.8: David vor Goliath als nächste Story integrieren.** Ein tatsächlich generierter 1536×1024-Master, drei WebPs (640/1024/1280, zusammen 448.938 Byte), Quellen/Prompt/Rechtegrenzen und ein Storyentwurf zu 1. Samuel 17,38–45 liegen unter [art/biblical-next/](../art/biblical-next/README.md). Master und 640er sind intern angesehen; **noch keine Runtimeintegration**. Mobile Bildausschnitte, exakte Reader-Verweise, Offlineverhalten und unveränderte Nutzdaten prüfen; bei Bedarf Story-Bildfallback verbessern. Öffentliche/Fachfreigaben bleiben offen.
+3. Vor weiteren Browserläufen den Standardberichtspfad auf `docs/evidence/latest/` umstellen, damit historische 0.4-Berichte nicht überschrieben werden. Neue abgeschlossene Sessions separat bewahren.
+4. Pilot fachlich prüfen und fünf bis zehn echte Anfänger beim ersten Weg beobachten. Geräteabnahme des vorhandenen Kerns einschließlich Storage, Tastatur und Hilfstechnologien organisieren.
+5. Weitere Buchillustrationen nach Prüfung des Johannes-Piloten, freiwillige Erinnerungen und unabhängige Kapitelredaktion ergänzen. 66 kompakte Schwerter bewahren. FaithPath-V5-Import zusätzlich mit anonymisiertem echtem Export und auf Geräten prüfen.
+6. Optionalen Sync und KI erst mit realen Diensten, sicheren Datenverträgen und nachweislichen Konten-/Quellenprüfungen anschließen.
 
 Die ausstehenden Punkte sind ausdrücklich dokumentierte Arbeit. Die privat bereitgestellte Umsetzung wird nicht als vollständiger Ersatz aller FaithPath-Funktionen oder als öffentlich veröffentlichungsreifes Endprodukt ausgegeben.
 
-## Aktueller Bereitstellungs- und Testnachweis 0.6
+## Aktueller Bereitstellungs- und Testnachweis 0.7
+
+Private Quelle `aa0f227a1e001de31ced169113a3f2f764948110`, erfolgreiches Deployment `appgdep_6aef85b06b1c8191b4a6a60fb3141064` am 07.11.2026 um 20:10:37 UTC. Kernbuild `oliva-f5f1df50305ec1e5`; Hostpaket `oliva-7173147c3f6d4bca`. [Deployment](evidence/session-07/private-deployment.json), [Quellcheckpoint](evidence/session-07/private-source-checkpoint.json) und [Paketprüfung](evidence/session-07/private-package-check.json) belegen die getrennte private Bereitstellung ohne Publikumsänderung.
+
+Die [finale HTTP-Prüfung](evidence/session-07/private-http-check.json) bestätigt 15 Routen mit Shell, 98 App-Dateien und 42 Review-Dateien bytegenau; Manifest/Worker korrekt, anonym 401. Mangels des vorgesehenen CUA-Werkzeugs gibt es keine zusätzliche gehostete Browserprüfung; die lokale Kern-App wurde separat mit Chromium geprüft.
+
+**116/116 Fachtests und ein einzelner vollständiger 59/59-Browserlauf** ohne Überspringen oder Flaky-Ergebnis sind belegt. Der vorherige 57/59-Lauf fand einen echten falschen Speicherhinweis nach Verwerfen und ein V1-Testfixture mit versehentlichem V6-Feld; beide sind korrigiert und im finalen Lauf enthalten. Frühere rote Berichte bleiben erhalten. [Zusammenfassung](evidence/session-07/validation-summary.json), [finaler Gesamtlauf](evidence/session-07/e2e-results.json) und [Rückblickvertrag](12-review-editing.md).
+
+Die finalen [Android-/iOS-Debugexports](evidence/session-07/native-builds.json) gehören zum Runtime-Quelldigest `0a45b1d952c55cfa530d14a10c684dcd45c4379e14e7620f6e50e0f3d05a2c3a` und enthalten je 98 A51-/3 Johannes-PNGs bytegenau. Sie prüfen Bundles und Assets, keine Installation, Simulatoren oder Geräte.
+
+Der [echte lokale 0.6→0.7-Offlinewechsel](evidence/session-07/offline-upgrade.json) prüft RAM-Migration V5→V6, unverändertes gespeichertes V5 bis zur ausdrücklichen Bearbeitung und den ersten V6-Commit im privaten Dokument V1. Review-ID/Quelle/Erstellzeit/Erfahrungsbestätigung, alter Journalentwurf, Wachstum, Lesefortschritte, Originalblob und Rückkehrsicherung bleiben erhalten. Offline-Neustart, sieben A51-Stadien, Johannesroute/PNG und exklusiver Vorgängerchunk sind bestanden. Physische SQLite-Version 3 und IndexedDB-Version 1 bleiben unverändert.
+
+## Historischer Bereitstellungs- und Testnachweis 0.6
 
 Private Quelle `f7705ee5955cb4bb984301363cd6641c7fa591c0`, erfolgreiches Deployment `appgdep_6aef2097fb108191981ddd7bfacf5e02` am 07.11. um 12:59:18 UTC. Kernbuild `oliva-a542b7009551a2a2`; Hostpaket `oliva-524e381f7222abe8`. [Deployment](evidence/session-06/private-deployment.json), [Quellcheckpoint](evidence/session-06/private-source-checkpoint.json) und [Paketprüfung](evidence/session-06/private-package-check.json) belegen die getrennte private Bereitstellung ohne Änderung des Publikums.
 
@@ -64,3 +77,5 @@ Private Quelle `672947b4853bf5e6ee326233c56209666391ff3c`, Deployment `appgdep_6
 Der vollständige lokale Browserlauf bestand vor der letzten isolierten Webkorrektur 44/45 Fälle. Ein tatsächlicher A51-Fehler beim Verarbeiten mehrerer IntersectionObserver-Meldungen desselben Baums wurde diagnostiziert und behoben. Alle fünf betroffenen A51-Fälle einschließlich beidseitigem Batch-Replay bestanden danach. Die vereinigten Berichte decken alle 45 unterschiedlichen Szenarien ab; sie werden nicht als neuer einzelner grüner Gesamtlauf ausgegeben. Belege: [Zusammenfassung](evidence/session-05/validation-summary.json), [Diagnose](evidence/session-05/IO-batch-diagnosis.json), [Nachtests](evidence/session-05/a51-io-fixed-e2e.json).
 
 Die native Bundleprüfung belegt Metro-Plattformtrennung und exakte PNG-Auslieferung. Der spätere Fix betrifft allein den nachweislich nicht in diesen Bundles enthaltenen Webrenderer; [native-builds.json](evidence/session-05/native-builds.json) nennt diesen zeitlichen Unterschied. Die [Updateprüfung](evidence/session-05/offline-upgrade.json) wurde gegen den finalen Kernbuild ausgeführt. Keine dieser Prüfungen ersetzt echte Geräte.
+
+GitHub-Quellenablage und private Webbereitstellung sind getrennt: Der aktuelle Auftrag vom08.11 erlaubt GitHub-Backups im bestehenden öffentlichen Repository, während die PWA beim bisherigen Eigentümerpublikum bleibt. Allgemeine Inhalts-/Storefreigabe wird daraus nicht abgeleitet.

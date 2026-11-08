@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "id": "david-before-goliath",
+  "prompt_version": "oliva-cinema-v1-david-before-goliath-01",
+  "style_version": "oliva-cinema-v1",
+  "scene": "David geht Goliath vor dem Schleuderwurf entgegen; ruhige künstlerische Interpretation.",
+  "reference": {
+    "book": "1SA",
+    "chapter": 17,
+    "from": 40,
+    "to": 47
+  },
+  "additional_landscape_reference": {
+    "book": "1SA",
+    "chapter": 17,
+    "from": 3,
+    "to": 3
+  },
+  "prompt": "Create one original landscape 3:2 premium editorial illustration for OLIVA, a calm Bible learning app. Art direction oliva-cinema-v1: softly painterly cinematic realism, tactile linen, stone and olive-leaf textures, restrained desaturated olive and sage, warm sand and cream with very subtle gold, atmospheric depth, natural early-morning light, emotionally thoughtful and unhurried. The image should belong to a coherent family with quiet ancient Levantine landscapes, intimate human storytelling and fine classical paint texture. No text, writing, inscriptions, logos, UI, halo, fantasy aura or decorative religious symbols. No glossy AI glow, no game loading-screen aesthetic, no stylized action poster. Do not imitate a named artist or existing artwork.\n\nScene: David goes to meet Goliath before the sling is used, a freely composed artistic interpretation of 1 Samuel 17:3 and 17:40–47. A broad, shallow rocky valley separates two low hills. In the nearer middle ground a young shepherd, David, is seen from behind and slightly to one side, clothed modestly in a simple undyed sand-coloured tunic and a muted olive wool mantle. His posture is grounded and attentive, without a victory pose or aggressive gesture. A plain wooden shepherd's staff rests loosely in one hand. A small leather sling hangs unused at his side, beside a modest shepherd's bag. He wears no helmet, no breastplate, no sword. A few smooth river stones and a thin stream may be visible nearby, without turning them into magical objects.\n\nFarther across the quiet valley stands Goliath as a recognizably human, taller and broader adult soldier, not a monster or supernatural giant. Suggest a plain warm-bronze helmet and scale armour in subdued tones, without claiming an archaeologically exact reconstruction. His spear is lowered or grounded, never raised to strike. A smaller shield-bearer stands just in front of him, consistent with the narrative; their faces are understated by distance. Do not add Roman legion armour, a medieval knight, plate-armour suits, fantasy spikes, heraldic crosses, modern weaponry, modern buildings or dramatic supernatural effects. Exact heights, costumes and faces are artistic interpretation.\n\nLet the emotional centre be a quiet space between the figures, trust and vulnerability within a spacious landscape. No blow, no projectile in flight, no fighting, no injury, no blood, no dead body, no severed head, no humiliation or triumph. Distant groups on opposite hills can be no more than soft, sparse silhouettes. A pale clouded morning opens over olive-grey hills with warm natural light at ground level; light is not a literal divine beam. Keep the complete narrative group within the central 60 percent of the image width and away from the top and bottom edges, so a small mobile story card still keeps David, Goliath and the shield-bearer readable. Give the composition room to breathe; no overbusy foreground, no big close-up weapon. Do not visually claim an identified archaeological location or exact historical portraits.",
+  "tool_arguments": {
+    "transparent_background": false
+  },
+  "narrative_source": {
+    "translation": "Luther 1912",
+    "local_file": "src/data/bible.json",
+    "local_file_sha256": "6dd74b74fa67033976536939521df6417ab9c41579fee8c6cbeffd94016e6ce8",
+    "selected_verses": [
+      {
+        "n": 3,
+        "text": "Und die Philister standen auf einem Berge jenseits und die Israeliten auf einem Berge diesseits, daß ein Tal zwischen ihnen war."
+      },
+      {
+        "n": 40,
+        "text": "und nahm seinen Stab in seine Hand und erwählte fünf glatte Steine aus dem Bach und tat sie in seine Hirtentasche, die er hatte, und in den Sack und nahm die Schleuder in seine Hand und machte sich zu dem Philister."
+      },
+      {
+        "n": 41,
+        "text": "Und der Philister ging auch einher und machte sich zu David und sein Schildträger vor ihm her."
+      },
+      {
+        "n": 42,
+        "text": "Da nun der Philister sah und schaute David an, verachtete er ihn; denn er war ein Knabe, bräunlich und schön."
+      },
+      {
+        "n": 45,
+        "text": "David aber sprach zu dem Philister: Du kommst zu mir mit Schwert, Spieß und Schild; ich aber komme zu dir im Namen des HERRN Zebaoth, des Gottes des Heeres Israels, das du gehöhnt hast."
+      },
+      {
+        "n": 47,
+        "text": "und daß alle diese Gemeinde innewerde, daß der HERR nicht durch Schwert noch Spieß hilft; denn der Streit ist des HERRN, und er wird euch geben in unsre Hände."
+      }
+    ],
+    "public_domain_record": "https://ebible.org/deu1912/copyright.htm"
+  },
+  "brief": {
+    "existing_assets_reviewed": [
+      "art/masters/nativity.png",
+      "art/masters/galilee.png",
+      "art/masters/abraham.png"
+    ],
+    "catalog_checked": "art/manifest.json; seven existing narrative/landscape masters, no David illustration",
+    "biblically_described": [
+      "Tal zwischen zwei Anhöhen (17,3)",
+      "David mit Stab, fünf glatten Steinen, Hirtentasche und Schleuder (17,40)",
+      "Goliath und sein vorausgehender Schildträger (17,41)",
+      "Bekenntnis, dass der HERR nicht durch Schwert oder Spieß hilft (17,47)"
+    ],
+    "artistic_interpretation": [
+      "Exaktes Aussehen, Alter, Größenverhältnis und Porträts",
+      "Stoffe, Leder, Sandalen, Form der Bronzeausrüstung",
+      "Tageszeit, Licht, konkrete Landschaft und räumliche Komposition",
+      "Ruhiger bildlicher Moment vor dem beschriebenen Schleuderwurf; keine Behauptung einer friedlichen Gesamterzählung"
+    ],
+    "not_depicted": [
+      "Kampfaktion oder Schleuderwurf",
+      "Verletzung, Tod oder Enthauptung",
+      "Fantasy-Riese oder Monster",
+      "Übernatürliche Lichtstrahlen als Tatsachenbehauptung"
+    ]
+  },
+  "generation": {
+    "status": "generated",
+    "provider": "OpenAI image_gen tool",
+    "generated_on": "2026-11-07",
+    "recorded_at": "2026-11-07T19:43:23.816325+00:00",
+    "original_path": "/workspace/generated_images/exec-e0799527-78be-4d01-8e60-d881d5554c4c.png",
+    "tool_original_identifier": "exec-e0799527-78be-4d01-8e60-d881d5554c4c",
+    "transparent_background": false,
+    "master_copy_byte_exact": true,
+    "actual_calls_for_this_pilot": 1,
+    "referenced_image_paths": [],
+    "num_last_images_to_include": null
+  },
+  "license_status": "Generated for this project under provider terms; internal preparation only; public-release rights review pending",
+  "approval": {
+    "internal_preparation": "authorized by ongoing OLIVA master prompt",
+    "visual_pilot": "Inspected by implementing agent: quiet nonviolent moment, staff and unused sling, bag, human Goliath and shield-bearer, central narrative group, no obvious modern objects or visible injury. Not a human specialist approval.",
+    "historical": "not a reconstruction; independent specialist review pending",
+    "theological": "pending independent specialist review",
+    "public_release": "not approved",
+    "runtime_integration": false
+  },
+  "variants": [],
+  "master": "art/biblical-next/masters/david-before-goliath.png",
+  "master_sha256": "aec9c5366147142b052ad66098a59be607abc72c0e3a6da5e12035f58b052452",
+  "master_bytes": 3146273,
+  "master_dimensions": {
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGB"
+  },
+  "quality_review": {
+    "reviewed_on": "2026-11-07",
+    "method": "Actual generated master viewed through the image generator output; existing OLIVA nativity, Galilee and Abraham masters viewed beforehand. PNG decoded and verified with Pillow.",
+    "passed": [
+      "Matches the muted olive/sand/cream palette and fine painterly texture of existing OLIVA artwork",
+      "David is shown from behind with staff, bag and unused hanging sling, without armour or sword",
+      "Distant Goliath reads as an adult human soldier with a shield-bearer in front",
+      "No combat action, projectile, blood, injury, humiliation, gore or modern Christmas/technology objects",
+      "Natural light and an open valley maintain a calm, emotionally legible composition"
+    ],
+    "limitations": [
+      "No archaeological reconstruction or independent specialist review",
+      "Exact armour, helmet, round shield, clothing, ages, heights, silhouettes and landscape are artistic choices",
+      "No claim that the entire biblical episode is peaceful; this image selects a moment before the narrated violence",
+      "No detailed cross-scene character continuity has been validated",
+      "Prompt requested a central mobile-safe group; actual device/card/hero crop verification remains pending because this asset is not integrated",
+      "No runtime variants, public hosting or product navigation added"
+    ],
+    "decision": "Keep as a separate next pilot for a future private story-card integration; preserve all existing seven masters unchanged"
+  }
+}

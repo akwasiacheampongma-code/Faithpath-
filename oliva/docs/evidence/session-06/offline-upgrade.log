@@ -1,0 +1,71 @@
+{
+  "baseline_version": "0.5.0",
+  "target_version": "0.6.0",
+  "synthetic_data": true,
+  "passed": true,
+  "physical_device_test": false,
+  "baseline_private_storage_version": 1,
+  "baseline_data_version": 5,
+  "baseline_build_id": "oliva-f9aa29af9f863cf9",
+  "baseline_worker": {
+    "expected": "oliva-f9aa29af9f863cf9",
+    "controller": {
+      "id": "oliva-f9aa29af9f863cf9",
+      "version": "0.5.0"
+    },
+    "active": {
+      "id": "oliva-f9aa29af9f863cf9",
+      "version": "0.5.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-f9aa29af9f863cf9"
+    ]
+  },
+  "new_worker": {
+    "expected": "oliva-a542b7009551a2a2",
+    "controller": {
+      "id": "oliva-a542b7009551a2a2",
+      "version": "0.6.0"
+    },
+    "active": {
+      "id": "oliva-a542b7009551a2a2",
+      "version": "0.6.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-f9aa29af9f863cf9",
+      "oliva-a542b7009551a2a2"
+    ]
+  },
+  "worker_activation_verified": true,
+  "upgrade_does_not_rewrite_data": true,
+  "old_cache_retained": true,
+  "profile_preserved": true,
+  "journal_draft_preserved": true,
+  "notes_preserved": true,
+  "goals_preserved": true,
+  "all_progress_fields_preserved": true,
+  "original_archive_blob_preserved": true,
+  "all_other_state_records_preserved": true,
+  "all_state_records_unchanged": true,
+  "no_data_migration_required": true,
+  "no_post_upgrade_user_data_commits": true,
+  "app_data_version_unchanged": true,
+  "offline_reload_passed": true,
+  "offline_a51_stages_verified": 7,
+  "tree_previews_do_not_write_data": true,
+  "offline_new_book_route_verified": true,
+  "offline_new_png_decoded": true,
+  "offline_book_route_reload_passed": true,
+  "book_view_does_not_write_data": true,
+  "old_cached_asset_verified": true,
+  "old_asset_present_in_old_cache": true,
+  "old_asset_absent_from_new_cache": true,
+  "old_cached_asset_path": "/_expo/static/js/web/__common-2614832155d38d8c62ecc2117d58dd95.js",
+  "old_cached_asset_sha256": "34e0dfa1819eb2e6a2dda5f9721b1c3946917ec46df538099d0146837133b6a8",
+  "storage_format": 1,
+  "data_version": 5,
+  "current_build_id": "oliva-a542b7009551a2a2",
+  "update_and_offline_check_ms": 9798
+}

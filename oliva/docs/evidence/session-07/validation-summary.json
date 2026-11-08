@@ -1,0 +1,108 @@
+{
+  "version": "0.7.0",
+  "checkedAt": "2026-11-07T20:08:35.966128+00:00",
+  "sourceBuild": "oliva-f5f1df50305ec1e5",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(path + NUL + bytes + NUL), sorted paths under src/, app/, assets/, plus app.json, package.json, package-lock.json, a51/native-derivatives.json and swords/runtime.json",
+    "fileCount": 273,
+    "sha256": "0a45b1d952c55cfa530d14a10c684dcd45c4379e14e7620f6e50e0f3d05a2c3a"
+  },
+  "unit": {
+    "total": 116,
+    "passed": 116,
+    "failed": 0,
+    "report": "unit-results.json"
+  },
+  "browser": {
+    "total": 59,
+    "passed": 59,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "isSingleGreenFullRun": true,
+    "report": "e2e-results.json",
+    "durationMs": 422429.738,
+    "priorFullRun": {
+      "report": "e2e-before-discard-fix.json",
+      "passed": 57,
+      "total": 59,
+      "failures": [
+        "Product: discard forwarded an empty-string success result, producing a saved toast without saving an experience; corrected to forward undefined on discard.",
+        "Fixture: historical V1 data accidentally retained the new V6 retainedReviewGrowth field; removed it from the old-version fixture."
+      ]
+    },
+    "earlierA11yFailures": "Initial full Axe scan exposed missing shell landmarks and a visible profile name absent from the accessible label; both corrected. Raw red reports remain preserved."
+  },
+  "native": {
+    "allPassed": true,
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "a51PngPerPlatform": 98,
+    "swordPngPerPlatform": 3,
+    "sourceVerified": true,
+    "kind": "Unminified Android/iOS JavaScript and asset debug exports only; no Hermes bytecode, APK, AAB, IPA, signing, simulator or physical-device execution.",
+    "simulatorTest": false,
+    "physicalDeviceTest": false,
+    "report": "native-builds.json"
+  },
+  "upgrade": {
+    "passed": true,
+    "baselineVersion": "0.6.0",
+    "targetVersion": "0.7.0",
+    "inMemoryV5ToV6": true,
+    "storedV5UnchangedUntilExplicitEdit": true,
+    "storageVersion": 1,
+    "allNonMainRecordsPreserved": true,
+    "originalArchivesAndRecoveryPreserved": true,
+    "historicalReviewFieldsPreserved": true,
+    "growthAndReadProgressPreserved": true,
+    "journalDraftPreserved": true,
+    "offlineA51Stages": 7,
+    "offlineJohnPng": true,
+    "previousCachedAssetAvailable": true,
+    "report": "offline-upgrade.json"
+  },
+  "hostedBrowserQa": "Unavailable: supported CUA tool is not exposed. Local Expo-core Chromium tests are separate from the private hosted Site.",
+  "physicalPhoneTest": false,
+  "publicRelease": false,
+  "rawReports": [
+    {
+      "file": "unit-results.json",
+      "sha256": "dbfbe991be08891cec302c82ce80b46a81c3204e69e5c4b87b8062415d3d7503"
+    },
+    {
+      "file": "e2e-results.json",
+      "sha256": "e151514273e9244cf6428236ca5a8f62f8eefd511a3fd20a15604d939ba35836"
+    },
+    {
+      "file": "e2e-before-discard-fix.json",
+      "sha256": "ea9e9244a18a2e923a8f269f3b313c59d4ae7878836bf55ba92bb7a36ed089a4"
+    },
+    {
+      "file": "reviews-first-red.json",
+      "sha256": "7d6e3a3c910e620ab57bdf6d9a3e1db2f825bbde694ac2f314c7c0eb4cd674c5"
+    },
+    {
+      "file": "review-fixes-e2e.json",
+      "sha256": "0e77b42f361e555b9bab2a8195023796863e6efecbb435c82d137235baf721f9"
+    },
+    {
+      "file": "review-a11y-fixed.json",
+      "sha256": "b05347b1012d2ae2f4477032aa4223f8e7fed69636338ec29830bd132ee6680a"
+    },
+    {
+      "file": "native-builds.json",
+      "sha256": "2ff6a06226a54ae81b62ce02348d18f1e3597d1616ea6e16752742e51c9c5110"
+    },
+    {
+      "file": "offline-upgrade.json",
+      "sha256": "80be82a0bdfef3325569789aac77d879ce7f0c24d9908d6ecbc2a74cb3ab63a6"
+    },
+    {
+      "file": "original-reference-integrity.json",
+      "sha256": "45a06642b1e2f28f83f2915779095396e382796fb40fd7f2d249cd401340dc49"
+    }
+  ]
+}

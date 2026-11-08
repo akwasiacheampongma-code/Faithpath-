@@ -2,6 +2,8 @@
 
 ## Ausführbarer Stand
 
+Aktuell ist 0.7 privat bereitgestellt: AppData/Backup **V6**, privates Speicherdokument **V1**, SQLite physisch **V3**, IndexedDB physisch **V1**. V1–V5 werden vor der Migration strikt mit eingefrorenen alten Verträgen geprüft. Die späteren Rückblick-/Entwurfs-/Undo-Verträge stehen in [Iteration 0.7](12-review-editing.md); die ADRs unten dokumentieren ihre jeweiligen Entstehungsstände.
+
 React Native mit Expo und TypeScript, Expo Router, tokenbasierte React-Native-Styles, kleiner Zustand-Store, Zod an persistenten Daten- und Importgrenzen. Die Webausgabe stammt aus demselben Projekt und dient als lokal ausführbare, automatisiert prüfbare Vorschau. Es gibt keinen vorgetäuschten Cloud- oder KI-Dienst.
 
 Die Paketbasis wurde aus dem am 05.11.2026 aktuellen offiziellen `expo-template-blank-typescript@58.0.32` geprüft: Expo `58.0.23`, React `19.3.0`, React Native `0.88.1`, TypeScript `6.0.3`. Native Expo-Pakete entsprechen `expo/bundledNativeModules.json`; genaue Auflösungen stehen in `package-lock.json`. Dies ist eine überprüfte Registry-/Build-Kompatibilität, keine native Gerätefreigabe. [Expo-Versionen](https://docs.expo.dev/versions/latest/), [SQLite](https://docs.expo.dev/versions/latest/sdk/sqlite/).

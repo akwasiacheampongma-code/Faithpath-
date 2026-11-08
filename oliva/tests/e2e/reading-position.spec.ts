@@ -53,10 +53,10 @@ test("eine installierte private V4-Speicherung migriert beim Lesen ohne Datenver
   await page.getByRole("textbox",{name:"Dein Vorname (freiwillig)"}).fill("Ada");
   await page.getByRole("button",{name:"Namen speichern",exact:true}).click();
   await expect.poll(async()=> (await localData(page))?.name).toBe("Ada");
-  const old=await rawData(page);delete old.data.readingPosition;old.data.version=4;old.data.reading={book:"JHN",chapter:6};
+  const old=await rawData(page);delete old.data.readingPosition;delete old.data.retainedReviewGrowth;old.data.version=4;old.data.reading={book:"JHN",chapter:6};
   await page.evaluate(value=>new Promise<void>((resolve,reject)=>{
     const r=indexedDB.open("oliva-local-v1",1);r.onsuccess=()=>{const db=r.result,tx=db.transaction("state","readwrite");tx.objectStore("state").put(value,"main");tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>reject(tx.error);};
   }),old);
   await page.goto("/lesen/JHN?chapter=6&verse=35");await anchor(page,35);
-  expect((await localData(page)).version).toBe(5);expect((await localData(page)).name).toBe("Ada");
+  expect((await localData(page)).version).toBe(6);expect((await localData(page)).name).toBe("Ada");
 });

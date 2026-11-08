@@ -175,6 +175,8 @@ export function Shell({
     >
       {desktop && !reader && (
         <View
+          role="navigation"
+          aria-label="Hauptnavigation"
           style={{
             width: 224,
             paddingHorizontal: 22,
@@ -233,6 +235,7 @@ export function Shell({
       <View style={{ flex: 1, minWidth: 0 }}>
         {!reader && (
           <View
+            role="banner"
             style={{
               height: desktop ? 86 : 73,
               paddingHorizontal: desktop ? 42 : 22,
@@ -285,7 +288,7 @@ export function Shell({
               />
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Profil und Einstellungen"
+                accessibilityLabel={`${data.name ? data.name[0]?.toUpperCase() : "Du"} · Profil und Einstellungen`}
                 onPress={() => router.push("/einstellungen")}
                 style={{
                   width: 35,
@@ -325,6 +328,7 @@ export function Shell({
           </View>
         )}
         <ScrollView
+          role="main"
           ref={attachScroll}
           onLayout={measureViewport}
           onContentSizeChange={() => {
@@ -353,6 +357,8 @@ export function Shell({
         </ScrollView>
         {!desktop && !reader && (
           <View
+            role="navigation"
+            aria-label="Hauptnavigation"
             style={{
               flexDirection: "row",
               borderTopWidth: 1,

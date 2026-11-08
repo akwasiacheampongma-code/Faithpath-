@@ -37,6 +37,7 @@ export const reviewSchema = z
     id,
     text: z.string().trim().min(1).max(10000),
     createdAt: date,
+    updatedAt: date.optional(),
     applied: z.boolean(),
     source: snapshotSchema,
   })
@@ -102,6 +103,16 @@ export const reviewValues = z
     source: snapshotSchema,
   })
   .strict();
+export const reviewEditValues = z
+  .object({
+    goalId: id,
+    reviewId: id,
+    baseRevision: z.number().int().positive(),
+    baseReviewHash: z.string().regex(/^[a-f0-9]{64}$/),
+    text: z.string().max(10000),
+    source: snapshotSchema,
+  })
+  .strict();
 const envelope = {
   id,
   key: z.string().min(1).max(160),
@@ -124,12 +135,20 @@ export const draftSchema = z.discriminatedUnion("type", [
   z
     .object({
       ...envelope,
+      type: z.literal("review-edit"),
+      values: reviewEditValues,
+    })
+    .strict(),
+  z
+    .object({
+      ...envelope,
       type: z.literal("capture"),
       values: captureValuesSchema,
     })
     .strict(),
 ]);
 export type Goal = z.infer<typeof goalSchema>;
+export type Review = z.infer<typeof reviewSchema>;
 export type Draft = z.infer<typeof draftSchema>;
 export type DraftOf<T extends Draft["type"]> = Extract<Draft, { type: T }>;
 export type DraftStamp = Pick<Draft, "id" | "revision">;

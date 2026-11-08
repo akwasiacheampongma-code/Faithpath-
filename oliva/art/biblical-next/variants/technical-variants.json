@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "david-before-goliath-technical-variants",
+  "source_metadata": "art/biblical-next/david-before-goliath.json",
+  "master": "art/biblical-next/masters/david-before-goliath.png",
+  "master_sha256": "aec9c5366147142b052ad66098a59be607abc72c0e3a6da5e12035f58b052452",
+  "master_bytes": 3146273,
+  "master_dimensions": {
+    "width": 1536,
+    "height": 1024
+  },
+  "generator": {
+    "version": "oliva-biblical-webp-v1",
+    "script": "art/biblical-next/variants/prepare-variants.py",
+    "command": "python art/biblical-next/variants/prepare-variants.py",
+    "verification_command": "python art/biblical-next/variants/prepare-variants.py --check",
+    "pillow_version": "13.0.0",
+    "libwebp_version": "1.6.0",
+    "format": "WEBP",
+    "quality": 86,
+    "method": 6,
+    "resampling": "Image.Resampling.LANCZOS",
+    "height_calculation": "round(target_width * 1024 / 1536)",
+    "operation": "Full-canvas RGB resize and lossy WebP compression only",
+    "crop": false,
+    "retouch": false,
+    "compositing": false,
+    "master_unmodified": true,
+    "reproducibility_scope": "Encoded variant bytes with the recorded Pillow and libwebp versions"
+  },
+  "approval": {
+    "master_visual": "Inspected internally by implementing agent and root; original scene retained",
+    "technical_variants": "All three formats, sizes, byte lengths, hashes and full decodes verified; repeatable encoding checked separately",
+    "variant_visual": "Pending root inspection at intended display sizes",
+    "historical": "Artistic interpretation; independent specialist review pending",
+    "theological": "Independent specialist review pending",
+    "public_release": "not approved",
+    "runtime_integration": false
+  },
+  "variants": [
+    {
+      "file": "art/biblical-next/variants/david-before-goliath-640.webp",
+      "width": 640,
+      "height": 427,
+      "bytes": 62648,
+      "sha256": "58481a9761d1ad0b8b773994342b26dd076227e4f524d48edeb4fa609a854591",
+      "format": "WEBP",
+      "full_decode_verified": true,
+      "quality_measurement_against_uncompressed_resized_rgb": {
+        "mean_absolute_error_rgb_0_to_255": [
+          2.94697,
+          2.28515,
+          3.38027
+        ],
+        "psnr_db": 36.49453,
+        "interpretation": "Lossy codec measurement, not an independent visual or subject-matter approval"
+      }
+    },
+    {
+      "file": "art/biblical-next/variants/david-before-goliath-1024.webp",
+      "width": 1024,
+      "height": 683,
+      "bytes": 154442,
+      "sha256": "c137f0fa77a268b311cb20a7802ced00946cf4ca15c4285521487db5199b3a8d",
+      "format": "WEBP",
+      "full_decode_verified": true,
+      "quality_measurement_against_uncompressed_resized_rgb": {
+        "mean_absolute_error_rgb_0_to_255": [
+          2.75999,
+          2.32173,
+          3.0704
+        ],
+        "psnr_db": 37.04827,
+        "interpretation": "Lossy codec measurement, not an independent visual or subject-matter approval"
+      }
+    },
+    {
+      "file": "art/biblical-next/variants/david-before-goliath-1280.webp",
+      "width": 1280,
+      "height": 853,
+      "bytes": 231848,
+      "sha256": "7bd0f9fc480b21a9c96b384ee48e167061019317b334ca24c3385b398baceeef",
+      "format": "WEBP",
+      "full_decode_verified": true,
+      "quality_measurement_against_uncompressed_resized_rgb": {
+        "mean_absolute_error_rgb_0_to_255": [
+          2.62005,
+          2.30152,
+          2.88476
+        ],
+        "psnr_db": 37.43823,
+        "interpretation": "Lossy codec measurement, not an independent visual or subject-matter approval"
+      }
+    }
+  ],
+  "total_variant_bytes": 448938,
+  "privacy": "No user data; no network call; no application storage or runtime file modified"
+}

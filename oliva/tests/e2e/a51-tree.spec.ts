@@ -6,7 +6,7 @@ import { originalA51 } from "./a51-reference";
 import type { A51Stage } from "../../src/features/garden/a51/types";
 import type { TreeMetrics } from "../../src/features/garden/a51/engine/tree-scene";
 type Host = HTMLElement & { olivaTree?: () => TreeMetrics };
-const output = "docs/evidence/a51/screens";
+const output = `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/a51/screens`;
 const A51_STAGES: A51Stage[] = JSON.parse(readFileSync("src/features/garden/a51/stage-data.json","utf8")).stages;
 async function metrics(page: Page) {
   return page.getByTestId("olive-tree").evaluate(el => (el as Host).olivaTree?.());

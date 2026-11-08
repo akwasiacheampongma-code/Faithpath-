@@ -3,11 +3,12 @@ import { View, Switch } from "react-native";
 import { T, Field, Button, Card, Tag } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { useApp } from "../../state/store";
-import { commitDraft, removeDraft } from "./model";
+import { reviewHash } from "./model";
 import type { Draft, DraftOf } from "./schema";
 import { useDraft } from "./useDraft";
 import { DraftStatus } from "./DraftStatus";
 import { referenceLabel } from "../bible/repository";
+import { exportText } from "../../services/storage";
 
 export function EditorFooter({
   status,
@@ -70,7 +71,6 @@ export function useEditorActions<T extends Draft["type"]>(
 ) {
   const editor = useDraft<T>(draft),
     notified = useRef(false),
-    mutate = useApp((s) => s.mutate),
     busy = useApp((s) => s.busy),
     [working, setWorking] = useState(false);
   function notify(result?: string) {
@@ -80,28 +80,28 @@ export function useEditorActions<T extends Draft["type"]>(
     }
   }
   useEffect(() => {
-    if (editor.obsolete) {
+    if (editor.obsolete && !working) {
       editor.close();
       notify();
     }
-  }, [editor.obsolete]);
+  }, [editor.obsolete, working]);
   async function finish(discard = false, completeGuided = true) {
     if (working) return;
     setWorking(true);
     try {
       const saved = await editor.flush(true);
       if (!saved) return;
-      let result: string | undefined;
-      const ok = await mutate((d) => {
-        if (discard) removeDraft(d, saved.key, saved);
-        else
-          result = commitDraft(d, saved.key, saved, new Date().toISOString(), {
-            completeGuided,
-          });
-      });
-      if (ok) {
+      const result = await useApp
+        .getState()
+        .finishEditorDraft(
+          saved.key,
+          { id: saved.id, revision: saved.revision },
+          discard,
+          completeGuided,
+        );
+      if (result) {
         editor.close();
-        notify(result);
+        notify(discard ? undefined : result.result);
       }
     } finally {
       setWorking(false);
@@ -331,6 +331,131 @@ export function ReviewEditor({
         onSave={e.save}
         onDiscard={e.discard}
       />
+    </Card>
+  );
+}
+
+export function ReviewEditEditor({
+  draft,
+  onDone,
+}: {
+  draft: DraftOf<"review-edit">;
+  onDone: () => void;
+}) {
+  const e = useEditorActions<"review-edit">(draft, onDone),
+    v = e.values,
+    t = useTheme();
+  const goal = useApp((s) => s.data.goals.find((g) => g.id === v.goalId));
+  const review = goal?.reviews.find((r) => r.id === v.reviewId);
+  const conflict = !!review && reviewHash(review) !== v.baseReviewHash;
+  const stale = !!goal && goal.revision !== v.baseRevision;
+  const unavailable = !goal || !review || !!goal.archivedAt;
+  const [message, setMessage] = useState("");
+  return (
+    <Card style={{ gap: 17 }}>
+      <Tag icon="pen">Deine Rückblickbearbeitung</Tag>
+      <T variant="heading">Deine Worte dürfen sich weiterentwickeln.</T>
+      <T style={{ fontSize: 12, color: t.muted }}>
+        Du änderst nur den Text. Der ursprüngliche Zeitpunkt, der bewahrte Stand
+        und deine damalige Einschätzung einer Erfahrung bleiben erhalten. Diese
+        Bearbeitung verändert deinen Baum nicht.
+      </T>
+      <Tag>Damals: {v.source.title}</Tag>
+      {(!goal || !review) && (
+        <T accessibilityRole="alert" style={{ fontSize: 12, color: t.danger }}>
+          Der zugehörige Rückblick ist nicht mehr vorhanden. Deine Entwurfsworte
+          bleiben hier lesbar. Du kannst sie exportieren oder den Entwurf
+          ausdrücklich verwerfen; ein gelöschter Rückblick wird daraus nicht neu
+          angelegt.
+        </T>
+      )}
+      {!!goal?.archivedAt && (
+        <T accessibilityRole="alert" style={{ fontSize: 12, color: t.muted }}>
+          Dieses Vorhaben ist archiviert. Dein Entwurf bleibt erhalten. Nimm das
+          Vorhaben wieder auf, bevor du den Rückblick änderst.
+        </T>
+      )}
+      {conflict && (
+        <Card style={{ gap: 10, backgroundColor: t.goldSoft }}>
+          <T variant="heading">Der Rückblick wurde inzwischen verändert.</T>
+          <T style={{ fontSize: 12 }}>
+            Deine Entwurfsworte bleiben erhalten. Sie ersetzen den aktuellen
+            Rückblick nicht. Du kannst sie exportieren oder den Entwurf
+            verwerfen und mit dem aktuellen Rückblick neu beginnen.
+          </T>
+          <T variant="label" style={{ fontSize: 9 }}>
+            AKTUELL GESPEICHERTE WORTE
+          </T>
+          <T>{review?.text}</T>
+        </Card>
+      )}
+      {stale && !conflict && !unavailable && (
+        <Card style={{ gap: 10, backgroundColor: t.goldSoft }}>
+          <T>
+            Das Vorhaben hat sich verändert; dieser Rückblick ist unverändert.
+          </T>
+          <T style={{ fontSize: 12 }}>
+            Prüfe den aktuellen Stand weiter unten. Du kannst deine Bearbeitung
+            damit verbinden, ohne deine Worte oder die ursprüngliche Quelle zu
+            ersetzen.
+          </T>
+          <Button
+            kind="secondary"
+            disabled={e.working}
+            onPress={() => e.change({ ...v, baseRevision: goal!.revision })}
+          >
+            Entwurf mit aktuellem Stand verbinden
+          </Button>
+        </Card>
+      )}
+      <Field
+        label="Deine überarbeiteten Worte"
+        value={v.text}
+        onChangeText={(text) => e.change({ ...v, text })}
+        editable={!e.working}
+        multiline
+        maxLength={10000}
+      />
+      <EditorFooter
+        status={e.status}
+        working={e.working}
+        canSave={!!v.text.trim() && !unavailable && !conflict && !stale}
+        label="Rückblickänderung speichern"
+        onSave={e.save}
+        onDiscard={e.discard}
+      />
+      <Button
+        kind="secondary"
+        icon="download"
+        onPress={() =>
+          void exportText(
+            JSON.stringify(
+              {
+                app: "OLIVA",
+                kind: "review-edit-draft",
+                exportedAt: new Date().toISOString(),
+                draft: { ...draft, values: v },
+              },
+              null,
+              2,
+            ),
+            `oliva-rueckblick-entwurf-${Date.now()}.json`,
+          )
+            .then(() =>
+              setMessage(
+                "Dein Bearbeitungsentwurf wurde zum Speichern übergeben.",
+              ),
+            )
+            .catch((error) => setMessage((error as Error).message))
+        }
+      >
+        Bearbeitungsentwurf exportieren
+      </Button>
+      {message && (
+        <T accessibilityRole="status" style={{ fontSize: 12 }}>
+          {message}
+        </T>
+      )}
     </Card>
   );
 }

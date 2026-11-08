@@ -2,6 +2,8 @@
 
 06.11.2026. Die eigenständige OLIVA-App wird erweitert; FaithPath-Dateien und das ursprüngliche OLIVA-0.1-ZIP bleiben unverändert.
 
+Historischer Bericht für 0.2. Die inzwischen privat bereitgestellten Verträge zur Rückblickbearbeitung, Löschung, V6-Migration und sitzungsgebundenem Undo stehen in [Iteration 0.7](12-review-editing.md).
+
 ## Produktverhalten
 
 „Geführte Wege“ bleiben kurze Lernreisen mit Bibelabschnitten und Einordnungen. „Persönliche Vorhaben“ begleiten ein frei gewähltes Anliegen im Alltag. Sie sind über Wege und Garten erreichbar, ohne ein weiteres Hauptnavigationsziel einzuführen.

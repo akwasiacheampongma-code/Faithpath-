@@ -1,0 +1,46 @@
+[WebServer] (node:11653) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:11661) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/reviews.spec.ts:447:1 › ein während des Verlassens abgeschlossener Löschvorgang lässt kein Undo zurück (19.7s)
+
+
+  1) tests/e2e/reviews.spec.ts:447:1 › ein während des Verlassens abgeschlossener Löschvorgang lässt kein Undo zurück 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'In Ruhe zuhören', exact: true })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'In Ruhe zuhören', exact: true }) with timeout 15000ms
+      - waiting for getByRole('heading', { name: 'In Ruhe zuhören', exact: true })
+
+
+      474 |   await expect.poll(async()=>(await localData(page)).goals[0]!.reviews.length).toBe(0);
+      475 |   await page.goBack();
+    > 476 |   await expect(page.getByRole("heading",{name:title,exact:true})).toBeVisible();
+          |                                                                   ^
+      477 |   await expect(page.getByRole("button",{name:"Rückblick wiederherstellen",exact:true})).toHaveCount(0);
+      478 |   expect((await localData(page)).growthStage).toBe(seed.growth);
+      479 | });
+        at /workspace/faithpath-next/tests/e2e/reviews.spec.ts:476:67
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reviews-ein-während-des-Ve-85a57-gang-lässt-kein-Undo-zurück/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reviews-ein-während-des-Ve-85a57-gang-lässt-kein-Undo-zurück/error-context.md
+
+  1 failed
+    tests/e2e/reviews.spec.ts:447:1 › ein während des Verlassens abgeschlossener Löschvorgang lässt kein Undo zurück 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

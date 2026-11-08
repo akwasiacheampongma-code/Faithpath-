@@ -1,0 +1,174 @@
+{
+  "baseline_version": "0.6.0",
+  "target_version": "0.7.0",
+  "synthetic_data": true,
+  "passed": true,
+  "physical_device_test": false,
+  "hosted_qa": false,
+  "evidence_scope": "Local automated Chromium; one persistent profile and origin throughout the worker update",
+  "byte_comparison": "Exact UTF-8 JSON serialization of raw IndexedDB values, not database-file bytes",
+  "phase": "complete",
+  "browser_version": "155.0.8059.79",
+  "origin": "http://127.0.0.1:46003",
+  "baseline_private_storage_version": 1,
+  "baseline_data_version": 5,
+  "baseline_build_id": "oliva-a542b7009551a2a2",
+  "baseline_worker": {
+    "expected": "oliva-a542b7009551a2a2",
+    "controller": {
+      "id": "oliva-a542b7009551a2a2",
+      "version": "0.6.0"
+    },
+    "active": {
+      "id": "oliva-a542b7009551a2a2",
+      "version": "0.6.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-a542b7009551a2a2"
+    ]
+  },
+  "baseline_review_id": "draft-1794081215394-obm0zo67",
+  "baseline_goal_revision": 2,
+  "baseline_main_json_sha256": "045f99639281363b8ea3a1f991280c3b399da8eee057463f5cd5d366392cdd09",
+  "baseline_records": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 539,
+      "json_sha256": "0948f277686d0bfd6acacd08be2d84284e3244f54094d4089eade5c592b8adcf"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 4547,
+      "json_sha256": "045f99639281363b8ea3a1f991280c3b399da8eee057463f5cd5d366392cdd09"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "original_archive_blob_sha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "baseline_cached_asset_sha256": "26120a43ec0a5f586cebed2097313bff882ae9790a63b61f063b0e65e9ecbf5d",
+  "new_worker": {
+    "expected": "oliva-256ab3e20eff2850",
+    "controller": {
+      "id": "oliva-256ab3e20eff2850",
+      "version": "0.7.0"
+    },
+    "active": {
+      "id": "oliva-256ab3e20eff2850",
+      "version": "0.7.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-a542b7009551a2a2",
+      "oliva-256ab3e20eff2850"
+    ]
+  },
+  "worker_activation_verified": true,
+  "same_origin_and_persistent_profile": true,
+  "old_cache_retained": true,
+  "in_memory_data_version_after_hydration": 6,
+  "in_memory_v5_to_v6_migration_verified": true,
+  "migration_adds_only_version_and_zero_retained_review_growth": true,
+  "durable_data_version_before_first_user_edit": 5,
+  "durable_v5_main_unchanged_after_hydration": true,
+  "read_only_main_json_sha256": "045f99639281363b8ea3a1f991280c3b399da8eee057463f5cd5d366392cdd09",
+  "all_records_unchanged_until_explicit_review_edit": true,
+  "first_v6_write_trigger": "Explicit Rückblick bearbeiten creates a review-edit draft",
+  "first_v6_write_storage_version": 1,
+  "first_v6_write_data_version": 6,
+  "first_v6_write_main_json_sha256": "a587e7ae80bdeacf4bb6b697524483c97d75466a04cc5c397ae119d9c4fa979a",
+  "first_v6_write_preserves_existing_reviews_and_journal_draft": true,
+  "retained_review_growth_after_first_write": {
+    "reflections": 0,
+    "actions": 0
+  },
+  "persisted_data_version_after_explicit_edit": 6,
+  "storage_format": 1,
+  "review_edit_saved": true,
+  "review_identity_source_created_at_and_applied_preserved": true,
+  "review_edit_changes_only_text_and_updated_at": true,
+  "goal_revision_increased_once": true,
+  "edited_goal_revision": 3,
+  "growth_and_all_reading_progress_preserved": true,
+  "journal_draft_preserved_exactly": true,
+  "notes_and_other_goals_preserved": true,
+  "all_non_main_records_preserved_exactly": true,
+  "final_main_json_sha256": "38dc091a865d312d26690984278083c119acd81651d2dd0926a3f49176842837",
+  "final_records": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 539,
+      "json_sha256": "0948f277686d0bfd6acacd08be2d84284e3244f54094d4089eade5c592b8adcf"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 4653,
+      "json_sha256": "38dc091a865d312d26690984278083c119acd81651d2dd0926a3f49176842837"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "profile_preserved": true,
+  "name_preserved": true,
+  "offline_reload_passed": true,
+  "offline_review_edit_preserved": true,
+  "offline_notes_goals_and_old_journal_draft_verified": true,
+  "offline_a51_stages_verified": 7,
+  "tree_previews_do_not_write_data": true,
+  "offline_book_route_verified": true,
+  "offline_john_png_decoded": true,
+  "offline_book_route_reload_passed": true,
+  "book_view_does_not_write_data": true,
+  "original_archive_blob_preserved": true,
+  "final_original_archive_blob_sha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "unchanged_recovery_copy_and_original_archives": true,
+  "all_records_unchanged_after_explicit_review_save": true,
+  "old_cached_asset_verified": true,
+  "old_asset_present_in_old_cache": true,
+  "old_asset_absent_from_new_cache": true,
+  "old_cached_asset_path": "/_expo/static/js/web/__common-39b1e0f0d02da55df426fb0db252f73e.js",
+  "old_cached_asset_sha256": "26120a43ec0a5f586cebed2097313bff882ae9790a63b61f063b0e65e9ecbf5d",
+  "current_build_id": "oliva-256ab3e20eff2850",
+  "offline_worker": {
+    "expected": "oliva-256ab3e20eff2850",
+    "controller": {
+      "id": "oliva-256ab3e20eff2850",
+      "version": "0.7.0"
+    },
+    "active": {
+      "id": "oliva-256ab3e20eff2850",
+      "version": "0.7.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-a542b7009551a2a2",
+      "oliva-256ab3e20eff2850"
+    ]
+  },
+  "update_and_offline_check_ms": 25340,
+  "checkedAt": "2026-11-07T19:54:06.158Z"
+}

@@ -53,9 +53,14 @@ export function draftDestination(draft: Draft): { label: string; href: Href } {
       };
     case "step":
     case "review":
+    case "review-edit":
       return {
         label:
-          draft.type === "step" ? "Dein eigener Schritt" : "Dein Rückblick",
+          draft.type === "step"
+            ? "Dein eigener Schritt"
+            : draft.type === "review-edit"
+              ? `Rückblickbearbeitung: ${draft.values.source.title}`
+              : "Dein Rückblick",
         href: {
           pathname: "/vorhaben/[id]",
           params: { id: draft.values.goalId },

@@ -1,0 +1,163 @@
+[WebServer] (node:1966) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:1974) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/swords.spec.ts:93:1 › das Buchschwert öffnet aus der Bibel, zeigt Johannes groß und verändert keine Lesespuren (23.2s)
+(node:2138) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/swords.spec.ts:113:1 › eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt (21.0s)
+(node:2295) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/swords.spec.ts:139:1 › synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel (20.9s)
+(node:2440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/e2e/swords.spec.ts:166:1 › die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück (18.3s)
+(node:2578) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 tests/e2e/swords.spec.ts:194:1 › nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet (1.2m)
+
+
+  1) tests/e2e/swords.spec.ts:93:1 › das Buchschwert öffnet aus der Bibel, zeigt Johannes groß und verändert keine Lesespuren 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })
+    Expected: "0"
+    Received: ""
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms
+      - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })
+        33 × locator resolved to <div role="progressbar" class="css-g5y9jx" aria-label="Lesefortschritt in Johannes">…</div>
+           - unexpected value "null"
+
+
+      62 |   await expect(page.getByText(`${chapters} von 21 Kapiteln gelesen`, { exact: true })).toBeVisible();
+      63 |   const bar = page.getByRole("progressbar", { name: "Lesefortschritt in Johannes", exact: true });
+    > 64 |   await expect(bar).toHaveAttribute("aria-valuemin", "0");
+         |                     ^
+      65 |   await expect(bar).toHaveAttribute("aria-valuemax", "100");
+      66 |   await expect(bar).toHaveAttribute("aria-valuenow", String(Math.round(chapters / 21 * 100)));
+      67 | }
+        at progress (/workspace/faithpath-next/tests/e2e/swords.spec.ts:64:21)
+        at /workspace/faithpath-next/tests/e2e/swords.spec.ts:103:3
+
+    Error Context: test-results/swords-das-Buchschwert-öff-b4879--verändert-keine-Lesespuren/error-context.md
+
+  2) tests/e2e/swords.spec.ts:113:1 › eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })
+    Expected: "0"
+    Received: ""
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms
+      - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })
+        34 × locator resolved to <div role="progressbar" class="css-g5y9jx" aria-label="Lesefortschritt in Johannes">…</div>
+           - unexpected value "null"
+
+
+      62 |   await expect(page.getByText(`${chapters} von 21 Kapiteln gelesen`, { exact: true })).toBeVisible();
+      63 |   const bar = page.getByRole("progressbar", { name: "Lesefortschritt in Johannes", exact: true });
+    > 64 |   await expect(bar).toHaveAttribute("aria-valuemin", "0");
+         |                     ^
+      65 |   await expect(bar).toHaveAttribute("aria-valuemax", "100");
+      66 |   await expect(bar).toHaveAttribute("aria-valuenow", String(Math.round(chapters / 21 * 100)));
+      67 | }
+        at progress (/workspace/faithpath-next/tests/e2e/swords.spec.ts:64:21)
+        at /workspace/faithpath-next/tests/e2e/swords.spec.ts:120:3
+
+    Error Context: test-results/swords-eine-echte-Kapitelb-c5f1e-leiben-voneinander-getrennt/error-context.md
+
+  3) tests/e2e/swords.spec.ts:139:1 › synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })
+    Expected: "0"
+    Received: ""
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true }) with timeout 15000ms
+      - waiting for getByRole('progressbar', { name: 'Lesefortschritt in Johannes', exact: true })
+        34 × locator resolved to <div role="progressbar" class="css-g5y9jx" aria-label="Lesefortschritt in Johannes">…</div>
+           - unexpected value "null"
+
+
+      62 |   await expect(page.getByText(`${chapters} von 21 Kapiteln gelesen`, { exact: true })).toBeVisible();
+      63 |   const bar = page.getByRole("progressbar", { name: "Lesefortschritt in Johannes", exact: true });
+    > 64 |   await expect(bar).toHaveAttribute("aria-valuemin", "0");
+         |                     ^
+      65 |   await expect(bar).toHaveAttribute("aria-valuemax", "100");
+      66 |   await expect(bar).toHaveAttribute("aria-valuenow", String(Math.round(chapters / 21 * 100)));
+      67 | }
+        at progress (/workspace/faithpath-next/tests/e2e/swords.spec.ts:64:21)
+        at /workspace/faithpath-next/tests/e2e/swords.spec.ts:146:7
+
+    Error Context: test-results/swords-synthetische-0--1---c4374-tschritt-in-Hell-und-Dunkel/error-context.md
+
+  4) tests/e2e/swords.spec.ts:166:1 › die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByTestId('book-sword-artwork')
+    Expected: "false"
+    Received: ""
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByTestId('book-sword-artwork') with timeout 15000ms
+      - waiting for getByTestId('book-sword-artwork')
+        28 × locator resolved to <div role="img" class="css-g5y9jx" data-testid="book-sword-artwork" aria-label="Schwert des Lebens · 0 Prozent gelesen">…</div>
+           - unexpected value "null"
+
+
+      16 | async function artworkReady(page: Page) {
+      17 |   const artwork = page.getByTestId("book-sword-artwork");
+    > 18 |   await expect(artwork).toHaveAttribute("aria-busy", "false");
+         |                         ^
+      19 |   await expect(page.getByTestId("book-sword-vector")).toHaveCount(0);
+      20 |   await expect.poll(() => page.getByTestId("book-sword-image").evaluate(node => {
+      21 |     const image = node instanceof HTMLImageElement ? node : node.querySelector("img");
+        at artworkReady (/workspace/faithpath-next/tests/e2e/swords.spec.ts:18:25)
+        at /workspace/faithpath-next/tests/e2e/swords.spec.ts:170:9
+
+    Error Context: test-results/swords-die-Buchansichten-b-bd898-h-führt-verständlich-zurück/error-context.md
+
+  5) tests/e2e/swords.spec.ts:194:1 › nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet 
+
+    Test was interrupted.
+
+    Error: locator.waitFor: Test ended.
+    Call log:
+      - waiting for getByTestId('sword-confirmation')
+
+
+      30 | /** Observe real compositor output from the actual click, without product sleeps. */
+      31 | async function samplePulse(page: Page, confirm = false) {
+    > 32 |   await page.getByTestId("sword-confirmation").waitFor({ state: "attached" });
+         |                                                ^
+      33 |   const confirmation = page.getByRole("button", { name: "Kapitel als gelesen bestätigen", exact: true });
+      34 |   const button = confirm ? await confirmation.elementHandle() : null;
+      35 |   const observer = await page.evaluateHandle(({ button }) => ({
+        at samplePulse (/workspace/faithpath-next/tests/e2e/swords.spec.ts:32:48)
+        at /workspace/faithpath-next/tests/e2e/swords.spec.ts:196:22
+
+    Error Context: test-results/swords-nur-eine-echte-Lese-a0f81-präferenzen-werden-beachtet/error-context.md
+
+  4 failed
+    tests/e2e/swords.spec.ts:93:1 › das Buchschwert öffnet aus der Bibel, zeigt Johannes groß und verändert keine Lesespuren 
+    tests/e2e/swords.spec.ts:113:1 › eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt 
+    tests/e2e/swords.spec.ts:139:1 › synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel 
+    tests/e2e/swords.spec.ts:166:1 › die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück 
+  1 interrupted
+    tests/e2e/swords.spec.ts:194:1 › nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet 
+  2 did not run

@@ -2,6 +2,7 @@ import { z } from "zod";
 import {
   dataSchema,
   v4DataSchema,
+  v5DataSchema,
   decodeData,
   type AppData,
 } from "../state/model";
@@ -12,7 +13,9 @@ const metadata = z
   .object({ ...receiptSchema.shape })
   .omit({ sourceText: true })
   .strict();
-const currentStoredData = z.object({ ...dataSchema.shape, imports: z.array(metadata).max(100) }).strict();
+const currentStoredData = z
+  .object({ ...dataSchema.shape, imports: z.array(metadata).max(100) })
+  .strict();
 const storedSchema = z
   .object({
     storageVersion: z.literal(1),
@@ -20,11 +23,17 @@ const storedSchema = z
       z
         .object({ ...v4DataSchema.shape, imports: z.array(metadata).max(100) })
         .strict(),
+      z
+        .object({ ...v5DataSchema.shape, imports: z.array(metadata).max(100) })
+        .strict(),
       currentStoredData,
     ]),
   })
   .strict();
-export type StoredDocument = { storageVersion: 1; data: z.infer<typeof currentStoredData> };
+export type StoredDocument = {
+  storageVersion: 1;
+  data: z.infer<typeof currentStoredData>;
+};
 export function forStorage(data: AppData): StoredDocument {
   return {
     storageVersion: 1,

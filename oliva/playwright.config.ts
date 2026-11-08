@@ -19,7 +19,7 @@ export default defineConfig({
   },
   reporter: [
     ["list"],
-    ["json", { outputFile: "docs/evidence/e2e-results.json" }],
+    ["json", { outputFile: process.env.PLAYWRIGHT_JSON_OUTPUT_NAME ?? "docs/evidence/latest/e2e-results.json" }],
   ],
   webServer: {
     command: "node scripts/serve.mjs",

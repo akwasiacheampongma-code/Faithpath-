@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "status": "draft for the next iteration; not in OLIVA 0.7 runtime",
+  "scene": {
+    "id": "david-before-goliath",
+    "ref": {
+      "book": "1SA",
+      "chapter": 17,
+      "from": 38,
+      "to": 45
+    },
+    "title": "Vertrauen vor dem ersten Schritt.",
+    "intro": "David probiert Rüstung und Helm aus. Dann legt er sie ab und nimmt Vertrautes mit in eine bedrohliche Begegnung.",
+    "summary": "Das erste Buch Samuel erzählt hier von einer Begegnung im Krieg. Saul, der König Israels, stattet David mit Helm und Rüstung aus. David legt sie ab, weil er sie nicht gewohnt ist. Er nimmt seinen Stab, fünf Steine und eine Schleuder. Goliath begegnet ihm mit Spott und Drohung. David antwortet, er komme im Namen des Gottes Israels. Der Ausschnitt zeigt Vorbereitung und Vertrauen; vom Ausgang des Kampfes erzählt erst der weitere Text.",
+    "minutes": 3,
+    "action": "Davids Vorbereitung lesen",
+    "interpretation": "Gesichter, Kleidung, Größenverhältnisse, Landschaft und Morgenlicht sind frei gestaltet. Das Bild ist keine vermessene historische Rekonstruktion.",
+    "word": [
+      "HERR Zebaoth",
+      "Eine biblische Bezeichnung für Gott, häufig als „Herr der Heerscharen“ wiedergegeben. In Vers 45 drückt Davids Antwort sein Vertrauen auf den Gott Israels aus."
+    ]
+  },
+  "source": {
+    "translation": "Luther 1912",
+    "file": "src/data/bible.json",
+    "sha256": "6dd74b74fa67033976536939521df6417ab9c41579fee8c6cbeffd94016e6ce8",
+    "selected_verses": [
+      {
+        "n": 38,
+        "text": "Und Saul sprach zu David: Gehe hin, der HERR sei mit dir! Und Saul zog David seine Kleider an und setzte ihm seinen ehernen Helm auf sein Haupt und legte ihm seinen Panzer an."
+      },
+      {
+        "n": 39,
+        "text": "Und David gürtete sein Schwert über seine Kleider und fing an zu gehen, denn er hatte es nie versucht. Da sprach David zu Saul: Ich kann nicht also gehen, denn ich bin's nicht gewohnt, und legte es von sich"
+      },
+      {
+        "n": 40,
+        "text": "und nahm seinen Stab in seine Hand und erwählte fünf glatte Steine aus dem Bach und tat sie in seine Hirtentasche, die er hatte, und in den Sack und nahm die Schleuder in seine Hand und machte sich zu dem Philister."
+      },
+      {
+        "n": 41,
+        "text": "Und der Philister ging auch einher und machte sich zu David und sein Schildträger vor ihm her."
+      },
+      {
+        "n": 42,
+        "text": "Da nun der Philister sah und schaute David an, verachtete er ihn; denn er war ein Knabe, bräunlich und schön."
+      },
+      {
+        "n": 43,
+        "text": "Und der Philister sprach zu David: Bin ich denn ein Hund, daß du mit Stecken zu mir kommst? und fluchte dem David bei seinem Gott"
+      },
+      {
+        "n": 44,
+        "text": "und sprach zu David: Komm her zu mir, ich will dein Fleisch geben den Vögeln unter dem Himmel und den Tieren auf dem Felde!"
+      },
+      {
+        "n": 45,
+        "text": "David aber sprach zu dem Philister: Du kommst zu mir mit Schwert, Spieß und Schild; ich aber komme zu dir im Namen des HERRN Zebaoth, des Gottes des Heeres Israels, das du gehöhnt hast."
+      }
+    ]
+  },
+  "editorial_boundaries": [
+    "An authored explanation, never Bible text or an AI speaking for God.",
+    "Describes the selected verses and explicitly leaves the later outcome outside this excerpt.",
+    "Does not promise personal success, endorse present-day violence or evaluate a user’s faith.",
+    "The military narrative and archaic term Zebaoth remain visible rather than being presented as a generic self-confidence story."
+  ],
+  "approval": {
+    "implementing_agent": "Draft checked against the eight local source verses; actual mobile runtime review pending.",
+    "independent_theological": "pending",
+    "historical": "pending",
+    "public_release": "not approved"
+  }
+}

@@ -1,0 +1,22 @@
+[WebServer] (node:7287) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 1 worker
+
+(node:7295) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/captures.spec.ts:11:1 › Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart (5.5s)
+  ✓   2 tests/e2e/captures.spec.ts:61:1 › zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt (6.7s)
+  ✓   3 tests/e2e/captures.spec.ts:145:1 › Reflexionsentwurf im Lernweg überlebt Neustart und schließt nur auf ausdrücklichen Klick ab (5.8s)
+  ✓   4 tests/e2e/captures.spec.ts:197:1 › ein Entwurf wird erst nach ausdrücklichem Verwerfen gelöscht und bestätigt dabei keine Erfahrung (2.8s)
+  ✓   5 tests/e2e/captures.spec.ts:229:1 › der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexionsentwurf (2.9s)
+  ✓   6 tests/e2e/captures.spec.ts:253:1 › ein Speicherfehler lässt den Kontextentwurf sichtbar und erzeugt keinen fertigen Eintrag (2.8s)
+  ✓   7 tests/e2e/captures.spec.ts:285:1 › ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren (4.1s)
+(node:7630) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 tests/e2e/reading-position.spec.ts:12:1 › Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers (8.5s)
+  ✓   9 tests/e2e/reading-position.spec.ts:24:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen (7.4s)
+  ✓  10 tests/e2e/reading-position.spec.ts:41:1 › Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker (7.5s)
+  ✓  11 tests/e2e/reading-position.spec.ts:51:1 › eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust (4.9s)
+
+  11 passed (1.0m)

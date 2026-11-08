@@ -2,6 +2,8 @@
 
 06.11.2026. Diese Iteration erweitert den lokalen Kern. Sie ist keine öffentliche Produktfreigabe. Der vorherige GitHub-Quellcheckpoint ist `f90fcfb8176b5f793c4c51b7360fdc1e67112e13` (0.3).
 
+Historischer Bericht für 0.4. Aktuell ist 0.7 privat bereitgestellt, mit AppData V6 bei unverändertem Dokument V1/SQLite V3/IndexedDB V1. Versfortsetzung ist seit 0.5, textliche Rückblickbearbeitung mit bestätigtem Löschen und sitzungsgebundenem Undo seit 0.7 integriert; aktueller Vertrag und 0.6→0.7-Offlinebeleg stehen in [Iteration 0.7](12-review-editing.md) und [Qualität und Abnahme](05-validation.md). Die Versions- und Offenstandsangaben unten gehören zu 0.4.
+
 ## Teilziele und Abnahme
 
 | Teilziel                          | Implementierung                                                                                                  | Überprüfbare Abnahme                                                                                                                                         |

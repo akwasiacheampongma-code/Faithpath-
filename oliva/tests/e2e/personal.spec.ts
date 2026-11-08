@@ -20,7 +20,7 @@ test("Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf",
     .getByRole("textbox", { name: "Deine Worte", exact: true })
     .fill("Meine letzten Worte vor dem Bereichswechsel.");
   await page
-    .getByRole("button", { name: "Profil und Einstellungen", exact: true })
+    .getByRole("button", { name: /Profil und Einstellungen$/, exact: true })
     .click();
   const pending = page.waitForEvent("download");
   await page
@@ -242,7 +242,7 @@ test("Eine installierte V1-Datenbank wird ohne Verlust weitergeführt", async ({
     .getByRole("button", { name: "Namen speichern", exact: true })
     .click();
   await expect.poll(async () => (await local(page))?.name).toBe("Ada");
-  const { goals, drafts, imports, readingPosition, ...rest } = await local(page);
+  const { goals, drafts, imports, readingPosition, retainedReviewGrowth, ...rest } = await local(page);
   const old = {
     ...rest,
     version: 1,
@@ -279,7 +279,7 @@ test("Eine installierte V1-Datenbank wird ohne Verlust weitergeführt", async ({
   await page
     .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
     .click();
-  expect((await local(page)).version).toBe(5);
+  expect((await local(page)).version).toBe(6);
   expect((await local(page)).readChapters).toEqual(["MRK:4"]);
   expect((await local(page)).growthStage).toBe(3);
   expect((await local(page)).notes[0]?.text).toBe("Meine alten eigenen Worte.");

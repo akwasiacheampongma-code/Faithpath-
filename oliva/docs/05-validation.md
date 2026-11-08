@@ -1,8 +1,40 @@
 # Qualität und Abnahme
 
-Dokumentationsstand: 07.11.2026. Prüfungen vom 06./07.11.2026 unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
+Dokumentationsstand: 07.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
 
-## Aktueller Nachweis 0.6 · Buchidentitäten und Johannes-Bildpilot
+## Aktueller Nachweis 0.7 · Rückblickkontinuität privat bereitgestellt
+
+Private Bereitstellung seit **07.11.2026, 20:10:37 UTC**. Kernbuild **`oliva-f5f1df50305ec1e5`**, Hostpaket **`oliva-7173147c3f6d4bca`**. Eigentümerzugriff unverändert; keine öffentliche Veröffentlichung. [Deployment](evidence/session-07/private-deployment.json), [Paketprüfung](evidence/session-07/private-package-check.json) und [privater Quellcheckpoint](evidence/session-07/private-source-checkpoint.json) sind gespeichert.
+
+| Prüfung | Tatsächliches Ergebnis | Beleg |
+| --- | --- | --- |
+| Fach-/Persistenzsuite | **116/116 bestanden**, keine Fehler | [unit-results.json](evidence/session-07/unit-results.json) |
+| Vollständiger finaler Browserlauf | **59/59 in einem einzelnen Lauf bestanden**, 0 übersprungen, 0 flaky | [e2e-results.json](evidence/session-07/e2e-results.json) |
+| TypeScript / Webbuild | Strikte Typprüfung und finaler Produktions-Webexport erfolgreich | [typecheck.txt](evidence/session-07/typecheck.txt), [web-build.txt](evidence/session-07/web-build.txt) |
+| Rückblickverträge | Textkorrektur erhält Identität, Quelle, Erstellzeit und Erfahrung; No-op ohne Fake-Edit; Konflikte/fehlende Ziele bewahren Entwurfsworte; Delete/Undo ohne Wachstum | Fach-/Storetests und sieben Browserfälle; [Vertrag](12-review-editing.md) |
+| Nebenläufigkeit | Hydrierung hinter Autosave und mit Aktionslock; verspäteter Delete-Abschluss nach Ansichtswechsel bietet kein Undo an | Store-Regressionen und Browserfall mit tatsächlich angehaltener IndexedDB-`oncomplete`-Bestätigung |
+| Webzugänglichkeit | Shell-Landmarks und Profilname korrigiert; Editor bei 320/390/1.440 CSS-Pixeln, Hell/Dunkel und Axe erfolgreich | [review-a11y-fixed.json](evidence/session-07/review-a11y-fixed.json), finaler Gesamtlauf und [Screens](evidence/session-07/screens/) |
+| Android-/iOS-Debugexports | Beide erfolgreich; je alle 98 A51- und drei Johannes-PNGs bytegenau; geprüfter finaler Runtime-Quellstand | [native-builds.json](evidence/session-07/native-builds.json) |
+| Echter lokaler 0.6→0.7-Workerwechsel | V5→V6 im RAM; gespeichertes V5 bis explizitem Edit exakt; Originalblobs/Rückkehrsicherung, Fortschritt und alter Entwurf erhalten; neuer Build offline nutzbar | [offline-upgrade.json](evidence/session-07/offline-upgrade.json), [Log](evidence/session-07/offline-upgrade.log) |
+| Private Hostingausgabe | 15 App-Routen mit Shell, 98 App- und 42 Review-Dateien bytegenau; Manifest/Worker korrekt, anonym HTTP 401 | [private-http-check.json](evidence/session-07/private-http-check.json) |
+
+[validation-summary.json](evidence/session-07/validation-summary.json) enthält die finalen Ergebnisse und Rohberichtshashes. Sein Runtime-SHA-256 `0a45b1d952c55cfa530d14a10c684dcd45c4379e14e7620f6e50e0f3d05a2c3a` stimmt mit dem nativen Exportbeleg überein. Dies bindet die Bundles an den geprüften Quellenstand, ohne eine native Geräteausführung zu behaupten.
+
+### Gefundene Fehler und erhaltene Rotbelege
+
+Der erste vollständige Lauf bestand **57/59**. Ein echter Produktfehler meldete nach dem Verwerfen eines Capture-Entwurfs fälschlich eine gespeicherte Erfahrung, weil der gemeinsame Abschluss einen leeren Erfolgswert weitergab. Verwerfen reicht jetzt `undefined` an den bestehenden Rückruf weiter. Der zweite Fehler lag in der historischen V1-Testfixture: Sie enthielt versehentlich das neue V6-Feld `retainedReviewGrowth`; dieses Feld ist aus der alten Fixture entfernt. Beide Fälle bestehen im neuen vollständigen 59/59-Lauf. Der ursprüngliche [57/59-Bericht](evidence/session-07/e2e-before-discard-fix.json) bleibt erhalten.
+
+Der erste fokussierte Rückblicklauf bestand 5/6 und fand fehlende Web-Landmarks sowie einen Profilnamen ohne die sichtbare Initiale. Nach den beiden Korrekturen bestand der Axe-Fall; die roten [Erstbelege](evidence/session-07/reviews-first-red.json) und der [Zwischenlauf](evidence/session-07/review-fixes-e2e.json) bleiben erhalten. Ein erster Delete-/Blur-Harness scheiterte an seiner Back-Navigation; er war kein ausgeführter Nachweis des Produktrennens. Die korrigierte Regression hält die echte IndexedDB-Abschlussbestätigung zurück und besteht ebenfalls im finalen Gesamtlauf.
+
+### Migration, Offline und Prüfgrenzen
+
+AppData/Backup ist erstmals **V6**, nach strikter Prüfung der eingefrorenen V1–V5-Verträge. Privates Dokument V1, SQLite physisch V3 und IndexedDB physisch V1 bleiben bestehen. Im tatsächlich ausgeführten Update bleibt `main` nach Hydrierung als V5 bytegleich in seiner UTF-8-JSON-Darstellung; erst der ausdrücklich angelegte Bearbeitungsentwurf schreibt V6. Beim Textabschluss bleiben Review-ID, Quelle, `createdAt` und `applied` erhalten, die Vorhabenrevision steigt einmal. Alle drei Nicht-`main`-Datensätze bleiben exakt erhalten. Nach Offline-Neustart sind Bearbeitung, sieben A51-Stadien, Johannesroute/PNG und ein ausschließlich im Vorgängercache vorhandener Chunk verfügbar. Das ist lokale Chromium-Evidenz mit synthetischen Daten.
+
+Native Exporte verwenden `--no-minify --no-bytecode`: unsignierte JS-/Asset-Debugbundles, keine Hermes-Bytecodes, APK/AAB/IPA, Simulatoren oder physischen Geräte. Die private Website wurde per HTTP geprüft; eine zusätzliche gehostete CUA-Browserprüfung war mangels des unterstützten Werkzeugs nicht möglich. Lokale Chromium-Interaktionen sind davon getrennt. Automatisierte Axe-Prüfungen ersetzen keine manuelle Screenreader-/WCAG-Gesamtfreigabe.
+
+Historische Berichte und Quellstände bis 0.6 bleiben erhalten. Der erfolgreiche GitHub-CI-Lauf gilt ausschließlich für 0.4; 0.7 ist lokal geprüft und privat bereitgestellt. Als Schutzaufgabe für 0.8 soll der Standardpfad neuer Playwright-Berichte nach `docs/evidence/latest/` wechseln, damit die historischen 0.4-Rohberichte nicht überschrieben werden; dies ist noch keine durchgeführte Konfigurationsänderung.
+
+## Historischer Nachweis 0.6 · Buchidentitäten und Johannes-Bildpilot
 
 Private Bereitstellung seit 07.11.2026, 12:59:18 UTC. Kernbuild **`oliva-a542b7009551a2a2`**, Hostpaket **`oliva-524e381f7222abe8`**. Eigentümerzugriff unverändert; keine öffentliche Veröffentlichung. [Deployment](evidence/session-06/private-deployment.json), [Paketprüfung](evidence/session-06/private-package-check.json) und [Quellcheckpoint](evidence/session-06/private-source-checkpoint.json) sind gespeichert.
 
@@ -63,7 +95,7 @@ Die lokale Kern-App wurde tatsächlich mit Playwright geprüft. Eine zusätzlich
 
 ## Historischer Prüfstand bis 0.4
 
-Die folgenden Tabellen und Iterationsberichte betreffen die vorangegangenen Versionen. Sie werden als Entwicklungs- und CI-Historie bewahrt und sind keine zusätzliche aktuelle 0.6-Abnahme.
+Die folgenden Tabellen und Iterationsberichte betreffen die vorangegangenen Versionen. Sie werden als Entwicklungs- und CI-Historie bewahrt und sind keine zusätzliche aktuelle 0.7-Abnahme.
 
 ### Tatsächlich ausgeführte Prüfungen bis 0.4
 

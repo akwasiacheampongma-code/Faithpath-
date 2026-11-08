@@ -3,7 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { mkdir } from "node:fs/promises";
 import { localData, rawData } from "./persistence";
 
-const screenshots = "docs/evidence/session-06/screens";
+const screenshots = `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/swords/screens`;
 const pilotPng = "**/john-life-pilot-*.png";
 test.use({ screenshot: "only-on-failure" });
 
@@ -73,7 +73,7 @@ async function progress(page: Page, chapters: number) {
 async function historyFixture(page: Page, chapters: number, theme: "light" | "dark") {
   const raw = structuredClone(await rawData(page));
   expect(raw.storageVersion).toBe(1);
-  expect(raw.data.version).toBe(5);
+  expect(raw.data.version).toBe(6);
   raw.data.readChapters = [...new Set([
     ...raw.data.readChapters.filter((key: string) => !key.startsWith("JHN:")),
     "GEN:1", "MRK:4", ...Array.from({ length: chapters }, (_, i) => `JHN:${i + 1}`),

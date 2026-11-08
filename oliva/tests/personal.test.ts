@@ -41,7 +41,14 @@ function makeGoal() {
 describe("Verlustfreie Payload-Migration", () => {
   it("übernimmt V1-Daten mit Notizen, Fortschritt und Einstellungen ohne Veränderung der Quelle", () => {
     const current = initialData();
-    const { goals, drafts, imports, readingPosition, ...rest } = current;
+    const {
+      goals,
+      drafts,
+      imports,
+      readingPosition,
+      retainedReviewGrowth,
+      ...rest
+    } = current;
     const old = {
       ...rest,
       version: 1,
@@ -63,7 +70,8 @@ describe("Verlustfreie Payload-Migration", () => {
       migrated = decodeData(old);
     expect(migrated).toEqual({
       ...old,
-      version: 5,
+      version: 6,
+      retainedReviewGrowth: { reflections: 0, actions: 0 },
       readingPosition: null,
       goals: [],
       drafts: [],
@@ -73,7 +81,14 @@ describe("Verlustfreie Payload-Migration", () => {
     expect(parseBackup(bytes)).toEqual(migrated);
   });
   it("weist beschädigte alte Daten und unbekannte Versionen zurück", () => {
-    const { goals, drafts, imports, readingPosition, ...rest } = initialData();
+    const {
+      goals,
+      drafts,
+      imports,
+      readingPosition,
+      retainedReviewGrowth,
+      ...rest
+    } = initialData();
     expect(() =>
       decodeData({ ...rest, version: 1, readChapters: ["GEN:99"] }),
     ).toThrow();

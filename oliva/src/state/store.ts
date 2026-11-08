@@ -14,8 +14,19 @@ import {
   type ImportPlan,
 } from "../features/imports/model";
 import type { WriteOptions } from "../features/imports/schema";
-import { saveDraft as updateDraft } from "../features/personal/model";
-import type { Draft, DraftStamp } from "../features/personal/schema";
+import {
+  saveDraft as updateDraft,
+  commitDraft,
+  removeDraft,
+  deleteReview,
+  undoReviewDeletion,
+  type ReviewDeletion,
+} from "../features/personal/model";
+import {
+  newId,
+  type Draft,
+  type DraftStamp,
+} from "../features/personal/schema";
 import {
   readingPositionSchema,
   sameReadingScope,
@@ -40,6 +51,20 @@ export type Store = {
     draft: Draft,
     expected: DraftStamp | null,
   ) => Promise<Draft | null>;
+  finishEditorDraft: (
+    key: string,
+    expected: DraftStamp,
+    discard?: boolean,
+    completeGuided?: boolean,
+  ) => Promise<{ result: string } | null>;
+  deleteGoalReview: (
+    goalId: string,
+    reviewId: string,
+    expectedGoalRevision: number,
+    expectedReviewHash: string,
+  ) => Promise<string | null>;
+  undoGoalReview: (token: string) => Promise<boolean>;
+  forgetReviewUndo: (token: string) => void;
   restore: (d: AppData) => Promise<boolean>;
   clearError: () => void;
   openReading: (reference: Reference) => Promise<boolean>;
@@ -68,6 +93,30 @@ function enqueue<T>(work: () => Promise<T>): Promise<T> {
   return result;
 }
 export const useApp = create<Store>((set, get) => {
+  // Deleted text exists only here for one explicit, navigation-scoped undo.
+  // Neither the payload nor the token is written to storage or backups.
+  let epoch = 0;
+  let reviewUndo: {
+    token: string;
+    epoch: number;
+    payload: ReviewDeletion;
+  } | null = null;
+  function invalidateUndo() {
+    epoch++;
+    reviewUndo = null;
+  }
+  async function action<T>(blocked: T, work: () => Promise<T>): Promise<T> {
+    if (get().busy || !get().ready || !get().healthy) return blocked;
+    set({ busy: true, error: null });
+    try {
+      return await work();
+    } catch (error) {
+      set({ error: message(error) });
+      return blocked;
+    } finally {
+      set({ busy: false });
+    }
+  }
   const persist = (
     fn: (d: AppData) => void,
     options: WriteOptions = {},
@@ -101,15 +150,18 @@ export const useApp = create<Store>((set, get) => {
     busy: false,
     error: null,
     hydrate: async () => {
+      if (get().busy) return;
+      invalidateUndo();
+      set({ busy: true });
       try {
-        set({
-          data: await readData(),
-          ready: true,
-          healthy: true,
-          error: null,
+        await enqueue(async () => {
+          const data = await readData();
+          set({ data, ready: true, healthy: true, error: null });
         });
       } catch (error) {
         set({ error: message(error), healthy: false, ready: true });
+      } finally {
+        set({ busy: false });
       }
     },
     mutate: async (fn) => {
@@ -123,16 +175,108 @@ export const useApp = create<Store>((set, get) => {
     },
     saveEditorDraft: async (draft, expected) => {
       let saved: Draft | null = null;
-      const ok = await persist((d) => {
-        updateDraft(d, draft, expected);
-        saved = d.drafts.find((x) => x.key === draft.key)!;
-      });
+      const ok = await persist(
+        (d) => {
+          updateDraft(d, draft, expected);
+          saved = d.drafts.find((x) => x.key === draft.key)!;
+        },
+        {},
+        false,
+      );
       return ok ? saved : null;
     },
-    restore: async (incoming) =>
-      get().mutate((d) => {
-        const revision = d.revision;
-        Object.assign(d, dataSchema.parse(incoming), { revision });
+    finishEditorDraft: (
+      key,
+      expected,
+      discard = false,
+      completeGuided = true,
+    ) =>
+      action<{ result: string } | null>(null, async () => {
+        let result = "";
+        const ok = await persist(
+          (d) => {
+            const draft = d.drafts.find((x) => x.key === key);
+            if (discard) removeDraft(d, key, expected);
+            else {
+              result = commitDraft(d, key, expected, new Date().toISOString(), {
+                completeGuided,
+              });
+              // Only a genuinely new reflection/experience or guided completion
+              // may update growth. Autosave, edits and discard are metadata.
+              if (
+                draft &&
+                (draft.type === "review" ||
+                  (draft.type === "journal" &&
+                    !draft.values.targetId &&
+                    draft.values.kind !== "note") ||
+                  (draft.type === "capture" &&
+                    draft.values.source.type !== "verse"))
+              )
+                grow(d);
+            }
+          },
+          {},
+          false,
+        );
+        return ok ? { result } : null;
+      }),
+    deleteGoalReview: (goalId, reviewId, revision, hash) =>
+      action<string | null>(null, async () => {
+        let payload: ReviewDeletion | null = null;
+        const atEpoch = epoch;
+        const ok = await persist(
+          (d) => {
+            payload = deleteReview(
+              d,
+              goalId,
+              reviewId,
+              revision,
+              hash,
+              new Date().toISOString(),
+            );
+          },
+          {},
+          false,
+        );
+        if (!ok || !payload || atEpoch !== epoch) return null;
+        const token = newId("review-undo");
+        reviewUndo = { token, epoch, payload };
+        return token;
+      }),
+    undoGoalReview: (token) =>
+      action(false, async () => {
+        const ok = await persist(
+          (d) => {
+            if (
+              !reviewUndo ||
+              reviewUndo.token !== token ||
+              reviewUndo.epoch !== epoch
+            )
+              throw new Error(
+                "Dieses Rückgängigmachen ist nicht mehr verfügbar. Es wurde nichts überschrieben.",
+              );
+            undoReviewDeletion(d, reviewUndo.payload, new Date().toISOString());
+          },
+          {},
+          false,
+        );
+        if (ok && reviewUndo?.token === token) reviewUndo = null;
+        return ok;
+      }),
+    forgetReviewUndo: (token) => {
+      if (reviewUndo?.token === token) reviewUndo = null;
+    },
+    restore: (incoming) =>
+      action(false, async () => {
+        invalidateUndo();
+        return persist(
+          (d) => {
+            const revision = d.revision;
+            Object.assign(d, dataSchema.parse(incoming), { revision });
+          },
+          {},
+          false,
+        );
       }),
     clearError: () => set({ error: null }),
     openReading: (reference) =>
@@ -174,6 +318,7 @@ export const useApp = create<Store>((set, get) => {
     },
     refresh: async () => {
       if (get().busy) return null;
+      invalidateUndo();
       set({ busy: true });
       try {
         return await enqueue(async () => {
@@ -190,6 +335,7 @@ export const useApp = create<Store>((set, get) => {
     },
     importFaithpath: async (plan) => {
       if (get().busy || !get().ready || !get().healthy) return false;
+      invalidateUndo();
       set({ busy: true, error: null });
       try {
         return await persist(
@@ -219,6 +365,7 @@ export const useApp = create<Store>((set, get) => {
     },
     rollbackImport: async (token, expectedRevision) => {
       if (get().busy || !get().ready || !get().healthy) return false;
+      invalidateUndo();
       set({ busy: true, error: null });
       try {
         const copy = await readRecovery();
