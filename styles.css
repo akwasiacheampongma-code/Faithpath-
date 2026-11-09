@@ -2250,3 +2250,5 @@ input, select, textarea { border-radius: var(--radius-small); border-color: var(
   line-height: 1.5;
 }
 .at-test-notice .text-button { display: block; margin-block-start: .3rem; }
+.at-test-notice details { margin: 0; padding: 0; border: 0; }
+.at-test-notice summary { min-height: 44px; align-content: center; cursor: pointer; }
