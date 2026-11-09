@@ -1,0 +1,340 @@
+{
+  "schema": "faithpath-at-quiz-rounds-preview-1",
+  "sourceBranch": "content/at-nt-qa-20261023",
+  "approved": false,
+  "production": false,
+  "chapters": {
+    "1KI": {
+      "name": "1. Könige",
+      "chapter": 8,
+      "variants": [
+        {
+          "id": "A",
+          "label": "Hauptquiz – erste Runde",
+          "questions": [
+            {
+              "id": "1270-Q5",
+              "text": "Was befand sich laut dem Bericht in der Bundeslade?",
+              "options": [
+                "Ein goldener Krug und Aarons Stab",
+                "Die Bücher Moses",
+                "Nur die zwei steinernen Tafeln, die Mose am Horeb hineingelegt hatte",
+                "Salomos Königssiegel"
+              ],
+              "correctIndex": 2,
+              "explanation": "1 Könige 8,9 sagt ausdrücklich, dass sich dort nur die zwei steinernen Tafeln Moses befanden, die mit dem Bund am Horeb verbunden werden.",
+              "reference": "1 Könige 8,9",
+              "sourceUnit": "1270"
+            },
+            {
+              "id": "1271-Q5",
+              "text": "Wer sollte nach Gottes Wort das Haus für seinen Namen bauen?",
+              "options": [
+                "David selbst",
+                "Ein Sohn Davids, der aus seinen Lenden kommen würde",
+                "Der Hohepriester Zadok",
+                "Hiram von Tyrus"
+              ],
+              "correctIndex": 1,
+              "explanation": "Nicht David selbst, sondern sein Sohn sollte das Haus für Gottes Namen bauen.",
+              "reference": "1 Könige 8,19",
+              "sourceUnit": "1271"
+            },
+            {
+              "id": "1272-Q4",
+              "text": "Was sagt Salomo darüber, ob Gott tatsächlich in einem von Menschen gebauten Haus gefasst werden kann?",
+              "options": [
+                "Himmel und aller Himmel Himmel können Gott nicht fassen, viel weniger das Haus",
+                "Der Tempel kann Gott vollständig aufnehmen",
+                "Nur das Allerheiligste kann Gott fassen",
+                "Gott wohnt nur während der Feste im Tempel"
+              ],
+              "correctIndex": 0,
+              "explanation": "Salomo stellt Gottes Größe ausdrücklich über die Fähigkeit des Tempels, ihn zu fassen.",
+              "reference": "1 Könige 8,27",
+              "sourceUnit": "1272"
+            },
+            {
+              "id": "1274-Q1",
+              "text": "Für wen betet Salomo ausdrücklich, obwohl diese Person nicht zu Israel gehört?",
+              "options": [
+                "Nur für ausländische Könige",
+                "Nur für Händler aus Tyrus",
+                "Für einen fremden Menschen, der um Gottes Namens willen kommt",
+                "Für niemanden außerhalb Israels"
+              ],
+              "correctIndex": 2,
+              "explanation": "Salomo schließt den Fremden ausdrücklich in sein Gebet ein, wenn dieser wegen Gottes großem Namen kommt und betet.",
+              "reference": "1 Könige 8,41-43",
+              "sourceUnit": "1274"
+            },
+            {
+              "id": "1275-Q2",
+              "text": "Was sagt Salomo über Gottes gute Worte durch Mose?",
+              "options": [
+                "Nicht eines sei dahingefallen",
+                "Nur die Hälfte sei erfüllt",
+                "Sie seien nur für die Priester bestimmt",
+                "Sie seien durch den Tempel ersetzt"
+              ],
+              "correctIndex": 0,
+              "explanation": "Salomo lobt Gott dafür, Israel Ruhe gegeben zu haben, und erklärt, dass keines seiner guten Worte durch Mose ausgefallen sei.",
+              "reference": "1 Könige 8,56",
+              "sourceUnit": "1275"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "label": "Vertiefung – zweite Runde",
+          "questions": [
+            {
+              "id": "1270-Q3",
+              "text": "Wer hob die Lade des HERRN auf, als die Ältesten Israels gekommen waren?",
+              "options": [
+                "Die Soldaten",
+                "Die Stammesfürsten",
+                "Salomos Bauleute",
+                "Die Priester"
+              ],
+              "correctIndex": 3,
+              "explanation": "Nach dem Eintreffen der Ältesten hoben die Priester die Lade des HERRN auf.",
+              "reference": "1 Könige 8,3",
+              "sourceUnit": "1270"
+            },
+            {
+              "id": "1271-Q4",
+              "text": "Was hatte David nach Salomos Rückblick im Herzen?",
+              "options": [
+                "Die Bundeslade nach Ägypten zu bringen",
+                "Den Tempel in Samaria zu errichten",
+                "Ein Haus für den Namen des HERRN zu bauen",
+                "Die Priesterschaft selbst zu übernehmen"
+              ],
+              "correctIndex": 2,
+              "explanation": "David hatte im Herzen, dem Namen des HERRN, des Gottes Israels, ein Haus zu bauen.",
+              "reference": "1 Könige 8,17",
+              "sourceUnit": "1271"
+            },
+            {
+              "id": "1273-Q3",
+              "text": "Was soll Israel bei ausbleibendem Regen tun?",
+              "options": [
+                "Zu Gott beten, seinen Namen bekennen und sich von der Sünde bekehren",
+                "Einen neuen Brunnen graben und nicht beten",
+                "Zum Meer ziehen",
+                "Den Tempel schließen"
+              ],
+              "correctIndex": 0,
+              "explanation": "Salomo verbindet die Bitte um Regen mit Gebet, Bekenntnis und Umkehr.",
+              "reference": "1 Könige 8,35-36",
+              "sourceUnit": "1273"
+            },
+            {
+              "id": "1274-Q4",
+              "text": "Welche Aussage macht Salomo über menschliche Sünde?",
+              "options": [
+                "Nur Könige sündigen",
+                "Es gibt keinen Menschen, der nicht sündigt",
+                "Sünde endet mit dem Tempelbau",
+                "Nur Fremde sündigen"
+              ],
+              "correctIndex": 1,
+              "explanation": "Salomo setzt im Szenario der Gefangenschaft voraus, dass kein Mensch ohne Sünde ist.",
+              "reference": "1 Könige 8,46",
+              "sourceUnit": "1274"
+            },
+            {
+              "id": "1275-Q6",
+              "text": "Wie wird die Stimmung des Volkes beim Abschied beschrieben?",
+              "options": [
+                "Ängstlich und schweigend",
+                "Zornig über den König",
+                "Fröhlich und guten Muts über all dem Guten, das der HERR getan hatte",
+                "Traurig wegen des Tempels"
+              ],
+              "correctIndex": 2,
+              "explanation": "Nach dem Fest segnete das Volk den König und ging fröhlich und guten Muts nach Hause wegen des Guten, das Gott getan hatte.",
+              "reference": "1 Könige 8,66",
+              "sourceUnit": "1275"
+            }
+          ]
+        }
+      ],
+      "requiredUnits": [
+        "1270",
+        "1271",
+        "1272",
+        "1273",
+        "1274",
+        "1275"
+      ]
+    },
+    "2KI": {
+      "name": "2. Könige",
+      "chapter": 15,
+      "variants": [
+        {
+          "id": "A",
+          "label": "Hauptquiz – erste Runde",
+          "questions": [
+            {
+              "id": "1351-Q1",
+              "text": "Wie alt war Asarja, als er König wurde?",
+              "options": [
+                "20 Jahre",
+                "25 Jahre",
+                "30 Jahre",
+                "16 Jahre"
+              ],
+              "correctIndex": 3,
+              "explanation": "Asarja war sechzehn Jahre alt, als er König wurde.",
+              "reference": "2 Könige 15,2",
+              "sourceUnit": "1351"
+            },
+            {
+              "id": "1352-Q1",
+              "text": "Wie lange regierte Sacharja in Samaria?",
+              "options": [
+                "Sechs Monate",
+                "Ein Jahr",
+                "Zwei Jahre",
+                "Zehn Jahre"
+              ],
+              "correctIndex": 0,
+              "explanation": "Sacharja regierte sechs Monate über Israel.",
+              "reference": "2 Könige 15,8",
+              "sourceUnit": "1352"
+            },
+            {
+              "id": "1353-Q2",
+              "text": "Welcher assyrische König kam während Menahems Herrschaft ins Land?",
+              "options": [
+                "Salmanasser",
+                "Thiglath-Pileser",
+                "Sanherib",
+                "Phul"
+              ],
+              "correctIndex": 3,
+              "explanation": "Der Text nennt Phul, den König von Assyrien.",
+              "reference": "2 Könige 15,19",
+              "sourceUnit": "1353"
+            },
+            {
+              "id": "1354-Q2",
+              "text": "Wer machte einen Bund gegen Pekahja?",
+              "options": [
+                "Jotham",
+                "Phul",
+                "Pekah, der Sohn Remaljas",
+                "Sallum"
+              ],
+              "correctIndex": 2,
+              "explanation": "Pekah, Pekahjas Ritter, verschwörte sich gegen ihn.",
+              "reference": "2 Könige 15,25",
+              "sourceUnit": "1354"
+            },
+            {
+              "id": "1355-Q4",
+              "text": "Wer tötete Pekah und wurde König an seiner Stelle?",
+              "options": [
+                "Jotham",
+                "Hosea, der Sohn Elas",
+                "Menahem",
+                "Ahas"
+              ],
+              "correctIndex": 1,
+              "explanation": "Hosea machte einen Bund gegen Pekah, tötete ihn und wurde König.",
+              "reference": "2 Könige 15,30",
+              "sourceUnit": "1355"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "label": "Vertiefung – zweite Runde",
+          "questions": [
+            {
+              "id": "1351-Q3",
+              "text": "Was blieb trotz Asarjas positiver Beurteilung bestehen?",
+              "options": [
+                "Der Tempel blieb geschlossen",
+                "Jerusalem blieb unbewohnt",
+                "Die Höhen wurden nicht abgetan",
+                "Das Königtum wurde abgeschafft"
+              ],
+              "correctIndex": 2,
+              "explanation": "Asarja tat, was dem HERRN wohlgefiel, doch die Höhen wurden nicht beseitigt.",
+              "reference": "2 Könige 15,3-4",
+              "sourceUnit": "1351"
+            },
+            {
+              "id": "1352-Q2",
+              "text": "Wer tötete Sacharja und wurde König an seiner Stelle?",
+              "options": [
+                "Pekah",
+                "Sallum",
+                "Phul",
+                "Jotham"
+              ],
+              "correctIndex": 1,
+              "explanation": "Sallum machte einen Bund gegen Sacharja, tötete ihn und wurde König.",
+              "reference": "2 Könige 15,10",
+              "sourceUnit": "1352"
+            },
+            {
+              "id": "1353-Q3",
+              "text": "Warum gab Menahem Phul Silber?",
+              "options": [
+                "Um Jerusalem zu kaufen",
+                "Um den Tempel zu bauen",
+                "Um Pekah freizukaufen",
+                "Damit Phul mit ihm hielt und sein Königtum befestigte"
+              ],
+              "correctIndex": 3,
+              "explanation": "Menahem zahlte, damit Phul ihn unterstützte und seine Herrschaft festigte.",
+              "reference": "2 Könige 15,19",
+              "sourceUnit": "1353"
+            },
+            {
+              "id": "1355-Q3",
+              "text": "Wohin wurden Bewohner der eroberten Gebiete geführt?",
+              "options": [
+                "Nach Assyrien",
+                "Nach Ägypten",
+                "Nach Juda",
+                "Nach Moab"
+              ],
+              "correctIndex": 0,
+              "explanation": "Thiglath-Pileser führte Menschen aus den eroberten Gebieten nach Assyrien weg.",
+              "reference": "2 Könige 15,29",
+              "sourceUnit": "1355"
+            },
+            {
+              "id": "1356-Q3",
+              "text": "Welches Bauwerk wird Jotham ausdrücklich zugeschrieben?",
+              "options": [
+                "Ein neuer Palast in Samaria",
+                "Die Mauern von Jericho",
+                "Das obere Tor am Haus des HERRN",
+                "Ein Altar in Bethel"
+              ],
+              "correctIndex": 2,
+              "explanation": "Jotham baute das obere Tor am Haus des HERRN.",
+              "reference": "2 Könige 15,35",
+              "sourceUnit": "1356"
+            }
+          ]
+        }
+      ],
+      "requiredUnits": [
+        "1351",
+        "1352",
+        "1353",
+        "1354",
+        "1355",
+        "1356"
+      ]
+    }
+  }
+}

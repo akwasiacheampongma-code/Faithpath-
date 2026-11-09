@@ -1,0 +1,160 @@
+{
+  "schema_version": "faithpath-at-quizvariants-1.0-test-only",
+  "generated_date": "2026-11-08",
+  "repository": "akwasiacheampongma-code/Faithpath-",
+  "source_ref": "content/at-nt-qa-20261023",
+  "description": "Separate review proposal; no app code or production data modified",
+  "human_approved": false,
+  "production_import_allowed": false,
+  "deployment_allowed": false,
+  "chapter_quiz_variants": {
+    "1KI": {
+      "chapter": 8,
+      "required_editorial_units": [
+        "1270",
+        "1271",
+        "1272",
+        "1273",
+        "1274",
+        "1275"
+      ],
+      "variants": [
+        {
+          "id": "A",
+          "label": "Hauptquiz – erste Runde",
+          "question_ids": [
+            "1270-Q5",
+            "1271-Q5",
+            "1272-Q4",
+            "1274-Q1",
+            "1275-Q2"
+          ],
+          "correct_answer_letters": "CBACA",
+          "source_editorial_units": [
+            "1270",
+            "1271",
+            "1272",
+            "1274",
+            "1275"
+          ]
+        },
+        {
+          "id": "B",
+          "label": "Vertiefung – zweite Runde",
+          "question_ids": [
+            "1270-Q3",
+            "1271-Q4",
+            "1273-Q3",
+            "1274-Q4",
+            "1275-Q6"
+          ],
+          "correct_answer_letters": "DCABC",
+          "source_editorial_units": [
+            "1270",
+            "1271",
+            "1273",
+            "1274",
+            "1275"
+          ]
+        }
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "availability": "TEST_ONLY_SPECIFICATION_NOT_YET_IN_APP",
+      "variant_selection": "Round A stays unchanged; Round B can be voluntarily started after completing Round A; 5 questions per round"
+    },
+    "2KI": {
+      "chapter": 15,
+      "required_editorial_units": [
+        "1351",
+        "1352",
+        "1353",
+        "1354",
+        "1355",
+        "1356"
+      ],
+      "variants": [
+        {
+          "id": "A",
+          "label": "Hauptquiz – erste Runde",
+          "question_ids": [
+            "1351-Q1",
+            "1352-Q1",
+            "1353-Q2",
+            "1354-Q2",
+            "1355-Q4"
+          ],
+          "correct_answer_letters": "DADCB",
+          "source_editorial_units": [
+            "1351",
+            "1352",
+            "1353",
+            "1354",
+            "1355"
+          ]
+        },
+        {
+          "id": "B",
+          "label": "Vertiefung – zweite Runde",
+          "question_ids": [
+            "1351-Q3",
+            "1352-Q2",
+            "1353-Q3",
+            "1355-Q3",
+            "1356-Q3"
+          ],
+          "correct_answer_letters": "CBDAC",
+          "source_editorial_units": [
+            "1351",
+            "1352",
+            "1353",
+            "1355",
+            "1356"
+          ]
+        }
+      ],
+      "implementation_status": "NOT_IMPLEMENTED",
+      "availability": "TEST_ONLY_SPECIFICATION_NOT_YET_IN_APP",
+      "variant_selection": "Round A stays unchanged; Round B can be voluntarily started after completing Round A; 5 questions per round"
+    }
+  },
+  "num17_revised_editorial_drafts": [
+    {
+      "id": "NUM17-ED01",
+      "app_chapter": 17,
+      "app_reference": "4 Mose 17,2-4",
+      "question": "Wie viele Stäbe sollte Mose von den Stammesoberhäuptern einsammeln?",
+      "options": [
+        "Zehn Stäbe",
+        "Zwölf Stäbe",
+        "Dreizehn Stäbe",
+        "Vierundzwanzig Stäbe"
+      ],
+      "correct_index": 1,
+      "correct_letter": "B",
+      "explanation": "Gott befahl Mose, von jedem Stammesoberhaupt einen Stab entgegenzunehmen – insgesamt zwölf. Mose legte die Stäbe anschließend vor das Zeugnis (4 Mose 17,2–7).",
+      "editorial_review_note": "Vorherige Formulierung legte nahe, die Stammesführer selbst sollten die Stäbe vor das Zeugnis legen; das tat Mose.",
+      "editorial_status": "PROPOSED_NOT_HUMAN_APPROVED",
+      "human_approved": false
+    },
+    {
+      "id": "NUM17-ED02",
+      "app_chapter": 17,
+      "app_reference": "4 Mose 17,12-13",
+      "question": "Welche Furcht äußerten die Israeliten nach dem Zeichen mit Aarons Stab?",
+      "options": [
+        "Sie müssten ein neues Zelt bauen.",
+        "Sie würden noch mehr Stäbe benötigen.",
+        "Sie könnten beim Nahen an die Stiftshütte umkommen.",
+        "Sie müssten den Sinai erneut besteigen."
+      ],
+      "correct_index": 2,
+      "correct_letter": "C",
+      "explanation": "Am Schluss des Kapitels fürchteten die Israeliten, beim Näherkommen an die Wohnung des HERRN zu sterben (4 Mose 17,12–13).",
+      "editorial_review_note": "Frage präzisiert den erzählerischen Zusammenhang; keine Übertragung des Textes als heutige Handlungsanweisung.",
+      "editorial_status": "PROPOSED_NOT_HUMAN_APPROVED",
+      "human_approved": false
+    }
+  ],
+  "cross_round_question_repeats_allowed": false,
+  "production_blockers_remain": true
+}
