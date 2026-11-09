@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-11-09T13:43:43.625Z",
+  "stats": {
+    "startTime": "2026-11-09T13:42:52.151Z",
+    "duration": 40413.873,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar",
+      "status": "passed",
+      "retry": 0,
+      "durationMs": 30532
+    },
+    {
+      "title": "Davids Kontext wartet auf das echte Reader-Modul und einen positiven 3:2-Rahmen",
+      "status": "passed",
+      "retry": 0,
+      "durationMs": 5642
+    }
+  ],
+  "scope": "Browser CI harness only; no product files edited, no rebuild or deployment performed.",
+  "claimLimit": "Actual Reader network gate proved destination URL can precede mounted deep Reader and positive context geometry. The old visible-artwork helper waited while the chunk was held; the specific outgoing-visible-image false-positive and the exact CI timing were not reproduced."
+}
