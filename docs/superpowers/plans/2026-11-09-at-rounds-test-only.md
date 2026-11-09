@@ -59,13 +59,13 @@
 
 **Interfaces:** QA nutzt nur synthetische Daten und lokale Server. Zwei gebaute TEST-Fassungen werden auf derselben isolierten Origin für den Service-Worker-Wechsel geprüft. Der normale Build und die Baseline dienen als Kontrollen.
 
-- [ ] Alle vier Runden im tatsächlichen App-Fluss vollständig beantworten; 20 besuchte IDs und jeweils sechs redaktionelle Einheiten belegen.
-- [ ] Mobile 320/390 und Desktop, vier Themes, große Schrift, Tastatur und axe prüfen; echte Screenshots aufnehmen.
-- [ ] Unterbrechung/Reload, Back/Forward, Reader-Rückkehr, Neustart, Hauptquiz-Schutz und Speicherfehler prüfen.
-- [ ] Offline-Wiederaufnahme und SW-Update mit gespeicherten synthetischen Daten testen.
-- [ ] Alle Tests, zwei gleiche Builds, Content-/Dateihashes und unveränderte Datenverträge prüfen.
-- [ ] Unabhängiges Abschlussreview; reproduzierbare Blocker gezielt korrigieren.
-- [ ] Technische Nachweise und weiterhin offene fachliche/Geräte-/Produktionsgates getrennt dokumentieren. TEST_ONLY-ZIP und Bericht liefern.
+- [x] Alle vier Runden im tatsächlichen App-Fluss vollständig beantworten; 20 besuchte IDs und jeweils sechs redaktionelle Einheiten belegen.
+- [x] Mobile 320/390 und Desktop, vier Themes, große Schrift, Tastatur und axe prüfen; echte Screenshots aufnehmen.
+- [x] Unterbrechung/Reload, Back/Forward, Reader-Rückkehr, Neustart, Hauptquiz-Schutz und Speicherfehler prüfen.
+- [x] Offline-Wiederaufnahme und SW-Update mit gespeicherten synthetischen Daten testen.
+- [x] Alle Tests, zwei gleiche Builds, Content-/Dateihashes und unveränderte Datenverträge prüfen.
+- [x] Unabhängiges Abschlussreview; reproduzierbare Blocker gezielt korrigieren.
+- [x] Technische Nachweise und weiterhin offene fachliche/Geräte-/Produktionsgates getrennt dokumentieren. TEST_ONLY-ZIP und Bericht liefern.
 
 ## Ledger
 
@@ -79,3 +79,8 @@
 
 - Task 2 abgeschlossen: realer Reader-/Sammlungsfluss für alle 20 Fragen, abschaltbarer Build, 3 neue Adaptertests sowie 9 Browser-Abnahmegruppen bestanden. 6 responsive/Schrift-/axe-Kombinationen ohne gemeldete Verstöße. Keine Vier-Theme-Prüfung möglich: f02106e enthält nur die vorhandene helle Palette.
 - Zusätzlicher Negativbefund: Ein gespeicherter Antwortschlüssel auf eine noch nicht erreichte Frage wurde akzeptiert. Sequenzprüfung gezielt gehärtet; reproduzierender RED/GREEN-Test vorhanden.
+
+- Task 3:99 Einzeltests in12 Dateien bestätigt (84 unveränderte Baseline,15 neue). Vorhandene Browser-Suite12 Gruppen bei Feature-off und Feature-on erfolgreich; neuer Real-App-Flow20 IDs, Abnahme9 Gruppen, Update5 Gruppen und vorhandener SW-Test3 Gruppen erfolgreich.
+- Zweimal identische Builds inklusive release-integrity.json verglichen. Kanonischer Content-Hash bleibt812f002add339a256d807530d3509297678e41f9e27e381938e50036234c36b9. Saubere abschließende Artefakte/ZIP-Prüfsummen werden außerhalb des Quellbaums nach diesem QA-Commit erzeugt.
+- Eigenständiges Read-only-Abschlussreview und Nachreview der kompakten mobilen Testnotiz ohne offene Critical/Important/Minor-Befunde im TEST_ONLY-Scope.
+- Design-/Fach-/Geräte-/Produktionsfreigabe unverändert offen. Fehlendes vollständiges AT-Importbundle verhindert globalen Preflight; kein pauschaler PASS.

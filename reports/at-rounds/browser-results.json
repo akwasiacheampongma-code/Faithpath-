@@ -1,0 +1,44 @@
+{
+  "browser": "Chromium/Linux",
+  "physical_iphone": "OPEN",
+  "human_approved": false,
+  "production_import_allowed": false,
+  "deploy_production": false,
+  "results": [
+    {
+      "check": "reader-entry",
+      "status": "PASS"
+    },
+    {
+      "check": "1KI8-two-real-app-rounds",
+      "status": "PASS"
+    },
+    {
+      "check": "2KI15-two-rounds-and-protected-personal-data",
+      "status": "PASS",
+      "visited_ids": [
+        "1270-Q5",
+        "1271-Q5",
+        "1272-Q4",
+        "1274-Q1",
+        "1275-Q2",
+        "1270-Q3",
+        "1271-Q4",
+        "1273-Q3",
+        "1274-Q4",
+        "1275-Q6",
+        "1351-Q1",
+        "1352-Q1",
+        "1353-Q2",
+        "1354-Q2",
+        "1355-Q4",
+        "1351-Q3",
+        "1352-Q2",
+        "1353-Q3",
+        "1355-Q3",
+        "1356-Q3"
+      ]
+    }
+  ],
+  "page_errors": []
+}
