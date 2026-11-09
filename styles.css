@@ -2237,3 +2237,16 @@ input, select, textarea { border-radius: var(--radius-small); border-color: var(
 .chapter-quiz-collection .list-row strong { font-size: var(--type-body); }
 .chapter-quiz-collection .list-row small { font-size: var(--type-meta); }
 .chapter-collection-entry { margin-block: var(--space-3) var(--space-4); }
+
+/* Fixture-only notice; inherits the existing semantic color tokens. */
+.at-test-notice {
+  margin-block: 1rem;
+  padding: .8rem;
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  color: var(--ink);
+  background: var(--surface-muted);
+  font-size: .875rem;
+  line-height: 1.5;
+}
+.at-test-notice .text-button { display: block; margin-block-start: .3rem; }

@@ -46,12 +46,12 @@
 
 **Interfaces:** Build-Schalter `FAITHPATH_AT_ROUNDS_TEST_ONLY=1` erzeugt einen eindeutig benannten TEST-Build und übernimmt ausschließlich die geprüfte Fixture. `loadAtRoundFeature(base, sessionStorage, fixtureSha)` nutzt denselben Store in einem isolierten Session-Namensraum. Routes erweitern `chapter-quizzes/BOOK/CHAPTER?round=A|B`; Original-NT-Routen bleiben unverändert.
 
-- [ ] Browserprüfung zuerst gegen die unveränderte App ausführen: AT-Einstieg ist nicht vorhanden.
-- [ ] Reader-/Sammlungseinstieg, gemeinsamen Quizrenderer, freiwilliges B-Angebot und sichere Rückwege anbinden.
-- [ ] Aktive normale Quizsession beim Wechsel in die Testansicht erhalten; Antworten und Cursor sofort transaktional sichern.
-- [ ] Auf Feature-off keine Fixture ausliefern oder laden; deaktivierte und manipulierte Deep Links prüfen.
-- [ ] Verständliche Fehlermeldungen und bestätigten, ausschließlich rundenbezogenen Neustart prüfen.
-- [ ] Unit-/Browserprüfungen grün ausführen; kleinen Commit erstellen.
+- [x] Browserprüfung zuerst gegen die unveränderte App ausführen: AT-Einstieg ist nicht vorhanden.
+- [x] Reader-/Sammlungseinstieg, gemeinsamen Quizrenderer, freiwilliges B-Angebot und sichere Rückwege anbinden.
+- [x] Aktive normale Quizsession beim Wechsel in die Testansicht erhalten; Antworten und Cursor sofort transaktional sichern.
+- [x] Auf Feature-off keine Fixture ausliefern oder laden; deaktivierte und manipulierte Deep Links prüfen.
+- [x] Verständliche Fehlermeldungen und bestätigten, ausschließlich rundenbezogenen Neustart prüfen.
+- [x] Unit-/Browserprüfungen grün ausführen; kleinen Commit erstellen.
 
 ## Task 3: Nachweise, Offline und Freigabegrenzen
 
@@ -76,3 +76,6 @@
 - Entscheidung: A-Neustart löscht nur A. B wird gesperrt und erst nach erneutem A-Abschluss wieder erreichbar; B-Antworten bleiben erhalten.
 
 - Task 1 abgeschlossen: zehn fachliche Runden-/Quelltests und vollständiges `npm test` (zehn Testdateien) bestanden; RED/GREEN-Protokolle im isolierten QA-Verzeichnis.
+
+- Task 2 abgeschlossen: realer Reader-/Sammlungsfluss für alle 20 Fragen, abschaltbarer Build, 3 neue Adaptertests sowie 9 Browser-Abnahmegruppen bestanden. 6 responsive/Schrift-/axe-Kombinationen ohne gemeldete Verstöße. Keine Vier-Theme-Prüfung möglich: f02106e enthält nur die vorhandene helle Palette.
+- Zusätzlicher Negativbefund: Ein gespeicherter Antwortschlüssel auf eine noch nicht erreichte Frage wurde akzeptiert. Sequenzprüfung gezielt gehärtet; reproduzierender RED/GREEN-Test vorhanden.

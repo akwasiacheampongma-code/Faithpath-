@@ -29,6 +29,14 @@ function finish(flow, book, chapter, round, choice = 0) {
   }
 }
 
+test('stored future answers cannot bypass the sequential round', () => {
+  const state=empty();state.quiz['1KI:8:A']={fixtureSha:sha,
+    questionIds:fixture.chapters['1KI'].variants[0].questions.map(q=>q.id),
+    answers:{'1275-Q2':0},index:0,done:null};
+  const {flow}=setup(state);
+  assert.throws(()=>flow.session('1KI',8,'A'),/beschädigt/);
+});
+
 test('only the two specified chapters expose their original five-question A and B selections', () => {
   const c = catalog();
   assert.equal(c.chapters.size,2);

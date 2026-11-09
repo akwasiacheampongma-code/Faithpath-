@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:at-rounds:test": "node scripts/build-at-rounds-test.mjs",
+    "validate:at-rounds:test": "node scripts/validate-at-rounds-test.mjs",
+    "test:at-rounds:browser": "node tests/at-rounds-browser.mjs",
     "test": "node --test tests/*.test.mjs",
     "validate": "node scripts/validate-content.mjs",
     "serve": "node scripts/serve.mjs",

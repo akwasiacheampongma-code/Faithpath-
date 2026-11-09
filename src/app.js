@@ -1,4 +1,6 @@
 import {createChapterCatalog,chapterUnit,chapterQuizRoute,chapterQuizNavigation} from "./chapter-questions.js";
+import {AT_ROUNDS_TEST_ONLY,AT_ROUNDS_FIXTURE_SHA} from "./at-rounds-config.js";
+import {loadAtRoundFeature,atRoundRoute,atRoundView} from "./at-rounds-feature.js";
 import {journalMatches} from "./journal-search.js";
 import {deleteJournalEntry,restoreJournalEntry,journalDraftMatches,setJournalPath} from "./journal-management.js";
 import {journalTransaction,recoverJournalWrite,JOURNAL_WRITE_KEY,journalWriteActive} from "./journal-storage.js";
@@ -83,6 +85,10 @@ const ui = {
   historyLimit: 40,
   journalLimit: 40,
   quiz: null,
+  roundQuiz: null,
+  atRounds: null,
+  atRoundsError: null,
+  retainedQuiz: null,
   form: null,
   import: null,
   offline: false,
@@ -516,6 +522,8 @@ async function reader(parts, params, token) {
   );
 }
 function readerChapterQuestions(ref, origin) {
+  if (ui.atRounds?.catalog.get(ref.book,+ref.chapter))
+    return `<section class="reader-chapter-questions" data-at-rounds-entry aria-labelledby="chapter-questions-title"><span class="overline">AT-Testkapitel · nicht freigegeben</span><h2 id="chapter-questions-title">5 Fragen zu diesem Kapitel</h2><p>Du kannst dein Verständnis prüfen. Eine zweite Runde ist nach Abschluss freiwillig.</p><div class="chapter-questions-actions">${link("Fragen starten",atRoundRoute(ref.book,+ref.chapter,'A',readRoute(ref,origin)),"button primary")}${button("Später","skip-chapter-quiz",{},"text-button")}</div></section>`;
   const unit = chapterUnit(ui.chapterCatalog, ref.book, ref.chapter);
   if (!unit) return "";
   return `<section class="reader-chapter-questions" data-unit-id="${unit.id}" aria-labelledby="chapter-questions-title"><span class="overline">Kapitel abgeschlossen</span><h2 id="chapter-questions-title">${unit.questions.length} Fragen zu diesem Kapitel</h2><p>Prüfe dein Verständnis des gelesenen Textes.</p>${s().quiz[unit.id]?.done ? '<p class="meta">Fragen zu diesem Kapitel bereits angesehen.</p>' : ""}<div class="chapter-questions-actions">${link("Fragen starten", chapterQuizRoute(unit, readRoute(ref, origin)), "button primary")}${button("Später", "skip-chapter-quiz", {}, "text-button")}</div></section>`;
@@ -524,10 +532,12 @@ function chapterCollection(bookCode) {
   const code = bookCode ? normBook(bookCode) : "";
   const book = ui.books.find(book => book.code === code);
   const units = code ? ui.chapterCatalog.byBook.get(code) : null;
-  if (code && (!book || !units)) return notFound();
+  const testChapters=[...(ui.atRounds?.catalog.chapters.values() || [])].filter(ch=>!code || ch.book===code);
+  if (code && (!book || (!units && !testChapters.length))) return notFound();
   const collectionRow = (title, sub, route, data) => row(title, sub, route).replace('<a ', `<a ${data} `);
-  const rows = code ? units.map(unit => collectionRow(`Kapitel ${unit.chapter + 1}`, `${unit.questions.length} Fragen${s().quiz[unit.id]?.done ? " · angesehen" : ""}`, chapterQuizRoute(unit, `chapter-quizzes/${code}`), `data-chapter-unit="${unit.id}"`)).join("") : ui.books.filter(book => ui.chapterCatalog.byBook.has(book.code)).map(book => {
-    const units = ui.chapterCatalog.byBook.get(book.code), count = units.reduce((n, unit) => n + unit.questions.length, 0);
+  const rows = code ? (units || []).map(unit => collectionRow(`Kapitel ${unit.chapter + 1}`, `${unit.questions.length} Fragen${s().quiz[unit.id]?.done ? " · angesehen" : ""}`, chapterQuizRoute(unit, `chapter-quizzes/${code}`), `data-chapter-unit="${unit.id}"`)).join("")+testChapters.map(ch=>collectionRow(`Kapitel ${ch.chapter}`,"TEST_ONLY · 5 Fragen je Runde",atRoundRoute(code,ch.chapter,'A',`chapter-quizzes/${code}`),`data-at-round-chapter="${ch.chapter}"`)).join("") : ui.books.filter(book => ui.chapterCatalog.byBook.has(book.code) || testChapters.some(ch=>ch.book===book.code)).map(book => {
+    const units = ui.chapterCatalog.byBook.get(book.code) || [], tests=testChapters.filter(ch=>ch.book===book.code), count = units.reduce((n, unit) => n + unit.questions.length, 0);
+    if(tests.length)return collectionRow(book.name,"TEST_ONLY · ein Kapitel, zwei freiwillige Runden",`chapter-quizzes/${book.code}`,`data-chapter-book="${book.code}"`);
     return collectionRow(book.name, `${units.length} Kapitel`, `chapter-quizzes/${book.code}`, `data-chapter-book="${book.code}" data-chapters="${units.length}" data-questions="${count}"`);
   }).join("");
   shell(`${back(code ? "Kapitelfragen" : "Entdecken", code ? "chapter-quizzes" : "discover")}${heading("Kapitelfragen", code ? book.name : "Buch für Buch verstehen.", code ? "Fragen zum gelesenen Kapitel. In deinem Tempo." : "Wähle ein Buch und dann ein Kapitel.")}<div class="chapter-quiz-collection">${rows}</div>`, "bible", "chapter-questions-page depth-page");
@@ -536,6 +546,35 @@ function chapterQuizComplete(unit, navigation) {
   const amount = unit.questions.length === 5 ? "fünf" : unit.questions.length;
   shell(`${back("Zurück", navigation.backRoute)}<section class="chapter-quiz-complete">${heading("Kapitelfragen abgeschlossen", `Fragen zu ${unit.ref}`, `Du hast die ${amount} Fragen zu ${unit.ref} angesehen.`)}<div class="chapter-questions-actions">${link("Zurück zum Kapitel", navigation.readerRoute, "button primary")}${navigation.nextReaderRoute ? link("Nächstes Kapitel lesen", navigation.nextReaderRoute, "button quiet") : ""}${link("Zur Sammlung", navigation.collectionRoute, "text-link")}</div>${button("Gedanken festhalten", "reflect-story", {id:unit.id}, "text-button")}</section>`, "bible", "chapter-questions-page depth-page");
 }
+// This route is fixture-only. It never replaces the canonical ui.quiz session.
+function atRoundLocation(route=ui.route) {
+  const [name,query='']=route.split('?'), parts=name.split('/');
+  if(parts.length!==3 || parts[0]!=="chapter-quizzes")return null;
+  const params=new URLSearchParams(query);
+  return {book:parts[1],chapter:Number(parts[2]),round:params.get('round') || 'A',returnRoute:params.get('return') || ''};
+}
+function atRoundScreen(location) {
+  ui.roundQuiz=null;
+  if(!AT_ROUNDS_TEST_ONLY)return notFound();
+  const {book,chapter,round,returnRoute}=location;
+  if(!ui.atRounds){
+    shell(`${back("Zur Sammlung","chapter-quizzes")}${heading("AT-Test nicht verfügbar","Die Testrunden konnten nicht geöffnet werden.",ui.atRoundsError || "Testdaten fehlen.")}${button("Erneut laden","reload",{},"button primary")}`,"bible");return;
+  }
+  if(!ui.atRounds.catalog.get(book,chapter)?.rounds.has(round))return notFound();
+  if(ui.quiz)ui.retainedQuiz=ui.quiz;
+  try {
+    const state=ui.atRounds.controller.session(book,chapter,round);
+    const view=atRoundView(state);
+    const navigation=chapterQuizNavigation(view.story,ui.books,s().translation,returnRoute.startsWith('read/') ? returnRoute : `chapter-quizzes/${book}`);
+    if(state.blocked){locationReplace(atRoundRoute(book,chapter,'A',navigation.backRoute));return;}
+    ui.roundQuiz={...view,navigation,returnRoute:navigation.backRoute};
+    if(!state.done){quiz(ui.roundQuiz);return;}
+    shell(`${back("Zurück",navigation.backRoute)}<section data-at-round-complete="${e(state.key)}">${heading("TEST_ONLY · Runde "+round,"Fünf Fragen angesehen.","Eine weitere Runde bleibt freiwillig. Dein Glaube wird nicht bewertet.")}${round==='A' ? link("Freiwillige zweite Runde",atRoundRoute(book,chapter,'B',navigation.backRoute),"button primary") : ""}<div class="chapter-questions-actions">${link("Zurück zum Kapitel",navigation.readerRoute,"button quiet")}${link("Zur Sammlung",navigation.collectionRoute,"text-link")}${button("Runde neu starten","at-round-reset",{},"text-button")}</div><p class="meta">Nicht redaktionell freigegeben. Testergebnisse bleiben in diesem Tab und sind kein Teil persönlicher Backups.</p></section>`,"bible");
+  } catch(error) {
+    shell(`${back("Zur Sammlung",`chapter-quizzes/${book}`)}${heading("Testfortschritt braucht Aufmerksamkeit","Diese Testrunde wurde nicht verändert.",error.message)}<p>Du kannst ausschließlich diese Runde nach Bestätigung neu starten. Persönliche Daten bleiben erhalten.</p>${button("Runde neu starten","at-round-reset",{},"button quiet")}`,"bible");
+  }
+}
+function locationReplace(route){window.location.replace('#'+route);}
 function selection() {
   const a = [...ui.selection].sort((a, b) => a - b);
   if (!a.length) return null;
@@ -620,11 +659,11 @@ function story(id) {
     "bible",
   );
 }
-function quiz() {
-  const { story: x, index, answer, navigation } = ui.quiz,
+function quiz(session=ui.quiz) {
+  const { story: x, index, answer, navigation, atRound } = session,
     q = x.questions[index];
   shell(
-    `${back(navigation?.backRoute.startsWith("read/") ? "Zurück zum Kapitel" : navigation?.backRoute.startsWith("chapter-quizzes/") ? "Zur Kapitelliste" : "Zur Geschichte", navigation?.backRoute || "story/" + x.id)}<div class="quiz-head"><span class="overline">${x.kind === "chapter-quiz" ? "Fragen zu diesem Kapitel" : "Verständnisfragen"}</span><span>Frage ${index + 1} von ${x.questions.length}</span></div><h1 class="quiz-title" tabindex="-1" data-question-id="${e(q.faithpath_id)}">${e(q.q)}</h1><p class="meta">${e(x.ref)}${x.kind === "chapter-quiz" ? " · Grundlage: Luther 1912" : ""}</p><div class="answers">${q.a.map((a, i) => `<button type="button" data-action="answer" data-answer="${i}" ${answer != null ? "disabled" : ""} class="answer ${answer != null && i === q.c ? "correct" : answer === i ? "selected-wrong" : ""}"><span>${String.fromCharCode(65 + i)}</span><span>${e(a)}${answer != null && i === q.c ? "<small>Richtige Antwort</small>" : answer === i ? "<small>Deine Antwort</small>" : ""}</span></button>`).join("")}</div>${answer != null ? `<section class="explanation" role="status" tabindex="-1"><strong>${answer === q.c ? "Ja, das steht im Text." : "Schau noch einmal auf den Zusammenhang."}</strong><p>${e(q.x)}</p><span class="meta">${e(q.ref || q.p)}</span></section>${button(index === x.questions.length - 1 ? "Kapitel abschließen" : "Nächste Frage", "next-question", {}, "button primary")}` : ""}`,
+    `${back(navigation?.backRoute.startsWith("read/") ? "Zurück zum Kapitel" : navigation?.backRoute.startsWith("chapter-quizzes/") ? "Zur Kapitelliste" : "Zur Geschichte", navigation?.backRoute || "story/" + x.id)}${atRound ? `<aside class="at-test-notice">TEST_ONLY · Runde ${e(atRound.round)} · Nicht redaktionell freigegeben. Ergebnisse bleiben nur in diesem Tab.${button("Runde neu starten","at-round-reset",{},"text-button")}</aside>` : ""}<div class="quiz-head"><span class="overline">${x.kind === "chapter-quiz" ? "Fragen zu diesem Kapitel" : "Verständnisfragen"}</span><span>Frage ${index + 1} von ${x.questions.length}</span></div><h1 class="quiz-title" tabindex="-1" data-question-id="${e(q.faithpath_id)}">${e(q.q)}</h1><p class="meta">${e(x.ref)}${x.kind === "chapter-quiz" ? " · Grundlage: Luther 1912" : ""}</p><div class="answers">${q.a.map((a, i) => `<button type="button" data-action="answer" data-answer="${i}" ${answer != null ? "disabled" : ""} class="answer ${answer != null && i === q.c ? "correct" : answer === i ? "selected-wrong" : ""}"><span>${String.fromCharCode(65 + i)}</span><span>${e(a)}${answer != null && i === q.c ? "<small>Richtige Antwort</small>" : answer === i ? "<small>Deine Antwort</small>" : ""}</span></button>`).join("")}</div>${answer != null ? `<section class="explanation" role="status" tabindex="-1"><strong>${answer === q.c ? "Ja, das steht im Text." : "Schau noch einmal auf den Zusammenhang."}</strong><p>${e(q.x)}</p><span class="meta">${e(q.ref || q.p)}</span></section>${button(index === x.questions.length - 1 ? atRound ? "Runde abschließen" : "Kapitel abschließen" : "Nächste Frage", "next-question", {}, "button primary")}` : ""}`,
     "bible",
   );
 }
@@ -1492,6 +1531,21 @@ async function action(a, d, el) {
     $(".chapter-nav a")?.focus();
     return;
   }
+  if(a==='at-round-reset' || a==='at-round-confirm-reset') {
+    const loc=atRoundLocation();
+    if(!loc || !ui.atRounds?.catalog.get(loc.book,loc.chapter)?.rounds.has(loc.round))return;
+    if(a==='at-round-reset'){
+      modal("Diese Testrunde neu starten?",`<p>Nur Runde ${e(loc.round)} dieses Kapitels wird zurückgesetzt. Andere Runden und persönliche Einträge bleiben erhalten.${loc.round==='A' ? ' Runde B ist bis zum erneuten A-Abschluss gesperrt.' : ''}</p>${button("Nur diese Runde zurücksetzen","at-round-confirm-reset",{},"button quiet")}`);return;
+    }
+    ui.atRounds.controller.reset(loc.book,loc.chapter,loc.round);closeModal();await render();return;
+  }
+  if((a==='answer' || a==='next-question') && atRoundLocation()) {
+    const loc=atRoundLocation();
+    if(!ui.atRounds || !ui.roundQuiz || ui.roundQuiz.atRound.key!==`${loc.book}:${loc.chapter}:${loc.round}`)return;
+    if(a==='answer')ui.atRounds.controller.answer(loc.book,loc.chapter,loc.round,Number(d.answer));
+    else ui.atRounds.controller.advance(loc.book,loc.chapter,loc.round);
+    atRoundScreen(loc);(a==='answer' ? $(".explanation") : $("h1"))?.focus();return;
+  }
   if (a === "quiz") {
     const x = ui.stories.find((x) => String(x.id) === d.id);
     if (!x) return;
@@ -1708,7 +1762,11 @@ async function render() {
     else if (kind === "topic") topic(key);
     else if (kind === "bible") bible();
     else if (kind === "chapters") chapters(key);
-    else if (kind === "chapter-quizzes") chapterCollection(key);
+    else if (kind === "chapter-quizzes") {
+      if(parts.length===3)atRoundScreen(atRoundLocation(route));
+      else if(parts.length<=2)chapterCollection(key);
+      else notFound();
+    }
     else if (kind === "read") {
       shell(
         `${heading("Bibel", "Der Text wird geöffnet.")}<p role="status">Ein Moment …</p>`,
@@ -1727,8 +1785,10 @@ async function render() {
       const canonical=canonicalStoryForLegacy(x);
       if(canonical){go("question/"+canonical.flow_items[0].primary_question_id);return;}
       const params = new URLSearchParams(query), returnRoute = params.get("return") || "";
-      if (!ui.quiz || String(ui.quiz.story.id) !== key || previousRoute.split("?")[0] !== name || ui.quiz.returnRoute !== returnRoute)
+      const resume=ui.retainedQuiz===ui.quiz && ui.quiz && String(ui.quiz.story.id)===key && ui.quiz.returnRoute===returnRoute;
+      if (!ui.quiz || String(ui.quiz.story.id) !== key || (!resume && previousRoute.split("?")[0] !== name) || ui.quiz.returnRoute !== returnRoute)
         ui.quiz = {story:x, index:0, answer:null, returnRoute};
+      ui.retainedQuiz=null;
       ui.quiz.navigation = chapterQuizNavigation(x, ui.books, s().translation, returnRoute);
       if (params.get("complete") === "1" && s().quiz[x.id]?.done) chapterQuizComplete(x, ui.quiz.navigation);
       else quiz();
@@ -1908,6 +1968,10 @@ async function init() {
     ui.stories = runtimeModel.units;
     ui.chapterCatalog = createChapterCatalog(ui.stories, ui.books);
     ui.refs = runtimeModel.refs;
+    if(AT_ROUNDS_TEST_ONLY){
+      try{ui.atRounds=await loadAtRoundFeature(CONTENT_BASE,window.sessionStorage,AT_ROUNDS_FIXTURE_SHA);}
+      catch(error){ui.atRoundsError=error.message;}
+    }
     await render();
     if(journalRecoveryError)notify(journalRecoveryError.message,true);
     pwa();

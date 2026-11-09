@@ -66,7 +66,8 @@ export function createAtRoundController(catalog, store, fixtureSha) {
       Number.isInteger(saved.index) && saved.index >= 0 && saved.index < 5,
       'Der Testfortschritt ist beschädigt.');
     const amount = Object.keys(saved.answers).length;
-    require(ids.slice(0,saved.index).every(id => Object.hasOwn(saved.answers,id)) &&
+    require(Object.keys(saved.answers).every(id=>ids.indexOf(id)<=saved.index) &&
+      ids.slice(0,saved.index).every(id => Object.hasOwn(saved.answers,id)) &&
       amount >= saved.index && amount <= saved.index + 1 &&
       (saved.done === null || (typeof saved.done === 'string' && Number.isFinite(Date.parse(saved.done)) &&
         amount === 5 && saved.index === 4)), 'Der Testfortschritt ist beschädigt.');

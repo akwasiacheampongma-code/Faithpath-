@@ -4,7 +4,14 @@ import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {auditContent} from './validate-content.mjs';
 import {createRuntimeModel} from '../src/runtime-model.js';
-import {BUILD} from '../src/version.js';
+import {BUILD as SOURCE_BUILD} from '../src/version.js';
+import {validateAtRoundFiles} from './validate-at-rounds-test.mjs';
+const flag=process.env.FAITHPATH_AT_ROUNDS_TEST_ONLY || '0';
+if(!['0','1'].includes(flag))throw new Error('FAITHPATH_AT_ROUNDS_TEST_ONLY must be 0 or 1');
+const testOnly=flag==='1';
+const BUILD=testOnly ? process.env.FAITHPATH_AT_TEST_BUILD_ID || 'FP4-20261109-G-AT-ROUNDS-TEST1' : SOURCE_BUILD;
+if(testOnly && !/^FP4-\d{8}-G-AT-ROUNDS-TEST[1-9]\d*$/.test(BUILD))throw new Error('Explicit TEST build ID required');
+const testAudit=testOnly ? validateAtRoundFiles() : null;
 const hash = v => crypto.createHash('sha256').update(v).digest('hex');
 const read = f => JSON.parse(fs.readFileSync(f,'utf8'));
 const {index,report} = auditContent();
@@ -20,13 +27,19 @@ fs.cpSync('data',`${out}/${release}/data`,{recursive:true,filter:p=>!p.startsWit
 fs.writeFileSync(`${out}/${release}/data/reference-index.json`,JSON.stringify(index));
 fs.writeFileSync(`${out}/${release}/data/content-report.json`,JSON.stringify(report,null,2));
 fs.cpSync('src',`${out}/${release}/src`,{recursive:true});fs.copyFileSync('styles.css',`${out}/${release}/styles.css`);
+if(testOnly){
+  fs.copyFileSync('tests/fixtures/at-rounds.test-only.json',`${out}/${release}/data/at-rounds.test-only.json`);
+  fs.writeFileSync(`${out}/${release}/src/at-rounds-config.js`,`// Explicit TEST_ONLY build. Never editorial/production approval.\nexport const AT_ROUNDS_TEST_ONLY = true;\nexport const AT_ROUNDS_FIXTURE_SHA = '${testAudit.fixture_sha256}';\n`);
+  fs.writeFileSync(`${out}/${release}/src/version.js`,`export const BUILD = '${BUILD}';\n`);
+}
 for(const d of ['data/bibles','trees','icons'])fs.cpSync(d,`${out}/${d}`,{recursive:true});
 for(const f of ['manifest.webmanifest','_headers','_redirects','404.html'])fs.copyFileSync(f,`${out}/${f}`);
 fs.writeFileSync(`${out}/index.html`,fs.readFileSync('index.html','utf8').replace('./styles.css',`./${release}/styles.css`).replace('./src/app.js',`./${release}/src/app.js`));
-fs.writeFileSync(`${out}/BUILD.txt`,`${BUILD}\nBranch: develop/v4\n`);
+const revision=testOnly ? {branch:execFileSync('git',['branch','--show-current'],{encoding:'utf8'}).trim(),commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),dirty:!!execFileSync('git',['status','--porcelain','--untracked-files=no'],{encoding:'utf8'}).trim()} : null;
+fs.writeFileSync(`${out}/BUILD.txt`,testOnly ? `${BUILD}\nTEST_ONLY=true\nBranch: ${revision.branch}\nCommit: ${revision.commit}\nTracked changes: ${revision.dirty}\nhuman_approved=false\nproduction_import_allowed=false\ndeploy_production=false\n` : `${BUILD}\nBranch: develop/v4\n`);
 fs.writeFileSync(`${out}/candidate-integrity.json`,JSON.stringify({build:BUILD,content_hash:contentHash,algorithm:'SHA256(JSON.stringify(sorted path-to-SHA256 map)); data/**/*.json excluding data/audit/**',files:candidateFiles},null,2));
 const assets=files(out).filter(f=>!f.endsWith('_headers')&&!f.endsWith('_redirects')).map(f=>'./'+path.relative(out,f)).sort();
 fs.writeFileSync(`${out}/sw.js`,fs.readFileSync('scripts/sw-template.js','utf8').replace('__BUILD__',BUILD).replace('__ASSETS__',JSON.stringify(assets)));
 const hashes=Object.fromEntries(files(out).map(f=>[path.relative(out,f),hash(fs.readFileSync(f))]));
-fs.writeFileSync(`${out}/release-integrity.json`,JSON.stringify({build:BUILD,content_hash:contentHash,build_hash:hash(JSON.stringify(hashes)),files:hashes},null,2));
+fs.writeFileSync(`${out}/release-integrity.json`,JSON.stringify({build:BUILD,content_hash:contentHash,build_hash:hash(JSON.stringify(hashes)),...(testOnly ? {test_only:{...testAudit,revision}} : {}),files:hashes},null,2));
 console.log(JSON.stringify({build:BUILD,files:Object.keys(hashes).length+1,content_hash:contentHash,build_hash:hash(JSON.stringify(hashes))}));
