@@ -1,0 +1,94 @@
+{
+  "version": "0.11.0",
+  "checkedAt": "2026-11-09T07:59:18.474872+00:00",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(sorted path + NUL + bytes + NUL); app/src/assets plus app/package/lock and A51/sword runtime manifests, including the Romans manifest and index",
+    "fileCount": 300,
+    "sha256": "5f0789aef525e68db2b4b841c2fa4bf1f9f74283fae6a3ed055d5eea2e2eb134"
+  },
+  "initialRuntimeSourceDigest": {
+    "algorithm": "SHA256(sorted path + NUL + bytes + NUL); app/src/assets plus app/package/lock and A51/sword runtime manifests, including the Romans manifest and index",
+    "fileCount": 300,
+    "sha256": "5f0789aef525e68db2b4b841c2fa4bf1f9f74283fae6a3ed055d5eea2e2eb134"
+  },
+  "sourceUnchangedDuringExports": true,
+  "priorNativeOutputsPreservedAt": "/workspace/oliva-native-v010-before-v011",
+  "preserved010": [
+    {
+      "platform": "android",
+      "metadataSha256": "7404354d5d153ce547011fba503dd956e8a78fa46cc45e316b9295fc15fe6bf8",
+      "bundle": "_expo/static/js/android/entry-d694c302fa2e7647cb0ccc9aff97aa12.js",
+      "bundleSha256": "18f88981b0c0c4a98694383a21e13f787fff25118e53943403a9540771c5785c",
+      "matchesFrozen010Report": true,
+      "fileCount": 154,
+      "bytes": 50811262
+    },
+    {
+      "platform": "ios",
+      "metadataSha256": "990fe1a11663ee4c29bacb951fe733908cbb73241d29a3a0857680ace490ca17",
+      "bundle": "_expo/static/js/ios/entry-3951969315b259c0a43cc22eade3dfd2.js",
+      "bundleSha256": "12c378341ab594083663776b046a773aae0494d9ec14051ce1709f7af18316ab",
+      "matchesFrozen010Report": true,
+      "fileCount": 151,
+      "bytes": 50827892
+    }
+  ],
+  "exports": [
+    {
+      "command": [
+        "node",
+        "scripts/expo.mjs",
+        "export",
+        "--platform",
+        "android",
+        "--output-dir",
+        "dist-android",
+        "--no-minify",
+        "--no-bytecode"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-11-09T07:59:05.891058+00:00",
+      "finishedAt": "2026-11-09T07:59:11.145789+00:00",
+      "durationSeconds": 5.255,
+      "rawLog": "docs/evidence/reader-flow/native/native-android.txt",
+      "rawLogSHA256": "343fffa853fe47f3ac8012c4c9eba8eaa43bff0e682ac96a07859b3d588ef88b",
+      "platform": "android"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/expo.mjs",
+        "export",
+        "--platform",
+        "ios",
+        "--output-dir",
+        "dist-ios",
+        "--no-minify",
+        "--no-bytecode"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-11-09T07:59:11.146121+00:00",
+      "finishedAt": "2026-11-09T07:59:16.300282+00:00",
+      "durationSeconds": 5.154,
+      "rawLog": "docs/evidence/reader-flow/native/native-ios.txt",
+      "rawLogSHA256": "a2fb97f0c995acdc951ac9bdef622144b4e57fd62b9b9a738f1f0450a4286231",
+      "platform": "ios"
+    }
+  ],
+  "assetCheck": {
+    "command": [
+      "node",
+      "scripts/check-native-export.mjs",
+      "--report",
+      "docs/evidence/reader-flow/native/native-export-check.json"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-09T07:59:16.300653+00:00",
+    "finishedAt": "2026-11-09T07:59:18.307607+00:00",
+    "durationSeconds": 2.007,
+    "rawLog": "docs/evidence/reader-flow/native/native-export-check.txt",
+    "rawLogSHA256": "7c17d41ea993abda661fcafb78af1913470d124165792e6ef01c97baeb98c0ce"
+  },
+  "allPassed": true,
+  "kind": "Unminified native JavaScript/asset debug exports; no Hermes bytecode execution, APK/AAB/IPA, signing, simulator, device, native image decoder, performance, memory or energy test."
+}

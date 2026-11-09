@@ -1,0 +1,109 @@
+{
+  "version": "0.11.0",
+  "checkedAt": "2026-11-09T08:18:24.546124+00:00",
+  "allCoreChecksPassed": true,
+  "coreBuild": "oliva-01c4b9f640bc0931",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(sorted path + NUL + bytes + NUL); app/src/assets plus app/package/lock and A51/sword runtime manifests, including the Romans manifest and index",
+    "fileCount": 300,
+    "sha256": "5f0789aef525e68db2b4b841c2fa4bf1f9f74283fae6a3ed055d5eea2e2eb134"
+  },
+  "runtimeInputOrder": "Use files in native/runtime-inputs.json order (Python Path component sorting), each path+NUL+bytes+NUL.",
+  "unit": {
+    "passed": 168,
+    "total": 168,
+    "failed": 0,
+    "pending": 0
+  },
+  "browser": {
+    "passed": 92,
+    "total": 92,
+    "singleFullGreenRun": true,
+    "skipped": 0,
+    "flaky": 0,
+    "unexpected": 0,
+    "allResultsSingleAttempt": true
+  },
+  "earlierTargetedBrowser": {
+    "flow": {
+      "passed": 7,
+      "core": "oliva-6dc58fa90ed710f9",
+      "report": "first-targeted.json"
+    },
+    "hardenedCases": {
+      "passed": 2,
+      "core": "oliva-6dc58fa90ed710f9",
+      "report": "second-cases4-7.json"
+    },
+    "focus": {
+      "passed": 3,
+      "core": "oliva-ac7ced6075cbbc76",
+      "report": "focus-targeted.json"
+    },
+    "positionAfterFix": {
+      "passed": 4,
+      "core": "oliva-ac7ced6075cbbc76",
+      "report": "reader-baseline-dimensions.json"
+    },
+    "scope": "Earlier unversioned feature builds bearing package0.10; no claim that the immutable0.10 release contains the new reader."
+  },
+  "dataVersion": 7,
+  "unchangedContractFilesFromV010": [
+    "src/state/model.ts",
+    "src/state/store.ts",
+    "src/services/documents.ts",
+    "src/features/personal/schema.ts",
+    "src/features/personal/capture-schema.ts",
+    "src/features/imports/schema.ts",
+    "src/features/imports/source.ts",
+    "src/features/invitations/schema.ts"
+  ],
+  "privateDocumentVersion": 1,
+  "sqliteSchemaVersion": 3,
+  "indexedDbVersion": 1,
+  "realPreviousPwaUpgrade": {
+    "passed": true,
+    "baseline": "0.10.0",
+    "target": "0.11.0",
+    "schemaMigration": false,
+    "allFourRawRecordsExact": true,
+    "oldCanonicalVerse120RestoredOfflineToInline": true,
+    "focusAndReloadPreserveRawRecords": true,
+    "evidence": "upgrade/offline-upgrade.json"
+  },
+  "nativeJavaScriptAssetExports": {
+    "android": true,
+    "ios": true,
+    "deviceOrSimulator": false,
+    "evidence": "native/native-builds.json"
+  },
+  "dependencyAuditVulnerabilities": 0,
+  "originalFaithpathMaterializedFilesVerified": 390,
+  "privateDeployment": {
+    "status": "succeeded",
+    "id": "appgdep_6af1823698f08191b7fd4d34012c9ca4",
+    "versionId": "appgprj_6aedf77e5ce0819180c10eb799447018~appgver_e4e4314cb4608191b4c29e8347e5abec",
+    "sourceCommit": "505da81aa36216c080158a617fc963ebf7d7dd5c",
+    "url": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+    "deployedAt": "2026-11-09T08:20:19.090692+00:00",
+    "routesHttpChecked": 20,
+    "appFilesChecked": 105,
+    "appFilesHashCompared": 104,
+    "indexHtmlShellCheckedSeparately": true,
+    "reviewFilesHashCompared": 42,
+    "anonymousStatus": 401,
+    "ownerOnlyPolicyUnchanged": true,
+    "hostBuild": "oliva-6fe6a58c87610ef5"
+  },
+  "githubBackup": {
+    "status": "not yet performed"
+  },
+  "limitations": [
+    "No hosted CUA browser tool is exposed; private HTTP/package checks are separate from local Chromium tests.",
+    "No physical phone, simulator, native line events, image decoder, signed installer, Hermes, energy or memory testing.",
+    "Native inline measurement can conservatively retain the existing verse-block fallback.",
+    "Original multi-verse selection, dedicated copy action and full-chapter presentation for partial references remain outstanding.",
+    "Full NT catalog is audited/prepared, not yet active; further imagery, human usability/content review and optional real services remain outstanding.",
+    "No public web/store deployment; original FaithPath/main and historical tags remain unchanged."
+  ]
+}

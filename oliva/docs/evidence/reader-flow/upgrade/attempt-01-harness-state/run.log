@@ -1,0 +1,137 @@
+Upgrade phase: baseline-ui-seed
+Upgrade phase: worker-update-and-read-only-hydration
+{
+  "baseline_version": "0.10.0",
+  "target_version": "0.11.0",
+  "synthetic_data": true,
+  "passed": false,
+  "physical_device_test": false,
+  "hosted_qa": false,
+  "evidence_scope": "Local automated Chromium; one persistent profile and origin throughout the worker update",
+  "byte_comparison": "Exact UTF-8 JSON serialization of raw IndexedDB values, not database-file bytes",
+  "phase": "worker-update-and-read-only-hydration",
+  "phases": [
+    {
+      "name": "baseline-ui-seed",
+      "startedAt": "2026-11-09T08:02:28.772Z"
+    },
+    {
+      "name": "worker-update-and-read-only-hydration",
+      "startedAt": "2026-11-09T08:02:55.749Z"
+    }
+  ],
+  "browser_version": "155.0.8059.79",
+  "origin": "http://127.0.0.1:35475",
+  "baseline_private_storage_version": 1,
+  "baseline_data_version": 7,
+  "baseline_build_id": "oliva-12c38c9b1a132bff",
+  "baseline_worker": {
+    "expected": "oliva-12c38c9b1a132bff",
+    "controller": {
+      "id": "oliva-12c38c9b1a132bff",
+      "version": "0.10.0"
+    },
+    "active": {
+      "id": "oliva-12c38c9b1a132bff",
+      "version": "0.10.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-12c38c9b1a132bff"
+    ]
+  },
+  "baseline_review_id": "draft-1794211363569-r3ysssc4",
+  "baseline_goal_revision": 2,
+  "baseline_main_json_sha256": "505c9140f894a1d3eb63acb13a30aa88fc9f731d61c060aeb1d064b450066d62",
+  "baseline_records": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 652,
+      "json_sha256": "ae760a27c1a348bf1cdf2df852163a3ba18dd68a727b0e398d9b9546051184cd"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5529,
+      "json_sha256": "505c9140f894a1d3eb63acb13a30aa88fc9f731d61c060aeb1d064b450066d62"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "baseline_reading_position": {
+    "ref": {
+      "book": "PSA",
+      "chapter": 119
+    },
+    "verse": 120,
+    "mode": "read"
+  },
+  "baseline_review_edit_draft_sha256": "150487181698e0554b614ce91eeba80744029cb18fa9c9307c5417b0acc630ce",
+  "baseline_journal_draft_sha256": "9e7fe329b085625a84a54396cc7ba1674eac1b880161b384d490861f77b048e9",
+  "baseline_block_reader_verse_120_observed": true,
+  "original_archive_blob_sha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "baseline_cached_asset_sha256": "d3660455e2e8fa29c604e897930856df760133a715fae25d4f81a8993a35e76c",
+  "error": "Error: expect(locator).toBeEnabled() failed\n\nLocator:  getByTestId('review-draft-1794211363569-r3ysssc4').getByRole('button', { name: 'Rückblick bearbeiten', exact: true })\nExpected: enabled\nReceived: disabled\nTimeout:  30000ms\n\nCall log:\n  - Expect \"toBeEnabled\" getByTestId('review-draft-1794211363569-r3ysssc4').getByRole('button', { name: 'Rückblick bearbeiten', exact: true }) with timeout 30000ms\n  - waiting for getByTestId('review-draft-1794211363569-r3ysssc4').getByRole('button', { name: 'Rückblick bearbeiten', exact: true })\n    62 × locator resolved to <button disabled role=\"button\" tabindex=\"-1\" type=\"button\" aria-disabled=\"true\" class=\"css-g5y9jx r-12vffkv\">…</button>\n       - unexpected value \"disabled\"\n",
+  "error_stack": "Error: expect(locator).toBeEnabled() failed\n\nLocator:  getByTestId('review-draft-1794211363569-r3ysssc4').getByRole('button', { name: 'Rückblick bearbeiten', exact: true })\nExpected: enabled\nReceived: disabled\nTimeout:  30000ms\n\nCall log:\n  - Expect \"toBeEnabled\" getByTestId('review-draft-1794211363569-r3ysssc4').getByRole('button', { name: 'Rückblick bearbeiten', exact: true }) with timeout 30000ms\n  - waiting for getByTestId('review-draft-1794211363569-r3ysssc4').getByRole('button', { name: 'Rückblick bearbeiten', exact: true })\n    62 × locator resolved to <button disabled role=\"button\" tabindex=\"-1\" type=\"button\" aria-disabled=\"true\" class=\"css-g5y9jx r-12vffkv\">…</button>\n       - unexpected value \"disabled\"\n\n    at captureRawStack (/workspace/faithpath-next/node_modules/playwright-core/lib/coreBundle.js:9551:17)\n    at callMatcherAsStep (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13342:57)\n    at Object.toBeEnabled (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13334:23)\n    at /workspace/faithpath-next/scripts/offline-upgrade-v011.mjs:545:5",
+  "failure_records": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 652,
+      "json_sha256": "ae760a27c1a348bf1cdf2df852163a3ba18dd68a727b0e398d9b9546051184cd"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5529,
+      "json_sha256": "505c9140f894a1d3eb63acb13a30aa88fc9f731d61c060aeb1d064b450066d62"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "failure_reading_position": {
+    "ref": {
+      "book": "PSA",
+      "chapter": 119
+    },
+    "verse": 120,
+    "mode": "read"
+  },
+  "worker_diagnostic": {
+    "expected": "oliva-01c4b9f640bc0931",
+    "controller": {
+      "id": "oliva-01c4b9f640bc0931",
+      "version": "0.11.0"
+    },
+    "active": {
+      "id": "oliva-01c4b9f640bc0931",
+      "version": "0.11.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-12c38c9b1a132bff",
+      "oliva-01c4b9f640bc0931"
+    ]
+  }
+}

@@ -2,7 +2,11 @@
 
 Dokumentationsstand: 08.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
 
-## Laufende Abnahme 0.10 und bestätigter Vorgänger
+## Aktueller Nachweis 0.11
+
+**168/168 Fachtests und ein einzelner vollständiger 92/92-Browserlauf erfolgreich**, ohne Skip/Flaky/Wiederholung. Beide nativen JS-/Assetexports erfolgreich, Runtime-Inputs unverändert. Echter 0.10→0.11-PWA-Wechsel bewahrt alle vier Rohrecords; neuer Reader/Lesefokus/Restart und alter kanonischer Anker sind offline geprüft. Seit 09.11.2026, 08:20:19 UTC eigentümerprivat bereitgestellt; tatsächliche HTTP-/Publikumsprüfung erfolgreich. [Bericht](21-reader-flow-and-focus.md), [Rohbelege](evidence/reader-flow/validation-summary.json). Native Geräte-/Textlayout-/Screenreaderabnahme bleibt offen. Die folgenden Abschnitte sind historische Zwischenstände ihrer Versionen.
+
+## Historische Abnahme 0.10 und bestätigter Vorgänger
 
 Der aktuelle Kandidat hat **154/154 Fachtests**, Typecheck, Web-/PWA-Build und **6/6 neue Browserfälle** bestanden. Beide nativen JS-/Assetexporte sind geprüft, Quelle über 291 Inputs unverändert. Der echte 0.9→0.10-PWA-Wechsel erhält alle V6-Rohdaten bis zum ausdrücklichen Opt-in und anschließend alle 18 weiteren V6-Felder sowie Archiv-/Rückkehrdatensätze. **Ein einzelner vollständiger 82/82-Browserlauf erfolgreich**, ohne Skip/Flaky/Wiederholung. [Einladungsvertrag](18-in-app-invitations.md), [lokale Belege](evidence/invitations/).
 

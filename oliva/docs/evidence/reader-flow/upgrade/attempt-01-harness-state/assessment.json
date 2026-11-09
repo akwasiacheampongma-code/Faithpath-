@@ -1,0 +1,21 @@
+{
+  "classification": "Harness expectation mismatch, not product failure",
+  "observed": "Existing saved review-edit draft correctly disables starting a second review editor; original review remains visible.",
+  "cause": "The new upgrade script combined the v09 enabled-button assertion with the additional review-edit draft seeding from v010.",
+  "correction": "Require the original review to remain visible and the second-editor button to be disabled; independently resume and verify the saved review-edit draft later offline.",
+  "source_contract": "app/vorhaben/[id].tsx button disabled when a pending draft exists; historical scripts/offline-upgrade-v010.mjs requires visibility only.",
+  "preserved_evidence": [
+    "offline-upgrade.json",
+    "offline-upgrade-failure.png",
+    "run.log"
+  ],
+  "product_sources_changed": false,
+  "raw_reading_position_at_stop": {
+    "ref": {
+      "book": "PSA",
+      "chapter": 119
+    },
+    "verse": 120,
+    "mode": "read"
+  }
+}

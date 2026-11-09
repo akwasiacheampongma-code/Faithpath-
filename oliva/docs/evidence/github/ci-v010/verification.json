@@ -1,0 +1,92 @@
+{
+  "version": "0.10.0",
+  "checkedAt": "2026-11-09T02:13:55.807973+00:00",
+  "repository": "akwasiacheampongma-code/Faithpath-",
+  "runId": 42520979658,
+  "runUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42520979658",
+  "event": "push",
+  "headBranch": "feature/oliva-v010-invitations-20261108",
+  "headSha": "adcb582842fb31252b844d2949c7fb67fbf4668d",
+  "expectedHeadSha": "adcb582842fb31252b844d2949c7fb67fbf4668d",
+  "headMatchesVersionBackup": true,
+  "runStatus": "completed",
+  "runConclusion": "success",
+  "runAttempt": 1,
+  "createdAt": "2026-11-08T20:36:19Z",
+  "completedAt": "2026-11-08T20:45:13Z",
+  "jobIds": [
+    128854153461
+  ],
+  "allJobsSuccessful": true,
+  "artifact": {
+    "id": 13634195056,
+    "name": "oliva-quality-adcb582842fb31252b844d2949c7fb67fbf4668d",
+    "bytes": 9046438,
+    "githubDigest": "sha256:6f00138548c2fed8f2573ee4bad1f28e6f8144edd7f4b048e6aaf5594437e74b",
+    "downloadSha256": "6f00138548c2fed8f2573ee4bad1f28e6f8144edd7f4b048e6aaf5594437e74b",
+    "digestMatches": true,
+    "archiveCrcVerified": true,
+    "archiveEntries": 92,
+    "headMatches": true,
+    "zipStoredOutsideSource": true
+  },
+  "unit": {
+    "total": 154,
+    "passed": 154,
+    "failed": 0,
+    "pending": 0,
+    "freshForRun": true,
+    "startTime": "2026-11-08T20:36:52.406000+00:00",
+    "sha256": "6e56d4f03bc8cc746d98c37c7d9300442f1eca3a824a2db808e70b3c2e23270e",
+    "report": "unit-results.json"
+  },
+  "browser": {
+    "total": 82,
+    "passed": 82,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "singleFullGreenRun": true,
+    "freshForRun": true,
+    "durationMs": 448044.063,
+    "startTime": "2026-11-08T20:37:36.011Z",
+    "testStatuses": {
+      "expected": 82
+    },
+    "resultStatuses": {
+      "passed": 82
+    },
+    "attemptCounts": {
+      "1": 82
+    },
+    "errors": [],
+    "sha256": "e343ad7676fe075b2886c2c6ce701a56a32983ed2e88564a82ec659688df0753",
+    "report": "e2e-results.json"
+  },
+  "buildAndValidation": {
+    "typecheck": true,
+    "publicDomainCorpus": true,
+    "artProvenance": true,
+    "webPwaBuild": true,
+    "remoteWebBuildId": "oliva-630e6e09f183d522",
+    "explicitDependencyAuditRan": true,
+    "auditVulnerabilities": 0,
+    "auditThreshold": "moderate",
+    "actionPinsObserved": {
+      "checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "setup-node": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "setup-python": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "upload-artifact": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+    },
+    "oldNode20DeprecationWarningPresent": false,
+    "evidence": "job.log; complete verify job succeeded"
+  },
+  "qualityVerified": true,
+  "limitations": [
+    "This is remote GitHub Actions Linux web/domain/persistence evidence, not a native device or simulator test.",
+    "This verifies a build from the exact GitHub source head; local/private-host build bytes and IDs are separate artifacts.",
+    "No hosted private Site browser or physical-phone QA is established by this run.",
+    "Historical 0.5/0.6/0.7/0.8/0.9 tags, reports and protected refs were not changed or rerun.",
+    "No deployment, release, merge, comment or workflow rerun was performed for this verification."
+  ]
+}

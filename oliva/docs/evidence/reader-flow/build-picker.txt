@@ -1,0 +1,108 @@
+
+> oliva-faith-companion@0.10.0 build
+> node scripts/expo.mjs export --platform web && node scripts/pwa.mjs && node scripts/offline.mjs
+
+Starting Metro Bundler
+
+Web Bundled 1599ms node_modules/expo-router/entry.js (1088 modules)
+
+› Assets (67):
+assets/a51/stage-1-1024-09d0f0e48b45.272528ab27888db413511f95a5962d00.webp (123KB)
+assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp (21KB)
+assets/a51/stage-1-640-61bf0ea0364c.2b67b13687ef44452445d4c7ef025873.webp (53KB)
+assets/a51/stage-2-1024-5faf7d8bacae.20f510d14e96bf1776daf6500b4525ab.webp (159KB)
+assets/a51/stage-2-384-83c9e1b068c2.9704851601f26041aae382898640f46d.webp (30KB)
+assets/a51/stage-2-640-657d676673c5.25f53dd1dd4cef598f244059035ec428.webp (71KB)
+assets/a51/stage-3-1024-dd3447ecfc31.46d226e8789f58d7cb98dc66bab36999.webp (446KB)
+assets/a51/stage-3-384-67a026427a62.bede3991f9fe0ccf02314027cba2adf4.webp (83KB)
+assets/a51/stage-3-640-daed3e069ebb.dd5dfa1b4fafe8e3582a7d47f4d47b90.webp (197KB)
+assets/a51/stage-4-1024-b694c875ac25.b69ea70ffd81b8c8b3d5457cc56501de.webp (581KB)
+assets/a51/stage-4-384-7fdbd6abfc70.e33440b0a040e1e20be2341d67217fd2.webp (102KB)
+assets/a51/stage-4-640-6cd93c9040c1.dd1e32a89bf4e6d3abc199c09699922a.webp (250KB)
+assets/a51/stage-5-1024-9662127e6782.016e4632f6f8488db5642ae08fccc478.webp (538KB)
+assets/a51/stage-5-384-1f45acdc445c.caa99e2daab09b528c3bdd81f072c7b9.webp (90KB)
+assets/a51/stage-5-640-c725f8e572eb.16986b6b87ca5631e1cced83d152204a.webp (228KB)
+assets/a51/stage-6-1024-d332e48c635b.4f3a7d94f4b13583edf96b0dda2f701c.webp (557KB)
+assets/a51/stage-6-384-18e5329006bc.dd0bac41cfdfa42b7daf93782607490e.webp (97KB)
+assets/a51/stage-6-640-db5395a982ed.f4668be153a788854791fd5a11e30d1e.webp (239KB)
+assets/a51/stage-7-1024-8d580a524725.2da9f38609ded7abae209eea3310bda9.webp (579KB)
+assets/a51/stage-7-384-1325b09c8f58.3c427d8cb2b2ee9162712a3b0cda1742.webp (102KB)
+assets/a51/stage-7-640-c9b6a16a1bf4.654c14cc2fced83f29a04c1161888035.webp (251KB)
+assets/fonts/CormorantGaramond.618588c6026366f173cd30e38d54cc28.ttf (1.2MB)
+assets/fonts/DMSans.09d1eaa1672d3815b7b121457ebda2d0.ttf (240KB)
+assets/images/abraham-1024.9f1d8adf6c468efe857c4b1ef8116f78.webp (119KB)
+assets/images/abraham-1280.1ff17be8d76a19dfd275b01cf82cdefe.webp (176KB)
+assets/images/abraham-640.445c3c3b7fa98839659af0a8e0b417e8.webp (48KB)
+assets/images/david-before-goliath-1024.77572822e86764be0a1ed457eb792b9c.webp (154KB)
+assets/images/david-before-goliath-1280.536f3fb2f43c964e7e8d589b678e1e52.webp (232KB)
+assets/images/david-before-goliath-640.579763367b6d7d59109419ee264ec889.webp (63KB)
+assets/images/easter-dawn-1024.b67651a5db6e32dbc92085216e58921e.webp (139KB)
+assets/images/easter-dawn-1280.e0bc1a91d008b43850720e038a63d243.webp (194KB)
+assets/images/easter-dawn-640.879d2495a829c5dd832ad687edce5e6c.webp (58KB)
+assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp (263KB)
+assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp (73KB)
+assets/images/garden-640.6432cb455695a7b4e6d68f26f821f058.webp (86KB)
+assets/images/nativity-1024.c872d5757fcfdc8109c09f93cddc7852.webp (133KB)
+assets/images/nativity-1280.f3e0553a483489937485a58c8af3b1d9.webp (190KB)
+assets/images/nativity-640.cb61b77b3f68bcda8087c973221230f9.webp (59KB)
+assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp (126KB)
+assets/images/noah-1280.4eb4f2ce3d949d3f605210683dc10b15.webp (175KB)
+assets/images/noah-640.4206b12f0aacc4967bc68ae417589a1a.webp (54KB)
+assets/images/storm-1280.853333ddbd93e55c72b5854c450b92ac.webp (135KB)
+assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp (38KB)
+assets/swords/john-life-pilot-256.d87247c7a1dcb10118c96f465ea9e4da.png (33KB)
+assets/swords/john-life-pilot-512.78e30cf64ba0d90a9eb61b05754f84e6.png (112KB)
+assets/swords/john-life-pilot-768.ce6b2dbea8d0653798c4a02c16edb1b9.png (244KB)
+assets/swords/romans-grace-pilot-256.15a76900f8d486fe42a57798ddfb46e6.png (32KB)
+assets/swords/romans-grace-pilot-512.3c543a36fd3e1d224aab3714ec51b87a.png (109KB)
+assets/swords/romans-grace-pilot-768.43a4b78e0cb0b99e2c83c63648b87353.png (233KB)
+node_modules/expo-router/assets/arrow_down.017bc6ba3fc25503e5eb5e53826d48a8.png (9.5KB)
+node_modules/expo-router/assets/error.d1ea1496f9057eb392d5bbf3732a61b7.png (469B)
+node_modules/expo-router/assets/file.19eeb73b9593a38f8e9f418337fc7d10.png (138B)
+node_modules/expo-router/assets/forward.d8b800c443b8972542883e0b9de2bdc6.png (188B)
+node_modules/expo-router/assets/pkg.ab19f4cbc543357183a20571f68380a3.png (364B)
+node_modules/expo-router/assets/react-navigation/elements/back-icon-mask.0a328cd9c1afd0afe8e3b1ec5165b1b4.png (653B)
+node_modules/expo-router/assets/react-navigation/elements/back-icon.35ba0eaec5a4f5ed12ca16fabeae451d.png (207B)
+node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55.png (4 variations | 425B)
+node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7.png (4 variations | 235B)
+node_modules/expo-router/assets/react-navigation/elements/search-icon.286d67d3f74808a60a78d3ebf1a5fb57.png (928B)
+node_modules/expo-router/assets/sitemap.412dd9275b6b48ad28f5e3d81bb1f626.png (465B)
+node_modules/expo-router/assets/unmatched.20e71bdf79e3a97bf55fd9e164041578.png (4.8KB)
+
+› web bundles (23):
+_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css (393B)
+_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css (675B)
+_expo/static/js/web/__common-e7bebd15716924018f8f60c695c7228b.js (5.5MB)
+_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js (3.8KB)
+_expo/static/js/web/_layout-df0b6fb47375424fd3b476678d1c20f2.js (26KB)
+_expo/static/js/web/[book]-706ddaa0e7ab94f4c48cc7fd776d5596.js (29KB)
+_expo/static/js/web/[book]-da3a45fc75f7c4c1259b614a1a09cea7.js (5KB)
+_expo/static/js/web/[id]-a2d9aea131b5af13a0d8a446ef310623.js (3.9KB)
+_expo/static/js/web/[id]-a97fa0675610a0c842fcacfdc51ec759.js (7.8KB)
+_expo/static/js/web/[id]-d8e6d377da959a5d66058d5d2903b17f.js (15KB)
+_expo/static/js/web/+not-found-3c1dac6d585de6439a9e288517f80881.js (601B)
+_expo/static/js/web/bibel-5eeca59fe189c275b2c62192a44bc937.js (7.6KB)
+_expo/static/js/web/einladungen-b31c81fdea50ab00d2a60a635ffc5929.js (5.3KB)
+_expo/static/js/web/einstellungen-4c49732c94db4a67b6d23753ad74c73e.js (7KB)
+_expo/static/js/web/entry-146bcb662294ec7997ee45e5e259d2d4.js (1.1MB)
+_expo/static/js/web/garten-584f1e3c66bf4186791720184504621c.js (6.6KB)
+_expo/static/js/web/importieren-33eacd7a5e1813e35c56eb802dbde616.js (8.9KB)
+_expo/static/js/web/index-55bbe10f8b303e01386ca38cc318e786.js (4.6KB)
+_expo/static/js/web/index-8cef0f3e3eccee7110f12fd9f36145c1.js (12KB)
+_expo/static/js/web/quellen-6f2ebbcc8f62b220240f836048f08cb7.js (5.4KB)
+_expo/static/js/web/sammlung-a42eb88fc56fc32fe6f9adb8c127a30b.js (15KB)
+_expo/static/js/web/start-9edae78946ca0d241e98dd280037505b.js (2.8KB)
+_expo/static/js/web/wege-c1c24df04ac791fc568f003007b6f193.js (2.8KB)
+
+› Files (2):
+index.html (1.8KB)
+metadata.json (49B)
+
+Exported: dist
+OLIVA PWA: manifest, icons, German metadata and rights notices included.
+Offline bundle: oliva-6dc58fa90ed710f9, 102 files
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

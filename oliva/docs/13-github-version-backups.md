@@ -100,3 +100,13 @@ Quellcommit `0f4cf3df79dee8d572427cd17db70d98101980ec`, Quelltag `oliva-v0.9-boo
 [Lauf 42517524350](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42517524350), erster Versuch, endete 08.11.2026 um 20:05:09 UTC erfolgreich: **120/120 Fachtests und 76/76 Browserfälle**, keine Skips, Flaky-Fälle oder Wiederholungen. Artefakt `13631949152`, 8.872.878 Byte, SHA-256 `4b45627dff92d01e5e12d0fa9f6638ddaffc136a82f40ed8c789dbe2763eada4`, entspricht GitHub. Audit 0 und vier eigene Node-24-Pins beobachtet. [Prüfung und Rohbelege](evidence/github/ci-v09/verification.json). Kein Deployment durch CI; kein Merge oder Eingriff in historische Tags.
 
 Der neue 0.10-Kandidat wird erst nach eigener vollständiger Abnahme separat gesichert. Sein Erfolg wird aus 0.9 nicht abgeleitet.
+
+## Bestätigte 0.10-Sicherung und Remote-CI
+
+Eigenständiger Quellcommit `643a066179d80d578c6eb46e5e40e456e8c17e91`, Tag `oliva-v0.10-invitations-private`. ZIP 143.566.498 Byte, SHA-256 `43bc7e37140ee83dbfed3521c1a794e06cf179d03932ed5ea38ad9f216b6dd53`. [Äußeres Manifest](evidence/reader-flow/checkpoints/oliva-v010-local-checkpoint.json).
+
+GitHub-Commit `adcb582842fb31252b844d2949c7fb67fbf4668d`, Branch `feature/oliva-v010-invitations-20261108`, Tag `oliva-v0.10.0`. Alle zwölf Versionsrefs, exakter Teilbaum und geschützte Ursprungsrefs sind [bestätigt](evidence/reader-flow/checkpoints/oliva-github-backups.json).
+
+Tatsächlicher [Lauf 42520979658](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42520979658) endete am 08.11.2026 um 20:45:13 UTC erfolgreich am exakten Versionshead: **154/154 Fachtests und 82/82 Browserfälle**, keine Skip-/Flaky-/Wiederholungsfälle. Artefakt `13634195056`, 9.046.438 Byte, SHA-256 `6f00138548c2fed8f2573ee4bad1f28e6f8144edd7f4b048e6aaf5594437e74b`, entspricht GitHub. Audit0 und alle vier eigenen Node-24-Pins tatsächlich beobachtet. [Nachweise](evidence/github/ci-v010/verification.json).
+
+0.11 ist lokal und privat abgenommen; der anschließende eigene Quellcheckpoint/Versionsupload und seine Remote-CI werden getrennt dokumentiert. Keine Änderung historischer Tags, kein Merge nach `main` und kein öffentlicher Web-/Storedeploy.

@@ -1,0 +1,22 @@
+{
+  "build": "oliva-6dc58fa90ed710f9",
+  "steps": [],
+  "trace": [
+    {
+      "t": 190.5,
+      "event": "sample",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "v119": null,
+      "v120": null,
+      "active": "\n    \n     You need to enable JavaScript to r",
+      "settings": false
+    }
+  ],
+  "errors": [
+    "NotFoundError: Failed to execute 'transaction' on 'IDBDatabase': One of the specified object stores was not found.",
+    "Error: Timeout 5000ms exceeded while waiting on the predicate"
+  ]
+}

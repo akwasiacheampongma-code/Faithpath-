@@ -39,10 +39,25 @@ export function verseAtOffset(
   frames: VerseFrame[],
   offset: number,
 ): number | null {
-  const ordered = frames
-    .filter((f) => f.height > 0 && Number.isFinite(f.y))
-    .sort((a, b) => a.y - b.y);
-  if (!Number.isFinite(offset) || !ordered.length || offset < ordered[0]!.y)
-    return null;
-  return ordered.findLast((f) => f.y <= offset)?.verse ?? null;
+  if (!Number.isFinite(offset)) return null;
+  const visible = frames.filter(
+    (frame) =>
+      Number.isInteger(frame.verse) &&
+      frame.verse > 0 &&
+      Number.isFinite(frame.height) &&
+      frame.height > 0 &&
+      Number.isFinite(frame.y) &&
+      frame.y <= offset,
+  );
+  if (!visible.length) return null;
+  let latestTop = -Infinity;
+  for (const frame of visible) latestTop = Math.max(latestTop, frame.y);
+  // Several inline verses can share an actual line. Fractional font metrics
+  // may differ slightly; that line belongs to its first canonical verse.
+  // Keep every fragment: a long verse may continue onto a later shared line.
+  let firstVerse = Infinity;
+  for (const frame of visible)
+    if (latestTop - frame.y <= 0.5)
+      firstVerse = Math.min(firstVerse, frame.verse);
+  return firstVerse;
 }

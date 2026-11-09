@@ -1,0 +1,144 @@
+{
+  "checkedAt": "2026-11-09T02:33:09.211Z",
+  "source_build_id": "oliva-6dc58fa90ed710f9",
+  "source": "Actual DOM getClientRects, real scrollIntoView; no layout mocking or explicit verse query",
+  "initial": [
+    {
+      "verse": 119,
+      "rectangles": [
+        {
+          "top": 11763.390625,
+          "left": 72.875,
+          "width": 268.8125,
+          "height": 28
+        },
+        {
+          "top": 11804.78125,
+          "left": 20,
+          "width": 342.5,
+          "height": 28
+        },
+        {
+          "top": 11846.171875,
+          "left": 20,
+          "width": 178.828125,
+          "height": 28
+        }
+      ]
+    },
+    {
+      "verse": 120,
+      "rectangles": [
+        {
+          "top": 11846.171875,
+          "left": 204.21875,
+          "width": 121.171875,
+          "height": 28
+        },
+        {
+          "top": 11887.5625,
+          "left": 20,
+          "width": 276.125,
+          "height": 28
+        },
+        {
+          "top": 11928.953125,
+          "left": 20,
+          "width": 295.4375,
+          "height": 28
+        },
+        {
+          "top": 11970.34375,
+          "left": 20,
+          "width": 160.9375,
+          "height": 28
+        }
+      ]
+    }
+  ],
+  "afterScroll": [
+    {
+      "verse": 119,
+      "rectangles": [
+        {
+          "top": -82.609375,
+          "left": 72.875,
+          "width": 268.8125,
+          "height": 28
+        },
+        {
+          "top": -41.21875,
+          "left": 20,
+          "width": 342.5,
+          "height": 28
+        },
+        {
+          "top": 0.171875,
+          "left": 20,
+          "width": 178.828125,
+          "height": 28
+        }
+      ]
+    },
+    {
+      "verse": 120,
+      "rectangles": [
+        {
+          "top": 0.171875,
+          "left": 204.21875,
+          "width": 121.171875,
+          "height": 28
+        },
+        {
+          "top": 41.5625,
+          "left": 20,
+          "width": 276.125,
+          "height": 28
+        },
+        {
+          "top": 82.953125,
+          "left": 20,
+          "width": 295.4375,
+          "height": 28
+        },
+        {
+          "top": 124.34375,
+          "left": 20,
+          "width": 160.9375,
+          "height": 28
+        }
+      ]
+    }
+  ],
+  "readingPosition": {
+    "ref": {
+      "book": "PSA",
+      "chapter": 119
+    },
+    "verse": 119,
+    "mode": "read"
+  },
+  "progressBefore": {
+    "readChapters": [],
+    "readPassages": [],
+    "readSteps": [],
+    "completedSteps": [],
+    "growthStage": 0,
+    "retainedReviewGrowth": {
+      "reflections": 0,
+      "actions": 0
+    }
+  },
+  "progressAfter": {
+    "readChapters": [],
+    "readPassages": [],
+    "readSteps": [],
+    "completedSteps": [],
+    "growthStage": 0,
+    "retainedReviewGrowth": {
+      "reflections": 0,
+      "actions": 0
+    }
+  },
+  "physicalDeviceTest": false
+}

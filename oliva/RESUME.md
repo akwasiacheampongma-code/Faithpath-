@@ -1,11 +1,12 @@
 # Fortsetzen · OLIVA / FaithPath Next Generation
 
-Stand: 08.11.2026. **OLIVA 0.10.0 ist mit freiwilligen In-App-Einladungen geprüft und seit 20:31:27 UTC eigentümerprivat bereitgestellt.** 154/154 Fachtests, ein einzelner vollständiger 82/82-Browserlauf, sechs neue gezielte Browserfälle, beide nativen JS-/Assetexporte und echter 0.9→0.10-PWA-Wechsel bestanden. Quellensicherung und GitHub-Push folgen nach diesem Dokumentcheckpoint. AppData/Backup V7 ergänzt standardmäßig ausgeschaltete Einladungskontrollen; alte V6-Rohdaten werden beim Öffnen nicht umgeschrieben. Privates Dokument V1, SQLite physisch V3 und IndexedDB V1 bleiben unverändert. Die Gesamt-Definition-of-Done bleibt offen.
+Stand: 09.11.2026. **OLIVA 0.11.0 mit Fließtext, Einzelversalternative, gemeinsamen Versaktionen und Lesefokus ist geprüft und seit 08:20:19 UTC eigentümerprivat bereitgestellt.** 168/168 Fachtests, ein einzelner vollständiger 92/92-Browserlauf ohne Skip/Flaky/Wiederholung, beide nativen JS-/Assetexporte und echter 0.10→0.11-PWA-Wechsel bestanden. Der separate 0.11-Quellcheckpoint und GitHub-Push folgen nach diesem Dokumentcheckpoint. Nutzdaten V7, privates Dokument V1, SQLite3 und IndexedDB1 bleiben unverändert; alle vier Datensätze blieben im tatsächlichen Updateversuch exakt. Die Gesamt-Definition-of-Done bleibt offen.
 
 ## Sofort ausprobieren
 
 - Private App: https://oliva-v04-private-preview.purplebean128.chatgpt.site
-- Mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **08.11.2026, 20:31:27 UTC** wird dort **0.10.0** ausgeliefert.
+- Mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **09.11.2026, 08:20:19 UTC** wird dort **0.11.0** ausgeliefert.
+- **Bibel → Buch/Kapitel:** Fließtext ist voreingestellt. **Lesefokus starten** blendet Begleitinformationen aus; der Ausstieg bleibt erreichbar. **Leseeinstellungen → Einzelverse** bewahrt die alte Darstellung. Versaktionen/Notizen bleiben erhalten; kein neuer Fortschritt durch die Darstellung.
 - **Einstellungen → Gedanken wiederbegegnen → Einladungen in der App erlauben** oder direkt `/einladungen`: zunächst aus; ältere Vorhaben/Gedanken freiwillig ansehen, zurückstellen, ausblenden oder wieder zulassen. Keine Benachrichtigungsberechtigung, kein Wachstum durch Steuerung.
 - **Bibel → Eine Geschichte entdecken → Davids Vorbereitung lesen:** neue Illustration und exakter Abschnitt 1. Samuel 17,38–45 mit getrennter Einordnung.
 - **Wege → Persönliche Vorhaben → eigener Rückblick:** Text bearbeiten, den gesicherten Entwurf über Sammlung fortsetzen, bestätigt löschen und innerhalb derselben geöffneten Ansicht einmal zurückholen. Identität, damalige Quelle und Erfahrungsbestätigung bleiben beim Edit erhalten; daraus entsteht kein neues Wachstum.
@@ -16,7 +17,7 @@ Stand: 08.11.2026. **OLIVA 0.10.0 ist mit freiwilligen In-App-Einladungen geprü
 
 ## Arbeitsbereiche und Quellschutz
 
-Unabhängige OLIVA-Quelle: `/workspace/faithpath-next`. Aktiver lokaler Gitbranch: `feature/oliva-v010-invitations-20261108`, ohne Remote. Der unabhängige 0.7-Checkpoint ist bereits abgeschlossen: Commit `f0e8db6b2847d5bfc8361e8f617b8caf0c860787`, Tag `oliva-v0.7-review-continuity-private`, Quell-ZIP `/workspace/oliva-next-v0.7-review-continuity-source.zip`, 107.691.030 Byte, SHA-256 `6f2e71667fec1f02abe3d4fc1cdae5799faf0f915ca5ff408a8f8bd1831f4821`; äußeres Manifest `/workspace/oliva-v07-local-checkpoint.json`. FaithPath-Referenz: `/workspace/faithpath-reference`; alle 390 materialisierten Referenzdateien stimmen mit ihren ursprünglichen Git-Blobs überein. Vorhandene 0.7-Web-/native Kontrollausgaben und historische Belege bleiben erhalten.
+Unabhängige OLIVA-Quelle: `/workspace/faithpath-next`. Aktiver lokaler Gitbranch: `feature/oliva-v011-reader-flow-20261109`, ohne Remote. Der unabhängige 0.7-Checkpoint ist bereits abgeschlossen: Commit `f0e8db6b2847d5bfc8361e8f617b8caf0c860787`, Tag `oliva-v0.7-review-continuity-private`, Quell-ZIP `/workspace/oliva-next-v0.7-review-continuity-source.zip`, 107.691.030 Byte, SHA-256 `6f2e71667fec1f02abe3d4fc1cdae5799faf0f915ca5ff408a8f8bd1831f4821`; äußeres Manifest `/workspace/oliva-v07-local-checkpoint.json`. FaithPath-Referenz: `/workspace/faithpath-reference`; alle 390 materialisierten Referenzdateien stimmen mit ihren ursprünglichen Git-Blobs überein. Vorhandene 0.7-Web-/native Kontrollausgaben und historische Belege bleiben erhalten.
 
 Der unabhängige Vorgänger 0.6 bleibt gesichert: Commit `9b28f586574a380ef40419b02fccb68301c8287c`, Tag `oliva-v0.6-book-identities-private`, Quell-ZIP `/workspace/oliva-next-v0.6-book-identities-source.zip`; äußeres Manifest `/workspace/oliva-v06-local-checkpoint.json`. Die 0.6-Quellen und Belege unter `docs/evidence/session-06/` bleiben erhalten.
 
@@ -149,12 +150,12 @@ npm run preview
 
 http://localhost:4173 öffnen. In einem separat ausgecheckten Standalone-Projekt dieselben npm-Befehle direkt in dessen Wurzel ausführen. In allen GitHub-Versionsbranches liegt die App unter `oliva/`; dort zuerst `cd oliva` ausführen. Das separate Quell-ZIP ist dagegen direkt ein Standalone-Projekt.
 
-Prüfungen: `npm run content:check`, `npm run content:art`, `npm run content:tree`, `npm run content:swords`, `npm run typecheck`, `npm test`, `npm run test:e2e`. Aktueller Updateversuch: `node scripts/offline-upgrade-v010.mjs /absoluter/pfad/zum/0.9/dist dist`. Ältere Update-Skripte bleiben ihren historischen Exporten zugeordnet. Neue Playwright-Ergebnisse liegen seit 0.8 standardmäßig unter `docs/evidence/latest/`; abgeschlossene Sessions gezielt separat sichern, damit historische Belege erhalten bleiben.
+Prüfungen: `npm run content:check`, `npm run content:art`, `npm run content:tree`, `npm run content:swords`, `npm run typecheck`, `npm test`, `npm run test:e2e`. Aktueller Updateversuch: `node scripts/offline-upgrade-v011.mjs /absoluter/pfad/zum/0.10/dist dist`. Ältere Update-Skripte bleiben ihren historischen Exporten zugeordnet. Neue Playwright-Ergebnisse liegen seit 0.8 standardmäßig unter `docs/evidence/latest/`; abgeschlossene Sessions gezielt separat sichern, damit historische Belege erhalten bleiben.
 
 ## Nächste überprüfbare Arbeit am ursprünglichen Master
 
-1. Abgenommenen 0.10-Quellstand separat committen/taggen, ZIP/Hash/äußeres Manifest erzeugen; anschließend eigener GitHub-Versionsbranch und `oliva-v0.10.0`. Exakten Teilbaum und geschützte Ursprungsrefs zurücklesen, tatsächlichen CI-Lauf separat verifizieren. Quellenbeleg folgt außerhalb des eigenen Commitbaums.
-2. Bestehenden Master-Backlog fortsetzen: Bestandsparität, weitere Buchbilder und Kapitelredaktion. Konkrete Fließtextvorbereitung unter `docs/19-reader-flow-preparation.md` ist Vorbereitung, kein fertiger Renderer. Vollständiger NT-Katalog bleibt offen; keine unbestätigten Versions-/Terminversprechen.
+1. Abgenommenen 0.11-Quellstand separat committen/taggen, ZIP/Hash/äußeres Manifest erzeugen; danach eigener GitHub-Versionszweig und `oliva-v0.11.0`. Exakten Teilbaum/geschützte Ursprungsrefs zurücklesen und tatsächliche neue CI separat prüfen. Nicht aus lokalen Erfolgen auf Remote-CI schließen.
+2. Bestehenden Master-Backlog fortsetzen. Fertiger NT-Katalog ist feldgleich geprüft und für die aktive Übernahme vorbereitet: `docs/20-nt-catalog-preparation.md`; keine Fragen neu erfinden. Mehrversauswahl/Kopieraktion und weitere Bestandsparität, Buchbilder und Redaktion bleiben offen. Für folgende Arbeit sind keine Termine/Versionsversprechen erfunden.
 3. Echte Anfänger-/Geräteabnahme, unabhängige Inhaltsprüfung und reale Dienste fehlen weiter. Auth/Sync, Live-KI und Audio sind nicht aktiv. Keine Personenexporte im Repository/Logs. Unabhängige FaithPath-Referenz, historische Quellstände und Kontrollbuilds bewahren.
 
 ## Bleibende Grenzen und Vorgaben
@@ -192,4 +193,20 @@ GitHub-Commit `29e082d0254ccc6754bacebfcc65a6fd09639c17`, Branch `feature/oliva-
 - Echter 0.9→0.10-Workerwechsel: V6-Rohdaten vor Opt-in exakt; erster Opt-in-Commit ändert nur Version/Revision/Kontrollen. Alle 18 weiteren V6-Felder, Originalarchiv und Rückkehrsicherung bleiben erhalten; offene Journal-/Revieweditentwürfe funktionieren offline.
 - Android/iOS jeweils erfolgreich als unminimierte JS-/Assetexports, je 98 A51-PNGs, sechs Buch-PNGs und drei David-WebPs bytegenau. Vorherige 0.9-Exporte unter `/workspace/oliva-native-v09-before-v010/` bewahrt. Keine native Geräte-/Simulator-/Decoder-/Energieprüfung.
 - Private Sites-Quelle `b691ba4cf5ef285b97714e0b8b738996e69672e1`; Deployment `appgdep_6af0dc11b9ec8191a2432f5503c5d811`, Version `appgprj_6aedf77e5ce0819180c10eb799447018~appgver_385d0d6650a08191ab9269d246ab5e80`, erfolgreich 08.11.2026, 20:31:27.880821 UTC. 18 Routen, 105 App-Dateien geprüft (104 Hashvergleiche, HTML-Shell separat), 42 Review-Dateien bytegenau. Anonym 401, Zugriffspolitik exakt unverändert: ein Eigentümer, keine weiteren Betrachter.
-- Lokaler 0.10-Quelltag und ZIP sowie GitHub-Branch/Tag sind der unmittelbar folgende Schritt; noch keine selbstreferenziellen Hashes oder unbestätigte Remote-CI behaupten. Historische 0.5–0.9-Refs bleiben unverändert.
+- Anschließende 0.10-Sicherung und Remote-CI sind vollständig abgeschlossen; exakte Kennungen stehen im folgenden bestätigten Abschnitt. Historische Tags bleiben unverändert.
+
+## Bestätigte Quellensicherung und Remote-CI 0.10
+
+Lokaler Commit `643a066179d80d578c6eb46e5e40e456e8c17e91`, Baum `4293fe817ed95cae3486d1f5400cb732345545d4`, Tag `oliva-v0.10-invitations-private`. ZIP `/workspace/oliva-next-v0.10-invitations-source.zip`, 143.566.498 Byte, 1.507 CRC-geprüfte Einträge, SHA-256 `43bc7e37140ee83dbfed3521c1a794e06cf179d03932ed5ea38ad9f216b6dd53`. Kontroll-Webexport `/workspace/oliva-v010-invitations-control-dist`. Manifest-/Remotekopien unter `docs/evidence/reader-flow/checkpoints/`.
+
+GitHub-Commit `adcb582842fb31252b844d2949c7fb67fbf4668d`, Branch `feature/oliva-v010-invitations-20261108`, Tag `oliva-v0.10.0`. Alle zwölf Versionsrefs und exakter `oliva/`-Teilbaum bestätigt; `main`, 0.4-Branch und ursprüngliche FaithPath-Pfade unverändert.
+
+Tatsächlicher Push-CI-Lauf **42520979658**, Versuch 1, endete **08.11.2026 um 20:45:13 UTC** erfolgreich: **154/154 Fachtests und 82/82 Browserfälle**, keine Skips/Flaky/Wiederholungen. Artefakt `13634195056`, 9.046.438 Byte, SHA-256 `6f00138548c2fed8f2573ee4bad1f28e6f8144edd7f4b048e6aaf5594437e74b`, entspricht GitHub. Audit 0, vier Node-24-Pins tatsächlich beobachtet. Rohbelege `docs/evidence/github/ci-v010/`. Der dortige Webbuild ist ein eigener GitHub-Export; keine Bytegleichheit mit lokalem PWA-Kern behaupten.
+
+## Tatsächliche 0.11-Abnahme und private Bereitstellung
+
+- Kern `oliva-01c4b9f640bc0931`, Hostpaket `oliva-6fe6a58c87610ef5`; Runtime-Digest `5f0789aef525e68db2b4b841c2fa4bf1f9f74283fae6a3ed055d5eea2e2eb134` über 300 Inputs. 168 Fachtests und 92 Browserfälle in einem einzelnen grünen Lauf. Quellen im finalen Inputscope bytegleich zu beiden nativen Exporten.
+- Echter 0.10→0.11-PWA-Wechsel: alle vier V7-Rohrecords einschließlich Archiv/Recovery exakt. Der alte Block-Leseanker PSA119/Vers120 wird erstmals offline ohne Versparameter zum Fließtext restauriert; Fokus und Neustart bewahren Daten und beide Entwürfe. Sieben A51-Stadien, John/Römer, fünf Storybilder und exklusiver Altcachechunk erfolgreich offline geprüft.
+- Android/iOS als unminimierte JS-/Assetexports erfolgreich; je 98 A51-/sechs Buch-PNGs und drei David-WebPs bytegenau. Keine native Textlayout-, Geräte-/Simulator-/Decoder-/Energieprüfung. Vorgängerexports unter `/workspace/oliva-native-v010-before-v011/` erhalten.
+- Private Sites-Quelle `505da81aa36216c080158a617fc963ebf7d7dd5c`; Deployment `appgdep_6af1823698f08191b7fd4d34012c9ca4`, Version `appgprj_6aedf77e5ce0819180c10eb799447018~appgver_e4e4314cb4608191b4c29e8347e5abec`, erfolgreich **09.11.2026, 08:20:19.090692 UTC**. HTTP: 20 Routen, 105 App-Dateien (104 Hashvergleiche und HTML-Shell), 42 Review-Dateien bytegenau; anonym401, Zugriffspolitik exakt unverändert.
+- 0.11-Quelltag/ZIP/GitHub-Sicherung sind der unmittelbar folgende Schritt. Prüfnachweise `docs/evidence/reader-flow/`, fachlicher Bericht `docs/21-reader-flow-and-focus.md`. Die dortigen älteren gezielten Arbeitsbuilds mit Paketversion0.10 sind nicht der immutable0.10-Release; finaler0.11-Gesamtlauf separat belegt.

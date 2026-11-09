@@ -53,6 +53,7 @@ export function Button({
   testID,
   style,
   foregroundColor,
+  buttonRef,
 }: {
   children: React.ReactNode;
   onPress: () => void;
@@ -62,10 +63,12 @@ export function Button({
   testID?: string;
   style?: StyleProp<ViewStyle>;
   foregroundColor?: string;
+  buttonRef?: React.Ref<React.ComponentRef<typeof Pressable>>;
 }) {
   const t = useTheme();
   return (
     <Pressable
+      ref={buttonRef}
       accessibilityRole="button"
       accessibilityState={{ disabled }}
       testID={testID}
@@ -119,15 +122,18 @@ export function IconButton({
   label,
   onPress,
   selected = false,
+  buttonRef,
 }: {
   name: IconName;
   label: string;
   onPress: () => void;
   selected?: boolean;
+  buttonRef?: React.Ref<React.ComponentRef<typeof Pressable>>;
 }) {
   const t = useTheme();
   return (
     <Pressable
+      ref={buttonRef}
       accessibilityLabel={label}
       accessibilityRole="button"
       accessibilityState={{ selected }}

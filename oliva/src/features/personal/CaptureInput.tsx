@@ -17,12 +17,14 @@ export function CaptureInput({
   label,
   placeholder,
   onSaved,
+  onFocusChange,
   children,
 }: {
   source: CaptureSource;
   label: string;
   placeholder?: string;
   onSaved?: () => void;
+  onFocusChange?: (focused: boolean) => void;
   children?: React.ReactNode;
 }) {
   const [cycle, setCycle] = useState(0),
@@ -33,9 +35,11 @@ export function CaptureInput({
       source={source}
       label={label}
       placeholder={placeholder}
+      onFocusChange={onFocusChange}
       saved={saved}
       onChanged={() => setSaved(false)}
       onDone={(result) => {
+        onFocusChange?.(false);
         setCycle((c) => c + 1);
         setSaved(result !== undefined);
         if (result !== undefined) onSaved?.();
@@ -52,6 +56,7 @@ function CaptureSession({
   onDone,
   onChanged,
   saved,
+  onFocusChange,
   children,
 }: {
   source: CaptureSource;
@@ -60,6 +65,7 @@ function CaptureSession({
   onDone: (result?: string) => void;
   onChanged: () => void;
   saved: boolean;
+  onFocusChange?: (focused: boolean) => void;
   children?: React.ReactNode;
 }) {
   const t = useTheme(),
@@ -106,6 +112,8 @@ function CaptureSession({
         multiline
         maxLength={10000}
         editable={!e.working}
+        onFocus={() => onFocusChange?.(true)}
+        onBlur={() => onFocusChange?.(false)}
         onChangeText={(text) => {
           onChanged();
           e.change({ ...v, text });

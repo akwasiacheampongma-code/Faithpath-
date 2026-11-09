@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-11-09T02:41:06.253325+00:00",
+  "evidenceScope": "Local automated Chromium on synthetic browser data; frozen core build unchanged. No hosted or device check.",
+  "build": "oliva-6dc58fa90ed710f9",
+  "baseline": "settings-scroll-api-baseline.json",
+  "overflowAnchorControl": "settings-overflow-anchor-control.json",
+  "observed": {
+    "explicit120Reached": true,
+    "resizeOrFollowingControlScrollOverwritesCanonicalAnchor": true,
+    "savedIntermediateBaselineVerse": 68,
+    "overflowAnchorNoneAloneFixes": false,
+    "savedIntermediateControlVerse": 98,
+    "baselineSettledVerse120Y": 3748.5,
+    "controlSettledVerse120Y": 1203.90625
+  },
+  "sourceFix": {
+    "files": [
+      "src/features/bible/useReaderPosition.ts"
+    ],
+    "platformDimensionsEventFreezesCanonicalBeforeReactLayoutKey": true,
+    "onScrollRejectsFramesForOldViewport": true,
+    "activeNoteInputDoesNotReceiveAutomaticRestore": true,
+    "distRebuilt": false,
+    "browserVerification": "pending root-owned rebuild"
+  },
+  "harnessFailure": "Initial sampling opened a missing IndexedDB database before the app and produced an empty schema; that observation is preserved separately in settings-harness-initialization-notfound.json. Corrected reads abort onupgradeneeded."
+}

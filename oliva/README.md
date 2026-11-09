@@ -1,12 +1,14 @@
 # OLIVA · Raum für deinen Glauben
 
-Eigenständige Bibel- und Glaubens-App mit Expo, React Native und TypeScript. **OLIVA 0.10.0 ist mit 154 Fachtests und einem einzelnen vollständigen 82/82-Browserlauf geprüft und privat bereitgestellt.** Neu sind freiwillige Einladungen zu älteren Vorhaben und Gedanken: einschalten, für 14 Tage zurückstellen, ausblenden und wieder zulassen. Sie verändern weder Quelltexte noch Baumwachstum. A51, beide großen Buchbilder und alle bestehenden Bereiche bleiben erhalten. Die Gesamt-Definition-of-Done bleibt offen; ursprünglicher Fließtext und vollständiger NT-Katalog fehlen weiterhin. FaithPath und `main` bleiben unverändert. [Vertrag und Nachweise](docs/18-in-app-invitations.md).
+Eigenständige Bibel- und Glaubens-App mit Expo, React Native und TypeScript. **OLIVA 0.11.0 ist mit 168 Fachtests und einem einzelnen vollständigen 92/92-Browserlauf geprüft und privat bereitgestellt.** Neu sind zusammenhängender Fließtext, eine jederzeit wählbare Einzelversansicht, gemeinsame Versaktionen und ein temporärer Lesefokus. Versfortsetzung, Notizentwürfe, A51-Baum, beide großen Buchbilder und alle bestehenden Bereiche bleiben erhalten. Die Gesamt-Definition-of-Done bleibt offen; Mehrversauswahl, eigene Kopieraktion und der vollständige NT-Katalog als aktive Funktion fehlen weiterhin. FaithPath und `main` bleiben unverändert. [Readerbericht und Nachweise](docs/21-reader-flow-and-focus.md).
 
 ## Auf dem Handy ansehen
 
-[Private OLIVA-Vorschau öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site) und mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **08.11.2026, 20:31:27 UTC** wird dort **0.10.0** ausgeliefert. Der Eigentümerzugriff bleibt unverändert; es gibt keine öffentliche Freigabe.
+[Private OLIVA-Vorschau öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site) und mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **09.11.2026, 08:20:19 UTC** wird dort **0.11.0** ausgeliefert. Der Eigentümerzugriff bleibt unverändert; es gibt keine öffentliche Freigabe.
 
-**Neu:** [Freiwillige Einladungen öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/einladungen). Der Schalter ist zunächst aus. Auch unter **Einstellungen → Gedanken wiederbegegnen** erreichbar. Keine Push-Nachrichten und kein Nachholbedarf.
+**Neu:** Im Reader **Lesefokus starten** wählen oder unter **Leseeinstellungen → Fließtext / Einzelverse** wechseln. [Einen kurzen Abschnitt ausprobieren](https://oliva-v04-private-preview.purplebean128.chatgpt.site/lesen/MRK?chapter=4&from=35&to=41). Die kleinen Zahlen bleiben auswählbar; **Versaktionen** bietet zusätzlich eine große Verswahl.
+
+[Freiwillige Einladungen öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/einladungen). Der Schalter ist zunächst aus. Auch unter **Einstellungen → Gedanken wiederbegegnen** erreichbar. Keine Push-Nachrichten und kein Nachholbedarf.
 
 [Römer – Schwert der Gnade](https://oliva-v04-private-preview.purplebean128.chatgpt.site/buch/ROM). Die Startseite zeigt das Bild des aktuellen illustrierten Buches und öffnet alle 66 Buchschwertansichten direkt. Johannes und alle kompakten Vektoren bleiben erhalten.
 
@@ -16,9 +18,9 @@ Unter **Bibel → Johannes → „Buchschwert ansehen“** findest du das große
 
 Nach **„Für den Offline-Neustart bereit.“** ist das Paket für den geladenen Build im Browsercache vollständig. Persönliche Einträge bleiben im jeweiligen Browser/Gerät; eine Cloud-Synchronisierung ist nicht aktiviert. Der Hosting-Zugang erfordert das berechtigte Konto, der lokal gestartete App-Kern keine Registrierung.
 
-## Vorhandene Bereiche im abgenommenen 0.10-Stand
+## Vorhandene Bereiche im abgenommenen 0.11-Stand
 
-- **Bibel:** gemeinfreie Lutherbibel 1912 mit 66 Büchern, 1.189 Kapiteln und 31.102 Versen; Navigation, Volltextsuche, zwei Lesemodi, Lesezeichen, Markierungen, Notizen, Schrift-/Abstandseinstellungen und präzise Versfortsetzung.
+- **Bibel:** gemeinfreie Lutherbibel 1912 mit 66 Büchern, 1.189 Kapiteln und 31.102 Versen; Navigation, Volltextsuche, zwei Lesemodi, Lesezeichen, Markierungen, Notizen, Schrift-/Abstandseinstellungen und präzise Versfortsetzung, Fließtext-/Einzelverswahl und temporärer Lesefokus.
 - **Geschichten:** fünf illustrierte Erzählpiloten einschließlich **David vor Goliath, 1. Samuel 17,38–45** im Entwicklungsstand 0.8. Unter **Bibel → Eine Geschichte entdecken** öffnen die Karten exakte Textabschnitte mit getrennter Einordnung. Acht biblische Bildmaster und 21 WebP-Varianten besitzen Herkunfts- und Freigabemetadaten; unabhängige Fach-/Vertriebsfreigaben bleiben offen.
 - **Wege:** neun geführte Reisen mit je drei Schritten, verständlichen Einordnungen, freiwilliger Reflexion und optionalem Gebet. Neun Textfragen nennen tatsächliche Verse als Beleg. Die Pilotredaktion wird thematisch wiederverwendet; eine unabhängige Fachfreigabe steht aus.
 - **Garten:** sieben unveränderte A51-Originalillustrationen, lebendige Webdarstellung, separater nativer PNG-Ebenenadapter, statische Fallbacks, reduzierte Bewegung und eine Galerie. Der Baum bewertet keinen Glauben und verliert in Pausen keine Blätter.
@@ -40,7 +42,7 @@ npm run build
 npm run preview
 ```
 
-Danach http://localhost:4173 öffnen. In einem eigenen Checkout dieselben npm-Befehle direkt im Projektverzeichnis ausführen. Die bestätigten GitHub-Versionsstände 0.4 bis 0.9 liegen unter `oliva/` im FaithPath-Repository. In diesen Checkouts zuerst `cd oliva` ausführen; das separate Standalone-Projekt und seine Quell-ZIPs starten direkt in ihrer Wurzel.
+Danach http://localhost:4173 öffnen. In einem eigenen Checkout dieselben npm-Befehle direkt im Projektverzeichnis ausführen. Die bestätigten GitHub-Versionsstände 0.4 bis 0.10 liegen unter `oliva/` im FaithPath-Repository. In diesen Checkouts zuerst `cd oliva` ausführen; das separate Standalone-Projekt und seine Quell-ZIPs starten direkt in ihrer Wurzel.
 
 Geprüfte Umgebung: Node 24.22.1, npm 11.9.0, Expo 58.0.23, React Native 0.88.1 und TypeScript 6.0.3. Der Kern benötigt keine API-Schlüssel. Für dieses eingeschränkte Arbeitsumfeld kann npm mit `npm --cache /tmp/faithpath-npm ci` einen beschreibbaren Cache verwenden.
 
@@ -132,15 +134,17 @@ Ein eigener HTTPS-Static-Host benötigt SPA-Fallback auf `index.html`, richtige 
 18. [Aktueller Plan und bestätigte Paritätslücken](docs/16-current-plan-and-parity.md)
 19. [Freiwillige In-App-Einladungen](docs/18-in-app-invitations.md)
 20. [Vorbereitung des ursprünglichen Fließtextreaders](docs/19-reader-flow-preparation.md)
-21. [Dauerhafter Fortsetzungsstand](RESUME.md)
+21. [Fertigen NT-Katalog übernehmen: Datenprüfung und Vorbereitung](docs/20-nt-catalog-preparation.md)
+22. [Reader, Lesefokus und Reflow-Abnahme](docs/21-reader-flow-and-focus.md)
+23. [Dauerhafter Fortsetzungsstand](RESUME.md)
 
 Die A51-Originale, die eigene biblische Bildwelt und beide Buchbildpiloten besitzen getrennte Herkunftsnachweise unter `art/a51/provenance.json`, `art/manifest.json` und `art/swords/runtime-index.json`. Übernommener FaithPath-A51-Code und A51-Bilder sind von OLIVAs MIT-Lizenz ausgenommen; die ausdrückliche Integrationserlaubnis ist keine allgemeine öffentliche Weiterveröffentlichungslizenz. Die öffentliche Produktfreigabe beider Buchbildpiloten bleibt offen. Details: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-Der aktuelle lokale Entwicklungsbranch heißt `feature/oliva-v010-invitations-20261108` und hat keinen Remote. Der abgeschlossene unabhängige 0.8-Checkpoint ist Commit `e6aa7f5ab552bb983264c1b4cc253c72728d5740`, Tag `oliva-v0.8-stories-offline-private`, ZIP `/workspace/oliva-next-v0.8-stories-offline-source.zip` (120.935.687 Byte, SHA-256 `82c564902e453b638a84c6487098abe769fb828094c8bdb1c4b772b81cde40ca`). [Manifestkopie](docs/evidence/session-09/checkpoints/oliva-v08-local-checkpoint.json). Die GitHub-Kopie unter `oliva/` besitzt Commit `dc4477b01dcd78f278e5dbf82408b26c83837ec1` und exakt denselben OLIVA-Dateibaum. Ältere Checkpoints bleiben erhalten.
+Der aktuelle lokale Entwicklungsbranch heißt `feature/oliva-v011-reader-flow-20261109` und hat keinen Remote. Der abgeschlossene unabhängige 0.8-Checkpoint ist Commit `e6aa7f5ab552bb983264c1b4cc253c72728d5740`, Tag `oliva-v0.8-stories-offline-private`, ZIP `/workspace/oliva-next-v0.8-stories-offline-source.zip` (120.935.687 Byte, SHA-256 `82c564902e453b638a84c6487098abe769fb828094c8bdb1c4b772b81cde40ca`). [Manifestkopie](docs/evidence/session-09/checkpoints/oliva-v08-local-checkpoint.json). Die GitHub-Kopie unter `oliva/` besitzt Commit `dc4477b01dcd78f278e5dbf82408b26c83837ec1` und exakt denselben OLIVA-Dateibaum. Ältere Checkpoints bleiben erhalten.
 
 **0.9 ist lokal und privat abgenommen.** Römer-Bilder, gemeinsame Registrierung, buchgenaue Lichtspuren und Startseitenzugang sind integriert und mit 120 Fachtests, 76 Browserfällen, beiden nativen JS-/Assetexporten sowie echtem Offline-Update geprüft. Die 0.9-Quellen sind lokal und auf [GitHub unter `oliva/`](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.9.0/oliva) gesichert. Auch der tatsächliche GitHub-Lauf 42517524350 besteht 120/120 Fach- und 76/76 Browserfälle, ohne Skip/Flaky/Wiederholung; [Belege](docs/evidence/github/ci-v09/verification.json). Der Kontrollbuild bleibt erhalten.
 
-Der ursprüngliche Fließtextmodus und die fertigen **1.300 NT-Fragen für 260 Kapitel und 27 Bücher** sind noch nicht vollständig übernommen. „Einfach lesen“ verwendet einzelne Versblöcke; neun eigene Pilotfragen ersetzen den NT-Katalog nicht. Für beide Übernahmen ist bislang keine verbindliche Version, kein Termin und kein konkret abgegrenztes Arbeitspaket festgelegt. Weitere bestätigte Paritätslücken und offene Entscheidungen: [aktueller Plan](docs/16-current-plan-and-parity.md). Diese Feststellung ändert die laufenden Prioritäten nicht.
+Fließtext und Lesefokus sind seit 0.11 integriert; Mehrversauswahl und eigene Kopieraktion fehlen weiter. Die fertigen **1.300 NT-Fragen für 260 Kapitel und 27 Bücher** sind noch nicht als aktive Funktion übernommen; neun eigene Pilotfragen ersetzen den NT-Katalog nicht. Für beide Übernahmen ist bislang keine verbindliche Version, kein Termin und kein konkret abgegrenztes Arbeitspaket festgelegt. Weitere bestätigte Paritätslücken und offene Entscheidungen: [aktueller Plan](docs/16-current-plan-and-parity.md). Diese Feststellung ändert die laufenden Prioritäten nicht.
 
 Die vorbereiteten Supabase-Migrationen sind kein aktiver Cloudbetrieb. Persönliche Daten und Exporte sind lokal und unverschlüsselt. Native Geräteabnahme, unabhängige Inhalts-/Bildprüfung, Anfänger-Usability, weitere Buchschwertillustrationen, optionale Dienste und die Gesamtfreigabe bleiben offen.
 
@@ -159,3 +163,9 @@ Das private Deployment vom 08.11.2026 um 19:49:19 UTC ist erfolgreich. Die HTTP-
 **154/154 Fachtests und ein einzelner vollständiger 82/82-Browserlauf bestanden**, ohne Skip, Flaky-Fälle oder Wiederholung; sechs neue Browserfälle auch separat grün. Typecheck, Bibel-/Bild-/A51-/Buchnachweise und Audit (0 Funde) erfolgreich. Echter 0.9→0.10-PWA-Wechsel erhält zunächst alle V6-Rohdaten; der ausdrückliche Opt-in schreibt ausschließlich V7, Revision und Einladungskontrollen. Native JS-/Assetexporte beider Plattformen sind geprüft, ohne Geräte-/Simulatorbehauptung. [Gesamtnachweis](docs/evidence/invitations/validation-summary.json).
 
 Private Bereitstellung am 08.11.2026 um 20:31:27 UTC: 18 App-Routen und 105 App-Dateien geprüft (104 Hashvergleiche, Index-HTML separat als App-Shell); 42 Review-Dateien bytegenau. Anonym HTTP 401, weiterhin nur ein Eigentümer. Gehosteter CUA-Browser und physische Handyinstallation nicht geprüft. Der nachfolgende separate Quellen-/GitHub-Checkpoint wird außerhalb seines eigenen Gitbaums protokolliert; keine unbekannten Commit- oder ZIP-Hashes vorwegnehmen.
+
+## Tatsächliche Abnahme 0.11
+
+**168/168 Fachtests und ein einzelner vollständiger 92/92-Browserlauf bestanden**, ohne Skip, Flaky-Fälle oder Wiederholung. Typecheck, Bibel-/Bild-/A51-/Buchnachweise und Audit (0 Funde) erfolgreich. Echter 0.10→0.11-PWA-Wechsel erhält alle vier rohen IndexedDB-Datensätze, beide Entwürfe, Originalarchiv und Rückkehrsicherung; ein alter Psalm-Leseanker wird erstmals offline im neuen Fließtext wiederhergestellt. AppData V7, privates Dokument V1, SQLite3 und IndexedDB1 bleiben unverändert. [Gesamtnachweis](docs/evidence/reader-flow/validation-summary.json).
+
+Private Bereitstellung am **09.11.2026 um 08:20:19 UTC**: 20 App-Routen und 105 App-Dateien geprüft (104 Hashvergleiche, Index-HTML separat als App-Shell); 42 Review-Dateien bytegenau. Anonym HTTP401, Zugriffspolitik unverändert eigentümerprivat. Beide nativen JS-/Assetexporte sind erfolgreich; tatsächliche native Zeilenereignisse, Geräte, Simulatoren, Decoder und Energie sind nicht geprüft. Quellcheckpoint/ZIP und GitHub-Sicherung folgen getrennt; die eigene Commit-ID kann nicht im selben Commit vorweggenommen werden.

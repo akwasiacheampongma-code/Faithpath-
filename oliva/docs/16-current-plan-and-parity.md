@@ -18,16 +18,16 @@ Verglichen wird der unveränderte FaithPath-Snapshot [`a519ce898fa33907b07d5ac7a
 
 | Vorhandener FaithPath-Bestand | Tatsächlicher OLIVA-Stand |
 | --- | --- |
-| Zusammenhängender Fließtext mit auswählbaren Versen, Markierungen und optionalem Lesefokus | Der Reader rendert weiterhin eigene Blöcke pro Vers. „Einfach lesen“ ist kein vollständiger Ersatz des ursprünglichen Fließtextmodus. |
+| Zusammenhängender Fließtext mit auswählbaren Versen, Markierungen und optionalem Lesefokus | Seit0.11 Fließtext mit auswählbaren Einzelversen und temporärem Lesefokus; alte Blockansicht bleibt wählbar. Mehrversauswahl und eigene Kopieraktion sowie echte native Geräteabnahme fehlen weiter. |
 | Vollständiger NT-Katalog: **1.300 Fragen, 260 Kapitel, 27 Bücher, genau fünf Fragen pro Kapitel**, vier Antwortoptionen, korrekter Index, Referenz, Erklärung und stabile `faithpath_id` | Neun eigene Pilotfragen mit drei Optionen. Der fertige NT-Katalog ist nicht als aktive OLIVA-Funktion übernommen. Alter Quizfortschritt bleibt beim V5-Import im Originalarchiv. |
-| Gemeinsamer Katalog mit **436 Geschichten und 2.479 Frageelementen**, mit dokumentierten Ausnahmen | Fünf neue illustrierte Erzählpiloten; kein vollständiger Katalogtransfer. Die Frageelemente überlappen mit dem NT-Katalog und werden nicht zu den 1.300 addiert. |
+| Gemeinsamer Katalog mit **436 Geschichten und 2.479 Frageelementen**, mit dokumentierten Ausnahmen | Fünf neue illustrierte Erzählpiloten; kein vollständiger Katalogtransfer. Die aktiven Story-Flow-Fragen sind vom NT-Kapitelkatalog getrennt: Die erneute ID-Prüfung findet keine Überschneidung. Die frühere Überlappungsannahme war unzutreffend; genaue Dateihashes und Mengengrenzen stehen in der NT-Vorbereitung. |
 | 18 Lebensthemen mit vorhandener Redaktion | Neun eigene geführte Wege; kein vollständiger Inhaltsabgleich. |
 | Belegte persönliche Wege, Gedanken, Rückblicke und Meilensteine sind Baumästen zugeordnet | Die A51-Darstellung mit sieben Stadien ist integriert; die persönliche Astzuordnung fehlt. |
-| Erinnerungen mit Zurückstellen, Wiederaufnahme und Verwerfen | Nach 0.9 im 0.10-Kandidaten als freiwillige **In-App-Einladungen** integriert; lokale Kontrollen, 21/35 Tage und 14 Tage zurückstellen. Markierungen ohne Datierung und automatische Übernahme alter Unterdrückungsentscheidungen fehlen. Keine Push-, E-Mail- oder Hintergrundbenachrichtigungen. |
+| Erinnerungen mit Zurückstellen, Wiederaufnahme und Verwerfen | Seit 0.10 als freiwillige **In-App-Einladungen** integriert; lokale Kontrollen, 21/35 Tage und 14 Tage zurückstellen. Markierungen ohne Datierung und automatische Übernahme alter Unterdrückungsentscheidungen fehlen. Keine Push-, E-Mail- oder Hintergrundbenachrichtigungen. |
 | Umfangreiche persönliche Zeitlinie und Vorher-/Nachher-Kontexte | Vorhaben, Archiv, geschützte Rückblicke und Snapshots sind vorhanden; vollständige Historienparität fehlt. |
 | Vier Themes und zwei Übersetzungen | OLIVA bietet Hell/Dunkel und Luther 1912. |
 
-Der ursprüngliche Fließtext ist in `src/verbunden/reader-flow.js` implementiert und gruppiert jeweils fünf inline dargestellte Verse zu Absätzen; `reader.css` und `app.js` binden ihn ein. Der OLIVA-Reader unter `app/lesen/[book].tsx` verwendet dagegen einzelne `View`-/`Pressable`-Blöcke.
+Der ursprüngliche Fließtext ist in `src/verbunden/reader-flow.js` implementiert und gruppiert jeweils fünf inline dargestellte Verse zu Absätzen; `reader.css` und `app.js` binden ihn ein. Der bis0.10 verwendete OLIVA-Blockreader bleibt seit0.11 als Alternative erhalten; eine gemeinsame Absatzprojektion mit Plattformrenderern ist nun integriert.
 
 Der NT-Bestand ist durch `data/stories.json` und `NT_QUIZ_FINAL_IMPORT_REPORT.md` im Snapshot belegt. Der Originalbericht bezeichnet den freigegebenen Master als maßgeblich und dokumentiert vollständigen Import sowie technische Abnahme. **Der Bestand ist kein unfertiger Fragenentwurf; offen ist seine Übernahme in OLIVA.** Der aktuelle Importumfang ist in [FaithPath-V5-Import](07-faithpath-import.md) beschrieben.
 
@@ -59,3 +59,9 @@ Die seit 08.11. ausdrücklich beauftragte öffentliche GitHub-Quellensicherung i
 ## Fortschreibung nach der 0.9-Abnahme
 
 Der vorhandene Backlogpunkt freiwillige In-App-Einladungen ist nun im tatsächlichen 0.10-Kandidaten implementiert. 154 Fachtests und sechs gezielte Browserfälle sowie beide nativen JS-/Assetexporte und der echte 0.9→0.10-Updateversuch bestehen. Auch ein einzelner vollständiger 82/82-Browserlauf, der echte PWA-Wechsel und die eigentümerprivate Bereitstellung sind inzwischen erfolgreich; Quelle und HTTP-/Zugriffsbelege stehen im Einladungsbericht. [Vertrag](18-in-app-invitations.md). Das ist eine durchgeführte Iteration, kein nachträglich erfundener Releasekalender. Fließtext und fertiger NT-Katalog bleiben als aktive Funktionen weiterhin offen.
+
+## Fortschreibung im Reader-Arbeitspaket 0.11
+
+Der tatsächliche Kandidat 0.11 enthält Fließtextabsätze, Einzelversalternative, gemeinsame Versaktionen, einen temporären Lesefokus und überarbeitete Fragmentmessung. 168 Fachtests, sieben gezielte Fließtextfälle, drei Fokusfälle und vier Reader-Fortsetzungsfälle sind erfolgreich; auch der vollständige 92/92-Lauf, der echte PWA-Wechsel und die eigentümerprivate Bereitstellung sind inzwischen erfolgreich. Native JS-/Assetexports sind erfolgreich, echte Geräte-/Screenreaderprüfung steht aus. Die Mehrversauswahl und die ursprüngliche eigene Kopieraktion fehlen weiter; diese Iteration behauptet keine vollständige Readerparität. Der persönliche Fortschrittsvertrag bleibt V7.
+
+Die nächste Bestandsvorbereitung hat den fertigen NT-Katalog tatsächlich Feld für Feld geprüft: [NT-Vorbereitung](20-nt-catalog-preparation.md). Die stabilen IDs lauten mit Bindestrich `FP-0261` bis `FP-1560`. Die 436 Stories/2.479 Story-Flow-Frageelemente sind ein anderer aktiver Pool und überschneiden sich nicht mit den 1.300 NT-Kapitelfragen. Eine neue Quizoberfläche oder Fortschrittsmigration ist dadurch noch nicht implementiert.

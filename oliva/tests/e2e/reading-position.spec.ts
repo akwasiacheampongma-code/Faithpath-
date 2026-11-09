@@ -24,7 +24,10 @@ test("Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächl
 test("ein langer Psalm behält den Vers bei Display- und Schriftänderungen", async ({page}) => {
   await page.goto("/lesen/PSA?chapter=119&verse=90");
   await anchor(page,90);
-  await page.getByRole("button",{name:/^Vers 120:/}).evaluate(el=>el.scrollIntoView({block:"start"}));
+  // Inline text may share a line with the previous verse. This test exercises
+  // an explicit canonical jump; separate flow cases check actual scroll lines.
+  await page.getByRole("button",{name:"Versaktionen",exact:true}).click();
+  await page.getByRole("button",{name:"Vers 120",exact:true}).click();
   await anchor(page,120);
   await page.setViewportSize({width:1440,height:1000}); await atVerse(page,120);
   await page.getByRole("button",{name:"Leseeinstellungen",exact:true}).click();

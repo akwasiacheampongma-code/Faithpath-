@@ -61,12 +61,14 @@ export function Shell({
   reader = false,
   scrollRef,
   onScroll,
+  readerToolbar,
 }: {
   children: React.ReactNode;
   wide?: boolean;
   reader?: boolean;
   scrollRef?: React.Ref<React.ComponentRef<typeof ScrollView>>;
   onScroll?: ScrollViewProps["onScroll"];
+  readerToolbar?: React.ReactNode;
 }) {
   const viewport = useViewportSignals(),
     viewportRef = useRef<React.ComponentRef<typeof ScrollView>>(null);
@@ -327,6 +329,18 @@ export function Shell({
             />
           </View>
         )}
+        {reader && readerToolbar ? (
+          <View
+            style={{
+              paddingHorizontal: 20,
+              paddingVertical: 4,
+              borderBottomWidth: 1,
+              borderColor: t.line,
+            }}
+          >
+            {readerToolbar}
+          </View>
+        ) : null}
         <ScrollView
           role="main"
           ref={attachScroll}

@@ -1,0 +1,47 @@
+
+> oliva-faith-companion@0.10.0 test:e2e
+> playwright test tests/e2e/reading-position.spec.ts
+
+
+Running 4 tests using 1 worker
+
+(node:19920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/reading-position.spec.ts:12:1 › Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers (10.9s)
+  ✘  2 tests/e2e/reading-position.spec.ts:24:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen (23.3s)
+(node:20140) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/e2e/reading-position.spec.ts:44:1 › Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker (9.2s)
+  ✓  4 tests/e2e/reading-position.spec.ts:54:1 › eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust (7.7s)
+
+
+  1) tests/e2e/reading-position.spec.ts:24:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 15000ms exceeded while waiting on the predicate
+
+       8 |     const box = await page.getByRole("button", {name:new RegExp(`^Vers ${verse}:`)}).boundingBox();
+       9 |     return box ? box.y >= 0 && box.y < 120 : false;
+    > 10 |   }).toBe(true);
+         |      ^
+      11 | }
+      12 | test("Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers", async ({page,context}) => {
+      13 |   await page.goto("/lesen/JHN?chapter=6&verse=35");
+        at atVerse (/workspace/faithpath-next/tests/e2e/reading-position.spec.ts:10:6)
+        at /workspace/faithpath-next/tests/e2e/reading-position.spec.ts:37:9
+
+    Error Context: test-results/reading-position-ein-lange-cf92f-play--und-Schriftänderungen/error-context.md
+
+  1 failed
+    tests/e2e/reading-position.spec.ts:24:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen 
+  3 passed (56.0s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

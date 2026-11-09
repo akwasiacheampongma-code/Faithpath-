@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-11-09T07:59:05.890747+00:00",
+  "frozenReport": "docs/evidence/invitations/native/native-export-check.json",
+  "priorNativeOutputsPreservedAt": "/workspace/oliva-native-v010-before-v011",
+  "overwroteExistingFiles": false,
+  "completeFileInventoriesMatch": true,
+  "exports": [
+    {
+      "platform": "android",
+      "metadataSha256": "7404354d5d153ce547011fba503dd956e8a78fa46cc45e316b9295fc15fe6bf8",
+      "bundle": "_expo/static/js/android/entry-d694c302fa2e7647cb0ccc9aff97aa12.js",
+      "bundleSha256": "18f88981b0c0c4a98694383a21e13f787fff25118e53943403a9540771c5785c",
+      "matchesFrozen010Report": true,
+      "fileCount": 154,
+      "bytes": 50811262
+    },
+    {
+      "platform": "ios",
+      "metadataSha256": "990fe1a11663ee4c29bacb951fe733908cbb73241d29a3a0857680ace490ca17",
+      "bundle": "_expo/static/js/ios/entry-3951969315b259c0a43cc22eade3dfd2.js",
+      "bundleSha256": "12c378341ab594083663776b046a773aae0494d9ec14051ce1709f7af18316ab",
+      "matchesFrozen010Report": true,
+      "fileCount": 151,
+      "bytes": 50827892
+    }
+  ]
+}

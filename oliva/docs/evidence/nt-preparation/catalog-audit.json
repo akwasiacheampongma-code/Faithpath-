@@ -1,0 +1,496 @@
+{
+  "status": "PASS",
+  "scope": "Read-only source inspection, independent JSON/master comparison and reference-range validation. Documentation preparation only; no app implementation or new original-app browser/device acceptance.",
+  "source": {
+    "repository": "akwasiacheampongma-code/Faithpath-",
+    "branch": "feature/simplified-step-experience-20261104",
+    "snapshot": "a519ce898fa33907b07d5ac7a585595127556183",
+    "access": "git show of immutable snapshot; original reference unchanged"
+  },
+  "source_files": [
+    {
+      "path": "data/stories.json",
+      "bytes": 1036959,
+      "sha256": "f9fc48a97ecb129eaed0289cf94afa7c747f15afe381fbe6241e67fac5ec04cd"
+    },
+    {
+      "path": "data/index.json",
+      "bytes": 3924,
+      "sha256": "8686e9de0c250b61f304d81ff5f9aa8462747ffbc0e8bb91a7d859570d6b822e"
+    },
+    {
+      "path": "data/nt-quiz-status.json",
+      "bytes": 885,
+      "sha256": "8b3e37a97e15ac9b3d6856cd1b45f58c83dae1dad2486d84061a28ec44c98c7d"
+    },
+    {
+      "path": "NT_QUIZ_FINAL_IMPORT_REPORT.md",
+      "bytes": 15714,
+      "sha256": "b2b36f3533eca7d15b7cecb89f13419a63645d6a0fb9050a51f0506d77438725"
+    },
+    {
+      "path": "reports/nt-quiz-final/master.json",
+      "bytes": 1172024,
+      "sha256": "f322bbe0b8214839faf4b6f5a0b994f441e745678ffa83669c3e528f62fdce56"
+    },
+    {
+      "path": "reports/nt-quiz-final/manifest.json",
+      "bytes": 3026,
+      "sha256": "d6473e899e31f0340f61d0a59c1a2a3fa19de43962a415094df5c7ac1bbaaf14"
+    },
+    {
+      "path": "reports/nt-quiz-final/acceptance.json",
+      "bytes": 3242,
+      "sha256": "6d9a0de11b10abe0f3920aafdc346cbe0632b6f5861d53cecf9ea3108bd2b56b"
+    },
+    {
+      "path": "reports/nt-quiz-final/FaithPath_Kapitelfragen_NT_FINAL_MASTER_1300.xlsx",
+      "bytes": 803684,
+      "sha256": "ddb5e9c5832a1aa60e5329621c6a0c92002cd1b879177c5b39027344cce5c199"
+    },
+    {
+      "path": "data/faithpath-nachlese-story-flow.json",
+      "bytes": 705226,
+      "sha256": "330d06b5b4e5c6413d41e8c10e16b1ff0735ac682637ccbe847ffbb4996c5435"
+    },
+    {
+      "path": "scripts/validate-nt-quiz.mjs",
+      "bytes": 5844,
+      "sha256": "d33e776e5ada68606bf3a250a0cb7b7c4a45d3ae15bcf16d8e0855e6c7fcb1d2"
+    },
+    {
+      "path": "scripts/quiz-reference-ranges.mjs",
+      "bytes": 1224,
+      "sha256": "0bcb56804f0944677c6d6e8f7c73aef7fa66592e8a078861c2d44323648e1433"
+    }
+  ],
+  "source_stories_json": {
+    "units_total": 312,
+    "questions_total": 1560,
+    "non_chapter_units": 52,
+    "non_chapter_questions": 260,
+    "chapter_quiz_units": 260,
+    "chapter_quiz_questions": 1300,
+    "books": 27,
+    "chapters": 260,
+    "questions_per_chapter": 5,
+    "question_id_start": "FP-0261",
+    "question_id_end": "FP-1560",
+    "legacy_unit_id_start": 10000,
+    "legacy_unit_id_end": 10259,
+    "correct_index_distribution": {
+      "0": 329,
+      "1": 326,
+      "2": 323,
+      "3": 322
+    },
+    "parsed_reference_ranges": 1304,
+    "questions_with_multiple_reference_ranges": 4,
+    "questions_with_one_chapter_book_reference_without_chapter_number": 20
+  },
+  "independent_checks": {
+    "exact_nt_counts": true,
+    "exact_5_questions_each_chapter": true,
+    "all_27_books_and_260_distinct_chapters": true,
+    "canonical_chapter_ranges_complete": true,
+    "source_to_oliva_book_codes_and_chapter_counts_identical": true,
+    "unique_contiguous_question_ids_in_source_order": true,
+    "unique_contiguous_legacy_unit_ids_in_source_order": true,
+    "exact_question_field_keys": true,
+    "four_distinct_nonempty_string_options_each": true,
+    "integer_zero_based_correct_indices_0_to_3": true,
+    "nonempty_questions_references_explanations_and_ids": true,
+    "five_distinct_questions_per_chapter": true,
+    "all_question_fields_verbatim_equal_normalized_approved_master": true,
+    "correct_answer_equals_option_at_correct_index": true,
+    "all_master_approval_flags_match": true,
+    "source_manifest_hashes_match": true,
+    "references_parse_to_source_unit_book_and_chapter": true,
+    "every_referenced_verse_exists_in_current_oliva_luther1912": true
+  },
+  "book_mapping": [
+    {
+      "faithpath_book_code": "MAT",
+      "oliva_book_code": "MAT",
+      "name": "Matthäus",
+      "chapters": 28,
+      "questions": 140,
+      "source_chapter_min": 0,
+      "source_chapter_max": 27,
+      "legacy_unit_id_start": 10000,
+      "legacy_unit_id_end": 10027,
+      "faithpath_question_id_start": "FP-0261",
+      "faithpath_question_id_end": "FP-0400"
+    },
+    {
+      "faithpath_book_code": "MRK",
+      "oliva_book_code": "MRK",
+      "name": "Markus",
+      "chapters": 16,
+      "questions": 80,
+      "source_chapter_min": 0,
+      "source_chapter_max": 15,
+      "legacy_unit_id_start": 10028,
+      "legacy_unit_id_end": 10043,
+      "faithpath_question_id_start": "FP-0401",
+      "faithpath_question_id_end": "FP-0480"
+    },
+    {
+      "faithpath_book_code": "LUK",
+      "oliva_book_code": "LUK",
+      "name": "Lukas",
+      "chapters": 24,
+      "questions": 120,
+      "source_chapter_min": 0,
+      "source_chapter_max": 23,
+      "legacy_unit_id_start": 10044,
+      "legacy_unit_id_end": 10067,
+      "faithpath_question_id_start": "FP-0481",
+      "faithpath_question_id_end": "FP-0600"
+    },
+    {
+      "faithpath_book_code": "JHN",
+      "oliva_book_code": "JHN",
+      "name": "Johannes",
+      "chapters": 21,
+      "questions": 105,
+      "source_chapter_min": 0,
+      "source_chapter_max": 20,
+      "legacy_unit_id_start": 10068,
+      "legacy_unit_id_end": 10088,
+      "faithpath_question_id_start": "FP-0601",
+      "faithpath_question_id_end": "FP-0705"
+    },
+    {
+      "faithpath_book_code": "ACT",
+      "oliva_book_code": "ACT",
+      "name": "Apostelgeschichte",
+      "chapters": 28,
+      "questions": 140,
+      "source_chapter_min": 0,
+      "source_chapter_max": 27,
+      "legacy_unit_id_start": 10089,
+      "legacy_unit_id_end": 10116,
+      "faithpath_question_id_start": "FP-0706",
+      "faithpath_question_id_end": "FP-0845"
+    },
+    {
+      "faithpath_book_code": "ROM",
+      "oliva_book_code": "ROM",
+      "name": "Römer",
+      "chapters": 16,
+      "questions": 80,
+      "source_chapter_min": 0,
+      "source_chapter_max": 15,
+      "legacy_unit_id_start": 10117,
+      "legacy_unit_id_end": 10132,
+      "faithpath_question_id_start": "FP-0846",
+      "faithpath_question_id_end": "FP-0925"
+    },
+    {
+      "faithpath_book_code": "1CO",
+      "oliva_book_code": "1CO",
+      "name": "1. Korinther",
+      "chapters": 16,
+      "questions": 80,
+      "source_chapter_min": 0,
+      "source_chapter_max": 15,
+      "legacy_unit_id_start": 10133,
+      "legacy_unit_id_end": 10148,
+      "faithpath_question_id_start": "FP-0926",
+      "faithpath_question_id_end": "FP-1005"
+    },
+    {
+      "faithpath_book_code": "2CO",
+      "oliva_book_code": "2CO",
+      "name": "2. Korinther",
+      "chapters": 13,
+      "questions": 65,
+      "source_chapter_min": 0,
+      "source_chapter_max": 12,
+      "legacy_unit_id_start": 10149,
+      "legacy_unit_id_end": 10161,
+      "faithpath_question_id_start": "FP-1006",
+      "faithpath_question_id_end": "FP-1070"
+    },
+    {
+      "faithpath_book_code": "GAL",
+      "oliva_book_code": "GAL",
+      "name": "Galater",
+      "chapters": 6,
+      "questions": 30,
+      "source_chapter_min": 0,
+      "source_chapter_max": 5,
+      "legacy_unit_id_start": 10162,
+      "legacy_unit_id_end": 10167,
+      "faithpath_question_id_start": "FP-1071",
+      "faithpath_question_id_end": "FP-1100"
+    },
+    {
+      "faithpath_book_code": "EPH",
+      "oliva_book_code": "EPH",
+      "name": "Epheser",
+      "chapters": 6,
+      "questions": 30,
+      "source_chapter_min": 0,
+      "source_chapter_max": 5,
+      "legacy_unit_id_start": 10168,
+      "legacy_unit_id_end": 10173,
+      "faithpath_question_id_start": "FP-1101",
+      "faithpath_question_id_end": "FP-1130"
+    },
+    {
+      "faithpath_book_code": "PHP",
+      "oliva_book_code": "PHP",
+      "name": "Philipper",
+      "chapters": 4,
+      "questions": 20,
+      "source_chapter_min": 0,
+      "source_chapter_max": 3,
+      "legacy_unit_id_start": 10174,
+      "legacy_unit_id_end": 10177,
+      "faithpath_question_id_start": "FP-1131",
+      "faithpath_question_id_end": "FP-1150"
+    },
+    {
+      "faithpath_book_code": "COL",
+      "oliva_book_code": "COL",
+      "name": "Kolosser",
+      "chapters": 4,
+      "questions": 20,
+      "source_chapter_min": 0,
+      "source_chapter_max": 3,
+      "legacy_unit_id_start": 10178,
+      "legacy_unit_id_end": 10181,
+      "faithpath_question_id_start": "FP-1151",
+      "faithpath_question_id_end": "FP-1170"
+    },
+    {
+      "faithpath_book_code": "1TH",
+      "oliva_book_code": "1TH",
+      "name": "1. Thessalonicher",
+      "chapters": 5,
+      "questions": 25,
+      "source_chapter_min": 0,
+      "source_chapter_max": 4,
+      "legacy_unit_id_start": 10182,
+      "legacy_unit_id_end": 10186,
+      "faithpath_question_id_start": "FP-1171",
+      "faithpath_question_id_end": "FP-1195"
+    },
+    {
+      "faithpath_book_code": "2TH",
+      "oliva_book_code": "2TH",
+      "name": "2. Thessalonicher",
+      "chapters": 3,
+      "questions": 15,
+      "source_chapter_min": 0,
+      "source_chapter_max": 2,
+      "legacy_unit_id_start": 10187,
+      "legacy_unit_id_end": 10189,
+      "faithpath_question_id_start": "FP-1196",
+      "faithpath_question_id_end": "FP-1210"
+    },
+    {
+      "faithpath_book_code": "1TI",
+      "oliva_book_code": "1TI",
+      "name": "1. Timotheus",
+      "chapters": 6,
+      "questions": 30,
+      "source_chapter_min": 0,
+      "source_chapter_max": 5,
+      "legacy_unit_id_start": 10190,
+      "legacy_unit_id_end": 10195,
+      "faithpath_question_id_start": "FP-1211",
+      "faithpath_question_id_end": "FP-1240"
+    },
+    {
+      "faithpath_book_code": "2TI",
+      "oliva_book_code": "2TI",
+      "name": "2. Timotheus",
+      "chapters": 4,
+      "questions": 20,
+      "source_chapter_min": 0,
+      "source_chapter_max": 3,
+      "legacy_unit_id_start": 10196,
+      "legacy_unit_id_end": 10199,
+      "faithpath_question_id_start": "FP-1241",
+      "faithpath_question_id_end": "FP-1260"
+    },
+    {
+      "faithpath_book_code": "TIT",
+      "oliva_book_code": "TIT",
+      "name": "Titus",
+      "chapters": 3,
+      "questions": 15,
+      "source_chapter_min": 0,
+      "source_chapter_max": 2,
+      "legacy_unit_id_start": 10200,
+      "legacy_unit_id_end": 10202,
+      "faithpath_question_id_start": "FP-1261",
+      "faithpath_question_id_end": "FP-1275"
+    },
+    {
+      "faithpath_book_code": "PHM",
+      "oliva_book_code": "PHM",
+      "name": "Philemon",
+      "chapters": 1,
+      "questions": 5,
+      "source_chapter_min": 0,
+      "source_chapter_max": 0,
+      "legacy_unit_id_start": 10203,
+      "legacy_unit_id_end": 10203,
+      "faithpath_question_id_start": "FP-1276",
+      "faithpath_question_id_end": "FP-1280"
+    },
+    {
+      "faithpath_book_code": "HEB",
+      "oliva_book_code": "HEB",
+      "name": "Hebräer",
+      "chapters": 13,
+      "questions": 65,
+      "source_chapter_min": 0,
+      "source_chapter_max": 12,
+      "legacy_unit_id_start": 10204,
+      "legacy_unit_id_end": 10216,
+      "faithpath_question_id_start": "FP-1281",
+      "faithpath_question_id_end": "FP-1345"
+    },
+    {
+      "faithpath_book_code": "JAS",
+      "oliva_book_code": "JAS",
+      "name": "Jakobus",
+      "chapters": 5,
+      "questions": 25,
+      "source_chapter_min": 0,
+      "source_chapter_max": 4,
+      "legacy_unit_id_start": 10217,
+      "legacy_unit_id_end": 10221,
+      "faithpath_question_id_start": "FP-1346",
+      "faithpath_question_id_end": "FP-1370"
+    },
+    {
+      "faithpath_book_code": "1PE",
+      "oliva_book_code": "1PE",
+      "name": "1. Petrus",
+      "chapters": 5,
+      "questions": 25,
+      "source_chapter_min": 0,
+      "source_chapter_max": 4,
+      "legacy_unit_id_start": 10222,
+      "legacy_unit_id_end": 10226,
+      "faithpath_question_id_start": "FP-1371",
+      "faithpath_question_id_end": "FP-1395"
+    },
+    {
+      "faithpath_book_code": "2PE",
+      "oliva_book_code": "2PE",
+      "name": "2. Petrus",
+      "chapters": 3,
+      "questions": 15,
+      "source_chapter_min": 0,
+      "source_chapter_max": 2,
+      "legacy_unit_id_start": 10227,
+      "legacy_unit_id_end": 10229,
+      "faithpath_question_id_start": "FP-1396",
+      "faithpath_question_id_end": "FP-1410"
+    },
+    {
+      "faithpath_book_code": "1JN",
+      "oliva_book_code": "1JN",
+      "name": "1. Johannes",
+      "chapters": 5,
+      "questions": 25,
+      "source_chapter_min": 0,
+      "source_chapter_max": 4,
+      "legacy_unit_id_start": 10230,
+      "legacy_unit_id_end": 10234,
+      "faithpath_question_id_start": "FP-1411",
+      "faithpath_question_id_end": "FP-1435"
+    },
+    {
+      "faithpath_book_code": "2JN",
+      "oliva_book_code": "2JN",
+      "name": "2. Johannes",
+      "chapters": 1,
+      "questions": 5,
+      "source_chapter_min": 0,
+      "source_chapter_max": 0,
+      "legacy_unit_id_start": 10235,
+      "legacy_unit_id_end": 10235,
+      "faithpath_question_id_start": "FP-1436",
+      "faithpath_question_id_end": "FP-1440"
+    },
+    {
+      "faithpath_book_code": "3JN",
+      "oliva_book_code": "3JN",
+      "name": "3. Johannes",
+      "chapters": 1,
+      "questions": 5,
+      "source_chapter_min": 0,
+      "source_chapter_max": 0,
+      "legacy_unit_id_start": 10236,
+      "legacy_unit_id_end": 10236,
+      "faithpath_question_id_start": "FP-1441",
+      "faithpath_question_id_end": "FP-1445"
+    },
+    {
+      "faithpath_book_code": "JUD",
+      "oliva_book_code": "JUD",
+      "name": "Judas",
+      "chapters": 1,
+      "questions": 5,
+      "source_chapter_min": 0,
+      "source_chapter_max": 0,
+      "legacy_unit_id_start": 10237,
+      "legacy_unit_id_end": 10237,
+      "faithpath_question_id_start": "FP-1446",
+      "faithpath_question_id_end": "FP-1450"
+    },
+    {
+      "faithpath_book_code": "REV",
+      "oliva_book_code": "REV",
+      "name": "Offenbarung",
+      "chapters": 22,
+      "questions": 110,
+      "source_chapter_min": 0,
+      "source_chapter_max": 21,
+      "legacy_unit_id_start": 10238,
+      "legacy_unit_id_end": 10259,
+      "faithpath_question_id_start": "FP-1451",
+      "faithpath_question_id_end": "FP-1560"
+    }
+  ],
+  "separate_aggregated_story_flow": {
+    "path": "data/faithpath-nachlese-story-flow.json",
+    "stories": 436,
+    "flow_items": 2479,
+    "unique_primary_question_ids": 2479,
+    "primary_id_namespace_counts": {
+      "N": 2314,
+      "FP": 165
+    },
+    "nt_overlap_primary_ids": 0,
+    "nt_overlap_source_ids": 0,
+    "relationship": "Separate story-flow and chapter-quiz sets; not the stories.json unit count."
+  },
+  "oliva_reference_inputs": [
+    {
+      "path": "src/data/catalog.json",
+      "bytes": 16671,
+      "sha256": "fd6e31bf3d111286f4f818d0f0f35f87139089af098d1f01d40a827e4bb1b599"
+    },
+    {
+      "path": "src/data/bible.json",
+      "bytes": 4652592,
+      "sha256": "6dd74b74fa67033976536939521df6417ab9c41579fee8c6cbeffd94016e6ce8"
+    }
+  ],
+  "limitations": [
+    "Historical FaithPath technical acceptance is quoted from the authoritative report, not rerun as part of this preparation.",
+    "No new Excel formula evaluation or independent theological/editorial review.",
+    "No full question text, options or explanations copied into this metadata artifact.",
+    "No runtime adapter, quiz UI or progress migration implemented.",
+    "No license or public publication rights inferred from user integration authorization or master approval."
+  ]
+}
