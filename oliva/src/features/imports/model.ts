@@ -20,6 +20,12 @@ import {
   type FaithpathThought,
 } from "./source";
 import type { ImportedOrigin, ImportReceipt } from "./schema";
+import {
+  appendLegacyNtCompletions,
+  extractLegacyNtCompletions,
+  type LegacyNtExtraction,
+} from "../quiz/model";
+import { ntStudySchema, type NtLegacyCompletion } from "../quiz/state-schema";
 
 type Kind = ImportedOrigin["kind"];
 export const sourceKey = (kind: Kind, id: string | number) =>
@@ -68,6 +74,8 @@ export type ImportPlan = {
   notes: Note[];
   highlights: Record<string, HighlightColor>;
   chapters: string[];
+  ntCompletions: NtLegacyCompletion[];
+  ntIgnored: LegacyNtExtraction["ignored"];
   rows: PreviewRow[];
   alreadyImported: boolean;
 };
@@ -117,6 +125,13 @@ export function prepareImport(
     notes: [],
     highlights: {},
     chapters: [],
+    ntCompletions: [],
+    ntIgnored: {
+      unknownUnitKeys: 0,
+      invalidEntries: 0,
+      invalidDone: 0,
+      extraFields: 0,
+    },
     rows: [],
     alreadyImported: current.imports.some((i) => i.id === importId),
   };
@@ -444,6 +459,33 @@ export function prepareImport(
   }
   receipt.counts.chapters = plan.chapters.length;
   receipt.addedChapters = [...plan.chapters];
+  const historicalNt = extractLegacyNtCompletions(
+    data.quiz ?? {},
+    receipt.id,
+    receipt.sourceHash,
+  );
+  plan.ntCompletions = historicalNt.completions;
+  plan.ntIgnored = historicalNt.ignored;
+  for (const completion of plan.ntCompletions) {
+    row(
+      "NT-Verständnisfragen",
+      referenceLabel(completion),
+      "add",
+      `Historischer Abschluss vom ${completion.completedAt}: fünf Fragen angesehen. Einzelne Antworten wurden in FaithPath nicht gespeichert. Kein Lese- oder Baumfortschritt.`,
+    );
+  }
+  const ignoredNtEntries =
+    plan.ntIgnored.unknownUnitKeys +
+    plan.ntIgnored.invalidEntries +
+    plan.ntIgnored.invalidDone;
+  if (ignoredNtEntries || plan.ntIgnored.extraFields) {
+    row(
+      "NT-Verständnisfragen",
+      "Nicht eindeutig zuordenbare Quizdaten",
+      "archive",
+      `${ignoredNtEntries} Einträge ohne bekannten NT-Kapitelabschluss mit vollständigem UTC-Zeitpunkt und ${plan.ntIgnored.extraFields} zusätzliche Felder bleiben ausschließlich im Originalarchiv. Es werden daraus keine Antworten oder Erfolge abgeleitet.`,
+    );
+  }
   row(
     "Originalarchiv",
     "Vollständige Sicherung",
@@ -466,11 +508,33 @@ export function applyImport(current: AppData, plan: ImportPlan) {
     current.imports.some((i) => i.id === plan.receipt.id)
   )
     throw new Error("Diese Sicherung wurde bereits übernommen.");
+  // A preview is editable memory. Derive historical facts again from the exact
+  // archived bytes before mutating anything, including unrelated import data.
+  const source = parseFaithpath(plan.receipt.sourceText);
+  const historicalNt = extractLegacyNtCompletions(
+    source.data.quiz ?? {},
+    "fp5-" + source.fingerprint,
+    source.sourceHash,
+  );
+  if (
+    plan.receipt.id !== "fp5-" + source.fingerprint ||
+    plan.receipt.fingerprint !== source.fingerprint ||
+    plan.receipt.sourceHash !== source.sourceHash ||
+    canonicalJson(plan.ntCompletions) !==
+      canonicalJson(historicalNt.completions) ||
+    canonicalJson(plan.ntIgnored) !== canonicalJson(historicalNt.ignored)
+  )
+    throw new Error(
+      "Die NT-Importvorschau passt nicht mehr zur Originaldatei. Bitte prüfe die Datei erneut.",
+    );
+  const nextNtStudy = ntStudySchema.parse(current.ntStudy);
+  appendLegacyNtCompletions(nextNtStudy, historicalNt.completions);
   current.goals.push(...plan.goals);
   current.notes.push(...plan.notes);
   Object.assign(current.highlights, plan.highlights);
   current.readChapters.push(...plan.chapters);
   current.imports.push(plan.receipt);
+  current.ntStudy = nextNtStudy;
 }
 export function archiveData(receipt: ImportReceipt): FaithpathData {
   return parseFaithpath(receipt.sourceText).data;

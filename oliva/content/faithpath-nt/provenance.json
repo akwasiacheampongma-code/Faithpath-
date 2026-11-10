@@ -1,0 +1,73 @@
+{
+  "source_repository": "https://github.com/akwasiacheampongma-code/Faithpath-",
+  "source_snapshot": "a519ce898fa33907b07d5ac7a585595127556183",
+  "source_branch": "feature/simplified-step-experience-20261104",
+  "selection": "Only stories.json units with kind === chapter-quiz. Other units remain solely in the unchanged source archive.",
+  "authoritative_master": "reports/nt-quiz-final/master.json, sheet FAITHPATH_IMPORT",
+  "authoritative_report": "NT_QUIZ_FINAL_IMPORT_REPORT.md",
+  "archive_format": "gzip, compression level 9, mtime 0; decompression preserves exact source bytes",
+  "files": [
+    {
+      "source_path": "data/stories.json",
+      "archive": "source/data/stories.json.gz",
+      "bytes": 1036959,
+      "sha256": "f9fc48a97ecb129eaed0289cf94afa7c747f15afe381fbe6241e67fac5ec04cd",
+      "archive_bytes": 228988,
+      "archive_sha256": "84444cf0018b28e39571b2b54b324208c2630e92eaab3ce1b3c9806e45755bec"
+    },
+    {
+      "source_path": "reports/nt-quiz-final/master.json",
+      "archive": "source/reports/nt-quiz-final/master.json.gz",
+      "bytes": 1172024,
+      "sha256": "f322bbe0b8214839faf4b6f5a0b994f441e745678ffa83669c3e528f62fdce56",
+      "archive_bytes": 211340,
+      "archive_sha256": "7d6101d4593ca29355634caba0a929d3fd2fa65ffb1e85e9e3f8117cee953f0c"
+    },
+    {
+      "source_path": "reports/nt-quiz-final/manifest.json",
+      "archive": "source/reports/nt-quiz-final/manifest.json.gz",
+      "bytes": 3026,
+      "sha256": "d6473e899e31f0340f61d0a59c1a2a3fa19de43962a415094df5c7ac1bbaaf14",
+      "archive_bytes": 863,
+      "archive_sha256": "7293d2a6de7cc0e733578a698e9845dc715beb17a1c61f35d3ba986958a157e8"
+    },
+    {
+      "source_path": "reports/nt-quiz-final/acceptance.json",
+      "archive": "source/reports/nt-quiz-final/acceptance.json.gz",
+      "bytes": 3242,
+      "sha256": "6d9a0de11b10abe0f3920aafdc346cbe0632b6f5861d53cecf9ea3108bd2b56b",
+      "archive_bytes": 1247,
+      "archive_sha256": "15c028d48134ea7b3309db70df4f121b60bdd0ee4655d3a93cd900f1ab0f61ef"
+    },
+    {
+      "source_path": "data/nt-quiz-status.json",
+      "archive": "source/data/nt-quiz-status.json.gz",
+      "bytes": 885,
+      "sha256": "8b3e37a97e15ac9b3d6856cd1b45f58c83dae1dad2486d84061a28ec44c98c7d",
+      "archive_bytes": 494,
+      "archive_sha256": "83b889dbb4bbd4d5da234711a2ba818b67d5b49b9d956b2bc3e82ae77b8054cd"
+    },
+    {
+      "source_path": "NT_QUIZ_FINAL_IMPORT_REPORT.md",
+      "archive": "source/NT_QUIZ_FINAL_IMPORT_REPORT.md.gz",
+      "bytes": 15714,
+      "sha256": "b2b36f3533eca7d15b7cecb89f13419a63645d6a0fb9050a51f0506d77438725",
+      "archive_bytes": 6661,
+      "archive_sha256": "c2431e138e58e1528c4920157fabf20661cf570468af0b3220d8006571fa2cda"
+    },
+    {
+      "source_path": "scripts/quiz-reference-ranges.mjs",
+      "archive": "source/scripts/quiz-reference-ranges.mjs.gz",
+      "bytes": 1224,
+      "sha256": "0bcb56804f0944677c6d6e8f7c73aef7fa66592e8a078861c2d44323648e1433",
+      "archive_bytes": 595,
+      "archive_sha256": "afd7be8436826b27076827d901515cde2c8ffa5d6be4f3713ffe1ee895b8f03e"
+    }
+  ],
+  "rights": "Preserved FaithPath source material. Reuse for this integration was commissioned by the user; no public redistribution permission or extension of OLIVA MIT license is inferred. See RIGHTS.md.",
+  "limits": [
+    "No newly generated or editorially revised questions.",
+    "No Excel formula recalculation or new theological/editorial approval.",
+    "Historical source acceptance remains a historical report."
+  ]
+}

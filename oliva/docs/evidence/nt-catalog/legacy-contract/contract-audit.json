@@ -1,0 +1,189 @@
+{
+  "status": "PASS",
+  "scope": "Read-only immutable-source audit, synthetic isolated handler/store probes and dataset assertions. No private backup inspected, no app changes, no browser or device acceptance.",
+  "source": {
+    "repository": "akwasiacheampongma-code/Faithpath-",
+    "snapshot": "a519ce898fa33907b07d5ac7a585595127556183",
+    "access": "git show of fixed snapshot only",
+    "reference_worktree_clean": true
+  },
+  "source_files": [
+    {
+      "path": "index.html",
+      "bytes": 2005,
+      "sha256": "58186d5103ff7942d7a3be631941c13711aab0b69316e5c7bfe2768fcc79a010",
+      "git_blob": "88a678f03b6f31e20dead36cb1867f17f380a117"
+    },
+    {
+      "path": "src/app.js",
+      "bytes": 113640,
+      "sha256": "56e494f2e84c18d74e970578217467feecc5670443c558a905af537f0be17771",
+      "git_blob": "d10cffc1b9e3fb93ad5e4ba8903c5c155199b1b4"
+    },
+    {
+      "path": "src/app-router.js",
+      "bytes": 6427,
+      "sha256": "fcd07cdccd2c4ad038affee4c1e1ee7e8104645274a3e4ef1a15e5e12a28ea52",
+      "git_blob": "b01b4cb408a2b13c5d221f845d07a21006df31ab"
+    },
+    {
+      "path": "src/store.js",
+      "bytes": 9174,
+      "sha256": "6ab0de7812b78a25f50f05f55963a19a5991843e56889e73e7fb67dc6c4b76db",
+      "git_blob": "087065713a1ca3e8b9003fda6f3392bd56952517"
+    },
+    {
+      "path": "src/import-validation.js",
+      "bytes": 3333,
+      "sha256": "cfb18a5031df3033dba7356a8f07019383b2c130c89d43e37152e7d0f8e27b24",
+      "git_blob": "43b12bd81c7970f424dcbcfa19e77908085a0e0d"
+    },
+    {
+      "path": "src/backup-model.js",
+      "bytes": 1507,
+      "sha256": "069ed404aff08fbc5579bad791cbab790f4a13f5ae351367accd5d22da3d2ef6",
+      "git_blob": "303669e0dfbf485aaef0b84ee6ea5356dc6e3c56"
+    },
+    {
+      "path": "src/backup-controller.js",
+      "bytes": 4570,
+      "sha256": "1fff3165de9623bbf3318881397952fba5ef99a45a6fc86cf6d600606032bc54",
+      "git_blob": "5d35c17dd9dc05e529fbfcee1882a69a41e271e4"
+    },
+    {
+      "path": "src/chapter-questions.js",
+      "bytes": 2717,
+      "sha256": "7efd3276c687170440fe2dfd4da415c781be7efbfa3c0d7d73079920a7061deb",
+      "git_blob": "15f0e440011763dcbded4c5afaffa31d63095392"
+    },
+    {
+      "path": "src/reader-view.js",
+      "bytes": 1906,
+      "sha256": "4da64f428d13f3ca83e11b7f8c0e4681d43dee87b88bd23fc9843f633a3280a1",
+      "git_blob": "ef895721576dd9b3742979625823e0e507acc52e"
+    },
+    {
+      "path": "src/domain.js",
+      "bytes": 10175,
+      "sha256": "ee05fe3c7809f7f1d3d5bf717d1b5a698fe6067a8a417a07516a7cc3da419644",
+      "git_blob": "265335062130653980b99b10243d03b3c498fd37"
+    },
+    {
+      "path": "src/bible-journey.js",
+      "bytes": 3279,
+      "sha256": "7c4682950dfddbb85ad34c37a8c449a894ef57fe2cb4fa56b36bd53be53b21a6",
+      "git_blob": "8c3f136d0243af94ba4c1e8a2f62fa85efc794ff"
+    },
+    {
+      "path": "src/tree-view.js",
+      "bytes": 4023,
+      "sha256": "dfcd1a0585aa7001ffdea5e14af15009f074f48cf0be8528333011657cf6e0fb",
+      "git_blob": "17fac2b59d6a555955e2fbe75358d92b2004511f"
+    },
+    {
+      "path": "src/tree-stage-guide.js",
+      "bytes": 4014,
+      "sha256": "34400ba1833026d30a2492344ddc6a71b68054ba63245f291d60d3bc778ebf14",
+      "git_blob": "ebb5f18f8aa2629f9d870447220cbcb196e8a4d6"
+    },
+    {
+      "path": "src/tree-branches.js",
+      "bytes": 2001,
+      "sha256": "36efd519630ee76842d16020ccd8505d5eda57ecd3ed6e2a6150b29fd45529ac",
+      "git_blob": "9e5bf9d1db35f21f77caa0ae1556e079caa612e8"
+    },
+    {
+      "path": "src/journey-sword.js",
+      "bytes": 2852,
+      "sha256": "1d4506ff0b28302632eaf9dcd70d75b313108f0160746879a375a5493885d3e7",
+      "git_blob": "38cf8073864ef8eb7f3491c5d315f9ae41c4ac7e"
+    },
+    {
+      "path": "tests/nt-quiz-browser.mjs",
+      "bytes": 9108,
+      "sha256": "7874eb92b4a057c0e2a2e3af2bf3195cad05662f1e914c9413e3f1001ad94d3e",
+      "git_blob": "09cc6b5c4cecd64b6f1407763441ac249499bddb"
+    },
+    {
+      "path": "data/stories.json",
+      "bytes": 1036959,
+      "sha256": "f9fc48a97ecb129eaed0289cf94afa7c747f15afe381fbe6241e67fac5ec04cd",
+      "git_blob": "af54187638d6dc72ac4a048537caf5ab64b099b5"
+    }
+  ],
+  "verified_contract": {
+    "persistent_writer": "src/app.js:1507",
+    "persistent_generated_fields": [
+      "done"
+    ],
+    "persistent_key": "String(unit.id), numeric legacy unit ID",
+    "transient_fields": [
+      "story",
+      "index",
+      "answer",
+      "returnRoute",
+      "navigation"
+    ],
+    "date_generator": "src/store.js:15 new Date().toISOString()",
+    "completion_semantics": "questions viewed; correctness is not required",
+    "replay_semantics": "overwrites done, preserves unknown existing properties, records no retry count/history",
+    "export_envelope_keys": [
+      "app",
+      "version",
+      "schemaVersion",
+      "exported",
+      "data",
+      "guidedPlans"
+    ],
+    "export_product_version": 4,
+    "export_schema_version": 5,
+    "export_data_version": 5,
+    "import_checks_done_type_only": "src/import-validation.js:41-43",
+    "unknown_quiz_fields_preserved": true
+  },
+  "dataset": {
+    "chapter_units": 260,
+    "questions": 1300,
+    "chapter_keys": 260,
+    "first_legacy_unit_id": 10000,
+    "last_legacy_unit_id": 10259,
+    "first_question_id": "FP-0261",
+    "last_question_id": "FP-1560",
+    "separate_story_units": 52,
+    "story_unit_id_min": 1,
+    "story_unit_id_max": 400,
+    "first_mapping": {
+      "legacyUnitId": 10000,
+      "book": "MAT",
+      "chapter": 1
+    },
+    "last_mapping": {
+      "legacyUnitId": 10259,
+      "book": "REV",
+      "chapter": 22
+    }
+  },
+  "synthetic_checks": {
+    "partial_next_changes_only_ui": true,
+    "wrong_final_answer_can_complete": true,
+    "final_next_writes_done_only": true,
+    "final_next_leaves_all_other_state_fields_equal": true,
+    "backup_envelope_and_versions_match": true,
+    "unknown_quiz_properties_round_trip": true,
+    "non_numeric_unknown_keys_round_trip": true,
+    "invalid_done_string_accepted_by_original": true,
+    "numeric_done_rejected_by_original": true,
+    "replay_overwrites_date_and_preserves_unknown_fields": true,
+    "contiguous_260_legacy_ids": true,
+    "contiguous_1300_question_ids": true,
+    "all_260_chapter_keys_unique": true,
+    "all_groups_have_five_questions": true,
+    "chapter_story_unit_ids_disjoint": true
+  },
+  "evidence_limits": [
+    "Synthetic data only, dates are fixed test inputs.",
+    "No claim that unknown stored fields describe authentic original features.",
+    "Date syntax and catalog membership must be validated before an active import; original acceptance alone is insufficient.",
+    "No source content or personal progress copied into this metadata."
+  ]
+}

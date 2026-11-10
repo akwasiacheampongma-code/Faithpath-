@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-11-10T03:54:30.592371+00:00",
+  "passed": false,
+  "scope": "First full authenticated HTTP attempt after vendor alias fix",
+  "path": "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+  "status": 503,
+  "cause": "undetermined transient service response; no claim about proxy versus origin",
+  "immediateIsolatedProbe": {
+    "status": 200,
+    "contentType": "image/webp",
+    "bytes": 72960,
+    "allBytesMatchPackage": true
+  },
+  "coreUnchanged": "oliva-80005b3c1d2e2eef",
+  "hostBuild": "oliva-168499f23f74e16c",
+  "nextVerification": "Two concurrent readers; bounded503retries recorded separately if needed"
+}

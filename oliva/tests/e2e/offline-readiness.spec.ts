@@ -31,6 +31,18 @@ declare global {
       onlineEvents: number;
       controllerChanges: number;
     };
+    __offlineNativeGetRegistration?: () => Promise<ServiceWorkerRegistration | undefined>;
+    __uncontrolledRegistration: {
+      started: number;
+      nativeResolved: number;
+      returnedSettled: number;
+      lookupStarted: number;
+      lookupNativeResolved: number;
+      lookupActive?: string;
+      controllerChanges: number;
+      onlineEvents: number;
+      release: () => void;
+    };
   }
 }
 
@@ -95,7 +107,7 @@ async function delayBuildReplies(page: Page, remaining: number, delayMs: number)
 
 async function worker(page: Page) {
   return page.evaluate(async () => {
-    const registration = await navigator.serviceWorker.getRegistration();
+    const registration = await (window.__offlineNativeGetRegistration?.() ?? navigator.serviceWorker.getRegistration());
     const inspect = (target?: ServiceWorker | null): Promise<BuildReply | null> =>
       !target ? Promise.resolve(null) : new Promise(resolve => {
         const Channel = window.__offlineNativeChannel ?? MessageChannel,
@@ -169,6 +181,49 @@ async function matchingWorker(page: Page) {
 }
 
 const probe = (page: Page) => page.evaluate(() => window.__offlineProbe);
+
+async function holdUncontrolledRegistration(page: Page, holdLookup = false) {
+  await page.addInitScript(({ holdLookup }) => {
+    const nativeRegister = navigator.serviceWorker.register.bind(navigator.serviceWorker);
+    const nativeLookup = navigator.serviceWorker.getRegistration.bind(navigator.serviceWorker);
+    window.__offlineNativeGetRegistration = nativeLookup;
+    let release = () => {};
+    const gate = new Promise<void>(resolve => { release = resolve; });
+    const observation = window.__uncontrolledRegistration = {
+      started: 0, nativeResolved: 0, returnedSettled: 0,
+      lookupStarted: 0, lookupNativeResolved: 0, lookupActive: undefined as string | undefined,
+      controllerChanges: 0, onlineEvents: 0, release,
+    };
+    navigator.serviceWorker.addEventListener("controllerchange", () => observation.controllerChanges++);
+    window.addEventListener("online", () => observation.onlineEvents++);
+    navigator.serviceWorker.register = (...args) => {
+      observation.started++;
+      const native = nativeRegister(...args);
+      void native.then(() => observation.nativeResolved++, () => {});
+      return Promise.all([native, gate]).then(([registration]) => {
+        observation.returnedSettled++;
+        return registration;
+      });
+    };
+    navigator.serviceWorker.getRegistration = (...args) => {
+      observation.lookupStarted++;
+      const native = nativeLookup(...args);
+      void native.then(registration => {
+        observation.lookupNativeResolved++;
+        observation.lookupActive = registration?.active?.state;
+      }, () => {});
+      return holdLookup ? Promise.all([native, gate]).then(([registration]) => registration) : native;
+    };
+  }, { holdLookup });
+  // A genuine force reload bypasses control for this document. The active
+  // registration and its cache remain native and available for the next load.
+  const cdp = await page.context().newCDPSession(page);
+  await cdp.send("Page.enable");
+  await Promise.all([page.waitForEvent("load"), cdp.send("Page.reload", { ignoreCache: true })]);
+  await cdp.detach();
+  await expect(page.getByRole("textbox", { name: "Dein Vorname (freiwillig)" })).toBeVisible();
+  expect(await page.evaluate(() => navigator.serviceWorker.controller)).toBeNull();
+}
 
 test("eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten", async ({ page, context }) => {
   const before = await seed(page);
@@ -289,5 +344,67 @@ test("ein bereits aktiver Worker wird trotz offenbleibender erneuter Registrieru
   await test.info().attach("real-controller-verified-before-registration-settles", {
     contentType: "application/json",
     body: JSON.stringify({ verified, observation, privateRecordsUnchanged: true }),
+  });
+});
+
+test("ein unkontrolliertes Dokument entdeckt den echten aktiven Worker vor dem Ende einer offenen Registrierung", async ({ page, context }) => {
+  const before = await seed(page);
+  await holdUncontrolledRegistration(page);
+  await expect(page.getByText(ready, { exact: true })).toBeVisible();
+  const observation = await page.evaluate(() => window.__uncontrolledRegistration);
+  expect(observation.started).toBe(1);
+  expect(observation.returnedSettled).toBe(0);
+  expect(observation.lookupStarted).toBeGreaterThan(0);
+  expect(observation.lookupNativeResolved).toBeGreaterThan(0);
+  expect(observation.lookupActive).toBe("activated");
+  expect(observation.controllerChanges).toBe(0);
+  expect(observation.onlineEvents).toBe(0);
+  const actual = await worker(page);
+  expect(actual.controller).toBeNull();
+  expect(actual.active).toEqual({ id: actual.expected, version: appConfig.expo.version });
+  expect(actual.caches).toContain(actual.expected);
+  expect(await rawSnapshot(page)).toBe(before);
+
+  // Keep the real worker and its replies. A different required document ID
+  // must still reject readiness on the independently discovered registration.
+  await page.evaluate(() => {
+    document.querySelector('meta[name="oliva-build"]')!.setAttribute("content", "oliva-newer-uncontrolled-document-required");
+    window.dispatchEvent(new Event("online"));
+  });
+  await expect(page.getByText(update, { exact: true })).toBeVisible();
+  await expect(page.getByText(ready, { exact: true })).toHaveCount(0);
+  await page.evaluate(() => window.__uncontrolledRegistration.release());
+  await expect(page.getByText(update, { exact: true })).toBeVisible();
+  expect(await rawSnapshot(page)).toBe(before);
+  await test.info().attach("real-uncontrolled-registration-discovery", {
+    contentType: "application/json", body: JSON.stringify({ actual, observation, privateRecordsUnchanged: true, mismatchedDocumentRejected: true }),
+  });
+
+  await context.setOffline(true);
+  await page.reload();
+  await expect(page.getByText(ready, { exact: true })).toBeVisible();
+  await matchingWorker(page);
+  expect(await rawSnapshot(page)).toBe(before);
+});
+
+test("eine offene Registrierung und eine offene Suche beenden die Prüfung weiterhin endlich", async ({ page }) => {
+  const before = await seed(page);
+  await holdUncontrolledRegistration(page, true);
+  await expect(page.getByText(unavailable, { exact: true })).toBeVisible();
+  await expect(page.getByText(ready, { exact: true })).toHaveCount(0);
+  const actual = await worker(page);
+  expect(actual.controller).toBeNull();
+  expect(actual.active).toEqual({ id: actual.expected, version: appConfig.expo.version });
+  const observation = await page.evaluate(() => window.__uncontrolledRegistration);
+  expect(observation.started).toBe(1);
+  expect(observation.returnedSettled).toBe(0);
+  expect(observation.lookupStarted).toBe(1);
+  expect(observation.lookupActive).toBe("activated");
+  expect(await rawSnapshot(page)).toBe(before);
+  await page.evaluate(() => window.__uncontrolledRegistration.release());
+  await expect(page.getByText(ready, { exact: true })).toBeVisible();
+  expect(await rawSnapshot(page)).toBe(before);
+  await test.info().attach("finite-uncontrolled-registration-lookups", {
+    contentType: "application/json", body: JSON.stringify({ actual, observation, privateRecordsUnchanged: true }),
   });
 });

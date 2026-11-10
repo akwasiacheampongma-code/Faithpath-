@@ -1,0 +1,122 @@
+[
+  {
+    "name": "legacy-aria-complete",
+    "atMs": 8436.395437
+  },
+  {
+    "name": "legacy-error-complete",
+    "atMs": 8445.910186
+  },
+  {
+    "name": "legacy-image-complete",
+    "atMs": 8490.439172
+  },
+  {
+    "name": "library-ready",
+    "atMs": 8490.559304,
+    "url": "http://localhost:4173/bibel"
+  },
+  {
+    "name": "book-request",
+    "atMs": 8625.997535,
+    "url": "http://localhost:4173/_expo/static/js/web/[book]-53933d83234c2d5c3fa19d986f4380aa.js"
+  },
+  {
+    "name": "click-returned",
+    "atMs": 8681.949679,
+    "url": "http://localhost:4173/lesen/1SA?chapter=17&from=38&to=45&mode=deep"
+  },
+  {
+    "name": "reader-response-held",
+    "atMs": 8727.823988,
+    "status": 200,
+    "bytes": 32305
+  },
+  {
+    "name": "legacy-threw",
+    "atMs": 13695.083642000001,
+    "message": "expect(locator).toHaveAttribute(expected) failed\n\nLocator: getByTestId('story-artwork-david-before-goliath').visible()\nExpected: \"false\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toHaveAttribute\" getByTestId('story-artwork-david-before-goliath').visible() with timeout 5000ms\n  - waiting for getByTestId('story-artwork-david-before-goliath').visible()\n"
+  },
+  {
+    "name": "while-held",
+    "atMs": 13707.155285,
+    "url": "http://localhost:4173/lesen/1SA?chapter=17&from=38&to=45&mode=deep",
+    "state": [
+      {
+        "testid": "story-card-david-before-goliath",
+        "busy": null,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "hidden": false,
+        "html": "<div class=\"css-g5y9jx\" data-testid=\"story-card-david-before-goliath\" style=\"background-color: rgb(255, 254, 250); border-radius: 20px; border-width: 1px; border-color: rgb(222, 223, 212); padding: 0p"
+      },
+      {
+        "testid": "story-artwork-david-before-goliath",
+        "busy": "false",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "hidden": false,
+        "html": "<div aria-busy=\"false\" aria-label=\"Künstlerische Interpretation: David steht mit Stab und Tasche in einem Tal. In der Ferne sind Goliath und ein Schildträger zu sehen. Gesichter, Kleidung, Größenverhä"
+      },
+      {
+        "testid": "story-image-david-before-goliath",
+        "busy": null,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "hidden": false,
+        "html": "<div aria-hidden=\"true\" class=\"css-g5y9jx r-1mlwlqe r-1udh08x r-417010 r-1pi2tsx r-2kxcpj r-u8s1d r-13qz1uu\" data-testid=\"story-image-david-before-goliath\" style=\"opacity: 1;\"><div class=\"css-g5y9jx r"
+      }
+    ]
+  },
+  {
+    "name": "reader-response-released",
+    "atMs": 13761.618138999998
+  },
+  {
+    "name": "legacy-aria-complete",
+    "atMs": 15377.030534000001
+  },
+  {
+    "name": "legacy-error-complete",
+    "atMs": 15389.070037000001
+  },
+  {
+    "name": "legacy-image-complete",
+    "atMs": 15450.763684999998
+  },
+  {
+    "name": "reader-ready",
+    "atMs": 15531.447591,
+    "url": "http://localhost:4173/lesen/1SA?chapter=17&from=38&to=45&mode=deep",
+    "frame": {
+      "x": 21,
+      "y": 701,
+      "width": 348,
+      "height": 232
+    }
+  }
+]

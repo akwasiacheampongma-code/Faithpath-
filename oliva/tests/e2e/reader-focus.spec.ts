@@ -8,7 +8,7 @@ import { localData } from "./persistence";
 
 test.use({ screenshot: "only-on-failure" });
 const evidence =
-  process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/reader-flow/focus";
+  `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/reader-focus`;
 // Read the canonical fixture independently of the app's browser renderer.
 const bible = JSON.parse(
   readFileSync(new URL("../../src/data/bible.json", import.meta.url), "utf8"),

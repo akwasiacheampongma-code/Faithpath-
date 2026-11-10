@@ -1,0 +1,48 @@
+{
+  "testedAt": "2026-11-09T19:03:23.276Z",
+  "scope": "Independent local Chromium probe only; no hosted or native device check",
+  "sourceQuestionId": "FP-0416",
+  "build": "oliva-90d58a6a170aa170",
+  "pendingAnswerCheckDisabled": true,
+  "leftBeforePersistenceCallback": true,
+  "returnedView": {
+    "answerCheckCount": 1,
+    "answerChangeCount": 0,
+    "alerts": []
+  },
+  "savedAnswer": {
+    "question": {
+      "id": "FP-0416",
+      "book": "MRK",
+      "chapter": 4,
+      "legacyUnitId": 10031,
+      "prompt": "Wofür steht im Gleichnis vom Sämann der gute Boden?",
+      "options": [
+        "Für Menschen, die das Wort sofort vergessen.",
+        "Für die Sorgen und den Reichtum der Welt.",
+        "Für Verfolgung und Bedrängnis.",
+        "Für Menschen, die das Wort hören, annehmen und Frucht bringen."
+      ],
+      "correctIndex": 3,
+      "referenceText": "Markus 4,14–20",
+      "referenceRanges": [
+        {
+          "book": "MRK",
+          "chapter": 4,
+          "from": 14,
+          "to": 20
+        }
+      ],
+      "explanation": "Der gute Boden steht für Menschen, die das Wort hören, annehmen und Frucht bringen.",
+      "hash": "f014451233a0df959961d7bd80a2e375741e44afa9b43f312d8672ad46cac080"
+    },
+    "choice": 0,
+    "createdAt": "2026-11-09T19:03:26.647Z",
+    "revision": 1
+  },
+  "recheckAlerts": [
+    "Dieser NT-Lernstand wurde inzwischen verändert. Öffne den aktuellen Stand erneut.",
+    "Dieser NT-Lernstand wurde inzwischen verändert. Öffne den aktuellen Stand erneut."
+  ],
+  "probeCompleted": true
+}

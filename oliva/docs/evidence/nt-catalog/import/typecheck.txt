@@ -1,0 +1,12 @@
+
+> oliva-faith-companion@0.11.0 typecheck
+> tsc --noEmit
+
+tests/e2e/invitations.spec.ts(27,5): error TS2322: Type '7' is not assignable to type '8'.
+tests/nt-import.test.ts(186,26): error TS2352: Conversion of type '{ "10000": { done: string; }; }' to type '{ faith: { done: string; }; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Property 'faith' is missing in type '{ "10000": { done: string; }; }' but required in type '{ faith: { done: string; }; }'.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

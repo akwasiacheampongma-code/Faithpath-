@@ -5,6 +5,7 @@ import {
   initialData,
   parseBackup,
   v6DataSchema,
+  v7DataSchema,
 } from "../src/state/model";
 import {
   archiveHashes,
@@ -26,7 +27,7 @@ const optOut = { enabled: false, snoozed: {}, dismissed: {} };
 
 // Synthetic predecessor data; never derived from a person's export.
 function previousData() {
-  const { invitations, ...fields } = initialData();
+  const { invitations, ntStudy, ...fields } = initialData();
   const data = {
     ...fields,
     version: 6 as const,
@@ -114,12 +115,22 @@ function previousData() {
   });
 }
 
-describe("Neutrale V6→V7-Migration für freiwillige Einladungen", () => {
+describe("V6-Einladungs-Migration mit anschließender neutraler NT-Ergänzung", () => {
   it("ergänzt ausschließlich Version und ausgeschaltete Kontrollen, ohne Altdaten oder Revision zu verändern", () => {
     const old = previousData();
     const bytes = JSON.stringify(old);
     const migrated = decodeData(old);
-    expect(migrated).toEqual({ ...old, version: 7, invitations: optOut });
+    expect(migrated).toEqual({
+      ...old,
+      version: 8,
+      invitations: optOut,
+      ntStudy: {
+        answers: {},
+        completions: {},
+        legacyCompletions: [],
+        position: null,
+      },
+    });
     expect(JSON.stringify(old)).toBe(bytes);
     expect(migrated.revision).toBe(23);
     expect(migrated.growthStage).toBe(4);
@@ -147,15 +158,16 @@ describe("Neutrale V6→V7-Migration für freiwillige Einladungen", () => {
     expect(v6DataSchema.safeParse({ ...old, version: 7 }).success).toBe(false);
     expect(dataSchema.safeParse({ ...old, version: 7 }).success).toBe(false);
     expect(
-      dataSchema.safeParse({ ...old, version: 7, invitations: optOut }).success,
+      v7DataSchema.safeParse({ ...old, version: 7, invitations: optOut })
+        .success,
     ).toBe(true);
   });
 
-  it("liest private V1-Dokumente mit Originalarchiv bytegetreu und exportiert erst den ausdrücklich übergebenen V7-Stand", async () => {
+  it("liest private V1-Dokumente mit Originalarchiv bytegetreu und exportiert erst den ausdrücklich übergebenen aktuellen Stand", async () => {
     const current = decodeData(previousData());
     const sourceText = JSON.stringify(faithpathFixture(), null, 2);
     applyImport(current, prepareImport(sourceText, current, editedAt));
-    const { invitations, ...predecessor } = current;
+    const { invitations, ntStudy, ...predecessor } = current;
     const old = v6DataSchema.parse({ ...predecessor, version: 6 });
     const stored = {
       storageVersion: 1,
@@ -173,7 +185,17 @@ describe("Neutrale V6→V7-Migration für freiwillige Einladungen", () => {
       expect(hash).toBe(old.imports[0]!.sourceHash);
       return sourceText;
     });
-    expect(migrated).toEqual({ ...old, version: 7, invitations: optOut });
+    expect(migrated).toEqual({
+      ...old,
+      version: 8,
+      invitations: optOut,
+      ntStudy: {
+        answers: {},
+        completions: {},
+        legacyCompletions: [],
+        position: null,
+      },
+    });
     expect(migrated.imports[0]!.sourceText).toBe(sourceText);
     expect(loadedHashes).toEqual([old.imports[0]!.sourceHash]);
     expect(archiveHashes(stored)).toEqual(loadedHashes);
@@ -181,14 +203,14 @@ describe("Neutrale V6→V7-Migration für freiwillige Einladungen", () => {
     expect(JSON.stringify(stored)).toBe(bytes);
     const rewritten = forStorage(migrated);
     expect(rewritten.storageVersion).toBe(1);
-    expect(rewritten.data.version).toBe(7);
+    expect(rewritten.data.version).toBe(8);
     expect(rewritten.data.invitations).toEqual(optOut);
     expect(rewritten.data.imports[0]).not.toHaveProperty("sourceText");
     expect(archiveHashes(rewritten)).toEqual(loadedHashes);
     expect(JSON.stringify(stored)).toBe(bytes);
   });
 
-  it("bewahrt vorhandene V7-Entscheidungen beim Backup-Roundtrip und aktiviert alte Backups nicht", async () => {
+  it("bewahrt vorhandene Einladungsentscheidungen beim Backup-Roundtrip und aktiviert alte Backups nicht", async () => {
     const old = previousData();
     const migrated = parseBackup(JSON.stringify(old));
     expect(migrated.invitations).toEqual(optOut);
@@ -302,13 +324,13 @@ describe("Neutrale V6→V7-Migration für freiwillige Einladungen", () => {
       );
       expect(() => decodeData({ ...current, invitations })).toThrow();
     }
-    expect(() => decodeData({ ...current, version: 8 })).toThrow();
+    expect(() => decodeData({ ...current, version: 999 })).toThrow();
     expect(() =>
-      parseBackup(JSON.stringify({ ...current, version: 8 })),
+      parseBackup(JSON.stringify({ ...current, version: 999 })),
     ).toThrow();
     await expect(
       decodeStored(
-        { storageVersion: 1, data: { ...current, version: 8 } },
+        { storageVersion: 1, data: { ...current, version: 999 } },
         async () => "",
       ),
     ).rejects.toThrow();

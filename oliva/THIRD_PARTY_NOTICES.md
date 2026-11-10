@@ -16,6 +16,8 @@ Book-sword pilots: an original OpenAI image generation output for the Gospel of 
 
 A51 olive tree: seven original PNG masters, 21 original WebPs and the reviewed mathematical/WebGL engine from the project owner's FaithPath work. Reuse in OLIVA is explicitly authorized by the project owner's instruction of 2026-11-06. Exact commits, original files/hashes, original prompts, adapted files and PNG derivatives are recorded in `art/a51/` and `docs/09-a51-integration.md`. No separate open-source license for this inherited material was found; it is excluded from OLIVA's MIT grant. Public redistribution and inherited image-generation rights review remain pending. No FaithPath user data, navigation, storage or progression code is included.
 
+FaithPath NT study catalog: 1,300 original questions in 260 chapters across all 27 New Testament books. Exact original source and final master are frozen with hashes in `content/faithpath-nt/provenance.json`. These inherited texts, including the generated catalogs `src/data/nt-catalog.json` and `src/data/nt-index.json`, are excluded from OLIVA's MIT grant. The integration is authorized by the project owner; no general content redistribution license or independent theological review is implied. See `content/faithpath-nt/RIGHTS.md`. Editorial explanations and answer keys are distinct from the Luther 1912 Bible text.
+
 
 ## GitHub-Sicherung ab 08.11.2026
 

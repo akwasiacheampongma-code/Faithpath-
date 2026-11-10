@@ -1,0 +1,15 @@
+
+Running 3 tests using 1 worker
+
+(node:45441) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/nt-archive.spec.ts:140:1 › NT-Importvorschau liest nur und übernimmt belegte Abschlüsse ohne Antworten oder Baumfortschritt (10.6s)
+  ✓  2 tests/e2e/nt-archive.spec.ts:193:1 › ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Quelle und Rückkehrsicherung bytegenau (6.8s)
+  ✓  3 tests/e2e/nt-archive.spec.ts:263:1 › ein fremder Fenstercommit blockiert die NT-Aktivierung und die Archivvorschau lässt sich sicher neu prüfen (8.8s)
+
+  3 passed (31.0s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

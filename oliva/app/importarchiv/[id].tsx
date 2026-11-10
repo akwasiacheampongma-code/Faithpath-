@@ -7,6 +7,7 @@ import { useTheme } from "../../src/design-system/theme";
 import { useApp } from "../../src/state/store";
 import { archiveData } from "../../src/features/imports/model";
 import { exportText } from "../../src/services/storage";
+import { LegacyNtRestore } from "../../src/features/imports/LegacyNtRestore";
 const categories = [
   ["paths", "Wege"],
   ["journal", "Journal"],
@@ -116,6 +117,11 @@ export default function ImportArchive() {
           </Button>
         </Card>
         {!!message && <T accessibilityRole="alert">{message}</T>}
+        <LegacyNtRestore
+          key={receipt.id + ":" + receipt.sourceHash}
+          receipt={receipt}
+          quiz={source.quiz}
+        />
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
           {categories.map(([key, label]) => (
             <Button

@@ -1,0 +1,261 @@
+{
+  "kind": "read-only-source-preparation",
+  "generatedAt": "2026-11-10T03:41:15.384020+00:00",
+  "candidateContext": {
+    "core": "oliva-80005b3c1d2e2eef",
+    "source": "parent-supplied frozen QA context; this report does not claim a new runtime validation"
+  },
+  "referenceContext": {
+    "snapshot": "a519ce898fa33907b07d5ac7a585595127556183",
+    "source": "parent-supplied read-only snapshot; content hashes recorded below"
+  },
+  "scope": {
+    "runtimeChanged": false,
+    "testsRun": false,
+    "packagesInstalled": false,
+    "gitMutations": false,
+    "deploymentChanged": false,
+    "browserExecution": false,
+    "nativeExecution": false,
+    "permittedWrites": "docs/evidence/reader-parity-preparation/"
+  },
+  "evidenceLimits": [
+    "Static code inspection only.",
+    "No native Clipboard API, device, simulator, screenreader or application execution.",
+    "Acceptance criteria in the report are proposed, not passed."
+  ],
+  "currentSources": [
+    {
+      "path": "/workspace/faithpath-next/app/lesen/[book].tsx",
+      "bytes": 30593,
+      "sha256": "cbd8c538148bf3ecceb1831b888892d199ccb6cb93ff8895d24944ece7546a0d"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/flow/model.ts",
+      "bytes": 7978,
+      "sha256": "1d37b2651e8261a7c93592d7eb543f4482bfd90f292edff2d7d1032c922d4b14"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/flow/types.ts",
+      "bytes": 989,
+      "sha256": "02f60402b9f450ce1f40961af926865806669a22308d87d9db356df0c33e1118"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/flow/FlowText.web.tsx",
+      "bytes": 5950,
+      "sha256": "78b35b48297a3ad6d4945320ccb423a913d23b9c92dafb602e9d4f27f29057ce"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/flow/FlowText.tsx",
+      "bytes": 12281,
+      "sha256": "8522d870ad5d62093442877f0e8d6d24d1aa762b1c5d263d668e1ccbda16ce78"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/flow/LegacyVerseText.tsx",
+      "bytes": 2840,
+      "sha256": "f45fc097c73bfd7e060e097babc0f10de110d15e3290055d3496c0198bb2388a"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/position.ts",
+      "bytes": 2104,
+      "sha256": "63885c7feea9cc6ea038bba8b3045a37e88574a49212b406eb23328dbaf536d1"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/useReaderPosition.ts",
+      "bytes": 15399,
+      "sha256": "bc79e1266dd470baecaf5901931ef7f445e0ca2446b98d4faf2ef4f344aac2a2"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/VerseActions.tsx",
+      "bytes": 4578,
+      "sha256": "1e6d01bb4a41b8399bbe9b4ad62098448f012a19b19fbb2510d7717b51b039c3"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/repository.ts",
+      "bytes": 2541,
+      "sha256": "b3e5c8ebeb0cf6d99343266e53e63175b4d8f4602a76c81c55569df5fbe921da"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/bible/schema.ts",
+      "bytes": 349,
+      "sha256": "8d6d633e025e28b54402c06567ea3a7045d765325f9fe181f7a981d7c8de2c97"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/personal/capture-schema.ts",
+      "bytes": 1691,
+      "sha256": "5872e4e75ed3c6d11a139b1f9ec7b3f8418258e480f34ad21ee009dc558a4f35"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/personal/capture-model.ts",
+      "bytes": 3302,
+      "sha256": "e88e149ae6f14c5c32fc1be5710a9bb6bb322070ba54642112ffa1cc800d0318"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/personal/schema.ts",
+      "bytes": 4188,
+      "sha256": "02479e6066d6d1130481b9d814b5cb75343b1b5877c8b61211d93a56124b5f28"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/personal/schema-v5.ts",
+      "bytes": 3714,
+      "sha256": "8d06b7927a97da24988f88ac72a42483169b390ed124f7f6b3043db9f252063e"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/personal/schema-v6.ts",
+      "bytes": 4188,
+      "sha256": "02479e6066d6d1130481b9d814b5cb75343b1b5877c8b61211d93a56124b5f28"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/personal/CaptureInput.tsx",
+      "bytes": 5685,
+      "sha256": "6aeeb4f0004bc4d37d0adf801bc91f7ce239299404b9a94a55e6224b0303fc5b"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/personal/CaptureContext.tsx",
+      "bytes": 2101,
+      "sha256": "abebb4823edf88f997d0f42c8303b3b2daf695b76c40128f0e5f23252a3ecf49"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/personal/DraftLinks.tsx",
+      "bytes": 5365,
+      "sha256": "3b47068cefd7a9d6be263c1b8c6adf326697318ad948800089e232800fea6a01"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/features/personal/model.ts",
+      "bytes": 13353,
+      "sha256": "6ea23a9d080982a5830acf075d780eb24ce17ef5da698a71b54e38d593ec944f"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/state/model.ts",
+      "bytes": 17109,
+      "sha256": "93bc586d3c283b512ecefaa806316fefafa9e4b3b989a0e24e52302a882ede51"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/state/store.ts",
+      "bytes": 17444,
+      "sha256": "4f5a001ef5d2f0e027bd44b0e990ce4d950da62b457ace92109358ca864dc1b5"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/services/documents.ts",
+      "bytes": 2917,
+      "sha256": "caa3aeb08c00b07c8c9253fdb42e25402f9393ab9c067b67315caa1cf49a4223"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/services/local-migrations.ts",
+      "bytes": 642,
+      "sha256": "ded08ca78ba047e0b3cbf4e8a3288259bc26dba8e29b982cbc3a194faad8d8a8"
+    },
+    {
+      "path": "/workspace/faithpath-next/app/sammlung.tsx",
+      "bytes": 21831,
+      "sha256": "dfcbae51711004a0b92c387e04b3cdd418d0486e450f92e31087a49a2ad0dbf5"
+    },
+    {
+      "path": "/workspace/faithpath-next/app/index.tsx",
+      "bytes": 18454,
+      "sha256": "f0d5f7357c8756f034c5bda62d1e78804d5b346bc7e5a9382aeac2cd56b8ec49"
+    },
+    {
+      "path": "/workspace/faithpath-next/app/bibel.tsx",
+      "bytes": 14116,
+      "sha256": "292585d32be10561c83a151cc176653fd19734fc52756e3016900bcee6f696f0"
+    },
+    {
+      "path": "/workspace/faithpath-next/package.json",
+      "bytes": 2268,
+      "sha256": "d9dc702b4d9fc662c080162aeefc141790e5fdc093ba4b84205e6dab6832435a"
+    },
+    {
+      "path": "/workspace/faithpath-next/package-lock.json",
+      "bytes": 308231,
+      "sha256": "8dd3cd12bdbfbdd0d0753e8cc806e270924d7ecd59a9d64303fb95b2599eea46"
+    },
+    {
+      "path": "/workspace/faithpath-next/node_modules/expo/bundledNativeModules.json",
+      "bytes": 4291,
+      "sha256": "e5e354e70149d8c7531c305998fd672d04a7974cca21d9bd5332689ed61c09a7"
+    },
+    {
+      "path": "/workspace/faithpath-next/assets/licenses/LUTHER1912-NOTICE.txt",
+      "bytes": 401,
+      "sha256": "60086a245625b7921d28a0a7db9d6d4eee2a6e813420fe05fe1a972bf1ff3d6d"
+    },
+    {
+      "path": "/workspace/faithpath-next/src/data/bible.json",
+      "bytes": 4652592,
+      "sha256": "6dd74b74fa67033976536939521df6417ab9c41579fee8c6cbeffd94016e6ce8"
+    }
+  ],
+  "referenceSources": [
+    {
+      "path": "/workspace/faithpath-reference/src/app.js",
+      "bytes": 113640,
+      "sha256": "56e494f2e84c18d74e970578217467feecc5670443c558a905af537f0be17771"
+    },
+    {
+      "path": "/workspace/faithpath-reference/src/verbunden/reader-flow.js",
+      "bytes": 1090,
+      "sha256": "3f770926fc09c8adff79bf71f2ca486a98d16697c46dab40c1050f1d424dd251"
+    },
+    {
+      "path": "/workspace/faithpath-reference/src/verbunden/reader.css",
+      "bytes": 10326,
+      "sha256": "289c236969b9e7266b01a2bc4a93ad9c76919d2f5bbd7801900c3dff400430c3"
+    },
+    {
+      "path": "/workspace/faithpath-reference/src/verbunden/interaction.js",
+      "bytes": 3406,
+      "sha256": "350600053d4ea4a1b52c05845e9bdcac160ca667c4fa5025666cc29d5e721d3e"
+    },
+    {
+      "path": "/workspace/faithpath-reference/src/content.js",
+      "bytes": 33361,
+      "sha256": "f20b6729406a34123abf860b4c5d69184be30da2834660601355dc71541dccda"
+    }
+  ],
+  "contextDocuments": [
+    {
+      "path": "/workspace/faithpath-next/docs/19-reader-flow-preparation.md",
+      "bytes": 19828,
+      "sha256": "8e4fab98ae83399df659d975c0deb1b327b7c9bd9eedee06be35909507929f2b"
+    },
+    {
+      "path": "/workspace/faithpath-next/docs/21-reader-flow-and-focus.md",
+      "bytes": 19968,
+      "sha256": "2dfe4ee6ad57e651e736b783cfb75d5620bf70fc724153a6f056071256a3d6ac"
+    },
+    {
+      "path": "/workspace/faithpath-next/docs/16-current-plan-and-parity.md",
+      "bytes": 12126,
+      "sha256": "85e71cffbdfac7ddc0a2615d009cf099a0555dbd918825dca5c910ae738b6cf1"
+    }
+  ],
+  "observations": {
+    "expoClipboardBundledRange": "~58.0.4",
+    "expoClipboardInAppPackage": false,
+    "expoClipboardInAppLockfile": false,
+    "captureVerseRequiresSingleVerse": true,
+    "frozenDraftSchemasImportLiveCaptureValues": [
+      "src/features/personal/schema-v5.ts",
+      "src/features/personal/schema-v6.ts"
+    ],
+    "storedDocumentHistoricalVersionsBeforeCurrent": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "currentDataVersionAtInspection": 8
+  },
+  "report": "reader-parity-preparation.md",
+  "reportSha256": "582a2d86827c8960b364813375693f6a9d2cc03c70e5e8a28c180e0b2efef918",
+  "recordedSourceHashesRechecked": {
+    "count": 37,
+    "mismatches": []
+  },
+  "independentReview": {
+    "scope": "position, logical/display contract, storage decoding and source/proposal separation",
+    "result": "No factual error found; canonical chapter-start clarification incorporated.",
+    "method": "read-only source and report review"
+  }
+}

@@ -1,0 +1,115 @@
+Listing tests:
+  a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten
+  a51-tree.spec.ts:200:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild
+  a51-tree.spec.ts:224:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild
+  a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium
+  a51-tree.spec.ts:250:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung
+  archives.spec.ts:57:1 › ein großer Originalblob wird bei Entwurfsänderungen nicht erneut geschrieben
+  archives.spec.ts:95:1 › verwaiste Blobs werden entfernt und Quellen der Rückkehrsicherung bleiben erhalten
+  archives.spec.ts:130:1 › Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unverändert
+  archives.spec.ts:149:1 › beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern
+  captures.spec.ts:11:1 › Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart
+  captures.spec.ts:61:1 › zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt
+  captures.spec.ts:146:1 › Reflexionsentwurf im Lernweg überlebt Neustart und schließt nur auf ausdrücklichen Klick ab
+  captures.spec.ts:198:1 › ein Entwurf wird erst nach ausdrücklichem Verwerfen gelöscht und bestätigt dabei keine Erfahrung
+  captures.spec.ts:230:1 › der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexionsentwurf
+  captures.spec.ts:254:1 › ein Speicherfehler lässt den Kontextentwurf sichtbar und erzeugt keinen fertigen Eintrag
+  captures.spec.ts:286:1 › ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren
+  core.spec.ts:13:1 › Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt
+  core.spec.ts:97:1 › Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss
+  core.spec.ts:153:1 › Journal bearbeiten, löschen und rückgängig machen
+  core.spec.ts:203:1 › Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen
+  core.spec.ts:250:1 › Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeichert
+  core.spec.ts:279:1 › Offline-Neustart öffnet auch einen noch nicht besuchten Reader
+  core.spec.ts:312:1 › Gleichzeitige Fenster überschreiben keine fremden Änderungen
+  core.spec.ts:344:1 › Speicherfehler bestätigt keine Notiz und erhält den getippten Text
+  core.spec.ts:373:1 › Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung
+  david-story.spec.ts:78:1 › fünf Geschichten bewahren den Bestand; David öffnet exakt acht Verse und zählt nur nach ausdrücklicher Bestätigung
+  david-story.spec.ts:111:1 › das vollständige Offlinepaket öffnet David und alle bisherigen Bilder erstmals offline und nach Neustart
+  david-story.spec.ts:131:1 › Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar
+  david-story.spec.ts:173:3 › Reader-Übergang bei echter Netzwerklatenz › Davids Kontext wartet auf das echte Reader-Modul und einen positiven 3:2-Rahmen
+  david-story.spec.ts:256:3 › echte Bildfehler ohne Service-Worker › drei ausgefallene Bildvarianten zeigen einen erreichbaren Wiederholungsbutton und laden danach wirklich
+  imports.spec.ts:47:1 › Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten
+  imports.spec.ts:70:1 › Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline
+  imports.spec.ts:132:1 › zwei Fenster schützen Änderungen und erlauben eine erneute Vorschau
+  imports.spec.ts:162:1 › Schreibfehler lassen Bestand und vorherige Rückkehrsicherung atomar erhalten
+  imports.spec.ts:195:1 › Rückkehr zeigt Folgen ausdrücklich und stellt den echten vorherigen Stand wieder her
+  imports.spec.ts:230:1 › Importansichten sind mobil, dunkel und per Tastatur zugänglich
+  invitations.spec.ts:180:1 › V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt den aktuellen V8-Stand und erschließt die Startseiteneinladung
+  invitations.spec.ts:216:1 › die tatsächliche Oberfläche beachtet exakt 21 und 35 Tage, neue Belege und archivierte Vorhaben ohne Schreibzugriff
+  invitations.spec.ts:275:1 › Zurückstellen, Ausblenden und Wiederzulassen überleben Offline-Neustart; Ausschalten bewahrt Entscheidungen und Quellen
+  invitations.spec.ts:348:1 › Quellenlinks zeigen das richtige Vorhaben und den Gedanken schreibfrei, auch wenn bereits ein anderer Entwurf besteht
+  invitations.spec.ts:412:1 › Einladungen bleiben bei 320 Pixeln in Hell und Dunkel sowie auf großem Display zugänglich und ohne Überlauf
+  invitations.spec.ts:472:1 › ein echter konkurrierender IndexedDB-Stand wird beim Ausblenden aus einer alten Ansicht nicht überschrieben
+  learning.spec.ts:4:1 › Textfragen zeigen belegte Rückmeldung und verändern keinen Fortschritt
+  learning.spec.ts:56:1 › Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zählt nur den Abschnitt
+  nt-archive.spec.ts:140:1 › NT-Importvorschau liest nur und übernimmt belegte Abschlüsse ohne Antworten oder Baumfortschritt
+  nt-archive.spec.ts:193:1 › ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Quelle und Rückkehrsicherung bytegenau
+  nt-archive.spec.ts:263:1 › ein fremder Fenstercommit blockiert die NT-Aktivierung und die Archivvorschau lässt sich sicher neu prüfen
+  nt-pending-return.spec.ts:93:1 › an own confirmed answer reconciles after leaving while its real commit acknowledgement is pending
+  nt-pending-return.spec.ts:136:1 › an own confirmed question move restores the visible question after a pending-commit detour
+  nt-pending-return.spec.ts:167:1 › a completion acknowledged away from the study view is shown on return without another completion write
+  nt-study.spec.ts:31:1 › NT discovery covers all 27 books and opens original questions without creating personal records
+  nt-study.spec.ts:65:1 › an incorrect answer saves the exact source, survives reload and can be changed without altering its original date
+  nt-study.spec.ts:109:1 › all five viewed questions may finish with wrong answers, and resume the exact last question without reading or growth
+  nt-study.spec.ts:143:1 › skipping questions remembers position but cannot create a completion
+  nt-study.spec.ts:168:1 › a real second-tab conflict keeps the local choice until the saved answer is deliberately accepted
+  nt-study.spec.ts:196:1 › a new NT chapter and the entire question bank work on first offline visit and after restart
+  nt-study.spec.ts:221:1 › keyboard answers, small-screen light mode, large-screen dark mode and invalid routes stay accessible
+  offline-readiness.spec.ts:228:1 › eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten
+  offline-readiness.spec.ts:257:1 › wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling
+  offline-readiness.spec.ts:280:1 › eine ältere echte Antwort überschreibt keinen neueren Buildkonflikt
+  offline-readiness.spec.ts:307:1 › ein bereits aktiver Worker wird trotz offenbleibender erneuter Registrierung sofort verifiziert
+  offline-readiness.spec.ts:350:1 › ein unkontrolliertes Dokument entdeckt den echten aktiven Worker vor dem Ende einer offenen Registrierung
+  offline-readiness.spec.ts:391:1 › eine offene Registrierung und eine offene Suche beenden die Prüfung weiterhin endlich
+  personal.spec.ts:12:1 › Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf
+  personal.spec.ts:38:1 › Journalentwurf überlebt Neustart, Bearbeitung und anschließendes Speichern
+  personal.spec.ts:84:1 › Vorhaben, Schritte, Rückblick-Snapshot und Archiv funktionieren zusammen
+  personal.spec.ts:201:1 › Ungespeicherte Entwurfsworte werden erst nach ausdrücklichem Verwerfen gelöscht
+  personal.spec.ts:234:1 › Eine installierte V1-Datenbank wird ohne Verlust weitergeführt
+  personal.spec.ts:296:1 › Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben
+  personal.spec.ts:319:1 › Neue Vorhaben- und Entwurfsansichten bleiben auf kleinen Displays zugänglich
+  pwa.spec.ts:2:1 › das installierbare Offlinepaket liefert Manifest, vollständige Icons und Inhaltsrechte
+  reader-flow.spec.ts:112:1 › echte Inlineabsätze erhalten jeden Johannesvers und umbrechen über Versgrenzen statt in Einzelblöcken
+  reader-flow.spec.ts:175:1 › eine tatsächlich geteilte Psalmzeile speichert nach Scrollen ihren ersten sichtbaren Vers 119 und erfindet keinen Verssprung zu 120
+  reader-flow.spec.ts:241:1 › ein ausdrücklicher Verslink bleibt nach breitem Reflow, größerer Schrift, Zeilenabstand und Neustart genau Johannes 6,35
+  reader-flow.spec.ts:274:1 › Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versnotizentwurf über Neustart ohne Leseabschluss
+  reader-flow.spec.ts:378:1 › Fließtext und Einzelverse behalten beim Umschalten denselben Versanker und denselben Notizquelltext
+  reader-flow.spec.ts:431:1 › der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunkel sowie auf großem Display lesbar und zugänglich
+  reader-flow.spec.ts:494:1 › die erste Offlineöffnung und der Neustart zeigen exakt Davids acht Abschnittsverse und bestätigen ausschließlich diesen Abschnitt
+  reader-focus.spec.ts:112:1 › Lesefokus hält auf 320 Pixeln in Hell und Dunkel den kanonischen Text und einen erreichbaren Ausstieg ohne Leseabschluss
+  reader-focus.spec.ts:232:1 › ein gerade getippter Versnotizentwurf überlebt das Unmount beim Fokusstart und bleibt mit derselben Quelle fortsetzbar
+  reader-focus.spec.ts:319:1 › Escape schließt Einstellungen und Verswahl vor Versaktionen und gibt den Tastaturfokus vor einer Navigation zurück
+  reading-position.spec.ts:12:1 › Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers
+  reading-position.spec.ts:24:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen
+  reading-position.spec.ts:44:1 › Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker
+  reading-position.spec.ts:54:1 › eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust
+  reviews.spec.ts:110:1 › Rückblicktext wird geändert, historischer Stand bleibt; Löschen und Rückgängig bewahren den Baum
+  reviews.spec.ts:159:1 › Bearbeitungsentwurf erreicht die Sammlung und überlebt Offline-Neustart ohne neuen Rückblick
+  reviews.spec.ts:210:1 › nur unveränderte Rückblicke werden wieder verbunden; echte Konflikte bewahren beide Wortlaute
+  reviews.spec.ts:287:1 › Löschen braucht Bestätigung, verwirft Undo beim Verlassen und exportiert keinen gelöschten Rückblick
+  reviews.spec.ts:332:1 › archivierte und fehlende Ziele lassen eigene Entwurfsworte lesbar, exportierbar und verwerfbar
+  reviews.spec.ts:391:1 › Rückblickeditor bleibt auf kleinen und großen Displays sowie in Hell und Dunkel lesbar
+  reviews.spec.ts:449:1 › ein während des Verlassens abgeschlossener Löschvorgang lässt kein Undo zurück
+  romans-sword.spec.ts:111:1 › Römer zeigt die eigene Illustration und öffnet seine drei belegten Quellen ohne Lesefortschritt zu erfinden
+  romans-sword.spec.ts:149:1 › Römers 16 Kapitel bleiben in Hell und Dunkel sowie bei kleinen und großen Ansichten eindeutig
+  romans-sword.spec.ts:181:1 › die Startseite bewahrt Lesen und Daten und öffnet illustrierte sowie bisherige Buchschwerter
+  romans-sword.spec.ts:214:1 › nur ausdrücklich bestätigtes Römerlesen erzeugt Kapitellicht und einen endlichen Impuls
+  romans-sword.spec.ts:241:1 › Römer und Johannes öffnen beim ersten Offlinebesuch und nach Neustart mit unveränderten Daten
+  romans-sword.spec.ts:263:3 › echte Römer-Bildfehler ohne Service-Worker › drei fehlgeschlagene Varianten erhalten das Römer-Symbol; ein Wiederholungsversuch dekodiert das echte Bild
+  romans-sword.spec.ts:280:3 › echte Römer-Bildfehler ohne Service-Worker › der schmale Startseiten-Fallback bleibt bei 320 Pixeln lesbar und der echte Retry erhält alle Daten
+  romans-sword.spec.ts:306:3 › echte Römer-Bildfehler ohne Service-Worker › eine verspätete Römerantwort übernimmt nach Buchwechsel kein Bild und keinen Fortschritt
+  romans-sword.spec.ts:335:3 › Römer auf einem hochauflösenden Browserdisplay › die große Ansicht dekodiert 768 Pixel und die Startseite ihre passende kleinere Variante
+  swords.spec.ts:96:1 › das Buchschwert öffnet aus Bibel und Sammlung, zeigt Johannes groß und verändert keine Lesespuren
+  swords.spec.ts:130:1 › eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt
+  swords.spec.ts:156:1 › synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel
+  swords.spec.ts:183:1 › die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück
+  swords.spec.ts:211:1 › nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet
+  swords.spec.ts:249:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › drei fehlgeschlagene PNG-Varianten lassen das Buchsymbol bestehen; erneutes Laden gelingt
+  swords.spec.ts:265:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › ein Buchwechsel während des Ladens übernimmt kein verspätetes Johannes-Bild
+Total: 108 tests in 20 files
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

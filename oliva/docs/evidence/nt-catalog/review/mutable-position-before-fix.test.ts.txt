@@ -1,0 +1,30 @@
+import { beforeEach, expect, it, vi } from "vitest";
+const storage = vi.hoisted(() => ({ readData: vi.fn(), writeData: vi.fn(), readRecovery: vi.fn() }));
+vi.mock("/workspace/faithpath-next/src/services/storage", () => storage);
+import { useApp } from "/workspace/faithpath-next/src/state/store";
+import { initialData } from "/workspace/faithpath-next/src/state/model";
+
+beforeEach(async () => {
+  vi.resetAllMocks();
+  storage.readData.mockResolvedValue(initialData());
+  storage.writeData.mockResolvedValue(undefined);
+  useApp.setState({ busy: false });
+  await useApp.getState().hydrate();
+});
+it("demonstrates that queued NT position uses caller mutations after invocation", async () => {
+ let release!: () => void;
+ storage.writeData.mockImplementationOnce(() => new Promise<void>(resolve => { release = resolve; }));
+ const first = useApp.getState().openReading({ book: "MAT", chapter: 1 });
+ await vi.waitFor(() => expect(storage.writeData).toHaveBeenCalledTimes(1));
+ expect(useApp.getState().busy).toBe(false);
+ const requested = { book: "MRK", chapter: 4, index: 0 };
+ const pending = useApp.getState().rememberNtStudyPosition(requested);
+ requested.book = "REV";
+ requested.chapter = 22;
+ requested.index = 4;
+ release();
+ expect(await first).toBe(true);
+ expect(await pending).toBe(true);
+ // The saved position differs from the action's requested position at invocation.
+ expect(useApp.getState().data.ntStudy.position).toEqual({ book: "REV", chapter: 22, index: 4 });
+});

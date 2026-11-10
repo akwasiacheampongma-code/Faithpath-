@@ -1,0 +1,271 @@
+{
+  "baseline_version": "0.11.0",
+  "target_version": "0.12.0",
+  "baseline_build_id": "oliva-01c4b9f640bc0931",
+  "target_build_id": "oliva-80005b3c1d2e2eef",
+  "baseline_html_sha256": "605e39ed47b9fd027f931eb358f9455dc326e60033f9aef66d89b69cb2e92ced",
+  "baseline_worker_sha256": "0c21937d865e7c83a7ad44ed3a0cd926d11025a2ade2573278d83c0205ce3d74",
+  "target_html_sha256": "044062fe8daccf4bea0ed7125add9d9a358f13f0b2f3552036b76f3cc6dec66d",
+  "target_worker_sha256": "0a813a678d3e85b2bfacd3e8e6f9a685de89cf9ad109cddff1115a01e8da5695",
+  "synthetic_data": true,
+  "synthetic_clock": "2027-01-01T12:00:00.000Z",
+  "passed": true,
+  "physical_device_test": false,
+  "simulator_test": false,
+  "hosted_qa": false,
+  "evidence_scope": "Local automated Chromium; one persistent profile and origin through the real worker update",
+  "byte_comparison": "Exact UTF-8 JSON serialization of every raw IndexedDB value, not database-file bytes",
+  "phase": "complete",
+  "phases": [
+    {
+      "name": "baseline-ui-seed",
+      "startedAt": "2026-11-09T19:11:36.264Z"
+    },
+    {
+      "name": "worker-update-and-read-only-hydration",
+      "startedAt": "2026-11-09T19:12:22.591Z"
+    },
+    {
+      "name": "offline-first-ever-nt-bank-visit",
+      "startedAt": "2026-11-09T19:12:31.379Z"
+    },
+    {
+      "name": "first-explicit-answer-commits-v8-only",
+      "startedAt": "2026-11-09T19:12:40.185Z"
+    },
+    {
+      "name": "explicit-original-archive-activation",
+      "startedAt": "2026-11-09T19:12:43.714Z"
+    },
+    {
+      "name": "real-export-and-restore-validation-preview",
+      "startedAt": "2026-11-09T19:12:50.463Z"
+    },
+    {
+      "name": "offline-old-drafts-reader-and-artwork",
+      "startedAt": "2026-11-09T19:12:53.981Z"
+    }
+  ],
+  "browser_version": "155.0.8059.79",
+  "origin": "http://127.0.0.1:34299",
+  "baseline_worker": {
+    "expected": "oliva-01c4b9f640bc0931",
+    "controller": {
+      "id": "oliva-01c4b9f640bc0931",
+      "version": "0.11.0"
+    },
+    "active": {
+      "id": "oliva-01c4b9f640bc0931",
+      "version": "0.11.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-01c4b9f640bc0931"
+    ]
+  },
+  "baseline_private_storage_version": 1,
+  "baseline_data_version": 7,
+  "baseline_main_json_sha256": "2a87339a0bfebecca3bcfdc25a669cd4796a6ae0740f841dde0f93535c3ab0b8",
+  "baseline_records": [
+    {
+      "store": "state",
+      "key": "archive:d5215271b8c15f9e1eb307e73b871ffbc9e04a4d0741d0e28244748aeeb8e068",
+      "json_utf8_bytes": 5111,
+      "json_sha256": "95d5c29b296c53faaaac3d03df51b1d01aa0a2757a7d50ab0743a35df2c6744f"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 652,
+      "json_sha256": "f87dbc8a906699830006fedb62150e887f326db460b876bd7049126fdd0f4be4"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5619,
+      "json_sha256": "2a87339a0bfebecca3bcfdc25a669cd4796a6ae0740f841dde0f93535c3ab0b8"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "82bbd4c3e5ffd3d58d59b1f2188639c89a05bb8d309c29c17cb6e7c1eba5a422"
+    }
+  ],
+  "baseline_goal_id": "fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a",
+  "baseline_review_id": "draft-1798804800000-o6lwhfha",
+  "baseline_invitations": {
+    "enabled": true,
+    "snoozed": {
+      "goal:fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a": "2027-01-15T12:00:00.000Z"
+    },
+    "dismissed": {}
+  },
+  "baseline_reading_position": {
+    "ref": {
+      "book": "PSA",
+      "chapter": 119
+    },
+    "verse": 120,
+    "mode": "read"
+  },
+  "baseline_journal_draft_sha256": "4a2157c6f584a4798a5c0fca51684a1b473d5b75b2db445abc027abbbdc52758",
+  "baseline_review_edit_draft_sha256": "dee1ccdf7a21e52a7c8b4c4d375d34fb573cd57c8e12eb6d09126354b1748b75",
+  "original_archive_blob_sha256": "d5215271b8c15f9e1eb307e73b871ffbc9e04a4d0741d0e28244748aeeb8e068",
+  "baseline_cached_asset_sha256": "79ac64e777b076400f50831060583410c9c794b1f4a264b6a71aaec78da24d3d",
+  "new_worker": {
+    "expected": "oliva-80005b3c1d2e2eef",
+    "controller": {
+      "id": "oliva-80005b3c1d2e2eef",
+      "version": "0.12.0"
+    },
+    "active": {
+      "id": "oliva-80005b3c1d2e2eef",
+      "version": "0.12.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-01c4b9f640bc0931",
+      "oliva-80005b3c1d2e2eef"
+    ]
+  },
+  "same_origin_and_persistent_profile": true,
+  "worker_activation_verified": true,
+  "old_cache_retained": true,
+  "schema_migration_expected": "V7 -> V8 in RAM; first explicit action writes V8",
+  "durable_v7_main_unchanged_after_hydration": true,
+  "all_raw_records_unchanged_after_update": true,
+  "offline_first_nt_route": "/verstehen/MAT?chapter=1",
+  "offline_last_nt_route": "/verstehen/REV?chapter=22",
+  "offline_first_nt_and_last_chapters_verified": true,
+  "catalog_source_chapters": 260,
+  "browser_nt_chapters_exercised": [
+    "MAT:1",
+    "REV:22"
+  ],
+  "all_1300_questions_individually_exercised_in_browser": false,
+  "catalog_source_questions": 1300,
+  "catalog_source_sha256": "850272e6cd3a22bdb50191e6e20f0ab9033377e7901f47fbfe6ec4c3eb067c7b",
+  "every_raw_record_preserved_before_explicit_action": true,
+  "legacy_done_not_automatically_activated": true,
+  "first_answer_source_snapshot_verified": true,
+  "first_answer_wrong_choice_accepted_without_score": true,
+  "first_explicit_action_committed_v8": true,
+  "only_version_revision_and_ntStudy_changed": true,
+  "all_other_personal_fields_preserved_exactly": true,
+  "first_action_non_main_records_unchanged": true,
+  "private_storage_version_before_and_after": 1,
+  "first_answer_revision_increment": 1,
+  "saved_question_id": "FP-0261",
+  "saved_question_hash": "3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc",
+  "offline_answer_reload_preserves_all_raw_records": true,
+  "legacy_activation_explicit": true,
+  "legacy_done_provenance_verified": true,
+  "legacy_canonical_completions_activated": 1,
+  "invalid_date_and_unknown_unit_remain_archived_only": true,
+  "legacy_activation_does_not_fabricate_answers_or_current_completion": true,
+  "legacy_activation_non_main_records_unchanged": true,
+  "legacy_source_view_and_reload_preserve_all_raw_records": true,
+  "real_backup_download_verified": true,
+  "exported_json_utf8_bytes": 14455,
+  "exported_json_sha256": "2155dfb0c27df638b72a7e6c1ea7a9f3186ee555b1243d94b3620becb6dad62c",
+  "export_preserves_snapshot_and_original_source_exactly": true,
+  "real_restore_picker_and_v8_validation_preview_passed": true,
+  "restore_was_not_applied": true,
+  "export_and_validation_preview_do_not_write": true,
+  "profile_preserved": true,
+  "name_preserved": true,
+  "offline_first_visit_and_reload_passed": true,
+  "offline_old_journal_draft_verified": true,
+  "offline_old_review_edit_draft_verified": true,
+  "pre_existing_review_preserved": true,
+  "all_invitation_controls_preserved": true,
+  "reader_scope_and_verse120_preserved": true,
+  "complete_psalm_176_verses_exact": true,
+  "offline_a51_stages_verified": 7,
+  "offline_book_illustrations_first_visit_and_reload": [
+    "JHN",
+    "ROM"
+  ],
+  "offline_story_images": [
+    {
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/noah-640.4206b12f0aacc4967bc68ae417589a1a.webp"
+    },
+    {
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/abraham-640.445c3c3b7fa98839659af0a8e0b417e8.webp"
+    },
+    {
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/david-before-goliath-640.579763367b6d7d59109419ee264ec889.webp"
+    },
+    {
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/nativity-640.cb61b77b3f68bcda8087c973221230f9.webp"
+    },
+    {
+      "width": 640,
+      "height": 427,
+      "source": "/assets/assets/images/easter-dawn-640.879d2495a829c5dd832ad687edce5e6c.webp"
+    }
+  ],
+  "offline_story_count": 5,
+  "original_archive_blob_preserved": true,
+  "recovery_and_archive_records_exact_through_two_nt_commits": true,
+  "final_original_archive_blob_sha256": "d5215271b8c15f9e1eb307e73b871ffbc9e04a4d0741d0e28244748aeeb8e068",
+  "final_main_json_sha256": "c7f21a13802912a473439c7f5185f3b6864f6a67c101559cbd0317ee6997e0f9",
+  "final_records": [
+    {
+      "store": "state",
+      "key": "archive:d5215271b8c15f9e1eb307e73b871ffbc9e04a4d0741d0e28244748aeeb8e068",
+      "json_utf8_bytes": 5111,
+      "json_sha256": "95d5c29b296c53faaaac3d03df51b1d01aa0a2757a7d50ab0743a35df2c6744f"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 652,
+      "json_sha256": "f87dbc8a906699830006fedb62150e887f326db460b876bd7049126fdd0f4be4"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6894,
+      "json_sha256": "c7f21a13802912a473439c7f5185f3b6864f6a67c101559cbd0317ee6997e0f9"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "82bbd4c3e5ffd3d58d59b1f2188639c89a05bb8d309c29c17cb6e7c1eba5a422"
+    }
+  ],
+  "old_asset_present_in_old_cache": true,
+  "old_asset_absent_from_new_cache": true,
+  "old_cached_asset_verified": true,
+  "old_cached_asset_path": "/_expo/static/js/web/__common-037c94c0da0d53ce291e18b99f084112.js",
+  "old_cached_asset_sha256": "79ac64e777b076400f50831060583410c9c794b1f4a264b6a71aaec78da24d3d",
+  "offline_worker": {
+    "expected": "oliva-80005b3c1d2e2eef",
+    "controller": {
+      "id": "oliva-80005b3c1d2e2eef",
+      "version": "0.12.0"
+    },
+    "active": {
+      "id": "oliva-80005b3c1d2e2eef",
+      "version": "0.12.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-01c4b9f640bc0931",
+      "oliva-80005b3c1d2e2eef"
+    ]
+  },
+  "update_and_offline_check_ms": 67411,
+  "checkedAt": "2026-11-09T19:13:30.036Z"
+}

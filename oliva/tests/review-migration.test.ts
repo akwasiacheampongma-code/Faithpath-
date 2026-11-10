@@ -16,7 +16,7 @@ import { faithpathFixture } from "./fixtures/faithpath-v5";
 
 const at = "2026-11-06T09:00:00.000Z";
 function legacyV5() {
-  const { retainedReviewGrowth, invitations, ...data } = initialData();
+  const { retainedReviewGrowth, invitations, ntStudy, ...data } = initialData();
   const source = {
     title: "Damals zuhören",
     why: "Meine damalige Frage",
@@ -75,14 +75,20 @@ function legacyV5() {
   });
 }
 
-describe("Eingefrorene Nutzdaten V1–V5 und neutrale Migration bis V7", () => {
+describe("Eingefrorene Nutzdaten V1–V5 und neutrale Migration bis V8", () => {
   it("bewahrt alte Rückblicke und offene Entwürfe exakt, ohne ein Bearbeitungsdatum zu erfinden", async () => {
     const old = legacyV5(),
       bytes = JSON.stringify(old);
     const migrated = decodeData(old);
     expect(migrated).toEqual({
       ...old,
-      version: 7,
+      version: 8,
+      ntStudy: {
+        answers: {},
+        completions: {},
+        legacyCompletions: [],
+        position: null,
+      },
       invitations: { enabled: false, snoozed: {}, dismissed: {} },
       retainedReviewGrowth: { reflections: 0, actions: 0 },
     });
@@ -140,7 +146,7 @@ describe("Eingefrorene Nutzdaten V1–V5 und neutrale Migration bis V7", () => {
     const sourceText = JSON.stringify(faithpathFixture(), null, 2);
     applyImport(current, prepareImport(sourceText, current, at));
     current.revision = 9;
-    const { retainedReviewGrowth, invitations, ...fields } =
+    const { retainedReviewGrowth, invitations, ntStudy, ...fields } =
       forStorage(current).data;
     for (const version of [4, 5]) {
       const old: any = { ...fields, version };

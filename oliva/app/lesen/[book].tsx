@@ -30,6 +30,7 @@ import { StoryCard } from "../../src/features/bible/StoryCard";
 import { sceneFor } from "../../src/features/bible/scenes";
 import { useReaderPosition } from "../../src/features/bible/useReaderPosition";
 import { sameReadingScope } from "../../src/features/bible/position";
+import { ntChapterIndex } from "../../src/features/quiz/index";
 export default function Reader() {
   const params = useLocalSearchParams<{
       book: string;
@@ -769,6 +770,29 @@ export default function Reader() {
                     <T style={{ fontSize: 11, color: t.muted }}>
                       Du musst jetzt keine Antwort haben.
                     </T>
+                  </Card>
+                )}
+                {ntChapterIndex(ref.book, ref.chapter) && (
+                  <Card style={{ gap: 13 }}>
+                    <Tag icon="book">In Ruhe weiterdenken</Tag>
+                    <T variant="heading">Was ist dir im Text begegnet?</T>
+                    <T style={{ fontSize: 13, color: t.muted }}>
+                      Fünf Fragen zum ganzen Kapitel helfen dir beim Verstehen.
+                      Du kannst jederzeit nachlesen oder pausieren.
+                    </T>
+                    <Button
+                      kind="secondary"
+                      onPress={() =>
+                        router.push({
+                          pathname: "/verstehen/[book]",
+                          params: { book: ref.book, chapter: ref.chapter },
+                        })
+                      }
+                    >
+                      Fragen zu{" "}
+                      {referenceLabel({ book: ref.book, chapter: ref.chapter })}{" "}
+                      entdecken
+                    </Button>
                   </Card>
                 )}
                 {!path && related.length > 0 && (

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "executed_path": "/tmp/oliva-native-v012.py",
+      "evidence_copy": "docs/evidence/nt-catalog/native/native-export-runner.py",
+      "bytes": 10972,
+      "sha256": "cda03818f040915d3a668fa737eec7d01bd05b5a32b6022b36a82c26f8e05aa5",
+      "equals_preexecution_hash": true
+    },
+    {
+      "executed_path": "/tmp/check-native-nt-catalog-v012.mjs",
+      "evidence_copy": "docs/evidence/nt-catalog/native/check-native-nt-catalog.mjs",
+      "bytes": 9725,
+      "sha256": "8b14e30dfd8414bc569f52505399dd7ebe4e6b39aac35bebdfa3ee9f6dbce031",
+      "equals_preexecution_hash": true
+    }
+  ]
+}

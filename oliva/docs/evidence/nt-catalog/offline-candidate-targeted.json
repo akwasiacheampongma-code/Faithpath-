@@ -1,0 +1,208 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/offline-readiness.spec.ts",
+      "--grep",
+      "unkontrolliertes Dokument|offene Registrierung und eine offene Suche",
+      "--output=docs/evidence/nt-catalog/offline-ci-diagnosis/candidate-results"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/docs/evidence/nt-catalog/offline-ci-diagnosis/candidate-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/docs/evidence/nt-catalog/offline-ci-diagnosis/candidate-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/nt-catalog/offline-candidate-targeted.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "offline-readiness.spec.ts",
+      "file": "offline-readiness.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ein unkontrolliertes Dokument entdeckt den echten aktiven Worker vor dem Ende einer offenen Registrierung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7844,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T19:13:13.993Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-uncontrolled-registration-discovery",
+                      "contentType": "application/json",
+                      "body": "eyJhY3R1YWwiOnsiZXhwZWN0ZWQiOiJvbGl2YS04MDAwNWIzYzFkMmUyZWVmIiwiY29udHJvbGxlciI6bnVsbCwiYWN0aXZlIjp7ImlkIjoib2xpdmEtODAwMDViM2MxZDJlMmVlZiIsInZlcnNpb24iOiIwLjEyLjAifSwiY2FjaGVzIjpbIm9saXZhLTgwMDA1YjNjMWQyZTJlZWYiXX0sIm9ic2VydmF0aW9uIjp7InN0YXJ0ZWQiOjEsIm5hdGl2ZVJlc29sdmVkIjowLCJyZXR1cm5lZFNldHRsZWQiOjAsImxvb2t1cFN0YXJ0ZWQiOjEsImxvb2t1cE5hdGl2ZVJlc29sdmVkIjoxLCJsb29rdXBBY3RpdmUiOiJhY3RpdmF0ZWQiLCJjb250cm9sbGVyQ2hhbmdlcyI6MCwib25saW5lRXZlbnRzIjowfSwicHJpdmF0ZVJlY29yZHNVbmNoYW5nZWQiOnRydWUsIm1pc21hdGNoZWREb2N1bWVudFJlamVjdGVkIjp0cnVlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "42a019434bccf2d4c8fa-bc4fab66f5687b97507c",
+          "file": "offline-readiness.spec.ts",
+          "line": 350,
+          "column": 1
+        },
+        {
+          "title": "eine offene Registrierung und eine offene Suche beenden die Prüfung weiterhin endlich",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12643,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-09T19:13:22.488Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "finite-uncontrolled-registration-lookups",
+                      "contentType": "application/json",
+                      "body": "eyJhY3R1YWwiOnsiZXhwZWN0ZWQiOiJvbGl2YS04MDAwNWIzYzFkMmUyZWVmIiwiY29udHJvbGxlciI6bnVsbCwiYWN0aXZlIjp7ImlkIjoib2xpdmEtODAwMDViM2MxZDJlMmVlZiIsInZlcnNpb24iOiIwLjEyLjAifSwiY2FjaGVzIjpbIm9saXZhLTgwMDA1YjNjMWQyZTJlZWYiXX0sIm9ic2VydmF0aW9uIjp7InN0YXJ0ZWQiOjEsIm5hdGl2ZVJlc29sdmVkIjoxLCJyZXR1cm5lZFNldHRsZWQiOjAsImxvb2t1cFN0YXJ0ZWQiOjEsImxvb2t1cE5hdGl2ZVJlc29sdmVkIjoxLCJsb29rdXBBY3RpdmUiOiJhY3RpdmF0ZWQiLCJjb250cm9sbGVyQ2hhbmdlcyI6MCwib25saW5lRXZlbnRzIjowfSwicHJpdmF0ZVJlY29yZHNVbmNoYW5nZWQiOnRydWV9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "42a019434bccf2d4c8fa-bc0186a671d1fd16341d",
+          "file": "offline-readiness.spec.ts",
+          "line": 390,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-09T19:13:12.761Z",
+    "duration": 22575.956,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

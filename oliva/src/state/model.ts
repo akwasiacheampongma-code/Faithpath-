@@ -14,6 +14,11 @@ import {
 } from "../features/personal/schema-v6";
 import { invitationControlsSchema } from "../features/invitations/schema";
 import { emptyInvitationControls } from "../features/invitations/model";
+import { ntStudySchema } from "../features/quiz/state-schema";
+import {
+  emptyNtStudy,
+  extractLegacyNtCompletions,
+} from "../features/quiz/model";
 import {
   goalSchema as v5GoalSchema,
   draftSchema as v5DraftSchema,
@@ -235,7 +240,7 @@ export const v6DataSchema = z
 
 // Invitations are control metadata, never growth evidence. V6 remains strict
 // and readable; merely opening an older document does not rewrite its bytes.
-export const dataSchema = z
+export const v7DataSchema = z
   .object({
     ...v6DataSchema.shape,
     version: z.literal(7),
@@ -267,17 +272,58 @@ export const dataSchema = z
     "Leseposition gehört zu einem anderen Abschnitt",
   );
 
+// NT learning is a separate local record. The strict V7 shape above remains
+// readable and cannot accept NT fields; migration adds no personal activity.
+export const dataSchema = z
+  .object({
+    ...v7DataSchema.shape,
+    version: z.literal(8),
+    ntStudy: ntStudySchema,
+  })
+  .strict()
+  .refine(completeStepsValid, "Ungültiger Wegfortschritt")
+  .refine(
+    (d) =>
+      [...d.goals, ...d.notes].every(
+        (x) => !x.origin || d.imports.some((r) => r.id === x.origin!.importId),
+      ),
+    "Importquelle fehlt",
+  )
+  .refine(
+    (d) =>
+      !d.readingPosition || sameReadingScope(d.readingPosition.ref, d.reading),
+    "Leseposition gehört zu einem anderen Abschnitt",
+  )
+  .refine(
+    (d) =>
+      d.ntStudy.legacyCompletions.every((completion) =>
+        d.imports.some(
+          (receipt) =>
+            receipt.id === completion.importId &&
+            receipt.sourceHash === completion.sourceHash,
+        ),
+      ),
+    "Originalbeleg des historischen NT-Status fehlt",
+  );
+
 export function decodeData(input: unknown): AppData {
   const version =
     input && typeof input === "object" && "version" in input
       ? input.version
       : undefined;
   let data: AppData;
-  if (version === 7) data = dataSchema.parse(input);
+  if (version === 8) data = dataSchema.parse(input);
+  else if (version === 7)
+    data = dataSchema.parse({
+      ...v7DataSchema.parse(input),
+      version: 8,
+      ntStudy: emptyNtStudy(),
+    });
   else if (version === 6)
     data = dataSchema.parse({
       ...v6DataSchema.parse(input),
-      version: 7,
+      version: 8,
+      ntStudy: emptyNtStudy(),
       invitations: emptyInvitationControls(),
     });
   else {
@@ -299,7 +345,8 @@ export function decodeData(input: unknown): AppData {
               : v5DataSchema.parse(input);
     data = dataSchema.parse({
       ...old,
-      version: 7,
+      version: 8,
+      ntStudy: emptyNtStudy(),
       invitations: emptyInvitationControls(),
       retainedReviewGrowth: { reflections: 0, actions: 0 },
     });
@@ -311,13 +358,38 @@ export function decodeData(input: unknown): AppData {
       parsed.fingerprint !== receipt.fingerprint
     )
       throw new Error("Eine archivierte Importquelle ist beschädigt.");
+    const historical = data.ntStudy.legacyCompletions.filter(
+      (completion) => completion.importId === receipt.id,
+    );
+    if (historical.length) {
+      // A legacy done timestamp is a viewed-questions fact, never five answers.
+      // Validate it against the immutable archived source already parsed above.
+      const provable = new Map(
+        extractLegacyNtCompletions(
+          parsed.data.quiz,
+          receipt.id,
+          receipt.sourceHash,
+        ).completions.map((completion) => [
+          completion.sourceUnitId,
+          completion,
+        ]),
+      );
+      for (const completion of historical) {
+        const original = provable.get(completion.sourceUnitId);
+        if (!original || original.completedAt !== completion.completedAt)
+          throw new Error(
+            "Der historische NT-Status stimmt nicht mit seiner Originalquelle überein.",
+          );
+      }
+    }
   }
   return data;
 }
 export type AppData = z.infer<typeof dataSchema>;
 export type Note = z.infer<typeof noteSchema>;
 export const initialData = (): AppData => ({
-  version: 7,
+  version: 8,
+  ntStudy: emptyNtStudy(),
   invitations: emptyInvitationControls(),
   retainedReviewGrowth: { reflections: 0, actions: 0 },
   readingPosition: null,

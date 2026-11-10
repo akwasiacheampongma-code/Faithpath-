@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "scope": "Local catalog transfer, original-byte comparison, runtime schema validation, independent reference parsing, deterministic snapshot hashes and defensive catalog access. No new editorial or theological approval.",
+  "source_snapshot": "a519ce898fa33907b07d5ac7a585595127556183",
+  "commands": [
+    {
+      "command": "npx vitest run tests/nt-catalog.test.ts",
+      "exit_code": 0,
+      "test_files_passed": 1,
+      "tests_passed": 8,
+      "duration_seconds": 10.92,
+      "output": "unit-tests.log"
+    },
+    {
+      "command": "npx tsc --noEmit --pretty false",
+      "exit_code": 0,
+      "output": "typecheck.log"
+    }
+  ],
+  "checked_counts": {
+    "frozen_original_files_sha256": 7,
+    "source_mixed_units": 312,
+    "source_mixed_questions": 1560,
+    "transferred_nt_books": 27,
+    "transferred_chapter_units": 260,
+    "source_unit_schema_validations": 260,
+    "questions_per_chapter": 5,
+    "questions_equal_original_source_and_approved_master": 1300,
+    "question_schema_validations": 1300,
+    "question_snapshot_schema_validations": 1300,
+    "python_generated_hashes_equal_app_and_node_sha256": 1300,
+    "reference_texts_equal_frozen_original_javascript_parser": 1300,
+    "canonical_reference_ranges_with_every_verse_present": 1304,
+    "questions_with_multiple_reference_ranges": 4,
+    "single_chapter_book_references_without_chapter_number": 20
+  },
+  "checked_behaviors": {
+    "contiguous_question_ids_FP_0261_through_FP_1560": true,
+    "contiguous_legacy_unit_ids_10000_through_10259": true,
+    "all_master_approval_flags_and_correct_answers": true,
+    "canonical_book_and_chapter_completeness": true,
+    "defensive_copies_preserve_catalog_after_mutation": true,
+    "lightweight_index_imports_only_nt_index_json": true,
+    "invalid_options_correct_indices_references_hashes_and_unknown_fields_rejected": true,
+    "invalid_question_chapter_and_legacy_locations_rejected": true,
+    "answer_time_snapshots_accept_valid_historical_text_without_current_bank_comparison": true
+  },
+  "limits": [
+    "The logs preserve combined command output from the completed runs; no additional run was performed to produce this evidence.",
+    "No original question, option or explanation text is duplicated in these evidence metadata.",
+    "No browser or physical device acceptance is established by these unit and type checks."
+  ]
+}

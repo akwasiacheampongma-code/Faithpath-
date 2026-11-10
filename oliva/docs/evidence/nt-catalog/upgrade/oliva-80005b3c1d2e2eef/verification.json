@@ -1,0 +1,78 @@
+{
+  "verifiedAt": "2026-11-09T19:13:47.925504+00:00",
+  "command": "node scripts/offline-upgrade-nt.mjs /workspace/oliva-v011-reader-flow-control-dist /workspace/faithpath-next/dist",
+  "exitCode": 0,
+  "passed": true,
+  "scriptSha256": "1de87af492fe091e2d08c7f891619f63bf6174e2198ccbc1ee1fe41301f9d7b8",
+  "baseline": "oliva-01c4b9f640bc0931",
+  "target": "oliva-80005b3c1d2e2eef",
+  "targetVersion": "0.12.0",
+  "allRawV7RecordsExactBeforeExplicitAction": true,
+  "firstAnswerChangedOnlyVersionRevisionNtStudy": true,
+  "rawRecords": 4,
+  "exactNonMainRecords": 3,
+  "oldRecoveryArchivesExactAfterTwoNtCommits": true,
+  "browserNtChapters": [
+    "MAT:1",
+    "REV:22"
+  ],
+  "sourceCatalogQuestions": 1300,
+  "all1300QuestionInteractions": false,
+  "restorePreviewOnlyNoRestoreApplied": true,
+  "a51Stages": 7,
+  "bookIllustrations": [
+    "JHN",
+    "ROM"
+  ],
+  "storyImages": 5,
+  "physicalDevice": false,
+  "simulator": false,
+  "hosted": false,
+  "artifacts": [
+    {
+      "path": "execution.txt",
+      "bytes": 10154,
+      "sha256": "f9d940a55bac20e370f6dfae29bf14c937ad37720f12875690bc4c12e4739f0b"
+    },
+    {
+      "path": "offline-book-JHN.png",
+      "bytes": 19615,
+      "sha256": "e1ee6f1a173d212c02f2061bb12d5ff812b9593a342b7387afcec1ba9944fc99"
+    },
+    {
+      "path": "offline-book-ROM.png",
+      "bytes": 19364,
+      "sha256": "ea7b0752eb675bcef7c4e38898d777e49c7631ed9c1152bff48f06e098d187b1"
+    },
+    {
+      "path": "offline-first-nt-question-before-write.png",
+      "bytes": 54329,
+      "sha256": "1926bfe722f3ad1600a9a9c2757156b2bf5fb316b605d54c47a60ec27a9c73ef"
+    },
+    {
+      "path": "offline-original-nt-history.png",
+      "bytes": 54402,
+      "sha256": "f89c91031ab3e6013f53e0bd5d6b4697031bf17d3fd9d40b2778cffe5b6163b1"
+    },
+    {
+      "path": "offline-saved-nt-answer-v8.png",
+      "bytes": 54402,
+      "sha256": "f89c91031ab3e6013f53e0bd5d6b4697031bf17d3fd9d40b2778cffe5b6163b1"
+    },
+    {
+      "path": "offline-seven-a51-stages.png",
+      "bytes": 162868,
+      "sha256": "7d22d667f3fa68778a21bc393fb84d8d46cb69a9bd83a926e7779eff32a6d046"
+    },
+    {
+      "path": "offline-upgrade.json",
+      "bytes": 9848,
+      "sha256": "21ddf71ac982598559bbba9b96856e5cb8055efb21039b839b3b3d361ca4b335"
+    },
+    {
+      "path": "offline-v8-export-restore-preview.png",
+      "bytes": 55694,
+      "sha256": "a554e4835b16ac1c221a6f0206b7087e60797ae5ffb7656913bb10f0ccfba0ba"
+    }
+  ]
+}

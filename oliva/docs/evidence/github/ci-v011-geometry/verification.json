@@ -1,0 +1,168 @@
+{
+  "purpose": "Independent test-harness validation of immutable OLIVA0.11 runtime; not a new product release",
+  "checkedAt": "2026-11-09T14:01:26.192994+00:00",
+  "repository": "akwasiacheampongma-code/Faithpath-",
+  "runId": 42629068592,
+  "runUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42629068592",
+  "headBranch": "feature/oliva-v011-ci-geometry-20261109",
+  "headSha": "20493b077d827c6875f276d0e36bf7fb0e9fce41",
+  "headMatchesValidationCommit": true,
+  "runStatus": "completed",
+  "runConclusion": "failure",
+  "runAttempt": 1,
+  "createdAt": "2026-11-09T13:50:54Z",
+  "completedAt": "2026-11-09T13:59:31Z",
+  "jobIds": [
+    129200326326
+  ],
+  "allJobsSuccessful": false,
+  "artifact": {
+    "id": 13680203595,
+    "name": "oliva-quality-20493b077d827c6875f276d0e36bf7fb0e9fce41",
+    "bytes": 8695120,
+    "githubDigest": "sha256:9adbc92dda1c0e0de132eafbcf7c1343c1f8d61f0a145dd85decbec9889d5338",
+    "downloadSha256": "9adbc92dda1c0e0de132eafbcf7c1343c1f8d61f0a145dd85decbec9889d5338",
+    "digestMatches": true,
+    "archiveCrcVerified": true,
+    "archiveEntries": 92,
+    "headMatches": true,
+    "zipStoredOutsideSource": true
+  },
+  "unit": {
+    "total": 168,
+    "passed": 168,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0,
+    "freshForRun": true,
+    "startTime": "2026-11-09T13:51:22.318000+00:00"
+  },
+  "browser": {
+    "total": 93,
+    "passed": 92,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0,
+    "freshForRun": true,
+    "durationMs": 451602.35099999997,
+    "startTime": "2026-11-09T13:51:53.760Z",
+    "resultStatuses": {
+      "failed": 1,
+      "passed": 92
+    },
+    "attemptCounts": {
+      "1": 93
+    },
+    "retryValues": {
+      "0": 93
+    },
+    "errors": [],
+    "failures": [
+      {
+        "title": "alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine pers\u00f6nlichen Daten",
+        "file": "a51-tree.spec.ts",
+        "status": "unexpected",
+        "results": [
+          {
+            "workerIndex": 0,
+            "parallelIndex": 0,
+            "status": "failed",
+            "duration": 25050,
+            "error": {
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true })\u001b[22m\n",
+              "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true })\u001b[22m\n\n    at /home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/a51-tree.spec.ts:188:81",
+              "location": {
+                "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/a51-tree.spec.ts",
+                "column": 81,
+                "line": 188
+              },
+              "snippet": "  186 |   expect(await rawData(page)).toEqual(darkBefore);\n  187 |   await page.getByRole(\"button\",{name:\"Zur\u00fcck zu deinem Baum\",exact:true}).click();await ready(page,0);\n> 188 |   await expect(page.getByText(\"F\u00fcr den Offline-Neustart bereit.\",{exact:true})).toBeVisible();\n      |                                                                                 ^\n  189 |   await context.setOffline(true);await page.reload();await ready(page,0);\n  190 |   for(const stage of A51_STAGES) {await page.getByRole(\"button\",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);}\n  191 |   expect(await rawData(page)).toEqual(darkBefore);"
+            },
+            "errors": [
+              {
+                "location": {
+                  "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/a51-tree.spec.ts",
+                  "column": 81,
+                  "line": 188
+                },
+                "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true })\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('F\u00fcr den Offline-Neustart bereit.', { exact: true })\u001b[22m\n\n\n  186 |   expect(await rawData(page)).toEqual(darkBefore);\n  187 |   await page.getByRole(\"button\",{name:\"Zur\u00fcck zu deinem Baum\",exact:true}).click();await ready(page,0);\n> 188 |   await expect(page.getByText(\"F\u00fcr den Offline-Neustart bereit.\",{exact:true})).toBeVisible();\n      |                                                                                 ^\n  189 |   await context.setOffline(true);await page.reload();await ready(page,0);\n  190 |   for(const stage of A51_STAGES) {await page.getByRole(\"button\",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);}\n  191 |   expect(await rawData(page)).toEqual(darkBefore);\n    at /home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/a51-tree.spec.ts:188:81"
+              }
+            ],
+            "stdout": [],
+            "stderr": [],
+            "retry": 0,
+            "startTime": "2026-11-09T13:51:54.589Z",
+            "annotations": [],
+            "attachments": [
+              {
+                "name": "a51-offline-lifecycle",
+                "contentType": "application/json",
+                "body": "ewogICJ0aXRsZSI6ICJhbGxlIHNpZWJlbiBPcmlnaW5hbGJpbGRlciBibGVpYmVuIGVyaGFsdGVuOyBWb3JzY2hhdWVuIHNjaHJlaWJlbiBrZWluZSBwZXJzw7ZubGljaGVuIERhdGVuIiwKICAic3RhdHVzIjogImZhaWxlZCIsCiAgImV4cGVjdGVkU3RhdHVzIjogInBhc3NlZCIsCiAgInF1aWV0V2luZG93TXMiOiAwLAogICJiZWZvcmVRdWlldFdpbmRvdyI6IHsKICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgImZvY3VzZWQiOiB0cnVlLAogICAgImhpZGRlbiI6IGZhbHNlLAogICAgImV4cGVjdGVkIjogIm9saXZhLTI4NGI2YTRlNjkyNzAyMzAiLAogICAgImNvbnRyb2xsZXIiOiBudWxsLAogICAgInJlZ2lzdHJhdGlvbiI6IHsKICAgICAgInNjb3BlIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My8iLAogICAgICAiYWN0aXZlIjogImFjdGl2YXRlZCIsCiAgICAgICJhY3RpdmVSZXBseSI6IHsKICAgICAgICAiaWQiOiAib2xpdmEtMjg0YjZhNGU2OTI3MDIzMCIsCiAgICAgICAgInZlcnNpb24iOiAiMC4xMS4wIgogICAgICB9CiAgICB9LAogICAgImNhY2hlQ291bnRzIjogewogICAgICAib2xpdmEtMjg0YjZhNGU2OTI3MDIzMCI6IDEwMgogICAgfSwKICAgICJvZmZsaW5lVGV4dCI6IFsKICAgICAgIk9mZmxpbmUtUGFrZXQgbm9jaCBuaWNodCB2b2xsc3TDpG5kaWcuIE1pdCBWZXJiaW5kdW5nIGVybmV1dCDDtmZmbmVuLiIKICAgIF0KICB9LAogICJzbmFwc2hvdCI6IHsKICAgICJ2aXNpYmlsaXR5IjogInZpc2libGUiLAogICAgImZvY3VzZWQiOiB0cnVlLAogICAgImhpZGRlbiI6IGZhbHNlLAogICAgImV4cGVjdGVkIjogIm9saXZhLTI4NGI2YTRlNjkyNzAyMzAiLAogICAgImNvbnRyb2xsZXIiOiBudWxsLAogICAgInJlZ2lzdHJhdGlvbiI6IHsKICAgICAgInNjb3BlIjogImh0dHA6Ly9sb2NhbGhvc3Q6NDE3My8iLAogICAgICAiYWN0aXZlIjogImFjdGl2YXRlZCIsCiAgICAgICJhY3RpdmVSZXBseSI6IHsKICAgICAgICAiaWQiOiAib2xpdmEtMjg0YjZhNGU2OTI3MDIzMCIsCiAgICAgICAgInZlcnNpb24iOiAiMC4xMS4wIgogICAgICB9CiAgICB9LAogICAgImNhY2hlQ291bnRzIjogewogICAgICAib2xpdmEtMjg0YjZhNGU2OTI3MDIzMCI6IDEwMgogICAgfSwKICAgICJvZmZsaW5lVGV4dCI6IFsKICAgICAgIk9mZmxpbmUtUGFrZXQgbm9jaCBuaWNodCB2b2xsc3TDpG5kaWcuIE1pdCBWZXJiaW5kdW5nIGVybmV1dCDDtmZmbmVuLiIKICAgIF0KICB9Cn0="
+              },
+              {
+                "name": "error-context",
+                "contentType": "text/markdown",
+                "path": "/home/runner/work/Faithpath-/Faithpath-/oliva/test-results/a51-tree-alle-sieben-Origi-974dc-en-keine-pers\u00f6nlichen-Daten/error-context.md"
+              }
+            ],
+            "errorLocation": {
+              "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/a51-tree.spec.ts",
+              "column": 81,
+              "line": 188
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "buildAndValidation": {
+    "remoteWebBuildIds": [
+      "oliva-284b6a4e69270230"
+    ],
+    "actionPinsObserved": {
+      "checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "setup-node": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "setup-python": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "upload-artifact": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+    },
+    "allFourPinsObserved": true,
+    "zeroVulnerabilitiesLogObserved": true,
+    "explicitDependencyAuditRan": true,
+    "typecheckCommandObserved": true,
+    "webPwaBuildCommandObserved": true,
+    "publicDomainCorpusCommandObserved": true,
+    "nativeDeviceTesting": false
+  },
+  "copiedReports": [
+    {
+      "report": "unit-results.json",
+      "sha256": "195881510ca34636aee136840649ad87aa8fc2988b3f1642a16421d188223fdd",
+      "bytes": 71790
+    },
+    {
+      "report": "e2e-results.json",
+      "sha256": "66387fd394ba1864be8e4b59797bc60634383c33a12ef8ec973943a44734b0ff",
+      "bytes": 414785
+    },
+    {
+      "report": "a51-asset-integrity.json",
+      "sha256": "8abac068c45ae4dddbc1c820943d83de98b856b0686eafb962925453f6eb0beb",
+      "bytes": 345
+    },
+    {
+      "report": "reader-anchor-synchronization.json",
+      "sha256": "da0e67409432ec5bbc2f0d243e6c3f74a4a8ae805ecd067c684e9222cd2feb53",
+      "bytes": 290
+    }
+  ],
+  "runtimeSha256": "5f0789aef525e68db2b4b841c2fa4bf1f9f74283fae6a3ed055d5eea2e2eb134",
+  "runtimeInputs": 300,
+  "runtimeUnchangedFromImmutable011": true,
+  "originalReleaseTag": "oliva-v0.11.0",
+  "originalReleaseCiRun": 42586789188,
+  "originalReleaseCiConclusion": "failure",
+  "originalReleaseCiUnchanged": true,
+  "noTagCreated": true,
+  "noAppDeployment": true,
+  "qualityVerified": false
+}

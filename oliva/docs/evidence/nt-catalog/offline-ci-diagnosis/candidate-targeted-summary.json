@@ -1,0 +1,32 @@
+{
+  "completedAt": "2026-11-09T19:14:05.393Z",
+  "actualCoreAfterTests": "oliva-80005b3c1d2e2eef",
+  "expectedCore": "oliva-80005b3c1d2e2eef",
+  "stats": {
+    "startTime": "2026-11-09T19:13:12.761Z",
+    "duration": 22575.956,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "ein unkontrolliertes Dokument entdeckt den echten aktiven Worker vor dem Ende einer offenen Registrierung",
+      "status": "passed",
+      "retry": 0,
+      "durationMs": 7844
+    },
+    {
+      "title": "eine offene Registrierung und eine offene Suche beenden die Prüfung weiterhin endlich",
+      "status": "passed",
+      "retry": 0,
+      "durationMs": 12643
+    }
+  ],
+  "historicalCiRun": 42629068592,
+  "historicalCiStillFailed": true,
+  "historicalTriggerProven": false,
+  "noTimeoutIncrease": true,
+  "noRetriesOrSkips": true
+}

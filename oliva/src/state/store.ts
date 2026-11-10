@@ -42,6 +42,16 @@ import {
   changeInvitationControl,
   type Invitation,
 } from "../features/invitations/model";
+import {
+  saveNtAnswer,
+  finishNtChapter,
+  rememberNtPosition,
+  chapterSetHash,
+  extractLegacyNtCompletions,
+  appendLegacyNtCompletions,
+} from "../features/quiz/model";
+import { ntPositionSchema, type NtPosition } from "../features/quiz/state-schema";
+import { parseFaithpath } from "../features/imports/source";
 
 export type Store = {
   data: AppData;
@@ -83,6 +93,24 @@ export type Store = {
   rememberReadingPosition: (
     position: ReadingPosition | null,
     reference: Reference,
+  ) => Promise<boolean>;
+  saveNtResponse: (
+    questionId: string,
+    displayedHash: string,
+    choice: number,
+    expectedStamp: string | null,
+  ) => Promise<boolean>;
+  completeNtStudy: (
+    book: string,
+    chapter: number,
+    displayedSetHash: string,
+    expectedStamp: string | null,
+  ) => Promise<boolean>;
+  rememberNtStudyPosition: (position: NtPosition) => Promise<boolean>;
+  activateArchivedNtProgress: (
+    importId: string,
+    sourceHash: string,
+    expectedRevision: number,
   ) => Promise<boolean>;
   waitForWrites: () => Promise<AppData>;
   refresh: () => Promise<AppData | null>;
@@ -130,7 +158,7 @@ export const useApp = create<Store>((set, get) => {
     }
   }
   const persist = (
-    fn: (d: AppData) => void,
+    fn: (d: AppData) => void | boolean,
     options: WriteOptions = {},
     updateGrowth = true,
     guard: (data: AppData) => boolean = () => true,
@@ -141,7 +169,9 @@ export const useApp = create<Store>((set, get) => {
       try {
         const current = get().data,
           next = cloneData(current);
-        fn(next);
+        // Only explicit metadata writers return false for a validated no-op.
+        // They still execute their stale-state guards before this early exit.
+        if (fn(next) === false) return true;
         if (updateGrowth) grow(next);
         next.revision = current.revision + 1;
         dataSchema.parse(next);
@@ -343,6 +373,98 @@ export const useApp = create<Store>((set, get) => {
         (d) =>
           sameReadingScope(d.reading, reference) &&
           !samePosition(d.readingPosition, position),
+      ),
+    saveNtResponse: (questionId, displayedHash, choice, expectedStamp) =>
+      action(false, async () => {
+        // Load the large source bank only for a deliberate study action.
+        const { ntQuestion } = await import("../features/quiz/catalog");
+        const question = ntQuestion(questionId);
+        if (!question || question.hash !== displayedHash)
+          throw new Error(
+            "Diese Fragenfassung ist nicht mehr aktuell. Öffne die Fragen erneut; dein bisheriger Stand bleibt erhalten.",
+          );
+        return persist(
+          (d) =>
+            saveNtAnswer(
+              d.ntStudy,
+              question,
+              choice,
+              expectedStamp,
+              new Date().toISOString(),
+            ),
+          {},
+          false,
+        );
+      }),
+    completeNtStudy: (book, chapter, displayedSetHash, expectedStamp) =>
+      action(false, async () => {
+        const { ntChapter } = await import("../features/quiz/catalog");
+        const source = ntChapter(book, chapter);
+        if (!source || chapterSetHash(source) !== displayedSetHash)
+          throw new Error(
+            "Dieser Fragensatz ist nicht mehr aktuell. Öffne das Kapitel erneut; dein bisheriger Stand bleibt erhalten.",
+          );
+        return persist(
+          (d) =>
+            finishNtChapter(
+              d.ntStudy,
+              source,
+              expectedStamp,
+              new Date().toISOString(),
+            ),
+          {},
+          false,
+        );
+      }),
+    rememberNtStudyPosition: (position) =>
+      action(false, () => {
+        // Capture caller-owned input before an earlier queued write can yield.
+        const requested = ntPositionSchema.parse(position);
+        return persist(
+          (d) =>
+            rememberNtPosition(
+              d.ntStudy,
+              requested.book,
+              requested.chapter,
+              requested.index,
+            ),
+          {},
+          false,
+        );
+      }),
+    activateArchivedNtProgress: (importId, sourceHash, expectedRevision) =>
+      action(false, () =>
+        persist(
+          (d) => {
+            if (d.revision !== expectedRevision)
+              throw new Error(
+                "Dein Datenstand hat sich verändert. Prüfe die Archivvorschau bitte erneut.",
+              );
+            const receipt = d.imports.find(
+              (item) => item.id === importId && item.sourceHash === sourceHash,
+            );
+            if (!receipt)
+              throw new Error(
+                "Dieses Originalarchiv ist nicht mehr vorhanden.",
+              );
+            const source = parseFaithpath(receipt.sourceText);
+            if (
+              source.sourceHash !== sourceHash ||
+              source.fingerprint !== receipt.fingerprint
+            )
+              throw new Error(
+                "Die archivierte Quelle stimmt nicht mit ihrem Beleg überein.",
+              );
+            const { completions } = extractLegacyNtCompletions(
+              source.data.quiz,
+              receipt.id,
+              receipt.sourceHash,
+            );
+            return appendLegacyNtCompletions(d.ntStudy, completions);
+          },
+          {},
+          false,
+        ),
       ),
     waitForWrites: async () => {
       while (tail) await tail;

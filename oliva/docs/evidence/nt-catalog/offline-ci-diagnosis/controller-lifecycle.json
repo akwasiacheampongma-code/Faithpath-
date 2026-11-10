@@ -1,0 +1,271 @@
+{
+  "scope": "Frozen 0.11 dist, localhost:4186, actual Chromium force reload and real native registration; only returned registration promise held.",
+  "events": [
+    {
+      "type": "document-start",
+      "at": 104.19999998807907,
+      "epoch": 1794250957979,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null
+    },
+    {
+      "type": "register-start",
+      "at": 1524.2999999970198,
+      "epoch": 1794250959399,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null
+    },
+    {
+      "type": "register-native-resolved",
+      "at": 1594.5999999940395,
+      "epoch": 1794250959470,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null,
+      "installing": "installing"
+    },
+    {
+      "type": "product-worker-query",
+      "at": 3116.5,
+      "epoch": 1794250960992,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null,
+      "target": "installed"
+    },
+    {
+      "type": "product-worker-query",
+      "at": 3117.2999999970198,
+      "epoch": 1794250960992,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null,
+      "target": "activating"
+    },
+    {
+      "type": "controllerchange",
+      "at": 3120.8999999910593,
+      "epoch": 1794250960996,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": "activating"
+    },
+    {
+      "type": "product-worker-query",
+      "at": 3121.199999988079,
+      "epoch": 1794250960996,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": "activating",
+      "target": "activating"
+    },
+    {
+      "type": "product-worker-query",
+      "at": 3122.5,
+      "epoch": 1794250960998,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": "activated",
+      "target": "activated"
+    },
+    {
+      "type": "product-worker-query",
+      "at": 3364.7999999970198,
+      "epoch": 1794250961240,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": "activated",
+      "target": "activated"
+    },
+    {
+      "type": "product-worker-query",
+      "at": 3367.699999988079,
+      "epoch": 1794250961243,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": "activated",
+      "target": "activated"
+    },
+    {
+      "type": "document-start",
+      "at": 40.29999999701977,
+      "epoch": 1794250961298,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null
+    },
+    {
+      "type": "register-start",
+      "at": 1019.7999999970198,
+      "epoch": 1794250962278,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null
+    },
+    {
+      "type": "product-worker-query",
+      "at": 1471.2000000029802,
+      "epoch": 1794250962729,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null,
+      "target": "activated"
+    },
+    {
+      "type": "register-native-resolved",
+      "at": 3517.5,
+      "epoch": 1794250964775,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null,
+      "active": "activated"
+    },
+    {
+      "type": "product-worker-query",
+      "at": 8160.0999999940395,
+      "epoch": 1794250969418,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null,
+      "target": "activated"
+    },
+    {
+      "type": "register-return-released",
+      "at": 8229.89999999106,
+      "epoch": 1794250969488,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null
+    },
+    {
+      "type": "product-worker-query",
+      "at": 8230.29999999702,
+      "epoch": 1794250969488,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null,
+      "target": "activated"
+    },
+    {
+      "type": "product-worker-query",
+      "at": 8249.59999999404,
+      "epoch": 1794250969507,
+      "url": "http://localhost:4186/einstellungen",
+      "visible": "visible",
+      "focused": true,
+      "controller": null,
+      "target": "activated"
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "seed-native-ready",
+      "url": "http://localhost:4186/einstellungen",
+      "visibility": "visible",
+      "focused": true,
+      "expected": "oliva-01c4b9f640bc0931",
+      "controller": {
+        "state": "activated",
+        "reply": {
+          "id": "oliva-01c4b9f640bc0931",
+          "version": "0.11.0"
+        }
+      },
+      "registration": {
+        "active": "activated",
+        "reply": {
+          "id": "oliva-01c4b9f640bc0931",
+          "version": "0.11.0"
+        }
+      },
+      "footer": [
+        "Für den Offline-Neustart bereit."
+      ],
+      "cacheCounts": {
+        "oliva-01c4b9f640bc0931": 102
+      }
+    },
+    {
+      "label": "forced-reload-native-document",
+      "url": "http://localhost:4186/einstellungen",
+      "visibility": "visible",
+      "focused": true,
+      "expected": "oliva-01c4b9f640bc0931",
+      "controller": null,
+      "registration": {
+        "active": "activated",
+        "reply": {
+          "id": "oliva-01c4b9f640bc0931",
+          "version": "0.11.0"
+        }
+      },
+      "footer": [
+        "Offline-Paket wird vorbereitet …"
+      ],
+      "cacheCounts": {
+        "oliva-01c4b9f640bc0931": 102
+      }
+    },
+    {
+      "label": "after-finite-retries",
+      "url": "http://localhost:4186/einstellungen",
+      "visibility": "visible",
+      "focused": true,
+      "expected": "oliva-01c4b9f640bc0931",
+      "controller": null,
+      "registration": {
+        "active": "activated",
+        "reply": {
+          "id": "oliva-01c4b9f640bc0931",
+          "version": "0.11.0"
+        }
+      },
+      "footer": [
+        "Offline-Paket noch nicht vollständig. Mit Verbindung erneut öffnen."
+      ],
+      "cacheCounts": {
+        "oliva-01c4b9f640bc0931": 102
+      }
+    },
+    {
+      "label": "after-native-registration-release",
+      "url": "http://localhost:4186/einstellungen",
+      "visibility": "visible",
+      "focused": true,
+      "expected": "oliva-01c4b9f640bc0931",
+      "controller": null,
+      "registration": {
+        "active": "activated",
+        "reply": {
+          "id": "oliva-01c4b9f640bc0931",
+          "version": "0.11.0"
+        }
+      },
+      "footer": [
+        "Für den Offline-Neustart bereit."
+      ],
+      "cacheCounts": {
+        "oliva-01c4b9f640bc0931": 102
+      }
+    }
+  ]
+}

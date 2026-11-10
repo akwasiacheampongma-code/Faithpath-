@@ -24,7 +24,13 @@ const noteCard = (page: Page) => visible(page, "invitation-note:n1");
 /** Synthetic local history, independent of the app decoder. No real user data. */
 function fixture(): AppData {
   return {
-    version: 7,
+    version: 8,
+    ntStudy: {
+      answers: {},
+      completions: {},
+      legacyCompletions: [],
+      position: null,
+    },
     revision: 8,
     name: "Ada",
     onboarded: true,
@@ -138,7 +144,7 @@ async function seed(
   const data = fixture();
   data.invitations.enabled = options.enabled ?? false;
   options.change?.(data);
-  const { invitations, ...old } = data;
+  const { invitations, ntStudy, ...old } = data;
   const raw = {
     storageVersion: 1,
     data: options.legacy ? { ...old, version: 6 } : data,
@@ -149,7 +155,7 @@ async function seed(
   return { data, raw };
 }
 function personalFields(data: any) {
-  const { invitations, revision, version, ...personal } = data;
+  const { invitations, ntStudy, revision, version, ...personal } = data;
   return personal;
 }
 async function unchangedExperience(page: Page, before: AppData) {
@@ -171,7 +177,7 @@ async function unchangedExperience(page: Page, before: AppData) {
     expect(data[key], key).toEqual(before[key]);
 }
 
-test("V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt V7 und erschließt die Startseiteneinladung", async ({
+test("V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt den aktuellen V8-Stand und erschließt die Startseiteneinladung", async ({
   page,
 }) => {
   const { raw } = await seed(page, { legacy: true });
@@ -192,7 +198,7 @@ test("V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges O
     .poll(async () => (await localData(page)).invitations.enabled)
     .toBe(true);
   const written = await localData(page);
-  expect(written.version).toBe(7);
+  expect(written.version).toBe(8);
   expect(written.revision).toBe(raw.data.revision + 1);
   expect(personalFields(written)).toEqual(personalFields(raw.data));
   await page.goto("/");

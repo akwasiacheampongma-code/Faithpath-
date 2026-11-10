@@ -49,6 +49,25 @@ export default function Sources() {
           </T>
         </Card>
         <Card style={{ gap: 13 }}>
+          <T variant="heading">Fragen zum Neuen Testament</T>
+          <T>
+            Die 1.300 Verständnisfragen für alle 260 Kapitel des Neuen
+            Testaments stammen unverändert aus der FaithPath-Vorarbeit. Fragen,
+            vier Antwortmöglichkeiten, Lösungsschlüssel und Erklärungen wurden
+            mit dem dortigen Finalmaster abgeglichen. Diese Texte sind
+            redaktionelle Inhalte und vom Bibeltext getrennt.
+          </T>
+          <T style={{ fontSize: 12, color: t.muted }}>
+            Die ursprüngliche redaktionelle Freigabe ist dokumentiert. Eine
+            unabhängige theologische Prüfung und eine allgemeine Lizenz zur
+            öffentlichen Weiterverwendung werden daraus nicht abgeleitet.
+            Unterschiedliche christliche Auslegungen können Fragen aufwerfen.
+          </T>
+          <Button kind="secondary" onPress={() => router.push("/verstehen")}>
+            NT-Fragen entdecken
+          </Button>
+        </Card>
+        <Card style={{ gap: 13 }}>
           <T variant="heading">Die Bildwelt</T>
           <T>
             Die Pilotbilder wurden mit OpenAI-Bildgenerierung für dieses Projekt
@@ -58,9 +77,10 @@ export default function Sources() {
           </T>
           <T style={{ fontSize: 12, color: t.muted }}>
             Landschaft von Galiläa · Boot nach dem Sturm (Markus 4,35–41) · ein
-            Garten als Deutung zu Genesis · Noah · Abraham · David vor Goliath · Jesu Geburt nach
-            Lukas · Ostermorgen nach Markus. Visuelle Pilotprüfung erfolgt;
-            historische und theologische Veröffentlichungsgates sind offen.
+            Garten als Deutung zu Genesis · Noah · Abraham · David vor Goliath ·
+            Jesu Geburt nach Lukas · Ostermorgen nach Markus. Visuelle
+            Pilotprüfung erfolgt; historische und theologische
+            Veröffentlichungsgates sind offen.
           </T>
         </Card>
         <Card style={{ gap: 13 }}>
@@ -78,9 +98,9 @@ export default function Sources() {
             Römer sind der Bogen als Brücke und der Olivenzweig freie
             künstlerische Deutungen von Verbindung und Frieden; die verlinkten
             Verse beschreiben diese Gegenstände nicht. Die kompakte
-            Vektorfamilie bleibt erhalten. Goldene Materialeinlagen und
-            Pflanzen sind Gestaltung; Lesespuren werden getrennt aus
-            bestätigten Kapiteln berechnet. Unabhängige Fachfreigaben stehen aus.
+            Vektorfamilie bleibt erhalten. Goldene Materialeinlagen und Pflanzen
+            sind Gestaltung; Lesespuren werden getrennt aus bestätigten Kapiteln
+            berechnet. Unabhängige Fachfreigaben stehen aus.
           </T>
           <T style={{ fontSize: 12, color: t.muted }}>
             Epheser 6,17 ist die biblische Anregung für das Schwert als Symbol

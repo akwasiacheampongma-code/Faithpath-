@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-11-09T19:01:24.205343+00:00",
+  "coreBuild": "oliva-90d58a6a170aa170",
+  "packageVersion": "0.11.0 development tree with V8; not a new released version",
+  "localHttp": true,
+  "routes": "nt-archive.spec.ts tests against localhost:4173",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 2171,
+      "sha256": "c685e0b9d0a54c4f5bcd6adc585a5d7730f5b37d5e805e7991aa1e607e4a2118",
+      "httpStatus": 200,
+      "httpByteExact": true
+    },
+    {
+      "path": "sw.js",
+      "bytes": 10268,
+      "sha256": "59e20fe38e2632b8960c0208ea586fcd08a24f364e086031b25516bd091d39ea",
+      "httpStatus": 200,
+      "httpByteExact": true
+    },
+    {
+      "path": "manifest.webmanifest",
+      "bytes": 588,
+      "sha256": "89e1fa799ec6a3daad16050e11ed5a337c60fa67665cd0cd5b5cac1789521cc6",
+      "httpStatus": 200,
+      "httpByteExact": true
+    },
+    {
+      "path": "_expo/static/js/web/[id]-7743e60d3a8bd2ff6d005e871de77d96.js",
+      "bytes": 8608,
+      "sha256": "a03ab8906feff8707cb93c704de6cbfdd11e71c4e903b83633485633c19e790a",
+      "httpStatus": 200,
+      "httpByteExact": true
+    },
+    {
+      "path": "_expo/static/js/web/__common-25eb1a732e3574d28a6892e2382b5fca.js",
+      "bytes": 6488862,
+      "sha256": "be1672018cda7b9fc63bcb080295cbe8b3aa213f754844155d1340ee614b20f2",
+      "httpStatus": 200,
+      "httpByteExact": true
+    },
+    {
+      "path": "_expo/static/js/web/importieren-a8d9a130cc18d02841d1b6d5009f86a0.js",
+      "bytes": 9302,
+      "sha256": "6a6d7d5bd064690721a080d2a239985eabc5b48b0d2b674c04ca18af54babeb0",
+      "httpStatus": 200,
+      "httpByteExact": true
+    }
+  ],
+  "noDeployment": true
+}

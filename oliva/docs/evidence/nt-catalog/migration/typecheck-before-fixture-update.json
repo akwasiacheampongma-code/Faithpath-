@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-11-09T13:54:29.250018+00:00",
+  "command": "npm run typecheck",
+  "exitCode": 2,
+  "scope": "Current shared working tree, including concurrent integration files; not a clean global pass.",
+  "diagnostics": [
+    "tests/e2e/invitations.spec.ts(27,5): TS2322 Type 7 is not assignable to type 8 (predecessor fixture).",
+    "tests/nt-import.test.ts(186,26): TS2352 quiz fixture cast requires an intermediate unknown cast."
+  ],
+  "migrationOwnedFilesHaveReportedTypeErrors": false,
+  "fullBuildTested": false,
+  "browserTested": false,
+  "physicalDeviceTested": false
+}

@@ -1,0 +1,126 @@
+{
+  "checkedAt": "2026-11-09T19:12:36.735070+00:00",
+  "core": "oliva-80005b3c1d2e2eef",
+  "stats": {
+    "startTime": "2026-11-09T19:09:36.804Z",
+    "duration": 169290.802,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "an own confirmed answer reconciles after leaving while its real commit acknowledgement is pending",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4893
+        }
+      ]
+    },
+    {
+      "title": "an own confirmed question move restores the visible question after a pending-commit detour",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4972
+        }
+      ]
+    },
+    {
+      "title": "a completion acknowledged away from the study view is shown on return without another completion write",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 7562
+        }
+      ]
+    },
+    {
+      "title": "NT discovery covers all 27 books and opens original questions without creating personal records",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 4701
+        }
+      ]
+    },
+    {
+      "title": "an incorrect answer saves the exact source, survives reload and can be changed without altering its original date",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 6222
+        }
+      ]
+    },
+    {
+      "title": "all five viewed questions may finish with wrong answers, and resume the exact last question without reading or growth",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 7131
+        }
+      ]
+    },
+    {
+      "title": "skipping questions remembers position but cannot create a completion",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 67065
+        }
+      ]
+    },
+    {
+      "title": "a real second-tab conflict keeps the local choice until the saved answer is deliberately accepted",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 14057
+        }
+      ]
+    },
+    {
+      "title": "a new NT chapter and the entire question bank work on first offline visit and after restart",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 8688
+        }
+      ]
+    },
+    {
+      "title": "keyboard answers, small-screen light mode, large-screen dark mode and invalid routes stay accessible",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "retry": 0,
+          "duration": 39753
+        }
+      ]
+    }
+  ],
+  "noSkippedFlakyOrRetried": true,
+  "scope": "Local Chromium only. No hosted, simulator or physical device checks."
+}

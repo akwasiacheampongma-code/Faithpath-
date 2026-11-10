@@ -53,7 +53,7 @@ test("Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten", a
   expect(await stored(page)).toEqual(before);
   expect(await stored(page, "before-faithpath-import")).toBeUndefined();
   await expect(
-    page.getByText("1 Vorhaben · 2 Gedanken · 2 Versmarkierungen · 1 Kapitel", {
+    page.getByText("1 Vorhaben · 2 Gedanken · 2 Versmarkierungen · 1 Kapitel · 0 historische NT-Fragenabschlüsse", {
       exact: true,
     }),
   ).toBeVisible();

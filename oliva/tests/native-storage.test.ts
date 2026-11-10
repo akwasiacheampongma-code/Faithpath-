@@ -55,6 +55,7 @@ describe("Native SQLite-Adapter mit realer SQL-Engine", () => {
         readingPosition,
         retainedReviewGrowth,
         invitations,
+        ntStudy,
         ...fields
       } = initialData(),
       old = { ...fields, version: 2, name: "Ada", revision: 7 };
@@ -66,7 +67,13 @@ describe("Native SQLite-Adapter mit realer SQL-Engine", () => {
     const data = await storage.readData();
     expect(data).toEqual({
       ...old,
-      version: 7,
+      version: 8,
+      ntStudy: {
+        answers: {},
+        completions: {},
+        legacyCompletions: [],
+        position: null,
+      },
       invitations: { enabled: false, snoozed: {}, dismissed: {} },
       retainedReviewGrowth: { reflections: 0, actions: 0 },
       imports: [],

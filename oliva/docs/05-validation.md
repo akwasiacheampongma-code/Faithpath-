@@ -1,8 +1,18 @@
 # Qualität und Abnahme
 
-Dokumentationsstand: 08.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
+Dokumentationsstand: 10.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
 
-## Aktueller Nachweis 0.11
+## Aktueller Nachweis 0.12
+
+**225/225 Fachtests und ein einzelner vollständiger 108/108-Browserlauf bestanden**, ohne Skips, instabile Fälle oder Wiederholungen. Typecheck, Web-/PWA-Build, Inhalts- und Provenienzprüfungen sowie das Audit mit 0 Funden sind erfolgreich. Kern `oliva-80005b3c1d2e2eef`, Runtime-Digest `00acc78da7d6268326b68fce0906ffa67d32c337240efbd8f59490e8d839590a` über 313 unveränderte Eingaben. [Gesamtnachweis](evidence/nt-catalog/validation-summary.json), [Fachtests](evidence/nt-catalog/unit-results.json), [vollständiger Browserlauf](evidence/nt-catalog/e2e-results.json).
+
+Der erste Gesamtversuch mit 107/108 bleibt erhalten: Nur eine veraltete exakte Import-Testerwartung passte nicht zur beabsichtigten neuen Anzeige. Nach reiner Testkorrektur besteht der vollständige Lauf am unveränderten Produktbuild. Die historischen roten 0.11-CI-Läufe werden nicht umgedeutet.
+
+Der reale 0.11→0.12-Wechsel bewahrt vier rohe V7-Datensätze bis zur ausdrücklichen Aktion. Der erste NT-Commit ändert nur Version, Revision und `ntStudy`; die drei Nicht-main-Records bleiben auch nach historischer Aktivierung exakt. Export und Wiederherstellungsvorschau sind geprüft, keine Wiederherstellung angewendet. Beide nativen Debugexports enthalten den gesamten 1.300er Katalog statisch feldgleich. [Updatebeleg](evidence/nt-catalog/upgrade/oliva-80005b3c1d2e2eef/verification.json), [native Belege](evidence/nt-catalog/native/README.md).
+
+Private Bereitstellung seit **10.11.2026, 03:51:05 UTC**: 24 App-Routen und 107 App-Dateien geprüft (106 Hashvergleiche, Index-HTML separat als App-Shell); 42 Review-Dateien bytegenau; anonym 401, Eigentümerzugriff unverändert. [Deployment](evidence/nt-catalog/private-deployment.json), [HTTP-Abgleich](evidence/nt-catalog/private-http-check.json), [Zugangspolitik](evidence/nt-catalog/private-access-policy.json). Der erste Hostingversuch lieferte für einen Expo-Router-PNG-Pfad eine HTML-Shell statt des Bildes. Dieser HTTP-Fehler und das erste Paket bleiben unter `before-vendor-host-fix/` erhalten. Ausschließlich das Hostingpaket wurde auf den vorhandenen Vendor-Alias samt URI-Umschreibung angepasst; der Produktkern blieb unverändert. Der anschließende vollständige HTTP-Abgleich ist der hier genannte Erfolgsnachweis. Native Nachweise betreffen JavaScript und Assetbytes einschließlich des vollständigen statischen Katalogabgleichs. Geräte-, Simulator-, Decoder-, Screenreader-, Energie-, Speicher- und signierte Installationstests sind damit nicht durchgeführt. Der eigenständige 0.12-Quellcheckpoint mit Tag, ZIP und SHA-256 sowie die beauftragte GitHub-Sicherung folgen nach diesem Dokumentcheckpoint. Deren noch nicht bestätigte Kennungen werden nicht vorweggenommen; die tatsächliche neue Remote-CI wird separat geprüft.
+
+## Historischer Nachweis 0.11
 
 **168/168 Fachtests und ein einzelner vollständiger 92/92-Browserlauf erfolgreich**, ohne Skip/Flaky/Wiederholung. Beide nativen JS-/Assetexports erfolgreich, Runtime-Inputs unverändert. Echter 0.10→0.11-PWA-Wechsel bewahrt alle vier Rohrecords; neuer Reader/Lesefokus/Restart und alter kanonischer Anker sind offline geprüft. Seit 09.11.2026, 08:20:19 UTC eigentümerprivat bereitgestellt; tatsächliche HTTP-/Publikumsprüfung erfolgreich. [Bericht](21-reader-flow-and-focus.md), [Rohbelege](evidence/reader-flow/validation-summary.json). Native Geräte-/Textlayout-/Screenreaderabnahme bleibt offen. Die folgenden Abschnitte sind historische Zwischenstände ihrer Versionen.
 

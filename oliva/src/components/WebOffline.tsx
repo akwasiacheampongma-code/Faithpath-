@@ -130,6 +130,13 @@ export function WebOffline() {
         worker.removeEventListener("statechange", changed);
       installingWorkers.clear();
     }
+    function attachRegistration(next: ServiceWorkerRegistration) {
+      unwatch();
+      registration = next;
+      registration.addEventListener("updatefound", watch);
+      watch();
+      void refresh();
+    }
     async function register() {
       if (!active) return;
       if (document.visibilityState === "hidden") {
@@ -143,20 +150,31 @@ export function WebOffline() {
       // With no controller, the same finite retries end honestly while the
       // actual registration continues. A later activation can still recover.
       void refresh();
+      let nativeRegistrationApplied = false;
+      // A force-reloaded document can have no controller even though a complete
+      // active registration already supports its next offline navigation. Find
+      // that real registration independently; a pending lookup must not gate
+      // controller verification or its finite retry path.
+      if (!navigator.serviceWorker.controller && !registration?.active) {
+        void navigator.serviceWorker.getRegistration().then((existing) => {
+          if (
+            !existing || !active || request !== registrationRequest ||
+            nativeRegistrationApplied
+          ) return;
+          attachRegistration(existing);
+        }).catch(() => {});
+      }
       try {
         const next = await navigator.serviceWorker.register("/sw.js", {
           updateViaCache: "none",
         });
         if (!active || request !== registrationRequest) return;
-        unwatch();
-        registration = next;
-        registration.addEventListener("updatefound", watch);
-        watch();
-        void registration.update().catch(() => {});
-        void refresh();
+        nativeRegistrationApplied = true;
+        attachRegistration(next);
+        void next.update().catch(() => {});
       } catch {
         if (active && request === registrationRequest) {
-          if (navigator.serviceWorker.controller) void refresh();
+          if (navigator.serviceWorker.controller || registration?.active) void refresh();
           else {
             ++sequence.current;
             cancel();

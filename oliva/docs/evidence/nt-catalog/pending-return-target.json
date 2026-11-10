@@ -1,0 +1,33 @@
+{
+  "testedAt": "2026-11-09T19:09:46.352277+00:00",
+  "url": "http://localhost:4173/verstehen/MRK?chapter=4",
+  "core": "oliva-80005b3c1d2e2eef",
+  "manifestSha256": "89e1fa799ec6a3daad16050e11ed5a337c60fa67665cd0cd5b5cac1789521cc6",
+  "manifest": {
+    "id": "/",
+    "name": "OLIVA \u00b7 Raum f\u00fcr deinen Glauben",
+    "short_name": "OLIVA",
+    "description": "Lesen, verstehen, wachsen. Dein pers\u00f6nlicher Raum f\u00fcr die Bibel.",
+    "lang": "de",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#f8f7f1",
+    "theme_color": "#314c3b",
+    "icons": [
+      {
+        "src": "/icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
+      }
+    ]
+  },
+  "scope": "Independent local Chromium tests; no hosted or native device test"
+}

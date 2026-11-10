@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "scope": "Follow-up schema hardening only; original catalog words, options, order, IDs and generated artifacts remain unchanged.",
+  "changes": {
+    "question_id_exact_length": 7,
+    "index_question_id_exact_length": 7,
+    "maximum_text_length": 10000,
+    "strings_preserved_without_trimming": true
+  },
+  "commands": [
+    {
+      "command": "npx vitest run tests/nt-catalog.test.ts",
+      "exit_code": 0,
+      "test_files_passed": 1,
+      "tests_passed": 8,
+      "duration_seconds": 7.3,
+      "output": "schema-hardening-unit-tests.log"
+    },
+    {
+      "command": "npx tsc --noEmit --pretty false",
+      "exit_code": 0,
+      "output": "schema-hardening-typecheck.log"
+    },
+    {
+      "command": "python3 scripts/import-nt-catalog.py --check",
+      "exit_code": 0,
+      "output": "schema-hardening-catalog-check.log"
+    }
+  ],
+  "regressions_checked": {
+    "newline_lf_and_crlf_ids_rejected_by_index_source_snapshot_and_rehashed_question": true,
+    "unknown_ids_rejected": true,
+    "text_at_10000_accepted_and_leading_trailing_spaces_preserved": true,
+    "text_at_10001_rejected_with_too_big_issue_in_snapshot_and_source_dtos": true,
+    "all_1300_original_source_and_master_questions_unchanged": true,
+    "all_1304_reference_ranges_still_valid": true,
+    "all_1300_python_js_node_hashes_match": true
+  },
+  "catalog_sha256": "850272e6cd3a22bdb50191e6e20f0ab9033377e7901f47fbfe6ec4c3eb067c7b",
+  "previous_evidence": "Prior unit-tests.log, typecheck.log, validations.json and import checks were preserved; this follow-up uses separate filenames."
+}

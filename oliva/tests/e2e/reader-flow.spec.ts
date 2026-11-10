@@ -7,7 +7,7 @@ import type { AppData } from "../../src/state/model";
 import { localData } from "./persistence";
 
 test.use({ screenshot: "only-on-failure" });
-const evidence = process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/reader-flow";
+const evidence = `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/reader-flow`;
 // Read the licensed canonical fixture independently of the app's renderer and
 // repository module (Node's JSON loader differs from Metro's browser loader).
 const bible = JSON.parse(

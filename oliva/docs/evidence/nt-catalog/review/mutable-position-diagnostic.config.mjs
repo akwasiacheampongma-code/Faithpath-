@@ -1,0 +1,1 @@
+export default { resolve: { alias: { vitest: "/workspace/faithpath-next/node_modules/vitest/dist/index.js" } }, test: { include: ["/tmp/nt-review.test.ts"], environment: "node", clearMocks: true, globals: true } };

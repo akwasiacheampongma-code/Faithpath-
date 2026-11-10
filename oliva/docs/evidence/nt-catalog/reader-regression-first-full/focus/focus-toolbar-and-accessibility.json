@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-11-09T19:27:21.370Z",
+  "source_build_id": "oliva-80005b3c1d2e2eef",
+  "physicalDeviceTest": false,
+  "method": "Headless Chromium, real DOM scrolling/focus and real IndexedDB; synthetic personal text",
+  "viewport": {
+    "width": 320,
+    "height": 844
+  },
+  "observations": [
+    {
+      "theme": "light",
+      "toolbarBeforeScroll": {
+        "x": 106.8125,
+        "y": 4,
+        "width": 193.1875,
+        "height": 50
+      },
+      "toolbarAfterScroll": {
+        "x": 106.8125,
+        "y": 4,
+        "width": 193.1875,
+        "height": 50
+      },
+      "scroll": {
+        "top": 6814,
+        "height": 7577,
+        "viewport": 763
+      },
+      "axeViolations": [],
+      "exitMethod": "toolbar click"
+    },
+    {
+      "theme": "dark",
+      "toolbarBeforeScroll": {
+        "x": 106.8125,
+        "y": 4,
+        "width": 193.1875,
+        "height": 50
+      },
+      "toolbarAfterScroll": {
+        "x": 106.8125,
+        "y": 4,
+        "width": 193.1875,
+        "height": 50
+      },
+      "scroll": {
+        "top": 6814,
+        "height": 7577,
+        "viewport": 763
+      },
+      "axeViolations": [],
+      "exitMethod": "Escape"
+    }
+  ],
+  "focusPersistedAcrossReload": false,
+  "progressBefore": {
+    "readChapters": [],
+    "readPassages": [],
+    "readSteps": [],
+    "completedSteps": [],
+    "growthStage": 0,
+    "retainedReviewGrowth": {
+      "reflections": 0,
+      "actions": 0
+    }
+  },
+  "progressAfter": {
+    "readChapters": [],
+    "readPassages": [],
+    "readSteps": [],
+    "completedSteps": [],
+    "growthStage": 0,
+    "retainedReviewGrowth": {
+      "reflections": 0,
+      "actions": 0
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "version": "0.11.0",
+  "checkedAt": "2026-11-09T08:44:15.125677+00:00",
+  "repository": "akwasiacheampongma-code/Faithpath-",
+  "runId": 42586789188,
+  "runUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/42586789188",
+  "event": "push",
+  "headBranch": "feature/oliva-v011-reader-flow-20261109",
+  "headSha": "5e093ee3d35560e5d902ac6d743341ab16126fe2",
+  "expectedHeadSha": "5e093ee3d35560e5d902ac6d743341ab16126fe2",
+  "headMatchesVersionBackup": true,
+  "tag": "oliva-v0.11.0",
+  "tagMatchesHead": true,
+  "runStatus": "completed",
+  "runConclusion": "failure",
+  "runAttempt": 1,
+  "createdAt": "2026-11-09T08:33:19Z",
+  "completedAt": "2026-11-09T08:42:00Z",
+  "jobIds": [
+    129058427961
+  ],
+  "allJobsSuccessful": false,
+  "artifact": {
+    "id": 13659981325,
+    "name": "oliva-quality-5e093ee3d35560e5d902ac6d743341ab16126fe2",
+    "bytes": 9017993,
+    "githubDigest": "sha256:0968f30835f0aff05f368971ff317678735426a8ea53a36acb4d6ecaf6171804",
+    "downloadSha256": "0968f30835f0aff05f368971ff317678735426a8ea53a36acb4d6ecaf6171804",
+    "digestMatches": true,
+    "archiveCrcVerified": true,
+    "archiveEntries": 93,
+    "headMatches": true,
+    "zipStoredOutsideSource": true
+  },
+  "unit": {
+    "total": 168,
+    "passed": 168,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0,
+    "assertionStatuses": {
+      "passed": 168
+    },
+    "suiteStatuses": {
+      "passed": 21
+    },
+    "freshForRun": true,
+    "startTime": "2026-11-09T08:33:49.209000+00:00",
+    "report": "unit-results.json"
+  },
+  "browser": {
+    "total": 92,
+    "passed": 91,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0,
+    "singleFullGreenRun": false,
+    "freshForRun": true,
+    "durationMs": 452003.197,
+    "startTime": "2026-11-09T08:34:22.821Z",
+    "testStatuses": {
+      "expected": 91,
+      "unexpected": 1
+    },
+    "resultStatuses": {
+      "passed": 91,
+      "failed": 1
+    },
+    "attemptCounts": {
+      "1": 92
+    },
+    "retryValues": {
+      "0": 92
+    },
+    "errors": [],
+    "failures": [
+      {
+        "title": "Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar",
+        "file": "david-story.spec.ts",
+        "line": 101,
+        "status": "unexpected",
+        "results": [
+          {
+            "workerIndex": 1,
+            "parallelIndex": 0,
+            "status": "failed",
+            "duration": 11025,
+            "error": {
+              "message": "TypeError: Cannot read properties of null (reading 'width')",
+              "stack": "TypeError: Cannot read properties of null (reading 'width')\n    at /home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/david-story.spec.ts:135:24",
+              "location": {
+                "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/david-story.spec.ts",
+                "column": 24,
+                "line": 135
+              },
+              "snippet": "  133 |   await artworkReady(page);\n  134 |   const contextFrame = await page.getByTestId(`story-artwork-${david}`).filter({ visible: true }).boundingBox();\n> 135 |   expect(contextFrame!.width / contextFrame!.height).toBeCloseTo(3 / 2, 2);\n      |                        ^\n  136 |   await noOverflow(page);\n  137 |   await page.getByTestId(`story-card-${david}`).filter({ visible: true }).scrollIntoViewIfNeeded();\n  138 |   await page.getByTestId(`story-card-${david}`).filter({ visible: true }).screenshot({ path: `${screenshots}/david-context-390-light.png` });"
+            },
+            "errors": [
+              {
+                "location": {
+                  "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/david-story.spec.ts",
+                  "column": 24,
+                  "line": 135
+                },
+                "message": "TypeError: Cannot read properties of null (reading 'width')\n\n  133 |   await artworkReady(page);\n  134 |   const contextFrame = await page.getByTestId(`story-artwork-${david}`).filter({ visible: true }).boundingBox();\n> 135 |   expect(contextFrame!.width / contextFrame!.height).toBeCloseTo(3 / 2, 2);\n      |                        ^\n  136 |   await noOverflow(page);\n  137 |   await page.getByTestId(`story-card-${david}`).filter({ visible: true }).scrollIntoViewIfNeeded();\n  138 |   await page.getByTestId(`story-card-${david}`).filter({ visible: true }).screenshot({ path: `${screenshots}/david-context-390-light.png` });\n    at /home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/david-story.spec.ts:135:24"
+              }
+            ],
+            "stdout": [],
+            "stderr": [],
+            "retry": 0,
+            "startTime": "2026-11-09T08:38:25.115Z",
+            "annotations": [],
+            "attachments": [
+              {
+                "name": "screenshot",
+                "contentType": "image/png",
+                "path": "/home/runner/work/Faithpath-/Faithpath-/oliva/test-results/david-story-Geschichten-un-869cd-s-in-Hell-und-Dunkel-lesbar/test-failed-1.png"
+              },
+              {
+                "name": "error-context",
+                "contentType": "text/markdown",
+                "path": "/home/runner/work/Faithpath-/Faithpath-/oliva/test-results/david-story-Geschichten-un-869cd-s-in-Hell-und-Dunkel-lesbar/error-context.md"
+              }
+            ],
+            "errorLocation": {
+              "file": "/home/runner/work/Faithpath-/Faithpath-/oliva/tests/e2e/david-story.spec.ts",
+              "column": 24,
+              "line": 135
+            }
+          }
+        ]
+      }
+    ],
+    "report": "e2e-results.json"
+  },
+  "buildAndValidation": {
+    "typecheck": true,
+    "publicDomainCorpus": true,
+    "artProvenance": true,
+    "a51Checks": true,
+    "swordChecks": true,
+    "webPwaBuild": true,
+    "remoteWebBuildIds": [
+      "oliva-284b6a4e69270230"
+    ],
+    "explicitDependencyAuditRan": true,
+    "auditVulnerabilities": 0,
+    "auditThreshold": "moderate",
+    "actionPinsObserved": {
+      "checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "setup-node": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "setup-python": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "upload-artifact": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+    },
+    "oldNode20DeprecationWarningPresent": false,
+    "evidence": "job.log; composite quality job failed in browser test step"
+  },
+  "copiedReports": [
+    {
+      "report": "unit-results.json",
+      "sha256": "76d62c4b0943d85af79fe4db4e1ee8a32e38b77ffa9e468db2de04fd17a516a4",
+      "bytes": 71802
+    },
+    {
+      "report": "e2e-results.json",
+      "sha256": "4c611b184d9050c8e835726fad43c6c5488cbc946e5438b730b6ace7f194d00c",
+      "bytes": 118158
+    },
+    {
+      "report": "a51-asset-integrity.json",
+      "sha256": "e7be2300793cdf9d3608b0c26161198482d98cfc271886a9a81c8b203c61293e",
+      "bytes": 345
+    },
+    {
+      "report": "reader-anchor-synchronization.json",
+      "sha256": "23b1a098eda6fc36588ade5b2bc7ce8fec0a2d2ec8d065fa7b185768f553dab5",
+      "bytes": 290
+    }
+  ],
+  "qualityVerified": false,
+  "limitations": [
+    "Remote GitHub Actions Linux web/domain/persistence evidence only; no native device/simulator or private hosted Site browser verification.",
+    "This run failed and does not establish a full green CI acceptance.",
+    "No workflow rerun, deployment, merge, comment, release or tag mutation was performed."
+  ]
+}

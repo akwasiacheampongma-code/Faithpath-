@@ -36,6 +36,7 @@ runs:
       working-directory: ${{ env.OLIVA_PROJECT }}
       run: |
         npm run content:check
+        npm run content:nt
         npm run content:art
         npm run content:tree
         npm run content:swords

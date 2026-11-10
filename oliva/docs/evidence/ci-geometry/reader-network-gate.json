@@ -1,0 +1,43 @@
+{
+  "readerChunk": "http://localhost:4173/_expo/static/js/web/[book]-53933d83234c2d5c3fa19d986f4380aa.js",
+  "readerStatus": 200,
+  "lifecycle": [
+    "library-ready",
+    "reader-response-held",
+    "context-still-pending",
+    "reader-response-released",
+    "context-ready"
+  ],
+  "before": {
+    "url": "http://localhost:4173/bibel",
+    "frame": {
+      "x": 23,
+      "y": 1964,
+      "width": 344,
+      "height": 215
+    }
+  },
+  "whileHeld": {
+    "url": "http://localhost:4173/lesen/1SA?chapter=17&from=38&to=45&mode=deep",
+    "artwork": [
+      {
+        "busy": "false",
+        "frame": {
+          "width": 0,
+          "height": 0
+        },
+        "imageDecoded": true
+      }
+    ]
+  },
+  "after": {
+    "url": "http://localhost:4173/lesen/1SA?chapter=17&from=38&to=45&mode=deep",
+    "deepPressed": "true",
+    "frame": {
+      "x": 21,
+      "y": 701,
+      "width": 348,
+      "height": 232
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "preparedAt": "2026-11-09T19:06:27.198764+00:00",
+  "script": "scripts/offline-upgrade-nt.mjs",
+  "scriptSha256": "1de87af492fe091e2d08c7f891619f63bf6174e2198ccbc1ee1fe41301f9d7b8",
+  "syntaxCheck": {
+    "command": "node --check scripts/offline-upgrade-nt.mjs",
+    "exitCode": 0
+  },
+  "browserExecuted": false,
+  "simulatorExecuted": false,
+  "physicalDeviceExecuted": false,
+  "buildOrDistModified": false,
+  "originalV011HarnessUnchanged": true,
+  "originalV011HarnessSha256": "3d1e88cb11df1b932b0207f31af32c891aef1e6505d060f86b56637d1014e012",
+  "baseline": {
+    "path": "/workspace/oliva-v011-reader-flow-control-dist",
+    "version": "0.11.0",
+    "build": "oliva-01c4b9f640bc0931"
+  },
+  "target": "Read from actual supplied dist/sw.js and index.html; same-version/development candidate rejected",
+  "pending": "Root supplies and authorizes execution on the actual versioned NT candidate; no upgrade result exists yet",
+  "browserScopeWhenExecuted": {
+    "catalogSourceCountValidated": 1300,
+    "actualBrowserChapters": [
+      "MAT:1",
+      "REV:22"
+    ],
+    "all1300QuestionInteractions": false
+  },
+  "independentStaticReview": {
+    "concreteBugsFound": 0,
+    "browserExecuted": false,
+    "scopeLimit": "Source count1300; actual browser interactions onlyMAT1 andREV22, not all1300."
+  }
+}

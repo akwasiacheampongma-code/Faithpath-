@@ -1,0 +1,116 @@
+{
+  "version": "0.12.0",
+  "checkedAt": "2026-11-10T03:43:57.232Z",
+  "runtime_files_verified": 103,
+  "unchanged_runtime_asset_bytes": 102,
+  "rewritten_uri_files": 1,
+  "all_runtime_hashes_match": true,
+  "pwa_manifest_valid": true,
+  "icons_valid": true,
+  "cache_files_verified": 106,
+  "build_id": "oliva-c4a370d75d87d01f",
+  "app_routes_rewritten": true,
+  "source_build": "oliva-80005b3c1d2e2eef",
+  "source_validation": {
+    "version": "0.12.0",
+    "checkedAt": "2026-11-10T03:43:55.992002+00:00",
+    "allCoreChecksPassed": true,
+    "coreBuild": "oliva-80005b3c1d2e2eef",
+    "runtimeSourceDigest": {
+      "algorithm": "SHA256(sorted path + NUL + bytes + NUL); app/src/assets plus app/package/lock and A51/sword runtime manifests, including the Romans manifest and index",
+      "fileCount": 313,
+      "sha256": "00acc78da7d6268326b68fce0906ffa67d32c337240efbd8f59490e8d839590a"
+    },
+    "runtimeInputOrder": "native/runtime-inputs.json Python Path component order; path+NUL+bytes+NUL",
+    "unit": {
+      "total": 225,
+      "passed": 225,
+      "failed": 0,
+      "pending": 0
+    },
+    "browser": {
+      "total": 108,
+      "passed": 108,
+      "singleFullGreenRun": true,
+      "skipped": 0,
+      "flaky": 0,
+      "unexpected": 0,
+      "allResultsSingleAttempt": true
+    },
+    "targetedCandidateBrowser": {
+      "pendingAndStudy": 10,
+      "independentRegistrationLookup": 2,
+      "core": "oliva-80005b3c1d2e2eef"
+    },
+    "earlierDevelopmentBrowser": {
+      "study": 7,
+      "archives": 3,
+      "core": "oliva-90d58a6a170aa170",
+      "scope": "Unreleased development input bearing package0.11; no claim that immutable0.11 contains NT study."
+    },
+    "catalog": {
+      "books": 27,
+      "chapters": 260,
+      "questions": 1300,
+      "referenceRanges": 1304,
+      "originalWordsPreserved": true,
+      "bothNativeCatalogsDeepEqual": true
+    },
+    "dataVersion": 8,
+    "strictPreviousVersions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "privateDocumentVersion": 1,
+    "sqliteSchemaVersion": 3,
+    "indexedDbVersion": 1,
+    "realPreviousPwaUpgrade": {
+      "baseline": "0.11.0",
+      "target": "0.12.0",
+      "passed": true,
+      "rawRecordsExactUntilExplicitAction": 4,
+      "unchangedNonMainRecordsAfterNtActions": 3,
+      "firstNtCommitChangesOnlyVersionRevisionNtStudy": true,
+      "evidence": "upgrade/oliva-80005b3c1d2e2eef/verification.json"
+    },
+    "nativeJavaScriptAssetExports": {
+      "android": true,
+      "ios": true,
+      "all1300QuestionsPerPlatformStaticDeepEqual": true,
+      "deviceOrSimulator": false,
+      "evidence": "native/native-builds.json"
+    },
+    "dependencyAuditVulnerabilities": 0,
+    "originalFaithpathMaterializedFilesVerified": 390,
+    "privateDeployment": {
+      "status": "not yet performed"
+    },
+    "githubBackup": {
+      "status": "not yet performed"
+    },
+    "historicalCi": {
+      "original011Run": 42586789188,
+      "original011Browser": "91/92",
+      "testOnlyValidationRun": 42629068592,
+      "testOnlyBrowser": "92/93",
+      "bothRemainFailure": true,
+      "exactHistoricalTriggersNotReproduced": true
+    },
+    "limitations": [
+      "No hosted CUA/browser tool exposed; local Chromium and package/HTTP checks are distinct.",
+      "No physical phone, simulator, native screenreader/decoder/line-event, signed installer, memory or energy testing.",
+      "Native JSON inspection is static and does not execute the React Native app.",
+      "Original multi-verse selection, dedicated copy action and full-chapter presentation of partial scopes remain outstanding.",
+      "The separate436-story catalog, further imagery and independent human/content review remain outstanding.",
+      "Auth/sync, live AI and audio are not connected; public product and rights reviews remain open.",
+      "No public website/store deployment, main merge, original FaithPath change or historical-tag mutation."
+    ]
+  },
+  "managed_sites_browser_qa": "unavailable: cua_repl.js not exposed",
+  "physical_phone_test": false
+}

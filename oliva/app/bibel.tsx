@@ -109,6 +109,13 @@ export default function Bible() {
             : "Eine Geschichte entdecken"}
         </Button>
         {showStory && <StoryLibrary />}
+        <Button
+          kind="ghost"
+          icon="book"
+          onPress={() => router.push("/verstehen")}
+        >
+          Fragen zum Neuen Testament
+        </Button>
       </View>
       <View style={{ flexDirection: "row", gap: 8, marginBottom: 15 }}>
         {[

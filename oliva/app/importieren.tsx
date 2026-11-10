@@ -192,7 +192,14 @@ export default function FaithpathImport() {
             <T>
               {plan.receipt.counts.paths} Vorhaben · {plan.receipt.counts.notes}{" "}
               Gedanken · {plan.receipt.counts.highlights} Versmarkierungen ·{" "}
-              {plan.receipt.counts.chapters} Kapitel
+              {plan.receipt.counts.chapters} Kapitel ·{" "}
+              {plan.ntCompletions.length} historische NT-Fragenabschlüsse
+            </T>
+            <T variant="small">
+              Ein historischer NT-Abschluss bedeutet: Die fünf Fragen des
+              Kapitels wurden in FaithPath angesehen. Einzelne Antworten sind
+              nicht überliefert. Diese Abschlüsse bleiben als Herkunftshinweis
+              sichtbar und erzeugen keinen Lese- oder Baumfortschritt.
             </T>
             <T variant="small">
               {plan.receipt.counts.mirrors} eindeutige Reflexionsspiegel
