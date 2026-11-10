@@ -1,0 +1,20 @@
+
+> faithpath@4.0.0 validate:at-rounds:test
+> node scripts/validate-at-rounds-test.mjs
+
+{
+  "scope": "TEST_FIXTURE_ONLY",
+  "status": "TEST_FIXTURE_TECHNICAL_PASS",
+  "question_count": 20,
+  "option_permutations": 16,
+  "coverage": {
+    "1KI:8": 6,
+    "2KI:15": 6
+  },
+  "human_approved": false,
+  "production_import_allowed": false,
+  "deploy_production": false,
+  "release_decision": "NO_GO",
+  "fixture_sha256": "08ce19855640b47b0419345fb58b29ddca466f1708b1b7bf021bad6691598285",
+  "source_commit": "7d20a62a3f016ea4218ff9d34c2486992e92cfdf"
+}

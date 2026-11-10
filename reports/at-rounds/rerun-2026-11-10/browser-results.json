@@ -1,0 +1,131 @@
+{
+  "browser": "Chromium/Linux",
+  "physical_iphone": "OPEN",
+  "tested_build": "FP4-20261109-G-AT-ROUNDS-TEST1",
+  "tested_build_hash": "c2765b0d4f0e0fa103e9b26f3f63ed60c7daf2cedf835cc6cc1ed735ea172452",
+  "tested_source_revision": {
+    "branch": "feature/at-chapter-quiz-rounds",
+    "commit": "2a8482a13679c91b0448143f139ab2200fe0126a",
+    "dirty": true
+  },
+  "captures": [
+    {
+      "book": "1KI",
+      "round": "A",
+      "question_id": "1270-Q5",
+      "reference": "1 Könige 8,9",
+      "route": "#chapter-quizzes/1KI/8?round=A&return=read%2F1KI%2F8%2Fl1912",
+      "screenshots": [
+        "1KI-A-1270-Q5-320-question.png",
+        "1KI-A-1270-Q5-320-answers.png",
+        "1KI-A-1270-Q5-390-question.png",
+        "1KI-A-1270-Q5-390-answers.png"
+      ]
+    },
+    {
+      "book": "1KI",
+      "round": "B",
+      "question_id": "1270-Q3",
+      "reference": "1 Könige 8,3",
+      "route": "#chapter-quizzes/1KI/8?round=B&return=read%2F1KI%2F8%2Fl1912",
+      "screenshots": [
+        "1KI-B-1270-Q3-320-question.png",
+        "1KI-B-1270-Q3-320-answers.png",
+        "1KI-B-1270-Q3-390-question.png",
+        "1KI-B-1270-Q3-390-answers.png"
+      ]
+    },
+    {
+      "book": "1KI",
+      "round": "B",
+      "question_id": "1273-Q3",
+      "reference": "1 Könige 8,35-36",
+      "route": "#chapter-quizzes/1KI/8?round=B&return=read%2F1KI%2F8%2Fl1912",
+      "screenshots": [
+        "1KI-B-1273-Q3-320-question.png",
+        "1KI-B-1273-Q3-320-answers.png",
+        "1KI-B-1273-Q3-390-question.png",
+        "1KI-B-1273-Q3-390-answers.png"
+      ]
+    },
+    {
+      "book": "2KI",
+      "round": "A",
+      "question_id": "1351-Q1",
+      "reference": "2 Könige 15,2",
+      "route": "#chapter-quizzes/2KI/15?round=A&return=chapter-quizzes%2F2KI",
+      "screenshots": [
+        "2KI-A-1351-Q1-320-question.png",
+        "2KI-A-1351-Q1-320-answers.png",
+        "2KI-A-1351-Q1-390-question.png",
+        "2KI-A-1351-Q1-390-answers.png"
+      ]
+    },
+    {
+      "book": "2KI",
+      "round": "B",
+      "question_id": "1351-Q3",
+      "reference": "2 Könige 15,3-4",
+      "route": "#chapter-quizzes/2KI/15?round=B&return=chapter-quizzes%2F2KI",
+      "screenshots": [
+        "2KI-B-1351-Q3-320-question.png",
+        "2KI-B-1351-Q3-320-answers.png",
+        "2KI-B-1351-Q3-390-question.png",
+        "2KI-B-1351-Q3-390-answers.png"
+      ]
+    },
+    {
+      "book": "2KI",
+      "round": "B",
+      "question_id": "1356-Q3",
+      "reference": "2 Könige 15,35",
+      "route": "#chapter-quizzes/2KI/15?round=B&return=chapter-quizzes%2F2KI",
+      "screenshots": [
+        "2KI-B-1356-Q3-320-question.png",
+        "2KI-B-1356-Q3-320-answers.png",
+        "2KI-B-1356-Q3-390-question.png",
+        "2KI-B-1356-Q3-390-answers.png"
+      ]
+    }
+  ],
+  "human_approved": false,
+  "production_import_allowed": false,
+  "deploy_production": false,
+  "results": [
+    {
+      "check": "reader-entry",
+      "status": "PASS"
+    },
+    {
+      "check": "1KI8-two-real-app-rounds",
+      "status": "PASS"
+    },
+    {
+      "check": "2KI15-two-rounds-and-protected-personal-data",
+      "status": "PASS",
+      "visited_ids": [
+        "1270-Q5",
+        "1271-Q5",
+        "1272-Q4",
+        "1274-Q1",
+        "1275-Q2",
+        "1270-Q3",
+        "1271-Q4",
+        "1273-Q3",
+        "1274-Q4",
+        "1275-Q6",
+        "1351-Q1",
+        "1352-Q1",
+        "1353-Q2",
+        "1354-Q2",
+        "1355-Q4",
+        "1351-Q3",
+        "1352-Q2",
+        "1353-Q3",
+        "1355-Q3",
+        "1356-Q3"
+      ]
+    }
+  ],
+  "page_errors": []
+}

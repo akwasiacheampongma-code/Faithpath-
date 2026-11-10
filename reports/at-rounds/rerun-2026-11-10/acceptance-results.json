@@ -1,0 +1,103 @@
+{
+  "browser": "Chromium/Linux",
+  "results": [
+    {
+      "check": "B gate, answer/cursor reload, back-forward and exact reader return",
+      "status": "PASS"
+    },
+    {
+      "check": "confirmed round-only reset, retained B answers, no automatic B start",
+      "status": "PASS"
+    },
+    {
+      "check": "already-running canonical quiz survives a fixture excursion",
+      "status": "PASS"
+    },
+    {
+      "check": "session quota failure never confirms an unsaved answer or changes personal data",
+      "status": "PASS"
+    },
+    {
+      "check": "corrupt fixture progress stays intact until a confirmed round reset",
+      "status": "PASS"
+    },
+    {
+      "check": "missing fixture / blocked session storage leave canonical app usable",
+      "status": "PASS"
+    },
+    {
+      "check": "invalid or editorial-draft routes cannot expose extra questions",
+      "status": "PASS"
+    },
+    {
+      "check": "responsive, 200% text, keyboard and axe on fixture screens",
+      "status": "PASS",
+      "viewports": [
+        {
+          "width": 320,
+          "height": 568,
+          "text_percent": 100,
+          "axe": {
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "width": 320,
+          "height": 568,
+          "text_percent": 200,
+          "axe": {
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "text_percent": 100,
+          "axe": {
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "text_percent": 200,
+          "axe": {
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "width": 1280,
+          "height": 900,
+          "text_percent": 100,
+          "axe": {
+            "violations": [],
+            "incomplete": []
+          }
+        },
+        {
+          "width": 1280,
+          "height": 900,
+          "text_percent": 200,
+          "axe": {
+            "violations": [],
+            "incomplete": []
+          }
+        }
+      ],
+      "themes": "Only the one palette present on f02106e; four-theme implementation absent",
+      "physical_iphone": "OPEN"
+    },
+    {
+      "check": "default build never loads or exposes fixture data; canonical reader/quiz remain usable",
+      "status": "PASS"
+    }
+  ],
+  "page_errors": [],
+  "human_approved": false,
+  "production_import_allowed": false,
+  "deploy_production": false
+}

@@ -1,5 +1,7 @@
 # AT-Zusatzrunden: isolierte App-Integration, 09.11.2026
 
+> **Nachprüfung 10.11.2026:** Alle relevanten lokalen Tests wurden erneut ausgeführt; neue A/B-Screenshots und vollständige Dateiliste liegen im [GitHub-Übergabebericht](../../reports/at-rounds/rerun-2026-11-10/README.md). Der Feature-Branch-Push ist inzwischen ausdrücklich beauftragt. Die folgende Dokumentation beschreibt den historischen Stand vom 09.11.; ihre damalige Aussage „kein Push“ ist keine Beschreibung des späteren Übergabeschritts. Produktions-/Fachfreigaben bleiben unverändert gesperrt.
+
 **Ergebnis: technische TEST_ONLY-Abnahme bestanden. Integration in einen freigegebenen Produktkandidaten und Produktion: NO-GO.**
 
 `human_approved=false` · `production_import_allowed=false` · `deploy_production=false`

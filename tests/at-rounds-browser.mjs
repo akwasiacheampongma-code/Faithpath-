@@ -9,7 +9,8 @@ const root=process.env.AT_ROUNDS_TEST_ROOT||'qa-output/at-rounds-test';
 const out=process.env.AT_ROUNDS_QA_OUT||'qa-output/at-rounds-browser';
 fs.mkdirSync(path.join(out,'screenshots'),{recursive:true});
 const fixture=JSON.parse(fs.readFileSync('tests/fixtures/at-rounds.test-only.json'));
-const server=await testServer(root),results=[],errors=[],visited=[];
+const build=JSON.parse(fs.readFileSync(path.join(root,'release-integrity.json')));
+const server=await testServer(root),results=[],errors=[],visited=[],captures=[];
 let browser;
 const seed=empty();
 seed.paths=[{id:'qa-path',title:'Synthetischer Prüfweg',steps:[],milestones:[],reviews:[],links:[]}];
@@ -36,10 +37,28 @@ async function question(page,id) {
   assert.equal(await page.locator('.quiz-title').getAttribute('data-question-id'),id);
   assert.equal(await page.locator('.answers .answer').count(),4);
 }
+async function captureQuestion(page,book,round,q) {
+  const original=page.viewportSize(),screenshots=[];
+  for(const [width,height]of [[320,568],[390,844]]){
+    await page.setViewportSize({width,height});
+    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`Question ${q.id} overflows ${width}px`);
+    const file=`${book}-${round}-${q.id}-${width}`;
+    await page.evaluate(()=>window.scrollTo(0,0));
+    await page.screenshot({path:path.join(out,'screenshots',file+'-question.png')});
+    await page.locator('.answers').scrollIntoViewIfNeeded();
+    await page.screenshot({path:path.join(out,'screenshots',file+'-answers.png')});
+    screenshots.push(file+'-question.png',file+'-answers.png');
+  }
+  await page.setViewportSize(original);
+  captures.push({book,round,question_id:q.id,reference:q.reference,route:new URL(page.url()).hash,
+    screenshots});
+}
 async function finishRound(page,book,round) {
   const spec=fixture.chapters[book].variants.find(v=>v.id===round);
   for(const [index,q] of spec.questions.entries()) {
     await question(page,q.id);visited.push(q.id);
+    if(index===0 || ['1273-Q3','1356-Q3'].includes(q.id))await captureQuestion(page,book,round,q);
     const choice=index%2===0?q.correctIndex:(q.correctIndex+1)%4;
     await page.locator('.answers .answer').nth(choice).click();
     await page.locator('.explanation').waitFor();
@@ -76,6 +95,7 @@ try {
   await finishRound(page,'2KI','B');
   assert.equal(new Set(visited).size,20);
   assert.equal(visited.length,20);
+  assert.deepEqual([...new Set(captures.map(c=>`${c.book}:${c.round}`))].sort(),['1KI:A','1KI:B','2KI:A','2KI:B']);
   const main=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEYS.main);
   assert.deepEqual(main.quiz,seed.quiz);assert.deepEqual(main.paths,seed.paths);assert.deepEqual(main.journal,seed.journal);
   results.push({check:'2KI15-two-rounds-and-protected-personal-data',status:'PASS',visited_ids:visited});
@@ -84,6 +104,6 @@ try {
   results.push({check:'run',status:'FAIL',error:error.stack});throw error;
 } finally {
   await browser?.close();await server.close();
-  fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({browser:'Chromium/Linux',physical_iphone:'OPEN',human_approved:false,production_import_allowed:false,deploy_production:false,results,page_errors:errors},null,2));
+  fs.writeFileSync(path.join(out,'browser-results.json'),JSON.stringify({browser:'Chromium/Linux',physical_iphone:'OPEN',tested_build:build.build,tested_build_hash:build.build_hash,tested_source_revision:build.test_only?.revision,captures,human_approved:false,production_import_allowed:false,deploy_production:false,results,page_errors:errors},null,2));
 }
 assert.deepEqual(errors,[]);console.log(JSON.stringify(results));
