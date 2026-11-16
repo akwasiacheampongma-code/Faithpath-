@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "checker": "static-metro-nt-catalog-book-search-v0121",
+  "parser": "acorn@8.19.0",
+  "bundle_code_executed": false,
+  "source": {
+    "path": "src/data/nt-catalog.json",
+    "package_version": "0.12.1",
+    "bytes": 975966,
+    "sha256": "850272e6cd3a22bdb50191e6e20f0ab9033377e7901f47fbfe6ec4c3eb067c7b",
+    "json_sha256": "436dee5453980562264f9396f5f28918f799e79b94017f6fd184f205c8a351f6",
+    "counts": {
+      "books": 27,
+      "chapters": 260,
+      "questions": 1300,
+      "questions_per_chapter": 5,
+      "unique_question_ids": 1300,
+      "reference_ranges": 1304
+    }
+  },
+  "comparison": "Complete deepStrictEqual of all chapter/question fields, original strings, options and reference arrays in order; no code evaluation.",
+  "exports": [
+    {
+      "export_directory": "/workspace/oliva-book-search/dist-android",
+      "metadata_sha256": "d05fc37cc82fcde827c0469b74ad01253640b36ff9bebdf529322c13500bd62d",
+      "platforms": [
+        {
+          "platform": "android",
+          "bundle": "_expo/static/js/android/entry-f6425355ca2c329deb54a73d66a04693.js",
+          "bundle_bytes": 11829377,
+          "bundle_sha256": "aa4cbd72b5eeb4b0d2e9bd1fcd9c60db9b46fcf4d710541b77ead7312785d3e4",
+          "metro_modules_scanned": 1668,
+          "module_id": 1324,
+          "source_name_in_bundle": null,
+          "identification": "json-module-literal-shape-and-complete-deep-equality",
+          "literal_module_sha256": "8fac9f3433defe15e2ca74aee34a9e7446dd3193eeb1d7cbaabf4e1f0ec678d4",
+          "literal_json_sha256": "436dee5453980562264f9396f5f28918f799e79b94017f6fd184f205c8a351f6",
+          "full_deep_equality": true,
+          "matched": {
+            "books": 27,
+            "chapters": 260,
+            "questions": 1300,
+            "questions_per_chapter": 5,
+            "unique_question_ids": 1300,
+            "reference_ranges": 1304
+          }
+        }
+      ]
+    },
+    {
+      "export_directory": "/workspace/oliva-book-search/dist-ios",
+      "metadata_sha256": "54e9e2af79125094d3c92d574f2804134df475e46ef2221db3e8e73866bbaa90",
+      "platforms": [
+        {
+          "platform": "ios",
+          "bundle": "_expo/static/js/ios/entry-a6e22f90bedfefab805e74e913c0b694.js",
+          "bundle_bytes": 11845818,
+          "bundle_sha256": "bef5c94c959889d177f17f5c8fb9b7d4e53889b937a652fb10998fad45dd2444",
+          "metro_modules_scanned": 1673,
+          "module_id": 1328,
+          "source_name_in_bundle": null,
+          "identification": "json-module-literal-shape-and-complete-deep-equality",
+          "literal_module_sha256": "31f12c6f05c5f9829814573fa14508d126560a2f15b058a2d4a85bbd09a0df69",
+          "literal_json_sha256": "436dee5453980562264f9396f5f28918f799e79b94017f6fd184f205c8a351f6",
+          "full_deep_equality": true,
+          "matched": {
+            "books": 27,
+            "chapters": 260,
+            "questions": 1300,
+            "questions_per_chapter": 5,
+            "unique_question_ids": 1300,
+            "reference_ranges": 1304
+          }
+        }
+      ]
+    }
+  ]
+}

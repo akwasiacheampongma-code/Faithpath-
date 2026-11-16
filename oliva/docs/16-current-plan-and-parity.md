@@ -73,3 +73,9 @@ Der vollständige Original-NT-Katalog ist mit plattformgerechter Oberfläche, ve
 Seit **10.11.2026, 03:51:05 UTC** eigentümerprivat bereitgestellt. Der frühere 107/108-Lauf bleibt als Diagnose erhalten; eine veraltete exakte Import-Testerwartung wurde ohne Produktänderung korrigiert. Auch die historischen roten 0.11-CI-Läufe bleiben unverändert. [NT-Vertrag und tatsächliche Belege](23-nt-study-and-progress.md).
 
 Der eigenständige 0.12-Quellcheckpoint mit Tag, ZIP und SHA-256 sowie die beauftragte GitHub-Sicherung folgen nach diesem Dokumentcheckpoint. Deren noch nicht bestätigte Kennungen werden nicht vorweggenommen; die tatsächliche neue Remote-CI wird separat geprüft. Danach die verbleibende Readerparität anhand der [Quellvorbereitung](evidence/reader-parity-preparation/reader-parity-preparation.md) umsetzen. Die übrigen Bestandslücken und die Gesamt-Definition-of-Done bleiben offen; neue Versionen oder Termine werden nicht festgelegt.
+
+## Fortschreibung 16.11.2026: Suchpatch und laufender Reader
+
+0.12.1 liefert die ausdrücklich gewünschte tolerante Buchsuche, den Standard Gesamte Bibel und das NT-/AT-Dropdown in der vorhandenen privaten Vorschau. Die bestehende Produkt- und Masterpriorität bleibt erhalten.
+
+Mehrversauswahl, Kopieren, Bereichsnotizen und Vollkapitelkontext sind in einer separaten Reader-Arbeitskopie implementiert und werden dort als V9 weiter geprüft. Noch keine neue Reader-Version oder deren Bereitstellung versprechen. Fehlgeschlagene Entwürfe müssen auch über die Sammlung mit genauer ID und Quelle wieder erreichbar sein. Die übrigen dokumentierten Paritäts-, Bild-, Fachredaktions-, Geräte- und Dienstaufgaben bleiben offen.

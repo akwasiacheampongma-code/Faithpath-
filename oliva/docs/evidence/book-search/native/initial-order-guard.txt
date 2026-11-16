@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/oliva-book-search/docs/evidence/book-search/native/native-export-runner.py", line 123, in <module>
+    main()
+  File "/workspace/oliva-book-search/docs/evidence/book-search/native/native-export-runner.py", line 82, in main
+    assert before['runtimeSourceDigest']['sha256'] == args.expected_runtime_digest, 'Input freeze differs'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Input freeze differs

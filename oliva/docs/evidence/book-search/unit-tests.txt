@@ -1,0 +1,21 @@
+
+> oliva-faith-companion@0.12.0 test
+> vitest run
+
+
+ RUN  v5.1.0 /workspace/oliva-book-search
+
+
+ Test Files  26 passed (26)
+      Tests  225 passed (225)
+   Start at  21:15:50
+   Duration  40.73s (import 56%, tests 28%, transform 15%, worker 1%)
+
+    Isolate  26 workers spawned · ~226ms startup each (spawn + environment, per file)
+             at least ~5.66s faster with isolate: false — reuses workers across files instead of one per file
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

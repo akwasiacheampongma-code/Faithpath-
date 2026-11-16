@@ -1,0 +1,29 @@
+[WebServer] (node:4383) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 1 worker
+
+(node:4397) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/book-search.spec.ts:19:1 › die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein (4.1s)
+  ✓   2 tests/e2e/book-search.spec.ts:46:1 › Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix (4.7s)
+  ✓   3 tests/e2e/book-search.spec.ts:66:1 › der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus (5.4s)
+  ✓   4 tests/e2e/book-search.spec.ts:87:1 › Suche und Bereich erhalten Buchschwert-Kontext und öffnen das gewählte Kapitel (11.0s)
+  ✓   5 tests/e2e/book-search.spec.ts:117:1 › die NT-Fragenübersicht nutzt dieselbe Buchsuche und bleibt auf ihre 27 Bücher begrenzt (5.5s)
+  ✓   6 tests/e2e/book-search.spec.ts:140:1 › Buchsuche und Dropdown sind bei 320 Pixeln hell und 1440 Pixeln dunkel zugänglich (12.2s)
+(node:4944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 tests/e2e/swords.spec.ts:96:1 › das Buchschwert öffnet aus Bibel und Sammlung, zeigt Johannes groß und verändert keine Lesespuren (15.9s)
+  ✓   8 tests/e2e/swords.spec.ts:130:1 › eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt (11.0s)
+  ✓   9 tests/e2e/swords.spec.ts:156:1 › synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel (16.9s)
+  ✓  10 tests/e2e/swords.spec.ts:183:1 › die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück (10.7s)
+  ✓  11 tests/e2e/swords.spec.ts:211:1 › nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet (13.5s)
+  ✓  12 tests/e2e/swords.spec.ts:249:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › drei fehlgeschlagene PNG-Varianten lassen das Buchsymbol bestehen; erneutes Laden gelingt (4.1s)
+  ✓  13 tests/e2e/swords.spec.ts:265:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › ein Buchwechsel während des Ladens übernimmt kein verspätetes Johannes-Bild (4.8s)
+
+  13 passed (2.1m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-11-15T21:26:47.075503+00:00",
+  "files": [
+    {
+      "path": "docs/evidence/book-search/native/native-export-runner.py",
+      "sha256": "f0a36876a54a5798c5f32dc509e16987437cc4b8b5018959d90c3ccbf2ebd6bc"
+    },
+    {
+      "path": "docs/evidence/book-search/native/check-native-nt-catalog.mjs",
+      "sha256": "d5fc6df348bcb2b3dc0e74f318c167108d7170335483caa7f58a33b20a69cd32"
+    },
+    {
+      "path": "docs/evidence/book-search/native/check-native-book-scope.mjs",
+      "sha256": "5f18d7ebe6f5cfdbfa26fab0b73ec3258011b98bb5474306b67022bbd3218411"
+    },
+    {
+      "path": "scripts/check-native-export.mjs",
+      "sha256": "ec57f422de199a9dc1d6e0148f4df6368b31c026b27460fb20af1797a8b28f7f"
+    }
+  ],
+  "ntCheckerAdaptation": "Same static deep-literal checker as0.12 with ROOT changed to the isolated worktree and checker label updated; no exported bundle code evaluated."
+}

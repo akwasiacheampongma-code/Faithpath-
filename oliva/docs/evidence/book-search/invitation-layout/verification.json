@@ -1,0 +1,93 @@
+{
+  "checkedAt": "2026-11-16T02:33:41.968334+00:00",
+  "status": "PASS for unchanged isolated checks; historical failure remains failed",
+  "initialFailure": {
+    "report": "docs/evidence/book-search/before-readiness-and-layout-fixes/e2e-results.json",
+    "reportSha256": "55292573f47084c4f3b04a0e9884f90c071b301a4da07d40dda7fe0f35cd7924",
+    "case": {
+      "title": "Einladungen bleiben bei 320 Pixeln in Hell und Dunkel sowie auf großem Display zugänglich und ohne Überlauf",
+      "testStatus": "unexpected",
+      "status": "timedOut",
+      "durationMs": 125198,
+      "retry": 0,
+      "startTime": "2026-11-15T21:37:58.931Z",
+      "errors": [
+        "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m",
+        "Error: locator.scrollIntoViewIfNeeded: Test timeout of 120000ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n\n\n  444 |       exact: true,\n  445 |     });\n> 446 |     await action.scrollIntoViewIfNeeded();\n      |                  ^\n  447 |     const bounds = await action.boundingBox();\n  448 |     expect(bounds!.height).toBeGreaterThanOrEqual(44);\n  449 |     expect(bounds!.x).toBeGreaterThanOrEqual(0);\n    at /workspace/oliva-book-search/tests/e2e/invitations.spec.ts:446:18"
+      ]
+    },
+    "observed": "Test deadline120000ms expired at scrollIntoViewIfNeeded waiting for a stable element; no first layout screenshot had been produced.",
+    "exactTriggerReproduced": false,
+    "scrollWaitDurationKnown": false,
+    "cumulativeThreeViewportBudgetProven": false
+  },
+  "unchangedIsolated": {
+    "report": "docs/evidence/book-search/invitation-layout/original-isolated-results.json",
+    "reportSha256": "870e62a94e24978cc631fa37d850ee09fbab51f521aed590c8dd536f9f4623fd",
+    "case": {
+      "title": "Einladungen bleiben bei 320 Pixeln in Hell und Dunkel sowie auf großem Display zugänglich und ohne Überlauf",
+      "testStatus": "expected",
+      "status": "passed",
+      "durationMs": 12306,
+      "retry": 0,
+      "startTime": "2026-11-16T02:30:10.364Z",
+      "errors": []
+    },
+    "statistics": {
+      "startTime": "2026-11-16T02:30:08.759Z",
+      "duration": 15211.944000000001,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "screenshots": [
+      {
+        "path": "docs/evidence/book-search/invitation-layout/original-isolated/invitations/screens/invitations-1440-light.png",
+        "bytes": 82085,
+        "sha256": "3195f33111c44e95c1325ccbd669652e87aa995b5ed12e30a445ae32cea0e3d5"
+      },
+      {
+        "path": "docs/evidence/book-search/invitation-layout/original-isolated/invitations/screens/invitations-320-dark.png",
+        "bytes": 45126,
+        "sha256": "45f9d9ed01a8b5f92eeefb310e5921f4d9a93e47c0c2ef595c37e73618a7c283"
+      },
+      {
+        "path": "docs/evidence/book-search/invitation-layout/original-isolated/invitations/screens/invitations-320-light.png",
+        "bytes": 44402,
+        "sha256": "897edd2320ccd76723be37fecb56d0baf30f22161d906e292a1543119e388a37"
+      }
+    ]
+  },
+  "revertedKeyboardDiagnostic": {
+    "report": "docs/evidence/book-search/invitation-layout/keyboard-results.json",
+    "reportSha256": "3061d73fe90848b06cca1f851af356a694a5db579b42f5368349fc033e5a4150",
+    "case": {
+      "title": "Einladungen bleiben bei 320 Pixeln in Hell und Dunkel sowie auf großem Display zugänglich und ohne Überlauf",
+      "testStatus": "expected",
+      "status": "passed",
+      "durationMs": 9955,
+      "retry": 0,
+      "startTime": "2026-11-16T02:31:24.421Z",
+      "errors": []
+    },
+    "change": "Temporarily replaced scroll-only stationary-frame guard with focus and actual viewport assertions, retaining size/bounds/axe/data checks.",
+    "reverted": true,
+    "shipped": false,
+    "scope": "Separate exploratory diagnostic; not the unchanged test evidence."
+  },
+  "currentSource": {
+    "patchInvitationTestDiffFromHead": false,
+    "sameLayoutCaseInMainAndPatch": true,
+    "testSourceSha256": "5c9b705a0360a23bca5b2809783f508c6b0f2fed88e926ee25104ba2170d36cf",
+    "runtimeFileCount": 316,
+    "runtimeSourceDigest": "abc9c992cf4606a9a525570097826da35b5e4b67c97d0d8c67f234ffaf8a5fc0",
+    "allRuntimeInputHashesUnchanged": true
+  },
+  "limitations": [
+    "No exact explanation for the historical stationary-frame wait is claimed.",
+    "An isolated passing diagnostic does not change the first full-suite failure.",
+    "Root must verify the final complete suite separately.",
+    "Local headless Chromium only; no device, simulator or hosted browser test."
+  ]
+}

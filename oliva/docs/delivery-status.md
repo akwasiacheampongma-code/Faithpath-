@@ -1,4 +1,14 @@
-# Lieferstand · OLIVA 0.12 · geprüft und privat bereitgestellt
+# Lieferstand · OLIVA 0.12.1 · geprüft und privat bereitgestellt
+
+**OLIVA 0.12.1 ist geprüft und seit 2026-11-16T02:50:55.344653+00:00 eigentümerprivat bereitgestellt.** Die Buchsuche findet Namen trotz zusätzlicher Leerzeichen, Unicode-Abständen und Punkten im Zahlpräfix. Standardmäßig erscheinen alle 66 Bücher; das Dropdown bietet Gesamte Bibel, NT und AT. Die NT-Fragenübersicht nutzt dieselbe tolerante Buchsuche. Alle abgenommenen Funktionen aus 0.12 bleiben enthalten.
+
+**225/225 Fachtests und ein einzelner vollständiger 114/114-Browserlauf bestanden**, ohne Skips, instabile Fälle oder Wiederholungen im finalen Lauf. Der echte 0.12→0.12.1-PWA-Wechsel bewahrt vier rohe IndexedDB-Werte exakt. Android-/iOS-JS-/Assetexports und der statische Vergleich aller 1.300 NT-Fragen bestehen. Keine reale Geräte- oder Simulatorprüfung. AppData bleibt V8; keine Datenmigration. Kern `oliva-75717978bae05979`, Hostpaket `oliva-a69912f7db12262b`. Die gesamte Master-Definition-of-Done bleibt offen.
+
+[Private Bibelübersicht](https://oliva-v04-private-preview.purplebean128.chatgpt.site/bibel) · [Suchvertrag](24-book-search-and-scope.md) · [vollständige Abnahme](evidence/book-search/validation-summary.json). Anonym HTTP 401; exakt unveränderte Eigentümerpolitik. Die URL behält `v04`, ausgeliefert wird 0.12.1.
+
+Der eigenständige Patch-Quellcheckpoint mit ZIP und die beauftragte GitHub-Sicherung folgen nach diesem Dokumentcheckpoint. Der vorgelagerte 0.12-Checkpoint und dessen tatsächliche Remote-CI sind inzwischen bestätigt; siehe `evidence/github/ci-v012/`. Keine öffentliche Web-/Storeveröffentlichung oder Änderung an FaithPath/main.
+
+## Historischer Lieferstand · OLIVA 0.12
 
 Stand: 10.11.2026. **OLIVA 0.12.0 ist seit 10.11.2026, 03:51:05 UTC eigentümerprivat bereitgestellt.** Alle 1.300 Originalfragen des NT-Katalogs sind aktiv, mit gespeicherten Antworten, Wiederaufnahme und getrenntem historischem Abschlussstatus. **225/225 Fachtests und ein einzelner vollständiger 108/108-Browserlauf bestanden**, ohne Skips, instabile Fälle oder Wiederholungen. Typecheck, Inhaltshashes, Audit ohne Funde, native JS-/Assetexports und der reale 0.11→0.12-Workerwechsel sind erfolgreich. Kern `oliva-80005b3c1d2e2eef`, Hostpaket `oliva-168499f23f74e16c`, Nutzdaten V8. Die gesamte Master-Definition-of-Done bleibt offen.
 

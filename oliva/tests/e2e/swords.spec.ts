@@ -276,7 +276,7 @@ test.describe("Bildfehler und verzögerte Antwort ohne Service-Worker", () => {
       await expect(page.getByTestId("book-sword-artwork")).toHaveAttribute("aria-busy", "true");
       await expect(page.getByTestId("book-sword-vector")).toBeVisible();
       await page.getByRole("button", { name: "Bibel", exact: true }).click();
-      await page.getByRole("button", { name: "Alle Bücher", exact: true }).click();
+      await page.getByRole("combobox", { name: "Bibelbereich", exact: true }).selectOption("Alle");
       await page.getByRole("textbox", { name: "Buch suchen", exact: true }).fill("1. Mose");
       await page.getByRole("button", { name: "1. Mose, 50 Kapitel", exact: true }).click();
       await page.getByRole("button", { name: "Buchschwert ansehen", exact: true }).click();

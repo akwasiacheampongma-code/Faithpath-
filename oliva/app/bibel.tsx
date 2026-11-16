@@ -13,11 +13,16 @@ import {
 import { useApp } from "../src/state/store";
 import { countBookRead } from "../src/state/model";
 import { StoryLibrary } from "../src/features/bible/StoryCard";
+import { BibleScopeSelect } from "../src/features/bible/BibleScopeSelect";
+import {
+  normalizeBookSearch,
+  type BibleScope,
+} from "../src/features/bible/book-search";
 export default function Bible() {
   const t = useTheme(),
     data = useApp((s) => s.data),
     { width } = useWindowDimensions(),
-    [group, setGroup] = useState("NT"),
+    [group, setGroup] = useState<BibleScope>("Alle"),
     [query, setQuery] = useState(""),
     [mode, setMode] = useState<"books" | "text">("books"),
     [expanded, setExpanded] = useState<string | null>(null),
@@ -31,10 +36,11 @@ export default function Bible() {
     () => (mode === "text" ? searchBible(debounced) : []),
     [mode, debounced],
   );
+  const normalizedQuery = normalizeBookSearch(query);
   const books = BOOKS.filter(
     (b) =>
       (group === "Alle" || b.testament === group) &&
-      b.name.toLocaleLowerCase("de").includes(query.toLocaleLowerCase("de")),
+      normalizeBookSearch(b.name).includes(normalizedQuery),
   );
   return (
     <Shell>
@@ -162,42 +168,8 @@ export default function Bible() {
       />
       {mode === "books" ? (
         <>
-          <View
-            style={{
-              flexDirection: "row",
-              gap: 8,
-              marginVertical: 20,
-              flexWrap: "wrap",
-            }}
-          >
-            {[
-              ["NT", "Neues Testament"],
-              ["AT", "Altes Testament"],
-              ["Alle", "Alle Bücher"],
-            ].map(([id, label]) => (
-              <Pressable
-                key={id}
-                accessibilityRole="button"
-                accessibilityState={{ selected: group === id }}
-                aria-pressed={group === id}
-                onPress={() => setGroup(id!)}
-                style={{
-                  borderBottomWidth: 2,
-                  borderColor: group === id ? t.gold : "transparent",
-                  padding: 10,
-                  minHeight: 44,
-                }}
-              >
-                <T
-                  style={{
-                    fontSize: 12,
-                    color: group === id ? t.text : t.muted,
-                  }}
-                >
-                  {label}
-                </T>
-              </Pressable>
-            ))}
+          <View style={{ marginVertical: 20 }}>
+            <BibleScopeSelect value={group} onChange={setGroup} />
           </View>
           <T style={{ fontSize: 12, color: t.muted, marginBottom: 22 }}>
             {group === "NT"
@@ -327,8 +299,8 @@ export default function Bible() {
           {!books.length && (
             <Card>
               <T>
-                Kein Buch gefunden. Probiere einen anderen Namen oder „Alle
-                Bücher“.
+                Kein Buch gefunden. Probiere einen anderen Namen oder wähle
+                „Gesamte Bibel“ im Bibelbereich.
               </T>
             </Card>
           )}

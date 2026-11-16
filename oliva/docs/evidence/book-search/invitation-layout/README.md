@@ -1,0 +1,11 @@
+# Einladungsdarstellung: historischer Timeout und isolierter Abgleich
+
+Der erste vollständige 0.12.1-Lauf bleibt **112/114 mit zwei Fehlern**. Dieser Fall überschritt die Testfrist von 120.000 ms; der Gesamteintrag dauerte 125.198 ms. Die Fehlermeldung entstand bei `scrollIntoViewIfNeeded`, während Playwright auf ein stabiles Element wartete. Vor dem Fehler war noch kein Bild der ersten 320-Pixel-Hellansicht entstanden. Die tatsächlich im Scrollaufruf verbrachte Zeit ist ohne Schritttrace nicht bekannt. Ein kumulatives Zeitbudget aller drei Größen ist damit **nicht belegt**. Die genaue historische Ursache wurde nicht reproduziert.
+
+Der **unveränderte ursprüngliche Fall** bestand danach isoliert: **1/1, 12,3 s** Falldauer (15,2 s Laufdauer), ohne Skip/Flaky/Retry. Alle bisherigen Prüfungen bleiben enthalten: 320 Pixel hell/dunkel und 1440 Pixel hell, tatsächlich sichtbare Kartenschaltfläche, Mindesthöhe 44, horizontale Grenzen, keine Überbreite, echte reduzierte Bewegung, drei Screenshots, Axe ohne Befund sowie unveränderte persönliche Erfahrungsdaten. Dieser isolierte Erfolg schreibt den alten Gesamtlauf nicht um.
+
+Ein zusätzliches Experiment ersetzte vorübergehend den reinen Scroll-/Stabilitätsaufruf durch tatsächlichen Tastaturfokus und vollständige Sichtbarkeit im Viewport bei sonst gleichen Kriterien. Auch dieser getrennte Diagnosefall bestand 1/1 in 10,0 s (12,5 s Laufdauer). Die Änderung wurde **vollständig zurückgenommen**. Der aktuelle Einladungsfall entspricht wieder exakt dem ursprünglichen Test; im Patch besteht hierfür kein Git-Diff. Die entsprechende Schleife in der Reader-Arbeitskopie ist ebenfalls unverändert; deren eigenständige V9-Fixture bleibt erhalten.
+
+Keine Runtime-, Paket-, Versions-, Bild- oder Cacheänderung. Alle 316 eingefrorenen Runtimeinputs stimmen weiterhin mit `abc9c992cf4606a9a525570097826da35b5e4b67c97d0d8c67f234ffaf8a5fc0` überein. Die separate Korrektur der Ostergeschichtenprüfung wartet nun auf tatsächlich vollständig geladene Bilder. Der abschließende vollständige Browserlauf wird vom Hauptagenten separat durchgeführt und dokumentiert.
+
+[Prüfbericht](verification.json), [unveränderter isolierter Lauf](original-isolated-results.json), [initialer Fehlerkontext](initial-error-context.md). Lokale automatisierte Chromiumprüfung; keine Simulator-, Geräte- oder gehostete Browserprüfung.

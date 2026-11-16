@@ -1,0 +1,169 @@
+{
+  "baselineVersion": "0.12.0",
+  "baselineBuild": "oliva-80005b3c1d2e2eef",
+  "targetVersion": "0.12.1",
+  "targetBuild": "oliva-75717978bae05979",
+  "baselineHtmlSha256": "044062fe8daccf4bea0ed7125add9d9a358f13f0b2f3552036b76f3cc6dec66d",
+  "baselineWorkerSha256": "0a813a678d3e85b2bfacd3e8e6f9a685de89cf9ad109cddff1115a01e8da5695",
+  "targetHtmlSha256": "ce09707942a30beee75140194fb4175bba225f5541badefe5845994d88109d27",
+  "targetWorkerSha256": "6ae9788ec3720dd09a594571f93402285a8c75c77495e8c1ae7c4e68e3b88dd7",
+  "syntheticData": true,
+  "syntheticClock": "2027-01-01T12:00:00.000Z",
+  "passed": true,
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "scope": "Local automated Chromium, one persistent profile and origin through actual worker update",
+  "comparison": "Exact JSON serialization of all raw IndexedDB store values, not physical database-file bytes",
+  "phases": [
+    {
+      "name": "baseline-ui-seed",
+      "startedAt": "2026-11-15T21:21:38.452Z"
+    },
+    {
+      "name": "actual-worker-update-and-read-only-hydration",
+      "startedAt": "2026-11-15T21:22:17.666Z"
+    },
+    {
+      "name": "book-search-default-and-whitespace",
+      "startedAt": "2026-11-15T21:22:43.017Z"
+    },
+    {
+      "name": "offline-reload-and-existing-nt-answer",
+      "startedAt": "2026-11-15T21:22:48.732Z"
+    },
+    {
+      "name": "offline-old-draft-and-seven-a51-stages",
+      "startedAt": "2026-11-15T21:22:58.265Z"
+    },
+    {
+      "name": "complete",
+      "startedAt": "2026-11-15T21:23:09.722Z"
+    }
+  ],
+  "phase": "complete",
+  "origin": "http://127.0.0.1:39785",
+  "browserVersion": "155.0.8059.79",
+  "beforeRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5285,
+      "json_sha256": "81f557644d08d4d539c89e15851e3ad4f519cdd1a2b34d86920b195265a0788f"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "archiveSha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "baselineNtAnswer": {
+    "id": "FP-0261",
+    "hash": "3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc",
+    "choice": 1
+  },
+  "baselineWorker": {
+    "expected": "oliva-80005b3c1d2e2eef",
+    "controller": {
+      "id": "oliva-80005b3c1d2e2eef",
+      "version": "0.12.0"
+    },
+    "active": {
+      "id": "oliva-80005b3c1d2e2eef",
+      "version": "0.12.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-80005b3c1d2e2eef"
+    ]
+  },
+  "afterWorker": {
+    "expected": "oliva-75717978bae05979",
+    "controller": {
+      "id": "oliva-75717978bae05979",
+      "version": "0.12.1"
+    },
+    "active": {
+      "id": "oliva-75717978bae05979",
+      "version": "0.12.1"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-80005b3c1d2e2eef",
+      "oliva-75717978bae05979"
+    ]
+  },
+  "realWorkerUpdate": true,
+  "sameOriginPersistentProfile": true,
+  "afterRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5285,
+      "json_sha256": "81f557644d08d4d539c89e15851e3ad4f519cdd1a2b34d86920b195265a0788f"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "allFourRawRecordsExact": true,
+  "offlineReload": true,
+  "offlineNtAnswerPreserved": true,
+  "offlineDraftPreserved": true,
+  "offlineA51Stages": 7,
+  "catalogChapters": 260,
+  "catalogQuestions": 1300,
+  "catalogQuestionIndividuallyExercisedInBrowser": 1,
+  "noNewGrowthOrProgress": true,
+  "searchScopes": {
+    "default": 66,
+    "NT": 27,
+    "AT": 39
+  },
+  "finalWorker": {
+    "expected": "oliva-75717978bae05979",
+    "controller": {
+      "id": "oliva-75717978bae05979",
+      "version": "0.12.1"
+    },
+    "active": {
+      "id": "oliva-75717978bae05979",
+      "version": "0.12.1"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-80005b3c1d2e2eef",
+      "oliva-75717978bae05979"
+    ]
+  },
+  "checkedAt": "2026-11-15T21:23:09.728Z"
+}

@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-11-15T21:26:16.118Z",
+  "parser": "acorn@8.19.0",
+  "appCodeExecuted": false,
+  "scope": "Static inspection of native Metro modules; no native runtime or accessibility behavior test.",
+  "results": [
+    {
+      "platform": "android",
+      "bundle": "_expo/static/js/android/entry-f6425355ca2c329deb54a73d66a04693.js",
+      "bundleSha256": "aa4cbd72b5eeb4b0d2e9bd1fcd9c60db9b46fcf4d710541b77ead7312785d3e4",
+      "selectorModule": {
+        "moduleId": 1482,
+        "sha256": "822aeb6a678af1d208a68fabceb5fbd4899f0870841517563c40e6dbab20d795",
+        "nativeRadioAndModal": true,
+        "htmlSelectAbsent": true
+      },
+      "normalizedSearchAndAllScopeLiteralVerified": true,
+      "defaultAllStateVerified": true
+    },
+    {
+      "platform": "ios",
+      "bundle": "_expo/static/js/ios/entry-a6e22f90bedfefab805e74e913c0b694.js",
+      "bundleSha256": "bef5c94c959889d177f17f5c8fb9b7d4e53889b937a652fb10998fad45dd2444",
+      "selectorModule": {
+        "moduleId": 1485,
+        "sha256": "eba902faa28fcec28989ee2cfa4deb276e2da26997ff2ba7a8a5162608a7459c",
+        "nativeRadioAndModal": true,
+        "htmlSelectAbsent": true
+      },
+      "normalizedSearchAndAllScopeLiteralVerified": true,
+      "defaultAllStateVerified": true
+    }
+  ]
+}

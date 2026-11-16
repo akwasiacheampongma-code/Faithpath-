@@ -106,8 +106,8 @@ test("Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zähl
   await context.setOffline(true);
   await page.reload();
   await expect(page.getByText(/Einordnung zu den Versen 1–8/)).toBeVisible();
-  expect(
-    await page.evaluate(() => {
+  await expect.poll(
+    () => page.evaluate(() => {
       const images = Array.from(document.images).filter((img) =>
         img.src.includes("easter-dawn"),
       );

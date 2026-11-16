@@ -1,0 +1,83 @@
+{
+  "version": "0.12.1",
+  "checkedAt": "2026-11-16T02:48:50.023383+00:00",
+  "allCoreChecksPassed": true,
+  "coreBuild": "oliva-75717978bae05979",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 316,
+    "sha256": "abc9c992cf4606a9a525570097826da35b5e4b67c97d0d8c67f234ffaf8a5fc0"
+  },
+  "runtimeInputsPath": "runtime-inputs.json",
+  "unit": {
+    "total": 225,
+    "passed": 225,
+    "failed": 0,
+    "pending": 0
+  },
+  "browser": {
+    "total": 114,
+    "passed": 114,
+    "singleFullGreenRun": true,
+    "allResultsSingleAttempt": true,
+    "unexpected": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "earlierFullBrowser": {
+    "passed": 112,
+    "failed": 2,
+    "evidence": "before-readiness-and-layout-fixes/e2e-results.json",
+    "easter": "Immediate offline image readiness assertion replaced by waiting for the same real decoded-image condition; runtime unchanged.",
+    "invitation": "Original stability timeout not reproduced; unchanged isolated test passed all three viewports. Historical trigger unknown."
+  },
+  "newBookSearchBrowserCases": 6,
+  "dataVersion": 8,
+  "privateDocumentVersion": 1,
+  "sqliteSchemaVersion": 3,
+  "indexedDbVersion": 1,
+  "nativeJavaScriptAssetExports": {
+    "android": true,
+    "ios": true,
+    "all1300QuestionsStaticDeepEqual": true,
+    "nativeScopeRendererAndDefaultVerified": true,
+    "physicalDeviceOrSimulator": false
+  },
+  "realPreviousPwaUpgrade": {
+    "baseline": "0.12.0",
+    "target": "0.12.1",
+    "passed": true,
+    "rawRecordsExact": 4,
+    "offlineA51Stages": 7,
+    "evidence": "upgrade/oliva-75717978bae05979/verification.json"
+  },
+  "dependencyAuditVulnerabilities": 0,
+  "originalFaithpathMaterializedFilesVerified": 390,
+  "privateDeployment": {
+    "status": "succeeded",
+    "url": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+    "deployedAt": "2026-11-16T02:50:55.344653+00:00",
+    "deploymentId": "appgdep_6afa6f7e9c1c81919156ad44d805a7bb",
+    "versionId": "appgprj_6aedf77e5ce0819180c10eb799447018~appgver_96fdbc1b42e081918a6cc031ed6b1bc7",
+    "sourceCommit": "993c8a6a6971f30f1e945af63caa14a26d39196b",
+    "hostBuild": "oliva-a69912f7db12262b",
+    "anonymousStatus": 401,
+    "ownerOnlyPolicyUnchanged": true,
+    "appRoutesHttpChecked": 24,
+    "appFilesVerified": 107,
+    "reviewFilesVerified": 42,
+    "httpTransientRetries": [],
+    "hostedBrowserQa": false
+  },
+  "githubBackup": {
+    "status": "not yet performed"
+  },
+  "limitations": [
+    "No physical phone, simulator, native screenreader, decoder, installation, memory or energy test.",
+    "Hosted supported CUA/browser QA is unavailable; local core Chromium and private package/HTTP checks are distinct.",
+    "Main Reader V9 work is in a different working tree and is excluded from this patch.",
+    "Full Master DoD, remaining art/content review, real auth/sync/liveAI/audio and native distribution remain open.",
+    "No public website/store deployment or FaithPath/main modification."
+  ],
+  "completedAt": "2026-11-16T02:53:23.932773+00:00"
+}

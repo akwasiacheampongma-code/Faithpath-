@@ -1,0 +1,30 @@
+{
+  "preparedAt": "2026-11-15T21:20:31.753610+00:00",
+  "status": "prepared, not executed",
+  "script": "offline-upgrade-book-search.mjs",
+  "scriptSha256": "6758e745e796f8d00e19e280fe1e722b1ed3b6c69c4abc772334e263a0328700",
+  "syntaxCheck": "node --check passed",
+  "baselineVersion": "0.12.0",
+  "baselineCore": "oliva-80005b3c1d2e2eef",
+  "requiredTargetVersion": "0.12.1",
+  "testKind": "local automated Chromium persistent profile and actual same-origin service-worker update",
+  "deviceOrSimulator": false,
+  "hostedBrowserQa": false,
+  "rawSnapshot": "all IndexedDB object-store values, read-only, exact JSON serialization",
+  "seededViaUi": [
+    "name",
+    "V5 source import with archive and recovery",
+    "Genesis1 verse1 bookmark",
+    "Matth\u00e4us1 first saved answer",
+    "journal draft"
+  ],
+  "plannedAssertions": [
+    "four raw records unchanged across update and all search/filter/preview use",
+    "default66 books, NT27, AT39",
+    "whitespace/Unicode/fullwidth numbered book names",
+    "offline reload and NT catalog search",
+    "existing NT answer and draft preserved",
+    "seven A51 stages decode offline"
+  ],
+  "executionPending": "Await root final0.12.1 build; no browser execution claimed"
+}

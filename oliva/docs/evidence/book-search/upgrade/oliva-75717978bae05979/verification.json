@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-11-15T21:23:30.841469+00:00",
+  "passed": true,
+  "exitCode": 0,
+  "baselineVersion": "0.12.0",
+  "baseline": "oliva-80005b3c1d2e2eef",
+  "targetVersion": "0.12.1",
+  "target": "oliva-75717978bae05979",
+  "allFourRawRecordsExact": true,
+  "realWorkerActivation": true,
+  "offlineReload": true,
+  "offlineNtAnswer": true,
+  "offlineDraft": true,
+  "offlineA51Stages": 7,
+  "scopes": {
+    "default": 66,
+    "NT": 27,
+    "AT": 39
+  },
+  "sourceQuestionCount": 1300,
+  "individualBrowserQuestions": 1,
+  "browser": "155.0.8059.79",
+  "scriptSha256": "6758e745e796f8d00e19e280fe1e722b1ed3b6c69c4abc772334e263a0328700",
+  "reportSha256": "f6941fc2701cdf3b90374eb892be9fe7183808bd953fbb528b64b7d3f22d4f19",
+  "screenshots": [
+    {
+      "name": "book-search-after-update.png",
+      "bytes": 47049,
+      "sha256": "d0793f486ab04a508ba6317feabbc3eecc4dcebfbd719ea4ee93b4f8699746a2"
+    },
+    {
+      "name": "book-search-offline.png",
+      "bytes": 47939,
+      "sha256": "a18903b297bbff127307aa94dc22b13224ee1f374ca467a937e8688b7426c654"
+    },
+    {
+      "name": "offline-seven-a51-stages.png",
+      "bytes": 162868,
+      "sha256": "7d22d667f3fa68778a21bc393fb84d8d46cb69a9bd83a926e7779eff32a6d046"
+    }
+  ],
+  "scope": "Local automated Chromium, not hosted/physical/simulator"
+}

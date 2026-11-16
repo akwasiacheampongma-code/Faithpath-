@@ -8,6 +8,7 @@ import { useTheme } from "../../src/design-system/theme";
 import { useApp } from "../../src/state/store";
 import { NT_BOOKS } from "../../src/features/quiz/index";
 import { referenceLabel } from "../../src/features/bible/repository";
+import { normalizeBookSearch } from "../../src/features/bible/book-search";
 
 export default function Understand() {
   const t = useTheme(),
@@ -23,10 +24,9 @@ export default function Understand() {
       ),
     [study.completions],
   );
+  const normalizedQuery = normalizeBookSearch(query);
   const books = NT_BOOKS.filter((book) =>
-    book.name
-      .toLocaleLowerCase("de")
-      .includes(query.trim().toLocaleLowerCase("de")),
+    normalizeBookSearch(book.name).includes(normalizedQuery),
   );
   const open = (book: string, chapter: number) =>
     router.push({ pathname: "/verstehen/[book]", params: { book, chapter } });

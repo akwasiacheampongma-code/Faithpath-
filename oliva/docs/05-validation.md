@@ -1,8 +1,16 @@
 # Qualität und Abnahme
 
-Dokumentationsstand: 10.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
+Dokumentationsstand: 16.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
 
-## Aktueller Nachweis 0.12
+## Aktueller Nachweis 0.12.1
+
+**OLIVA 0.12.1 ist geprüft und seit 2026-11-16T02:50:55.344653+00:00 eigentümerprivat bereitgestellt.** Die Buchsuche findet Namen trotz zusätzlicher Leerzeichen, Unicode-Abständen und Punkten im Zahlpräfix. Standardmäßig erscheinen alle 66 Bücher; das Dropdown bietet Gesamte Bibel, NT und AT. Die NT-Fragenübersicht nutzt dieselbe tolerante Buchsuche. Alle abgenommenen Funktionen aus 0.12 bleiben enthalten.
+
+**225/225 Fachtests und ein einzelner vollständiger 114/114-Browserlauf bestanden**, ohne Skips, instabile Fälle oder Wiederholungen im finalen Lauf. Der echte 0.12→0.12.1-PWA-Wechsel bewahrt vier rohe IndexedDB-Werte exakt. Android-/iOS-JS-/Assetexports und der statische Vergleich aller 1.300 NT-Fragen bestehen. Keine reale Geräte- oder Simulatorprüfung. AppData bleibt V8; keine Datenmigration. Kern `oliva-75717978bae05979`, Hostpaket `oliva-a69912f7db12262b`. Die gesamte Master-Definition-of-Done bleibt offen.
+
+[Gesamtnachweis](evidence/book-search/validation-summary.json), [vollständiger Browserlauf](evidence/book-search/e2e-results.json), [Fachtests](evidence/book-search/unit-results.json), [realer PWA-Wechsel](evidence/book-search/upgrade/README.md), [native Exporte](evidence/book-search/native/README.md), [private HTTP-Prüfung](evidence/book-search/private-http-check.json). Alle 316 eingefrorenen Laufzeitdateien sind unverändert. Der erste Lauf mit 112/114 bleibt dokumentiert; die Einladungstimeout-Ursache ist nicht reproduziert und wird nicht als behobener Runtimefehler bezeichnet. Der finale Lauf hat keinen Skip, kein Flaky-Ergebnis und keinen Retry.
+
+## Historischer Nachweis 0.12
 
 **225/225 Fachtests und ein einzelner vollständiger 108/108-Browserlauf bestanden**, ohne Skips, instabile Fälle oder Wiederholungen. Typecheck, Web-/PWA-Build, Inhalts- und Provenienzprüfungen sowie das Audit mit 0 Funden sind erfolgreich. Kern `oliva-80005b3c1d2e2eef`, Runtime-Digest `00acc78da7d6268326b68fce0906ffa67d32c337240efbd8f59490e8d839590a` über 313 unveränderte Eingaben. [Gesamtnachweis](evidence/nt-catalog/validation-summary.json), [Fachtests](evidence/nt-catalog/unit-results.json), [vollständiger Browserlauf](evidence/nt-catalog/e2e-results.json).
 

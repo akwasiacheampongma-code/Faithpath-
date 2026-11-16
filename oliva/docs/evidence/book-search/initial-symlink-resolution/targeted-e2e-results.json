@@ -1,0 +1,536 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/oliva-book-search/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/book-search.spec.ts",
+      "tests/e2e/swords.spec.ts"
+    ],
+    "configFile": "/workspace/oliva-book-search/playwright.config.ts",
+    "rootDir": "/workspace/oliva-book-search/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/oliva-book-search/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/oliva-book-search/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/oliva-book-search/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/oliva-book-search/tests/e2e",
+        "snapshotDir": "/workspace/oliva-book-search/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4182",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/book-search/targeted-e2e-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "PORT=4182 node scripts/serve.mjs",
+      "port": 4182,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "book-search.spec.ts",
+      "file": "book-search.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17084,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('combobox', { name: 'Bibelbereich', exact: true })\nExpected: \u001b[32m\"Alle\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByRole('combobox', { name: 'Bibelbereich', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Bibelbereich', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('combobox', { name: 'Bibelbereich', exact: true })\nExpected: \u001b[32m\"Alle\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByRole('combobox', { name: 'Bibelbereich', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Bibelbereich', exact: true })\u001b[22m\n\n    at /workspace/oliva-book-search/tests/e2e/book-search.spec.ts:21:29",
+                    "location": {
+                      "file": "/workspace/oliva-book-search/tests/e2e/book-search.spec.ts",
+                      "column": 29,
+                      "line": 21
+                    },
+                    "snippet": " \u001b[90m 19 |\u001b[39m test(\u001b[32m\"die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 20 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m\"/bibel\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 21 |\u001b[39m   \u001b[36mawait\u001b[39m expect(scope(page))\u001b[33m.\u001b[39mtoHaveValue(\u001b[32m\"Alle\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 22 |\u001b[39m   \u001b[36mawait\u001b[39m expect(scope(page)\u001b[33m.\u001b[39mlocator(\u001b[32m\"option\"\u001b[39m))\u001b[33m.\u001b[39mtoHaveText([\n \u001b[90m 23 |\u001b[39m     \u001b[32m\"Gesamte Bibel\"\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 24 |\u001b[39m     \u001b[32m\"Neues Testament (NT)\"\u001b[39m\u001b[33m,\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/oliva-book-search/tests/e2e/book-search.spec.ts",
+                        "column": 29,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('combobox', { name: 'Bibelbereich', exact: true })\nExpected: \u001b[32m\"Alle\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" getByRole('combobox', { name: 'Bibelbereich', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Bibelbereich', exact: true })\u001b[22m\n\n\n  19 | test(\"die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein\", async ({ page }) => {\n  20 |   await page.goto(\"/bibel\");\n> 21 |   await expect(scope(page)).toHaveValue(\"Alle\");\n     |                             ^\n  22 |   await expect(scope(page).locator(\"option\")).toHaveText([\n  23 |     \"Gesamte Bibel\",\n  24 |     \"Neues Testament (NT)\",\n    at /workspace/oliva-book-search/tests/e2e/book-search.spec.ts:21:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:14:57.279Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/oliva-book-search/test-results/book-search-die-Bibel-begi-824a0--ohne-persönliche-Daten-ein/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/oliva-book-search/tests/e2e/book-search.spec.ts",
+                    "column": 29,
+                    "line": 21
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "54535c88f704b43af9e1-5896091445bbb6ced72c",
+          "file": "book-search.spec.ts",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 26751,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /, \\d+ Kapitel$/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /, \\d+ Kapitel$/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /, \\d+ Kapitel$/ })\u001b[22m\n\u001b[2m    32 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /, \\d+ Kapitel$/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /, \\d+ Kapitel$/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /, \\d+ Kapitel$/ })\u001b[22m\n\u001b[2m    32 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at /workspace/oliva-book-search/tests/e2e/book-search.spec.ts:53:34",
+                    "location": {
+                      "file": "/workspace/oliva-book-search/tests/e2e/book-search.spec.ts",
+                      "column": 34,
+                      "line": 53
+                    },
+                    "snippet": " \u001b[90m 51 |\u001b[39m   \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m query \u001b[36mof\u001b[39m [\u001b[32m\"Markus \"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"  MARKUS  \"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"M a r k u s\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"\\u00a0Mar\\u2009kus\\u202f\"\u001b[39m]) {\n \u001b[90m 52 |\u001b[39m     \u001b[36mawait\u001b[39m search(page)\u001b[33m.\u001b[39mfill(query)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 53 |\u001b[39m     \u001b[36mawait\u001b[39m expect(bookRows(page))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 54 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"button\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Markus, 16 Kapitel\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 55 |\u001b[39m   }\n \u001b[90m 56 |\u001b[39m   \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m query \u001b[36mof\u001b[39m [\u001b[32m\"1 Mose\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"1.Mose\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"1. Mose\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\" 1 . M o s e \\u00a0\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"１．Ｍｏｓｅ\"\u001b[39m]) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/oliva-book-search/tests/e2e/book-search.spec.ts",
+                        "column": 34,
+                        "line": 53
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /, \\d+ Kapitel$/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /, \\d+ Kapitel$/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /, \\d+ Kapitel$/ })\u001b[22m\n\u001b[2m    32 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  51 |   for (const query of [\"Markus \", \"  MARKUS  \", \"M a r k u s\", \"\\u00a0Mar\\u2009kus\\u202f\"]) {\n  52 |     await search(page).fill(query);\n> 53 |     await expect(bookRows(page)).toHaveCount(1);\n     |                                  ^\n  54 |     await expect(page.getByRole(\"button\", { name: \"Markus, 16 Kapitel\", exact: true })).toBeVisible();\n  55 |   }\n  56 |   for (const query of [\"1 Mose\", \"1.Mose\", \"1. Mose\", \" 1 . M o s e \\u00a0\", \"１．Ｍｏｓｅ\"]) {\n    at /workspace/oliva-book-search/tests/e2e/book-search.spec.ts:53:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:15:18.112Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/oliva-book-search/test-results/book-search-Buchnamen-vert-f1cfc-ng-und-Punkte-im-Zahlpräfix/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/oliva-book-search/tests/e2e/book-search.spec.ts",
+                    "column": 34,
+                    "line": 53
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "54535c88f704b43af9e1-6a0a95b8d6370f3de5b9",
+          "file": "book-search.spec.ts",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "interrupted",
+                  "duration": 3568,
+                  "error": {
+                    "message": "Error: locator.evaluate: Test ended.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Bibelbereich', exact: true })\u001b[22m\n",
+                    "stack": "Error: locator.evaluate: Test ended.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Bibelbereich', exact: true })\u001b[22m\n\n    at /workspace/oliva-book-search/tests/e2e/book-search.spec.ts:68:28",
+                    "location": {
+                      "file": "/workspace/oliva-book-search/tests/e2e/book-search.spec.ts",
+                      "column": 28,
+                      "line": 68
+                    },
+                    "snippet": " \u001b[90m 66 |\u001b[39m test(\u001b[32m\"der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 67 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m\"/bibel\"\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 68 |\u001b[39m   expect(\u001b[36mawait\u001b[39m scope(page)\u001b[33m.\u001b[39mevaluate(node \u001b[33m=>\u001b[39m node\u001b[33m.\u001b[39mtagName))\u001b[33m.\u001b[39mtoBe(\u001b[32m\"SELECT\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 69 |\u001b[39m   \u001b[36mawait\u001b[39m scope(page)\u001b[33m.\u001b[39mfocus()\u001b[33m;\u001b[39m\n \u001b[90m 70 |\u001b[39m   \u001b[36mawait\u001b[39m expect(scope(page))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m 71 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m\"ArrowDown\"\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/oliva-book-search/tests/e2e/book-search.spec.ts",
+                        "column": 28,
+                        "line": 68
+                      },
+                      "message": "Error: locator.evaluate: Test ended.\nCall log:\n\u001b[2m  - waiting for getByRole('combobox', { name: 'Bibelbereich', exact: true })\u001b[22m\n\n\n  66 | test(\"der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus\", async ({ page }) => {\n  67 |   await page.goto(\"/bibel\");\n> 68 |   expect(await scope(page).evaluate(node => node.tagName)).toBe(\"SELECT\");\n     |                            ^\n  69 |   await scope(page).focus();\n  70 |   await expect(scope(page)).toBeFocused();\n  71 |   await page.keyboard.press(\"ArrowDown\");\n    at /workspace/oliva-book-search/tests/e2e/book-search.spec.ts:68:28"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:15:50.221Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/oliva-book-search/test-results/book-search-der-native-Web-ab06d-dienen-und-behält-den-Fokus/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/oliva-book-search/tests/e2e/book-search.spec.ts",
+                    "column": 28,
+                    "line": 68
+                  }
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "54535c88f704b43af9e1-1c2f2fb0832ecdad11da",
+          "file": "book-search.spec.ts",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "Suche und Bereich erhalten Buchschwert-Kontext und öffnen das gewählte Kapitel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "54535c88f704b43af9e1-343de55bb0638adbdd9a",
+          "file": "book-search.spec.ts",
+          "line": 87,
+          "column": 1
+        },
+        {
+          "title": "die NT-Fragenübersicht nutzt dieselbe Buchsuche und bleibt auf ihre 27 Bücher begrenzt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "54535c88f704b43af9e1-bf41b7319bf557136cdc",
+          "file": "book-search.spec.ts",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "Buchsuche und Dropdown sind bei 320 Pixeln hell und 1440 Pixeln dunkel zugänglich",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "54535c88f704b43af9e1-8b18768d720682c7f9d8",
+          "file": "book-search.spec.ts",
+          "line": 140,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "swords.spec.ts",
+      "file": "swords.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "das Buchschwert öffnet aus Bibel und Sammlung, zeigt Johannes groß und verändert keine Lesespuren",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-12c02adb214f7f77c2e8",
+          "file": "swords.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-b6c3c3061cec7c9b0178",
+          "file": "swords.spec.ts",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-51c7f436270f7d40e8d7",
+          "file": "swords.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-2057e2f42869c14283ec",
+          "file": "swords.spec.ts",
+          "line": 183,
+          "column": 1
+        },
+        {
+          "title": "nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ee3e4816a8557cd91adc-78d1178e5d44cf12cc46",
+          "file": "swords.spec.ts",
+          "line": 211,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "Bildfehler und verzögerte Antwort ohne Service-Worker",
+          "file": "swords.spec.ts",
+          "line": 247,
+          "column": 6,
+          "specs": [
+            {
+              "title": "drei fehlgeschlagene PNG-Varianten lassen das Buchsymbol bestehen; erneutes Laden gelingt",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ee3e4816a8557cd91adc-2a6125072a01c9259043",
+              "file": "swords.spec.ts",
+              "line": 249,
+              "column": 3
+            },
+            {
+              "title": "ein Buchwechsel während des Ladens übernimmt kein verspätetes Johannes-Bild",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ee3e4816a8557cd91adc-d3c66c19b30e3654cff6",
+              "file": "swords.spec.ts",
+              "line": 265,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-15T21:14:55.704Z",
+    "duration": 59661.149999999994,
+    "expected": 0,
+    "skipped": 11,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

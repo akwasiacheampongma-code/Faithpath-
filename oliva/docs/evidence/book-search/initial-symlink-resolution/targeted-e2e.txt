@@ -1,0 +1,99 @@
+[WebServer] (node:2354) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 1 worker
+
+(node:2373) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/e2e/book-search.spec.ts:19:1 › die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein (17.1s)
+(node:2673) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 tests/e2e/book-search.spec.ts:46:1 › Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix (26.8s)
+(node:2970) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 tests/e2e/book-search.spec.ts:66:1 › der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus (3.6s)
+
+
+  1) tests/e2e/book-search.spec.ts:19:1 › die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('combobox', { name: 'Bibelbereich', exact: true })
+    Expected: "Alle"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('combobox', { name: 'Bibelbereich', exact: true }) with timeout 15000ms
+      - waiting for getByRole('combobox', { name: 'Bibelbereich', exact: true })
+
+
+      19 | test("die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein", async ({ page }) => {
+      20 |   await page.goto("/bibel");
+    > 21 |   await expect(scope(page)).toHaveValue("Alle");
+         |                             ^
+      22 |   await expect(scope(page).locator("option")).toHaveText([
+      23 |     "Gesamte Bibel",
+      24 |     "Neues Testament (NT)",
+        at /workspace/oliva-book-search/tests/e2e/book-search.spec.ts:21:29
+
+    Error Context: test-results/book-search-die-Bibel-begi-824a0--ohne-persönliche-Daten-ein/error-context.md
+
+  2) tests/e2e/book-search.spec.ts:46:1 › Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('button', { name: /, \d+ Kapitel$/ })
+    Expected: 1
+    Received: 0
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('button', { name: /, \d+ Kapitel$/ }) with timeout 15000ms
+      - waiting for getByRole('button', { name: /, \d+ Kapitel$/ })
+        32 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      51 |   for (const query of ["Markus ", "  MARKUS  ", "M a r k u s", "\u00a0Mar\u2009kus\u202f"]) {
+      52 |     await search(page).fill(query);
+    > 53 |     await expect(bookRows(page)).toHaveCount(1);
+         |                                  ^
+      54 |     await expect(page.getByRole("button", { name: "Markus, 16 Kapitel", exact: true })).toBeVisible();
+      55 |   }
+      56 |   for (const query of ["1 Mose", "1.Mose", "1. Mose", " 1 . M o s e \u00a0", "１．Ｍｏｓｅ"]) {
+        at /workspace/oliva-book-search/tests/e2e/book-search.spec.ts:53:34
+
+    Error Context: test-results/book-search-Buchnamen-vert-f1cfc-ng-und-Punkte-im-Zahlpräfix/error-context.md
+
+  3) tests/e2e/book-search.spec.ts:66:1 › der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus 
+
+    Test was interrupted.
+
+    Error: locator.evaluate: Test ended.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Bibelbereich', exact: true })
+
+
+      66 | test("der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus", async ({ page }) => {
+      67 |   await page.goto("/bibel");
+    > 68 |   expect(await scope(page).evaluate(node => node.tagName)).toBe("SELECT");
+         |                            ^
+      69 |   await scope(page).focus();
+      70 |   await expect(scope(page)).toBeFocused();
+      71 |   await page.keyboard.press("ArrowDown");
+        at /workspace/oliva-book-search/tests/e2e/book-search.spec.ts:68:28
+
+    Error Context: test-results/book-search-der-native-Web-ab06d-dienen-und-behält-den-Fokus/error-context.md
+
+  2 failed
+    tests/e2e/book-search.spec.ts:19:1 › die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein 
+    tests/e2e/book-search.spec.ts:46:1 › Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix 
+  1 interrupted
+    tests/e2e/book-search.spec.ts:66:1 › der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus 
+  10 did not run
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

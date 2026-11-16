@@ -1,0 +1,162 @@
+{
+  "checkedAt": "2026-11-15T21:27:19.063517+00:00",
+  "reviewer": "book_search_fix; final read-only verification separate from the root build/browser runner",
+  "status": "PASS",
+  "blockingIssues": [],
+  "reviewActions": "Read source and baseline diffs, existing real test/upgrade evidence and native static export evidence; independently recompute file/blob/artifact hashes. No browser/build execution or runtime/version changes during this review.",
+  "source": {
+    "featureCommit": "6b8fa1ace6aa1d9832311c6a49abc87b50e157e0",
+    "baseline": "a6f82509a2b2b72436e23aa417844f26067589fe",
+    "workingVersion": "0.12.1",
+    "changedRuntimeAndPackagePaths": [
+      "app.json",
+      "app/bibel.tsx",
+      "app/verstehen/index.tsx",
+      "package-lock.json",
+      "package.json",
+      "src/features/bible/BibleScopeSelect.tsx",
+      "src/features/bible/BibleScopeSelect.web.tsx",
+      "src/features/bible/book-search.ts"
+    ],
+    "unchangedSensitivePaths": {
+      "src/state": true,
+      "src/services": true,
+      "src/data": true,
+      "src/features/bible/repository.ts": true,
+      "app/lesen/[book].tsx": true,
+      "src/features/garden": true,
+      "src/features/swords": true
+    },
+    "dependencyChanges": "Only package/app version metadata changed to0.12.1; dependency lists and installed-package lock entries unchanged.",
+    "requirements": {
+      "defaultWholeBible": "Alle initial local state;66 books",
+      "scopes": [
+        "Gesamte Bibel",
+        "Neues Testament (NT)",
+        "Altes Testament (AT)"
+      ],
+      "normalizedBookNames": "Shared pure NFKC + German lowercase + Unicode whitespace/period removal; whitespace-only query includes every book in selected scope.",
+      "fullTextSearch": "repository.ts and searchBible implementation unchanged; only book-name callers use normalizer.",
+      "ntCatalog": "Same normalizer over existing NT_BOOKS only; no AT quiz content added.",
+      "dataNeutrality": "New query/scope/open values use component state; new selector has no persistence writes; no LocalAppData/schema changes.",
+      "navigation": "Existing book expansion, chapter and book-sword route handlers untouched."
+    }
+  },
+  "runtimeInputs": {
+    "filesChecked": 316,
+    "mismatches": [],
+    "recordedDigest": "abc9c992cf4606a9a525570097826da35b5e4b67c97d0d8c67f234ffaf8a5fc0",
+    "recomputedDigest": "abc9c992cf4606a9a525570097826da35b5e4b67c97d0d8c67f234ffaf8a5fc0",
+    "matches": true
+  },
+  "platformSplit": {
+    "web": "Native HTML label/select/options, controlled typed values, visible focus ring and OLIVA theme tokens.",
+    "native": "Core React Native Pressable/Modal/radiogroup/radio, checked/expanded state; selection/close/back/backdrop handlers; animationType none. No picker dependency.",
+    "androidAndIosExports": true,
+    "staticNtCatalog": "PASS",
+    "nativeRuntimeOrDeviceTest": false,
+    "limitation": "Exports/static code inspection prove packaging and platform source selection; native interaction and screen-reader behavior were not exercised on a device or simulator."
+  },
+  "existingEvidenceReviewed": {
+    "unit": {
+      "passed": 225,
+      "failed": 0,
+      "success": true
+    },
+    "targetedBrowser": {
+      "startTime": "2026-11-15T21:18:13.538Z",
+      "duration": 125597.767,
+      "expected": 13,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "fullBrowser": "Full114-case run in progress at review time; no final full-suite result claimed.",
+    "responsiveAxe": "Six book-search browser scenarios passed in targeted run, including320-light/1440-dark Axe, no overflow, keyboard focus and actual chapter/book-sword navigation."
+  },
+  "upgrade": {
+    "baseline": "oliva-80005b3c1d2e2eef",
+    "target": "oliva-75717978bae05979",
+    "passed": true,
+    "allFourRawRecordsExact": true,
+    "recordKeys": [
+      "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "before-faithpath-import",
+      "main",
+      "recovery-index"
+    ],
+    "realWorkerActivation": true,
+    "offlineReload": true,
+    "scopeCounts": {
+      "default": 66,
+      "NT": 27,
+      "AT": 39
+    },
+    "noNewGrowthOrProgress": true,
+    "offlineSavedNtAnswer": true,
+    "offlineDraft": true,
+    "offlineA51Stages": 7,
+    "sourceCatalogQuestions": 1300,
+    "individualBrowserQuestions": 1,
+    "comparison": "Exact JSON serialization of all raw IndexedDB store values, not physical database-file bytes",
+    "scope": "Local automated Chromium, one persistent profile and origin through actual worker update",
+    "artifactChecks": [
+      {
+        "path": "docs/evidence/book-search/upgrade/offline-upgrade-book-search.mjs",
+        "sha256": "6758e745e796f8d00e19e280fe1e722b1ed3b6c69c4abc772334e263a0328700",
+        "expected": "6758e745e796f8d00e19e280fe1e722b1ed3b6c69c4abc772334e263a0328700",
+        "matches": true
+      },
+      {
+        "path": "docs/evidence/book-search/upgrade/oliva-75717978bae05979/offline-upgrade.json",
+        "sha256": "f6941fc2701cdf3b90374eb892be9fe7183808bd953fbb528b64b7d3f22d4f19",
+        "expected": "f6941fc2701cdf3b90374eb892be9fe7183808bd953fbb528b64b7d3f22d4f19",
+        "matches": true
+      },
+      {
+        "path": "dist/index.html",
+        "sha256": "ce09707942a30beee75140194fb4175bba225f5541badefe5845994d88109d27",
+        "expected": "ce09707942a30beee75140194fb4175bba225f5541badefe5845994d88109d27",
+        "matches": true
+      },
+      {
+        "path": "dist/sw.js",
+        "sha256": "6ae9788ec3720dd09a594571f93402285a8c75c77495e8c1ae7c4e68e3b88dd7",
+        "expected": "6ae9788ec3720dd09a594571f93402285a8c75c77495e8c1ae7c4e68e3b88dd7",
+        "matches": true
+      },
+      {
+        "path": "docs/evidence/book-search/upgrade/oliva-75717978bae05979/book-search-after-update.png",
+        "bytes": 47049,
+        "expectedBytes": 47049,
+        "sha256": "d0793f486ab04a508ba6317feabbc3eecc4dcebfbd719ea4ee93b4f8699746a2",
+        "expected": "d0793f486ab04a508ba6317feabbc3eecc4dcebfbd719ea4ee93b4f8699746a2",
+        "matches": true
+      },
+      {
+        "path": "docs/evidence/book-search/upgrade/oliva-75717978bae05979/book-search-offline.png",
+        "bytes": 47939,
+        "expectedBytes": 47939,
+        "sha256": "a18903b297bbff127307aa94dc22b13224ee1f374ca467a937e8688b7426c654",
+        "expected": "a18903b297bbff127307aa94dc22b13224ee1f374ca467a937e8688b7426c654",
+        "matches": true
+      },
+      {
+        "path": "docs/evidence/book-search/upgrade/oliva-75717978bae05979/offline-seven-a51-stages.png",
+        "bytes": 162868,
+        "expectedBytes": 162868,
+        "sha256": "7d22d667f3fa68778a21bc393fb84d8d46cb69a9bd83a926e7779eff32a6d046",
+        "expected": "7d22d667f3fa68778a21bc393fb84d8d46cb69a9bd83a926e7779eff32a6d046",
+        "matches": true
+      }
+    ]
+  },
+  "originalReference": {
+    "proof": "original-reference-integrity.json",
+    "files": 390,
+    "allOriginalGitBlobHashesMatch": true
+  },
+  "nonblockingNotes": [
+    "Upgrade README reproduction command names a temporary /tmp copy; the intact archived runner is docs/evidence/book-search/upgrade/offline-upgrade-book-search.mjs. Historical preparation state is explicitly distinguished from final passed evidence."
+  ]
+}
