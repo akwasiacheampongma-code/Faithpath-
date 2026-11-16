@@ -1,0 +1,328 @@
+Reader upgrade phase: baseline-ui-seed
+Reader upgrade phase: real-worker-update-and-v8-ram-hydration
+Reader upgrade phase: offline-full-chapter-around-unchanged-partial-scope
+Reader upgrade phase: gap-protection-and-exact-manual-copy-fallback
+Reader upgrade phase: first-explicit-range-draft-writes-v9-only-intended-fields
+Reader upgrade phase: offline-range-draft-recovery-and-commit
+Reader upgrade phase: outside-focus-anchor-and-real-offline-reboot
+{
+  "baselineVersion": "0.12.1",
+  "baselineBuild": "oliva-75717978bae05979",
+  "targetVersion": "0.13.0",
+  "targetBuild": "oliva-71cf17993d0bc7fd",
+  "baselineHtmlSha256": "ce09707942a30beee75140194fb4175bba225f5541badefe5845994d88109d27",
+  "baselineWorkerSha256": "6ae9788ec3720dd09a594571f93402285a8c75c77495e8c1ae7c4e68e3b88dd7",
+  "targetHtmlSha256": "d617dca1b46363ff248699c1035582314f151d91d05b9405a2d6a93e7863d994",
+  "targetWorkerSha256": "c0fe09611826dcc6af2e59b12c61c09c76df368861ce4e4155c58bee75d5cae9",
+  "syntheticData": true,
+  "syntheticClock": "2027-01-01T12:00:00.000Z",
+  "passed": false,
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "scope": "Local automated Chromium persistent profile and actual same-origin worker update",
+  "comparison": "Exact JSON serialization of all raw IndexedDB values, not physical database-file bytes",
+  "phase": "outside-focus-anchor-and-real-offline-reboot",
+  "phases": [
+    {
+      "name": "baseline-ui-seed",
+      "startedAt": "2026-11-16T02:54:38.940Z"
+    },
+    {
+      "name": "real-worker-update-and-v8-ram-hydration",
+      "startedAt": "2026-11-16T02:54:52.529Z"
+    },
+    {
+      "name": "offline-full-chapter-around-unchanged-partial-scope",
+      "startedAt": "2026-11-16T02:54:59.093Z"
+    },
+    {
+      "name": "gap-protection-and-exact-manual-copy-fallback",
+      "startedAt": "2026-11-16T02:55:03.017Z"
+    },
+    {
+      "name": "first-explicit-range-draft-writes-v9-only-intended-fields",
+      "startedAt": "2026-11-16T02:55:04.100Z"
+    },
+    {
+      "name": "offline-range-draft-recovery-and-commit",
+      "startedAt": "2026-11-16T02:55:05.335Z"
+    },
+    {
+      "name": "outside-focus-anchor-and-real-offline-reboot",
+      "startedAt": "2026-11-16T02:55:07.350Z"
+    }
+  ],
+  "runtimeInputsBefore": {
+    "fileCount": 327,
+    "sha256": "0b097eb24fc4fded654aef9f1a68ffb76301ed48e3d941ca146046efe3e15611",
+    "allFileHashesMatch": true
+  },
+  "origin": "http://127.0.0.1:45991",
+  "browserVersion": "155.0.8059.79",
+  "beforeRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5687,
+      "json_sha256": "be181a0d54df6a485d11016dd1605b5ba95fd80163f6392eb8bda32ff7a73ec0"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "beforeWorker": {
+    "expected": "oliva-75717978bae05979",
+    "controller": {
+      "id": "oliva-75717978bae05979",
+      "version": "0.12.1"
+    },
+    "active": {
+      "id": "oliva-75717978bae05979",
+      "version": "0.12.1"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-75717978bae05979"
+    ]
+  },
+  "originalArchiveSha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "afterWorker": {
+    "expected": "oliva-71cf17993d0bc7fd",
+    "controller": {
+      "id": "oliva-71cf17993d0bc7fd",
+      "version": "0.13.0"
+    },
+    "active": {
+      "id": "oliva-71cf17993d0bc7fd",
+      "version": "0.13.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-75717978bae05979",
+      "oliva-71cf17993d0bc7fd"
+    ]
+  },
+  "realWorkerActivation": true,
+  "sameOriginPersistentProfile": true,
+  "displayedCanonicalVerses": 71,
+  "logicalFocus": {
+    "book": "JHN",
+    "chapter": 6,
+    "from": 35,
+    "to": 37
+  },
+  "allFourRawV8RecordsExactBeforeNewActions": true,
+  "noAutomaticChapterCompletion": true,
+  "copyFallbackExact": "Johannes 6,35–36\n35 Jesus aber sprach zu ihnen: Ich bin das Brot des Lebens. Wer zu mir kommt, den wird nicht hungern; und wer an mich glaubt, den wird nimmermehr dürsten.\n36 Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\nLutherbibel 1912",
+  "gapDidNotFillOrWrite": true,
+  "afterFirstRangeDraftRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6068,
+      "json_sha256": "3f341f8fd42a4d624835e720a5fc164816525d0425577b09b3c4fb939869e231"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "firstExplicitActionWroteV9": true,
+  "onlyVersionRevisionDraftsAndCanonicalAnchorPermittedToChange": true,
+  "afterIndependentRangeDraftRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6441,
+      "json_sha256": "42ed167d7500a72bbcaa8865b6c687e3433f00c7995ffa69a4833b0a5f846d80"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "afterRangeNoteRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6360,
+      "json_sha256": "a05d5f52bb92bc3801d00dda79d83712f55a5bafb992d84062f00de838d0f02d"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "savedRangeNote": {
+    "id": "note-1798804800000-7pky1zhc",
+    "text": "Mein neuer Bereichsentwurf zu Johannes 6,35–36.\n  Genau diese beiden Verse gehören zusammen.",
+    "kind": "note",
+    "createdAt": "2027-01-01T12:00:00.000Z",
+    "updatedAt": "2027-01-01T12:00:00.000Z",
+    "captureSource": {
+      "type": "passage",
+      "ref": {
+        "book": "JHN",
+        "chapter": 6,
+        "from": 35,
+        "to": 36
+      }
+    },
+    "ref": {
+      "book": "JHN",
+      "chapter": 6,
+      "from": 35,
+      "to": 36
+    }
+  },
+  "independentSecondRangeDraft": {
+    "id": "draft-1798804800000-3q2wdqsv",
+    "key": "capture:passage:JHN:6:35:37",
+    "revision": 1,
+    "updatedAt": "2027-01-01T12:00:00.000Z",
+    "type": "capture",
+    "values": {
+      "entityId": "note-1798804800000-xpwodv0u",
+      "text": "Mein unabhängiger Entwurf zu Johannes 6,35–37.\n  Sein anderes Ende bleibt erhalten.  ",
+      "source": {
+        "type": "passage",
+        "ref": {
+          "book": "JHN",
+          "chapter": 6,
+          "from": 35,
+          "to": 37
+        }
+      }
+    }
+  },
+  "oldSingleVerseAndJournalDraftsExact": true,
+  "ntAnswerAndReadGrowthFieldsExact": true,
+  "outsideFocusAnchorRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6433,
+      "json_sha256": "ae641c21f0d05d52688069a41f95f110de4bc0d596c440a48eaed69fc85c6efc"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"{\\\"version\\\":9,\\\"name\\\":\\\"Ada\\\",\\\"onboarded\\\":false,\\\"readChapters\\\":[\\\"MRK:4\\\"],\\\"readPassages\\\":[],\\\"readSteps\\\":[],\\\"completedSteps\\\":[],\\\"activePath\\\":null,\\\"bookmarks\\\":[\\\"JHN:6:35\\\"],\\\"highlights\\\":{\\\"MRK:4:35\\\":\\\"sage\\\",\\\"MRK:4:36\\\":\\\"sage\\\"},\\\"notes\\\":[{\\\"id\\\":\\\"note-1798804800000-7pky1zhc\\\",\\\"text\\\":\\\"Mein neuer Bereichsentwurf zu Johannes 6,35–36.\\\\n  Genau diese beiden Verse gehören zusammen.\\\",\\\"kind\\\":\\\"note\\\",\\\"createdAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"captureSource\\\":{\\\"type\\\":\\\"passage\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":36}},\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":36}},{\\\"id\\\":\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\",\\\"text\\\":\\\"Ich darf mit meinen Fragen kommen.\\\",\\\"kind\\\":\\\"reflection\\\",\\\"ref\\\":{\\\"book\\\":\\\"MRK\\\",\\\"chapter\\\":4,\\\"from\\\":35,\\\"to\\\":41},\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"journal\\\",\\\"sourceId\\\":\\\"j1\\\",\\\"sourceKeys\\\":[\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\",\\\"fp5-reflection-82f3e9c695dc6b8d1b11818d5701919e286de8d47f7c3eb3100c485f79e57828\\\"],\\\"entityHash\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"referenceLabel\\\":\\\"Luther 1912 · Markus 4,35–41\\\"},\\\"goalIds\\\":[\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\"]},{\\\"id\\\":\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\",\\\"text\\\":\\\"Ein Bezug aus OTB bleibt als OTB erkennbar.\\\",\\\"kind\\\":\\\"note\\\",\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"journal\\\",\\\"sourceId\\\":\\\"j2\\\",\\\"sourceKeys\\\":[\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\"],\\\"entityHash\\\":\\\"d9e9a20b6abd6501498d011d4c7f52cdb2a0d8ecd5605b333782a5a4c1329385\\\",\\\"referenceLabel\\\":\\\"OTB · Johannes 14,27\\\"},\\\"goalIds\\\":[]}],\\\"growthStage\\\":0,\\\"settings\\\":{\\\"theme\\\":\\\"light\\\",\\\"fontSize\\\":20,\\\"lineHeight\\\":1.8,\\\"reducedMotion\\\":false},\\\"goals\\\":[{\\\"id\\\":\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\",\\\"title\\\":\\\"In Ruhe zuhören\\\",\\\"why\\\":\\\"Raum für andere schaffen.\\\",\\\"ref\\\":{\\\"book\\\":\\\"MRK\\\",\\\"chapter\\\":4,\\\"from\\\":35,\\\"to\\\":41},\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"archivedAt\\\":null,\\\"revision\\\":1,\\\"steps\\\":[{\\\"id\\\":\\\"fp5-step-58d2c1406f9edccfd67d5cfcc65991416d36389e529331a1718395290fff53b0\\\",\\\"text\\\":\\\"Vor der Antwort warten.\\\",\\\"done\\\":true,\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"completedAt\\\":\\\"2026-11-02T10:00:00.000Z\\\"}],\\\"reviews\\\":[],\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"path\\\",\\\"sourceId\\\":\\\"p1\\\",\\\"sourceKeys\\\":[\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\"],\\\"entityHash\\\":\\\"89d5ae50efbcc5cc9532899c2ac96fa35239e61b2e8c0bc3f911f0ff85b34014\\\",\\\"category\\\":\\\"Alltag\\\",\\\"referenceLabel\\\":\\\"Luther 1912 · Markus 4,35–41\\\"}}],\\\"drafts\\\":[{\\\"id\\\":\\\"draft-1798804800000-jgm3hd2f\\\",\\\"key\\\":\\\"journal\\\",\\\"revision\\\":2,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"journal\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-3wfi2b4i\\\",\\\"targetId\\\":null,\\\"baseUpdatedAt\\\":null,\\\"text\\\":\\\"Mein alter Journalentwurf aus OLIVA 0.12.1.\\\\n  Diese Worte bleiben unverändert.  \\\",\\\"kind\\\":\\\"note\\\"}},{\\\"id\\\":\\\"draft-1798804800000-f3jthcyi\\\",\\\"key\\\":\\\"capture:verse:JHN:6:35\\\",\\\"revision\\\":1,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"capture\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-7l4fpc7r\\\",\\\"text\\\":\\\"Mein alter Einzelversentwurf zu Johannes 6,35.\\\\n  Keine Bereichsnotiz soll ihn ersetzen.  \\\",\\\"source\\\":{\\\"type\\\":\\\"verse\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":35}}}},{\\\"id\\\":\\\"draft-1798804800000-3q2wdqsv\\\",\\\"key\\\":\\\"capture:passage:JHN:6:35:37\\\",\\\"revision\\\":1,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"capture\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-xpwodv0u\\\",\\\"text\\\":\\\"Mein unabhängiger Entwurf zu Johannes 6,35–37.\\\\n  Sein anderes Ende bleibt erhalten.  \\\",\\\"source\\\":{\\\"type\\\":\\\"passage\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":37}}}}],\\\"imports\\\":[{\\\"id\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"fingerprint\\\":\\\"0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"sourceHash\\\":\\\"6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0\\\",\\\"importedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"sourceExported\\\":\\\"2026-11-05T10:00:00.000Z\\\",\\\"counts\\\":{\\\"paths\\\":1,\\\"notes\\\":2,\\\"highlights\\\":2,\\\"chapters\\\":1,\\\"mirrors\\\":1,\\\"conflicts\\\":0},\\\"entities\\\":{\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\":\\\"89d5ae50efbcc5cc9532899c2ac96fa35239e61b2e8c0bc3f911f0ff85b34014\\\",\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"fp5-reflection-82f3e9c695dc6b8d1b11818d5701919e286de8d47f7c3eb3100c485f79e57828\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\":\\\"d9e9a20b6abd6501498d011d4c7f52cdb2a0d8ecd5605b333782a5a4c1329385\\\"},\\\"addedChapters\\\":[\\\"MRK:4\\\"]}],\\\"retainedReviewGrowth\\\":{\\\"reflections\\\":0,\\\"actions\\\":0},\\\"invitations\\\":{\\\"enabled\\\":false,\\\"snoozed\\\":{},\\\"dismissed\\\":{}},\\\"ntStudy\\\":{\\\"answers\\\":{\\\"FP-0261:3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc\\\":{\\\"question\\\":{\\\"id\\\":\\\"FP-0261\\\",\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"legacyUnitId\\\":10000,\\\"prompt\\\":\\\"Wie fasst Matthäus den Stammbaum Jesu in Vers 17 zusammen?\\\",\\\"options\\\":[\\\"In drei Abschnitten mit jeweils vierzehn Generationen.\\\",\\\"In zwei Abschnitten mit jeweils zwölf Generationen.\\\",\\\"In vier Abschnitten mit jeweils sieben Generationen.\\\",\\\"Als eine durchgehende Liste mit vierzig Generationen.\\\"],\\\"correctIndex\\\":0,\\\"referenceText\\\":\\\"Matthäus 1,17\\\",\\\"referenceRanges\\\":[{\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"from\\\":17,\\\"to\\\":17}],\\\"explanation\\\":\\\"Matthäus gliedert die Abstammung Jesu in drei Abschnitte: von Abraham bis David, von David bis zur Wegführung nach Babylon und von dort bis Christus – jeweils vierzehn Generationen.\\\",\\\"hash\\\":\\\"3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc\\\"},\\\"choice\\\":1,\\\"createdAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"revision\\\":1}},\\\"completions\\\":{},\\\"legacyCompletions\\\":[],\\\"position\\\":{\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"index\\\":0}}}\"\nReceived: \"{\\\"version\\\":9,\\\"name\\\":\\\"Ada\\\",\\\"onboarded\\\":false,\\\"readChapters\\\":[\\\"MRK:4\\\"],\\\"readPassages\\\":[],\\\"readSteps\\\":[],\\\"completedSteps\\\":[],\\\"activePath\\\":null,\\\"bookmarks\\\":[\\\"JHN:6:35\\\"],\\\"highlights\\\":{\\\"MRK:4:35\\\":\\\"sage\\\",\\\"MRK:4:36\\\":\\\"sage\\\"},\\\"notes\\\":[{\\\"id\\\":\\\"note-1798804800000-7pky1zhc\\\",\\\"text\\\":\\\"Mein neuer Bereichsentwurf zu Johannes 6,35–36.\\\\n  Genau diese beiden Verse gehören zusammen.\\\",\\\"kind\\\":\\\"note\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":36},\\\"createdAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"captureSource\\\":{\\\"type\\\":\\\"passage\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":36}}},{\\\"id\\\":\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\",\\\"text\\\":\\\"Ich darf mit meinen Fragen kommen.\\\",\\\"kind\\\":\\\"reflection\\\",\\\"ref\\\":{\\\"book\\\":\\\"MRK\\\",\\\"chapter\\\":4,\\\"from\\\":35,\\\"to\\\":41},\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"journal\\\",\\\"sourceId\\\":\\\"j1\\\",\\\"sourceKeys\\\":[\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\",\\\"fp5-reflection-82f3e9c695dc6b8d1b11818d5701919e286de8d47f7c3eb3100c485f79e57828\\\"],\\\"entityHash\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"referenceLabel\\\":\\\"Luther 1912 · Markus 4,35–41\\\"},\\\"goalIds\\\":[\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\"]},{\\\"id\\\":\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\",\\\"text\\\":\\\"Ein Bezug aus OTB bleibt als OTB erkennbar.\\\",\\\"kind\\\":\\\"note\\\",\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"journal\\\",\\\"sourceId\\\":\\\"j2\\\",\\\"sourceKeys\\\":[\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\"],\\\"entityHash\\\":\\\"d9e9a20b6abd6501498d011d4c7f52cdb2a0d8ecd5605b333782a5a4c1329385\\\",\\\"referenceLabel\\\":\\\"OTB · Johannes 14,27\\\"},\\\"goalIds\\\":[]}],\\\"growthStage\\\":0,\\\"settings\\\":{\\\"theme\\\":\\\"light\\\",\\\"fontSize\\\":20,\\\"lineHeight\\\":1.8,\\\"reducedMotion\\\":false},\\\"goals\\\":[{\\\"id\\\":\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\",\\\"title\\\":\\\"In Ruhe zuhören\\\",\\\"why\\\":\\\"Raum für andere schaffen.\\\",\\\"ref\\\":{\\\"book\\\":\\\"MRK\\\",\\\"chapter\\\":4,\\\"from\\\":35,\\\"to\\\":41},\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"archivedAt\\\":null,\\\"revision\\\":1,\\\"steps\\\":[{\\\"id\\\":\\\"fp5-step-58d2c1406f9edccfd67d5cfcc65991416d36389e529331a1718395290fff53b0\\\",\\\"text\\\":\\\"Vor der Antwort warten.\\\",\\\"done\\\":true,\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"completedAt\\\":\\\"2026-11-02T10:00:00.000Z\\\"}],\\\"reviews\\\":[],\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"path\\\",\\\"sourceId\\\":\\\"p1\\\",\\\"sourceKeys\\\":[\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\"],\\\"entityHash\\\":\\\"89d5ae50efbcc5cc9532899c2ac96fa35239e61b2e8c0bc3f911f0ff85b34014\\\",\\\"category\\\":\\\"Alltag\\\",\\\"referenceLabel\\\":\\\"Luther 1912 · Markus 4,35–41\\\"}}],\\\"drafts\\\":[{\\\"id\\\":\\\"draft-1798804800000-jgm3hd2f\\\",\\\"key\\\":\\\"journal\\\",\\\"revision\\\":2,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"journal\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-3wfi2b4i\\\",\\\"targetId\\\":null,\\\"baseUpdatedAt\\\":null,\\\"text\\\":\\\"Mein alter Journalentwurf aus OLIVA 0.12.1.\\\\n  Diese Worte bleiben unverändert.  \\\",\\\"kind\\\":\\\"note\\\"}},{\\\"id\\\":\\\"draft-1798804800000-f3jthcyi\\\",\\\"key\\\":\\\"capture:verse:JHN:6:35\\\",\\\"revision\\\":1,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"capture\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-7l4fpc7r\\\",\\\"text\\\":\\\"Mein alter Einzelversentwurf zu Johannes 6,35.\\\\n  Keine Bereichsnotiz soll ihn ersetzen.  \\\",\\\"source\\\":{\\\"type\\\":\\\"verse\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":35}}}},{\\\"id\\\":\\\"draft-1798804800000-3q2wdqsv\\\",\\\"key\\\":\\\"capture:passage:JHN:6:35:37\\\",\\\"revision\\\":1,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"capture\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-xpwodv0u\\\",\\\"text\\\":\\\"Mein unabhängiger Entwurf zu Johannes 6,35–37.\\\\n  Sein anderes Ende bleibt erhalten.  \\\",\\\"source\\\":{\\\"type\\\":\\\"passage\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":37}}}}],\\\"imports\\\":[{\\\"id\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"fingerprint\\\":\\\"0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"sourceHash\\\":\\\"6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0\\\",\\\"importedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"sourceExported\\\":\\\"2026-11-05T10:00:00.000Z\\\",\\\"counts\\\":{\\\"paths\\\":1,\\\"notes\\\":2,\\\"highlights\\\":2,\\\"chapters\\\":1,\\\"mirrors\\\":1,\\\"conflicts\\\":0},\\\"entities\\\":{\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\":\\\"89d5ae50efbcc5cc9532899c2ac96fa35239e61b2e8c0bc3f911f0ff85b34014\\\",\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"fp5-reflection-82f3e9c695dc6b8d1b11818d5701919e286de8d47f7c3eb3100c485f79e57828\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\":\\\"d9e9a20b6abd6501498d011d4c7f52cdb2a0d8ecd5605b333782a5a4c1329385\\\"},\\\"addedChapters\\\":[\\\"MRK:4\\\"]}],\\\"retainedReviewGrowth\\\":{\\\"reflections\\\":0,\\\"actions\\\":0},\\\"invitations\\\":{\\\"enabled\\\":false,\\\"snoozed\\\":{},\\\"dismissed\\\":{}},\\\"ntStudy\\\":{\\\"answers\\\":{\\\"FP-0261:3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc\\\":{\\\"question\\\":{\\\"id\\\":\\\"FP-0261\\\",\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"legacyUnitId\\\":10000,\\\"prompt\\\":\\\"Wie fasst Matthäus den Stammbaum Jesu in Vers 17 zusammen?\\\",\\\"options\\\":[\\\"In drei Abschnitten mit jeweils vierzehn Generationen.\\\",\\\"In zwei Abschnitten mit jeweils zwölf Generationen.\\\",\\\"In vier Abschnitten mit jeweils sieben Generationen.\\\",\\\"Als eine durchgehende Liste mit vierzig Generationen.\\\"],\\\"correctIndex\\\":0,\\\"referenceText\\\":\\\"Matthäus 1,17\\\",\\\"referenceRanges\\\":[{\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"from\\\":17,\\\"to\\\":17}],\\\"explanation\\\":\\\"Matthäus gliedert die Abstammung Jesu in drei Abschnitte: von Abraham bis David, von David bis zur Wegführung nach Babylon und von dort bis Christus – jeweils vierzehn Generationen.\\\",\\\"hash\\\":\\\"3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc\\\"},\\\"choice\\\":1,\\\"createdAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"revision\\\":1}},\\\"completions\\\":{},\\\"legacyCompletions\\\":[],\\\"position\\\":{\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"index\\\":0}}}\"",
+  "errorStack": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"{\\\"version\\\":9,\\\"name\\\":\\\"Ada\\\",\\\"onboarded\\\":false,\\\"readChapters\\\":[\\\"MRK:4\\\"],\\\"readPassages\\\":[],\\\"readSteps\\\":[],\\\"completedSteps\\\":[],\\\"activePath\\\":null,\\\"bookmarks\\\":[\\\"JHN:6:35\\\"],\\\"highlights\\\":{\\\"MRK:4:35\\\":\\\"sage\\\",\\\"MRK:4:36\\\":\\\"sage\\\"},\\\"notes\\\":[{\\\"id\\\":\\\"note-1798804800000-7pky1zhc\\\",\\\"text\\\":\\\"Mein neuer Bereichsentwurf zu Johannes 6,35–36.\\\\n  Genau diese beiden Verse gehören zusammen.\\\",\\\"kind\\\":\\\"note\\\",\\\"createdAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"captureSource\\\":{\\\"type\\\":\\\"passage\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":36}},\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":36}},{\\\"id\\\":\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\",\\\"text\\\":\\\"Ich darf mit meinen Fragen kommen.\\\",\\\"kind\\\":\\\"reflection\\\",\\\"ref\\\":{\\\"book\\\":\\\"MRK\\\",\\\"chapter\\\":4,\\\"from\\\":35,\\\"to\\\":41},\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"journal\\\",\\\"sourceId\\\":\\\"j1\\\",\\\"sourceKeys\\\":[\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\",\\\"fp5-reflection-82f3e9c695dc6b8d1b11818d5701919e286de8d47f7c3eb3100c485f79e57828\\\"],\\\"entityHash\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"referenceLabel\\\":\\\"Luther 1912 · Markus 4,35–41\\\"},\\\"goalIds\\\":[\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\"]},{\\\"id\\\":\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\",\\\"text\\\":\\\"Ein Bezug aus OTB bleibt als OTB erkennbar.\\\",\\\"kind\\\":\\\"note\\\",\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"journal\\\",\\\"sourceId\\\":\\\"j2\\\",\\\"sourceKeys\\\":[\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\"],\\\"entityHash\\\":\\\"d9e9a20b6abd6501498d011d4c7f52cdb2a0d8ecd5605b333782a5a4c1329385\\\",\\\"referenceLabel\\\":\\\"OTB · Johannes 14,27\\\"},\\\"goalIds\\\":[]}],\\\"growthStage\\\":0,\\\"settings\\\":{\\\"theme\\\":\\\"light\\\",\\\"fontSize\\\":20,\\\"lineHeight\\\":1.8,\\\"reducedMotion\\\":false},\\\"goals\\\":[{\\\"id\\\":\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\",\\\"title\\\":\\\"In Ruhe zuhören\\\",\\\"why\\\":\\\"Raum für andere schaffen.\\\",\\\"ref\\\":{\\\"book\\\":\\\"MRK\\\",\\\"chapter\\\":4,\\\"from\\\":35,\\\"to\\\":41},\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"archivedAt\\\":null,\\\"revision\\\":1,\\\"steps\\\":[{\\\"id\\\":\\\"fp5-step-58d2c1406f9edccfd67d5cfcc65991416d36389e529331a1718395290fff53b0\\\",\\\"text\\\":\\\"Vor der Antwort warten.\\\",\\\"done\\\":true,\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"completedAt\\\":\\\"2026-11-02T10:00:00.000Z\\\"}],\\\"reviews\\\":[],\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"path\\\",\\\"sourceId\\\":\\\"p1\\\",\\\"sourceKeys\\\":[\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\"],\\\"entityHash\\\":\\\"89d5ae50efbcc5cc9532899c2ac96fa35239e61b2e8c0bc3f911f0ff85b34014\\\",\\\"category\\\":\\\"Alltag\\\",\\\"referenceLabel\\\":\\\"Luther 1912 · Markus 4,35–41\\\"}}],\\\"drafts\\\":[{\\\"id\\\":\\\"draft-1798804800000-jgm3hd2f\\\",\\\"key\\\":\\\"journal\\\",\\\"revision\\\":2,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"journal\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-3wfi2b4i\\\",\\\"targetId\\\":null,\\\"baseUpdatedAt\\\":null,\\\"text\\\":\\\"Mein alter Journalentwurf aus OLIVA 0.12.1.\\\\n  Diese Worte bleiben unverändert.  \\\",\\\"kind\\\":\\\"note\\\"}},{\\\"id\\\":\\\"draft-1798804800000-f3jthcyi\\\",\\\"key\\\":\\\"capture:verse:JHN:6:35\\\",\\\"revision\\\":1,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"capture\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-7l4fpc7r\\\",\\\"text\\\":\\\"Mein alter Einzelversentwurf zu Johannes 6,35.\\\\n  Keine Bereichsnotiz soll ihn ersetzen.  \\\",\\\"source\\\":{\\\"type\\\":\\\"verse\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":35}}}},{\\\"id\\\":\\\"draft-1798804800000-3q2wdqsv\\\",\\\"key\\\":\\\"capture:passage:JHN:6:35:37\\\",\\\"revision\\\":1,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"capture\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-xpwodv0u\\\",\\\"text\\\":\\\"Mein unabhängiger Entwurf zu Johannes 6,35–37.\\\\n  Sein anderes Ende bleibt erhalten.  \\\",\\\"source\\\":{\\\"type\\\":\\\"passage\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":37}}}}],\\\"imports\\\":[{\\\"id\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"fingerprint\\\":\\\"0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"sourceHash\\\":\\\"6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0\\\",\\\"importedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"sourceExported\\\":\\\"2026-11-05T10:00:00.000Z\\\",\\\"counts\\\":{\\\"paths\\\":1,\\\"notes\\\":2,\\\"highlights\\\":2,\\\"chapters\\\":1,\\\"mirrors\\\":1,\\\"conflicts\\\":0},\\\"entities\\\":{\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\":\\\"89d5ae50efbcc5cc9532899c2ac96fa35239e61b2e8c0bc3f911f0ff85b34014\\\",\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"fp5-reflection-82f3e9c695dc6b8d1b11818d5701919e286de8d47f7c3eb3100c485f79e57828\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\":\\\"d9e9a20b6abd6501498d011d4c7f52cdb2a0d8ecd5605b333782a5a4c1329385\\\"},\\\"addedChapters\\\":[\\\"MRK:4\\\"]}],\\\"retainedReviewGrowth\\\":{\\\"reflections\\\":0,\\\"actions\\\":0},\\\"invitations\\\":{\\\"enabled\\\":false,\\\"snoozed\\\":{},\\\"dismissed\\\":{}},\\\"ntStudy\\\":{\\\"answers\\\":{\\\"FP-0261:3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc\\\":{\\\"question\\\":{\\\"id\\\":\\\"FP-0261\\\",\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"legacyUnitId\\\":10000,\\\"prompt\\\":\\\"Wie fasst Matthäus den Stammbaum Jesu in Vers 17 zusammen?\\\",\\\"options\\\":[\\\"In drei Abschnitten mit jeweils vierzehn Generationen.\\\",\\\"In zwei Abschnitten mit jeweils zwölf Generationen.\\\",\\\"In vier Abschnitten mit jeweils sieben Generationen.\\\",\\\"Als eine durchgehende Liste mit vierzig Generationen.\\\"],\\\"correctIndex\\\":0,\\\"referenceText\\\":\\\"Matthäus 1,17\\\",\\\"referenceRanges\\\":[{\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"from\\\":17,\\\"to\\\":17}],\\\"explanation\\\":\\\"Matthäus gliedert die Abstammung Jesu in drei Abschnitte: von Abraham bis David, von David bis zur Wegführung nach Babylon und von dort bis Christus – jeweils vierzehn Generationen.\\\",\\\"hash\\\":\\\"3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc\\\"},\\\"choice\\\":1,\\\"createdAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"revision\\\":1}},\\\"completions\\\":{},\\\"legacyCompletions\\\":[],\\\"position\\\":{\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"index\\\":0}}}\"\nReceived: \"{\\\"version\\\":9,\\\"name\\\":\\\"Ada\\\",\\\"onboarded\\\":false,\\\"readChapters\\\":[\\\"MRK:4\\\"],\\\"readPassages\\\":[],\\\"readSteps\\\":[],\\\"completedSteps\\\":[],\\\"activePath\\\":null,\\\"bookmarks\\\":[\\\"JHN:6:35\\\"],\\\"highlights\\\":{\\\"MRK:4:35\\\":\\\"sage\\\",\\\"MRK:4:36\\\":\\\"sage\\\"},\\\"notes\\\":[{\\\"id\\\":\\\"note-1798804800000-7pky1zhc\\\",\\\"text\\\":\\\"Mein neuer Bereichsentwurf zu Johannes 6,35–36.\\\\n  Genau diese beiden Verse gehören zusammen.\\\",\\\"kind\\\":\\\"note\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":36},\\\"createdAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"captureSource\\\":{\\\"type\\\":\\\"passage\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":36}}},{\\\"id\\\":\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\",\\\"text\\\":\\\"Ich darf mit meinen Fragen kommen.\\\",\\\"kind\\\":\\\"reflection\\\",\\\"ref\\\":{\\\"book\\\":\\\"MRK\\\",\\\"chapter\\\":4,\\\"from\\\":35,\\\"to\\\":41},\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"journal\\\",\\\"sourceId\\\":\\\"j1\\\",\\\"sourceKeys\\\":[\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\",\\\"fp5-reflection-82f3e9c695dc6b8d1b11818d5701919e286de8d47f7c3eb3100c485f79e57828\\\"],\\\"entityHash\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"referenceLabel\\\":\\\"Luther 1912 · Markus 4,35–41\\\"},\\\"goalIds\\\":[\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\"]},{\\\"id\\\":\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\",\\\"text\\\":\\\"Ein Bezug aus OTB bleibt als OTB erkennbar.\\\",\\\"kind\\\":\\\"note\\\",\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"journal\\\",\\\"sourceId\\\":\\\"j2\\\",\\\"sourceKeys\\\":[\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\"],\\\"entityHash\\\":\\\"d9e9a20b6abd6501498d011d4c7f52cdb2a0d8ecd5605b333782a5a4c1329385\\\",\\\"referenceLabel\\\":\\\"OTB · Johannes 14,27\\\"},\\\"goalIds\\\":[]}],\\\"growthStage\\\":0,\\\"settings\\\":{\\\"theme\\\":\\\"light\\\",\\\"fontSize\\\":20,\\\"lineHeight\\\":1.8,\\\"reducedMotion\\\":false},\\\"goals\\\":[{\\\"id\\\":\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\",\\\"title\\\":\\\"In Ruhe zuhören\\\",\\\"why\\\":\\\"Raum für andere schaffen.\\\",\\\"ref\\\":{\\\"book\\\":\\\"MRK\\\",\\\"chapter\\\":4,\\\"from\\\":35,\\\"to\\\":41},\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"updatedAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"archivedAt\\\":null,\\\"revision\\\":1,\\\"steps\\\":[{\\\"id\\\":\\\"fp5-step-58d2c1406f9edccfd67d5cfcc65991416d36389e529331a1718395290fff53b0\\\",\\\"text\\\":\\\"Vor der Antwort warten.\\\",\\\"done\\\":true,\\\"createdAt\\\":\\\"2026-11-01T10:00:00.000Z\\\",\\\"completedAt\\\":\\\"2026-11-02T10:00:00.000Z\\\"}],\\\"reviews\\\":[],\\\"origin\\\":{\\\"importId\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"kind\\\":\\\"path\\\",\\\"sourceId\\\":\\\"p1\\\",\\\"sourceKeys\\\":[\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\"],\\\"entityHash\\\":\\\"89d5ae50efbcc5cc9532899c2ac96fa35239e61b2e8c0bc3f911f0ff85b34014\\\",\\\"category\\\":\\\"Alltag\\\",\\\"referenceLabel\\\":\\\"Luther 1912 · Markus 4,35–41\\\"}}],\\\"drafts\\\":[{\\\"id\\\":\\\"draft-1798804800000-jgm3hd2f\\\",\\\"key\\\":\\\"journal\\\",\\\"revision\\\":2,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"journal\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-3wfi2b4i\\\",\\\"targetId\\\":null,\\\"baseUpdatedAt\\\":null,\\\"text\\\":\\\"Mein alter Journalentwurf aus OLIVA 0.12.1.\\\\n  Diese Worte bleiben unverändert.  \\\",\\\"kind\\\":\\\"note\\\"}},{\\\"id\\\":\\\"draft-1798804800000-f3jthcyi\\\",\\\"key\\\":\\\"capture:verse:JHN:6:35\\\",\\\"revision\\\":1,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"capture\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-7l4fpc7r\\\",\\\"text\\\":\\\"Mein alter Einzelversentwurf zu Johannes 6,35.\\\\n  Keine Bereichsnotiz soll ihn ersetzen.  \\\",\\\"source\\\":{\\\"type\\\":\\\"verse\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":35}}}},{\\\"id\\\":\\\"draft-1798804800000-3q2wdqsv\\\",\\\"key\\\":\\\"capture:passage:JHN:6:35:37\\\",\\\"revision\\\":1,\\\"updatedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"type\\\":\\\"capture\\\",\\\"values\\\":{\\\"entityId\\\":\\\"note-1798804800000-xpwodv0u\\\",\\\"text\\\":\\\"Mein unabhängiger Entwurf zu Johannes 6,35–37.\\\\n  Sein anderes Ende bleibt erhalten.  \\\",\\\"source\\\":{\\\"type\\\":\\\"passage\\\",\\\"ref\\\":{\\\"book\\\":\\\"JHN\\\",\\\"chapter\\\":6,\\\"from\\\":35,\\\"to\\\":37}}}}],\\\"imports\\\":[{\\\"id\\\":\\\"fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"fingerprint\\\":\\\"0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d\\\",\\\"sourceHash\\\":\\\"6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0\\\",\\\"importedAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"sourceExported\\\":\\\"2026-11-05T10:00:00.000Z\\\",\\\"counts\\\":{\\\"paths\\\":1,\\\"notes\\\":2,\\\"highlights\\\":2,\\\"chapters\\\":1,\\\"mirrors\\\":1,\\\"conflicts\\\":0},\\\"entities\\\":{\\\"fp5-path-f64551fcd6f07823cb87971cfb91446425da18286b3ab1ef935e0cbd7a69f68a\\\":\\\"89d5ae50efbcc5cc9532899c2ac96fa35239e61b2e8c0bc3f911f0ff85b34014\\\",\\\"fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"fp5-reflection-82f3e9c695dc6b8d1b11818d5701919e286de8d47f7c3eb3100c485f79e57828\\\":\\\"5db5fbd42da3d1390b427fd0def83b756d869cf10f41d2f5cd6386906155aa3b\\\",\\\"fp5-journal-a499068b8f456a03adaf1064efe8fb54c8f0fd204468f27e168642eab19d883b\\\":\\\"d9e9a20b6abd6501498d011d4c7f52cdb2a0d8ecd5605b333782a5a4c1329385\\\"},\\\"addedChapters\\\":[\\\"MRK:4\\\"]}],\\\"retainedReviewGrowth\\\":{\\\"reflections\\\":0,\\\"actions\\\":0},\\\"invitations\\\":{\\\"enabled\\\":false,\\\"snoozed\\\":{},\\\"dismissed\\\":{}},\\\"ntStudy\\\":{\\\"answers\\\":{\\\"FP-0261:3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc\\\":{\\\"question\\\":{\\\"id\\\":\\\"FP-0261\\\",\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"legacyUnitId\\\":10000,\\\"prompt\\\":\\\"Wie fasst Matthäus den Stammbaum Jesu in Vers 17 zusammen?\\\",\\\"options\\\":[\\\"In drei Abschnitten mit jeweils vierzehn Generationen.\\\",\\\"In zwei Abschnitten mit jeweils zwölf Generationen.\\\",\\\"In vier Abschnitten mit jeweils sieben Generationen.\\\",\\\"Als eine durchgehende Liste mit vierzig Generationen.\\\"],\\\"correctIndex\\\":0,\\\"referenceText\\\":\\\"Matthäus 1,17\\\",\\\"referenceRanges\\\":[{\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"from\\\":17,\\\"to\\\":17}],\\\"explanation\\\":\\\"Matthäus gliedert die Abstammung Jesu in drei Abschnitte: von Abraham bis David, von David bis zur Wegführung nach Babylon und von dort bis Christus – jeweils vierzehn Generationen.\\\",\\\"hash\\\":\\\"3ea24d97164e2a7d2840b3dab9d8e30c9afaa90cf3709d2b33b8b52d1fae7afc\\\"},\\\"choice\\\":1,\\\"createdAt\\\":\\\"2027-01-01T12:00:00.000Z\\\",\\\"revision\\\":1}},\\\"completions\\\":{},\\\"legacyCompletions\\\":[],\\\"position\\\":{\\\"book\\\":\\\"MAT\\\",\\\"chapter\\\":1,\\\"index\\\":0}}}\"\n    at captureRawStack (/workspace/faithpath-next/node_modules/playwright-core/lib/coreBundle.js:9551:17)\n    at callMatcherAsStep (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13342:57)\n    at Object.toBe (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13334:23)\n    at sourceContentExact (/workspace/faithpath-next/docs/evidence/reader-parity/upgrade/offline-upgrade-reader-v9.mjs:85:86)\n    at /workspace/faithpath-next/docs/evidence/reader-parity/upgrade/offline-upgrade-reader-v9.mjs:245:372",
+  "failureRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6433,
+      "json_sha256": "ae641c21f0d05d52688069a41f95f110de4bc0d596c440a48eaed69fc85c6efc"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "workerDiagnostic": {
+    "expected": "oliva-71cf17993d0bc7fd",
+    "controller": {
+      "id": "oliva-71cf17993d0bc7fd",
+      "version": "0.13.0"
+    },
+    "active": {
+      "id": "oliva-71cf17993d0bc7fd",
+      "version": "0.13.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-75717978bae05979",
+      "oliva-71cf17993d0bc7fd"
+    ]
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "preparedAt": "2026-11-16T09:41:51.478680+00:00",
+  "status": "read-only preparation; no implementation, runtime test, build or new release assignment",
+  "original": {
+    "repository": "akwasiacheampongma-code/Faithpath-",
+    "snapshot": "a519ce898fa33907b07d5ac7a585595127556183",
+    "branch": "feature/simplified-step-experience-20261104",
+    "referenceRoot": "/workspace/faithpath-reference",
+    "files": [
+      {
+        "path": "src/step-suggestions.js",
+        "bytes": 13163,
+        "sha256": "5b527e93e7136d999fcda35aac8f73f61910a72f3b5e5d6ae13a77f1d196d2bc",
+        "originalGitBlob": "0fad8e5620732fbd5dbce173522e314c5aca816d",
+        "matchesPreservedReferenceManifest": true
+      },
+      {
+        "path": "src/step-selection.js",
+        "bytes": 772,
+        "sha256": "2ff2ed311f1dcecf6979958041155526f8dbd966e49e5ca38f052bfba20952ac",
+        "originalGitBlob": "fff44124e7440af1969e0f84922e84513fb05562",
+        "matchesPreservedReferenceManifest": true
+      },
+      {
+        "path": "src/step-help.js",
+        "bytes": 8830,
+        "sha256": "36ead71d25fbd066d2845bcd617b9c5c2f5fbd96026b12cf71c96c8d54ed27eb",
+        "originalGitBlob": "29bd9cb1a13ab3a18b4a4509c65680aa88ff4620",
+        "matchesPreservedReferenceManifest": true
+      },
+      {
+        "path": "src/content.js",
+        "bytes": 33361,
+        "sha256": "f20b6729406a34123abf860b4c5d69184be30da2834660601355dc71541dccda",
+        "originalGitBlob": "f7827e886567b1d91956f4cd0453603fa59dbad7",
+        "matchesPreservedReferenceManifest": true
+      },
+      {
+        "path": "src/domain.js",
+        "bytes": 10175,
+        "sha256": "ee05fe3c7809f7f1d3d5bf717d1b5a698fe6067a8a417a07516a7cc3da419644",
+        "originalGitBlob": "265335062130653980b99b10243d03b3c498fd37",
+        "matchesPreservedReferenceManifest": true
+      },
+      {
+        "path": "src/app.js",
+        "bytes": 113640,
+        "sha256": "56e494f2e84c18d74e970578217467feecc5670443c558a905af537f0be17771",
+        "originalGitBlob": "d10cffc1b9e3fb93ad5e4ba8903c5c155199b1b4",
+        "matchesPreservedReferenceManifest": true
+      },
+      {
+        "path": "src/first-seed/view.js",
+        "bytes": 9447,
+        "sha256": "8b8de0c1c2123ebbc2e4da817b34510d1d4ce315ed470f5613909043c6eb021f",
+        "originalGitBlob": "03f14127623af00161c0ecc57a905377e6d7f955",
+        "matchesPreservedReferenceManifest": true
+      },
+      {
+        "path": "src/first-seed/model.js",
+        "bytes": 4118,
+        "sha256": "ab48f0920ca67f7c31163418c13edfc85d61151b6798bf8979d9fd51a820ec7b",
+        "originalGitBlob": "8b872fb88f4f86f8c1656bf7f1be87c1cfbcf228",
+        "matchesPreservedReferenceManifest": true
+      },
+      {
+        "path": "src/first-seed/controller.js",
+        "bytes": 8694,
+        "sha256": "6b5b76226113e2807a4f460d1054d76c15afad1469d3794860396de9f6d0b4db",
+        "originalGitBlob": "b4ffb75dae3ece03c2db6dc06740b3332493703f",
+        "matchesPreservedReferenceManifest": true
+      }
+    ]
+  },
+  "currentOliva": {
+    "root": "/workspace/faithpath-next",
+    "scope": "Observed current editors/contracts only; current Reader release QA remains Root-owned. This preparation does not change runtime.",
+    "files": [
+      {
+        "path": "src/features/personal/Editors.tsx",
+        "bytes": 13909,
+        "sha256": "9c12275e7cdb7a11a8b4a2e1c1fecb82e56dedda6115fbf10ba5257e1f2df996"
+      },
+      {
+        "path": "src/features/personal/schema.ts",
+        "bytes": 4196,
+        "sha256": "d23927115a5fb3dab854de1a896f80b746293645b7de63a6ef522ef1793605e2"
+      },
+      {
+        "path": "src/features/personal/useDraft.ts",
+        "bytes": 6009,
+        "sha256": "92f401241aa46974cf90ecf7f282f4c24c4c8d0338de790b392f44d3ac234231"
+      },
+      {
+        "path": "src/features/personal/model.ts",
+        "bytes": 13361,
+        "sha256": "a66e5a78afa01c42d8e767565a386f92d859ca90633b9f9bc635c4cd3490564c"
+      },
+      {
+        "path": "app/vorhaben/index.tsx",
+        "bytes": 7106,
+        "sha256": "f9dae623d3ac7b707c9418cac834e7343ee337ffb3df5620cf4b15f785b62167"
+      },
+      {
+        "path": "app/vorhaben/[id].tsx",
+        "bytes": 21179,
+        "sha256": "0a93fd45ca7b2985962eaa1907d1588312ff132190df7eb9ee4398915adffffe"
+      }
+    ]
+  },
+  "staticCounts": {
+    "lifeTopics": 18,
+    "pathCategories": 17,
+    "catalogRows": 25,
+    "primaryStringsPerRow": 4,
+    "alternativeRows": 18,
+    "alternativeStringsPerRow": 3,
+    "lifeTopicIds": [
+      "angst",
+      "streit",
+      "einsam",
+      "entscheidung",
+      "vergebung",
+      "zweifel",
+      "ueberfordert",
+      "trauer",
+      "dankbar",
+      "wut",
+      "familie",
+      "hoffnung",
+      "versuchung",
+      "arbeit",
+      "schuld",
+      "selbstbeherrschung",
+      "ruhe",
+      "geduld"
+    ],
+    "pathCategoryIds": [
+      "gebet",
+      "bibel",
+      "vertrauen",
+      "geduld",
+      "vergebung",
+      "beziehungen",
+      "naechstenliebe",
+      "dankbarkeit",
+      "glaube",
+      "hoffnung",
+      "charakter",
+      "disziplin",
+      "entscheidung",
+      "berufung",
+      "gemeinde",
+      "ruhe",
+      "sonstiges"
+    ],
+    "catalogIds": [
+      "angst",
+      "streit",
+      "einsam",
+      "entscheidung",
+      "vergebung",
+      "zweifel",
+      "ueberfordert",
+      "trauer",
+      "dankbar",
+      "wut",
+      "familie",
+      "hoffnung",
+      "versuchung",
+      "arbeit",
+      "schuld",
+      "selbstbeherrschung",
+      "ruhe",
+      "geduld",
+      "gebet",
+      "bibel",
+      "naechstenliebe",
+      "charakter",
+      "disziplin",
+      "gemeinde",
+      "sonstiges"
+    ],
+    "alternativeIds": [
+      "angst",
+      "streit",
+      "einsam",
+      "entscheidung",
+      "vergebung",
+      "zweifel",
+      "ueberfordert",
+      "trauer",
+      "dankbar",
+      "wut",
+      "familie",
+      "hoffnung",
+      "versuchung",
+      "arbeit",
+      "schuld",
+      "selbstbeherrschung",
+      "ruhe",
+      "geduld"
+    ]
+  },
+  "originalFacts": {
+    "featureLocation": [
+      "new personal path editor",
+      "existing personal step editor",
+      "First-Seed scene 4"
+    ],
+    "homeRecommendationRanking": false,
+    "maxVisibleSuggestions": 3,
+    "kindOrder": [
+      "Ganz klein anfangen",
+      "Etwas ausprobieren",
+      "Erst nachdenken"
+    ],
+    "exportedStepKinds": [
+      "Ganz klein anfangen",
+      "Ein konkreter nächster Schritt",
+      "Erst einmal reflektieren"
+    ],
+    "selectionRule": "For each of indices0..2, choose unused full prefixed primary string, else same-index alternative, else omit. Fixed order; no rank, random or AI.",
+    "usedComparison": "Exact used.includes on full Mein kleiner Versuch: prefix+text; no trim/case/paraphrase matching.",
+    "topicInference": "Only valid explicit topic or unique category+first verse-link match against first topic reference, using sameRef alias/number/translation normalization. No prose analysis.",
+    "savedHelperDraftStrings": [
+      "stepSuggestion",
+      "stepOwnText",
+      "stepCandidate"
+    ],
+    "persistentPendingConfirmation": false,
+    "ownTextBackupSlots": 1,
+    "automaticNavigationOnSelection": false,
+    "automaticStepCompletionOnSelection": false,
+    "newCommittedStepDone": false
+  },
+  "independentStaticReview": {
+    "agent": "suggestions_fact_check",
+    "result": "Source facts/counts independently confirmed; no files changed or app code executed.",
+    "notes": [
+      "UI labels differ from exported STEP_KINDS.",
+      "At most three suggestions; used alternatives can exhaust a kind.",
+      "Single own-word backup, no history stack.",
+      "The confirmation intent is transient; helper strings are preserved in existing drafts."
+    ]
+  },
+  "implementationProposal": {
+    "status": "proposal only, Root decides after current Reader delivery",
+    "smallFirstScope": "StepEditor only, explicit local category selection with neutral default, three deterministic local editorial ideas and existing draft/CAS commit path.",
+    "topicSelectionMayRemainEphemeral": true,
+    "widenStoredGoalForUiHelp": false,
+    "doNotInferFromPersonalProse": true,
+    "replacementRequiresDurableOwnWordProtection": true,
+    "draftProtectionContractDecisionOpen": true,
+    "futureVersionOrDateAssigned": false
+  },
+  "integrity": {
+    "referenceModified": false,
+    "olivaRuntimeModified": false,
+    "testsExecuted": false,
+    "buildsExecuted": false,
+    "appCodeExecuted": false,
+    "gitWrites": false,
+    "externalWrites": false,
+    "outputsOnly": [
+      "docs/evidence/suggestions-preparation/preparation.md",
+      "docs/evidence/suggestions-preparation/provenance.json"
+    ]
+  }
+}

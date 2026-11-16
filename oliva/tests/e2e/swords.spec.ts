@@ -73,7 +73,7 @@ async function progress(page: Page, chapters: number) {
 async function historyFixture(page: Page, chapters: number, theme: "light" | "dark") {
   const raw = structuredClone(await rawData(page));
   expect(raw.storageVersion).toBe(1);
-  expect(raw.data.version).toBe(8);
+  expect(raw.data.version).toBe(9);
   raw.data.readChapters = [...new Set([
     ...raw.data.readChapters.filter((key: string) => !key.startsWith("JHN:")),
     "GEN:1", "MRK:4", ...Array.from({ length: chapters }, (_, i) => `JHN:${i + 1}`),
@@ -143,7 +143,10 @@ test("eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinand
   for (const context of contexts) {
     await page.getByRole("button", { name: context.label, exact: true }).click();
     await expect(page.getByRole("button", { name: new RegExp(`^Vers ${context.from}:`) })).toBeVisible();
-    await expect(page.getByRole("button", { name: new RegExp(`^Vers ${context.to + 1}:`) })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: new RegExp(`^Vers ${context.to + 1}:`) })).toHaveCount(1);
+    for (let n = context.from; n <= context.to; n++)
+      await expect(page.getByRole("button", { name: new RegExp(`^Vers ${n}:`) })).toHaveAccessibleName(/· im Fokus$/);
+    await expect(page.getByRole("button", { name: new RegExp(`^Vers ${context.to + 1}:`) })).not.toHaveAccessibleName(/· im Fokus$/);
     await expect.poll(async () => (await localData(page))?.reading).toEqual({
       book: "JHN", chapter: context.chapter, from: context.from, to: context.to,
     });

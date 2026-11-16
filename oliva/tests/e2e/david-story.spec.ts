@@ -75,7 +75,7 @@ async function noOverflow(page: Page) {
   await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 }
 
-test("fünf Geschichten bewahren den Bestand; David öffnet exakt acht Verse und zählt nur nach ausdrücklicher Bestätigung", async ({ page }) => {
+test("fünf Geschichten bewahren den Bestand; David öffnet acht Fokusverse im ganzen Kapitel und zählt nur nach ausdrücklicher Bestätigung", async ({ page }) => {
   await savedProfile(page);
   const before = await rawData(page);
   await openLibrary(page);
@@ -100,7 +100,11 @@ test("fünf Geschichten bewahren den Bestand; David öffnet exakt acht Verse und
   await expect(context.getByText(/vom Ausgang des Kampfes erzählt erst der weitere Text/)).toBeVisible();
   await expect(context.getByText(/Unabhängige Fachfreigabe steht aus/)).toBeVisible();
   for (let verse = 38; verse <= 45; verse++) await expect(page.getByRole("button", { name: new RegExp(`^Vers ${verse}:`) })).toBeAttached();
-  await expect(page.getByRole("button", { name: /^Vers (?:37|46):/ })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /^Vers (?:37|46):/ })).toHaveCount(2);
+  for (let n = 38; n <= 45; n++)
+    await expect(page.getByRole("button", { name: new RegExp(`^Vers ${n}:`) })).toHaveAccessibleName(/· im Fokus$/);
+  for (const n of [37, 46])
+    await expect(page.getByRole("button", { name: new RegExp(`^Vers ${n}:`) })).not.toHaveAccessibleName(/· im Fokus$/);
   expect(learningProgress(await localData(page))).toEqual(progress);
   await page.getByRole("button", { name: "Abschnitt als gelesen bestätigen", exact: true }).click();
   await expect.poll(async () => (await localData(page)).readPassages).toEqual(["1SA:17:38:45"]);

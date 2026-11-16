@@ -468,12 +468,12 @@ test("der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunke
       .toBe(theme);
     await exactText(
       flow(page),
-      getPassage({ book: "MRK", chapter: 4, from: 35, to: 41 }),
+      getChapter("MRK", 4),
     );
     await noOverflow(page);
-    await visible(page, "flow-paragraph-35")
-      .locator("p")
-      .evaluate((node) => node.scrollIntoView({ block: "start" }));
+    await verse(page, 35).evaluate((node) =>
+      node.scrollIntoView({ block: "start" }),
+    );
     await page.screenshot({
       path: `${evidence}/screens/flow-${width}-${theme}-font30.png`,
     });
@@ -491,7 +491,7 @@ test("der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunke
   await unchangedProgress(page, before);
 });
 
-test("die erste Offlineöffnung und der Neustart zeigen exakt Davids acht Abschnittsverse und bestätigen ausschließlich diesen Abschnitt", async ({
+test("die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, markieren acht Fokusverse und bestätigen ausschließlich den Abschnitt", async ({
   page,
   context,
 }) => {
@@ -502,12 +502,17 @@ test("die erste Offlineöffnung und der Neustart zeigen exakt Davids acht Abschn
   await context.setOffline(true);
   await page.goto("/lesen/1SA?chapter=17&from=38&to=45&mode=deep");
   await ready(page, "1SA", 17);
-  const canonical = getPassage({ book: "1SA", chapter: 17, from: 38, to: 45 });
-  expect(canonical).toHaveLength(8);
+  const canonical = getChapter("1SA", 17);
+  const focus = getPassage({ book: "1SA", chapter: 17, from: 38, to: 45 });
+  expect(focus).toHaveLength(8);
   await exactText(flow(page), canonical);
-  await expect(flow(page).locator("[data-verse]")).toHaveCount(8);
-  await expect(verse(page, 37)).toHaveCount(0);
-  await expect(verse(page, 46)).toHaveCount(0);
+  await expect(flow(page).locator("[data-verse]")).toHaveCount(canonical.length);
+  await expect(verse(page, 37)).toHaveCount(1);
+  await expect(verse(page, 46)).toHaveCount(1);
+  for (const n of focus.map((v) => v.n))
+    await expect(verse(page, n)).toHaveAccessibleName(/· im Fokus$/);
+  await expect(verse(page, 37)).not.toHaveAccessibleName(/· im Fokus$/);
+  await expect(verse(page, 46)).not.toHaveAccessibleName(/· im Fokus$/);
   const before = progress(await localData(page));
   await page.reload();
   await ready(page, "1SA", 17);
@@ -524,7 +529,7 @@ test("die erste Offlineöffnung und der Neustart zeigen exakt Davids acht Abschn
     .toEqual(["1SA:17:38:45"]);
   expect((await localData(page)).readChapters).toEqual([]);
   await page
-    .getByRole("button", { name: "Das ganze Kapitel lesen", exact: true })
+    .getByRole("button", { name: "Ganzes Kapitel als Lesebereich öffnen", exact: true })
     .click();
   await ready(page, "1SA", 17);
   await expect

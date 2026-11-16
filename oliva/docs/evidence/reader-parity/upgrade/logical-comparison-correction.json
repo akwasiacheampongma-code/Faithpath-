@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-11-16T09:26:09.971238+00:00",
+  "originalFailure": "oliva-71cf17993d0bc7fd/offline-upgrade.json",
+  "actualDifference": "Only keys of newly committed notes[0] were canonically reordered; deep content equal",
+  "logicalComparator": "toStrictEqual exact keys/values/array order; object insertion order ignored",
+  "rawV8AndNonMainSerializationChecksUnchanged": true,
+  "runtimeEdits": false,
+  "updatedRunnerSha256": "7f27c1bfa529836ae40d35ac1771ace359c448a19ccb05be4eb351e78d6700cb",
+  "executionStatus": "Second actual run passed; original failed run preserved",
+  "successfulExecution": "execution-r2.json",
+  "successfulReport": "oliva-71cf17993d0bc7fd-r2/verification.json",
+  "completedAt": "2026-11-16T09:31:18.484569+00:00"
+}

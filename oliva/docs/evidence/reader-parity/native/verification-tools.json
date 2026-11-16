@@ -1,0 +1,24 @@
+{
+  "scope": "Exact native verification helper bytes; no app code execution",
+  "files": [
+    {
+      "path": "native-export-runner.py",
+      "bytes": 6012,
+      "sha256": "a1f27af7f0f7e0e0f4a500b45209c853a431254f8585f74f5b5200e5eed70d79"
+    },
+    {
+      "path": "check-native-nt-catalog.mjs",
+      "bytes": 9739,
+      "sha256": "7d51e7c9a3c6460765ce5fd01fd5b8c9ab2b84b9f46aa7e8d85d9c8f0da2edd6"
+    },
+    {
+      "path": "check-native-reader.mjs",
+      "bytes": 9066,
+      "sha256": "8968d9af659eb6ff361f1bc5a8899c8b157011ee935b8024b27a1c0037bcbd60"
+    }
+  ],
+  "portableChecker": {
+    "path": "scripts/check-native-export.mjs",
+    "sha256": "ec57f422de199a9dc1d6e0148f4df6368b31c026b27460fb20af1797a8b28f7f"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-11-16T02:44:09.309321+00:00",
+  "status": "PASS for bounded Reader fixes; not release acceptance",
+  "developmentVersion": "0.12.0 unreleased Reader working tree with dataV9",
+  "testedCoreBuild": "oliva-731688e629bf5958",
+  "reports": {
+    "oldFull": {
+      "path": "docs/evidence/reader-parity/before-held-resume-fix/development-full-e2e-results.json",
+      "stats": {
+        "startTime": "2026-11-15T21:30:25.769Z",
+        "duration": 1173388.767,
+        "expected": 122,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "sha256": "16b256add4ae0c95f617e1ccbdaec4154355c6073a8b09ab5e961ba3785cea4c"
+    },
+    "beforeHeld": {
+      "path": "docs/evidence/reader-parity/before-held-resume-fix/held-resume-results.json",
+      "stats": {
+        "startTime": "2026-11-16T02:33:20.176Z",
+        "duration": 54340.244999999995,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      },
+      "sha256": "3084cc23eee956d37722fcb39cae18f20e144e8f04c64980e6681fc872a62352"
+    },
+    "targeted": {
+      "path": "docs/evidence/reader-parity/held-resume-targeted-results.json",
+      "stats": {
+        "startTime": "2026-11-16T02:38:24.450Z",
+        "duration": 227173.389,
+        "expected": 23,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sha256": "56dacc373dd2f7c7a9add7859f6bb205dbb699024cf4fffc3740c3584c1ec93c"
+    },
+    "transientMountObserver": {
+      "path": "docs/evidence/reader-parity/draft-route-mount-observer-results.json",
+      "stats": {
+        "startTime": "2026-11-16T02:42:43.755Z",
+        "duration": 17266.299,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sha256": "8ce8e3863de41da552eba8cfbab3e76f1b661ba34f07c2e874cb8df8167c70a9"
+    }
+  },
+  "unit": {
+    "total": 290,
+    "passed": 290,
+    "failed": 0,
+    "pending": 0,
+    "path": "docs/evidence/reader-parity/selection-e2e/unit-after-held-resume.json"
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "path": "docs/evidence/reader-parity/selection-e2e/typecheck-final-held-resume.txt"
+  },
+  "sourceHashes": {
+    "app/lesen/[book].tsx": "df9601e6ce08927a18c4e6617652b82215a34ac167b4cca786926338cfae5188",
+    "src/features/personal/resolve-bible-draft.ts": "e303ae74b91e3cb16858a39113a34f51f4dfbd5e1f21e395166f3c91fe1e28a5",
+    "tests/resolve-bible-draft.test.ts": "d956e4395f2d683aeb60d470dd9a46ae5ee970f55e8305dab3d70814f0d8b5c3",
+    "tests/e2e/reader-selection.spec.ts": "52611d0392efaf842a522aa489c91aeaf12f6bce2abe2c187a6779341375eaac",
+    "src/state/store.ts": "884e78ed71c657d00750b69de724be7260441be4cb6efea374ae42e145827720"
+  },
+  "assertions": {
+    "heldSingleVerseRecovery": true,
+    "heldRangeRecovery": true,
+    "exactOriginalEntityIdSourceAndWords": true,
+    "sourceConflictRejectedWithoutEditor": true,
+    "readOnlyDomObserverSeesNoTransientPreauthorizationEditor": true,
+    "explicitManualChoiceRemainsUsable": true,
+    "originalWholeChapterStartClearsAnchorAndShowsHeader": true,
+    "partialStartRestoresAndFocusesFirstVerse": true,
+    "noReadingOrGrowthFromNoteManagement": true
+  },
+  "limitations": [
+    "No final candidate full-suite or release-version check yet",
+    "No native export/device/simulator checks of these new fixes yet",
+    "No private deployment, source checkpoint, GitHub backup or public publication by this agent"
+  ]
+}

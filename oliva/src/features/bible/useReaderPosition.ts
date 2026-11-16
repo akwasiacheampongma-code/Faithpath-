@@ -16,8 +16,8 @@ import {
   verseAtOffset,
   type ReadingPosition,
   type VerseFrame,
-} from "./position";
-import { getPassage, validReference, type Reference } from "./repository";
+} from "./position-current";
+import { getChapter, validReference, type Reference } from "./repository";
 
 const viewportKey = () => {
   const window = Dimensions.get("window");
@@ -236,7 +236,7 @@ export function useReaderPosition({
     )
       return;
     const expected = new Set(
-      getPassage(latest.current.reference).map((verse) => verse.n),
+      getChapter(latest.current.reference.book, latest.current.reference.chapter).map((verse) => verse.n),
     );
     if (
       !listFrame ||
@@ -293,7 +293,7 @@ export function useReaderPosition({
   requestViewport.current = viewportChanged;
   function restore(verse: number) {
     if (readingScope(latest.current.reference) !== scope) return;
-    if (!getPassage(latest.current.reference).some((v) => v.n === verse))
+    if (!getChapter(latest.current.reference.book, latest.current.reference.chapter).some((v) => v.n === verse))
       return;
     target.current = verse;
     lastVerse.current = verse;
@@ -312,12 +312,13 @@ export function useReaderPosition({
     if (!validReference(reference)) return;
     const saved = useApp.getState().data.readingPosition;
     const validExplicit =
-      explicitVerse && getPassage(reference).some((v) => v.n === explicitVerse)
+      explicitVerse && getChapter(reference.book, reference.chapter).some((v) => v.n === explicitVerse)
         ? explicitVerse
         : null;
     const verse =
       validExplicit ??
-      (saved && sameReadingScope(saved.ref, reference) ? saved.verse : null);
+      (saved && sameReadingScope(saved.ref, reference) ? saved.verse : null) ??
+      (reference.from ?? (reference.to ? getChapter(reference.book, reference.chapter)[0]?.n ?? null : null));
     target.current = verse;
     lastVerse.current = verse;
     holdRestoredVerse.current = verse !== null;
@@ -347,6 +348,9 @@ export function useReaderPosition({
   useFocusEffect(
     useCallback(() => {
       active.current = true;
+      // A retained reader may return after another chapter has become current.
+      // Restore its logical scope before accepting any new measured anchor.
+      void useApp.getState().openReading(latest.current.reference);
       requestLayout.current();
       return () => {
         active.current = false;

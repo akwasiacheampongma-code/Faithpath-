@@ -24,6 +24,8 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
   {
     paragraphs,
     selected,
+    selectedVerses,
+    focusRange,
     highlights,
     bookmarks,
     fontSize,
@@ -46,15 +48,17 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
     mounted = useRef(false),
     unavailableGeneration = useRef<number | null>(null),
     callbacks = useRef({ onGeometryChange, onUnavailable }),
-    current = useRef({ layoutKey, paragraphs, generation: 0 });
+    current = useRef({ layoutKey, paragraphs, selected, generation: 0 });
   callbacks.current = { onGeometryChange, onUnavailable };
   if (
     current.current.layoutKey !== layoutKey ||
-    current.current.paragraphs !== paragraphs
+    current.current.paragraphs !== paragraphs ||
+    current.current.selected !== selected
   ) {
     current.current = {
       layoutKey,
       paragraphs,
+      selected,
       generation: current.current.generation + 1,
     };
     lines.current.clear();
@@ -224,6 +228,8 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
     [paragraphs, layoutKey],
   );
 
+  // An inline single-verse panel changes paragraph origins. Background-only
+  // range selection/focus does not invalidate native line measurements.
   useLayoutEffect(() => {
     mounted.current = true;
     callbacks.current.onGeometryChange();
@@ -242,7 +248,7 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
       for (const cancel of [...pending.current]) cancel();
       pending.current.clear();
     };
-  }, [layoutKey, paragraphs]);
+  }, [layoutKey, paragraphs, selected]);
 
   return (
     <View testID="reader-flow" style={{ width: "100%", minWidth: 0 }}>
@@ -303,7 +309,14 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
             >
               {paragraph.verses.map((verse, index) => {
                 const color = highlights[verse.key],
-                  marked = bookmarks.includes(verse.key);
+                  marked = bookmarks.includes(verse.key),
+                  isSelected = selectedVerses
+                    ? selectedVerses.includes(verse.n)
+                    : selected === verse.n,
+                  isFocused =
+                    !!focusRange &&
+                    verse.n >= focusRange.from &&
+                    verse.n <= focusRange.to;
                 return (
                   <Fragment key={verse.key}>
                     {index > 0 ? " " : null}
@@ -315,14 +328,21 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
                       testID={`flow-verse-${verse.n}`}
                       accessible
                       accessibilityRole="button"
-                      accessibilityLabel={`Vers ${verse.n}: ${verse.text}${marked ? " · gemerkt" : ""}${color ? " · markiert" : ""}`}
-                      accessibilityState={{ selected: selected === verse.n }}
+                      accessibilityLabel={`Vers ${verse.n}: ${verse.text}${marked ? " · gemerkt" : ""}${color ? " · markiert" : ""}${isFocused ? " · im Fokus" : ""}`}
+                      accessibilityState={{ selected: isSelected }}
+                      aria-pressed={isSelected}
                       onPress={() => onSelect(verse.n)}
                       style={{
                         backgroundColor:
-                          selected === verse.n
+                          isSelected
                             ? t.soft
-                            : highlightBackground(color, t.dark),
+                            : color
+                              ? highlightBackground(color, t.dark)
+                              : isFocused
+                                ? t.dark
+                                  ? "#293b43"
+                                  : "#e8edf0"
+                                : "transparent",
                       }}
                     >
                       <Text

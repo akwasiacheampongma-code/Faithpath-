@@ -1,0 +1,960 @@
+﻿2026-11-16T02:54:15.3038795Z Current runner version: '2.338.2'
+2026-11-16T02:54:15.3061379Z ##[group]Runner Image Provisioner
+2026-11-16T02:54:15.3062095Z Hosted Compute Agent
+2026-11-16T02:54:15.3062701Z Version: 20261103.629
+2026-11-16T02:54:15.3063228Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-16T02:54:15.3063877Z Build Date: 2026-11-03T17:26:59Z
+2026-11-16T02:54:15.3064459Z Worker ID: {530f3ae5-6f42-49c7-9a42-824198c30aa8}
+2026-11-16T02:54:15.3065040Z Region: eastus2
+2026-11-16T02:54:15.3065561Z Cloud: Azure
+2026-11-16T02:54:15.3066045Z ##[endgroup]
+2026-11-16T02:54:15.3067619Z ##[group]Operating System
+2026-11-16T02:54:15.3068176Z Ubuntu
+2026-11-16T02:54:15.3068652Z 26.04.1
+2026-11-16T02:54:15.3069153Z LTS
+2026-11-16T02:54:15.3069582Z ##[endgroup]
+2026-11-16T02:54:15.3070079Z ##[group]Runner Image
+2026-11-16T02:54:15.3070641Z Image: ubuntu-26.04
+2026-11-16T02:54:15.3071119Z Version: 20261111.196.1
+2026-11-16T02:54:15.3072223Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-16T02:54:15.3073467Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-16T02:54:15.3074313Z ##[endgroup]
+2026-11-16T02:54:15.3075284Z ##[group]GITHUB_TOKEN Permissions
+2026-11-16T02:54:15.3077303Z Contents: read
+2026-11-16T02:54:15.3077808Z Metadata: read
+2026-11-16T02:54:15.3078370Z ##[endgroup]
+2026-11-16T02:54:15.3080395Z Secret source: Actions
+2026-11-16T02:54:15.3081564Z Cache mode: write
+2026-11-16T02:54:15.3082366Z Prepare workflow directory
+2026-11-16T02:54:15.3353336Z Prepare all required actions
+2026-11-16T02:54:15.3391779Z Getting action download info
+2026-11-16T02:54:15.5075949Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-16T02:54:15.6617176Z Complete job name: verify
+2026-11-16T02:54:15.7413342Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-11-16T02:54:15.7414171Z with:
+2026-11-16T02:54:15.7414572Z   persist-credentials: false
+2026-11-16T02:54:15.7414999Z   sparse-checkout: oliva
+2026-11-16T02:54:15.7415441Z   repository: akwasiacheampongma-code/Faithpath-
+2026-11-16T02:54:15.7418939Z   token: ***
+2026-11-16T02:54:15.7419312Z   ssh-strict: true
+2026-11-16T02:54:15.7419680Z   ssh-user: git
+2026-11-16T02:54:15.7420033Z   clean: true
+2026-11-16T02:54:15.7420402Z   sparse-checkout-cone-mode: true
+2026-11-16T02:54:15.7420827Z   fetch-depth: 1
+2026-11-16T02:54:15.7421183Z   fetch-tags: false
+2026-11-16T02:54:15.7421556Z   show-progress: true
+2026-11-16T02:54:15.7421922Z   lfs: false
+2026-11-16T02:54:15.7422257Z   submodules: false
+2026-11-16T02:54:15.7422622Z   set-safe-directory: true
+2026-11-16T02:54:15.7423044Z   allow-unsafe-pr-checkout: false
+2026-11-16T02:54:15.7423613Z ##[endgroup]
+2026-11-16T02:54:15.9402021Z Syncing repository: akwasiacheampongma-code/Faithpath-
+2026-11-16T02:54:15.9404151Z ##[group]Getting Git version info
+2026-11-16T02:54:15.9404993Z Working directory is '/home/runner/work/Faithpath-/Faithpath-'
+2026-11-16T02:54:15.9406199Z [command]/usr/bin/git version
+2026-11-16T02:54:15.9417393Z git version 2.56.1
+2026-11-16T02:54:15.9438025Z ##[endgroup]
+2026-11-16T02:54:15.9443590Z Temporarily overriding HOME='/home/runner/work/_temp/816b3e25-5a57-4112-97a7-7d7072d5d85f' before making global git config changes
+2026-11-16T02:54:15.9448097Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T02:54:15.9450170Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Faithpath-/Faithpath-
+2026-11-16T02:54:15.9499578Z Deleting the contents of '/home/runner/work/Faithpath-/Faithpath-'
+2026-11-16T02:54:15.9502374Z ##[group]Determining repository object format
+2026-11-16T02:54:15.9503818Z ##[endgroup]
+2026-11-16T02:54:15.9504723Z ##[group]Initializing the repository
+2026-11-16T02:54:15.9508465Z [command]/usr/bin/git init /home/runner/work/Faithpath-/Faithpath-
+2026-11-16T02:54:15.9587932Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-16T02:54:15.9589501Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-16T02:54:15.9590330Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-16T02:54:15.9590982Z hint: call:
+2026-11-16T02:54:15.9591363Z hint:
+2026-11-16T02:54:15.9591833Z hint: 	git config --global init.defaultBranch <name>
+2026-11-16T02:54:15.9592377Z hint:
+2026-11-16T02:54:15.9592886Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-16T02:54:15.9593661Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-16T02:54:15.9594276Z hint:
+2026-11-16T02:54:15.9594660Z hint: 	git branch -m <name>
+2026-11-16T02:54:15.9595087Z hint:
+2026-11-16T02:54:15.9595649Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-16T02:54:15.9603246Z Initialized empty Git repository in /home/runner/work/Faithpath-/Faithpath-/.git/
+2026-11-16T02:54:15.9614013Z [command]/usr/bin/git remote add origin https://github.com/akwasiacheampongma-code/Faithpath-
+2026-11-16T02:54:15.9663115Z ##[endgroup]
+2026-11-16T02:54:15.9663759Z ##[group]Disabling automatic garbage collection
+2026-11-16T02:54:15.9666494Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-16T02:54:15.9698406Z ##[endgroup]
+2026-11-16T02:54:15.9699482Z ##[group]Setting up auth
+2026-11-16T02:54:15.9699972Z Removing SSH command configuration
+2026-11-16T02:54:15.9704295Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T02:54:15.9737350Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T02:54:16.0123378Z Removing HTTP extra header
+2026-11-16T02:54:16.0136419Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T02:54:16.0172755Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T02:54:16.0423500Z Removing includeIf entries pointing to credentials config files
+2026-11-16T02:54:16.0428812Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T02:54:16.0460532Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T02:54:16.0702637Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-16T02:54:16.0735714Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Faithpath-/Faithpath-/.git.path /home/runner/work/_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config
+2026-11-16T02:54:16.0764011Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/Faithpath-/Faithpath-/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config
+2026-11-16T02:54:16.0793142Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config
+2026-11-16T02:54:16.0820286Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config
+2026-11-16T02:54:16.0845661Z ##[endgroup]
+2026-11-16T02:54:16.0846311Z ##[group]Fetching the repository
+2026-11-16T02:54:16.0851875Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin +8d0e663150da1860c371aeeba2c4f2ddf16daf8a:refs/remotes/origin/feature/oliva-v0121-book-search-20261115
+2026-11-16T02:54:16.3150010Z From https://github.com/akwasiacheampongma-code/Faithpath-
+2026-11-16T02:54:16.3152245Z  * [new ref]         8d0e663150da1860c371aeeba2c4f2ddf16daf8a -> origin/feature/oliva-v0121-book-search-20261115
+2026-11-16T02:54:16.3163117Z [command]/usr/bin/git branch --list --remote origin/feature/oliva-v0121-book-search-20261115
+2026-11-16T02:54:16.3194831Z   origin/feature/oliva-v0121-book-search-20261115
+2026-11-16T02:54:16.3206213Z [command]/usr/bin/git rev-parse refs/remotes/origin/feature/oliva-v0121-book-search-20261115
+2026-11-16T02:54:16.3230708Z 8d0e663150da1860c371aeeba2c4f2ddf16daf8a
+2026-11-16T02:54:16.3235136Z ##[endgroup]
+2026-11-16T02:54:16.3236152Z ##[group]Determining the checkout info
+2026-11-16T02:54:16.3237338Z ##[endgroup]
+2026-11-16T02:54:16.3238210Z ##[group]Setting up sparse checkout
+2026-11-16T02:54:16.3241066Z [command]/usr/bin/git sparse-checkout set oliva
+2026-11-16T02:54:16.3293907Z ##[endgroup]
+2026-11-16T02:54:16.3294844Z ##[group]Checking out the ref
+2026-11-16T02:54:16.3298605Z [command]/usr/bin/git checkout --progress --force -B feature/oliva-v0121-book-search-20261115 refs/remotes/origin/feature/oliva-v0121-book-search-20261115
+2026-11-16T02:54:19.0467533Z Updating files:   0% (1/2204)
+2026-11-16T02:54:19.0481367Z Updating files:   1% (23/2204)
+2026-11-16T02:54:19.1047986Z Updating files:   2% (45/2204)
+2026-11-16T02:54:19.1059456Z Updating files:   3% (67/2204)
+2026-11-16T02:54:19.2029409Z Updating files:   4% (89/2204)
+2026-11-16T02:54:19.2089146Z Updating files:   5% (111/2204)
+2026-11-16T02:54:19.2181738Z Updating files:   6% (133/2204)
+2026-11-16T02:54:19.2335896Z Updating files:   7% (155/2204)
+2026-11-16T02:54:19.2491678Z Updating files:   8% (177/2204)
+2026-11-16T02:54:19.2700199Z Updating files:   9% (199/2204)
+2026-11-16T02:54:19.2782404Z Updating files:  10% (221/2204)
+2026-11-16T02:54:19.2896189Z Updating files:  11% (243/2204)
+2026-11-16T02:54:19.2915336Z Updating files:  12% (265/2204)
+2026-11-16T02:54:19.2953094Z Updating files:  13% (287/2204)
+2026-11-16T02:54:19.2972241Z Updating files:  14% (309/2204)
+2026-11-16T02:54:19.2998863Z Updating files:  15% (331/2204)
+2026-11-16T02:54:19.3069092Z Updating files:  16% (353/2204)
+2026-11-16T02:54:19.3129515Z Updating files:  17% (375/2204)
+2026-11-16T02:54:19.3200212Z Updating files:  18% (397/2204)
+2026-11-16T02:54:19.3246121Z Updating files:  19% (419/2204)
+2026-11-16T02:54:19.3285009Z Updating files:  20% (441/2204)
+2026-11-16T02:54:19.3361746Z Updating files:  21% (463/2204)
+2026-11-16T02:54:19.3386409Z Updating files:  22% (485/2204)
+2026-11-16T02:54:19.3396217Z Updating files:  22% (492/2204)
+2026-11-16T02:54:19.3427191Z Updating files:  23% (507/2204)
+2026-11-16T02:54:19.3448788Z Updating files:  24% (529/2204)
+2026-11-16T02:54:19.3472663Z Updating files:  25% (551/2204)
+2026-11-16T02:54:19.3512932Z Updating files:  26% (574/2204)
+2026-11-16T02:54:19.3561138Z Updating files:  27% (596/2204)
+2026-11-16T02:54:19.3590462Z Updating files:  28% (618/2204)
+2026-11-16T02:54:19.3604121Z Updating files:  29% (640/2204)
+2026-11-16T02:54:19.3619573Z Updating files:  30% (662/2204)
+2026-11-16T02:54:19.3631871Z Updating files:  31% (684/2204)
+2026-11-16T02:54:19.3688116Z Updating files:  32% (706/2204)
+2026-11-16T02:54:19.3710286Z Updating files:  33% (728/2204)
+2026-11-16T02:54:19.3769520Z Updating files:  34% (750/2204)
+2026-11-16T02:54:19.3822968Z Updating files:  35% (772/2204)
+2026-11-16T02:54:19.3896133Z Updating files:  36% (794/2204)
+2026-11-16T02:54:19.3937323Z Updating files:  37% (816/2204)
+2026-11-16T02:54:19.3956811Z Updating files:  38% (838/2204)
+2026-11-16T02:54:19.3976908Z Updating files:  39% (860/2204)
+2026-11-16T02:54:19.3997098Z Updating files:  40% (882/2204)
+2026-11-16T02:54:19.4072335Z Updating files:  41% (904/2204)
+2026-11-16T02:54:19.4128663Z Updating files:  42% (926/2204)
+2026-11-16T02:54:19.4167428Z Updating files:  43% (948/2204)
+2026-11-16T02:54:19.4239244Z Updating files:  44% (970/2204)
+2026-11-16T02:54:19.4260968Z Updating files:  45% (992/2204)
+2026-11-16T02:54:19.4268088Z Updating files:  46% (1014/2204)
+2026-11-16T02:54:19.4279399Z Updating files:  47% (1036/2204)
+2026-11-16T02:54:19.4290121Z Updating files:  48% (1058/2204)
+2026-11-16T02:54:19.4308998Z Updating files:  49% (1080/2204)
+2026-11-16T02:54:19.4328943Z Updating files:  50% (1102/2204)
+2026-11-16T02:54:19.4368654Z Updating files:  51% (1125/2204)
+2026-11-16T02:54:19.4393513Z Updating files:  52% (1147/2204)
+2026-11-16T02:54:19.4406471Z Updating files:  53% (1169/2204)
+2026-11-16T02:54:19.4465311Z Updating files:  54% (1191/2204)
+2026-11-16T02:54:19.4511698Z Updating files:  55% (1213/2204)
+2026-11-16T02:54:19.4552037Z Updating files:  56% (1235/2204)
+2026-11-16T02:54:19.4625671Z Updating files:  57% (1257/2204)
+2026-11-16T02:54:19.4639844Z Updating files:  58% (1279/2204)
+2026-11-16T02:54:19.4654921Z Updating files:  59% (1301/2204)
+2026-11-16T02:54:19.4682817Z Updating files:  60% (1323/2204)
+2026-11-16T02:54:19.4765805Z Updating files:  61% (1345/2204)
+2026-11-16T02:54:19.4887744Z Updating files:  62% (1367/2204)
+2026-11-16T02:54:19.4915870Z Updating files:  63% (1389/2204)
+2026-11-16T02:54:19.4935623Z Updating files:  64% (1411/2204)
+2026-11-16T02:54:19.4967807Z Updating files:  65% (1433/2204)
+2026-11-16T02:54:19.5008779Z Updating files:  66% (1455/2204)
+2026-11-16T02:54:19.5033129Z Updating files:  67% (1477/2204)
+2026-11-16T02:54:19.5101010Z Updating files:  68% (1499/2204)
+2026-11-16T02:54:19.5120168Z Updating files:  69% (1521/2204)
+2026-11-16T02:54:19.5156776Z Updating files:  70% (1543/2204)
+2026-11-16T02:54:19.5186690Z Updating files:  71% (1565/2204)
+2026-11-16T02:54:19.5243236Z Updating files:  72% (1587/2204)
+2026-11-16T02:54:19.5280095Z Updating files:  73% (1609/2204)
+2026-11-16T02:54:19.5299908Z Updating files:  74% (1631/2204)
+2026-11-16T02:54:19.5330980Z Updating files:  75% (1653/2204)
+2026-11-16T02:54:19.5345487Z Updating files:  76% (1676/2204)
+2026-11-16T02:54:19.5367579Z Updating files:  77% (1698/2204)
+2026-11-16T02:54:19.5387218Z Updating files:  78% (1720/2204)
+2026-11-16T02:54:19.5412674Z Updating files:  79% (1742/2204)
+2026-11-16T02:54:19.5429960Z Updating files:  80% (1764/2204)
+2026-11-16T02:54:19.5441294Z Updating files:  81% (1786/2204)
+2026-11-16T02:54:19.5503039Z Updating files:  82% (1808/2204)
+2026-11-16T02:54:19.5522451Z Updating files:  83% (1830/2204)
+2026-11-16T02:54:19.5567533Z Updating files:  84% (1852/2204)
+2026-11-16T02:54:19.5600161Z Updating files:  85% (1874/2204)
+2026-11-16T02:54:19.5616818Z Updating files:  86% (1896/2204)
+2026-11-16T02:54:19.5653737Z Updating files:  87% (1918/2204)
+2026-11-16T02:54:19.5721904Z Updating files:  88% (1940/2204)
+2026-11-16T02:54:19.5739865Z Updating files:  89% (1962/2204)
+2026-11-16T02:54:19.5754420Z Updating files:  90% (1984/2204)
+2026-11-16T02:54:19.5767617Z Updating files:  91% (2006/2204)
+2026-11-16T02:54:19.5960479Z Updating files:  92% (2028/2204)
+2026-11-16T02:54:19.5969746Z Updating files:  93% (2050/2204)
+2026-11-16T02:54:19.5978840Z Updating files:  94% (2072/2204)
+2026-11-16T02:54:19.5989859Z Updating files:  95% (2094/2204)
+2026-11-16T02:54:19.5999391Z Updating files:  96% (2116/2204)
+2026-11-16T02:54:19.6012143Z Updating files:  97% (2138/2204)
+2026-11-16T02:54:19.6025855Z Updating files:  98% (2160/2204)
+2026-11-16T02:54:19.6039842Z Updating files:  99% (2182/2204)
+2026-11-16T02:54:19.6040173Z Updating files: 100% (2204/2204)
+2026-11-16T02:54:19.6040474Z Updating files: 100% (2204/2204), done.
+2026-11-16T02:54:19.6100816Z Switched to a new branch 'feature/oliva-v0121-book-search-20261115'
+2026-11-16T02:54:19.6105776Z branch 'feature/oliva-v0121-book-search-20261115' set up to track 'origin/feature/oliva-v0121-book-search-20261115'.
+2026-11-16T02:54:19.6136031Z ##[endgroup]
+2026-11-16T02:54:19.6181107Z [command]/usr/bin/git log -1 --format=%H
+2026-11-16T02:54:19.6206293Z 8d0e663150da1860c371aeeba2c4f2ddf16daf8a
+2026-11-16T02:54:19.6214381Z ##[group]Removing auth
+2026-11-16T02:54:19.6214606Z Removing SSH command configuration
+2026-11-16T02:54:19.6218012Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T02:54:19.6246881Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T02:54:19.6502623Z Removing HTTP extra header
+2026-11-16T02:54:19.6506155Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T02:54:19.6537114Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T02:54:19.6787100Z Removing includeIf entries pointing to credentials config files
+2026-11-16T02:54:19.6790102Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T02:54:19.6816082Z includeif.gitdir:/home/runner/work/Faithpath-/Faithpath-/.git.path
+2026-11-16T02:54:19.6816963Z includeif.gitdir:/home/runner/work/Faithpath-/Faithpath-/.git/worktrees/*.path
+2026-11-16T02:54:19.6817319Z includeif.gitdir:/github/workspace/.git.path
+2026-11-16T02:54:19.6817618Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-16T02:54:19.6823643Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Faithpath-/Faithpath-/.git.path
+2026-11-16T02:54:19.6845892Z /home/runner/work/_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config
+2026-11-16T02:54:19.6855258Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Faithpath-/Faithpath-/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-1ec1eff4\-4a3d\-48c5\-98a7\-f441534f8aa8\.config
+2026-11-16T02:54:19.6893936Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/Faithpath-/Faithpath-/.git/worktrees/*.path
+2026-11-16T02:54:19.6917115Z /home/runner/work/_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config
+2026-11-16T02:54:19.6927490Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/Faithpath-/Faithpath-/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-1ec1eff4\-4a3d\-48c5\-98a7\-f441534f8aa8\.config
+2026-11-16T02:54:19.6961118Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-16T02:54:19.6987190Z /github/runner_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config
+2026-11-16T02:54:19.6994386Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-1ec1eff4\-4a3d\-48c5\-98a7\-f441534f8aa8\.config
+2026-11-16T02:54:19.7028937Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-16T02:54:19.7052024Z /github/runner_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config
+2026-11-16T02:54:19.7058176Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-1ec1eff4\-4a3d\-48c5\-98a7\-f441534f8aa8\.config
+2026-11-16T02:54:19.7090593Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T02:54:19.7343584Z Removing credentials config '/home/runner/work/_temp/git-credentials-1ec1eff4-4a3d-48c5-98a7-f441534f8aa8.config'
+2026-11-16T02:54:19.7352922Z ##[endgroup]
+2026-11-16T02:54:19.7649656Z Prepare all required actions
+2026-11-16T02:54:19.7650166Z Getting action download info
+2026-11-16T02:54:19.8624201Z Download action repository 'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+2026-11-16T02:54:19.9419880Z Download action repository 'actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0' (SHA:6d4fd22b20465ccc0f7354476588e8df7c9ca0e0)
+2026-11-16T02:54:20.0868267Z Download action repository 'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-11-16T02:54:20.2129449Z ##[group]Run ./oliva/.github/actions/quality
+2026-11-16T02:54:20.2129881Z ##[endgroup]
+2026-11-16T02:54:20.2179299Z ##[start-action display=Resolve the standalone project;id=__self.__run]
+2026-11-16T02:54:20.2211891Z ##[group]Run python3 - <<'PYTHON'
+2026-11-16T02:54:20.2212209Z [36;1mpython3 - <<'PYTHON'[0m
+2026-11-16T02:54:20.2212437Z [36;1mimport os[0m
+2026-11-16T02:54:20.2212687Z [36;1mfrom pathlib import Path[0m
+2026-11-16T02:54:20.2213017Z [36;1mproject = str(Path(os.environ["GITHUB_ACTION_PATH"]).resolve().parents[2])[0m
+2026-11-16T02:54:20.2213397Z [36;1mwith open(os.environ["GITHUB_ENV"], "a") as output:[0m
+2026-11-16T02:54:20.2213702Z [36;1m    output.write("OLIVA_PROJECT=" + project + "\n")[0m
+2026-11-16T02:54:20.2213943Z [36;1mPYTHON[0m
+2026-11-16T02:54:20.2263630Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T02:54:20.2263936Z ##[endgroup]
+2026-11-16T02:54:20.2572143Z ##[end-action id=__self.__run;outcome=success;conclusion=success;duration_ms=39]
+2026-11-16T02:54:20.2574922Z ##[start-action display=Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1;id=__self.__actions_setup-node]
+2026-11-16T02:54:20.2658770Z ##[group]Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+2026-11-16T02:54:20.2659113Z with:
+2026-11-16T02:54:20.2659294Z   node-version: 24
+2026-11-16T02:54:20.2659481Z   cache: npm
+2026-11-16T02:54:20.2659828Z   cache-dependency-path: /home/runner/work/Faithpath-/Faithpath-/oliva/package-lock.json
+2026-11-16T02:54:20.2660189Z   check-latest: false
+2026-11-16T02:54:20.2662278Z   token: ***
+2026-11-16T02:54:20.2662476Z   package-manager-cache: true
+2026-11-16T02:54:20.2662680Z env:
+2026-11-16T02:54:20.2662901Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T02:54:20.2663182Z ##[endgroup]
+2026-11-16T02:54:20.3785261Z Found in cache @ /opt/hostedtoolcache/node/24.22.2/x64
+2026-11-16T02:54:20.4405186Z ##[group]Environment details
+2026-11-16T02:54:20.8066293Z node: v24.22.2
+2026-11-16T02:54:20.8066948Z npm: 11.19.1
+2026-11-16T02:54:20.8067605Z yarn: 1.22.22
+2026-11-16T02:54:20.8068596Z ##[endgroup]
+2026-11-16T02:54:20.8084236Z [command]/opt/hostedtoolcache/node/24.22.2/x64/bin/npm config get cache
+2026-11-16T02:54:20.9520150Z /home/runner/.npm
+2026-11-16T02:54:21.0623576Z npm cache is not found
+2026-11-16T02:54:21.0716245Z ##[end-action id=__self.__actions_setup-node;outcome=success;conclusion=success;duration_ms=814]
+2026-11-16T02:54:21.0719601Z ##[start-action display=Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0;id=__self.__actions_setup-python]
+2026-11-16T02:54:21.0770495Z ##[group]Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+2026-11-16T02:54:21.0770803Z with:
+2026-11-16T02:54:21.0770979Z   python-version: 3.12
+2026-11-16T02:54:21.0771164Z   check-latest: false
+2026-11-16T02:54:21.0773266Z   token: ***
+2026-11-16T02:54:21.0773535Z   mirror: https://raw.githubusercontent.com/actions/python-versions/main
+2026-11-16T02:54:21.0773851Z   update-environment: true
+2026-11-16T02:54:21.0774053Z   allow-prereleases: false
+2026-11-16T02:54:21.0774266Z   freethreaded: false
+2026-11-16T02:54:21.0774442Z env:
+2026-11-16T02:54:21.0774663Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T02:54:21.0774926Z ##[endgroup]
+2026-11-16T02:54:21.1723467Z ##[group]Installed versions
+2026-11-16T02:54:21.2096378Z Successfully set up CPython (3.12.16)
+2026-11-16T02:54:21.2097097Z ##[endgroup]
+2026-11-16T02:54:21.2189099Z ##[end-action id=__self.__actions_setup-python;outcome=success;conclusion=success;duration_ms=146]
+2026-11-16T02:54:21.2191475Z ##[start-action display=Install locked packages;id=__self.__run_2]
+2026-11-16T02:54:21.2211048Z ##[group]Run npm ci
+2026-11-16T02:54:21.2211245Z [36;1mnpm ci[0m
+2026-11-16T02:54:21.2379933Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T02:54:21.2380245Z env:
+2026-11-16T02:54:21.2380501Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T02:54:21.2402399Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:21.2403115Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-16T02:54:21.2403463Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:21.2403763Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:21.2404060Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:21.2404352Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-16T02:54:21.2404617Z ##[endgroup]
+2026-11-16T02:54:32.8310145Z 
+2026-11-16T02:54:32.8311104Z added 586 packages, and audited 587 packages in 12s
+2026-11-16T02:54:32.8311407Z 
+2026-11-16T02:54:32.8311580Z 62 packages are looking for funding
+2026-11-16T02:54:32.8311857Z   run `npm fund` for details
+2026-11-16T02:54:32.8321724Z 
+2026-11-16T02:54:32.8322027Z found 0 vulnerabilities
+2026-11-16T02:54:32.9003619Z ##[end-action id=__self.__run_2;outcome=success;conclusion=success;duration_ms=11681]
+2026-11-16T02:54:32.9006766Z ##[start-action display=Check dependency advisories;id=__self.__run_3]
+2026-11-16T02:54:32.9024107Z ##[group]Run npm audit --audit-level=moderate
+2026-11-16T02:54:32.9024392Z [36;1mnpm audit --audit-level=moderate[0m
+2026-11-16T02:54:32.9073348Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T02:54:32.9073624Z env:
+2026-11-16T02:54:32.9073866Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T02:54:32.9074203Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:32.9074558Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-16T02:54:32.9074899Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:32.9075261Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:32.9075702Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:32.9076170Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-16T02:54:32.9076711Z ##[endgroup]
+2026-11-16T02:54:33.3642515Z found 0 vulnerabilities
+2026-11-16T02:54:33.3735119Z ##[end-action id=__self.__run_3;outcome=success;conclusion=success;duration_ms=472]
+2026-11-16T02:54:33.3737736Z ##[start-action display=Validate public-domain corpus and art provenance;id=__self.__run_4]
+2026-11-16T02:54:33.3754790Z ##[group]Run npm run content:check
+2026-11-16T02:54:33.3755066Z [36;1mnpm run content:check[0m
+2026-11-16T02:54:33.3755278Z [36;1mnpm run content:nt[0m
+2026-11-16T02:54:33.3755478Z [36;1mnpm run content:art[0m
+2026-11-16T02:54:33.3755680Z [36;1mnpm run content:tree[0m
+2026-11-16T02:54:33.3755882Z [36;1mnpm run content:swords[0m
+2026-11-16T02:54:33.3802743Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T02:54:33.3803026Z env:
+2026-11-16T02:54:33.3803255Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T02:54:33.3803577Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:33.3803912Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-16T02:54:33.3804252Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:33.3804541Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:33.3804846Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:33.3805290Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-16T02:54:33.3805549Z ##[endgroup]
+2026-11-16T02:54:33.4676751Z 
+2026-11-16T02:54:33.4677460Z > oliva-faith-companion@0.12.1 content:check
+2026-11-16T02:54:33.4677880Z > python3 scripts/import-bible.py --check
+2026-11-16T02:54:33.4678061Z 
+2026-11-16T02:54:34.6234557Z {"books": 66, "chapters": 1189, "verses": 31102, "source_sha256": "76fb83f108dd9029e2ec63c582b5a7e2acc46736d7b1659f802dff27f5563af7", "bundle_sha256": "6dd74b74fa67033976536939521df6417ab9c41579fee8c6cbeffd94016e6ce8"}
+2026-11-16T02:54:34.7227808Z 
+2026-11-16T02:54:34.7228579Z > oliva-faith-companion@0.12.1 content:nt
+2026-11-16T02:54:34.7229193Z > python3 scripts/import-nt-catalog.py --check
+2026-11-16T02:54:34.7229932Z 
+2026-11-16T02:54:34.8978330Z {"status": "PASS", "mode": "check", "mixed_units": 312, "mixed_questions": 1560, "excluded_story_units": 52, "excluded_story_questions": 260, "books": 27, "chapters": 260, "questions": 1300, "questions_per_chapter": 5, "reference_ranges": 1304, "questions_with_multiple_ranges": 4, "single_chapter_references_without_chapter_number": 20, "catalog_sha256": "850272e6cd3a22bdb50191e6e20f0ab9033377e7901f47fbfe6ec4c3eb067c7b"}
+2026-11-16T02:54:34.9904629Z 
+2026-11-16T02:54:34.9905397Z > oliva-faith-companion@0.12.1 content:art
+2026-11-16T02:54:34.9905896Z > node scripts/check-art.mjs
+2026-11-16T02:54:34.9906125Z 
+2026-11-16T02:54:35.0531996Z {"masters":8,"variants":21,"all_hashes_match":true,"release_approval":"Read individual metadata; this check does not grant approval."}
+2026-11-16T02:54:35.1415510Z 
+2026-11-16T02:54:35.1416163Z > oliva-faith-companion@0.12.1 content:tree
+2026-11-16T02:54:35.1416729Z > node scripts/check-a51.mjs
+2026-11-16T02:54:35.1416907Z 
+2026-11-16T02:54:35.2388639Z {"checkedAt":"2026-11-16T02:54:35.236Z","study":"FP-DESIGN-20261101-A51-FINAL-LIVING-TREE","originalsVerified":47,"masterCount":7,"webpCount":21,"nativePngCount":98,"allFileHashesMatch":true,"sourceSnapshot":"a519ce898fa33907b07d5ac7a585595127556183","originalsUnmodified":true,"nativeDeviceTest":false}
+2026-11-16T02:54:35.3247641Z 
+2026-11-16T02:54:35.3248253Z > oliva-faith-companion@0.12.1 content:swords
+2026-11-16T02:54:35.3248778Z > node scripts/check-sword-art.mjs
+2026-11-16T02:54:35.3249019Z 
+2026-11-16T02:54:35.3882172Z {"masters":2,"variants":6,"totalVariantBytes":762431,"books":[{"id":"john-life-pilot","book":"JHN","masters":1,"variants":3,"widths":[256,512,768],"totalVariantBytes":388515,"exactSourceVerses":0,"masterSHA":"67aef437a0cd7239b10339143f96993ff7bd2bacbd938f017e0801bc6c2a4c33","sourceDerivativeBytesMatch":"Original John derivatives checked by their preserved hashes","publicRelease":"not approved"},{"id":"romans-grace-pilot","book":"ROM","masters":1,"variants":3,"widths":[256,512,768],"totalVariantBytes":373916,"exactSourceVerses":4,"masterSHA":"3a4b4c77c322972310198e94971c0bec81dd09d0dea8ef3038fdac8a6fe49839","sourceDerivativeBytesMatch":true,"publicRelease":"not approved"}],"allHashesMatch":true,"allDimensionsMatch":true,"allPngsRGBA":true,"mastersUnmodified":true,"publicRelease":"not approved","scope":"Technical PNG/header/hash/provenance and quoted-source checks only; no runtime, device, new decoder, visual, theological or public-release approval."}
+2026-11-16T02:54:35.4027127Z ##[end-action id=__self.__run_4;outcome=success;conclusion=success;duration_ms=2028]
+2026-11-16T02:54:35.4030417Z ##[start-action display=Types and domain/persistence tests;id=__self.__run_5]
+2026-11-16T02:54:35.4048214Z ##[group]Run npm run typecheck
+2026-11-16T02:54:35.4048466Z [36;1mnpm run typecheck[0m
+2026-11-16T02:54:35.4048806Z [36;1mnpm test -- --reporter=json --outputFile=docs/evidence/latest/unit-results.json[0m
+2026-11-16T02:54:35.4095755Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T02:54:35.4096056Z env:
+2026-11-16T02:54:35.4096290Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T02:54:35.4096844Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:35.4097445Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-16T02:54:35.4097772Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:35.4098071Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:35.4098362Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:35.4098674Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-16T02:54:35.4098932Z ##[endgroup]
+2026-11-16T02:54:35.4998834Z 
+2026-11-16T02:54:35.4999533Z > oliva-faith-companion@0.12.1 typecheck
+2026-11-16T02:54:35.5000012Z > tsc --noEmit
+2026-11-16T02:54:35.5000170Z 
+2026-11-16T02:54:40.6520041Z 
+2026-11-16T02:54:40.6520755Z > oliva-faith-companion@0.12.1 test
+2026-11-16T02:54:40.6521702Z > vitest run --reporter=json --outputFile=docs/evidence/latest/unit-results.json
+2026-11-16T02:54:40.6521973Z 
+2026-11-16T02:54:49.7140206Z JSON report written to /home/runner/work/Faithpath-/Faithpath-/oliva/docs/evidence/latest/unit-results.json
+2026-11-16T02:54:49.7767319Z ##[end-action id=__self.__run_5;outcome=success;conclusion=success;duration_ms=14373]
+2026-11-16T02:54:49.7769775Z ##[start-action display=Build the web application and complete offline package;id=__self.__run_6]
+2026-11-16T02:54:49.7787267Z ##[group]Run npm run build
+2026-11-16T02:54:49.7787504Z [36;1mnpm run build[0m
+2026-11-16T02:54:49.7834300Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T02:54:49.7834589Z env:
+2026-11-16T02:54:49.7834826Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T02:54:49.7835164Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:49.7835506Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-16T02:54:49.7835862Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:49.7836164Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:49.7836458Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:54:49.7836937Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-16T02:54:49.7837205Z ##[endgroup]
+2026-11-16T02:54:49.8657878Z 
+2026-11-16T02:54:49.8658543Z > oliva-faith-companion@0.12.1 build
+2026-11-16T02:54:49.8659107Z > node scripts/expo.mjs export --platform web && node scripts/pwa.mjs && node scripts/offline.mjs
+2026-11-16T02:54:49.8659406Z 
+2026-11-16T02:54:50.3705021Z Starting Metro Bundler
+2026-11-16T02:54:50.3705230Z 
+2026-11-16T02:55:05.9211193Z Web Bundled 15384ms node_modules/expo-router/entry.js (1105 modules)
+2026-11-16T02:55:05.9527115Z 
+2026-11-16T02:55:05.9552814Z › Assets (67):
+2026-11-16T02:55:05.9598187Z assets/a51/stage-1-1024-09d0f0e48b45.272528ab27888db413511f95a5962d00.webp (123KB)
+2026-11-16T02:55:05.9624249Z assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp (21KB)
+2026-11-16T02:55:05.9625537Z assets/a51/stage-1-640-61bf0ea0364c.2b67b13687ef44452445d4c7ef025873.webp (53KB)
+2026-11-16T02:55:05.9626787Z assets/a51/stage-2-1024-5faf7d8bacae.20f510d14e96bf1776daf6500b4525ab.webp (159KB)
+2026-11-16T02:55:05.9628022Z assets/a51/stage-2-384-83c9e1b068c2.9704851601f26041aae382898640f46d.webp (30KB)
+2026-11-16T02:55:05.9629116Z assets/a51/stage-2-640-657d676673c5.25f53dd1dd4cef598f244059035ec428.webp (71KB)
+2026-11-16T02:55:05.9630190Z assets/a51/stage-3-1024-dd3447ecfc31.46d226e8789f58d7cb98dc66bab36999.webp (446KB)
+2026-11-16T02:55:05.9631342Z assets/a51/stage-3-384-67a026427a62.bede3991f9fe0ccf02314027cba2adf4.webp (83KB)
+2026-11-16T02:55:05.9632512Z assets/a51/stage-3-640-daed3e069ebb.dd5dfa1b4fafe8e3582a7d47f4d47b90.webp (197KB)
+2026-11-16T02:55:05.9633609Z assets/a51/stage-4-1024-b694c875ac25.b69ea70ffd81b8c8b3d5457cc56501de.webp (581KB)
+2026-11-16T02:55:05.9634714Z assets/a51/stage-4-384-7fdbd6abfc70.e33440b0a040e1e20be2341d67217fd2.webp (102KB)
+2026-11-16T02:55:05.9635816Z assets/a51/stage-4-640-6cd93c9040c1.dd1e32a89bf4e6d3abc199c09699922a.webp (250KB)
+2026-11-16T02:55:05.9636985Z assets/a51/stage-5-1024-9662127e6782.016e4632f6f8488db5642ae08fccc478.webp (538KB)
+2026-11-16T02:55:05.9638651Z assets/a51/stage-5-384-1f45acdc445c.caa99e2daab09b528c3bdd81f072c7b9.webp (90KB)
+2026-11-16T02:55:05.9639798Z assets/a51/stage-5-640-c725f8e572eb.16986b6b87ca5631e1cced83d152204a.webp (228KB)
+2026-11-16T02:55:05.9640914Z assets/a51/stage-6-1024-d332e48c635b.4f3a7d94f4b13583edf96b0dda2f701c.webp (557KB)
+2026-11-16T02:55:05.9642060Z assets/a51/stage-6-384-18e5329006bc.dd0bac41cfdfa42b7daf93782607490e.webp (97KB)
+2026-11-16T02:55:05.9643173Z assets/a51/stage-6-640-db5395a982ed.f4668be153a788854791fd5a11e30d1e.webp (239KB)
+2026-11-16T02:55:05.9644339Z assets/a51/stage-7-1024-8d580a524725.2da9f38609ded7abae209eea3310bda9.webp (579KB)
+2026-11-16T02:55:05.9645428Z assets/a51/stage-7-384-1325b09c8f58.3c427d8cb2b2ee9162712a3b0cda1742.webp (102KB)
+2026-11-16T02:55:05.9646915Z assets/a51/stage-7-640-c9b6a16a1bf4.654c14cc2fced83f29a04c1161888035.webp (251KB)
+2026-11-16T02:55:05.9648009Z assets/fonts/CormorantGaramond.618588c6026366f173cd30e38d54cc28.ttf (1.2MB)
+2026-11-16T02:55:05.9648996Z assets/fonts/DMSans.09d1eaa1672d3815b7b121457ebda2d0.ttf (240KB)
+2026-11-16T02:55:05.9649983Z assets/images/abraham-1024.9f1d8adf6c468efe857c4b1ef8116f78.webp (119KB)
+2026-11-16T02:55:05.9650950Z assets/images/abraham-1280.1ff17be8d76a19dfd275b01cf82cdefe.webp (176KB)
+2026-11-16T02:55:05.9651937Z assets/images/abraham-640.445c3c3b7fa98839659af0a8e0b417e8.webp (48KB)
+2026-11-16T02:55:05.9653050Z assets/images/david-before-goliath-1024.77572822e86764be0a1ed457eb792b9c.webp (154KB)
+2026-11-16T02:55:05.9654257Z assets/images/david-before-goliath-1280.536f3fb2f43c964e7e8d589b678e1e52.webp (232KB)
+2026-11-16T02:55:05.9655427Z assets/images/david-before-goliath-640.579763367b6d7d59109419ee264ec889.webp (63KB)
+2026-11-16T02:55:05.9656662Z assets/images/easter-dawn-1024.b67651a5db6e32dbc92085216e58921e.webp (139KB)
+2026-11-16T02:55:05.9657749Z assets/images/easter-dawn-1280.e0bc1a91d008b43850720e038a63d243.webp (194KB)
+2026-11-16T02:55:05.9658791Z assets/images/easter-dawn-640.879d2495a829c5dd832ad687edce5e6c.webp (58KB)
+2026-11-16T02:55:05.9659819Z assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp (263KB)
+2026-11-16T02:55:05.9660830Z assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp (73KB)
+2026-11-16T02:55:05.9661809Z assets/images/garden-640.6432cb455695a7b4e6d68f26f821f058.webp (86KB)
+2026-11-16T02:55:05.9662795Z assets/images/nativity-1024.c872d5757fcfdc8109c09f93cddc7852.webp (133KB)
+2026-11-16T02:55:05.9663799Z assets/images/nativity-1280.f3e0553a483489937485a58c8af3b1d9.webp (190KB)
+2026-11-16T02:55:05.9664784Z assets/images/nativity-640.cb61b77b3f68bcda8087c973221230f9.webp (59KB)
+2026-11-16T02:55:05.9665754Z assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp (126KB)
+2026-11-16T02:55:05.9666807Z assets/images/noah-1280.4eb4f2ce3d949d3f605210683dc10b15.webp (175KB)
+2026-11-16T02:55:05.9667733Z assets/images/noah-640.4206b12f0aacc4967bc68ae417589a1a.webp (54KB)
+2026-11-16T02:55:05.9668669Z assets/images/storm-1280.853333ddbd93e55c72b5854c450b92ac.webp (135KB)
+2026-11-16T02:55:05.9669614Z assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp (38KB)
+2026-11-16T02:55:05.9670627Z assets/swords/john-life-pilot-256.d87247c7a1dcb10118c96f465ea9e4da.png (33KB)
+2026-11-16T02:55:05.9671698Z assets/swords/john-life-pilot-512.78e30cf64ba0d90a9eb61b05754f84e6.png (112KB)
+2026-11-16T02:55:05.9672742Z assets/swords/john-life-pilot-768.ce6b2dbea8d0653798c4a02c16edb1b9.png (244KB)
+2026-11-16T02:55:05.9673789Z assets/swords/romans-grace-pilot-256.15a76900f8d486fe42a57798ddfb46e6.png (32KB)
+2026-11-16T02:55:05.9674845Z assets/swords/romans-grace-pilot-512.3c543a36fd3e1d224aab3714ec51b87a.png (109KB)
+2026-11-16T02:55:05.9675918Z assets/swords/romans-grace-pilot-768.43a4b78e0cb0b99e2c83c63648b87353.png (233KB)
+2026-11-16T02:55:05.9677178Z node_modules/expo-router/assets/arrow_down.017bc6ba3fc25503e5eb5e53826d48a8.png (9.5KB)
+2026-11-16T02:55:05.9678296Z node_modules/expo-router/assets/error.d1ea1496f9057eb392d5bbf3732a61b7.png (469B)
+2026-11-16T02:55:05.9679612Z node_modules/expo-router/assets/file.19eeb73b9593a38f8e9f418337fc7d10.png (138B)
+2026-11-16T02:55:05.9680729Z node_modules/expo-router/assets/forward.d8b800c443b8972542883e0b9de2bdc6.png (188B)
+2026-11-16T02:55:05.9681781Z node_modules/expo-router/assets/pkg.ab19f4cbc543357183a20571f68380a3.png (364B)
+2026-11-16T02:55:05.9683067Z node_modules/expo-router/assets/react-navigation/elements/back-icon-mask.0a328cd9c1afd0afe8e3b1ec5165b1b4.png (653B)
+2026-11-16T02:55:05.9684710Z node_modules/expo-router/assets/react-navigation/elements/back-icon.35ba0eaec5a4f5ed12ca16fabeae451d.png (207B)
+2026-11-16T02:55:05.9686322Z node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55.png (4 variations | 425B)
+2026-11-16T02:55:05.9688311Z node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7.png (4 variations | 235B)
+2026-11-16T02:55:05.9689814Z node_modules/expo-router/assets/react-navigation/elements/search-icon.286d67d3f74808a60a78d3ebf1a5fb57.png (928B)
+2026-11-16T02:55:05.9691097Z node_modules/expo-router/assets/sitemap.412dd9275b6b48ad28f5e3d81bb1f626.png (465B)
+2026-11-16T02:55:05.9692187Z node_modules/expo-router/assets/unmatched.20e71bdf79e3a97bf55fd9e164041578.png (4.8KB)
+2026-11-16T02:55:05.9692800Z 
+2026-11-16T02:55:05.9693309Z › web bundles (25):
+2026-11-16T02:55:05.9693984Z _expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css (393B)
+2026-11-16T02:55:05.9694883Z _expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css (675B)
+2026-11-16T02:55:05.9712024Z _expo/static/js/web/__common-87aba978baf5638f59ba87bc5cc1300c.js (6.5MB)
+2026-11-16T02:55:05.9713323Z _expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js (3.8KB)
+2026-11-16T02:55:05.9714443Z _expo/static/js/web/_layout-7179750eb478a723566f96ed00510e8e.js (26KB)
+2026-11-16T02:55:05.9715443Z _expo/static/js/web/[book]-36b8710f5c51bd317091bf4dc734bf38.js (33KB)
+2026-11-16T02:55:05.9717818Z _expo/static/js/web/[book]-6ed6bf31df832758e112557438fd1803.js (14KB)
+2026-11-16T02:55:05.9719149Z _expo/static/js/web/[book]-e4f6dc93ec401e3ccee8bf25697a5235.js (5KB)
+2026-11-16T02:55:05.9720934Z _expo/static/js/web/[id]-a14fbf61fbcb822c98a5a5dee0b473f5.js (15KB)
+2026-11-16T02:55:05.9721688Z _expo/static/js/web/[id]-a82bc9f95cac216d193d11006e82e935.js (8.6KB)
+2026-11-16T02:55:05.9722187Z _expo/static/js/web/[id]-e49222890b2145c8f08ba21886b41063.js (7.8KB)
+2026-11-16T02:55:05.9722687Z _expo/static/js/web/+not-found-3d4e9ac4b5a87cdba1dce2ebde71cc56.js (601B)
+2026-11-16T02:55:05.9723183Z _expo/static/js/web/bibel-f557764039d011bb48c58cacf9453fb9.js (8.5KB)
+2026-11-16T02:55:05.9723673Z _expo/static/js/web/einladungen-5395c741705efc49a03e9f96ac8bc1d4.js (5.3KB)
+2026-11-16T02:55:05.9724183Z _expo/static/js/web/einstellungen-3d965a25e1d4e07de4440b695ffdd9ae.js (7KB)
+2026-11-16T02:55:05.9759829Z _expo/static/js/web/entry-944a720bd554d0eb0590ddff1ee7010f.js (1.1MB)
+2026-11-16T02:55:05.9760429Z _expo/static/js/web/garten-422c9b3baf8360898d40a3c9930dfba0.js (6.6KB)
+2026-11-16T02:55:05.9760983Z _expo/static/js/web/importieren-c8915753ba26af81abeda0c698f44163.js (9.3KB)
+2026-11-16T02:55:05.9761523Z _expo/static/js/web/index-3c4f9016f82a254f0f2b10136e2871da.js (4.6KB)
+2026-11-16T02:55:05.9762030Z _expo/static/js/web/index-83503fbdbab2f3265593a1ef3a3c4365.js (12KB)
+2026-11-16T02:55:05.9762638Z _expo/static/js/web/index-8d5dc81c65afd09ed04e874b480dd811.js (4.6KB)
+2026-11-16T02:55:05.9763144Z _expo/static/js/web/quellen-da536e476cf839bf15e470e8a95a9abd.js (6.3KB)
+2026-11-16T02:55:05.9763587Z _expo/static/js/web/sammlung-f9f6780de754c8c685dd9b5ec7ffac4d.js (15KB)
+2026-11-16T02:55:05.9764208Z _expo/static/js/web/start-358ba94da7ac5efc57cd4650f6179f15.js (2.8KB)
+2026-11-16T02:55:05.9764617Z _expo/static/js/web/wege-3bad29bd93645093e3f5bde26154b4e6.js (2.8KB)
+2026-11-16T02:55:05.9764873Z 
+2026-11-16T02:55:05.9765105Z › Files (2):
+2026-11-16T02:55:05.9765312Z index.html (1.8KB)
+2026-11-16T02:55:05.9765519Z metadata.json (49B)
+2026-11-16T02:55:06.0408723Z 
+2026-11-16T02:55:06.0413979Z Exported: dist
+2026-11-16T02:55:06.2777133Z OLIVA PWA: manifest, icons, German metadata and rights notices included.
+2026-11-16T02:55:06.3437453Z Offline bundle: oliva-c74e9c9ec6137bfb, 104 files
+2026-11-16T02:55:06.3553952Z ##[end-action id=__self.__run_6;outcome=success;conclusion=success;duration_ms=16578]
+2026-11-16T02:55:06.3556264Z ##[start-action display=Install test browser;id=__self.__run_7]
+2026-11-16T02:55:06.3575988Z ##[group]Run npx playwright install --with-deps chromium
+2026-11-16T02:55:06.3576346Z [36;1mnpx playwright install --with-deps chromium[0m
+2026-11-16T02:55:06.3624259Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T02:55:06.3624551Z env:
+2026-11-16T02:55:06.3624795Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T02:55:06.3625330Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:55:06.3625683Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-16T02:55:06.3626023Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:55:06.3626342Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:55:06.3626864Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:55:06.3627190Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-16T02:55:06.3627461Z ##[endgroup]
+2026-11-16T02:55:06.9546041Z Installing dependencies...
+2026-11-16T02:55:06.9678744Z Switching to root user to install dependencies...
+2026-11-16T02:55:07.0804417Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-16T02:55:07.1061725Z Hit:2 http://azure.archive.ubuntu.com/ubuntu resolute InRelease
+2026-11-16T02:55:07.1062971Z Get:6 https://packages.microsoft.com/ubuntu/26.04/prod resolute InRelease [3964 B]
+2026-11-16T02:55:07.1105709Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+2026-11-16T02:55:07.1126511Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+2026-11-16T02:55:07.1138512Z Get:5 http://azure.archive.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+2026-11-16T02:55:07.1348261Z Get:7 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main amd64 Packages [158 kB]
+2026-11-16T02:55:07.1508138Z Get:8 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 Packages [869 kB]
+2026-11-16T02:55:07.1520599Z Get:12 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main arm64 Packages [143 kB]
+2026-11-16T02:55:07.1528191Z Get:9 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [195 kB]
+2026-11-16T02:55:07.1588170Z Get:10 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe amd64v3 Packages [390 kB]
+2026-11-16T02:55:07.1589482Z Get:11 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [122 kB]
+2026-11-16T02:55:07.1707351Z Get:13 http://azure.archive.ubuntu.com/ubuntu resolute-security/main amd64v3 Packages [718 kB]
+2026-11-16T02:55:07.1740112Z Get:14 http://azure.archive.ubuntu.com/ubuntu resolute-security/main Translation-en [157 kB]
+2026-11-16T02:55:07.1752991Z Get:15 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe amd64v3 Packages [220 kB]
+2026-11-16T02:55:07.1768382Z Get:16 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe Translation-en [72.5 kB]
+2026-11-16T02:55:07.1779263Z Get:17 http://azure.archive.ubuntu.com/ubuntu resolute-security/restricted amd64v3 Packages [590 kB]
+2026-11-16T02:55:07.1807835Z Get:18 http://azure.archive.ubuntu.com/ubuntu resolute-security/restricted Translation-en [122 kB]
+2026-11-16T02:55:09.8984601Z Fetched 4172 kB in 0s (12.9 MB/s)
+2026-11-16T02:55:10.5145981Z Reading package lists...
+2026-11-16T02:55:10.5376266Z Reading package lists...
+2026-11-16T02:55:10.7189926Z Building dependency tree...
+2026-11-16T02:55:10.7196799Z Reading state information...
+2026-11-16T02:55:10.7573994Z libasound2t64 is already the newest version (1.2.15.3-1ubuntu1.1).
+2026-11-16T02:55:10.7574568Z libasound2t64 set to manually installed.
+2026-11-16T02:55:10.7575655Z libatk-bridge2.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+2026-11-16T02:55:10.7576231Z libatk-bridge2.0-0t64 set to manually installed.
+2026-11-16T02:55:10.7576964Z libatk1.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+2026-11-16T02:55:10.7577466Z libatk1.0-0t64 set to manually installed.
+2026-11-16T02:55:10.7578011Z libatspi2.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+2026-11-16T02:55:10.7578538Z libatspi2.0-0t64 set to manually installed.
+2026-11-16T02:55:10.7579020Z libcairo2 is already the newest version (1.18.4-3).
+2026-11-16T02:55:10.7579473Z libcairo2 set to manually installed.
+2026-11-16T02:55:10.7579832Z libcups2t64 is already the newest version (2.4.16-1ubuntu1.3).
+2026-11-16T02:55:10.7580204Z libcups2t64 set to manually installed.
+2026-11-16T02:55:10.7581083Z libdbus-1-3 is already the newest version (1.16.2-2ubuntu4).
+2026-11-16T02:55:10.7581444Z libdbus-1-3 set to manually installed.
+2026-11-16T02:55:10.7581735Z libdrm2 is already the newest version (2.4.131-1).
+2026-11-16T02:55:10.7582025Z libdrm2 set to manually installed.
+2026-11-16T02:55:10.7582331Z libgbm1 is already the newest version (26.0.8-1ubuntu0.3).
+2026-11-16T02:55:10.7582640Z libgbm1 set to manually installed.
+2026-11-16T02:55:10.7582958Z libglib2.0-0t64 is already the newest version (2.88.0-1ubuntu0.1).
+2026-11-16T02:55:10.7583298Z libglib2.0-0t64 set to manually installed.
+2026-11-16T02:55:10.7583643Z libnspr4 is already the newest version (2:4.38.2-1ubuntu1).
+2026-11-16T02:55:10.7583958Z libnspr4 set to manually installed.
+2026-11-16T02:55:10.7584264Z libnss3 is already the newest version (2:3.120-1ubuntu2.2).
+2026-11-16T02:55:10.7584565Z libnss3 set to manually installed.
+2026-11-16T02:55:10.7584875Z libpango-1.0-0 is already the newest version (1.57.0-1).
+2026-11-16T02:55:10.7585198Z libpango-1.0-0 set to manually installed.
+2026-11-16T02:55:10.7585526Z libx11-6 is already the newest version (2:1.8.13-1ubuntu0.1).
+2026-11-16T02:55:10.7585831Z libx11-6 set to manually installed.
+2026-11-16T02:55:10.7586129Z libxcb1 is already the newest version (1.17.0-2ubuntu1).
+2026-11-16T02:55:10.7586414Z libxcb1 set to manually installed.
+2026-11-16T02:55:10.7586917Z libxcomposite1 is already the newest version (1:0.4.6-1build1).
+2026-11-16T02:55:10.7587259Z libxcomposite1 set to manually installed.
+2026-11-16T02:55:10.7587568Z libxdamage1 is already the newest version (1:1.1.7-1).
+2026-11-16T02:55:10.7587863Z libxdamage1 set to manually installed.
+2026-11-16T02:55:10.7588170Z libxext6 is already the newest version (2:1.3.4-1build3).
+2026-11-16T02:55:10.7588458Z libxext6 set to manually installed.
+2026-11-16T02:55:10.7588765Z libxfixes3 is already the newest version (1:6.0.0-2build2).
+2026-11-16T02:55:10.7589071Z libxfixes3 set to manually installed.
+2026-11-16T02:55:10.7589378Z libxkbcommon0 is already the newest version (1.13.1-1).
+2026-11-16T02:55:10.7589677Z libxkbcommon0 set to manually installed.
+2026-11-16T02:55:10.7589988Z libxrandr2 is already the newest version (2:1.5.4-1build1).
+2026-11-16T02:55:10.7590280Z libxrandr2 set to manually installed.
+2026-11-16T02:55:10.7590596Z xvfb is already the newest version (2:21.1.22-1ubuntu1.3).
+2026-11-16T02:55:10.7590991Z fonts-noto-color-emoji is already the newest version (2.051-1build1).
+2026-11-16T02:55:10.7591394Z libfontconfig1 is already the newest version (2.17.1-3ubuntu1).
+2026-11-16T02:55:10.7591717Z libfontconfig1 set to manually installed.
+2026-11-16T02:55:10.7592060Z libfreetype6 is already the newest version (2.14.2+dfsg-1ubuntu0.2).
+2026-11-16T02:55:10.7592396Z libfreetype6 set to manually installed.
+2026-11-16T02:55:10.7592747Z fonts-liberation is already the newest version (1:2.1.5-3build1).
+2026-11-16T02:55:10.7593082Z fonts-liberation set to manually installed.
+2026-11-16T02:55:10.8198065Z Solving dependencies...
+2026-11-16T02:55:10.9022186Z The following additional packages will be installed:
+2026-11-16T02:55:10.9022697Z   xfonts-encodings xfonts-utils
+2026-11-16T02:55:10.9026126Z Recommended packages:
+2026-11-16T02:55:10.9026748Z   fonts-ipafont-mincho fonts-tlwg-loma
+2026-11-16T02:55:10.9468857Z The following NEW packages will be installed:
+2026-11-16T02:55:10.9469744Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+2026-11-16T02:55:10.9474465Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+2026-11-16T02:55:10.9475218Z   xfonts-utils
+2026-11-16T02:55:10.9662144Z 0 upgraded, 9 newly installed, 0 to remove and 24 not upgraded.
+2026-11-16T02:55:10.9662951Z Need to get 21.9 MB of archives.
+2026-11-16T02:55:10.9663687Z After this operation, 80.2 MB of additional disk space will be used.
+2026-11-16T02:55:10.9718005Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-16T02:55:11.0018880Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-ipafont-gothic all 00303-23ubuntu1 [3703 kB]
+2026-11-16T02:55:11.0400808Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 fonts-freefont-ttf all 20211204+svn4273-4build1 [5656 kB]
+2026-11-16T02:55:11.0905442Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-tlwg-loma-otf all 1:0.7.3-1build1 [106 kB]
+2026-11-16T02:55:11.1094656Z Get:5 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-unifont all 1:16.0.04-1build1 [3169 kB]
+2026-11-16T02:55:11.1455131Z Get:6 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-wqy-zenhei all 0.9.45-8build1 [7863 kB]
+2026-11-16T02:55:11.2090390Z Get:7 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 xfonts-encodings all 1:1.0.5-0ubuntu3 [576 kB]
+2026-11-16T02:55:11.2326531Z Get:8 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 xfonts-utils amd64 1:7.7+7build1 [97.3 kB]
+2026-11-16T02:55:11.2514619Z Get:9 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 xfonts-cyrillic all 1:1.0.5+nmu1build1 [384 kB]
+2026-11-16T02:55:11.2716868Z Get:10 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 xfonts-scalable all 1:1.0.3-1.3build1 [304 kB]
+2026-11-16T02:55:11.5708807Z Fetched 21.9 MB in 0s (68.7 MB/s)
+2026-11-16T02:55:11.5910857Z Selecting previously unselected package fonts-ipafont-gothic.
+2026-11-16T02:55:11.6142273Z (Reading database ... 
+2026-11-16T02:55:11.6142546Z (Reading database ... 5%
+2026-11-16T02:55:11.6142873Z (Reading database ... 10%
+2026-11-16T02:55:11.6143179Z (Reading database ... 15%
+2026-11-16T02:55:11.6143766Z (Reading database ... 20%
+2026-11-16T02:55:11.6144063Z (Reading database ... 25%
+2026-11-16T02:55:11.6144375Z (Reading database ... 30%
+2026-11-16T02:55:11.6144696Z (Reading database ... 35%
+2026-11-16T02:55:11.6145009Z (Reading database ... 40%
+2026-11-16T02:55:11.6145252Z (Reading database ... 45%
+2026-11-16T02:55:11.6145454Z (Reading database ... 50%
+2026-11-16T02:55:11.6828609Z (Reading database ... 55%
+2026-11-16T02:55:11.8793034Z (Reading database ... 60%
+2026-11-16T02:55:11.9882341Z (Reading database ... 65%
+2026-11-16T02:55:12.1764898Z (Reading database ... 70%
+2026-11-16T02:55:12.3362617Z (Reading database ... 75%
+2026-11-16T02:55:12.5212169Z (Reading database ... 80%
+2026-11-16T02:55:12.7680421Z (Reading database ... 85%
+2026-11-16T02:55:12.9545098Z (Reading database ... 90%
+2026-11-16T02:55:13.1281313Z (Reading database ... 95%
+2026-11-16T02:55:13.1281673Z (Reading database ... 100%
+2026-11-16T02:55:13.1282143Z (Reading database ... 213946 files and directories currently installed.)
+2026-11-16T02:55:13.1330432Z Preparing to unpack .../0-fonts-ipafont-gothic_00303-23ubuntu1_all.deb ...
+2026-11-16T02:55:13.1465382Z Unpacking fonts-ipafont-gothic (00303-23ubuntu1) ...
+2026-11-16T02:55:13.2446061Z Selecting previously unselected package fonts-freefont-ttf.
+2026-11-16T02:55:13.2571397Z Preparing to unpack .../1-fonts-freefont-ttf_20211204+svn4273-4build1_all.deb ...
+2026-11-16T02:55:13.2578740Z Unpacking fonts-freefont-ttf (20211204+svn4273-4build1) ...
+2026-11-16T02:55:13.3862242Z Selecting previously unselected package fonts-tlwg-loma-otf.
+2026-11-16T02:55:13.3989470Z Preparing to unpack .../2-fonts-tlwg-loma-otf_1%3a0.7.3-1build1_all.deb ...
+2026-11-16T02:55:13.3998542Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1build1) ...
+2026-11-16T02:55:13.4198234Z Selecting previously unselected package fonts-unifont.
+2026-11-16T02:55:13.4324286Z Preparing to unpack .../3-fonts-unifont_1%3a16.0.04-1build1_all.deb ...
+2026-11-16T02:55:13.4331875Z Unpacking fonts-unifont (1:16.0.04-1build1) ...
+2026-11-16T02:55:13.6850427Z Selecting previously unselected package fonts-wqy-zenhei.
+2026-11-16T02:55:13.6981822Z Preparing to unpack .../4-fonts-wqy-zenhei_0.9.45-8build1_all.deb ...
+2026-11-16T02:55:13.7115095Z Unpacking fonts-wqy-zenhei (0.9.45-8build1) ...
+2026-11-16T02:55:13.8770148Z Selecting previously unselected package xfonts-encodings.
+2026-11-16T02:55:13.8899589Z Preparing to unpack .../5-xfonts-encodings_1%3a1.0.5-0ubuntu3_all.deb ...
+2026-11-16T02:55:13.8906739Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu3) ...
+2026-11-16T02:55:13.9184964Z Selecting previously unselected package xfonts-utils.
+2026-11-16T02:55:13.9314984Z Preparing to unpack .../6-xfonts-utils_1%3a7.7+7build1_amd64v3.deb ...
+2026-11-16T02:55:13.9321506Z Unpacking xfonts-utils (1:7.7+7build1) ...
+2026-11-16T02:55:13.9641841Z Selecting previously unselected package xfonts-cyrillic.
+2026-11-16T02:55:13.9769385Z Preparing to unpack .../7-xfonts-cyrillic_1%3a1.0.5+nmu1build1_all.deb ...
+2026-11-16T02:55:13.9783539Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1build1) ...
+2026-11-16T02:55:14.0062308Z Selecting previously unselected package xfonts-scalable.
+2026-11-16T02:55:14.0186011Z Preparing to unpack .../8-xfonts-scalable_1%3a1.0.3-1.3build1_all.deb ...
+2026-11-16T02:55:14.0196143Z Unpacking xfonts-scalable (1:1.0.3-1.3build1) ...
+2026-11-16T02:55:14.0630754Z Setting up fonts-wqy-zenhei (0.9.45-8build1) ...
+2026-11-16T02:55:14.0944719Z Setting up fonts-freefont-ttf (20211204+svn4273-4build1) ...
+2026-11-16T02:55:14.0960288Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1build1) ...
+2026-11-16T02:55:14.0977863Z Setting up xfonts-encodings (1:1.0.5-0ubuntu3) ...
+2026-11-16T02:55:14.0993117Z Setting up fonts-ipafont-gothic (00303-23ubuntu1) ...
+2026-11-16T02:55:14.1054580Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+2026-11-16T02:55:14.1066963Z Setting up fonts-unifont (1:16.0.04-1build1) ...
+2026-11-16T02:55:14.1082809Z Setting up xfonts-utils (1:7.7+7build1) ...
+2026-11-16T02:55:14.1133881Z Setting up xfonts-cyrillic (1:1.0.5+nmu1build1) ...
+2026-11-16T02:55:14.1533492Z Setting up xfonts-scalable (1:1.0.3-1.3build1) ...
+2026-11-16T02:55:14.1923311Z Processing triggers for man-db (2.13.1-1build1) ...
+2026-11-16T02:55:14.1942337Z Not building database; man-db/auto-update is not 'true'.
+2026-11-16T02:55:14.1954399Z Processing triggers for fontconfig (2.17.1-3ubuntu1) ...
+2026-11-16T02:55:14.9122521Z 
+2026-11-16T02:55:14.9123150Z Running kernel seems to be up-to-date.
+2026-11-16T02:55:14.9123448Z 
+2026-11-16T02:55:14.9123587Z Restarting services...
+2026-11-16T02:55:14.9207329Z 
+2026-11-16T02:55:14.9207661Z Service restarts being deferred:
+2026-11-16T02:55:14.9209991Z  systemctl restart hosted-compute-agent.service
+2026-11-16T02:55:14.9210376Z 
+2026-11-16T02:55:14.9217477Z No containers need to be restarted.
+2026-11-16T02:55:14.9217731Z 
+2026-11-16T02:55:14.9217961Z No user sessions are running outdated binaries.
+2026-11-16T02:55:14.9218210Z 
+2026-11-16T02:55:14.9218448Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-16T02:55:15.9301732Z Downloading Chrome for Testing 158.0.8127.18 (playwright chromium v1254) from https://cdn.playwright.dev/builds/cft/158.0.8127.18/linux64/chrome-linux64.zip
+2026-11-16T02:55:16.2536005Z |                                                                                |   0% of 197.8 MiB
+2026-11-16T02:55:16.3700323Z |■■■■■■■■                                                                        |  10% of 197.8 MiB
+2026-11-16T02:55:16.4484467Z |■■■■■■■■■■■■■■■■                                                                |  20% of 197.8 MiB
+2026-11-16T02:55:16.5031684Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 197.8 MiB
+2026-11-16T02:55:16.5734883Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 197.8 MiB
+2026-11-16T02:55:16.6408514Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 197.8 MiB
+2026-11-16T02:55:16.6867516Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 197.8 MiB
+2026-11-16T02:55:16.7480266Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 197.8 MiB
+2026-11-16T02:55:16.8118528Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 197.8 MiB
+2026-11-16T02:55:16.8545327Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 197.8 MiB
+2026-11-16T02:55:16.9248461Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 197.8 MiB
+2026-11-16T02:55:19.2663759Z Chrome for Testing 158.0.8127.18 (playwright chromium v1254) downloaded to /home/runner/.cache/ms-playwright/chromium-1254
+2026-11-16T02:55:19.2667261Z Downloading FFmpeg (playwright ffmpeg v1013) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1013/ffmpeg-linux.zip
+2026-11-16T02:55:19.6188453Z |                                                                                |   0% of 2.2 MiB
+2026-11-16T02:55:19.6295414Z |■■■■■■■■                                                                        |  10% of 2.2 MiB
+2026-11-16T02:55:19.6348897Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.2 MiB
+2026-11-16T02:55:19.6385346Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.2 MiB
+2026-11-16T02:55:19.6932830Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.2 MiB
+2026-11-16T02:55:19.6946088Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.2 MiB
+2026-11-16T02:55:19.6955995Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.2 MiB
+2026-11-16T02:55:19.7327890Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.2 MiB
+2026-11-16T02:55:19.7341272Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.2 MiB
+2026-11-16T02:55:19.7363644Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.2 MiB
+2026-11-16T02:55:19.7392231Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.2 MiB
+2026-11-16T02:55:19.7850425Z FFmpeg (playwright ffmpeg v1013) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1013
+2026-11-16T02:55:19.7852505Z Downloading Chrome Headless Shell 158.0.8127.18 (playwright chromium-headless-shell v1254) from https://cdn.playwright.dev/builds/cft/158.0.8127.18/linux64/chrome-headless-shell-linux64.zip
+2026-11-16T02:55:20.0962800Z |                                                                                |   0% of 125.9 MiB
+2026-11-16T02:55:20.1864721Z |■■■■■■■■                                                                        |  10% of 125.9 MiB
+2026-11-16T02:55:20.2319134Z |■■■■■■■■■■■■■■■■                                                                |  20% of 125.9 MiB
+2026-11-16T02:55:20.2846367Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 125.9 MiB
+2026-11-16T02:55:20.3170445Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 125.9 MiB
+2026-11-16T02:55:20.3472999Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 125.9 MiB
+2026-11-16T02:55:20.3907362Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 125.9 MiB
+2026-11-16T02:55:20.4218482Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 125.9 MiB
+2026-11-16T02:55:20.4622769Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 125.9 MiB
+2026-11-16T02:55:20.4867206Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 125.9 MiB
+2026-11-16T02:55:20.5122313Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 125.9 MiB
+2026-11-16T02:55:22.2930101Z Chrome Headless Shell 158.0.8127.18 (playwright chromium-headless-shell v1254) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1254
+2026-11-16T02:55:22.3243715Z ##[end-action id=__self.__run_7;outcome=success;conclusion=success;duration_ms=15968]
+2026-11-16T02:55:22.3245925Z ##[start-action display=Test real browser flows;id=__self.__run_8]
+2026-11-16T02:55:22.3264395Z ##[group]Run npm run test:e2e
+2026-11-16T02:55:22.3264646Z [36;1mnpm run test:e2e[0m
+2026-11-16T02:55:22.3312075Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T02:55:22.3312395Z env:
+2026-11-16T02:55:22.3312641Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T02:55:22.3312984Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:55:22.3313330Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-16T02:55:22.3313669Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:55:22.3313992Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:55:22.3314297Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T02:55:22.3314613Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-16T02:55:22.3314885Z ##[endgroup]
+2026-11-16T02:55:22.4247925Z 
+2026-11-16T02:55:22.4248509Z > oliva-faith-companion@0.12.1 test:e2e
+2026-11-16T02:55:22.4248853Z > playwright test
+2026-11-16T02:55:22.4248976Z 
+2026-11-16T02:55:23.7371901Z 
+2026-11-16T02:55:23.7372548Z Running 114 tests using 1 worker
+2026-11-16T02:55:23.7372945Z 
+2026-11-16T02:56:02.6140537Z   ✓    1 tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (20.7s)
+2026-11-16T02:56:05.6340871Z   ✓    2 tests/e2e/a51-tree.spec.ts:200:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (3.0s)
+2026-11-16T02:56:08.9600007Z   ✓    3 tests/e2e/a51-tree.spec.ts:224:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (3.3s)
+2026-11-16T02:56:11.5741052Z   ✓    4 tests/e2e/a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (2.6s)
+2026-11-16T02:56:13.3894046Z   ✓    5 tests/e2e/a51-tree.spec.ts:250:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (1.8s)
+2026-11-16T02:56:18.2728859Z   ✓    6 tests/e2e/archives.spec.ts:57:1 › ein großer Originalblob wird bei Entwurfsänderungen nicht erneut geschrieben (4.9s)
+2026-11-16T02:56:25.7278661Z   ✓    7 tests/e2e/archives.spec.ts:95:1 › verwaiste Blobs werden entfernt und Quellen der Rückkehrsicherung bleiben erhalten (7.4s)
+2026-11-16T02:56:28.6194173Z   ✓    8 tests/e2e/archives.spec.ts:130:1 › Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unverändert (2.9s)
+2026-11-16T02:56:31.8271898Z   ✓    9 tests/e2e/archives.spec.ts:149:1 › beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern (3.2s)
+2026-11-16T02:56:33.5508417Z   ✓   10 tests/e2e/book-search.spec.ts:19:1 › die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein (1.7s)
+2026-11-16T02:56:36.5460135Z   ✓   11 tests/e2e/book-search.spec.ts:46:1 › Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix (3.0s)
+2026-11-16T02:56:38.2730696Z   ✓   12 tests/e2e/book-search.spec.ts:66:1 › der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus (1.7s)
+2026-11-16T02:56:41.9558188Z   ✓   13 tests/e2e/book-search.spec.ts:87:1 › Suche und Bereich erhalten Buchschwert-Kontext und öffnen das gewählte Kapitel (3.7s)
+2026-11-16T02:56:43.6188939Z   ✓   14 tests/e2e/book-search.spec.ts:117:1 › die NT-Fragenübersicht nutzt dieselbe Buchsuche und bleibt auf ihre 27 Bücher begrenzt (1.6s)
+2026-11-16T02:56:50.4674586Z   ✓   15 tests/e2e/book-search.spec.ts:140:1 › Buchsuche und Dropdown sind bei 320 Pixeln hell und 1440 Pixeln dunkel zugänglich (6.8s)
+2026-11-16T02:56:56.1950940Z   ✓   16 tests/e2e/core.spec.ts:13:1 › Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt (5.7s)
+2026-11-16T02:57:01.9242770Z   ✓   17 tests/e2e/core.spec.ts:97:1 › Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss (5.7s)
+2026-11-16T02:57:04.8252861Z   ✓   18 tests/e2e/core.spec.ts:153:1 › Journal bearbeiten, löschen und rückgängig machen (2.9s)
+2026-11-16T02:57:06.7815698Z   ✓   19 tests/e2e/core.spec.ts:203:1 › Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen (1.9s)
+2026-11-16T02:57:10.6592209Z   ✓   20 tests/e2e/core.spec.ts:250:1 › Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeichert (3.9s)
+2026-11-16T02:57:14.3560019Z   ✓   21 tests/e2e/core.spec.ts:279:1 › Offline-Neustart öffnet auch einen noch nicht besuchten Reader (3.7s)
+2026-11-16T02:57:17.9906415Z   ✓   22 tests/e2e/core.spec.ts:312:1 › Gleichzeitige Fenster überschreiben keine fremden Änderungen (3.6s)
+2026-11-16T02:57:19.6160993Z   ✓   23 tests/e2e/core.spec.ts:344:1 › Speicherfehler bestätigt keine Notiz und erhält den getippten Text (1.6s)
+2026-11-16T02:57:42.5711895Z   ✓   24 tests/e2e/core.spec.ts:373:1 › Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung (22.9s)
+2026-11-16T02:57:45.6440224Z   ✓   25 tests/e2e/imports.spec.ts:47:1 › Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten (3.0s)
+2026-11-16T02:57:52.5063236Z   ✓   26 tests/e2e/imports.spec.ts:70:1 › Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline (6.8s)
+2026-11-16T02:57:58.5958720Z   ✓   27 tests/e2e/imports.spec.ts:132:1 › zwei Fenster schützen Änderungen und erlauben eine erneute Vorschau (6.1s)
+2026-11-16T02:58:02.5809152Z   ✓   28 tests/e2e/imports.spec.ts:162:1 › Schreibfehler lassen Bestand und vorherige Rückkehrsicherung atomar erhalten (4.0s)
+2026-11-16T02:58:07.6338758Z   ✓   29 tests/e2e/imports.spec.ts:195:1 › Rückkehr zeigt Folgen ausdrücklich und stellt den echten vorherigen Stand wieder her (5.0s)
+2026-11-16T02:58:12.4192791Z   ✓   30 tests/e2e/imports.spec.ts:230:1 › Importansichten sind mobil, dunkel und per Tastatur zugänglich (4.8s)
+2026-11-16T02:58:14.9410612Z   ✓   31 tests/e2e/learning.spec.ts:4:1 › Textfragen zeigen belegte Rückmeldung und verändern keinen Fortschritt (2.5s)
+2026-11-16T02:58:18.0438475Z   ✓   32 tests/e2e/learning.spec.ts:56:1 › Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zählt nur den Abschnitt (3.1s)
+2026-11-16T02:58:20.0605568Z   ✓   33 tests/e2e/nt-archive.spec.ts:140:1 › NT-Importvorschau liest nur und übernimmt belegte Abschlüsse ohne Antworten oder Baumfortschritt (2.0s)
+2026-11-16T02:58:23.7350762Z   ✓   34 tests/e2e/nt-archive.spec.ts:193:1 › ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Quelle und Rückkehrsicherung bytegenau (3.7s)
+2026-11-16T02:58:29.7203558Z   ✓   35 tests/e2e/nt-archive.spec.ts:263:1 › ein fremder Fenstercommit blockiert die NT-Aktivierung und die Archivvorschau lässt sich sicher neu prüfen (6.0s)
+2026-11-16T02:58:31.8659138Z   ✓   36 tests/e2e/nt-pending-return.spec.ts:93:1 › an own confirmed answer reconciles after leaving while its real commit acknowledgement is pending (2.1s)
+2026-11-16T02:58:33.8739163Z   ✓   37 tests/e2e/nt-pending-return.spec.ts:136:1 › an own confirmed question move restores the visible question after a pending-commit detour (2.0s)
+2026-11-16T02:58:36.7228827Z   ✓   38 tests/e2e/nt-pending-return.spec.ts:167:1 › a completion acknowledged away from the study view is shown on return without another completion write (2.8s)
+2026-11-16T02:58:39.0146069Z   ✓   39 tests/e2e/nt-study.spec.ts:32:1 › NT discovery covers all 27 books and opens original questions without creating personal records (2.3s)
+2026-11-16T02:58:41.9371852Z   ✓   40 tests/e2e/nt-study.spec.ts:66:1 › an incorrect answer saves the exact source, survives reload and can be changed without altering its original date (2.9s)
+2026-11-16T02:58:45.2839579Z   ✓   41 tests/e2e/nt-study.spec.ts:110:1 › all five viewed questions may finish with wrong answers, and resume the exact last question without reading or growth (3.3s)
+2026-11-16T02:58:48.0641983Z   ✓   42 tests/e2e/nt-study.spec.ts:144:1 › skipping questions remembers position but cannot create a completion (2.8s)
+2026-11-16T02:58:51.2499622Z   ✓   43 tests/e2e/nt-study.spec.ts:169:1 › a real second-tab conflict keeps the local choice until the saved answer is deliberately accepted (3.2s)
+2026-11-16T02:58:54.7740444Z   ✓   44 tests/e2e/nt-study.spec.ts:197:1 › a new NT chapter and the entire question bank work on first offline visit and after restart (3.5s)
+2026-11-16T02:59:01.3179387Z   ✓   45 tests/e2e/nt-study.spec.ts:222:1 › keyboard answers, small-screen light mode, large-screen dark mode and invalid routes stay accessible (6.5s)
+2026-11-16T02:59:06.6422610Z   ✓   46 tests/e2e/offline-readiness.spec.ts:228:1 › eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten (5.3s)
+2026-11-16T02:59:23.8141085Z   ✓   47 tests/e2e/offline-readiness.spec.ts:257:1 › wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling (17.2s)
+2026-11-16T02:59:27.2929195Z   ✓   48 tests/e2e/offline-readiness.spec.ts:280:1 › eine ältere echte Antwort überschreibt keinen neueren Buildkonflikt (3.5s)
+2026-11-16T02:59:29.8400580Z   ✓   49 tests/e2e/offline-readiness.spec.ts:307:1 › ein bereits aktiver Worker wird trotz offenbleibender erneuter Registrierung sofort verifiziert (2.5s)
+2026-11-16T02:59:34.0021260Z   ✓   50 tests/e2e/offline-readiness.spec.ts:350:1 › ein unkontrolliertes Dokument entdeckt den echten aktiven Worker vor dem Ende einer offenen Registrierung (4.1s)
+2026-11-16T02:59:44.0999650Z   ✓   51 tests/e2e/offline-readiness.spec.ts:390:1 › eine offene Registrierung und eine offene Suche beenden die Prüfung weiterhin endlich (10.1s)
+2026-11-16T02:59:46.5068709Z   ✓   52 tests/e2e/personal.spec.ts:12:1 › Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf (2.4s)
+2026-11-16T02:59:51.2898691Z   ✓   53 tests/e2e/personal.spec.ts:38:1 › Journalentwurf überlebt Neustart, Bearbeitung und anschließendes Speichern (4.8s)
+2026-11-16T02:59:59.6585402Z   ✓   54 tests/e2e/personal.spec.ts:84:1 › Vorhaben, Schritte, Rückblick-Snapshot und Archiv funktionieren zusammen (8.4s)
+2026-11-16T03:00:03.0874515Z   ✓   55 tests/e2e/personal.spec.ts:201:1 › Ungespeicherte Entwurfsworte werden erst nach ausdrücklichem Verwerfen gelöscht (3.4s)
+2026-11-16T03:00:05.8799283Z   ✓   56 tests/e2e/personal.spec.ts:234:1 › Eine installierte V1-Datenbank wird ohne Verlust weitergeführt (2.8s)
+2026-11-16T03:00:09.1604544Z   ✓   57 tests/e2e/personal.spec.ts:296:1 › Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben (3.3s)
+2026-11-16T03:00:15.9332473Z   ✓   58 tests/e2e/personal.spec.ts:319:1 › Neue Vorhaben- und Entwurfsansichten bleiben auf kleinen Displays zugänglich (6.8s)
+2026-11-16T03:00:17.9579138Z   ✓   59 tests/e2e/pwa.spec.ts:2:1 › das installierbare Offlinepaket liefert Manifest, vollständige Icons und Inhaltsrechte (2.0s)
+2026-11-16T03:00:23.2498765Z   ✓   60 tests/e2e/reading-position.spec.ts:12:1 › Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers (5.3s)
+2026-11-16T03:00:29.0709590Z   ✓   61 tests/e2e/reading-position.spec.ts:24:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen (5.8s)
+2026-11-16T03:00:35.5276470Z   ✓   62 tests/e2e/reading-position.spec.ts:44:1 › Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker (6.5s)
+2026-11-16T03:00:39.3221450Z   ✓   63 tests/e2e/reading-position.spec.ts:54:1 › eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust (3.8s)
+2026-11-16T03:00:44.2849057Z   ✓   64 tests/e2e/captures.spec.ts:11:1 › Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart (4.4s)
+2026-11-16T03:00:49.4505823Z   ✓   65 tests/e2e/captures.spec.ts:61:1 › zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt (5.1s)
+2026-11-16T03:00:54.2198874Z   ✓   66 tests/e2e/captures.spec.ts:146:1 › Reflexionsentwurf im Lernweg überlebt Neustart und schließt nur auf ausdrücklichen Klick ab (4.7s)
+2026-11-16T03:00:56.2210955Z   ✓   67 tests/e2e/captures.spec.ts:198:1 › ein Entwurf wird erst nach ausdrücklichem Verwerfen gelöscht und bestätigt dabei keine Erfahrung (2.0s)
+2026-11-16T03:00:58.7169125Z   ✓   68 tests/e2e/captures.spec.ts:230:1 › der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexionsentwurf (2.5s)
+2026-11-16T03:01:00.6068370Z   ✓   69 tests/e2e/captures.spec.ts:254:1 › ein Speicherfehler lässt den Kontextentwurf sichtbar und erzeugt keinen fertigen Eintrag (1.9s)
+2026-11-16T03:01:04.4673869Z   ✓   70 tests/e2e/captures.spec.ts:286:1 › ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren (3.8s)
+2026-11-16T03:01:08.0492134Z   ✓   71 tests/e2e/david-story.spec.ts:78:1 › fünf Geschichten bewahren den Bestand; David öffnet exakt acht Verse und zählt nur nach ausdrücklicher Bestätigung (3.5s)
+2026-11-16T03:01:12.9412361Z   ✓   72 tests/e2e/david-story.spec.ts:111:1 › das vollständige Offlinepaket öffnet David und alle bisherigen Bilder erstmals offline und nach Neustart (4.9s)
+2026-11-16T03:01:26.2859468Z   ✓   73 tests/e2e/david-story.spec.ts:131:1 › Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar (13.3s)
+2026-11-16T03:01:29.7469740Z   ✓   74 tests/e2e/david-story.spec.ts:173:3 › Reader-Übergang bei echter Netzwerklatenz › Davids Kontext wartet auf das echte Reader-Modul und einen positiven 3:2-Rahmen (3.5s)
+2026-11-16T03:01:32.7449195Z   ✓   75 tests/e2e/david-story.spec.ts:256:3 › echte Bildfehler ohne Service-Worker › drei ausgefallene Bildvarianten zeigen einen erreichbaren Wiederholungsbutton und laden danach wirklich (3.0s)
+2026-11-16T03:01:38.5945400Z   ✓   76 tests/e2e/invitations.spec.ts:180:1 › V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt den aktuellen V8-Stand und erschließt die Startseiteneinladung (5.8s)
+2026-11-16T03:01:42.2164306Z   ✓   77 tests/e2e/invitations.spec.ts:216:1 › die tatsächliche Oberfläche beachtet exakt 21 und 35 Tage, neue Belege und archivierte Vorhaben ohne Schreibzugriff (3.6s)
+2026-11-16T03:01:46.2646976Z   ✓   78 tests/e2e/invitations.spec.ts:275:1 › Zurückstellen, Ausblenden und Wiederzulassen überleben Offline-Neustart; Ausschalten bewahrt Entscheidungen und Quellen (4.0s)
+2026-11-16T03:01:49.7621997Z   ✓   79 tests/e2e/invitations.spec.ts:348:1 › Quellenlinks zeigen das richtige Vorhaben und den Gedanken schreibfrei, auch wenn bereits ein anderer Entwurf besteht (3.5s)
+2026-11-16T03:01:54.6841895Z   ✓   80 tests/e2e/invitations.spec.ts:412:1 › Einladungen bleiben bei 320 Pixeln in Hell und Dunkel sowie auf großem Display zugänglich und ohne Überlauf (4.9s)
+2026-11-16T03:01:58.3879698Z   ✓   81 tests/e2e/invitations.spec.ts:472:1 › ein echter konkurrierender IndexedDB-Stand wird beim Ausblenden aus einer alten Ansicht nicht überschrieben (3.7s)
+2026-11-16T03:02:00.1538572Z   ✓   82 tests/e2e/reader-flow.spec.ts:112:1 › echte Inlineabsätze erhalten jeden Johannesvers und umbrechen über Versgrenzen statt in Einzelblöcken (1.7s)
+2026-11-16T03:02:02.6181414Z   ✓   83 tests/e2e/reader-flow.spec.ts:175:1 › eine tatsächlich geteilte Psalmzeile speichert nach Scrollen ihren ersten sichtbaren Vers 119 und erfindet keinen Verssprung zu 120 (2.4s)
+2026-11-16T03:02:06.6265387Z   ✓   84 tests/e2e/reader-flow.spec.ts:241:1 › ein ausdrücklicher Verslink bleibt nach breitem Reflow, größerer Schrift, Zeilenabstand und Neustart genau Johannes 6,35 (4.0s)
+2026-11-16T03:02:10.1679086Z   ✓   85 tests/e2e/reader-flow.spec.ts:274:1 › Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versnotizentwurf über Neustart ohne Leseabschluss (3.5s)
+2026-11-16T03:02:13.5366088Z   ✓   86 tests/e2e/reader-flow.spec.ts:378:1 › Fließtext und Einzelverse behalten beim Umschalten denselben Versanker und denselben Notizquelltext (3.4s)
+2026-11-16T03:02:18.2909198Z   ✓   87 tests/e2e/reader-flow.spec.ts:431:1 › der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunkel sowie auf großem Display lesbar und zugänglich (4.7s)
+2026-11-16T03:02:22.3856322Z   ✓   88 tests/e2e/reader-flow.spec.ts:494:1 › die erste Offlineöffnung und der Neustart zeigen exakt Davids acht Abschnittsverse und bestätigen ausschließlich diesen Abschnitt (4.1s)
+2026-11-16T03:02:26.8120232Z   ✓   89 tests/e2e/reader-focus.spec.ts:112:1 › Lesefokus hält auf 320 Pixeln in Hell und Dunkel den kanonischen Text und einen erreichbaren Ausstieg ohne Leseabschluss (4.4s)
+2026-11-16T03:02:29.7632291Z   ✓   90 tests/e2e/reader-focus.spec.ts:232:1 › ein gerade getippter Versnotizentwurf überlebt das Unmount beim Fokusstart und bleibt mit derselben Quelle fortsetzbar (2.9s)
+2026-11-16T03:02:31.8633080Z   ✓   91 tests/e2e/reader-focus.spec.ts:319:1 › Escape schließt Einstellungen und Verswahl vor Versaktionen und gibt den Tastaturfokus vor einer Navigation zurück (2.1s)
+2026-11-16T03:02:35.1602726Z   ✓   92 tests/e2e/reviews.spec.ts:110:1 › Rückblicktext wird geändert, historischer Stand bleibt; Löschen und Rückgängig bewahren den Baum (3.3s)
+2026-11-16T03:02:40.1124813Z   ✓   93 tests/e2e/reviews.spec.ts:159:1 › Bearbeitungsentwurf erreicht die Sammlung und überlebt Offline-Neustart ohne neuen Rückblick (4.9s)
+2026-11-16T03:02:45.6139475Z   ✓   94 tests/e2e/reviews.spec.ts:210:1 › nur unveränderte Rückblicke werden wieder verbunden; echte Konflikte bewahren beide Wortlaute (5.5s)
+2026-11-16T03:02:49.4748750Z   ✓   95 tests/e2e/reviews.spec.ts:287:1 › Löschen braucht Bestätigung, verwirft Undo beim Verlassen und exportiert keinen gelöschten Rückblick (3.8s)
+2026-11-16T03:02:54.5093206Z   ✓   96 tests/e2e/reviews.spec.ts:332:1 › archivierte und fehlende Ziele lassen eigene Entwurfsworte lesbar, exportierbar und verwerfbar (5.0s)
+2026-11-16T03:02:58.8103515Z   ✓   97 tests/e2e/reviews.spec.ts:391:1 › Rückblickeditor bleibt auf kleinen und großen Displays sowie in Hell und Dunkel lesbar (4.3s)
+2026-11-16T03:03:01.7075931Z   ✓   98 tests/e2e/reviews.spec.ts:449:1 › ein während des Verlassens abgeschlossener Löschvorgang lässt kein Undo zurück (2.9s)
+2026-11-16T03:03:09.7150830Z   ✓   99 tests/e2e/romans-sword.spec.ts:111:1 › Römer zeigt die eigene Illustration und öffnet seine drei belegten Quellen ohne Lesefortschritt zu erfinden (8.0s)
+2026-11-16T03:03:23.6623182Z   ✓  100 tests/e2e/romans-sword.spec.ts:149:1 › Römers 16 Kapitel bleiben in Hell und Dunkel sowie bei kleinen und großen Ansichten eindeutig (13.9s)
+2026-11-16T03:03:31.5590018Z   ✓  101 tests/e2e/romans-sword.spec.ts:181:1 › die Startseite bewahrt Lesen und Daten und öffnet illustrierte sowie bisherige Buchschwerter (7.9s)
+2026-11-16T03:03:41.1254301Z   ✓  102 tests/e2e/romans-sword.spec.ts:214:1 › nur ausdrücklich bestätigtes Römerlesen erzeugt Kapitellicht und einen endlichen Impuls (9.6s)
+2026-11-16T03:03:48.6824427Z   ✓  103 tests/e2e/romans-sword.spec.ts:241:1 › Römer und Johannes öffnen beim ersten Offlinebesuch und nach Neustart mit unveränderten Daten (7.5s)
+2026-11-16T03:03:51.5279526Z   ✓  104 tests/e2e/romans-sword.spec.ts:263:3 › echte Römer-Bildfehler ohne Service-Worker › drei fehlgeschlagene Varianten erhalten das Römer-Symbol; ein Wiederholungsversuch dekodiert das echte Bild (2.8s)
+2026-11-16T03:03:55.1381051Z   ✓  105 tests/e2e/romans-sword.spec.ts:280:3 › echte Römer-Bildfehler ohne Service-Worker › der schmale Startseiten-Fallback bleibt bei 320 Pixeln lesbar und der echte Retry erhält alle Daten (3.6s)
+2026-11-16T03:03:58.7449150Z   ✓  106 tests/e2e/romans-sword.spec.ts:306:3 › echte Römer-Bildfehler ohne Service-Worker › eine verspätete Römerantwort übernimmt nach Buchwechsel kein Bild und keinen Fortschritt (3.6s)
+2026-11-16T03:04:02.9054211Z   ✓  107 tests/e2e/romans-sword.spec.ts:335:3 › Römer auf einem hochauflösenden Browserdisplay › die große Ansicht dekodiert 768 Pixel und die Startseite ihre passende kleinere Variante (4.2s)
+2026-11-16T03:04:07.7648860Z   ✓  108 tests/e2e/swords.spec.ts:96:1 › das Buchschwert öffnet aus Bibel und Sammlung, zeigt Johannes groß und verändert keine Lesespuren (4.8s)
+2026-11-16T03:04:16.0381044Z   ✓  109 tests/e2e/swords.spec.ts:130:1 › eine echte Kapitelbestätigung und die drei Quellenlinks bleiben voneinander getrennt (8.3s)
+2026-11-16T03:04:27.3959356Z   ✓  110 tests/e2e/swords.spec.ts:156:1 › synthetische 0-, 1-, 11- und 21-Kapitel-Stände zeigen korrekten Fortschritt in Hell und Dunkel (11.3s)
+2026-11-16T03:04:35.2562696Z   ✓  111 tests/e2e/swords.spec.ts:183:1 › die Buchansichten bleiben offline erreichbar und ein unbekanntes Buch führt verständlich zurück (7.9s)
+2026-11-16T03:04:46.7885599Z   ✓  112 tests/e2e/swords.spec.ts:211:1 › nur eine echte Lesebestätigung löst den endlichen Lichtimpuls aus; beide Bewegungspräferenzen werden beachtet (11.5s)
+2026-11-16T03:04:49.6605329Z   ✓  113 tests/e2e/swords.spec.ts:249:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › drei fehlgeschlagene PNG-Varianten lassen das Buchsymbol bestehen; erneutes Laden gelingt (2.9s)
+2026-11-16T03:04:53.2396495Z   ✓  114 tests/e2e/swords.spec.ts:265:3 › Bildfehler und verzögerte Antwort ohne Service-Worker › ein Buchwechsel während des Ladens übernimmt kein verspätetes Johannes-Bild (3.6s)
+2026-11-16T03:04:53.3756211Z 
+2026-11-16T03:04:53.3761613Z   114 passed (9.5m)
+2026-11-16T03:04:53.4098771Z ##[end-action id=__self.__run_8;outcome=success;conclusion=success;duration_ms=571085]
+2026-11-16T03:04:53.4101313Z ##[start-action display=Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9;id=__self.__actions_upload-artifact]
+2026-11-16T03:04:53.4136853Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2026-11-16T03:04:53.4137302Z with:
+2026-11-16T03:04:53.4137534Z   name: oliva-quality-8d0e663150da1860c371aeeba2c4f2ddf16daf8a
+2026-11-16T03:04:53.4137812Z   retention-days: 14
+2026-11-16T03:04:53.4138243Z   path: /home/runner/work/Faithpath-/Faithpath-/oliva/docs/evidence/latest/
+/home/runner/work/Faithpath-/Faithpath-/oliva/test-results/
+
+2026-11-16T03:04:53.4138731Z   if-no-files-found: warn
+2026-11-16T03:04:53.4151625Z   compression-level: 6
+2026-11-16T03:04:53.4151831Z   overwrite: false
+2026-11-16T03:04:53.4152021Z   include-hidden-files: false
+2026-11-16T03:04:53.4152232Z   archive: true
+2026-11-16T03:04:53.4152387Z env:
+2026-11-16T03:04:53.4152603Z   OLIVA_PROJECT: /home/runner/work/Faithpath-/Faithpath-/oliva
+2026-11-16T03:04:53.4152931Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T03:04:53.4153259Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-16T03:04:53.4153590Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T03:04:53.4153885Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T03:04:53.4154169Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-16T03:04:53.4154460Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-16T03:04:53.4154709Z ##[endgroup]
+2026-11-16T03:04:53.5679143Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-16T03:04:53.5681212Z The least common ancestor is /home/runner/work/Faithpath-/Faithpath-/oliva. This will be the root directory of the artifact
+2026-11-16T03:04:53.5682095Z With the provided path, there will be 106 files uploaded
+2026-11-16T03:04:53.5682692Z Artifact name is valid!
+2026-11-16T03:04:53.5683036Z Root directory input is valid!
+2026-11-16T03:04:53.8362141Z Uploading artifact: oliva-quality-8d0e663150da1860c371aeeba2c4f2ddf16daf8a.zip
+2026-11-16T03:04:53.8392989Z Beginning upload of artifact content to blob storage
+2026-11-16T03:04:54.3362981Z Uploaded bytes 8388608
+2026-11-16T03:04:54.3919115Z Uploaded bytes 9993257
+2026-11-16T03:04:54.4030098Z Finished uploading artifact content to blob storage!
+2026-11-16T03:04:54.4030774Z SHA256 digest of uploaded artifact is 17744119ab9175a8fddb1b3dcad9dac6b9644616effc39609eec19da0568816f
+2026-11-16T03:04:54.4031411Z Finalizing artifact upload
+2026-11-16T03:04:54.7609750Z Artifact oliva-quality-8d0e663150da1860c371aeeba2c4f2ddf16daf8a successfully finalized. Artifact ID 14194243608
+2026-11-16T03:04:54.7610666Z Artifact oliva-quality-8d0e663150da1860c371aeeba2c4f2ddf16daf8a has been successfully uploaded! Final size is 9993257 bytes. Artifact ID is 14194243608
+2026-11-16T03:04:54.7613777Z Artifact download URL: https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/43794926581/artifacts/14194243608
+2026-11-16T03:04:54.7742696Z ##[end-action id=__self.__actions_upload-artifact;outcome=success;conclusion=success;duration_ms=1364]
+2026-11-16T03:04:54.7843235Z Post job cleanup.
+2026-11-16T03:04:54.7847376Z ##[start-action display=Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0;id=__96061540-17e6-499d-99e1-f220c0c5c729.__actions_setup-python]
+2026-11-16T03:04:54.7883617Z Post job cleanup.
+2026-11-16T03:04:54.8943635Z ##[end-action id=__96061540-17e6-499d-99e1-f220c0c5c729.__actions_setup-python;outcome=success;conclusion=success;duration_ms=109]
+2026-11-16T03:04:54.8947510Z ##[start-action display=Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1;id=__96061540-17e6-499d-99e1-f220c0c5c729.__actions_setup-node]
+2026-11-16T03:04:54.9034091Z Post job cleanup.
+2026-11-16T03:04:55.0215433Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/Faithpath-/Faithpath- --files-from manifest.txt --use-compress-program zstdmt
+2026-11-16T03:04:56.4420434Z Sent 122503240 of 189612104 (64.6%), 116.8 MBs/sec
+2026-11-16T03:04:56.6422596Z Sent 189612104 of 189612104 (100.0%), 150.6 MBs/sec
+2026-11-16T03:04:56.7860256Z Cache saved with the key: node-cache-Linux-x64-npm-f1e7ad2abd0cb2978754c7f852a0f5bc404dbdc9bd1b0dde9e494294b3faa01e
+2026-11-16T03:04:56.7976007Z ##[end-action id=__96061540-17e6-499d-99e1-f220c0c5c729.__actions_setup-node;outcome=success;conclusion=success;duration_ms=1902]
+2026-11-16T03:04:56.8050010Z Post job cleanup.
+2026-11-16T03:04:56.8776246Z [command]/usr/bin/git version
+2026-11-16T03:04:56.8852274Z git version 2.56.1
+2026-11-16T03:04:56.8885631Z Temporarily overriding HOME='/home/runner/work/_temp/323636de-68f7-4ce0-80e2-8196045ce144' before making global git config changes
+2026-11-16T03:04:56.8886460Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T03:04:56.8890835Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Faithpath-/Faithpath-
+2026-11-16T03:04:56.8929422Z Removing SSH command configuration
+2026-11-16T03:04:56.8936223Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T03:04:56.8973844Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T03:04:56.9287542Z Removing HTTP extra header
+2026-11-16T03:04:56.9299566Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T03:04:56.9339292Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T03:04:56.9609840Z Removing includeIf entries pointing to credentials config files
+2026-11-16T03:04:56.9615408Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T03:04:56.9648298Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T03:04:57.0039521Z Cleaning up orphan processes
+

@@ -1,0 +1,60 @@
+# Tatsächlicher Master-Status · 16.11.2026
+
+Dieser Abgleich ist eine lesende Prüfung von Quellcode und vorhandenen Nachweisen. Er führt keine neuen Tests aus und ändert weder Prioritäten noch Releaseplanung. Er beschreibt einen Zeitpunkt während der laufenden Entwicklung; spätere Bereitstellungen benötigen ihre eigenen Belege. Der ursprüngliche Master-Prompt ist **nicht abgeschlossen**.
+
+## Ausgeliefert, in Arbeit und vorbereitet
+
+| Stand | Tatsächlicher Inhalt | Grenze / Beleg |
+|---|---|---|
+| **Privat live: 0.12.0, AppData V8** | Vollständige Lutherbibel 1912, Fließtext und Einzelverse, Lesefokus, Versaktionen/Notizen, neun Lernwege, persönliche Vorhaben/Rückblicke/Entwürfe, freiwillige In-App-Einladungen, sieben A51-Stadien, 66 kompakte Buchschwerter, zwei große Buchillustrationen und vollständiger Original-NT-Katalog | 225/225 Fachtests, ein vollständiger 108/108-Browserlauf, reale PWA-Aktualisierung und native JS-/Assetexports. [Lokale Abnahme](../nt-catalog/validation-summary.json), [private Bereitstellung](../nt-catalog/private-deployment.json). Keine echte Geräteabnahme. |
+| **GitHub-Sicherung und CI für 0.12 abgeschlossen** | Exakter gesicherter `oliva/`-Teilbaum; tatsächlicher Remote-Lauf `42752829627` erfolgreich mit 225/225 und 108/108 | [Unabhängige CI-Prüfung](../github/ci-v012/verification.json). Das ist ein eigener Remote-Build; historische rote 0.11-Läufe bleiben rot. |
+| **Suchpatch 0.12.1 implementiert, noch nicht bereitgestellt** | Tolerante Leerzeichen-/Punktsuche, standardmäßig 66 Bücher, NT-/AT-Dropdown; dieselbe Buchnamensnormalisierung im NT-Katalog | Separate Arbeitskopie `/workspace/oliva-book-search`. 225 Fachtests, native Exporte und echter 0.12→0.12.1-Wechsel bestehen; vier Rohrecords bleiben exakt. Erster vollständiger Lauf 112/114; eine zu frühe Offline-Bildprüfung ist korrigiert, ein unveränderter Einladungsfall besteht isoliert. Neuer vollständiger Lauf ist zum Prüfzeitpunkt noch offen. [Upgrade](../../../../oliva-book-search/docs/evidence/book-search/upgrade/README.md). |
+| **Reader-Parität: implementierte V9-Arbeit, keine neue Releasekennung** | Additive Mehrversauswahl mit Lückenschutz, exaktes Kopieren mit manuellem Rückfall, Bereichsnotizen, vollständiges Kapitel um einen getrennten Teilabschnittsfokus, aktuelle Kapitelanker und strikt eingefrorene Vorgängerverträge | [Quellvertrag](../reader-parity-preparation/reader-parity-preparation.md), [Migration](../reader-parity/migration/contract.md), [16 gezielte Browserfälle](../reader-parity/selection-e2e/verification.json). Der erste vollständige Entwicklungslauf endete 122/123. Kapitelanfang und Wiederaufnahme fehlgeschlagener Sitzungsentwürfe werden aktuell abschließend korrigiert/geprüft. |
+| **Reader-Speicherhärtung geprüft** | Übergebene Bereiche, Wörter und erwartete Revisionen werden vor dem Warten in eigene Snapshots übernommen | Frischer Stand vom 16.11., 02:32 UTC: 277/277 Fachtests und globaler Typecheck erfolgreich, einschließlich fünf zuvor reproduzierter Fehler. [Nachweis](../reader-parity/domain-review/verification-final.json). Dies ist kein Gesamtnachweis nach allen späteren UI-Änderungen. |
+| **Nur vorbereitet / konzipiert** | Optionale Cloudtabellen mit RLS-Entwürfen, Synchronisationsvertrag, serverseitiger KI-Quellenvertrag, weitere Inhalts-/Bildplanung | [`database/migrations/`](../../../database/migrations/), [Architektur](../../03-architecture.md). Kein aktiver Supabase-, Login-, Sync-, KI- oder Audiodienst. Der private Hostingzugang ist keine App-Konto-/Synchronisationsfunktion. |
+
+Die Paketkennung `0.12.0` im laufenden Reader-Checkout ist eine noch nicht angehobene Entwicklungskennung. Sie bedeutet nicht, dass der unveränderliche ausgelieferte 0.12-Tag die neuen V9-Funktionen bereits enthält.
+
+## Welche ursprünglichen FaithPath-Funktionen fehlen noch?
+
+Vergleichsbasis ist der unveränderte Snapshot `a519ce898fa33907b07d5ac7a585595127556183`. Die Bestandsfunktionen wurden im Code bzw. in vorhandenen Berichten belegt; daraus folgt keine neue Geräteprüfung der alten App. [Funktionsmatrix](../../00-faithpath-audit.md), [bisheriger Paritätsabgleich](../../16-current-plan-and-parity.md).
+
+| Belegter FaithPath-Bestand | Verbleibende Lücke in OLIVA |
+|---|---|
+| Eigenständiger Geschichtenpool: **436 Geschichten / 2.479 Story-Flow-Frageelemente** | Fünf eigene Erzählpiloten ersetzen diesen Katalog nicht. Original: `data/faithpath-nachlese-story-flow.json`; OLIVA: [`scenes.ts`](../../../src/features/bible/scenes.ts). Dieser Pool ist vom übernommenen NT-Katalog getrennt. |
+| **18 Lebensthemen** mit vorhandener Redaktion | Neun eigene Lernwege, teilweise mit wiederverwendeten Pilotabschnitten; kein vollständiger Abgleich/Transfer. Original: `src/content.js:LIFE_TOPICS`; OLIVA: [`paths/catalog.ts`](../../../src/features/paths/catalog.ts). |
+| Belegte persönliche Wege, Gedanken und Rückblicke an **Baumästen** | Die sieben A51-Bilder und OLIVA-Fortschrittslogik sind integriert; die persönliche Astzuordnung fehlt. Original: `src/tree-branches.js`. |
+| Umfangreiche Kontinuitäts-/Vorher-Nachher-Historie | Vorhaben, Archiv, Rückblicke und Quell-Snapshots sind vorhanden; die gesamte ursprüngliche Historienprojektion ist nicht übernommen. Original: `src/continuity.js`, `src/path-review-context.js`. |
+| Erinnerungskontrollen des Bestands | Freiwillige In-App-Einladungen sind live. Undatierte Markierungen und automatische Übernahme alter Unterdrückungsentscheidungen bleiben offen. [Grenzen](../../18-in-app-invitations.md). |
+| Zwei Übersetzungen und vier Themes | Luther 1912 sowie Hell/Dunkel sind live; OTB und weitere Bestands-Themes fehlen. OTB ist nachweislich **CC BY-SA 4.0**, nicht lizenzlos; bei Integration sind die konkreten Pflichten umzusetzen. |
+| Drei kontextbezogene Schrittvorschläge mit Schutz eigener Formulierungen | OLIVA bietet manuelle kleine Schritte; der ursprüngliche Vorschlagshelfer ist nicht übernommen. Original: `src/step-help.js`, `src/step-selection.js`; OLIVA: [`Editors.tsx`](../../../src/features/personal/Editors.tsx). |
+| Buchsuche über Namen **und Buchcode** | Die aktuelle OLIVA-Buchsuche normalisiert Namen, sucht aber noch nicht nach Codes wie `MRK`/`JHN`. Original: `src/app.js:377`; OLIVA: [`bibel.tsx`](../../../app/bibel.tsx). Kleiner offener Paritätsdetailpunkt; keine Änderung des eingefrorenen Suchpatchs durch diesen Audit. |
+| Ursprüngliche Mehrversauswahl, eigene Kopieraktion und Vollkapitelkontext | Im ausgelieferten 0.12 fehlen sie; im aktuellen Reader sind sie implementiert und werden abgenommen. Keine bloße Konzeptphase mehr. |
+
+**Nicht mehr als fehlend aufführen:** Fließtext/Lesefokus sind seit 0.11 live. Alle **1.300 Original-NT-Fragen / 260 Kapitel / 27 Bücher** sind seit 0.12 aktiv, mit unveränderten Optionen, Lösungsschlüsseln, Referenzen und Erklärungen. Ein technischer Katalogtransfer erfindet keine neue Redaktion. Die zusätzlichen neun thematischen Pilotfragen sind ein anderer Inhalt.
+
+Live-KI, Cloud-Login/-Sync, Audio und 66 große individuelle Premiumillustrationen waren keine belegten fertigen FaithPath-Funktionen. Das ursprüngliche FaithPath hatte ein gemeinsames Schwertsiegel; die 66 kompakten Buchidentitäten sind bereits eine OLIVA-Erweiterung.
+
+## Was zur ursprünglichen Definition of Done noch fehlt
+
+| Masterbereich | Vorhanden | Noch offen |
+|---|---|---|
+| Analyse, Produkt und Design | Funktionsmatrix, Konkurrenz-/USP-Analyse, Informationsarchitektur, Tokens, Hell/Dunkel und interaktive Hauptansichten | USP und Einstieg mit echten Menschen ohne Bibelwissen prüfen; die 60 Sekunden sind bisher ein Designziel. Markenverfügbarkeit und unabhängige Design-/Inhaltsabnahme stehen aus. |
+| Olivenbaum | Sieben A51-Originalstadien, große Galerie und Hub, Webanimation, nativer PNG-Adapter, reduzierte Bewegung und Fallback | Echte native Darstellung, Energie/Speicher und Screenreader prüfen; persönliche Astzuordnung aus dem Bestand übernehmen. Keine Glaubenswertung oder Streaks einführen. |
+| Buchschwerter und Bildwelt | 66 Identitäten/Kompaktmotive; große Illustrationen für Johannes und Römer; **acht biblische Bildmaster**, davon fünf eigenständige Erzählpiloten | Weitere hochwertige Buch-/Geschichtenbilder, konsistente Figuren und der angefragte größere Motivumfang. Noch keine durchgängige Kapitelserie oder unabhängige öffentliche Rechte-/Fachfreigabe. Quellen: [`art/manifest.json`](../../../art/manifest.json), [`runtime-index.json`](../../../art/swords/runtime-index.json). |
+| Reader, Wege und Inhalt | Zuverlässiger lokaler Bibelkorpus und Basisfunktionen, neun Wege, vollständiger NT-Katalog | Laufende Reader-Parität fertig abnehmen; vollständige Bestandskataloge und breitere Kapitelredaktion. Für nicht kuratierte Kapitel wird das Fehlen einer geprüften Zusammenfassung bereits ausdrücklich angezeigt. |
+| KI-Begleiter | Sicherheits-/Quellenvertrag dokumentiert; vorhandene Erklärungstexte getrennt vom Bibelwort | Tatsächlichen serverseitigen Dienst, belegte Zitate/Quellen, Unsicherheit/Traditionen, Abschaltung, Limits und reale Fehlerzustände implementieren und prüfen. Kein vorgetäuschter Live-Begleiter. |
+| Daten, Cloud und Betrieb | Lokale Speicherung, CAS-Konfliktschutz, Migrationen, Export/Restore/Import und PWA-Updates | Reale Auth-/Sync-Integration mit Gast-/Kontentrennung, Konflikterhalt und Berechtigungstests; konkreter Datenschutz-/Lösch-/Monitoringbetrieb. Native Daten und Exporte sind bisher nicht zusätzlich verschlüsselt. |
+| Audio | Ausdrücklich kein vorgetäuschter Audio-Button | Audioquelle sowie Sprecher-/Aufnahme-/Übersetzungsrechte entscheiden; erst dann optional integrieren. |
+| Prüfung und Auslieferung | Viele echte lokale Browser-/Persistenztests, unabhängige GitHub-CI und native JS-/Assetexports | Reale iOS-/Android-Geräte, VoiceOver/TalkBack, OS-Schriftvergrößerung, Lifecycle/Offline, Decoder, Speicher und Energie. Reproduzierbare signierte Installationspakete und native Build-/Update-/Rollbackabnahme fehlen. Exporte sind keine installierte App. |
+| Rechte und Inhaltsverantwortung | Luther-Quelle und Bild-/A51-/Fragenherkunft dokumentiert, Originale erhalten | Unabhängige theologische/historische Prüfung und konkrete Vertriebs-/Rechtefreigaben. GitHub-Backupautorisierung ersetzt diese nicht. |
+
+## Verbindlicher aktueller Ablauf und offene Entscheidungen
+
+1. Den **bereits implementierten Suchpatch** vollständig prüfen, anschließend auf der bestehenden eigentümerprivaten URL bereitstellen und HTTP-/Zugriffsregeln nachweisen. Danach den tatsächlichen Quellcheckpoint und die beauftragte GitHub-Versionssicherung samt unabhängiger CI prüfen.
+2. Die **laufende Reader-Arbeit** mit korrektem Kapitelanfang und sicherer Wiederaufnahme gehaltener Entwürfe abschließen. Danach einen unveränderlichen Kandidaten bilden und gegen vollständige Regression, reale PWA-Migration vom bestätigten Vorgänger sowie neue native JS-/Assetexports prüfen. Noch keine zukünftige Produktversion oder Frist ist vergeben.
+3. Anschließend den vorhandenen Master-/Paritätsbacklog weiter abarbeiten. Geschichten-/Themenkataloge, Ast-/Historienparität, Bildausbau und Fachabnahme sind ausdrücklich offene Arbeit; dieser Audit ordnet sie keiner neuen Version zu und ändert ihre Priorität nicht.
+
+Cloudanbieter/-region, konkrete Auth-/Sync-Betriebsform, KI-Provider, Audioquelle, weitere Übersetzungsintegration und Produktionsvertrieb benötigen noch konkrete Entscheidungen. Für diese Bereiche besteht kein belegter vollständiger Releasekalender. „Ohne konkretes Arbeitspaket“ bedeutet keine Streichung aus dem Master. Ein öffentliches Website-/Storedeployment oder Merge nach `main` bleibt ohne ausdrückliche Freigabe ausgeschlossen; die laufend beauftragte GitHub-Quellensicherung ist davon getrennt.
+
+Ältere Absätze in den Design-, Rechte- und Planungsdokumenten enthalten frühere Zwischenstände, etwa „eigene Vektorstadien“, „kein Fragenimport“ oder noch ausstehende 0.12-Sicherung. Dieser Audit nutzt für den heutigen Status die aktuellen Renderer/Manifeste und die tatsächlich bestätigten Abnahme-/CI-Belege. Er schreibt historische Berichte nicht um.

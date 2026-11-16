@@ -1,0 +1,897 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/reader-selection.spec.ts",
+      "tests/e2e/reader-copy.spec.ts",
+      "tests/e2e/reader-flow.spec.ts"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/reader-parity/targeted-e2e-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "PORT=4173 node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "reader-copy.spec.ts",
+      "file": "reader-copy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ein einzelner Vers wird per echtem Browser-Clipboard unverändert mit LF und Übersetzungsname kopiert",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4383,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:20:58.080Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ce442e8cf1d9cbf500a3-1f50798b0496b706db64",
+          "file": "reader-copy.spec.ts",
+          "line": 140,
+          "column": 1
+        },
+        {
+          "title": "additive Auswahl kopiert genau 35–36 und danach 35–37 ohne UI-Einordnung oder persönliche Daten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5610,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:21:03.163Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ce442e8cf1d9cbf500a3-4f17ffb4e90161e309b1",
+          "file": "reader-copy.spec.ts",
+          "line": 163,
+          "column": 1
+        },
+        {
+          "title": "eine abgelehnte Clipboard-API zeigt denselben schreibgeschützten Text ohne falsche Erfolgsmeldung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4512,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:21:08.909Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ce442e8cf1d9cbf500a3-4aa419861e87fa3ad506",
+          "file": "reader-copy.spec.ts",
+          "line": 193,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reader-flow.spec.ts",
+      "file": "reader-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "echte Inlineabsätze erhalten jeden Johannesvers und umbrechen über Versgrenzen statt in Einzelblöcken",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4617,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:21:13.694Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-8b1618772a6b9a439a5d",
+          "file": "reader-flow.spec.ts",
+          "line": 112,
+          "column": 1
+        },
+        {
+          "title": "eine tatsächlich geteilte Psalmzeile speichert nach Scrollen ihren ersten sichtbaren Vers 119 und erfindet keinen Verssprung zu 120",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4503,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:21:18.339Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-55fd06f9c4c02c8de1ff",
+          "file": "reader-flow.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "ein ausdrücklicher Verslink bleibt nach breitem Reflow, größerer Schrift, Zeilenabstand und Neustart genau Johannes 6,35",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10014,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:21:22.922Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-d16f190461dc71552478",
+          "file": "reader-flow.spec.ts",
+          "line": 241,
+          "column": 1
+        },
+        {
+          "title": "Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versnotizentwurf über Neustart ohne Leseabschluss",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23143,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:21:33.036Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-071c1af11ddf249659f9",
+          "file": "reader-flow.spec.ts",
+          "line": 274,
+          "column": 1
+        },
+        {
+          "title": "Fließtext und Einzelverse behalten beim Umschalten denselben Versanker und denselben Notizquelltext",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21366,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:21:56.344Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-6bd46f88455a8159e11f",
+          "file": "reader-flow.spec.ts",
+          "line": 378,
+          "column": 1
+        },
+        {
+          "title": "der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunkel sowie auf großem Display lesbar und zugänglich",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 41966,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:22:17.748Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-458a229bab2ad4b046a2",
+          "file": "reader-flow.spec.ts",
+          "line": 431,
+          "column": 1
+        },
+        {
+          "title": "die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, markieren acht Fokusverse und bestätigen ausschließlich den Abschnitt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22640,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:22:59.846Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-6bfd74bec8efab11ce52",
+          "file": "reader-flow.spec.ts",
+          "line": 494,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reader-selection.spec.ts",
+      "file": "reader-selection.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21391,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"book\": \"JHN\",\u001b[22m\n\u001b[2m    \"chapter\": 6,\u001b[22m\n\u001b[31m+   \"from\": 35,\u001b[39m\n\u001b[31m+   \"to\": 37,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"book\": \"JHN\",\u001b[22m\n\u001b[2m    \"chapter\": 6,\u001b[22m\n\u001b[31m+   \"from\": 35,\u001b[39m\n\u001b[31m+   \"to\": 37,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at ready (/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:65:6)\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:147:3",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                      "column": 6,
+                      "line": 65
+                    },
+                    "snippet": " \u001b[90m 63 |\u001b[39m   \u001b[36mawait\u001b[39m expect\n \u001b[90m 64 |\u001b[39m     \u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m (\u001b[36mawait\u001b[39m localData(page))\u001b[33m?.\u001b[39mreading)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 65 |\u001b[39m     \u001b[33m.\u001b[39mtoMatchObject({ book\u001b[33m:\u001b[39m \u001b[32m\"JHN\"\u001b[39m\u001b[33m,\u001b[39m chapter\u001b[33m:\u001b[39m \u001b[35m6\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 66 |\u001b[39m }\n \u001b[90m 67 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m exactWholeChapter(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m) {\n \u001b[90m 68 |\u001b[39m   expect(fullChapter)\u001b[33m.\u001b[39mtoHaveLength(\u001b[35m71\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                        "column": 6,
+                        "line": 65
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"book\": \"JHN\",\u001b[22m\n\u001b[2m    \"chapter\": 6,\u001b[22m\n\u001b[31m+   \"from\": 35,\u001b[39m\n\u001b[31m+   \"to\": 37,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  63 |   await expect\n  64 |     .poll(async () => (await localData(page))?.reading)\n> 65 |     .toMatchObject({ book: \"JHN\", chapter: 6 });\n     |      ^\n  66 | }\n  67 | async function exactWholeChapter(page: Page) {\n  68 |   expect(fullChapter).toHaveLength(71);\n    at ready (/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:65:6)\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:147:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:23:22.919Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-ein-Teila-32a56-pewechsel-das-ganze-Kapitel/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-ein-Teila-32a56-pewechsel-das-ganze-Kapitel/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                    "column": 6,
+                    "line": 65
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-9c351430c1ad69fc87a9",
+          "file": "reader-selection.spec.ts",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23425,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^Vers 37:/ }).visible()\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: /^Vers 37:/ }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^Vers 37:/ }).visible()\u001b[22m\n\u001b[2m    31 × locator resolved to <span tabindex=\"0\" role=\"button\" data-verse=\"37\" aria-pressed=\"true\" data-testid=\"flow-verse-37\" aria-label=\"Vers 37: Alles, was mir mein Vater gibt, das kommt zu mir; und wer zu mir kommt, den werde ich nicht hinausstoßen.\">…</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^Vers 37:/ }).visible()\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: /^Vers 37:/ }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^Vers 37:/ }).visible()\u001b[22m\n\u001b[2m    31 × locator resolved to <span tabindex=\"0\" role=\"button\" data-verse=\"37\" aria-pressed=\"true\" data-testid=\"flow-verse-37\" aria-label=\"Vers 37: Alles, was mir mein Vater gibt, das kommt zu mir; und wer zu mir kommt, den werde ich nicht hinausstoßen.\">…</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:227:33",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                      "column": 33,
+                      "line": 227
+                    },
+                    "snippet": " \u001b[90m 225 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m\"Escape\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 226 |\u001b[39m   \u001b[36mawait\u001b[39m expect(tools(page))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 227 |\u001b[39m   \u001b[36mawait\u001b[39m expect(verse(page\u001b[33m,\u001b[39m \u001b[35m37\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 228 |\u001b[39m\n \u001b[90m 229 |\u001b[39m   \u001b[36mawait\u001b[39m verse(page\u001b[33m,\u001b[39m \u001b[35m36\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 230 |\u001b[39m   \u001b[36mawait\u001b[39m selected(page\u001b[33m,\u001b[39m [\u001b[35m35\u001b[39m\u001b[33m,\u001b[39m \u001b[35m36\u001b[39m\u001b[33m,\u001b[39m \u001b[35m37\u001b[39m])\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                        "column": 33,
+                        "line": 227
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^Vers 37:/ }).visible()\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: /^Vers 37:/ }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^Vers 37:/ }).visible()\u001b[22m\n\u001b[2m    31 × locator resolved to <span tabindex=\"0\" role=\"button\" data-verse=\"37\" aria-pressed=\"true\" data-testid=\"flow-verse-37\" aria-label=\"Vers 37: Alles, was mir mein Vater gibt, das kommt zu mir; und wer zu mir kommt, den werde ich nicht hinausstoßen.\">…</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  225 |   await page.keyboard.press(\"Escape\");\n  226 |   await expect(tools(page)).toHaveCount(0);\n> 227 |   await expect(verse(page, 37)).toBeFocused();\n      |                                 ^\n  228 |\n  229 |   await verse(page, 36).click();\n  230 |   await selected(page, [35, 36, 37]);\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:227:33"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:23:46.561Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-eine-addi-8afab-ine-exakt-zugeordnete-Notiz/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-eine-addi-8afab-ine-exakt-zugeordnete-Notiz/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                    "column": 33,
+                    "line": 227
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-c5742540f6f563465bee",
+          "file": "reader-selection.spec.ts",
+          "line": 192,
+          "column": 1
+        },
+        {
+          "title": "35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 31036,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"book\": \"JHN\",\u001b[22m\n\u001b[2m    \"chapter\": 6,\u001b[22m\n\u001b[31m+   \"from\": 35,\u001b[39m\n\u001b[31m+   \"to\": 37,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"book\": \"JHN\",\u001b[22m\n\u001b[2m    \"chapter\": 6,\u001b[22m\n\u001b[31m+   \"from\": 35,\u001b[39m\n\u001b[31m+   \"to\": 37,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at ready (/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:65:6)\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:333:3",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                      "column": 6,
+                      "line": 65
+                    },
+                    "snippet": " \u001b[90m 63 |\u001b[39m   \u001b[36mawait\u001b[39m expect\n \u001b[90m 64 |\u001b[39m     \u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m (\u001b[36mawait\u001b[39m localData(page))\u001b[33m?.\u001b[39mreading)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 65 |\u001b[39m     \u001b[33m.\u001b[39mtoMatchObject({ book\u001b[33m:\u001b[39m \u001b[32m\"JHN\"\u001b[39m\u001b[33m,\u001b[39m chapter\u001b[33m:\u001b[39m \u001b[35m6\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 66 |\u001b[39m }\n \u001b[90m 67 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m exactWholeChapter(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m) {\n \u001b[90m 68 |\u001b[39m   expect(fullChapter)\u001b[33m.\u001b[39mtoHaveLength(\u001b[35m71\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                        "column": 6,
+                        "line": 65
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"book\": \"JHN\",\u001b[22m\n\u001b[2m    \"chapter\": 6,\u001b[22m\n\u001b[31m+   \"from\": 35,\u001b[39m\n\u001b[31m+   \"to\": 37,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  63 |   await expect\n  64 |     .poll(async () => (await localData(page))?.reading)\n> 65 |     .toMatchObject({ book: \"JHN\", chapter: 6 });\n     |      ^\n  66 | }\n  67 | async function exactWholeChapter(page: Page) {\n  68 |   expect(fullChapter).toHaveLength(71);\n    at ready (/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:65:6)\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:333:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:24:13.558Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-35–36-und-9799f-tändigen-Bereich-wieder-her/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-35–36-und-9799f-tändigen-Bereich-wieder-her/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                    "column": 6,
+                    "line": 65
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-e4624869b3ba8f5a388a",
+          "file": "reader-selection.spec.ts",
+          "line": 290,
+          "column": 1
+        },
+        {
+          "title": "ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21369,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"book\": \"JHN\",\u001b[22m\n\u001b[2m    \"chapter\": 6,\u001b[22m\n\u001b[31m+   \"from\": 35,\u001b[39m\n\u001b[31m+   \"to\": 37,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"book\": \"JHN\",\u001b[22m\n\u001b[2m    \"chapter\": 6,\u001b[22m\n\u001b[31m+   \"from\": 35,\u001b[39m\n\u001b[31m+   \"to\": 37,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at ready (/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:65:6)\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:401:3",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                      "column": 6,
+                      "line": 65
+                    },
+                    "snippet": " \u001b[90m 63 |\u001b[39m   \u001b[36mawait\u001b[39m expect\n \u001b[90m 64 |\u001b[39m     \u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m (\u001b[36mawait\u001b[39m localData(page))\u001b[33m?.\u001b[39mreading)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 65 |\u001b[39m     \u001b[33m.\u001b[39mtoMatchObject({ book\u001b[33m:\u001b[39m \u001b[32m\"JHN\"\u001b[39m\u001b[33m,\u001b[39m chapter\u001b[33m:\u001b[39m \u001b[35m6\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 66 |\u001b[39m }\n \u001b[90m 67 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m exactWholeChapter(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m) {\n \u001b[90m 68 |\u001b[39m   expect(fullChapter)\u001b[33m.\u001b[39mtoHaveLength(\u001b[35m71\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                        "column": 6,
+                        "line": 65
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 2\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"book\": \"JHN\",\u001b[22m\n\u001b[2m    \"chapter\": 6,\u001b[22m\n\u001b[31m+   \"from\": 35,\u001b[39m\n\u001b[31m+   \"to\": 37,\u001b[39m\n\u001b[2m  }\u001b[22m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  63 |   await expect\n  64 |     .poll(async () => (await localData(page))?.reading)\n> 65 |     .toMatchObject({ book: \"JHN\", chapter: 6 });\n     |      ^\n  66 | }\n  67 | async function exactWholeChapter(page: Page) {\n  68 |   expect(fullChapter).toHaveLength(71);\n    at ready (/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:65:6)\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:401:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:24:48.732Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-ein-echte-c7ce0-en-Lesebereich-zu-erweitern/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-ein-echte-c7ce0-en-Lesebereich-zu-erweitern/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                    "column": 6,
+                    "line": 65
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-2cc3596dd882a936143a",
+          "file": "reader-selection.spec.ts",
+          "line": 397,
+          "column": 1
+        },
+        {
+          "title": "Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 24104,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^Vers 36:/ }).visible()\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: /^Vers 36:/ }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^Vers 36:/ }).visible()\u001b[22m\n\u001b[2m    32 × locator resolved to <span tabindex=\"0\" role=\"button\" data-verse=\"36\" aria-pressed=\"true\" data-testid=\"flow-verse-36\" aria-label=\"Vers 36: Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\">…</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^Vers 36:/ }).visible()\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: /^Vers 36:/ }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^Vers 36:/ }).visible()\u001b[22m\n\u001b[2m    32 × locator resolved to <span tabindex=\"0\" role=\"button\" data-verse=\"36\" aria-pressed=\"true\" data-testid=\"flow-verse-36\" aria-label=\"Vers 36: Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\">…</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:460:35",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                      "column": 35,
+                      "line": 460
+                    },
+                    "snippet": " \u001b[90m 458 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m\"Escape\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 459 |\u001b[39m     \u001b[36mawait\u001b[39m expect(tools(page))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 460 |\u001b[39m     \u001b[36mawait\u001b[39m expect(verse(page\u001b[33m,\u001b[39m \u001b[35m36\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 461 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m n \u001b[36mof\u001b[39m [\u001b[35m35\u001b[39m\u001b[33m,\u001b[39m \u001b[35m36\u001b[39m\u001b[33m,\u001b[39m \u001b[35m37\u001b[39m])\n \u001b[90m 462 |\u001b[39m       \u001b[36mawait\u001b[39m expect(verse(page\u001b[33m,\u001b[39m n))\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-pressed\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"true\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 463 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m\"Escape\"\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                        "column": 35,
+                        "line": 460
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^Vers 36:/ }).visible()\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: /^Vers 36:/ }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^Vers 36:/ }).visible()\u001b[22m\n\u001b[2m    32 × locator resolved to <span tabindex=\"0\" role=\"button\" data-verse=\"36\" aria-pressed=\"true\" data-testid=\"flow-verse-36\" aria-label=\"Vers 36: Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\">…</span>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  458 |     await page.keyboard.press(\"Escape\");\n  459 |     await expect(tools(page)).toHaveCount(0);\n> 460 |     await expect(verse(page, 36)).toBeFocused();\n      |                                   ^\n  461 |     for (const n of [35, 36, 37])\n  462 |       await expect(verse(page, n)).toHaveAttribute(\"aria-pressed\", \"true\");\n  463 |     await page.keyboard.press(\"Escape\");\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:460:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:25:13.932Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-Fließtext-2c833-inzugefügten-Vers-36-zurück/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-Fließtext-2c833-inzugefügten-Vers-36-zurück/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                    "column": 35,
+                    "line": 460
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-39de6a8ff9ee70c8e0de",
+          "file": "reader-selection.spec.ts",
+          "line": 434,
+          "column": 3
+        },
+        {
+          "title": "Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 22108,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^Vers 36:/ }).visible()\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: /^Vers 36:/ }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^Vers 36:/ }).visible()\u001b[22m\n\u001b[2m    32 × locator resolved to <button tabindex=\"0\" role=\"button\" type=\"button\" aria-pressed=\"true\" class=\"css-g5y9jx r-1loqt21 r-1otgn73\" aria-label=\"Vers 36: Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^Vers 36:/ }).visible()\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: /^Vers 36:/ }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^Vers 36:/ }).visible()\u001b[22m\n\u001b[2m    32 × locator resolved to <button tabindex=\"0\" role=\"button\" type=\"button\" aria-pressed=\"true\" class=\"css-g5y9jx r-1loqt21 r-1otgn73\" aria-label=\"Vers 36: Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:460:35",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                      "column": 35,
+                      "line": 460
+                    },
+                    "snippet": " \u001b[90m 458 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m\"Escape\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 459 |\u001b[39m     \u001b[36mawait\u001b[39m expect(tools(page))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 460 |\u001b[39m     \u001b[36mawait\u001b[39m expect(verse(page\u001b[33m,\u001b[39m \u001b[35m36\u001b[39m))\u001b[33m.\u001b[39mtoBeFocused()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 461 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m n \u001b[36mof\u001b[39m [\u001b[35m35\u001b[39m\u001b[33m,\u001b[39m \u001b[35m36\u001b[39m\u001b[33m,\u001b[39m \u001b[35m37\u001b[39m])\n \u001b[90m 462 |\u001b[39m       \u001b[36mawait\u001b[39m expect(verse(page\u001b[33m,\u001b[39m n))\u001b[33m.\u001b[39mtoHaveAttribute(\u001b[32m\"aria-pressed\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"true\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 463 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mkeyboard\u001b[33m.\u001b[39mpress(\u001b[32m\"Escape\"\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                        "column": 35,
+                        "line": 460
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /^Vers 36:/ }).visible()\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: /^Vers 36:/ }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /^Vers 36:/ }).visible()\u001b[22m\n\u001b[2m    32 × locator resolved to <button tabindex=\"0\" role=\"button\" type=\"button\" aria-pressed=\"true\" class=\"css-g5y9jx r-1loqt21 r-1otgn73\" aria-label=\"Vers 36: Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  458 |     await page.keyboard.press(\"Escape\");\n  459 |     await expect(tools(page)).toHaveCount(0);\n> 460 |     await expect(verse(page, 36)).toBeFocused();\n      |                                   ^\n  461 |     for (const n of [35, 36, 37])\n  462 |       await expect(verse(page, n)).toHaveAttribute(\"aria-pressed\", \"true\");\n  463 |     await page.keyboard.press(\"Escape\");\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:460:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:25:42.512Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-Einzelver-d1264-inzugefügten-Vers-36-zurück/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/reader-selection-Einzelver-d1264-inzugefügten-Vers-36-zurück/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                    "column": 35,
+                    "line": 460
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-3ef307e42a01c7d1ef63",
+          "file": "reader-selection.spec.ts",
+          "line": 434,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-15T21:20:56.018Z",
+    "duration": 310391.224,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  }
+}

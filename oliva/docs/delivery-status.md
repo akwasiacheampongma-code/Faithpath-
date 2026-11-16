@@ -1,4 +1,24 @@
-# Lieferstand · OLIVA 0.12.1 · geprüft und privat bereitgestellt
+<!-- OLIVA-013-DELIVERY:BEGIN -->
+# Lieferstand · OLIVA 0.13 · geprüft und privat bereitgestellt
+
+**OLIVA 0.13.0 ist geprüft und seit 16.11.2026, 14:37:15 UTC eigentümerprivat bereitgestellt.** Der Reader zeigt jetzt das vollständige Kapitel um einen ausgewählten Teilabschnitt. Mehrversauswahl, exaktes Kopieren, Bereichsnotizen und die sichere Wiederaufnahme fehlgeschlagener Entwürfe sind integriert. Die Buchsuche bleibt leerzeichentolerant und startet mit allen 66 Büchern; NT und AT sind über das Dropdown erreichbar.
+
+**290/290 Fachtests und ein einzelner vollständiger 126/126-Browserlauf bestanden**, ohne Skips, instabile Fälle oder Wiederholungen im finalen Lauf. Beide nativen JavaScript-/Assetexports und der echte 0.12.1→0.13-PWA-Wechsel bestehen. Native Exporte sind keine Geräte- oder Simulatorprüfung. AppData ist V9; historische V8-Daten bleiben bis zur ersten ausdrücklichen neuen Datenaktion als Rohwerte unverändert. Kern `oliva-71cf17993d0bc7fd`, Hostpaket `oliva-4ef23c75148a9974`. Die gesamte Master-Definition-of-Done bleibt offen.
+
+[Private Reader-Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site/lesen/JHN?chapter=6&from=35&to=37) · [Reader-Vertrag](25-reader-selection-and-context.md) · [vollständige Abnahme](evidence/reader-parity/validation-summary.json).
+
+Private Auslieferung: 26 Routen, 107 App-Dateien und 42 Review-Dateien geprüft; Index-HTML als App-Shell, alle übrigen App-Dateien per Hash. Anonym HTTP 401, kein App-HTML und exakt unveränderte Eigentümerpolitik. Aufgezeichnete transiente HTTP-Wiederholungen: 0. Keine gehostete CUA-/Browserprüfung und keine reale Handy-, Simulator-, native Screenreader-, Speicher- oder Energieprüfung behauptet.
+
+Der Vorgänger 0.12.1 ist vollständig gesichert: eigenständiger Commit `5216e75db7f6e7df72adb2f6f040fdedbb621439`, GitHub-Commit `8d0e663150da1860c371aeeba2c4f2ddf16daf8a`, Tag `oliva-v0.12.1`. Die tatsächliche [Remote-CI 43794926581](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/43794926581) bestätigt 225/225 Fachtests und 114/114 Browserfälle im ersten Versuch. Die unabhängigen Nachweise liegen unter [CI-Nachweise](evidence/github/ci-v0121/README.md); der dortige Remote-Build wird getrennt vom lokalen und privaten Build ausgewiesen.
+
+Der eigene 0.13-Quellcheckpoint mit Tag/ZIP und die beauftragte GitHub-Sicherung folgen nach diesem Dokumentcheckpoint. Die tatsächlichen eigenen Kennungen stehen anschließend in `/workspace/oliva-v013-local-checkpoint.json` und `/workspace/oliva-github-backups.json`. Hier werden keine noch unbekannten Commit- oder ZIP-Hashes behauptet. Auch die neue tatsächliche Remote-CI muss separat geprüft werden; die erfolgreiche Vorgänger-CI ersetzt sie nicht.
+
+Offen bleiben der vollständige ursprüngliche Geschichten-/Themenbestand und weitere Bestandsparität, die persönliche Astzuordnung, zusätzliche hochwertige Buch- und Bibelbilder, unabhängige Inhalts- und Rechtefreigaben, Tests mit Menschen ohne Bibelwissen, echte Geräteabnahme und native Installationspakete. Authentifizierung/Cloud-Sync, Live-KI und Audio sind noch nicht angeschlossen. Anbieter- und Betriebsentscheidungen bleiben offen. Für diese Arbeit werden keine neuen Versionsnummern oder Termine zugesagt.
+<!-- OLIVA-013-DELIVERY:END -->
+
+Die folgenden historischen Abschnitte bewahren ihren damaligen Dokumentcheckpoint. Die spätere Quellensicherung und die tatsächliche 0.12.1-CI sind oben bestätigt.
+
+## Historischer Lieferstand · OLIVA 0.12.1
 
 **OLIVA 0.12.1 ist geprüft und seit 2026-11-16T02:50:55.344653+00:00 eigentümerprivat bereitgestellt.** Die Buchsuche findet Namen trotz zusätzlicher Leerzeichen, Unicode-Abständen und Punkten im Zahlpräfix. Standardmäßig erscheinen alle 66 Bücher; das Dropdown bietet Gesamte Bibel, NT und AT. Die NT-Fragenübersicht nutzt dieselbe tolerante Buchsuche. Alle abgenommenen Funktionen aus 0.12 bleiben enthalten.
 

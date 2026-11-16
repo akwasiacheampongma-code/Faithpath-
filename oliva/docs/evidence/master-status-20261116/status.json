@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-16T02:42:16.168818+00:00",
+  "scope": "Read-only source/document/evidence audit; point-in-time status, no reprioritization or release assignment",
+  "masterDefinitionOfDoneComplete": false,
+  "testsExecutedByAuditor": false,
+  "buildsExecutedByAuditor": false,
+  "deploymentsPerformedByAuditor": false,
+  "reference": {
+    "commit": "a519ce898fa33907b07d5ac7a585595127556183",
+    "readOnly": true,
+    "newDeviceTestOfOriginal": false,
+    "sourceAudit": "docs/00-faithpath-audit.md"
+  },
+  "live": {
+    "appVersion": "0.12.0",
+    "dataVersion": 8,
+    "privateOnly": true,
+    "url": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+    "unitPassed": 225,
+    "browserSingleFullPassed": 108,
+    "localEvidence": "docs/evidence/nt-catalog/validation-summary.json",
+    "remoteCi": {
+      "runId": 42752829627,
+      "conclusion": "success",
+      "unitPassed": 225,
+      "browserPassed": 108,
+      "evidence": "docs/evidence/github/ci-v012/verification.json"
+    },
+    "nativeProofKind": "JavaScript/assets/static catalog only; no device or simulator"
+  },
+  "bookSearchPatch": {
+    "appVersion": "0.12.1",
+    "sourceRoot": "/workspace/oliva-book-search",
+    "implemented": true,
+    "deployedAtAudit": false,
+    "features": [
+      "Whitespace and number-prefix dot normalization",
+      "Default all 66 books",
+      "NT27/AT39 native-platform scope selector",
+      "Same book-name normalization in NT study"
+    ],
+    "dataVersion": 8,
+    "runtimeFileCount": 316,
+    "runtimeDigest": "abc9c992cf4606a9a525570097826da35b5e4b67c97d0d8c67f234ffaf8a5fc0",
+    "webCore": "oliva-75717978bae05979",
+    "nativeExportsPassed": true,
+    "realPreviousPwaUpgradePassed": true,
+    "rawRecordsExact": 4,
+    "firstFullBrowser": {
+      "passed": 112,
+      "failed": 2,
+      "laterOutcomeNotClaimed": true
+    },
+    "newFullBrowserRun": "in progress at audit; final report pending",
+    "githubBackupNotClaimed": true
+  },
+  "readerWorkInProgress": {
+    "sourceRoot": "/workspace/faithpath-next",
+    "newReleaseVersion": null,
+    "dataVersion": 9,
+    "developmentPackageLabel": "0.12.0; does not alter immutable released0.12",
+    "implemented": [
+      "Additive multiverse selection and gap guard",
+      "Canonical copy with manual fallback",
+      "Range note/draft identity",
+      "Full chapter presentation around distinct logical partial scope",
+      "Canonical withinchapter anchor outsidepartialfocus",
+      "Frozen strict V1–V8 decode contracts",
+      "Queue input snapshots"
+    ],
+    "queueReviewSnapshot": {
+      "checkedAt": "2026-11-16T02:32:31.008997+00:00",
+      "globalUnitPassed": 277,
+      "typecheckPassed": true,
+      "fiveQueueRegressionsPassed": true,
+      "evidence": "docs/evidence/reader-parity/domain-review/verification-final.json",
+      "notValidationOfLaterUiEdits": true
+    },
+    "previousTargetedBrowser": {
+      "passed": 16,
+      "evidence": "docs/evidence/reader-parity/selection-e2e/verification.json"
+    },
+    "previousFullBrowser": {
+      "passed": 122,
+      "failed": 1,
+      "evidence": "docs/evidence/reader-parity/development-full-e2e-results.json"
+    },
+    "currentOpenVerification": [
+      "Preserve original fullchapter beginning behavior while partialjump focusesverse",
+      "Resume exact volatile failedsave verse/range drafts through collection",
+      "Final full suite/freeze/PWA/native exports"
+    ],
+    "deployed": false,
+    "nativeDeviceTest": false
+  },
+  "inventory": {
+    "bible": {
+      "books": 66,
+      "chapters": 1189,
+      "verses": 31102,
+      "translation": "Luther1912"
+    },
+    "originalNt": {
+      "books": 27,
+      "chapters": 260,
+      "questions": 1300,
+      "activeSince": "0.12.0"
+    },
+    "paths": 9,
+    "a51Stages": 7,
+    "compactSwordIdentities": 66,
+    "largeSwordIllustrations": 2,
+    "biblicalArtMasters": 8,
+    "standaloneNarrativePilots": 5,
+    "sources": [
+      "src/data/catalog.json",
+      "src/data/nt-catalog.json",
+      "src/features/paths/catalog.ts",
+      "src/features/garden/a51/stage-data.json",
+      "src/features/swords/illustrations.ts",
+      "art/manifest.json",
+      "src/features/bible/scenes.ts"
+    ]
+  },
+  "confirmedOriginalParityGaps": [
+    {
+      "id": "original-story-pool",
+      "original": "436stories/2479StoryFlowQuestionItems",
+      "status": "not fully transferred; distinct from completeNTcatalog",
+      "sources": [
+        "original:data/faithpath-nachlese-story-flow.json",
+        "src/features/bible/scenes.ts"
+      ]
+    },
+    {
+      "id": "life-topics",
+      "original": "18LifeTopics",
+      "status": "9ownpaths; no completeeditorialtransfer",
+      "sources": [
+        "original:src/content.js:LIFE_TOPICS",
+        "src/features/paths/catalog.ts"
+      ]
+    },
+    {
+      "id": "personal-tree-branches",
+      "status": "notimplemented",
+      "sources": [
+        "original:src/tree-branches.js",
+        "docs/16-current-plan-and-parity.md"
+      ]
+    },
+    {
+      "id": "continuity-history",
+      "status": "partiallyimplemented; fulleroriginalprojectionmissing",
+      "sources": [
+        "original:src/continuity.js",
+        "original:src/path-review-context.js",
+        "docs/16-current-plan-and-parity.md"
+      ]
+    },
+    {
+      "id": "reminder-parity",
+      "status": "inappexists; undatedhighlights/automaticlegacycontrolimportmissing",
+      "sources": [
+        "docs/18-in-app-invitations.md"
+      ]
+    },
+    {
+      "id": "otb-and-extra-themes",
+      "status": "notintegrated; OTBknownCCBYSA4.0",
+      "sources": [
+        "original:data/bibles/OTB-LICENSE.txt",
+        "original:src/themes.js",
+        "src/features/bible/repository.ts"
+      ]
+    },
+    {
+      "id": "contextual-step-suggestions",
+      "status": "manualstepsonly",
+      "sources": [
+        "original:src/step-help.js",
+        "original:src/step-selection.js",
+        "src/features/personal/Editors.tsx"
+      ]
+    },
+    {
+      "id": "book-code-search",
+      "status": "namesonly; codesMRK/JHNnotsearched",
+      "sources": [
+        "original:src/app.js:377",
+        "app/bibel.tsx"
+      ],
+      "doesNotReprioritizeFrozenPatch": true
+    },
+    {
+      "id": "reader-remaining-parity",
+      "status": "implementedWIPnotreleased",
+      "sources": [
+        "docs/evidence/reader-parity-preparation/reader-parity-preparation.md",
+        "app/lesen/[book].tsx"
+      ]
+    }
+  ],
+  "preparedNotActive": {
+    "supabaseSql": [
+      "database/migrations/001_cloud_foundation.sql",
+      "database/migrations/002_catalog.sql"
+    ],
+    "cloudAuthSync": "contract/schema only; no active instance/client",
+    "aiCompanion": "server-side citation/safety contract only; service unimplemented",
+    "audio": "not connected, sources/rights decision pending",
+    "sqliteContentDownloads": "notimplemented; currentcorpusbundledoffline"
+  },
+  "remainingMasterAcceptance": [
+    "Finish currentreader and prioritizedoriginalparity",
+    "Expand premiumbook/storyart and historical/theologicaleditorial coverage",
+    "Independent content/rights review and applicableproductionprivacy/branddecisions",
+    "Real beginnerusability and approximately60sonboarding validation",
+    "Actual iOS/Android including VoiceOver/TalkBack/largefont/SQLite/offlinelifecycle/image decoding/memory/energy",
+    "Real auth/sync/AI services and permission/conflict/privacy operations; optional audio afterrights",
+    "Reproducible signed native installers and distribution/update/rollback acceptance"
+  ],
+  "openDecisions": [
+    "Cloudprovider/region andoperatingmodel",
+    "AIprovider andquotas",
+    "Audio source/rights",
+    "Additionaltranslationintegration",
+    "Productiondistribution"
+  ],
+  "futureVersionsOrDatesAssigned": false,
+  "prioritiesChanged": false,
+  "originalFaithpathModified": false,
+  "mainMergePerformed": false,
+  "publicWebOrStoreDeploymentPerformed": false,
+  "historicalReportsRecolored": false,
+  "readingNotes": [
+    "Historical design/rights/planning paragraphs may describe priorstages; currentcode/manifests and actualvalidationevidence takeprecedence.",
+    "The five own narrativepilots do not replace the original436storypool.",
+    "66compactidentities exist; only2largepremiumillustrations are active.",
+    "LiveAI/authsync/audio were not established finished originalFaithPathfeatures."
+  ]
+}

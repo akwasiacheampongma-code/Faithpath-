@@ -1,0 +1,101 @@
+{
+  "version": "0.13.0",
+  "checkedAt": "2026-11-16T14:28:56.051965+00:00",
+  "allCoreChecksPassed": true,
+  "coreBuild": "oliva-71cf17993d0bc7fd",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 327,
+    "sha256": "0b097eb24fc4fded654aef9f1a68ffb76301ed48e3d941ca146046efe3e15611"
+  },
+  "runtimeInputsPath": "runtime-inputs.json",
+  "dataVersion": 9,
+  "strictPreviousVersions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "privateDocumentVersion": 1,
+  "sqliteSchemaVersion": 3,
+  "indexedDbVersion": 1,
+  "unit": {
+    "total": 290,
+    "passed": 290,
+    "failed": 0,
+    "pending": 0
+  },
+  "browser": {
+    "total": 126,
+    "passed": 126,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "singleFullGreenRun": true,
+    "allResultsSingleAttempt": true
+  },
+  "upgradeReportPath": "upgrade/oliva-71cf17993d0bc7fd-r2/offline-upgrade.json",
+  "upgradeExecutionPath": "upgrade/execution-r2.json",
+  "upgradeLogPath": "upgrade/execution-r2.txt",
+  "realPreviousPwaUpgrade": {
+    "baseline": "0.12.1",
+    "target": "0.13.0",
+    "passed": true,
+    "rawV8RecordsExactBeforeNewActions": 4,
+    "nonMainRecordsExactThroughV9Actions": 3,
+    "offlineA51Stages": 7,
+    "actualV9ExportAndRestorePreview": true,
+    "restoreNotApplied": true
+  },
+  "nativeJavaScriptAssetExports": {
+    "android": true,
+    "ios": true,
+    "all1300QuestionsStaticDeepEqual": true,
+    "readerAndClipboardModulesStaticChecked": true,
+    "physicalDeviceOrSimulator": false
+  },
+  "earlierFullBrowser": {
+    "passed": 125,
+    "failed": 1,
+    "evidence": "focus-bottom-review/before-original/e2e-results.json",
+    "scope": "A direct DOM jump raced pending layout restoration. The test now uses trusted Tab/End input; original bottom/text/toolbar/data/Axe criteria retained. No runtime change, real input loss not reproduced in12 scenarios."
+  },
+  "earlierUpgrade": {
+    "passed": false,
+    "evidence": "upgrade/oliva-71cf17993d0bc7fd/offline-upgrade.json",
+    "scope": "Logical content comparison incorrectly required object property order after an explicit note commit; corrected toStrictEqual. Exact raw predecessor/non-main comparisons retained. No runtime change."
+  },
+  "dependencyAuditVulnerabilities": 0,
+  "originalFaithpathMaterializedFilesVerified": 390,
+  "privateDeployment": {
+    "status": "succeeded",
+    "url": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+    "deployedAt": "2026-11-16T14:37:15.941877+00:00",
+    "deploymentId": "appgdep_6afb150a82548191bedc14c69b4a3fb3",
+    "versionId": "appgprj_6aedf77e5ce0819180c10eb799447018~appgver_122b8cea53b881918d9a5ff200fb07c6",
+    "sourceCommit": "43bb8614da3a8d4bbcf4f562621f337e1e5733c0",
+    "hostBuild": "oliva-4ef23c75148a9974",
+    "anonymousStatus": 401,
+    "ownerOnlyPolicyUnchanged": true,
+    "appRoutesHttpChecked": 26,
+    "appFilesVerified": 107,
+    "reviewFilesVerified": 42,
+    "httpTransientRetries": [],
+    "hostedBrowserQa": false
+  },
+  "githubBackup": {
+    "status": "not yet performed"
+  },
+  "limitations": [
+    "No physical device, simulator, native screenreader/decoder, signed installer, memory or energy test.",
+    "Native verification inspects exported JavaScript and asset bytes without running app code.",
+    "Hosted supported CUA/browser QA unavailable; local core Chromium and private HTTP/package verification are distinct.",
+    "Full Master DoD remains open: original content/theme/branch parity, additional premium illustrations and independent rights/theology/history review, live auth/sync/AI/audio and native distribution.",
+    "No public website/store deployment or FaithPath/main modification."
+  ],
+  "completedAt": "2026-11-16T14:39:37.038128+00:00"
+}

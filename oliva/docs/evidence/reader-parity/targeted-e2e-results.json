@@ -1,0 +1,687 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/reader-selection.spec.ts",
+      "tests/e2e/reader-copy.spec.ts",
+      "tests/e2e/reader-flow.spec.ts"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/reader-parity/targeted-e2e-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "PORT=4173 node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "reader-copy.spec.ts",
+      "file": "reader-copy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ein einzelner Vers wird per echtem Browser-Clipboard unverändert mit LF und Übersetzungsname kopiert",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7913,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:27:16.960Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ce442e8cf1d9cbf500a3-1f50798b0496b706db64",
+          "file": "reader-copy.spec.ts",
+          "line": 140,
+          "column": 1
+        },
+        {
+          "title": "additive Auswahl kopiert genau 35–36 und danach 35–37 ohne UI-Einordnung oder persönliche Daten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12472,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:27:26.018Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ce442e8cf1d9cbf500a3-4f17ffb4e90161e309b1",
+          "file": "reader-copy.spec.ts",
+          "line": 163,
+          "column": 1
+        },
+        {
+          "title": "eine abgelehnte Clipboard-API zeigt denselben schreibgeschützten Text ohne falsche Erfolgsmeldung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9941,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:27:38.555Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ce442e8cf1d9cbf500a3-4aa419861e87fa3ad506",
+          "file": "reader-copy.spec.ts",
+          "line": 193,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reader-flow.spec.ts",
+      "file": "reader-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "echte Inlineabsätze erhalten jeden Johannesvers und umbrechen über Versgrenzen statt in Einzelblöcken",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8179,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:27:49.013Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-8b1618772a6b9a439a5d",
+          "file": "reader-flow.spec.ts",
+          "line": 112,
+          "column": 1
+        },
+        {
+          "title": "eine tatsächlich geteilte Psalmzeile speichert nach Scrollen ihren ersten sichtbaren Vers 119 und erfindet keinen Verssprung zu 120",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6310,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:27:57.241Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-55fd06f9c4c02c8de1ff",
+          "file": "reader-flow.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "ein ausdrücklicher Verslink bleibt nach breitem Reflow, größerer Schrift, Zeilenabstand und Neustart genau Johannes 6,35",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14725,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:28:03.656Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-d16f190461dc71552478",
+          "file": "reader-flow.spec.ts",
+          "line": 241,
+          "column": 1
+        },
+        {
+          "title": "Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versnotizentwurf über Neustart ohne Leseabschluss",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8143,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:28:18.450Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-071c1af11ddf249659f9",
+          "file": "reader-flow.spec.ts",
+          "line": 274,
+          "column": 1
+        },
+        {
+          "title": "Fließtext und Einzelverse behalten beim Umschalten denselben Versanker und denselben Notizquelltext",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10146,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:28:26.662Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-6bd46f88455a8159e11f",
+          "file": "reader-flow.spec.ts",
+          "line": 378,
+          "column": 1
+        },
+        {
+          "title": "der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunkel sowie auf großem Display lesbar und zugänglich",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14603,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:28:36.859Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-458a229bab2ad4b046a2",
+          "file": "reader-flow.spec.ts",
+          "line": 431,
+          "column": 1
+        },
+        {
+          "title": "die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, markieren acht Fokusverse und bestätigen ausschließlich den Abschnitt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:28:51.571Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3d6dcc635a1495bc1122-6bfd74bec8efab11ce52",
+          "file": "reader-flow.spec.ts",
+          "line": 494,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reader-selection.spec.ts",
+      "file": "reader-selection.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8470,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:29:08.339Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-9c351430c1ad69fc87a9",
+          "file": "reader-selection.spec.ts",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11544,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:29:16.919Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-c5742540f6f563465bee",
+          "file": "reader-selection.spec.ts",
+          "line": 192,
+          "column": 1
+        },
+        {
+          "title": "35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22276,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:29:28.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-e4624869b3ba8f5a388a",
+          "file": "reader-selection.spec.ts",
+          "line": 290,
+          "column": 1
+        },
+        {
+          "title": "ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8645,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:29:51.967Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-2cc3596dd882a936143a",
+          "file": "reader-selection.spec.ts",
+          "line": 397,
+          "column": 1
+        },
+        {
+          "title": "Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6805,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:30:00.643Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-39de6a8ff9ee70c8e0de",
+          "file": "reader-selection.spec.ts",
+          "line": 434,
+          "column": 3
+        },
+        {
+          "title": "Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6831,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T21:30:07.515Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-3ef307e42a01c7d1ef63",
+          "file": "reader-selection.spec.ts",
+          "line": 434,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-15T21:27:12.869Z",
+    "duration": 181726.999,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

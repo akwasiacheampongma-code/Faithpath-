@@ -19,7 +19,7 @@ describe("Lesefortsetzung ohne Fortschrittsbestätigung", () => {
     const before = JSON.stringify(old);
     expect(decodeData(old)).toEqual({
       ...old,
-      version: 8,
+      version: 9,
       ntStudy: {
         answers: {},
         completions: {},
@@ -36,7 +36,7 @@ describe("Lesefortsetzung ohne Fortschrittsbestätigung", () => {
       }),
     ).toEqual({
       ...old,
-      version: 8,
+      version: 9,
       ntStudy: {
         answers: {},
         completions: {},
@@ -49,7 +49,7 @@ describe("Lesefortsetzung ohne Fortschrittsbestätigung", () => {
     });
     expect(JSON.stringify(old)).toBe(before);
   });
-  it("validiert den Anker gegen den exakten Textabschnitt und das aktuelle Kapitel", () => {
+  it("bewahrt den historischen Abschnittsprüfer und prüft die aktuelle Kapitelzuordnung", () => {
     const data = initialData();
     data.reading = { book: "MRK", chapter: 4, from: 35, to: 41 };
     data.readingPosition = { ref: data.reading, verse: 38, mode: "deep" };

@@ -1,0 +1,600 @@
+import { create } from "zustand";
+import { readData, writeData, readRecovery } from "../services/storage";
+import {
+  dataSchema,
+  grow,
+  initialData,
+  assertStorageBudget,
+  cloneData,
+  type AppData,
+} from "./model";
+import {
+  applyImport,
+  prepareImport,
+  type ImportPlan,
+} from "../features/imports/model";
+import type { WriteOptions } from "../features/imports/schema";
+import {
+  saveDraft as updateDraft,
+  commitDraft,
+  removeDraft,
+  deleteReview,
+  undoReviewDeletion,
+  type ReviewDeletion,
+} from "../features/personal/model";
+import {
+  newId,
+  type Draft,
+  type DraftStamp,
+} from "../features/personal/schema";
+import {
+  readingPositionSchema,
+  sameReadingScope,
+  samePosition,
+  type ReadingPosition,
+} from "../features/bible/position-current";
+import { getPassage, type Reference } from "../features/bible/repository";
+import { referenceSchema } from "../features/bible/schema";
+import { highlightColor, type HighlightColor } from "../features/bible/highlights";
+import {
+  useVolatileDrafts,
+  acknowledgeDrafts,
+} from "../features/personal/volatile-drafts";
+import {
+  changeInvitationControl,
+  type Invitation,
+} from "../features/invitations/model";
+import {
+  saveNtAnswer,
+  finishNtChapter,
+  rememberNtPosition,
+  chapterSetHash,
+  extractLegacyNtCompletions,
+  appendLegacyNtCompletions,
+} from "../features/quiz/model";
+import { ntPositionSchema, type NtPosition } from "../features/quiz/state-schema";
+import { parseFaithpath } from "../features/imports/source";
+
+export type Store = {
+  data: AppData;
+  ready: boolean;
+  healthy: boolean;
+  busy: boolean;
+  error: string | null;
+  hydrate: () => Promise<void>;
+  mutate: (fn: (d: AppData) => void) => Promise<boolean>;
+  saveEditorDraft: (
+    draft: Draft,
+    expected: DraftStamp | null,
+  ) => Promise<Draft | null>;
+  finishEditorDraft: (
+    key: string,
+    expected: DraftStamp,
+    discard?: boolean,
+    completeGuided?: boolean,
+  ) => Promise<{ result: string } | null>;
+  deleteGoalReview: (
+    goalId: string,
+    reviewId: string,
+    expectedGoalRevision: number,
+    expectedReviewHash: string,
+  ) => Promise<string | null>;
+  undoGoalReview: (token: string) => Promise<boolean>;
+  forgetReviewUndo: (token: string) => void;
+  restore: (d: AppData) => Promise<boolean>;
+  clearError: () => void;
+  setInvitationsEnabled: (
+    enabled: boolean,
+    expected: boolean,
+  ) => Promise<boolean>;
+  chooseInvitation: (
+    invitation: Pick<Invitation, "key" | "stamp">,
+    action: "snooze" | "dismiss" | "resume",
+  ) => Promise<boolean>;
+  openReading: (reference: Reference) => Promise<boolean>;
+  rememberReadingPosition: (
+    position: ReadingPosition | null,
+    reference: Reference,
+  ) => Promise<boolean>;
+  saveNtResponse: (
+    questionId: string,
+    displayedHash: string,
+    choice: number,
+    expectedStamp: string | null,
+  ) => Promise<boolean>;
+  completeNtStudy: (
+    book: string,
+    chapter: number,
+    displayedSetHash: string,
+    expectedStamp: string | null,
+  ) => Promise<boolean>;
+  rememberNtStudyPosition: (position: NtPosition) => Promise<boolean>;
+  setPassageHighlight: (reference: Reference, color: HighlightColor | null) => Promise<boolean>;
+  setPassageBookmarked: (reference: Reference, bookmarked: boolean) => Promise<boolean>;
+  activateArchivedNtProgress: (
+    importId: string,
+    sourceHash: string,
+    expectedRevision: number,
+  ) => Promise<boolean>;
+  waitForWrites: () => Promise<AppData>;
+  refresh: () => Promise<AppData | null>;
+  importFaithpath: (plan: ImportPlan) => Promise<boolean>;
+  rollbackImport: (token: string, expectedRevision: number) => Promise<boolean>;
+};
+// Background draft writes and explicit actions share one ordered transaction queue.
+// The visible action lock still rejects a second tap on the same pending action.
+let tail: Promise<void> | null = null;
+function enqueue<T>(work: () => Promise<T>): Promise<T> {
+  const result = tail ? tail.then(work) : work();
+  const settled = result.then(
+    () => undefined,
+    () => undefined,
+  );
+  tail = settled;
+  void settled.then(() => {
+    if (tail === settled) tail = null;
+  });
+  return result;
+}
+export const useApp = create<Store>((set, get) => {
+  // Deleted text exists only here for one explicit, navigation-scoped undo.
+  // Neither the payload nor the token is written to storage or backups.
+  let epoch = 0;
+  let reviewUndo: {
+    token: string;
+    epoch: number;
+    payload: ReviewDeletion;
+  } | null = null;
+  function invalidateUndo() {
+    epoch++;
+    reviewUndo = null;
+  }
+  async function action<T>(blocked: T, work: () => Promise<T>): Promise<T> {
+    if (get().busy || !get().ready || !get().healthy) return blocked;
+    set({ busy: true, error: null });
+    try {
+      return await work();
+    } catch (error) {
+      set({ error: message(error) });
+      return blocked;
+    } finally {
+      set({ busy: false });
+    }
+  }
+  const persist = (
+    fn: (d: AppData) => void | boolean,
+    options: WriteOptions = {},
+    updateGrowth = true,
+    guard: (data: AppData) => boolean = () => true,
+  ) =>
+    enqueue(async () => {
+      if (!get().ready || !get().healthy) return false;
+      if (!guard(get().data)) return false;
+      try {
+        const current = get().data,
+          next = cloneData(current);
+        // Only explicit metadata writers return false for a validated no-op.
+        // They still execute their stale-state guards before this early exit.
+        if (fn(next) === false) return true;
+        if (updateGrowth) grow(next);
+        next.revision = current.revision + 1;
+        dataSchema.parse(next);
+        assertStorageBudget(next);
+        await writeData(next, current.revision, options);
+        set({ data: next, error: null });
+        acknowledgeDrafts(next.drafts);
+        return true;
+      } catch (error) {
+        set({ error: message(error) });
+        return false;
+      }
+    });
+  return {
+    data: initialData(),
+    ready: false,
+    healthy: false,
+    busy: false,
+    error: null,
+    hydrate: async () => {
+      if (get().busy) return;
+      invalidateUndo();
+      set({ busy: true });
+      try {
+        await enqueue(async () => {
+          const data = await readData();
+          set({ data, ready: true, healthy: true, error: null });
+        });
+      } catch (error) {
+        set({ error: message(error), healthy: false, ready: true });
+      } finally {
+        set({ busy: false });
+      }
+    },
+    mutate: async (fn) => {
+      if (get().busy || !get().ready || !get().healthy) return false;
+      set({ busy: true, error: null });
+      try {
+        return await persist(fn);
+      } finally {
+        set({ busy: false });
+      }
+    },
+    saveEditorDraft: async (draft, expected) => {
+      let saved: Draft | null = null;
+      const ok = await persist(
+        (d) => {
+          updateDraft(d, draft, expected);
+          saved = d.drafts.find((x) => x.key === draft.key)!;
+        },
+        {},
+        false,
+      );
+      return ok ? saved : null;
+    },
+    finishEditorDraft: (
+      key,
+      expected,
+      discard = false,
+      completeGuided = true,
+    ) =>
+      action<{ result: string } | null>(null, async () => {
+        let result = "";
+        const ok = await persist(
+          (d) => {
+            const draft = d.drafts.find((x) => x.key === key);
+            if (discard) removeDraft(d, key, expected);
+            else {
+              result = commitDraft(d, key, expected, new Date().toISOString(), {
+                completeGuided,
+              });
+              // Only a genuinely new reflection/experience or guided completion
+              // may update growth. Autosave, edits and discard are metadata.
+              if (
+                draft &&
+                (draft.type === "review" ||
+                  (draft.type === "journal" &&
+                    !draft.values.targetId &&
+                    draft.values.kind !== "note") ||
+                  (draft.type === "capture" &&
+                    draft.values.source.type !== "verse" &&
+                    draft.values.source.type !== "passage"))
+              )
+                grow(d);
+            }
+          },
+          {},
+          false,
+        );
+        return ok ? { result } : null;
+      }),
+    deleteGoalReview: (goalId, reviewId, revision, hash) =>
+      action<string | null>(null, async () => {
+        let payload: ReviewDeletion | null = null;
+        const atEpoch = epoch;
+        const ok = await persist(
+          (d) => {
+            payload = deleteReview(
+              d,
+              goalId,
+              reviewId,
+              revision,
+              hash,
+              new Date().toISOString(),
+            );
+          },
+          {},
+          false,
+        );
+        if (!ok || !payload || atEpoch !== epoch) return null;
+        const token = newId("review-undo");
+        reviewUndo = { token, epoch, payload };
+        return token;
+      }),
+    undoGoalReview: (token) =>
+      action(false, async () => {
+        const ok = await persist(
+          (d) => {
+            if (
+              !reviewUndo ||
+              reviewUndo.token !== token ||
+              reviewUndo.epoch !== epoch
+            )
+              throw new Error(
+                "Dieses Rückgängigmachen ist nicht mehr verfügbar. Es wurde nichts überschrieben.",
+              );
+            undoReviewDeletion(d, reviewUndo.payload, new Date().toISOString());
+          },
+          {},
+          false,
+        );
+        if (ok && reviewUndo?.token === token) reviewUndo = null;
+        return ok;
+      }),
+    forgetReviewUndo: (token) => {
+      if (reviewUndo?.token === token) reviewUndo = null;
+    },
+    restore: (incoming) =>
+      action(false, async () => {
+        invalidateUndo();
+        return persist(
+          (d) => {
+            const revision = d.revision;
+            Object.assign(d, dataSchema.parse(incoming), { revision });
+          },
+          {},
+          false,
+        );
+      }),
+    clearError: () => set({ error: null }),
+    setInvitationsEnabled: (enabled, expected) =>
+      action(false, async () => {
+        if (get().data.invitations.enabled === enabled) return true;
+        return persist(
+          (d) => {
+            if (d.invitations.enabled !== expected)
+              throw new Error(
+                "Deine Einstellung hat sich inzwischen verändert. Prüfe sie bitte erneut.",
+              );
+            d.invitations.enabled = enabled;
+          },
+          {},
+          false,
+        );
+      }),
+    chooseInvitation: (invitation, choice) =>
+      action(false, () =>
+        persist(
+          (d) => {
+            d.invitations = changeInvitationControl(
+              d,
+              d.invitations,
+              invitation,
+              choice,
+            );
+          },
+          {},
+          false,
+        ),
+      ),
+    openReading: (reference) =>
+      persist(
+        (d) => {
+          d.reading = { ...reference };
+          d.readingPosition = null;
+        },
+        {},
+        false,
+        (d) => d.revision === 0 || !sameReadingScope(d.reading, reference),
+      ),
+    rememberReadingPosition: (position, reference) =>
+      persist(
+        (d) => {
+          d.readingPosition = position
+            ? readingPositionSchema.parse(position)
+            : null;
+        },
+        {},
+        false,
+        (d) =>
+          sameReadingScope(d.reading, reference) &&
+          !samePosition(d.readingPosition, position),
+      ),
+    setPassageHighlight: (reference, color) =>
+      action(false, () => {
+        const requested = referenceSchema.parse(reference);
+        const requestedColor = color === null ? null : highlightColor.parse(color);
+        const keys = getPassage(requested).map((verse) => `${requested.book}:${requested.chapter}:${verse.n}`);
+        return persist((d) => {
+          let changed = false;
+          for (const key of keys) {
+            if (requestedColor === null) {
+              if (d.highlights[key] !== undefined) { delete d.highlights[key]; changed = true; }
+            } else if (d.highlights[key] !== requestedColor) {
+              d.highlights[key] = requestedColor; changed = true;
+            }
+          }
+          return changed;
+        }, {}, false);
+      }),
+    setPassageBookmarked: (reference, bookmarked) =>
+      action(false, () => {
+        const requested = referenceSchema.parse(reference);
+        if (typeof bookmarked !== "boolean") throw new Error("Ungültige Merken-Auswahl.");
+        const keys = getPassage(requested).map((verse) => `${requested.book}:${requested.chapter}:${verse.n}`);
+        return persist((d) => {
+          const before = new Set(d.bookmarks), next = new Set(before);
+          for (const key of keys) { if (bookmarked) next.add(key); else next.delete(key); }
+          if (next.size === before.size && [...next].every((key) => before.has(key))) return false;
+          d.bookmarks = [...next];
+          return true;
+        }, {}, false);
+      }),
+    saveNtResponse: (questionId, displayedHash, choice, expectedStamp) =>
+      action(false, async () => {
+        // Load the large source bank only for a deliberate study action.
+        const { ntQuestion } = await import("../features/quiz/catalog");
+        const question = ntQuestion(questionId);
+        if (!question || question.hash !== displayedHash)
+          throw new Error(
+            "Diese Fragenfassung ist nicht mehr aktuell. Öffne die Fragen erneut; dein bisheriger Stand bleibt erhalten.",
+          );
+        return persist(
+          (d) =>
+            saveNtAnswer(
+              d.ntStudy,
+              question,
+              choice,
+              expectedStamp,
+              new Date().toISOString(),
+            ),
+          {},
+          false,
+        );
+      }),
+    completeNtStudy: (book, chapter, displayedSetHash, expectedStamp) =>
+      action(false, async () => {
+        const { ntChapter } = await import("../features/quiz/catalog");
+        const source = ntChapter(book, chapter);
+        if (!source || chapterSetHash(source) !== displayedSetHash)
+          throw new Error(
+            "Dieser Fragensatz ist nicht mehr aktuell. Öffne das Kapitel erneut; dein bisheriger Stand bleibt erhalten.",
+          );
+        return persist(
+          (d) =>
+            finishNtChapter(
+              d.ntStudy,
+              source,
+              expectedStamp,
+              new Date().toISOString(),
+            ),
+          {},
+          false,
+        );
+      }),
+    rememberNtStudyPosition: (position) =>
+      action(false, () => {
+        // Capture caller-owned input before an earlier queued write can yield.
+        const requested = ntPositionSchema.parse(position);
+        return persist(
+          (d) =>
+            rememberNtPosition(
+              d.ntStudy,
+              requested.book,
+              requested.chapter,
+              requested.index,
+            ),
+          {},
+          false,
+        );
+      }),
+    activateArchivedNtProgress: (importId, sourceHash, expectedRevision) =>
+      action(false, () =>
+        persist(
+          (d) => {
+            if (d.revision !== expectedRevision)
+              throw new Error(
+                "Dein Datenstand hat sich verändert. Prüfe die Archivvorschau bitte erneut.",
+              );
+            const receipt = d.imports.find(
+              (item) => item.id === importId && item.sourceHash === sourceHash,
+            );
+            if (!receipt)
+              throw new Error(
+                "Dieses Originalarchiv ist nicht mehr vorhanden.",
+              );
+            const source = parseFaithpath(receipt.sourceText);
+            if (
+              source.sourceHash !== sourceHash ||
+              source.fingerprint !== receipt.fingerprint
+            )
+              throw new Error(
+                "Die archivierte Quelle stimmt nicht mit ihrem Beleg überein.",
+              );
+            const { completions } = extractLegacyNtCompletions(
+              source.data.quiz,
+              receipt.id,
+              receipt.sourceHash,
+            );
+            return appendLegacyNtCompletions(d.ntStudy, completions);
+          },
+          {},
+          false,
+        ),
+      ),
+    waitForWrites: async () => {
+      while (tail) await tail;
+      await new Promise<void>((resolve) => setTimeout(resolve, 0));
+      while (tail) await tail;
+      if (!get().ready || !get().healthy)
+        throw new Error(
+          "Die lokalen Daten konnten nicht sicher gelesen werden. Verwende die Reparatursicherung.",
+        );
+      if (Object.keys(useVolatileDrafts.getState().items).length)
+        throw new Error(
+          "Einige Entwürfe sind noch nicht dauerhaft gesichert. Bewahre sie zuerst unter Sammlung → Entwürfe.",
+        );
+      return get().data;
+    },
+    refresh: async () => {
+      if (get().busy) return null;
+      invalidateUndo();
+      set({ busy: true });
+      try {
+        return await enqueue(async () => {
+          const data = await readData();
+          set({ data, ready: true, healthy: true, error: null });
+          return data;
+        });
+      } catch (error) {
+        set({ error: message(error), healthy: false });
+        return null;
+      } finally {
+        set({ busy: false });
+      }
+    },
+    importFaithpath: async (plan) => {
+      if (get().busy || !get().ready || !get().healthy) return false;
+      invalidateUndo();
+      set({ busy: true, error: null });
+      try {
+        return await persist(
+          (d) => {
+            if (d.revision !== plan.baseRevision)
+              throw new Error(
+                "Der lokale Stand hat sich seit der Vorschau verändert. Bitte prüfe die Datei erneut.",
+              );
+            const checked = prepareImport(
+              plan.receipt.sourceText,
+              d,
+              plan.receipt.importedAt,
+            );
+            applyImport(d, checked);
+          },
+          {
+            createRecovery: {
+              token: plan.receipt.id + ":" + plan.baseRevision,
+              createdAt: new Date().toISOString(),
+            },
+          },
+          false,
+        );
+      } finally {
+        set({ busy: false });
+      }
+    },
+    rollbackImport: async (token, expectedRevision) => {
+      if (get().busy || !get().ready || !get().healthy) return false;
+      invalidateUndo();
+      set({ busy: true, error: null });
+      try {
+        const copy = await readRecovery();
+        if (!copy || copy.token !== token)
+          throw new Error(
+            "Die Rückkehrsicherung wurde verändert. Bitte prüfe sie erneut.",
+          );
+        return await persist(
+          (d) => {
+            if (d.revision !== expectedRevision)
+              throw new Error(
+                "Der lokale Stand hat sich verändert. Bitte prüfe die Rückkehr erneut.",
+              );
+            const revision = d.revision;
+            Object.assign(d, copy.data, { revision });
+          },
+          { consumeRecoveryToken: token },
+          false,
+        );
+      } catch (error) {
+        set({ error: message(error) });
+        return false;
+      } finally {
+        set({ busy: false });
+      }
+    },
+  };
+});
+function message(error: unknown) {
+  return error instanceof Error
+    ? error.message
+    : "Das hat leider nicht funktioniert. Bitte versuche es erneut.";
+}

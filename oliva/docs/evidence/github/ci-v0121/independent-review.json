@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-11-16T09:30:27.829517+00:00",
+  "reviewer": "/root/ci0121_finish_0923/ci0121_readonly_review",
+  "status": "PASS",
+  "concreteInconsistencies": [],
+  "readOnlyChecksPassed": 19,
+  "scope": [
+    "Exact actual run/job/head, branch, source subtree and annotated tag identities",
+    "225 unit and 114 browser results, no skips, flaky outcomes, retries or repeated attempts",
+    "Fresh reports inside actual logged step windows and exact CI commit metadata",
+    "Artifact size, GitHub SHA-256, all ZIP CRCs, 106 entries and exact copied raw report bytes",
+    "Four pinned upstream actions use native Node24; actual pins and audit zero observed",
+    "Actual remote build oliva-c74e9c9ec6137bfb has 104 runtime files",
+    "Both historical 0.11 failed runs preserved on attempt1",
+    "Fresh source identity retrieved09:28:10UTC matches expected head/subtree/tag",
+    "29 pre-review manifest entries verified; evidence scan found no persisted credentials or signed capabilities"
+  ],
+  "reviewerNetworkCalls": false,
+  "reviewerGitMutations": false,
+  "reviewerFileWrites": false
+}

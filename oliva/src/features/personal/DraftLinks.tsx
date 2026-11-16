@@ -5,6 +5,7 @@ import { useApp } from "../../state/store";
 import { T, Card, Button, Tag } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { referenceLabel } from "../bible/repository";
+import { captureBibleDestination } from "./capture-presentation";
 import type { Draft } from "./schema";
 import { useVolatileDrafts, volatileExport } from "./volatile-drafts";
 import { exportText } from "../../services/storage";
@@ -18,16 +19,10 @@ export function draftDestination(draft: Draft): { label: string; href: Href } {
         case "experience":
           return { label: "Deine Erfahrung im Garten", href: "/garten" };
         case "verse":
+        case "passage":
           return {
             label: `Notiz zu ${referenceLabel(s.ref)}`,
-            href: {
-              pathname: "/lesen/[book]",
-              params: {
-                book: s.ref.book,
-                chapter: s.ref.chapter,
-                verse: s.ref.from,
-              },
-            },
+            href: captureBibleDestination(s, draft.id),
           };
         case "guided":
           return {

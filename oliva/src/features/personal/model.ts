@@ -1,6 +1,6 @@
 import type { AppData, Note } from "../../state/model";
 import { commitCapture } from "./capture-model";
-import { captureKey } from "./capture-schema";
+import { captureKey } from "./capture-schema-current";
 import { canonicalJson, sha256 } from "../../lib/hash";
 import {
   draftSchema,

@@ -3,11 +3,24 @@ import { View } from "react-native";
 import { router } from "expo-router";
 import { T, Tag, Button } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
-import type { CaptureSource } from "./capture-schema";
+import type { CaptureSource } from "./capture-schema-current";
+import { captureBibleContextLabel } from "./capture-presentation";
 export function CaptureContext({ source }: { source: CaptureSource }) {
   const t = useTheme(),
     [open, setOpen] = useState(false);
   if (source.type === "verse") return null;
+  if (source.type === "passage") {
+    const label = captureBibleContextLabel(source);
+    return (
+      <T
+        variant="small"
+        accessibilityLabel={label}
+        style={{ color: t.muted }}
+      >
+        {label}
+      </T>
+    );
+  }
   return (
     <View style={{ gap: 9 }}>
       <Tag icon="info">

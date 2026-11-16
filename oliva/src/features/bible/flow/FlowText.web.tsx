@@ -1,5 +1,6 @@
 import {
   forwardRef,
+  useId,
   useImperativeHandle,
   useLayoutEffect,
   useRef,
@@ -14,6 +15,8 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
   {
     paragraphs,
     selected,
+    selectedVerses,
+    focusRange,
     highlights,
     bookmarks,
     fontSize,
@@ -26,6 +29,7 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
   ref,
 ) {
   const t = useTheme(),
+    actionsId = useId(),
     root = useRef<HTMLDivElement>(null),
     verses = useRef(new Map<number, HTMLSpanElement>()),
     geometry = useRef(onGeometryChange);
@@ -60,6 +64,8 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
     }),
     [paragraphs],
   );
+  // Only the single-verse action anchor can add layout inside this renderer.
+  // Range selection and focus change backgrounds, never fragment geometry.
   useLayoutEffect(() => {
     geometry.current();
     const observer =
@@ -78,7 +84,7 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
       observer?.disconnect();
       window.removeEventListener("resize", onResize);
     };
-  }, [layoutKey, paragraphs]);
+  }, [layoutKey, paragraphs, selected]);
   return (
     <div
       ref={root}
@@ -107,7 +113,14 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
             >
               {paragraph.verses.map((verse, index) => {
                 const color = highlights[verse.key],
-                  marked = bookmarks.includes(verse.key);
+                  marked = bookmarks.includes(verse.key),
+                  isSelected = selectedVerses
+                    ? selectedVerses.includes(verse.n)
+                    : selected === verse.n,
+                  isFocused =
+                    !!focusRange &&
+                    verse.n >= focusRange.from &&
+                    verse.n <= focusRange.to;
                 return (
                   <span key={verse.key}>
                     {index > 0 ? " " : null}
@@ -118,13 +131,14 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
                       }}
                       role="button"
                       tabIndex={0}
-                      aria-label={`Vers ${verse.n}: ${verse.text}${marked ? " · gemerkt" : ""}${color ? " · markiert" : ""}`}
-                      aria-pressed={selected === verse.n}
+                      aria-label={`Vers ${verse.n}: ${verse.text}${marked ? " · gemerkt" : ""}${color ? " · markiert" : ""}${isFocused ? " · im Fokus" : ""}`}
+                      aria-pressed={isSelected}
                       data-verse={verse.n}
+                      data-focus={isFocused || undefined}
                       data-testid={`flow-verse-${verse.n}`}
                       aria-controls={
                         selected === verse.n
-                          ? `verse-actions-${verse.n}`
+                          ? `${actionsId}-verse-actions-${verse.n}`
                           : undefined
                       }
                       onClick={() => onSelect(verse.n)}
@@ -138,9 +152,15 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
                         cursor: "pointer",
                         borderRadius: 4,
                         backgroundColor:
-                          selected === verse.n
+                          isSelected
                             ? t.soft
-                            : highlightBackground(color, t.dark),
+                            : color
+                              ? highlightBackground(color, t.dark)
+                              : isFocused
+                                ? t.dark
+                                  ? "#293b43"
+                                  : "#e8edf0"
+                                : "transparent",
                         boxDecorationBreak: "clone",
                         WebkitBoxDecorationBreak: "clone",
                       }}
@@ -163,7 +183,7 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
               })}
             </p>
             {active ? (
-              <div id={`verse-actions-${active.n}`}>
+              <div id={`${actionsId}-verse-actions-${active.n}`}>
                 {renderActions(active)}
               </div>
             ) : null}

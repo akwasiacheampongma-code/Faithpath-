@@ -54,7 +54,7 @@ async function progress(page: Page, chapters: number) {
 async function priorHistory(page: Page, book: string, chapters = 0, theme: "light" | "dark" = "light") {
   const raw = structuredClone(await rawData(page));
   expect(raw.storageVersion).toBe(1);
-  expect(raw.data.version).toBe(8);
+  expect(raw.data.version).toBe(9);
   raw.data.reading = { book, chapter: 1 };
   raw.data.readingPosition = null;
   raw.data.onboarded = true;
@@ -133,7 +133,10 @@ test("Römer zeigt die eigene Illustration und öffnet seine drei belegten Quell
       chapter: String(context.chapter), from: String(context.from), to: String(context.to),
     });
     await expect(page.getByRole("button", { name: new RegExp(`^Vers ${context.from}:`) })).toBeVisible();
-    await expect(page.getByRole("button", { name: new RegExp(`^Vers ${context.to + 1}:`) })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: new RegExp(`^Vers ${context.to + 1}:`) })).toHaveCount(1);
+    for (let n = context.from; n <= context.to; n++)
+      await expect(page.getByRole("button", { name: new RegExp(`^Vers ${n}:`) })).toHaveAccessibleName(/· im Fokus$/);
+    await expect(page.getByRole("button", { name: new RegExp(`^Vers ${context.to + 1}:`) })).not.toHaveAccessibleName(/· im Fokus$/);
     await expect.poll(async () => (await localData(page))?.reading).toEqual({
       book: context.book, chapter: context.chapter, from: context.from, to: context.to,
     });

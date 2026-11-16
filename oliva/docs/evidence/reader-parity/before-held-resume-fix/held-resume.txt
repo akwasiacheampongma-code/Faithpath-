@@ -1,0 +1,81 @@
+[WebServer] (node:23931) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:23939) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/reader-selection.spec.ts:485:3 › Einzelvers: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme (24.8s)
+(node:24215) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/reader-selection.spec.ts:485:3 › Bereich: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme (22.6s)
+
+
+  1) tests/e2e/reader-selection.spec.ts:485:3 › Einzelvers: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)
+    Expected: 0
+    Received: 1
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toHaveCount" getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/) with timeout 15000ms
+      - waiting for getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)
+        33 × locator resolved to 1 element
+           - unexpected value "1"
+
+
+      538 |     const resumed = kind === "passage" ? noteField(page) : page.getByRole("textbox", { name: "Notiz zu Vers 35", exact: true }).filter({ visible: true });
+      539 |     await expect(resumed).toHaveValue(text);
+    > 540 |     await expect(page.getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)).toHaveCount(0);
+          |                                                                                  ^
+      541 |     expect((await localData(page)).drafts.some(d => d.key === key)).toBe(false);
+      542 |     expect((await localData(page)).notes).toEqual([]);
+      543 |     await page.evaluate(() => { (window as Window & { failReaderWrites?: boolean }).failReaderWrites = false; });
+        at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:540:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs/evidence/reader-parity/before-held-resume-fix/artifacts/reader-selection-Einzelver-978a2-d-die-genaue-Wiederaufnahme/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs/evidence/reader-parity/before-held-resume-fix/artifacts/reader-selection-Einzelver-978a2-d-die-genaue-Wiederaufnahme/error-context.md
+
+  2) tests/e2e/reader-selection.spec.ts:485:3 › Bereich: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible() with timeout 15000ms
+      - waiting for getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible()
+
+
+      533 |     await ready(page);
+      534 |     if (kind === "passage") {
+    > 535 |       await expect(tools(page)).toBeVisible();
+          |                                 ^
+      536 |       await selected(page, [35, 36, 37]);
+      537 |     }
+      538 |     const resumed = kind === "passage" ? noteField(page) : page.getByRole("textbox", { name: "Notiz zu Vers 35", exact: true }).filter({ visible: true });
+        at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:535:33
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    docs/evidence/reader-parity/before-held-resume-fix/artifacts/reader-selection-Bereich-e-644b8-d-die-genaue-Wiederaufnahme/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: docs/evidence/reader-parity/before-held-resume-fix/artifacts/reader-selection-Bereich-e-644b8-d-die-genaue-Wiederaufnahme/error-context.md
+
+  2 failed
+    tests/e2e/reader-selection.spec.ts:485:3 › Einzelvers: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme 
+    tests/e2e/reader-selection.spec.ts:485:3 › Bereich: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

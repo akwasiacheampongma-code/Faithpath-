@@ -18,6 +18,7 @@ import { journalDraft } from "../src/features/personal/model";
 import { highlightBackground } from "../src/features/bible/highlights";
 import { DraftLinks } from "../src/features/personal/DraftLinks";
 import { CaptureContext } from "../src/features/personal/CaptureContext";
+import { captureBibleDestination } from "../src/features/personal/capture-presentation";
 export default function Collection() {
   const {
     tab: requestedTab,
@@ -324,11 +325,12 @@ export default function Collection() {
                     kind="ghost"
                     icon="book"
                     onPress={() =>
-                      router.push({
+                      router.push(note.captureSource?.type === "passage" ? captureBibleDestination(note.captureSource) : {
                         pathname: "/lesen/[book]",
                         params: {
                           book: note.ref!.book,
                           chapter: note.ref!.chapter,
+                          ...(note.ref!.from !== undefined && note.ref!.to !== undefined && note.ref!.to > note.ref!.from ? { from: note.ref!.from, to: note.ref!.to } : {}),
                           verse: note.ref!.from,
                         },
                       })

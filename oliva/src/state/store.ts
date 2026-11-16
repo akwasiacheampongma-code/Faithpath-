@@ -24,6 +24,7 @@ import {
 } from "../features/personal/model";
 import {
   newId,
+  draftSchema,
   type Draft,
   type DraftStamp,
 } from "../features/personal/schema";
@@ -32,8 +33,10 @@ import {
   sameReadingScope,
   samePosition,
   type ReadingPosition,
-} from "../features/bible/position";
-import type { Reference } from "../features/bible/repository";
+} from "../features/bible/position-current";
+import { getPassage, type Reference } from "../features/bible/repository";
+import { referenceSchema } from "../features/bible/schema";
+import { highlightColor, type HighlightColor } from "../features/bible/highlights";
 import {
   useVolatileDrafts,
   acknowledgeDrafts,
@@ -52,6 +55,18 @@ import {
 } from "../features/quiz/model";
 import { ntPositionSchema, type NtPosition } from "../features/quiz/state-schema";
 import { parseFaithpath } from "../features/imports/source";
+
+// A stamp may be supplied as a complete saved draft. Extract its two contract
+// fields and validate a detached snapshot before an earlier queued write yields.
+const draftStampSchema = draftSchema.options[0]
+  .pick({ id: true, revision: true })
+  .strict();
+function snapshotDraftStamp(expected: DraftStamp) {
+  return draftStampSchema.parse({
+    id: expected?.id,
+    revision: expected?.revision,
+  });
+}
 
 export type Store = {
   data: AppData;
@@ -107,6 +122,8 @@ export type Store = {
     expectedStamp: string | null,
   ) => Promise<boolean>;
   rememberNtStudyPosition: (position: NtPosition) => Promise<boolean>;
+  setPassageHighlight: (reference: Reference, color: HighlightColor | null) => Promise<boolean>;
+  setPassageBookmarked: (reference: Reference, bookmarked: boolean) => Promise<boolean>;
   activateArchivedNtProgress: (
     importId: string,
     sourceHash: string,
@@ -216,16 +233,23 @@ export const useApp = create<Store>((set, get) => {
       }
     },
     saveEditorDraft: async (draft, expected) => {
-      let saved: Draft | null = null;
-      const ok = await persist(
-        (d) => {
-          updateDraft(d, draft, expected);
-          saved = d.drafts.find((x) => x.key === draft.key)!;
-        },
-        {},
-        false,
-      );
-      return ok ? saved : null;
+      try {
+        const requested = draftSchema.parse(draft);
+        const expectedStamp = expected === null ? null : snapshotDraftStamp(expected);
+        let saved: Draft | null = null;
+        const ok = await persist(
+          (d) => {
+            updateDraft(d, requested, expectedStamp);
+            saved = d.drafts.find((x) => x.key === requested.key)!;
+          },
+          {},
+          false,
+        );
+        return ok ? saved : null;
+      } catch (error) {
+        set({ error: message(error) });
+        return null;
+      }
     },
     finishEditorDraft: (
       key,
@@ -234,13 +258,14 @@ export const useApp = create<Store>((set, get) => {
       completeGuided = true,
     ) =>
       action<{ result: string } | null>(null, async () => {
+        const expectedStamp = snapshotDraftStamp(expected);
         let result = "";
         const ok = await persist(
           (d) => {
             const draft = d.drafts.find((x) => x.key === key);
-            if (discard) removeDraft(d, key, expected);
+            if (discard) removeDraft(d, key, expectedStamp);
             else {
-              result = commitDraft(d, key, expected, new Date().toISOString(), {
+              result = commitDraft(d, key, expectedStamp, new Date().toISOString(), {
                 completeGuided,
               });
               // Only a genuinely new reflection/experience or guided completion
@@ -252,7 +277,8 @@ export const useApp = create<Store>((set, get) => {
                     !draft.values.targetId &&
                     draft.values.kind !== "note") ||
                   (draft.type === "capture" &&
-                    draft.values.source.type !== "verse"))
+                    draft.values.source.type !== "verse" &&
+                    draft.values.source.type !== "passage"))
               )
                 grow(d);
             }
@@ -351,29 +377,72 @@ export const useApp = create<Store>((set, get) => {
           false,
         ),
       ),
-    openReading: (reference) =>
-      persist(
-        (d) => {
-          d.reading = { ...reference };
-          d.readingPosition = null;
-        },
-        {},
-        false,
-        (d) => d.revision === 0 || !sameReadingScope(d.reading, reference),
-      ),
-    rememberReadingPosition: (position, reference) =>
-      persist(
-        (d) => {
-          d.readingPosition = position
-            ? readingPositionSchema.parse(position)
-            : null;
-        },
-        {},
-        false,
-        (d) =>
-          sameReadingScope(d.reading, reference) &&
-          !samePosition(d.readingPosition, position),
-      ),
+    openReading: async (reference) => {
+      try {
+        const requested = referenceSchema.parse(reference);
+        return await persist(
+          (d) => {
+            d.reading = requested;
+            d.readingPosition = null;
+          },
+          {},
+          false,
+          (d) => d.revision === 0 || !sameReadingScope(d.reading, requested),
+        );
+      } catch (error) {
+        set({ error: message(error) });
+        return false;
+      }
+    },
+    rememberReadingPosition: async (position, reference) => {
+      try {
+        const requestedReference = referenceSchema.parse(reference);
+        const requestedPosition = position === null ? null : readingPositionSchema.parse(position);
+        return await persist(
+          (d) => {
+            d.readingPosition = requestedPosition;
+          },
+          {},
+          false,
+          (d) =>
+            sameReadingScope(d.reading, requestedReference) &&
+            !samePosition(d.readingPosition, requestedPosition),
+        );
+      } catch (error) {
+        set({ error: message(error) });
+        return false;
+      }
+    },
+    setPassageHighlight: (reference, color) =>
+      action(false, () => {
+        const requested = referenceSchema.parse(reference);
+        const requestedColor = color === null ? null : highlightColor.parse(color);
+        const keys = getPassage(requested).map((verse) => `${requested.book}:${requested.chapter}:${verse.n}`);
+        return persist((d) => {
+          let changed = false;
+          for (const key of keys) {
+            if (requestedColor === null) {
+              if (d.highlights[key] !== undefined) { delete d.highlights[key]; changed = true; }
+            } else if (d.highlights[key] !== requestedColor) {
+              d.highlights[key] = requestedColor; changed = true;
+            }
+          }
+          return changed;
+        }, {}, false);
+      }),
+    setPassageBookmarked: (reference, bookmarked) =>
+      action(false, () => {
+        const requested = referenceSchema.parse(reference);
+        if (typeof bookmarked !== "boolean") throw new Error("Ungültige Merken-Auswahl.");
+        const keys = getPassage(requested).map((verse) => `${requested.book}:${requested.chapter}:${verse.n}`);
+        return persist((d) => {
+          const before = new Set(d.bookmarks), next = new Set(before);
+          for (const key of keys) { if (bookmarked) next.add(key); else next.delete(key); }
+          if (next.size === before.size && [...next].every((key) => before.has(key))) return false;
+          d.bookmarks = [...next];
+          return true;
+        }, {}, false);
+      }),
     saveNtResponse: (questionId, displayedHash, choice, expectedStamp) =>
       action(false, async () => {
         // Load the large source bank only for a deliberate study action.

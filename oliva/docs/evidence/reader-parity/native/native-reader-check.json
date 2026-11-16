@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-11-16T02:49:51.583Z",
+  "appVersion": "0.13.0",
+  "parser": "acorn@8.19.0",
+  "appCodeExecuted": false,
+  "scope": "Static AST inspection of actual native Metro factories and imports. Does not prove native rendering, clipboard operation, accessibility behavior, database migration or device/simulator behavior.",
+  "results": [
+    {
+      "platform": "android",
+      "bundle": "_expo/static/js/android/entry-9d0e4f9081be407bf6fff51e2dbcbe86.js",
+      "bundleSha256": "3bd2387aefdbf8b5da984be03abeef4ebee8858e128e8027345606735babda51",
+      "parsedMetroFactories": 1684,
+      "nativeClipboardAdapter": {
+        "moduleId": 1649,
+        "sha256": "6f2e083f6ca35713fbd76065bb5db4c9ec47cefb6a3259ea53e163fbab475649",
+        "awaitedExpoSetStringAsync": true,
+        "actualTrueResultRequired": true
+      },
+      "expoNativeBridge": {
+        "moduleId": 1651,
+        "sha256": "81b06db5fdd2aada18560f15ed79584f6d76cb1c0f938bfe75c0fb131e161e46"
+      },
+      "selectionTools": {
+        "moduleId": 1663,
+        "sha256": "bdbc2680472d1cbd47563b65511ca1a11b81d264adeb6d2770842a92f6a1d225",
+        "staticModalDismissAndBackPropsPresent": true,
+        "rangeStoreActionsPresent": true
+      },
+      "nativeFlowText": {
+        "moduleId": 1642,
+        "sha256": "2eb12909f7621c6fc784133b3fb5a764f3c82ff2f0991d2cc6b04db06d0c4d8b",
+        "selectedVersesAndSeparateFocusRange": true,
+        "nativeTextLayoutProp": true,
+        "domSpanAbsent": true
+      },
+      "readerRoute": {
+        "moduleId": 1641,
+        "sha256": "bd77de04b7b68f012e3f73a95c52c44f4c4be4b3e56c9dab84654c7ba659a1eb",
+        "containingChapterLookup": true,
+        "fullChapterReferenceAndSeparateFocusRange": true
+      },
+      "stateSchema": {
+        "moduleId": 1200,
+        "sha256": "e9847b6cecdea9ce10d03a45f76d3495b6c34e72b5f513a68cf8225da905ad2f",
+        "frozenV8Literal": 8,
+        "currentV9Literal": 9
+      }
+    },
+    {
+      "platform": "ios",
+      "bundle": "_expo/static/js/ios/entry-74832918f643bce987e70709b2f26ed3.js",
+      "bundleSha256": "ead64b494c7468070bfbdce84f4bb1eae95b422fa540304e8dd0708720042503",
+      "parsedMetroFactories": 1689,
+      "nativeClipboardAdapter": {
+        "moduleId": 1652,
+        "sha256": "6977b4a246aa3d2d44f291c829876ce986b37bacf8a8c4461f6443dbfff5fc4f",
+        "awaitedExpoSetStringAsync": true,
+        "actualTrueResultRequired": true
+      },
+      "expoNativeBridge": {
+        "moduleId": 1654,
+        "sha256": "100640f9b6d7f485ee794a27a68cf6f93729670e9a3f5eac2c04116d807cbadd"
+      },
+      "selectionTools": {
+        "moduleId": 1666,
+        "sha256": "2f073924ffdca40115b3f119e595cd74542de384519a7801675e3216a04910a3",
+        "staticModalDismissAndBackPropsPresent": true,
+        "rangeStoreActionsPresent": true
+      },
+      "nativeFlowText": {
+        "moduleId": 1645,
+        "sha256": "b286ff0d2706d59554f37129fbadb330a54f4b528d76ef57fd4e54f5ae7a9dda",
+        "selectedVersesAndSeparateFocusRange": true,
+        "nativeTextLayoutProp": true,
+        "domSpanAbsent": true
+      },
+      "readerRoute": {
+        "moduleId": 1644,
+        "sha256": "88773785d7fb4673eb6c2b40348d178538288b28370c3f7f4956fa56d80dad2d",
+        "containingChapterLookup": true,
+        "fullChapterReferenceAndSeparateFocusRange": true
+      },
+      "stateSchema": {
+        "moduleId": 1204,
+        "sha256": "fbf2deb988a6cb0bfe3c40decb7a2b0a43626a2a657e89fdd45845d6268b2a50",
+        "frozenV8Literal": 8,
+        "currentV9Literal": 9
+      }
+    }
+  ]
+}

@@ -2,7 +2,28 @@
 
 Dokumentationsstand: 16.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
 
-## Aktueller Nachweis 0.12.1
+<!-- OLIVA-013-VALIDATION:BEGIN -->
+## Aktueller Nachweis 0.13
+
+**OLIVA 0.13.0 ist geprüft und seit 16.11.2026, 14:37:15 UTC eigentümerprivat bereitgestellt.** Der Reader zeigt jetzt das vollständige Kapitel um einen ausgewählten Teilabschnitt. Mehrversauswahl, exaktes Kopieren, Bereichsnotizen und die sichere Wiederaufnahme fehlgeschlagener Entwürfe sind integriert. Die Buchsuche bleibt leerzeichentolerant und startet mit allen 66 Büchern; NT und AT sind über das Dropdown erreichbar.
+
+**290/290 Fachtests und ein einzelner vollständiger 126/126-Browserlauf bestanden**, ohne Skips, instabile Fälle oder Wiederholungen im finalen Lauf. Beide nativen JavaScript-/Assetexports und der echte 0.12.1→0.13-PWA-Wechsel bestehen. Native Exporte sind keine Geräte- oder Simulatorprüfung. AppData ist V9; historische V8-Daten bleiben bis zur ersten ausdrücklichen neuen Datenaktion als Rohwerte unverändert. Kern `oliva-71cf17993d0bc7fd`, Hostpaket `oliva-4ef23c75148a9974`. Die gesamte Master-Definition-of-Done bleibt offen.
+
+
+[Gesamtnachweis](evidence/reader-parity/validation-summary.json), [Fachtests](evidence/reader-parity/unit-results.json), [vollständiger Browserlauf](evidence/reader-parity/e2e-results.json), [native Exporte](evidence/reader-parity/native/README.md), [realer PWA-Wechsel](evidence/reader-parity/upgrade/README.md), [Upgradebericht](evidence/reader-parity/upgrade/oliva-71cf17993d0bc7fd-r2/verification.json), [private HTTP-Prüfung](evidence/reader-parity/private-http-check.json).
+
+Alle 327 eingefrorenen Laufzeitdateien stimmen überein; SHA-256 `0b097eb24fc4fded654aef9f1a68ffb76301ed48e3d941ca146046efe3e15611`. Der tatsächliche PWA-Wechsel bewahrt vier rohe V8-Datensätze bis zur ersten ausdrücklichen neuen Datenaktion. Danach bleiben Archiv, Rückkehrsicherung und Rückkehrindex exakt. Alte Entwürfe, Originalnotizen, NT-Antworten und Lese-/Baumfortschritt bleiben inhaltlich unverändert. Ein V9-Sicherungsdownload und die Wiederherstellungsvorschau wurden geprüft; keine Wiederherstellung wurde angewendet.
+
+Der erste vollständige Reader-Kandidatenlauf mit 125/126 bleibt unverändert erhalten. Die direkte DOM-Scrollanweisung im Fokus-Test konnte mit der noch laufenden Ankerrestaurierung konkurrieren. Nur der Testhelfer wurde auf tatsächliche Tastaturbedienung mit Tab/End umgestellt; Endposition und erreichbarer Ausstieg werden weiterhin vollständig geprüft. Dies ist keine behauptete Runtime-Korrektur. Der erste PWA-Upgradeversuch scheiterte nur am Vergleich der Einfügereihenfolge von Schlüsseln einer bereits ausdrücklich gespeicherten Notiz. Für logische Inhalte wird jetzt strikt nach Schlüsseln/Werten und Arrayreihenfolge verglichen. Die exakten Rohwertvergleiche vor neuen Aktionen und für Archiv/Rückkehrdaten bleiben unverändert. Kein früherer roter Lauf wird nachträglich als bestanden bezeichnet.
+
+[Scroll-/Fokusdiagnose](evidence/reader-parity/focus-bottom-review/README.md) und [Upgradevergleich](evidence/reader-parity/upgrade/README.md) bewahren die früheren Rohberichte. Die separaten grünen finalen Läufe ersetzen keine historischen Ergebnisse. Auch die roten 0.11-CI-Läufe bleiben unverändert.
+
+Private Auslieferung: 26 Routen, 107 App-Dateien und 42 Review-Dateien geprüft; Index-HTML als App-Shell, alle übrigen App-Dateien per Hash. Anonym HTTP 401, kein App-HTML und exakt unveränderte Eigentümerpolitik. Aufgezeichnete transiente HTTP-Wiederholungen: 0. Keine gehostete CUA-/Browserprüfung und keine reale Handy-, Simulator-, native Screenreader-, Speicher- oder Energieprüfung behauptet.
+
+Die Vorgänger-CI [43794926581](evidence/github/ci-v0121/README.md) ist mit 225/225 und 114/114 unabhängig bestätigt. Sie ist kein Remote-CI-Nachweis für 0.13. Der eigene 0.13-Quellcheckpoint mit Tag/ZIP und die beauftragte GitHub-Sicherung folgen nach diesem Dokumentcheckpoint. Die tatsächlichen eigenen Kennungen stehen anschließend in `/workspace/oliva-v013-local-checkpoint.json` und `/workspace/oliva-github-backups.json`. Hier werden keine noch unbekannten Commit- oder ZIP-Hashes behauptet. Auch die neue tatsächliche Remote-CI muss separat geprüft werden; die erfolgreiche Vorgänger-CI ersetzt sie nicht.
+<!-- OLIVA-013-VALIDATION:END -->
+
+## Historischer Nachweis 0.12.1
 
 **OLIVA 0.12.1 ist geprüft und seit 2026-11-16T02:50:55.344653+00:00 eigentümerprivat bereitgestellt.** Die Buchsuche findet Namen trotz zusätzlicher Leerzeichen, Unicode-Abständen und Punkten im Zahlpräfix. Standardmäßig erscheinen alle 66 Bücher; das Dropdown bietet Gesamte Bibel, NT und AT. Die NT-Fragenübersicht nutzt dieselbe tolerante Buchsuche. Alle abgenommenen Funktionen aus 0.12 bleiben enthalten.
 

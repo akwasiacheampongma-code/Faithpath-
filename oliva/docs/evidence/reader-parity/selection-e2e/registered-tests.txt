@@ -1,0 +1,8 @@
+Listing tests:
+  reader-selection.spec.ts:143:1 › ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel
+  reader-selection.spec.ts:188:1 › eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz
+  reader-selection.spec.ts:286:1 › 35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her
+  reader-selection.spec.ts:393:1 › ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern
+  reader-selection.spec.ts:430:3 › Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück
+  reader-selection.spec.ts:430:3 › Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück
+Total: 6 tests in 1 file

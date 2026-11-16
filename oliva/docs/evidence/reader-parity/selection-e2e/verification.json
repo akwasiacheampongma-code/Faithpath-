@@ -1,0 +1,117 @@
+{
+  "checkedAt": "2026-11-15T21:31:03.349370+00:00",
+  "developmentBuild": "oliva-10d91616b310caa1",
+  "sourceHashes": {
+    "app/lesen/[book].tsx": "da1a691ff86321c7d45d7d8bb5a19ae2bc8c29c6b552c3e62d504a675a2a8e28",
+    "src/features/bible/SelectionTools.tsx": "082a5e9228797ce36bd757171a5c502007532aeb412289f2e3bfd24d9befc022",
+    "src/features/bible/flow/LegacyVerseText.tsx": "221ffeda3e633f01818136add4592340f7bb28cb6ba0ca5b9754709cd3042177",
+    "tests/e2e/reader-selection.spec.ts": "3cf8c990ebc11f541d54ac6a40be080cc92470287c298027608d6ef9cb72fd63",
+    "tests/e2e/reader-copy.spec.ts": "263c72952145bae6ed10647dc236e2e08fe6e1bdb56523a2bc90c50c02954c78",
+    "tests/e2e/reader-flow.spec.ts": "441c40de6b2d38e7c09ba0f98caff3d7a73b2ce03a61e4dde0a20edd5e398aae"
+  },
+  "targetedReport": {
+    "path": "docs/evidence/reader-parity/targeted-e2e-results.json",
+    "sha256": "a988ebfa61c56312f487b0fa49f0d8ea6d5c561bde449a3bb49a2223a57647f7",
+    "stats": {
+      "startTime": "2026-11-15T21:27:12.869Z",
+      "duration": 181726.999,
+      "expected": 16,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "results": [
+      {
+        "title": "ein einzelner Vers wird per echtem Browser-Clipboard unverändert mit LF und Übersetzungsname kopiert",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "additive Auswahl kopiert genau 35–36 und danach 35–37 ohne UI-Einordnung oder persönliche Daten",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "eine abgelehnte Clipboard-API zeigt denselben schreibgeschützten Text ohne falsche Erfolgsmeldung",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "echte Inlineabsätze erhalten jeden Johannesvers und umbrechen über Versgrenzen statt in Einzelblöcken",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "eine tatsächlich geteilte Psalmzeile speichert nach Scrollen ihren ersten sichtbaren Vers 119 und erfindet keinen Verssprung zu 120",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "ein ausdrücklicher Verslink bleibt nach breitem Reflow, größerer Schrift, Zeilenabstand und Neustart genau Johannes 6,35",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versnotizentwurf über Neustart ohne Leseabschluss",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "Fließtext und Einzelverse behalten beim Umschalten denselben Versanker und denselben Notizquelltext",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunkel sowie auf großem Display lesbar und zugänglich",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, markieren acht Fokusverse und bestätigen ausschließlich den Abschnitt",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück",
+        "status": "passed",
+        "retry": 0
+      },
+      {
+        "title": "Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück",
+        "status": "passed",
+        "retry": 0
+      }
+    ]
+  },
+  "isolatedModalRegression": {
+    "report": "docs/evidence/reader-parity/modal-regression-results.json",
+    "expected": 1
+  },
+  "fullRegression": {
+    "status": "running",
+    "registeredTests": 123,
+    "files": 23
+  },
+  "deviceOrSimulatorTest": false,
+  "hostedBrowserTest": false
+}

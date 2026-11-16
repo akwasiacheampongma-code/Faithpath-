@@ -1,0 +1,18 @@
+{
+  "version": "0.13.0",
+  "status": "implemented release candidate, not yet fully verified or delivered",
+  "createdAt": "2026-11-16T02:45:43.253831+00:00",
+  "featureOnlyCommit": "45cbccc1e7293eb77e476dd11c72585eeb130e88",
+  "branch": "feature/oliva-v013-reader-parity-20261116",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 327,
+    "sha256": "0b097eb24fc4fded654aef9f1a68ffb76301ed48e3d941ca146046efe3e15611"
+  },
+  "dataVersion": 9,
+  "registeredBrowserTests": 126,
+  "priorUnitPassed": 290,
+  "priorTargetedBrowserPassed": 23,
+  "privateDeployment": false,
+  "coreBuild": "oliva-71cf17993d0bc7fd"
+}

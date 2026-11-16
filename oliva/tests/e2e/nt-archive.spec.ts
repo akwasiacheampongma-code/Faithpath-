@@ -231,7 +231,7 @@ test("ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Q
     ),
   ).toBeVisible();
   const current = await localData(page);
-  expect(current.version).toBe(8);
+  expect(current.version).toBe(9);
   expect(current.revision).toBe(13);
   expect(current.ntStudy.legacyCompletions).toHaveLength(2);
   expect(current.ntStudy.answers).toEqual({});

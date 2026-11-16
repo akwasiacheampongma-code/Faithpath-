@@ -1,0 +1,39 @@
+[WebServer] (node:26563) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 23 tests using 1 worker
+
+(node:26576) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/reader-copy.spec.ts:140:1 › ein einzelner Vers wird per echtem Browser-Clipboard unverändert mit LF und Übersetzungsname kopiert (9.1s)
+  ✓   2 tests/e2e/reader-copy.spec.ts:163:1 › additive Auswahl kopiert genau 35–36 und danach 35–37 ohne UI-Einordnung oder persönliche Daten (12.3s)
+  ✓   3 tests/e2e/reader-copy.spec.ts:193:1 › eine abgelehnte Clipboard-API zeigt denselben schreibgeschützten Text ohne falsche Erfolgsmeldung (8.9s)
+  ✓   4 tests/e2e/reader-flow.spec.ts:112:1 › echte Inlineabsätze erhalten jeden Johannesvers und umbrechen über Versgrenzen statt in Einzelblöcken (9.2s)
+  ✓   5 tests/e2e/reader-flow.spec.ts:175:1 › eine tatsächlich geteilte Psalmzeile speichert nach Scrollen ihren ersten sichtbaren Vers 119 und erfindet keinen Verssprung zu 120 (7.4s)
+  ✓   6 tests/e2e/reader-flow.spec.ts:241:1 › ein ausdrücklicher Verslink bleibt nach breitem Reflow, größerer Schrift, Zeilenabstand und Neustart genau Johannes 6,35 (11.6s)
+  ✓   7 tests/e2e/reader-flow.spec.ts:274:1 › Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versnotizentwurf über Neustart ohne Leseabschluss (9.4s)
+  ✓   8 tests/e2e/reader-flow.spec.ts:378:1 › Fließtext und Einzelverse behalten beim Umschalten denselben Versanker und denselben Notizquelltext (7.3s)
+  ✓   9 tests/e2e/reader-flow.spec.ts:431:1 › der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunkel sowie auf großem Display lesbar und zugänglich (14.3s)
+  ✓  10 tests/e2e/reader-flow.spec.ts:494:1 › die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, markieren acht Fokusverse und bestätigen ausschließlich den Abschnitt (8.9s)
+  ✓  11 tests/e2e/reader-selection.spec.ts:143:1 › ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel (5.1s)
+  ✓  12 tests/e2e/reader-selection.spec.ts:192:1 › eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz (7.0s)
+  ✓  13 tests/e2e/reader-selection.spec.ts:290:1 › 35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her (12.0s)
+  ✓  14 tests/e2e/reader-selection.spec.ts:397:1 › ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern (8.3s)
+  ✓  15 tests/e2e/reader-selection.spec.ts:434:3 › Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück (5.9s)
+  ✓  16 tests/e2e/reader-selection.spec.ts:434:3 › Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück (8.1s)
+  ✓  17 tests/e2e/reader-selection.spec.ts:485:3 › Einzelvers: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme (6.4s)
+  ✓  18 tests/e2e/reader-selection.spec.ts:485:3 › Bereich: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme (8.8s)
+  ✓  19 tests/e2e/reader-selection.spec.ts:564:1 › eine abgelehnte Versentwurf-URL öffnet vor oder nach der Quellenprüfung keinen fremden Editor (8.0s)
+(node:28375) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  20 tests/e2e/reading-position.spec.ts:12:1 › Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers (19.1s)
+  ✓  21 tests/e2e/reading-position.spec.ts:24:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen (11.1s)
+  ✓  22 tests/e2e/reading-position.spec.ts:44:1 › Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker (11.3s)
+  ✓  23 tests/e2e/reading-position.spec.ts:54:1 › eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust (7.2s)
+
+  23 passed (3.8m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

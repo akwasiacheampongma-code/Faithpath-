@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-11-15T21:07:04.756310+00:00",
+  "comparisonSource": "docs/evidence/reader-parity-preparation/provenance.json",
+  "frozenHistoricalFiles": [
+    {
+      "path": "src/features/personal/capture-schema.ts",
+      "expectedSha256": "5872e4e75ed3c6d11a139b1f9ec7b3f8418258e480f34ad21ee009dc558a4f35",
+      "actualSha256": "5872e4e75ed3c6d11a139b1f9ec7b3f8418258e480f34ad21ee009dc558a4f35",
+      "matches": true
+    },
+    {
+      "path": "src/features/personal/schema-v5.ts",
+      "expectedSha256": "8d06b7927a97da24988f88ac72a42483169b390ed124f7f6b3043db9f252063e",
+      "actualSha256": "8d06b7927a97da24988f88ac72a42483169b390ed124f7f6b3043db9f252063e",
+      "matches": true
+    },
+    {
+      "path": "src/features/personal/schema-v6.ts",
+      "expectedSha256": "02479e6066d6d1130481b9d814b5cb75343b1b5877c8b61211d93a56124b5f28",
+      "actualSha256": "02479e6066d6d1130481b9d814b5cb75343b1b5877c8b61211d93a56124b5f28",
+      "matches": true
+    },
+    {
+      "path": "src/features/bible/position.ts",
+      "expectedSha256": "63885c7feea9cc6ea038bba8b3045a37e88574a49212b406eb23328dbaf536d1",
+      "actualSha256": "63885c7feea9cc6ea038bba8b3045a37e88574a49212b406eb23328dbaf536d1",
+      "matches": true
+    },
+    {
+      "path": "src/features/personal/schema-v8.ts",
+      "expectedSource": "src/features/personal/schema.ts at preparation",
+      "expectedSha256": "02479e6066d6d1130481b9d814b5cb75343b1b5877c8b61211d93a56124b5f28",
+      "actualSha256": "02479e6066d6d1130481b9d814b5cb75343b1b5877c8b61211d93a56124b5f28",
+      "matches": true
+    }
+  ],
+  "currentPersonalSchemaDiffersOnlyByCaptureImport": true,
+  "storageContract": {
+    "privateStorageVersion": 1,
+    "sqliteSchemaVersion": 3,
+    "indexedDBName": "oliva-local-v1",
+    "indexedDBVersion": 1
+  },
+  "verifiedCurrentSourceHashes": {
+    "src/state/model.ts": "924d733ce15fdf8c7a375bc6f738b17a31a2f2b819ebb9098b2d7c1f564d382b",
+    "src/services/documents.ts": "d5677c64b238fbc2caac20c2389f5850a888df8f1f5b8f33412ee10b4aaf03bc",
+    "src/features/personal/schema.ts": "d23927115a5fb3dab854de1a896f80b746293645b7de63a6ef522ef1793605e2",
+    "src/features/personal/capture-schema-current.ts": "dae2239809eb9deced5ac0e56019a880f631e290ddb637a28784548677b6ba1e",
+    "src/features/bible/position-current.ts": "1609d388bc02fe8710b3639df62e56b264fb927892aca1b37ada4e43e624b871",
+    "tests/reader-v9-migration.test.ts": "c5c3ada49490e1d48e54d5748b61ceadab6f7385e6cb42850d09d319acbf2411"
+  }
+}

@@ -1,0 +1,27 @@
+› Installing 1 SDK 58.0.0 compatible native module using npm
+> npm install
+npm error code ENOENT
+npm error syscall mkdir
+npm error path /home/agent/.npm/_cacache
+npm error errno ENOENT
+npm error enoent Invalid response body while trying to fetch https://registry.npmjs.org/expo-clipboard: ENOENT: no such file or directory, mkdir '/home/agent/.npm/_cacache'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+npm error Log files were not written due to an error writing to the directory: /home/agent/.npm/_logs
+npm error You can rerun the command with `--loglevel=verbose` to see the logs in your terminal
+Error: npm install exited with non-zero code: 1
+Error: npm install exited with non-zero code: 1
+    at ChildProcess.completionListener (/workspace/faithpath-next/node_modules/@expo/spawn-async/build/spawnAsync.js:113:23)
+    at ChildProcess.wrapper (node:events:639:12)
+    at ChildProcess.emit (node:events:514:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:324:12)
+    ...
+    at spawnAsync (/workspace/faithpath-next/node_modules/@expo/spawn-async/build/spawnAsync.js:9:23)
+    at NpmPackageManager.runAsync (/workspace/faithpath-next/node_modules/@expo/package-manager/build/node/BasePackageManager.js:75:42)
+    at /workspace/faithpath-next/node_modules/@expo/package-manager/build/node/NpmPackageManager.js:68:143
+    at /workspace/faithpath-next/node_modules/@expo/package-manager/build/utils/spawn.js:20:34

@@ -1,6 +1,19 @@
 # Aktueller Plan und FaithPath-Parität
 
-Planungsabgleich vom 08.11.2026, fortgeschrieben am 10.11.2026. Dieser Abgleich beantwortet die Planungsfrage und hält die tatsächliche Entwicklung fest. Der damalige 0.9-Umfang und die Prioritäten des Master-Prompts bleiben nachvollziehbar. Für weitere offene Aufgaben werden keine Versionsnummern oder Termine festgelegt.
+Planungsabgleich vom 08.11.2026, fortgeschrieben am 16.11.2026. Dieser Abgleich beantwortet die Planungsfrage und hält die tatsächliche Entwicklung fest. Der damalige 0.9-Umfang und die Prioritäten des Master-Prompts bleiben nachvollziehbar. Für weitere offene Aufgaben werden keine Versionsnummern oder Termine festgelegt.
+
+
+<!-- OLIVA-013-PLAN:BEGIN -->
+## Aktueller Abgleich nach der tatsächlich abgenommenen 0.13
+
+Seit **16.11.2026, 14:37:15 UTC** ist der neue Reader privat verfügbar. 290/290 Fachtests und ein einzelner vollständiger 126/126-Browserlauf, beide nativen JS-/Assetexports sowie der echte 0.12.1→0.13-PWA-Wechsel bestehen. [Reader-Vertrag](25-reader-selection-and-context.md). Die vorbereiteten Readerlücken Mehrversauswahl, eigenes Kopieren, Bereichsnotizen und Vollkapitelkontext sind damit tatsächlich umgesetzt. Die ursprüngliche Fließtextdarstellung war bereits seit 0.11 aktiv; alle 1.300 fertigen NT-Fragen sind seit 0.12 aktiv und wurden für diese Iteration nicht neu erfunden.
+
+Diese Lieferung ändert die Prioritäten des Master-Prompts nicht. Der Quellcheckpoint und die beauftragte Versionssicherung dieser 0.13 folgen nach dem Dokumentcheckpoint; die neue Remote-CI wird erst nach dem tatsächlichen Push bewertet. Die vorgelagerte 0.12.1-CI 43794926581 ist mit 225/225 und 114/114 bestätigt.
+
+Offen bleiben der vollständige ursprüngliche Geschichten-/Themenbestand und weitere Bestandsparität, die persönliche Astzuordnung, zusätzliche hochwertige Buch- und Bibelbilder, unabhängige Inhalts- und Rechtefreigaben, Tests mit Menschen ohne Bibelwissen, echte Geräteabnahme und native Installationspakete. Authentifizierung/Cloud-Sync, Live-KI und Audio sind noch nicht angeschlossen. Anbieter- und Betriebsentscheidungen bleiben offen. Für diese Arbeit werden keine neuen Versionsnummern oder Termine zugesagt.
+
+Die folgenden älteren Fortschreibungen behalten ihren damaligen Stand. Aussagen wie „Mehrversauswahl fehlt“ in einem ausdrücklich älteren Arbeitspaket sind keine Beschreibung der heutigen 0.13. Öffentliche GitHub-Quellsicherung und eigentümerprivate Web-Vorschau bleiben getrennt; FaithPath, GitHub main und historische Tags bleiben erhalten.
+<!-- OLIVA-013-PLAN:END -->
 
 ## Festgelegter Umfang von 0.9
 
@@ -18,7 +31,7 @@ Verglichen wird der unveränderte FaithPath-Snapshot [`a519ce898fa33907b07d5ac7a
 
 | Vorhandener FaithPath-Bestand | Tatsächlicher OLIVA-Stand |
 | --- | --- |
-| Zusammenhängender Fließtext mit auswählbaren Versen, Markierungen und optionalem Lesefokus | Seit 0.11 Fließtext mit auswählbaren Einzelversen und temporärem Lesefokus; alte Blockansicht bleibt wählbar. Mehrversauswahl und eigene Kopieraktion sowie echte native Geräteabnahme fehlen weiter. |
+| Zusammenhängender Fließtext mit auswählbaren Versen, Markierungen und optionalem Lesefokus | Seit 0.11 Fließtext mit auswählbaren Einzelversen und temporärem Lesefokus; alte Blockansicht bleibt wählbar. Seit 0.13 sind auch zusammenhängende Mehrversauswahl, exakte Kopieraktion, Bereichsnotizen und vollständiger Kapitelkontext integriert und privat abgenommen. Echte native Geräteabnahme bleibt offen. |
 | Vollständiger NT-Katalog: **1.300 Fragen, 260 Kapitel, 27 Bücher, genau fünf Fragen pro Kapitel**, vier Antwortoptionen, korrekter Index, Referenz, Erklärung und stabile `faithpath_id` | Seit 0.12 vollständig aktiv und privat bereitgestellt. V8 trennt neue Antworten und belegte historische Abschlüsse; vorhandene Archive werden nur ausdrücklich aktiviert. 225 Fachtests, ein vollständiger 108/108-Browserlauf, beide nativen statischen Katalogprüfungen und der reale Updateversuch bestehen. Die neun thematischen Pilotfragen bleiben eigenständig. |
 | Gemeinsamer Katalog mit **436 Geschichten und 2.479 Frageelementen**, mit dokumentierten Ausnahmen | Fünf neue illustrierte Erzählpiloten; kein vollständiger Katalogtransfer. Die aktiven Story-Flow-Fragen sind vom NT-Kapitelkatalog getrennt: Die erneute ID-Prüfung findet keine Überschneidung. Die frühere Überlappungsannahme war unzutreffend; genaue Dateihashes und Mengengrenzen stehen in der NT-Vorbereitung. |
 | 18 Lebensthemen mit vorhandener Redaktion | Neun eigene geführte Wege; kein vollständiger Inhaltsabgleich. |

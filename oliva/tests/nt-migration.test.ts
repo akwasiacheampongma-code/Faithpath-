@@ -7,6 +7,7 @@ import {
   initialData,
   parseBackup,
   v7DataSchema,
+  v8DataSchema,
 } from "../src/state/model";
 import {
   archiveHashes,
@@ -116,14 +117,14 @@ function historicalCurrent() {
   return { data, text };
 }
 
-describe("Neutrale NT-Migration von AppData V1–V7 nach V8", () => {
+describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () => {
   it("liest alle sieben Vorgänger strikt und ergänzt nur die jeweils fehlenden Metadaten im RAM", () => {
     for (let version = 1; version <= 7; version++) {
       const old = previous(version);
       const bytes = JSON.stringify(old);
       const migrated = decodeData(old);
       expect(migrated).toEqual(initialData());
-      expect(migrated.version).toBe(8);
+      expect(migrated.version).toBe(9);
       expect(migrated.revision).toBe(0);
       expect(migrated.ntStudy).toEqual(emptyNtStudy());
       expect(JSON.stringify(old)).toBe(bytes);
@@ -134,7 +135,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 nach V8", () => {
     const { data: old } = richPrevious();
     const bytes = JSON.stringify(old);
     const migrated = decodeData(old);
-    expect(migrated).toEqual({ ...old, version: 8, ntStudy: emptyNtStudy() });
+    expect(migrated).toEqual({ ...old, version: 9, ntStudy: emptyNtStudy() });
     expect(migrated.ntStudy.legacyCompletions).toEqual([]);
     expect(migrated.revision).toBe(42);
     expect(migrated.growthStage).toBe(4);
@@ -145,22 +146,31 @@ describe("Neutrale NT-Migration von AppData V1–V7 nach V8", () => {
     expect(JSON.stringify(old)).toBe(bytes);
   });
 
-  it("behält V7 strikt und verlangt das vollständige NT-Feld ausdrücklich für aktuelle V8-Daten", () => {
+  it("behält V7 und V8 strikt und verlangt das NT-Feld auch für aktuelle V9-Daten", () => {
     const old = previous();
     expect(v7DataSchema.safeParse(old).success).toBe(true);
     expect(
       v7DataSchema.safeParse({ ...old, ntStudy: emptyNtStudy() }).success,
     ).toBe(false);
     expect(v7DataSchema.safeParse({ ...old, version: 8 }).success).toBe(false);
-    expect(dataSchema.safeParse({ ...old, version: 8 }).success).toBe(false);
+    expect(v8DataSchema.safeParse({ ...old, version: 8 }).success).toBe(false);
     expect(
-      dataSchema.safeParse({ ...old, version: 8, ntStudy: emptyNtStudy() })
+      v8DataSchema.safeParse({ ...old, version: 8, ntStudy: emptyNtStudy() })
         .success,
     ).toBe(true);
     expect(() =>
       decodeData({ ...old, version: 7, ntStudy: emptyNtStudy() }),
     ).toThrow();
-    expect(() => decodeData({ ...old, version: 9 })).toThrow();
+    expect(dataSchema.safeParse({ ...old, version: 9 }).success).toBe(false);
+    expect(
+      dataSchema.safeParse({ ...old, version: 9, ntStudy: emptyNtStudy() })
+        .success,
+    ).toBe(true);
+    expect(
+      dataSchema.safeParse({ ...old, version: 8, ntStudy: emptyNtStudy() })
+        .success,
+    ).toBe(false);
+    expect(() => decodeData({ ...old, version: 999 })).toThrow();
     expect(() => decodeData({ ...old, futureUnknown: true })).toThrow();
   });
 
@@ -185,7 +195,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 nach V8", () => {
       const loader = vi.fn(async () => text);
       const migrated = await decodeStored(stored, loader);
       expect(migrated).toEqual(decodeData(old));
-      expect(migrated.version).toBe(8);
+      expect(migrated.version).toBe(9);
       expect(migrated.imports[0]!.sourceText).toBe(text);
       expect(migrated.ntStudy).toEqual(emptyNtStudy());
       expect(loader).toHaveBeenCalledExactlyOnceWith(
@@ -197,13 +207,13 @@ describe("Neutrale NT-Migration von AppData V1–V7 nach V8", () => {
     }
   });
 
-  it("exportiert erst den ausdrücklich übergebenen V8-Stand unter unveränderter privater Dokumentversion 1", async () => {
+  it("exportiert erst den ausdrücklich übergebenen aktuellen V9-Stand unter unveränderter privater Dokumentversion 1", async () => {
     const { data: old, text } = richPrevious();
     const bytes = JSON.stringify(old);
     const migrated = parseBackup(JSON.stringify(old));
     const stored = forStorage(migrated);
     expect(stored.storageVersion).toBe(1);
-    expect(stored.data.version).toBe(8);
+    expect(stored.data.version).toBe(9);
     expect(stored.data.ntStudy).toEqual(emptyNtStudy());
     expect(stored.data.imports[0]).not.toHaveProperty("sourceText");
     expect(await decodeStored(stored, async () => text)).toEqual(migrated);
@@ -211,7 +221,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 nach V8", () => {
   });
 });
 
-describe("V8-Backups mit unabhängigen NT-Antworten und prüfbarer Originalherkunft", () => {
+describe("Aktuelle Backups mit unabhängigen NT-Antworten und prüfbarer Originalherkunft", () => {
   it("bewahrt fünf Originalsnapshots und einen Abschluss ohne Lesefortschritt/Wachstum im privaten Roundtrip", async () => {
     const data = initialData();
     const chapter = ntChapter("MAT", 1)!;

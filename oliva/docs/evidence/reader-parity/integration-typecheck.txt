@@ -1,0 +1,13 @@
+
+> oliva-faith-companion@0.12.0 typecheck
+> tsc --noEmit
+
+src/features/bible/SelectionTools.tsx(12,29): error TS2307: Cannot find module './clipboard/CopyPassage' or its corresponding type declarations.
+src/features/bible/SelectionTools.tsx(77,16): error TS2741: Property 'label' is missing in type '{ key: string; source: BibleCaptureSource; onFocusChange: (focused: boolean) => void; }' but required in type '{ source: { type: "daily"; date: string; question: string; } | { type: "experience"; question: string; } | { type: "verse"; ref: { book: string; chapter: number; from?: number | undefined; to?: number | undefined; }; } | { ...; } | { ...; }; ... 4 more ...; children?: ReactNode; }'.
+src/features/bible/VerseActions.tsx(8,29): error TS2307: Cannot find module './clipboard/CopyPassage' or its corresponding type declarations.
+tests/e2e/invitations.spec.ts(27,5): error TS2322: Type '8' is not assignable to type '9'.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

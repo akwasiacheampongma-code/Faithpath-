@@ -9,6 +9,10 @@ import { pathById } from "../features/paths/catalog";
 import { referenceSchema as ref } from "../features/bible/schema";
 import { goalSchema, draftSchema } from "../features/personal/schema";
 import {
+  goalSchema as v8GoalSchema,
+  draftSchema as v8DraftSchema,
+} from "../features/personal/schema-v8";
+import {
   goalSchema as v6GoalSchema,
   draftSchema as v6DraftSchema,
 } from "../features/personal/schema-v6";
@@ -31,11 +35,13 @@ import {
 import { parseFaithpath } from "../features/imports/source";
 import { highlightColor } from "../features/bible/highlights";
 import { utf8Length } from "../lib/hash";
-import { captureSourceSchema } from "../features/personal/capture-schema";
+import { captureSourceSchema as historicalCaptureSourceSchema } from "../features/personal/capture-schema";
+import { captureSourceSchema } from "../features/personal/capture-schema-current";
 import {
-  readingPositionSchema,
+  readingPositionSchema as historicalReadingPositionSchema,
   sameReadingScope,
 } from "../features/bible/position";
+import { readingPositionSchema } from "../features/bible/position-current";
 const chapterKey = z.string().refine((value) => {
   const [book, c] = value.split(":");
   return (
@@ -72,7 +78,9 @@ const stepKey = z.string().refine((value) => {
   );
 });
 const unique = <T>(items: T[]) => new Set(items).size === items.length;
-export const noteSchema = z
+// Every historical version uses the original nested capture graph, including
+// versions predating capture creation. Current additions must not widen it.
+const historicalNoteSchema = z
   .object({
     id: z.string().min(1).max(100),
     text: z.string().trim().min(1).max(10000),
@@ -86,9 +94,39 @@ export const noteSchema = z
       .max(500)
       .refine(unique)
       .optional(),
-    captureSource: captureSourceSchema.optional(),
+    captureSource: historicalCaptureSourceSchema.optional(),
   })
   .strict();
+export const currentNoteSchema = historicalNoteSchema
+  .extend({ captureSource: captureSourceSchema.optional() })
+  .superRefine((note, ctx) => {
+    if (note.captureSource?.type !== "passage") return;
+    if (note.kind !== "note")
+      ctx.addIssue({
+        code: "custom",
+        path: ["kind"],
+        message: "Eine Bereichsnotiz ist eine eigene Notiz",
+      });
+    if (note.origin)
+      ctx.addIssue({
+        code: "custom",
+        path: ["origin"],
+        message: "Eine Bereichsnotiz trägt keine historische Importquelle",
+      });
+    const sourceRef = note.captureSource.ref;
+    if (
+      !note.ref ||
+      (["book", "chapter", "from", "to"] as const).some(
+        (key) => note.ref![key] !== sourceRef[key],
+      )
+    )
+      ctx.addIssue({
+        code: "custom",
+        path: ["ref"],
+        message: "Notiz und Bereichsquelle müssen dieselbe Bibelstelle haben",
+      });
+  });
+export const noteSchema = currentNoteSchema;
 const baseSchema = z
   .object({
     version: z.number().int(),
@@ -107,7 +145,7 @@ const baseSchema = z
     bookmarks: z.array(verseKey).max(31102).refine(unique),
     highlights: z.record(verseKey, highlightColor),
     notes: z
-      .array(noteSchema)
+      .array(historicalNoteSchema)
       .max(5000)
       .refine((items) => unique(items.map((n) => n.id))),
     growthStage: z.number().int().min(0).max(6),
@@ -176,7 +214,7 @@ export const v5DataSchema = z
   .object({
     ...v4DataSchema.shape,
     version: z.literal(5),
-    readingPosition: readingPositionSchema.nullable(),
+    readingPosition: historicalReadingPositionSchema.nullable(),
   })
   .strict()
   .refine(completeStepsValid, "Ungültiger Wegfortschritt")
@@ -245,11 +283,11 @@ export const v7DataSchema = z
     ...v6DataSchema.shape,
     version: z.literal(7),
     goals: z
-      .array(goalSchema)
+      .array(v8GoalSchema)
       .max(500)
       .refine((items) => unique(items.map((g) => g.id))),
     drafts: z
-      .array(draftSchema)
+      .array(v8DraftSchema)
       .max(100)
       .refine(
         (items) =>
@@ -274,7 +312,7 @@ export const v7DataSchema = z
 
 // NT learning is a separate local record. The strict V7 shape above remains
 // readable and cannot accept NT fields; migration adds no personal activity.
-export const dataSchema = z
+export const v8DataSchema = z
   .object({
     ...v7DataSchema.shape,
     version: z.literal(8),
@@ -306,23 +344,78 @@ export const dataSchema = z
     "Originalbeleg des historischen NT-Status fehlt",
   );
 
+// V9 adds only explicit range captures and chapter-context anchors. All other
+// fields, NT snapshots and original receipts keep their preceding meanings.
+export const dataSchema = z
+  .object({
+    ...v8DataSchema.shape,
+    version: z.literal(9),
+    notes: z
+      .array(currentNoteSchema)
+      .max(5000)
+      .refine((items) => unique(items.map((note) => note.id))),
+    goals: z
+      .array(goalSchema)
+      .max(500)
+      .refine((items) => unique(items.map((goal) => goal.id))),
+    drafts: z
+      .array(draftSchema)
+      .max(100)
+      .refine(
+        (items) =>
+          unique(items.map((draft) => draft.key)) &&
+          unique(items.map((draft) => draft.id)),
+      ),
+    readingPosition: readingPositionSchema.nullable(),
+  })
+  .strict()
+  .refine(completeStepsValid, "Ungültiger Wegfortschritt")
+  .refine(
+    (data) =>
+      [...data.goals, ...data.notes].every(
+        (item) =>
+          !item.origin ||
+          data.imports.some((receipt) => receipt.id === item.origin!.importId),
+      ),
+    "Importquelle fehlt",
+  )
+  .refine(
+    (data) =>
+      !data.readingPosition ||
+      sameReadingScope(data.readingPosition.ref, data.reading),
+    "Leseposition gehört zu einem anderen Abschnitt",
+  )
+  .refine(
+    (data) =>
+      data.ntStudy.legacyCompletions.every((completion) =>
+        data.imports.some(
+          (receipt) =>
+            receipt.id === completion.importId &&
+            receipt.sourceHash === completion.sourceHash,
+        ),
+      ),
+    "Originalbeleg des historischen NT-Status fehlt",
+  );
+
 export function decodeData(input: unknown): AppData {
   const version =
     input && typeof input === "object" && "version" in input
       ? input.version
       : undefined;
   let data: AppData;
-  if (version === 8) data = dataSchema.parse(input);
+  if (version === 9) data = dataSchema.parse(input);
+  else if (version === 8)
+    data = dataSchema.parse({ ...v8DataSchema.parse(input), version: 9 });
   else if (version === 7)
     data = dataSchema.parse({
       ...v7DataSchema.parse(input),
-      version: 8,
+      version: 9,
       ntStudy: emptyNtStudy(),
     });
   else if (version === 6)
     data = dataSchema.parse({
       ...v6DataSchema.parse(input),
-      version: 8,
+      version: 9,
       ntStudy: emptyNtStudy(),
       invitations: emptyInvitationControls(),
     });
@@ -345,7 +438,7 @@ export function decodeData(input: unknown): AppData {
               : v5DataSchema.parse(input);
     data = dataSchema.parse({
       ...old,
-      version: 8,
+      version: 9,
       ntStudy: emptyNtStudy(),
       invitations: emptyInvitationControls(),
       retainedReviewGrowth: { reflections: 0, actions: 0 },
@@ -385,10 +478,11 @@ export function decodeData(input: unknown): AppData {
   }
   return data;
 }
-export type AppData = z.infer<typeof dataSchema>;
+export type AppDataV9 = z.infer<typeof dataSchema>;
+export type AppData = AppDataV9;
 export type Note = z.infer<typeof noteSchema>;
 export const initialData = (): AppData => ({
-  version: 8,
+  version: 9,
   ntStudy: emptyNtStudy(),
   invitations: emptyInvitationControls(),
   retainedReviewGrowth: { reflections: 0, actions: 0 },

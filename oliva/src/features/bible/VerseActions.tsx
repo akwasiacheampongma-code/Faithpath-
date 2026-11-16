@@ -5,6 +5,7 @@ import { useTheme } from "../../design-system/theme";
 import { useApp } from "../../state/store";
 import { CaptureInput } from "../personal/CaptureInput";
 import type { Reference, Verse } from "./repository";
+import { CopyPassage } from "./clipboard/CopyPassage";
 
 /** Existing single-verse tools, rendered outside any paragraph Text tree. */
 export function VerseActions({
@@ -20,10 +21,10 @@ export function VerseActions({
 }) {
   const t = useTheme(),
     data = useApp((s) => s.data),
-    mutate = useApp((s) => s.mutate),
     busy = useApp((s) => s.busy),
     key = `${reference.book}:${reference.chapter}:${verse.n}`,
     color = data.highlights[key];
+  const selectedReference = { book: reference.book, chapter: reference.chapter, from: verse.n, to: verse.n };
   return (
     <Card
       testID={`verse-actions-${verse.n}`}
@@ -38,11 +39,7 @@ export function VerseActions({
           kind={data.bookmarks.includes(key) ? "primary" : "secondary"}
           disabled={busy}
           onPress={() =>
-            void mutate((d) => {
-              d.bookmarks = d.bookmarks.includes(key)
-                ? d.bookmarks.filter((k) => k !== key)
-                : [...d.bookmarks, key];
-            })
+            void useApp.getState().setPassageBookmarked(selectedReference, !data.bookmarks.includes(key))
           }
         >
           {data.bookmarks.includes(key) ? "Gemerkt" : "Merken"}
@@ -52,9 +49,7 @@ export function VerseActions({
           kind="secondary"
           disabled={busy}
           onPress={() =>
-            void mutate((d) => {
-              d.highlights[key] = "olive";
-            })
+            void useApp.getState().setPassageHighlight(selectedReference, "olive")
           }
         >
           Oliv markieren
@@ -64,9 +59,7 @@ export function VerseActions({
           kind="secondary"
           disabled={busy}
           onPress={() =>
-            void mutate((d) => {
-              d.highlights[key] = "gold";
-            })
+            void useApp.getState().setPassageHighlight(selectedReference, "gold")
           }
         >
           Gold markieren
@@ -77,15 +70,14 @@ export function VerseActions({
             kind="ghost"
             disabled={busy}
             onPress={() =>
-              void mutate((d) => {
-                delete d.highlights[key];
-              })
+              void useApp.getState().setPassageHighlight(selectedReference, null)
             }
           >
             Markierung entfernen
           </Button>
         )}
       </View>
+      <CopyPassage reference={selectedReference} onFocusChange={onFocusChange} />
       <Button
         kind="secondary"
         icon="leaf"

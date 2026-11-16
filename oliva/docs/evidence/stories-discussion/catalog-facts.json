@@ -1,0 +1,961 @@
+{
+  "snapshot": "a519ce898fa33907b07d5ac7a585595127556183",
+  "checkedAt": "2026-11-16T14:35:00.328564+00:00",
+  "scope": "Static original-data/source audit only; no application, test suite, build, image generation or implementation executed.",
+  "canonicalStories": 436,
+  "storyNamespaces": {
+    "Nachlese": 435,
+    "FaithPath": 1
+  },
+  "canonicalFlowItems": 2479,
+  "primaryQuestionSources": {
+    "N": 2314,
+    "FP": 165
+  },
+  "underlyingSourceIds": 2574,
+  "uniqueUnderlyingSourceIds": 2574,
+  "existingDeduplicatedAliasPairs": 95,
+  "ntChapterQuestionOverlap": 0,
+  "separateReflectionPrompts": 436,
+  "actualPrimaryTypes": {
+    "MC4": 2479,
+    "revealOnly": 0
+  },
+  "allPrimaryFourDistinctNonemptyOptionsAndValidCorrectIndex": true,
+  "additionalExplanationField": {
+    "nonemptyX": 174,
+    "FPPrimary": 165,
+    "NPrimary": 9,
+    "withoutX": 2305,
+    "meaning": "Presence of additional original x text, not a new independent quality/theological review."
+  },
+  "primaryReferenceLabelsPresent": 2479,
+  "primaryStructuredQuestionReferences": {
+    "N": 2314,
+    "FPPrimaryWithOwnStructuredReferences": 0
+  },
+  "referencesAudit": {
+    "all437StoryRangesValidInOlivaLuther1912": true,
+    "storyRangeCount": 437,
+    "all2316NQuestionRangesValidInOlivaLuther1912": true,
+    "NQuestionRangeCount": 2316,
+    "FPPrimary165ProseReferenceRangesIndependentlyParsed": false,
+    "limits": "Endpoint/schema audit against currently bundled verse IDs, not fresh semantic/exegetical approval. FP prose labels still need an explicit structured adapter; local OTB/Luther numbering differences must be preserved."
+  },
+  "testamentStories": {
+    "AT": 107,
+    "NT": 329
+  },
+  "booksRepresented": 66,
+  "perBook": [
+    {
+      "book": "GEN",
+      "name": "1. Mose",
+      "testament": "AT",
+      "stories": 20
+    },
+    {
+      "book": "EXO",
+      "name": "2. Mose",
+      "testament": "AT",
+      "stories": 10
+    },
+    {
+      "book": "LEV",
+      "name": "3. Mose",
+      "testament": "AT",
+      "stories": 2
+    },
+    {
+      "book": "NUM",
+      "name": "4. Mose",
+      "testament": "AT",
+      "stories": 3
+    },
+    {
+      "book": "DEU",
+      "name": "5. Mose",
+      "testament": "AT",
+      "stories": 4
+    },
+    {
+      "book": "JOS",
+      "name": "Josua",
+      "testament": "AT",
+      "stories": 4
+    },
+    {
+      "book": "JDG",
+      "name": "Richter",
+      "testament": "AT",
+      "stories": 3
+    },
+    {
+      "book": "RUT",
+      "name": "Ruth",
+      "testament": "AT",
+      "stories": 2
+    },
+    {
+      "book": "1SA",
+      "name": "1. Samuel",
+      "testament": "AT",
+      "stories": 4
+    },
+    {
+      "book": "2SA",
+      "name": "2. Samuel",
+      "testament": "AT",
+      "stories": 2
+    },
+    {
+      "book": "1KI",
+      "name": "1. Könige",
+      "testament": "AT",
+      "stories": 5
+    },
+    {
+      "book": "2KI",
+      "name": "2. Könige",
+      "testament": "AT",
+      "stories": 3
+    },
+    {
+      "book": "1CH",
+      "name": "1. Chronik",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "2CH",
+      "name": "2. Chronik",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "EZR",
+      "name": "Esra",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "NEH",
+      "name": "Nehemia",
+      "testament": "AT",
+      "stories": 2
+    },
+    {
+      "book": "EST",
+      "name": "Esther",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "JOB",
+      "name": "Hiob",
+      "testament": "AT",
+      "stories": 3
+    },
+    {
+      "book": "PSA",
+      "name": "Psalmen",
+      "testament": "AT",
+      "stories": 9
+    },
+    {
+      "book": "PRO",
+      "name": "Sprüche",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "ECC",
+      "name": "Prediger",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "SNG",
+      "name": "Hohelied",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "ISA",
+      "name": "Jesaja",
+      "testament": "AT",
+      "stories": 4
+    },
+    {
+      "book": "JER",
+      "name": "Jeremia",
+      "testament": "AT",
+      "stories": 3
+    },
+    {
+      "book": "LAM",
+      "name": "Klagelieder",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "EZK",
+      "name": "Hesekiel",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "DAN",
+      "name": "Daniel",
+      "testament": "AT",
+      "stories": 2
+    },
+    {
+      "book": "HOS",
+      "name": "Hosea",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "JOL",
+      "name": "Joel",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "AMO",
+      "name": "Amos",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "OBA",
+      "name": "Obadja",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "JON",
+      "name": "Jona",
+      "testament": "AT",
+      "stories": 2
+    },
+    {
+      "book": "MIC",
+      "name": "Micha",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "NAM",
+      "name": "Nahum",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "HAB",
+      "name": "Habakuk",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "ZEP",
+      "name": "Zephanja",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "HAG",
+      "name": "Haggai",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "ZEC",
+      "name": "Sacharja",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "MAL",
+      "name": "Maleachi",
+      "testament": "AT",
+      "stories": 1
+    },
+    {
+      "book": "MAT",
+      "name": "Matthäus",
+      "testament": "NT",
+      "stories": 83
+    },
+    {
+      "book": "MRK",
+      "name": "Markus",
+      "testament": "NT",
+      "stories": 46
+    },
+    {
+      "book": "LUK",
+      "name": "Lukas",
+      "testament": "NT",
+      "stories": 29
+    },
+    {
+      "book": "JHN",
+      "name": "Johannes",
+      "testament": "NT",
+      "stories": 41
+    },
+    {
+      "book": "ACT",
+      "name": "Apostelgeschichte",
+      "testament": "NT",
+      "stories": 43
+    },
+    {
+      "book": "ROM",
+      "name": "Römer",
+      "testament": "NT",
+      "stories": 14
+    },
+    {
+      "book": "1CO",
+      "name": "1. Korinther",
+      "testament": "NT",
+      "stories": 6
+    },
+    {
+      "book": "2CO",
+      "name": "2. Korinther",
+      "testament": "NT",
+      "stories": 5
+    },
+    {
+      "book": "GAL",
+      "name": "Galater",
+      "testament": "NT",
+      "stories": 5
+    },
+    {
+      "book": "EPH",
+      "name": "Epheser",
+      "testament": "NT",
+      "stories": 5
+    },
+    {
+      "book": "PHP",
+      "name": "Philipper",
+      "testament": "NT",
+      "stories": 4
+    },
+    {
+      "book": "COL",
+      "name": "Kolosser",
+      "testament": "NT",
+      "stories": 3
+    },
+    {
+      "book": "1TH",
+      "name": "1. Thessalonicher",
+      "testament": "NT",
+      "stories": 2
+    },
+    {
+      "book": "2TH",
+      "name": "2. Thessalonicher",
+      "testament": "NT",
+      "stories": 1
+    },
+    {
+      "book": "1TI",
+      "name": "1. Timotheus",
+      "testament": "NT",
+      "stories": 2
+    },
+    {
+      "book": "2TI",
+      "name": "2. Timotheus",
+      "testament": "NT",
+      "stories": 2
+    },
+    {
+      "book": "TIT",
+      "name": "Titus",
+      "testament": "NT",
+      "stories": 1
+    },
+    {
+      "book": "PHM",
+      "name": "Philemon",
+      "testament": "NT",
+      "stories": 1
+    },
+    {
+      "book": "HEB",
+      "name": "Hebräer",
+      "testament": "NT",
+      "stories": 6
+    },
+    {
+      "book": "JAS",
+      "name": "Jakobus",
+      "testament": "NT",
+      "stories": 4
+    },
+    {
+      "book": "1PE",
+      "name": "1. Petrus",
+      "testament": "NT",
+      "stories": 3
+    },
+    {
+      "book": "2PE",
+      "name": "2. Petrus",
+      "testament": "NT",
+      "stories": 2
+    },
+    {
+      "book": "1JN",
+      "name": "1. Johannes",
+      "testament": "NT",
+      "stories": 3
+    },
+    {
+      "book": "2JN",
+      "name": "2. Johannes",
+      "testament": "NT",
+      "stories": 1
+    },
+    {
+      "book": "3JN",
+      "name": "3. Johannes",
+      "testament": "NT",
+      "stories": 1
+    },
+    {
+      "book": "JUD",
+      "name": "Judas",
+      "testament": "NT",
+      "stories": 1
+    },
+    {
+      "book": "REV",
+      "name": "Offenbarung",
+      "testament": "NT",
+      "stories": 15
+    }
+  ],
+  "questionsPerStory": {
+    "min": 5,
+    "max": 31,
+    "median": 5.0,
+    "mean": 5.685779816513762,
+    "distribution": {
+      "5": 294,
+      "6": 102,
+      "7": 16,
+      "8": 5,
+      "9": 3,
+      "10": 5,
+      "11": 5,
+      "15": 3,
+      "16": 1,
+      "21": 1,
+      "31": 1
+    }
+  },
+  "multiReferenceStories": [
+    {
+      "storyId": "NS-0420",
+      "title": "Für den Glauben kämpfen",
+      "references": [
+        {
+          "book": "JUD",
+          "chapter": 1,
+          "from": 1,
+          "to": 4
+        },
+        {
+          "book": "JUD",
+          "chapter": 1,
+          "from": 17,
+          "to": 25
+        }
+      ]
+    }
+  ],
+  "multiChapterStories": 0,
+  "crossBookStories": 0,
+  "storyFields": {
+    "story_id": 436,
+    "title": 436,
+    "ref": 436,
+    "references": 436,
+    "reflection": 436,
+    "source_namespace": 436,
+    "source_story_id": 435,
+    "flow_items": 436,
+    "legacy_story_id": 1
+  },
+  "storyRetellingsOrSummariesPresent": false,
+  "imageFieldsPresent": false,
+  "durationTagsDifficultyFieldsPresent": false,
+  "sourceOrder": "NS-0001 through NS-0435, then FP-STORY-0391 (Acts11,1–18) appended at position436.",
+  "aliasComparisons": {
+    "pairs": 95,
+    "questionExact": 91,
+    "correctAnswerExact": 91,
+    "optionsOrderExact": 0,
+    "optionsSetExact": 4,
+    "correctIndexExact": 26,
+    "referenceTextExact": 94,
+    "currentWordingDriftPairs": [
+      {
+        "primaryId": "N-0545",
+        "N_ID": "N-0545",
+        "FP_ID": "FP-0010",
+        "sourceLabel": "EXACT_FINAL_WORDING",
+        "questionExact": false,
+        "correctAnswerExact": false,
+        "optionsOrderExact": false,
+        "optionsSetExact": false,
+        "correctIndexExact": false,
+        "referenceTextExact": true,
+        "currentWordings": {
+          "N": {
+            "q": "Warum kehrten die Sterndeuter nach Matthäus 2,12 auf einem anderen Weg heim?",
+            "correctAnswer": "Sie waren im Traum gewarnt worden, nicht zu Herodes zurückzukehren.",
+            "ref": "Matthäus 2,12"
+          },
+          "FP": {
+            "q": "Wie kehrten sie in ihr Land zurück?",
+            "correctAnswer": "Auf einem anderen Weg",
+            "ref": "Matthäus 2,12"
+          }
+        }
+      },
+      {
+        "primaryId": "N-0586",
+        "N_ID": "N-0586",
+        "FP_ID": "FP-0051",
+        "sourceLabel": "EXACT_FINAL_WORDING",
+        "questionExact": false,
+        "correctAnswerExact": false,
+        "optionsOrderExact": false,
+        "optionsSetExact": false,
+        "correctIndexExact": false,
+        "referenceTextExact": true,
+        "currentWordings": {
+          "N": {
+            "q": "Welche Gefahren für Schätze auf der Erde nennt Jesus in Matthäus 6,19 ausdrücklich?",
+            "correctAnswer": "Motten, Rost und Diebe.",
+            "ref": "Matthäus 6,19"
+          },
+          "FP": {
+            "q": "Wo sollen Jünger keine Schätze sammeln?",
+            "correctAnswer": "Auf Erden",
+            "ref": "Matthäus 6,19"
+          }
+        }
+      },
+      {
+        "primaryId": "N-0589",
+        "N_ID": "N-0589",
+        "FP_ID": "FP-0054",
+        "sourceLabel": "EXACT_FINAL_WORDING",
+        "questionExact": false,
+        "correctAnswerExact": false,
+        "optionsOrderExact": false,
+        "optionsSetExact": false,
+        "correctIndexExact": false,
+        "referenceTextExact": true,
+        "currentWordings": {
+          "N": {
+            "q": "Was sollen die Zuhörer aus dem Blick auf die Vögel nach Matthäus 6,26 lernen?",
+            "correctAnswer": "Obwohl sie nicht säen oder ernten, versorgt der himmlische Vater sie.",
+            "ref": "Matthäus 6,26"
+          },
+          "FP": {
+            "q": "Welchen Vögeln sollen die Zuhörer Aufmerksamkeit schenken?",
+            "correctAnswer": "Den Vögeln unter dem Himmel",
+            "ref": "Matthäus 6,26"
+          }
+        }
+      },
+      {
+        "primaryId": "N-0596",
+        "N_ID": "N-0596",
+        "FP_ID": "FP-0061",
+        "sourceLabel": "EXACT_FINAL_WORDING",
+        "questionExact": false,
+        "correctAnswerExact": false,
+        "optionsOrderExact": false,
+        "optionsSetExact": false,
+        "correctIndexExact": true,
+        "referenceTextExact": false,
+        "currentWordings": {
+          "N": {
+            "q": "Wie beschreibt Jesus in Matthäus 7,13–14 die Pforte und den Weg zum Leben?",
+            "correctAnswer": "Die Pforte ist eng, und der Weg ist schmal.",
+            "ref": "Matthäus 7,13–14"
+          },
+          "FP": {
+            "q": "Durch welche Pforte sollen die Zuhörer eingehen?",
+            "correctAnswer": "Durch die enge Pforte",
+            "ref": "Matthäus 7,13"
+          }
+        }
+      }
+    ],
+    "warning": "The original flow retains95EXACT_FINAL_WORDING alias labels; current edited data no longer word-equal for4pairs. Preserve both versions and mapping provenance; never transfer option indices acrossIDs."
+  },
+  "repeatedQuestionText": {
+    "distinctTexts": 2441,
+    "duplicateTextGroups": 33,
+    "distinctQuestionCorrectAnswerReferenceTriples": 2479,
+    "meaning": "Same bare question text is not sufficient grounds for another deduplication."
+  },
+  "selectedActualCatalogEntries": [
+    {
+      "storyId": "NS-0001",
+      "title": "Am Anfang",
+      "referenceText": "1. Mose 1,1–31",
+      "references": [
+        {
+          "book": "GEN",
+          "chapter": 1,
+          "from": 1,
+          "to": 31
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "NS-0005",
+      "title": "Noah tat alles, was ihm Gott gebot",
+      "referenceText": "1. Mose 6,5–22",
+      "references": [
+        {
+          "book": "GEN",
+          "chapter": 6,
+          "from": 5,
+          "to": 22
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "NS-0006",
+      "title": "Da gedachte Gott an Noah",
+      "referenceText": "1. Mose 8,1–22",
+      "references": [
+        {
+          "book": "GEN",
+          "chapter": 8,
+          "from": 1,
+          "to": 22
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "NS-0010",
+      "title": "Abram glaubte dem HERRN",
+      "referenceText": "1. Mose 15,1–6",
+      "references": [
+        {
+          "book": "GEN",
+          "chapter": 15,
+          "from": 1,
+          "to": 6
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "NS-0023",
+      "title": "ICH WERDE SEIN, DER ICH SEIN WERDE",
+      "referenceText": "2. Mose 3,1–15",
+      "references": [
+        {
+          "book": "EXO",
+          "chapter": 3,
+          "from": 1,
+          "to": 15
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "NS-0025",
+      "title": "Der HERR wird für euch streiten",
+      "referenceText": "2. Mose 14,13–31",
+      "references": [
+        {
+          "book": "EXO",
+          "chapter": 14,
+          "from": 13,
+          "to": 31
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "NS-0052",
+      "title": "Der Streit ist des HERRN",
+      "referenceText": "1. Samuel 17,32–50",
+      "references": [
+        {
+          "book": "1SA",
+          "chapter": 17,
+          "from": 32,
+          "to": 50
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "NS-0189",
+      "title": "Er ist nicht hier",
+      "referenceText": "Matthäus 28,1–10",
+      "references": [
+        {
+          "book": "MAT",
+          "chapter": 28,
+          "from": 1,
+          "to": 10
+        }
+      ],
+      "questionCount": 6
+    },
+    {
+      "storyId": "NS-0203",
+      "title": "Schweig und verstumme",
+      "referenceText": "Markus 4,35–41",
+      "references": [
+        {
+          "book": "MRK",
+          "chapter": 4,
+          "from": 35,
+          "to": 41
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "NS-0235",
+      "title": "Sie fürchteten sich",
+      "referenceText": "Markus 16,1–8",
+      "references": [
+        {
+          "book": "MRK",
+          "chapter": 16,
+          "from": 1,
+          "to": 8
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "NS-0241",
+      "title": "In der Krippe",
+      "referenceText": "Lukas 2,1–20",
+      "references": [
+        {
+          "book": "LUK",
+          "chapter": 2,
+          "from": 1,
+          "to": 20
+        }
+      ],
+      "questionCount": 6
+    },
+    {
+      "storyId": "NS-0249",
+      "title": "Der barmherzige Samariter",
+      "referenceText": "Lukas 10,25–37",
+      "references": [
+        {
+          "book": "LUK",
+          "chapter": 10,
+          "from": 25,
+          "to": 37
+        }
+      ],
+      "questionCount": 6
+    },
+    {
+      "storyId": "NS-0254",
+      "title": "Schaf und Groschen",
+      "referenceText": "Lukas 15,1–10",
+      "references": [
+        {
+          "book": "LUK",
+          "chapter": 15,
+          "from": 1,
+          "to": 10
+        }
+      ],
+      "questionCount": 6
+    },
+    {
+      "storyId": "NS-0255",
+      "title": "Der verlorene Sohn",
+      "referenceText": "Lukas 15,11–32",
+      "references": [
+        {
+          "book": "LUK",
+          "chapter": 15,
+          "from": 11,
+          "to": 32
+        }
+      ],
+      "questionCount": 6
+    },
+    {
+      "storyId": "NS-0264",
+      "title": "Der Weg nach Emmaus",
+      "referenceText": "Lukas 24,13–35",
+      "references": [
+        {
+          "book": "LUK",
+          "chapter": 24,
+          "from": 13,
+          "to": 35
+        }
+      ],
+      "questionCount": 6
+    },
+    {
+      "storyId": "NS-0324",
+      "title": "Was Gott gereinigt hat",
+      "referenceText": "Apostelgeschichte 10,1–48",
+      "references": [
+        {
+          "book": "ACT",
+          "chapter": 10,
+          "from": 1,
+          "to": 48
+        }
+      ],
+      "questionCount": 31
+    },
+    {
+      "storyId": "NS-0420",
+      "title": "Für den Glauben kämpfen",
+      "referenceText": "Judas 1–4.17–25",
+      "references": [
+        {
+          "book": "JUD",
+          "chapter": 1,
+          "from": 1,
+          "to": 4
+        },
+        {
+          "book": "JUD",
+          "chapter": 1,
+          "from": 17,
+          "to": 25
+        }
+      ],
+      "questionCount": 5
+    },
+    {
+      "storyId": "FP-STORY-0391",
+      "title": "Petrus erklärt sein Handeln in Jerusalem",
+      "referenceText": "Apg 11,1-18",
+      "references": [
+        {
+          "book": "ACT",
+          "chapter": 11,
+          "from": 1,
+          "to": 18
+        }
+      ],
+      "questionCount": 5
+    }
+  ],
+  "sizeMeasurements": {
+    "sourceFiles": [
+      {
+        "path": "data/faithpath-nachlese-story-flow.json",
+        "gitBlob": "3c74301f18de69a8a147c094cce33b4064acf4e6",
+        "bytes": 705226,
+        "sha256": "330d06b5b4e5c6413d41e8c10e16b1ff0735ac682637ccbe847ffbb4996c5435",
+        "gzipBytesMeasured": 64500,
+        "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/faithpath-nachlese-story-flow.json"
+      },
+      {
+        "path": "data/nachlese-stories.json",
+        "gitBlob": "0c32fc904e44b1cebbdeeb92679036b23e287545",
+        "bytes": 277350,
+        "sha256": "5ff19290f042667e6f321e23de16c4c933ce43fc87a070612dd006d1a529afc6",
+        "gzipBytesMeasured": 48834,
+        "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/nachlese-stories.json"
+      },
+      {
+        "path": "data/nachlese-questions.json",
+        "gitBlob": "c1bd0aac92e831cfcdbff98caa9f568776a3faa2",
+        "bytes": 3795630,
+        "sha256": "fee7b3b4c549baf9e4cdd90efeece573933e37ebaa7d551860708ffae4e8efd0",
+        "gzipBytesMeasured": 368100,
+        "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/nachlese-questions.json"
+      },
+      {
+        "path": "data/stories.json",
+        "gitBlob": "af54187638d6dc72ac4a048537caf5ab64b099b5",
+        "bytes": 1036959,
+        "sha256": "f9fc48a97ecb129eaed0289cf94afa7c747f15afe381fbe6241e67fac5ec04cd",
+        "gzipBytesMeasured": 228988,
+        "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/stories.json"
+      },
+      {
+        "path": "data/index.json",
+        "gitBlob": "09d9d1322e2a22afe47b9ba2d10f59fc04e5e9be",
+        "bytes": 3924,
+        "sha256": "8686e9de0c250b61f304d81ff5f9aa8462747ffbc0e8bb91a7d859570d6b822e",
+        "gzipBytesMeasured": 964,
+        "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/index.json"
+      },
+      {
+        "path": "data/reference-index.json",
+        "gitBlob": "f54ef2816fc58a4a874c5128ada1861a34327214",
+        "bytes": 171488,
+        "sha256": "794b228f00dfc2df4f265e88e686db3a8916610aef9ca610cbe377d35fd42420",
+        "gzipBytesMeasured": 5085,
+        "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/reference-index.json"
+      },
+      {
+        "path": "data/bibles/OTB-LICENSE.txt",
+        "gitBlob": "48e4ac12e632a17d0f72c4f95637ee995ff72c45",
+        "bytes": 342,
+        "sha256": "2d0cd3c05745a500271c180086c32ca540b6d200fb018c58ed0516e734378192",
+        "gzipBytesMeasured": 259,
+        "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/bibles/OTB-LICENSE.txt"
+      }
+    ],
+    "compactLegacy52Units": {
+      "bytes": 93480,
+      "gzipBytes": 25333
+    },
+    "inMemoryCompactCatalogWithAll2574SourceQuestionsAndProvenance": {
+      "bytes": 3177489,
+      "gzipBytes": 410336,
+      "notWrittenAsRuntimePayload": true
+    },
+    "limits": "Measured original byte counts and deterministic gzip only; not actual Expo bundle, download, RAM, cache or application-size forecasts."
+  },
+  "originalReferenceFilesUnchanged": 390,
+  "originalHistoricalEditorialReport": {
+    "NMC2": [
+      "2314N MC complete",
+      "58changedN records",
+      "208questions model/source reviewed inthatphase",
+      "2106notagainsemanticallyreviewed inthatphase"
+    ],
+    "humanEditorialApprovalClaimed": false,
+    "physicalIphoneGateClosedClaimed": false,
+    "productionPublicationClaimed": false
+  },
+  "rights": "Original source/provenance is present. No new license/author-ownership/public-distribution permission was inferred for question manuscripts. OTB text has its separateCC BY-SA4 license; OLIVA currently uses its documented Luther1912 corpus."
+}

@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-11-16T02:32:31.008997+00:00",
+  "status": "PASS",
+  "scope": "Main Reader WIP only; no new release or deployment implied",
+  "historicalRed": {
+    "report": "reproduction-with-finish.json",
+    "passed": 0,
+    "failed": 5,
+    "preserved": true
+  },
+  "priorTargeted": {
+    "report": "targeted-results.json",
+    "passed": 35,
+    "failed": 0
+  },
+  "freshGlobalUnit": {
+    "report": "unit-results-final.json",
+    "exitCode": 0,
+    "success": true,
+    "total": 277,
+    "passed": 277,
+    "failed": 0,
+    "pending": 0,
+    "testFiles": 32,
+    "startTime": 1794796189973,
+    "endTime": 1794796247901.5034
+  },
+  "queueRegressions": {
+    "file": "tests/reader-parity-review.test.ts",
+    "passed": 5,
+    "failed": 0,
+    "names": [
+      "Reader queue input ownership captures the requested reading scope before a previous background write yields",
+      "Reader queue input ownership captures an outside-focus chapter anchor before an earlier queued write yields",
+      "Reader queue input ownership owns the range draft words, exact source and key before its queued autosave starts",
+      "Reader queue input ownership keeps the original expected draft stamp while a newer autosave is pending",
+      "Reader queue input ownership does not use a subsequently changed stamp to commit a newer range draft"
+    ]
+  },
+  "freshTypecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0,
+    "log": "typecheck-final.txt"
+  },
+  "source": {
+    "storeSha256AfterRun": "884e78ed71c657d00750b69de724be7260441be4cb6efea374ae42e145827720",
+    "regressionTestsSha256": "3b55ccc8ea818f5ffaa296b84e7dfcae2f65f2fb7d3d919ac8106456d00a1d0b",
+    "historicalSnapshotReport": "source-comparison-final.json",
+    "allFiveHistoricalContractsByteExact": true
+  },
+  "staticReview": {
+    "saveEditorDraft": "draftSchema.parse plus detached id/revision expected stamp before persist; queued code uses only requested values",
+    "finishEditorDraft": "action calls work synchronously; detached id/revision stamp precedes persist enqueue, used for both discard and commit",
+    "openReading": "referenceSchema.parse before queued persist; both scope guard and stored scope use requested snapshot",
+    "rememberReadingPosition": "reference and nullable current position parsed before persist; scope/no-op guards and stored anchor use snapshots",
+    "unchangedPersistence": "same serial queue, current revision CAS, existing gate/guards, null/false returns, explicit metadata growth behavior"
+  },
+  "independentReadOnlyReview": {
+    "agent": "reader_store_review_16/store_snapshot_readonly",
+    "status": "PASS",
+    "checks": "Synchronous snapshot timing; finish work immediate inside action; null semantics, busy gate, scope/no-op guards, revision CAS and growth behavior retained",
+    "testsRunByReviewer": false
+  },
+  "runtimeEditsThisContinuation": false,
+  "limitations": [
+    "Unit tests use mocked storage with a real deferred predecessor write; they are not IndexedDB/native filesystem tests.",
+    "No browser, native export, simulator or physical-device test was executed by this review.",
+    "Main WIP still requires its complete final Reader release validation."
+  ]
+}

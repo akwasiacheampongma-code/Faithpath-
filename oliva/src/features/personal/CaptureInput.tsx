@@ -3,13 +3,13 @@ import { View } from "react-native";
 import { useApp } from "../../state/store";
 import { T, Field, Button } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
-import { referenceLabel } from "../bible/repository";
 import {
   captureDraft,
   captureSourceCurrent,
   dailySource,
 } from "./capture-model";
-import { captureKey, type CaptureSource } from "./capture-schema";
+import { captureKey, type CaptureSource } from "./capture-schema-current";
+import { captureBibleContextLabel } from "./capture-presentation";
 import { EditorFooter, useEditorActions } from "./Editors";
 
 export function CaptureInput({
@@ -100,9 +100,13 @@ function CaptureSession({
           Entwurf vom {v.source.date} · {v.source.question}
         </T>
       )}
-      {v.source.type === "verse" && (
-        <T variant="small" style={{ color: t.muted }}>
-          Dein Bibelbezug: {referenceLabel(v.source.ref)} · Luther 1912
+      {(v.source.type === "verse" || v.source.type === "passage") && (
+        <T
+          variant="small"
+          accessibilityLabel={captureBibleContextLabel(v.source)}
+          style={{ color: t.muted }}
+        >
+          {captureBibleContextLabel(v.source)}
         </T>
       )}
       <Field
@@ -152,7 +156,7 @@ function CaptureSession({
                 : "Ohne Reflexion abschließen"
               : v.source.type === "experience"
                 ? "Erfahrung festhalten"
-                : v.source.type === "verse"
+                : v.source.type === "verse" || v.source.type === "passage"
                   ? "Notiz speichern"
                   : v.source.type === "guided"
                     ? "Reflexion speichern"
@@ -166,7 +170,7 @@ function CaptureSession({
           Deine Worte werden beim Schreiben als Entwurf lokal gesichert. Erst „
           {v.source.type === "experience"
             ? "Erfahrung festhalten"
-            : v.source.type === "verse"
+            : v.source.type === "verse" || v.source.type === "passage"
               ? "Notiz speichern"
               : "Festhalten"}
           “ legt einen Eintrag in deiner Sammlung an.
@@ -174,7 +178,7 @@ function CaptureSession({
       )}
       {saved && !hasDraft && (
         <T accessibilityRole="alert" style={{ fontSize: 11 }}>
-          {v.source.type === "verse"
+          {v.source.type === "verse" || v.source.type === "passage"
             ? "Deine Notiz wurde auf diesem Gerät gespeichert."
             : v.source.type === "experience"
               ? "Deine Erfahrung wurde lokal in der Sammlung gespeichert."

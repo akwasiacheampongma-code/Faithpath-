@@ -1,0 +1,16 @@
+Working directory: /workspace/faithpath-next
+Date: 2026-11-15 UTC
+Command: npm test -- tests/reader-v9-migration.test.ts tests/domain.test.ts tests/imports.test.ts tests/nt-study.test.ts tests/nt-import.test.ts
+Exit code: 0
+
+> oliva-faith-companion@0.12.0 test
+> vitest run tests/reader-v9-migration.test.ts tests/domain.test.ts tests/imports.test.ts tests/nt-study.test.ts tests/nt-import.test.ts
+
+RUN v5.1.0 /workspace/faithpath-next
+
+Test Files  5 passed (5)
+     Tests  70 passed (70)
+  Start at  21:06:16
+  Duration  28.01s (tests 50%, import 42%, transform 8%)
+
+The dedicated reader-v9-migration.test.ts file contains 13 contract tests.

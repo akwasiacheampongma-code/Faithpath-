@@ -1,0 +1,61 @@
+{
+  "version": "0.13.0",
+  "preparedAt": "2026-11-16T09:45:13.640732+00:00",
+  "state": "prepared only, awaiting actual pushed SHA from Root",
+  "networkCalls": false,
+  "workflowPolled": false,
+  "sourceMutated": false,
+  "refsMutated": false,
+  "expectedSourceRoot": "/workspace/faithpath-next",
+  "expectedBranch": "feature/oliva-v013-reader-parity-20261116",
+  "expectedGithubTag": "oliva-v0.13.0",
+  "expectedStandaloneTag": "oliva-v0.13-reader-parity-private",
+  "combinedParentProvidedByRoot": "8d0e663150da1860c371aeeba2c4f2ddf16daf8a",
+  "expectedUnit": 290,
+  "expectedBrowser": 126,
+  "localCoreIsNotRemoteBuild": "oliva-71cf17993d0bc7fd",
+  "expectedChecks": [
+    "Actual first-attempt run/job/head, exact source subtree and annotated tag identity",
+    "290 unit and 126 browser tests, no skips/flaky/retries, unfiltered commands",
+    "Report timestamps within actual logged step windows and exact CI commit metadata",
+    "Artifact API SHA-256 and byte count, all ZIP CRCs, exact copied reports",
+    "Four actual pinned native Node24 actions and explicit audit zero",
+    "Both historical 0.11 failed runs preserved without reruns",
+    "Actual remote build ID independently observed from log",
+    "Second independent read-only review before completion"
+  ],
+  "helpers": [
+    {
+      "path": "/tmp/verify-oliva-ci013.py",
+      "bytes": 20674,
+      "sha256": "f06dcfb5da4de57cd34cdc920471f7585d092941b8d12939db1d891919675bf6",
+      "pythonSyntaxValid": true
+    },
+    {
+      "path": "/tmp/identify-oliva-ci013-source.py",
+      "bytes": 2230,
+      "sha256": "df9053b6a90591e13de57282640f7e910c7a1f0c8fffd3208e9641f0e6e62652",
+      "pythonSyntaxValid": true
+    },
+    {
+      "path": "/tmp/write-oliva-ci013-readme.py",
+      "bytes": 3617,
+      "sha256": "6c6e859581c0ef22e73356f0d7cf9a1668fa21889269a4c1b4c174753d363b96",
+      "pythonSyntaxValid": true
+    },
+    {
+      "path": "/tmp/download-oliva-ci013-artifact.py",
+      "bytes": 1828,
+      "sha256": "b97720afb1cff201905a6d742e85693e482d9f77489bd79d39c5f9324fba3ac3",
+      "pythonSyntaxValid": true
+    },
+    {
+      "path": "/tmp/save-oliva-ci013-job-log.py",
+      "bytes": 1580,
+      "sha256": "32aac2104a2d17b2e7c6de159e92d56a008631c56a871572bbce9514bc8faa5c",
+      "pythonSyntaxValid": true
+    }
+  ],
+  "preparedFromVerified0121Evidence": true,
+  "signedDownloadCapabilities": "Memory and protected stdin only; never print or persist URI values"
+}

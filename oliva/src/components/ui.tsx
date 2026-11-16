@@ -54,6 +54,7 @@ export function Button({
   style,
   foregroundColor,
   buttonRef,
+  selected,
 }: {
   children: React.ReactNode;
   onPress: () => void;
@@ -64,13 +65,15 @@ export function Button({
   style?: StyleProp<ViewStyle>;
   foregroundColor?: string;
   buttonRef?: React.Ref<React.ComponentRef<typeof Pressable>>;
+  selected?: boolean;
 }) {
   const t = useTheme();
   return (
     <Pressable
       ref={buttonRef}
       accessibilityRole="button"
-      accessibilityState={{ disabled }}
+      accessibilityState={{ disabled, ...(selected === undefined ? {} : { selected }) }}
+      aria-pressed={selected}
       testID={testID}
       onPress={onPress}
       disabled={disabled}

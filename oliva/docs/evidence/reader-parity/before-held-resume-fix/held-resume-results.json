@@ -1,0 +1,266 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/reader-selection.spec.ts",
+      "--grep",
+      "ein echter Speicherfehler",
+      "--output=docs/evidence/reader-parity/before-held-resume-fix/artifacts"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/docs/evidence/reader-parity/before-held-resume-fix/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/docs/evidence/reader-parity/before-held-resume-fix/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/reader-parity/before-held-resume-fix/held-resume-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "PORT=4173 node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "reader-selection.spec.ts",
+      "file": "reader-selection.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Einzelvers: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 24792,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)\u001b[22m\n\u001b[2m    33 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)\u001b[22m\n\u001b[2m    33 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:540:82",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                      "column": 82,
+                      "line": 540
+                    },
+                    "snippet": " \u001b[90m 538 |\u001b[39m     \u001b[36mconst\u001b[39m resumed \u001b[33m=\u001b[39m kind \u001b[33m===\u001b[39m \u001b[32m\"passage\"\u001b[39m \u001b[33m?\u001b[39m noteField(page) \u001b[33m:\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"textbox\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Notiz zu Vers 35\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mfilter({ visible\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 539 |\u001b[39m     \u001b[36mawait\u001b[39m expect(resumed)\u001b[33m.\u001b[39mtoHaveValue(text)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 540 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(\u001b[35m/Dieser Bibelentwurf ist nicht mehr vorhanden/\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 541 |\u001b[39m     expect((\u001b[36mawait\u001b[39m localData(page))\u001b[33m.\u001b[39mdrafts\u001b[33m.\u001b[39msome(d \u001b[33m=>\u001b[39m d\u001b[33m.\u001b[39mkey \u001b[33m===\u001b[39m key))\u001b[33m.\u001b[39mtoBe(\u001b[36mfalse\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 542 |\u001b[39m     expect((\u001b[36mawait\u001b[39m localData(page))\u001b[33m.\u001b[39mnotes)\u001b[33m.\u001b[39mtoEqual([])\u001b[33m;\u001b[39m\n \u001b[90m 543 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m { (window \u001b[36mas\u001b[39m \u001b[33mWindow\u001b[39m \u001b[33m&\u001b[39m { failReaderWrites\u001b[33m?\u001b[39m\u001b[33m:\u001b[39m boolean })\u001b[33m.\u001b[39mfailReaderWrites \u001b[33m=\u001b[39m \u001b[36mfalse\u001b[39m\u001b[33m;\u001b[39m })\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                        "column": 82,
+                        "line": 540
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)\u001b[22m\n\u001b[2m    33 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  538 |     const resumed = kind === \"passage\" ? noteField(page) : page.getByRole(\"textbox\", { name: \"Notiz zu Vers 35\", exact: true }).filter({ visible: true });\n  539 |     await expect(resumed).toHaveValue(text);\n> 540 |     await expect(page.getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)).toHaveCount(0);\n      |                                                                                  ^\n  541 |     expect((await localData(page)).drafts.some(d => d.key === key)).toBe(false);\n  542 |     expect((await localData(page)).notes).toEqual([]);\n  543 |     await page.evaluate(() => { (window as Window & { failReaderWrites?: boolean }).failReaderWrites = false; });\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:540:82"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T02:33:22.429Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/docs/evidence/reader-parity/before-held-resume-fix/artifacts/reader-selection-Einzelver-978a2-d-die-genaue-Wiederaufnahme/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/docs/evidence/reader-parity/before-held-resume-fix/artifacts/reader-selection-Einzelver-978a2-d-die-genaue-Wiederaufnahme/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                    "column": 82,
+                    "line": 540
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-059d32da7d3271d1401f",
+          "file": "reader-selection.spec.ts",
+          "line": 485,
+          "column": 3
+        },
+        {
+          "title": "Bereich: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 22607,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible()\u001b[22m\n\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:535:33",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                      "column": 33,
+                      "line": 535
+                    },
+                    "snippet": " \u001b[90m 533 |\u001b[39m     \u001b[36mawait\u001b[39m ready(page)\u001b[33m;\u001b[39m\n \u001b[90m 534 |\u001b[39m     \u001b[36mif\u001b[39m (kind \u001b[33m===\u001b[39m \u001b[32m\"passage\"\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 535 |\u001b[39m       \u001b[36mawait\u001b[39m expect(tools(page))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 536 |\u001b[39m       \u001b[36mawait\u001b[39m selected(page\u001b[33m,\u001b[39m [\u001b[35m35\u001b[39m\u001b[33m,\u001b[39m \u001b[35m36\u001b[39m\u001b[33m,\u001b[39m \u001b[35m37\u001b[39m])\u001b[33m;\u001b[39m\n \u001b[90m 537 |\u001b[39m     }\n \u001b[90m 538 |\u001b[39m     \u001b[36mconst\u001b[39m resumed \u001b[33m=\u001b[39m kind \u001b[33m===\u001b[39m \u001b[32m\"passage\"\u001b[39m \u001b[33m?\u001b[39m noteField(page) \u001b[33m:\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"textbox\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m\"Notiz zu Vers 35\"\u001b[39m\u001b[33m,\u001b[39m exact\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m.\u001b[39mfilter({ visible\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m })\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                        "column": 33,
+                        "line": 535
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Auswahl verwenden', exact: true }).visible()\u001b[22m\n\n\n  533 |     await ready(page);\n  534 |     if (kind === \"passage\") {\n> 535 |       await expect(tools(page)).toBeVisible();\n      |                                 ^\n  536 |       await selected(page, [35, 36, 37]);\n  537 |     }\n  538 |     const resumed = kind === \"passage\" ? noteField(page) : page.getByRole(\"textbox\", { name: \"Notiz zu Vers 35\", exact: true }).filter({ visible: true });\n    at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:535:33"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T02:33:50.853Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/workspace/faithpath-next/docs/evidence/reader-parity/before-held-resume-fix/artifacts/reader-selection-Bereich-e-644b8-d-die-genaue-Wiederaufnahme/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/docs/evidence/reader-parity/before-held-resume-fix/artifacts/reader-selection-Bereich-e-644b8-d-die-genaue-Wiederaufnahme/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts",
+                    "column": 33,
+                    "line": 535
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9e0d128e2e9be10af03c-deb21003461a91644017",
+          "file": "reader-selection.spec.ts",
+          "line": 485,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T02:33:20.176Z",
+    "duration": 54340.244999999995,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

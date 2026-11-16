@@ -61,5 +61,5 @@ test("eine installierte private V4-Speicherung migriert beim Lesen ohne Datenver
     const r=indexedDB.open("oliva-local-v1",1);r.onsuccess=()=>{const db=r.result,tx=db.transaction("state","readwrite");tx.objectStore("state").put(value,"main");tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>reject(tx.error);};
   }),old);
   await page.goto("/lesen/JHN?chapter=6&verse=35");await anchor(page,35);
-  expect((await localData(page)).version).toBe(8);expect((await localData(page)).name).toBe("Ada");
+  expect((await localData(page)).version).toBe(9);expect((await localData(page)).name).toBe("Ada");
 });

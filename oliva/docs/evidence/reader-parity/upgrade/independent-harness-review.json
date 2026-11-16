@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-11-16T02:52:17.939917+00:00",
+  "reviewer": "/root/reader_upgrade013/upgrade_harness_review",
+  "scope": "Independent read-only source review before actual browser execution",
+  "status": "PASS after pre-execution harness correction",
+  "concreteIssue": "Baseline verse=35 already opens the verse actions; redundant verse click would close them. Removed and replaced with actual-panel visibility assertion.",
+  "otherBlockingIssues": [],
+  "reviewedContracts": [
+    "Current source/test labels and IDs",
+    "V8 raw-record comparison before new actions",
+    "V9 partial focus and complete canonical chapter",
+    "Exact captureSource/ref and separate draft ends",
+    "Note trimming and progress neutrality",
+    "Read-only IndexedDB observation",
+    "Actual V9 export and non-applied restore preview"
+  ],
+  "limits": [
+    "Static review, not browser/device execution",
+    "Clipboard write rejection is deliberately injected, not a real OS permission dialog"
+  ],
+  "harnessOnlyPostReviewAddition": "Added immutable candidate/baseline HTML and worker hash rechecks; no functional flow changed."
+}

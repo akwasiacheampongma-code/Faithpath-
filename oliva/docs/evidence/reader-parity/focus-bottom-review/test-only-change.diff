@@ -1,0 +1,27 @@
+diff --git a/tests/e2e/reader-focus.spec.ts b/tests/e2e/reader-focus.spec.ts
+index 695d197..43f9553 100644
+--- a/tests/e2e/reader-focus.spec.ts
++++ b/tests/e2e/reader-focus.spec.ts
+@@ -59,12 +59,16 @@ async function canonicalText(
+ }
+ async function bottom(page: Page) {
+   const main = page.getByRole("main");
+-  // RN Web replaces ScrollView's scrollTo with its { y } interface. Use the
+-  // real final verse's native DOM scrollIntoView, as in the reader-flow tests.
+-  await flow(page)
+-    .locator("[data-verse]")
+-    .last()
+-    .evaluate((node) => node.scrollIntoView({ block: "start" }));
++  // Enter the reader through its real keyboard order. A direct DOM jump can
++  // race the pending canonical restoration after changing the focus layout.
++  // The trusted End gesture exercises user scrolling while preserving the
++  // exact end-position and fixed-toolbar assertions below.
++  await exit(page).focus();
++  await page.keyboard.press("Tab");
++  await expect
++    .poll(() => main.evaluate((node) => node.contains(document.activeElement)))
++    .toBe(true);
++  await page.keyboard.press("End");
+   await expect
+     .poll(() =>
+       main.evaluate((node) => ({

@@ -1,0 +1,60 @@
+{
+  "reviewedAt": "2026-11-16T09:27:11.819Z",
+  "reviewer": "Independent read-only child: reader_upgrade_resume/logical_comparison_review",
+  "status": "PASS: comparison-only harness correction is appropriate",
+  "scope": "Decode and strictly compare the original failed projected data; inspect logical and raw comparator separation. No browser, application, native or upgrade execution; no source/runtime edits.",
+  "originalFailedReport": {
+    "path": "docs/evidence/reader-parity/upgrade/oliva-71cf17993d0bc7fd/offline-upgrade.json",
+    "sha256": "841da7499ff5a1a95cfb2b10598a828c8696d5f0baa5dbfffad08d5bb55d5465",
+    "passed": false,
+    "phase": "outside-focus-anchor-and-real-offline-reboot"
+  },
+  "decodedOriginalError": {
+    "jsonStringsDiffer": true,
+    "nodeAssertDeepStrictEqualPassed": true,
+    "changedKeysOrValues": 0,
+    "objectPropertyOrderDifferences": [
+      {
+        "path": "$.notes[0]",
+        "expectedKeys": [
+          "id",
+          "text",
+          "kind",
+          "createdAt",
+          "updatedAt",
+          "captureSource",
+          "ref"
+        ],
+        "actualKeys": [
+          "id",
+          "text",
+          "kind",
+          "ref",
+          "createdAt",
+          "updatedAt",
+          "captureSource"
+        ]
+      }
+    ],
+    "visitedObjects": 40,
+    "visitedArrays": 20,
+    "visitedScalarValues": 154
+  },
+  "logicalComparatorReview": {
+    "script": "docs/evidence/reader-parity/upgrade/offline-upgrade-reader-v9.mjs",
+    "currentScriptSha256": "7f27c1bfa529836ae40d35ac1771ace359c448a19ccb05be4eb351e78d6700cb",
+    "approvedMethod": "Object toStrictEqual on data after removing only expressly permitted fields",
+    "reason": "Object insertion order is not logical JSON content. Strict deep equality preserves key membership, value types, values, nested objects and array lengths/order. The observed new range note retained identical values when the explicit subsequent anchor write canonically reordered ref.",
+    "rawV8BeforeActionsExactSerializationStillPresent": true,
+    "nonMainRecordsExactSerializationStillPresent": true
+  },
+  "evidenceAlreadyReportedBeforeOriginalFailure": {
+    "realWorkerActivation": true,
+    "allFourRawV8RecordsExactBeforeNewActions": true
+  },
+  "wholeUpgradePassedClaimed": false,
+  "runtimeChanged": false,
+  "filesWritten": [
+    "docs/evidence/reader-parity/upgrade/logical-comparison-review.json"
+  ]
+}

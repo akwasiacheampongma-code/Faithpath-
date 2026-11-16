@@ -75,14 +75,14 @@ function legacyV5() {
   });
 }
 
-describe("Eingefrorene Nutzdaten V1–V5 und neutrale Migration bis V8", () => {
+describe("Eingefrorene Nutzdaten V1–V5 und neutrale Migration bis V9", () => {
   it("bewahrt alte Rückblicke und offene Entwürfe exakt, ohne ein Bearbeitungsdatum zu erfinden", async () => {
     const old = legacyV5(),
       bytes = JSON.stringify(old);
     const migrated = decodeData(old);
     expect(migrated).toEqual({
       ...old,
-      version: 8,
+      version: 9,
       ntStudy: {
         answers: {},
         completions: {},

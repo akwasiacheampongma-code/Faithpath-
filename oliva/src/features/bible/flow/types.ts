@@ -14,7 +14,12 @@ export type FlowTextHandle = {
 };
 export type FlowTextProps = {
   paragraphs: FlowParagraph[];
+  /** The sole inline action anchor; retained for the single-verse reader. */
   selected: number | null;
+  /** When supplied, controls selection styling independently of inline actions. */
+  selectedVerses?: readonly number[];
+  /** Logical passage focus within the displayed chapter; never changes text. */
+  focusRange?: Readonly<{ from: number; to: number }>;
   highlights: Record<string, HighlightColor>;
   bookmarks: readonly string[];
   /** Actual rendered size, including the existing reader's +3 adjustment. */

@@ -136,7 +136,7 @@ describe("Entwürfe mit festem Kontext", () => {
     expect(() => commitDraft(data, draft.key, draft, at)).toThrow(/bereits/);
     expect(JSON.stringify(data)).toBe(before);
   });
-  it("migriert echte V3-Bestände auf V5 und hält Tagesdatum und alte Daten stabil", () => {
+  it("migriert echte V3-Bestände auf V9 und hält Tagesdatum und alte Daten stabil", () => {
     const {
         readingPosition,
         retainedReviewGrowth,
@@ -161,7 +161,7 @@ describe("Entwürfe mit festem Kontext", () => {
       bytes = JSON.stringify(old);
     expect(decodeData(old)).toEqual({
       ...old,
-      version: 8,
+      version: 9,
       ntStudy: {
         answers: {},
         completions: {},

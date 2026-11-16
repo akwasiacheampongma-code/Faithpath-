@@ -1,0 +1,17 @@
+{
+  "status": "prepared; actual browser run not started",
+  "preparedAt": "2026-11-16T02:49:35.932730+00:00",
+  "baseline": "/workspace/oliva-v0121-book-search-control-dist",
+  "baselineVersion": "0.12.1",
+  "baselineCore": "oliva-75717978bae05979",
+  "targetVersion": "0.13.0",
+  "targetCore": "oliva-71cf17993d0bc7fd",
+  "runtimeInputCount": 327,
+  "runtimeDigest": "0b097eb24fc4fded654aef9f1a68ffb76301ed48e3d941ca146046efe3e15611",
+  "runnerSha256": "890643b56d8c27ef6cb033e8d885b7dff3fe82dbbaad7fb8de8731482c4c311e",
+  "requiresRootBaselineFreezeSignal": true,
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "preExecutionHarnessCorrection": "Independent review found baseline verse=35 already opens verse actions; removed a redundant toggle click, and assert the real open panel."
+}

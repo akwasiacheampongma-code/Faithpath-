@@ -2,8 +2,26 @@ import type { AppData } from "../../state/model";
 import { finishStep } from "../../state/model";
 import { pathById } from "../paths/catalog";
 import { canonicalJson } from "../../lib/hash";
-import { captureKey, type CaptureSource } from "./capture-schema";
+import {
+  captureKey,
+  captureSourceSchema,
+  type CaptureSource,
+} from "./capture-schema-current";
+import type { Reference } from "../bible/repository";
 import { newId, type DraftOf } from "./schema";
+export type BibleCaptureSource = Extract<
+  CaptureSource,
+  { type: "verse" | "passage" }
+>;
+
+// Only explicit, complete canonical ranges can become Bible note sources.
+// The single-verse source and its historical key keep their original meaning.
+export function captureSourceForReference(ref: Reference): BibleCaptureSource {
+  return captureSourceSchema.parse({
+    type: ref.from !== undefined && ref.from === ref.to ? "verse" : "passage",
+    ref,
+  }) as BibleCaptureSource;
+}
 export const DAILY_QUESTION =
   "Wofür möchtest du heute einen Moment dankbar sein?";
 export const EXPERIENCE_QUESTION =
@@ -45,13 +63,16 @@ export function captureSourceCurrent(source: CaptureSource) {
   );
 }
 export function captureDraft(source: CaptureSource): DraftOf<"capture"> {
+  // Zod also clones the context: a caller changing its selection or guided
+  // snapshot cannot move words that already belong to this draft.
+  const capturedSource = captureSourceSchema.parse(source);
   return {
     id: newId("draft"),
-    key: captureKey(source),
+    key: captureKey(capturedSource),
     revision: 0,
     type: "capture",
     updatedAt: new Date().toISOString(),
-    values: { entityId: newId("note"), text: "", source },
+    values: { entityId: newId("note"), text: "", source: capturedSource },
   };
 }
 // Called inside the same transaction that removes the draft. Draft text alone
@@ -83,13 +104,13 @@ export function commitCapture(
     kind:
       source.type === "experience"
         ? "action"
-        : source.type === "verse"
+        : source.type === "verse" || source.type === "passage"
           ? "note"
           : "reflection",
     createdAt: at,
     updatedAt: at,
     captureSource: JSON.parse(JSON.stringify(source)),
-    ...(source.type === "verse"
+    ...(source.type === "verse" || source.type === "passage"
       ? { ref: { ...source.ref } }
       : source.type === "guided"
         ? { ref: { ...source.snapshot.ref } }

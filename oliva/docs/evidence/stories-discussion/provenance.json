@@ -1,0 +1,151 @@
+{
+  "snapshot": "a519ce898fa33907b07d5ac7a585595127556183",
+  "checkedAt": "2026-11-16T14:35:00.328564+00:00",
+  "method": "git show and git rev-parse only; no reference materialization or application/test/build execution. Python audit counted existing JSON records, compared values, measured bytes/gzip and checked reference endpoints in existing OLIVA Bible.",
+  "sources": [
+    {
+      "path": "data/faithpath-nachlese-story-flow.json",
+      "gitBlob": "3c74301f18de69a8a147c094cce33b4064acf4e6",
+      "bytes": 705226,
+      "sha256": "330d06b5b4e5c6413d41e8c10e16b1ff0735ac682637ccbe847ffbb4996c5435",
+      "gzipBytesMeasured": 64500,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/faithpath-nachlese-story-flow.json"
+    },
+    {
+      "path": "data/nachlese-stories.json",
+      "gitBlob": "0c32fc904e44b1cebbdeeb92679036b23e287545",
+      "bytes": 277350,
+      "sha256": "5ff19290f042667e6f321e23de16c4c933ce43fc87a070612dd006d1a529afc6",
+      "gzipBytesMeasured": 48834,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/nachlese-stories.json"
+    },
+    {
+      "path": "data/nachlese-questions.json",
+      "gitBlob": "c1bd0aac92e831cfcdbff98caa9f568776a3faa2",
+      "bytes": 3795630,
+      "sha256": "fee7b3b4c549baf9e4cdd90efeece573933e37ebaa7d551860708ffae4e8efd0",
+      "gzipBytesMeasured": 368100,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/nachlese-questions.json"
+    },
+    {
+      "path": "data/stories.json",
+      "gitBlob": "af54187638d6dc72ac4a048537caf5ab64b099b5",
+      "bytes": 1036959,
+      "sha256": "f9fc48a97ecb129eaed0289cf94afa7c747f15afe381fbe6241e67fac5ec04cd",
+      "gzipBytesMeasured": 228988,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/stories.json"
+    },
+    {
+      "path": "data/index.json",
+      "gitBlob": "09d9d1322e2a22afe47b9ba2d10f59fc04e5e9be",
+      "bytes": 3924,
+      "sha256": "8686e9de0c250b61f304d81ff5f9aa8462747ffbc0e8bb91a7d859570d6b822e",
+      "gzipBytesMeasured": 964,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/index.json"
+    },
+    {
+      "path": "data/reference-index.json",
+      "gitBlob": "f54ef2816fc58a4a874c5128ada1861a34327214",
+      "bytes": 171488,
+      "sha256": "794b228f00dfc2df4f265e88e686db3a8916610aef9ca610cbe377d35fd42420",
+      "gzipBytesMeasured": 5085,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/reference-index.json"
+    },
+    {
+      "path": "src/runtime-model.js",
+      "gitBlob": "e74a6c0d8ce2724498c6aa79154a27bc39d1fdde",
+      "bytes": 6056,
+      "sha256": "92019135db47fce281a487773b2badf5a61ca53e67b8dfddf38fe157c98fbf08",
+      "gzipBytesMeasured": 2284,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/src/runtime-model.js"
+    },
+    {
+      "path": "src/story-flow-view.js",
+      "gitBlob": "0d48e5d0ec03a70107b18ac2c4701b9aec760ab8",
+      "bytes": 3480,
+      "sha256": "9014cfc6e3f909868da716980d7e971e20284fd82791cfa9904c8e8cff6d5e1a",
+      "gzipBytesMeasured": 1535,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/src/story-flow-view.js"
+    },
+    {
+      "path": "src/discover-model.js",
+      "gitBlob": "d57e40b948f9dededcef4386ba4a237821f7fbe8",
+      "bytes": 1403,
+      "sha256": "4e33705cc92560194095fa998fccf2d966fe86d05336474c1397173f0e441eb2",
+      "gzipBytesMeasured": 745,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/src/discover-model.js"
+    },
+    {
+      "path": "src/discover-view.js",
+      "gitBlob": "a3e43c714c24f9cfb1e78875c67c0603c5019631",
+      "bytes": 4640,
+      "sha256": "4e78cfafda8d2ab211a951e899afcab9912a321a493fc166e8c2e8bf429e3610",
+      "gzipBytesMeasured": 1892,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/src/discover-view.js"
+    },
+    {
+      "path": "src/app.js",
+      "gitBlob": "d10cffc1b9e3fb93ad5e4ba8903c5c155199b1b4",
+      "bytes": 113640,
+      "sha256": "56e494f2e84c18d74e970578217467feecc5670443c558a905af537f0be17771",
+      "gzipBytesMeasured": 35335,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/src/app.js"
+    },
+    {
+      "path": "src/app-router.js",
+      "gitBlob": "b01b4cb408a2b13c5d221f845d07a21006df31ab",
+      "bytes": 6427,
+      "sha256": "fcd07cdccd2c4ad038affee4c1e1ee7e8104645274a3e4ef1a15e5e12a28ea52",
+      "gzipBytesMeasured": 2350,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/src/app-router.js"
+    },
+    {
+      "path": "docs/FAITHPATH_NACHLESE_DATA_MODEL.md",
+      "gitBlob": "d740833e83c7bd12c61ba6d27ed5cf6023b8de86",
+      "bytes": 3727,
+      "sha256": "a2726552f24b2724a583c3feeee0af5474510530b0160ff104fd04463105c619",
+      "gzipBytesMeasured": 1860,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/docs/FAITHPATH_NACHLESE_DATA_MODEL.md"
+    },
+    {
+      "path": "docs/NACHLESE_MULTIPLE_CHOICE_REPORT_2026-10-16.md",
+      "gitBlob": "264e7f7255a50f8010eac9b5975c1de0ccf8897f",
+      "bytes": 15193,
+      "sha256": "c5ff4fc840eb87c3c616d550ba7bb23586eab075b3e125468dccc5f0156a5ba0",
+      "gzipBytesMeasured": 6609,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/docs/NACHLESE_MULTIPLE_CHOICE_REPORT_2026-10-16.md"
+    },
+    {
+      "path": "reports/nachlese-editorial-56/manifest.json",
+      "gitBlob": "0a5b76c54b69cde22dd8c821f06892f26c22db2d",
+      "bytes": 18058,
+      "sha256": "a7493ec9d90b04ad7eb924143477cfeb90db5bd00c7bd5b1928acfc01553f0cc",
+      "gzipBytesMeasured": 8239,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/reports/nachlese-editorial-56/manifest.json"
+    },
+    {
+      "path": "reports/nachlese-editorial-56/ABSCHLUSSBERICHT.md",
+      "gitBlob": "20809120e94b212756307aa175f91b341a96183f",
+      "bytes": 15197,
+      "sha256": "23aa3eb50b27524bd879e530c42f4a0e4227a20f1091bfc31234d80a56bbafb7",
+      "gzipBytesMeasured": 6712,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/reports/nachlese-editorial-56/ABSCHLUSSBERICHT.md"
+    },
+    {
+      "path": "data/bibles/OTB-LICENSE.txt",
+      "gitBlob": "48e4ac12e632a17d0f72c4f95637ee995ff72c45",
+      "bytes": 342,
+      "sha256": "2d0cd3c05745a500271c180086c32ca540b6d200fb018c58ed0516e734378192",
+      "gzipBytesMeasured": 259,
+      "sourceUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/a519ce898fa33907b07d5ac7a585595127556183/data/bibles/OTB-LICENSE.txt"
+    }
+  ],
+  "existingOlivaBible": {
+    "path": "src/data/bible.json",
+    "bytes": 4652592,
+    "sha256": "6dd74b74fa67033976536939521df6417ab9c41579fee8c6cbeffd94016e6ce8"
+  },
+  "original390MaterializedFilesStillMatch": true,
+  "noRuntimeImplementation": true,
+  "noImagesGenerated": true
+}

@@ -1,0 +1,11 @@
+Working directory: /workspace/faithpath-next
+Date: 2026-11-15 UTC
+Command: npm run typecheck
+Exit code: 2
+
+> oliva-faith-companion@0.12.0 typecheck
+> tsc --noEmit
+
+src/features/bible/SelectionTools.tsx(12,29): error TS2307: Cannot find module './clipboard/CopyPassage' or its corresponding type declarations.
+src/features/bible/VerseActions.tsx(8,29): error TS2307: Cannot find module './clipboard/CopyPassage' or its corresponding type declarations.
+tests/e2e/invitations.spec.ts(27,5): error TS2322: Type '8' is not assignable to type '9'.

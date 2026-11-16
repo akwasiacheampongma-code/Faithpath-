@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { referenceSchema } from "../bible/schema";
 import { originSchema } from "../imports/schema";
-import { captureValuesSchema } from "./capture-schema";
+import { captureValuesSchema } from "./capture-schema-current";
 
 const id = z.string().min(1).max(100),
   date = z.string().datetime();

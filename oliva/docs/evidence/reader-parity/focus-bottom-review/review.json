@@ -1,0 +1,312 @@
+{
+  "checkedAt": "2026-11-16T09:35:55.217289+00:00",
+  "sourceBuild": "oliva-71cf17993d0bc7fd",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 327,
+    "sha256": "0b097eb24fc4fded654aef9f1a68ffb76301ed48e3d941ca146046efe3e15611"
+  },
+  "runtimeUnchanged": true,
+  "fullRunBefore": {
+    "passed": 125,
+    "failed": 1,
+    "test": "reader-focus.spec.ts:112",
+    "error": "actual scrollTop ended202px before maximum after a direct DOM scrollIntoView; screenshot showsverse37top/verse41partiallybelow"
+  },
+  "originalUnchangedIsolated": {
+    "passed": 1,
+    "durationSeconds": 12.1,
+    "runSeconds": 14.8
+  },
+  "programmaticDiagnostic": {
+    "cases": 6,
+    "atBottom": 5,
+    "lostDirectDomJump": 1,
+    "normalCpuDark": {
+      "reachedMaximum": 6814,
+      "subsequentRealRnScrollToY": 6611.546875,
+      "remainingPixels": 202
+    },
+    "cause": "Real queued canonical position restoration after focus reflow ran after direct native DOM scrollIntoView and overwrote its offset."
+  },
+  "realWheelDiagnostic": {
+    "cases": 4,
+    "atBottom": 4,
+    "input": "one browser wheel delta9000; actualisTrusted observed",
+    "cpuRates": [
+      1,
+      4
+    ],
+    "limitations": "In these observations restoration preceded wheel dispatch, so not a proof of cancellation for every timing."
+  },
+  "realKeyboardDiagnostic": {
+    "cases": 8,
+    "atBottom": 8,
+    "inputs": [
+      "trusted Tab then one End",
+      "trusted Tab then one Control+End"
+    ],
+    "cpuRates": [
+      1,
+      4
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "limitations": "Browser CSSviewports and Chrome CPUthrottle only; not physicalmobile/keyboard testing. Native animation reaches bottom despite measured queued restores."
+  },
+  "runtimeFixRequiredByEvidence": false,
+  "testChangeStatus": "Only bottom() now uses real fixed-exit focus, trusted Tab, actual focused-descendant assertion and trusted End. All existing exact bottom/toolbar-hit/canonical text/data/Axe assertions remain. No runtime fix.",
+  "method": "Native API observer delegates exactarguments/return to originalRN DOMscrollTo; real browser rAF,scroll,wheel,key events and geometry; no forged offsets,worker replies,source edits or sleep-based passing conditions.",
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 2943,
+      "sha256": "f0cbce07fa9bbe723382760e57803f6334136ca789eebc6a05b705777677fdc8"
+    },
+    {
+      "path": "before-original/e2e-results.json",
+      "bytes": 399383,
+      "sha256": "c80a263e989cdef16a52718177b904a7d154d0b94e82cdea427841af9f527008"
+    },
+    {
+      "path": "before-original/e2e.txt",
+      "bytes": 22519,
+      "sha256": "fa0b1147d90ac743cf30768c56ea32b05c58640c81234629e4b253116b14c7d3"
+    },
+    {
+      "path": "before-original/error-context.md",
+      "bytes": 21487,
+      "sha256": "e9869113f8e0f506c8490f63b942381bcba28a174a6b21485dcb655c9e8fc838"
+    },
+    {
+      "path": "before-original/test-failed-1.png",
+      "bytes": 70465,
+      "sha256": "99b7bb4e708ddba3e7f473fb7e7ef30424da5ddec854a207f9dbf021c9284c69"
+    },
+    {
+      "path": "diagnostic-rate-1-dark.png",
+      "bytes": 70465,
+      "sha256": "99b7bb4e708ddba3e7f473fb7e7ef30424da5ddec854a207f9dbf021c9284c69"
+    },
+    {
+      "path": "diagnostic-rate-1-light.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "diagnostic-rate-4-dark.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "diagnostic-rate-4-light.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "diagnostic-rate-6-dark.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "diagnostic-rate-6-light.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "oliva-focus-real-key-diagnostic.mjs",
+      "bytes": 5398,
+      "sha256": "b556239bad332bb1fbcc8c0fafd01a925397a237ba4e15049c66d2c28377375c"
+    },
+    {
+      "path": "oliva-focus-real-wheel-diagnostic.mjs",
+      "bytes": 5107,
+      "sha256": "6654c6c9ce027532a45e37eb5db10fa01247df2d78293430c0a7b0b11a27b58d"
+    },
+    {
+      "path": "oliva-focus-scroll-diagnostic.mjs",
+      "bytes": 4946,
+      "sha256": "a46a0aa9c6aae69da936f8b174bbff4e75bbf611b068d4aeaf18e9a1e8837e08"
+    },
+    {
+      "path": "original-isolated/reader-focus/focus-toolbar-and-accessibility.json",
+      "bytes": 1682,
+      "sha256": "a79f1df65f3c3b405c0ef412d5217da990a58f12b203aa82b56855e0a69e1446"
+    },
+    {
+      "path": "original-isolated/reader-focus/screens/focus-320-dark-bottom.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "original-isolated/reader-focus/screens/focus-320-light-bottom.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "original-isolated-artifacts/.last-run.json",
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "path": "original-isolated-results.json",
+      "bytes": 4403,
+      "sha256": "1a387c7257928f91d759ded13681e354a3ea4ab36d468344f3f5262b21b18b36"
+    },
+    {
+      "path": "original-isolated.txt",
+      "bytes": 792,
+      "sha256": "d43a1a44cda462693e0fe1aa6eecab8e7545520c2a5edb7d7d2c644485935c60"
+    },
+    {
+      "path": "real-key-Control+End-rate-1-dark.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "real-key-Control+End-rate-1-light.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "real-key-Control+End-rate-4-dark.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "real-key-Control+End-rate-4-light.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "real-key-End-rate-1-dark.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "real-key-End-rate-1-light.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "real-key-End-rate-4-dark.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "real-key-End-rate-4-light.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "real-key-timeline.json",
+      "bytes": 152762,
+      "sha256": "fd2179cdc0ed1def28230d88a1fc228d6b2f345b9655c5fdaa7b208fea958b20"
+    },
+    {
+      "path": "real-key-timeline.txt",
+      "bytes": 1590,
+      "sha256": "b7eb4a9aaf0c86489e78c8e38e2336a188995ccd30598e4efab04b0be72a18a6"
+    },
+    {
+      "path": "real-wheel-rate-1-dark.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "real-wheel-rate-1-light.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "real-wheel-rate-4-dark.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "real-wheel-rate-4-light.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "real-wheel-timeline.json",
+      "bytes": 66623,
+      "sha256": "571056284ffdab8456cf1a90793af878b6a62be6539c68e7aa0a11614799c204"
+    },
+    {
+      "path": "real-wheel-timeline.txt",
+      "bytes": 710,
+      "sha256": "812263613f5ebdfdf225b4f8c7a589136671bef961ff650052aa6790527e58c2"
+    },
+    {
+      "path": "scroll-timeline.json",
+      "bytes": 97593,
+      "sha256": "6a4cded3d8fa18974506def1adea5de11e79087b81baf752f0f9577c9a4f5237"
+    },
+    {
+      "path": "scroll-timeline.txt",
+      "bytes": 1098,
+      "sha256": "8a4e652b57c9e0b863e28351ef09fd2f5cc6dd5fc4c1228bb5b72e6caf05cee3"
+    },
+    {
+      "path": "targeted/reader-focus/escape-dismiss-priority.json",
+      "bytes": 874,
+      "sha256": "c7050b216dea5a5d4604c290dcf4189d6318e6cfac8fba198371f61db3141a78"
+    },
+    {
+      "path": "targeted/reader-focus/focus-draft-unmount.json",
+      "bytes": 1240,
+      "sha256": "a1c9df5adf958b43bce6b526a12e0f2ae318efcc98269e4097467d9155c61639"
+    },
+    {
+      "path": "targeted/reader-focus/focus-toolbar-and-accessibility.json",
+      "bytes": 1682,
+      "sha256": "48d3cee1859bbf60da06fb02b318e5ea946147a967beed412b5ea83cc16118ec"
+    },
+    {
+      "path": "targeted/reader-focus/screens/focus-320-dark-bottom.png",
+      "bytes": 62926,
+      "sha256": "81fa0bf1d7d941d92f9cea4cda806a70972748e704c030743aeb450e0ae4bb55"
+    },
+    {
+      "path": "targeted/reader-focus/screens/focus-320-light-bottom.png",
+      "bytes": 62558,
+      "sha256": "f8236514bfc4d4aa010a7d411e2e3ff427ca0be3798f5dbe300d758f134dacc3"
+    },
+    {
+      "path": "targeted-artifacts/.last-run.json",
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "path": "targeted-results.json",
+      "bytes": 6522,
+      "sha256": "529aa21dedf91344f1082c52f1475ca1a23905e77e8c77d0fed6cd673392c4a9"
+    },
+    {
+      "path": "targeted.txt",
+      "bytes": 1143,
+      "sha256": "29b708b7051ca69650a3bc432cfaf4ed5c8d527231a001f46360767557bd5bc3"
+    },
+    {
+      "path": "test-only-change.diff",
+      "bytes": 1178,
+      "sha256": "989e7c559fa2dd30dd7f6a765a61ab0af94d926b3760812f64cde463f11bd12e"
+    }
+  ],
+  "finalCheckedAt": "2026-11-16T09:37:57.032274+00:00",
+  "runtimeUnchangedAfterTargeted": true,
+  "testFileSha256": "975fe187fc510baea9a8d5a2fb72fbd885bbad9dd97756f1e0eac84633f9d1df",
+  "targeted": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "allResultsSingleAttempt": true,
+    "durationSeconds": 21.127569,
+    "evidence": "targeted-results.json"
+  },
+  "fullSuiteAfterTestChange": "Root will perform the complete126 separately; not run or claimed by this agent."
+}

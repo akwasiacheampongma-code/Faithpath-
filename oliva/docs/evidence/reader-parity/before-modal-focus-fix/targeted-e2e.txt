@@ -1,0 +1,235 @@
+[WebServer] (node:5898) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 16 tests using 1 worker
+
+(node:5906) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/reader-copy.spec.ts:140:1 › ein einzelner Vers wird per echtem Browser-Clipboard unverändert mit LF und Übersetzungsname kopiert (4.4s)
+  ✓   2 tests/e2e/reader-copy.spec.ts:163:1 › additive Auswahl kopiert genau 35–36 und danach 35–37 ohne UI-Einordnung oder persönliche Daten (5.6s)
+  ✓   3 tests/e2e/reader-copy.spec.ts:193:1 › eine abgelehnte Clipboard-API zeigt denselben schreibgeschützten Text ohne falsche Erfolgsmeldung (4.5s)
+  ✓   4 tests/e2e/reader-flow.spec.ts:112:1 › echte Inlineabsätze erhalten jeden Johannesvers und umbrechen über Versgrenzen statt in Einzelblöcken (4.6s)
+  ✓   5 tests/e2e/reader-flow.spec.ts:175:1 › eine tatsächlich geteilte Psalmzeile speichert nach Scrollen ihren ersten sichtbaren Vers 119 und erfindet keinen Verssprung zu 120 (4.5s)
+  ✓   6 tests/e2e/reader-flow.spec.ts:241:1 › ein ausdrücklicher Verslink bleibt nach breitem Reflow, größerer Schrift, Zeilenabstand und Neustart genau Johannes 6,35 (10.0s)
+  ✓   7 tests/e2e/reader-flow.spec.ts:274:1 › Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versnotizentwurf über Neustart ohne Leseabschluss (23.1s)
+  ✓   8 tests/e2e/reader-flow.spec.ts:378:1 › Fließtext und Einzelverse behalten beim Umschalten denselben Versanker und denselben Notizquelltext (21.4s)
+  ✓   9 tests/e2e/reader-flow.spec.ts:431:1 › der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunkel sowie auf großem Display lesbar und zugänglich (42.0s)
+  ✓  10 tests/e2e/reader-flow.spec.ts:494:1 › die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, markieren acht Fokusverse und bestätigen ausschließlich den Abschnitt (22.6s)
+  ✘  11 tests/e2e/reader-selection.spec.ts:143:1 › ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel (21.4s)
+(node:7834) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  12 tests/e2e/reader-selection.spec.ts:192:1 › eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz (23.4s)
+(node:8212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  13 tests/e2e/reader-selection.spec.ts:290:1 › 35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her (31.0s)
+(node:8628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  14 tests/e2e/reader-selection.spec.ts:397:1 › ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern (21.4s)
+(node:9000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  15 tests/e2e/reader-selection.spec.ts:434:3 › Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück (24.1s)
+(node:9319) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  16 tests/e2e/reader-selection.spec.ts:434:3 › Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück (22.1s)
+
+
+  1) tests/e2e/reader-selection.spec.ts:143:1 › ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 2
+
+      Object {
+        "book": "JHN",
+        "chapter": 6,
+    +   "from": 35,
+    +   "to": 37,
+      }
+
+    Call Log:
+    - Timeout 15000ms exceeded while waiting on the predicate
+
+      63 |   await expect
+      64 |     .poll(async () => (await localData(page))?.reading)
+    > 65 |     .toMatchObject({ book: "JHN", chapter: 6 });
+         |      ^
+      66 | }
+      67 | async function exactWholeChapter(page: Page) {
+      68 |   expect(fullChapter).toHaveLength(71);
+        at ready (/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:65:6)
+        at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:147:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reader-selection-ein-Teila-32a56-pewechsel-das-ganze-Kapitel/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reader-selection-ein-Teila-32a56-pewechsel-das-ganze-Kapitel/error-context.md
+
+  2) tests/e2e/reader-selection.spec.ts:192:1 › eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz 
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByRole('button', { name: /^Vers 37:/ }).visible()
+    Expected: focused
+    Received: inactive
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toBeFocused" getByRole('button', { name: /^Vers 37:/ }).visible() with timeout 15000ms
+      - waiting for getByRole('button', { name: /^Vers 37:/ }).visible()
+        31 × locator resolved to <span tabindex="0" role="button" data-verse="37" aria-pressed="true" data-testid="flow-verse-37" aria-label="Vers 37: Alles, was mir mein Vater gibt, das kommt zu mir; und wer zu mir kommt, den werde ich nicht hinausstoßen.">…</span>
+           - unexpected value "inactive"
+
+
+      225 |   await page.keyboard.press("Escape");
+      226 |   await expect(tools(page)).toHaveCount(0);
+    > 227 |   await expect(verse(page, 37)).toBeFocused();
+          |                                 ^
+      228 |
+      229 |   await verse(page, 36).click();
+      230 |   await selected(page, [35, 36, 37]);
+        at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:227:33
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reader-selection-eine-addi-8afab-ine-exakt-zugeordnete-Notiz/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reader-selection-eine-addi-8afab-ine-exakt-zugeordnete-Notiz/error-context.md
+
+  3) tests/e2e/reader-selection.spec.ts:290:1 › 35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 2
+
+      Object {
+        "book": "JHN",
+        "chapter": 6,
+    +   "from": 35,
+    +   "to": 37,
+      }
+
+    Call Log:
+    - Timeout 15000ms exceeded while waiting on the predicate
+
+      63 |   await expect
+      64 |     .poll(async () => (await localData(page))?.reading)
+    > 65 |     .toMatchObject({ book: "JHN", chapter: 6 });
+         |      ^
+      66 | }
+      67 | async function exactWholeChapter(page: Page) {
+      68 |   expect(fullChapter).toHaveLength(71);
+        at ready (/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:65:6)
+        at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:333:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reader-selection-35–36-und-9799f-tändigen-Bereich-wieder-her/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reader-selection-35–36-und-9799f-tändigen-Bereich-wieder-her/error-context.md
+
+  4) tests/e2e/reader-selection.spec.ts:397:1 › ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 2
+
+      Object {
+        "book": "JHN",
+        "chapter": 6,
+    +   "from": 35,
+    +   "to": 37,
+      }
+
+    Call Log:
+    - Timeout 15000ms exceeded while waiting on the predicate
+
+      63 |   await expect
+      64 |     .poll(async () => (await localData(page))?.reading)
+    > 65 |     .toMatchObject({ book: "JHN", chapter: 6 });
+         |      ^
+      66 | }
+      67 | async function exactWholeChapter(page: Page) {
+      68 |   expect(fullChapter).toHaveLength(71);
+        at ready (/workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:65:6)
+        at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:401:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reader-selection-ein-echte-c7ce0-en-Lesebereich-zu-erweitern/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reader-selection-ein-echte-c7ce0-en-Lesebereich-zu-erweitern/error-context.md
+
+  5) tests/e2e/reader-selection.spec.ts:434:3 › Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück 
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByRole('button', { name: /^Vers 36:/ }).visible()
+    Expected: focused
+    Received: inactive
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toBeFocused" getByRole('button', { name: /^Vers 36:/ }).visible() with timeout 15000ms
+      - waiting for getByRole('button', { name: /^Vers 36:/ }).visible()
+        32 × locator resolved to <span tabindex="0" role="button" data-verse="36" aria-pressed="true" data-testid="flow-verse-36" aria-label="Vers 36: Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.">…</span>
+           - unexpected value "inactive"
+
+
+      458 |     await page.keyboard.press("Escape");
+      459 |     await expect(tools(page)).toHaveCount(0);
+    > 460 |     await expect(verse(page, 36)).toBeFocused();
+          |                                   ^
+      461 |     for (const n of [35, 36, 37])
+      462 |       await expect(verse(page, n)).toHaveAttribute("aria-pressed", "true");
+      463 |     await page.keyboard.press("Escape");
+        at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:460:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reader-selection-Fließtext-2c833-inzugefügten-Vers-36-zurück/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reader-selection-Fließtext-2c833-inzugefügten-Vers-36-zurück/error-context.md
+
+  6) tests/e2e/reader-selection.spec.ts:434:3 › Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück 
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByRole('button', { name: /^Vers 36:/ }).visible()
+    Expected: focused
+    Received: inactive
+    Timeout:  15000ms
+
+    Call log:
+      - Expect "toBeFocused" getByRole('button', { name: /^Vers 36:/ }).visible() with timeout 15000ms
+      - waiting for getByRole('button', { name: /^Vers 36:/ }).visible()
+        32 × locator resolved to <button tabindex="0" role="button" type="button" aria-pressed="true" class="css-g5y9jx r-1loqt21 r-1otgn73" aria-label="Vers 36: Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.">…</button>
+           - unexpected value "inactive"
+
+
+      458 |     await page.keyboard.press("Escape");
+      459 |     await expect(tools(page)).toHaveCount(0);
+    > 460 |     await expect(verse(page, 36)).toBeFocused();
+          |                                   ^
+      461 |     for (const n of [35, 36, 37])
+      462 |       await expect(verse(page, n)).toHaveAttribute("aria-pressed", "true");
+      463 |     await page.keyboard.press("Escape");
+        at /workspace/faithpath-next/tests/e2e/reader-selection.spec.ts:460:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reader-selection-Einzelver-d1264-inzugefügten-Vers-36-zurück/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reader-selection-Einzelver-d1264-inzugefügten-Vers-36-zurück/error-context.md
+
+  6 failed
+    tests/e2e/reader-selection.spec.ts:143:1 › ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel 
+    tests/e2e/reader-selection.spec.ts:192:1 › eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz 
+    tests/e2e/reader-selection.spec.ts:290:1 › 35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her 
+    tests/e2e/reader-selection.spec.ts:397:1 › ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern 
+    tests/e2e/reader-selection.spec.ts:434:3 › Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück 
+    tests/e2e/reader-selection.spec.ts:434:3 › Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück 
+  10 passed (5.2m)

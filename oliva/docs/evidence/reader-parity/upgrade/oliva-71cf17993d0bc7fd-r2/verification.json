@@ -1,0 +1,106 @@
+{
+  "checkedAt": "2026-11-16T09:29:36.415087+00:00",
+  "passed": true,
+  "exitCode": 0,
+  "baselineVersion": "0.12.1",
+  "baseline": "oliva-75717978bae05979",
+  "targetVersion": "0.13.0",
+  "target": "oliva-71cf17993d0bc7fd",
+  "realSameOriginWorkerActivation": true,
+  "allFourRawV8RecordsExactBeforeExplicitAction": true,
+  "threeNonMainRecordsExactThroughout": 3,
+  "logicalDataComparator": "Strict keys/types/values and ordered arrays; JSON object insertion order ignored after explicit canonical writes. Raw before-action and non-main comparisons remain exact serialized values.",
+  "canonicalChapterVersesDisplayed": 71,
+  "logicalFocus": {
+    "book": "JHN",
+    "chapter": 6,
+    "from": 35,
+    "to": 37
+  },
+  "gapDidNotFillOrWrite": true,
+  "copyFallbackExact": true,
+  "firstExplicitRangeDraftWritesV9": true,
+  "oldSingleVerseAndJournalDraftsExact": true,
+  "rangeSources": {
+    "savedNote": {
+      "book": "JHN",
+      "chapter": 6,
+      "from": 35,
+      "to": 36
+    },
+    "independentDraft": {
+      "book": "JHN",
+      "chapter": 6,
+      "from": 35,
+      "to": 37
+    }
+  },
+  "outsideFocusAnchor": {
+    "verse": 60,
+    "logicalRef": {
+      "book": "JHN",
+      "chapter": 6,
+      "from": 35,
+      "to": 37
+    },
+    "widths": [
+      390,
+      1440,
+      320
+    ],
+    "offlineReload": true
+  },
+  "offlineA51Stages": 7,
+  "readGrowthAndNtFieldsExactThroughout": true,
+  "actualV9DownloadAndReadonlyRestorePreview": true,
+  "restoreApplied": false,
+  "exportSha256": "4f28583c678717ccf09fae12771aa25c52b8a5af87b78badf4120ac3dd1870a6",
+  "runtimeInputsBeforeAfterExact": {
+    "fileCount": 327,
+    "sha256": "0b097eb24fc4fded654aef9f1a68ffb76301ed48e3d941ca146046efe3e15611",
+    "allFileHashesMatch": true
+  },
+  "builtHtmlAndWorkersUnchanged": true,
+  "runnerSha256": "7f27c1bfa529836ae40d35ac1771ace359c448a19ccb05be4eb351e78d6700cb",
+  "reportSha256": "6b969c75eef75c318f3d3e36c9bff6790477e41a6bdfb8d515e221c865abe389",
+  "executionLogSha256": "1e2ae25d8cf16f1fe785fc8df4c5727c3f6873160755826d50c7c7f4607e11b8",
+  "screenshots": [
+    {
+      "name": "offline-committed-range-note.png",
+      "bytes": 45365,
+      "sha256": "a76987d5436effe54a55084933f7b2376995b93714ec28d0555cfcf3d7ff04be"
+    },
+    {
+      "name": "offline-context-anchor60-after-reflow.png",
+      "bytes": 73649,
+      "sha256": "7a852025be8850021c068a9d79bc831475725564864809c9f5eb1e17651ecf52"
+    },
+    {
+      "name": "offline-exact-copy-fallback.png",
+      "bytes": 49554,
+      "sha256": "a2b5e40232145c2f0bd803492884bc6b9db884ee464e8494d79c463b82b0191a"
+    },
+    {
+      "name": "offline-full-chapter-before-v9-write.png",
+      "bytes": 89345,
+      "sha256": "f9fa3c9bcdb1bfb66a7335b8372f293ccd88ddeb422a8b5d781631ac67b6c554"
+    },
+    {
+      "name": "offline-seven-a51-stages.png",
+      "bytes": 113529,
+      "sha256": "530d65d34851026b3b47ede339c5ff7115529a784071fa77208f730e540125dc"
+    },
+    {
+      "name": "offline-v9-export-restore-preview.png",
+      "bytes": 47484,
+      "sha256": "83d0826925e80a31daea169be1733f06c38ac3c0b61333c43a27b0ff615f5883"
+    }
+  ],
+  "browser": "155.0.8059.79",
+  "localChromiumAutomation": true,
+  "physicalDevice": false,
+  "simulator": false,
+  "hostedBrowserQa": false,
+  "originalFailurePreserved": "../oliva-71cf17993d0bc7fd/offline-upgrade.json",
+  "independentLogicalComparisonReview": "../logical-comparison-review.json"
+}

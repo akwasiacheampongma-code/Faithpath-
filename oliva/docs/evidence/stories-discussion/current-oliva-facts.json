@@ -1,0 +1,225 @@
+{
+  "checked_at": "2026-11-16T14:31:56.860457+00:00",
+  "scope": "Read-only source/metadata/byte inspection and existing screenshot viewing; discussion only. No app execution, new browser session, build, test, image generation or runtime implementation.",
+  "last_parent_confirmed_live_at_assignment": "0.12.1; Reader0.13 candidate under final QA, release status not independently queried here",
+  "sources": [
+    {
+      "path": "src/features/bible/scenes.ts",
+      "bytes": 6205,
+      "sha256": "9bcb5d08e00db7228ed0db976880754affd8819f06828cb439ddadd816236a23"
+    },
+    {
+      "path": "src/features/bible/StoryCard.tsx",
+      "bytes": 3678,
+      "sha256": "d1c0bf6e93ce9ae0ab295c734b505e3681e54447a6db9ea578173ba518a6d12a"
+    },
+    {
+      "path": "src/features/bible/StoryArtwork.tsx",
+      "bytes": 8638,
+      "sha256": "688579485c8ab334290bc3d88ad7e29e4c1a6ae0e95f2cef7fe363f1d0344b2d"
+    },
+    {
+      "path": "src/design-system/theme.ts",
+      "bytes": 1173,
+      "sha256": "4d1b0281ab68195aef6aa02df188fc08fe0854a11189782e58f7d28dce368474"
+    },
+    {
+      "path": "src/features/paths/checks.ts",
+      "bytes": 4336,
+      "sha256": "6719cea69973052aec0fe97bb5140add0ce06eba602b40c52e1411c907548098"
+    },
+    {
+      "path": "src/features/paths/TextCheck.tsx",
+      "bytes": 3369,
+      "sha256": "9cba9a6f976ff47c6a3600ed243cbd48255dcf0f75bf99da968a8f86067ae7e9"
+    },
+    {
+      "path": "src/features/quiz/model.ts",
+      "bytes": 10421,
+      "sha256": "c0acd8b5d7c7c8dca084ce2d6cfa549e5ce846e54c92a398b6e1372a15138aed"
+    },
+    {
+      "path": "src/features/swords/model.ts",
+      "bytes": 2386,
+      "sha256": "cd9a04ebcde347ade38a3caa3276ec79187f59e83ec66160f277b6fd21815431"
+    },
+    {
+      "path": "src/features/garden/model.ts",
+      "bytes": 1322,
+      "sha256": "01b0abcec955ed062f53226f8db0fce56d0a120c696164ebd2daf6f63b6bf575"
+    },
+    {
+      "path": "art/manifest.json",
+      "bytes": 14796,
+      "sha256": "2f5619b4bbee5f0adb1d084dfb34f59a660498f5d583f6bd5415fce85c2d76eb"
+    },
+    {
+      "path": "art/swords/runtime-index.json",
+      "bytes": 874,
+      "sha256": "0b663faacc1c4c53f4f679b8a048fef549e08f1e8b0b4cc989f0adff8ef610af"
+    },
+    {
+      "path": "scripts/offline.mjs",
+      "bytes": 4097,
+      "sha256": "d6bc6868f0dd04f2202822b9b3304c5b590cb1ddd923db588e94d3b458d7daf3"
+    },
+    {
+      "path": "docs/15-stories-and-offline-v08.md",
+      "bytes": 12789,
+      "sha256": "8646570f6cf970ca6b2807e441052899a6bd6eaf9f459e895782d95a08254322"
+    },
+    {
+      "path": "docs/16-current-plan-and-parity.md",
+      "bytes": 12541,
+      "sha256": "9377706376a85f27891a38639709cea94789236a740eaadb95cd72e2878fb529"
+    },
+    {
+      "path": "docs/04-art-direction-and-rights.md",
+      "bytes": 9503,
+      "sha256": "bcb8100bb1c01d353455e083a5bf5e714b8952ae90fc17051123b3795b691e8c"
+    }
+  ],
+  "story_pilots": [
+    {
+      "id": "noah",
+      "title": "Ein Blatt und ein neuer Anfang.",
+      "book": "GEN",
+      "chapter": 8,
+      "from": 6,
+      "to": 12,
+      "minutes": 3
+    },
+    {
+      "id": "abraham",
+      "title": "Unter einem weiten Himmel.",
+      "book": "GEN",
+      "chapter": 15,
+      "from": 1,
+      "to": 6,
+      "minutes": 3
+    },
+    {
+      "id": "david-before-goliath",
+      "title": "Vertrauen vor dem ersten Schritt.",
+      "book": "1SA",
+      "chapter": 17,
+      "from": 38,
+      "to": 45,
+      "minutes": 3
+    },
+    {
+      "id": "nativity",
+      "title": "Ein kleiner Anfang in Bethlehem.",
+      "book": "LUK",
+      "chapter": 2,
+      "from": 1,
+      "to": 20,
+      "minutes": 5
+    },
+    {
+      "id": "easter-dawn",
+      "title": "Ein Morgen voller Fragen.",
+      "book": "MRK",
+      "chapter": 16,
+      "from": 1,
+      "to": 8,
+      "minutes": 4
+    }
+  ],
+  "story_library": {
+    "entry": "Bibel → Eine Geschichte entdecken",
+    "current_count": 5,
+    "renderer": "StoryLibrary eagerly maps SCENES; mobile full-width cards, desktop two columns",
+    "card_ratio": "8:5",
+    "reader_context_ratio": "3:2",
+    "opens": "Shared Bible reader with exact book/chapter/from/to, mode deep",
+    "context": "Original Bible text, AI-assisted editorial draft and artistic illustration visibly separate",
+    "question_transfer_436_2479_implemented": false
+  },
+  "other_learning": {
+    "curated_optional_text_checks": 9,
+    "curated_check_answers_durably_recorded": false,
+    "nt_original_chapter_questions": 1300,
+    "nt_chapters": 260,
+    "nt_books": 27,
+    "nt_model_requires_exactly_five_questions_per_chapter": true,
+    "nt_catalog_is_distinct_from_future_story_question_pool": true
+  },
+  "art": {
+    "manifest_assets": 8,
+    "runtime_variants": 21,
+    "all_runtime_variant_bytes": 2821948,
+    "all_master_bytes": 23503350,
+    "five_story_scene_variant_bytes": 1920840,
+    "five_story_scene_mean_variant_bytes": 384168.0,
+    "all_public_release_flags": [
+      "not approved",
+      "not approved",
+      "not approved",
+      "not approved",
+      "not approved",
+      "not approved",
+      "not approved",
+      "not approved"
+    ],
+    "current_story_images_have_no_independent_public_release_approval": true,
+    "licensing": "Provider terms recorded; specialist historical/theological and public-distribution review pending",
+    "runtime_masters_included": false
+  },
+  "offline": {
+    "current_worker": "Precache all files under dist; previous build cache retained for old open clients",
+    "current_dist_file_bytes": 17423016,
+    "projection_436_all_three_scene_sizes_bytes": 167497248.0,
+    "projection_by_size": {
+      "640": {
+        "current_five_scenes_bytes": 282778,
+        "mean_per_scene_bytes": 56555.6,
+        "hypothetical_436_bytes": 24658241.599999998
+      },
+      "1024": {
+        "current_five_scenes_bytes": 671098,
+        "mean_per_scene_bytes": 134219.6,
+        "hypothetical_436_bytes": 58519745.6
+      },
+      "1280": {
+        "current_five_scenes_bytes": 966964,
+        "mean_per_scene_bytes": 193392.8,
+        "hypothetical_436_bytes": 84319260.8
+      }
+    },
+    "projection_caveat": "Arithmetic extrapolation from five existing 640/1024/1280 scene variants, not436 generated images or a measured delivery budget; excludes core, user data, browser overhead and old-build cache."
+  },
+  "design": {
+    "light_bg": "#f8f7f2",
+    "dark_bg": "#19251f",
+    "primary_light": "#40583d",
+    "primary_dark": "#c4d0a8",
+    "gold_light": "#806025",
+    "gold_dark": "#dfbd7c",
+    "display_font": "Cormorant",
+    "ui_font": "DMSans",
+    "main_navigation": [
+      "Heute",
+      "Bibel",
+      "Wege",
+      "Mein Garten",
+      "Sammlung"
+    ],
+    "book_swords": 66,
+    "premium_book_sword_illustrations": [
+      "JHN",
+      "ROM"
+    ],
+    "a51_stages": 7,
+    "full_chapter_confirmation_is_separate_from_partial_story_reading": true
+  },
+  "existing_screenshots_inspected": [
+    "docs/evidence/nt-catalog/final-browser/stories/screens/david-library-320-light.png",
+    "docs/evidence/nt-catalog/final-browser/stories/screens/david-library-390-dark.png",
+    "docs/evidence/screens/home-mobile.png"
+  ],
+  "historical_document_caveats": [
+    "docs/04-art-direction-and-rights.md still has seven-master/eighteen-variant and no-old-quiz-transfer wording from earlier phases; current manifest and later NT/story reports supersede these facts.",
+    "docs/02-ux-and-design.md includes early vector-tree wording; actual A51 implementation supersedes it."
+  ]
+}

@@ -1,0 +1,389 @@
+{
+  "baselineVersion": "0.12.1",
+  "baselineBuild": "oliva-75717978bae05979",
+  "targetVersion": "0.13.0",
+  "targetBuild": "oliva-71cf17993d0bc7fd",
+  "baselineHtmlSha256": "ce09707942a30beee75140194fb4175bba225f5541badefe5845994d88109d27",
+  "baselineWorkerSha256": "6ae9788ec3720dd09a594571f93402285a8c75c77495e8c1ae7c4e68e3b88dd7",
+  "targetHtmlSha256": "d617dca1b46363ff248699c1035582314f151d91d05b9405a2d6a93e7863d994",
+  "targetWorkerSha256": "c0fe09611826dcc6af2e59b12c61c09c76df368861ce4e4155c58bee75d5cae9",
+  "syntheticData": true,
+  "syntheticClock": "2027-01-01T12:00:00.000Z",
+  "passed": true,
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "scope": "Local automated Chromium persistent profile and actual same-origin worker update",
+  "comparison": "Exact JSON serialization of all raw IndexedDB values, not physical database-file bytes",
+  "phase": "complete",
+  "phases": [
+    {
+      "name": "baseline-ui-seed",
+      "startedAt": "2026-11-16T09:26:29.363Z"
+    },
+    {
+      "name": "real-worker-update-and-v8-ram-hydration",
+      "startedAt": "2026-11-16T09:26:40.985Z"
+    },
+    {
+      "name": "offline-full-chapter-around-unchanged-partial-scope",
+      "startedAt": "2026-11-16T09:26:46.166Z"
+    },
+    {
+      "name": "gap-protection-and-exact-manual-copy-fallback",
+      "startedAt": "2026-11-16T09:26:49.685Z"
+    },
+    {
+      "name": "first-explicit-range-draft-writes-v9-only-intended-fields",
+      "startedAt": "2026-11-16T09:26:50.431Z"
+    },
+    {
+      "name": "offline-range-draft-recovery-and-commit",
+      "startedAt": "2026-11-16T09:26:51.545Z"
+    },
+    {
+      "name": "outside-focus-anchor-and-real-offline-reboot",
+      "startedAt": "2026-11-16T09:26:53.983Z"
+    },
+    {
+      "name": "offline-existing-nt-journal-and-seven-a51-stages",
+      "startedAt": "2026-11-16T09:26:58.810Z"
+    },
+    {
+      "name": "actual-v9-export-and-readonly-restore-preview",
+      "startedAt": "2026-11-16T09:27:03.852Z"
+    },
+    {
+      "name": "complete",
+      "startedAt": "2026-11-16T09:27:05.565Z"
+    }
+  ],
+  "runtimeInputsBefore": {
+    "fileCount": 327,
+    "sha256": "0b097eb24fc4fded654aef9f1a68ffb76301ed48e3d941ca146046efe3e15611",
+    "allFileHashesMatch": true
+  },
+  "origin": "http://127.0.0.1:40403",
+  "browserVersion": "155.0.8059.79",
+  "beforeRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5687,
+      "json_sha256": "2f565b0bef4b03947edac56580231ccb9de8c3cd9a967ff5cda41a3c8a7dca42"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "beforeWorker": {
+    "expected": "oliva-75717978bae05979",
+    "controller": {
+      "id": "oliva-75717978bae05979",
+      "version": "0.12.1"
+    },
+    "active": {
+      "id": "oliva-75717978bae05979",
+      "version": "0.12.1"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-75717978bae05979"
+    ]
+  },
+  "originalArchiveSha256": "6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+  "afterWorker": {
+    "expected": "oliva-71cf17993d0bc7fd",
+    "controller": {
+      "id": "oliva-71cf17993d0bc7fd",
+      "version": "0.13.0"
+    },
+    "active": {
+      "id": "oliva-71cf17993d0bc7fd",
+      "version": "0.13.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-75717978bae05979",
+      "oliva-71cf17993d0bc7fd"
+    ]
+  },
+  "realWorkerActivation": true,
+  "sameOriginPersistentProfile": true,
+  "displayedCanonicalVerses": 71,
+  "logicalFocus": {
+    "book": "JHN",
+    "chapter": 6,
+    "from": 35,
+    "to": 37
+  },
+  "allFourRawV8RecordsExactBeforeNewActions": true,
+  "noAutomaticChapterCompletion": true,
+  "copyFallbackExact": "Johannes 6,35–36\n35 Jesus aber sprach zu ihnen: Ich bin das Brot des Lebens. Wer zu mir kommt, den wird nicht hungern; und wer an mich glaubt, den wird nimmermehr dürsten.\n36 Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\nLutherbibel 1912",
+  "gapDidNotFillOrWrite": true,
+  "afterFirstRangeDraftRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6068,
+      "json_sha256": "16bf29151ffb33cb69de296007315d6c0738bbe62e03f0f83236d4c46f933633"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "firstExplicitActionWroteV9": true,
+  "onlyVersionRevisionDraftsAndCanonicalAnchorPermittedToChange": true,
+  "afterIndependentRangeDraftRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6441,
+      "json_sha256": "6f9cc117107b78588a5be3f8d4667eb86a1e95ba0ba2c28e3eae55372fa7ebaa"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "afterRangeNoteRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6360,
+      "json_sha256": "8d84ced5e3df78e529e17d1ed81e83b9fee0b05e928feac28fe700a57bf58104"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "savedRangeNote": {
+    "id": "note-1798804800000-8icqwnze",
+    "text": "Mein neuer Bereichsentwurf zu Johannes 6,35–36.\n  Genau diese beiden Verse gehören zusammen.",
+    "kind": "note",
+    "createdAt": "2027-01-01T12:00:00.000Z",
+    "updatedAt": "2027-01-01T12:00:00.000Z",
+    "captureSource": {
+      "type": "passage",
+      "ref": {
+        "book": "JHN",
+        "chapter": 6,
+        "from": 35,
+        "to": 36
+      }
+    },
+    "ref": {
+      "book": "JHN",
+      "chapter": 6,
+      "from": 35,
+      "to": 36
+    }
+  },
+  "independentSecondRangeDraft": {
+    "id": "draft-1798804800000-4kdd3p0y",
+    "key": "capture:passage:JHN:6:35:37",
+    "revision": 1,
+    "updatedAt": "2027-01-01T12:00:00.000Z",
+    "type": "capture",
+    "values": {
+      "entityId": "note-1798804800000-s0x15ibv",
+      "text": "Mein unabhängiger Entwurf zu Johannes 6,35–37.\n  Sein anderes Ende bleibt erhalten.  ",
+      "source": {
+        "type": "passage",
+        "ref": {
+          "book": "JHN",
+          "chapter": 6,
+          "from": 35,
+          "to": 37
+        }
+      }
+    }
+  },
+  "oldSingleVerseAndJournalDraftsExact": true,
+  "ntAnswerAndReadGrowthFieldsExact": true,
+  "outsideFocusAnchorRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6433,
+      "json_sha256": "6fa1b962216480d19908820b8fca293ea4543187211c1712d560c942340bb525"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "outsideFocusAnchorPreserved": {
+    "verse": 60,
+    "logicalRef": {
+      "book": "JHN",
+      "chapter": 6,
+      "from": 35,
+      "to": 37
+    },
+    "widths": [
+      390,
+      1440,
+      320
+    ],
+    "offlineReload": true
+  },
+  "explicitSectionJumpFocusedVerse35": true,
+  "afterOfflineArtRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6433,
+      "json_sha256": "1d4074a8a68e0cf75bb68e8c55a1dc0ee55caf83f802605ab0ff89f28bd60eae"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "offlineA51Stages": 7,
+  "offlineNtAnswerAndOldJournalRestored": true,
+  "exportSha256": "4f28583c678717ccf09fae12771aa25c52b8a5af87b78badf4120ac3dd1870a6",
+  "actualV9DownloadAndRestorePreview": true,
+  "restoreWasNotApplied": true,
+  "finalRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "ac5737718f3af0a2bb6b75e7ea1c58654e223224fcdff7ce286e74f38cc6e16e"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 6433,
+      "json_sha256": "1d4074a8a68e0cf75bb68e8c55a1dc0ee55caf83f802605ab0ff89f28bd60eae"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "allThreeNonMainRecordsExactThroughV9Actions": true,
+  "originalNotesAndSourcesPreserved": true,
+  "readAndGrowthAndNtFieldsExactThroughout": true,
+  "finalWorker": {
+    "expected": "oliva-71cf17993d0bc7fd",
+    "controller": {
+      "id": "oliva-71cf17993d0bc7fd",
+      "version": "0.13.0"
+    },
+    "active": {
+      "id": "oliva-71cf17993d0bc7fd",
+      "version": "0.13.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-75717978bae05979",
+      "oliva-71cf17993d0bc7fd"
+    ]
+  },
+  "runtimeInputsAfter": {
+    "fileCount": 327,
+    "sha256": "0b097eb24fc4fded654aef9f1a68ffb76301ed48e3d941ca146046efe3e15611",
+    "allFileHashesMatch": true
+  },
+  "builtHtmlAndWorkersUnchanged": true,
+  "sourceUnchangedDuringUpgrade": true,
+  "checkedAt": "2026-11-16T09:27:05.565Z"
+}
