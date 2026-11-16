@@ -1,5 +1,19 @@
 # Lieferstand · OLIVA 0.13.1 und drei private Gestaltungsansichten
 
+**Reader-Phase abgeschlossen · OLIVA 0.13.1.** Der Reader ist in der regulären App aktiv: Startseite, Bibelnavigation, geführte Wege, Sammlung, vorhandene Geschichtenpiloten und NT-Fragen öffnen dieselbe Route. Die direkte Versauswahl ist integriert; Kopieren, Markierungen, Notizen, Merken und Vorhaben verwenden den gemeinsamen Datenbestand.
+
+Die unabhängige [GitHub-CI 43949849283](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/43949849283) ist seit **16.11.2026, 20:38:21 UTC** erfolgreich: **293/293 Fachtests und 130/130 Browserfälle**, erster Versuch, keine Skips/Flaky-Ergebnisse/Browser-Retries. Artefakt, Berichtzeiten, Quellcommit und Version wurden zusätzlich geprüft. Die lokalen 293/130-Prüfungen, der echte 0.13.0→0.13.1-Offlinewechsel und beide statischen nativen Exporte bleiben belegt. Kein weiterer Runtime-Umbau und keine neue Migration waren zum Abschluss nötig; alle 328 ausgelieferten Runtimeinputs sind unverändert.
+
+[Privaten Reader öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/lesen/JHN?chapter=6&from=35&to=37). Verse direkt antippen, weitere hinzufügen oder abwählen. Markieren, Kopieren, Notiz und Mehr erscheinen unten. Ein zusätzlicher Auswahlmodus entfällt. Für eine gemeinsame Notiz müssen die Verse benachbart sein; Kopieren, Markieren und Merken unterstützen auch getrennte Verse.
+
+Quelle und Release bleiben [oliva-v0.13.1](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.13.1/oliva), GitHub-Commit f4528e4dc8f4fcfaaa26059f00eb8128cf2747cf, eigenständiger Quellcommit 055d8c564a18ef12d804c5327f8413e9287704f3. Der Abschlussnachweis wird zusätzlich auf dem Dokumentationsbranch docs/oliva-reader-phase-closeout-20261116 gesichert; bestehende Versionstags werden nicht verändert. Keine erneute Website-Veröffentlichung ist für reine Nachweise/Anleitungen erforderlich.
+
+**Grenzen:** Web-/PWA-Abnahme und statische native Exporte sind getrennt. Echte iOS-/Android-Geräte, Simulatoren, VoiceOver/TalkBack, native Installationspakete und Energie-/Speichermessungen sind weiterhin offen. Audio, weitere Inhaltsredaktion und Cloud-/KI-Dienste bleiben Master-Aufgaben. Die gesamte Master-Definition-of-Done ist nicht abgeschlossen. Die 436 Geschichten/2.479 Fragen werden weiterhin erst nach ausdrücklicher Freigabe der drei Gestaltungsvorschauen vollständig integriert. FaithPath und GitHub-main bleiben unverändert; Zugriff auf die App bleibt eigentümerprivat.
+
+[Endabnahme](27-reader-phase-closeout.md) · [CI-Nachweis](evidence/github/ci-v0131/README.md).
+
+## Vorangegangener Auslieferungsstand
+
 Stand: 16.11.2026. **OLIVA 0.13.1 ist seit 2026-11-16T20:20:14.516734+00:00 eigentümerprivat bereitgestellt. Die Reader-Bedienkorrektur ist abgeschlossen.** Verse direkt antippen, weitere hinzufügen oder abwählen; die feste kleine Leiste bietet Markieren, Kopieren, Notiz und Mehr. Kein Auswahlmodus, keine Bestätigung „Auswahl verwenden“, keine eingeschobene Textkarte. Notiz öffnet nur den benötigten Editor. Getrennte Verse lassen sich exakt kopieren, markieren und merken; eine gemeinsame Notiz benötigt weiterhin benachbarte Verse.
 
 **293/293 Fachtests und ein einzelner vollständiger 130/130-Browserlauf bestanden**, zusätzlich 46 gezielte Reader-/Bestandsfälle und der reale 0.13.0→0.13.1-Offline-PWA-Wechsel. Der erste vollständige 127/130-Lauf und seine Diagnose bleiben erhalten. Keine Kriterien für Baum/Buchbilder aufgeweicht. Native JS-/Assetexports und alle 1.300 NT-Fragen sind statisch geprüft; keine Geräte- oder Simulatorausführung. AppData bleibt V9 ohne neue Migration. Kern oliva-1f49306347c4f496, Host oliva-f8b4e7c2394490b6. Vorhandene Daten, Glaubensfortschritt, A51-Stadien und ursprüngliche FaithPath-Dateien bleiben bewahrt.

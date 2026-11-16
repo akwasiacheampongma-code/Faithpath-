@@ -1,5 +1,7 @@
 # Reader-Auswahl, Kapitelkontext und Entwürfe · OLIVA 0.13
 
+**Historischer Vertrag für 0.13.0.** Die damals beschriebenen Modusschalter wurden in 0.13.1 durch direktes Antippen und eine feste kleine Aktionsleiste ersetzt. Aktuelle Bedienung: [0.13.1](26-reader-direct-selection.md); abgeschlossene Phase: [Endabnahme](27-reader-phase-closeout.md). Die historischen Rohberichte bleiben unverändert.
+
 Seit **16.11.2026, 14:37:15 UTC** unter der bestehenden [eigentümerprivaten Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site) bereitgestellt. Der Lieferumfang erweitert den vorhandenen Fließtext; er ersetzt keine fertigen OLIVA-Funktionen. Die gemeinfreie Lutherbibel 1912 und der vollständige Original-NT-Katalog bleiben unverändert. Die gesamte Master-Definition-of-Done ist offen.
 
 ## Lesen und Handeln verständlich trennen

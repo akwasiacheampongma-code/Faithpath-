@@ -1,5 +1,19 @@
 # Fortsetzen · OLIVA / FaithPath Next Generation
 
+**Reader-Phase abgeschlossen · OLIVA 0.13.1.** Der Reader ist in der regulären App aktiv: Startseite, Bibelnavigation, geführte Wege, Sammlung, vorhandene Geschichtenpiloten und NT-Fragen öffnen dieselbe Route. Die direkte Versauswahl ist integriert; Kopieren, Markierungen, Notizen, Merken und Vorhaben verwenden den gemeinsamen Datenbestand.
+
+Die unabhängige [GitHub-CI 43949849283](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/43949849283) ist seit **16.11.2026, 20:38:21 UTC** erfolgreich: **293/293 Fachtests und 130/130 Browserfälle**, erster Versuch, keine Skips/Flaky-Ergebnisse/Browser-Retries. Artefakt, Berichtzeiten, Quellcommit und Version wurden zusätzlich geprüft. Die lokalen 293/130-Prüfungen, der echte 0.13.0→0.13.1-Offlinewechsel und beide statischen nativen Exporte bleiben belegt. Kein weiterer Runtime-Umbau und keine neue Migration waren zum Abschluss nötig; alle 328 ausgelieferten Runtimeinputs sind unverändert.
+
+[Privaten Reader öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/lesen/JHN?chapter=6&from=35&to=37). Verse direkt antippen, weitere hinzufügen oder abwählen. Markieren, Kopieren, Notiz und Mehr erscheinen unten. Ein zusätzlicher Auswahlmodus entfällt. Für eine gemeinsame Notiz müssen die Verse benachbart sein; Kopieren, Markieren und Merken unterstützen auch getrennte Verse.
+
+Quelle und Release bleiben [oliva-v0.13.1](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.13.1/oliva), GitHub-Commit f4528e4dc8f4fcfaaa26059f00eb8128cf2747cf, eigenständiger Quellcommit 055d8c564a18ef12d804c5327f8413e9287704f3. Der Abschlussnachweis wird zusätzlich auf dem Dokumentationsbranch docs/oliva-reader-phase-closeout-20261116 gesichert; bestehende Versionstags werden nicht verändert. Keine erneute Website-Veröffentlichung ist für reine Nachweise/Anleitungen erforderlich.
+
+**Grenzen:** Web-/PWA-Abnahme und statische native Exporte sind getrennt. Echte iOS-/Android-Geräte, Simulatoren, VoiceOver/TalkBack, native Installationspakete und Energie-/Speichermessungen sind weiterhin offen. Audio, weitere Inhaltsredaktion und Cloud-/KI-Dienste bleiben Master-Aufgaben. Die gesamte Master-Definition-of-Done ist nicht abgeschlossen. Die 436 Geschichten/2.479 Fragen werden weiterhin erst nach ausdrücklicher Freigabe der drei Gestaltungsvorschauen vollständig integriert. FaithPath und GitHub-main bleiben unverändert; Zugriff auf die App bleibt eigentümerprivat.
+
+[Abschlussvertrag](docs/27-reader-phase-closeout.md) · [Prüfnachweis](docs/evidence/reader-closeout/acceptance.json).
+
+## Auslieferung und Gestaltungsvorschauen
+
 Stand: 16.11.2026. **OLIVA 0.13.1 ist seit 2026-11-16T20:20:14.516734+00:00 eigentümerprivat bereitgestellt. Die Reader-Bedienkorrektur ist abgeschlossen.** Verse direkt antippen, weitere hinzufügen oder abwählen; die feste kleine Leiste bietet Markieren, Kopieren, Notiz und Mehr. Kein Auswahlmodus, keine Bestätigung „Auswahl verwenden“, keine eingeschobene Textkarte. Notiz öffnet nur den benötigten Editor. Getrennte Verse lassen sich exakt kopieren, markieren und merken; eine gemeinsame Notiz benötigt weiterhin benachbarte Verse.
 
 **293/293 Fachtests und ein einzelner vollständiger 130/130-Browserlauf bestanden**, zusätzlich 46 gezielte Reader-/Bestandsfälle und der reale 0.13.0→0.13.1-Offline-PWA-Wechsel. Der erste vollständige 127/130-Lauf und seine Diagnose bleiben erhalten. Keine Kriterien für Baum/Buchbilder aufgeweicht. Native JS-/Assetexports und alle 1.300 NT-Fragen sind statisch geprüft; keine Geräte- oder Simulatorausführung. AppData bleibt V9 ohne neue Migration. Kern oliva-1f49306347c4f496, Host oliva-f8b4e7c2394490b6. Vorhandene Daten, Glaubensfortschritt, A51-Stadien und ursprüngliche FaithPath-Dateien bleiben bewahrt.
@@ -16,7 +30,7 @@ Vorschauantworten/-gedanken liegen nur im Arbeitsspeicher dieser Seite und versc
 
 [Privater Reader](https://oliva-v04-private-preview.purplebean128.chatgpt.site/lesen/JHN?chapter=6&from=35&to=37) · [Reader-Vertrag](docs/26-reader-direct-selection.md) · [Studienquellcode und Grenzen](design-previews/stories/README.md).
 
-Beide Sites bleiben ausschließlich dem Eigentümerkonto zugänglich; anonymer Zugriff ergibt 401. Kein öffentliches Website-/Storedeployment und kein Merge nach GitHub-main. Die beauftragte Quellcodesicherung erfolgt auf Branch feature/oliva-v0131-direct-selection-20261116 und Tag oliva-v0.13.1 unter oliva/. Eigene endgültige Commit-/ZIP-Kennungen stehen nach dem Quellcheckpoint in /workspace/oliva-v0131-local-checkpoint.json; die bestätigten Remote-Refs in /workspace/oliva-github-backups.json. Keine noch unbekannten Hashes werden vorweggenommen. Die neue Remote-CI wird durch den Quellpush ausgelöst und ist separat zu beurteilen; die Vorgänger-CI 43888534422 bestätigt ausschließlich 0.13.0 mit 290/126.
+Beide Sites bleiben ausschließlich dem Eigentümerkonto zugänglich; anonymer Zugriff ergibt 401. Kein öffentliches Website-/Storedeployment und kein Merge nach GitHub-main. Die beauftragte Quellcodesicherung erfolgt auf Branch feature/oliva-v0131-direct-selection-20261116 und Tag oliva-v0.13.1 unter oliva/. Eigene endgültige Commit-/ZIP-Kennungen stehen nach dem Quellcheckpoint in /workspace/oliva-v0131-local-checkpoint.json; die bestätigten Remote-Refs in /workspace/oliva-github-backups.json. Keine noch unbekannten Hashes werden vorweggenommen. Die tatsächliche Remote-CI 43949849283 ist mit 293/130 unabhängig bestätigt; die Vorgänger-CI 43888534422 bestätigt ausschließlich 0.13.0 mit 290/126.
 
 **Nächster zulässiger Schritt:** Nutzer beurteilt die drei konkreten Ansichten. Vollständige Geschichtenintegration wartet auf diese Freigabe. Andere bereits freigegebene Master-Aufgaben bleiben bestehen; die gesamte Master-Definition-of-Done ist weiterhin offen.
 
@@ -35,12 +49,12 @@ Der eigene 0.13-Quellcheckpoint mit Tag/ZIP und die beauftragte GitHub-Sicherung
 ## Sofort ausprobieren
 
 <!-- OLIVA-013-QUICKSTART:BEGIN -->
-- **Neu: [Reader-Auswahl ausprobieren](https://oliva-v04-private-preview.purplebean128.chatgpt.site/lesen/JHN?chapter=6&from=35&to=37).** Das ganze Kapitel ist lesbar; nur 35–37 sind zunächst der logische Fokus. **Mehrere Verse auswählen → Auswahl verwenden** öffnet Kopieren, Markierungen, Merken und Bereichsnotiz. **Sammlung → Entwürfe** kehrt zur genauen Quelle zurück. Ein nur im RAM gehaltener fehlgeschlagener Entwurf bleibt auf die laufende Sitzung begrenzt.
+- **Neu: [Reader-Auswahl ausprobieren](https://oliva-v04-private-preview.purplebean128.chatgpt.site/lesen/JHN?chapter=6&from=35&to=37).** Das ganze Kapitel ist lesbar; nur 35–37 sind zunächst der logische Fokus. **Verse direkt antippen**, weitere hinzufügen/abwählen; die feste Leiste bietet Markieren, Kopieren, Notiz und Mehr. Merken und Vorhaben liegen unter Mehr. **Sammlung → Entwürfe** kehrt zur genauen Quelle zurück. Ein nur im RAM gehaltener fehlgeschlagener Entwurf bleibt auf die laufende Sitzung begrenzt.
 - **Buchsuche:** standardmäßig alle 66 Bücher, Dropdown für NT/AT und zusätzliche Leerzeichen erlaubt. Die NT-Fragenübersicht bleibt auf ihren tatsächlichen NT-Bestand begrenzt.
 <!-- OLIVA-013-QUICKSTART:END -->
 
 - Private App: https://oliva-v04-private-preview.purplebean128.chatgpt.site
-- Mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **16.11.2026, 14:37:15 UTC** wird dort **0.13.0** ausgeliefert.
+- Mit dem berechtigten ChatGPT-Eigentümerkonto anmelden. Die URL enthält weiterhin `v04`; seit **16.11.2026, 20:20:14 UTC** wird dort **0.13.1** ausgeliefert.
 - **Neu: Bibel → Fragen zum Neuen Testament** oder direkt `/verstehen`. Alle 27 Bücher und 260 Kapitel sind enthalten; `/verstehen/MRK?chapter=4` startet mit Markus 4. Erst **Antwort prüfen** speichert. In bestehenden Importarchiven können belegte frühere Abschlüsse ausdrücklich aktiviert werden.
 - **Bibel → Buch/Kapitel:** Fließtext ist voreingestellt. **Lesefokus starten** blendet Begleitinformationen aus; der Ausstieg bleibt erreichbar. **Leseeinstellungen → Einzelverse** bewahrt die alte Darstellung. Versaktionen/Notizen bleiben erhalten; kein neuer Fortschritt durch die Darstellung.
 - **Einstellungen → Gedanken wiederbegegnen → Einladungen in der App erlauben** oder direkt `/einladungen`: zunächst aus; ältere Vorhaben/Gedanken freiwillig ansehen, zurückstellen, ausblenden oder wieder zulassen. Keine Benachrichtigungsberechtigung, kein Wachstum durch Steuerung.

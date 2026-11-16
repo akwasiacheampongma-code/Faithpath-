@@ -1,5 +1,17 @@
 # Aktueller Plan und FaithPath-Parität
 
+**Reader-Phase abgeschlossen · OLIVA 0.13.1.** Der Reader ist in der regulären App aktiv: Startseite, Bibelnavigation, geführte Wege, Sammlung, vorhandene Geschichtenpiloten und NT-Fragen öffnen dieselbe Route. Die direkte Versauswahl ist integriert; Kopieren, Markierungen, Notizen, Merken und Vorhaben verwenden den gemeinsamen Datenbestand.
+
+Die unabhängige [GitHub-CI 43949849283](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/43949849283) ist seit **16.11.2026, 20:38:21 UTC** erfolgreich: **293/293 Fachtests und 130/130 Browserfälle**, erster Versuch, keine Skips/Flaky-Ergebnisse/Browser-Retries. Artefakt, Berichtzeiten, Quellcommit und Version wurden zusätzlich geprüft. Die lokalen 293/130-Prüfungen, der echte 0.13.0→0.13.1-Offlinewechsel und beide statischen nativen Exporte bleiben belegt. Kein weiterer Runtime-Umbau und keine neue Migration waren zum Abschluss nötig; alle 328 ausgelieferten Runtimeinputs sind unverändert.
+
+[Privaten Reader öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/lesen/JHN?chapter=6&from=35&to=37). Verse direkt antippen, weitere hinzufügen oder abwählen. Markieren, Kopieren, Notiz und Mehr erscheinen unten. Ein zusätzlicher Auswahlmodus entfällt. Für eine gemeinsame Notiz müssen die Verse benachbart sein; Kopieren, Markieren und Merken unterstützen auch getrennte Verse.
+
+Quelle und Release bleiben [oliva-v0.13.1](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.13.1/oliva), GitHub-Commit f4528e4dc8f4fcfaaa26059f00eb8128cf2747cf, eigenständiger Quellcommit 055d8c564a18ef12d804c5327f8413e9287704f3. Der Abschlussnachweis wird zusätzlich auf dem Dokumentationsbranch docs/oliva-reader-phase-closeout-20261116 gesichert; bestehende Versionstags werden nicht verändert. Keine erneute Website-Veröffentlichung ist für reine Nachweise/Anleitungen erforderlich.
+
+**Grenzen:** Web-/PWA-Abnahme und statische native Exporte sind getrennt. Echte iOS-/Android-Geräte, Simulatoren, VoiceOver/TalkBack, native Installationspakete und Energie-/Speichermessungen sind weiterhin offen. Audio, weitere Inhaltsredaktion und Cloud-/KI-Dienste bleiben Master-Aufgaben. Die gesamte Master-Definition-of-Done ist nicht abgeschlossen. Die 436 Geschichten/2.479 Fragen werden weiterhin erst nach ausdrücklicher Freigabe der drei Gestaltungsvorschauen vollständig integriert. FaithPath und GitHub-main bleiben unverändert; Zugriff auf die App bleibt eigentümerprivat.
+
+[Endabnahme](27-reader-phase-closeout.md). Ältere Fortschreibungen dokumentieren ihren damaligen Stand; sie sind keine erneut offenen Reader-Aufträge.
+
 Planungsabgleich vom 08.11.2026, fortgeschrieben am 16.11.2026. Dieser Abgleich beantwortet die Planungsfrage und hält die tatsächliche Entwicklung fest. Der damalige 0.9-Umfang und die Prioritäten des Master-Prompts bleiben nachvollziehbar. Für weitere offene Aufgaben werden keine Versionsnummern oder Termine festgelegt.
 
 
@@ -31,7 +43,7 @@ Verglichen wird der unveränderte FaithPath-Snapshot [`a519ce898fa33907b07d5ac7a
 
 | Vorhandener FaithPath-Bestand | Tatsächlicher OLIVA-Stand |
 | --- | --- |
-| Zusammenhängender Fließtext mit auswählbaren Versen, Markierungen und optionalem Lesefokus | Seit 0.11 Fließtext mit auswählbaren Einzelversen und temporärem Lesefokus; alte Blockansicht bleibt wählbar. Seit 0.13 sind auch zusammenhängende Mehrversauswahl, exakte Kopieraktion, Bereichsnotizen und vollständiger Kapitelkontext integriert und privat abgenommen. Echte native Geräteabnahme bleibt offen. |
+| Zusammenhängender Fließtext mit auswählbaren Versen, Markierungen und optionalem Lesefokus | Seit 0.11 Fließtext mit auswählbaren Einzelversen und temporärem Lesefokus; alte Blockansicht bleibt wählbar. Seit 0.13 sind auch Mehrversauswahl, exakte Kopieraktion, Bereichsnotizen und vollständiger Kapitelkontext integriert. Mit 0.13.1 sind die direkte additive Bedienung und unabhängige Endabnahme abgeschlossen. Echte native Geräteabnahme bleibt offen. |
 | Vollständiger NT-Katalog: **1.300 Fragen, 260 Kapitel, 27 Bücher, genau fünf Fragen pro Kapitel**, vier Antwortoptionen, korrekter Index, Referenz, Erklärung und stabile `faithpath_id` | Seit 0.12 vollständig aktiv und privat bereitgestellt. V8 trennt neue Antworten und belegte historische Abschlüsse; vorhandene Archive werden nur ausdrücklich aktiviert. 225 Fachtests, ein vollständiger 108/108-Browserlauf, beide nativen statischen Katalogprüfungen und der reale Updateversuch bestehen. Die neun thematischen Pilotfragen bleiben eigenständig. |
 | Gemeinsamer Katalog mit **436 Geschichten und 2.479 Frageelementen**, mit dokumentierten Ausnahmen | Fünf neue illustrierte Erzählpiloten; kein vollständiger Katalogtransfer. Die aktiven Story-Flow-Fragen sind vom NT-Kapitelkatalog getrennt: Die erneute ID-Prüfung findet keine Überschneidung. Die frühere Überlappungsannahme war unzutreffend; genaue Dateihashes und Mengengrenzen stehen in der NT-Vorbereitung. |
 | 18 Lebensthemen mit vorhandener Redaktion | Neun eigene geführte Wege; kein vollständiger Inhaltsabgleich. |
