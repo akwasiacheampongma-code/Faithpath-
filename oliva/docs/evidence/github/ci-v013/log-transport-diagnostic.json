@@ -1,0 +1,10 @@
+{
+  "recordedAt": "2026-11-16T14:56:23.001281+00:00",
+  "initialAttempt": "Receiver rejected truncated JSON before any log/evidence write because terminal canonical input limits a line to4096bytes",
+  "correction": "Disabled canonical input in addition to echo; the exact connector-decoded terminal log was then accepted in one JSON frame",
+  "productSourceOrTestsChanged": false,
+  "workflowRerun": false,
+  "credentialOrSignedCapabilityPrinted": false,
+  "finalReceiverBytes": 1597,
+  "finalReceiverSha256": "48d08bac5752bfb53ca347fd2c07c68b48398fd259c1dcc048feb50cbc38115d"
+}

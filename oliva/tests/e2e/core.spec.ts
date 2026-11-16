@@ -1,3 +1,11 @@
+import {
+  selectionBar,
+  noteDialog,
+  openNote,
+  closeNote,
+  markSelection,
+  bookmarkSelection,
+} from "./selection-ui";
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import type { AppData } from "../../src/state/model";
@@ -27,13 +35,9 @@ test("Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getr
     page.getByText("Wenn der Sturm still wird", { exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: /^Vers 35:/ }).click();
-  await page.getByRole("button", { name: "Merken", exact: true }).click();
-  await expect(
-    page.getByRole("button", { name: "Gemerkt", exact: true }),
-  ).toBeVisible();
-  await page
-    .getByRole("button", { name: "Oliv markieren", exact: true })
-    .click();
+  await bookmarkSelection(page);
+  await markSelection(page, "Oliv");
+  await openNote(page);
   await page
     .getByRole("textbox", { name: "Notiz zu Vers 35" })
     .fill("Die Freunde sprechen ihre Angst aus.");
@@ -43,6 +47,7 @@ test("Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getr
   await expect(
     page.getByText("Deine Notiz wurde auf diesem Gerät gespeichert."),
   ).toBeVisible();
+  await closeNote(page);
   for (let i = 0; i < 3; i++) {
     if (i > 0) {
       await page

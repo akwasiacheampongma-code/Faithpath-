@@ -1,3 +1,11 @@
+import {
+  selectionBar,
+  noteDialog,
+  openNote,
+  closeNote,
+  markSelection,
+  bookmarkSelection,
+} from "./selection-ui";
 import { test, expect, type Page, type Locator } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFileSync } from "node:fs";
@@ -7,8 +15,7 @@ import type { AppData } from "../../src/state/model";
 import { localData } from "./persistence";
 
 test.use({ screenshot: "only-on-failure" });
-const evidence =
-  `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/reader-focus`;
+const evidence = `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/reader-focus`;
 // Read the canonical fixture independently of the app's browser renderer.
 const bible = JSON.parse(
   readFileSync(new URL("../../src/data/bible.json", import.meta.url), "utf8"),
@@ -151,7 +158,7 @@ test("Lesefokus hält auf 320 Pixeln in Hell und Dunkel den kanonischen Text und
     for (const label of [
       "Lesefokus starten",
       "Leseeinstellungen",
-      "Versaktionen",
+      "Zu Vers springen",
       "Einfach lesen",
       "Tiefer verstehen",
       "Kapitel als gelesen bestätigen",
@@ -217,6 +224,7 @@ test("Lesefokus hält auf 320 Pixeln in Hell und Dunkel den kanonischen Text und
     ).toBeVisible();
     expect(progress(await localData(page))).toEqual(before);
   }
+  await page.keyboard.press("Escape");
   await start(page).press("Enter");
   await expect(exit(page)).toBeVisible();
   await page.reload();
@@ -241,12 +249,14 @@ test("ein gerade getippter Versnotizentwurf überlebt das Unmount beim Fokusstar
   const before = progress(await localData(page));
   const text =
     "  Mein synthetischer Versgedanke.\nDie zweite Zeile bleibt erhalten.  ";
-  const panel = visible(page, "verse-actions-35");
+  const panel = noteDialog(page);
+  await openNote(page);
   await panel
     .getByRole("textbox", { name: "Notiz zu Vers 35", exact: true })
     .fill(text);
   // Enter immediately after typing, without waiting for the draft debounce.
   // This exercises the real editor's unmount flush through the public control.
+  await page.keyboard.press("Escape");
   await start(page).press("Enter");
   await expect(exit(page)).toBeVisible();
   await expect(visible(page, "verse-actions-35")).toHaveCount(0);
@@ -293,6 +303,7 @@ test("ein gerade getippter Versnotizentwurf überlebt das Unmount beim Fokusstar
     }),
   ).toBeVisible();
   expect((await draft())?.id).toBe(savedDraft?.id);
+  await page.keyboard.press("Escape");
   await start(page).press("Enter");
   await expect(exit(page)).toBeVisible();
   await page.reload();
@@ -332,12 +343,15 @@ test("Escape schließt Einstellungen und Verswahl vor Versaktionen und gibt den 
   const readerUrl = page.url(),
     before = progress(await localData(page)),
     target = verse(page, 38),
-    panel = visible(page, "verse-actions-38"),
+    panel = selectionBar(page),
     settings = page.getByRole("button", {
       name: "Leseeinstellungen",
       exact: true,
     }),
-    picker = page.getByRole("button", { name: "Versaktionen", exact: true });
+    picker = page.getByRole("button", {
+      name: "Zu Vers springen",
+      exact: true,
+    });
   await expect(panel).toBeVisible();
   await settings.click();
   await expect(
@@ -365,11 +379,11 @@ test("Escape schließt Einstellungen und Verswahl vor Versaktionen und gibt den 
   await expect(panel).toBeVisible();
   await picker.click();
   await expect(
-    page.getByText("Welchen Vers möchtest du auswählen?", { exact: true }),
+    page.getByText("Zu welchem Vers möchtest du springen?", { exact: true }),
   ).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(
-    page.getByText("Welchen Vers möchtest du auswählen?", { exact: true }),
+    page.getByText("Zu welchem Vers möchtest du springen?", { exact: true }),
   ).toHaveCount(0);
   await expect(picker).toBeFocused();
   await expect(panel).toBeVisible();
@@ -382,7 +396,12 @@ test("Escape schließt Einstellungen und Verswahl vor Versaktionen und gibt den 
   expect(progress(await localData(page))).toEqual(before);
   await report(page, "escape-dismiss-priority", {
     routeRetainedDuringDismissal: readerUrl,
-    focusReturns: ["Leseeinstellungen", "Vers 38", "Versaktionen", "Vers 38"],
+    focusReturns: [
+      "Leseeinstellungen",
+      "Vers 38",
+      "Zu Vers springen",
+      "Vers 38",
+    ],
     progressBefore: before,
     progressAfter: progress(await localData(page)),
   });

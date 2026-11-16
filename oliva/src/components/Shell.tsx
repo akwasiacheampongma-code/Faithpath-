@@ -62,6 +62,7 @@ export function Shell({
   scrollRef,
   onScroll,
   readerToolbar,
+  readerActions,
 }: {
   children: React.ReactNode;
   wide?: boolean;
@@ -69,6 +70,7 @@ export function Shell({
   scrollRef?: React.Ref<React.ComponentRef<typeof ScrollView>>;
   onScroll?: ScrollViewProps["onScroll"];
   readerToolbar?: React.ReactNode;
+  readerActions?: React.ReactNode;
 }) {
   const viewport = useViewportSignals(),
     viewportRef = useRef<React.ComponentRef<typeof ScrollView>>(null);
@@ -358,7 +360,7 @@ export function Shell({
           contentContainerStyle={{
             paddingHorizontal: reader ? 20 : desktop ? 42 : 22,
             paddingTop: reader ? 20 : desktop ? 30 : 16,
-            paddingBottom: reader ? 70 : 40,
+            paddingBottom: reader ? 210 : 40,
             alignItems: "center",
           }}
           keyboardShouldPersistTaps="handled"
@@ -369,6 +371,22 @@ export function Shell({
             </ViewportSignals.Provider>
           </View>
         </ScrollView>
+        {reader && readerActions ? (
+          <View
+            pointerEvents="box-none"
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              paddingHorizontal: 12,
+              paddingTop: 8,
+              paddingBottom: Math.max(insets.bottom, 8),
+            }}
+          >
+            {readerActions}
+          </View>
+        ) : null}
         {!desktop && !reader && (
           <View
             role="navigation"

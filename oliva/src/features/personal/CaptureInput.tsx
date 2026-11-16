@@ -17,6 +17,7 @@ export function CaptureInput({
   label,
   placeholder,
   onSaved,
+  autoFocus = false,
   onFocusChange,
   children,
 }: {
@@ -24,6 +25,7 @@ export function CaptureInput({
   label: string;
   placeholder?: string;
   onSaved?: () => void;
+  autoFocus?: boolean;
   onFocusChange?: (focused: boolean) => void;
   children?: React.ReactNode;
 }) {
@@ -34,6 +36,7 @@ export function CaptureInput({
       key={captureKey(source) + ":" + cycle}
       source={source}
       label={label}
+      autoFocus={autoFocus && cycle === 0}
       placeholder={placeholder}
       onFocusChange={onFocusChange}
       saved={saved}
@@ -51,6 +54,7 @@ export function CaptureInput({
 }
 function CaptureSession({
   source,
+  autoFocus,
   label,
   placeholder,
   onDone,
@@ -63,6 +67,7 @@ function CaptureSession({
   label: string;
   placeholder?: string;
   onDone: (result?: string) => void;
+  autoFocus?: boolean;
   onChanged: () => void;
   saved: boolean;
   onFocusChange?: (focused: boolean) => void;
@@ -110,6 +115,7 @@ function CaptureSession({
         </T>
       )}
       <Field
+        autoFocus={autoFocus}
         label={label}
         placeholder={placeholder}
         value={v.text}

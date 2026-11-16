@@ -1,0 +1,292 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/direct-selection.spec.ts",
+      "--output=docs/evidence/direct-selection/initial-artifacts"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/docs/evidence/direct-selection/initial-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/docs/evidence/direct-selection/initial-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4185",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/direct-selection/initial-ux.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "PORT=4185 node scripts/serve.mjs",
+      "port": 4185,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "direct-selection.spec.ts",
+      "file": "direct-selection.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "direktes Antippen öffnet die kleine Leiste und verändert weder Textlayout noch persönliche Inhalte",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4110,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:53:33.152Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "438237691762220cb048-ec69b1b0bf601d253d53",
+          "file": "direct-selection.spec.ts",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "auch getrennte Verse lassen sich direkt kopieren, markieren und merken ohne Zwischenverse zu verändern",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3941,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:53:37.996Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "438237691762220cb048-17abe9ebf25884b1a81f",
+          "file": "direct-selection.spec.ts",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "Notizen öffnen erst auf Wunsch und bewahren getrennte Vers- und Bereichsentwürfe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4959,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:53:41.987Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "438237691762220cb048-ffd69806a07989150354",
+          "file": "direct-selection.spec.ts",
+          "line": 68,
+          "column": 1
+        },
+        {
+          "title": "die Aktionsleiste bleibt schmal, dunkel und hell per Tastatur und Screenreader bedienbar",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 26480,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m35\u001b[39m\nReceived: \u001b[31m32\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m35\u001b[39m\nReceived: \u001b[31m32\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at ready (/workspace/faithpath-next/tests/e2e/direct-selection.spec.ts:15:82)\n    at /workspace/faithpath-next/tests/e2e/direct-selection.spec.ts:90:5",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/direct-selection.spec.ts",
+                      "column": 82,
+                      "line": 15
+                    },
+                    "snippet": " \u001b[90m 13 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m\"reader-flow\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 14 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m document\u001b[33m.\u001b[39mfonts\u001b[33m.\u001b[39mready\u001b[33m.\u001b[39mthen(() \u001b[33m=>\u001b[39m undefined))\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m   \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m (\u001b[36mawait\u001b[39m localData(page))\u001b[33m?.\u001b[39mreadingPosition\u001b[33m?.\u001b[39mverse)\u001b[33m.\u001b[39mtoBe(\u001b[35m35\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m }\n \u001b[90m 17 |\u001b[39m \u001b[36mfunction\u001b[39m copy(numbers\u001b[33m:\u001b[39m number[]\u001b[33m,\u001b[39m label\u001b[33m:\u001b[39m string) {\n \u001b[90m 18 |\u001b[39m   \u001b[36mreturn\u001b[39m [label\u001b[33m,\u001b[39m \u001b[33m...\u001b[39mnumbers\u001b[33m.\u001b[39mmap((n) \u001b[33m=>\u001b[39m \u001b[32m`${n} ${bible.JHN[\"6\"].find((v: any) => v.n === n).text}`\u001b[39m)\u001b[33m,\u001b[39m \u001b[32m\"Lutherbibel 1912\"\u001b[39m]\u001b[33m.\u001b[39mjoin(\u001b[32m\"\\n\"\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/direct-selection.spec.ts",
+                        "column": 82,
+                        "line": 15
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m35\u001b[39m\nReceived: \u001b[31m32\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  13 |   await expect(page.getByTestId(\"reader-flow\")).toBeVisible();\n  14 |   await page.evaluate(() => document.fonts.ready.then(() => undefined));\n> 15 |   await expect.poll(async () => (await localData(page))?.readingPosition?.verse).toBe(35);\n     |                                                                                  ^\n  16 | }\n  17 | function copy(numbers: number[], label: string) {\n  18 |   return [label, ...numbers.map((n) => `${n} ${bible.JHN[\"6\"].find((v: any) => v.n === n).text}`), \"Lutherbibel 1912\"].join(\"\\n\");\n    at ready (/workspace/faithpath-next/tests/e2e/direct-selection.spec.ts:15:82)\n    at /workspace/faithpath-next/tests/e2e/direct-selection.spec.ts:90:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T15:53:46.972Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/docs/evidence/direct-selection/initial-artifacts/direct-selection-die-Aktio-9d920--und-Screenreader-bedienbar/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/direct-selection.spec.ts",
+                    "column": 82,
+                    "line": 15
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "438237691762220cb048-9105fb9c6fc4c1a088bf",
+          "file": "direct-selection.spec.ts",
+          "line": 87,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T15:53:31.434Z",
+    "duration": 42271.931,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

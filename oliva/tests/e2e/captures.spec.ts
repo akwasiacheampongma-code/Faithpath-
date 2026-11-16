@@ -1,3 +1,11 @@
+import {
+  selectionBar,
+  noteDialog,
+  openNote,
+  closeNote,
+  markSelection,
+  bookmarkSelection,
+} from "./selection-ui";
 import { test, expect, type Page } from "@playwright/test";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import type { AppData } from "../../src/state/model";
@@ -63,10 +71,16 @@ test("zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übe
 }) => {
   await page.goto("/lesen/MRK?chapter=4");
   await page.getByRole("button", { name: /^Vers 35:/ }).click();
+  await openNote(page);
   await page
     .getByRole("textbox", { name: "Notiz zu Vers 35", exact: true })
     .fill("Meine offene Frage zu Vers 35.");
+  await closeNote(page);
+  await selectionBar(page)
+    .getByRole("button", { name: "Auswahl aufheben", exact: true })
+    .click();
   await page.getByRole("button", { name: /^Vers 36:/ }).click();
+  await openNote(page);
   await page
     .getByRole("textbox", { name: "Notiz zu Vers 36", exact: true })
     .fill("Mein Gedanke zu Vers 36.");
@@ -85,31 +99,55 @@ test("zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übe
   // Restored text is ready before the Reader's asynchronous layout measurement
   // and scroll restoration finish. Wait for the SAME position requirement;
   // never scroll the element from the test or relax its viewport threshold.
-  const geometry: { elapsed_ms: number; y: number | null }[] = [], began = performance.now();
+  await closeNote(page);
+  const geometry: { elapsed_ms: number; y: number | null }[] = [],
+    began = performance.now();
   try {
-    await expect.poll(async () => {
-      const box = await page.getByRole("button", { name: /^Vers 35:/ }).boundingBox();
-      geometry.push({ elapsed_ms: Math.round(performance.now() - began), y: box?.y ?? null });
-      return box !== null && box.y >= 0 && box.y < 200;
-    }).toBe(true);
+    await expect
+      .poll(async () => {
+        const box = await page
+          .getByRole("button", { name: /^Vers 35:/ })
+          .boundingBox();
+        geometry.push({
+          elapsed_ms: Math.round(performance.now() - began),
+          y: box?.y ?? null,
+        });
+        return box !== null && box.y >= 0 && box.y < 200;
+      })
+      .toBe(true);
   } finally {
     const evidence = process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest";
     await mkdir(evidence, { recursive: true });
-    await writeFile(`${evidence}/reader-anchor-synchronization.json`, JSON.stringify({
-      criterion: "A real, non-null verse rectangle with 0 <= y < 200, within the standard 15-second assertion timeout",
-      measured_without_test_scroll: true,
-      source_build_id: await page.locator('meta[name="oliva-build"]').getAttribute("content"),
-      measurements: geometry,
-    }, null, 2) + "\n");
+    await writeFile(
+      `${evidence}/reader-anchor-synchronization.json`,
+      JSON.stringify(
+        {
+          criterion:
+            "A real, non-null verse rectangle with 0 <= y < 200, within the standard 15-second assertion timeout",
+          measured_without_test_scroll: true,
+          source_build_id: await page
+            .locator('meta[name="oliva-build"]')
+            .getAttribute("content"),
+          measurements: geometry,
+        },
+        null,
+        2,
+      ) + "\n",
+    );
   }
+  await openNote(page);
   await page
     .getByRole("button", { name: "Notiz speichern", exact: true })
     .click();
   await expect.poll(async () => (await local(page)).notes.length).toBe(1);
   expect((await local(page)).notes[0]?.ref?.from).toBe(35);
+  await closeNote(page);
+  await selectionBar(page)
+    .getByRole("button", { name: "Mehr", exact: true })
+    .click();
   await page
     .getByRole("button", {
-      name: "Diesen Eintrag in der Sammlung bearbeiten",
+      name: "Eintrag bearbeiten",
       exact: true,
     })
     .click();

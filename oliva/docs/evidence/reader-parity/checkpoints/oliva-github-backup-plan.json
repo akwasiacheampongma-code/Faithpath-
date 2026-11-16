@@ -170,6 +170,24 @@
       "oliva_subtree_exact": true,
       "original_faithpath_paths_unchanged": true,
       "url": "https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.12.1/oliva"
+    },
+    {
+      "version": "0.13.0",
+      "source_ref": "oliva-v0.13-reader-parity-private",
+      "source_commit": "8595783344f49c978da80a1ef52b8776dd8f3a3c",
+      "source_tree": "a51c1bc5d154c2f8630c97b75daeef9af46eb844",
+      "parent_commit": "8d0e663150da1860c371aeeba2c4f2ddf16daf8a",
+      "commit": "639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12",
+      "tree": "afe80a2699615b81f227ace19560df702fe43967",
+      "branch": "feature/oliva-v013-reader-parity-20261116",
+      "tag": "oliva-v0.13.0",
+      "tag_object": "e2857350246076ef5c5febd8f9b423430a65d10e",
+      "local_commit_ref": "refs/publish/oliva/v0.13.0",
+      "local_tag_ref": "refs/publish/oliva-tags/v0.13.0",
+      "workflow_blob": "0435cce524a5a763467644b23bdcf62efa09f6d1",
+      "oliva_subtree_exact": true,
+      "original_faithpath_paths_unchanged": true,
+      "url": "https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.13.0/oliva"
     }
   ],
   "all_three_prepared": true,
@@ -179,6 +197,7 @@
     "refs/heads/feature/oliva-v011-ci-geometry-20261109": "20493b077d827c6875f276d0e36bf7fb0e9fce41",
     "refs/heads/feature/oliva-v011-reader-flow-20261109": "5e093ee3d35560e5d902ac6d743341ab16126fe2",
     "refs/heads/feature/oliva-v012-nt-study-20261109": "869b1f750d4b0ff96dcfe6d247280840be5e2c4f",
+    "refs/heads/feature/oliva-v0121-book-search-20261115": "8d0e663150da1860c371aeeba2c4f2ddf16daf8a",
     "refs/heads/feature/oliva-v05-a51-20261108": "76ae5ec49a03cd670925a75893c67cbb228bf9d1",
     "refs/heads/feature/oliva-v06-book-identities-20261108": "b1c3cb608047f67856e24ec7bb1f4935e27f0f5f",
     "refs/heads/feature/oliva-v07-review-history-20261108": "a4c266ddc33e2b8041e2f8608cfdf84292c98cb2",
@@ -188,6 +207,7 @@
     "refs/tags/oliva-v0.10.0": "9201cd41b5da2310eb1f412388ba9ac486229564",
     "refs/tags/oliva-v0.11.0": "6ab2aa1e6b34e0e7963076dd2031e96fa287c4af",
     "refs/tags/oliva-v0.12.0": "9227cf4359dda9b31a445a2cf25e52cc8180e60f",
+    "refs/tags/oliva-v0.12.1": "60495bb72a1c05b28b564f808a1785c0da4b033d",
     "refs/tags/oliva-v0.5.0": "50ffa72ce940eadb82cc5597560bc8028224d639",
     "refs/tags/oliva-v0.6.0": "328297ddf6922bdd06b443abfaed6a413c28f855",
     "refs/tags/oliva-v0.7.0": "33aea5417516fb9721379a4caaeb570c0f6fd201",
@@ -195,5 +215,5 @@
     "refs/tags/oliva-v0.9.0": "f418faa5c7e34f4797e774b77160681570a268e4"
   },
   "all_prepared": true,
-  "expected_versions": 9
+  "expected_versions": 10
 }

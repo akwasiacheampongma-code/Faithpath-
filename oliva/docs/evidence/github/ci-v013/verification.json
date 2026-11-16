@@ -1,0 +1,217 @@
+{
+  "purpose": "Independent verification of the actual OLIVA 0.13.0 GitHub Actions source-backup run",
+  "checkedAt": "2026-11-16T14:55:56.128386+00:00",
+  "repository": "akwasiacheampongma-code/Faithpath-",
+  "runId": 43888534422,
+  "runUrl": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/43888534422",
+  "headSha": "639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12",
+  "headBranch": "feature/oliva-v013-reader-parity-20261116",
+  "runStatus": "completed",
+  "runConclusion": "success",
+  "runAttempt": 1,
+  "createdAt": "2026-11-16T14:42:21Z",
+  "completedAt": "2026-11-16T14:53:23Z",
+  "jobIds": [
+    133373145803
+  ],
+  "checks": {
+    "headAndBranchMatch": true,
+    "completedSuccessfully": true,
+    "singleRunAttempt": true,
+    "singleJobAttempt": true,
+    "allJobsSuccessful": true,
+    "allJobStepsSuccessful": true,
+    "archiveIntegrityVerified": true,
+    "freshUnitReport": true,
+    "freshBrowserReport": true,
+    "freshArtifact": true,
+    "allUnitAssertionsPresent": true,
+    "290UnitPassed": true,
+    "126BrowserPassed": true,
+    "noBrowserRetries": true,
+    "noBrowserResultErrors": true,
+    "allFourPinsObservedAndDeclared": true,
+    "allFourOwnActionsUseNode24": true,
+    "explicitAuditZero": true,
+    "realRemoteBuildIdObserved": true,
+    "typecheckCommandObserved": true,
+    "webPwaBuildCommandObserved": true,
+    "allContentValidationCommandsObserved": true,
+    "browserMetadataMatchesRun": true,
+    "unfilteredBrowserConfiguration": true,
+    "unitRunnerRetriesNotConfigured": true,
+    "unfilteredBrowserCommand": true,
+    "exactVersion": true,
+    "freshAssetIntegrityReport": true,
+    "readerAnchorReportMatchesRemoteBuild": true,
+    "sourceSubtreeAndTagMatchAuthorizedHead": true,
+    "historical011FailuresUnchanged": true
+  },
+  "verificationComplete": true,
+  "qualityVerified": true,
+  "artifact": {
+    "id": 14237130650,
+    "name": "oliva-quality-639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12",
+    "bytes": 10747231,
+    "githubDigest": "sha256:f49d547d6b5866104d964320198fbde239ffbe3b51dbdc9b138aff0c89f18046",
+    "downloadSha256": "f49d547d6b5866104d964320198fbde239ffbe3b51dbdc9b138aff0c89f18046",
+    "digestMatches": true,
+    "archiveCrcVerified": true,
+    "archiveEntries": 130,
+    "headMatches": true,
+    "zipStoredOutsideSource": true
+  },
+  "unit": {
+    "total": 290,
+    "passed": 290,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0,
+    "assertionStatuses": {
+      "passed": 290
+    },
+    "testResultFiles": 33,
+    "freshForRun": true,
+    "startTime": "2026-11-16T14:42:46.851000+00:00",
+    "actualStepWindow": [
+      "2026-11-16T14:42:41.842099+00:00",
+      "2026-11-16T14:42:54.924151+00:00"
+    ]
+  },
+  "browser": {
+    "total": 126,
+    "passed": 126,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "freshForRun": true,
+    "startTime": "2026-11-16T14:43:22.628Z",
+    "durationMs": 565984.944,
+    "resultStatuses": {
+      "passed": 126
+    },
+    "attemptCounts": {
+      "1": 126
+    },
+    "retryValues": {
+      "0": 126
+    },
+    "errors": [],
+    "failures": []
+  },
+  "buildAndValidation": {
+    "remoteWebBuildIds": [
+      "oliva-4669ec10881d7abd"
+    ],
+    "actualBuildOutput": [
+      {
+        "buildId": "oliva-4669ec10881d7abd",
+        "runtimeFiles": 104
+      }
+    ],
+    "actionPinsObserved": {
+      "checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "setup-node": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "setup-python": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "upload-artifact": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+    },
+    "ownActionManifests": [
+      {
+        "repository": "actions/checkout",
+        "path": "action.yml",
+        "ref": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "blobSha": "5b0524f730db83f9513c18ab31a6c086c7239076",
+        "bytes": 5144,
+        "sha256": "d59219cb79590abdb877deaa14e3b65a00c05318bf5a6f3b989b9162b5d08c35",
+        "action": "checkout",
+        "pin": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "nativeNode24": true,
+        "evidenceFile": "action-checkout.yml"
+      },
+      {
+        "repository": "actions/setup-node",
+        "path": "action.yml",
+        "ref": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+        "blobSha": "31057efa69b67281683c7b601a1d202329eaa3c1",
+        "bytes": 3002,
+        "sha256": "84cd55863dbadfb83ed786c0bb4336553c2f4ceb52e102fccec01848f1977387",
+        "action": "setup-node",
+        "pin": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+        "nativeNode24": true,
+        "evidenceFile": "action-setup-node.yml"
+      },
+      {
+        "repository": "actions/setup-python",
+        "path": "action.yml",
+        "ref": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+        "blobSha": "645de4f5108b28bcc7ed043ee171770b0754cc35",
+        "bytes": 3141,
+        "sha256": "0829b3f54d769f8b25cefd4d856c735bc8e097d6597835b838ebb4da497c838d",
+        "action": "setup-python",
+        "pin": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+        "nativeNode24": true,
+        "evidenceFile": "action-setup-python.yml"
+      },
+      {
+        "repository": "actions/upload-artifact",
+        "path": "action.yml",
+        "ref": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+        "blobSha": "7cb4d1e81db55320b41217e1a78a1a46e3d2baef",
+        "bytes": 3603,
+        "sha256": "c5979822866a72362e609844b6ebe77d4b7e759af68cc1c2c425dcf51481fab4",
+        "action": "upload-artifact",
+        "pin": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+        "nativeNode24": true,
+        "evidenceFile": "action-upload-artifact.yml"
+      }
+    ],
+    "explicitDependencyAuditZero": true,
+    "typecheckCommandObserved": true,
+    "webPwaBuildCommandObserved": true,
+    "publicDomainCorpusCommandObserved": true,
+    "nativeDeviceTesting": false
+  },
+  "copiedReports": [
+    {
+      "report": "unit-results.json",
+      "archivePath": "docs/evidence/latest/unit-results.json",
+      "bytes": 126122,
+      "sha256": "d018354ca77e066d5fb01fda2463a6973ffc5e46485d596b53fcbc5976fce0c0"
+    },
+    {
+      "report": "e2e-results.json",
+      "archivePath": "docs/evidence/latest/e2e-results.json",
+      "bytes": 404978,
+      "sha256": "cc9d560b2aa2b1efdc01c19b8d2534321c1b4f6cbb3f64b8e4fb68d1eb01ed14"
+    },
+    {
+      "report": "a51-asset-integrity.json",
+      "archivePath": "docs/evidence/latest/a51-asset-integrity.json",
+      "bytes": 345,
+      "sha256": "492db1c9cc72a2ef86131cff9c26bedf099b6dcbde452d9fb4788d02f2e1e03d"
+    },
+    {
+      "report": "reader-anchor-synchronization.json",
+      "archivePath": "docs/evidence/latest/reader-anchor-synchronization.json",
+      "bytes": 290,
+      "sha256": "ac15679079b1d30f3a8541df08e963aec588af44ac0edc8c4fb61b48cd94140c"
+    }
+  ],
+  "historical011Runs": [
+    {
+      "id": 42586789188,
+      "headSha": "5e093ee3d35560e5d902ac6d743341ab16126fe2",
+      "conclusion": "failure",
+      "attempt": 1,
+      "unchanged": true
+    },
+    {
+      "id": 42629068592,
+      "headSha": "20493b077d827c6875f276d0e36bf7fb0e9fce41",
+      "conclusion": "failure",
+      "attempt": 1,
+      "unchanged": true
+    }
+  ],
+  "noAppDeployment": true
+}

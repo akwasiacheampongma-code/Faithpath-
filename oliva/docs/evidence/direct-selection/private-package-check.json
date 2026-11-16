@@ -1,0 +1,87 @@
+{
+  "version": "0.13.1",
+  "checkedAt": "2026-11-16T20:18:48.353Z",
+  "runtime_files_verified": 103,
+  "unchanged_runtime_asset_bytes": 102,
+  "rewritten_uri_files": 1,
+  "all_runtime_hashes_match": true,
+  "pwa_manifest_valid": true,
+  "icons_valid": true,
+  "cache_files_verified": 106,
+  "build_id": "oliva-f8b4e7c2394490b6",
+  "app_routes_rewritten": true,
+  "source_build": "oliva-1f49306347c4f496",
+  "source_validation": {
+    "version": "0.13.1",
+    "checkedAt": "2026-11-16T20:18:00.360874+00:00",
+    "allCoreChecksPassed": true,
+    "coreBuild": "oliva-1f49306347c4f496",
+    "runtimeSourceDigest": {
+      "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+      "fileCount": 328,
+      "sha256": "6e6b250f3979b00403f84e1cc74bc2bd9a18f2960343e930a6f7c5b866a0342c"
+    },
+    "runtimeInputsPath": "runtime-inputs.json",
+    "dataVersion": 9,
+    "privateDocumentVersion": 1,
+    "sqliteSchemaVersion": 3,
+    "indexedDbVersion": 1,
+    "unit": {
+      "total": 293,
+      "passed": 293,
+      "failed": 0,
+      "pending": 0
+    },
+    "browser": {
+      "total": 130,
+      "passed": 130,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "singleFullGreenRun": true,
+      "allResultsSingleAttempt": true
+    },
+    "targetedBrowser": {
+      "total": 46,
+      "passed": 46,
+      "evidence": "targeted-e2e-results.json"
+    },
+    "upgradeReportPath": "upgrade/attempt1/offline-upgrade.json",
+    "upgradeExecutionPath": "upgrade/execution.json",
+    "upgradeLogPath": "upgrade/execution.txt",
+    "realPreviousPwaUpgrade": {
+      "baseline": "0.13.0",
+      "target": "0.13.1",
+      "passed": true,
+      "rawV9RecordsExactBeforeNewActions": 4,
+      "nonMainRecordsExactThroughNewActions": 3,
+      "offlineA51Stages": 7,
+      "actualV9ExportAndRestorePreview": true,
+      "restoreNotApplied": true,
+      "noDataSchemaMigration": true
+    },
+    "nativeJavaScriptAssetExports": {
+      "android": true,
+      "ios": true,
+      "all1300QuestionsStaticDeepEqual": true,
+      "directReaderAndClipboardModulesStaticChecked": true,
+      "physicalDeviceOrSimulator": false
+    },
+    "dependencyAuditVulnerabilities": 0,
+    "originalFaithpathMaterializedFilesVerified": 390,
+    "privateDeployment": {
+      "status": "not yet performed"
+    },
+    "githubBackup": {
+      "status": "not yet performed"
+    },
+    "limitations": [
+      "No physical device or simulator execution; no native screenreader, decoder, memory or energy measurement.",
+      "Hosted browser QA unavailable: supported CUA tool absent. Local core Playwright and static/HTTP hosting checks remain separate.",
+      "Full stories integration awaits user approval of the three design previews; no new image generation.",
+      "Master DoD remains open; original FaithPath and GitHub-main unchanged."
+    ]
+  },
+  "managed_sites_browser_qa": "unavailable: cua_repl.js not exposed",
+  "physical_phone_test": false
+}

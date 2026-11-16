@@ -1,0 +1,104 @@
+{
+  "version": "0.13.1",
+  "checkedAt": "2026-11-16T20:18:00.360874+00:00",
+  "allCoreChecksPassed": true,
+  "coreBuild": "oliva-1f49306347c4f496",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 328,
+    "sha256": "6e6b250f3979b00403f84e1cc74bc2bd9a18f2960343e930a6f7c5b866a0342c"
+  },
+  "runtimeInputsPath": "runtime-inputs.json",
+  "dataVersion": 9,
+  "privateDocumentVersion": 1,
+  "sqliteSchemaVersion": 3,
+  "indexedDbVersion": 1,
+  "unit": {
+    "total": 293,
+    "passed": 293,
+    "failed": 0,
+    "pending": 0
+  },
+  "browser": {
+    "total": 130,
+    "passed": 130,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "singleFullGreenRun": true,
+    "allResultsSingleAttempt": true
+  },
+  "targetedBrowser": {
+    "total": 46,
+    "passed": 46,
+    "evidence": "targeted-e2e-results.json"
+  },
+  "upgradeReportPath": "upgrade/attempt1/offline-upgrade.json",
+  "upgradeExecutionPath": "upgrade/execution.json",
+  "upgradeLogPath": "upgrade/execution.txt",
+  "realPreviousPwaUpgrade": {
+    "baseline": "0.13.0",
+    "target": "0.13.1",
+    "passed": true,
+    "rawV9RecordsExactBeforeNewActions": 4,
+    "nonMainRecordsExactThroughNewActions": 3,
+    "offlineA51Stages": 7,
+    "actualV9ExportAndRestorePreview": true,
+    "restoreNotApplied": true,
+    "noDataSchemaMigration": true
+  },
+  "nativeJavaScriptAssetExports": {
+    "android": true,
+    "ios": true,
+    "all1300QuestionsStaticDeepEqual": true,
+    "directReaderAndClipboardModulesStaticChecked": true,
+    "physicalDeviceOrSimulator": false
+  },
+  "dependencyAuditVulnerabilities": 0,
+  "originalFaithpathMaterializedFilesVerified": 390,
+  "privateDeployment": {
+    "status": "succeeded",
+    "url": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+    "hostBuild": "oliva-f8b4e7c2394490b6",
+    "deploymentId": "appgdep_6afb656d99208191a8c5f68e7ee075ff",
+    "sourceCommit": "704095246041c9f2d5be2ee134fbe4ccc444f13c",
+    "anonymousStatus": 401,
+    "ownerOnlyPolicyUnchanged": true,
+    "appRoutesHttpChecked": 26,
+    "appFilesVerified": 107,
+    "reviewFilesVerified": 42
+  },
+  "githubBackup": {
+    "status": "source checkpoint and atomic authorized push follow this documentation checkpoint",
+    "branch": "feature/oliva-v0131-direct-selection-20261116",
+    "tag": "oliva-v0.13.1",
+    "outerProof": "/workspace/oliva-github-backups.json"
+  },
+  "limitations": [
+    "No physical device or simulator execution; no native screenreader, decoder, memory or energy measurement.",
+    "Hosted browser QA unavailable: supported CUA tool absent. Local core Playwright and static/HTTP hosting checks remain separate.",
+    "Full stories integration awaits user approval of the three design previews; no new image generation.",
+    "Master DoD remains open; original FaithPath and GitHub-main unchanged."
+  ],
+  "earlierFullBrowser": {
+    "passed": 127,
+    "failed": 3,
+    "report": "e2e-results-r1.json",
+    "scope": "Two unreproduced unchanged artwork timeouts; original checks passed in separate diagnosis and final run without relaxed criteria. Old goal entry adapted to More and visible target main. Raw reports preserved."
+  },
+  "storyDesignPreview": {
+    "status": "privately deployed",
+    "url": "https://oliva-geschichten-gestaltungsstudie.purplebean128.chatgpt.site",
+    "project_id": "appgprj_6afb5c762278819193ed8d9fd2a322c7",
+    "sourceCommit": "d045691943d32c6dcdd94bb15e8760bc2cc57b5f",
+    "sampleUnits": 7,
+    "sampleQuestions": 36,
+    "sampleReflections": 7,
+    "fullIntegrationImplemented": false,
+    "fullIntegrationRequiresUserDesignApproval": true,
+    "existingImagesOnly": true,
+    "nodeDomActionsChecked": 8,
+    "hostedBrowserOrDeviceTest": false,
+    "anonymousStatus": 401
+  }
+}

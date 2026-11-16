@@ -7,14 +7,10 @@ import {
   type Reference,
 } from "./repository";
 
-export const SELECTION_GAP_MESSAGE =
-  "Bitte wähle zusammenhängende Verse aus.";
+export const SELECTION_GAP_MESSAGE = "Bitte wähle zusammenhängende Verse aus.";
 
 export type SelectionErrorCode =
-  | "invalid-reference"
-  | "invalid-verse"
-  | "duplicate-verse"
-  | "non-contiguous";
+  "invalid-reference" | "invalid-verse" | "duplicate-verse" | "non-contiguous";
 
 export class SelectionError extends Error {
   constructor(
@@ -27,11 +23,7 @@ export class SelectionError extends Error {
 }
 
 function checkedReference(reference: Reference): Reference {
-  if (
-    !reference ||
-    !bookByCode(reference.book) ||
-    !validReference(reference)
-  )
+  if (!reference || !bookByCode(reference.book) || !validReference(reference))
     throw new SelectionError("invalid-reference", "Ungültige Bibelstelle.");
 
   return {
@@ -124,6 +116,56 @@ export function formatBibleCopy(reference: Reference): string {
   return [
     referenceLabel(labelReference),
     ...verses.map((verse) => `${verse.n} ${verse.text}`),
+    "Lutherbibel 1912",
+  ].join("\n");
+}
+
+/** Canonical selected verses only; disjoint selections never include gap text. */
+export function selectedBibleVerses(
+  reference: Reference,
+  selected: readonly number[],
+) {
+  const checked = checkedReference(reference);
+  const numbers = checkedSelection(checked, selected);
+  if (!numbers.length)
+    throw new SelectionError(
+      "invalid-verse",
+      "Wähle mindestens einen Vers aus.",
+    );
+  const wanted = new Set(numbers);
+  return getChapter(checked.book, checked.chapter).filter((verse) =>
+    wanted.has(verse.n),
+  );
+}
+
+export function selectedBibleLabel(
+  reference: Reference,
+  selected: readonly number[],
+): string {
+  const verses = selectedBibleVerses(reference, selected);
+  const groups: number[][] = [];
+  for (const verse of verses) {
+    const last = groups.at(-1);
+    if (last && last.at(-1)! + 1 === verse.n) last.push(verse.n);
+    else groups.push([verse.n]);
+  }
+  const ranges = groups
+    .map((group) =>
+      group.length === 1 ? String(group[0]) : `${group[0]}–${group.at(-1)}`,
+    )
+    .join(".");
+  return `${bookByCode(reference.book)!.name} ${reference.chapter},${ranges}`;
+}
+
+export function formatSelectedBibleCopy(
+  reference: Reference,
+  selected: readonly number[],
+): string {
+  return [
+    selectedBibleLabel(reference, selected),
+    ...selectedBibleVerses(reference, selected).map(
+      (verse) => `${verse.n} ${verse.text}`,
+    ),
     "Lutherbibel 1912",
   ].join("\n");
 }

@@ -1,0 +1,27 @@
+{
+  "sourceCommit": "a519ce898fa33907b07d5ac7a585595127556183",
+  "sources": {
+    "data/faithpath-nachlese-story-flow.json": {
+      "bytes": 705226,
+      "sha256": "330d06b5b4e5c6413d41e8c10e16b1ff0735ac682637ccbe847ffbb4996c5435"
+    },
+    "data/nachlese-questions.json": {
+      "bytes": 3795630,
+      "sha256": "fee7b3b4c549baf9e4cdd90efeece573933e37ebaa7d551860708ffae4e8efd0"
+    }
+  },
+  "sampleIds": [
+    "NS-0006",
+    "NS-0010",
+    "NS-0052",
+    "NS-0073",
+    "NS-0203",
+    "NS-0235",
+    "NS-0241"
+  ],
+  "allTitlesReferencesQuestionsOptionOrdersCorrectIndicesAndReflectionsUnchanged": true,
+  "noGeneratedRetellingsOrExplanations": true,
+  "fullIntegrationNotStarted": true,
+  "bibleSource": "src/data/bible.json: Luther 1912; exact canonical verse text",
+  "sourceBibleSha256": "6dd74b74fa67033976536939521df6417ab9c41579fee8c6cbeffd94016e6ce8"
+}

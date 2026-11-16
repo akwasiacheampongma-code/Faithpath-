@@ -1,3 +1,27 @@
+# Lieferstand · OLIVA 0.13.1 und drei private Gestaltungsansichten
+
+Stand: 16.11.2026. **OLIVA 0.13.1 ist seit 2026-11-16T20:20:14.516734+00:00 eigentümerprivat bereitgestellt. Die Reader-Bedienkorrektur ist abgeschlossen.** Verse direkt antippen, weitere hinzufügen oder abwählen; die feste kleine Leiste bietet Markieren, Kopieren, Notiz und Mehr. Kein Auswahlmodus, keine Bestätigung „Auswahl verwenden“, keine eingeschobene Textkarte. Notiz öffnet nur den benötigten Editor. Getrennte Verse lassen sich exakt kopieren, markieren und merken; eine gemeinsame Notiz benötigt weiterhin benachbarte Verse.
+
+**293/293 Fachtests und ein einzelner vollständiger 130/130-Browserlauf bestanden**, zusätzlich 46 gezielte Reader-/Bestandsfälle und der reale 0.13.0→0.13.1-Offline-PWA-Wechsel. Der erste vollständige 127/130-Lauf und seine Diagnose bleiben erhalten. Keine Kriterien für Baum/Buchbilder aufgeweicht. Native JS-/Assetexports und alle 1.300 NT-Fragen sind statisch geprüft; keine Geräte- oder Simulatorausführung. AppData bleibt V9 ohne neue Migration. Kern oliva-1f49306347c4f496, Host oliva-f8b4e7c2394490b6. Vorhandene Daten, Glaubensfortschritt, A51-Stadien und ursprüngliche FaithPath-Dateien bleiben bewahrt.
+
+**Drei private Gestaltungsansichten sind zur Nutzerprüfung bereit:**
+
+- [Geschichtenbibliothek](https://oliva-geschichten-gestaltungsstudie.purplebean128.chatgpt.site/#bibliothek)
+- [In der Krippe · Illustration, Fragen, Reflexion](https://oliva-geschichten-gestaltungsstudie.purplebean128.chatgpt.site/#geschichte/NS-0241/lesen)
+- [Psalm 23 · ohne individuelles Bild](https://oliva-geschichten-gestaltungsstudie.purplebean128.chatgpt.site/#geschichte/NS-0073/lesen)
+
+Die separate Studie nutzt die aktuelle OLIVA-Palette, die Originalschriften und vorhandene unveränderte Bilder. Sieben geprüfte Originaleinheiten mit 36 Fragen und sieben Reflexionsimpulsen sind bedienbar. Der vollständige Zielbestand bleibt 436 Einheiten, 2.479 Frageelemente und 436 Reflexionsimpulse. **Die vollständige Integration beginnt erst nach ausdrücklicher Gestaltungsfreigabe des Nutzers.** Keine neuen Bilder und keine neue Versions-/Terminplanung.
+
+Vorschauantworten/-gedanken liegen nur im Arbeitsspeicher dieser Seite und verschwinden beim Neuladen; keine Verbindung zu Sammlung, Baum oder AppData. Der gemeinsame echte Reader öffnet sich für diese isolierte Studie in einem neuen Tab; die spätere Integration würde innerhalb der App zurückkehren. Diese Abweichung ist sichtbar erklärt. Fünf Modelltests, acht Node-DOM-Abläufe, Originalquellenvergleich sowie statische und private HTTP-Kontrollen bestehen. **Keine Browser-/Layout-/Geräteprüfung der neuen Sites-Studie:** Das unterstützte CUA-Werkzeug fehlt; DOM-Shims sind keine solche Prüfung.
+
+[Privater Reader](https://oliva-v04-private-preview.purplebean128.chatgpt.site/lesen/JHN?chapter=6&from=35&to=37) · [Reader-Vertrag](26-reader-direct-selection.md) · [Studienquellcode und Grenzen](../design-previews/stories/README.md).
+
+Beide Sites bleiben ausschließlich dem Eigentümerkonto zugänglich; anonymer Zugriff ergibt 401. Kein öffentliches Website-/Storedeployment und kein Merge nach GitHub-main. Die beauftragte Quellcodesicherung erfolgt auf Branch feature/oliva-v0131-direct-selection-20261116 und Tag oliva-v0.13.1 unter oliva/. Eigene endgültige Commit-/ZIP-Kennungen stehen nach dem Quellcheckpoint in /workspace/oliva-v0131-local-checkpoint.json; die bestätigten Remote-Refs in /workspace/oliva-github-backups.json. Keine noch unbekannten Hashes werden vorweggenommen. Die neue Remote-CI wird durch den Quellpush ausgelöst und ist separat zu beurteilen; die Vorgänger-CI 43888534422 bestätigt ausschließlich 0.13.0 mit 290/126.
+
+**Nächster zulässiger Schritt:** Nutzer beurteilt die drei konkreten Ansichten. Vollständige Geschichtenintegration wartet auf diese Freigabe. Andere bereits freigegebene Master-Aufgaben bleiben bestehen; die gesamte Master-Definition-of-Done ist weiterhin offen.
+
+## Historische Lieferstände
+
 <!-- OLIVA-013-DELIVERY:BEGIN -->
 # Lieferstand · OLIVA 0.13 · geprüft und privat bereitgestellt
 
@@ -211,3 +235,7 @@ Die früheren 224/224 Fachtests vor der letzten Positionseingangskorrektur, die 
 Private Bereitstellung **10.11.2026, 03:51:05 UTC**: Quellcommit `597abd802820fece4bac4601ed5fa0a57134c983`, Deployment `appgdep_6af2949d0910819196b799ea5b20de94`, gespeicherte Version `appgprj_6aedf77e5ce0819180c10eb799447018~appgver_a32bfb3b4bfc819189fb1bd1696f6866`. Kern `oliva-80005b3c1d2e2eef`, Host `oliva-168499f23f74e16c`. 24 App-Routen und 107 App-Dateien geprüft (106 Hashvergleiche, Index-HTML separat als App-Shell); 42 Review-Dateien bytegenau; anonym HTTP 401, ein Eigentümer und keine weiteren Betrachter. [HTTP-Nachweis](evidence/nt-catalog/private-http-check.json) und [Zugangsnachweis](evidence/nt-catalog/private-access-policy.json). Der erste Hostingversuch lieferte für einen Expo-Router-PNG-Pfad eine HTML-Shell statt des Bildes. Dieser HTTP-Fehler und das erste Paket bleiben unter `before-vendor-host-fix/` erhalten. Ausschließlich das Hostingpaket wurde auf den vorhandenen Vendor-Alias samt URI-Umschreibung angepasst; der Produktkern blieb unverändert. Der anschließende vollständige HTTP-Abgleich ist der hier genannte Erfolgsnachweis. Native Nachweise betreffen JavaScript und Assetbytes einschließlich des vollständigen statischen Katalogabgleichs. Geräte-, Simulator-, Decoder-, Screenreader-, Energie-, Speicher- und signierte Installationstests sind damit nicht durchgeführt.
 
 Der eigenständige 0.12-Quellcheckpoint mit Tag, ZIP und SHA-256 sowie die beauftragte GitHub-Sicherung folgen nach diesem Dokumentcheckpoint. Deren noch nicht bestätigte Kennungen werden nicht vorweggenommen; die tatsächliche neue Remote-CI wird separat geprüft. Danach die vorbereitete Readerparität umsetzen: [Quellprüfung und Abnahmekriterien](evidence/reader-parity-preparation/reader-parity-preparation.md). Die übrigen Masterlücken bleiben offen; keine neue Versionsnummer oder Frist wird vergeben.
+
+## Nachträglich bestätigter 0.13-Checkpoint und Remote-CI
+
+Eigenständiger Quellcommit `8595783344f49c978da80a1ef52b8776dd8f3a3c`, GitHub-Commit `639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12`, Tag `oliva-v0.13.0`; alle 20 Versionsrefs bestätigt. Die tatsächliche Remote-CI `43888534422` bestätigt unabhängig 290/290 Fachtests und 126/126 Browserfälle im ersten Versuch. [Prüfbericht](evidence/github/ci-v013/README.md). Die Reader-Phase ist abgeschlossen; der Gesamt-Master und insbesondere die besprochene Geschichtenintegration bleiben offen.

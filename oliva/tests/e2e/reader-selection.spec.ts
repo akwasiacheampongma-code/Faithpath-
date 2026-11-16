@@ -1,3 +1,11 @@
+import {
+  selectionBar,
+  noteDialog,
+  openNote,
+  closeNote,
+  markSelection,
+  bookmarkSelection,
+} from "./selection-ui";
 import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -23,7 +31,7 @@ const verse = (page: Page, n: number) =>
     .filter({ visible: true });
 const tools = (page: Page) =>
   page
-    .getByRole("dialog", { name: "Auswahl verwenden", exact: true })
+    .getByRole("dialog", { name: "Deine Notiz", exact: true })
     .filter({ visible: true });
 const noteField = (page: Page) =>
   tools(page).getByRole("textbox", {
@@ -92,12 +100,12 @@ async function selected(page: Page, numbers: number[]) {
   expect(actual).toEqual(expected);
 }
 async function openTools(page: Page) {
-  await button(page, "Auswahl verwenden").click();
+  await button(page, "Notiz").click();
   await expect(tools(page)).toBeVisible();
 }
 async function closeTools(page: Page) {
   await tools(page)
-    .getByRole("button", { name: "Auswahlwerkzeuge schließen", exact: true })
+    .getByRole("button", { name: "Schließen", exact: true })
     .click();
   await expect(tools(page)).toHaveCount(0);
 }
@@ -197,41 +205,25 @@ test("eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erh
   const initial = await localData(page),
     before = durableContent(initial),
     beforeProgress = progress(initial);
-  await button(page, "Mehrere Verse auswählen").click();
   await verse(page, 35).click();
   await verse(page, 37).click();
   await selected(page, [35, 37]);
   await expect(verse(page, 36)).toHaveAttribute("aria-pressed", "false");
-  await openTools(page);
   await expect(
-    tools(page).getByText("Bitte wähle zusammenhängende Verse aus.", {
-      exact: true,
-    }),
-  ).toBeVisible();
+    selectionBar(page).getByRole("button", { name: "Notiz", exact: true }),
+  ).toBeDisabled();
   await expect(
-    tools(page).getByRole("button", {
-      name: "Terrakotta markieren",
-      exact: true,
-    }),
-  ).toHaveCount(0);
-  await expect(
-    tools(page).getByRole("button", {
+    selectionBar(page).getByRole("button", {
       name: "Bibeltext kopieren",
       exact: true,
     }),
-  ).toHaveCount(0);
+  ).toBeEnabled();
   await expect(noteField(page)).toHaveCount(0);
   expect(durableContent(await localData(page))).toEqual(before);
-  await page.keyboard.press("Escape");
-  await expect(tools(page)).toHaveCount(0);
-  await expect(verse(page, 37)).toBeFocused();
 
   await verse(page, 36).click();
   await selected(page, [35, 36, 37]);
-  await openTools(page);
-  await tools(page)
-    .getByRole("button", { name: "Terrakotta markieren", exact: true })
-    .click();
+  await markSelection(page, "Terrakotta");
   const expectedHighlights = {
     ...initial.highlights,
     "JHN:6:35": "terra",
@@ -241,9 +233,7 @@ test("eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erh
   await expect
     .poll(async () => (await localData(page)).highlights)
     .toEqual(expectedHighlights);
-  await tools(page)
-    .getByRole("button", { name: "Ausgewählte Verse merken", exact: true })
-    .click();
+  await bookmarkSelection(page);
   await expect
     .poll(async () => [...(await localData(page)).bookmarks].sort())
     .toEqual(
@@ -252,6 +242,7 @@ test("eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erh
       ].sort(),
     );
   const text = "Diese Worte gehören genau zu Johannes 6,35–37.";
+  await openTools(page);
   await noteField(page).fill(text);
   await tools(page)
     .getByRole("button", { name: "Notiz speichern", exact: true })
@@ -295,7 +286,6 @@ test("35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den 
   const beforeProgress = progress(await localData(page)),
     firstText = "Mein erster Entwurf gehört zu 35 bis 36.",
     secondText = "Mein anderer Entwurf gehört zu 35 bis 37.";
-  await button(page, "Mehrere Verse auswählen").click();
   await verse(page, 35).click();
   await verse(page, 36).click();
   await openTools(page);
@@ -443,8 +433,7 @@ for (const representation of ["Fließtext", "Einzelverse"] as const) {
       await expect(visible(page, "reader-single-verses")).toBeVisible();
     }
     const before = durableContent(await localData(page));
-    await button(page, "Mehrere Verse auswählen").click();
-    await expect(button(page, "Auswahl verwenden")).toBeDisabled();
+    await expect(selectionBar(page)).toHaveCount(0);
     for (const [n, key] of [
       [35, "Enter"],
       [37, "Space"],
@@ -461,8 +450,7 @@ for (const representation of ["Fließtext", "Einzelverse"] as const) {
     for (const n of [35, 36, 37])
       await expect(verse(page, n)).toHaveAttribute("aria-pressed", "true");
     await page.keyboard.press("Escape");
-    await expect(button(page, "Mehrere Verse auswählen")).toBeVisible();
-    await expect(button(page, "Auswahl verwenden")).toHaveCount(0);
+    await expect(selectionBar(page)).toHaveCount(0);
     await expect(verse(page, 36)).toBeFocused();
     for (const n of [35, 36, 37])
       await expect(verse(page, n)).toHaveAttribute("aria-pressed", "false");
@@ -482,21 +470,39 @@ for (const representation of ["Fließtext", "Einzelverse"] as const) {
 }
 
 for (const kind of ["verse", "passage"] as const) {
-  test(`${kind === "verse" ? "Einzelvers" : "Bereich"}: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme`, async ({ page }) => {
+  test(`${kind === "verse" ? "Einzelvers" : "Bereich"}: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme`, async ({
+    page,
+  }) => {
     await page.goto("/lesen/JHN?chapter=6");
     await ready(page);
     const beforeProgress = progress(await localData(page));
-    const expectedRef = { book: "JHN", chapter: 6, from: 35, to: kind === "verse" ? 35 : 37 };
-    const key = kind === "verse" ? "capture:verse:JHN:6:35" : "capture:passage:JHN:6:35:37";
-    const text = kind === "verse"
-      ? "Meine ungesicherten Worte zu genau Vers 35."
-      : "Meine ungesicherten Worte zum vollständigen Bereich 35 bis 37.";
+    const expectedRef = {
+      book: "JHN",
+      chapter: 6,
+      from: 35,
+      to: kind === "verse" ? 35 : 37,
+    };
+    const key =
+      kind === "verse"
+        ? "capture:verse:JHN:6:35"
+        : "capture:passage:JHN:6:35:37";
+    const text =
+      kind === "verse"
+        ? "Meine ungesicherten Worte zu genau Vers 35."
+        : "Meine ungesicherten Worte zum vollständigen Bereich 35 bis 37.";
     if (kind === "passage") {
-      await button(page, "Mehrere Verse auswählen").click();
       for (const n of [35, 36, 37]) await verse(page, n).click();
       await openTools(page);
-    } else await verse(page, 35).click();
-    const field = kind === "passage" ? noteField(page) : page.getByRole("textbox", { name: "Notiz zu Vers 35", exact: true }).filter({ visible: true });
+    } else {
+      await verse(page, 35).click();
+      await openNote(page);
+    }
+    const field =
+      kind === "passage"
+        ? noteField(page)
+        : page
+            .getByRole("textbox", { name: "Notiz zu Vers 35", exact: true })
+            .filter({ visible: true });
     await expect(field).toBeVisible();
     await page.evaluate(() => {
       const testWindow = window as Window & { failReaderWrites?: boolean };
@@ -504,48 +510,93 @@ for (const kind of ["verse", "passage"] as const) {
       const put = IDBObjectStore.prototype.put;
       IDBObjectStore.prototype.put = function (value, recordKey) {
         if (testWindow.failReaderWrites && recordKey === "main")
-          throw new DOMException("Echter Test-Schreibfehler", "QuotaExceededError");
+          throw new DOMException(
+            "Echter Test-Schreibfehler",
+            "QuotaExceededError",
+          );
         return put.call(this, value, recordKey);
       };
     });
     await field.fill(text);
-    await expect(page.getByText(/Entwurf konnte nicht gesichert werden/).filter({ visible: true })).toBeVisible();
-    expect((await localData(page)).drafts.some(d => d.key === key)).toBe(false);
+    await expect(
+      page
+        .getByText(/Entwurf konnte nicht gesichert werden/)
+        .filter({ visible: true }),
+    ).toBeVisible();
+    expect((await localData(page)).drafts.some((d) => d.key === key)).toBe(
+      false,
+    );
     expect((await localData(page)).notes).toEqual([]);
     if (kind === "passage") await closeTools(page);
-    else await button(page, "Versaktionen schließen").click();
+    else await closeNote(page);
     // These are actual client-side navigation controls. A document reload would
     // intentionally lose session-only memory and cannot test held recovery.
     await button(page, "Zurück").click();
     await expect(page).toHaveURL(/\/bibel(?:\?|$)/);
     await button(page, "Sammlung").click();
     await button(page, "Entwürfe").click();
-    await expect(page.getByText("Nur in dieser Sitzung erhalten", { exact: true })).toBeVisible();
-    await expect(page.getByText(text, { exact: true }).filter({ visible: true })).toBeVisible();
+    await expect(
+      page.getByText("Nur in dieser Sitzung erhalten", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByText(text, { exact: true }).filter({ visible: true }),
+    ).toBeVisible();
     const download = page.waitForEvent("download");
     await button(page, "Ungesicherte Entwürfe exportieren").click();
     const exportedPath = await (await download).path();
     const exported = JSON.parse(readFileSync(exportedPath!, "utf8"));
-    const held = exported.drafts.find((entry: { draft: { key: string } }) => entry.draft.key === key);
-    expect(held).toMatchObject({ reason: "error", draft: { revision: 0, values: { text, source: { type: kind, ref: expectedRef } } } });
+    const held = exported.drafts.find(
+      (entry: { draft: { key: string } }) => entry.draft.key === key,
+    );
+    expect(held).toMatchObject({
+      reason: "error",
+      draft: {
+        revision: 0,
+        values: { text, source: { type: kind, ref: expectedRef } },
+      },
+    });
     const sourceId = held.draft.id as string;
-    await button(page, `Entwurf fortsetzen: Notiz zu Johannes 6,${kind === "verse" ? "35" : "35–37"}`).click();
+    await button(
+      page,
+      `Entwurf fortsetzen: Notiz zu Johannes 6,${kind === "verse" ? "35" : "35–37"}`,
+    ).click();
     await ready(page);
     if (kind === "passage") {
       await expect(tools(page)).toBeVisible();
       await selected(page, [35, 36, 37]);
     }
-    const resumed = kind === "passage" ? noteField(page) : page.getByRole("textbox", { name: "Notiz zu Vers 35", exact: true }).filter({ visible: true });
+    const resumed =
+      kind === "passage"
+        ? noteField(page)
+        : page
+            .getByRole("textbox", { name: "Notiz zu Vers 35", exact: true })
+            .filter({ visible: true });
     await expect(resumed).toHaveValue(text);
-    await expect(page.getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/)).toHaveCount(0);
-    expect((await localData(page)).drafts.some(d => d.key === key)).toBe(false);
+    await expect(
+      page.getByText(/Dieser Bibelentwurf ist nicht mehr vorhanden/),
+    ).toHaveCount(0);
+    expect((await localData(page)).drafts.some((d) => d.key === key)).toBe(
+      false,
+    );
     expect((await localData(page)).notes).toEqual([]);
-    await page.evaluate(() => { (window as Window & { failReaderWrites?: boolean }).failReaderWrites = false; });
-    await button(page, "Notiz speichern").click();
-    await expect.poll(async () => (await localData(page)).notes.find(note => note.text === text)).toMatchObject({
-      id: held.draft.values.entityId, kind: "note", ref: expectedRef, captureSource: { type: kind, ref: expectedRef },
+    await page.evaluate(() => {
+      (window as Window & { failReaderWrites?: boolean }).failReaderWrites =
+        false;
     });
-    expect((await localData(page)).drafts.some(d => d.id === sourceId)).toBe(false);
+    await button(page, "Notiz speichern").click();
+    await expect
+      .poll(async () =>
+        (await localData(page)).notes.find((note) => note.text === text),
+      )
+      .toMatchObject({
+        id: held.draft.values.entityId,
+        kind: "note",
+        ref: expectedRef,
+        captureSource: { type: kind, ref: expectedRef },
+      });
+    expect((await localData(page)).drafts.some((d) => d.id === sourceId)).toBe(
+      false,
+    );
     expect((await localData(page)).notes).toHaveLength(1);
     expect(progress(await localData(page))).toEqual(beforeProgress);
     await report(page, `held-${kind}-draft-source-recovery`, {
@@ -561,36 +612,83 @@ for (const kind of ["verse", "passage"] as const) {
   });
 }
 
-test("eine abgelehnte Versentwurf-URL öffnet vor oder nach der Quellenprüfung keinen fremden Editor", async ({ page }) => {
+test("eine abgelehnte Versentwurf-URL öffnet vor oder nach der Quellenprüfung keinen fremden Editor", async ({
+  page,
+}) => {
   await page.goto("/lesen/JHN?chapter=6&verse=35");
   await ready(page);
-  const words = "Dieser Entwurf bleibt ausschließlich Johannes 6,35 zugeordnet.";
-  await page.getByRole("textbox", { name: "Notiz zu Vers 35", exact: true }).filter({ visible: true }).fill(words);
-  await expect.poll(async () => (await localData(page)).drafts.find(d => d.key === "capture:verse:JHN:6:35")).toMatchObject({ values: { text: words } });
-  const original = (await localData(page)).drafts.find(d => d.key === "capture:verse:JHN:6:35")!;
+  const words =
+    "Dieser Entwurf bleibt ausschließlich Johannes 6,35 zugeordnet.";
+  await openNote(page);
+  await page
+    .getByRole("textbox", { name: "Notiz zu Vers 35", exact: true })
+    .filter({ visible: true })
+    .fill(words);
+  await expect
+    .poll(async () =>
+      (await localData(page)).drafts.find(
+        (d) => d.key === "capture:verse:JHN:6:35",
+      ),
+    )
+    .toMatchObject({ values: { text: words } });
+  const original = (await localData(page)).drafts.find(
+    (d) => d.key === "capture:verse:JHN:6:35",
+  )!;
   const beforeProgress = progress(await localData(page));
   // Read-only observation includes nodes added and removed before a later
   // assertion, so even a transient pre-authorization editor mount is visible.
   await page.addInitScript(() => {
     const labels: string[] = [];
-    (window as Window & { readerMountedNoteLabels?: string[] }).readerMountedNoteLabels = labels;
+    (
+      window as Window & { readerMountedNoteLabels?: string[] }
+    ).readerMountedNoteLabels = labels;
     const record = (element: Element) => {
-      const selector = 'textarea[aria-label^="Notiz zu Vers"],input[aria-label^="Notiz zu Vers"]';
-      if (element.matches(selector)) labels.push(element.getAttribute("aria-label")!);
-      element.querySelectorAll(selector).forEach(node => labels.push(node.getAttribute("aria-label")!));
+      const selector =
+        'textarea[aria-label^="Notiz zu Vers"],input[aria-label^="Notiz zu Vers"]';
+      if (element.matches(selector))
+        labels.push(element.getAttribute("aria-label")!);
+      element
+        .querySelectorAll(selector)
+        .forEach((node) => labels.push(node.getAttribute("aria-label")!));
     };
-    new MutationObserver(records => {
+    new MutationObserver((records) => {
       for (const mutation of records) {
-        if (mutation.type === "attributes" && mutation.target instanceof Element) record(mutation.target);
-        mutation.addedNodes.forEach(node => { if (node instanceof Element) record(node); });
+        if (
+          mutation.type === "attributes" &&
+          mutation.target instanceof Element
+        )
+          record(mutation.target);
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof Element) record(node);
+        });
       }
-    }).observe(document, { childList: true, subtree: true, attributes: true, attributeFilter: ["aria-label"] });
+    }).observe(document, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["aria-label"],
+    });
   });
-  await page.goto(`/lesen/MRK?chapter=4&verse=35&draft=${encodeURIComponent(original.id)}`);
-  await expect(page.getByText("Entwurf und Bibelabschnitt passen nicht zusammen. Öffne den Entwurf erneut über die Sammlung.", { exact: true })).toBeVisible();
-  await expect(page.getByRole("textbox", { name: "Notiz zu Vers 35", exact: true }).filter({ visible: true })).toHaveCount(0);
+  await page.goto(
+    `/lesen/MRK?chapter=4&verse=35&draft=${encodeURIComponent(original.id)}`,
+  );
+  await expect(
+    page.getByText(
+      "Entwurf und Bibelabschnitt passen nicht zusammen. Öffne den Entwurf erneut über die Sammlung.",
+      { exact: true },
+    ),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("textbox", { name: "Notiz zu Vers 35", exact: true })
+      .filter({ visible: true }),
+  ).toHaveCount(0);
   await expect(tools(page)).toHaveCount(0);
-  const editorLabelsBeforeExplicitSelection = await page.evaluate(() => (window as Window & { readerMountedNoteLabels?: string[] }).readerMountedNoteLabels);
+  const editorLabelsBeforeExplicitSelection = await page.evaluate(
+    () =>
+      (window as Window & { readerMountedNoteLabels?: string[] })
+        .readerMountedNoteLabels,
+  );
   expect(editorLabelsBeforeExplicitSelection).toEqual([]);
   expect((await localData(page)).drafts).toEqual([original]);
   expect((await localData(page)).notes).toEqual([]);
@@ -598,12 +696,34 @@ test("eine abgelehnte Versentwurf-URL öffnet vor oder nach der Quellenprüfung 
   // Reading remains usable after the rejected route. Only a fresh explicit
   // verse choice opens a new editor for the actual visible canonical source.
   await verse(page, 36).click();
-  await expect(page.getByRole("textbox", { name: "Notiz zu Vers 36", exact: true }).filter({ visible: true })).toHaveValue("");
-  await expect.poll(() => page.evaluate(() => (window as Window & { readerMountedNoteLabels?: string[] }).readerMountedNoteLabels)).toContain("Notiz zu Vers 36");
+  await expect(
+    page
+      .getByRole("textbox", { name: "Notiz zu Vers 36", exact: true })
+      .filter({ visible: true }),
+  ).toHaveCount(0);
+  await openNote(page);
+  await expect(
+    page
+      .getByRole("textbox", { name: "Notiz zu Vers 36", exact: true })
+      .filter({ visible: true }),
+  ).toHaveValue("");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as Window & { readerMountedNoteLabels?: string[] })
+            .readerMountedNoteLabels,
+      ),
+    )
+    .toContain("Notiz zu Vers 36");
   expect((await localData(page)).drafts).toEqual([original]);
   await report(page, "rejected-verse-draft-route-keeps-editors-closed", {
-    rejectedDraftId: original.id, originalSourceUnchanged: true,
-    editedRoute: "MRK 4,35", explicitNewSelection: "MRK 4,36", noExtraDraftOrNote: true,
-    readOnlyDomObserverSawNoEditorBeforeExplicitChoice: editorLabelsBeforeExplicitSelection,
+    rejectedDraftId: original.id,
+    originalSourceUnchanged: true,
+    editedRoute: "MRK 4,35",
+    explicitNewSelection: "MRK 4,36",
+    noExtraDraftOrNote: true,
+    readOnlyDomObserverSawNoEditorBeforeExplicitChoice:
+      editorLabelsBeforeExplicitSelection,
   });
 });

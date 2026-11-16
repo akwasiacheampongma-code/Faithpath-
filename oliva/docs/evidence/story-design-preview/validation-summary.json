@@ -1,0 +1,73 @@
+{
+  "status": "ready for user design review",
+  "privateUrl": "https://oliva-geschichten-gestaltungsstudie.purplebean128.chatgpt.site",
+  "privateDeploymentId": "appgdep_6afb65ef5bc881918846a278ef2e319e",
+  "hostingSourceCommit": "d045691943d32c6dcdd94bb15e8760bc2cc57b5f",
+  "actualSample": {
+    "units": 7,
+    "questions": 36,
+    "reflections": 7
+  },
+  "approvedFutureTarget": {
+    "units": 436,
+    "questions": 2479,
+    "reflections": 436
+  },
+  "originalContentCheck": {
+    "passed": true,
+    "originalGitCommit": "a519ce898fa33907b07d5ac7a585595127556183",
+    "unitsCompared": 7,
+    "questionsCompared": 36,
+    "reflectionsCompared": 7,
+    "allQuestionOptionOrdersAndCorrectIndicesExact": true,
+    "canonicalBibleEvidenceExact": true,
+    "originalGitFilesChanged": false
+  },
+  "nodeDomCheck": {
+    "passed": true,
+    "checkedAt": "2026-11-16T20:02:02.960Z",
+    "actions": [
+      "Library renders seven actual source units",
+      "Image-free filter changes the displayed real result",
+      "Illustrated unit opens the real existing shared-reader URL",
+      "Original question order, wrong-answer feedback and verbatim Bible evidence work",
+      "A preview answer can be changed without changing the source",
+      "Original reflection and exact temporary words survive preview navigation without duplicate completion controls",
+      "Psalm uses canonical typography without a missing-image placeholder",
+      "Theme and the three-view chooser have actual handlers"
+    ],
+    "unitEnvironment": "linkedom Node DOM emulator with explicit no-op focus/scroll, dialog shims and select.value property shim",
+    "requestsObserved": [
+      "./sample-data.json"
+    ],
+    "actualBrowser": false,
+    "actualLayout": false,
+    "actualScreenreader": false,
+    "physicalDevice": false,
+    "simulator": false,
+    "applicationDataStoreImported": false
+  },
+  "staticPackageCheck": {
+    "passed": true,
+    "checkedAt": "2026-11-16T20:04:18.039Z",
+    "views": 3,
+    "sampleUnits": 7,
+    "sampleQuestions": 36,
+    "sampleReflections": 7,
+    "filesHashed": 20,
+    "existingImagesOnly": true,
+    "personalApplicationDataWritten": false,
+    "scope": "Static package and source checks; no browser, screenreader or device execution."
+  },
+  "ownerOnly": true,
+  "anonymousHttpStatus": 401,
+  "httpAssetHashesPassed": true,
+  "existingImagesOnly": true,
+  "generatedNewImages": false,
+  "hostedBrowserTest": false,
+  "deviceTest": false,
+  "fullCatalogIntegrationStarted": false,
+  "waitingForUserDesignApproval": true,
+  "readerExternalTabIsPreviewDeviation": true,
+  "noPersonalApplicationDataWrites": true
+}

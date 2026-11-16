@@ -1,87 +1,276 @@
 import { useEffect, useRef, useState } from "react";
-import { Modal, ScrollView, View, Pressable } from "react-native";
+import { Modal, ScrollView, TextInput, View, Pressable } from "react-native";
 import { router } from "expo-router";
-import { Button, Card, T } from "../../components/ui";
+import { Button, T } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { useApp } from "../../state/store";
 import { CaptureInput } from "../personal/CaptureInput";
 import { captureSourceForReference } from "../personal/capture-model";
-import { getPassage, referenceLabel, type Reference } from "./repository";
-import { highlightBackground, type HighlightColor } from "./highlights";
+import { selectedBibleLabel } from "./selection";
+import { referenceLabel, type Reference } from "./repository";
 import { focusReaderControl } from "./flow/focus";
-import { CopyPassage } from "./clipboard/CopyPassage";
 
-const colors: { value: HighlightColor; label: string }[] = [
-  { value: "olive", label: "Oliv" }, { value: "gold", label: "Gold" },
-  { value: "sand", label: "Sand" }, { value: "sage", label: "Salbei" },
-  { value: "terra", label: "Terrakotta" },
-];
-
-/** Outside the Bible Text tree: selecting never changes or copies a verse. */
-export function SelectionTools({ visible, reference, error, onClose, onDismiss, onFocusChange }: {
+export type SelectionPanel = "note" | "more" | "copy";
+/** Only the explicitly requested editor or extra options open a sheet. */
+export function SelectionTools({
+  visible,
+  panel,
+  reference,
+  logicalReference,
+  selected,
+  copyText,
+  onClose,
+  onDismiss,
+  onFocusChange,
+}: {
   visible: boolean;
+  panel: SelectionPanel;
   reference: Reference | null;
-  error: string | null;
+  logicalReference: Reference;
+  selected: readonly number[];
+  copyText: string | null;
   onClose: () => void;
   onDismiss?: () => void;
   onFocusChange: (focused: boolean) => void;
 }) {
-  const t = useTheme(), data = useApp((s) => s.data), busy = useApp((s) => s.busy);
+  const t = useTheme(),
+    data = useApp((s) => s.data),
+    busy = useApp((s) => s.busy);
   const [message, setMessage] = useState<string | null>(null);
   const close = useRef<React.ComponentRef<typeof Pressable>>(null);
   const generation = useRef(0);
-  const sourceKey = reference ? `${reference.book}:${reference.chapter}:${reference.from}:${reference.to}` : "";
-  useEffect(() => { generation.current++; setMessage(null); return () => { generation.current++; }; }, [visible, sourceKey]);
-  const keys = reference ? getPassage(reference).map((verse) => `${reference.book}:${reference.chapter}:${verse.n}`) : [];
-  const allBookmarked = keys.length > 0 && keys.every((key) => data.bookmarks.includes(key));
-  async function mark(color: HighlightColor | null) {
-    if (!reference || busy) return;
-    const turn = generation.current;
-    const ok = await useApp.getState().setPassageHighlight(reference, color);
-    if (generation.current !== turn) return;
-    setMessage(ok ? (color ? "Die ausgewählten Verse sind markiert." : "Die Markierungen sind entfernt.") : useApp.getState().error ?? "Die Änderung wurde nicht gespeichert.");
+  const sourceKey = `${logicalReference.book}:${logicalReference.chapter}:${selected.join(",")}`;
+  useEffect(() => {
+    generation.current++;
+    setMessage(null);
+    return () => {
+      generation.current++;
+    };
+  }, [visible, panel, sourceKey]);
+  const keys = selected.map(
+    (n) => `${logicalReference.book}:${logicalReference.chapter}:${n}`,
+  );
+  const allBookmarked =
+    keys.length > 0 && keys.every((key) => data.bookmarks.includes(key));
+  function leave() {
+    generation.current++;
+    onFocusChange(false);
+    onClose();
   }
-  function leave() { generation.current++; onFocusChange(false); onClose(); }
-  return <Modal visible={visible} transparent animationType="none" onRequestClose={leave} onDismiss={onDismiss}
-    onShow={() => { setMessage(null); requestAnimationFrame(() => focusReaderControl(close.current)); }}>
-    <View style={{ flex: 1, justifyContent: "flex-end", alignItems: "center", padding: 16, backgroundColor: "rgba(0,0,0,0.32)" }}>
-      <View role="dialog" accessibilityLabel="Auswahl verwenden" accessibilityViewIsModal
-        style={{ maxHeight: "90%", width: "100%", maxWidth: 720, backgroundColor: t.bg, borderRadius: 24, padding: 20 }}>
-        <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ gap: 18 }}>
-          <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-            <T variant="heading" accessibilityRole="header">Deine Auswahl</T>
-            <Button buttonRef={close} kind="ghost" icon="close" onPress={leave}>Auswahlwerkzeuge schließen</Button>
-          </View>
-          {error || !reference ? <T accessibilityRole="alert">{error ?? "Wähle zuerst einen oder mehrere Verse aus."}</T> : <>
-            <T variant="label" style={{ color: t.muted }}>{referenceLabel(reference)}</T>
-            <T variant="small" style={{ color: t.muted }}>Markierungen und Notizen gelten genau für diese Verse. Dein Lesefortschritt bleibt unverändert.</T>
-            <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
-              {colors.map((color) => <Button key={color.value} kind="secondary" icon={null} disabled={busy}
-                style={{ backgroundColor: highlightBackground(color.value, t.dark) }} onPress={() => void mark(color.value)}>
-                {color.label} markieren
-              </Button>)}
-              <Button kind="ghost" icon="close" disabled={busy} onPress={() => void mark(null)}>Markierungen entfernen</Button>
+  const title =
+    panel === "note"
+      ? "Deine Notiz"
+      : panel === "copy"
+        ? "Text manuell kopieren"
+        : "Weitere Versaktionen";
+  return (
+    <Modal
+      visible={visible}
+      transparent
+      animationType="none"
+      onRequestClose={leave}
+      onDismiss={onDismiss}
+      onShow={() => {
+        setMessage(null);
+        if (panel !== "note")
+          requestAnimationFrame(() => focusReaderControl(close.current));
+      }}
+    >
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "flex-end",
+          alignItems: "center",
+          padding: 16,
+          backgroundColor: "rgba(0,0,0,0.32)",
+        }}
+      >
+        <View
+          role="dialog"
+          accessibilityLabel={title}
+          accessibilityViewIsModal
+          style={{
+            maxHeight: "88%",
+            width: "100%",
+            maxWidth: 660,
+            backgroundColor: t.bg,
+            borderRadius: 24,
+            padding: 20,
+          }}
+        >
+          <ScrollView
+            keyboardShouldPersistTaps="handled"
+            contentContainerStyle={{ gap: 16 }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 12,
+              }}
+            >
+              <T
+                variant="heading"
+                accessibilityRole="header"
+                style={{ flex: 1 }}
+              >
+                {title}
+              </T>
+              <Button
+                buttonRef={close}
+                kind="ghost"
+                icon="close"
+                onPress={leave}
+              >
+                Schließen
+              </Button>
             </View>
-            <Button kind="secondary" icon="bookmark" disabled={busy} onPress={() => {
-              const turn = generation.current;
-              void useApp.getState().setPassageBookmarked(reference, !allBookmarked).then((ok) => {
-                if (turn === generation.current) setMessage(ok ? (allBookmarked ? "Aus der Merkliste entfernt." : "Alle ausgewählten Verse sind gemerkt.") : useApp.getState().error ?? "Die Änderung wurde nicht gespeichert.");
-              });
-            }}>{allBookmarked ? "Ausgewählte Verse nicht mehr merken" : "Ausgewählte Verse merken"}</Button>
-            <CopyPassage reference={reference} onFocusChange={onFocusChange} />
-            <Button kind="secondary" icon="leaf" disabled={busy} onPress={() => {
-              const requested = { ...reference }; leave();
-              router.push({ pathname: "/vorhaben", params: { start: "1", ...requested } });
-            }}>Auswahl mit einem Vorhaben verbinden</Button>
-            <Card style={{ padding: 16, gap: 10 }}>
-              <T variant="heading">Deine Worte zum Abschnitt</T>
-              <CaptureInput key={`${reference.book}:${reference.chapter}:${reference.from}:${reference.to}`}
-                source={captureSourceForReference(reference)} label="Deine Notiz zu dieser Auswahl" onFocusChange={onFocusChange} />
-            </Card>
-          </>}
-          {message && <T accessibilityLiveRegion="polite">{message}</T>}
-        </ScrollView>
+            {visible && selected.length > 0 && (
+              <T variant="small" style={{ color: t.muted }}>
+                {selectedBibleLabel(logicalReference, selected)}
+              </T>
+            )}
+            {visible && panel === "note" && reference && (
+              <CaptureInput
+                key={`${reference.book}:${reference.chapter}:${reference.from}:${reference.to}`}
+                source={captureSourceForReference(reference)}
+                autoFocus
+                label={
+                  reference.from === reference.to
+                    ? `Notiz zu Vers ${reference.from}`
+                    : "Deine Notiz zu dieser Auswahl"
+                }
+                onFocusChange={onFocusChange}
+              />
+            )}
+            {visible && panel === "more" && (
+              <>
+                <Button
+                  kind="secondary"
+                  icon="bookmark"
+                  disabled={busy}
+                  onPress={() => {
+                    const turn = generation.current;
+                    void useApp
+                      .getState()
+                      .setSelectionBookmarked(
+                        logicalReference,
+                        selected,
+                        !allBookmarked,
+                      )
+                      .then((ok) => {
+                        if (turn === generation.current)
+                          setMessage(
+                            ok
+                              ? allBookmarked
+                                ? "Aus der Merkliste entfernt."
+                                : "Auswahl gemerkt."
+                              : (useApp.getState().error ??
+                                  "Nicht gespeichert. Bitte erneut versuchen."),
+                          );
+                      });
+                  }}
+                >
+                  {allBookmarked ? "Nicht mehr merken" : "Merken"}
+                </Button>
+                <Button
+                  kind="secondary"
+                  icon="leaf"
+                  disabled={busy || !reference}
+                  onPress={() => {
+                    if (!reference) return;
+                    const requested = { ...reference };
+                    leave();
+                    router.push({
+                      pathname: "/vorhaben",
+                      params: { start: "1", ...requested },
+                    });
+                  }}
+                >
+                  Mit einem Vorhaben verbinden
+                </Button>
+                {!reference && (
+                  <T variant="small" style={{ color: t.muted }}>
+                    Für ein gemeinsames Vorhaben benachbarte Verse wählen.
+                  </T>
+                )}
+                {reference &&
+                  data.notes
+                    .filter(
+                      (note) =>
+                        note.ref?.book === reference.book &&
+                        note.ref.chapter === reference.chapter &&
+                        (note.ref.from ?? 1) <= reference.to! &&
+                        (note.ref.to ?? Number.MAX_SAFE_INTEGER) >=
+                          reference.from!,
+                    )
+                    .map((note) => (
+                      <View
+                        key={note.id}
+                        style={{
+                          borderTopWidth: 1,
+                          borderColor: t.line,
+                          paddingTop: 12,
+                          gap: 8,
+                        }}
+                      >
+                        <T variant="small" style={{ color: t.muted }}>
+                          {note.ref ? referenceLabel(note.ref) : "Deine Worte"}
+                        </T>
+                        <T selectable>{note.text}</T>
+                        <Button
+                          kind="ghost"
+                          icon="pen"
+                          onPress={() => {
+                            leave();
+                            router.push({
+                              pathname: "/sammlung",
+                              params: { note: note.id },
+                            });
+                          }}
+                        >
+                          Eintrag bearbeiten
+                        </Button>
+                      </View>
+                    ))}
+              </>
+            )}
+            {visible && panel === "copy" && copyText !== null && (
+              <>
+                <T accessibilityRole="alert" variant="small">
+                  Automatisches Kopieren ist hier nicht verfügbar. Markiere den
+                  Text im Feld und wähle „Kopieren“.
+                </T>
+                <TextInput
+                  accessibilityLabel="Bibeltext zum manuellen Kopieren"
+                  value={copyText}
+                  readOnly
+                  multiline
+                  selectTextOnFocus
+                  onFocus={() => onFocusChange(true)}
+                  onBlur={() => onFocusChange(false)}
+                  style={{
+                    minHeight: 180,
+                    maxHeight: 320,
+                    borderWidth: 1,
+                    borderColor: t.line,
+                    borderRadius: 12,
+                    padding: 12,
+                    color: t.text,
+                    backgroundColor: t.surface,
+                    fontFamily: "DMSans",
+                    fontSize: 14,
+                    lineHeight: 22,
+                    textAlignVertical: "top",
+                  }}
+                />
+              </>
+            )}
+            {message && <T accessibilityLiveRegion="polite">{message}</T>}
+          </ScrollView>
+        </View>
       </View>
-    </View>
-  </Modal>;
+    </Modal>
+  );
 }

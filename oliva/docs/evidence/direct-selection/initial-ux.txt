@@ -1,0 +1,43 @@
+[WebServer] (node:52314) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:52322) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/direct-selection.spec.ts:21:1 › direktes Antippen öffnet die kleine Leiste und verändert weder Textlayout noch persönliche Inhalte (4.1s)
+  ✓  2 tests/e2e/direct-selection.spec.ts:45:1 › auch getrennte Verse lassen sich direkt kopieren, markieren und merken ohne Zwischenverse zu verändern (3.9s)
+  ✓  3 tests/e2e/direct-selection.spec.ts:68:1 › Notizen öffnen erst auf Wunsch und bewahren getrennte Vers- und Bereichsentwürfe (5.0s)
+  ✘  4 tests/e2e/direct-selection.spec.ts:87:1 › die Aktionsleiste bleibt schmal, dunkel und hell per Tastatur und Screenreader bedienbar (26.5s)
+
+
+  1) tests/e2e/direct-selection.spec.ts:87:1 › die Aktionsleiste bleibt schmal, dunkel und hell per Tastatur und Screenreader bedienbar 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 35
+    Received: 32
+
+    Call Log:
+    - Timeout 15000ms exceeded while waiting on the predicate
+
+      13 |   await expect(page.getByTestId("reader-flow")).toBeVisible();
+      14 |   await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    > 15 |   await expect.poll(async () => (await localData(page))?.readingPosition?.verse).toBe(35);
+         |                                                                                  ^
+      16 | }
+      17 | function copy(numbers: number[], label: string) {
+      18 |   return [label, ...numbers.map((n) => `${n} ${bible.JHN["6"].find((v: any) => v.n === n).text}`), "Lutherbibel 1912"].join("\n");
+        at ready (/workspace/faithpath-next/tests/e2e/direct-selection.spec.ts:15:82)
+        at /workspace/faithpath-next/tests/e2e/direct-selection.spec.ts:90:5
+
+    Error Context: docs/evidence/direct-selection/initial-artifacts/direct-selection-die-Aktio-9d920--und-Screenreader-bedienbar/error-context.md
+
+  1 failed
+    tests/e2e/direct-selection.spec.ts:87:1 › die Aktionsleiste bleibt schmal, dunkel und hell per Tastatur und Screenreader bedienbar 
+  3 passed (42.3s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

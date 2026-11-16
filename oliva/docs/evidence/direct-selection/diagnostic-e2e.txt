@@ -1,0 +1,53 @@
+[WebServer] (node:63478) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:63486) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/core.spec.ts:255:1 › Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeichert (8.3s)
+  ✘  2 tests/e2e/personal.spec.ts:296:1 › Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben (4.7s)
+(node:63649) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/e2e/romans-sword.spec.ts:338:3 › Römer auf einem hochauflösenden Browserdisplay › die große Ansicht dekodiert 768 Pixel und die Startseite ihre passende kleinere Variante (10.1s)
+
+
+  1) tests/e2e/personal.spec.ts:296:1 › Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Markus 4,35', { exact: true })
+    Expected: visible
+    Error: strict mode violation: getByText('Markus 4,35', { exact: true }) resolved to 2 elements:
+        1) <div dir="auto" class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-1iln25a">Markus 4,35</div> aka getByLabel('Versauswahl').getByText('Markus')
+        2) <div dir="auto" class="css-146c3p1">Markus 4,35</div> aka getByRole('main').getByText('Markus')
+
+    Call log:
+      - Expect "toBeVisible" getByText('Markus 4,35', { exact: true }) with timeout 15000ms
+      - waiting for getByText('Markus 4,35', { exact: true })
+        3 × locator resolved to <div dir="auto" class="css-146c3p1 r-dnmrzs r-1udh08x r-1udbk01 r-3s2u2q r-1iln25a">Markus 4,35</div>
+          - unexpected value "hidden"
+
+
+      306 |     .getByRole("button", { name: "Mit einem Vorhaben verbinden", exact: true })
+      307 |     .click();
+    > 308 |   await expect(page.getByText("Markus 4,35", { exact: true })).toBeVisible();
+          |                                                                ^
+      309 |   await page
+      310 |     .getByRole("textbox", { name: "Name deines Vorhabens" })
+      311 |     .fill("Fragen ehrlich aussprechen");
+        at /workspace/faithpath-next/tests/e2e/personal.spec.ts:308:64
+
+    Error Context: docs/evidence/direct-selection/diagnostic-artifacts/personal-Bibelbezug-wird-a-4ab24-n-an-ein-Vorhaben-übergeben/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    docs/evidence/direct-selection/diagnostic-artifacts/personal-Bibelbezug-wird-a-4ab24-n-an-ein-Vorhaben-übergeben/trace.zip
+    Usage:
+
+        npx playwright show-trace docs/evidence/direct-selection/diagnostic-artifacts/personal-Bibelbezug-wird-a-4ab24-n-an-ein-Vorhaben-übergeben/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/personal.spec.ts:296:1 › Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben 
+  2 passed (28.9s)

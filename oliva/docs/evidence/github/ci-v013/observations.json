@@ -1,0 +1,227 @@
+[
+  {
+    "checkedAt": "2026-11-16T14:44:52.720794+00:00",
+    "headSha": "639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12",
+    "headBranch": "feature/oliva-v013-reader-parity-20261116",
+    "runAttempt": 1,
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs": [
+      {
+        "id": 133373145803,
+        "runAttempt": 1,
+        "status": "in_progress",
+        "conclusion": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "in_progress",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "pending",
+            "conclusion": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "checkedAt": "2026-11-16T14:48:29.318706+00:00",
+    "headSha": "639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12",
+    "headBranch": "feature/oliva-v013-reader-parity-20261116",
+    "runAttempt": 1,
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs": [
+      {
+        "id": 133373145803,
+        "runAttempt": 1,
+        "status": "in_progress",
+        "conclusion": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "in_progress",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "pending",
+            "conclusion": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "checkedAt": "2026-11-16T14:51:49.291636+00:00",
+    "headSha": "639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12",
+    "headBranch": "feature/oliva-v013-reader-parity-20261116",
+    "runAttempt": 1,
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs": [
+      {
+        "id": 133373145803,
+        "runAttempt": 1,
+        "status": "in_progress",
+        "conclusion": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "in_progress",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "pending",
+            "conclusion": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "checkedAt": "2026-11-16T14:54:26.541255+00:00",
+    "headSha": "639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12",
+    "headBranch": "feature/oliva-v013-reader-parity-20261116",
+    "runAttempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 133373145803,
+        "runAttempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "checkedAt": "2026-11-16T14:55:51.769514+00:00",
+    "headSha": "639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12",
+    "headBranch": "feature/oliva-v013-reader-parity-20261116",
+    "runAttempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 133373145803,
+        "runAttempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+{"command": ["node", "scripts/expo.mjs", "export", "--platform", "android", "--output-dir", "dist-android", "--no-minify", "--no-bytecode"], "exitCode": 0, "startedAt": "2026-11-16T19:28:50.669961+00:00", "finishedAt": "2026-11-16T19:29:07.649746+00:00", "durationSeconds": 16.98, "rawLog": "docs/evidence/direct-selection/native/native-android.txt", "rawLogSHA256": "af26dba8bfddf42d043c9e3bd6f51ed5930c735361d16643b01e592cf9bd61ad"}
+{"command": ["node", "scripts/expo.mjs", "export", "--platform", "ios", "--output-dir", "dist-ios", "--no-minify", "--no-bytecode"], "exitCode": 0, "startedAt": "2026-11-16T19:29:08.178844+00:00", "finishedAt": "2026-11-16T19:29:25.468464+00:00", "durationSeconds": 17.29, "rawLog": "docs/evidence/direct-selection/native/native-ios.txt", "rawLogSHA256": "6acbd34f35d4382833db7b2d446630a0006930e6f3ce2192320702553dd34b78"}
+{"command": ["node", "scripts/check-native-export.mjs", "--report", "docs/evidence/direct-selection/native/native-export-check.json", "dist-android", "dist-ios"], "exitCode": 0, "startedAt": "2026-11-16T19:29:25.470178+00:00", "finishedAt": "2026-11-16T19:29:28.053755+00:00", "durationSeconds": 2.584, "rawLog": "docs/evidence/direct-selection/native/native-export-check.txt", "rawLogSHA256": "6602b183e8d5bc9d3fea5d351adaa7d2b11c6c4e5231944adc2669877f314e26"}
+{"command": ["node", "docs/evidence/direct-selection/native/check-native-nt-catalog.mjs", "--report", "docs/evidence/direct-selection/native/nt-native-catalog-check.json", "dist-android", "dist-ios"], "exitCode": 1, "startedAt": "2026-11-16T19:29:28.054204+00:00", "finishedAt": "2026-11-16T19:29:28.148336+00:00", "durationSeconds": 0.094, "rawLog": "docs/evidence/direct-selection/native/nt-native-catalog-check.txt", "rawLogSHA256": "58f3d0b09998de60914dd77a9079f684340e094f4852960e0d56c0a9098713d1"}
+Traceback (most recent call last):
+  File "/workspace/faithpath-next/docs/evidence/direct-selection/native/native-export-runner.py", line 123, in <module>
+    main()
+  File "/workspace/faithpath-next/docs/evidence/direct-selection/native/native-export-runner.py", line 118, in main
+    assert passed, 'Native static check or input preservation failed'
+           ^^^^^^
+AssertionError: Native static check or input preservation failed

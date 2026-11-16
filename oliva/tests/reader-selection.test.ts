@@ -33,12 +33,20 @@ describe("Additive ephemere Readerauswahl", () => {
   });
 
   it("prüft das ganze Kapitel und erlaubt Kontextverse vor und hinter dem Fokus", () => {
-    const logical = Object.freeze({ book: "1SA", chapter: 17, from: 38, to: 45 });
+    const logical = Object.freeze({
+      book: "1SA",
+      chapter: 17,
+      from: 38,
+      to: 45,
+    });
     expect(displayReference(logical)).toEqual({ book: "1SA", chapter: 17 });
     expect(toggleVerseSelection(logical, [], 37)).toEqual([37]);
     expect(toggleVerseSelection(logical, [], 46)).toEqual([46]);
     expect(selectionReference(logical, [46, 45])).toEqual({
-      book: "1SA", chapter: 17, from: 45, to: 46,
+      book: "1SA",
+      chapter: 17,
+      from: 45,
+      to: 46,
     });
     expect(logical).toEqual({ book: "1SA", chapter: 17, from: 38, to: 45 });
   });
@@ -60,8 +68,9 @@ describe("Additive ephemere Readerauswahl", () => {
       );
     }
     expect(selected).toEqual([35, 37]);
-    expect(selectionReference(focus, toggleVerseSelection(focus, selected, 36)))
-      .toEqual({ ...chapter, from: 35, to: 37 });
+    expect(
+      selectionReference(focus, toggleVerseSelection(focus, selected, 36)),
+    ).toEqual({ ...chapter, from: 35, to: 37 });
   });
 
   it("erhält den logischen Scope bei leerer Auswahl und teilt keine Referenzobjekte", () => {
@@ -78,22 +87,32 @@ describe("Additive ephemere Readerauswahl", () => {
 
   it("verwirft unbekannte, doppelte und kapitelübergreifende Versnummern atomar", () => {
     for (const selected of [
-      [35, 35], [35, 0], [35, 72], [35, -1], [35, 1.5], [35, NaN],
+      [35, 35],
+      [35, 0],
+      [35, 72],
+      [35, -1],
+      [35, 1.5],
+      [35, NaN],
       [35, Infinity],
     ]) {
       const frozen = Object.freeze(selected);
       expect(() => selectionReference(focus, frozen)).toThrow(SelectionError);
-      expect(() => toggleVerseSelection(focus, frozen, 36)).toThrow(SelectionError);
+      expect(() => toggleVerseSelection(focus, frozen, 36)).toThrow(
+        SelectionError,
+      );
       expect(frozen).toEqual(selected);
     }
     // 48 exists in the following chapter, but is not a verse of John 5.
     expect(getChapter("JHN", 5).some((v) => v.n === 47)).toBe(true);
     expect(getChapter("JHN", 6).some((v) => v.n === 48)).toBe(true);
-    expect(() => toggleVerseSelection({ book: "JHN", chapter: 5 }, [35], 48))
-      .toThrow(SelectionError);
+    expect(() =>
+      toggleVerseSelection({ book: "JHN", chapter: 5 }, [35], 48),
+    ).toThrow(SelectionError);
     const before = Object.freeze([35]);
     for (const verse of [0, -1, 72, 1.5, NaN, Infinity])
-      expect(() => toggleVerseSelection(focus, before, verse)).toThrow(SelectionError);
+      expect(() => toggleVerseSelection(focus, before, verse)).toThrow(
+        SelectionError,
+      );
     expect(before).toEqual([35]);
   });
 
@@ -113,24 +132,37 @@ describe("Additive ephemere Readerauswahl", () => {
     for (const reference of invalid) {
       expect(() => displayReference(reference)).toThrow(SelectionError);
       expect(() => selectionReference(reference, [])).toThrow(SelectionError);
-      expect(() => toggleVerseSelection(reference, [], 35)).toThrow(SelectionError);
+      expect(() => toggleVerseSelection(reference, [], 35)).toThrow(
+        SelectionError,
+      );
       expect(() => formatBibleCopy(reference)).toThrow(SelectionError);
     }
   });
 
   it("sortiert Psalm 119 numerisch und bleibt auch an den Kapitelgrenzen exakt", () => {
     const psalm = { book: "PSA", chapter: 119, from: 9, to: 16 };
-    const reverse = Object.freeze(Array.from({ length: 176 }, (_, i) => 176 - i));
+    const reverse = Object.freeze(
+      Array.from({ length: 176 }, (_, i) => 176 - i),
+    );
     expect(selectionReference(psalm, reverse)).toEqual({
-      book: "PSA", chapter: 119, from: 1, to: 176,
+      book: "PSA",
+      chapter: 119,
+      from: 1,
+      to: 176,
     });
     expect(toggleVerseSelection(psalm, [10, 9], 11)).toEqual([9, 10, 11]);
     expect(selectionReference(psalm, [176])).toEqual({
-      book: "PSA", chapter: 119, from: 176, to: 176,
+      book: "PSA",
+      chapter: 119,
+      from: 176,
+      to: 176,
     });
-    expect(() => toggleVerseSelection(psalm, [176], 177)).toThrow(SelectionError);
-    expect(() => selectionReference({ book: "PSA", chapter: 118 }, [176]))
-      .toThrow(SelectionError);
+    expect(() => toggleVerseSelection(psalm, [176], 177)).toThrow(
+      SelectionError,
+    );
+    expect(() =>
+      selectionReference({ book: "PSA", chapter: 118 }, [176]),
+    ).toThrow(SelectionError);
     expect(reverse[0]).toBe(176);
   });
 });
@@ -140,9 +172,9 @@ describe("Unveränderter Bibeltext zum ausdrücklichen Kopieren", () => {
     const reference = selectionReference(focus, [36, 35]);
     expect(formatBibleCopy(reference)).toBe(
       "Johannes 6,35–36\n" +
-      "35 Jesus aber sprach zu ihnen: Ich bin das Brot des Lebens. Wer zu mir kommt, den wird nicht hungern; und wer an mich glaubt, den wird nimmermehr dürsten.\n" +
-      "36 Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\n" +
-      "Lutherbibel 1912",
+        "35 Jesus aber sprach zu ihnen: Ich bin das Brot des Lebens. Wer zu mir kommt, den wird nicht hungern; und wer an mich glaubt, den wird nimmermehr dürsten.\n" +
+        "36 Aber ich habe es euch gesagt, daß ihr mich gesehen habt, und glaubet doch nicht.\n" +
+        "Lutherbibel 1912",
     );
     const single = formatBibleCopy(selectionReference(focus, [37]));
     expect(single.split("\n")).toEqual([
@@ -172,7 +204,11 @@ describe("Unveränderter Bibeltext zum ausdrücklichen Kopieren", () => {
   it("bewahrt alle kanonischen UTF-16-Zeichen und LF-Grenzen der 31.102 Repoverse", () => {
     let count = 0;
     for (const book of BOOKS)
-      for (let chapterNumber = 1; chapterNumber <= book.chapters; chapterNumber++) {
+      for (
+        let chapterNumber = 1;
+        chapterNumber <= book.chapters;
+        chapterNumber++
+      ) {
         const reference = { book: book.code, chapter: chapterNumber };
         const source = getPassage(reference);
         const before = JSON.stringify(source);
@@ -189,14 +225,45 @@ describe("Unveränderter Bibeltext zum ausdrücklichen Kopieren", () => {
 
   it("kopiert den langen Psalm vollständig sowie Randbereiche ohne Kapitelmischung", () => {
     const psalm = { book: "PSA", chapter: 119 };
-    const complete = formatBibleCopy(selectionReference(psalm,
-      Array.from({ length: 176 }, (_, i) => i + 1),
-    ));
+    const complete = formatBibleCopy(
+      selectionReference(
+        psalm,
+        Array.from({ length: 176 }, (_, i) => i + 1),
+      ),
+    );
     expect(complete.split("\n")).toHaveLength(178);
     expect(complete.startsWith("Psalmen 119,1–176\n1 ")).toBe(true);
     const tail = { ...psalm, from: 175, to: 176 };
     expect(formatBibleCopy(tail).split("\n").slice(1, -1)).toEqual(
       getPassage(tail).map((v) => `${v.n} ${v.text}`),
     );
+  });
+});
+
+import {
+  formatSelectedBibleCopy,
+  selectedBibleLabel,
+  selectedBibleVerses,
+} from "../src/features/bible/selection";
+describe("Explicit disjoint copy selection", () => {
+  it("copies only selected verses and labels both contiguous groups without filling gaps", () => {
+    const ref = { book: "JHN", chapter: 6 };
+    const selection = Object.freeze([38, 35, 36]);
+    expect(selectedBibleLabel(ref, selection)).toBe("Johannes 6,35–36.38");
+    const expected = getChapter("JHN", 6).filter((v) =>
+      [35, 36, 38].includes(v.n),
+    );
+    expect(selectedBibleVerses(ref, selection)).toEqual(expected);
+    expect(formatSelectedBibleCopy(ref, selection)).toBe(
+      [
+        "Johannes 6,35–36.38",
+        ...expected.map((v) => `${v.n} ${v.text}`),
+        "Lutherbibel 1912",
+      ].join("\n"),
+    );
+    for (const invalid of [[], [0], [72], [35, 35]])
+      expect(() => formatSelectedBibleCopy(ref, invalid)).toThrow(
+        SelectionError,
+      );
   });
 });

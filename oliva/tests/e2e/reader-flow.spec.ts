@@ -1,3 +1,11 @@
+import {
+  selectionBar,
+  noteDialog,
+  openNote,
+  closeNote,
+  markSelection,
+  bookmarkSelection,
+} from "./selection-ui";
 import { test, expect, type Page, type Locator } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFileSync } from "node:fs";
@@ -281,20 +289,18 @@ test("Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versn
   await target.focus();
   await target.press("Enter");
   await expect(target).toHaveAttribute("aria-pressed", "true");
-  const panel = visible(page, "verse-actions-35");
-  await expect(panel).toBeVisible();
-  await panel.getByRole("button", { name: "Merken", exact: true }).click();
+  const panel = noteDialog(page);
+  await expect(selectionBar(page)).toBeVisible();
+  await bookmarkSelection(page);
   await expect
     .poll(async () => (await localData(page)).bookmarks)
     .toContain("JHN:6:35");
-  await panel
-    .getByRole("button", { name: "Oliv markieren", exact: true })
-    .click();
+  await markSelection(page, "Oliv");
   await expect
     .poll(async () => (await localData(page)).highlights["JHN:6:35"])
     .toBe("olive");
-  await panel
-    .getByRole("button", { name: "Versaktionen schließen", exact: true })
+  await selectionBar(page)
+    .getByRole("button", { name: "Auswahl aufheben", exact: true })
     .click();
   await expect(target).toHaveAttribute("aria-pressed", "false");
   await expect
@@ -304,17 +310,15 @@ test("Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versn
     .toBe("rgb(231, 236, 220)");
   await target.press(" ");
   await expect(target).toHaveAttribute("aria-pressed", "true");
-  await panel
-    .getByRole("button", { name: "Gold markieren", exact: true })
-    .click();
+  await markSelection(page, "Gold");
   await expect
     .poll(async () => (await localData(page)).highlights["JHN:6:35"])
     .toBe("gold");
   await expect(target).toHaveAttribute("aria-label", /gemerkt.*markiert/);
   // A selected verse uses the selection wash, which does not prove that its
   // persisted mark is painted. Inspect the real gold fill after deselection.
-  await panel
-    .getByRole("button", { name: "Versaktionen schließen", exact: true })
+  await selectionBar(page)
+    .getByRole("button", { name: "Auswahl aufheben", exact: true })
     .click();
   await expect(target).toHaveAttribute("aria-pressed", "false");
   await expect
@@ -325,6 +329,7 @@ test("Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versn
   await target.press("Enter");
   const text =
     "  Mein offener Gedanke aus dem Fließtext.\nDie zweite Zeile bleibt.  ";
+  await openNote(page);
   await panel
     .getByRole("textbox", { name: "Notiz zu Vers 35", exact: true })
     .fill(text);
@@ -350,7 +355,7 @@ test("Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versn
     })
     .click();
   await expect(
-    visible(page, "verse-actions-35").getByRole("textbox", {
+    noteDialog(page).getByRole("textbox", {
       name: "Notiz zu Vers 35",
       exact: true,
     }),
@@ -385,12 +390,14 @@ test("Fließtext und Einzelverse behalten beim Umschalten denselben Versanker un
     settings = (await localData(page)).settings;
   const text =
     "Dieser Versentwurf gehört auch nach dem Darstellungswechsel zu Johannes 6,35.";
-  await visible(page, "verse-actions-35")
+  await openNote(page);
+  await noteDialog(page)
     .getByRole("textbox", { name: "Notiz zu Vers 35", exact: true })
     .fill(text);
   await expect(
     page.getByText("Entwurf auf diesem Gerät gesichert.", { exact: true }),
   ).toBeVisible();
+  await closeNote(page);
   for (const representation of ["Einzelverse", "Fließtext"] as const) {
     await page
       .getByRole("button", { name: "Leseeinstellungen", exact: true })
@@ -408,12 +415,14 @@ test("Fließtext und Einzelverse behalten beim Umschalten denselben Versanker un
     }
     await atVerse(page, 35);
     await anchor(page, 35);
+    await openNote(page);
     await expect(
-      visible(page, "verse-actions-35").getByRole("textbox", {
+      noteDialog(page).getByRole("textbox", {
         name: "Notiz zu Vers 35",
         exact: true,
       }),
     ).toHaveValue(text);
+    await closeNote(page);
   }
   const data = await localData(page);
   expect(data.settings).toEqual(settings);
@@ -466,10 +475,7 @@ test("der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunke
     await expect
       .poll(async () => (await localData(page)).settings.theme)
       .toBe(theme);
-    await exactText(
-      flow(page),
-      getChapter("MRK", 4),
-    );
+    await exactText(flow(page), getChapter("MRK", 4));
     await noOverflow(page);
     await verse(page, 35).evaluate((node) =>
       node.scrollIntoView({ block: "start" }),
@@ -506,7 +512,9 @@ test("die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, m
   const focus = getPassage({ book: "1SA", chapter: 17, from: 38, to: 45 });
   expect(focus).toHaveLength(8);
   await exactText(flow(page), canonical);
-  await expect(flow(page).locator("[data-verse]")).toHaveCount(canonical.length);
+  await expect(flow(page).locator("[data-verse]")).toHaveCount(
+    canonical.length,
+  );
   await expect(verse(page, 37)).toHaveCount(1);
   await expect(verse(page, 46)).toHaveCount(1);
   for (const n of focus.map((v) => v.n))
@@ -529,7 +537,10 @@ test("die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, m
     .toEqual(["1SA:17:38:45"]);
   expect((await localData(page)).readChapters).toEqual([]);
   await page
-    .getByRole("button", { name: "Ganzes Kapitel als Lesebereich öffnen", exact: true })
+    .getByRole("button", {
+      name: "Ganzes Kapitel als Lesebereich öffnen",
+      exact: true,
+    })
     .click();
   await ready(page, "1SA", 17);
   await expect

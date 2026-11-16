@@ -299,9 +299,15 @@ test("Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben", async ({
   await page.goto("/lesen/MRK?chapter=4");
   await page.getByRole("button", { name: /^Vers 35:/ }).click();
   await page
+    .getByRole("toolbar", { name: "Versauswahl", exact: true })
+    .getByRole("button", { name: "Mehr", exact: true })
+    .click();
+  await page
     .getByRole("button", { name: "Mit einem Vorhaben verbinden", exact: true })
     .click();
-  await expect(page.getByText("Markus 4,35", { exact: true })).toBeVisible();
+  await expect(
+    page.getByRole("main").filter({ visible: true }).getByText("Markus 4,35", { exact: true }),
+  ).toBeVisible();
   await page
     .getByRole("textbox", { name: "Name deines Vorhabens" })
     .fill("Fragen ehrlich aussprechen");

@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-11-16T19:33:29.443Z",
+  "appVersion": "0.13.1",
+  "parser": "acorn@8.19.0",
+  "appCodeExecuted": false,
+  "scope": "Static AST inspection of actual native Metro factories and imports. Does not prove native rendering, clipboard operation, accessibility behavior, database migration or device/simulator behavior.",
+  "results": [
+    {
+      "platform": "android",
+      "bundle": "_expo/static/js/android/entry-26be54e902e161530126814d9e1c21b5.js",
+      "bundleSha256": "31be756417d152c2bf24aff87ded4af5579d3e90b44132fc38a520bc5b862d27",
+      "parsedMetroFactories": 1684,
+      "nativeClipboardAdapter": {
+        "moduleId": 1657,
+        "sha256": "ad58ebfdaca2560c8bc39fb1c574c2f3a7a31e92ff9529c51346d1c03479d81d",
+        "awaitedExpoSetStringAsync": true,
+        "actualTrueResultRequired": true
+      },
+      "expoNativeBridge": {
+        "moduleId": 1659,
+        "sha256": "9892a498b21f185bc62271384526b04016a3c2f030826675a02736052f6d0638"
+      },
+      "selectionTools": {
+        "moduleId": 1654,
+        "sha256": "023ae99df567cd3a7b9608c17690dc5d3ce1d4e75efc282895a19c26d3d76226",
+        "staticModalDismissAndBackPropsPresent": true,
+        "exactSelectionActionsPresent": true
+      },
+      "directSelectionBar": {
+        "moduleId": 1655,
+        "sha256": "4da15a87b22b47a57a093f6d3448ad15942756f15a9d4b64e2afff9356400d12",
+        "additiveActionsBundled": true
+      },
+      "nativeFlowText": {
+        "moduleId": 1643,
+        "sha256": "328e873a06aeddd209a7fbea08c60ec239f247f886d047ed7c505dbaf2ed8746",
+        "selectedVersesAndSeparateFocusRange": true,
+        "nativeTextLayoutProp": true,
+        "domSpanAbsent": true
+      },
+      "readerRoute": {
+        "moduleId": 1642,
+        "sha256": "a5d45eda1c3b4bfa114e8e61a540e9525f4298b0deb758bb9d9c5b61e8815ffe",
+        "containingChapterLookup": true,
+        "fullChapterReferenceAndSeparateFocusRange": true
+      },
+      "stateSchema": {
+        "moduleId": 1200,
+        "sha256": "e9847b6cecdea9ce10d03a45f76d3495b6c34e72b5f513a68cf8225da905ad2f",
+        "frozenV8Literal": 8,
+        "currentV9Literal": 9
+      }
+    },
+    {
+      "platform": "ios",
+      "bundle": "_expo/static/js/ios/entry-bbc88599495a2518b67ccd2aafd224c7.js",
+      "bundleSha256": "23d3b33e38082a48c057c06e02a6e02b9f15763d36ee95d6bd415ba95335bb3b",
+      "parsedMetroFactories": 1689,
+      "nativeClipboardAdapter": {
+        "moduleId": 1660,
+        "sha256": "43d8792321f0264faf86f4357ecd865c1946215317eef90fa328c1c26a17a8a4",
+        "awaitedExpoSetStringAsync": true,
+        "actualTrueResultRequired": true
+      },
+      "expoNativeBridge": {
+        "moduleId": 1662,
+        "sha256": "83cc4fd2db10b11982db7eaebe4eb784a96b5881434bf5b02d6db0f17c5518d5"
+      },
+      "selectionTools": {
+        "moduleId": 1657,
+        "sha256": "99755fd6252cd83f32fd3636d2211a4152f597da6667e2a2c753c97745b4a653",
+        "staticModalDismissAndBackPropsPresent": true,
+        "exactSelectionActionsPresent": true
+      },
+      "directSelectionBar": {
+        "moduleId": 1658,
+        "sha256": "d37936e08e7761863cfcf89e1fddc8be1261437aa5a9f5f24aa8ec5b8a9be270",
+        "additiveActionsBundled": true
+      },
+      "nativeFlowText": {
+        "moduleId": 1646,
+        "sha256": "7512af8b60c2148ae4abbbdcf8eadbf76cc9cda358b222e6189c39c0d6f89741",
+        "selectedVersesAndSeparateFocusRange": true,
+        "nativeTextLayoutProp": true,
+        "domSpanAbsent": true
+      },
+      "readerRoute": {
+        "moduleId": 1645,
+        "sha256": "da03aab78c890a889d0c91c8ef7caf8bd06900f0fe9b9abdbdc9890315f59cdc",
+        "containingChapterLookup": true,
+        "fullChapterReferenceAndSeparateFocusRange": true
+      },
+      "stateSchema": {
+        "moduleId": 1204,
+        "sha256": "fbf2deb988a6cb0bfe3c40decb7a2b0a43626a2a657e89fdd45845d6268b2a50",
+        "frozenV8Literal": 8,
+        "currentV9Literal": 9
+      }
+    }
+  ]
+}

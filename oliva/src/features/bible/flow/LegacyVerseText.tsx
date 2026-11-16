@@ -53,11 +53,16 @@ export const LegacyVerseText = forwardRef<FlowTextHandle, LegacyVerseTextProps>(
   ) {
     const t = useTheme(),
       verseNodes = useRef(new Map<number, ComponentRef<typeof Pressable>>());
-    useImperativeHandle(ref, () => ({
-      // Legacy geometry remains owned by the measured block-position hook.
-      measure: async () => null,
-      focusVerse: (verse) => focusReaderControl(verseNodes.current.get(verse)),
-    }), []);
+    useImperativeHandle(
+      ref,
+      () => ({
+        // Legacy geometry remains owned by the measured block-position hook.
+        measure: async () => null,
+        focusVerse: (verse) =>
+          focusReaderControl(verseNodes.current.get(verse)),
+      }),
+      [],
+    );
     return (
       <View testID="reader-single-verses" style={{ gap: 5 }}>
         {verses.map((verse) => {
@@ -93,16 +98,17 @@ export const LegacyVerseText = forwardRef<FlowTextHandle, LegacyVerseTextProps>(
                   paddingHorizontal: 8,
                   marginHorizontal: -8,
                   borderRadius: 8,
-                  backgroundColor:
-                    isSelected
-                      ? t.soft
-                      : color
-                        ? highlightBackground(color, t.dark)
-                        : isFocused
-                          ? t.dark
-                            ? "#293b43"
-                            : "#e8edf0"
-                          : "transparent",
+                  backgroundColor: isSelected
+                    ? color
+                      ? highlightBackground(color, t.dark)
+                      : t.goldSoft
+                    : color
+                      ? highlightBackground(color, t.dark)
+                      : isFocused
+                        ? t.dark
+                          ? "#293b43"
+                          : "#e8edf0"
+                        : "transparent",
                 }}
               >
                 <T

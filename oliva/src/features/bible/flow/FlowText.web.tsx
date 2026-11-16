@@ -151,16 +151,17 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
                       style={{
                         cursor: "pointer",
                         borderRadius: 4,
-                        backgroundColor:
-                          isSelected
-                            ? t.soft
-                            : color
-                              ? highlightBackground(color, t.dark)
-                              : isFocused
-                                ? t.dark
-                                  ? "#293b43"
-                                  : "#e8edf0"
-                                : "transparent",
+                        backgroundColor: isSelected
+                          ? color
+                            ? highlightBackground(color, t.dark)
+                            : t.goldSoft
+                          : color
+                            ? highlightBackground(color, t.dark)
+                            : isFocused
+                              ? t.dark
+                                ? "#293b43"
+                                : "#e8edf0"
+                              : "transparent",
                         boxDecorationBreak: "clone",
                         WebkitBoxDecorationBreak: "clone",
                       }}

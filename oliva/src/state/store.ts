@@ -36,7 +36,11 @@ import {
 } from "../features/bible/position-current";
 import { getPassage, type Reference } from "../features/bible/repository";
 import { referenceSchema } from "../features/bible/schema";
-import { highlightColor, type HighlightColor } from "../features/bible/highlights";
+import { selectedBibleVerses } from "../features/bible/selection";
+import {
+  highlightColor,
+  type HighlightColor,
+} from "../features/bible/highlights";
 import {
   useVolatileDrafts,
   acknowledgeDrafts,
@@ -53,7 +57,10 @@ import {
   extractLegacyNtCompletions,
   appendLegacyNtCompletions,
 } from "../features/quiz/model";
-import { ntPositionSchema, type NtPosition } from "../features/quiz/state-schema";
+import {
+  ntPositionSchema,
+  type NtPosition,
+} from "../features/quiz/state-schema";
 import { parseFaithpath } from "../features/imports/source";
 
 // A stamp may be supplied as a complete saved draft. Extract its two contract
@@ -122,8 +129,24 @@ export type Store = {
     expectedStamp: string | null,
   ) => Promise<boolean>;
   rememberNtStudyPosition: (position: NtPosition) => Promise<boolean>;
-  setPassageHighlight: (reference: Reference, color: HighlightColor | null) => Promise<boolean>;
-  setPassageBookmarked: (reference: Reference, bookmarked: boolean) => Promise<boolean>;
+  setPassageHighlight: (
+    reference: Reference,
+    color: HighlightColor | null,
+  ) => Promise<boolean>;
+  setPassageBookmarked: (
+    reference: Reference,
+    bookmarked: boolean,
+  ) => Promise<boolean>;
+  setSelectionHighlight: (
+    reference: Reference,
+    selected: readonly number[],
+    color: HighlightColor | null,
+  ) => Promise<boolean>;
+  setSelectionBookmarked: (
+    reference: Reference,
+    selected: readonly number[],
+    bookmarked: boolean,
+  ) => Promise<boolean>;
   activateArchivedNtProgress: (
     importId: string,
     sourceHash: string,
@@ -235,7 +258,8 @@ export const useApp = create<Store>((set, get) => {
     saveEditorDraft: async (draft, expected) => {
       try {
         const requested = draftSchema.parse(draft);
-        const expectedStamp = expected === null ? null : snapshotDraftStamp(expected);
+        const expectedStamp =
+          expected === null ? null : snapshotDraftStamp(expected);
         let saved: Draft | null = null;
         const ok = await persist(
           (d) => {
@@ -265,9 +289,15 @@ export const useApp = create<Store>((set, get) => {
             const draft = d.drafts.find((x) => x.key === key);
             if (discard) removeDraft(d, key, expectedStamp);
             else {
-              result = commitDraft(d, key, expectedStamp, new Date().toISOString(), {
-                completeGuided,
-              });
+              result = commitDraft(
+                d,
+                key,
+                expectedStamp,
+                new Date().toISOString(),
+                {
+                  completeGuided,
+                },
+              );
               // Only a genuinely new reflection/experience or guided completion
               // may update growth. Autosave, edits and discard are metadata.
               if (
@@ -397,7 +427,8 @@ export const useApp = create<Store>((set, get) => {
     rememberReadingPosition: async (position, reference) => {
       try {
         const requestedReference = referenceSchema.parse(reference);
-        const requestedPosition = position === null ? null : readingPositionSchema.parse(position);
+        const requestedPosition =
+          position === null ? null : readingPositionSchema.parse(position);
         return await persist(
           (d) => {
             d.readingPosition = requestedPosition;
@@ -416,32 +447,114 @@ export const useApp = create<Store>((set, get) => {
     setPassageHighlight: (reference, color) =>
       action(false, () => {
         const requested = referenceSchema.parse(reference);
-        const requestedColor = color === null ? null : highlightColor.parse(color);
-        const keys = getPassage(requested).map((verse) => `${requested.book}:${requested.chapter}:${verse.n}`);
-        return persist((d) => {
-          let changed = false;
-          for (const key of keys) {
-            if (requestedColor === null) {
-              if (d.highlights[key] !== undefined) { delete d.highlights[key]; changed = true; }
-            } else if (d.highlights[key] !== requestedColor) {
-              d.highlights[key] = requestedColor; changed = true;
+        const requestedColor =
+          color === null ? null : highlightColor.parse(color);
+        const keys = getPassage(requested).map(
+          (verse) => `${requested.book}:${requested.chapter}:${verse.n}`,
+        );
+        return persist(
+          (d) => {
+            let changed = false;
+            for (const key of keys) {
+              if (requestedColor === null) {
+                if (d.highlights[key] !== undefined) {
+                  delete d.highlights[key];
+                  changed = true;
+                }
+              } else if (d.highlights[key] !== requestedColor) {
+                d.highlights[key] = requestedColor;
+                changed = true;
+              }
             }
-          }
-          return changed;
-        }, {}, false);
+            return changed;
+          },
+          {},
+          false,
+        );
       }),
     setPassageBookmarked: (reference, bookmarked) =>
       action(false, () => {
         const requested = referenceSchema.parse(reference);
-        if (typeof bookmarked !== "boolean") throw new Error("Ungültige Merken-Auswahl.");
-        const keys = getPassage(requested).map((verse) => `${requested.book}:${requested.chapter}:${verse.n}`);
-        return persist((d) => {
-          const before = new Set(d.bookmarks), next = new Set(before);
-          for (const key of keys) { if (bookmarked) next.add(key); else next.delete(key); }
-          if (next.size === before.size && [...next].every((key) => before.has(key))) return false;
-          d.bookmarks = [...next];
-          return true;
-        }, {}, false);
+        if (typeof bookmarked !== "boolean")
+          throw new Error("Ungültige Merken-Auswahl.");
+        const keys = getPassage(requested).map(
+          (verse) => `${requested.book}:${requested.chapter}:${verse.n}`,
+        );
+        return persist(
+          (d) => {
+            const before = new Set(d.bookmarks),
+              next = new Set(before);
+            for (const key of keys) {
+              if (bookmarked) next.add(key);
+              else next.delete(key);
+            }
+            if (
+              next.size === before.size &&
+              [...next].every((key) => before.has(key))
+            )
+              return false;
+            d.bookmarks = [...next];
+            return true;
+          },
+          {},
+          false,
+        );
+      }),
+    setSelectionHighlight: (reference, selected, color) =>
+      action(false, () => {
+        const requested = referenceSchema.parse(reference);
+        const requestedColor =
+          color === null ? null : highlightColor.parse(color);
+        const keys = selectedBibleVerses(requested, selected).map(
+          (verse) => `${requested.book}:${requested.chapter}:${verse.n}`,
+        );
+        return persist(
+          (d) => {
+            let changed = false;
+            for (const key of keys) {
+              if (requestedColor === null) {
+                if (d.highlights[key] !== undefined) {
+                  delete d.highlights[key];
+                  changed = true;
+                }
+              } else if (d.highlights[key] !== requestedColor) {
+                d.highlights[key] = requestedColor;
+                changed = true;
+              }
+            }
+            return changed;
+          },
+          {},
+          false,
+        );
+      }),
+    setSelectionBookmarked: (reference, selected, bookmarked) =>
+      action(false, () => {
+        const requested = referenceSchema.parse(reference);
+        if (typeof bookmarked !== "boolean")
+          throw new Error("Ungültige Merken-Auswahl.");
+        const keys = selectedBibleVerses(requested, selected).map(
+          (verse) => `${requested.book}:${requested.chapter}:${verse.n}`,
+        );
+        return persist(
+          (d) => {
+            const before = new Set(d.bookmarks),
+              next = new Set(before);
+            for (const key of keys) {
+              if (bookmarked) next.add(key);
+              else next.delete(key);
+            }
+            if (
+              next.size === before.size &&
+              [...next].every((key) => before.has(key))
+            )
+              return false;
+            d.bookmarks = [...next];
+            return true;
+          },
+          {},
+          false,
+        );
       }),
     saveNtResponse: (questionId, displayedHash, choice, expectedStamp) =>
       action(false, async () => {

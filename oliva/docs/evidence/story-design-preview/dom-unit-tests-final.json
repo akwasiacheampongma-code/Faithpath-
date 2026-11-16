@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checkedAt": "2026-11-16T20:02:02.960Z",
+  "actions": [
+    "Library renders seven actual source units",
+    "Image-free filter changes the displayed real result",
+    "Illustrated unit opens the real existing shared-reader URL",
+    "Original question order, wrong-answer feedback and verbatim Bible evidence work",
+    "A preview answer can be changed without changing the source",
+    "Original reflection and exact temporary words survive preview navigation without duplicate completion controls",
+    "Psalm uses canonical typography without a missing-image placeholder",
+    "Theme and the three-view chooser have actual handlers"
+  ],
+  "unitEnvironment": "linkedom Node DOM emulator with explicit no-op focus/scroll, dialog shims and select.value property shim",
+  "requestsObserved": [
+    "./sample-data.json"
+  ],
+  "actualBrowser": false,
+  "actualLayout": false,
+  "actualScreenreader": false,
+  "physicalDevice": false,
+  "simulator": false,
+  "applicationDataStoreImported": false
+}

@@ -1,0 +1,177 @@
+{
+  "kind": "Owner-private isolated OLIVA design study, not a complete stories integration",
+  "project_id": "appgprj_6afb5c762278819193ed8d9fd2a322c7",
+  "createdAt": "2026-11-16T20:02:03.285Z",
+  "sourceApplicationVersion": "0.13.1",
+  "sourceApplicationCore": "oliva-1f49306347c4f496",
+  "sourceApplicationRuntimeDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 328,
+    "sha256": "6e6b250f3979b00403f84e1cc74bc2bd9a18f2960343e930a6f7c5b866a0342c"
+  },
+  "sourceOriginalCommit": "a519ce898fa33907b07d5ac7a585595127556183",
+  "targetCatalog": {
+    "units": 436,
+    "questions": 2479,
+    "reflections": 436
+  },
+  "actualSample": {
+    "units": 7,
+    "questions": 36,
+    "reflections": 7
+  },
+  "views": [
+    "#bibliothek",
+    "#geschichte/NS-0241/lesen",
+    "#geschichte/NS-0073/lesen"
+  ],
+  "existingImagesOnly": true,
+  "generatedNewImages": false,
+  "applicationPersonalStorageUsed": false,
+  "noCollectionOrTreeWrites": true,
+  "persistence": "Preview tab JavaScript memory only; no local/session storage, IndexedDB, cookies, backend or automatic completion",
+  "browserQa": "Not performed for this managed Site: supported cua_repl.js unavailable. Node DOM checks are separate unit checks, not a browser/screenreader/device test.",
+  "files": [
+    {
+      "path": "index.html",
+      "source": "design-previews/stories/index.html",
+      "bytes": 928,
+      "sha256": "801698c0d16fc15dfbb1dbbc114762643a2a81446e7f29f2d3e4cf2fb5fac796",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "app.mjs",
+      "source": "design-previews/stories/app.mjs",
+      "bytes": 24042,
+      "sha256": "835ec5d1174a2490dbc95a9b21630c2bc4baf9be1a08e4e5a58394f8c82882c6",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "model.mjs",
+      "source": "design-previews/stories/model.mjs",
+      "bytes": 3072,
+      "sha256": "ccf09df0efb6391004f8d738a2194d9d07694c7163ef597c3fb67e2f11596305",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "styles.css",
+      "source": "design-previews/stories/styles.css",
+      "bytes": 12488,
+      "sha256": "8290f2ecd23fdc8f8059450d2941da153a055f56b072761b7be68d6c48d7ff82",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "sample-data.json",
+      "source": "design-previews/stories/sample-data.json",
+      "bytes": 66036,
+      "sha256": "602a112d7202c206b25cc4ddc0ac61ccb2c4fa78d906a3937a53f1f71f03e195",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/DMSans.ttf",
+      "source": "assets/fonts/DMSans.ttf",
+      "bytes": 240164,
+      "sha256": "8cd08d97e89c24d0aa92edd2f0f4c8ee6195eee9b7c9f154865a58b02f0c1c0d",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/CormorantGaramond.ttf",
+      "source": "assets/fonts/CormorantGaramond.ttf",
+      "bytes": 1195560,
+      "sha256": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/noah-640.webp",
+      "source": "assets/images/noah-640.webp",
+      "bytes": 54448,
+      "sha256": "94d711765575c9dc299415060b90201adf72e4fc072b7f2a0b0abe4f563dbdf5",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/noah-large.webp",
+      "source": "assets/images/noah-1024.webp",
+      "bytes": 126202,
+      "sha256": "0c5faff234bbb6907e4caa2485744b7448ee71ac73d38cf209fa01e140c91f6e",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/abraham-640.webp",
+      "source": "assets/images/abraham-640.webp",
+      "bytes": 48078,
+      "sha256": "6cc393ef2f8e0a2996fa29455681b452ed0847043ed4bb275c293009fb667a1e",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/abraham-large.webp",
+      "source": "assets/images/abraham-1024.webp",
+      "bytes": 118658,
+      "sha256": "8a3147a71975be7ddef6036a3eb2ddd00d35e54299de19fe640cccc725eaabf5",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/david-before-goliath-640.webp",
+      "source": "assets/images/david-before-goliath-640.webp",
+      "bytes": 62648,
+      "sha256": "58481a9761d1ad0b8b773994342b26dd076227e4f524d48edeb4fa609a854591",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/david-before-goliath-large.webp",
+      "source": "assets/images/david-before-goliath-1024.webp",
+      "bytes": 154442,
+      "sha256": "c137f0fa77a268b311cb20a7802ced00946cf4ca15c4285521487db5199b3a8d",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/storm-640.webp",
+      "source": "assets/images/storm-640.webp",
+      "bytes": 37842,
+      "sha256": "5ebb97320a29eefe1323e2ac3957e6429fc2b4814f3810383ca418b5a0b07afc",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/storm-large.webp",
+      "source": "assets/images/storm-1280.webp",
+      "bytes": 134952,
+      "sha256": "e445c3d87d6830b93fe4f674bed2b8a8bf2ff3021e7a61a1ce1c4fc221dea7e2",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/easter-dawn-640.webp",
+      "source": "assets/images/easter-dawn-640.webp",
+      "bytes": 58428,
+      "sha256": "f4d44b2018030d521f397d6338adad362198d1557e0e4e081d16701d08e9547d",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/easter-dawn-large.webp",
+      "source": "assets/images/easter-dawn-1024.webp",
+      "bytes": 138806,
+      "sha256": "f90a2e9b27a301c7f774670bd720cf6b661fc82dbd71a96dc95b60ed1efde885",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/nativity-640.webp",
+      "source": "assets/images/nativity-640.webp",
+      "bytes": 59176,
+      "sha256": "7c4309b24483064048b68d073e2b983dbf3b5a1390905e7c5d144f14c685be21",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "assets/nativity-large.webp",
+      "source": "assets/images/nativity-1024.webp",
+      "bytes": 132990,
+      "sha256": "e01b3aba5cb414afb30a766f73392ebcad19d70cf8dde92eba0e32ae10f355a1",
+      "unchangedSourceBytes": true
+    },
+    {
+      "path": "tokens.css",
+      "source": "src/design-system/theme.ts",
+      "sourceSha256": "4d1b0281ab68195aef6aa02df188fc08fe0854a11189782e58f7d28dce368474",
+      "bytes": 472,
+      "sha256": "f01b10361761da6fe341355ee5fbe9ff1a6f894b0783861dc7c4e25c6279744d",
+      "generatedFromCurrentPalette": true
+    }
+  ]
+}

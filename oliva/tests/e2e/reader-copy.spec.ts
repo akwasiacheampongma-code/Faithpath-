@@ -1,3 +1,4 @@
+import { selectionBar } from "./selection-ui";
 import { test, expect, type Page, type Locator } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -10,8 +11,7 @@ test.use({
   permissions: ["clipboard-read", "clipboard-write"],
 });
 
-const evidence =
-  `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/reader-copy`;
+const evidence = `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/reader-copy`;
 // Independent licensed fixture: do not import the app's formatter or its Metro
 // JSON loader into the Node test process.
 const bible = JSON.parse(
@@ -59,7 +59,7 @@ const flow = (page: Page) => visible(page, "reader-flow");
 const verse = (page: Page, n: number) => visible(page, `flow-verse-${n}`);
 const tools = (page: Page) =>
   page
-    .getByRole("dialog", { name: "Auswahl verwenden", exact: true })
+    .getByRole("toolbar", { name: "Versauswahl", exact: true })
     .filter({ visible: true });
 
 function allDurableFieldsExceptPosition(data: AppData) {
@@ -95,24 +95,20 @@ async function copyAndRead(page: Page, container: Locator, expected: string) {
   await container
     .getByRole("button", { name: "Bibeltext kopieren", exact: true })
     .click();
-  await expect
-    .poll(() => readClipboard(page))
-    .toBe(expected);
+  await expect.poll(() => readClipboard(page)).toBe(expected);
   await expect(
-    page.getByText("Bibeltext kopiert.", { exact: true }).filter({ visible: true }),
+    page.getByText("Kopiert", { exact: true }).filter({ visible: true }),
   ).toBeVisible();
   const actual = await readClipboard(page);
   expect(actual).not.toContain("\r");
   return actual;
 }
 async function openRange(page: Page) {
-  await button(page, "Mehrere Verse auswählen").click();
   await verse(page, 36).click();
   await verse(page, 35).click();
   await expect(verse(page, 35)).toHaveAttribute("aria-pressed", "true");
   await expect(verse(page, 36)).toHaveAttribute("aria-pressed", "true");
   await expect(verse(page, 37)).toHaveAttribute("aria-pressed", "false");
-  await button(page, "Auswahl verwenden").click();
   await expect(tools(page)).toBeVisible();
 }
 async function report(page: Page, name: string, result: object) {
@@ -146,7 +142,7 @@ test("ein einzelner Vers wird per echtem Browser-Clipboard unverändert mit LF u
   await seedClipboard(page, "OLIVA Clipboard: Einzelvers vorher");
   await verse(page, 35).focus();
   await verse(page, 35).press("Enter");
-  const panel = visible(page, "verse-actions-35");
+  const panel = selectionBar(page);
   await expect(panel).toBeVisible();
   const actual = await copyAndRead(page, panel, singleCopy);
   await expect(verse(page, 35)).toHaveAttribute("aria-pressed", "true");
@@ -169,11 +165,7 @@ test("additive Auswahl kopiert genau 35–36 und danach 35–37 ohne UI-Einordnu
   await seedClipboard(page, "OLIVA Clipboard: Bereich vorher");
   await openRange(page);
   const first = await copyAndRead(page, tools(page), rangeCopy[36]);
-  await tools(page)
-    .getByRole("button", { name: "Auswahlwerkzeuge schließen", exact: true })
-    .click();
   await verse(page, 37).click();
-  await button(page, "Auswahl verwenden").click();
   const second = await copyAndRead(page, tools(page), rangeCopy[37]);
   for (const n of [35, 36, 37])
     await expect(verse(page, n)).toHaveAttribute("aria-pressed", "true");
@@ -220,7 +212,7 @@ test("eine abgelehnte Clipboard-API zeigt denselben schreibgeschützten Text ohn
   await expect(fallback).not.toBeEditable();
   await expect(fallback).toHaveJSProperty("readOnly", true);
   await expect(
-    page.getByText("Bibeltext kopiert.", { exact: true }).filter({ visible: true }),
+    page.getByText("Kopiert", { exact: true }).filter({ visible: true }),
   ).toHaveCount(0);
   expect(await readClipboard(page)).toBe(sentinel);
   for (const n of [35, 36])

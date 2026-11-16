@@ -20,7 +20,6 @@ import FlowText from "../../src/features/bible/flow/FlowText";
 import type { FlowTextHandle } from "../../src/features/bible/flow/types";
 import { flowParagraphs } from "../../src/features/bible/flow/model";
 import { LegacyVerseText } from "../../src/features/bible/flow/LegacyVerseText";
-import { VerseActions } from "../../src/features/bible/VerseActions";
 import { ReaderPreferences } from "../../src/features/bible/ReaderPreferences";
 import { focusReaderControl } from "../../src/features/bible/flow/focus";
 import { useReaderDismiss } from "../../src/features/bible/flow/useReaderDismiss";
@@ -30,8 +29,16 @@ import { sceneFor } from "../../src/features/bible/scenes";
 import { useReaderPosition } from "../../src/features/bible/useReaderPosition";
 import { sameReadingScope } from "../../src/features/bible/position";
 import { ReaderFooter } from "../../src/features/bible/ReaderFooter";
-import { displayReference, selectionReference, toggleVerseSelection } from "../../src/features/bible/selection";
-import { SelectionTools } from "../../src/features/bible/SelectionTools";
+import {
+  displayReference,
+  selectionReference,
+  toggleVerseSelection,
+} from "../../src/features/bible/selection";
+import {
+  SelectionTools,
+  type SelectionPanel,
+} from "../../src/features/bible/SelectionTools";
+import { ReaderSelectionBar } from "../../src/features/bible/ReaderSelectionBar";
 import { useVolatileDrafts } from "../../src/features/personal/volatile-drafts";
 import { resolveBibleDraft } from "../../src/features/personal/resolve-bible-draft";
 export default function Reader() {
@@ -94,14 +101,12 @@ export default function Reader() {
     [chooseVerse, setChooseVerse] = useState(false),
     [noteFocused, setNoteFocused] = useState(false),
     [focus, setFocus] = useState(false),
-    [multiMode, setMultiMode] = useState(!!(params.selectFrom && params.selectTo)),
-    [multiSelection, setMultiSelection] = useState<number[]>([]),
+    [selectedVerses, setSelectedVerses] = useState<number[]>([]),
     [selectionOrder, setSelectionOrder] = useState<number[]>([]),
     [selectionToolsOpen, setSelectionToolsOpen] = useState(false),
     [selectionError, setSelectionError] = useState<string | null>(null),
-    [selected, setSelected] = useState<number | null>(
-      params.verse && !params.draft ? Number(params.verse) : null,
-    ),
+    [selectionPanel, setSelectionPanel] = useState<SelectionPanel>("note"),
+    [copyText, setCopyText] = useState<string | null>(null),
     [ack, setAck] = useState<string | null>(null);
   const scroll = useRef<React.ComponentRef<typeof ScrollView>>(null);
   const flowText = useRef<FlowTextHandle>(null),
@@ -110,8 +115,7 @@ export default function Reader() {
     settingsEntry = useRef<React.ComponentRef<typeof Pressable>>(null),
     wasFocus = useRef(false),
     routeActive = useRef(false),
-    selectionReturnFocus = useRef<(() => void) | null>(null),
-    multiEntry = useRef<React.ComponentRef<typeof Pressable>>(null);
+    selectionReturnFocus = useRef<(() => void) | null>(null);
   const openKey = JSON.stringify(ref);
   const paragraphs = useMemo(
     () => (valid ? flowParagraphs(displayReference(ref), verses) : []),
@@ -120,26 +124,26 @@ export default function Reader() {
   const position = useReaderPosition({
     reference: ref,
     scroll,
-    explicitVerse: params.verse && !params.draft ? Number(params.verse) : undefined,
+    explicitVerse:
+      params.verse && !params.draft ? Number(params.verse) : undefined,
     mode,
     toolsOpen: tools || chooseVerse || selectionToolsOpen,
     pauseRemember: noteFocused || chooseVerse || selectionToolsOpen,
     measureVerses: flow
       ? (node) => flowText.current?.measure(node) ?? Promise.resolve(null)
       : undefined,
-    layoutKey: `${width}:${fontScale}:${data.settings.fontSize}:${data.settings.lineHeight}:${mode}:${selected ?? ""}:${flow}:${chooseVerse}:${focus}:${multiMode}:${selectionToolsOpen}:${multiSelection.length}`,
+    layoutKey: `${width}:${fontScale}:${data.settings.fontSize}:${data.settings.lineHeight}:${mode}:${flow}:${chooseVerse}:${focus}:${selectionToolsOpen}`,
   });
   const jumpToVerse = position.restore;
   useEffect(() => {
     setAck(null);
     setNoteFocused(false);
     setFocus(false);
-    setMultiMode(false);
-    setMultiSelection([]);
+    setSelectedVerses([]);
     setSelectionOrder([]);
     setSelectionToolsOpen(false);
     setSelectionError(null);
-    setSelected(params.verse && !params.draft ? Number(params.verse) : null);
+    setCopyText(null);
     const saved = useApp.getState().data.readingPosition;
     setMode(
       params.mode === "deep"
@@ -153,16 +157,29 @@ export default function Reader() {
   }, [openKey]);
   useEffect(() => {
     if (params.verse && !params.draft) {
-      setSelected(Number(params.verse));
+      const requested = Number(params.verse);
+      if (
+        valid &&
+        getChapter(ref.book, ref.chapter).some((verse) => verse.n === requested)
+      ) {
+        setSelectedVerses([requested]);
+        setSelectionOrder([requested]);
+      }
       // Consume the incoming jump once. A reload must resume the subsequently
       // read verse, while a fresh bookmark/search link still takes precedence.
       router.setParams({ verse: undefined });
     }
   }, [params.verse, params.draft, openKey]);
-  useFocusEffect(useCallback(() => {
-    routeActive.current = true;
-    return () => { routeActive.current = false; setSelectionToolsOpen(false); setNoteFocused(false); };
-  }, []));
+  useFocusEffect(
+    useCallback(() => {
+      routeActive.current = true;
+      return () => {
+        routeActive.current = false;
+        setSelectionToolsOpen(false);
+        setNoteFocused(false);
+      };
+    }, []),
+  );
   useEffect(() => {
     if (!params.draft && !params.selectFrom && !params.selectTo) return;
     try {
@@ -177,20 +194,39 @@ export default function Reader() {
           settled: volatile.settled,
         });
         requested = draft.values.source.ref;
-      } else requested = { book: ref.book, chapter: ref.chapter, from: Number(params.selectFrom), to: Number(params.selectTo) };
-      if (!validReference(requested) || requested.from === undefined || requested.to === undefined || requested.from > requested.to)
+      } else
+        requested = {
+          book: ref.book,
+          chapter: ref.chapter,
+          from: Number(params.selectFrom),
+          to: Number(params.selectTo),
+        };
+      if (
+        !validReference(requested) ||
+        requested.from === undefined ||
+        requested.to === undefined ||
+        requested.from > requested.to
+      )
         throw new Error("Diese Versauswahl ist nicht vorhanden.");
       const selectedVerses = getPassage(requested).map((verse) => verse.n);
       selectionReference(ref, selectedVerses);
-      if (selectedVerses.length === 1) { setMultiMode(false); setMultiSelection([]); setSelectionOrder([]); setSelected(selectedVerses[0]!); }
-      else { setMultiMode(true); setMultiSelection(selectedVerses); setSelectionOrder(selectedVerses); setSelected(null); }
+      setSelectedVerses(selectedVerses);
+      setSelectionOrder(selectedVerses);
       setSelectionError(null);
       if (params.draft) {
         jumpToVerse(requested.from);
-        if (selectedVerses.length > 1) setSelectionToolsOpen(true);
+        setSelectionPanel("note");
+        setSelectionToolsOpen(true);
       }
-    } catch (error) { rejectDraftResume(error); }
-    router.setParams({ draft: undefined, selectFrom: undefined, selectTo: undefined, ...(params.draft ? { verse: undefined } : {}) });
+    } catch (error) {
+      rejectDraftResume(error);
+    }
+    router.setParams({
+      draft: undefined,
+      selectFrom: undefined,
+      selectTo: undefined,
+      ...(params.draft ? { verse: undefined } : {}),
+    });
   }, [params.draft, params.selectFrom, params.selectTo, openKey]);
   useEffect(() => {
     const leaving = wasFocus.current && !focus;
@@ -202,13 +238,15 @@ export default function Reader() {
     return () => cancelAnimationFrame(frame);
   }, [focus]);
   function rejectDraftResume(error: unknown) {
-    setSelected(null);
-    setMultiMode(false);
-    setMultiSelection([]);
+    setSelectedVerses([]);
     setSelectionOrder([]);
     setSelectionToolsOpen(false);
     setNoteFocused(false);
-    setSelectionError(error instanceof Error ? error.message : "Die Auswahl konnte nicht geöffnet werden.");
+    setSelectionError(
+      error instanceof Error
+        ? error.message
+        : "Die Auswahl konnte nicht geöffnet werden.",
+    );
   }
   function closeTools() {
     setTools(false);
@@ -219,19 +257,28 @@ export default function Reader() {
     requestAnimationFrame(() => focusReaderControl(pickerEntry.current));
   }
   function selectVerse(verse: number) {
-    if (params.draft) return;
+    if (params.draft || !valid || !verses.some((entry) => entry.n === verse))
+      return;
     setNoteFocused(false);
     setSelectionError(null);
     if (focus) setFocus(false);
-    if (multiMode) {
-      try { setMultiSelection((current) => toggleVerseSelection(ref, current, verse)); setSelectionOrder((current) => current.includes(verse) ? current.filter((item) => item !== verse) : [...current, verse]); setSelectionError(null); }
-      catch (error) { setSelectionError(error instanceof Error ? error.message : "Dieser Vers ist nicht vorhanden."); }
-    } else setSelected(selected === verse ? null : verse);
+    setSelectedVerses((current) => toggleVerseSelection(ref, current, verse));
+    setSelectionOrder((current) =>
+      current.includes(verse)
+        ? current.filter((item) => item !== verse)
+        : [...current, verse],
+    );
   }
   function closeSelectionTools() {
-    setSelectionToolsOpen(false); setNoteFocused(false);
-    const verse = selectionOrder.at(-1) ?? multiSelection.at(-1);
-    const returnFocus = () => { if (routeActive.current) { if (verse !== undefined) flowText.current?.focusVerse(verse); else focusReaderControl(multiEntry.current); } };
+    setSelectionToolsOpen(false);
+    setNoteFocused(false);
+    const verse = selectionOrder.at(-1) ?? selectedVerses.at(-1);
+    const returnFocus = () => {
+      if (routeActive.current) {
+        if (verse !== undefined) flowText.current?.focusVerse(verse);
+        else focusReaderControl(pickerEntry.current);
+      }
+    };
     // Web/iOS dismiss their focus trap after this state update. Its actual
     // dismissal callback owns the final return; Android has no onDismiss.
     selectionReturnFocus.current = returnFocus;
@@ -242,28 +289,33 @@ export default function Reader() {
     selectionReturnFocus.current = null;
     if (!selectionToolsOpen) returnFocus?.();
   }
-  function stopMultiSelection() {
-    const verse = selectionOrder.at(-1) ?? multiSelection.at(-1);
-    setSelectionToolsOpen(false); setMultiMode(false); setMultiSelection([]); setSelectionOrder([]); setSelectionError(null); setNoteFocused(false);
-    requestAnimationFrame(() => { if (routeActive.current) { if (verse !== undefined) flowText.current?.focusVerse(verse); else focusReaderControl(multiEntry.current); } });
-  }
-  function closeActions() {
-    const verse = selected;
-    setSelected(null);
+  function clearSelection() {
+    const verse = selectionOrder.at(-1) ?? selectedVerses.at(-1);
+    setSelectionToolsOpen(false);
+    setSelectedVerses([]);
+    setSelectionOrder([]);
+    setSelectionError(null);
     setNoteFocused(false);
-    if (verse !== null)
-      requestAnimationFrame(() => flowText.current?.focusVerse(verse));
+    setCopyText(null);
+    requestAnimationFrame(() => {
+      if (routeActive.current && verse !== undefined)
+        flowText.current?.focusVerse(verse);
+    });
   }
   function startFocus() {
     setTools(false);
     setChooseVerse(false);
-    setSelected(null);
     setNoteFocused(false);
     setFocus(true);
-    setMultiMode(false); setMultiSelection([]); setSelectionOrder([]); setSelectionToolsOpen(false);
+    setSelectedVerses([]);
+    setSelectionOrder([]);
+    setSelectionToolsOpen(false);
   }
   useReaderDismiss(() => {
-    if (selectionToolsOpen) { closeSelectionTools(); return true; }
+    if (selectionToolsOpen) {
+      closeSelectionTools();
+      return true;
+    }
     if (tools) {
       closeTools();
       return true;
@@ -272,11 +324,10 @@ export default function Reader() {
       closePicker();
       return true;
     }
-    if (selected !== null) {
-      closeActions();
+    if (selectedVerses.length) {
+      clearSelection();
       return true;
     }
-    if (multiMode) { stopMultiSelection(); return true; }
     if (focus) {
       setFocus(false);
       return true;
@@ -310,13 +361,18 @@ export default function Reader() {
               `${ref.book}:${ref.chapter}:${ref.from ?? getChapter(ref.book, ref.chapter)[0]?.n}:${ref.to ?? getChapter(ref.book, ref.chapter).at(-1)?.n}`,
             )
           : read);
-  let multiReference: Reference | null = null;
-  let multiReferenceError = selectionError;
-  if (multiSelection.length) {
-    try { multiReference = selectionReference(ref, multiSelection); }
-    catch (error) { multiReferenceError = error instanceof Error ? error.message : "Die Auswahl ist nicht gültig."; }
+  let selectedReference: Reference | null = null;
+  if (selectedVerses.length) {
+    try {
+      selectedReference = selectionReference(ref, selectedVerses);
+    } catch {
+      /* Disjoint verses remain valid for copying, marking and bookmarks. */
+    }
   }
-  const focusRange = passage && valid ? { from: ref.from ?? verses[0]!.n, to: ref.to ?? verses.at(-1)!.n } : undefined;
+  const focusRange =
+    passage && valid
+      ? { from: ref.from ?? verses[0]!.n, to: ref.to ?? verses.at(-1)!.n }
+      : undefined;
   return (
     <Shell
       reader
@@ -340,17 +396,45 @@ export default function Reader() {
               Lesefokus beenden
             </Button>
           </View>
-        ) : multiMode ? (
-          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "space-between" }}>
-            <T variant="small" style={{ color: t.muted }}>{multiSelection.length} {multiSelection.length === 1 ? "Vers" : "Verse"} ausgewählt</T>
-            <Button kind="secondary" disabled={!!params.draft || !multiSelection.length} onPress={() => setSelectionToolsOpen(true)}>Auswahl verwenden</Button>
-            <Button kind="ghost" icon="close" onPress={stopMultiSelection}>Auswahl beenden</Button>
-          </View>
+        ) : undefined
+      }
+      readerActions={
+        valid &&
+        selectedVerses.length > 0 &&
+        !params.draft &&
+        !selectionToolsOpen ? (
+          <ReaderSelectionBar
+            reference={ref}
+            selected={selectedVerses}
+            onClear={clearSelection}
+            onNote={() => {
+              setSelectionPanel("note");
+              setSelectionToolsOpen(true);
+            }}
+            onMore={() => {
+              setSelectionPanel("more");
+              setSelectionToolsOpen(true);
+            }}
+            onFallback={(text) => {
+              setCopyText(text);
+              setSelectionPanel("copy");
+              setSelectionToolsOpen(true);
+            }}
+          />
         ) : undefined
       }
     >
-      <SelectionTools visible={selectionToolsOpen && valid && !params.draft} reference={multiReference} error={multiReferenceError}
-        onClose={closeSelectionTools} onDismiss={selectionDismissed} onFocusChange={setNoteFocused} />
+      <SelectionTools
+        visible={selectionToolsOpen && valid && !params.draft}
+        panel={selectionPanel}
+        reference={selectedReference}
+        logicalReference={ref}
+        selected={selectedVerses}
+        copyText={copyText}
+        onClose={closeSelectionTools}
+        onDismiss={selectionDismissed}
+        onFocusChange={setNoteFocused}
+      />
       <View
         ref={position.rootRef}
         onLayout={position.rootLayout}
@@ -469,14 +553,28 @@ export default function Reader() {
                 <T style={{ color: t.muted, fontSize: 12 }}>
                   {referenceLabel(ref)} · Bibeltext
                 </T>
-                {passage && <T variant="small" style={{ color: t.muted, textAlign: "center" }}>Das ganze Kapitel bleibt lesbar. Der farbig hinterlegte Abschnitt ist dein Bezug; eine Bestätigung gilt nur für diesen Abschnitt.</T>}
-                <Button kind="ghost" icon="back" onPress={() => {
-                  if (passage) {
-                    const target = ref.from ?? verses[0]!.n;
-                    position.restore(target);
-                    if (routeActive.current) flowText.current?.focusVerse(target);
-                  } else position.beginning();
-                }}>
+                {passage && (
+                  <T
+                    variant="small"
+                    style={{ color: t.muted, textAlign: "center" }}
+                  >
+                    Das ganze Kapitel bleibt lesbar. Der farbig hinterlegte
+                    Abschnitt ist dein Bezug; eine Bestätigung gilt nur für
+                    diesen Abschnitt.
+                  </T>
+                )}
+                <Button
+                  kind="ghost"
+                  icon="back"
+                  onPress={() => {
+                    if (passage) {
+                      const target = ref.from ?? verses[0]!.n;
+                      position.restore(target);
+                      if (routeActive.current)
+                        flowText.current?.focusVerse(target);
+                    } else position.beginning();
+                  }}
+                >
                   {passage ? "Zum Abschnittsanfang" : "Zum Kapitelanfang"}
                 </Button>
                 <View
@@ -593,13 +691,16 @@ export default function Reader() {
                 marginTop: 12,
               }}
             >
-              {selectionError && !selectionToolsOpen && <T accessibilityRole="alert">{selectionError}</T>}
+              {selectionError && !selectionToolsOpen && (
+                <T accessibilityRole="alert">{selectionError}</T>
+              )}
               {!focus && (
                 <T
                   variant="small"
                   style={{ fontSize: 10, color: t.muted, marginBottom: 15 }}
                 >
-                  {multiMode ? "Tippe auf Verse oder nutze die Verswahl. Du kannst jeden Vers wieder abwählen. Für eine gemeinsame Aktion müssen sie zusammenhängen." : "Tippe auf einen Vers, um ihn zu markieren, zu merken, zu kopieren oder eine Notiz zu schreiben."}
+                  Tippe Verse an. Unten kannst du sie markieren, kopieren oder
+                  eine Notiz schreiben. Erneutes Antippen hebt die Auswahl auf.
                 </T>
               )}
               {!focus &&
@@ -607,14 +708,16 @@ export default function Reader() {
                   .filter(
                     (d) =>
                       d.type === "capture" &&
-                      (d.values.source.type === "verse" || d.values.source.type === "passage") &&
+                      (d.values.source.type === "verse" ||
+                        d.values.source.type === "passage") &&
                       d.values.source.ref.book === ref.book &&
                       d.values.source.ref.chapter === ref.chapter,
                   )
                   .map((d) => {
                     if (
                       d.type !== "capture" ||
-                      (d.values.source.type !== "verse" && d.values.source.type !== "passage")
+                      (d.values.source.type !== "verse" &&
+                        d.values.source.type !== "passage")
                     )
                       return null;
                     const source = d.values.source;
@@ -626,15 +729,29 @@ export default function Reader() {
                         onPress={() => {
                           try {
                             const volatile = useVolatileDrafts.getState();
-                            const resolved = resolveBibleDraft({ draftId: d.id, reference: source.ref, durable: useApp.getState().data.drafts, held: volatile.items, settled: volatile.settled });
+                            const resolved = resolveBibleDraft({
+                              draftId: d.id,
+                              reference: source.ref,
+                              durable: useApp.getState().data.drafts,
+                              held: volatile.items,
+                              settled: volatile.settled,
+                            });
                             const requested = resolved.values.source;
                             setSelectionError(null);
-                            if (requested.type === "passage") {
-                              const selectedVerses = getPassage(requested.ref).map((verse) => verse.n);
-                              setSelected(null); setMultiMode(true); setMultiSelection(selectedVerses); setSelectionOrder(selectedVerses); setSelectionToolsOpen(true);
-                            } else { setMultiMode(false); setMultiSelection([]); setSelectionOrder([]); setSelected(requested.ref.from!); }
-                            requestAnimationFrame(() => { if (routeActive.current) jumpToVerse(requested.ref.from!); });
-                          } catch (error) { rejectDraftResume(error); }
+                            const selectedVerses = getPassage(
+                              requested.ref,
+                            ).map((verse) => verse.n);
+                            setSelectedVerses(selectedVerses);
+                            setSelectionOrder(selectedVerses);
+                            setSelectionPanel("note");
+                            setSelectionToolsOpen(true);
+                            requestAnimationFrame(() => {
+                              if (routeActive.current)
+                                jumpToVerse(requested.ref.from!);
+                            });
+                          } catch (error) {
+                            rejectDraftResume(error);
+                          }
                         }}
                       >
                         Notizentwurf zu {referenceLabel(source.ref)} fortsetzen
@@ -642,11 +759,15 @@ export default function Reader() {
                     );
                   })}
               {!focus && (
-                <View style={{ alignItems: "flex-start", flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 12 }}>
-                  <Button kind="secondary" icon="pen" buttonRef={multiEntry} onPress={() => {
-                    if (multiMode) stopMultiSelection();
-                    else { setSelected(null); setNoteFocused(false); setMultiMode(true); setMultiSelection([]); setSelectionOrder([]); setSelectionError(null); }
-                  }}>{multiMode ? "Einzelversaktionen verwenden" : "Mehrere Verse auswählen"}</Button>
+                <View
+                  style={{
+                    alignItems: "flex-start",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    gap: 8,
+                    marginBottom: 12,
+                  }}
+                >
                   <Button
                     kind="ghost"
                     icon="pen"
@@ -657,16 +778,15 @@ export default function Reader() {
                       else setChooseVerse(true);
                     }}
                   >
-                    {chooseVerse ? "Verswahl schließen" : "Versaktionen"}
+                    {chooseVerse ? "Verswahl schließen" : "Zu Vers springen"}
                   </Button>
                 </View>
               )}
               {chooseVerse && (
                 <Card style={{ gap: 12, marginBottom: 20 }}>
-                  <T variant="heading">Welchen Vers möchtest du auswählen?</T>
+                  <T variant="heading">Zu welchem Vers möchtest du springen?</T>
                   <T variant="small" style={{ color: t.muted }}>
-                    Die kleinen Zahlen kennzeichnen Verse. Du kannst hier eine
-                    Zahl wählen oder direkt auf den Bibeltext tippen.
+                    Wähle eine Zahl, um direkt zu diesem Vers zu springen.
                   </T>
                   <View
                     style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}
@@ -674,12 +794,11 @@ export default function Reader() {
                     {verses.map((verse) => (
                       <Button
                         key={verse.n}
-                        kind={(multiMode ? multiSelection.includes(verse.n) : selected === verse.n) ? "primary" : "secondary"}
-                        selected={multiMode ? multiSelection.includes(verse.n) : selected === verse.n}
+                        kind="secondary"
                         icon={null}
                         onPress={() => {
-                          if (multiMode) { selectVerse(verse.n); return; }
-                          setSelected(verse.n);
+                          setSelectedVerses([]);
+                          setSelectionOrder([]);
                           setNoteFocused(false);
                           setChooseVerse(false);
                           requestAnimationFrame(() => {
@@ -698,14 +817,14 @@ export default function Reader() {
                 <FlowText
                   ref={flowText}
                   paragraphs={paragraphs}
-                  selected={params.draft || multiMode ? null : selected}
-                  selectedVerses={params.draft ? [] : multiMode ? multiSelection : undefined}
+                  selected={null}
+                  selectedVerses={params.draft ? [] : selectedVerses}
                   focusRange={focusRange}
                   highlights={data.highlights}
                   bookmarks={data.bookmarks}
                   fontSize={data.settings.fontSize + 3}
                   lineHeight={data.settings.lineHeight}
-                  layoutKey={`${width}:${fontScale}:${data.settings.fontSize}:${data.settings.lineHeight}:${mode}:${multiMode ? "" : selected ?? ""}`}
+                  layoutKey={`${width}:${fontScale}:${data.settings.fontSize}:${data.settings.lineHeight}:${mode}`}
                   onSelect={selectVerse}
                   onGeometryChange={position.layoutChanged}
                   onUnavailable={() => {
@@ -713,22 +832,15 @@ export default function Reader() {
                     setFlowUnavailable(true);
                     setFlow(false);
                   }}
-                  renderActions={(verse) => (
-                    <VerseActions
-                      reference={ref}
-                      onFocusChange={setNoteFocused}
-                      verse={verse}
-                      onClose={closeActions}
-                    />
-                  )}
+                  renderActions={() => null}
                 />
               ) : (
                 <LegacyVerseText
                   ref={flowText}
                   reference={ref}
                   verses={verses}
-                  selected={params.draft || multiMode ? null : selected}
-                  selectedVerses={params.draft ? [] : multiMode ? multiSelection : undefined}
+                  selected={null}
+                  selectedVerses={params.draft ? [] : selectedVerses}
                   focusRange={focusRange}
                   highlights={data.highlights}
                   bookmarks={data.bookmarks}
@@ -736,20 +848,23 @@ export default function Reader() {
                   lineHeight={data.settings.lineHeight}
                   position={position}
                   onSelect={selectVerse}
-                  renderActions={(verse) => (
-                    <VerseActions
-                      reference={ref}
-                      onFocusChange={setNoteFocused}
-                      verse={verse}
-                      onClose={closeActions}
-                    />
-                  )}
+                  renderActions={() => null}
                 />
               )}
             </View>
-            {!focus && <ReaderFooter reference={ref} done={done} busy={busy}
-              onComplete={() => void complete()} pathId={path?.id} question={context?.question}
-              relatedPath={related[0]} mode={mode} celebrate={ack === completionScope && read} />}
+            {!focus && (
+              <ReaderFooter
+                reference={ref}
+                done={done}
+                busy={busy}
+                onComplete={() => void complete()}
+                pathId={path?.id}
+                question={context?.question}
+                relatedPath={related[0]}
+                mode={mode}
+                celebrate={ack === completionScope && read}
+              />
+            )}
             <T
               style={{
                 fontSize: 9,

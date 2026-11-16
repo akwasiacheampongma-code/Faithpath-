@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-11-16T14:59:11.479032+00:00",
+  "reviewer": "/root/ci0121_finish_0923/ci013_independent_review",
+  "status": "PASS",
+  "checksPassed": 27,
+  "concreteInconsistencies": [],
+  "confirmed": [
+    "Exact first-attempt run/job/head, branch, local source subtree and annotated tag",
+    "All47 non-oliva root entries unchanged against authorized0.12.1 combined backup; exact parent8d0e663",
+    "290 unit and126 browser cases, no skips, flaky results, retries or repeated attempts",
+    "Actual step timestamps, exact CI metadata and99408-byte terminal joblog provenance",
+    "Source API blob and local hashes, four actual pinned Node24 actions, audit zero",
+    "Both original0.11 failed runs retain exact heads and first attempts",
+    "A51 report freshness and actual anchor/remote build identity",
+    "Remote build oliva-4669ec10881d7abd with104 runtime files",
+    "Artifact10747231bytes,130 unique ZIP entries, all CRCs, copied rawreports and inventory hashes",
+    "GitHub and downloaded SHA256 f49d547d6b5866104d964320198fbde239ffbe3b51dbdc9b138aff0c89f18046",
+    "All35 pre-review manifest hashes match; all36 then-existing files scanned without credentials or signed URIs",
+    "Fresh source identity retrieved14:56:37UTC matches authorized snapshot"
+  ],
+  "reviewerNetworkCalls": false,
+  "reviewerGitMutations": false,
+  "reviewerFileWrites": false
+}

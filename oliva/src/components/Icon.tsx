@@ -20,7 +20,9 @@ export type IconName =
   | "volume"
   | "sword"
   | "download"
-  | "heart";
+  | "heart"
+  | "copy"
+  | "more";
 export function Icon({
   name,
   size = 22,
@@ -54,6 +56,19 @@ export function Icon({
       <>
         <Path d="M5 19C2 8 9 3 21 3c0 12-5 18-16 16Z" />
         <Path d="M3 22 16 8M9 15V9M9 15h6" />
+      </>
+    ),
+    copy: (
+      <>
+        <Rect x="8" y="8" width="12" height="13" rx="2" />
+        <Path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
+      </>
+    ),
+    more: (
+      <>
+        <Circle cx="5" cy="12" r="1" />
+        <Circle cx="12" cy="12" r="1" />
+        <Circle cx="19" cy="12" r="1" />
       </>
     ),
     bookmark: <Path d="M6 3h12v19l-6-4-6 4Z" />,
