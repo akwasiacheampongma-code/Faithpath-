@@ -1,0 +1,23 @@
+{
+  "command": [
+    "npm",
+    "run",
+    "test:e2e",
+    "--",
+    "--output=docs/evidence/original-history-release17/browser-final-r1/results"
+  ],
+  "coreBuild": "oliva-727bb651e0a924f0",
+  "startedAt": "2026-11-17T11:26:22.972199+00:00",
+  "precedingBuildExitCodes": [
+    0,
+    0,
+    0
+  ],
+  "filtered": false,
+  "workers": 1,
+  "retries": 0,
+  "exitCode": 0,
+  "finishedAt": "2026-11-17T11:45:10.861273+00:00",
+  "log": "docs/evidence/original-history-release17/e2e-final-r1.txt",
+  "logSha256": "e34ce702b62ca74fa38a1a79901432017c3e3ead6b3186bddf2608963b886bed"
+}

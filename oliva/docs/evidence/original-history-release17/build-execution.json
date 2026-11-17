@@ -1,0 +1,43 @@
+[
+  {
+    "name": "typecheck",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T11:23:27.580311+00:00",
+    "finishedAt": "2026-11-17T11:23:45.334004+00:00",
+    "log": "docs/evidence/original-history-release17/typecheck.txt",
+    "sha256": "f2b0aa802c0478fb3cc3871f59ef58aba7ba0199a156831897787c2de0671e78"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=json",
+      "--outputFile=docs/evidence/original-history-release17/unit-results.json"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T11:23:45.416730+00:00",
+    "finishedAt": "2026-11-17T11:24:32.759600+00:00",
+    "log": "docs/evidence/original-history-release17/unit.txt",
+    "sha256": "8138b24a671aff53c17361a6db20c109eb4391b09306986326a47e67641a7fb6"
+  },
+  {
+    "name": "web-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T11:24:32.921163+00:00",
+    "finishedAt": "2026-11-17T11:24:37.823664+00:00",
+    "log": "docs/evidence/original-history-release17/web-build.txt",
+    "sha256": "5af2db5c777f83f2cf1e66acbd2ee9cd8a3ccd59c352cef10489b7815e578e93"
+  }
+]

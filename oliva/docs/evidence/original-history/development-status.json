@@ -1,0 +1,32 @@
+{
+  "recordedAt": "2026-11-17T10:48:13.287257+00:00",
+  "state": "Development based on shipped 0.16.0; no new product version or deployment",
+  "changes": [
+    "Pure provenance-checked original path review/milestone selector",
+    "Read-only original-history cards in existing imported goals",
+    "Hash-bound exact raw archive coordinates without expanding all earlier records"
+  ],
+  "unitTests": 13,
+  "typecheckPassed": true,
+  "webBuild": "oliva-d81d04fa124e3cec",
+  "browserChecks": {
+    "targetedPassed": 9,
+    "expected": 9,
+    "fullRegression": false,
+    "includesExistingImportCases": 6,
+    "newHistoryCases": 3,
+    "retries": 0
+  },
+  "firstTypecheckFailure": "Sparse worktree lacked unchanged tracked art/content manifests; original log retained, materialized manifests, then passed. No tree or schema source weakened.",
+  "personalDataSchemaUnchanged": true,
+  "newRuntimeDependencies": false,
+  "masterDefinitionOfDoneComplete": false,
+  "browserPassedAt": "2026-11-17T10:51:43.322151+00:00",
+  "completeUnitSuite": {
+    "passed": 341,
+    "total": 341,
+    "failed": 0
+  },
+  "typecheckIncludingBrowserTestsPassed": true,
+  "fullBrowserRegressionPassed": false
+}

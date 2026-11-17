@@ -8,6 +8,8 @@ import { useApp } from "../../src/state/store";
 import { archiveData } from "../../src/features/imports/model";
 import { exportText } from "../../src/services/storage";
 import { LegacyNtRestore } from "../../src/features/imports/LegacyNtRestore";
+import { resolveArchiveFocus, type ArchiveFocusParams } from "../../src/features/imports/archive-focus";
+import { ArchiveHistory } from "../../src/features/imports/ArchiveHistory";
 const categories = [
   ["paths", "Wege"],
   ["journal", "Journal"],
@@ -18,7 +20,8 @@ const categories = [
   ["other", "Weitere Originalfelder"],
 ] as const;
 export default function ImportArchive() {
-  const { id } = useLocalSearchParams<{ id: string }>(),
+  const { id, view, historyTab, historyPath, category: focusCategory, entry, section, record, source: sourceHash } = useLocalSearchParams<{ id: string; view?: string; historyTab?: string; historyPath?: string } & ArchiveFocusParams>(),
+    historyView = view === "history",
     t = useTheme(),
     receipt = useApp((s) => s.data.imports.find((r) => r.id === id));
   const [category, setCategory] = useState<string>("paths"),
@@ -26,14 +29,17 @@ export default function ImportArchive() {
     [selected, setSelected] = useState<number | null>(null),
     [message, setMessage] = useState("");
   const source = useMemo(() => {
-    if (!receipt) return null;
+    if (!receipt || historyView) return null;
     try {
       return archiveData(receipt);
     } catch {
       return null;
     }
-  }, [receipt]);
-  if (!receipt || !source)
+  }, [receipt, historyView]);
+  const focus = useMemo(() => receipt ? resolveArchiveFocus(receipt, {
+    category: focusCategory, entry, section, record, source: sourceHash,
+  }) : { status: "none" as const }, [receipt, focusCategory, entry, section, record, sourceHash]);
+  if (!receipt || !historyView && !source)
     return (
       <Shell>
         <Card style={{ gap: 14 }}>
@@ -44,7 +50,7 @@ export default function ImportArchive() {
         </Card>
       </Shell>
     );
-  const original = JSON.parse(receipt.sourceText) as Record<string, unknown>;
+  const original = (historyView ? {} : JSON.parse(receipt.sourceText)) as Record<string, unknown>;
   const all = (
     original.app === "FaithPath" ? original.data : original
   ) as Record<string, unknown>;
@@ -71,21 +77,28 @@ export default function ImportArchive() {
         : [];
   return (
     <Shell>
-      <Tag icon="bookmark">Unveränderte Originalquelle</Tag>
+      <Tag icon="bookmark">{historyView ? "Original aus FaithPath" : "Unveränderte Originalquelle"}</Tag>
       <T
         variant="title"
         accessibilityRole="header"
         style={{ fontSize: 44, marginTop: 14, marginBottom: 12 }}
       >
-        Was du mitgebracht hast.
+        {historyView ? "Deine früheren Momente." : "Was du mitgebracht hast."}
       </T>
       <View style={{ maxWidth: 780, gap: 18 }}>
         <T style={{ fontSize: 13, color: t.muted }}>
-          FaithPath-Datenschema 5 · übernommen am{" "}
-          {new Date(receipt.importedAt).toLocaleString("de-DE")}. Dies sind
+          {historyView ? <>Aus FaithPath übernommen am {new Date(receipt.importedAt).toLocaleString("de-DE")}. Deine damaligen Worte im Original.</> : <>
+          FaithPath-Datenschema 5 · übernommen am {new Date(receipt.importedAt).toLocaleString("de-DE")}. Dies sind
           historische Originaldatensätze. Alte Bewertungen, Übersetzungen und
-          Quellenangaben sind keine neuen OLIVA-Bestätigungen.
+          Quellenangaben sind keine neuen OLIVA-Bestätigungen.</>}
         </T>
+        {historyView ? <>
+          <ArchiveHistory key={receipt.id} receipt={receipt} tab={historyTab} pathId={historyPath}
+            onPath={(pathId) => router.replace({ pathname: "/importarchiv/[id]", params: { id, view: "history", historyTab: "path", historyPath: pathId } })}
+            onUnassigned={() => router.replace({ pathname: "/importarchiv/[id]", params: { id, view: "history", historyTab: "unassigned" } })} />
+          <Button kind="ghost" icon="book" onPress={() => router.push({ pathname: "/importarchiv/[id]", params: { id } })}>Alle Originalfelder und Dateiexport</Button>
+          <Button kind="ghost" icon="back" onPress={() => router.dismissTo("/garten")}>Zurück zu deinem Garten</Button>
+        </> : <>
         <Card style={{ gap: 12 }}>
           <T variant="small">Datei-Fingerabdruck (SHA-256):</T>
           <T selectable style={{ fontSize: 10 }}>
@@ -117,10 +130,20 @@ export default function ImportArchive() {
           </Button>
         </Card>
         {!!message && <T accessibilityRole="alert">{message}</T>}
+        {focus.status !== "none" && <Card style={{ gap: 12 }} testID="archive-focused-record">
+          <Tag icon="bookmark">Direkt geöffnete Originalstelle</Tag>
+          {focus.status === "ok" ? <>
+            <T variant="heading" accessibilityRole="header">Diese ursprüngliche Stelle.</T>
+            <T variant="small" style={{ color: t.muted }}>Der genaue Datensatz aus der gespeicherten FaithPath-Datei. Seine Felder bleiben unverändert.</T>
+            <T variant="small" selectable style={{ color: t.muted }}>{focus.pointer}</T>
+            <T selectable testID="archive-focused-json" style={{ fontFamily: "monospace", fontSize: 11, lineHeight: 19 }}>{JSON.stringify(focus.value, null, 2)}</T>
+          </> : <T variant="small">{focus.reason}</T>}
+          <Button kind="ghost" icon="back" onPress={() => router.replace({ pathname: "/importarchiv/[id]", params: { id } })}>Zur Übersicht dieser Quelle</Button>
+        </Card>}
         <LegacyNtRestore
           key={receipt.id + ":" + receipt.sourceHash}
           receipt={receipt}
-          quiz={source.quiz}
+          quiz={source?.quiz}
         />
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
           {categories.map(([key, label]) => (
@@ -195,6 +218,7 @@ export default function ImportArchive() {
             Weitere Originaldatensätze anzeigen
           </Button>
         )}
+        </>}
       </View>
     </Shell>
   );

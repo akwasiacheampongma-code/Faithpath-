@@ -1,0 +1,63 @@
+{
+  "version": "0.17.0",
+  "allCoreChecksPassed": true,
+  "dataVersion": 11,
+  "coreBuild": "oliva-727bb651e0a924f0",
+  "fullBrowserExecutableBuild": "oliva-727bb651e0a924f0",
+  "packagingSourceDigest": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 358,
+    "sha256": "1fe3082dd01129d18dd278adfd366351cbb895226a74ce4c3d0a387a3070cb17"
+  },
+  "unit": {
+    "passed": 347,
+    "total": 347,
+    "failed": 0,
+    "pending": 0
+  },
+  "browser": {
+    "passed": 154,
+    "total": 154,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "singleFullGreenRun": true,
+    "allResultsSingleAttempt": true
+  },
+  "originalLifeTopics": {
+    "topics": 18,
+    "references": 45,
+    "contexts": 45,
+    "reflectionPrompts": 45
+  },
+  "originalStories": {
+    "units": 436,
+    "questions": 2479,
+    "reflectionPrompts": 436,
+    "aliasPairs": 95
+  },
+  "existingGuidedPaths": 9,
+  "personalTreeReadOnly": true,
+  "originalHistoryReadOnly": true,
+  "nativeExecution": false,
+  "masterDefinitionOfDoneComplete": false,
+  "checkedAt": "2026-11-17T14:27:18.440988+00:00",
+  "privateDeployment": {
+    "status": "succeeded",
+    "url": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+    "deploymentId": "appgdep_6afc653fe99c81919fb7ec9f14accfde",
+    "savedVersionId": "appgprj_6aedf77e5ce0819180c10eb799447018~appgver_d081429c118c8191a08744707a190a55",
+    "sourceCommit": "6db5454c7b10726562e9df527978575458f2ff51",
+    "deployedAt": "2026-11-17T14:31:49.540527+00:00",
+    "hostBuild": "oliva-c4e0bc1e9484a00e",
+    "anonymousStatus": 401,
+    "ownerOnlyPolicyUnchanged": true,
+    "appFilesVerified": 111,
+    "byteComparedAppFiles": 110,
+    "reviewFilesVerified": 48,
+    "appRoutesHttpChecked": 40,
+    "anonymousAppRoutesVerified": 40,
+    "hostedBrowserQa": false
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "checker": "static-metro-nt-catalog-reader-v013",
+  "parser": "acorn@8.19.0",
+  "bundle_code_executed": false,
+  "source": {
+    "path": "src/data/nt-catalog.json",
+    "package_version": "0.17.0",
+    "bytes": 975966,
+    "sha256": "850272e6cd3a22bdb50191e6e20f0ab9033377e7901f47fbfe6ec4c3eb067c7b",
+    "json_sha256": "436dee5453980562264f9396f5f28918f799e79b94017f6fd184f205c8a351f6",
+    "counts": {
+      "books": 27,
+      "chapters": 260,
+      "questions": 1300,
+      "questions_per_chapter": 5,
+      "unique_question_ids": 1300,
+      "reference_ranges": 1304
+    }
+  },
+  "comparison": "Complete deepStrictEqual of all chapter/question fields, original strings, options and reference arrays in order; no code evaluation.",
+  "exports": [
+    {
+      "export_directory": "/workspace/faithpath-next/dist-android",
+      "metadata_sha256": "539986b776b75f7a7a3b8675d5f35b99c4d7bcdd555a453d54aac14a65bc9730",
+      "platforms": [
+        {
+          "platform": "android",
+          "bundle": "_expo/static/js/android/entry-0e880842bb0fd0c51be6a3231fcaad60.js",
+          "bundle_bytes": 13905944,
+          "bundle_sha256": "ac3165c19568f4d73db54bab25e732cb6b9811466bcec27c5c0f423039271514",
+          "metro_modules_scanned": 1714,
+          "module_id": 1345,
+          "source_name_in_bundle": null,
+          "identification": "json-module-literal-shape-and-complete-deep-equality",
+          "literal_module_sha256": "1b11b2f0c1f310a4351e2fd7bf47bea08ebc5032eeddf83e6f9c07fc8caffd7f",
+          "literal_json_sha256": "436dee5453980562264f9396f5f28918f799e79b94017f6fd184f205c8a351f6",
+          "full_deep_equality": true,
+          "matched": {
+            "books": 27,
+            "chapters": 260,
+            "questions": 1300,
+            "questions_per_chapter": 5,
+            "unique_question_ids": 1300,
+            "reference_ranges": 1304
+          }
+        }
+      ]
+    },
+    {
+      "export_directory": "/workspace/faithpath-next/dist-ios",
+      "metadata_sha256": "2f4f47f9f835eb683f799abf506e8e58a12cc93bc48009fb0bbd901c59ef9135",
+      "platforms": [
+        {
+          "platform": "ios",
+          "bundle": "_expo/static/js/ios/entry-66298e0fde73208024a25c4712d86d7c.js",
+          "bundle_bytes": 13922503,
+          "bundle_sha256": "8f01f67745e36d45eb76f2701daef9f3a9121524581d35af6de1f39eae0075b0",
+          "metro_modules_scanned": 1719,
+          "module_id": 1349,
+          "source_name_in_bundle": null,
+          "identification": "json-module-literal-shape-and-complete-deep-equality",
+          "literal_module_sha256": "63ce794f27d1b40142bf8870828e76b981c8b2b29995fdb76cb6eec407fb5b0f",
+          "literal_json_sha256": "436dee5453980562264f9396f5f28918f799e79b94017f6fd184f205c8a351f6",
+          "full_deep_equality": true,
+          "matched": {
+            "books": 27,
+            "chapters": 260,
+            "questions": 1300,
+            "questions_per_chapter": 5,
+            "unique_question_ids": 1300,
+            "reference_ranges": 1304
+          }
+        }
+      ]
+    }
+  ]
+}

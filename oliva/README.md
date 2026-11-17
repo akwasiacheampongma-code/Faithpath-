@@ -1,7 +1,28 @@
 # OLIVA · Raum für deinen Glauben
 
+<!-- OLIVA_017_CURRENT -->
+## Aktueller Lieferstand · Originalhistorie 0.17.0
+
+**OLIVA 0.17.0 ist seit 17.11.2026, 14:31:49 UTC eigentümerprivat bereitgestellt.**
+[Private Vorschau öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/garten). Nach einem FaithPath-Import: **Mein Garten → Frühere FaithPath-Momente ansehen**. Ohne eigene Importdatei zeigen die privaten [320-Pixel-](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/original-history/original-history-320.png) und [1440-Pixel-Aufnahmen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/original-history/original-history-1440.png) die neue Ansicht mit synthetischen Prüfdaten.
+
+Frühere Vorhaben, Rückblicke und Meilensteine sind lesbar erschlossen. Jede Originaldatei behält ihre eigene Fassung. Rückblicke ohne eindeutigen Weg bleiben eigenständig; Spiegel erscheinen einmal, abweichende Fassungen getrennt. Fehlende Datierung, fehlender Wortlaut und widersprüchliche Zuordnungen bleiben kenntlich. Genaue Archivlinks öffnen den tatsächlichen ursprünglichen Datensatz. Die Ansicht verlangt kein heutiges Vorhaben und stellt keine gelöschten heutigen Einträge wieder her. Der kompakte Smartphoneaufbau zeigt eigene Worte früh. Historische Angaben erzeugen keinen heutigen Fortschritt.
+
+**347/347 Fachtests und ein einzelner vollständiger 154/154-Browserlauf bestanden**, erster Versuch, keine Retries, Skips oder Flaky-Ergebnisse. Typecheck, sieben Inhaltsprüfungen und Produktionsaudit ohne Funde erfolgreich. Der tatsächliche 0.16→0.17-PWA-Wechsel bewahrt alle vier V11-Rohdatensätze durchgehend exakt, auch nach Originalkarten, unzugeordneten Rückblicken, genauen Archivstellen, allen sieben Offline-A51-Stadien und tatsächlichem Export/Restorepreview ohne Anwendung. AppData V11, Dokument 1 / SQLite 3 / IndexedDB 1 unverändert.
+
+Android-/iOS-JavaScript- und Assetexports sowie vollständige NT-/Geschichten-/Themenkatalogvergleiche bestehen statisch. Neue Historienmodule und der native Baumrenderer sind in beiden Bundles vorhanden; der DOM-/WebGL-Baumrenderer fehlt. **Keine native Geräte- oder Simulatorprüfung.** Alle 436 Originaleinheiten / 2.479 Fragen / 436 Impulse, 95 Quellenvarianten, 1.300 separate NT-Fragen, 18 Lebensthemen / 45 Stellen, neun bisherige Wege, sieben A51-Originalstadien und 66 Buchschwerter bleiben erhalten. Keine neuen Bilder oder Laufzeitabhängigkeiten. Alle 390 materialisierten FaithPath-Dateien erneut hashgenau unverändert.
+
+Kern `oliva-727bb651e0a924f0`, Host `oliva-c4e0bc1e9484a00e`; 358 eingefrorene Runtimeinputs, SHA-256 `1fe3082dd01129d18dd278adfd366351cbb895226a74ce4c3d0a387a3070cb17`. Private HTTP-/Paketprüfung: 40 App-Routen, 111 App-Dateien (110 bytegenau plus HTML-Marker) und 48 Review-Dateien. Alle 40 App-Direktlinks auch anonym geprüft und gesperrt; Eigentümerpolitik exakt unverändert. Eine erste Antwort enthielt unmittelbar nach der Bereitstellung noch nicht den erwarteten Buildmarker; dieselbe normale URL lieferte später die richtige Fassung. Ohne Code-/Berechtigungsänderung oder erneute Bereitstellung bestand danach die vollständige verschärfte HTTP-Abnahme. Die frühen Nachweise bleiben erhalten. Keine gehostete Browser-QA mangels unterstütztem CUA-Werkzeug.
+
+Die beauftragte GitHub-Versionssicherung und die neue unabhängige 0.17-CI folgen als Lieferabschlussschritte; noch kein Erfolg dafür vorweggenommen. Die bestätigte 0.16-CI 44065974720 bleibt ein eigener Nachweis. Weitere Bildarbeit, unabhängige Fach-/Rechtefreigaben, echte Einsteiger-/Geräte-/Hilfstechnologietests, signierte native Pakete und konkrete Cloud-/KI-/Audioarbeit bleiben Master-Aufgaben. **Die gesamte Master-Definition-of-Done ist nicht abgeschlossen.** Keine öffentliche Website-/Storefreigabe, kein GitHub-main-Merge und keine Änderung an Original-FaithPath.
+
+[Gesamtabnahme](docs/evidence/original-history-release17/validation-summary.json)
+<!-- /OLIVA_017_CURRENT -->
+
+
+
 <!-- OLIVA_016_CURRENT -->
-## Aktueller Lieferstand · persönlicher Garten 0.16.0
+## Historischer Lieferstand · persönlicher Garten 0.16.0
 
 **OLIVA 0.16.0 ist seit 17.11.2026, 10:30:07 UTC eigentümerprivat bereitgestellt.**
 [Mein Garten öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/garten). Die bisherige Vorschau-Adresse bleibt bestehen.
@@ -14,7 +35,9 @@ Alle 436 Originaleinheiten / 2.479 Fragen / 436 Reflexionsimpulse, 95 Quellenvar
 
 Kernbuild `oliva-b484395da372ae92`, Hostbuild `oliva-cc32414f4ff73284`; 353 eingefrorene Runtimeinputs, SHA-256 `5590a20d0e7f99c8c4169df6d34219ad2979bd24c8115654d4d96d488a6df976`. Private HTTP-/Paketprüfung: 37 Routen, 111 App-Dateien (110 bytegenau plus HTML-Marker) und 45 Review-Dateien. Eigentümerpolitik exakt unverändert, anonym HTTP 401. Keine gehostete Browser-QA mangels unterstütztem CUA-Werkzeug. Tatsächliche neue Gartenaufnahmen: [320 Pixel](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/personal-tree/garden-320.png), [1440 Pixel](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/personal-tree/garden-1440.png), jeweils synthetische Prüfdaten.
 
-Die GitHub-Versionssicherung und die neue unabhängige 0.16-CI folgen als Lieferabschlussschritte; noch kein Erfolg dafür vorweggenommen. Der frühere WIP-Lauf 44055494198 und die ausgelieferte 0.15-CI 44045010987 bleiben getrennte Nachweise.
+Die beauftragte GitHub-Versionssicherung ist abgeschlossen: eigener unveränderlicher Quellcommit `902a5dd5ac3e11a848d95d474df2a1487f41b77e`, GitHub-Commit `b2952b682b306f5f4db02d7cef63819f73fcb301`, [Tag `oliva-v0.16.0`](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.16.0/oliva) und Branch `feature/oliva-v016-personal-tree-20261117`. Alle 28 Versionsverweise und geschützten Bestandsbranches sind bestätigt; main und alle 47 Nicht-OLIVA-Root-Einträge unverändert. Quell-ZIP: 316.055.587 Byte, 5.111 CRC-geprüfte Einträge, SHA-256 `7411c3cd85c3615d166c5db56b7640af6371b48449ac6ec4b9c541ba77ba8181`.
+
+Die unabhängige [0.16-CI 44065974720](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/44065974720) ist seit **2026-11-17T10:49:13Z erfolgreich bestätigt: 328/328 Fachtests und 148/148 Browserfälle**, erster Versuch, keine Retries/Skips/Flaky-Ergebnisse. Alle 31 Kriterien einschließlich tatsächlicher Testzeiten, Artefakt-SHA/CRC/Frische und exaktem Quellteilbaum bestehen. Remote- und privater Kernbuild sind tatsächlich gleich: `oliva-b484395da372ae92`. Frühere 0.15- und WIP-Läufe bleiben eigene Nachweise. Der statische native Prüfumfang ist keine Geräte- oder Simulatorausführung.
 
 **Offen bleibt die vollständige historische Erschließung alter FaithPath-Rückblicke und Meilensteine.** Die aktuelle Ansicht ist die erste persönliche Historienstufe. Weitere Bildarbeit, unabhängige Fach-/Rechtefreigaben, echte Einsteiger-/Geräte-/Hilfstechnologietests, signierte native Pakete und konkrete Cloud-/KI-/Audioarbeit bleiben Master-Aufgaben. Keine öffentliche Website-/Storefreigabe, kein GitHub-main-Merge und keine Änderung an FaithPath. Die gesamte Master-Definition-of-Done ist nicht abgeschlossen.
 

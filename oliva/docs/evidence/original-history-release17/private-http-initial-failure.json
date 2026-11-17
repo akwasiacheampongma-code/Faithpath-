@@ -1,0 +1,20 @@
+{
+  "recordedAt": "2026-11-17T14:38:16.166564+00:00",
+  "phase": "First HTTP check after successful private deployment",
+  "failedRoute": "/lesen/MRK?chapter=4",
+  "httpStatus": 200,
+  "failure": "Response did not contain expected 0.17 host build marker. First received marker was not captured, so no older version is asserted.",
+  "expectedHostBuild": "oliva-c4e0bc1e9484a00e",
+  "readOnlyRecoveryProbe": {
+    "sameExactUrlNowCorrect": true,
+    "receivedHostBuild": "oliva-c4e0bc1e9484a00e",
+    "cacheControl": "public, max-age=0, must-revalidate",
+    "cfCacheStatus": "HIT",
+    "etag": "\"008fda87a3df6389f5b00e65175c5900\"",
+    "cacheBustOnlyWasNotRequired": true
+  },
+  "sourceChanged": false,
+  "deploymentRepeated": false,
+  "permissionsChanged": false,
+  "nextStep": "Repeat unchanged full HTTP verification after observed route recovery; also check anonymous app routes."
+}

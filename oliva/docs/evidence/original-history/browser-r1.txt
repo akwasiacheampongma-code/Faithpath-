@@ -1,0 +1,22 @@
+
+> oliva-faith-companion@0.16.0 test:e2e
+> playwright test tests/e2e/legacy-history.spec.ts tests/e2e/imports.spec.ts --output=docs/evidence/original-history/browser-r1/results
+
+[WebServer] (node:123716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 9 tests using 1 worker
+
+(node:123736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/imports.spec.ts:47:1 › Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten (5.6s)
+  ✓  2 tests/e2e/imports.spec.ts:70:1 › Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline (9.2s)
+  ✓  3 tests/e2e/imports.spec.ts:132:1 › zwei Fenster schützen Änderungen und erlauben eine erneute Vorschau (8.5s)
+  ✓  4 tests/e2e/imports.spec.ts:162:1 › Schreibfehler lassen Bestand und vorherige Rückkehrsicherung atomar erhalten (5.7s)
+  ✓  5 tests/e2e/imports.spec.ts:195:1 › Rückkehr zeigt Folgen ausdrücklich und stellt den echten vorherigen Stand wieder her (7.2s)
+  ✓  6 tests/e2e/imports.spec.ts:230:1 › Importansichten sind mobil, dunkel und per Tastatur zugänglich (6.9s)
+  ✓  7 tests/e2e/legacy-history.spec.ts:30:1 › historische Meilensteine und echte Spiegel öffnen genau ihre Originalstelle und bleiben auch offline schreibfrei (6.9s)
+  ✓  8 tests/e2e/legacy-history.spec.ts:53:1 › verknüpfte Gedankenrückblicke, abweichende Fassungen und fehlende Daten bleiben erkennbar statt heutige Belege zu erfinden (4.5s)
+  ✓  9 tests/e2e/legacy-history.spec.ts:71:1 › historische Karten und genaue Archivstellen bleiben klein, dunkel und per Tastatur zugänglich; ein falscher Quellhash öffnet keinen fremden Datensatz (13.4s)
+
+  9 passed (1.2m)

@@ -13,6 +13,7 @@ import { CaptureInput } from "../src/features/personal/CaptureInput";
 import { EXPERIENCE_QUESTION } from "../src/features/personal/capture-model";
 import { personalTreeHistory, personalTreeLinks } from "../src/features/garden/personal-history";
 import { PersonalTreeJourney, PersonalTreePins } from "../src/features/garden/PersonalTreeJourney";
+import { LegacyGardenHistory } from "../src/features/imports/LegacyGardenHistory";
 import { a51Stage, treeLayout } from "../src/features/garden/a51/stages";
 export default function Garden() {
   const t = useTheme(),
@@ -227,6 +228,7 @@ export default function Garden() {
         </View>
       </View>
       <PersonalTreeJourney model={history} links={links} />
+      <LegacyGardenHistory />
       <Card style={{ marginTop: 24, gap: 13 }}>
         <T variant="heading">Was möchtest du im Alltag ausprobieren?</T>
         <T style={{ fontSize: 12, color: t.muted }}>

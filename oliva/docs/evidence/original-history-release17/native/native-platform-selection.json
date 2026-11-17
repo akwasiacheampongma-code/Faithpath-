@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-11-17T11:28:17.176920+00:00",
+  "checks": [
+    {
+      "platform": "android",
+      "bundle": "_expo/static/js/android/entry-0e880842bb0fd0c51be6a3231fcaad60.js",
+      "bundleSha256": "ac3165c19568f4d73db54bab25e732cb6b9811466bcec27c5c0f423039271514",
+      "nativeRendererAndNewPersonalTreeModulesPresent": true,
+      "originalHistoryModulesPresent": true,
+      "domWebglRendererAbsent": true,
+      "positiveMarkers": {
+        "NativeTreeArtwork": true,
+        "reportReady": true,
+        "PersonalTreeJourney": true,
+        "personalTreeLinks": true,
+        "ArchiveHistory": true,
+        "LegacyGardenHistory": true,
+        "LegacyMomentCard": true,
+        "legacyArchiveReader": true,
+        "resolveArchiveFocus": true
+      },
+      "absentMarkers": {
+        "createTreeScene": true,
+        "WebGLRenderingContext": true,
+        "document.createElement(\"canvas\")": true
+      }
+    },
+    {
+      "platform": "ios",
+      "bundle": "_expo/static/js/ios/entry-66298e0fde73208024a25c4712d86d7c.js",
+      "bundleSha256": "8f01f67745e36d45eb76f2701daef9f3a9121524581d35af6de1f39eae0075b0",
+      "nativeRendererAndNewPersonalTreeModulesPresent": true,
+      "originalHistoryModulesPresent": true,
+      "domWebglRendererAbsent": true,
+      "positiveMarkers": {
+        "NativeTreeArtwork": true,
+        "reportReady": true,
+        "PersonalTreeJourney": true,
+        "personalTreeLinks": true,
+        "ArchiveHistory": true,
+        "LegacyGardenHistory": true,
+        "LegacyMomentCard": true,
+        "legacyArchiveReader": true,
+        "resolveArchiveFocus": true
+      },
+      "absentMarkers": {
+        "createTreeScene": true,
+        "WebGLRenderingContext": true,
+        "document.createElement(\"canvas\")": true
+      }
+    }
+  ],
+  "nativeExecution": false
+}

@@ -1,0 +1,25 @@
+
+> oliva-faith-companion@0.16.0 test:e2e
+> playwright test tests/e2e/legacy-history.spec.ts tests/e2e/imports.spec.ts --output=docs/evidence/original-history/complete-browser-r1/results
+
+[WebServer] (node:126183) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:126191) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/imports.spec.ts:47:1 › Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten (5.7s)
+  ✓   2 tests/e2e/imports.spec.ts:70:1 › Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline (9.0s)
+  ✓   3 tests/e2e/imports.spec.ts:132:1 › zwei Fenster schützen Änderungen und erlauben eine erneute Vorschau (8.5s)
+  ✓   4 tests/e2e/imports.spec.ts:162:1 › Schreibfehler lassen Bestand und vorherige Rückkehrsicherung atomar erhalten (6.0s)
+  ✓   5 tests/e2e/imports.spec.ts:195:1 › Rückkehr zeigt Folgen ausdrücklich und stellt den echten vorherigen Stand wieder her (7.3s)
+  ✓   6 tests/e2e/imports.spec.ts:230:1 › Importansichten sind mobil, dunkel und per Tastatur zugänglich (7.0s)
+  ✓   7 tests/e2e/legacy-history.spec.ts:30:1 › historische Meilensteine und echte Spiegel öffnen genau ihre Originalstelle und bleiben auch offline schreibfrei (7.1s)
+  ✓   8 tests/e2e/legacy-history.spec.ts:53:1 › verknüpfte Gedankenrückblicke, abweichende Fassungen und fehlende Daten bleiben erkennbar statt heutige Belege zu erfinden (4.6s)
+  ✓   9 tests/e2e/legacy-history.spec.ts:71:1 › historische Karten und genaue Archivstellen bleiben klein, dunkel und per Tastatur zugänglich; ein falscher Quellhash öffnet keinen fremden Datensatz (12.2s)
+  ✓  10 tests/e2e/legacy-history.spec.ts:97:1 › der Garten erschließt erhaltene Originalvorhaben ohne heutiges Vorhaben und stellt beim Offline-Neustart nichts wieder her (6.3s)
+  ✓  11 tests/e2e/legacy-history.spec.ts:119:1 › mehrere Originaldateien behalten ihre eigenen Fassungen und unzugeordnete Rückblicke bleiben ohne geratenen Weg (8.6s)
+  ✓  12 tests/e2e/legacy-history.spec.ts:143:1 › die vollständige Originalhistorie bleibt mobil und dunkel zugänglich und verwirft eine unbekannte Vorhabenauswahl (10.2s)
+
+  12 passed (1.6m)

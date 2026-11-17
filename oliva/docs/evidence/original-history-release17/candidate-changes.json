@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-17T11:22:13.092921+00:00",
+  "version": "0.17.0",
+  "qualifiedDevelopmentBase": "71a68b25bf280c215a0cea81d0e9258e13e42aa3",
+  "versionOnlyFiles": [
+    {
+      "path": "app.json",
+      "onlyVersionFieldsChanged": true,
+      "beforeSha256": "e99933410ace80b75ee34f798e64aeb52110e51e465bb85b8cb1d392d38f7a6b",
+      "afterSha256": "778187458195b37b3f7391c7d4d8b13456087974557cbc05d58a4d11d894c91a"
+    },
+    {
+      "path": "package.json",
+      "onlyVersionFieldsChanged": true,
+      "beforeSha256": "e5d93aa47ba181b8f0af76ccb88a13c6a1b724b3f8e2ef8ffe62d9116ec6f3b4",
+      "afterSha256": "36cf371c82f9328dd59e2c72f6fc81c1cbf2064a33c68a90eded8ba849a68b64"
+    },
+    {
+      "path": "package-lock.json",
+      "onlyVersionFieldsChanged": true,
+      "beforeSha256": "880404e983f468c97a28a6b9a6b2465ebfc483dcc98498bdaeec76114a9796a3",
+      "afterSha256": "5558db395e38eea8a4ae7bc0b7a4770e5a8c2df9513fa5c93ef60458fc5372bc"
+    }
+  ],
+  "additionalLayoutChange": {
+    "reason": "Observed actual 320px screenshot placed explanations before the original quote; shorten intro and collapse picker framing after selection. No model/state/source-data changes.",
+    "files": [
+      {
+        "path": "app/importarchiv/[id].tsx",
+        "beforeSha256": "8c236c608d893179599262a83fee5660458856f3d5229de593571932c8ff8150",
+        "afterSha256": "550c179362a85dc814a43dd08fc24d06e976c040635b2cd021ce9477fabfaacd"
+      },
+      {
+        "path": "src/features/imports/ArchiveHistory.tsx",
+        "beforeSha256": "4891ecaa614a92a8c06db8b1250fc3baa4a91298b49310c54b0adb204f7f695b",
+        "afterSha256": "7776c8c07cac840e589d2d4c84007c7b585eb794615af6672016abde1bb4cae8"
+      }
+    ]
+  },
+  "newRuntimeDependencies": false,
+  "newPersonalDataSchema": false
+}

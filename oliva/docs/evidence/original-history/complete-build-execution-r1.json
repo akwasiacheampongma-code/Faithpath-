@@ -1,0 +1,30 @@
+[
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=json",
+      "--outputFile=docs/evidence/original-history/complete-unit-r1.json"
+    ],
+    "startedAt": "2026-11-17T11:13:36.026043+00:00",
+    "finishedAt": "2026-11-17T11:14:23.890599+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/original-history/complete-unit-r1.txt",
+    "sha256": "343550906d6605572efa507759700a237511b1647f48d543cdd840ac4dd0ec19"
+  },
+  {
+    "name": "web-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "startedAt": "2026-11-17T11:14:23.891188+00:00",
+    "finishedAt": "2026-11-17T11:14:28.561999+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/original-history/complete-web-build-r1.txt",
+    "sha256": "085812c63400018f0a88e5b7c479584f63564c35d71a4485092c47d5948eade4"
+  }
+]

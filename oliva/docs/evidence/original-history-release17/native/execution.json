@@ -1,0 +1,49 @@
+[
+  {
+    "name": "exports",
+    "command": [
+      "python3",
+      "docs/evidence/original-history-release17/native/native-export-runner.py",
+      "--execute-after-freeze",
+      "--expected-runtime-digest",
+      "1fe3082dd01129d18dd278adfd366351cbb895226a74ce4c3d0a387a3070cb17"
+    ],
+    "startedAt": "2026-11-17T11:27:44.170682+00:00",
+    "finishedAt": "2026-11-17T11:28:05.948193+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/original-history-release17/native/exports-execution.txt",
+    "sha256": "e4813da9097f8d65e460b5957317567ad3c3f033859c184ea93fced64c5fc7df"
+  },
+  {
+    "name": "story-native-catalog-check",
+    "command": [
+      "node",
+      "docs/evidence/stories-integration/native/check-native-story-catalog.mjs",
+      "--report",
+      "docs/evidence/original-history-release17/native/story-native-catalog-check.json",
+      "dist-android",
+      "dist-ios"
+    ],
+    "startedAt": "2026-11-17T11:28:05.949059+00:00",
+    "finishedAt": "2026-11-17T11:28:11.342706+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/original-history-release17/native/story-native-catalog-check-execution.txt",
+    "sha256": "028f341afca053b253cef17e8d50f6823a7808af7c1e000c2592728020bd158d"
+  },
+  {
+    "name": "topic-native-catalog-check",
+    "command": [
+      "node",
+      "scripts/check-native-topics.mjs",
+      "--report",
+      "docs/evidence/original-history-release17/native/topic-native-catalog-check.json",
+      "dist-android",
+      "dist-ios"
+    ],
+    "startedAt": "2026-11-17T11:28:11.343370+00:00",
+    "finishedAt": "2026-11-17T11:28:16.564977+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/original-history-release17/native/topic-native-catalog-check-execution.txt",
+    "sha256": "d1b122e1e122caa6450481fa3c62bd0086a91656a43997c2c159017895018226"
+  }
+]

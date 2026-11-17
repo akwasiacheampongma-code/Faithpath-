@@ -1,0 +1,22 @@
+{
+  "command": [
+    "npm",
+    "run",
+    "test:e2e",
+    "--",
+    "tests/e2e/legacy-history.spec.ts",
+    "tests/e2e/imports.spec.ts",
+    "--output=docs/evidence/original-history/complete-browser-r1/results"
+  ],
+  "startedAt": "2026-11-17T11:16:14.981657+00:00",
+  "finishedAt": "2026-11-17T11:17:52.079988+00:00",
+  "exitCode": 0,
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); runtime app/src/assets, versions and four art manifests",
+    "fileCount": 358,
+    "sha256": "fea835fe5bac2b463281c8590f71f8ca198ff2c6393ba6f4fd8c71414fa2685f"
+  },
+  "log": "docs/evidence/original-history/complete-browser-r1.txt",
+  "logSha256": "8c84c59ffd9c8ad1bb1ce3973ba83e2c4a32b465872eccaf6a598c508d96c484",
+  "kind": "Targeted new history plus complete existing import browser cases; not the full suite"
+}

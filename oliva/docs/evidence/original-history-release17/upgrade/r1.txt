@@ -1,0 +1,178 @@
+Personal tree update phase: seed-real-016-personal-data-only-through-its-shipped-ui
+Personal tree update phase: activate-different-real-worker-build-without-schema-or-data-write
+Personal tree update phase: first-offline-personal-tree-history-and-real-goal-return-are-readonly
+Personal tree update phase: history-thought-opens-collection-for-reading-and-keeps-other-drafts
+Personal tree update phase: offline-seven-a51-stages-and-existing-study-answers
+Personal tree update phase: new-offline-original-history-from-garden-and-exact-archive-coordinates-remains-readonly
+Personal tree update phase: actual-v11-backup-download-and-restore-preview-without-applying
+Personal tree update phase: complete
+{
+  "passed": true,
+  "baselineVersion": "0.16.0",
+  "baselineBuild": "oliva-b484395da372ae92",
+  "targetVersion": "0.17.0",
+  "targetBuild": "oliva-727bb651e0a924f0",
+  "baselineHtmlSha256": "d914e4c4bb39791b992966d245efb10b47be677fe5c7e85e5849632cc19ab979",
+  "baselineWorkerSha256": "00d0171e693d9bc58533e7723394e4e76fde14b2e63b0d7ddf6b297d06911758",
+  "targetHtmlSha256": "bde54823ee1bdea05b3f19a0ea25f1d9cdd41f1ee1bbd8489b6880f72ca8f690",
+  "targetWorkerSha256": "835491685652a449a97db8bf0dc8f9920a26953a9ccde5fea21c55745c921234",
+  "syntheticData": true,
+  "syntheticClock": "2027-01-01T12:00:00.000Z",
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "runtimeInputsBefore": {
+    "fileCount": 358,
+    "sha256": "1fe3082dd01129d18dd278adfd366351cbb895226a74ce4c3d0a387a3070cb17",
+    "allFileHashesMatch": true
+  },
+  "phases": [
+    {
+      "name": "seed-real-016-personal-data-only-through-its-shipped-ui",
+      "startedAt": "2026-11-17T11:30:42.922Z"
+    },
+    {
+      "name": "activate-different-real-worker-build-without-schema-or-data-write",
+      "startedAt": "2026-11-17T11:31:03.411Z"
+    },
+    {
+      "name": "first-offline-personal-tree-history-and-real-goal-return-are-readonly",
+      "startedAt": "2026-11-17T11:31:10.562Z"
+    },
+    {
+      "name": "history-thought-opens-collection-for-reading-and-keeps-other-drafts",
+      "startedAt": "2026-11-17T11:31:15.662Z"
+    },
+    {
+      "name": "offline-seven-a51-stages-and-existing-study-answers",
+      "startedAt": "2026-11-17T11:31:16.061Z"
+    },
+    {
+      "name": "new-offline-original-history-from-garden-and-exact-archive-coordinates-remains-readonly",
+      "startedAt": "2026-11-17T11:31:23.357Z"
+    },
+    {
+      "name": "actual-v11-backup-download-and-restore-preview-without-applying",
+      "startedAt": "2026-11-17T11:31:26.731Z"
+    },
+    {
+      "name": "complete",
+      "startedAt": "2026-11-17T11:31:28.962Z"
+    }
+  ],
+  "origin": "http://127.0.0.1:36237",
+  "browserVersion": "155.0.8059.79",
+  "phase": "complete",
+  "beforeRecords": [
+    {
+      "store": "state",
+      "key": "archive:3f34c3ae3478f9e9766c4dcecb7f3c243c42c16471af9985a20d928c354d73c7",
+      "json_utf8_bytes": 5410,
+      "json_sha256": "4ceb53eafb1629d01d2ee75f28113bf1a7e887d687ff9ef0a3291627e6e47f05"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "6f6c147601127415174156832d77fdc161d7bde1cf4764822326df59e3aff226"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8768,
+      "json_sha256": "ba0f0a93efead3067ef23d6cc944acc4b545d60c7b43fef1902ffbd3a868299b"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "995641f5d7c8f83fd49c665f7298c2ab1e123eec027f5347515bef8b31c92d74"
+    }
+  ],
+  "beforeWorker": {
+    "expected": "oliva-b484395da372ae92",
+    "controller": {
+      "id": "oliva-b484395da372ae92",
+      "version": "0.16.0"
+    },
+    "active": {
+      "id": "oliva-b484395da372ae92",
+      "version": "0.16.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-b484395da372ae92"
+    ]
+  },
+  "afterWorker": {
+    "expected": "oliva-727bb651e0a924f0",
+    "controller": {
+      "id": "oliva-727bb651e0a924f0",
+      "version": "0.17.0"
+    },
+    "active": {
+      "id": "oliva-727bb651e0a924f0",
+      "version": "0.17.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-b484395da372ae92",
+      "oliva-727bb651e0a924f0"
+    ]
+  },
+  "realWorkerActivation": true,
+  "sameOriginPersistentProfile": true,
+  "personalGoalAndReviewRestoredExactly": true,
+  "thoughtOpenedReadonlyWithUnrelatedDraftsExact": true,
+  "offlineA51Stages": 7,
+  "oldStudyAnswersUnchanged": true,
+  "originalReviewsAndMilestonesAccessibleReadonly": true,
+  "unassignedReviewOriginalSourceExact": true,
+  "actualV11DownloadAndRestorePreview": true,
+  "restoreWasNotApplied": true,
+  "exportSha256": "876fba4b2c260f8dce6a2a0980c27d458f216417cce5fe30375ddf4278488a87",
+  "finalRecords": [
+    {
+      "store": "state",
+      "key": "archive:3f34c3ae3478f9e9766c4dcecb7f3c243c42c16471af9985a20d928c354d73c7",
+      "json_utf8_bytes": 5410,
+      "json_sha256": "4ceb53eafb1629d01d2ee75f28113bf1a7e887d687ff9ef0a3291627e6e47f05"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "6f6c147601127415174156832d77fdc161d7bde1cf4764822326df59e3aff226"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8768,
+      "json_sha256": "ba0f0a93efead3067ef23d6cc944acc4b545d60c7b43fef1902ffbd3a868299b"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "995641f5d7c8f83fd49c665f7298c2ab1e123eec027f5347515bef8b31c92d74"
+    }
+  ],
+  "allFourRawV11RecordsExactThroughout": true,
+  "packagingInputsBefore": {
+    "sha256": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "packagingInputsAfter": {
+    "sha256": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "runtimeInputsAfter": {
+    "fileCount": 358,
+    "sha256": "1fe3082dd01129d18dd278adfd366351cbb895226a74ce4c3d0a387a3070cb17",
+    "allFileHashesMatch": true
+  },
+  "builtHtmlAndWorkersUnchanged": true,
+  "sourceUnchangedDuringUpgrade": true
+}
