@@ -147,17 +147,17 @@ describe("Independent, durable story answers and voluntary reflection", () => {
     expect(() => resolveCaptureDraft({ ...args, draftId: "forged" })).toThrow();
   });
 });
-describe("V10 migration keeps the shipped V9 graph and raw documents intact", () => {
+describe("Current migration keeps the shipped V9 graph and raw documents intact", () => {
   it("adds only the new empty story domain and version in RAM, without modifying any V9 value", async () => {
     const previous = initialV9Data();
     previous.name = "Ada"; previous.revision = 71; previous.growthStage = 4;
     previous.readPassages = ["JHN:6:35:36"];
     const bytes = JSON.stringify(previous), stored = { storageVersion: 1, data: previous };
     expect(v9DataSchema.safeParse(previous).success).toBe(true);
-    expect(decodeData(previous)).toEqual({ ...previous, version: 10, storyStudy: emptyStoryStudy() });
+    expect(decodeData(previous)).toEqual({ ...previous, version: 11, storyStudy: emptyStoryStudy() });
     expect(await decodeStored(stored, async () => { throw new Error("Unexpected archive read"); })).toEqual(decodeData(previous));
     expect(JSON.stringify(previous)).toBe(bytes);
-    expect(forStorage(decodeData(previous)).data.version).toBe(10);
+    expect(forStorage(decodeData(previous)).data.version).toBe(11);
     expect(oldCapture.safeParse(storyCapture(nativity)).success).toBe(false);
     expect(v9DataSchema.safeParse({ ...previous, storyStudy: emptyStoryStudy() }).success).toBe(false);
     expect(dataSchema.safeParse(previous).success).toBe(false);

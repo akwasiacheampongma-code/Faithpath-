@@ -7,6 +7,7 @@ import {
   v7DataSchema,
   v8DataSchema,
   v9DataSchema,
+  v10DataSchema,
   decodeData,
   type AppData,
 } from "../state/model";
@@ -40,6 +41,7 @@ const storedSchema = z
         .object({ ...v8DataSchema.shape, imports: z.array(metadata).max(100) })
         .strict(),
       z.object({ ...v9DataSchema.shape, imports: z.array(metadata).max(100) }).strict(),
+      z.object({ ...v10DataSchema.shape, imports: z.array(metadata).max(100) }).strict(),
       currentStoredData,
     ]),
   })

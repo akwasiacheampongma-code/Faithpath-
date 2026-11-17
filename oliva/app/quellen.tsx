@@ -74,6 +74,12 @@ export default function Sources() {
           <Button kind="secondary" onPress={() => router.push("/geschichten")}>Originalabschnitte entdecken</Button>
         </Card>
         <Card style={{ gap: 13 }}>
+          <T variant="heading">Lebensthemen aus FaithPath</T>
+          <T>18 Originalthemen verbinden 45 Bibelstellen mit unveränderten kurzen Einordnungen und freiwilligen Reflexionsfragen. Die vorhandenen neun OLIVA-Wege bleiben eigenständig erhalten.</T>
+          <T style={{ fontSize: 12, color: t.muted }}>Die alten Quelltexte werden beim Import nur als Daten gelesen. Ergänzende OLIVA-Hinweise, etwa zum historischen Hintergrund, stehen getrennt von Originaleinordnung und Bibeltext. Eine allgemeine Inhaltslizenz oder unabhängige Fachfreigabe folgt nicht aus der Projektübernahme. Die Originale enthalten keine Dauern oder Gebete; solche Angaben werden nicht als Originale ergänzt.</T>
+          <Button kind="secondary" onPress={() => router.push("/themen")}>Lebensthemen entdecken</Button>
+        </Card>
+        <Card style={{ gap: 13 }}>
           <T variant="heading">Die Bildwelt</T>
           <T>
             Die Pilotbilder wurden mit OpenAI-Bildgenerierung für dieses Projekt

@@ -21,6 +21,7 @@ export function StoryQuestionPanel({ question, saved, readEvidence }: {
   const heading = useRef<React.ComponentRef<typeof Text>>(null);
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
+      if (!focused.current) return;
       if (Platform.OS === "web") (heading.current as unknown as HTMLElement | null)?.focus?.({ preventScroll: true });
       else AccessibilityInfo.announceForAccessibility(question.prompt);
     });

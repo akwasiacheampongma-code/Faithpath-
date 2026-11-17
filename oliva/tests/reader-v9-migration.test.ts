@@ -202,7 +202,7 @@ describe("AppData V9: neutrale Migration und eingefrorene V1–V8-Verträge", ()
       const bytes = JSON.stringify(old);
       const migrated = decodeData(old);
       expect(migrated).toEqual(initialData());
-      expect(migrated.version).toBe(10);
+      expect(migrated.version).toBe(11);
       expect(migrated.revision).toBe(0);
       expect(migrated.ntStudy).toEqual(emptyNtStudy());
       expect(JSON.stringify(old)).toBe(bytes);
@@ -213,7 +213,7 @@ describe("AppData V9: neutrale Migration und eingefrorene V1–V8-Verträge", ()
     const { old, sourceText, chapter, revised } = richV8();
     const bytes = JSON.stringify(old);
     const migrated = decodeData(old);
-    expect(migrated).toEqual({ ...old, version: 10, storyStudy: initialData().storyStudy });
+    expect(migrated).toEqual({ ...old, version: 11, storyStudy: initialData().storyStudy });
     expect(migrated.revision).toBe(42);
     expect(migrated.imports[0]!.sourceText).toBe(sourceText);
     expect(migrated.ntStudy.answers[answerKey(chapter.questions[0]!)]!.question).toEqual(chapter.questions[0]);
@@ -250,13 +250,13 @@ describe("AppData V9: neutrale Migration und eingefrorene V1–V8-Verträge", ()
     expect(archiveHashes(stored)).toEqual([old.imports[0]!.sourceHash]);
     expect(documentRevision(stored)).toBe(42);
     const loaded = await decodeStored(stored, loader);
-    expect(loaded).toEqual({ ...old, version: 10, storyStudy: initialData().storyStudy });
+    expect(loaded).toEqual({ ...old, version: 11, storyStudy: initialData().storyStudy });
     expect(loader).toHaveBeenCalledExactlyOnceWith(old.imports[0]!.sourceHash);
     expect(loaded.imports[0]!.sourceText).toBe(sourceText);
     expect(JSON.stringify(stored)).toBe(bytes);
     const currentStored = forStorage(loaded);
     expect(currentStored.storageVersion).toBe(1);
-    expect(currentStored.data.version).toBe(10);
+    expect(currentStored.data.version).toBe(11);
     expect(currentStored.data.imports[0]).not.toHaveProperty("sourceText");
     expect(await decodeStored(currentStored, async () => sourceText)).toEqual(loaded);
     expect(parseBackup(JSON.stringify(loaded))).toEqual(loaded);

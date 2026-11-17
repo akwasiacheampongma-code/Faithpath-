@@ -135,6 +135,6 @@ test("eine installierte private V4-Speicherung migriert beim Lesen ohne Datenver
   );
   await page.goto("/lesen/JHN?chapter=6&verse=35");
   await anchor(page, 35);
-  expect((await localData(page)).version).toBe(10);
+  expect((await localData(page)).version).toBe(11);
   expect((await localData(page)).name).toBe("Ada");
 });

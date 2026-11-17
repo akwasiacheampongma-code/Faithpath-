@@ -26,7 +26,7 @@ export function PathCard({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${path.title}, ${path.minutes} Minuten, ${completed} von ${path.steps.length} Schritten`}
+      accessibilityLabel={`${path.title}, ${path.minutes !== undefined ? path.minutes + " Minuten" : path.steps.length + " Bibelabschnitte"}, ${completed} von ${path.steps.length} Schritten`}
       onPress={() =>
         router.push({ pathname: "/weg/[id]", params: { id: path.id } })
       }
@@ -67,7 +67,7 @@ export function PathCard({
         >
           <Icon name="clock" color="#fff" size={12} />
           <T variant="small" style={{ color: "#fff", fontSize: 10 }}>
-            {path.minutes} Min. · {path.steps.length} kleine Schritte
+            {path.minutes !== undefined ? path.minutes + " Min. · " : ""}{path.steps.length} kleine Schritte
           </T>
         </View>
       </View>

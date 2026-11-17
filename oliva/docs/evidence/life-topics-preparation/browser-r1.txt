@@ -1,0 +1,111 @@
+
+> oliva-faith-companion@0.15.0 test:e2e
+> playwright test tests/e2e/topics.spec.ts
+
+[WebServer] (node:97467) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:97482) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/topics.spec.ts:22:1 › alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt (5.8s)
+  ✘  2 tests/e2e/topics.spec.ts:39:1 › ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig (6.3s)
+(node:97689) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/e2e/topics.spec.ts:61:1 › originaler Arbeitskontext und getrennte OLIVA-Einordnung bleiben im Entwurf und in der Sammlung erhalten (10.9s)
+  ✘  4 tests/e2e/topics.spec.ts:99:1 › Wechsel von drei zu zwei Schritten bewahrt unterschiedliche Gedanken zur selben Bibelstelle (20.1s)
+(node:98016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 tests/e2e/topics.spec.ts:120:1 › ein zuvor ungeöffnetes Thema funktioniert samt Reader und Wiederaufnahme vollständig offline (23.9s)
+(node:98195) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 tests/e2e/topics.spec.ts:133:1 › Themenbibliothek und Leseschritt bleiben bei 320, 390 und 1440 Pixeln sowie in Dunkelansicht zugänglich (20.2s)
+
+
+  1) tests/e2e/topics.spec.ts:39:1 › ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 1
+
+    - Array [
+    -   "JAS:1:19:20",
+    -   "EPH:4:26:27",
+    - ]
+    + Array []
+
+      52 |   expect(data.readSteps).toEqual(["faithpath-topic-wut:0", "faithpath-topic-wut:1"]);
+      53 |   expect(data.completedSteps).toEqual(data.readSteps); expect(data.notes).toEqual([]);
+    > 54 |   expect(data.readPassages).toEqual(["JAS:1:19:20", "EPH:4:26:27"]);
+         |                             ^
+      55 |   expect(data.storyStudy.answers).toEqual({});
+      56 |   await page.goto("/"); await expect(button(page, "Dein Thema fortsetzen")).toBeVisible();
+      57 |   await button(page, "Dein Thema fortsetzen").click();
+        at /workspace/faithpath-next/tests/e2e/topics.spec.ts:54:29
+
+    Error Context: test-results/topics-ein-vollständiges-T-9d87e--lässt-Reflexion-freiwillig/error-context.md
+
+  2) tests/e2e/topics.spec.ts:99:1 › Wechsel von drei zu zwei Schritten bewahrt unterschiedliche Gedanken zur selben Bibelstelle 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible() with timeout 15000ms
+      - waiting for getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()
+
+
+      17 |   await button(page, "Abschnitt als gelesen bestätigen").click();
+      18 |   await button(page, "Weiter zum Verstehen").click();
+    > 19 |   await expect(thought(page)).toBeVisible();
+         |                               ^
+      20 | }
+      21 |
+      22 | test("alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt", async ({ page }) => {
+        at read (/workspace/faithpath-next/tests/e2e/topics.spec.ts:19:31)
+        at /workspace/faithpath-next/tests/e2e/topics.spec.ts:101:3
+
+    Error Context: test-results/topics-Wechsel-von-drei-zu-4b966-nken-zur-selben-Bibelstelle/error-context.md
+
+  3) tests/e2e/topics.spec.ts:120:1 › ein zuvor ungeöffnetes Thema funktioniert samt Reader und Wiederaufnahme vollständig offline 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible() with timeout 15000ms
+      - waiting for getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()
+
+
+      17 |   await button(page, "Abschnitt als gelesen bestätigen").click();
+      18 |   await button(page, "Weiter zum Verstehen").click();
+    > 19 |   await expect(thought(page)).toBeVisible();
+         |                               ^
+      20 | }
+      21 |
+      22 | test("alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt", async ({ page }) => {
+        at read (/workspace/faithpath-next/tests/e2e/topics.spec.ts:19:31)
+        at /workspace/faithpath-next/tests/e2e/topics.spec.ts:124:34
+
+    Error Context: test-results/topics-ein-zuvor-ungeöffne-9c83c-ufnahme-vollständig-offline/error-context.md
+
+  3 failed
+    tests/e2e/topics.spec.ts:39:1 › ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig 
+    tests/e2e/topics.spec.ts:99:1 › Wechsel von drei zu zwei Schritten bewahrt unterschiedliche Gedanken zur selben Bibelstelle 
+    tests/e2e/topics.spec.ts:120:1 › ein zuvor ungeöffnetes Thema funktioniert samt Reader und Wiederaufnahme vollständig offline 
+  3 passed (1.6m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

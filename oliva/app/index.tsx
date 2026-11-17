@@ -299,10 +299,10 @@ export default function Home() {
           <View>
             <SectionTitle
               title={
-                active ? "Dein aktueller Weg" : "Ein Weg, der zu dir passt"
+                active ? active.kind === "life-topic" ? "Dein aktuelles Thema" : "Dein aktueller Weg" : "Ein Weg, der zu dir passt"
               }
-              action="Alle Wege"
-              onPress={() => router.replace("/wege")}
+              action={active?.kind === "life-topic" ? "Alle Themen" : "Alle Wege"}
+              onPress={() => router.replace(active?.kind === "life-topic" ? "/themen" : "/wege")}
             />
             {!active && (
               <T
@@ -338,7 +338,7 @@ export default function Home() {
                     })
                   }
                 >
-                  Deinen Weg fortsetzen
+                  {active.kind === "life-topic" ? "Dein Thema fortsetzen" : "Deinen Weg fortsetzen"}
                 </Button>
               </Card>
             ) : (

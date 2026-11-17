@@ -1,0 +1,24 @@
+
+> oliva-faith-companion@0.15.0 test:e2e
+> playwright test tests/e2e/topics.spec.ts
+
+[WebServer] (node:98596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:98604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/topics.spec.ts:22:1 › alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt (7.4s)
+  ✓  2 tests/e2e/topics.spec.ts:39:1 › ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig (6.9s)
+  ✓  3 tests/e2e/topics.spec.ts:62:1 › originaler Arbeitskontext und getrennte OLIVA-Einordnung bleiben im Entwurf und in der Sammlung erhalten (8.3s)
+  ✓  4 tests/e2e/topics.spec.ts:100:1 › Wechsel von drei zu zwei Schritten bewahrt unterschiedliche Gedanken zur selben Bibelstelle (6.7s)
+  ✓  5 tests/e2e/topics.spec.ts:121:1 › ein zuvor ungeöffnetes Thema funktioniert samt Reader und Wiederaufnahme vollständig offline (7.1s)
+  ✓  6 tests/e2e/topics.spec.ts:134:1 › Themenbibliothek und Leseschritt bleiben bei 320, 390 und 1440 Pixeln sowie in Dunkelansicht zugänglich (21.1s)
+
+  6 passed (1.0m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

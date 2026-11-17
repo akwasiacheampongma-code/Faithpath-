@@ -105,6 +105,9 @@ export default function Paths() {
         </Button>
       </Card>
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 18 }}>
+        <View style={{ width: "100%", alignItems: "flex-start", marginBottom: 8 }}>
+          <Button kind="ghost" icon="leaf" onPress={() => router.push("/themen")}>18 Lebensthemen entdecken</Button>
+        </View>
         {PATHS.filter(
           (p) => filter === "Alle Wege" || p.category === filter,
         ).map((path) => (

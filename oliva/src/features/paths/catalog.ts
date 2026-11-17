@@ -1,10 +1,12 @@
 import type { Reference } from "../bible/repository";
+import { TOPIC_PATHS } from "../topics/catalog";
 export type PathStep = {
   title: string;
   ref: Reference;
   explanation: string;
   question: string;
-  prayer: string;
+  prayer?: string;
+  editorialNote?: string;
   word?: [string, string];
 };
 export type LearningPath = {
@@ -12,7 +14,9 @@ export type LearningPath = {
   title: string;
   subtitle: string;
   category: string;
-  minutes: number;
+  minutes?: number;
+  kind?: "life-topic";
+  sourceTopicId?: string;
   intro: string;
   goals: string[];
   steps: PathStep[];
@@ -291,4 +295,9 @@ export const PATHS: LearningPath[] = [
     art: "garden",
   },
 ];
-export const pathById = (id: string) => PATHS.find((path) => path.id === id);
+export const ALL_PATHS = Object.freeze([...PATHS, ...TOPIC_PATHS]);
+export const CURRENT_STEP_COUNT = ALL_PATHS.reduce((count, path) => count + path.steps.length, 0);
+export const pathById = (id: string) => ALL_PATHS.find((path) => path.id === id);
+export function stepContextText(step: PathStep) {
+  return step.editorialNote ? `${step.explanation}\n\nErgänzender OLIVA-Hinweis:\n${step.editorialNote}` : step.explanation;
+}

@@ -72,7 +72,12 @@
     "hostedBrowserQa": false
   },
   "githubBackup": {
-    "status": "not yet performed"
+    "status": "published",
+    "commit": "b5476721825d54c4e86e42965e5d0658dcfaf5d8",
+    "tag": "oliva-v0.14.0",
+    "branch": "feature/oliva-v014-original-stories-20261117",
+    "versionRefsVerified": 24,
+    "mainUnchanged": true
   },
   "limitations": [
     "Physical devices, simulators and native screenreaders not tested.",
@@ -80,5 +85,17 @@
     "Full local browser run used the identical executable build before final inherited-content rights notices. The final package differs only in three notice files and derived HTML/worker build ID; exact parity, separate PWA and real final worker upgrade are verified.",
     "Independent theological/historical approval and public product rights remain open.",
     "Master remains active; no original FaithPath or GitHub-main changes."
-  ]
+  ],
+  "independentGithubCi": {
+    "status": "success",
+    "runId": 44014441925,
+    "head": "b5476721825d54c4e86e42965e5d0658dcfaf5d8",
+    "completedAt": "2026-11-17T04:17:00Z",
+    "unitPassed": 312,
+    "browserPassed": 138,
+    "singleAttempt": true,
+    "qualityVerified": true,
+    "remoteBuild": "oliva-e145318fd5a05531",
+    "artifactSha256": "53d2e00db666b5e1a14ee898304877647aef70d0deb62c8eb293115826ec1e92"
+  }
 }

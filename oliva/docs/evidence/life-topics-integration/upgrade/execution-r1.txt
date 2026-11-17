@@ -1,0 +1,198 @@
+Topic upgrade phase: seed-only-through-shipped-014-ui
+Topic upgrade phase: activate-real-worker-without-automatic-data-write
+Topic upgrade phase: first-offline-topic-visits-leave-all-v10-records-exact
+Topic upgrade phase: first-explicit-topic-opening-writes-v11-without-touching-old-personal-content
+Topic upgrade phase: offline-old-story-draft-nt-answer-and-all-seven-a51-stages
+Topic upgrade phase: actual-v11-backup-download-and-restore-preview
+Topic upgrade phase: complete
+{
+  "passed": true,
+  "baselineVersion": "0.14.0",
+  "baselineBuild": "oliva-2077ca680180fb6b",
+  "targetVersion": "0.15.0",
+  "targetBuild": "oliva-2a5dee07245f877a",
+  "baselineHtmlSha256": "31ad10fb12d1f75f2e0af03217bf633b77bf58672cd26e73316dff159fe22023",
+  "baselineWorkerSha256": "7d0292381e912aa2dc97c493c49e32581c14514d93bcf9951c16fdee103c18fb",
+  "targetHtmlSha256": "e8dfa1e91963b37108e5546dbc702f35a4a6503b039d12ca0508f091d32b4654",
+  "targetWorkerSha256": "fb06dedaf2a7a89b923d47d2d8d8e6038294d8ef216bfb1449bd6e00c20287b8",
+  "syntheticData": true,
+  "syntheticClock": "2027-01-01T12:00:00.000Z",
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "runtimeInputsBefore": {
+    "fileCount": 351,
+    "sha256": "c2e8a15dc1ec16010b463389d379396947f53a0f71accfa3da463326edd2b485",
+    "allFileHashesMatch": true
+  },
+  "phases": [
+    {
+      "name": "seed-only-through-shipped-014-ui",
+      "startedAt": "2026-11-17T05:11:25.150Z"
+    },
+    {
+      "name": "activate-real-worker-without-automatic-data-write",
+      "startedAt": "2026-11-17T05:11:58.059Z"
+    },
+    {
+      "name": "first-offline-topic-visits-leave-all-v10-records-exact",
+      "startedAt": "2026-11-17T05:12:08.009Z"
+    },
+    {
+      "name": "first-explicit-topic-opening-writes-v11-without-touching-old-personal-content",
+      "startedAt": "2026-11-17T05:12:17.516Z"
+    },
+    {
+      "name": "offline-old-story-draft-nt-answer-and-all-seven-a51-stages",
+      "startedAt": "2026-11-17T05:12:24.464Z"
+    },
+    {
+      "name": "actual-v11-backup-download-and-restore-preview",
+      "startedAt": "2026-11-17T05:12:33.263Z"
+    },
+    {
+      "name": "complete",
+      "startedAt": "2026-11-17T05:12:37.027Z"
+    }
+  ],
+  "origin": "http://127.0.0.1:40441",
+  "browserVersion": "155.0.8059.79",
+  "phase": "complete",
+  "beforeRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "e92e00a9284df211b8631fd42774d0f3491336d3a811562c953cb698251ce1b9"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8801,
+      "json_sha256": "b857e076aa55681ad21f31b59b294b2f861f8cadde6c976494dc518537763be5"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "beforeWorker": {
+    "expected": "oliva-2077ca680180fb6b",
+    "controller": {
+      "id": "oliva-2077ca680180fb6b",
+      "version": "0.14.0"
+    },
+    "active": {
+      "id": "oliva-2077ca680180fb6b",
+      "version": "0.14.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-2077ca680180fb6b"
+    ]
+  },
+  "afterWorker": {
+    "expected": "oliva-2a5dee07245f877a",
+    "controller": {
+      "id": "oliva-2a5dee07245f877a",
+      "version": "0.15.0"
+    },
+    "active": {
+      "id": "oliva-2a5dee07245f877a",
+      "version": "0.15.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-2077ca680180fb6b",
+      "oliva-2a5dee07245f877a"
+    ]
+  },
+  "realWorkerActivation": true,
+  "sameOriginPersistentProfile": true,
+  "allFourRawV10RecordsExactBeforeNewActions": true,
+  "afterTopicOpeningRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "e92e00a9284df211b8631fd42774d0f3491336d3a811562c953cb698251ce1b9"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8747,
+      "json_sha256": "5faebda10ae2007f362461c89443bf1546e592a7daf623eca873387e0b873cfd"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "firstExplicitTopicOpeningOnlyMigratesVersionAndNavigation": true,
+  "afterTopicReflectionRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "e92e00a9284df211b8631fd42774d0f3491336d3a811562c953cb698251ce1b9"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 9856,
+      "json_sha256": "c1e8b204f6ed0b589818550e330274f81b77225bf5d5f4ccebb8a7d81d048678"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "newTopicReflectionKeepsAllOldDomainsAndDrafts": true,
+  "oldStoryDraftKeepsBothOriginalRanges": true,
+  "offlineA51Stages": 7,
+  "oldNtAnswerUnchanged": true,
+  "actualV11DownloadAndRestorePreview": true,
+  "restoreWasNotApplied": true,
+  "exportSha256": "1b7c1f78193521123fb76e8980391af0179e7669fa1cdab2db145bb465e3045d",
+  "packagingInputsBefore": {
+    "sha256": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "packagingInputsAfter": {
+    "sha256": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "runtimeInputsAfter": {
+    "fileCount": 351,
+    "sha256": "c2e8a15dc1ec16010b463389d379396947f53a0f71accfa3da463326edd2b485",
+    "allFileHashesMatch": true
+  },
+  "builtHtmlAndWorkersUnchanged": true,
+  "sourceUnchangedDuringUpgrade": true
+}

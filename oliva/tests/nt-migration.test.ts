@@ -126,7 +126,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
       const bytes = JSON.stringify(old);
       const migrated = decodeData(old);
       expect(migrated).toEqual(initialData());
-      expect(migrated.version).toBe(10);
+      expect(migrated.version).toBe(11);
       expect(migrated.revision).toBe(0);
       expect(migrated.ntStudy).toEqual(emptyNtStudy());
       expect(JSON.stringify(old)).toBe(bytes);
@@ -137,7 +137,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
     const { data: old } = richPrevious();
     const bytes = JSON.stringify(old);
     const migrated = decodeData(old);
-    expect(migrated).toEqual({ ...old, version: 10, storyStudy: initialData().storyStudy, ntStudy: emptyNtStudy() });
+    expect(migrated).toEqual({ ...old, version: 11, storyStudy: initialData().storyStudy, ntStudy: emptyNtStudy() });
     expect(migrated.ntStudy.legacyCompletions).toEqual([]);
     expect(migrated.revision).toBe(42);
     expect(migrated.growthStage).toBe(4);
@@ -163,9 +163,9 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
     expect(() =>
       decodeData({ ...old, version: 7, ntStudy: emptyNtStudy() }),
     ).toThrow();
-    expect(dataSchema.safeParse({ ...old, version: 10, storyStudy: initialData().storyStudy }).success).toBe(false);
+    expect(dataSchema.safeParse({ ...old, version: 11, storyStudy: initialData().storyStudy }).success).toBe(false);
     expect(
-      dataSchema.safeParse({ ...old, version: 10, storyStudy: initialData().storyStudy, ntStudy: emptyNtStudy() })
+      dataSchema.safeParse({ ...old, version: 11, storyStudy: initialData().storyStudy, ntStudy: emptyNtStudy() })
         .success,
     ).toBe(true);
     expect(
@@ -198,7 +198,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
       const loader = vi.fn(async () => text);
       const migrated = await decodeStored(stored, loader);
       expect(migrated).toEqual(decodeData(old));
-      expect(migrated.version).toBe(10);
+      expect(migrated.version).toBe(11);
       expect(migrated.imports[0]!.sourceText).toBe(text);
       expect(migrated.ntStudy).toEqual(emptyNtStudy());
       expect(loader).toHaveBeenCalledExactlyOnceWith(
@@ -216,7 +216,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
     const migrated = parseBackup(JSON.stringify(old));
     const stored = forStorage(migrated);
     expect(stored.storageVersion).toBe(1);
-    expect(stored.data.version).toBe(10);
+    expect(stored.data.version).toBe(11);
     expect(stored.data.ntStudy).toEqual(emptyNtStudy());
     expect(stored.data.imports[0]).not.toHaveProperty("sourceText");
     expect(await decodeStored(stored, async () => text)).toEqual(migrated);

@@ -1,0 +1,59 @@
+{
+  "version": "0.15.0",
+  "checkedAt": "2026-11-17T08:06:13.147Z",
+  "runtime_files_verified": 107,
+  "unchanged_runtime_asset_bytes": 104,
+  "rewritten_uri_files": 3,
+  "all_runtime_hashes_match": true,
+  "pwa_manifest_valid": true,
+  "icons_valid": true,
+  "cache_files_verified": 110,
+  "build_id": "oliva-95adc4fd401f5b42",
+  "app_routes_rewritten": true,
+  "source_build": "oliva-2a5dee07245f877a",
+  "source_validation": {
+    "version": "0.15.0",
+    "allCoreChecksPassed": true,
+    "dataVersion": 11,
+    "coreBuild": "oliva-2a5dee07245f877a",
+    "fullBrowserExecutableBuild": "oliva-2a5dee07245f877a",
+    "packagingSourceDigest": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+    "runtimeSourceDigest": {
+      "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+      "fileCount": 351,
+      "sha256": "c2e8a15dc1ec16010b463389d379396947f53a0f71accfa3da463326edd2b485"
+    },
+    "unit": {
+      "passed": 321,
+      "total": 321,
+      "failed": 0,
+      "pending": 0
+    },
+    "browser": {
+      "passed": 144,
+      "total": 144,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "singleFullGreenRun": true,
+      "allResultsSingleAttempt": true
+    },
+    "originalLifeTopics": {
+      "topics": 18,
+      "references": 45,
+      "contexts": 45,
+      "reflectionPrompts": 45
+    },
+    "originalStories": {
+      "units": 436,
+      "questions": 2479,
+      "reflectionPrompts": 436,
+      "aliasPairs": 95
+    },
+    "existingGuidedPaths": 9,
+    "nativeExecution": false,
+    "masterDefinitionOfDoneComplete": false
+  },
+  "managed_sites_browser_qa": "unavailable: cua_repl.js not exposed",
+  "physical_phone_test": false
+}

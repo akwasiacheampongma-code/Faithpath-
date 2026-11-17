@@ -1,6 +1,6 @@
 import type { AppData } from "../../state/model";
 import { finishStep } from "../../state/model";
-import { pathById } from "../paths/catalog";
+import { pathById, stepContextText } from "../paths/catalog";
 import { canonicalJson } from "../../lib/hash";
 import {
   captureKey,
@@ -40,16 +40,16 @@ export function guidedSource(
   pathId: string,
   index: number,
 ): Extract<CaptureSource, { type: "guided" }> {
-  const step = pathById(pathId)?.steps[index];
+  const path = pathById(pathId), step = path?.steps[index];
   if (!step) throw new Error("Dieser Lernschritt ist nicht vorhanden.");
   return {
     type: "guided",
     pathId,
     step: index,
     snapshot: {
-      title: step.title,
+      title: path?.kind === "life-topic" ? `${path.title} · ${step.title}` : step.title,
       question: step.question,
-      explanation: step.explanation,
+      explanation: stepContextText(step),
       ref: { ...step.ref },
     },
   };

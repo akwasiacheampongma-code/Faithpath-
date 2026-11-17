@@ -161,7 +161,7 @@ describe("Entwürfe mit festem Kontext", () => {
       bytes = JSON.stringify(old);
     expect(decodeData(old)).toEqual({
       ...old,
-      version: 10, storyStudy: initialData().storyStudy,
+      version: 11, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},

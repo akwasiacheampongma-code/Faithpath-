@@ -19,6 +19,7 @@ export type ReaderFooterProps = {
   busy: boolean;
   onComplete: () => void;
   pathId?: string;
+  pathStep?: number;
   question?: string;
   relatedPath?: { id: string; title: string };
   mode: "read" | "deep";
@@ -32,6 +33,7 @@ export function ReaderFooter({
   busy,
   onComplete,
   pathId,
+  pathStep,
   question,
   relatedPath,
   mode,
@@ -86,7 +88,7 @@ export function ReaderFooter({
             onPress={() =>
               router.dismissTo({
                 pathname: "/weg/[id]",
-                params: { id: pathId },
+                params: { id: pathId, ...(pathStep !== undefined ? { step: pathStep } : {}) },
               })
             }
           >

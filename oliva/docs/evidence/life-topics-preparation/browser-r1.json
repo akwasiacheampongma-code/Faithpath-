@@ -1,0 +1,419 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/topics.spec.ts"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4185",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/life-topics-preparation/browser-r1.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "PORT=4185 node scripts/serve.mjs",
+      "port": 4185,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "topics.spec.ts",
+      "file": "topics.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5811,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T05:04:53.376Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263213824407c9428e81-f4d37e86a0fe560ac162",
+          "file": "topics.spec.ts",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6278,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 4\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[32m- Array [\u001b[39m\n\u001b[32m-   \"JAS:1:19:20\",\u001b[39m\n\u001b[32m-   \"EPH:4:26:27\",\u001b[39m\n\u001b[32m- ]\u001b[39m\n\u001b[31m+ Array []\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 4\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[32m- Array [\u001b[39m\n\u001b[32m-   \"JAS:1:19:20\",\u001b[39m\n\u001b[32m-   \"EPH:4:26:27\",\u001b[39m\n\u001b[32m- ]\u001b[39m\n\u001b[31m+ Array []\u001b[39m\n    at /workspace/faithpath-next/tests/e2e/topics.spec.ts:54:29",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/topics.spec.ts",
+                      "column": 29,
+                      "line": 54
+                    },
+                    "snippet": " \u001b[90m 52 |\u001b[39m   expect(data\u001b[33m.\u001b[39mreadSteps)\u001b[33m.\u001b[39mtoEqual([\u001b[32m\"faithpath-topic-wut:0\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"faithpath-topic-wut:1\"\u001b[39m])\u001b[33m;\u001b[39m\n \u001b[90m 53 |\u001b[39m   expect(data\u001b[33m.\u001b[39mcompletedSteps)\u001b[33m.\u001b[39mtoEqual(data\u001b[33m.\u001b[39mreadSteps)\u001b[33m;\u001b[39m expect(data\u001b[33m.\u001b[39mnotes)\u001b[33m.\u001b[39mtoEqual([])\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 54 |\u001b[39m   expect(data\u001b[33m.\u001b[39mreadPassages)\u001b[33m.\u001b[39mtoEqual([\u001b[32m\"JAS:1:19:20\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"EPH:4:26:27\"\u001b[39m])\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 55 |\u001b[39m   expect(data\u001b[33m.\u001b[39mstoryStudy\u001b[33m.\u001b[39manswers)\u001b[33m.\u001b[39mtoEqual({})\u001b[33m;\u001b[39m\n \u001b[90m 56 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m\"/\"\u001b[39m)\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m expect(button(page\u001b[33m,\u001b[39m \u001b[32m\"Dein Thema fortsetzen\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 57 |\u001b[39m   \u001b[36mawait\u001b[39m button(page\u001b[33m,\u001b[39m \u001b[32m\"Dein Thema fortsetzen\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/topics.spec.ts",
+                        "column": 29,
+                        "line": 54
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 4\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[32m- Array [\u001b[39m\n\u001b[32m-   \"JAS:1:19:20\",\u001b[39m\n\u001b[32m-   \"EPH:4:26:27\",\u001b[39m\n\u001b[32m- ]\u001b[39m\n\u001b[31m+ Array []\u001b[39m\n\n  52 |   expect(data.readSteps).toEqual([\"faithpath-topic-wut:0\", \"faithpath-topic-wut:1\"]);\n  53 |   expect(data.completedSteps).toEqual(data.readSteps); expect(data.notes).toEqual([]);\n> 54 |   expect(data.readPassages).toEqual([\"JAS:1:19:20\", \"EPH:4:26:27\"]);\n     |                             ^\n  55 |   expect(data.storyStudy.answers).toEqual({});\n  56 |   await page.goto(\"/\"); await expect(button(page, \"Dein Thema fortsetzen\")).toBeVisible();\n  57 |   await button(page, \"Dein Thema fortsetzen\").click();\n    at /workspace/faithpath-next/tests/e2e/topics.spec.ts:54:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T05:04:59.828Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/topics-ein-vollständiges-T-9d87e--lässt-Reflexion-freiwillig/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/topics.spec.ts",
+                    "column": 29,
+                    "line": 54
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "263213824407c9428e81-60ac0482bac8b3b673f6",
+          "file": "topics.spec.ts",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "originaler Arbeitskontext und getrennte OLIVA-Einordnung bleiben im Entwurf und in der Sammlung erhalten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10946,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T05:05:07.257Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263213824407c9428e81-8c9ecdf0a8e42cfa8fa7",
+          "file": "topics.spec.ts",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "Wechsel von drei zu zwei Schritten bewahrt unterschiedliche Gedanken zur selben Bibelstelle",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20061,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\u001b[22m\n\n    at read (/workspace/faithpath-next/tests/e2e/topics.spec.ts:19:31)\n    at /workspace/faithpath-next/tests/e2e/topics.spec.ts:101:3",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/topics.spec.ts",
+                      "column": 31,
+                      "line": 19
+                    },
+                    "snippet": " \u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m button(page\u001b[33m,\u001b[39m \u001b[32m\"Abschnitt als gelesen bestätigen\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m button(page\u001b[33m,\u001b[39m \u001b[32m\"Weiter zum Verstehen\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m expect(thought(page))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m }\n \u001b[90m 21 |\u001b[39m\n \u001b[90m 22 |\u001b[39m test(\u001b[32m\"alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/topics.spec.ts",
+                        "column": 31,
+                        "line": 19
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\u001b[22m\n\n\n  17 |   await button(page, \"Abschnitt als gelesen bestätigen\").click();\n  18 |   await button(page, \"Weiter zum Verstehen\").click();\n> 19 |   await expect(thought(page)).toBeVisible();\n     |                               ^\n  20 | }\n  21 |\n  22 | test(\"alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt\", async ({ page }) => {\n    at read (/workspace/faithpath-next/tests/e2e/topics.spec.ts:19:31)\n    at /workspace/faithpath-next/tests/e2e/topics.spec.ts:101:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T05:05:18.742Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/topics-Wechsel-von-drei-zu-4b966-nken-zur-selben-Bibelstelle/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/topics.spec.ts",
+                    "column": 31,
+                    "line": 19
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "263213824407c9428e81-40c33732e212b039758a",
+          "file": "topics.spec.ts",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "ein zuvor ungeöffnetes Thema funktioniert samt Reader und Wiederaufnahme vollständig offline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23886,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\u001b[22m\n\n    at read (/workspace/faithpath-next/tests/e2e/topics.spec.ts:19:31)\n    at /workspace/faithpath-next/tests/e2e/topics.spec.ts:124:34",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/topics.spec.ts",
+                      "column": 31,
+                      "line": 19
+                    },
+                    "snippet": " \u001b[90m 17 |\u001b[39m   \u001b[36mawait\u001b[39m button(page\u001b[33m,\u001b[39m \u001b[32m\"Abschnitt als gelesen bestätigen\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36mawait\u001b[39m button(page\u001b[33m,\u001b[39m \u001b[32m\"Weiter zum Verstehen\"\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m   \u001b[36mawait\u001b[39m expect(thought(page))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m }\n \u001b[90m 21 |\u001b[39m\n \u001b[90m 22 |\u001b[39m test(\u001b[32m\"alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/topics.spec.ts",
+                        "column": 31,
+                        "line": 19
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Deine Reflexion (freiwillig)', exact: true }).visible()\u001b[22m\n\n\n  17 |   await button(page, \"Abschnitt als gelesen bestätigen\").click();\n  18 |   await button(page, \"Weiter zum Verstehen\").click();\n> 19 |   await expect(thought(page)).toBeVisible();\n     |                               ^\n  20 | }\n  21 |\n  22 | test(\"alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt\", async ({ page }) => {\n    at read (/workspace/faithpath-next/tests/e2e/topics.spec.ts:19:31)\n    at /workspace/faithpath-next/tests/e2e/topics.spec.ts:124:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T05:05:41.150Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/topics-ein-zuvor-ungeöffne-9c83c-ufnahme-vollständig-offline/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/topics.spec.ts",
+                    "column": 31,
+                    "line": 19
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "263213824407c9428e81-a16bbb8e109da4531e0e",
+          "file": "topics.spec.ts",
+          "line": 120,
+          "column": 1
+        },
+        {
+          "title": "Themenbibliothek und Leseschritt bleiben bei 320, 390 und 1440 Pixeln sowie in Dunkelansicht zugänglich",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20220,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-17T05:06:06.603Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "263213824407c9428e81-9fb071855f526d1c318f",
+          "file": "topics.spec.ts",
+          "line": 133,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-17T05:04:51.470Z",
+    "duration": 96009.903,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

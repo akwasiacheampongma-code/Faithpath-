@@ -67,7 +67,7 @@ describe("Native SQLite-Adapter mit realer SQL-Engine", () => {
     const data = await storage.readData();
     expect(data).toEqual({
       ...old,
-      version: 10, storyStudy: initialData().storyStudy,
+      version: 11, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},

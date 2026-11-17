@@ -122,7 +122,7 @@ describe("V6-Einladungs-Migration mit anschließender neutraler NT-Ergänzung", 
     const migrated = decodeData(old);
     expect(migrated).toEqual({
       ...old,
-      version: 10, storyStudy: initialData().storyStudy,
+      version: 11, storyStudy: initialData().storyStudy,
       invitations: optOut,
       ntStudy: {
         answers: {},
@@ -187,7 +187,7 @@ describe("V6-Einladungs-Migration mit anschließender neutraler NT-Ergänzung", 
     });
     expect(migrated).toEqual({
       ...old,
-      version: 10, storyStudy: initialData().storyStudy,
+      version: 11, storyStudy: initialData().storyStudy,
       invitations: optOut,
       ntStudy: {
         answers: {},
@@ -203,7 +203,7 @@ describe("V6-Einladungs-Migration mit anschließender neutraler NT-Ergänzung", 
     expect(JSON.stringify(stored)).toBe(bytes);
     const rewritten = forStorage(migrated);
     expect(rewritten.storageVersion).toBe(1);
-    expect(rewritten.data.version).toBe(10);
+    expect(rewritten.data.version).toBe(11);
     expect(rewritten.data.invitations).toEqual(optOut);
     expect(rewritten.data.imports[0]).not.toHaveProperty("sourceText");
     expect(archiveHashes(rewritten)).toEqual(loadedHashes);

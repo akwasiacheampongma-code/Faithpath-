@@ -14,7 +14,8 @@ import {
   validReference,
   type Reference,
 } from "../../src/features/bible/repository";
-import { PATHS, pathById } from "../../src/features/paths/catalog";
+import { PATHS } from "../../src/features/paths/catalog";
+import { guidedReadingContext } from "../../src/features/paths/reader-context";
 import { markRead, chapterId } from "../../src/state/model";
 import FlowText from "../../src/features/bible/flow/FlowText";
 import type { FlowTextHandle } from "../../src/features/bible/flow/types";
@@ -72,13 +73,11 @@ export default function Reader() {
     },
     book = bookByCode(ref.book),
     valid = validReference(ref),
-    verses = valid ? getChapter(ref.book, ref.chapter) : [],
-    stepKey =
-      params.path && params.step !== undefined
-        ? `${params.path}:${params.step}`
-        : undefined;
-  const path = params.path ? pathById(params.path) : null,
-    step = path?.steps[Number(params.step)],
+    verses = valid ? getChapter(ref.book, ref.chapter) : [];
+  const binding = guidedReadingContext(ref, params.path, params.step),
+    stepKey = binding?.key,
+    path = binding?.path,
+    step = binding?.step,
     context =
       step ??
       PATHS.flatMap((p) => p.steps).find(
@@ -89,6 +88,7 @@ export default function Reader() {
         (s) => s.ref.book === ref.book && s.ref.chapter === ref.chapter,
       ),
     );
+  const topicContext = path?.kind === "life-topic" && !!step && context === step;
   const [mode, setMode] = useState<"read" | "deep">(
       params.mode === "deep"
         ? "deep"
@@ -340,7 +340,7 @@ export default function Reader() {
   });
   const back = () => {
     if (stepKey && path)
-      router.dismissTo({ pathname: "/weg/[id]", params: { id: path.id } });
+      router.dismissTo({ pathname: "/weg/[id]", params: { id: path.id, step: params.step } });
     else if (router.canGoBack()) router.back();
     else if (params.story && storyById(params.story)?.references.some((source) => source.book === ref.book && source.chapter === ref.chapter))
       router.replace({ pathname: "/geschichte/[id]", params: { id: params.story, stage: ["lesen", "verstehen", "gedanken"].includes(params.storyStage ?? "") ? params.storyStage : "lesen",
@@ -641,7 +641,7 @@ export default function Reader() {
                 style={{ gap: 12, backgroundColor: t.soft, borderWidth: 0 }}
               >
                 <T variant="label" style={{ color: t.gold, fontSize: 9 }}>
-                  KI-UNTERSTÜTZTER ENTWURF · KEIN BIBELTEXT
+                  {topicContext ? "ORIGINALE FAITHPATH-EINORDNUNG · KEIN BIBELTEXT" : "KI-UNTERSTÜTZTER ENTWURF · KEIN BIBELTEXT"}
                 </T>
                 <T variant="heading">
                   {context
@@ -651,6 +651,10 @@ export default function Reader() {
                 <T style={{ fontSize: 13, lineHeight: 23 }}>
                   {context?.explanation ?? book?.description}
                 </T>
+                {context?.editorialNote && <View style={{ gap: 8, borderLeftWidth: 2, borderColor: t.gold, paddingLeft: 14 }}>
+                  <T variant="label" style={{ fontSize: 9, color: t.gold }}>ERGÄNZENDER OLIVA-HINWEIS</T>
+                  <T style={{ fontSize: 13, lineHeight: 23 }}>{context.editorialNote}</T>
+                </View>}
                 {context && (
                   <T style={{ fontSize: 10, color: t.muted }}>
                     Diese Einordnung bezieht sich auf{" "}
@@ -680,7 +684,7 @@ export default function Reader() {
                     vor. Der Bibeltext ist vollständig lesbar.
                   </T>
                 )}
-                {context && <TextCheck reference={context.ref} />}
+                {context && !topicContext && <TextCheck reference={context.ref} />}
               </Card>
             )}
             {!focus && mode === "deep" && sceneFor(ref) && (
@@ -866,6 +870,7 @@ export default function Reader() {
                 busy={busy}
                 onComplete={() => void complete()}
                 pathId={path?.id}
+                pathStep={binding ? Number(params.step) : undefined}
                 question={context?.question}
                 relatedPath={related[0]}
                 mode={mode}
@@ -882,7 +887,9 @@ export default function Reader() {
             >
               Bibeltext: Lutherbibel 1912 · gemeinfrei · Quelle: eBible.org
               {!focus && mode === "deep"
-                ? "\nEinordnungen: OLIVA-Entwürfe; theologische Freigabe vor Veröffentlichung offen."
+                ? topicContext
+                  ? "\nEinordnung: ursprüngliche FaithPath-Vorarbeit. Zusätzliche OLIVA-Hinweise sind getrennt gekennzeichnet; unabhängige theologische Freigabe offen."
+                  : "\nEinordnungen: OLIVA-Entwürfe; theologische Freigabe vor Veröffentlichung offen."
                 : ""}
             </T>
           </>

@@ -24,7 +24,7 @@ const noteCard = (page: Page) => visible(page, "invitation-note:n1");
 /** Synthetic local history, independent of the app decoder. No real user data. */
 function fixture(): AppData {
   return {
-    version: 10,
+    version: 11,
     storyStudy: { answers: {}, viewed: {}, position: null },
     ntStudy: {
       answers: {},
@@ -178,7 +178,7 @@ async function unchangedExperience(page: Page, before: AppData) {
     expect(data[key], key).toEqual(before[key]);
 }
 
-test("V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt den aktuellen V10-Stand und erschließt die Startseiteneinladung", async ({
+test("V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt den aktuellen V11-Stand und erschließt die Startseiteneinladung", async ({
   page,
 }) => {
   const { raw } = await seed(page, { legacy: true });
@@ -199,7 +199,7 @@ test("V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges O
     .poll(async () => (await localData(page)).invitations.enabled)
     .toBe(true);
   const written = await localData(page);
-  expect(written.version).toBe(10);
+  expect(written.version).toBe(11);
   expect(written.revision).toBe(raw.data.revision + 1);
   expect(personalFields(written)).toEqual(personalFields(raw.data));
   await page.goto("/");

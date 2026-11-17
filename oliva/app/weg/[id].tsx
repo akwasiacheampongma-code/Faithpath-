@@ -20,10 +20,14 @@ import { CaptureInput } from "../../src/features/personal/CaptureInput";
 import { guidedSource } from "../../src/features/personal/capture-model";
 import { TextCheck } from "../../src/features/paths/TextCheck";
 export default function PathDetail() {
-  const { id, step: requestedStep } = useLocalSearchParams<{
+  const params = useLocalSearchParams<{
       id: string;
       step?: string;
-    }>(),
+    }>();
+  return <PathExperience key={params.id + ":" + (params.step ?? "resume")} params={params} />;
+}
+function PathExperience({ params }: { params: { id: string; step?: string } }) {
+  const { id, step: requestedStep } = params,
     path = pathById(id),
     t = useTheme(),
     data = useApp((s) => s.data),
@@ -57,6 +61,7 @@ export default function PathDetail() {
       </Shell>
     );
   const step = path.steps[selected]!,
+    isTopic = path.kind === "life-topic",
     key = `${id}:${selected}`,
     read = data.readSteps.includes(key),
     done = data.completedSteps.includes(key),
@@ -91,20 +96,20 @@ export default function PathDetail() {
         <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
           <IconButton
             name="back"
-            label="Zurück zu den Wegen"
-            onPress={() => router.replace("/wege")}
+            label={isTopic ? "Zurück zu den Themen" : "Zurück zu den Wegen"}
+            onPress={() => router.replace(isTopic ? "/themen" : "/wege")}
           />
-          <T style={{ fontSize: 12, color: t.muted }}>Deine geführte Reise</T>
+          <T style={{ fontSize: 12, color: t.muted }}>{isTopic ? "Ein Thema aus deinem Leben" : "Deine geführte Reise"}</T>
         </View>
-        <Image
+        {!isTopic && <Image
           source={artSources[path.art]}
           style={{ width: "100%", height: 220, borderRadius: 22 }}
           resizeMode="cover"
           accessibilityLabel="Künstlerische Interpretation als Einstimmung auf diesen Weg"
-        />
+        />}
         <View style={{ gap: 12 }}>
-          <Tag icon="clock">
-            {path.minutes} Minuten · {path.steps.length} kleine Schritte
+          <Tag icon={isTopic ? "leaf" : "clock"}>
+            {path.minutes !== undefined ? `${path.minutes} Minuten · ${path.steps.length} kleine Schritte` : `${path.steps.length} Bibelabschnitte · in deinem Tempo`}
           </Tag>
           <T
             variant="hero"
@@ -115,13 +120,12 @@ export default function PathDetail() {
           </T>
           <T style={{ color: t.muted, fontSize: 14 }}>{path.intro}</T>
           <T style={{ fontSize: 11, color: t.muted }}>
-            Ein Weg führt dich durch kurze Bibeltexte und verständliche
-            Einordnungen. Du kannst jederzeit pausieren.
+            {isTopic ? "Du liest ausgewählte Bibeltexte und die ursprünglichen FaithPath-Einordnungen. Deine Gedanken sind freiwillig. Du kannst jederzeit pausieren." : "Ein Weg führt dich durch kurze Bibeltexte und verständliche Einordnungen. Du kannst jederzeit pausieren."}
           </T>
         </View>
         <Card style={{ gap: 12, backgroundColor: t.soft, borderWidth: 0 }}>
           <T variant="label" style={{ color: t.gold, fontSize: 9 }}>
-            DAS KANNST DU ENTDECKEN
+            {isTopic ? "EIN KLEINER SCHRITT NACH DEM ANDEREN" : "DAS KANNST DU ENTDECKEN"}
           </T>
           {path.goals.map((goal) => (
             <View
@@ -187,7 +191,7 @@ export default function PathDetail() {
               <View style={{ flex: 1, gap: 3 }}>
                 <T style={{ fontSize: 13 }}>{s.title}</T>
                 <T style={{ fontSize: 10, color: t.muted }}>
-                  {referenceLabel(s.ref)} · etwa 5 Min.
+                  {isTopic ? "Lesen · Einordnen · Nachdenken" : referenceLabel(s.ref) + " · etwa 5 Min."}
                 </T>
               </View>
               <Icon name="chevron" size={16} color={t.muted} />
@@ -196,23 +200,20 @@ export default function PathDetail() {
         </View>
         {allDone && (
           <Card style={{ gap: 14, backgroundColor: t.goldSoft }}>
-            <Tag icon="leaf">Ein Weg ist entdeckt</Tag>
+            <Tag icon="leaf">{isTopic ? "Ein Thema ist entdeckt" : "Ein Weg ist entdeckt"}</Tag>
             <T variant="heading">Nimm mit, was dich berührt.</T>
             <T style={{ fontSize: 13 }}>
-              Du hast alle drei Schritte angesehen und abgeschlossen. Fragen
-              dürfen offen bleiben. Du kannst diesen Weg jederzeit wieder
-              besuchen.
+              Du hast alle {path.steps.length === 3 ? "drei" : String(path.steps.length)} Schritte angesehen und abgeschlossen. Fragen dürfen offen bleiben. Du kannst {isTopic ? "dieses Thema" : "diesen Weg"} jederzeit wieder besuchen.
             </T>
             <Button
               onPress={() =>
-                router.push({
+                isTopic ? router.push("/themen") : router.push({
                   pathname: "/weg/[id]",
                   params: { id: id === "beten" ? "frieden" : "beten" },
                 })
               }
             >
-              Als Nächstes:{" "}
-              {id === "beten" ? "Frieden finden" : "Wie kann ich beten?"}
+              {isTopic ? "Andere Lebensthemen entdecken" : "Als Nächstes: " + (id === "beten" ? "Frieden finden" : "Wie kann ich beten?")}
             </Button>
             <Button kind="ghost" onPress={() => router.replace("/garten")}>
               Deinen Garten ansehen
@@ -222,7 +223,7 @@ export default function PathDetail() {
         <Card style={{ gap: 17 }}>
           <T variant="label" style={{ color: t.gold, fontSize: 9 }}>
             SCHRITT {selected + 1} ·{" "}
-            {read ? "VERSTEHEN & NACHDENKEN" : "MIT EINER GESCHICHTE BEGINNEN"}
+            {read ? "VERSTEHEN & NACHDENKEN" : isTopic ? "MIT DEM BIBELTEXT BEGINNEN" : "MIT EINER GESCHICHTE BEGINNEN"}
           </T>
           <T variant="heading">{step.title}</T>
           {!read ? (
@@ -239,9 +240,13 @@ export default function PathDetail() {
           ) : (
             <>
               <T variant="label" style={{ fontSize: 8, color: t.muted }}>
-                KI-UNTERSTÜTZTER ENTWURF · KEIN BIBELTEXT
+                {isTopic ? "ORIGINALE FAITHPATH-EINORDNUNG · KEIN BIBELTEXT" : "KI-UNTERSTÜTZTER ENTWURF · KEIN BIBELTEXT"}
               </T>
               <T style={{ fontSize: 14, lineHeight: 25 }}>{step.explanation}</T>
+              {step.editorialNote && <View style={{ gap: 8, borderLeftWidth: 2, borderColor: t.gold, paddingLeft: 15 }}>
+                <T variant="label" style={{ fontSize: 9, color: t.gold }}>ERGÄNZENDER OLIVA-HINWEIS</T>
+                <T style={{ fontSize: 13, lineHeight: 23 }}>{step.editorialNote}</T>
+              </View>}
               {step.word && (
                 <View
                   style={{
@@ -257,7 +262,7 @@ export default function PathDetail() {
                   <T style={{ fontSize: 12, color: t.muted }}>{step.word[1]}</T>
                 </View>
               )}
-              <TextCheck reference={step.ref} />
+              {!isTopic && <TextCheck reference={step.ref} />}
               <T variant="heading" style={{ fontSize: 26, marginTop: 3 }}>
                 Was bleibt bei dir?
               </T>
@@ -274,13 +279,13 @@ export default function PathDetail() {
                   placeholder="Deine Worte dürfen unvollkommen sein …"
                 />
               )}
-              <Button
+              {step.prayer && <Button
                 kind="ghost"
                 icon={prayer ? "close" : "heart"}
                 onPress={() => setPrayer(!prayer)}
               >
                 {prayer ? "Gebet ausblenden" : "Ein freiwilliges Gebet"}
-              </Button>
+              </Button>}
               {prayer && (
                 <View
                   style={{
@@ -343,8 +348,7 @@ export default function PathDetail() {
           )}
         </Card>
         <T style={{ fontSize: 9, color: t.muted, textAlign: "center" }}>
-          Einordnungen und Gebete sind redaktionelle Entwürfe. Die theologische
-          Freigabe vor einem öffentlichen Release steht aus.
+          {isTopic ? "Einordnungen und Reflexionsfragen stammen aus der FaithPath-Vorarbeit. Ergänzende OLIVA-Hinweise sind getrennt gekennzeichnet. Eine unabhängige theologische und historische Freigabe vor einer öffentlichen Veröffentlichung steht aus." : "Einordnungen und Gebete sind redaktionelle Entwürfe. Die theologische Freigabe vor einem öffentlichen Release steht aus."}
         </T>
       </View>
     </Shell>

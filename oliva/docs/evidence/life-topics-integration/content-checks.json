@@ -1,0 +1,86 @@
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:check"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T05:10:41.651350+00:00",
+    "finishedAt": "2026-11-17T05:10:43.147951+00:00",
+    "log": "docs/evidence/life-topics-integration/content-check.txt",
+    "sha256": "23f50b12e5c758629d0cdfaa8f36f5a0290d833580902bdb0ef4cfea5cbaff8f"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:nt"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T05:10:43.148291+00:00",
+    "finishedAt": "2026-11-17T05:10:44.348125+00:00",
+    "log": "docs/evidence/life-topics-integration/content-nt.txt",
+    "sha256": "61a36bf71473d32ea3a0af3e8e2c2bc8c85d89629d4796e09a5f302e23eeb1f3"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:stories"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T05:10:44.348384+00:00",
+    "finishedAt": "2026-11-17T05:10:45.965276+00:00",
+    "log": "docs/evidence/life-topics-integration/content-stories.txt",
+    "sha256": "6e7f7f23d3e2b284bf3afb38c72f4835f0d869883f2d59b8b3d47700f27e7b77"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:topics"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T05:10:45.965587+00:00",
+    "finishedAt": "2026-11-17T05:10:46.965125+00:00",
+    "log": "docs/evidence/life-topics-integration/content-topics.txt",
+    "sha256": "173c5e13608af7362407b38d99f794c796204d8d815f82c89bca1de7b4eb5266"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:art"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T05:10:46.965652+00:00",
+    "finishedAt": "2026-11-17T05:10:47.924195+00:00",
+    "log": "docs/evidence/life-topics-integration/content-art.txt",
+    "sha256": "bea5213a262f599388a8791161ac65a85b64064c6f2924603a58510078f54eeb"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:tree"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T05:10:47.924492+00:00",
+    "finishedAt": "2026-11-17T05:10:50.446169+00:00",
+    "log": "docs/evidence/life-topics-integration/content-tree.txt",
+    "sha256": "a8f1f0064042fbefd431adb03f90cfa885a3bc55b715827f3f90aa48b806f42c"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:swords"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T05:10:50.446637+00:00",
+    "finishedAt": "2026-11-17T05:10:52.442554+00:00",
+    "log": "docs/evidence/life-topics-integration/content-swords.txt",
+    "sha256": "1b59fd0798e04851a833ade68a970da8b4462ef0dde433de0a547bdc40bba903"
+  }
+]

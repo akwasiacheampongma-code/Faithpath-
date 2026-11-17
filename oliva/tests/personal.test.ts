@@ -72,7 +72,7 @@ describe("Verlustfreie Payload-Migration", () => {
       migrated = decodeData(old);
     expect(migrated).toEqual({
       ...old,
-      version: 10, storyStudy: initialData().storyStudy,
+      version: 11, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},

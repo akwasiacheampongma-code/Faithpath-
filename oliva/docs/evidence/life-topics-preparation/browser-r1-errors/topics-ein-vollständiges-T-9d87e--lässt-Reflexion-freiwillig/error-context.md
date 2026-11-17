@@ -1,0 +1,245 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: topics.spec.ts >> ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig
+- Location: tests/e2e/topics.spec.ts:39:1
+
+# Error details
+
+```
+Error: expect(received).toEqual(expected) // deep equality
+
+- Expected  - 4
++ Received  + 1
+
+- Array [
+-   "JAS:1:19:20",
+-   "EPH:4:26:27",
+- ]
++ Array []
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - generic [ref=e10]:
+    - banner [ref=e11]:
+      - generic [ref=e12]: OLIVA
+      - generic [ref=e19]:
+        - button "Dunklen Modus aktivieren" [ref=e20] [cursor=pointer]
+        - button "Du · Profil und Einstellungen" [ref=e23] [cursor=pointer]:
+          - generic [ref=e24]: Du
+    - main [ref=e25]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - button "Zurück zu den Themen" [ref=e30] [cursor=pointer]
+          - generic [ref=e33]: Ein Thema aus deinem Leben
+        - generic [ref=e34]:
+          - generic [ref=e35]: 2 Bibelabschnitte · in deinem Tempo
+          - heading "Wut" [level=1] [ref=e40]
+          - generic [ref=e41]: Wenn Ärger dich festhält oder schnell hochkommt
+          - generic [ref=e42]: Du liest ausgewählte Bibeltexte und die ursprünglichen FaithPath-Einordnungen. Deine Gedanken sind freiwillig. Du kannst jederzeit pausieren.
+        - generic [ref=e43]:
+          - generic [ref=e44]: EIN KLEINER SCHRITT NACH DEM ANDEREN
+          - generic [ref=e45]:
+            - progressbar "2 von 2 Schritten abgeschlossen" [ref=e46]
+            - generic [ref=e48]: 2 von 2 Schritten · ohne Zeitdruck
+        - generic [ref=e49]:
+          - button "Jakobus 1,19–20 Lesen · Einordnen · Nachdenken" [ref=e50] [cursor=pointer]:
+            - generic [ref=e54]:
+              - generic [ref=e55]: Jakobus 1,19–20
+              - generic [ref=e56]: Lesen · Einordnen · Nachdenken
+          - button "Epheser 4,26–27 Lesen · Einordnen · Nachdenken" [ref=e59] [cursor=pointer]:
+            - generic [ref=e63]:
+              - generic [ref=e64]: Epheser 4,26–27
+              - generic [ref=e65]: Lesen · Einordnen · Nachdenken
+        - generic [ref=e68]:
+          - generic [ref=e69]: Ein Thema ist entdeckt
+          - generic [ref=e74]: Nimm mit, was dich berührt.
+          - generic [ref=e75]: Du hast alle 2 Schritte angesehen und abgeschlossen. Fragen dürfen offen bleiben. Du kannst dieses Thema jederzeit wieder besuchen.
+          - button "Andere Lebensthemen entdecken" [ref=e76] [cursor=pointer]
+          - button "Deinen Garten ansehen" [ref=e80] [cursor=pointer]
+        - generic [ref=e84]:
+          - generic [ref=e85]: SCHRITT 2 · VERSTEHEN & NACHDENKEN
+          - generic [ref=e86]: Epheser 4,26–27
+          - generic [ref=e87]: ORIGINALE FAITHPATH-EINORDNUNG · KEIN BIBELTEXT
+          - generic [ref=e88]: Zorn wird ernst genommen, soll aber nicht das Handeln bestimmen.
+          - generic [ref=e89]: Was bleibt bei dir?
+          - generic [ref=e90]: Was wäre heute eine Reaktion, die du später nicht bereuen musst?
+          - generic [ref=e91]: Diesen Schritt hast du abgeschlossen
+          - button "Bibelabschnitt noch einmal lesen" [ref=e95] [cursor=pointer]
+        - generic [ref=e99]: Einordnungen und Reflexionsfragen stammen aus der FaithPath-Vorarbeit. Ergänzende OLIVA-Hinweise sind getrennt gekennzeichnet. Eine unabhängige theologische und historische Freigabe vor einer öffentlichen Veröffentlichung steht aus.
+    - navigation "Hauptnavigation" [ref=e100]:
+      - button "Heute" [ref=e101] [cursor=pointer]
+      - button "Bibel" [ref=e105] [cursor=pointer]
+      - button "Wege" [ref=e109] [cursor=pointer]
+      - button "Mein Garten" [ref=e114] [cursor=pointer]
+      - button "Sammlung" [ref=e119] [cursor=pointer]
+  - generic [ref=e123]: Für den Offline-Neustart bereit.
+```
+
+# Test source
+
+```ts
+  1   | import { test, expect, type Page } from "@playwright/test";
+  2   | import AxeBuilder from "@axe-core/playwright";
+  3   | import { mkdirSync, readFileSync } from "node:fs";
+  4   | import { localData, rawData } from "./persistence";
+  5   | 
+  6   | const topics = JSON.parse(readFileSync("src/data/life-topics.json", "utf8")).topics as any[];
+  7   | const topic = (id: string) => topics.find((t) => t.sourceId === id)!;
+  8   | const button = (page: Page, name: string | RegExp) => page.getByRole("button", { name, exact: typeof name === "string" }).filter({ visible: true });
+  9   | const thought = (page: Page) => page.getByRole("textbox", { name: "Deine Reflexion (freiwillig)", exact: true }).filter({ visible: true });
+  10  | async function open(page: Page, id: string, step = 0) {
+  11  |   await page.goto(`/weg/faithpath-topic-${id}?step=${step}`);
+  12  |   await expect(button(page, "Abschnitt lesen")).toBeVisible();
+  13  | }
+  14  | async function read(page: Page) {
+  15  |   await button(page, "Abschnitt lesen").click();
+  16  |   await expect(page.getByTestId("reader-flow")).toBeVisible();
+  17  |   await button(page, "Abschnitt als gelesen bestätigen").click();
+  18  |   await button(page, "Weiter zum Verstehen").click();
+  19  |   await expect(thought(page)).toBeVisible();
+  20  | }
+  21  | 
+  22  | test("alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt", async ({ page }) => {
+  23  |   await page.goto("/wege");
+  24  |   await button(page, "18 Lebensthemen entdecken").click();
+  25  |   await expect(page.getByText("18 Themen", { exact: true })).toBeVisible();
+  26  |   for (const t of topics) await expect(button(page, `${t.title}, ${t.steps.length} Bibelabschnitte`)).toHaveCount(1);
+  27  |   await page.getByRole("textbox", { name: "Ein Thema finden", exact: true }).fill(" über forde rung ");
+  28  |   await expect(page.getByText("1 Thema", { exact: true })).toBeVisible();
+  29  |   await button(page, "Überforderung & Ruhe, 3 Bibelabschnitte").click();
+  30  |   await expect(button(page, "Abschnitt lesen")).toBeVisible();
+  31  |   await expect(button(page, "Ein freiwilliges Gebet")).toHaveCount(0);
+  32  |   expect(await rawData(page)).toBeUndefined();
+  33  |   await button(page, "Zurück zu den Themen").click();
+  34  |   await button(page, "Zu den Wegen").click();
+  35  |   await expect(button(page, /Ich bin neu im Glauben/)).toBeVisible();
+  36  |   expect(await rawData(page)).toBeUndefined();
+  37  | });
+  38  | 
+  39  | test("ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig", async ({ page }) => {
+  40  |   await open(page, "wut");
+  41  |   for (let i = 0; i < 2; i++) {
+  42  |     await read(page);
+  43  |     await expect(page.getByText(topic("wut").steps[i].explanation, { exact: true })).toBeVisible();
+  44  |     await expect(button(page, "Ein freiwilliges Gebet")).toHaveCount(0);
+  45  |     await button(page, "Ohne Reflexion abschließen").click();
+  46  |     await expect.poll(async () => (await localData(page)).completedSteps.length).toBe(i + 1);
+  47  |     if (i === 0) await button(page, "Zum nächsten Schritt").click();
+  48  |   }
+  49  |   await expect(page.getByText("Ein Thema ist entdeckt", { exact: true })).toBeVisible();
+  50  |   const data = await localData(page);
+  51  |   expect(data.version).toBe(11); expect(data.readChapters).toEqual([]);
+  52  |   expect(data.readSteps).toEqual(["faithpath-topic-wut:0", "faithpath-topic-wut:1"]);
+  53  |   expect(data.completedSteps).toEqual(data.readSteps); expect(data.notes).toEqual([]);
+> 54  |   expect(data.readPassages).toEqual(["JAS:1:19:20", "EPH:4:26:27"]);
+      |                             ^ Error: expect(received).toEqual(expected) // deep equality
+  55  |   expect(data.storyStudy.answers).toEqual({});
+  56  |   await page.goto("/"); await expect(button(page, "Dein Thema fortsetzen")).toBeVisible();
+  57  |   await button(page, "Dein Thema fortsetzen").click();
+  58  |   await expect(page.getByText("Ein Thema ist entdeckt", { exact: true })).toBeVisible();
+  59  | });
+  60  | 
+  61  | test("originaler Arbeitskontext und getrennte OLIVA-Einordnung bleiben im Entwurf und in der Sammlung erhalten", async ({ page }) => {
+  62  |   await open(page, "arbeit");
+  63  |   await button(page, "Abschnitt lesen").click();
+  64  |   await expect(page.getByTestId("reader-flow")).toBeVisible();
+  65  |   await expect(page).toHaveURL(/from=22/); await expect(page).toHaveURL(/to=24/);
+  66  |   await button(page, "Tiefer verstehen").click();
+  67  |   await expect(page.getByText("ORIGINALE FAITHPATH-EINORDNUNG · KEIN BIBELTEXT", { exact: true })).toBeVisible();
+  68  |   await expect(page.getByText(/Diese Worte stehen in einer antiken Haustafel/)).toBeVisible();
+  69  |   await expect(button(page, "Eine kleine Frage zum Text")).toHaveCount(0);
+  70  |   await button(page, "Abschnitt als gelesen bestätigen").click();
+  71  |   await button(page, "Weiter zum Verstehen").click();
+  72  |   const text = "Meine Arbeit und die Würde anderer.\nEin noch unfertiger Gedanke.";
+  73  |   await thought(page).fill(text);
+  74  |   await expect.poll(async () => (await localData(page)).drafts.length).toBe(1);
+  75  |   const draft = (await localData(page)).drafts[0]!;
+  76  |   const source = (draft.values as any).source;
+  77  |   expect(source.snapshot.title).toBe("Arbeit & Berufung · Kolosser 3,22–24");
+  78  |   expect(source.snapshot.explanation).toContain(topic("arbeit").steps[0].explanation);
+  79  |   expect(source.snapshot.explanation).toContain("Ergänzender OLIVA-Hinweis:");
+  80  |   expect(source.snapshot.explanation).toContain("versklavte Menschen");
+  81  |   expect((await localData(page)).completedSteps).toEqual([]);
+  82  |   await page.goto("/sammlung?tab=Entw%C3%BCrfe");
+  83  |   await button(page, /Entwurf fortsetzen:.*Arbeit & Berufung/).click();
+  84  |   await expect(thought(page)).toHaveValue(text);
+  85  |   await page.reload(); await expect(thought(page)).toHaveValue(text);
+  86  |   await button(page, "Reflexion speichern & Schritt abschließen").click();
+  87  |   await expect.poll(async () => (await localData(page)).notes.length).toBe(1);
+  88  |   const note = (await localData(page)).notes[0]!;
+  89  |   expect(note.captureSource).toEqual(source); expect(note.text).toBe(text);
+  90  |   expect((await localData(page)).completedSteps).toEqual(["faithpath-topic-arbeit:0"]);
+  91  |   await page.goto("/sammlung");
+  92  |   await button(page, "Bearbeiten").click();
+  93  |   await page.getByRole("textbox", { name: "Deine Worte", exact: true }).fill("Weitergedacht, ohne die Herkunft zu verändern.");
+  94  |   await button(page, "Gedanken speichern").click();
+  95  |   await expect.poll(async () => (await localData(page)).notes[0]?.text).toBe("Weitergedacht, ohne die Herkunft zu verändern.");
+  96  |   expect((await localData(page)).notes[0]?.captureSource).toEqual(source);
+  97  | });
+  98  | 
+  99  | test("Wechsel von drei zu zwei Schritten bewahrt unterschiedliche Gedanken zur selben Bibelstelle", async ({ page }) => {
+  100 |   await open(page, "streit", 2);
+  101 |   await read(page); await thought(page).fill("Mein dritter Konfliktschritt.");
+  102 |   await button(page, "Zurück zu den Themen").click();
+  103 |   await button(page, "Wut, 2 Bibelabschnitte").click();
+  104 |   await read(page); await thought(page).fill("Meine Wut beim Zuhören.");
+  105 |   await button(page, "Zurück zu den Themen").click();
+  106 |   await button(page, "Streit & Konflikte, 3 Bibelabschnitte").click();
+  107 |   await read(page); await thought(page).fill("Mein erster Konfliktschritt beim Zuhören.");
+  108 |   await expect.poll(async () => (await localData(page)).drafts.length).toBe(3);
+  109 |   const drafts = (await localData(page)).drafts;
+  110 |   const a = drafts.find((d) => d.key === "capture:guided:faithpath-topic-streit:0")!,
+  111 |     b = drafts.find((d) => d.key === "capture:guided:faithpath-topic-wut:0")!;
+  112 |   expect((a.values as any).source.snapshot.ref).toEqual((b.values as any).source.snapshot.ref);
+  113 |   expect((a.values as any).source.snapshot.title).not.toBe((b.values as any).source.snapshot.title);
+  114 |   await page.goto("/sammlung?tab=Entw%C3%BCrfe");
+  115 |   await button(page, /Entwurf fortsetzen:.*Wut/).click();
+  116 |   await expect(thought(page)).toHaveValue("Meine Wut beim Zuhören.");
+  117 |   expect((await localData(page)).completedSteps).toEqual([]);
+  118 | });
+  119 | 
+  120 | test("ein zuvor ungeöffnetes Thema funktioniert samt Reader und Wiederaufnahme vollständig offline", async ({ page, context }) => {
+  121 |   await page.goto("/themen");
+  122 |   await expect(page.getByText("Für den Offline-Neustart bereit.", { exact: true })).toBeVisible();
+  123 |   await context.setOffline(true);
+  124 |   await open(page, "geduld", 1); await read(page);
+  125 |   await thought(page).fill("Wachsen braucht Zeit.");
+  126 |   await expect.poll(async () => (await localData(page)).drafts.length).toBe(1);
+  127 |   const before = await rawData(page);
+  128 |   await page.reload(); await expect(thought(page)).toHaveValue("Wachsen braucht Zeit.");
+  129 |   expect(await rawData(page)).toEqual(before);
+  130 |   await context.setOffline(false);
+  131 | });
+  132 | 
+  133 | test("Themenbibliothek und Leseschritt bleiben bei 320, 390 und 1440 Pixeln sowie in Dunkelansicht zugänglich", async ({ page }) => {
+  134 |   const evidence = `${process.env.OLIVA_EVIDENCE_DIR ?? "docs/evidence/latest"}/topics/screens`;
+  135 |   mkdirSync(evidence, { recursive: true });
+  136 |   for (const [width, theme] of [[320, "light"], [390, "dark"], [1440, "dark"]] as const) {
+  137 |     await page.setViewportSize({ width, height: 844 });
+  138 |     await page.goto("/themen");
+  139 |     await expect(page.getByText("18 Themen", { exact: true })).toBeVisible();
+  140 |     const toggle = button(page, theme === "dark" ? "Dunklen Modus aktivieren" : "Hellen Modus aktivieren");
+  141 |     if (await toggle.count()) await toggle.click();
+  142 |     await expect(button(page, theme === "dark" ? "Hellen Modus aktivieren" : "Dunklen Modus aktivieren")).toBeVisible();
+  143 |     for (const [name, route] of [["library", "/themen"], ["topic", "/weg/faithpath-topic-trauer"]]) {
+  144 |       await page.goto(route!); await page.evaluate(() => document.fonts.ready.then(() => undefined));
+  145 |       await expect(button(page, theme === "dark" ? "Hellen Modus aktivieren" : "Dunklen Modus aktivieren")).toBeVisible();
+  146 |       if (name === "topic") {
+  147 |         const readButton = button(page, "Abschnitt lesen");
+  148 |         await readButton.focus(); await expect(readButton).toBeFocused();
+  149 |       }
+  150 |       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  151 |       expect((await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze()).violations).toEqual([]);
+  152 |       await page.screenshot({ path: `${evidence}/${name}-${width}-${theme}.png` });
+  153 |     }
+  154 |   }
+```

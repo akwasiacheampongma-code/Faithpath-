@@ -45,7 +45,7 @@ describe("Unveränderliche Originalquellen außerhalb des laufenden Payloads", (
       });
     expect(await decodeStored(old, load)).toEqual({
       ...old,
-      version: 10, storyStudy: initialData().storyStudy,
+      version: 11, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},
