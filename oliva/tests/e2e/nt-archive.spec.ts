@@ -231,7 +231,7 @@ test("ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Q
     ),
   ).toBeVisible();
   const current = await localData(page);
-  expect(current.version).toBe(9);
+  expect(current.version).toBe(10);
   expect(current.revision).toBe(13);
   expect(current.ntStudy.legacyCompletions).toHaveLength(2);
   expect(current.ntStudy.answers).toEqual({});
@@ -243,8 +243,10 @@ test("ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Q
     version: newVersion,
     revision: newRevision,
     ntStudy,
+    storyStudy,
     ...newFields
   } = raw.data;
+  expect(storyStudy).toEqual({ answers: {}, viewed: {}, position: null });
   expect(newFields).toEqual(oldFields);
   expect(await page.evaluate(() => (window as any).ntArchiveWrites)).toBe(0);
   expect(await rawData(page, "before-faithpath-import")).toEqual(recovery);

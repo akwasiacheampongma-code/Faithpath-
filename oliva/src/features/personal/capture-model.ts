@@ -9,6 +9,7 @@ import {
 } from "./capture-schema-current";
 import type { Reference } from "../bible/repository";
 import { newId, type DraftOf } from "./schema";
+import { storyCaptureCurrent } from "../stories/model";
 export type BibleCaptureSource = Extract<
   CaptureSource,
   { type: "verse" | "passage" }
@@ -54,6 +55,7 @@ export function guidedSource(
   };
 }
 export function captureSourceCurrent(source: CaptureSource) {
+  if (source.type === "story") return storyCaptureCurrent(source);
   if (source.type !== "guided") return true;
   const step = pathById(source.pathId)?.steps[source.step];
   return (
@@ -87,6 +89,8 @@ export function commitCapture(
     text = draft.values.text.trim();
   if (draft.key !== captureKey(source))
     throw new Error("Entwurf und Quelle passen nicht zusammen.");
+  if (source.type === "story" && completeGuided && !captureSourceCurrent(source))
+    throw new Error("Der Originalabschnitt wurde geändert. Bewahre zuerst die ursprüngliche Reflexion.");
   if (text && data.notes.some((n) => n.id === entityId))
     throw new Error("Dieser Gedanke wurde bereits festgehalten.");
   if (source.type === "guided" && completeGuided) {
@@ -114,6 +118,8 @@ export function commitCapture(
       ? { ref: { ...source.ref } }
       : source.type === "guided"
         ? { ref: { ...source.snapshot.ref } }
+        : source.type === "story" && source.references.length === 1
+          ? { ref: { ...source.references[0]! } }
         : {}),
   });
   return entityId;

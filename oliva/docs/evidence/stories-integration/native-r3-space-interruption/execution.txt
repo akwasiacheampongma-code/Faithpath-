@@ -1,0 +1,9 @@
+{"command": ["node", "scripts/expo.mjs", "export", "--platform", "android", "--output-dir", "dist-android", "--no-minify", "--no-bytecode"], "exitCode": 0, "startedAt": "2026-11-17T03:13:50.119171+00:00", "finishedAt": "2026-11-17T03:13:56.247074+00:00", "durationSeconds": 6.128, "rawLog": "docs/evidence/stories-integration/native/native-android.txt", "rawLogSHA256": "5fbf88fc8c3f518ad7aeb8cce5d376199823cf7a969191da501ce1409ee59576"}
+{"command": ["node", "scripts/expo.mjs", "export", "--platform", "ios", "--output-dir", "dist-ios", "--no-minify", "--no-bytecode"], "exitCode": 1, "startedAt": "2026-11-17T03:13:56.411190+00:00", "finishedAt": "2026-11-17T03:14:00.113971+00:00", "durationSeconds": 3.703, "rawLog": "docs/evidence/stories-integration/native/native-ios.txt", "rawLogSHA256": "adc938ec2397a2b8a2e30ce8d3bd0df225a4d87bf640df66958c2d56bc363e55"}
+Traceback (most recent call last):
+  File "/workspace/faithpath-next/docs/evidence/stories-integration/native/native-export-runner.py", line 123, in <module>
+    main()
+  File "/workspace/faithpath-next/docs/evidence/stories-integration/native/native-export-runner.py", line 101, in main
+    assert record['exitCode'] == 0, 'Native export failed: ' + platform
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Native export failed: ios

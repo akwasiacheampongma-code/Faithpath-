@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { referenceSchema } from "../bible/schema";
 import { getPassage, validReference } from "../bible/repository";
+import { storyCaptureSchema } from "../stories/schema";
 import {
   captureSourceSchema as historicalCaptureSourceSchema,
   captureKey as historicalCaptureKey,
@@ -28,6 +29,7 @@ export const captureSourceSchema = z.discriminatedUnion("type", [
   z
     .object({ type: z.literal("passage"), ref: passageReferenceSchema })
     .strict(),
+  storyCaptureSchema,
 ]);
 
 export const captureValuesSchema = z
@@ -40,6 +42,7 @@ export const captureValuesSchema = z
 
 export type CaptureSource = z.infer<typeof captureSourceSchema>;
 export function captureKey(source: CaptureSource) {
+  if (source.type === "story") return "capture:story:" + source.unitId + ":" + source.hash;
   if (source.type === "passage")
     return `capture:passage:${source.ref.book}:${source.ref.chapter}:${source.ref.from}:${source.ref.to}`;
   return historicalCaptureKey(source);

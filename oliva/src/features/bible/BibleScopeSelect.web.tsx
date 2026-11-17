@@ -3,7 +3,7 @@ import { useTheme } from "../../design-system/theme";
 import { BIBLE_SCOPES } from "./book-search";
 import type { BibleScopeSelectProps } from "./BibleScopeSelect";
 
-export function BibleScopeSelect({ value, onChange }: BibleScopeSelectProps) {
+export function BibleScopeSelect({ value, onChange, compact = false }: BibleScopeSelectProps) {
   const t = useTheme(),
     [focused, setFocused] = useState(false);
   return (
@@ -38,12 +38,12 @@ export function BibleScopeSelect({ value, onChange }: BibleScopeSelectProps) {
           boxSizing: "border-box",
           border: `1px solid ${t.line}`,
           borderRadius: 12,
-          padding: "12px 14px",
+          padding: compact ? "12px 8px" : "12px 14px",
           backgroundColor: t.surface,
           color: t.text,
           colorScheme: t.dark ? "dark" : "light",
           fontFamily: "inherit",
-          fontSize: 15,
+          fontSize: compact ? 12 : 15,
           lineHeight: "24px",
           cursor: "pointer",
           outline: focused ? `2px solid ${t.gold}` : undefined,

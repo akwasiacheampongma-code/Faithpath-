@@ -29,3 +29,7 @@ Die Original-FaithPath-Dateien und GitHub-main bleiben unverändert. Öffentlich
 ## Nachfolgende Gestaltungsvorschauen
 
 Der Nutzer hat das Geschichtenkonzept grundsätzlich freigegeben, verlangt aber vor der vollständigen Integration drei konkrete Smartphone-Ansichten: Bibliothek, illustrierte Originaleinheit mit Fragen/Reflexion und bildloser Psalm oder Brief. Vorhandene Bilder und OLIVA-Tokens sind maßgeblich; keine neuen Bilder. Alle 436 Originaleinheiten, 2.479 Frageelemente und 436 Reflexionsimpulse bleiben der freigegebene Zielbestand. Die vollständige Sammlung wird **erst nach einer weiteren ausdrücklichen Gestaltungsfreigabe** integriert. Die Freigabe dieser Vorschauen ist keine bereits erteilte Vollintegrationsfreigabe.
+
+## Reader-Phase abgeschlossen
+
+Die unabhängige Endabnahme für die ausgelieferte 0.13.1 ist erfolgreich: CI 43949849283 bestätigt 293/293 Fachtests und 130/130 Browserfälle im ersten Versuch. Alle vorhandenen App-Einstiege nutzen denselben Reader; keine zusätzliche eigenständige Readerintegration bleibt offen. [Endabnahme, Einstiege und Grenzen](27-reader-phase-closeout.md). Die native Geräteabnahme und andere Master-Aufgaben bleiben getrennt offen.

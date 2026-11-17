@@ -113,6 +113,7 @@ test("eine installierte private V4-Speicherung migriert beim Lesen ohne Datenver
   delete old.data.retainedReviewGrowth;
   delete old.data.invitations;
   delete old.data.ntStudy;
+  delete old.data.storyStudy;
   old.data.version = 4;
   old.data.reading = { book: "JHN", chapter: 6 };
   await page.evaluate(
@@ -134,6 +135,6 @@ test("eine installierte private V4-Speicherung migriert beim Lesen ohne Datenver
   );
   await page.goto("/lesen/JHN?chapter=6&verse=35");
   await anchor(page, 35);
-  expect((await localData(page)).version).toBe(9);
+  expect((await localData(page)).version).toBe(10);
   expect((await localData(page)).name).toBe("Ada");
 });

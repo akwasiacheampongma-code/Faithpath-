@@ -37,6 +37,7 @@ runs:
       run: |
         npm run content:check
         npm run content:nt
+        npm run content:stories
         npm run content:art
         npm run content:tree
         npm run content:swords

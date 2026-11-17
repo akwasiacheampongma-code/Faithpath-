@@ -142,7 +142,7 @@ describe("Entwürfe mit festem Kontext", () => {
         retainedReviewGrowth,
         invitations,
         ntStudy,
-        ...current
+        storyStudy, ...current
       } = initialData(),
       old = {
         ...current,
@@ -161,7 +161,7 @@ describe("Entwürfe mit festem Kontext", () => {
       bytes = JSON.stringify(old);
     expect(decodeData(old)).toEqual({
       ...old,
-      version: 9,
+      version: 10, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},

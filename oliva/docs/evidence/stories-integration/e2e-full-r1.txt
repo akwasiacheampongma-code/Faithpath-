@@ -1,0 +1,47 @@
+[WebServer] (node:77206) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 138 tests using 1 worker
+
+(node:77220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    1 tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (19.1s)
+  ✓    2 tests/e2e/a51-tree.spec.ts:200:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (5.3s)
+  ✓    3 tests/e2e/a51-tree.spec.ts:224:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (6.1s)
+  ✓    4 tests/e2e/a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (3.9s)
+  ✓    5 tests/e2e/a51-tree.spec.ts:250:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (3.6s)
+  ✓    6 tests/e2e/archives.spec.ts:57:1 › ein großer Originalblob wird bei Entwurfsänderungen nicht erneut geschrieben (7.5s)
+  ✓    7 tests/e2e/archives.spec.ts:95:1 › verwaiste Blobs werden entfernt und Quellen der Rückkehrsicherung bleiben erhalten (11.0s)
+  ✓    8 tests/e2e/archives.spec.ts:130:1 › Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unverändert (5.1s)
+  ✘    9 tests/e2e/archives.spec.ts:149:1 › beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern (3.2s)
+
+
+  1) tests/e2e/archives.spec.ts:149:1 › beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern 
+
+    Test was interrupted.
+
+    Error: page.reload: Test ended.
+    Call log:
+      - waiting for navigation until "load"
+
+
+      172 |     broken,
+      173 |   );
+    > 174 |   await page.reload();
+          |              ^
+      175 |   await expect(
+      176 |     page.getByText("Dein Speicher braucht Aufmerksamkeit.", { exact: true }),
+      177 |   ).toBeVisible();
+        at /workspace/faithpath-next/tests/e2e/archives.spec.ts:174:14
+
+    Error Context: test-results-stories-full-r1/archives-beschädigte-Daten-b6c9f-ndert-zur-Reparatur-sichern/error-context.md
+
+  1 interrupted
+    tests/e2e/archives.spec.ts:149:1 › beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern 
+  129 did not run
+  8 passed (1.2m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

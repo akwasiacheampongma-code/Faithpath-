@@ -250,6 +250,7 @@ test("Eine installierte V1-Datenbank wird ohne Verlust weitergeführt", async ({
     retainedReviewGrowth,
     invitations,
     ntStudy,
+    storyStudy,
     ...rest
   } = await local(page);
   const old = {
@@ -288,7 +289,7 @@ test("Eine installierte V1-Datenbank wird ohne Verlust weitergeführt", async ({
   await page
     .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
     .click();
-  expect((await local(page)).version).toBe(9);
+  expect((await local(page)).version).toBe(10);
   expect((await local(page)).readChapters).toEqual(["MRK:4"]);
   expect((await local(page)).growthStage).toBe(3);
   expect((await local(page)).notes[0]?.text).toBe("Meine alten eigenen Worte.");

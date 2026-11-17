@@ -1,0 +1,93 @@
+[WebServer] (node:74507) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:74515) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/stories.spec.ts:20:1 › 436 Originaleinheiten sind auffindbar, standardmäßig gesamte Bibel und tatsächlich virtualisiert (2.0m)
+(node:74818) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/stories.spec.ts:43:1 › Originalantworten bleiben nach Neustart änderbar, ohne Lesen oder Baumwachstum auszulösen (5.6s)
+  ✓  3 tests/e2e/stories.spec.ts:64:1 › auch die längste Einheit führt durch alle 31 Fragen und setzt genau am letzten Schritt fort (6.8s)
+  ✘  4 tests/e2e/stories.spec.ts:84:1 › Reflexionsentwürfe führen über die Sammlung zur richtigen Einheit und bewahren die Originalquelle (2.3s)
+(node:75074) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/e2e/stories.spec.ts:108:1 › Judas öffnet zwei exakte Lesebereiche; ein gefälschter Reflexionslink zeigt niemals den Editor (5.9s)
+  ✓  6 tests/e2e/stories.spec.ts:121:1 › ein echter Zwei-Fenster-Konflikt bewahrt die lokale Auswahl bis zur ausdrücklichen Übernahme (4.8s)
+  ✓  7 tests/e2e/stories.spec.ts:139:1 › ein noch nie geöffneter Abschnitt und die Originalfragen funktionieren beim Offline-Neustart (5.5s)
+  ✘  8 tests/e2e/stories.spec.ts:150:1 › bestätigte Ansichten bleiben auf kleinen Displays, in Dunkelansicht und per Tastatur barrierearm (10.0s)
+
+
+  1) tests/e2e/stories.spec.ts:20:1 › 436 Originaleinheiten sind auffindbar, standardmäßig gesamte Bibel und tatsächlich virtualisiert 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.click: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Bibelbereich', exact: true }).visible()
+
+
+      24 |   const count = await page.locator('[data-testid^="story-row-"]').count();
+      25 |   expect(count).toBeGreaterThan(0); expect(count).toBeLessThan(80);
+    > 26 |   await button(page, "Bibelbereich").click();
+         |                                      ^
+      27 |   await expect(radio(page, "Gesamte Bibel")).toBeChecked();
+      28 |   await radio(page, "Neues Testament").check();
+      29 |   await expect(page.getByText("329 Abschnitte", { exact: true })).toBeVisible();
+        at /workspace/faithpath-next/tests/e2e/stories.spec.ts:26:38
+
+    Error Context: test-results/stories-436-Originaleinhei-767ce-d-tatsächlich-virtualisiert/error-context.md
+
+  2) tests/e2e/stories.spec.ts:84:1 › Reflexionsentwürfe führen über die Sammlung zur richtigen Einheit und bewahren die Originalquelle 
+
+    TypeError: Cannot read properties of undefined (reading 'drafts')
+
+      86 |   const text = "Mein Gedanke zum Psalm.\nEr darf noch unfertig sein.";
+      87 |   await thought(page).fill(text);
+    > 88 |   await expect.poll(async () => (await localData(page)).drafts.length).toBe(1);
+         |                                                         ^
+      89 |   const draft = (await localData(page)).drafts[0]!;
+      90 |   await page.goto("/sammlung?tab=Entw%C3%BCrfe");
+      91 |   await button(page, "Entwurf fortsetzen: Reflexion: " + psalm.title).click();
+        at /workspace/faithpath-next/tests/e2e/stories.spec.ts:88:57
+        at /workspace/faithpath-next/tests/e2e/stories.spec.ts:88:3
+
+    Error Context: test-results/stories-Reflexionsentwürfe-28163-bewahren-die-Originalquelle/error-context.md
+
+  3) tests/e2e/stories.spec.ts:150:1 › bestätigte Ansichten bleiben auf kleinen Displays, in Dunkelansicht und per Tastatur barrierearm 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { level: 1 }).visible()
+    Expected: visible
+    Error: strict mode violation: getByRole('heading', { level: 1 }).visible() resolved to 2 elements:
+        1) <h1 dir="auto" aria-level="1" role="heading" class="css-146c3p1">Was Gott gereinigt hat</h1> aka getByRole('heading', { name: 'Was Gott gereinigt hat' })
+        2) <h1 dir="auto" role="heading" class="css-146c3p1" data-testid="story-question-heading">Welche Reihenfolge fällt in diesem Abschnitt beso…</h1> aka getByTestId('story-question-heading')
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { level: 1 }).visible() with timeout 15000ms
+      - waiting for getByRole('heading', { level: 1 }).visible()
+
+
+      159 |     for (const [name, route] of [["library", "/geschichten"], ["illustrated", "/geschichte/NS-0241"], ["psalm", "/geschichte/NS-0073"], ["questions", "/geschichte/NS-0324?stage=verstehen&index=30"]]) {
+      160 |       await page.goto(route!); await page.evaluate(() => document.fonts.ready.then(() => undefined));
+    > 161 |       await expect(page.getByRole("heading", { level: 1 }).filter({ visible: true })).toBeVisible();
+          |                                                                                       ^
+      162 |       if (name === "psalm") { await expect(page.getByTestId("story-typographic-hero")).toBeVisible(); }
+      163 |       if (name === "questions") await expect(question(page)).toBeVisible();
+      164 |       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+        at /workspace/faithpath-next/tests/e2e/stories.spec.ts:161:87
+
+    Error Context: test-results/stories-bestätigte-Ansicht-aee03-nd-per-Tastatur-barrierearm/error-context.md
+
+  3 failed
+    tests/e2e/stories.spec.ts:20:1 › 436 Originaleinheiten sind auffindbar, standardmäßig gesamte Bibel und tatsächlich virtualisiert 
+    tests/e2e/stories.spec.ts:84:1 › Reflexionsentwürfe führen über die Sammlung zur richtigen Einheit und bewahren die Originalquelle 
+    tests/e2e/stories.spec.ts:150:1 › bestätigte Ansichten bleiben auf kleinen Displays, in Dunkelansicht und per Tastatur barrierearm 
+  5 passed (2.8m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

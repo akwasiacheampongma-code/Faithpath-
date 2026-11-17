@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/verify-oliva-ci0131.py", line 222, in <module>
+    prior = repo_api(f'actions/runs/{historical_id}')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/verify-oliva-ci0131.py", line 38, in repo_api
+    def repo_api(path, binary=False): return api('repos/' + REPO + '/' + path, binary)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/verify-oliva-ci0131.py", line 36, in api
+    raise RuntimeError('GitHub API request failed: ' + path.split('?')[0])
+RuntimeError: GitHub API request failed: repos/akwasiacheampongma-code/Faithpath-/actions/runs/42629368592

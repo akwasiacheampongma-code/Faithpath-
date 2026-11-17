@@ -1,0 +1,479 @@
+{
+  "config": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/faithpath-next/node_modules/.bin/playwright",
+      "test",
+      "tests/e2e/stories.spec.ts"
+    ],
+    "configFile": "/workspace/faithpath-next/playwright.config.ts",
+    "rootDir": "/workspace/faithpath-next/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspace/faithpath-next/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspace/faithpath-next/tests/e2e",
+        "snapshotDir": "/workspace/faithpath-next/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://localhost:4173",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "headless": true,
+          "launchOptions": {
+            "executablePath": "/usr/bin/chromium",
+            "args": [
+              "--no-sandbox"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/stories-integration/e2e-stories-r1.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.0",
+    "workers": 1,
+    "webServer": {
+      "command": "PORT=4173 node scripts/serve.mjs",
+      "port": 4173,
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "stories.spec.ts",
+      "file": "stories.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "436 Originaleinheiten sind auffindbar, standardmäßig gesamte Bibel und tatsächlich virtualisiert",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 120086,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 120000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/stories.spec.ts",
+                        "column": 38,
+                        "line": 26
+                      },
+                      "message": "Error: locator.click: Test timeout of 120000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Bibelbereich', exact: true }).visible()\u001b[22m\n\n\n  24 |   const count = await page.locator('[data-testid^=\"story-row-\"]').count();\n  25 |   expect(count).toBeGreaterThan(0); expect(count).toBeLessThan(80);\n> 26 |   await button(page, \"Bibelbereich\").click();\n     |                                      ^\n  27 |   await expect(radio(page, \"Gesamte Bibel\")).toBeChecked();\n  28 |   await radio(page, \"Neues Testament\").check();\n  29 |   await expect(page.getByText(\"329 Abschnitte\", { exact: true })).toBeVisible();\n    at /workspace/faithpath-next/tests/e2e/stories.spec.ts:26:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T22:51:29.569Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/stories-436-Originaleinhei-767ce-d-tatsächlich-virtualisiert/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4a7870dab9f2beb54560-17900be1002032f48b43",
+          "file": "stories.spec.ts",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "Originalantworten bleiben nach Neustart änderbar, ohne Lesen oder Baumwachstum auszulösen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5631,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T22:53:31.573Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a7870dab9f2beb54560-0bb0a1ed8699ce164d3f",
+          "file": "stories.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "auch die längste Einheit führt durch alle 31 Fragen und setzt genau am letzten Schritt fort",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6755,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T22:53:37.658Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a7870dab9f2beb54560-87f56097aef83661e104",
+          "file": "stories.spec.ts",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "Reflexionsentwürfe führen über die Sammlung zur richtigen Einheit und bewahren die Originalquelle",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2290,
+                  "error": {
+                    "message": "TypeError: Cannot read properties of undefined (reading 'drafts')",
+                    "stack": "TypeError: Cannot read properties of undefined (reading 'drafts')\n    at /workspace/faithpath-next/tests/e2e/stories.spec.ts:88:57\n    at /workspace/faithpath-next/tests/e2e/stories.spec.ts:88:3",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/stories.spec.ts",
+                      "column": 57,
+                      "line": 88
+                    },
+                    "snippet": " \u001b[90m 86 |\u001b[39m   \u001b[36mconst\u001b[39m text \u001b[33m=\u001b[39m \u001b[32m\"Mein Gedanke zum Psalm.\\nEr darf noch unfertig sein.\"\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 87 |\u001b[39m   \u001b[36mawait\u001b[39m thought(page)\u001b[33m.\u001b[39mfill(text)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 88 |\u001b[39m   \u001b[36mawait\u001b[39m expect\u001b[33m.\u001b[39mpoll(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m (\u001b[36mawait\u001b[39m localData(page))\u001b[33m.\u001b[39mdrafts\u001b[33m.\u001b[39mlength)\u001b[33m.\u001b[39mtoBe(\u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 89 |\u001b[39m   \u001b[36mconst\u001b[39m draft \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m localData(page))\u001b[33m.\u001b[39mdrafts[\u001b[35m0\u001b[39m]\u001b[33m!\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 90 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m\"/sammlung?tab=Entw%C3%BCrfe\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 91 |\u001b[39m   \u001b[36mawait\u001b[39m button(page\u001b[33m,\u001b[39m \u001b[32m\"Entwurf fortsetzen: Reflexion: \"\u001b[39m \u001b[33m+\u001b[39m psalm\u001b[33m.\u001b[39mtitle)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/stories.spec.ts",
+                        "column": 57,
+                        "line": 88
+                      },
+                      "message": "TypeError: Cannot read properties of undefined (reading 'drafts')\n\n  86 |   const text = \"Mein Gedanke zum Psalm.\\nEr darf noch unfertig sein.\";\n  87 |   await thought(page).fill(text);\n> 88 |   await expect.poll(async () => (await localData(page)).drafts.length).toBe(1);\n     |                                                         ^\n  89 |   const draft = (await localData(page)).drafts[0]!;\n  90 |   await page.goto(\"/sammlung?tab=Entw%C3%BCrfe\");\n  91 |   await button(page, \"Entwurf fortsetzen: Reflexion: \" + psalm.title).click();\n    at /workspace/faithpath-next/tests/e2e/stories.spec.ts:88:57\n    at /workspace/faithpath-next/tests/e2e/stories.spec.ts:88:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T22:53:44.448Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/stories-Reflexionsentwürfe-28163-bewahren-die-Originalquelle/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/stories.spec.ts",
+                    "column": 57,
+                    "line": 88
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4a7870dab9f2beb54560-891795d16a74453faba1",
+          "file": "stories.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "Judas öffnet zwei exakte Lesebereiche; ein gefälschter Reflexionslink zeigt niemals den Editor",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5870,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T22:53:47.418Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a7870dab9f2beb54560-931a2a8411bddf205319",
+          "file": "stories.spec.ts",
+          "line": 108,
+          "column": 1
+        },
+        {
+          "title": "ein echter Zwei-Fenster-Konflikt bewahrt die lokale Auswahl bis zur ausdrücklichen Übernahme",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4822,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T22:53:53.623Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a7870dab9f2beb54560-53885dcc5ddf90aaf28c",
+          "file": "stories.spec.ts",
+          "line": 121,
+          "column": 1
+        },
+        {
+          "title": "ein noch nie geöffneter Abschnitt und die Originalfragen funktionieren beim Offline-Neustart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5516,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T22:53:58.470Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a7870dab9f2beb54560-2d406e106741e613610e",
+          "file": "stories.spec.ts",
+          "line": 139,
+          "column": 1
+        },
+        {
+          "title": "bestätigte Ansichten bleiben auf kleinen Displays, in Dunkelansicht und per Tastatur barrierearm",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9992,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { level: 1 }).visible()\nExpected: visible\nError: strict mode violation: getByRole('heading', { level: 1 }).visible() resolved to 2 elements:\n    1) <h1 dir=\"auto\" aria-level=\"1\" role=\"heading\" class=\"css-146c3p1\">Was Gott gereinigt hat</h1> aka getByRole('heading', { name: 'Was Gott gereinigt hat' })\n    2) <h1 dir=\"auto\" role=\"heading\" class=\"css-146c3p1\" data-testid=\"story-question-heading\">Welche Reihenfolge fällt in diesem Abschnitt beso…</h1> aka getByTestId('story-question-heading')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { level: 1 }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { level: 1 }).visible()\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { level: 1 }).visible()\nExpected: visible\nError: strict mode violation: getByRole('heading', { level: 1 }).visible() resolved to 2 elements:\n    1) <h1 dir=\"auto\" aria-level=\"1\" role=\"heading\" class=\"css-146c3p1\">Was Gott gereinigt hat</h1> aka getByRole('heading', { name: 'Was Gott gereinigt hat' })\n    2) <h1 dir=\"auto\" role=\"heading\" class=\"css-146c3p1\" data-testid=\"story-question-heading\">Welche Reihenfolge fällt in diesem Abschnitt beso…</h1> aka getByTestId('story-question-heading')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { level: 1 }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { level: 1 }).visible()\u001b[22m\n\n    at /workspace/faithpath-next/tests/e2e/stories.spec.ts:161:87",
+                    "location": {
+                      "file": "/workspace/faithpath-next/tests/e2e/stories.spec.ts",
+                      "column": 87,
+                      "line": 161
+                    },
+                    "snippet": " \u001b[90m 159 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m [name\u001b[33m,\u001b[39m route] \u001b[36mof\u001b[39m [[\u001b[32m\"library\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"/geschichten\"\u001b[39m]\u001b[33m,\u001b[39m [\u001b[32m\"illustrated\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"/geschichte/NS-0241\"\u001b[39m]\u001b[33m,\u001b[39m [\u001b[32m\"psalm\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"/geschichte/NS-0073\"\u001b[39m]\u001b[33m,\u001b[39m [\u001b[32m\"questions\"\u001b[39m\u001b[33m,\u001b[39m \u001b[32m\"/geschichte/NS-0324?stage=verstehen&index=30\"\u001b[39m]]) {\n \u001b[90m 160 |\u001b[39m       \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(route\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m document\u001b[33m.\u001b[39mfonts\u001b[33m.\u001b[39mready\u001b[33m.\u001b[39mthen(() \u001b[33m=>\u001b[39m undefined))\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 161 |\u001b[39m       \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { level\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m })\u001b[33m.\u001b[39mfilter({ visible\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m }))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                                                                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 162 |\u001b[39m       \u001b[36mif\u001b[39m (name \u001b[33m===\u001b[39m \u001b[32m\"psalm\"\u001b[39m) { \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByTestId(\u001b[32m\"story-typographic-hero\"\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m }\n \u001b[90m 163 |\u001b[39m       \u001b[36mif\u001b[39m (name \u001b[33m===\u001b[39m \u001b[32m\"questions\"\u001b[39m) \u001b[36mawait\u001b[39m expect(question(page))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 164 |\u001b[39m       expect(\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(() \u001b[33m=>\u001b[39m document\u001b[33m.\u001b[39mdocumentElement\u001b[33m.\u001b[39mscrollWidth \u001b[33m<=\u001b[39m innerWidth))\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/faithpath-next/tests/e2e/stories.spec.ts",
+                        "column": 87,
+                        "line": 161
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { level: 1 }).visible()\nExpected: visible\nError: strict mode violation: getByRole('heading', { level: 1 }).visible() resolved to 2 elements:\n    1) <h1 dir=\"auto\" aria-level=\"1\" role=\"heading\" class=\"css-146c3p1\">Was Gott gereinigt hat</h1> aka getByRole('heading', { name: 'Was Gott gereinigt hat' })\n    2) <h1 dir=\"auto\" role=\"heading\" class=\"css-146c3p1\" data-testid=\"story-question-heading\">Welche Reihenfolge fällt in diesem Abschnitt beso…</h1> aka getByTestId('story-question-heading')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { level: 1 }).visible() with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { level: 1 }).visible()\u001b[22m\n\n\n  159 |     for (const [name, route] of [[\"library\", \"/geschichten\"], [\"illustrated\", \"/geschichte/NS-0241\"], [\"psalm\", \"/geschichte/NS-0073\"], [\"questions\", \"/geschichte/NS-0324?stage=verstehen&index=30\"]]) {\n  160 |       await page.goto(route!); await page.evaluate(() => document.fonts.ready.then(() => undefined));\n> 161 |       await expect(page.getByRole(\"heading\", { level: 1 }).filter({ visible: true })).toBeVisible();\n      |                                                                                       ^\n  162 |       if (name === \"psalm\") { await expect(page.getByTestId(\"story-typographic-hero\")).toBeVisible(); }\n  163 |       if (name === \"questions\") await expect(question(page)).toBeVisible();\n  164 |       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);\n    at /workspace/faithpath-next/tests/e2e/stories.spec.ts:161:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-16T22:54:04.006Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/faithpath-next/test-results/stories-bestätigte-Ansicht-aee03-nd-per-Tastatur-barrierearm/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/faithpath-next/tests/e2e/stories.spec.ts",
+                    "column": 87,
+                    "line": 161
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4a7870dab9f2beb54560-05cdbc0a853936f1f0c4",
+          "file": "stories.spec.ts",
+          "line": 150,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-16T22:51:26.636Z",
+    "duration": 167516.416,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

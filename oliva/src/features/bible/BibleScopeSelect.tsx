@@ -8,9 +8,10 @@ import { BIBLE_SCOPES, type BibleScope } from "./book-search";
 export type BibleScopeSelectProps = {
   value: BibleScope;
   onChange: (value: BibleScope) => void;
+  compact?: boolean;
 };
 
-export function BibleScopeSelect({ value, onChange }: BibleScopeSelectProps) {
+export function BibleScopeSelect({ value, onChange, compact = false }: BibleScopeSelectProps) {
   const t = useTheme(),
     [open, setOpen] = useState(false),
     selected = BIBLE_SCOPES.find((scope) => scope.value === value)!;
@@ -28,18 +29,18 @@ export function BibleScopeSelect({ value, onChange }: BibleScopeSelectProps) {
         onPress={() => setOpen(true)}
         style={({ pressed }) => ({
           minHeight: 50,
-          padding: 14,
+          padding: compact ? 10 : 14,
           borderWidth: 1,
           borderColor: t.line,
           borderRadius: 12,
           backgroundColor: t.surface,
           flexDirection: "row",
           alignItems: "center",
-          gap: 12,
+          gap: compact ? 6 : 12,
           opacity: pressed ? 0.75 : 1,
         })}
       >
-        <T style={{ flex: 1 }}>{selected.label}</T>
+        <T style={{ flex: 1, ...(compact ? { fontSize: 12 } : {}) }}>{selected.label}</T>
         <View style={{ transform: [{ rotate: "90deg" }] }}>
           <Icon name="chevron" size={17} color={t.muted} />
         </View>

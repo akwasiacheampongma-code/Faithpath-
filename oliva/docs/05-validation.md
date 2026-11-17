@@ -1,5 +1,8 @@
 # Qualität und Abnahme
 
+Aktueller 0.14-Nachweis:312/312 Fachtests, ein vollständiger 138/138-Browserlauf ohne Retries, Skips oder instabile Ergebnisse, zwei statische native Exporte, vollständige Katalogvergleiche und echter 0.13.1→0.14-PWA-Wechsel. Rechtebeilagen wurden gesondert bei identischen ausführbaren Bytes paketiert und geprüft. Private HTTP-/Eigentümerkontrollen bestehen; reale Geräte und gehostete Browser-QA bleiben getrennt offen. [Abnahme](evidence/stories-integration/validation-summary.json).
+
+
 Dokumentationsstand: 16.11.2026. Lokale Prüfungen unter Linux, Node 24.22.1, npm 11.9.0 und systemweitem Headless-Chromium über Playwright. Browsergrößen sind simulierte CSS-Viewports. Nicht auf physischen Smartphones getestet.
 
 <!-- OLIVA-013-VALIDATION:BEGIN -->

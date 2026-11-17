@@ -62,6 +62,9 @@ import {
   type NtPosition,
 } from "../features/quiz/state-schema";
 import { parseFaithpath } from "../features/imports/source";
+import { storyById } from "../features/stories/index";
+import { saveStoryAnswer, rememberStoryPosition, viewStoryQuestion } from "../features/stories/model";
+import { storyPositionSchema, type StoryPosition } from "../features/stories/state-schema";
 
 // A stamp may be supplied as a complete saved draft. Extract its two contract
 // fields and validate a detached snapshot before an earlier queued write yields.
@@ -122,6 +125,8 @@ export type Store = {
     choice: number,
     expectedStamp: string | null,
   ) => Promise<boolean>;
+  saveStoryResponse: (unitId: string, questionId: string, displayedHash: string, choice: number, expectedStamp: string | null) => Promise<boolean>;
+  rememberStoryStep: (position: StoryPosition, viewedIndex?: number) => Promise<boolean>;
   completeNtStudy: (
     book: string,
     chapter: number,
@@ -556,6 +561,27 @@ export const useApp = create<Store>((set, get) => {
           false,
         );
       }),
+    saveStoryResponse: (unitId, questionId, displayedHash, choice, expectedStamp) =>
+      action(false, async () => {
+        const { storyQuestion } = await import("../features/stories/catalog");
+        const unit = storyById(unitId), question = storyQuestion(questionId);
+        if (!unit || !question || question.unitId !== unitId || question.hash !== displayedHash)
+          throw new Error("Die Originalfragenfassung ist nicht mehr aktuell. Deine bisherigen Antworten bleiben erhalten.");
+        return persist((data) => saveStoryAnswer(data.storyStudy, unit, question, choice, expectedStamp, new Date().toISOString()), {}, false);
+      }),
+    rememberStoryStep: (position, viewedIndex) => {
+      const requested = { ...position };
+      return action(false, () => {
+        const next = storyPositionSchema.parse(requested);
+        const unit = storyById(next.unitId)!;
+        if (next.setHash !== unit.questionSetHash)
+          throw new Error("Dieser Fragensatz ist nicht mehr aktuell.");
+        return persist((data) => {
+          const viewed = viewedIndex === undefined ? false : viewStoryQuestion(data.storyStudy, unit, viewedIndex);
+          return rememberStoryPosition(data.storyStudy, next) || viewed;
+        }, {}, false);
+      });
+    },
     saveNtResponse: (questionId, displayedHash, choice, expectedStamp) =>
       action(false, async () => {
         // Load the large source bank only for a deliberate study action.

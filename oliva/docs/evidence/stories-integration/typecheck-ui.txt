@@ -1,0 +1,5 @@
+
+> oliva-faith-companion@0.13.1 typecheck
+> tsc --noEmit
+
+tests/e2e/invitations.spec.ts(27,5): error TS2322: Type '9' is not assignable to type '10'.

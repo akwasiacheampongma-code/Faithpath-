@@ -1,0 +1,229 @@
+Story upgrade phase: seed-only-through-shipped-0131-ui
+Story upgrade phase: activate-real-worker-without-automatic-data-write
+Story upgrade phase: first-offline-library-and-question-visits-leave-all-v9-records-exact
+Story upgrade phase: first-explicit-answer-writes-v10-without-touching-any-existing-domain
+Story upgrade phase: new-two-range-reflection-draft-and-old-drafts-remain-independent
+Story upgrade phase: offline-old-nt-and-all-seven-a51-stages
+Story upgrade phase: actual-v10-backup-download-and-restore-preview
+Story upgrade phase: complete
+{
+  "passed": true,
+  "baselineVersion": "0.13.1",
+  "baselineBuild": "oliva-1f49306347c4f496",
+  "targetVersion": "0.14.0",
+  "targetBuild": "oliva-2077ca680180fb6b",
+  "baselineHtmlSha256": "27869084c056328f45877db3d14d52fc8957429b23988640b471fffbd3eff052",
+  "baselineWorkerSha256": "2b17c8d1dcb7c37b1e8f50d12622d856e115cd89728f3f51ef8e450c3a5f8f82",
+  "targetHtmlSha256": "31ad10fb12d1f75f2e0af03217bf633b77bf58672cd26e73316dff159fe22023",
+  "targetWorkerSha256": "7d0292381e912aa2dc97c493c49e32581c14514d93bcf9951c16fdee103c18fb",
+  "syntheticData": true,
+  "syntheticClock": "2027-01-01T12:00:00.000Z",
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "runtimeInputsBefore": {
+    "fileCount": 344,
+    "sha256": "63e540c438f6c002429e22b0df45c51c4b370bcb344ae51f8a7855c9080e0976",
+    "allFileHashesMatch": true
+  },
+  "phases": [
+    {
+      "name": "seed-only-through-shipped-0131-ui",
+      "startedAt": "2026-11-17T03:48:39.851Z"
+    },
+    {
+      "name": "activate-real-worker-without-automatic-data-write",
+      "startedAt": "2026-11-17T03:48:55.071Z"
+    },
+    {
+      "name": "first-offline-library-and-question-visits-leave-all-v9-records-exact",
+      "startedAt": "2026-11-17T03:49:02.183Z"
+    },
+    {
+      "name": "first-explicit-answer-writes-v10-without-touching-any-existing-domain",
+      "startedAt": "2026-11-17T03:49:08.179Z"
+    },
+    {
+      "name": "new-two-range-reflection-draft-and-old-drafts-remain-independent",
+      "startedAt": "2026-11-17T03:49:10.484Z"
+    },
+    {
+      "name": "offline-old-nt-and-all-seven-a51-stages",
+      "startedAt": "2026-11-17T03:49:14.478Z"
+    },
+    {
+      "name": "actual-v10-backup-download-and-restore-preview",
+      "startedAt": "2026-11-17T03:49:17.883Z"
+    },
+    {
+      "name": "complete",
+      "startedAt": "2026-11-17T03:49:19.508Z"
+    }
+  ],
+  "origin": "http://127.0.0.1:45889",
+  "browserVersion": "155.0.8059.79",
+  "phase": "complete",
+  "beforeRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "d92b1cf47f772a3b149dafcf8f381a81f8b1c1e32c48acc6805180f454a94de8"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 5931,
+      "json_sha256": "fa5912d41e8fb4176d1537c1952d0387a5333f0c6a52d840f110198d8920a141"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "beforeWorker": {
+    "expected": "oliva-1f49306347c4f496",
+    "controller": {
+      "id": "oliva-1f49306347c4f496",
+      "version": "0.13.1"
+    },
+    "active": {
+      "id": "oliva-1f49306347c4f496",
+      "version": "0.13.1"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-1f49306347c4f496"
+    ]
+  },
+  "afterWorker": {
+    "expected": "oliva-2077ca680180fb6b",
+    "controller": {
+      "id": "oliva-2077ca680180fb6b",
+      "version": "0.14.0"
+    },
+    "active": {
+      "id": "oliva-2077ca680180fb6b",
+      "version": "0.14.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-1f49306347c4f496",
+      "oliva-2077ca680180fb6b"
+    ]
+  },
+  "realWorkerActivation": true,
+  "sameOriginPersistentProfile": true,
+  "allFourRawV9RecordsExactBeforeNewActions": true,
+  "afterAnswerRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "d92b1cf47f772a3b149dafcf8f381a81f8b1c1e32c48acc6805180f454a94de8"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 7460,
+      "json_sha256": "5d75025bdd739024a44ce15d62b29be87129f6373c1e20decc65f7028756d7e3"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "firstExplicitWriteMigratedOnlyVersionRevisionStoryStudy": true,
+  "afterStoryDraftRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "d92b1cf47f772a3b149dafcf8f381a81f8b1c1e32c48acc6805180f454a94de8"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8206,
+      "json_sha256": "44d09bd2b28ba332941cedabd4ccece0cb14619008ab359ca11cc781424ee795"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "storyDraftResumedWithBothOriginalRanges": true,
+  "offlineA51Stages": 7,
+  "oldNtAnswerUnchanged": true,
+  "actualV10DownloadAndRestorePreview": true,
+  "restoreWasNotApplied": true,
+  "exportSha256": "b7d69ebb901e1ec490999a874414fc3f363966e71da72474935240e826ddccae",
+  "finalRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 733,
+      "json_sha256": "d92b1cf47f772a3b149dafcf8f381a81f8b1c1e32c48acc6805180f454a94de8"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8206,
+      "json_sha256": "44d09bd2b28ba332941cedabd4ccece0cb14619008ab359ca11cc781424ee795"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "allOriginalDomainsAndNonMainRecordsPreserved": true,
+  "packagingInputsBefore": {
+    "sha256": "e8ee6fc9873f22eddc22f715a4ed6a0cfcc94118d929453ec5acb2218730583f",
+    "files": 5,
+    "allFileHashesMatch": true
+  },
+  "packagingInputsAfter": {
+    "sha256": "e8ee6fc9873f22eddc22f715a4ed6a0cfcc94118d929453ec5acb2218730583f",
+    "files": 5,
+    "allFileHashesMatch": true
+  },
+  "runtimeInputsAfter": {
+    "fileCount": 344,
+    "sha256": "63e540c438f6c002429e22b0df45c51c4b370bcb344ae51f8a7855c9080e0976",
+    "allFileHashesMatch": true
+  },
+  "builtHtmlAndWorkersUnchanged": true,
+  "sourceUnchangedDuringUpgrade": true
+}

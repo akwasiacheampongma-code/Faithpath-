@@ -37,7 +37,7 @@ describe("Unveränderliche Originalquellen außerhalb des laufenden Payloads", (
         retainedReviewGrowth,
         invitations,
         ntStudy,
-        ...current
+        storyStudy, ...current
       } = initialData(),
       old = { ...current, version: 3, name: "Ada" },
       load = vi.fn(async () => {
@@ -45,7 +45,7 @@ describe("Unveränderliche Originalquellen außerhalb des laufenden Payloads", (
       });
     expect(await decodeStored(old, load)).toEqual({
       ...old,
-      version: 9,
+      version: 10, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},

@@ -63,6 +63,7 @@ export function Shell({
   onScroll,
   readerToolbar,
   readerActions,
+  scrollable = true,
 }: {
   children: React.ReactNode;
   wide?: boolean;
@@ -71,6 +72,7 @@ export function Shell({
   onScroll?: ScrollViewProps["onScroll"];
   readerToolbar?: React.ReactNode;
   readerActions?: React.ReactNode;
+  scrollable?: boolean;
 }) {
   const viewport = useViewportSignals(),
     viewportRef = useRef<React.ComponentRef<typeof ScrollView>>(null);
@@ -117,7 +119,7 @@ export function Shell({
     const active =
       path === n.path ||
       (n.path === "/wege" && path.startsWith("/vorhaben")) ||
-      (n.path === "/bibel" && path.startsWith("/buch/"));
+      (n.path === "/bibel" && ["/buch/", "/geschichte/", "/geschichten"].some((prefix) => path.startsWith(prefix)));
     return (
       <Pressable
         key={String(n.path)}
@@ -343,7 +345,9 @@ export function Shell({
             {readerToolbar}
           </View>
         ) : null}
-        <ScrollView
+        {!scrollable ? <View role="main" style={{ flex: 1, minHeight: 0 }}>
+          <ViewportSignals.Provider value={viewport}>{children}</ViewportSignals.Provider>
+        </View> : <ScrollView
           role="main"
           ref={attachScroll}
           onLayout={measureViewport}
@@ -370,7 +374,7 @@ export function Shell({
               {children}
             </ViewportSignals.Provider>
           </View>
-        </ScrollView>
+        </ScrollView>}
         {reader && readerActions ? (
           <View
             pointerEvents="box-none"

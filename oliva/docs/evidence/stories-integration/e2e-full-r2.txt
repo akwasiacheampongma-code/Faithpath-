@@ -1,0 +1,121 @@
+[WebServer] (node:77722) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 138 tests using 1 worker
+
+(node:77730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    1 tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (20.0s)
+  ✓    2 tests/e2e/a51-tree.spec.ts:200:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (5.4s)
+  ✓    3 tests/e2e/a51-tree.spec.ts:224:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (8.7s)
+  ✓    4 tests/e2e/a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (4.4s)
+  ✓    5 tests/e2e/a51-tree.spec.ts:250:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (4.5s)
+  ✓    6 tests/e2e/archives.spec.ts:57:1 › ein großer Originalblob wird bei Entwurfsänderungen nicht erneut geschrieben (8.2s)
+  ✓    7 tests/e2e/archives.spec.ts:95:1 › verwaiste Blobs werden entfernt und Quellen der Rückkehrsicherung bleiben erhalten (12.7s)
+  ✓    8 tests/e2e/archives.spec.ts:130:1 › Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unverändert (6.2s)
+  ✓    9 tests/e2e/archives.spec.ts:149:1 › beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern (7.1s)
+  ✓   10 tests/e2e/book-search.spec.ts:19:1 › die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein (3.7s)
+  ✓   11 tests/e2e/book-search.spec.ts:46:1 › Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix (5.7s)
+  ✓   12 tests/e2e/book-search.spec.ts:66:1 › der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus (3.7s)
+  ✓   13 tests/e2e/book-search.spec.ts:87:1 › Suche und Bereich erhalten Buchschwert-Kontext und öffnen das gewählte Kapitel (7.3s)
+  ✓   14 tests/e2e/book-search.spec.ts:117:1 › die NT-Fragenübersicht nutzt dieselbe Buchsuche und bleibt auf ihre 27 Bücher begrenzt (3.3s)
+  ✓   15 tests/e2e/book-search.spec.ts:140:1 › Buchsuche und Dropdown sind bei 320 Pixeln hell und 1440 Pixeln dunkel zugänglich (14.1s)
+  ✓   16 tests/e2e/core.spec.ts:21:1 › Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt (8.8s)
+  ✓   17 tests/e2e/core.spec.ts:102:1 › Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss (8.3s)
+  ✓   18 tests/e2e/core.spec.ts:158:1 › Journal bearbeiten, löschen und rückgängig machen (5.7s)
+  ✓   19 tests/e2e/core.spec.ts:208:1 › Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen (3.8s)
+  ✓   20 tests/e2e/core.spec.ts:255:1 › Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeichert (7.8s)
+  ✓   21 tests/e2e/core.spec.ts:284:1 › Offline-Neustart öffnet auch einen noch nicht besuchten Reader (6.4s)
+  ✓   22 tests/e2e/core.spec.ts:317:1 › Gleichzeitige Fenster überschreiben keine fremden Änderungen (6.8s)
+  ✓   23 tests/e2e/core.spec.ts:349:1 › Speicherfehler bestätigt keine Notiz und erhält den getippten Text (3.1s)
+  ✓   24 tests/e2e/core.spec.ts:378:1 › Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung (42.6s)
+  ✓   25 tests/e2e/direct-selection.spec.ts:43:1 › direktes Antippen öffnet die kleine Leiste und verändert weder Textlayout noch persönliche Inhalte (4.0s)
+  ✓   26 tests/e2e/direct-selection.spec.ts:81:1 › auch getrennte Verse lassen sich direkt kopieren, markieren und merken ohne Zwischenverse zu verändern (4.9s)
+  ✓   27 tests/e2e/direct-selection.spec.ts:128:1 › Notizen öffnen erst auf Wunsch und bewahren getrennte Vers- und Bereichsentwürfe (6.7s)
+  ✓   28 tests/e2e/direct-selection.spec.ts:181:1 › die Aktionsleiste bleibt schmal, dunkel und hell per Tastatur und Screenreader bedienbar (15.4s)
+  ✓   29 tests/e2e/imports.spec.ts:47:1 › Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten (6.0s)
+  ✓   30 tests/e2e/imports.spec.ts:70:1 › Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline (9.6s)
+  ✓   31 tests/e2e/imports.spec.ts:132:1 › zwei Fenster schützen Änderungen und erlauben eine erneute Vorschau (10.2s)
+  ✓   32 tests/e2e/imports.spec.ts:162:1 › Schreibfehler lassen Bestand und vorherige Rückkehrsicherung atomar erhalten (8.0s)
+  ✓   33 tests/e2e/imports.spec.ts:195:1 › Rückkehr zeigt Folgen ausdrücklich und stellt den echten vorherigen Stand wieder her (9.1s)
+  ✓   34 tests/e2e/imports.spec.ts:230:1 › Importansichten sind mobil, dunkel und per Tastatur zugänglich (8.0s)
+  ✓   35 tests/e2e/learning.spec.ts:4:1 › Textfragen zeigen belegte Rückmeldung und verändern keinen Fortschritt (5.4s)
+  ✓   36 tests/e2e/learning.spec.ts:56:1 › Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zählt nur den Abschnitt (8.3s)
+  ✓   37 tests/e2e/nt-archive.spec.ts:140:1 › NT-Importvorschau liest nur und übernimmt belegte Abschlüsse ohne Antworten oder Baumfortschritt (4.6s)
+  ✘   38 tests/e2e/nt-archive.spec.ts:193:1 › ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Quelle und Rückkehrsicherung bytegenau (5.4s)
+(node:79504) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   39 tests/e2e/nt-archive.spec.ts:263:1 › ein fremder Fenstercommit blockiert die NT-Aktivierung und die Archivvorschau lässt sich sicher neu prüfen (9.5s)
+  ✓   40 tests/e2e/nt-pending-return.spec.ts:93:1 › an own confirmed answer reconciles after leaving while its real commit acknowledgement is pending (4.2s)
+  ✓   41 tests/e2e/nt-pending-return.spec.ts:136:1 › an own confirmed question move restores the visible question after a pending-commit detour (4.3s)
+  ✓   42 tests/e2e/nt-pending-return.spec.ts:167:1 › a completion acknowledged away from the study view is shown on return without another completion write (5.4s)
+  ✓   43 tests/e2e/nt-study.spec.ts:32:1 › NT discovery covers all 27 books and opens original questions without creating personal records (3.9s)
+  ✓   44 tests/e2e/nt-study.spec.ts:66:1 › an incorrect answer saves the exact source, survives reload and can be changed without altering its original date (5.6s)
+  ✓   45 tests/e2e/nt-study.spec.ts:110:1 › all five viewed questions may finish with wrong answers, and resume the exact last question without reading or growth (6.7s)
+  ✓   46 tests/e2e/nt-study.spec.ts:144:1 › skipping questions remembers position but cannot create a completion (5.6s)
+  ✓   47 tests/e2e/nt-study.spec.ts:169:1 › a real second-tab conflict keeps the local choice until the saved answer is deliberately accepted (5.7s)
+  ✓   48 tests/e2e/nt-study.spec.ts:197:1 › a new NT chapter and the entire question bank work on first offline visit and after restart (5.7s)
+  ✓   49 tests/e2e/nt-study.spec.ts:222:1 › keyboard answers, small-screen light mode, large-screen dark mode and invalid routes stay accessible (12.1s)
+  ✓   50 tests/e2e/offline-readiness.spec.ts:228:1 › eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten (8.3s)
+  ✘   51 tests/e2e/offline-readiness.spec.ts:257:1 › wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling (18.8s)
+
+
+  1) tests/e2e/nt-archive.spec.ts:193:1 › ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Quelle und Rückkehrsicherung bytegenau 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 5
+
+    @@ -49,6 +49,11 @@
+          "fontSize": 20,
+          "lineHeight": 1.8,
+          "reducedMotion": false,
+          "theme": "light",
+        },
+    +   "storyStudy": Object {
+    +     "answers": Object {},
+    +     "position": null,
+    +     "viewed": Object {},
+    +   },
+      }
+
+      246 |     ...newFields
+      247 |   } = raw.data;
+    > 248 |   expect(newFields).toEqual(oldFields);
+          |                     ^
+      249 |   expect(await page.evaluate(() => (window as any).ntArchiveWrites)).toBe(0);
+      250 |   expect(await rawData(page, "before-faithpath-import")).toEqual(recovery);
+      251 |   expect(await rawData(page, "archive:" + receipt.sourceHash)).toBe(text);
+        at /workspace/faithpath-next/tests/e2e/nt-archive.spec.ts:248:21
+
+    Error Context: test-results-stories-full-r2/nt-archive-ein-V7-Original-93c4b-Rückkehrsicherung-bytegenau/error-context.md
+
+  2) tests/e2e/offline-readiness.spec.ts:257:1 › wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling 
+
+    Test was interrupted.
+
+    Error: page.waitForTimeout: Test ended.
+
+      265 |   expect(exhausted.replies.length).toBeLessThanOrEqual(6);
+      266 |   // A quiet observation window distinguishes finite recovery from ongoing work.
+    > 267 |   await page.waitForTimeout(5000);
+          |              ^
+      268 |   const quiet = await probe(page);
+      269 |   expect(quiet.replies).toEqual(exhausted.replies);
+      270 |   expect(quiet.delivered).toBe(quiet.delayed);
+        at /workspace/faithpath-next/tests/e2e/offline-readiness.spec.ts:267:14
+
+    Error Context: test-results-stories-full-r2/offline-readiness-wiederho-0a846--erzeugen-kein-Dauerpolling/error-context.md
+
+  1 failed
+    tests/e2e/nt-archive.spec.ts:193:1 › ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Quelle und Rückkehrsicherung bytegenau 
+  1 interrupted
+    tests/e2e/offline-readiness.spec.ts:257:1 › wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling 
+  87 did not run
+  49 passed (6.9m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

@@ -1,0 +1,34 @@
+{
+  "version": "0.14.0",
+  "allCoreChecksPassed": true,
+  "dataVersion": 10,
+  "coreBuild": "oliva-fb1fc932602d5898",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 344,
+    "sha256": "63e540c438f6c002429e22b0df45c51c4b370bcb344ae51f8a7855c9080e0976"
+  },
+  "unit": {
+    "passed": 312,
+    "total": 312,
+    "failed": 0,
+    "pending": 0
+  },
+  "browser": {
+    "passed": 138,
+    "total": 138,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "singleFullGreenRun": true,
+    "allResultsSingleAttempt": true
+  },
+  "originalStories": {
+    "units": 436,
+    "questions": 2479,
+    "reflectionPrompts": 436,
+    "aliasPairs": 95
+  },
+  "nativeExecution": false,
+  "masterDefinitionOfDoneComplete": false
+}

@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-11-17T03:47:34.903594+00:00",
+  "fullRegressionBuild": "oliva-fb1fc932602d5898",
+  "finalPackagingBuild": "oliva-2077ca680180fb6b",
+  "baselineDirectory": "/workspace/oliva-v014-before-rights-web",
+  "finalDirectory": "/workspace/faithpath-next/dist",
+  "files": 108,
+  "unchangedFiles": 103,
+  "changedFiles": [
+    "THIRD_PARTY_NOTICES.txt",
+    "sw.js",
+    "index.html",
+    "licenses/THIRD_PARTY_NOTICES.txt",
+    "licenses/MIT.txt"
+  ],
+  "everyJavaScriptPathAndByteUnchanged": true,
+  "everyBinaryAssetPathAndByteUnchanged": true,
+  "workerAlgorithmAndUrlsUnchanged": true,
+  "htmlChangesOnlyBuildIdentifier": true,
+  "finalNoticesExactlyMatchSource": true,
+  "reason": "Add explicit inherited-story content rights and MIT exclusion. Only notices and derived PWA cache identifier change; final PWA/update/HTTP checks run separately.",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 344,
+    "sha256": "63e540c438f6c002429e22b0df45c51c4b370bcb344ae51f8a7855c9080e0976"
+  }
+}

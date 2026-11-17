@@ -37,6 +37,9 @@ import { highlightColor } from "../features/bible/highlights";
 import { utf8Length } from "../lib/hash";
 import { captureSourceSchema as historicalCaptureSourceSchema } from "../features/personal/capture-schema";
 import { captureSourceSchema } from "../features/personal/capture-schema-current";
+import { captureSourceSchema as v9CaptureSourceSchema } from "../features/personal/capture-schema-v9";
+import { goalSchema as v9GoalSchema, draftSchema as v9DraftSchema } from "../features/personal/schema-v9";
+import { storyStudySchema, emptyStoryStudy } from "../features/stories/state-schema";
 import {
   readingPositionSchema as historicalReadingPositionSchema,
   sameReadingScope,
@@ -97,9 +100,47 @@ const historicalNoteSchema = z
     captureSource: historicalCaptureSourceSchema.optional(),
   })
   .strict();
+export const v9NoteSchema = historicalNoteSchema
+  .extend({ captureSource: v9CaptureSourceSchema.optional() })
+  .superRefine((note, ctx) => {
+    if (note.captureSource?.type !== "passage") return;
+    if (note.kind !== "note")
+      ctx.addIssue({
+        code: "custom",
+        path: ["kind"],
+        message: "Eine Bereichsnotiz ist eine eigene Notiz",
+      });
+    if (note.origin)
+      ctx.addIssue({
+        code: "custom",
+        path: ["origin"],
+        message: "Eine Bereichsnotiz trägt keine historische Importquelle",
+      });
+    const sourceRef = note.captureSource.ref;
+    if (
+      !note.ref ||
+      (["book", "chapter", "from", "to"] as const).some(
+        (key) => note.ref![key] !== sourceRef[key],
+      )
+    )
+      ctx.addIssue({
+        code: "custom",
+        path: ["ref"],
+        message: "Notiz und Bereichsquelle müssen dieselbe Bibelstelle haben",
+      });
+  });
 export const currentNoteSchema = historicalNoteSchema
   .extend({ captureSource: captureSourceSchema.optional() })
   .superRefine((note, ctx) => {
+    if (note.captureSource?.type === "story") {
+      const source = note.captureSource;
+      if (note.kind !== "reflection" || note.origin)
+        ctx.addIssue({ code: "custom", message: "Eine Geschichtenreflexion hat eine eigene unveränderte Quelle" });
+      const expected = source.references.length === 1 ? source.references[0] : undefined;
+      if (expected ? !note.ref || ["book", "chapter", "from", "to"].some((key) => note.ref![key as keyof typeof expected] !== expected[key as keyof typeof expected]) : note.ref !== undefined)
+        ctx.addIssue({ code: "custom", path: ["ref"], message: "Die Reflexion muss genau ihre Originalstellen bewahren" });
+      return;
+    }
     if (note.captureSource?.type !== "passage") return;
     if (note.kind !== "note")
       ctx.addIssue({
@@ -346,10 +387,64 @@ export const v8DataSchema = z
 
 // V9 adds only explicit range captures and chapter-context anchors. All other
 // fields, NT snapshots and original receipts keep their preceding meanings.
-export const dataSchema = z
+export const v9DataSchema = z
   .object({
     ...v8DataSchema.shape,
     version: z.literal(9),
+    notes: z
+      .array(v9NoteSchema)
+      .max(5000)
+      .refine((items) => unique(items.map((note) => note.id))),
+    goals: z
+      .array(v9GoalSchema)
+      .max(500)
+      .refine((items) => unique(items.map((goal) => goal.id))),
+    drafts: z
+      .array(v9DraftSchema)
+      .max(100)
+      .refine(
+        (items) =>
+          unique(items.map((draft) => draft.key)) &&
+          unique(items.map((draft) => draft.id)),
+      ),
+    readingPosition: readingPositionSchema.nullable(),
+  })
+  .strict()
+  .refine(completeStepsValid, "Ungültiger Wegfortschritt")
+  .refine(
+    (data) =>
+      [...data.goals, ...data.notes].every(
+        (item) =>
+          !item.origin ||
+          data.imports.some((receipt) => receipt.id === item.origin!.importId),
+      ),
+    "Importquelle fehlt",
+  )
+  .refine(
+    (data) =>
+      !data.readingPosition ||
+      sameReadingScope(data.readingPosition.ref, data.reading),
+    "Leseposition gehört zu einem anderen Abschnitt",
+  )
+  .refine(
+    (data) =>
+      data.ntStudy.legacyCompletions.every((completion) =>
+        data.imports.some(
+          (receipt) =>
+            receipt.id === completion.importId &&
+            receipt.sourceHash === completion.sourceHash,
+        ),
+      ),
+    "Originalbeleg des historischen NT-Status fehlt",
+  );
+
+
+// V10 adds the independent story question state and original story captures.
+export const dataSchema = z
+  .object({
+    ...v9DataSchema.shape,
+    version: z.literal(10),
+    storyStudy: storyStudySchema,
     notes: z
       .array(currentNoteSchema)
       .max(5000)
@@ -403,19 +498,20 @@ export function decodeData(input: unknown): AppData {
       ? input.version
       : undefined;
   let data: AppData;
-  if (version === 9) data = dataSchema.parse(input);
+  if (version === 10) data = dataSchema.parse(input);
+  else if (version === 9) data = dataSchema.parse({ ...v9DataSchema.parse(input), version: 10, storyStudy: emptyStoryStudy() });
   else if (version === 8)
-    data = dataSchema.parse({ ...v8DataSchema.parse(input), version: 9 });
+    data = dataSchema.parse({ ...v8DataSchema.parse(input), version: 10, storyStudy: emptyStoryStudy() });
   else if (version === 7)
     data = dataSchema.parse({
       ...v7DataSchema.parse(input),
-      version: 9,
+      version: 10, storyStudy: emptyStoryStudy(),
       ntStudy: emptyNtStudy(),
     });
   else if (version === 6)
     data = dataSchema.parse({
       ...v6DataSchema.parse(input),
-      version: 9,
+      version: 10, storyStudy: emptyStoryStudy(),
       ntStudy: emptyNtStudy(),
       invitations: emptyInvitationControls(),
     });
@@ -438,7 +534,7 @@ export function decodeData(input: unknown): AppData {
               : v5DataSchema.parse(input);
     data = dataSchema.parse({
       ...old,
-      version: 9,
+      version: 10, storyStudy: emptyStoryStudy(),
       ntStudy: emptyNtStudy(),
       invitations: emptyInvitationControls(),
       retainedReviewGrowth: { reflections: 0, actions: 0 },
@@ -478,11 +574,11 @@ export function decodeData(input: unknown): AppData {
   }
   return data;
 }
-export type AppDataV9 = z.infer<typeof dataSchema>;
-export type AppData = AppDataV9;
+export type AppDataV9 = z.infer<typeof v9DataSchema>;
+export type AppData = z.infer<typeof dataSchema>;
 export type Note = z.infer<typeof noteSchema>;
 export const initialData = (): AppData => ({
-  version: 9,
+  version: 10, storyStudy: emptyStoryStudy(),
   ntStudy: emptyNtStudy(),
   invitations: emptyInvitationControls(),
   retainedReviewGrowth: { reflections: 0, actions: 0 },

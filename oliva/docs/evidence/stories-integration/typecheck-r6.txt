@@ -1,0 +1,19 @@
+
+> oliva-faith-companion@0.14.0 typecheck
+> tsc --noEmit
+
+src/features/stories/StoryDetail.tsx(30,37): error TS2339: Property 'scrollTo' does not exist on type '((props: Omit<ScrollViewProps, "ref"> & { ref?: Ref<ScrollViewInstance> | undefined; }) => ReactNode) & Readonly<{ Context: Context<...>; }>'.
+src/features/stories/StoryDetail.tsx(66,17): error TS2322: Type 'RefObject<(((props: Omit<ScrollViewProps, "ref"> & { ref?: Ref<ScrollViewInstance> | undefined; }) => ReactNode) & Readonly<...>) | null>' is not assignable to type 'Ref<ScrollViewInstance> | undefined'.
+  Type 'RefObject<(((props: Omit<ScrollViewProps, "ref"> & { ref?: Ref<ScrollViewInstance> | undefined; }) => ReactNode) & Readonly<...>) | null>' is not assignable to type 'RefObject<ScrollViewInstance | null>'.
+    Type '(((props: Omit<ScrollViewProps, "ref"> & { ref?: Ref<ScrollViewInstance> | undefined; }) => ReactNode) & Readonly<{ ...; }>) | null' is not assignable to type 'ScrollViewInstance | null'.
+      Type '((props: Omit<ScrollViewProps, "ref"> & { ref?: Ref<ScrollViewInstance> | undefined; }) => ReactNode) & Readonly<{ Context: Context<...>; }>' is not assignable to type 'ScrollViewInstance | null'.
+src/features/stories/StoryQuestionPanel.tsx(60,8): error TS2322: Type 'RefObject<(((props: Omit<TextProps, "ref"> & { ref?: Ref<ReactNativeElement> | undefined; }) => ReactNode) & { focus?: ((options?: { ...; } | undefined) => void) | undefined; }) | null>' is not assignable to type 'Ref<ReactNativeElement> | undefined'.
+  Type 'RefObject<(((props: Omit<TextProps, "ref"> & { ref?: Ref<ReactNativeElement> | undefined; }) => ReactNode) & { focus?: ((options?: { ...; } | undefined) => void) | undefined; }) | null>' is not assignable to type 'RefObject<ReactNativeElement | null>'.
+    Type '(((props: Omit<TextProps, "ref"> & { ref?: Ref<ReactNativeElement> | undefined; }) => ReactNode) & { focus?: ((options?: { preventScroll: boolean; } | undefined) => void) | undefined; }) | null' is not assignable to type 'ReactNativeElement | null'.
+      Type '((props: Omit<TextProps, "ref"> & { ref?: Ref<ReactNativeElement> | undefined; }) => ReactNode) & { focus?: ((options?: { preventScroll: boolean; } | undefined) => void) | undefined; }' is not assignable to type 'ReactNativeElement | null'.
+        Type '((props: Omit<TextProps, "ref"> & { ref?: Ref<ReactNativeElement> | undefined; }) => ReactNode) & { focus?: ((options?: { preventScroll: boolean; } | undefined) => void) | undefined; }' is not assignable to type 'ReactNativeElement'.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

@@ -16,7 +16,7 @@ import { faithpathFixture } from "./fixtures/faithpath-v5";
 
 const at = "2026-11-06T09:00:00.000Z";
 function legacyV5() {
-  const { retainedReviewGrowth, invitations, ntStudy, ...data } = initialData();
+  const { retainedReviewGrowth, invitations, ntStudy, storyStudy, ...data } = initialData();
   const source = {
     title: "Damals zuhören",
     why: "Meine damalige Frage",
@@ -82,7 +82,7 @@ describe("Eingefrorene Nutzdaten V1–V5 und neutrale Migration bis V9", () => {
     const migrated = decodeData(old);
     expect(migrated).toEqual({
       ...old,
-      version: 9,
+      version: 10, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},
@@ -146,7 +146,7 @@ describe("Eingefrorene Nutzdaten V1–V5 und neutrale Migration bis V9", () => {
     const sourceText = JSON.stringify(faithpathFixture(), null, 2);
     applyImport(current, prepareImport(sourceText, current, at));
     current.revision = 9;
-    const { retainedReviewGrowth, invitations, ntStudy, ...fields } =
+    const { retainedReviewGrowth, invitations, ntStudy, storyStudy, ...fields } =
       forStorage(current).data;
     for (const version of [4, 5]) {
       const old: any = { ...fields, version };

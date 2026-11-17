@@ -18,6 +18,8 @@ A51 olive tree: seven original PNG masters, 21 original WebPs and the reviewed m
 
 FaithPath NT study catalog: 1,300 original questions in 260 chapters across all 27 New Testament books. Exact original source and final master are frozen with hashes in `content/faithpath-nt/provenance.json`. These inherited texts, including the generated catalogs `src/data/nt-catalog.json` and `src/data/nt-index.json`, are excluded from OLIVA's MIT grant. The integration is authorized by the project owner; no general content redistribution license or independent theological review is implied. See `content/faithpath-nt/RIGHTS.md`. Editorial explanations and answer keys are distinct from the Luther 1912 Bible text.
 
+FaithPath/Nachlese story catalog: 436 original units, 2,479 primary question elements and 436 reflection prompts, with 95 separately preserved original question variants. The unchanged compressed sources and original hashes are recorded in `content/faithpath-stories/provenance.json`. These inherited editorial texts and the generated `src/data/story-index.json` and `src/data/story-questions.json` are excluded from OLIVA's MIT grant. The owner expressly authorized the integration and approved its visual design; this does not imply a general content redistribution license, independent theological/historical review or public product-release approval. See `content/faithpath-stories/RIGHTS.md`. No new retellings or explanations are represented as original source content.
+
 
 ## GitHub-Sicherung ab 08.11.2026
 

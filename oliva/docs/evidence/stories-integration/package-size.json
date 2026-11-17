@@ -1,0 +1,24 @@
+{
+  "baselineVersion": "0.13.1",
+  "targetVersion": "0.14.0",
+  "before": {
+    "files": 105,
+    "rawBytes": 17425809,
+    "textRawBytes": 7868135,
+    "textGzipBytes": 2233353,
+    "binaryBytes": 9557674
+  },
+  "after": {
+    "files": 108,
+    "rawBytes": 19194938,
+    "textRawBytes": 9637264,
+    "textGzipBytes": 2805651,
+    "binaryBytes": 9557674
+  },
+  "rawByteDelta": 1769129,
+  "textGzipDelta": 572298,
+  "binaryBytesUnchanged": true,
+  "newRuntimeDependencies": 0,
+  "newGeneratedImages": 0,
+  "note": "Local static files and reproducible gzip, not a physical install size, server compression promise, device memory measurement or network benchmark."
+}

@@ -1,0 +1,87 @@
+{
+  "version": "0.14.0",
+  "checkedAt": "2026-11-17T03:51:07.864Z",
+  "runtime_files_verified": 106,
+  "unchanged_runtime_asset_bytes": 103,
+  "rewritten_uri_files": 3,
+  "all_runtime_hashes_match": true,
+  "pwa_manifest_valid": true,
+  "icons_valid": true,
+  "cache_files_verified": 109,
+  "build_id": "oliva-187aca5610d476e4",
+  "app_routes_rewritten": true,
+  "source_build": "oliva-2077ca680180fb6b",
+  "source_validation": {
+    "version": "0.14.0",
+    "allCoreChecksPassed": true,
+    "dataVersion": 10,
+    "coreBuild": "oliva-2077ca680180fb6b",
+    "fullBrowserExecutableBuild": "oliva-fb1fc932602d5898",
+    "rightsOnlyRepackVerified": true,
+    "packagingSourceDigest": "e8ee6fc9873f22eddc22f715a4ed6a0cfcc94118d929453ec5acb2218730583f",
+    "runtimeSourceDigest": {
+      "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+      "fileCount": 344,
+      "sha256": "63e540c438f6c002429e22b0df45c51c4b370bcb344ae51f8a7855c9080e0976"
+    },
+    "unit": {
+      "passed": 312,
+      "total": 312,
+      "failed": 0,
+      "pending": 0
+    },
+    "browser": {
+      "passed": 138,
+      "total": 138,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "singleFullGreenRun": true,
+      "allResultsSingleAttempt": true
+    },
+    "originalStories": {
+      "units": 436,
+      "questions": 2479,
+      "reflectionPrompts": 436,
+      "aliasPairs": 95
+    },
+    "nativeExecution": false,
+    "masterDefinitionOfDoneComplete": false,
+    "checkedAt": "2026-11-17T03:50:03.628226+00:00",
+    "privateDocumentVersion": 1,
+    "sqliteSchemaVersion": 3,
+    "indexedDbVersion": 1,
+    "physicalDeviceTest": false,
+    "simulatorTest": false,
+    "hostedBrowserQa": false,
+    "realPreviousPwaUpgrade": {
+      "baseline": "0.13.1",
+      "target": "0.14.0",
+      "rawV9RecordsExactBeforeNewActions": 4,
+      "nonMainRecordsExactAfterNewActions": 3,
+      "actualV10ExportAndRestorePreview": true,
+      "restoreNotApplied": true,
+      "passed": true
+    },
+    "rightsPackagePwaTest": {
+      "passed": 1,
+      "failed": 0,
+      "path": "rights-package-pwa.json"
+    },
+    "privateDeployment": {
+      "status": "not yet performed"
+    },
+    "githubBackup": {
+      "status": "not yet performed"
+    },
+    "limitations": [
+      "Physical devices, simulators and native screenreaders not tested.",
+      "Managed Sites browser QA unavailable; supported CUA tool absent. Local Expo Chromium and hosting HTTP/package checks are separate.",
+      "Full local browser run used the identical executable build before final inherited-content rights notices. The final package differs only in three notice files and derived HTML/worker build ID; exact parity, separate PWA and real final worker upgrade are verified.",
+      "Independent theological/historical approval and public product rights remain open.",
+      "Master remains active; no original FaithPath or GitHub-main changes."
+    ]
+  },
+  "managed_sites_browser_qa": "unavailable: cua_repl.js not exposed",
+  "physical_phone_test": false
+}

@@ -3,6 +3,7 @@ import {
   backupByteLength,
   cloneData,
   dataSchema,
+  v9DataSchema,
   decodeData,
   initialData,
   parseBackup,
@@ -33,6 +34,7 @@ const later = "2026-11-07T11:00:00.000Z";
 // Synthetic snapshots, never a person's data or a production export.
 function previous(version = 7) {
   const data = { ...initialData(), version } as Record<string, unknown>;
+  delete data.storyStudy;
   delete data.ntStudy;
   if (version < 7) delete data.invitations;
   if (version < 6) delete data.retainedReviewGrowth;
@@ -60,7 +62,7 @@ function importedCurrent() {
 
 function richPrevious() {
   const { data, text } = importedCurrent();
-  const { ntStudy: omitted, ...fields } = data;
+  const { ntStudy: omitted, storyStudy, ...fields } = data;
   return {
     data: v7DataSchema.parse({
       ...fields,
@@ -124,7 +126,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
       const bytes = JSON.stringify(old);
       const migrated = decodeData(old);
       expect(migrated).toEqual(initialData());
-      expect(migrated.version).toBe(9);
+      expect(migrated.version).toBe(10);
       expect(migrated.revision).toBe(0);
       expect(migrated.ntStudy).toEqual(emptyNtStudy());
       expect(JSON.stringify(old)).toBe(bytes);
@@ -135,7 +137,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
     const { data: old } = richPrevious();
     const bytes = JSON.stringify(old);
     const migrated = decodeData(old);
-    expect(migrated).toEqual({ ...old, version: 9, ntStudy: emptyNtStudy() });
+    expect(migrated).toEqual({ ...old, version: 10, storyStudy: initialData().storyStudy, ntStudy: emptyNtStudy() });
     expect(migrated.ntStudy.legacyCompletions).toEqual([]);
     expect(migrated.revision).toBe(42);
     expect(migrated.growthStage).toBe(4);
@@ -146,7 +148,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
     expect(JSON.stringify(old)).toBe(bytes);
   });
 
-  it("behält V7 und V8 strikt und verlangt das NT-Feld auch für aktuelle V9-Daten", () => {
+  it("behält V7 und V8 strikt und verlangt das NT-Feld auch für eingefrorene V9-Daten", () => {
     const old = previous();
     expect(v7DataSchema.safeParse(old).success).toBe(true);
     expect(
@@ -161,9 +163,9 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
     expect(() =>
       decodeData({ ...old, version: 7, ntStudy: emptyNtStudy() }),
     ).toThrow();
-    expect(dataSchema.safeParse({ ...old, version: 9 }).success).toBe(false);
+    expect(dataSchema.safeParse({ ...old, version: 10, storyStudy: initialData().storyStudy }).success).toBe(false);
     expect(
-      dataSchema.safeParse({ ...old, version: 9, ntStudy: emptyNtStudy() })
+      dataSchema.safeParse({ ...old, version: 10, storyStudy: initialData().storyStudy, ntStudy: emptyNtStudy() })
         .success,
     ).toBe(true);
     expect(
@@ -179,6 +181,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
       const { data, text } = importedCurrent();
       const old = { ...data, version } as Record<string, unknown>;
       delete old.ntStudy;
+      delete old.storyStudy;
       if (version < 7) delete old.invitations;
       if (version < 6) delete old.retainedReviewGrowth;
       if (version < 5) delete old.readingPosition;
@@ -195,7 +198,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
       const loader = vi.fn(async () => text);
       const migrated = await decodeStored(stored, loader);
       expect(migrated).toEqual(decodeData(old));
-      expect(migrated.version).toBe(9);
+      expect(migrated.version).toBe(10);
       expect(migrated.imports[0]!.sourceText).toBe(text);
       expect(migrated.ntStudy).toEqual(emptyNtStudy());
       expect(loader).toHaveBeenCalledExactlyOnceWith(
@@ -213,7 +216,7 @@ describe("Neutrale NT-Migration von AppData V1–V7 mit aktuellem V9-Ziel", () =
     const migrated = parseBackup(JSON.stringify(old));
     const stored = forStorage(migrated);
     expect(stored.storageVersion).toBe(1);
-    expect(stored.data.version).toBe(9);
+    expect(stored.data.version).toBe(10);
     expect(stored.data.ntStudy).toEqual(emptyNtStudy());
     expect(stored.data.imports[0]).not.toHaveProperty("sourceText");
     expect(await decodeStored(stored, async () => text)).toEqual(migrated);

@@ -13,13 +13,13 @@ describe("Lesefortsetzung ohne Fortschrittsbestätigung", () => {
       retainedReviewGrowth,
       invitations,
       ntStudy,
-      ...fields
+      storyStudy, ...fields
     } = initialData();
     const old = { ...fields, version: 4 as const, name: "Ada", revision: 9 };
     const before = JSON.stringify(old);
     expect(decodeData(old)).toEqual({
       ...old,
-      version: 9,
+      version: 10, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},
@@ -36,7 +36,7 @@ describe("Lesefortsetzung ohne Fortschrittsbestätigung", () => {
       }),
     ).toEqual({
       ...old,
-      version: 9,
+      version: 10, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},

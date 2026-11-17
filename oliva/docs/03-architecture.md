@@ -1,5 +1,8 @@
 # Technische Architektur und Entscheidungen
 
+Aktuell ergänzt AppData V10 den unabhängigen Geschichtenbereich und Story-Capturequellen. V9 einschließlich seiner Capture-/Draft-Graphen bleibt eingefroren; V9-Dokumente werden bis zur ausdrücklichen Aktion nur im RAM erweitert. SQLite 3 / IndexedDB 1 / Dokumentformat 1 bleiben. Kataloge, bei Bedarf geladene Fragen, atomare Antworten und Sammlung teilen sich bestehende Dienste. [Integrationsvertrag](28-original-stories-integration.md).
+
+
 ## Ausführbarer Stand
 
 Seit **0.12.0** ist der vollständige Original-NT-Katalog aktiv und eigentümerprivat bereitgestellt. AppData/Backup **V8** ergänzt einen separaten Bereich `ntStudy`; V1–V7 bleiben strikt lesbar. Migration und Anzeige schreiben keine alten Daten um. Erst eine ausdrückliche Aktion schreibt den ergänzten Stand. Private Dokumentversion 1, SQLite 3 und IndexedDB 1 bleiben unverändert. Originalfragen verwenden versionierte Snapshots; historische Abschlüsse benötigen nachgewiesene Archivbelege.

@@ -1,0 +1,32 @@
+{
+  "at": "2026-11-17T03:15:33.870692+00:00",
+  "removed": [
+    {
+      "path": "/tmp/oliva-npm-probe-cache",
+      "kind": "regenerable dependency/cache only",
+      "kilobytes": 198740
+    },
+    {
+      "path": "/workspace/oliva-dependency-probe/node_modules",
+      "kind": "regenerable dependency/cache only",
+      "kilobytes": 661352
+    }
+  ],
+  "originalFilesAndReleaseArtifactsPreserved": true,
+  "immutableCandidateDeduplication": {
+    "at": "2026-11-17T03:16:50.863022+00:00",
+    "roots": [
+      "/workspace/oliva-v014-before-type-fix-dist-android",
+      "/workspace/oliva-v014-before-type-fix-dist-ios",
+      "/workspace/oliva-v014-before-final-dom-ref-dist-android",
+      "/workspace/oliva-v014-before-final-dom-ref-dist-ios",
+      "/workspace/oliva-v014-native-space-interruption-android",
+      "/workspace/oliva-v014-native-space-interruption-ios"
+    ],
+    "filesInspected": 914,
+    "filesLinked": 751,
+    "duplicateBytesShared": 242059929,
+    "allPathBytesUnchanged": true,
+    "activeExportsExcluded": true
+  }
+}

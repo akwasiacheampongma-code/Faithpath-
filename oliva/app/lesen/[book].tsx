@@ -41,6 +41,7 @@ import {
 import { ReaderSelectionBar } from "../../src/features/bible/ReaderSelectionBar";
 import { useVolatileDrafts } from "../../src/features/personal/volatile-drafts";
 import { resolveBibleDraft } from "../../src/features/personal/resolve-bible-draft";
+import { storyById } from "../../src/features/stories/index";
 export default function Reader() {
   const params = useLocalSearchParams<{
       book: string;
@@ -54,6 +55,9 @@ export default function Reader() {
       selectFrom?: string;
       selectTo?: string;
       draft?: string;
+      story?: string;
+      storyStage?: string;
+      storyIndex?: string;
     }>(),
     t = useTheme(),
     { width, fontScale } = useWindowDimensions(),
@@ -338,6 +342,9 @@ export default function Reader() {
     if (stepKey && path)
       router.dismissTo({ pathname: "/weg/[id]", params: { id: path.id } });
     else if (router.canGoBack()) router.back();
+    else if (params.story && storyById(params.story)?.references.some((source) => source.book === ref.book && source.chapter === ref.chapter))
+      router.replace({ pathname: "/geschichte/[id]", params: { id: params.story, stage: ["lesen", "verstehen", "gedanken"].includes(params.storyStage ?? "") ? params.storyStage : "lesen",
+        index: String(Number.isInteger(Number(params.storyIndex)) && Number(params.storyIndex) >= 0 && Number(params.storyIndex) < storyById(params.story)!.questions.length ? params.storyIndex : 0) } });
     else router.replace("/bibel");
   };
   async function complete() {

@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-11-16T21:51:04.562641+00:00",
+  "applicationVersion": "0.13.1",
+  "readerPhase": "closed",
+  "scope": "Integrated shared OLIVA web/PWA Reader and agreed FaithPath Reader parity through 0.13.1; not the entire Master or native release acceptance",
+  "runtimeChangedForCloseout": false,
+  "runtimeInputCount": 328,
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 328,
+    "sha256": "6e6b250f3979b00403f84e1cc74bc2bd9a18f2960343e930a6f7c5b866a0342c"
+  },
+  "entryPointReview": {
+    "method": "Read-only source review with source hashes, supported by the complete local and remote browser suites; not a new runtime test",
+    "sources": [
+      {
+        "entry": "Startseite / Weiterlesen",
+        "source": "app/index.tsx",
+        "sha256": "f0d5f7357c8756f034c5bda62d1e78804d5b346bc7e5a9382aeac2cd56b8ec49",
+        "sharedRoute": "/lesen/[book]"
+      },
+      {
+        "entry": "Bibel / Buch / Kapitel",
+        "source": "app/bibel.tsx",
+        "sha256": "f3ab59ed496102ff134c829bf33ae4e76f5b62416252d64d58b9517e371fb8f2",
+        "sharedRoute": "/lesen/[book]"
+      },
+      {
+        "entry": "Erste Geschichte",
+        "source": "app/start.tsx",
+        "sha256": "efa745faf720963501fff705ab4a6e8aef38f9b38e5795621cdd8ab947429452",
+        "sharedRoute": "/lesen/[book]"
+      },
+      {
+        "entry": "Geführte Wege",
+        "source": "app/weg/[id].tsx",
+        "sha256": "1754ab9a951e2207c75cdf716045755234190a17814a930246c4756af389f587",
+        "sharedRoute": "/lesen/[book]"
+      },
+      {
+        "entry": "Sammlung / Notizen und Lesezeichen",
+        "source": "app/sammlung.tsx",
+        "sha256": "0154e9075f66f43a91c7ef4885665b010552fc349d8b95350cdc3550d365875c",
+        "sharedRoute": "/lesen/[book]"
+      },
+      {
+        "entry": "NT-Fragen / Kapitel lesen",
+        "source": "app/verstehen/[book].tsx",
+        "sha256": "0a83007bf3c4867f5859baa0a77feae8a792efb305d00facb5578c3cf5b81185",
+        "sharedRoute": "/lesen/[book]"
+      },
+      {
+        "entry": "Vorhandene Geschichtenpiloten",
+        "source": "src/features/bible/StoryCard.tsx",
+        "sha256": "d1c0bf6e93ce9ae0ab295c734b505e3681e54447a6db9ea578173ba518a6d12a",
+        "sharedRoute": "/lesen/[book]"
+      },
+      {
+        "entry": "Genauer Entwurfs- und Quellenrückweg",
+        "source": "src/features/personal/capture-presentation.ts",
+        "sha256": "a665347926565f2420691611e5501affd57f79e44e78c8c84448f0b627a3ace3",
+        "sharedRoute": "/lesen/[book]"
+      }
+    ]
+  },
+  "localUnitPassed": 293,
+  "localBrowserPassed": 130,
+  "remoteRunId": 43949849283,
+  "remoteGithubHead": "f4528e4dc8f4fcfaaa26059f00eb8128cf2747cf",
+  "remoteUnitPassed": 293,
+  "remoteBrowserPassed": 130,
+  "remoteAttempts": 1,
+  "allIndependentCiChecksPassed": true,
+  "remoteBuildIds": [
+    "oliva-d727dc83726f0921"
+  ],
+  "localWebCore": "oliva-1f49306347c4f496",
+  "privateWebBuild": "oliva-f8b4e7c2394490b6",
+  "applicationDataVersion": 9,
+  "newMigration": false,
+  "physicalDeviceTesting": false,
+  "simulatorTesting": false,
+  "nativeJavaScriptAssetExportsOnly": true,
+  "originalFaithpathAndMainUnchanged": true,
+  "fullStoryCollectionApproved": false,
+  "fullStoryCollectionImplemented": false,
+  "fullStoryCollectionAwaitsUserDesignApproval": true,
+  "masterDone": false,
+  "sourceReleaseTagPreserved": "oliva-v0.13.1"
+}

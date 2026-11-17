@@ -1,0 +1,9 @@
+{
+  "firstUntypedWebExport": "/workspace/oliva-v014-before-type-fix-web",
+  "finalTypedWebExport": "/workspace/oliva-v014-before-rights-web",
+  "allExportPathsAndSHA256Equal": true,
+  "webFiles": 108,
+  "behavioralEditsAfterFinalFreeze": false,
+  "finalSourceDigest": "63e540c438f6c002429e22b0df45c51c4b370bcb344ae51f8a7855c9080e0976",
+  "note": "Native Text/ScrollView refs were corrected to React.ComponentRef and the web HTMLElement focus overload. All emitted web bytes remain identical; final native exports and PWA upgrade were rerun against the final source freeze."
+}

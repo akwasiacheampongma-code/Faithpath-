@@ -14,6 +14,11 @@ export function draftDestination(draft: Draft): { label: string; href: Href } {
     case "capture": {
       const s = draft.values.source;
       switch (s.type) {
+        case "story":
+          return {
+            label: "Reflexion: " + s.title,
+            href: { pathname: "/geschichte/[id]", params: { id: s.unitId, stage: "gedanken", draft: draft.id } },
+          };
         case "daily":
           return { label: "Deine Tagesreflexion", href: "/" };
         case "experience":

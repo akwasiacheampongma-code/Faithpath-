@@ -55,6 +55,10 @@ export default function Bible() {
       <T style={{ color: t.muted, fontSize: 13, marginBottom: 24 }}>
         66 Bücher. Viele Stimmen. Eine Einladung zum Entdecken.
       </T>
+      <View style={{ marginBottom: 22, gap: 9 }}>
+        <Button kind="secondary" icon="book" onPress={() => router.push("/geschichten")}>Geschichten und Abschnitte entdecken</Button>
+        <T variant="small" style={{ color: t.muted }}>436 Originaleinheiten · lesen, verstehen und eigene Gedanken festhalten.</T>
+      </View>
       <Card
         style={{
           backgroundColor: t.soft,

@@ -68,6 +68,12 @@ export default function Sources() {
           </Button>
         </Card>
         <Card style={{ gap: 13 }}>
+          <T variant="heading">Geschichten und Abschnitte</T>
+          <T>436 Originaleinheiten mit 2.479 Fragen und 436 freiwilligen Reflexionsimpulsen stammen aus dem geprüften FaithPath-/Nachlese-Bestand. Titel, Stellen, Fragen, Antwortreihenfolge, Lösungsschlüssel und vorhandene Hinweise bleiben bewahrt. Die Sammlung enthält auch Psalmen und Briefe.</T>
+          <T style={{ fontSize: 12, color: t.muted }}>95 ursprüngliche Fragevarianten bleiben als Quellenvarianten dokumentiert. Ihre Antwortindizes werden nicht vermischt. Nicht jede Frage hat einen zusätzlichen Hinweis. Die Übernahme ist für dieses Projekt beauftragt; eine allgemeine öffentliche Inhaltslizenz und unabhängige theologische Freigabe werden daraus nicht abgeleitet.</T>
+          <Button kind="secondary" onPress={() => router.push("/geschichten")}>Originalabschnitte entdecken</Button>
+        </Card>
+        <Card style={{ gap: 13 }}>
           <T variant="heading">Die Bildwelt</T>
           <T>
             Die Pilotbilder wurden mit OpenAI-Bildgenerierung für dieses Projekt

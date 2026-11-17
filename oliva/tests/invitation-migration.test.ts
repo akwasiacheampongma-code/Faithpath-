@@ -27,7 +27,7 @@ const optOut = { enabled: false, snoozed: {}, dismissed: {} };
 
 // Synthetic predecessor data; never derived from a person's export.
 function previousData() {
-  const { invitations, ntStudy, ...fields } = initialData();
+  const { invitations, ntStudy, storyStudy, ...fields } = initialData();
   const data = {
     ...fields,
     version: 6 as const,
@@ -122,7 +122,7 @@ describe("V6-Einladungs-Migration mit anschließender neutraler NT-Ergänzung", 
     const migrated = decodeData(old);
     expect(migrated).toEqual({
       ...old,
-      version: 9,
+      version: 10, storyStudy: initialData().storyStudy,
       invitations: optOut,
       ntStudy: {
         answers: {},
@@ -167,7 +167,7 @@ describe("V6-Einladungs-Migration mit anschließender neutraler NT-Ergänzung", 
     const current = decodeData(previousData());
     const sourceText = JSON.stringify(faithpathFixture(), null, 2);
     applyImport(current, prepareImport(sourceText, current, editedAt));
-    const { invitations, ntStudy, ...predecessor } = current;
+    const { invitations, ntStudy, storyStudy, ...predecessor } = current;
     const old = v6DataSchema.parse({ ...predecessor, version: 6 });
     const stored = {
       storageVersion: 1,
@@ -187,7 +187,7 @@ describe("V6-Einladungs-Migration mit anschließender neutraler NT-Ergänzung", 
     });
     expect(migrated).toEqual({
       ...old,
-      version: 9,
+      version: 10, storyStudy: initialData().storyStudy,
       invitations: optOut,
       ntStudy: {
         answers: {},
@@ -203,7 +203,7 @@ describe("V6-Einladungs-Migration mit anschließender neutraler NT-Ergänzung", 
     expect(JSON.stringify(stored)).toBe(bytes);
     const rewritten = forStorage(migrated);
     expect(rewritten.storageVersion).toBe(1);
-    expect(rewritten.data.version).toBe(9);
+    expect(rewritten.data.version).toBe(10);
     expect(rewritten.data.invitations).toEqual(optOut);
     expect(rewritten.data.imports[0]).not.toHaveProperty("sourceText");
     expect(archiveHashes(rewritten)).toEqual(loadedHashes);

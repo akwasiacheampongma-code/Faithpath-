@@ -166,7 +166,7 @@ function CaptureSession({
                   ? "Notiz speichern"
                   : v.source.type === "guided"
                     ? "Reflexion speichern"
-                    : "Festhalten"
+                    : v.source.type === "story" ? "Gedanken speichern" : "Festhalten"
           }
           onSave={e.save}
           onDiscard={e.discard}
@@ -178,7 +178,7 @@ function CaptureSession({
             ? "Erfahrung festhalten"
             : v.source.type === "verse" || v.source.type === "passage"
               ? "Notiz speichern"
-              : "Festhalten"}
+              : v.source.type === "story" ? "Gedanken speichern" : "Festhalten"}
           “ legt einen Eintrag in deiner Sammlung an.
         </T>
       )}

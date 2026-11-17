@@ -5,9 +5,18 @@ import { T, Tag, Button } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import type { CaptureSource } from "./capture-schema-current";
 import { captureBibleContextLabel } from "./capture-presentation";
+import { referenceLabel } from "../bible/repository";
 export function CaptureContext({ source }: { source: CaptureSource }) {
   const t = useTheme(),
     [open, setOpen] = useState(false);
+  if (source.type === "story") return (
+    <View style={{ gap: 9 }}>
+      <Tag icon="book">{source.title}</Tag>
+      <T variant="small" style={{ color: t.muted }}>Original-Reflexionsimpuls: {source.question}</T>
+      {source.references.map((ref, index) => <T key={index} variant="small" style={{ color: t.muted }}>{referenceLabel(ref)}</T>)}
+      <Button kind="ghost" icon="book" onPress={() => router.push({ pathname: "/geschichte/[id]", params: { id: source.unitId, stage: "gedanken" } })}>Zum zugehörigen Abschnitt</Button>
+    </View>
+  );
   if (source.type === "verse") return null;
   if (source.type === "passage") {
     const label = captureBibleContextLabel(source);

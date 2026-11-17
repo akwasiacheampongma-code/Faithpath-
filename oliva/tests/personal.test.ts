@@ -49,7 +49,7 @@ describe("Verlustfreie Payload-Migration", () => {
       retainedReviewGrowth,
       invitations,
       ntStudy,
-      ...rest
+      storyStudy, ...rest
     } = current;
     const old = {
       ...rest,
@@ -72,7 +72,7 @@ describe("Verlustfreie Payload-Migration", () => {
       migrated = decodeData(old);
     expect(migrated).toEqual({
       ...old,
-      version: 9,
+      version: 10, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},
@@ -98,7 +98,7 @@ describe("Verlustfreie Payload-Migration", () => {
       retainedReviewGrowth,
       invitations,
       ntStudy,
-      ...rest
+      storyStudy, ...rest
     } = initialData();
     expect(() =>
       decodeData({ ...rest, version: 1, readChapters: ["GEN:99"] }),

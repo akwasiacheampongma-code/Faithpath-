@@ -56,7 +56,7 @@ describe("Native SQLite-Adapter mit realer SQL-Engine", () => {
         retainedReviewGrowth,
         invitations,
         ntStudy,
-        ...fields
+        storyStudy, ...fields
       } = initialData(),
       old = { ...fields, version: 2, name: "Ada", revision: 7 };
     harness.db!.exec(LOCAL_SCHEMA_SQL + "PRAGMA user_version=1;");
@@ -67,7 +67,7 @@ describe("Native SQLite-Adapter mit realer SQL-Engine", () => {
     const data = await storage.readData();
     expect(data).toEqual({
       ...old,
-      version: 9,
+      version: 10, storyStudy: initialData().storyStudy,
       ntStudy: {
         answers: {},
         completions: {},
