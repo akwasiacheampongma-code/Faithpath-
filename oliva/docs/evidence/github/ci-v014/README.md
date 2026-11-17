@@ -1,0 +1,11 @@
+# Unabhängige GitHub-CI · OLIVA 0.14.0
+
+Tatsächlicher Pushlauf [44014441925](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/44014441925), Head `b5476721825d54c4e86e42965e5d0658dcfaf5d8`, Branch `feature/oliva-v014-original-stories-20261117`. Erfolgreich seit **17.11.2026, 04:17:00 UTC**. Alle 31 unabhängigen Gates bestehen.
+
+**312/312 Fachtests und 138/138 Browserfälle**, jeweils erster Versuch. Keine Browser-Retries, Skips oder Flaky-Ergebnisse. Der gesamte unselektierte Lauf wurde aus dem endgültigen Quellenstand neu gebaut. Berichtzeiten liegen innerhalb der tatsächlichen geloggten Testschritte. Der exakte `oliva/`-Teilbaum entspricht dem autorisierten unveränderlichen Quellcheckpoint; Branch und Tag zeigen auf den geprüften Commit.
+
+Artefakt 14298901681: 13.321.722 Byte, 145 Einträge, CRC geprüft, SHA-256 `53d2e00db666b5e1a14ee898304877647aef70d0deb62c8eb293115826ec1e92` entspricht dem GitHub-Digest. ZIP liegt außerhalb des Quellbaums unter `/tmp/oliva-ci-v014-artifact.zip`. Joblog stammt aus dem Connector und ist mit eigenem SHA/Provenienz versehen. Downloadfähigkeit und Credentials wurden nicht gespeichert. Die vier offiziellen Action-Pins und ihre Node24-Laufzeit sind sowohl deklariert als auch im echten Log beobachtet. Audit ohne Funde und alle sechs Inhalts-/Provenienzprüfungen sind belegt.
+
+Remote-Codebuild **oliva-e145318fd5a05531** ist von lokalem Volltest-Codebuild oliva-fb1fc932602d5898, finalem lokalen Rechtepaket oliva-2077ca680180fb6b und privatem Hostpaket oliva-187aca5610d476e4 getrennt. Keine Geräte-/Simulatorausführung und keine erneute Website-Veröffentlichung durch diese lesende CI-Prüfung. Die historischen roten 0.11-Läufe bleiben unverändert rot; ihre IDs/SHAs wurden erneut geprüft.
+
+Maßgeblich: [verification.json](verification.json), [source-identities.json](source-identities.json), [artifact-integrity.json](artifact-integrity.json), [run.json](run.json), [job-log-source.json](job-log-source.json), [unit-results.json](unit-results.json), [e2e-results.json](e2e-results.json). Die gesamte Master-Definition-of-Done bleibt offen; die laufende Übernahme der 18 Lebensthemen ist nicht Teil dieses eingefrorenen 0.14-Kandidaten.
