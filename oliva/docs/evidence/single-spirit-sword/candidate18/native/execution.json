@@ -1,0 +1,104 @@
+[
+  {
+    "name": "android",
+    "command": [
+      "node",
+      "scripts/expo.mjs",
+      "export",
+      "--platform",
+      "android",
+      "--output-dir",
+      "dist-android",
+      "--no-minify",
+      "--no-bytecode"
+    ],
+    "startedAt": "2026-11-17T15:51:32.475682+00:00",
+    "finishedAt": "2026-11-17T15:51:37.639623+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/candidate18/native/android.log",
+    "sha256": "33525194aa63829b86096066743cd0e589658fc9f79ca574f3964071514df639"
+  },
+  {
+    "name": "ios",
+    "command": [
+      "node",
+      "scripts/expo.mjs",
+      "export",
+      "--platform",
+      "ios",
+      "--output-dir",
+      "dist-ios",
+      "--no-minify",
+      "--no-bytecode"
+    ],
+    "startedAt": "2026-11-17T15:51:37.899103+00:00",
+    "finishedAt": "2026-11-17T15:51:41.599600+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/candidate18/native/ios.log",
+    "sha256": "2fb694f3d5307962cf05bac701c3dfd566ce5f18cb4a0a4b15b95f7f001776fc"
+  },
+  {
+    "name": "asset-check",
+    "command": [
+      "node",
+      "scripts/check-native-export.mjs",
+      "--report",
+      "docs/evidence/single-spirit-sword/candidate18/native/asset-check.json",
+      "dist-android",
+      "dist-ios"
+    ],
+    "startedAt": "2026-11-17T15:51:41.936089+00:00",
+    "finishedAt": "2026-11-17T15:51:43.270973+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/candidate18/native/asset-check.log",
+    "sha256": "bacdcd5571b22549039cc3aa07765d24c4f033436672b2af8c2b40b47c8f45d6"
+  },
+  {
+    "name": "nt-catalog",
+    "command": [
+      "node",
+      "docs/evidence/direct-selection/native/check-native-nt-catalog.mjs",
+      "--report",
+      "docs/evidence/single-spirit-sword/candidate18/native/nt-catalog.json",
+      "dist-android",
+      "dist-ios"
+    ],
+    "startedAt": "2026-11-17T15:51:43.571244+00:00",
+    "finishedAt": "2026-11-17T15:51:46.562135+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/candidate18/native/nt-catalog.log",
+    "sha256": "4019177aa9229fb088586ecea554b72bc807c5cc308e4d778e8af3950a2ad21d"
+  },
+  {
+    "name": "story-catalog",
+    "command": [
+      "node",
+      "docs/evidence/stories-integration/native/check-native-story-catalog.mjs",
+      "--report",
+      "docs/evidence/single-spirit-sword/candidate18/native/story-catalog.json",
+      "dist-android",
+      "dist-ios"
+    ],
+    "startedAt": "2026-11-17T15:51:46.830952+00:00",
+    "finishedAt": "2026-11-17T15:51:50.809184+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/candidate18/native/story-catalog.log",
+    "sha256": "a903a45e9f15772db101f5f5f4cacb914fac668a2e8df034af3f07c37fee737a"
+  },
+  {
+    "name": "topic-catalog",
+    "command": [
+      "node",
+      "scripts/check-native-topics.mjs",
+      "--report",
+      "docs/evidence/single-spirit-sword/candidate18/native/topic-catalog.json",
+      "dist-android",
+      "dist-ios"
+    ],
+    "startedAt": "2026-11-17T15:51:51.061945+00:00",
+    "finishedAt": "2026-11-17T15:51:53.865833+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/candidate18/native/topic-catalog.log",
+    "sha256": "c60e1b03281e1c6c29bb6f5cbd8fc796b01718a0657d02e05f7bccf09aaf4185"
+  }
+]

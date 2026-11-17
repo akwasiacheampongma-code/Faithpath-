@@ -1,0 +1,11 @@
+[WebServer] (node:138731) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 22 tests using 1 worker
+
+(node:138739) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/genesis-sword.spec.ts:62:1 › Genesis zeigt Originalkunst und belegte Motivstellen im gemeinsamen Reader ohne vorgetäuschten Fortschritt (26.7s)
+  ✓   2 tests/e2e/genesis-sword.spec.ts:87:1 › Genesis hat 50 echte Kapitelabschnitte und bleibt in Hell/Dunkel bei320/1440Pixeln lesbar (35.1s)
+  ✓   3 tests/e2e/genesis-sword.spec.ts:120:1 › Genesis erscheint auf der Startseite und beim ersten Offlinebesuch nach Neustart ohne Datenänderung (8.8s)
+  ✓   4 tests/e2e/genesis-sword.spec.ts:140:1 › Genesis-Licht zählt erst nach ausdrücklicher Kapitelbestätigung und bleibt bei reduzierter Bewegung vollständig (12.1s)

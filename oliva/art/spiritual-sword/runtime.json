@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "word-of-god",
+  "purpose": "One static symbol of God’s Word; no book collection, reading-progress, unlock or reward input.",
+  "master": "art/swords/genesis-beginnings/masters/genesis-beginnings-pilot.png",
+  "masterSHA256": "7f535d1f586dd2bca9a97009068439ac0eecff48259426bc1f87c5a393cbb458",
+  "sourceGenerationMetadata": "art/swords/genesis-beginnings/pilot.json",
+  "sourceTechnicalMetadata": "art/swords/genesis-beginnings/technical-variants.json",
+  "sourceDerivative": "art/swords/genesis-beginnings/variants/genesis-beginnings-pilot-512.png",
+  "activeAsset": {
+    "path": "assets/spiritual-sword/word-sword-512.png",
+    "width": 512,
+    "height": 768,
+    "bytes": 81042,
+    "sha256": "3693a3396e1d9a5815ad703ec8915796390db85c3d846fefc0c03d1b7b9e8875"
+  },
+  "originalPixelsPreserved": true,
+  "newGenerationPerformed": false,
+  "reference": {
+    "book": "EPH",
+    "chapter": 6,
+    "from": 17,
+    "to": 17
+  },
+  "context": {
+    "book": "EPH",
+    "chapter": 6,
+    "from": 10,
+    "to": 18
+  },
+  "quote": "… und das Schwert des Geistes, welches ist das Wort Gottes.",
+  "quoteNote": "Exact contiguous suffix of integrated Luther1912Ephesians6:17; ellipsis marks omitted helmet clause. The suggested Nehmet das wording is not a verbatim contiguous excerpt.",
+  "license": "Original OpenAI image_gen output under provider terms; no third-party image reference supplied; prototype use only, public release not approved",
+  "status": {
+    "internalRuntime": "Local development; application/PWA/native acceptance remains separately documented.",
+    "publicRelease": "not approved",
+    "independentSpecialistApproval": false
+  }
+}

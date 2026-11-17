@@ -73,7 +73,7 @@ export default function Start() {
             [
               "leaf",
               "Komm jederzeit zurück.",
-              "Dein Baum erinnert an Entdeckungen. Das Buchschwert zeigt gelesene Kapitel – keinen Wert deines Glaubens.",
+              "Dein Baum erinnert an Entdeckungen. Deine letzte Lesestelle bleibt zum Weitergehen bereit.",
             ],
           ].map(([icon, title, text]) => (
             <View

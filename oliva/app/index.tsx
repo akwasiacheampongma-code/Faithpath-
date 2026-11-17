@@ -11,9 +11,7 @@ import {
   Progress,
 } from "../src/components/ui";
 import { Icon } from "../src/components/Icon";
-import { OliveTree, SwordArt } from "../src/components/Artwork";
-import { BookSwordArtwork } from "../src/features/swords/BookSwordArtwork";
-import { swordIllustration } from "../src/features/swords/illustrations";
+import { OliveTree } from "../src/components/Artwork";
 import { PathCard } from "../src/components/PathCard";
 import { useTheme } from "../src/design-system/theme";
 import { useApp } from "../src/state/store";
@@ -49,8 +47,7 @@ export default function Home() {
     data.readPassages.length > 0;
   const active = pathById(data.activePath ?? ""),
     book = bookByCode(data.reading.book),
-    read = countBookRead(data, data.reading.book),
-    illustration = swordIllustration(data.reading.book);
+    read = countBookRead(data, data.reading.book);
   const date = new Date(),
     greeting =
       date.getHours() < 11
@@ -450,44 +447,12 @@ export default function Home() {
             <T variant="label" style={{ color: t.muted, fontSize: 8 }}>
               DEIN AKTUELLES BUCH
             </T>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: illustration ? 12 : 7,
-              }}
-            >
-              {illustration ? (
-                <View style={{ width: 100, flexShrink: 0 }}>
-                  <BookSwordArtwork
-                    book={data.reading.book}
-                    progress={read / (book?.chapters ?? 1)}
-                    size={100}
-                    compact
-                  />
-                </View>
-              ) : (
-                <SwordArt
-                  book={data.reading.book}
-                  progress={read / (book?.chapters ?? 1)}
-                  size={67}
-                />
-              )}
-              <View style={{ flex: 1, minWidth: 0, gap: 7 }}>
-                <T variant="heading" style={{ fontSize: 26 }}>
-                  {book?.name}
-                </T>
-                <T style={{ color: t.gold, fontSize: 10, lineHeight: 17 }}>
-                  {book?.sword}
-                </T>
-                <T variant="small" style={{ color: t.muted, fontSize: 9 }}>
-                  {read} von {book?.chapters} Kapiteln gelesen
-                </T>
-                <Progress
-                  value={read / (book?.chapters ?? 1)}
-                  label="Lesefortschritt im aktuellen Buch"
-                />
-              </View>
+            <View style={{ gap: 9 }}>
+              <Icon name="book" size={25} color={t.primary} />
+              <T variant="heading" style={{ fontSize: 28 }}>{book?.name}</T>
+              <T style={{ color: t.muted, fontSize: 12 }}>{book?.description}</T>
+              <T variant="small" style={{ color: t.muted }}>{read} von {book?.chapters} Kapiteln gelesen</T>
+              <Progress value={read / (book?.chapters ?? 1)} label="Lesefortschritt im aktuellen Buch" />
             </View>
             <Button
               kind="ghost"
@@ -517,7 +482,7 @@ export default function Home() {
                 })
               }
             >
-              Dein Buchschwert entdecken
+              Kapitelübersicht öffnen
             </Button>
           </Card>
           <View style={{ padding: 16, gap: 9, alignItems: "center" }}>

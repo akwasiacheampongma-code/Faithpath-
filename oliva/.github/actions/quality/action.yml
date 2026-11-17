@@ -51,7 +51,9 @@ runs:
     - name: Build the web application and complete offline package
       shell: bash
       working-directory: ${{ env.OLIVA_PROJECT }}
-      run: npm run build
+      run: |
+        npm run build
+        node scripts/check-spiritual-sword-runtime.mjs
     - name: Install test browser
       shell: bash
       working-directory: ${{ env.OLIVA_PROJECT }}

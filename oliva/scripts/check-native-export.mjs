@@ -109,7 +109,7 @@ async function expectations(root) {
   const derivatives = await json(await namedFile(root, "art/a51/native-derivatives.json", "manifest"));
   const bible = await json(await namedFile(root, "art/manifest.json", "manifest"));
   const provenance = await json(await namedFile(root, "art/a51/provenance.json", "manifest"));
-  const swordRuntime = await json(await namedFile(root, "art/swords/runtime.json", "manifest"));
+  const swordRuntime = await json(await namedFile(root, "art/spiritual-sword/runtime.json", "manifest"));
   checked(Array.isArray(derivatives.groups), "A51 derivative groups missing");
   const a51 = new Map(), stages = new Map();
   for (const group of derivatives.groups) {
@@ -127,28 +127,15 @@ async function expectations(root) {
   }
   checked(stages.size === 14 && a51.size === 98, `Expected seven A51 stages / 14 groups / 98 PNGs; got ${stages.size} groups / ${a51.size} PNGs`);
 
-  // Every PNG deliberately placed in this delivery directory must be bundled.
-  // This also picks up new book pilots without adding another hardcoded book.
+  // One active sword image; all former book-sword assets remain historical.
   const swords = new Map();
-  for (const file of await files(path.join(root, "assets/swords"))) {
-    if (file.toLowerCase().endsWith(".png")) {
-      const name = relative(root, file);
-      swords.set(name, await source(root, name, undefined, "png"));
-    }
-  }
-  checked(swords.size > 0, "No runtime sword PNGs found");
-  function validateSwordHashes(value) {
-    if (!value || typeof value !== "object") return;
-    if (Array.isArray(value)) { value.forEach(validateSwordHashes); return; }
-    const name = value.path ?? value.file;
-    if (typeof name === "string" && name.startsWith("assets/swords/") && name.endsWith(".png")) {
-      checked(swords.has(name), `Sword manifest source missing: ${name}`);
-      checked(validHash(value.sha256) && swords.get(name).sha256 === value.sha256.toLowerCase(),
-        `Sword source hash mismatch: ${name}`);
-    }
-    Object.values(value).forEach(validateSwordHashes);
-  }
-  validateSwordHashes(swordRuntime);
+  const single = swordRuntime.activeAsset;
+  checked(single && validHash(single.sha256) && single.path === "assets/spiritual-sword/word-sword-512.png",
+    "Missing or invalid spiritual sword asset");
+  swords.set(single.path, await source(root, single.path, single.sha256, "png"));
+  const activeSwordFiles = await files(path.join(root, "assets/spiritual-sword"));
+  checked(activeSwordFiles.length === 1 && relative(root, activeSwordFiles[0]) === single.path,
+    "Unexpected spiritual sword runtime asset");
 
   checked(Array.isArray(bible.assets), "Bible art manifest missing assets");
   const david = bible.assets.filter((asset) => asset.id === "david-before-goliath");
@@ -165,6 +152,11 @@ async function expectations(root) {
     const existing = forbidden.get(record.sha256);
     if (existing) existing.sources.push(record.source);
     else forbidden.set(record.sha256, { category, sources: [record.source], sha256: record.sha256 });
+  }
+  const retiredSwords = await json(await namedFile(root, "art/swords/historical-runtime-assets/manifest.json", "historical manifest"));
+  for (const item of retiredSwords.assets) {
+    if (item.sha256 !== single.sha256)
+      forbid(await source(root, item.archivePath, item.sha256, "png"), "retired-book-sword-asset");
   }
   for (const asset of bible.assets) {
     checked(validHash(asset.master_sha256), `Missing/invalid Bible master SHA-256: ${asset.id}`);

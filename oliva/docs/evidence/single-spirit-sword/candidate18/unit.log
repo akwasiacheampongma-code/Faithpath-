@@ -1,0 +1,69 @@
+
+> oliva-faith-companion@0.18.0 test
+> vitest run --reporter=default --reporter=json --outputFile=docs/evidence/single-spirit-sword/candidate18/unit-results.json
+
+
+ RUN  v5.1.0 /workspace/faithpath-next
+
+ ✓ tests/nt-study.test.ts (26 tests) 2101ms
+   ✓ Strikte Snapshot-, Schlüssel- und Zeitintegrität (12)
+     ✓ begrenzt die Zahl bewahrter Antworten, Abschlüsse und Legacy-Nachweise 1921ms
+ ✓ tests/a51-tree.test.ts (4 tests) 600ms
+   ✓ A51 als Darstellung bestehender OLIVA-Daten (4)
+     ✓ hält die bewegten Netze bei allen Qualitätsstufen durchgängig und unverfaltet 565ms
+ ✓ tests/documents.test.ts (4 tests) 431ms
+ ✓ tests/nt-catalog.test.ts (8 tests) 677ms
+   ✓ Unveränderter freigegebener FaithPath-NT-Katalog (8)
+     ✓ bewahrt alle 1300 Fragenfelder und die Optionen wort- und reihenfolgegleich zu Quelle und Finalmaster 319ms
+ ✓ tests/reader-flow.test.ts (11 tests) 664ms
+   ✓ Kanonischer Fließtext ohne zweite Bibelkopie (4)
+     ✓ bewahrt alle 31.102 Verse, ihre Reihenfolge und sämtliche UTF-16-Textbereiche exakt 650ms
+ ✓ tests/native-storage.test.ts (3 tests) 982ms
+   ✓ Native SQLite-Adapter mit realer SQL-Engine (3)
+     ✓ schreibt Sicherung und Import atomar, erhält sie bei Fehlern und prüft Revision sowie Rückkehrtoken 332ms
+     ✓ schreibt große Quellen einmalig und erhält ausschließlich von der Rückkehrsicherung benötigte Blobs 396ms
+ ✓ tests/nt-import.test.ts (6 tests) 227ms
+ ✓ tests/reader-v9-migration.test.ts (13 tests) 510ms
+ ✓ tests/stories.test.ts (14 tests) 587ms
+   ✓ The complete, original FaithPath story catalog (5)
+     ✓ keeps 436 units, all 2479 ordered questions, 436 prompts and 95 alternate source versions 525ms
+ ✓ tests/imports.test.ts (11 tests) 272ms
+ ✓ tests/nt-migration.test.ts (8 tests) 251ms
+ ✓ tests/legacy-history.test.ts (15 tests) 189ms
+ ✓ tests/invitation-migration.test.ts (9 tests) 296ms
+ ✓ tests/nt-store.test.ts (9 tests) 185ms
+ ✓ tests/domain.test.ts (14 tests) 196ms
+ ✓ tests/review-store.test.ts (12 tests) 82ms
+ ✓ tests/store.test.ts (12 tests) 101ms
+ ✓ tests/topics-state.test.ts (7 tests) 55ms
+ ✓ tests/review-migration.test.ts (3 tests) 95ms
+ ✓ tests/reader-selection.test.ts (12 tests) 132ms
+ ✓ tests/archive-focus.test.ts (4 tests) 67ms
+ ✓ tests/invitations.test.ts (14 tests) 145ms
+ ✓ tests/reviews.test.ts (26 tests) 54ms
+ ✓ tests/stories-store.test.ts (5 tests) 48ms
+ ✓ tests/invitation-store.test.ts (11 tests) 56ms
+ ✓ tests/personal.test.ts (9 tests) 38ms
+ ✓ tests/range-capture.test.ts (11 tests) 43ms
+ ✓ tests/reader-parity-review.test.ts (5 tests) 35ms
+ ✓ tests/topics-import.test.ts (2 tests) 44ms
+ ✓ tests/reader-mark-store.test.ts (8 tests) 37ms
+ ✓ tests/captures.test.ts (8 tests) 36ms
+ ✓ tests/resolve-bible-draft.test.ts (13 tests) 23ms
+ ✓ tests/reading-position.test.ts (6 tests) 32ms
+ ✓ tests/spiritual-word.test.ts (2 tests) 31ms
+ ✓ tests/personal-tree.test.ts (7 tests) 17ms
+ ✓ tests/clipboard.test.ts (6 tests) 12ms
+ ✓ tests/volatile-drafts.test.ts (2 tests) 9ms
+ ✓ tests/scenes.test.ts (2 tests) 8ms
+ ✓ tests/checks.test.ts (1 test) 10ms
+
+ Test Files  39 passed (39)
+      Tests  343 passed (343)
+   Start at  15:47:34
+   Duration  40.81s (import 70%, tests 27%, transform 2%, worker 1%)
+
+    Isolate  39 workers spawned · ~134ms startup each (spawn + environment, per file)
+             at least ~5.10s faster with isolate: false — reuses workers across files instead of one per file
+
+JSON report written to /workspace/faithpath-next/docs/evidence/single-spirit-sword/candidate18/unit-results.json

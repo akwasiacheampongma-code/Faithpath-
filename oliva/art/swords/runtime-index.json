@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "hashAlgorithm": "sha256",
-  "scope": "Runtime delivery provenance for the two illustrated books. Original generation and technical preparation records remain unchanged; no public-release or device approval is granted.",
+  "scope": "Runtime delivery provenance for the illustrated books. Original generation and technical preparation records remain preserved; no public-release or device approval is granted.",
   "illustrations": [
     {
       "id": "john-life-pilot",
@@ -18,6 +18,14 @@
       "sourceMetadata": "art/swords/romans-grace/pilot.json",
       "sourceRoot": "art/swords/romans-grace",
       "expectedMasterSHA": "3a4b4c77c322972310198e94971c0bec81dd09d0dea8ef3038fdac8a6fe49839"
+    },
+    {
+      "id": "genesis-beginnings-pilot",
+      "book": "GEN",
+      "manifest": "art/swords/genesis-runtime.json",
+      "sourceMetadata": "art/swords/genesis-beginnings/pilot.json",
+      "sourceRoot": "art/swords/genesis-beginnings",
+      "expectedMasterSHA": "7f535d1f586dd2bca9a97009068439ac0eecff48259426bc1f87c5a393cbb458"
     }
   ]
 }

@@ -1,0 +1,135 @@
+[
+  {
+    "name": "typecheck",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "startedAt": "2026-11-17T15:38:40.739680+00:00",
+    "finishedAt": "2026-11-17T15:38:54.533267+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/typecheck.log",
+    "sha256": "f2b0aa802c0478fb3cc3871f59ef58aba7ba0199a156831897787c2de0671e78"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=docs/evidence/single-spirit-sword/qualification/unit-results.json"
+    ],
+    "startedAt": "2026-11-17T15:38:54.678977+00:00",
+    "finishedAt": "2026-11-17T15:39:39.386370+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/unit.log",
+    "sha256": "31afae0fd3b110db1ea74ff26b6f45b93009c8267f7ed0b8d3c0213fb2ae8ab9"
+  },
+  {
+    "name": "content:check",
+    "command": [
+      "npm",
+      "run",
+      "content:check"
+    ],
+    "startedAt": "2026-11-17T15:39:39.510400+00:00",
+    "finishedAt": "2026-11-17T15:39:40.555160+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/content-check.log",
+    "sha256": "3adf4f32be5c3cc5b71e8b36adac806bf533c4f8dfde9a1d40b148f334d28155"
+  },
+  {
+    "name": "content:nt",
+    "command": [
+      "npm",
+      "run",
+      "content:nt"
+    ],
+    "startedAt": "2026-11-17T15:39:40.676685+00:00",
+    "finishedAt": "2026-11-17T15:39:41.020816+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/content-nt.log",
+    "sha256": "ddd3d853f8637228f865e2f7a2c4216a730f4260f39a8f0a0d3f719d334fe1c1"
+  },
+  {
+    "name": "content:stories",
+    "command": [
+      "npm",
+      "run",
+      "content:stories"
+    ],
+    "startedAt": "2026-11-17T15:39:41.149422+00:00",
+    "finishedAt": "2026-11-17T15:39:41.550299+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/content-stories.log",
+    "sha256": "6cb9dc08d3c028ab5ec7a1987c152ca70b549263c9f6ba099e3fd182b10a8679"
+  },
+  {
+    "name": "content:topics",
+    "command": [
+      "npm",
+      "run",
+      "content:topics"
+    ],
+    "startedAt": "2026-11-17T15:39:41.672553+00:00",
+    "finishedAt": "2026-11-17T15:39:42.061873+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/content-topics.log",
+    "sha256": "7ef49c6b3f80f34fdd552a32cd65e01803dcd4945a4f91e3664604f4a2c258a4"
+  },
+  {
+    "name": "content:art",
+    "command": [
+      "npm",
+      "run",
+      "content:art"
+    ],
+    "startedAt": "2026-11-17T15:39:42.182680+00:00",
+    "finishedAt": "2026-11-17T15:39:42.461964+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/content-art.log",
+    "sha256": "aa47123bac1a952761cfeeb7451f026a639285117c27477a4407cad90cc5b0e0"
+  },
+  {
+    "name": "content:tree",
+    "command": [
+      "npm",
+      "run",
+      "content:tree"
+    ],
+    "startedAt": "2026-11-17T15:39:42.588141+00:00",
+    "finishedAt": "2026-11-17T15:39:42.937588+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/content-tree.log",
+    "sha256": "51d5876e601ef28f229edd7130a144bc47e11a774d0a97cfa2ff54a9a3f35cc3"
+  },
+  {
+    "name": "content:swords",
+    "command": [
+      "npm",
+      "run",
+      "content:swords"
+    ],
+    "startedAt": "2026-11-17T15:39:43.057504+00:00",
+    "finishedAt": "2026-11-17T15:39:43.363882+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/content-swords.log",
+    "sha256": "6d3fdaa4ab81966f7da85b79d6c910115c6b1915f314c4a1bb95f203cb383e2b"
+  },
+  {
+    "name": "web-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "startedAt": "2026-11-17T15:39:43.486131+00:00",
+    "finishedAt": "2026-11-17T15:39:49.335798+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/single-spirit-sword/qualification/web-build.log",
+    "sha256": "67ae1b00ca6078511e6a4c2bb4e06217fb9d32123dbc2d41b960ab3f99636d0d"
+  }
+]

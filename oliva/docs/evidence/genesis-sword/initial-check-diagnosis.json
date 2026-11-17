@@ -1,0 +1,9 @@
+{
+  "initialUnitPassed": 347,
+  "initialUnitFailed": 1,
+  "cause": "An existing v0.9 registry test still expected exactly John/Romans. Updated its exact set to Genesis/John/Romans; all existing assertions retained.",
+  "runtimeChangedForCorrection": false,
+  "firstReportPreserved": true,
+  "firstFingerprintDescriptorCorrection": "First runner sorted POSIX strings lexicographically although the descriptor said Path sorting. The first files/bytes/hashes are preserved. R2 uses actual Python Path sorting, matching native fingerprinting.",
+  "sameInputFileBytesInBothFingerprints": true
+}

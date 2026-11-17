@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-11-17T15:42:36.768008+00:00",
+  "allPassed": true,
+  "runtimeSourceSHA256": "5727b7db20d4120ea0e5e8f73d092d4d30ea620e4dad622a32dceff75166ded4",
+  "runtimeFiles": 344,
+  "sourceUnchanged": true,
+  "platformMarkers": [
+    {
+      "platform": "android",
+      "bundle": "_expo/static/js/android/entry-63b4f52cfbc1c375c16b8448695df2bc.js",
+      "bundleSHA256": "d78c5b9eb345379899d51b573d383ef3f28d3d2d3d9ce108bcc72a0f5f56dfbc",
+      "positive": {
+        "SpiritualWordCard": true,
+        "BookChapterGrid": true,
+        "spiritual-word-card": true,
+        "spiritual-sword-image": true,
+        "NativeTreeArtwork": true,
+        "ArchiveHistory": true
+      },
+      "absent": {
+        "BookSwordArtwork": true,
+        "SwordPulse": true,
+        "VectorSwordDrawing": true,
+        "book-sword-artwork": true,
+        "Schwert der Gnade": true,
+        "Schwert des Anfangs": true,
+        "createTreeScene": true,
+        "WebGLRenderingContext": true
+      }
+    },
+    {
+      "platform": "ios",
+      "bundle": "_expo/static/js/ios/entry-816bab70b58cecc6e77acc8492754f09.js",
+      "bundleSHA256": "5a0fed6058eec8f0b3855356b7dcc6fcb6bb9a32840d9a983612ca95fdc362eb",
+      "positive": {
+        "SpiritualWordCard": true,
+        "BookChapterGrid": true,
+        "spiritual-word-card": true,
+        "spiritual-sword-image": true,
+        "NativeTreeArtwork": true,
+        "ArchiveHistory": true
+      },
+      "absent": {
+        "BookSwordArtwork": true,
+        "SwordPulse": true,
+        "VectorSwordDrawing": true,
+        "book-sword-artwork": true,
+        "Schwert der Gnade": true,
+        "Schwert des Anfangs": true,
+        "createTreeScene": true,
+        "WebGLRenderingContext": true
+      }
+    }
+  ],
+  "nativeExecution": false,
+  "scope": "Actual native JavaScript/asset exports and static checks only. No simulator, device, native decoder, screenreader, energy/memory or signed installer acceptance."
+}

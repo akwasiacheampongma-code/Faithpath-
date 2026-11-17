@@ -874,7 +874,6 @@ export default function Reader() {
                 question={context?.question}
                 relatedPath={related[0]}
                 mode={mode}
-                celebrate={ack === completionScope && read}
               />
             )}
             <T

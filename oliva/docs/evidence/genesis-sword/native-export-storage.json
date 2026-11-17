@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-17T15:17:40.280392+00:00",
+  "scope": "Explicitly frozen native exports only. Qualified0.17outputs preserved before later builds. No active outputs, sources, originals, ZIPs or evidence payloads relinked.",
+  "moved": [
+    {
+      "from": "/workspace/faithpath-next/dist-android",
+      "to": "/workspace/oliva-v017-preserved-dist-android"
+    },
+    {
+      "from": "/workspace/faithpath-next/dist-ios",
+      "to": "/workspace/oliva-v017-preserved-dist-ios"
+    }
+  ],
+  "roots": [
+    "/workspace/oliva-v017-preserved-dist-android",
+    "/workspace/oliva-v017-preserved-dist-ios",
+    "/workspace/oliva-v016-preserved-dist-android",
+    "/workspace/oliva-v016-preserved-dist-ios",
+    "/workspace/oliva-book-search/dist-android",
+    "/workspace/oliva-book-search/dist-ios",
+    "/workspace/oliva-dependency-probe/dist-android",
+    "/workspace/oliva-dependency-probe/dist-ios"
+  ],
+  "files": 1210,
+  "filesRelinked": 1033,
+  "allBytesAndModesPreserved": true,
+  "freeBefore": 142290944,
+  "freeAfter": 343089152
+}

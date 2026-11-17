@@ -67,6 +67,11 @@ try {
   run("unreferenced-master-leak", fixture, /Forbidden sword-master/);
   await rm(masterPath);
 
+  const retiredPath = path.join(fixture, "assets/accidental-retired-book-image.png");
+  await cp(path.join(root, "art/swords/historical-runtime-assets/assets/swords/john-life-pilot-256.png"), retiredPath);
+  run("unreferenced-retired-book-sword-leak", fixture, /Forbidden retired-book-sword-asset/);
+  await rm(retiredPath);
+
   const promptPath = path.join(fixture, "assets/internal-prompt.txt");
   const prompt = JSON.parse(await readFile(path.join(root, "art/swords/pilot.json"), "utf8")).prompt;
   // The added newline changes the hash: the text scan must still detect it.
@@ -101,7 +106,7 @@ try {
   await writeFile(path.join(fixture, "metadata.json"), originalMetadata);
 
   const rootCopy = path.join(temporary, "manifest-copy");
-  for (const name of ["app.json", "art/manifest.json", "art/a51/provenance.json", "art/a51/native-derivatives.json", "art/swords/runtime.json"]) {
+  for (const name of ["app.json", "art/manifest.json", "art/a51/provenance.json", "art/a51/native-derivatives.json", "art/spiritual-sword/runtime.json"]) {
     await mkdir(path.dirname(path.join(rootCopy, name)), { recursive: true });
     await cp(path.join(root, name), path.join(rootCopy, name));
   }

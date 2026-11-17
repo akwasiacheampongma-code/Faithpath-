@@ -1,0 +1,46 @@
+[WebServer] (node:140380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 14 tests using 1 worker
+
+(node:140388) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/book-search.spec.ts:19:1 › die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein (4.6s)
+  ✓   2 tests/e2e/book-search.spec.ts:46:1 › Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix (6.9s)
+  ✓   3 tests/e2e/book-search.spec.ts:66:1 › der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus (4.9s)
+  ✓   4 tests/e2e/book-search.spec.ts:87:1 › Suche und Bereich erhalten die Buchübersicht und öffnen das gewählte Kapitel (8.2s)
+  ✓   5 tests/e2e/book-search.spec.ts:117:1 › die NT-Fragenübersicht nutzt dieselbe Buchsuche und bleibt auf ihre 27 Bücher begrenzt (4.2s)
+  ✓   6 tests/e2e/book-search.spec.ts:140:1 › Buchsuche und Dropdown sind bei 320 Pixeln hell und 1440 Pixeln dunkel zugänglich (10.4s)
+  ✓   7 tests/e2e/spiritual-word.spec.ts:70:1 › der Bibelhub öffnet alle66Bücher und1189Kapitel ohne Buchschwert-Auswahl oder Datenänderung (15.0s)
+  ✓   8 tests/e2e/spiritual-word.spec.ts:88:1 › alle66altenBuch-Links öffnen ruhige Buchübersichten und keine Schwertseiten (1.4m)
+  ✓   9 tests/e2e/spiritual-word.spec.ts:107:1 › der quellentreue Vers und sein friedlicher Zusammenhang öffnen den gemeinsamen Reader (8.0s)
+  ✘  10 tests/e2e/spiritual-word.spec.ts:133:1 › der Hub bleibt bei320/1440Pixeln in Hell/Dunkel mit reduzierter Bewegung barrierearm (4.3s)
+(node:141050) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 tests/e2e/spiritual-word.spec.ts:159:1 › das einzelne Symbol und alle Bücher bleiben beim Offline-Neustart ohne Schreibvorgang verfügbar (5.5s)
+  ✓  12 tests/e2e/spiritual-word.spec.ts:173:1 › Startseite und Sammlung bleiben frei von Schwertern; bestätigtes Lesen behält seinen normalen Fortschritt (7.2s)
+  ✓  13 tests/e2e/spiritual-word.spec.ts:194:3 › einzelnes Bild bei echtem Ladefehler › Vers und Navigation bleiben bedienbar; bewusster Retry dekodiert das Original (4.0s)
+  ✓  14 tests/e2e/spiritual-word.spec.ts:212:3 › hochauflösende Browserdarstellung › die eine512erDatei reicht für den vollständigen80x120Bildrahmen (4.2s)
+
+
+  1) tests/e2e/spiritual-word.spec.ts:133:1 › der Hub bleibt bei320/1440Pixeln in Hell/Dunkel mit reduzierter Bewegung barrierearm 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 568
+    Received:   590
+
+      148 |       const card = await visible(page, "spiritual-word-card").boundingBox();
+      149 |       expect(search!.y).toBeLessThan(card!.y);
+    > 150 |       expect(search!.y).toBeLessThan(width === 320 ? 568 : 1000);
+          |                         ^
+      151 |       await visible(page, "spiritual-word-card").screenshot({ path: `${screens}/word-${width}-${color}.png` });
+      152 |       await page.screenshot({ path: `${screens}/hub-${width}-${color}.png` });
+      153 |       expect((await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze()).violations).toEqual([]);
+        at /workspace/faithpath-next/tests/e2e/spiritual-word.spec.ts:150:25
+
+    Error Context: docs/evidence/single-spirit-sword/targeted-r2/artifacts/spiritual-word-der-Hub-ble-313d3-ierter-Bewegung-barrierearm/error-context.md
+
+  1 failed
+    tests/e2e/spiritual-word.spec.ts:133:1 › der Hub bleibt bei320/1440Pixeln in Hell/Dunkel mit reduzierter Bewegung barrierearm 
+  13 passed (2.9m)

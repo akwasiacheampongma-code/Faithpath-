@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "id": "genesis-beginnings-pilot",
+  "book": "GEN",
+  "masterSHA": "7f535d1f586dd2bca9a97009068439ac0eecff48259426bc1f87c5a393cbb458",
+  "masterWidth": 1024,
+  "masterHeight": 1536,
+  "derivation": {
+    "generator": "art/swords/genesis-beginnings/scripts/prepare-variants.py",
+    "version": 1,
+    "operation": "Full-canvas RGBA resize only; original2:3aspect retained",
+    "resampler": "Pillow.Image.Resampling.LANCZOS",
+    "pillowVersion": "13.0.0",
+    "masterUnmodified": true,
+    "crop": false,
+    "retouch": false,
+    "backgroundRemoval": false,
+    "pixelVerification": "Every actual PNG decoded to the exact resized RGBA buffer"
+  },
+  "master": "art/swords/genesis-beginnings/masters/genesis-beginnings-pilot.png",
+  "hashAlgorithm": "sha256",
+  "license": "Original OpenAI image_gen output under provider terms; no third-party image reference supplied; prototype use only, public release not approved",
+  "status": {
+    "internalRuntime": "Integrated in an unversioned local development iteration; product, offline, native and browser acceptance pending. Package0.17.0 remains the development base, not a new delivered Genesis release.",
+    "publicRelease": "not approved",
+    "historical": "symbolic illustration; no historical reconstruction claimed",
+    "theological": "pending independent specialist review"
+  },
+  "sourceMetadata": "art/swords/genesis-beginnings/pilot.json",
+  "sourceVariantsMetadata": "art/swords/genesis-beginnings/technical-variants.json",
+  "references": [
+    {
+      "book": "GEN",
+      "chapter": 1,
+      "from": 1,
+      "to": 1
+    },
+    {
+      "book": "GEN",
+      "chapter": 1,
+      "from": 11,
+      "to": 12
+    },
+    {
+      "book": "GEN",
+      "chapter": 2,
+      "from": 15,
+      "to": 15
+    }
+  ],
+  "variants": [
+    {
+      "width": 256,
+      "height": 384,
+      "path": "assets/swords/genesis-beginnings-pilot-256.png",
+      "sha256": "8bef1086223c4f8580780002e3bddd01e7e2a14c10c9a482a1a8d144a913d40e",
+      "bytes": 24215
+    },
+    {
+      "width": 512,
+      "height": 768,
+      "path": "assets/swords/genesis-beginnings-pilot-512.png",
+      "sha256": "3693a3396e1d9a5815ad703ec8915796390db85c3d846fefc0c03d1b7b9e8875",
+      "bytes": 81042
+    },
+    {
+      "width": 768,
+      "height": 1152,
+      "path": "assets/swords/genesis-beginnings-pilot-768.png",
+      "sha256": "523b2787b561db431655abbedc05367252c9b672a6eaa304c6a230801577ad2b",
+      "bytes": 170563
+    }
+  ]
+}

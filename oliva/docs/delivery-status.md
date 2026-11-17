@@ -1,4 +1,13 @@
-# Lieferstand · OLIVA 0.14.0 · Originalgeschichten integriert
+# Lieferstand · OLIVA 0.17.0 · Originalhistorie
+
+<!-- OLIVA_SINGLE_SWORD_CANDIDATE -->
+## Aktuelle Umstellung · ein geistliches Schwert
+
+Der Nutzer hat die 66 Buchschwert-Sammlung am 17.11.2026 ausdrücklich abgelöst. Kandidat 0.18.0 entfernt Galerie, Buchschwertaktionen und Lichtspuren; alle 66 Bücher und vorhandenen Nutzerdaten bleiben erhalten. Der Bibel-Hub zeigt genau ein statisches, wiederverwendetes Originalbild mit quellentreuem Epheser 6,17 und zugänglichem Zusammenhang 6,10–18. Kein Lesefortschritt, Sammeln oder Belohnung am Schwert. Originalbilder/Provenienz/historische Releases bleiben bewahrt.
+
+343 Fachtests,Typecheck,7 Inhaltsprüfungen,Produktionsexport und beide statischen Nativeabnahmen bestehen. Vollständige Browser-, PWA-Wechsel- und private Lieferabnahme laufen bzw. sind noch offen; **private Vorschau bleibt bis dahin bei 0.17**. Der eigene Featurebranch ist`feature/oliva-single-spirit-sword-20261117`. Details und tatsächliche Grenzen in `docs/34-single-spirit-sword.md` (aus `docs/` entsprechend relativ). Kein main-Merge und keine öffentliche Website-/Storefreigabe. ÄltereBuchschwert-Beschreibungen unten sind historische Lieferstände.
+<!-- /OLIVA_SINGLE_SWORD_CANDIDATE -->
+
 
 <!-- OLIVA_017_CURRENT -->
 ## Aktueller Lieferstand · Originalhistorie 0.17.0
@@ -14,7 +23,9 @@ Android-/iOS-JavaScript- und Assetexports sowie vollständige NT-/Geschichten-/T
 
 Kern `oliva-727bb651e0a924f0`, Host `oliva-c4e0bc1e9484a00e`; 358 eingefrorene Runtimeinputs, SHA-256 `1fe3082dd01129d18dd278adfd366351cbb895226a74ce4c3d0a387a3070cb17`. Private HTTP-/Paketprüfung: 40 App-Routen, 111 App-Dateien (110 bytegenau plus HTML-Marker) und 48 Review-Dateien. Alle 40 App-Direktlinks auch anonym geprüft und gesperrt; Eigentümerpolitik exakt unverändert. Eine erste Antwort enthielt unmittelbar nach der Bereitstellung noch nicht den erwarteten Buildmarker; dieselbe normale URL lieferte später die richtige Fassung. Ohne Code-/Berechtigungsänderung oder erneute Bereitstellung bestand danach die vollständige verschärfte HTTP-Abnahme. Die frühen Nachweise bleiben erhalten. Keine gehostete Browser-QA mangels unterstütztem CUA-Werkzeug.
 
-Die beauftragte GitHub-Versionssicherung und die neue unabhängige 0.17-CI folgen als Lieferabschlussschritte; noch kein Erfolg dafür vorweggenommen. Die bestätigte 0.16-CI 44065974720 bleibt ein eigener Nachweis. Weitere Bildarbeit, unabhängige Fach-/Rechtefreigaben, echte Einsteiger-/Geräte-/Hilfstechnologietests, signierte native Pakete und konkrete Cloud-/KI-/Audioarbeit bleiben Master-Aufgaben. **Die gesamte Master-Definition-of-Done ist nicht abgeschlossen.** Keine öffentliche Website-/Storefreigabe, kein GitHub-main-Merge und keine Änderung an Original-FaithPath.
+Die beauftragte GitHub-Versionssicherung ist abgeschlossen: eigener unveränderlicher Quellcommit `f7419ae7c7165ce77d300050459bcc29b12e736f`, GitHub-Commit `30a34393cf19b508d80ba8bc6abf84388f026fd8`, [Tag `oliva-v0.17.0`](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.17.0/oliva) und Branch `feature/oliva-v017-original-history-20261117`. Alle 30 Versionsverweise und geschützten Bestandsbranches bestätigt; main und alle 47 Nicht-OLIVA-Root-Einträge unverändert. Quell-ZIP: 331.878.969 Byte, 5.464 CRC-geprüfte Einträge, SHA-256 `fb64bbff8fe7dc425e6e35706b597c3db4bc064cc1a068ef1c4413877d9ce471`.
+
+Die unabhängige [0.17-CI 44107370439](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/44107370439) ist seit **2026-11-17T15:03:49Z erfolgreich bestätigt: 347/347 Fachtests und 154/154 Browserfälle**, erster Versuch, ohne Retries/Skips/Flaky-Ergebnisse. Alle 31 Kriterien einschließlich tatsächlicher Testzeiten, Artefakt-SHA/CRC/Frische und exaktem Quellteilbaum bestehen. Der beobachtete Remote-Build `oliva-c1a470ef785764e7` und der lokale/private Kern `oliva-727bb651e0a924f0` sind getrennte Exporte; keine bytegleichen Build-Dateien behauptet. Die bestätigte 0.16-CI 44065974720 bleibt ein eigener Nachweis. Weitere Bildarbeit, unabhängige Fach-/Rechtefreigaben, echte Einsteiger-/Geräte-/Hilfstechnologietests, signierte native Pakete und konkrete Cloud-/KI-/Audioarbeit bleiben Master-Aufgaben. **Die gesamte Master-Definition-of-Done ist nicht abgeschlossen.** Keine öffentliche Website-/Storefreigabe, kein GitHub-main-Merge und keine Änderung an Original-FaithPath.
 
 [Gesamtabnahme](evidence/original-history-release17/validation-summary.json)
 <!-- /OLIVA_017_CURRENT -->

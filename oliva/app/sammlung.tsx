@@ -1,18 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { View, Pressable, useWindowDimensions } from "react-native";
+import { View, Pressable } from "react-native";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
-import { T, Button, Card, Field, Tag, Progress } from "../src/components/ui";
-import { SwordArt } from "../src/components/Artwork";
+import { T, Button, Card, Field, Tag } from "../src/components/ui";
 import { Icon } from "../src/components/Icon";
 import { useTheme } from "../src/design-system/theme";
 import { useApp } from "../src/state/store";
 import {
-  BOOKS,
   referenceLabel,
   getPassage,
 } from "../src/features/bible/repository";
-import { countBookRead, type Note } from "../src/state/model";
+import { type Note } from "../src/state/model";
 import { JournalEditor } from "../src/features/personal/Editors";
 import { journalDraft } from "../src/features/personal/model";
 import { highlightBackground } from "../src/features/bible/highlights";
@@ -34,7 +32,6 @@ export default function Collection() {
     data = useApp((s) => s.data),
     mutate = useApp((s) => s.mutate),
     busy = useApp((s) => s.busy),
-    { width } = useWindowDimensions(),
     [tab, setTab] = useState(
       requestedTab === "Entwürfe" ? "Entwürfe" : "Gedanken",
     ),
@@ -148,7 +145,6 @@ export default function Collection() {
           "Entwürfe",
           "Lesezeichen",
           "Markierungen",
-          "Buchschwerter",
         ].map((label) => (
           <Pressable
             key={label}
@@ -180,18 +176,10 @@ export default function Collection() {
       </View>
       {tab !== "Entwürfe" && (
         <Field
-          label={
-            tab === "Buchschwerter"
-              ? "Buch suchen"
-              : "Deine Sammlung durchsuchen"
-          }
+          label="Deine Sammlung durchsuchen"
           value={query}
           onChangeText={setQuery}
-          placeholder={
-            tab === "Buchschwerter"
-              ? "Zum Beispiel Johannes"
-              : "Deine Suchwörter …"
-          }
+          placeholder="Deine Suchwörter …"
         />
       )}
       <View style={{ height: 20 }} />
@@ -446,95 +434,6 @@ export default function Collection() {
               }
             />
           )}
-        </View>
-      ) : tab === "Buchschwerter" ? (
-        <View style={{ gap: 20 }}>
-          <Card
-            style={{ backgroundColor: t.goldSoft, borderWidth: 0, gap: 10 }}
-          >
-            <T variant="heading">Worte geben Orientierung.</T>
-            <T style={{ fontSize: 12, lineHeight: 22 }}>
-              Inspiriert von Epheser 6,17 steht das Schwert hier für Gottes
-              Wort: Wahrheit, Erkenntnis und Orientierung. Es bedeutet keine
-              Macht über andere Menschen.
-            </T>
-            <T style={{ fontSize: 11, color: t.muted }}>
-              Alle 66 Buchidentitäten sind von Anfang an sichtbar. Die
-              Lichtlinie auf der Klinge zeigt bestätigte Kapitel – keinen
-              Glaubensrang.
-            </T>
-          </Card>
-          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 15 }}>
-            {BOOKS.filter((b) =>
-              b.name
-                .toLocaleLowerCase("de")
-                .includes(query.toLocaleLowerCase("de")),
-            ).map((book) => (
-              <Pressable
-                key={book.code}
-                accessibilityRole="button"
-                accessibilityLabel={`${book.name}: ${book.sword}`}
-                onPress={() =>
-                  router.push({
-                    pathname: "/buch/[book]",
-                    params: { book: book.code },
-                  })
-                }
-                style={{
-                  minWidth: width < 500 ? "46%" : 170,
-                  flexBasis: width < 500 ? "46%" : "22%",
-                  flexGrow: 1,
-                  maxWidth: width < 500 ? "49%" : "32%",
-                }}
-              >
-                <Card
-                  style={{
-                    alignItems: "center",
-                    padding: 17,
-                    height: 328,
-                    gap: 5,
-                  }}
-                >
-                  <SwordArt
-                    book={book.code}
-                    size={105}
-                    progress={countBookRead(data, book.code) / book.chapters}
-                  />
-                  <T
-                    variant="heading"
-                    style={{ fontSize: 24, textAlign: "center" }}
-                  >
-                    {book.name}
-                  </T>
-                  <T
-                    style={{ fontSize: 10, color: t.gold, textAlign: "center" }}
-                  >
-                    {book.sword}
-                  </T>
-                  <T
-                    style={{ fontSize: 9, color: t.muted, textAlign: "center" }}
-                  >
-                    {book.motif}
-                  </T>
-                  <View style={{ width: "100%", marginTop: 9, gap: 8 }}>
-                    <Progress
-                      value={countBookRead(data, book.code) / book.chapters}
-                      label={`${countBookRead(data, book.code)} von ${book.chapters} Kapiteln`}
-                    />
-                    <T
-                      style={{
-                        fontSize: 9,
-                        color: t.muted,
-                        textAlign: "center",
-                      }}
-                    >
-                      {countBookRead(data, book.code)} / {book.chapters} Kapitel
-                    </T>
-                  </View>
-                </Card>
-              </Pressable>
-            ))}
-          </View>
         </View>
       ) : (
         <View style={{ gap: 14 }}>

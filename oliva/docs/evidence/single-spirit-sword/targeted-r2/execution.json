@@ -1,0 +1,20 @@
+{
+  "startedAt": "2026-11-17T15:42:03.553847+00:00",
+  "finishedAt": "2026-11-17T15:45:01.538359+00:00",
+  "command": [
+    "node",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "tests/e2e/spiritual-word.spec.ts",
+    "tests/e2e/book-search.spec.ts",
+    "--output=docs/evidence/single-spirit-sword/targeted-r2/artifacts"
+  ],
+  "exitCode": 1,
+  "workers": 1,
+  "retries": 0,
+  "filtered": true,
+  "runtimeInputsExact": true,
+  "runtimeSourceSHA256": "5727b7db20d4120ea0e5e8f73d092d4d30ea620e4dad622a32dceff75166ded4",
+  "log": "docs/evidence/single-spirit-sword/targeted-r2/execution.log",
+  "logSHA256": "3ff6900bcbc95125bb5c759de95f18372323781f6f16e4d08a098128ae9585e4"
+}

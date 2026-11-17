@@ -18,7 +18,6 @@ export type IconName =
   | "chevron"
   | "info"
   | "volume"
-  | "sword"
   | "download"
   | "heart"
   | "copy"
@@ -123,11 +122,6 @@ export function Icon({
       <>
         <Path d="m4 9 5 0 5-5v16l-5-5H4Z" />
         <Path d="M18 8c3 2 3 6 0 8" />
-      </>
-    ),
-    sword: (
-      <>
-        <Path d="m12 2 3 4v10H9V6Zm-6 15h12M12 17v5m-2 0h4" />
       </>
     ),
     download: <Path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4" />,

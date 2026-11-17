@@ -157,8 +157,10 @@ describe("Lernfortschritt und Datensicherheit", () => {
     ])
       expect(() => parseBackup(text)).toThrow();
   });
-  it("hält für jedes Buch eine individuelle Themenidentität bereit", () => {
-    expect(new Set(BOOKS.map((b) => b.sword)).size).toBe(66);
-    expect(new Set(BOOKS.map((b) => b.index)).size).toBe(66);
+  it("bewahrt alle 66 Bücher ohne Buchschwert-Metadaten", () => {
+    expect(BOOKS).toHaveLength(66);
+    expect(new Set(BOOKS.map((b) => b.code)).size).toBe(66);
+    expect(BOOKS.reduce((sum, b) => sum + b.chapters, 0)).toBe(1189);
+    expect(BOOKS.every(b => !("sword" in b) && !("motif" in b) && !("index" in b))).toBe(true);
   });
 });

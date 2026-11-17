@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "source": "src/data/life-topics.json",
+  "sourceSha256": "698f278f71b6007c32e261aae5bf80a9d79335c15f050cc0bdad8bea7e2a52a6",
+  "topics": 18,
+  "references": 45,
+  "contexts": 45,
+  "reflectionPrompts": 45,
+  "exports": [
+    {
+      "platform": "android",
+      "bundle": "_expo/static/js/android/entry-c53aa676fd5bbc9c08b7e4cd0472f44a.js",
+      "bundleSha256": "8997fcd0198eb9e1841c0b026b98c9cc03dbfb2ee98bfd2c57bb73bec98b6b4b",
+      "matches": [
+        {
+          "moduleId": 1301,
+          "completeCatalogEqual": true
+        }
+      ]
+    },
+    {
+      "platform": "ios",
+      "bundle": "_expo/static/js/ios/entry-35dd6a792e8a4d0a4ff5baf1aa03e0dc.js",
+      "bundleSha256": "af1ba9391eab52b5a90f4d8365a5f273f1b1cf8823d2bff2e36346ad607bff0a",
+      "matches": [
+        {
+          "moduleId": 1305,
+          "completeCatalogEqual": true
+        }
+      ]
+    }
+  ],
+  "kind": "Static original JSON catalog equality in native JS/asset exports; no native execution, simulator or device test."
+}

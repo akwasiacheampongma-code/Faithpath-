@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { View, Pressable, useWindowDimensions } from "react-native";
 import { router } from "expo-router";
 import { Shell } from "../src/components/Shell";
-import { T, Button, Card, Field, Tag, Progress } from "../src/components/ui";
+import { T, Button, Card, Field, Tag } from "../src/components/ui";
 import { Icon } from "../src/components/Icon";
 import { useTheme } from "../src/design-system/theme";
 import {
@@ -13,6 +13,8 @@ import {
 import { useApp } from "../src/state/store";
 import { countBookRead } from "../src/state/model";
 import { StoryLibrary } from "../src/features/bible/StoryCard";
+import { SpiritualWordCard } from "../src/features/bible/SpiritualWordCard";
+import { BookChapterGrid } from "../src/features/bible/BookChapterGrid";
 import { BibleScopeSelect } from "../src/features/bible/BibleScopeSelect";
 import {
   normalizeBookSearch,
@@ -43,22 +45,18 @@ export default function Bible() {
       normalizeBookSearch(b.name).includes(normalizedQuery),
   );
   return (
-    <Shell>
+    <Shell wide>
       <Tag icon="book">Luther 1912 · vollständig offline enthalten</Tag>
       <T
         variant="title"
         accessibilityRole="header"
-        style={{ fontSize: 44, marginTop: 14, marginBottom: 10 }}
+        style={{ fontSize: 40, marginTop: 10, marginBottom: 8 }}
       >
-        Worte für dein Leben.
+        Deine Bibel.
       </T>
-      <T style={{ color: t.muted, fontSize: 13, marginBottom: 24 }}>
-        66 Bücher. Viele Stimmen. Eine Einladung zum Entdecken.
+      <T style={{ color: t.muted, fontSize: 13, marginBottom: 18 }}>
+        66 Bücher. Raum zum Lesen und Verstehen.
       </T>
-      <View style={{ marginBottom: 22, gap: 9 }}>
-        <Button kind="secondary" icon="book" onPress={() => router.push("/geschichten")}>Geschichten und Abschnitte entdecken</Button>
-        <T variant="small" style={{ color: t.muted }}>436 Originaleinheiten · lesen, verstehen und eigene Gedanken festhalten.</T>
-      </View>
       <Card
         style={{
           backgroundColor: t.soft,
@@ -70,63 +68,20 @@ export default function Bible() {
         <T variant="label" style={{ color: t.muted, fontSize: 9 }}>
           HIER KANNST DU WEITERLESEN
         </T>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 12,
-          }}
-        >
-          <View>
-            <T variant="heading">{referenceLabel(data.reading)}</T>
-            {data.readingPosition && (
-              <T variant="small" style={{ color: t.muted }}>
-                Zuletzt bei Vers {data.readingPosition.verse}
-              </T>
-            )}
-            <T style={{ fontSize: 11, color: t.muted }}>
-              {data.readChapters.length} Kapitel bewusst als gelesen bestätigt
-            </T>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <T variant="heading" style={{ fontSize: 26 }}>{referenceLabel(data.reading)}</T>
+            {data.readingPosition && <T variant="small" style={{ color: t.muted }}>Zuletzt bei Vers {data.readingPosition.verse}</T>}
           </View>
-          <Button
-            onPress={() =>
-              router.push({
-                pathname: "/lesen/[book]",
-                params: {
-                  book: data.reading.book,
-                  chapter: data.reading.chapter,
-                  from: data.reading.from,
-                  to: data.reading.to,
-                  mode: data.readingPosition?.mode,
-                },
-              })
-            }
-          >
-            Weiterlesen
-          </Button>
+          <Button icon={null} style={{ paddingHorizontal: 14 }} onPress={() => router.push({
+            pathname: "/lesen/[book]", params: {
+              book: data.reading.book, chapter: data.reading.chapter, from: data.reading.from,
+              to: data.reading.to, mode: data.readingPosition?.mode,
+            },
+          })}>Weiterlesen</Button>
         </View>
+        <T style={{ fontSize: 11, lineHeight: 18, color: t.muted }}>{data.readChapters.length} Kapitel bewusst als gelesen bestätigt</T>
       </Card>
-      <View style={{ gap: 14, marginBottom: 20, alignItems: "flex-start" }}>
-        <Button
-          kind="secondary"
-          icon="book"
-          onPress={() => setShowStory(!showStory)}
-        >
-          {showStory
-            ? "Geschichtenvorschlag schließen"
-            : "Eine Geschichte entdecken"}
-        </Button>
-        {showStory && <StoryLibrary />}
-        <Button
-          kind="ghost"
-          icon="book"
-          onPress={() => router.push("/verstehen")}
-        >
-          Fragen zum Neuen Testament
-        </Button>
-      </View>
       <View style={{ flexDirection: "row", gap: 8, marginBottom: 15 }}>
         {[
           ["books", "Bücher finden"],
@@ -182,7 +137,9 @@ export default function Bible() {
                 ? "Das Alte Testament umfasst Israels Geschichte, Gebete, Weisheit und prophetische Texte."
                 : "Die Bibel ist eine Sammlung verschiedener Bücher – von Erzählungen bis zu Briefen."}
           </T>
-          <View style={{ gap: 10 }}>
+          <View style={{ flexDirection: width >= 960 ? "row" : "column", gap: 24, alignItems: "flex-start" }}>
+            {width < 960 && <View style={{ width: "100%" }}><SpiritualWordCard /></View>}
+          <View testID="bible-book-list" style={{ gap: 10, width: width >= 960 ? undefined : "100%", flex: width >= 960 ? 1 : undefined }}>
             {books.map((book) => (
               <Card key={book.code} style={{ padding: 0, overflow: "hidden" }}>
                 <Pressable
@@ -236,7 +193,7 @@ export default function Bible() {
                     <View style={{ alignItems: "flex-start" }}>
                       <Button
                         kind="ghost"
-                        icon="sword"
+                        icon="book"
                         onPress={() =>
                           router.push({
                             pathname: "/buch/[book]",
@@ -244,57 +201,10 @@ export default function Bible() {
                           })
                         }
                       >
-                        Buchschwert ansehen
+                        Über dieses Buch
                       </Button>
                     </View>
-                    <T variant="label" style={{ fontSize: 9 }}>
-                      Wähle ein Kapitel
-                    </T>
-                    <View
-                      style={{ flexDirection: "row", flexWrap: "wrap", gap: 7 }}
-                    >
-                      {Array.from(
-                        { length: book.chapters },
-                        (_, n) => n + 1,
-                      ).map((n) => (
-                        <Pressable
-                          key={n}
-                          accessibilityRole="button"
-                          accessibilityLabel={`${book.name}, Kapitel ${n}${data.readChapters.includes(`${book.code}:${n}`) ? ", gelesen" : ""}`}
-                          onPress={() =>
-                            router.push({
-                              pathname: "/lesen/[book]",
-                              params: { book: book.code, chapter: n },
-                            })
-                          }
-                          style={{
-                            width: 46,
-                            height: 46,
-                            borderRadius: 9,
-                            backgroundColor: data.readChapters.includes(
-                              `${book.code}:${n}`,
-                            )
-                              ? t.primary
-                              : t.soft,
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <T
-                            style={{
-                              fontSize: 12,
-                              color: data.readChapters.includes(
-                                `${book.code}:${n}`,
-                              )
-                                ? t.onPrimary
-                                : t.text,
-                            }}
-                          >
-                            {n}
-                          </T>
-                        </Pressable>
-                      ))}
-                    </View>
+                    <BookChapterGrid code={book.code} />
                   </View>
                 )}
               </Card>
@@ -308,6 +218,8 @@ export default function Bible() {
               </T>
             </Card>
           )}
+            {width >= 960 && <View style={{ width: 320 }}><SpiritualWordCard /></View>}
+          </View>
         </>
       ) : (
         <View style={{ gap: 12, marginTop: 20 }}>
@@ -368,6 +280,31 @@ export default function Bible() {
           )}
         </View>
       )}
+      <View style={{ marginTop: 32, borderTopWidth: 1, borderTopColor: t.line, paddingTop: 24 }}>
+      <View style={{ marginBottom: 22, gap: 9 }}>
+        <Button kind="secondary" icon="book" onPress={() => router.push("/geschichten")}>Geschichten und Abschnitte entdecken</Button>
+        <T variant="small" style={{ color: t.muted }}>436 Originaleinheiten · lesen, verstehen und eigene Gedanken festhalten.</T>
+      </View>
+      <View style={{ gap: 14, marginBottom: 20, alignItems: "flex-start" }}>
+        <Button
+          kind="secondary"
+          icon="book"
+          onPress={() => setShowStory(!showStory)}
+        >
+          {showStory
+            ? "Geschichtenvorschlag schließen"
+            : "Eine Geschichte entdecken"}
+        </Button>
+        {showStory && <StoryLibrary />}
+        <Button
+          kind="ghost"
+          icon="book"
+          onPress={() => router.push("/verstehen")}
+        >
+          Fragen zum Neuen Testament
+        </Button>
+      </View>
+      </View>
     </Shell>
   );
 }

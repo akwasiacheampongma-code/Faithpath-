@@ -1,0 +1,44 @@
+[
+  {
+    "name": "sword-art",
+    "command": [
+      "npm",
+      "run",
+      "content:swords"
+    ],
+    "startedAt": "2026-11-17T15:17:08.245887+00:00",
+    "finishedAt": "2026-11-17T15:17:08.766720+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/genesis-sword/sword-art.log",
+    "sha256": "e857be1eb88b73a2d50ae3f79438058def16a7db1529b9a39448f7fe5617ab4b"
+  },
+  {
+    "name": "typecheck",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "startedAt": "2026-11-17T15:17:08.895869+00:00",
+    "finishedAt": "2026-11-17T15:17:22.952053+00:00",
+    "exitCode": 0,
+    "log": "docs/evidence/genesis-sword/typecheck.log",
+    "sha256": "f2b0aa802c0478fb3cc3871f59ef58aba7ba0199a156831897787c2de0671e78"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=docs/evidence/genesis-sword/unit-results.json"
+    ],
+    "startedAt": "2026-11-17T15:17:23.209939+00:00",
+    "finishedAt": "2026-11-17T15:18:12.020214+00:00",
+    "exitCode": 1,
+    "log": "docs/evidence/genesis-sword/unit.log",
+    "sha256": "5482c07b69318e91ba908c6602366539003c881c78d1dd5a27c3e94f526cfa41"
+  }
+]

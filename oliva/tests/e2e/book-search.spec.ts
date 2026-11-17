@@ -84,7 +84,7 @@ test("der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und b
   expect(await rawData(page)).toBeUndefined();
 });
 
-test("Suche und Bereich erhalten Buchschwert-Kontext und öffnen das gewählte Kapitel", async ({ page }) => {
+test("Suche und Bereich erhalten die Buchübersicht und öffnen das gewählte Kapitel", async ({ page }) => {
   await savedProfile(page);
   const before = await rawData(page);
   await page.goto("/bibel");
@@ -92,7 +92,7 @@ test("Suche und Bereich erhalten Buchschwert-Kontext und öffnen das gewählte K
   const query = " 1 . M o s e \u00a0";
   await search(page).fill(query);
   await page.getByRole("button", { name: "1. Mose, 50 Kapitel", exact: true }).click();
-  await page.getByRole("button", { name: "Buchschwert ansehen", exact: true }).click();
+  await page.getByRole("button", { name: "Über dieses Buch", exact: true }).click();
   await expect(page).toHaveURL(/\/buch\/GEN(?:\?|$)/);
   await expect(page.getByRole("heading", { name: "1. Mose", exact: true })).toBeVisible();
   expect(await rawData(page)).toEqual(before);

@@ -59,5 +59,27 @@
     "appRoutesHttpChecked": 40,
     "anonymousAppRoutesVerified": 40,
     "hostedBrowserQa": false
+  },
+  "githubBackup": {
+    "commit": "30a34393cf19b508d80ba8bc6abf84388f026fd8",
+    "branch": "feature/oliva-v017-original-history-20261117",
+    "tag": "oliva-v0.17.0",
+    "versionRefsVerified": 30,
+    "standaloneCommit": "f7419ae7c7165ce77d300050459bcc29b12e736f",
+    "mainUnchanged": true
+  },
+  "independentCi": {
+    "runId": 44107370439,
+    "headSha": "30a34393cf19b508d80ba8bc6abf84388f026fd8",
+    "completedAt": "2026-11-17T15:03:49Z",
+    "qualityVerified": true,
+    "checks": 31,
+    "unitPassed": 347,
+    "browserPassed": 154,
+    "singleAttempt": true,
+    "remoteBuild": "oliva-c1a470ef785764e7",
+    "sameBinaryAsPrivateClaimed": false,
+    "artifactId": 14340625822,
+    "artifactSha256": "1f2c06c93a102ce8310c549ab995f7fee41ff5d4d06d55370c03111e70bc9b06"
   }
 }

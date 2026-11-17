@@ -1,14 +1,10 @@
 import { View } from "react-native";
 import { router } from "expo-router";
 import { Button, Card, T, Tag } from "../../components/ui";
-import { SwordArt } from "../../components/Artwork";
 import { useTheme } from "../../design-system/theme";
-import { countBookRead } from "../../state/model";
-import { useApp } from "../../state/store";
 import { ntChapterIndex } from "../quiz/index";
 import {
   adjacentChapter,
-  bookByCode,
   referenceLabel,
   type Reference,
 } from "./repository";
@@ -23,7 +19,6 @@ export type ReaderFooterProps = {
   question?: string;
   relatedPath?: { id: string; title: string };
   mode: "read" | "deep";
-  celebrate: boolean;
 };
 
 /** Completion and onward navigation retain the reader's logical reference. */
@@ -37,13 +32,9 @@ export function ReaderFooter({
   question,
   relatedPath,
   mode,
-  celebrate,
 }: ReaderFooterProps) {
   const t = useTheme(),
-    data = useApp((state) => state.data),
-    book = bookByCode(reference.book),
-    passage = !!(reference.from || reference.to),
-    readCount = countBookRead(data, reference.book);
+    passage = !!(reference.from || reference.to);
 
   function navigate(delta: -1 | 1) {
     const next = adjacentChapter(reference.book, reference.chapter, delta);
@@ -147,45 +138,6 @@ export function ReaderFooter({
           Glaubens.
         </T>
       </View>
-      {done && !passage && (
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 20,
-            paddingVertical: 10,
-          }}
-        >
-          <SwordArt
-            book={reference.book}
-            size={70}
-            celebrate={celebrate}
-            progress={readCount / (book?.chapters ?? 1)}
-          />
-          <View style={{ maxWidth: 230 }}>
-            <T variant="heading" style={{ fontSize: 24 }}>
-              {book?.sword}
-            </T>
-            <T style={{ fontSize: 11, color: t.muted }}>
-              {readCount} von {book?.chapters}{" "}
-              Kapiteln gelesen. Die Lichtlinie erinnert daran.
-            </T>
-            <Button
-              kind="ghost"
-              icon="sword"
-              onPress={() =>
-                router.push({
-                  pathname: "/buch/[book]",
-                  params: { book: reference.book },
-                })
-              }
-            >
-              Buchschwert ansehen
-            </Button>
-          </View>
-        </View>
-      )}
       {mode === "deep" && question && (
         <Card style={{ gap: 14 }}>
           <T variant="heading">Ein Gedanke für dich</T>
