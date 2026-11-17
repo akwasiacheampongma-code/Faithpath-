@@ -1,0 +1,13 @@
+
+> oliva-faith-companion@0.15.0 typecheck
+> tsc --noEmit
+
+src/features/garden/PersonalTreeJourney.tsx(78,26): error TS2322: Type '"journal" | "leaf"' is not assignable to type 'IconName | null | undefined'.
+  Type '"journal"' is not assignable to type 'IconName | null | undefined'.
+tests/nt-catalog.test.ts(7,24): error TS2307: Cannot find module '../content/faithpath-nt/provenance.json' or its corresponding type declarations.
+tests/nt-catalog.test.ts(56,35): error TS7006: Parameter 'file' implicitly has an 'any' type.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

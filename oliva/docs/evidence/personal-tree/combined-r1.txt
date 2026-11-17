@@ -1,0 +1,27 @@
+
+> oliva-faith-companion@0.15.0 test:e2e
+> playwright test tests/e2e/a51-tree.spec.ts tests/e2e/personal-tree.spec.ts
+
+[WebServer] (node:112323) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 9 tests using 1 worker
+
+(node:112331) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (18.1s)
+  ✓  2 tests/e2e/a51-tree.spec.ts:200:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (4.6s)
+  ✓  3 tests/e2e/a51-tree.spec.ts:224:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (5.8s)
+  ✓  4 tests/e2e/a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (3.7s)
+  ✓  5 tests/e2e/a51-tree.spec.ts:250:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (3.3s)
+  ✓  6 tests/e2e/personal-tree.spec.ts:45:1 › persönliche Baumzweige öffnen echte Vorhaben; alle Aufzeichnungen und der Baum bleiben unverändert (5.0s)
+  ✓  7 tests/e2e/personal-tree.spec.ts:60:3 › Baumverknüpfungen bei echtem Bildladen ohne Service-Worker › persönliche Pins warten auf das tatsächliche Originalbild; die Liste bleibt währenddessen bedienbar (4.2s)
+  ✓  8 tests/e2e/personal-tree.spec.ts:77:1 › ein geteilter Gedanke erscheint einmal und öffnet die lesende Sammlung ohne fremde Entwürfe zu verändern (6.0s)
+  ✓  9 tests/e2e/personal-tree.spec.ts:89:1 › Stadienvorschauen zeigen keine eigenen Baumzweige; kleine Ziele und Dunkelansicht bleiben zugänglich (9.8s)
+
+  9 passed (1.1m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

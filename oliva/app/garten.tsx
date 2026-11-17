@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { View, Pressable, useWindowDimensions } from "react-native";
 import { router } from "expo-router";
 import { Shell } from "../src/components/Shell";
@@ -11,13 +11,21 @@ import { useApp } from "../src/state/store";
 import { useTheme } from "../src/design-system/theme";
 import { CaptureInput } from "../src/features/personal/CaptureInput";
 import { EXPERIENCE_QUESTION } from "../src/features/personal/capture-model";
+import { personalTreeHistory, personalTreeLinks } from "../src/features/garden/personal-history";
+import { PersonalTreeJourney, PersonalTreePins } from "../src/features/garden/PersonalTreeJourney";
+import { a51Stage, treeLayout } from "../src/features/garden/a51/stages";
 export default function Garden() {
   const t = useTheme(),
-    { width } = useWindowDimensions(),
+    { width, fontScale } = useWindowDimensions(),
     data = useApp((s) => s.data),
     [preview, setPreview] = useState<number | null>(null),
     [gallery, setGallery] = useState(false),
-    stage = preview ?? data.growthStage;
+    [loadedStage, setLoadedStage] = useState<number | null>(null),
+    stage = preview ?? data.growthStage,
+    treeSize = Math.min(width - 90, 380),
+    treeHeight = Math.max(120, treeLayout(a51Stage(stage), treeSize).height),
+    history = useMemo(() => personalTreeHistory(data), [data.goals, data.notes, data.growthStage]),
+    links = preview === null && loadedStage === data.growthStage ? personalTreeLinks(history, treeSize, fontScale, treeHeight) : [];
   return (
     <Shell>
       <Tag icon="leaf">Dein persönlicher Garten</Tag>
@@ -62,7 +70,10 @@ export default function Garden() {
               ? "DEIN BAUM HEUTE"
               : "VORSCHAU · KEIN EIGENER FORTSCHRITT"}
           </T>
-          <OliveTree stage={stage} size={Math.min(width - 90, 380)} />
+          <View style={{ width: treeSize }}>
+            <OliveTree stage={stage} size={treeSize} onReady={setLoadedStage} />
+            <PersonalTreePins links={links} />
+          </View>
           <T variant="title">{STAGES[stage]?.name}</T>
           <T
             style={{
@@ -215,6 +226,7 @@ export default function Garden() {
           </Card>
         </View>
       </View>
+      <PersonalTreeJourney model={history} links={links} />
       <Card style={{ marginTop: 24, gap: 13 }}>
         <T variant="heading">Was möchtest du im Alltag ausprobieren?</T>
         <T style={{ fontSize: 12, color: t.muted }}>

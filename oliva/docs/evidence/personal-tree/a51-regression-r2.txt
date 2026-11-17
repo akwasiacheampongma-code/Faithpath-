@@ -1,0 +1,48 @@
+
+> oliva-faith-companion@0.15.0 test:e2e
+> playwright test tests/e2e/a51-tree.spec.ts
+
+[WebServer] (node:111145) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:111153) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (2.0m)
+(node:111473) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/a51-tree.spec.ts:200:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (5.4s)
+  ✓  3 tests/e2e/a51-tree.spec.ts:224:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (5.4s)
+  ✓  4 tests/e2e/a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (3.8s)
+  ✓  5 tests/e2e/a51-tree.spec.ts:250:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (6.3s)
+
+
+  1) tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.fill: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for getByRole('textbox', { name: 'Dein Vorname (freiwillig)' })
+
+
+      139 |   await page.emulateMedia({reducedMotion:"reduce"});
+      140 |   await page.goto("/einstellungen");
+    > 141 |   await page.getByRole("textbox",{name:"Dein Vorname (freiwillig)"}).fill("Ada");
+          |                                                                      ^
+      142 |   await page.getByRole("button",{name:"Namen speichern",exact:true}).click();
+      143 |   await expect.poll(async()=>(await localData(page))?.name).toBe("Ada");
+      144 |   await page.goto("/garten");await ready(page,0);
+        at /workspace/oliva-personal-tree-next/tests/e2e/a51-tree.spec.ts:141:70
+
+    Error Context: test-results/a51-tree-alle-sieben-Origi-974dc-en-keine-persönlichen-Daten/error-context.md
+
+  1 failed
+    tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten 
+  4 passed (2.4m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

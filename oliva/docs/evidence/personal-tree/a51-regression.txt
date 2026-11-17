@@ -1,0 +1,53 @@
+
+> oliva-faith-companion@0.15.0 test:e2e
+> playwright test tests/e2e/a51-tree.spec.ts
+
+[WebServer] (node:110102) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:110110) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (22.5s)
+  ✓  2 tests/e2e/a51-tree.spec.ts:200:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (6.3s)
+  ✓  3 tests/e2e/a51-tree.spec.ts:224:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (6.5s)
+  ✘  4 tests/e2e/a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (18.2s)
+(node:110564) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/e2e/a51-tree.spec.ts:250:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (3.4s)
+
+
+  1) tests/e2e/a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "Dieses Stadium konnte nicht geladen werden"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 15000ms
+      - waiting for getByRole('alert')
+
+
+      239 |     await page.route("**/*stage-4*.webp",r=>r.abort());
+      240 |     await page.getByRole("button",{name:/^Stadium 4 ansehen:/}).click();
+    > 241 |     await expect(page.getByRole("alert")).toContainText("Dieses Stadium konnte nicht geladen werden");
+          |                                           ^
+      242 |     expect((await metrics(page))?.stage).toBe(0);
+      243 |     await page.unroute("**/*stage-4*.webp");
+      244 |     await page.getByRole("button",{name:"Baumbild erneut laden",exact:true}).click();await ready(page,3);
+        at /workspace/oliva-personal-tree-next/tests/e2e/a51-tree.spec.ts:241:43
+
+    Error Context: test-results/a51-tree-Bildladefehler-oh-cde8b-lädt-das-gewünschte-Stadium/error-context.md
+
+  1 failed
+    tests/e2e/a51-tree.spec.ts:237:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium 
+  4 passed (1.0m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
