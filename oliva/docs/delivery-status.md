@@ -1,12 +1,24 @@
-# Lieferstand · OLIVA 0.17.0 · Originalhistorie
+# Lieferstand · OLIVA 0.18.0 · Ein geistliches Schwert
 
-<!-- OLIVA_SINGLE_SWORD_CANDIDATE -->
-## Aktuelle Umstellung · ein geistliches Schwert
+<!-- OLIVA_018_CURRENT -->
+## OLIVA 0.18.0 · ein geistliches Schwert
 
-Der Nutzer hat die 66 Buchschwert-Sammlung am 17.11.2026 ausdrücklich abgelöst. Kandidat 0.18.0 entfernt Galerie, Buchschwertaktionen und Lichtspuren; alle 66 Bücher und vorhandenen Nutzerdaten bleiben erhalten. Der Bibel-Hub zeigt genau ein statisches, wiederverwendetes Originalbild mit quellentreuem Epheser 6,17 und zugänglichem Zusammenhang 6,10–18. Kein Lesefortschritt, Sammeln oder Belohnung am Schwert. Originalbilder/Provenienz/historische Releases bleiben bewahrt.
+**OLIVA 0.18.0 ist seit 17.11.2026, 16:52:21 UTC eigentümerprivat bereitgestellt.** [Bibel-Hub öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/bibel). Die bisherige Vorschau-Adresse bleibt bestehen. [Schwertkarte auf dem Smartphone](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/spiritual-word/word-320-light.png) · [Hub auf dem Smartphone](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/spiritual-word/hub-top-320-light.png); tatsächliche lokale Chromium-Aufnahmen mit synthetischen Prüfdaten.
 
-343 Fachtests,Typecheck,7 Inhaltsprüfungen,Produktionsexport und beide statischen Nativeabnahmen bestehen. Vollständige Browser-, PWA-Wechsel- und private Lieferabnahme laufen bzw. sind noch offen; **private Vorschau bleibt bis dahin bei 0.17**. Der eigene Featurebranch ist`feature/oliva-single-spirit-sword-20261117`. Details und tatsächliche Grenzen in `docs/34-single-spirit-sword.md` (aus `docs/` entsprechend relativ). Kein main-Merge und keine öffentliche Website-/Storefreigabe. ÄltereBuchschwert-Beschreibungen unten sind historische Lieferstände.
-<!-- /OLIVA_SINGLE_SWORD_CANDIDATE -->
+Die 66er-Schwertsammlung ist auf ausdrücklichen Nutzerauftrag entfernt. Galerie, Sammlungsregisterkarte, Buchschwertaktionen, Lichtspuren, Bestätigungsanimationen und zehn Schwertmodule entfallen. Alle 66 Bibelbücher und 1.189 Kapitel bleiben direkt über die ruhige Buchliste erreichbar, standardmäßig gesamte Bibel mit NT-/AT-Dropdown und leerzeichentoleranter Suche. Alte Buchlinks öffnen sachliche Buchübersichten. Normaler Lesefortschritt, Reader, Geschichten, Fragen, Gedanken, Entwürfe und persönlicher Garten bleiben erhalten.
+
+Genau ein vorhandenes Original mit Holzgriff und jungem Trieb erscheint statisch im Bibel-Hub. Kein Sammeln, Freischalten, Kapitelindikator oder Lohn. Der wörtliche Auszug „… und das Schwert des Geistes, welches ist das Wort Gottes.“ öffnet Epheser 6,17; der Zusammenhang 6,10–18 ist zugänglich. OLIVA-Einordnung und Bibelwort sind getrennt. Die Karte erklärt ausdrücklich, dass sich das Symbol nicht gegen Menschen richtet.
+
+Eine unveränderte 81.042-Byte-Datei ersetzt 1.038.251 Byte Schwertvarianten im jüngsten Entwicklungsstand. Neun frühere Varianten und 45 Kunst-/Provenienzdateien sind bytegenau bewahrt. AppData V11 / Dokument 1 / SQLite 3 / IndexedDB 1 bleiben unverändert; keine neue Abhängigkeit oder Datenmigration.
+
+**343/343 Fachtests und der finale vollständige 146/146-Browserlauf bestanden**, ohne Retries, Skips oder Flaky-Ergebnisse. Typecheck, sieben Inhaltsprüfungen, Produktionsaudit ohne Funde, Webbuild, beide statischen nativen Exporte mit vollständigen Inhaltsvergleichen und 14 absichtliche Native-Artefaktfehlerprüfungen bestehen. Der echte lokale Wechsel von der bisherigen privaten 0.17-Hostfassung zum 0.18-PWA-Kandidaten bewahrt alle vier V11-Rohdatensätze durchgehend exakt. Frühere rote Berichte und ihre konkreten Korrekturen bleiben erhalten. Keine native Geräte-/Simulatorprüfung behauptet.
+
+Die unabhängige [GitHub-CI 44124684188](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/44124684188) bestätigt denselben korrigierten Quellstand mit 343/146 und allen 31 Kriterien. Code gesichert unter [Tag `oliva-v0.18.0`](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.18.0/oliva), Feature-Branch `feature/oliva-single-spirit-sword-20261117`, GitHub-Commit `84527ef0b7e3c970b3c7e33bd758cd2fd28d06a0`, eigenem Quellcommit `bc2c199921ba0a20e4d9436248db8f46d256e3ff` und eigenem Tag `oliva-v0.18.0-single-spirit-sword-private`. Alle 32 Versionsrefs, geschützten Bestandsbranches und 47 Nicht-OLIVA-Root-Einträge bleiben bestätigt unverändert. Die abschließenden Nachweise werden separat auf `docs/oliva-v018-delivery-20261117` gesichert, ohne Retagging oder erneutes Website-Deployment.
+
+Privat geprüft: 40 App-Routen, 106 App-Dateien (105 bytegenau plus HTML-Marker) und 53 Review-Dateien. Alle 40 App-Routen sowie zusätzlich Schwertbild, Reviewbild und Worker anonym401; Eigentümerpolitik Revision 1 exakt unverändert. Kern `oliva-6e2b52bb8e634041`, privater Host `oliva-5d647075614ace83`, CI-Build `oliva-dd2018980e9ea631` sind getrennte Exporte. 344 Runtimeinputs, SHA-256 `29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab`. Keine gehostete Browser-QA mangels unterstütztem CUA-Werkzeug.
+
+Weitere Master-Arbeit bleibt offen: Bibelbildserie, unabhängige Inhalts-/Rechteabnahmen, echte Einsteiger-/Geräte-/Hilfstechnologietests, signierte native Pakete und konkrete Cloud-/KI-/Audioentscheidungen. Die abgeschaffte Buchschwertsammlung wird nicht wieder eingeführt. **Die Gesamt-Definition-of-Done ist nicht abgeschlossen.** Keine öffentliche Website-/Storefreigabe, kein GitHub-main-Merge und keine Änderung an Original-FaithPath.
+<!-- /OLIVA_018_CURRENT -->
 
 
 <!-- OLIVA_017_CURRENT -->
@@ -347,3 +359,8 @@ Der eigenständige 0.12-Quellcheckpoint mit Tag, ZIP und SHA-256 sowie die beauf
 ## Nachträglich bestätigter 0.13-Checkpoint und Remote-CI
 
 Eigenständiger Quellcommit `8595783344f49c978da80a1ef52b8776dd8f3a3c`, GitHub-Commit `639fdafaf15a9ae49ce6a3d8e2889f2fa3ee0d12`, Tag `oliva-v0.13.0`; alle 20 Versionsrefs bestätigt. Die tatsächliche Remote-CI `43888534422` bestätigt unabhängig 290/290 Fachtests und 126/126 Browserfälle im ersten Versuch. [Prüfbericht](evidence/github/ci-v013/README.md). Die Reader-Phase ist abgeschlossen; der Gesamt-Master und insbesondere die besprochene Geschichtenintegration bleiben offen.
+
+
+## Nutzerwunsch nach dem Abschluss
+
+Nach Abschluss und Sicherung dieser Umstellung wird die Entwicklung auf ausdrücklichen Nutzerwunsch pausiert. Der übrige Master bleibt offen; keine automatische Weiterarbeit bis zu einem erneuten Fortsetzen.

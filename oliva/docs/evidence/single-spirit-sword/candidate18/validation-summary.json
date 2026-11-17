@@ -1,0 +1,74 @@
+{
+  "version": "0.18.0",
+  "coreBuild": "oliva-6e2b52bb8e634041",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); app/src/assets, app/package/lock and active tree/spiritual-sword runtime manifests",
+    "fileCount": 344,
+    "sha256": "29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab"
+  },
+  "unit": {
+    "passed": 343,
+    "total": 343
+  },
+  "browser": {
+    "passed": 146,
+    "total": 146,
+    "singleFullGreenRun": true,
+    "singleAttempt": true
+  },
+  "appDataVersion": 11,
+  "nativeExecution": false,
+  "allCoreChecksPassed": true,
+  "singleSpiritualSword": true,
+  "bookSwordCollection": false,
+  "activeSwordImages": 1,
+  "originalArtFilesPreserved": 45,
+  "retiredVariantsArchived": 9,
+  "all66BooksPreserved": true,
+  "pwaUpgradeAllFourRawRecordsExact": true,
+  "masterDefinitionOfDoneComplete": false,
+  "independentCi": {
+    "runId": 44124684188,
+    "headSha": "84527ef0b7e3c970b3c7e33bd758cd2fd28d06a0",
+    "completedAt": "2026-11-17T16:37:36Z",
+    "qualityVerified": true,
+    "checks": 31,
+    "unitPassed": 343,
+    "browserPassed": 146,
+    "sourceSubtree": "442ab1ff1b474c97c109b03005d4ed4e74f0eae2",
+    "remoteBuild": "oliva-dd2018980e9ea631",
+    "sameBinaryAsPrivateClaimed": false,
+    "artifactId": 14347074543,
+    "artifactSHA256": "11a02dcf2decde9a68f935fabf379373708265a1b77e7ef21816b5ac9ef27da3"
+  },
+  "privateDeployment": {
+    "project_id": "appgprj_6aedf77e5ce0819180c10eb799447018",
+    "deployment_id": "appgdep_6afc85fb56b8819195ae3d2b7859d32f",
+    "status": "succeeded",
+    "version_id": "appgprj_6aedf77e5ce0819180c10eb799447018~appgver_b77795d692208191a510f1395e3abe77",
+    "url": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+    "updated_at": "2026-11-17T16:52:21.500551+00:00",
+    "source_commit": "617e5f08d2dae520faec4ccdc78a28e2ab0ebd0d",
+    "host_build": "oliva-5d647075614ace83",
+    "public_deployment": false,
+    "ownerPolicyExactlyUnchanged": true,
+    "appRoutesHttpChecked": 40,
+    "anonymousAppRoutesVerified": 40,
+    "anonymousStatus": 401,
+    "appFilesVerified": 106,
+    "byteComparedAppFiles": 105,
+    "reviewFilesVerified": 53,
+    "hostedBrowserQa": false
+  },
+  "githubRelease": {
+    "githubCommit": "84527ef0b7e3c970b3c7e33bd758cd2fd28d06a0",
+    "githubBranch": "feature/oliva-single-spirit-sword-20261117",
+    "githubTag": "oliva-v0.18.0",
+    "githubTagObject": "44e4ecddaeb7d1fd170e5f8aed11b821dfe5df0c",
+    "standaloneCommit": "bc2c199921ba0a20e4d9436248db8f46d256e3ff",
+    "localTag": "oliva-v0.18.0-single-spirit-sword-private",
+    "versionRefsVerified": 32,
+    "protectedRefsUnchanged": true
+  },
+  "singleSpiritSwordTaskImplementedAndDelivered": true
+}

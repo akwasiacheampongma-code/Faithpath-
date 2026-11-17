@@ -1,0 +1,141 @@
+[
+  {
+    "checkedAt": "2026-11-17T16:32:25.451607+00:00",
+    "headSha": "84527ef0b7e3c970b3c7e33bd758cd2fd28d06a0",
+    "headBranch": "feature/oliva-single-spirit-sword-20261117",
+    "runAttempt": 1,
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs": [
+      {
+        "id": 134185116862,
+        "runAttempt": 1,
+        "status": "in_progress",
+        "conclusion": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "in_progress",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "pending",
+            "conclusion": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "checkedAt": "2026-11-17T16:39:51.826269+00:00",
+    "headSha": "84527ef0b7e3c970b3c7e33bd758cd2fd28d06a0",
+    "headBranch": "feature/oliva-single-spirit-sword-20261117",
+    "runAttempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 134185116862,
+        "runAttempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "checkedAt": "2026-11-17T16:43:56.318848+00:00",
+    "headSha": "84527ef0b7e3c970b3c7e33bd758cd2fd28d06a0",
+    "headBranch": "feature/oliva-single-spirit-sword-20261117",
+    "runAttempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 134185116862,
+        "runAttempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  }
+]

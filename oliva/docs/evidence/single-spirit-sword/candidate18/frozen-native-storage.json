@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-17T16:37:52.257810+00:00",
+  "scope": "Only explicitly frozen native export outputs. Completed0.18candidate exports preserved before future builds; prior0.17and superseded beta outputs preserved. No active export, source, original art, ZIP or evidence payload relinked.",
+  "moved": [
+    {
+      "from": "/workspace/faithpath-next/dist-android",
+      "to": "/workspace/oliva-v018-preserved-dist-android"
+    },
+    {
+      "from": "/workspace/faithpath-next/dist-ios",
+      "to": "/workspace/oliva-v018-preserved-dist-ios"
+    }
+  ],
+  "roots": [
+    "/workspace/oliva-v018-preserved-dist-android",
+    "/workspace/oliva-v018-preserved-dist-ios",
+    "/workspace/oliva-v017-preserved-dist-android",
+    "/workspace/oliva-v017-preserved-dist-ios",
+    "/workspace/oliva-single-sword-before-mobile-adjustment-dist-android",
+    "/workspace/oliva-single-sword-before-mobile-adjustment-dist-ios",
+    "/workspace/oliva-genesis-superseded-dist-android",
+    "/workspace/oliva-genesis-superseded-dist-ios"
+  ],
+  "files": 1052,
+  "relinked": 869,
+  "allBytesAndModesUnchanged": true,
+  "freeBefore": 46657536,
+  "freeAfter": 165974016
+}

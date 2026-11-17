@@ -1,0 +1,11 @@
+# Unabhängige GitHub-CI · OLIVA 0.18.0
+
+Der tatsächliche Pushlauf [44124684188](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/44124684188) für den korrigierten Quellstand `84527ef0b7e3c970b3c7e33bd758cd2fd28d06a0` ist seit 2026-11-17T16:37:36Z unabhängig bestätigt. Job 134185116862, erster Versuch: 343/343 Fachtests und 146/146 Browserfälle, ohne Retries, Skips oder Flaky-Ergebnisse. Alle 31 Kriterien bestehen. Der genaue autorisierte Standalone-Teilbaum `442ab1ff1b474c97c109b03005d4ed4e74f0eae2` aus `bc2c199921ba0a20e4d9436248db8f46d256e3ff` ist geprüft.
+
+Artefakt 14347074543: 13.829.174 Byte, SHA-256`11a02dcf2decde9a68f935fabf379373708265a1b77e7ef21816b5ac9ef27da3`; CRC und sämtliche Einträge geprüft. Vier tatsächliche Berichte und exakter Decoder-Joblog sind hier mit Herkunft und Hash gespeichert. ZIP außerhalb des Projekts unter `/tmp/oliva-ci-v018-artifact.zip`. Temporäre Downloadfähigkeit aus Sitzungsspeicher entfernt; keine Secrets oder signierten URLs gespeichert.
+
+Remote-Build `oliva-dd2018980e9ea631`, lokaler Kern `oliva-6e2b52bb8e634041`, privater Hostkandidat `oliva-5d647075614ace83` sind getrennte Exporte. Keine bytegleichen Builddateien behauptet. CI prüft Web/PWA und echte Browserabläufe; statische Nativeprüfung, Datenwechsel und private Bereitstellung besitzen eigene Nachweise. Keine native Geräte-/Simulatorabnahme.
+
+Der erste eigene Kandidatenlauf44121813373 für `a5901bb41e793475f985a71d87cbde5cae6956c8` scheiterte an der sofortigen URL-Abfrage vor dem asynchronen Readerwechsel. Sein tatsächlicher roter Joblog und Ausgang liegen unter `../ci-v018-first-candidate/`. Die Anwendung blieb bytegleich; die korrigierte Prüfung wartet auf den tatsächlichen Reader und prüft danach dieselben strengen Vers-/Datenbedingungen. Es gab keinen Workflow-Rerun für den alten Head. Die alten roten 0.11-Erstläufe bleiben ebenfalls unverändert.
+
+Die CI-Quellidentität wurde für den neuen Feature-Branch vor dem Release-Tag geprüft. Der anschließend gesetzte Tag `oliva-v0.18.0` zeigt auf genau diesen CI-Head; `release-tag-identity.json` bestätigt dies gesondert nach vollständiger privater Abnahme. CI hat keine Website bereitgestellt und main nicht geändert. Gesamter Master bleibt offen; die66er-Schwertsammlung ist durch ausdrücklichen Nutzerauftrag abgelöst.

@@ -1,0 +1,46 @@
+{
+  "version": "0.18.0",
+  "checkedAt": "2026-11-17T16:40:19.926Z",
+  "runtime_files_verified": 102,
+  "unchanged_runtime_asset_bytes": 99,
+  "rewritten_uri_files": 3,
+  "all_runtime_hashes_match": true,
+  "pwa_manifest_valid": true,
+  "icons_valid": true,
+  "cache_files_verified": 105,
+  "build_id": "oliva-5d647075614ace83",
+  "app_routes_rewritten": true,
+  "source_build": "oliva-6e2b52bb8e634041",
+  "source_validation": {
+    "version": "0.18.0",
+    "coreBuild": "oliva-6e2b52bb8e634041",
+    "runtimeSourceDigest": {
+      "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); app/src/assets, app/package/lock and active tree/spiritual-sword runtime manifests",
+      "fileCount": 344,
+      "sha256": "29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab"
+    },
+    "unit": {
+      "passed": 343,
+      "total": 343
+    },
+    "browser": {
+      "passed": 146,
+      "total": 146,
+      "singleFullGreenRun": true,
+      "singleAttempt": true
+    },
+    "appDataVersion": 11,
+    "nativeExecution": false,
+    "allCoreChecksPassed": true,
+    "singleSpiritualSword": true,
+    "bookSwordCollection": false,
+    "activeSwordImages": 1,
+    "originalArtFilesPreserved": 45,
+    "retiredVariantsArchived": 9,
+    "all66BooksPreserved": true,
+    "pwaUpgradeAllFourRawRecordsExact": true,
+    "masterDefinitionOfDoneComplete": false
+  },
+  "managed_sites_browser_qa": "unavailable: cua_repl.js not exposed",
+  "physical_phone_test": false
+}

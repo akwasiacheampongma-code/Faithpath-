@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-17T19:41:40.999670+00:00",
+  "initialFailure": "Git quoted four untracked screenshot filenames containing German umlauts. Line-based parsing rejected the quoted display paths before branch creation or commit.",
+  "correction": "NUL-delimited git diff/ls-files paths; same strict docs-only allowlist retained.",
+  "actualNonDocumentationChanges": 0,
+  "runtimeChanged": false,
+  "releaseTagsChanged": false,
+  "initialHelperPreserved": true
+}
