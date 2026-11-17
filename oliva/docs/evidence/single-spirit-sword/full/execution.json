@@ -1,0 +1,18 @@
+{
+  "startedAt": "2026-11-17T15:53:40.491372+00:00",
+  "finishedAt": "2026-11-17T16:11:25.423650+00:00",
+  "command": [
+    "node",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--output=docs/evidence/single-spirit-sword/full/artifacts"
+  ],
+  "exitCode": 1,
+  "workers": 1,
+  "retries": 0,
+  "filtered": false,
+  "runtimeInputsExact": true,
+  "runtimeSourceSHA256": "29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab",
+  "log": "docs/evidence/single-spirit-sword/full/execution.log",
+  "logSHA256": "032c66a8066cbde38825f6b8fc32af895349f63a539ee43db54a98fddbfb4ab5"
+}

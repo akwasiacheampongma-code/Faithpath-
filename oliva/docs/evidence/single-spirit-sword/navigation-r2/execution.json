@@ -1,0 +1,21 @@
+{
+  "startedAt": "2026-11-17T16:15:57.046773+00:00",
+  "finishedAt": "2026-11-17T16:16:08.042538+00:00",
+  "command": [
+    "node",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "tests/e2e/spiritual-word.spec.ts",
+    "-g",
+    "quellentreue Vers",
+    "--output=docs/evidence/single-spirit-sword/navigation-r2/artifacts"
+  ],
+  "exitCode": 0,
+  "workers": 1,
+  "retries": 0,
+  "filtered": true,
+  "runtimeInputsExact": true,
+  "runtimeSourceSHA256": "29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab",
+  "log": "docs/evidence/single-spirit-sword/navigation-r2/execution.log",
+  "logSHA256": "8b892749ce70af345159a6f74bf0b7fb91799cc6290eef3f5e45201ab698cbd4"
+}

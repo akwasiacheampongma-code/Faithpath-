@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "baselineVersion": "0.17.0",
+  "baselineBuild": "oliva-c4e0bc1e9484a00e",
+  "targetVersion": "0.18.0",
+  "targetBuild": "oliva-6e2b52bb8e634041",
+  "baselineHtmlSha256": "a394f091328ca61e8bfc16ed05affdf2c8e6191db7fc33f39f83753ead77449e",
+  "baselineWorkerSha256": "f84d8abb21c3086791d159098f0de922af75ff49e6a950f778441acc3e770be1",
+  "targetHtmlSha256": "bd6e5a8dd66a2e8b3598f48c8f4d037a0495ab3dd729a2e15d872a5c824523b4",
+  "targetWorkerSha256": "285b74cd3e1bd43465ea75b6bc5a2d590282452c7d02c7bca49470747116bafb",
+  "syntheticData": true,
+  "syntheticClock": "2027-01-01T12:00:00.000Z",
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "runtimeInputsBefore": {
+    "fileCount": 344,
+    "sha256": "29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab",
+    "allFileHashesMatch": true
+  },
+  "phases": [
+    {
+      "name": "seed-real-017-owner-private-host-only-through-its-shipped-ui",
+      "startedAt": "2026-11-17T16:07:24.814Z"
+    },
+    {
+      "name": "activate-different-real-worker-build-without-schema-or-data-write",
+      "startedAt": "2026-11-17T16:07:46.568Z"
+    },
+    {
+      "name": "single-static-sword-and-all66books-offline-without-any-data-write",
+      "startedAt": "2026-11-17T16:07:53.076Z"
+    },
+    {
+      "name": "first-offline-personal-tree-history-and-real-goal-return-are-readonly",
+      "startedAt": "2026-11-17T16:07:58.668Z"
+    },
+    {
+      "name": "history-thought-opens-collection-for-reading-and-keeps-other-drafts",
+      "startedAt": "2026-11-17T16:08:02.977Z"
+    },
+    {
+      "name": "offline-seven-a51-stages-and-existing-study-answers",
+      "startedAt": "2026-11-17T16:08:03.372Z"
+    },
+    {
+      "name": "preserved-offline-original-history-from-garden-and-exact-archive-coordinates-remains-readonly",
+      "startedAt": "2026-11-17T16:08:08.455Z"
+    },
+    {
+      "name": "actual-v11-backup-download-and-restore-preview-without-applying",
+      "startedAt": "2026-11-17T16:08:11.790Z"
+    },
+    {
+      "name": "complete",
+      "startedAt": "2026-11-17T16:08:13.847Z"
+    }
+  ],
+  "origin": "http://127.0.0.1:40143",
+  "browserVersion": "155.0.8059.79",
+  "phase": "complete",
+  "beforeRecords": [
+    {
+      "store": "state",
+      "key": "archive:3f34c3ae3478f9e9766c4dcecb7f3c243c42c16471af9985a20d928c354d73c7",
+      "json_utf8_bytes": 5410,
+      "json_sha256": "4ceb53eafb1629d01d2ee75f28113bf1a7e887d687ff9ef0a3291627e6e47f05"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "6f6c147601127415174156832d77fdc161d7bde1cf4764822326df59e3aff226"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8768,
+      "json_sha256": "a79522ff6757a981a9cba7b1b3e3f12a7fdbb524e2ccd5daa78db43690e49ded"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "995641f5d7c8f83fd49c665f7298c2ab1e123eec027f5347515bef8b31c92d74"
+    }
+  ],
+  "beforeWorker": {
+    "expected": "oliva-c4e0bc1e9484a00e",
+    "controller": {
+      "id": "oliva-c4e0bc1e9484a00e",
+      "version": "0.17.0"
+    },
+    "active": {
+      "id": "oliva-c4e0bc1e9484a00e",
+      "version": "0.17.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-c4e0bc1e9484a00e"
+    ]
+  },
+  "afterWorker": {
+    "expected": "oliva-6e2b52bb8e634041",
+    "controller": {
+      "id": "oliva-6e2b52bb8e634041",
+      "version": "0.18.0"
+    },
+    "active": {
+      "id": "oliva-6e2b52bb8e634041",
+      "version": "0.18.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-c4e0bc1e9484a00e",
+      "oliva-6e2b52bb8e634041"
+    ]
+  },
+  "realWorkerActivation": true,
+  "sameOriginPersistentProfile": true,
+  "singleStaticSwordAvailableOffline": true,
+  "bookSwordGalleryRemoved": true,
+  "all66BooksAvailable": true,
+  "personalGoalAndReviewRestoredExactly": true,
+  "thoughtOpenedReadonlyWithUnrelatedDraftsExact": true,
+  "offlineA51Stages": 7,
+  "oldStudyAnswersUnchanged": true,
+  "originalReviewsAndMilestonesAccessibleReadonly": true,
+  "unassignedReviewOriginalSourceExact": true,
+  "actualV11DownloadAndRestorePreview": true,
+  "restoreWasNotApplied": true,
+  "exportSha256": "dd2365fba6fc3ead9f57ed43d872f514dee3cdef68639d5ff574de5fdeeb7b59",
+  "finalRecords": [
+    {
+      "store": "state",
+      "key": "archive:3f34c3ae3478f9e9766c4dcecb7f3c243c42c16471af9985a20d928c354d73c7",
+      "json_utf8_bytes": 5410,
+      "json_sha256": "4ceb53eafb1629d01d2ee75f28113bf1a7e887d687ff9ef0a3291627e6e47f05"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "6f6c147601127415174156832d77fdc161d7bde1cf4764822326df59e3aff226"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8768,
+      "json_sha256": "a79522ff6757a981a9cba7b1b3e3f12a7fdbb524e2ccd5daa78db43690e49ded"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "995641f5d7c8f83fd49c665f7298c2ab1e123eec027f5347515bef8b31c92d74"
+    }
+  ],
+  "allFourRawV11RecordsExactThroughout": true,
+  "packagingInputsBefore": {
+    "sha256": "8cb57889f427d6b1c662fc5d09b17e7835cdac4ce6116b78b072ac852f4bbda5",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "packagingInputsAfter": {
+    "sha256": "8cb57889f427d6b1c662fc5d09b17e7835cdac4ce6116b78b072ac852f4bbda5",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "runtimeInputsAfter": {
+    "fileCount": 344,
+    "sha256": "29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab",
+    "allFileHashesMatch": true
+  },
+  "builtHtmlAndWorkersUnchanged": true,
+  "sourceUnchangedDuringUpgrade": true,
+  "checkedAt": "2026-11-17T16:08:13.847Z"
+}

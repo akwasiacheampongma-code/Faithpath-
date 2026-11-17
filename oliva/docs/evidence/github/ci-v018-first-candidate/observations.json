@@ -1,0 +1,45 @@
+[
+  {
+    "checkedAt": "2026-11-17T16:12:19.457874+00:00",
+    "headSha": "a5901bb41e793475f985a71d87cbde5cae6956c8",
+    "headBranch": "feature/oliva-single-spirit-sword-20261117",
+    "runAttempt": 1,
+    "status": "in_progress",
+    "conclusion": null,
+    "jobs": [
+      {
+        "id": 134174906740,
+        "runAttempt": 1,
+        "status": "in_progress",
+        "conclusion": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "in_progress",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "pending",
+            "conclusion": null
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "pending",
+            "conclusion": null
+          }
+        ]
+      }
+    ]
+  }
+]

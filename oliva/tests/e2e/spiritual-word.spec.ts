@@ -119,6 +119,7 @@ test("der quellentreue Vers und sein friedlicher Zusammenhang öffnen den gemein
     await expect(card.getByText(/richtet sich nicht gegen Menschen/)).toBeVisible();
     await expect(card.getByRole("progressbar")).toHaveCount(0);
     await card.getByRole("button", { name: ref.label, exact: true }).click();
+    await expect(page).toHaveURL(/\/lesen\/EPH\?/);
     const url = new URL(page.url());
     expect(url.pathname).toBe("/lesen/EPH");
     expect(Object.fromEntries(url.searchParams)).toMatchObject({ chapter: "6", from: String(ref.from), to: String(ref.to) });

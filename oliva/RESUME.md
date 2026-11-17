@@ -1,3 +1,15 @@
+# Fortsetzen · Zitat-Test-Wartebedingung korrigieren, ganze Prüfung wiederholen
+
+Die erste volle0.18-Regression endete145/146: Der neue Zitat-Test prüfte die URL synchron direkt nach ExpoRouter-Klick. Jetzt wartet er ausdrücklich auf`/lesen/EPH`, bevor alle unveränderten Kapitel-/Vers-/Datenprüfungen erfolgen. Kein Runtimeumbau;344Inputs/SHA`29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab` und Kern`oliva-6e2b52bb8e634041` unverändert. Alter voller Bericht unter`docs/evidence/single-spirit-sword/full/` bleibt erhalten. Isolierter korrigierter Fall unter`navigation-r2/` läuft. Anschließend neuen reinen Test-/Dokumentcheckpoint erstellen, denselben neuen GitHub-Featurebranch normal vorspulen und neue CI für den tatsächlichen neuen Head prüfen. Kein Release-Tag bisher.
+
+Erster Kandidat eigenerCommit`b8b6f93f894827302713b21da62ac9bee737471f`, GitHub`a5901bb41e793475f985a71d87cbde5cae6956c8`, ersteCI44121813373/Job134174906740. Ersten Stand und tatsächlichen Ausgang getrennt erhalten; seine CI ersetzt nicht die neue Quelle. Quellbranch`feature/oliva-single-spirit-sword-20261117` ist vorhanden,30alteVersionsrefs und47Nicht-OLIVA-Root-Einträge unverändert. Kein main-/FaithPath-Eingriff.
+
+Der echte lokale PWA-Wechsel von der tatsächlichen privaten0.17-Hostfassung`oliva-c4e0bc1e9484a00e` zum0.18-Quellbuild besteht: alle vier V11-Rohdatensätze durchgehend exakt, einzelnes Schwert/all66Bücher offline, alte Links, persönliche/originale Historie, alle7A51-Stadien, gespeicherte Studienantworten und Export/Restorepreview ohne Anwendung. Nachweis`docs/evidence/single-spirit-sword/candidate18/upgrade/r1/offline-upgrade.json`. Keine gehostete Browser-QA. Private Vorschau bleibt0.17; neue Bereitstellung erst nach vollständiger Abnahme.
+
+Das neue Sites-get_site wurde nur lesend aufgerufen; SIWC-Fähigkeit liegt nur im Sitzungsspeicher. Vor erneutem Quellpush und späterer Lieferung konkreten Token-Scan mit verstecktem stdin durchführen. Keine Geheimnisse ausgeben oder in Dateien schreiben. Erst das Ende dieses neuen Abschnitts ist aktueller als die älteren Fortsetzungsanweisungen unten.
+
+## Vorheriger Kandidatenstand
+
 # Fortsetzen · OLIVA / FaithPath Next Generation
 
 ## Aktuell · ein geistliches Schwert · Kandidat 0.18.0

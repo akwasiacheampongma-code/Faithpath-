@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-17T16:15:58.170187+00:00",
+  "fullInitialPassed": 145,
+  "fullInitialFailed": 1,
+  "observedFailure": "The immediate URL assertion observed /bibel immediately after the quote click; asynchronous ExpoRouter navigation had not settled.",
+  "correction": "Await the actual /lesen/EPH URL before inspecting its exact chapter/from/to parameters. All original target/focus/data-preservation assertions remain.",
+  "productionRuntimeChanged": false,
+  "runtimeSourceSHA256": "29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab",
+  "initialReportsPreserved": true,
+  "browserRetriesConfigured": 0,
+  "releaseTagCreated": false
+}

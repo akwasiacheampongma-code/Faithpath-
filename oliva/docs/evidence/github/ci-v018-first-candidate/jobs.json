@@ -1,0 +1,73 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 134174906740,
+      "run_id": 44121813373,
+      "workflow_name": "OLIVA quality",
+      "head_branch": "feature/oliva-single-spirit-sword-20261117",
+      "run_url": "https://api.github.com/repos/akwasiacheampongma-code/Faithpath-/actions/runs/44121813373",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUdG-aM8AAAAfPXKZdA",
+      "head_sha": "a5901bb41e793475f985a71d87cbde5cae6956c8",
+      "url": "https://api.github.com/repos/akwasiacheampongma-code/Faithpath-/actions/jobs/134174906740",
+      "html_url": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/44121813373/job/134174906740",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-11-17T16:05:48Z",
+      "started_at": "2026-11-17T16:05:51Z",
+      "completed_at": null,
+      "name": "verify",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T16:05:51Z",
+          "completed_at": "2026-11-17T16:05:55Z"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T16:05:55Z",
+          "completed_at": "2026-11-17T16:06:13Z"
+        },
+        {
+          "name": "Run ./oliva/.github/actions/quality",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 3,
+          "started_at": "2026-11-17T16:06:13Z",
+          "completed_at": null
+        },
+        {
+          "name": "Post Run ./oliva/.github/actions/quality",
+          "status": "pending",
+          "conclusion": null,
+          "number": 5,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "pending",
+          "conclusion": null,
+          "number": 6,
+          "started_at": null,
+          "completed_at": null
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/akwasiacheampongma-code/Faithpath-/check-runs/134174906740",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000068,
+      "runner_name": "GitHub Actions 1000000068",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}
