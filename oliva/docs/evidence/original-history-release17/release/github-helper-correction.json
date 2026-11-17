@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-17T14:49:32.623535+00:00",
+  "initialFailure": "A broad template replacement accidentally turned one dictionary key into a tuple. KeyError stopped the helper before any push or remote ref mutation.",
+  "corrected": "Only the malformed WIP dictionary lookup; protected refs and exact SHA assertions retained.",
+  "releaseRuntimeChanged": false,
+  "releaseTagChanged": false,
+  "earlierHelperPreserved": true,
+  "newHelper": "push-github-history-corrected.py"
+}

@@ -24,7 +24,7 @@ def refs():
 before=refs();assert all(k in before for k in protected)
 assert before['refs/heads/main']=='d3f0c01adc8f1a67da79e4f0b4cbe5d99ca895b3'
 assert before['refs/heads/docs/oliva-v015-delivery-20261117']=='a8e9e5ea31b4a004ff31c851eb2eb7e6582a5647'
-assert before['refs/heads/feature/oliva-personal-tree-20261117','refs/heads/docs/oliva-v016-delivery-20261117']=='c0ae726a1a2cef430c37b89a8fe94d55a78287f8'
+assert before['refs/heads/feature/oliva-personal-tree-20261117']=='c0ae726a1a2cef430c37b89a8fe94d55a78287f8'
 for item in p['versions'][:-1]:
     assert before['refs/heads/'+item['branch']]==item['commit'] and before['refs/tags/'+item['tag']]==item['tag_object']
 assert before['refs/heads/docs/oliva-v016-delivery-20261117']=='18d55c0a9155c8da251bbccf8c095a46049b574f'
