@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-17T10:33:37.522585+00:00",
+  "method": "Sum actual frozen core service-worker cache manifest file bytes. Excludes deployment review material and compression effects.",
+  "builds": [
+    {
+      "version": "0.15.0",
+      "core": "oliva-2a5dee07245f877a",
+      "cacheFiles": 108,
+      "bytes": 19221955
+    },
+    {
+      "version": "0.16.0",
+      "core": "oliva-b484395da372ae92",
+      "cacheFiles": 108,
+      "bytes": 19230635
+    }
+  ],
+  "deltaBytes": 8680,
+  "newImagesOrRuntimeDependencies": false
+}
