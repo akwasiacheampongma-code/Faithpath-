@@ -9,25 +9,26 @@ import { createTreeScene, type TreeScene } from "./a51/engine/tree-scene";
 import type { OliveTreeProps } from "./a51/types";
 import "./a51/tree.css";
 type SceneHost = HTMLDivElement & { olivaTree?: () => TreeScene["metrics"] };
-export function OliveTree({ stage: value, size = 280, animate = true }: OliveTreeProps) {
+export function OliveTree({ stage: value, size = 280, animate = true, onReady }: OliveTreeProps) {
   const stage = a51Stage(value), layout = treeLayout(stage, size), t = useTheme();
   const { moving, focused } = useTreeMotion(animate), host = useRef<SceneHost>(null), scene = useRef<TreeScene | null>(null);
   const [loaded, setLoaded] = useState(false), [failed, setFailed] = useState(false);
   const requested = useRef(stage.index); requested.current = stage.index;
+  const reportReady = useRef(onReady); reportReady.current = onReady;
   useEffect(() => {
     const element = host.current;
     if (!element) return;
     let alive = true;
     const instance = createTreeScene(element, {
       stage: stage.index, autoplay: false, resolveSource: uriFor,
-      onStage: index => { if (alive) { setLoaded(true); setFailed(index !== requested.current); } },
-      onStatus: text => { if (alive && text.includes("nicht geladen")) setFailed(true); },
+      onStage: index => { if (alive) { setLoaded(true); setFailed(index !== requested.current); reportReady.current?.(index === requested.current ? index : null); } },
+      onStatus: text => { if (alive && text.includes("nicht geladen")) { setFailed(true); reportReady.current?.(null); } },
     });
     scene.current = instance;
     element.olivaTree = () => instance.metrics;
     return () => { alive = false; delete element.olivaTree; instance.dispose(); scene.current = null; };
   }, []);
-  useEffect(() => { void scene.current?.setStage(stage.index); }, [stage.index]);
+  useEffect(() => { reportReady.current?.(null); void scene.current?.setStage(stage.index); }, [stage.index]);
   useEffect(() => { scene.current?.setEnabled(focused); }, [focused]);
   useEffect(() => { scene.current?.setReducedMotion(!moving); if (moving) scene.current?.play(); else scene.current?.pause(); }, [moving]);
   return <View style={{ alignSelf: "center", alignItems: "center", maxWidth: "100%", gap: 8 }}>

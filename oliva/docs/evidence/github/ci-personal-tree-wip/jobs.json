@@ -1,0 +1,81 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 133943657828,
+      "run_id": 44055494198,
+      "workflow_name": "OLIVA quality",
+      "head_branch": "feature/oliva-personal-tree-20261117",
+      "run_url": "https://api.github.com/repos/akwasiacheampongma-code/Faithpath-/actions/runs/44055494198",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOUdG-aM8AAAAfL6oFZA",
+      "head_sha": "c0ae726a1a2cef430c37b89a8fe94d55a78287f8",
+      "url": "https://api.github.com/repos/akwasiacheampongma-code/Faithpath-/actions/jobs/133943657828",
+      "html_url": "https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/44055494198/job/133943657828",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T09:25:49Z",
+      "started_at": "2026-11-17T09:25:51Z",
+      "completed_at": "2026-11-17T09:40:49Z",
+      "name": "verify",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T09:25:51Z",
+          "completed_at": "2026-11-17T09:25:52Z"
+        },
+        {
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T09:25:52Z",
+          "completed_at": "2026-11-17T09:26:00Z"
+        },
+        {
+          "name": "Run ./oliva/.github/actions/quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T09:26:00Z",
+          "completed_at": "2026-11-17T09:40:45Z"
+        },
+        {
+          "name": "Post Run ./oliva/.github/actions/quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T09:40:45Z",
+          "completed_at": "2026-11-17T09:40:48Z"
+        },
+        {
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T09:40:48Z",
+          "completed_at": "2026-11-17T09:40:48Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T09:40:48Z",
+          "completed_at": "2026-11-17T09:40:48Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/akwasiacheampongma-code/Faithpath-/check-runs/133943657828",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000065,
+      "runner_name": "GitHub Actions 1000000065",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

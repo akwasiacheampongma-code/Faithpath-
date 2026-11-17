@@ -16,4 +16,4 @@ export type AnatomicalStage = A51Stage & {
   falloff: number;
   fade: number[];
 };
-export type OliveTreeProps = { stage: number; size?: number; animate?: boolean };
+export type OliveTreeProps = { stage: number; size?: number; animate?: boolean; onReady?: (stage: number | null) => void };

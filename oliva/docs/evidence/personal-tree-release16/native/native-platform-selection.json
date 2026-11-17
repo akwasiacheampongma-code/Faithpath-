@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-11-17T10:14:13.531787+00:00",
+  "checks": [
+    {
+      "platform": "android",
+      "bundle": "_expo/static/js/android/entry-07c4648e570826b3c088320b81079477.js",
+      "bundleSha256": "0054274a1dd64eaf6b1d63f84e867b02f0d3ffff39da49c3fc1354293802d79a",
+      "nativeRendererAndNewPersonalTreeModulesPresent": true,
+      "domWebglRendererAbsent": true,
+      "positiveMarkers": {
+        "NativeTreeArtwork": true,
+        "reportReady": true,
+        "PersonalTreeJourney": true,
+        "personalTreeLinks": true
+      },
+      "absentMarkers": {
+        "createTreeScene": true,
+        "WebGLRenderingContext": true,
+        "document.createElement(\"canvas\")": true
+      }
+    },
+    {
+      "platform": "ios",
+      "bundle": "_expo/static/js/ios/entry-c13c30040dfaaaf9a5b364c27d051283.js",
+      "bundleSha256": "6aa31026e18fc68c4e7fedf5336b0f8477d1113d4ea360016a3a20d509f11aef",
+      "nativeRendererAndNewPersonalTreeModulesPresent": true,
+      "domWebglRendererAbsent": true,
+      "positiveMarkers": {
+        "NativeTreeArtwork": true,
+        "reportReady": true,
+        "PersonalTreeJourney": true,
+        "personalTreeLinks": true
+      },
+      "absentMarkers": {
+        "createTreeScene": true,
+        "WebGLRenderingContext": true,
+        "document.createElement(\"canvas\")": true
+      }
+    }
+  ],
+  "nativeExecution": false
+}

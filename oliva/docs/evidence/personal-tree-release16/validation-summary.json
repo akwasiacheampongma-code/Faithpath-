@@ -1,0 +1,61 @@
+{
+  "version": "0.16.0",
+  "allCoreChecksPassed": true,
+  "dataVersion": 11,
+  "coreBuild": "oliva-b484395da372ae92",
+  "fullBrowserExecutableBuild": "oliva-b484395da372ae92",
+  "packagingSourceDigest": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+  "runtimeSourceDigest": {
+    "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); all app/src/assets plus app/package/lock and four runtime art manifests",
+    "fileCount": 353,
+    "sha256": "5590a20d0e7f99c8c4169df6d34219ad2979bd24c8115654d4d96d488a6df976"
+  },
+  "unit": {
+    "passed": 328,
+    "total": 328,
+    "failed": 0,
+    "pending": 0
+  },
+  "browser": {
+    "passed": 148,
+    "total": 148,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "singleFullGreenRun": true,
+    "allResultsSingleAttempt": true
+  },
+  "originalLifeTopics": {
+    "topics": 18,
+    "references": 45,
+    "contexts": 45,
+    "reflectionPrompts": 45
+  },
+  "originalStories": {
+    "units": 436,
+    "questions": 2479,
+    "reflectionPrompts": 436,
+    "aliasPairs": 95
+  },
+  "existingGuidedPaths": 9,
+  "personalTreeReadOnly": true,
+  "nativeExecution": false,
+  "masterDefinitionOfDoneComplete": false,
+  "checkedAt": "2026-11-17T10:28:07.583775+00:00",
+  "privateDeployment": {
+    "status": "succeeded",
+    "url": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+    "deploymentId": "appgdep_6afc2c9caca4819196dab487b6ffcda2",
+    "savedVersionId": "appgprj_6aedf77e5ce0819180c10eb799447018~appgver_d741999a5f208191ad17bd4e2e9e18e4",
+    "sourceCommit": "22f0b1700a84cde359001649a02717984ae7af82",
+    "deployedAt": "2026-11-17T10:30:07.501812+00:00",
+    "hostBuild": "oliva-cc32414f4ff73284",
+    "anonymousStatus": 401,
+    "ownerOnlyPolicyUnchanged": true,
+    "appFilesVerified": 111,
+    "byteComparedAppFiles": 110,
+    "reviewFilesVerified": 45,
+    "appRoutesHttpChecked": 37,
+    "hostedBrowserQa": false
+  }
+}

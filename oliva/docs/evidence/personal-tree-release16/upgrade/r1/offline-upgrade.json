@@ -1,0 +1,165 @@
+{
+  "passed": true,
+  "baselineVersion": "0.15.0",
+  "baselineBuild": "oliva-2a5dee07245f877a",
+  "targetVersion": "0.16.0",
+  "targetBuild": "oliva-b484395da372ae92",
+  "baselineHtmlSha256": "e8dfa1e91963b37108e5546dbc702f35a4a6503b039d12ca0508f091d32b4654",
+  "baselineWorkerSha256": "fb06dedaf2a7a89b923d47d2d8d8e6038294d8ef216bfb1449bd6e00c20287b8",
+  "targetHtmlSha256": "d914e4c4bb39791b992966d245efb10b47be677fe5c7e85e5849632cc19ab979",
+  "targetWorkerSha256": "00d0171e693d9bc58533e7723394e4e76fde14b2e63b0d7ddf6b297d06911758",
+  "syntheticData": true,
+  "syntheticClock": "2027-01-01T12:00:00.000Z",
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "runtimeInputsBefore": {
+    "fileCount": 353,
+    "sha256": "5590a20d0e7f99c8c4169df6d34219ad2979bd24c8115654d4d96d488a6df976",
+    "allFileHashesMatch": true
+  },
+  "phases": [
+    {
+      "name": "seed-real-015-personal-data-only-through-its-shipped-ui",
+      "startedAt": "2026-11-17T10:14:32.056Z"
+    },
+    {
+      "name": "activate-different-real-worker-build-without-schema-or-data-write",
+      "startedAt": "2026-11-17T10:14:51.868Z"
+    },
+    {
+      "name": "first-offline-personal-tree-history-and-real-goal-return-are-readonly",
+      "startedAt": "2026-11-17T10:15:00.008Z"
+    },
+    {
+      "name": "history-thought-opens-collection-for-reading-and-keeps-other-drafts",
+      "startedAt": "2026-11-17T10:15:06.010Z"
+    },
+    {
+      "name": "offline-seven-a51-stages-and-existing-study-answers",
+      "startedAt": "2026-11-17T10:15:06.526Z"
+    },
+    {
+      "name": "actual-v11-backup-download-and-restore-preview-without-applying",
+      "startedAt": "2026-11-17T10:15:13.410Z"
+    },
+    {
+      "name": "complete",
+      "startedAt": "2026-11-17T10:15:16.182Z"
+    }
+  ],
+  "origin": "http://127.0.0.1:39247",
+  "browserVersion": "155.0.8059.79",
+  "phase": "complete",
+  "beforeRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "2d72658180cbd7e2487ee3d8625387ea0ba9c307810a39486e32f9ffee2109cf"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8768,
+      "json_sha256": "ac23039a081c9e5312016505a1dd4a0d634bb79f18fc3321ae3c363291b7328c"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "beforeWorker": {
+    "expected": "oliva-2a5dee07245f877a",
+    "controller": {
+      "id": "oliva-2a5dee07245f877a",
+      "version": "0.15.0"
+    },
+    "active": {
+      "id": "oliva-2a5dee07245f877a",
+      "version": "0.15.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-2a5dee07245f877a"
+    ]
+  },
+  "afterWorker": {
+    "expected": "oliva-b484395da372ae92",
+    "controller": {
+      "id": "oliva-b484395da372ae92",
+      "version": "0.16.0"
+    },
+    "active": {
+      "id": "oliva-b484395da372ae92",
+      "version": "0.16.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-2a5dee07245f877a",
+      "oliva-b484395da372ae92"
+    ]
+  },
+  "realWorkerActivation": true,
+  "sameOriginPersistentProfile": true,
+  "personalGoalAndReviewRestoredExactly": true,
+  "thoughtOpenedReadonlyWithUnrelatedDraftsExact": true,
+  "offlineA51Stages": 7,
+  "oldStudyAnswersUnchanged": true,
+  "actualV11DownloadAndRestorePreview": true,
+  "restoreWasNotApplied": true,
+  "exportSha256": "a360c35aa11c27f8a859d8a28e83da8c116f415a51b4d552acd0921349afed33",
+  "finalRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "2d72658180cbd7e2487ee3d8625387ea0ba9c307810a39486e32f9ffee2109cf"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8768,
+      "json_sha256": "ac23039a081c9e5312016505a1dd4a0d634bb79f18fc3321ae3c363291b7328c"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "allFourRawV11RecordsExactThroughout": true,
+  "packagingInputsBefore": {
+    "sha256": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "packagingInputsAfter": {
+    "sha256": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "runtimeInputsAfter": {
+    "fileCount": 353,
+    "sha256": "5590a20d0e7f99c8c4169df6d34219ad2979bd24c8115654d4d96d488a6df976",
+    "allFileHashesMatch": true
+  },
+  "builtHtmlAndWorkersUnchanged": true,
+  "sourceUnchangedDuringUpgrade": true,
+  "checkedAt": "2026-11-17T10:15:16.182Z"
+}

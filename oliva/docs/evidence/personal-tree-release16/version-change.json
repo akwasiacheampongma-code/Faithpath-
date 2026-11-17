@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-11-17T10:03:04.387219+00:00",
+  "baseQualifiedCommit": "60f3ef2fa7804c02810696fe6adfc6f991b6f898",
+  "from": "0.15.0 development",
+  "to": "0.16.0 candidate",
+  "files": [
+    {
+      "path": "package.json",
+      "beforeSha256": "052350d9699c1492007c60796d8643383945c3c16ced7b5ba956e40e4c5cf3bd",
+      "afterSha256": "e5d93aa47ba181b8f0af76ccb88a13c6a1b724b3f8e2ef8ffe62d9116ec6f3b4",
+      "onlyVersionFieldsChanged": true
+    },
+    {
+      "path": "package-lock.json",
+      "beforeSha256": "3975335786b36430c58afb6b4f28aa57dd7fa94f73d1efb96ad2758d44ad6ae9",
+      "afterSha256": "880404e983f468c97a28a6b9a6b2465ebfc483dcc98498bdaeec76114a9796a3",
+      "onlyVersionFieldsChanged": true
+    },
+    {
+      "path": "app.json",
+      "beforeSha256": "08ea578fdb0c25cd8667dd57ab1a232b3bc9ef9902e3923115aff9a5e8d2afd4",
+      "afterSha256": "e99933410ace80b75ee34f798e64aeb52110e51e465bb85b8cb1d392d38f7a6b",
+      "onlyVersionFieldsChanged": true
+    }
+  ],
+  "runtimeDependencyChanges": false,
+  "privateCandidateDeployed": false
+}

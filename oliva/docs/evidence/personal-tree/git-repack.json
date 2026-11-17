@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-11-17T09:49:01.958624+00:00",
+  "repository": "/workspace/faithpath-next",
+  "command": "git -c pack.windowMemory=32m repack -a -d --keep-unreachable",
+  "allRefNamesAndHashesUnchanged": true,
+  "fullFsckPassed": true,
+  "unreachableObjectsNotPruned": true,
+  "before": "count: 3597\nsize: 156296\nin-pack: 0\npacks: 0\nsize-pack: 0\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+  "after": "count: 0\nsize: 0\nin-pack: 3597\npacks: 1\nsize-pack: 134217\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0\n",
+  "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

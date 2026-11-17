@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-11-17T10:23:43.478229+00:00",
+  "readOnly": true,
+  "implementationStarted": false,
+  "userDataChanged": false,
+  "newVersionOrDateAssigned": false,
+  "files": [
+    {
+      "project": "Original FaithPath (read-only)",
+      "path": "src/tree-branches.js",
+      "bytes": 2001,
+      "sha256": "36efd519630ee76842d16020ccd8505d5eda57ecd3ed6e2a6150b29fd45529ac"
+    },
+    {
+      "project": "Original FaithPath (read-only)",
+      "path": "src/tree-view.js",
+      "bytes": 4023,
+      "sha256": "dfcd1a0585aa7001ffdea5e14af15009f074f48cf0be8528333011657cf6e0fb"
+    },
+    {
+      "project": "Original FaithPath (read-only)",
+      "path": "src/continuity.js",
+      "bytes": 4146,
+      "sha256": "20ab9b6cad5afbd47baebaff500bdf9e567e1e289bf65c9110a4ffec0ad113f7"
+    },
+    {
+      "project": "OLIVA",
+      "path": "src/features/imports/LegacyHistory.tsx",
+      "bytes": 5180,
+      "sha256": "c714dab2d0acc68eb11482330a0aca618d0e04bd649f61b0617be513d1168be6"
+    },
+    {
+      "project": "OLIVA",
+      "path": "src/features/imports/model.ts",
+      "bytes": 17826,
+      "sha256": "ba9d6cdfda774e6ee6dcdcf84375b02f5a9106f68aacc74971703daa7ec32917"
+    },
+    {
+      "project": "OLIVA",
+      "path": "src/features/imports/source.ts",
+      "bytes": 7571,
+      "sha256": "9d09249513134006fdfa3b015ebe7b4b2650fe8e931ff7b65afbb976e943cbcb"
+    },
+    {
+      "project": "OLIVA",
+      "path": "app/importarchiv/[id].tsx",
+      "bytes": 6764,
+      "sha256": "f76d5919e2f023b41212a5d9edf45e86785d76636901742775b245f3c1f563ac"
+    }
+  ],
+  "verifiedFindings": [
+    "Original pathEvidence also connects reviews through explicit journal/reflection source keys and their aliases.",
+    "Original milestones carry their own text/date and optional reviewId; source text and unknown dates must not be manufactured.",
+    "Current OLIVA LegacyHistory shows direct path reviews but does not yet resolve reviews through linked thought source keys.",
+    "Current OLIVA LegacyHistory preserves milestone contents only in the raw archive, exposing a count in the goal view.",
+    "Native imported steps can contain fallback dates; goal provenance alone cannot distinguish later-added steps."
+  ],
+  "nextExistingScope": [
+    "Pure, provenance-checked archive selectors; no progress or storage writes.",
+    "Readable historical review/milestone cards with exact original-source links.",
+    "Keep ambiguous identities, missing original snapshots and absent dates explicit.",
+    "Prevent double representations of exact mirrored records while retaining conflicting original variants."
+  ]
+}

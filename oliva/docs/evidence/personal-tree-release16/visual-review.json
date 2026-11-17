@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-17T10:20:19.644784+00:00",
+  "method": "Assistant visual inspection of actual final-candidate Playwright screenshots via local view_image",
+  "files": [
+    {
+      "path": "docs/evidence/personal-tree-release16/browser-final-r1/personal-tree/garden-320.png",
+      "sha256": "abec1aa94cab8c2b0c25dae3629b1c77259f2c080513d03c208a63c00def7c0e"
+    },
+    {
+      "path": "docs/evidence/personal-tree-release16/browser-final-r1/personal-tree/garden-1440.png",
+      "sha256": "adc69e27f80dab49fb583031fae172d8ee2c15e7dce2d37f44c73719b8877ff1"
+    }
+  ],
+  "observations": [
+    "Original A51 tree remains detailed and clearly visible.",
+    "Small light view has three readable link markers; large dark view has five.",
+    "Cream/olive/gold palette, typography and navigation match existing OLIVA.",
+    "Screenshots reflect the test scroll position and synthetic personal data."
+  ],
+  "physicalDeviceTest": false,
+  "hostedBrowserQa": false,
+  "layoutOrArtworkChangesRequired": false
+}

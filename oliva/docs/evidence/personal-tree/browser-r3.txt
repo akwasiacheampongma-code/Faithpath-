@@ -1,0 +1,21 @@
+
+> oliva-faith-companion@0.15.0 test:e2e
+> playwright test tests/e2e/personal-tree.spec.ts
+
+[WebServer] (node:108210) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:108218) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/personal-tree.spec.ts:45:1 › persönliche Baumzweige öffnen echte Vorhaben; alle Aufzeichnungen und der Baum bleiben unverändert (5.2s)
+  ✓  2 tests/e2e/personal-tree.spec.ts:58:1 › ein geteilter Gedanke erscheint einmal und öffnet die lesende Sammlung ohne fremde Entwürfe zu verändern (5.5s)
+  ✓  3 tests/e2e/personal-tree.spec.ts:70:1 › Stadienvorschauen zeigen keine eigenen Baumzweige; kleine Ziele und Dunkelansicht bleiben zugänglich (8.9s)
+
+  3 passed (21.9s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

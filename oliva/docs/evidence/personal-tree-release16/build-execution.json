@@ -1,0 +1,43 @@
+[
+  {
+    "name": "typecheck",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T10:04:34.093072+00:00",
+    "finishedAt": "2026-11-17T10:04:47.840078+00:00",
+    "log": "docs/evidence/personal-tree-release16/typecheck.txt",
+    "sha256": "01c9c75b9697b96394de35eebc40ea8fc5274c1c3a2b1caa218a2e3369e12c2d"
+  },
+  {
+    "name": "unit",
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=json",
+      "--outputFile=docs/evidence/personal-tree-release16/unit-results.json"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T10:04:47.840769+00:00",
+    "finishedAt": "2026-11-17T10:05:37.298490+00:00",
+    "log": "docs/evidence/personal-tree-release16/unit.txt",
+    "sha256": "8b8b1f83b7b9eecfd3ed73ba921d1f15264dfdcf5a9b27ebf565a754b6bcb27f"
+  },
+  {
+    "name": "web-build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T10:05:37.299100+00:00",
+    "finishedAt": "2026-11-17T10:06:44.344969+00:00",
+    "log": "docs/evidence/personal-tree-release16/web-build.txt",
+    "sha256": "4dbc4e61235e7e463cb8d761b937e3d5407c435b38c9932f847e75f360c780f7"
+  }
+]

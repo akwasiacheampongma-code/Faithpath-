@@ -1,0 +1,43 @@
+[
+  {
+    "name": "typecheck-layout-final",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T08:59:29.713516+00:00",
+    "finishedAt": "2026-11-17T08:59:47.897172+00:00",
+    "log": "docs/evidence/personal-tree/typecheck-layout-final.txt",
+    "sha256": "98c7a237658f2033731d824f191d33133d76fd95630793adc04619b8071a62c2"
+  },
+  {
+    "name": "unit-layout-final",
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=json",
+      "--outputFile=docs/evidence/personal-tree/all-unit-layout-final.json"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T08:59:47.898354+00:00",
+    "finishedAt": "2026-11-17T09:00:30.868884+00:00",
+    "log": "docs/evidence/personal-tree/unit-layout-final.txt",
+    "sha256": "71feec3dec59ea724986a987cc18d793567db7a017671d1f13304368fa972279"
+  },
+  {
+    "name": "build-layout-final",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-17T09:00:30.869612+00:00",
+    "finishedAt": "2026-11-17T09:00:34.089583+00:00",
+    "log": "docs/evidence/personal-tree/build-layout-final.txt",
+    "sha256": "f47b107edd749db5441233a161312e4c38f11284169f79d1612b4a46fcdb4c57"
+  }
+]

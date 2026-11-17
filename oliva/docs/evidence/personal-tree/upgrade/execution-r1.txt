@@ -1,0 +1,171 @@
+Personal tree update phase: seed-real-015-personal-data-only-through-its-shipped-ui
+Personal tree update phase: activate-different-real-worker-build-without-schema-or-data-write
+Personal tree update phase: first-offline-personal-tree-history-and-real-goal-return-are-readonly
+Personal tree update phase: history-thought-opens-collection-for-reading-and-keeps-other-drafts
+Personal tree update phase: offline-seven-a51-stages-and-existing-study-answers
+Personal tree update phase: actual-v11-backup-download-and-restore-preview-without-applying
+Personal tree update phase: complete
+{
+  "passed": true,
+  "baselineVersion": "0.15.0",
+  "baselineBuild": "oliva-2a5dee07245f877a",
+  "targetVersion": "0.15.0",
+  "targetBuild": "oliva-e9ca5a3f04c752fb",
+  "baselineHtmlSha256": "e8dfa1e91963b37108e5546dbc702f35a4a6503b039d12ca0508f091d32b4654",
+  "baselineWorkerSha256": "fb06dedaf2a7a89b923d47d2d8d8e6038294d8ef216bfb1449bd6e00c20287b8",
+  "targetHtmlSha256": "975a2af24e482ec153f4e39e351807ef6ed5c6678c7e6bba16da65f890272aec",
+  "targetWorkerSha256": "81ccecaabd0e2b17c1e04df450dbeeb79dd725c38e6a70bbd4e9a3f5fb9c4ff5",
+  "syntheticData": true,
+  "syntheticClock": "2027-01-01T12:00:00.000Z",
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedQa": false,
+  "runtimeInputsBefore": {
+    "fileCount": 353,
+    "sha256": "e0609e138838d69f07c0a36c162e448cef7f600ce5bbbe85c8ce2708a56cdd10",
+    "allFileHashesMatch": true
+  },
+  "phases": [
+    {
+      "name": "seed-real-015-personal-data-only-through-its-shipped-ui",
+      "startedAt": "2026-11-17T09:33:26.583Z"
+    },
+    {
+      "name": "activate-different-real-worker-build-without-schema-or-data-write",
+      "startedAt": "2026-11-17T09:33:42.950Z"
+    },
+    {
+      "name": "first-offline-personal-tree-history-and-real-goal-return-are-readonly",
+      "startedAt": "2026-11-17T09:33:48.155Z"
+    },
+    {
+      "name": "history-thought-opens-collection-for-reading-and-keeps-other-drafts",
+      "startedAt": "2026-11-17T09:33:52.865Z"
+    },
+    {
+      "name": "offline-seven-a51-stages-and-existing-study-answers",
+      "startedAt": "2026-11-17T09:33:53.272Z"
+    },
+    {
+      "name": "actual-v11-backup-download-and-restore-preview-without-applying",
+      "startedAt": "2026-11-17T09:33:57.697Z"
+    },
+    {
+      "name": "complete",
+      "startedAt": "2026-11-17T09:33:59.363Z"
+    }
+  ],
+  "origin": "http://127.0.0.1:42369",
+  "browserVersion": "155.0.8059.79",
+  "phase": "complete",
+  "beforeRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "2d72658180cbd7e2487ee3d8625387ea0ba9c307810a39486e32f9ffee2109cf"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8768,
+      "json_sha256": "b4eb6fd3fc80a98aaae3c4c7603860b36010dacb5ccd39562f9ed472591b19cf"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "beforeWorker": {
+    "expected": "oliva-2a5dee07245f877a",
+    "controller": {
+      "id": "oliva-2a5dee07245f877a",
+      "version": "0.15.0"
+    },
+    "active": {
+      "id": "oliva-2a5dee07245f877a",
+      "version": "0.15.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-2a5dee07245f877a"
+    ]
+  },
+  "afterWorker": {
+    "expected": "oliva-e9ca5a3f04c752fb",
+    "controller": {
+      "id": "oliva-e9ca5a3f04c752fb",
+      "version": "0.15.0"
+    },
+    "active": {
+      "id": "oliva-e9ca5a3f04c752fb",
+      "version": "0.15.0"
+    },
+    "waiting": null,
+    "caches": [
+      "oliva-2a5dee07245f877a",
+      "oliva-e9ca5a3f04c752fb"
+    ]
+  },
+  "realWorkerActivation": true,
+  "sameOriginPersistentProfile": true,
+  "personalGoalAndReviewRestoredExactly": true,
+  "thoughtOpenedReadonlyWithUnrelatedDraftsExact": true,
+  "offlineA51Stages": 7,
+  "oldStudyAnswersUnchanged": true,
+  "actualV11DownloadAndRestorePreview": true,
+  "restoreWasNotApplied": true,
+  "exportSha256": "1e21faef045f2fab4934cdd14c281dd7dff1bf2a7d876faf4b5f23dd251a2931",
+  "finalRecords": [
+    {
+      "store": "state",
+      "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+      "json_utf8_bytes": 4892,
+      "json_sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+    },
+    {
+      "store": "state",
+      "key": "before-faithpath-import",
+      "json_utf8_bytes": 790,
+      "json_sha256": "2d72658180cbd7e2487ee3d8625387ea0ba9c307810a39486e32f9ffee2109cf"
+    },
+    {
+      "store": "state",
+      "key": "main",
+      "json_utf8_bytes": 8768,
+      "json_sha256": "b4eb6fd3fc80a98aaae3c4c7603860b36010dacb5ccd39562f9ed472591b19cf"
+    },
+    {
+      "store": "state",
+      "key": "recovery-index",
+      "json_utf8_bytes": 94,
+      "json_sha256": "af15cfcc95e5b2b416ca07e28d25fd928b42e2c708262faf470936837e3d2a40"
+    }
+  ],
+  "allFourRawV11RecordsExactThroughout": true,
+  "packagingInputsBefore": {
+    "sha256": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "packagingInputsAfter": {
+    "sha256": "5d4e0b00a8e15fed651709989ed6af9824b9db1c16aad51368d8222e95e2a7a6",
+    "files": 6,
+    "allFileHashesMatch": true
+  },
+  "runtimeInputsAfter": {
+    "fileCount": 353,
+    "sha256": "e0609e138838d69f07c0a36c162e448cef7f600ce5bbbe85c8ce2708a56cdd10",
+    "allFileHashesMatch": true
+  },
+  "builtHtmlAndWorkersUnchanged": true,
+  "sourceUnchangedDuringUpgrade": true
+}

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "npm",
+    "run",
+    "test:e2e",
+    "--",
+    "--output=docs/evidence/personal-tree-release16/browser-final-r1/results"
+  ],
+  "startedAt": "2026-11-17T10:10:11.146762+00:00",
+  "precedingBuildExitCodes": [
+    0,
+    0,
+    0
+  ],
+  "retries": 0,
+  "workers": 1,
+  "filtered": false,
+  "exitCode": 0,
+  "finishedAt": "2026-11-17T10:27:48.547192+00:00",
+  "log": "docs/evidence/personal-tree-release16/e2e-final-r1.txt",
+  "logSha256": "73718ffe9b892fb5c5bf607db7af565d0d91842427359e7259ebddacba3622e1"
+}

@@ -30,6 +30,7 @@ export function OliveTree({
   stage: value,
   size = 280,
   animate = true,
+  onReady,
 }: OliveTreeProps) {
   const stage = a51Stage(value),
     layout = treeLayout(stage, size);
@@ -58,6 +59,7 @@ export function OliveTree({
         retry={() => setAttempt((n) => n + 1)}
         viewRef={view}
         onLayout={check}
+        onReady={onReady}
       />
     </View>
   );
@@ -72,6 +74,7 @@ function NativeTreeArtwork({
   retry,
   viewRef,
   onLayout,
+  onReady,
 }: {
   group: NativeGroup;
   layout: ReturnType<typeof treeLayout>;
@@ -79,6 +82,7 @@ function NativeTreeArtwork({
   retry: () => void;
   viewRef: React.RefObject<React.ComponentRef<typeof View> | null>;
   onLayout: () => void;
+  onReady?: (stage: number | null) => void;
 }) {
   const t = useTheme(),
     alive = useRef(true);
@@ -100,6 +104,10 @@ function NativeTreeArtwork({
   ).current;
   const fullFailed = full.candidate >= candidates.length,
     ready = layersLoaded(session, group);
+  const reportReady = useRef(onReady); reportReady.current = onReady;
+  useLayoutEffect(() => {
+    reportReady.current?.(full.loaded || ready ? group.stage : null);
+  }, [group.stage, full.loaded, ready]);
   // Keep already loaded image parts only if they are the sole complete fallback.
   // A reduced-motion or offscreen visit never initiates loading these parts.
   const mountLayers = session.active && (eligible || (fullFailed && ready));

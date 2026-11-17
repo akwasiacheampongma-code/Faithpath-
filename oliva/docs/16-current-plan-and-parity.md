@@ -1,6 +1,29 @@
 # Aktueller Plan und FaithPath-Parität
 
-## Aktueller Lieferstand · Lebensthemen 0.15.0
+<!-- OLIVA_016_CURRENT -->
+## Aktueller Lieferstand · persönlicher Garten 0.16.0
+
+**OLIVA 0.16.0 ist seit 17.11.2026, 10:30:07 UTC eigentümerprivat bereitgestellt.**
+[Mein Garten öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/garten). Die bisherige Vorschau-Adresse bleibt bestehen.
+
+Der Garten verbindet tatsächlich vorhandene persönliche Vorhaben mit dem unveränderten A51-Originalbaum. Wenige bedienbare Bildziele und eine ergänzende Liste öffnen Vorhaben, Gedanken, eigene Schritte und Rückblicke. Gemeinsame Gedanken erscheinen global einmal; offene Schritte, alte Rückblicktitel und unklare Importdaten bleiben erhalten. Die sieben Stadienvorschauen zeigen keine fiktiven persönlichen Verknüpfungen. Die Liste bleibt auch während des Bildladens erreichbar; Bildziele erscheinen erst am tatsächlich geladenen eigenen Stadium. Reines Betrachten schreibt keine Daten und erzeugt keinen Fortschritt.
+
+**328/328 Fachtests und ein einzelner vollständiger 148/148-Browserlauf bestanden**, erster Versuch, keine Retries, Skips oder Flaky-Ergebnisse. Typecheck, sieben Inhaltsprüfungen und Produktionsaudit ohne Funde erfolgreich. Echter 0.15→0.16-PWA-Wechsel: alle vier V11-Rohdatensätze durchgehend exakt, auch nach neuen Ansichten, Offline-Neustart und tatsächlichem Export/Restorepreview ohne Anwendung. AppData V11 sowie Dokument 1 / SQLite 3 / IndexedDB 1 unverändert. Android-/iOS-JS-/Assetexports und vollständige NT-/Geschichten-/Themenkatalogvergleiche bestehen statisch; **keine Geräte- oder Simulatorprüfung**.
+
+Alle 436 Originaleinheiten / 2.479 Fragen / 436 Reflexionsimpulse, 95 Quellenvarianten, 1.300 separate NT-Fragen, 18 Lebensthemen / 45 Stellen, neun bisherige Wege und 66 Buchschwerter bleiben erhalten. Keine neuen Illustrationen oder Laufzeitabhängigkeiten. Alle 390 materialisierten Original-FaithPath-Dateien erneut hashgenau unverändert bestätigt.
+
+Kernbuild `oliva-b484395da372ae92`, Hostbuild `oliva-cc32414f4ff73284`; 353 eingefrorene Runtimeinputs, SHA-256 `5590a20d0e7f99c8c4169df6d34219ad2979bd24c8115654d4d96d488a6df976`. Private HTTP-/Paketprüfung: 37 Routen, 111 App-Dateien (110 bytegenau plus HTML-Marker) und 45 Review-Dateien. Eigentümerpolitik exakt unverändert, anonym HTTP 401. Keine gehostete Browser-QA mangels unterstütztem CUA-Werkzeug. Tatsächliche neue Gartenaufnahmen: [320 Pixel](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/personal-tree/garden-320.png), [1440 Pixel](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/personal-tree/garden-1440.png), jeweils synthetische Prüfdaten.
+
+Die GitHub-Versionssicherung und die neue unabhängige 0.16-CI folgen als Lieferabschlussschritte; noch kein Erfolg dafür vorweggenommen. Der frühere WIP-Lauf 44055494198 und die ausgelieferte 0.15-CI 44045010987 bleiben getrennte Nachweise.
+
+**Offen bleibt die vollständige historische Erschließung alter FaithPath-Rückblicke und Meilensteine.** Die aktuelle Ansicht ist die erste persönliche Historienstufe. Weitere Bildarbeit, unabhängige Fach-/Rechtefreigaben, echte Einsteiger-/Geräte-/Hilfstechnologietests, signierte native Pakete und konkrete Cloud-/KI-/Audioarbeit bleiben Master-Aufgaben. Keine öffentliche Website-/Storefreigabe, kein GitHub-main-Merge und keine Änderung an FaithPath. Die gesamte Master-Definition-of-Done ist nicht abgeschlossen.
+
+[Gesamtabnahme](evidence/personal-tree-release16/validation-summary.json)
+<!-- /OLIVA_016_CURRENT -->
+
+
+
+## Historischer Lieferstand · Lebensthemen 0.15.0
 
 **OLIVA 0.15.0 ist seit 17.11.2026, 08:07:16 UTC eigentümerprivat bereitgestellt.** Alle **18 originalen FaithPath-Lebensthemen mit 45 Bibelstellen, Einordnungen und Reflexionsfragen** sind über Wege → 18 Lebensthemen entdecken erreichbar. Die neun bisherigen Wege bleiben erhalten. [Private Themenübersicht](https://oliva-v04-private-preview.purplebean128.chatgpt.site/themen) · [Arbeit & Berufung](https://oliva-v04-private-preview.purplebean128.chatgpt.site/weg/faithpath-topic-arbeit) · [Trauer & schwere Zeiten](https://oliva-v04-private-preview.purplebean128.chatgpt.site/weg/faithpath-topic-trauer).
 
@@ -10,7 +33,7 @@ Die Themen nutzen den gemeinsamen Reader, freiwillige Reflexionen, automatische 
 
 Kernbuild `oliva-2a5dee07245f877a`, Hostbuild `oliva-95adc4fd401f5b42`;351 eingefrorene Runtimeinputs, SHA-256 `c2e8a15dc1ec16010b463389d379396947f53a0f71accfa3da463326edd2b485`. Sechs gesonderte Build-/Rechteinputs waren vor dem endgültigen Build enthalten. Die gehostete Fassung ist über37Routen,111App-Dateien(110bytegenau plusHTML-Marker) und42Review-Dateien geprüft. Eigentümerpolitik Revision1 exakt unverändert, anonymHTTP401. Keine gehostete Browser-QA mangels unterstütztem CUA-Werkzeug.
 
-Die neue Funktion ist im eigenen Codecheckpoint `71903b410b60235232771d9eaf1500018c10add7` enthalten. Der unveränderliche Releasecheckpoint, ZIP und die beauftragte GitHub-Versionssicherung folgen als nächste Abschlussschritte. Die neue unabhängige GitHub-CI ist **noch nicht ausgelöst oder bestätigt**; die bestätigte 0.14-CI44014441925 bleibt ein eigener Nachweis. Aktuelle Belege: [Themenvertrag](29-original-life-topics.md) und [Gesamtabnahme](evidence/life-topics-integration/validation-summary.json).
+Die neue Funktion ist im eigenen Codecheckpoint `71903b410b60235232771d9eaf1500018c10add7` enthalten. Der unveränderliche Releasecheckpoint `ade5e7e3983827941d2038eb8d8d69f669d20290`, CRC-geprüfte Quell-ZIP(289.381.314Byte) und die beauftragte GitHub-Versionssicherung sind abgeschlossen. GitHub-Commit `94777280c915887bdc9c25527ee7c0d299eb938b`, [Tag `oliva-v0.15.0`](https://github.com/akwasiacheampongma-code/Faithpath-/tree/oliva-v0.15.0/oliva),26Versionsrefs bestätigt; main und alle geschützten Bestandsbranches unverändert. Die neue unabhängige [GitHub-CI44045010987](https://github.com/akwasiacheampongma-code/Faithpath-/actions/runs/44045010987) ist seit **17.11.2026,08:27:38UTC erfolgreich bestätigt:321/321 und144/144, erster Versuch, keineRetries/Skips/Flaky-Ergebnisse**. Alle31Kriterien, Artifact-SHA/CRC/Frische, tatsächliche Testzeiten und exakter Quellteilbaum sind geprüft; die bestätigte 0.14-CI44014441925 bleibt ein eigener Nachweis. Aktuelle Belege: [Themenvertrag](29-original-life-topics.md) und [Gesamtabnahme](evidence/life-topics-integration/validation-summary.json).
 
 Die gesamte Master-Definition-of-Done bleibt offen. Die persönliche Ast-/Historienparität ist als nächster bestehender Bereich lesend vorbereitet; keine neue Wachstumsauswertung oder neue persönliche Datenzuordnung wurde dafür eingeführt. Weitere Bildarbeit, unabhängige Inhalts-/Rechtefreigaben, Einsteiger-/Geräte-/Hilfstechnologietests, signierte native Pakete und konkrete Cloud-/KI-/Audioarbeit bleiben offen. FaithPath, GitHub-main und historische Versionstags sind unverändert; es gibt keine öffentliche Web-/Storefreigabe und keine neuen Zukunftsversionsnummern oder Termine.
 

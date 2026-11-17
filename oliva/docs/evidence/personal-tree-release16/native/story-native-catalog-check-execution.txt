@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "checker": "static-metro-original-stories-v014",
+  "bundleCodeExecuted": false,
+  "deviceTest": false,
+  "simulatorTest": false,
+  "parser": "acorn@8.19.0",
+  "counts": {
+    "units": 436,
+    "questions": 2479,
+    "reflectionPrompts": 436,
+    "aliasPairs": 95,
+    "books": 66
+  },
+  "sources": [
+    {
+      "file": "src/data/story-index.json",
+      "sha256": "e33a1abf8f85f8ff4df84a95a2390e57b8e810d40e8240a132a4cbc31f575d6a",
+      "bytes": 468093
+    },
+    {
+      "file": "src/data/story-questions.json",
+      "sha256": "0ae8fb77c91d098412de6e96bf170635e8d671c35a62acb6cdcdc3ae8f24bbe5",
+      "bytes": 1331216
+    }
+  ],
+  "exports": [
+    {
+      "platform": "android",
+      "bundle": "_expo/static/js/android/entry-07c4648e570826b3c088320b81079477.js",
+      "bundleSha256": "0054274a1dd64eaf6b1d63f84e867b02f0d3ffff39da49c3fc1354293802d79a",
+      "modulesScanned": 1709,
+      "matches": [
+        {
+          "source": "src/data/story-index.json",
+          "moduleId": 1311,
+          "fullDeepEquality": true,
+          "jsonSha256": "5176d34f14ec970487b5ab251f222181f32e3a6ba858ec9ee80b11ee6dec8e59"
+        },
+        {
+          "source": "src/data/story-questions.json",
+          "moduleId": 1341,
+          "fullDeepEquality": true,
+          "jsonSha256": "785fca90825db5a53935019e3946dc5c2944e0957615be9b8e0b635cbe9adbc5"
+        }
+      ]
+    },
+    {
+      "platform": "ios",
+      "bundle": "_expo/static/js/ios/entry-c13c30040dfaaaf9a5b364c27d051283.js",
+      "bundleSha256": "6aa31026e18fc68c4e7fedf5336b0f8477d1113d4ea360016a3a20d509f11aef",
+      "modulesScanned": 1714,
+      "matches": [
+        {
+          "source": "src/data/story-index.json",
+          "moduleId": 1315,
+          "fullDeepEquality": true,
+          "jsonSha256": "5176d34f14ec970487b5ab251f222181f32e3a6ba858ec9ee80b11ee6dec8e59"
+        },
+        {
+          "source": "src/data/story-questions.json",
+          "moduleId": 1345,
+          "fullDeepEquality": true,
+          "jsonSha256": "785fca90825db5a53935019e3946dc5c2944e0957615be9b8e0b635cbe9adbc5"
+        }
+      ]
+    }
+  ]
+}
