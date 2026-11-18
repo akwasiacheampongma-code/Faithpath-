@@ -7,13 +7,29 @@ import { LOCAL_SCHEMA_SQL } from "../src/services/local-migrations";
 const harness = vi.hoisted(() => ({
   db: null as DatabaseSync | null,
   failMain: false,
+  failExportCleanup: false,
+  closedExportConnections: 0,
 }));
-vi.mock("expo-sharing", () => ({}));
-vi.mock("expo-file-system", () => ({ File: class {}, Paths: {} }));
+vi.mock("expo-sharing", () => ({ isAvailableAsync: async () => true, shareAsync: async () => {} }));
+vi.mock("expo-file-system", () => ({
+  File: class {
+    uri = "file:///synthetic-cache/recovery.sqlite";
+    exists = false;
+    create() { this.exists = true; }
+    write() {}
+    delete() {
+      if (harness.failExportCleanup) throw new Error("Temporäre Datei konnte nicht entfernt werden");
+      this.exists = false;
+    }
+  },
+  Paths: { cache: "file:///synthetic-cache/" },
+}));
 vi.mock("expo-sqlite", () => ({
   openDatabaseAsync: vi.fn(async () => {
     const db = harness.db!;
     const adapter = {
+      serializeAsync: async () => Uint8Array.of(1, 2, 3),
+      closeAsync: async () => { harness.closedExportConnections++; },
       execAsync: async (sql: string) => {
         db.exec(sql);
       },
@@ -46,9 +62,17 @@ beforeEach(() => {
   vi.resetModules();
   harness.db = new DatabaseSync(":memory:");
   harness.failMain = false;
+  harness.failExportCleanup = false;
+  harness.closedExportConnections = 0;
 });
 afterEach(() => harness.db?.close());
 describe("Native SQLite-Adapter mit realer SQL-Engine", () => {
+  it("schließt die zusätzliche Exportverbindung auch bei fehlgeschlagener Cachebereinigung", async () => {
+    const storage = await import("../src/services/storage");
+    harness.failExportCleanup = true;
+    await expect(storage.exportRawData()).rejects.toThrow("Temporäre Datei konnte nicht entfernt werden");
+    expect(harness.closedExportConnections).toBe(1);
+  });
   it("migriert eine physische V1-Datenbank und V2-Nutzdaten verlustfrei", async () => {
     const {
         imports,

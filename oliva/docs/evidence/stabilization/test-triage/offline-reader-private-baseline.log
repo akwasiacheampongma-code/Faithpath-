@@ -1,0 +1,35 @@
+
+Running 1 test using 1 worker
+
+(node:196237) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/core.spec.ts:284:1 › Offline-Neustart öffnet auch einen noch nicht besuchten Reader (23.9s)
+
+
+  1) tests/e2e/core.spec.ts:284:1 › Offline-Neustart öffnet auch einen noch nicht besuchten Reader ─
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Offenbarung', { exact: true }).first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Offenbarung', { exact: true }).first() with timeout 15000ms
+      - waiting for getByText('Offenbarung', { exact: true }).first()
+
+
+      299 |   await expect(
+      300 |     page.getByText("Offenbarung", { exact: true }).first(),
+    > 301 |   ).toBeVisible();
+          |     ^
+      302 |   await expect(page.getByRole("button", { name: /^Vers 21:/ })).toBeVisible();
+      303 |   await page
+      304 |     .getByRole("button", {
+        at /workspace/faithpath-next/tests/e2e/core.spec.ts:301:5
+
+    Error Context: ../../tmp/oliva-baseline-offline-test/core-Offline-Neustart-öffn-28ec8-noch-nicht-besuchten-Reader/error-context.md
+
+  1 failed
+    tests/e2e/core.spec.ts:284:1 › Offline-Neustart öffnet auch einen noch nicht besuchten Reader ──

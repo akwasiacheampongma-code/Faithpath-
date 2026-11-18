@@ -10,6 +10,7 @@ const types = {
   ".json": "application/json",
   ".css": "text/css",
   ".ttf": "font/ttf",
+  ".woff2": "font/woff2",
   ".webp": "image/webp",
   ".png": "image/png",
   ".svg": "image/svg+xml",

@@ -1,0 +1,19 @@
+{
+  "nodeVersion": "v24.22.1",
+  "syntheticInputOnly": true,
+  "isolatedNodeProcessPerRun": true,
+  "summaries": {
+    "baseline": {
+      "bytes": 8388608,
+      "rssPeakKiB": 448332,
+      "elapsedMs": 6811,
+      "nodeHashEqual": true
+    },
+    "candidate": {
+      "bytes": 8388608,
+      "rssPeakKiB": 91492,
+      "elapsedMs": 1758,
+      "nodeHashEqual": true
+    }
+  }
+}

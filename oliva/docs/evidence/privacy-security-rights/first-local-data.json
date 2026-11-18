@@ -1,0 +1,44 @@
+{
+  "browser": "Local Chromium",
+  "syntheticDataOnly": true,
+  "testedHost": "loopback",
+  "runtimeOriginIsNotPrivateProductionOrigin": true,
+  "cases": [
+    {
+      "case": "Unsupported FaithPath schema",
+      "rejected": true,
+      "rawRecordsExact": true
+    },
+    {
+      "case": "Confirmed FaithPath import",
+      "previewReadOnly": true,
+      "archiveBytesExact": true,
+      "sourceSha256": "947ebee359a1a4b9e0e11ebd329d75e3330925717aa36f68a3c54655db01e9b3",
+      "recoveryCopyPresent": true,
+      "keys": [
+        "archive:<sha256>",
+        "before-faithpath-import",
+        "main",
+        "recovery-index"
+      ]
+    }
+  ],
+  "requestCounts": {
+    "same-origin GET document": 4,
+    "same-origin GET stylesheet": 8,
+    "same-origin GET script": 22,
+    "same-origin GET other": 6,
+    "same-origin GET font": 8,
+    "same-origin GET fetch": 106,
+    "same-origin GET image": 1
+  },
+  "consoleCounts": {},
+  "pageErrors": 0,
+  "outgoingMarkerSeen": false,
+  "consoleMarkerSeen": false,
+  "sqlOnPhysicalDevice": false,
+  "build": "oliva-ae078dca10b74ebc",
+  "cookieCount": 0,
+  "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByText('<em>OLIVA-AUDIT-LITERAL-20261118 & Text</em>', { exact: true })\nExpected: visible\nError: strict mode violation: getByText('<em>OLIVA-AUDIT-LITERAL-20261118 & Text</em>', { exact: true }) resolved to 3 elements:\n    1) <div dir=\"auto\" class=\"css-146c3p1 r-8akbws r-krxsd3 r-dnmrzs r-1qsk4np r-1udbk01\"><em>OLIVA-AUDIT-LITERAL-20261118 & Text</em></div> aka getByLabel('In Ruhe zuhören: zugehöriges').getByText('<em>OLIVA-AUDIT-LITERAL-')\n    2) <div dir=\"auto\" class=\"css-146c3p1 r-8akbws r-krxsd3 r-dnmrzs r-1qsk4np r-1udbk01\"><em>OLIVA-AUDIT-LITERAL-20261118 & Text</em></div> aka getByTestId('tree-moment-note:fp5-journal-08243666f926aa4e5b884b8ef1fc3b93d19e191a793581530616bd2e032c4761').getByText('<em>OLIVA-AUDIT-LITERAL-')\n    3) <div dir=\"auto\" class=\"css-146c3p1\"><em>OLIVA-AUDIT-LITERAL-20261118 & Text</em></div> aka getByTestId('legacy-moment-review:f2f8d6cb1ab32877eed10ebbc9f038dccc89575df48b97e2db85dde0fa9fbb4a').getByText('<em>OLIVA-AUDIT-LITERAL-')\n\nCall log:\n  - Expect \"toBeVisible\" getByText('<em>OLIVA-AUDIT-LITERAL-20261118 & Text</em>', { exact: true }) with timeout 20000ms\n  - waiting for getByText('<em>OLIVA-AUDIT-LITERAL-20261118 & Text</em>', { exact: true })\n\n    at captureRawStack (/workspace/faithpath-next/node_modules/playwright-core/lib/coreBundle.js:9551:17)\n    at callMatcherAsStep (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13342:57)\n    at Object.toBeVisible (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13334:23)\n    at /workspace/faithpath-next/scripts/audit-local-data.mjs:104:55",
+  "passed": false
+}

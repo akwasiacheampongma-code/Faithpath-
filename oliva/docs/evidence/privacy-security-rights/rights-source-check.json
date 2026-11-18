@@ -1,0 +1,84 @@
+{
+  "checkedAt": "2026-11-18T13:53:03.641105+00:00",
+  "external": [
+    {
+      "source": "source-notice",
+      "url": "https://ebible.org/deu1912/copyright.htm",
+      "status": 200,
+      "titleAvailable": true,
+      "declaresPublicDomain": true
+    },
+    {
+      "source": "ddg-5",
+      "url": "https://www.gesetze-im-internet.de/ddg/__5.html",
+      "status": 200,
+      "titleAvailable": true,
+      "declaresPublicDomain": null
+    },
+    {
+      "source": "tdddg-25",
+      "url": "https://www.gesetze-im-internet.de/tdddg/__25.html",
+      "status": 404
+    },
+    {
+      "source": "gdpr",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj?locale=de",
+      "status": 202,
+      "titleAvailable": false,
+      "declaresPublicDomain": null
+    },
+    {
+      "source": "mstv-18",
+      "url": "https://www.gesetze-bayern.de/Content/Document/MStV-18",
+      "status": 200,
+      "titleAvailable": true,
+      "declaresPublicDomain": null
+    }
+  ],
+  "projectFiles": [
+    {
+      "file": "assets/licenses/LUTHER1912-NOTICE.txt",
+      "exists": true,
+      "sha256": "60086a245625b7921d28a0a7db9d6d4eee2a6e813420fe05fe1a972bf1ff3d6d"
+    },
+    {
+      "file": "assets/licenses/luther1912-source-notice.html",
+      "exists": true,
+      "sha256": "89bef84e3056fbf0cd309f4e6a823dec5a9e6cf1806efc5ecef66d0c2cec3532"
+    },
+    {
+      "file": "assets/deu1912-source.zip",
+      "exists": true,
+      "sha256": "76fb83f108dd9029e2ec63c582b5a7e2acc46736d7b1659f802dff27f5563af7"
+    },
+    {
+      "file": "assets/fonts/DMSans-OFL.txt",
+      "exists": true,
+      "sha256": "9af36190332437f5ecd09974de43c1f7c77a310a996cdd8ceb25628b458840e1"
+    },
+    {
+      "file": "assets/fonts/CormorantGaramond-OFL.txt",
+      "exists": true,
+      "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956"
+    },
+    {
+      "file": "LICENSE",
+      "exists": true,
+      "sha256": "ea339ca8480251ab0f7526feb253aab8ad01f0905a655b5beef07e0b706f4684"
+    }
+  ],
+  "alternateCitationChecks": [
+    {
+      "source": "tdddg-25-alternative",
+      "url": "https://www.gesetze-im-internet.de/ttdsg/__25.html",
+      "status": 200,
+      "documentObserved": true
+    },
+    {
+      "source": "gdpr-de-alternative",
+      "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32016R0679",
+      "status": 202,
+      "documentObserved": false
+    }
+  ]
+}

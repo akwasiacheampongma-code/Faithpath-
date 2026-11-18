@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-11-18T15:27:58.235339+00:00",
+  "head": "0d077a0937dc32bfa4005423ab6b6a0d510a3175",
+  "trackedFiles": 6432,
+  "worktree": {
+    "textScanned": 3112,
+    "binarySkipped": 3317,
+    "symlinkOrMissing": 3
+  },
+  "history": {
+    "reachableBlobs": 4306,
+    "textScanned": 3213,
+    "binarySkipped": 1093
+  },
+  "patterns": [
+    "AWS access key ID",
+    "Credential embedded in URL",
+    "GitHub token",
+    "Google API key",
+    "JWT-like value",
+    "Literal authentication header",
+    "Literal secret assignment",
+    "OpenAI key",
+    "Private key block",
+    "Signed URL parameter",
+    "Slack token"
+  ],
+  "currentCandidates": [],
+  "historicCandidates": [],
+  "limitations": [
+    "Nur verfolgte Dateien und erreichbare Blobs aus lokalen Git-Refs, keine gelöschten oder nicht geholten Remote-Refs.",
+    "Binärdateien, Archive und Dateien über 12 MiB sind ausgenommen. Keine rotierenden Werte, Hashlisten oder Zugangsdaten durch Onlineversuche geprüft.",
+    "Ignorierte Dateien, Git-Konfiguration, Provider-Secrets, Shell-Historie und Nutzerprofile wurden nicht durchsucht.",
+    "Patterntreffer sind Prüfkandidaten. Ein Nullbefund schließt unbekannte oder anders formatierte Zugangsdaten nicht aus."
+  ]
+}

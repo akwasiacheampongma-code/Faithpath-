@@ -761,7 +761,7 @@ export function grow(data: AppData) {
   data.growthStage = Math.max(data.growthStage, next);
 }
 export function parseBackup(text: string): AppData {
-  if (utf8Length(text) > MAX_BACKUP_BYTES)
+  if (text.length > MAX_BACKUP_BYTES || utf8Length(text) > MAX_BACKUP_BYTES)
     throw new Error("Die Sicherung ist zu groß (maximal 64 MB).");
   try {
     return decodeData(JSON.parse(text));

@@ -1,0 +1,70 @@
+
+> oliva-faith-companion@0.18.0 content:check
+> python3 scripts/import-bible.py --check
+
+{"books": 66, "chapters": 1189, "verses": 31102, "source_sha256": "76fb83f108dd9029e2ec63c582b5a7e2acc46736d7b1659f802dff27f5563af7", "bundle_sha256": "6dd74b74fa67033976536939521df6417ab9c41579fee8c6cbeffd94016e6ce8"}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+> oliva-faith-companion@0.18.0 content:nt
+> python3 scripts/import-nt-catalog.py --check
+
+{"status": "PASS", "mode": "check", "mixed_units": 312, "mixed_questions": 1560, "excluded_story_units": 52, "excluded_story_questions": 260, "books": 27, "chapters": 260, "questions": 1300, "questions_per_chapter": 5, "reference_ranges": 1304, "questions_with_multiple_ranges": 4, "single_chapter_references_without_chapter_number": 20, "catalog_sha256": "850272e6cd3a22bdb50191e6e20f0ab9033377e7901f47fbfe6ec4c3eb067c7b"}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+> oliva-faith-companion@0.18.0 content:stories
+> python3 scripts/import-story-catalog.py --check
+
+{"sourceCommit": "a519ce898fa33907b07d5ac7a585595127556183", "units": 436, "questions": 2479, "reflections": 436, "preservedSourceIds": 2574, "aliasPairs": 95, "originalExplanations": 174, "structuredStoryRanges": 437, "fpQuestionReferencesResolvedAndCorpusChecked": 165, "newQuestionsOrImagesGenerated": false, "classification": "kind and image are OLIVA editorial presentation metadata; original text/order/source IDs retained", "byteCheck": true}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+> oliva-faith-companion@0.18.0 content:topics
+> node scripts/import-life-topics.mjs --check
+
+{"checked":true,"topics":18,"references":45,"contexts":45,"reflectionPrompts":45,"originalCategories":11,"sourceHash":"f20b6729406a34123abf860b4c5d69184be30da2834660601355dc71541dccda","catalogHash":"698f278f71b6007c32e261aae5bf80a9d79335c15f050cc0bdad8bea7e2a52a6","originalExecuted":false,"originalStringsPreserved":true,"canonicalBoundsChecked":true,"estimatedOriginalDurations":false,"originalPrayersAdded":false}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+> oliva-faith-companion@0.18.0 content:art
+> node scripts/check-art.mjs
+
+{"masters":8,"variants":21,"all_hashes_match":true,"release_approval":"Read individual metadata; this check does not grant approval."}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+> oliva-faith-companion@0.18.0 content:tree
+> node scripts/check-a51.mjs
+
+{"checkedAt":"2026-11-18T15:03:35.842Z","study":"FP-DESIGN-20261101-A51-FINAL-LIVING-TREE","originalsVerified":47,"masterCount":7,"webpCount":21,"nativePngCount":98,"allFileHashesMatch":true,"sourceSnapshot":"a519ce898fa33907b07d5ac7a585595127556183","originalsUnmodified":true,"nativeDeviceTest":false}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+> oliva-faith-companion@0.18.0 content:swords
+> node scripts/check-sword-art.mjs
+
+{"activeSymbols":1,"activeRuntimeImages":1,"activeRuntimeBytes":81042,"archivedRuntimeImages":9,"historicalOriginalFilesUnchanged":45,"previousDevelopmentRuntimeBytes":1038251,"removedRuntimeBytes":957209,"allHashesMatch":true,"originalsUnmodified":true,"bibleBooks":66,"chapters":1189,"exactIntegratedEphesiansQuote":true,"noProgressOrRewardInput":true,"publicRelease":"not approved","scope":"Technical provenance/source checks. Browser, native, device and independent specialist acceptance are separate."}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

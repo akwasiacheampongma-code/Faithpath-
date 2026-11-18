@@ -1,22 +1,27 @@
 // SHA-256 (FIPS 180-4). Local, deterministic fingerprints; no personal text leaves the device.
 export function utf8Bytes(text: string): Uint8Array {
-  const bytes: number[] = [];
+  const bytes = new Uint8Array(utf8Length(text));
+  let offset = 0;
   for (const char of text) {
     let c = char.codePointAt(0)!;
     if (c >= 0xd800 && c <= 0xdfff) c = 0xfffd;
-    if (c < 128) bytes.push(c);
-    else if (c < 2048) bytes.push(192 | (c >> 6), 128 | (c & 63));
-    else if (c < 65536)
-      bytes.push(224 | (c >> 12), 128 | ((c >> 6) & 63), 128 | (c & 63));
-    else
-      bytes.push(
-        240 | (c >> 18),
-        128 | ((c >> 12) & 63),
-        128 | ((c >> 6) & 63),
-        128 | (c & 63),
-      );
+    if (c < 128) {
+      bytes[offset++] = c;
+    } else if (c < 2048) {
+      bytes[offset++] = 192 | (c >> 6);
+      bytes[offset++] = 128 | (c & 63);
+    } else if (c < 65536) {
+      bytes[offset++] = 224 | (c >> 12);
+      bytes[offset++] = 128 | ((c >> 6) & 63);
+      bytes[offset++] = 128 | (c & 63);
+    } else {
+      bytes[offset++] = 240 | (c >> 18);
+      bytes[offset++] = 128 | ((c >> 12) & 63);
+      bytes[offset++] = 128 | ((c >> 6) & 63);
+      bytes[offset++] = 128 | (c & 63);
+    }
   }
-  return new Uint8Array(bytes);
+  return bytes;
 }
 export function utf8Length(text: string) {
   let n = 0;

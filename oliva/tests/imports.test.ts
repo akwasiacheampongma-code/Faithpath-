@@ -26,6 +26,7 @@ describe("FaithPath-V5-Prüfung und Zuordnung", () => {
       "",
       "abc",
       "ä 👋 \ud800",
+      "\u007f\u0080\u07ff\u0800\udc00 x\r\n\u{10ffff}",
       "0123456789".repeat(10000),
     ]) {
       expect(sha256(value)).toBe(
@@ -36,6 +37,21 @@ describe("FaithPath-V5-Prüfung und Zuordnung", () => {
     expect(canonicalJson({ b: 2, a: { z: 0, x: 1 } })).toBe(
       canonicalJson({ a: { x: 1, z: 0 }, b: 2 }),
     );
+  });
+  it("bewahrt die bestehenden Tiefengrenzen und lehnt reservierte Schlüssel in Originalen ab", () => {
+    const source = faithpathFixture();
+    const withDepth = (depth: number) => {
+      let extra: unknown = null;
+      for (let i = 0; i < depth; i++) extra = [extra];
+      return JSON.stringify({ ...source, extra });
+    };
+    expect(parseFaithpath(withDepth(39)).sourceHash).toBe(
+      createHash("sha256").update(withDepth(39)).digest("hex"),
+    );
+    expect(() => parseFaithpath(withDepth(40))).toThrow(/zu tief/);
+    expect(() => parseFaithpath(JSON.stringify({
+      ...source, extra: JSON.parse('{"nested":{"__proto__":null}}'),
+    }))).toThrow(/unzulässige Objektschlüssel/);
   });
   it("prüft rein lesend, führt nur belegte Spiegel zusammen und bewahrt sämtliche Originalbytes", () => {
     const current = initialData(),

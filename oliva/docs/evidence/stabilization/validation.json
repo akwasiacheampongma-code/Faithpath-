@@ -1,0 +1,32 @@
+{
+  "build": "oliva-ef3b048eca9d6b21",
+  "baselineBuild": "oliva-507a582d5a9cc3a6",
+  "unitPassed": 345,
+  "browserInitialRun": {
+    "startTime": "2026-11-18T15:02:30.428Z",
+    "duration": 1580900.8520000002,
+    "expected": 160,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "recheckedOfflineReaderOnBothBuilds": "passed",
+  "startMedianMs": {
+    "Heute": {
+      "before": 23720,
+      "after": 16124
+    },
+    "Noah": {
+      "before": 22051,
+      "after": 14988
+    }
+  },
+  "offlineFilesFullyCached": 126,
+  "rawUpgradeRecordsExact": 4,
+  "packageImageHashesIdentical": 64,
+  "privatePreviewSiteVersion": 24,
+  "nativeStaticExportsPassed": true,
+  "physicalDevicesTested": false,
+  "openPicomatchLockfileMatches": 5,
+  "newReleaseAssigned": false
+}

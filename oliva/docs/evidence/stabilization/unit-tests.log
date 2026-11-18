@@ -1,0 +1,12 @@
+
+ RUN  v5.1.0 /workspace/faithpath-next
+
+
+ Test Files  39 passed (39)
+      Tests  345 passed (345)
+   Start at  15:03:42
+   Duration  137.71s (import 66%, tests 23%, transform 11%, worker 1%)
+
+    Isolate  39 workers spawned · ~433ms startup each (spawn + environment, per file)
+             at least ~16.46s faster with isolate: false — reuses workers across files instead of one per file
+

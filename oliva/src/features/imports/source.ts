@@ -119,21 +119,22 @@ export function iso(value: unknown): string | null {
   return new Date(value).toISOString();
 }
 function scan(value: unknown) {
-  const queue = [{ v: value, depth: 0 }];
   let nodes = 0;
-  while (queue.length) {
-    const { v, depth } = queue.pop()!;
+  function visit(node: unknown, depth: number) {
     if (++nodes > 200000 || depth > 40)
       throw new Error(
         "Die Sicherung ist zu komplex oder zu tief verschachtelt.",
       );
-    if (v && typeof v === "object")
-      for (const [k, item] of Object.entries(v)) {
-        if (["__proto__", "constructor", "prototype"].includes(k))
-          throw new Error("Die Sicherung enthält unzulässige Objektschlüssel.");
-        queue.push({ v: item, depth: depth + 1 });
-      }
+    if (!node || typeof node !== "object") return;
+    const record = node as Record<string, unknown>;
+    for (const key in record) {
+      if (!Object.hasOwn(record, key)) continue;
+      if (key === "__proto__" || key === "constructor" || key === "prototype")
+        throw new Error("Die Sicherung enthält unzulässige Objektschlüssel.");
+      visit(record[key], depth + 1);
+    }
   }
+  visit(value, 0);
 }
 function unique(items: { id: string | number }[], label: string) {
   if (new Set(items.map((x) => String(x.id))).size !== items.length)
@@ -142,7 +143,7 @@ function unique(items: { id: string | number }[], label: string) {
     );
 }
 export function parseFaithpath(text: string) {
-  if (!text.trim() || utf8Length(text) > MAX_SOURCE_BYTES)
+  if (text.length > MAX_SOURCE_BYTES || utf8Length(text) > MAX_SOURCE_BYTES || !text.trim())
     throw new Error("Bitte wähle eine FaithPath-JSON-Sicherung bis 10 MB.");
   let input: unknown;
   try {

@@ -1,0 +1,453 @@
+{
+  "build": "oliva-507a582d5a9cc3a6",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "deviceScaleFactor": 2,
+  "network": {
+    "latency": 150,
+    "downloadThroughput": 200000,
+    "uploadThroughput": 93750
+  },
+  "repetitions": 0,
+  "results": [],
+  "offline": {
+    "networkCondition": "unthrottled loopback; worker enabled",
+    "first": {
+      "readyMs": 2249,
+      "ttfbMs": 38,
+      "domContentLoadedMs": 1188,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2357089,
+          "firstStartMs": 60,
+          "lastEndMs": 1667,
+          "files": [
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 60,
+              "endMs": 99,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/entry-c33de39945b5dbdc1a1b8b5df658db15.js",
+              "startMs": 60,
+              "endMs": 245,
+              "transferBytes": 295521,
+              "encodedBytes": 295221,
+              "decodedBytes": 1119808
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/__common-a5d9ca451a862ef3c8f70b376d661eb2.js",
+              "startMs": 60,
+              "endMs": 980,
+              "transferBytes": 2046337,
+              "encodedBytes": 2046037,
+              "decodedBytes": 6993704
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/_layout-a14f92c286cd4edb522c3a254c6d93df.js",
+              "startMs": 1218,
+              "endMs": 1266,
+              "transferBytes": 8913,
+              "encodedBytes": 8613,
+              "decodedBytes": 26064
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/index-8a37102091d456386c44324496fa73df.js",
+              "startMs": 1662,
+              "endMs": 1667,
+              "transferBytes": 4467,
+              "encodedBytes": 4167,
+              "decodedBytes": 12161
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 1436324,
+          "firstStartMs": 1585,
+          "lastEndMs": 1617,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.09d1eaa1672d3815b7b121457ebda2d0.ttf",
+              "startMs": 1585,
+              "endMs": 1610,
+              "transferBytes": 240464,
+              "encodedBytes": 240164,
+              "decodedBytes": 240164
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.618588c6026366f173cd30e38d54cc28.ttf",
+              "startMs": 1587,
+              "endMs": 1617,
+              "transferBytes": 1195860,
+              "encodedBytes": 1195560,
+              "decodedBytes": 1195560
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 396551,
+          "firstStartMs": 1222,
+          "lastEndMs": 2075,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 1222,
+              "endMs": 1281,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+              "startMs": 2052,
+              "endMs": 2060,
+              "transferBytes": 262850,
+              "encodedBytes": 262550,
+              "decodedBytes": 262550
+            },
+            {
+              "file": "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+              "startMs": 2054,
+              "endMs": 2075,
+              "transferBytes": 38142,
+              "encodedBytes": 37842,
+              "decodedBytes": 37842
+            },
+            {
+              "file": "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+              "startMs": 2056,
+              "endMs": 2075,
+              "transferBytes": 73260,
+              "encodedBytes": 72960,
+              "decodedBytes": 72960
+            },
+            {
+              "file": "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+              "startMs": 2057,
+              "endMs": 2075,
+              "transferBytes": 21694,
+              "encodedBytes": 21394,
+              "decodedBytes": 21394
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 59,
+          "lastEndMs": 83,
+          "files": [
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 59,
+              "endMs": 83,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 60,
+              "endMs": 75,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 1589,
+            "endMs": 1642,
+            "durationMs": 53
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 1645,
+            "endMs": 1679,
+            "durationMs": 34
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    },
+    "prepared": {
+      "readyMs": 3744,
+      "firstOfflineWorkerResponseMs": 0,
+      "paths": [
+        "/THIRD_PARTY_NOTICES.txt",
+        "/apple-touch-icon.png",
+        "/assets/assets/a51/stage-1-1024-09d0f0e48b45.272528ab27888db413511f95a5962d00.webp",
+        "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+        "/assets/assets/a51/stage-1-640-61bf0ea0364c.2b67b13687ef44452445d4c7ef025873.webp",
+        "/assets/assets/a51/stage-2-1024-5faf7d8bacae.20f510d14e96bf1776daf6500b4525ab.webp",
+        "/assets/assets/a51/stage-2-384-83c9e1b068c2.9704851601f26041aae382898640f46d.webp",
+        "/assets/assets/a51/stage-2-640-657d676673c5.25f53dd1dd4cef598f244059035ec428.webp",
+        "/assets/assets/a51/stage-3-1024-dd3447ecfc31.46d226e8789f58d7cb98dc66bab36999.webp",
+        "/assets/assets/a51/stage-3-384-67a026427a62.bede3991f9fe0ccf02314027cba2adf4.webp",
+        "/assets/assets/a51/stage-3-640-daed3e069ebb.dd5dfa1b4fafe8e3582a7d47f4d47b90.webp",
+        "/assets/assets/a51/stage-4-1024-b694c875ac25.b69ea70ffd81b8c8b3d5457cc56501de.webp",
+        "/assets/assets/a51/stage-4-384-7fdbd6abfc70.e33440b0a040e1e20be2341d67217fd2.webp",
+        "/assets/assets/a51/stage-4-640-6cd93c9040c1.dd1e32a89bf4e6d3abc199c09699922a.webp",
+        "/assets/assets/a51/stage-5-1024-9662127e6782.016e4632f6f8488db5642ae08fccc478.webp",
+        "/assets/assets/a51/stage-5-384-1f45acdc445c.caa99e2daab09b528c3bdd81f072c7b9.webp",
+        "/assets/assets/a51/stage-5-640-c725f8e572eb.16986b6b87ca5631e1cced83d152204a.webp",
+        "/assets/assets/a51/stage-6-1024-d332e48c635b.4f3a7d94f4b13583edf96b0dda2f701c.webp",
+        "/assets/assets/a51/stage-6-384-18e5329006bc.dd0bac41cfdfa42b7daf93782607490e.webp",
+        "/assets/assets/a51/stage-6-640-db5395a982ed.f4668be153a788854791fd5a11e30d1e.webp",
+        "/assets/assets/a51/stage-7-1024-8d580a524725.2da9f38609ded7abae209eea3310bda9.webp",
+        "/assets/assets/a51/stage-7-384-1325b09c8f58.3c427d8cb2b2ee9162712a3b0cda1742.webp",
+        "/assets/assets/a51/stage-7-640-c9b6a16a1bf4.654c14cc2fced83f29a04c1161888035.webp",
+        "/assets/assets/fonts/CormorantGaramond.618588c6026366f173cd30e38d54cc28.ttf",
+        "/assets/assets/fonts/DMSans.09d1eaa1672d3815b7b121457ebda2d0.ttf",
+        "/assets/assets/images/abraham-1024.9f1d8adf6c468efe857c4b1ef8116f78.webp",
+        "/assets/assets/images/abraham-1280.1ff17be8d76a19dfd275b01cf82cdefe.webp",
+        "/assets/assets/images/abraham-640.445c3c3b7fa98839659af0a8e0b417e8.webp",
+        "/assets/assets/images/david-before-goliath-1024.77572822e86764be0a1ed457eb792b9c.webp",
+        "/assets/assets/images/david-before-goliath-1280.536f3fb2f43c964e7e8d589b678e1e52.webp",
+        "/assets/assets/images/david-before-goliath-640.579763367b6d7d59109419ee264ec889.webp",
+        "/assets/assets/images/easter-dawn-1024.b67651a5db6e32dbc92085216e58921e.webp",
+        "/assets/assets/images/easter-dawn-1280.e0bc1a91d008b43850720e038a63d243.webp",
+        "/assets/assets/images/easter-dawn-640.879d2495a829c5dd832ad687edce5e6c.webp",
+        "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+        "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+        "/assets/assets/images/garden-640.6432cb455695a7b4e6d68f26f821f058.webp",
+        "/assets/assets/images/nativity-1024.c872d5757fcfdc8109c09f93cddc7852.webp",
+        "/assets/assets/images/nativity-1280.f3e0553a483489937485a58c8af3b1d9.webp",
+        "/assets/assets/images/nativity-640.cb61b77b3f68bcda8087c973221230f9.webp",
+        "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+        "/assets/assets/images/noah-1280.4eb4f2ce3d949d3f605210683dc10b15.webp",
+        "/assets/assets/images/noah-640.4206b12f0aacc4967bc68ae417589a1a.webp",
+        "/assets/assets/images/storm-1280.853333ddbd93e55c72b5854c450b92ac.webp",
+        "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+        "/assets/assets/spiritual-sword/word-sword-512.5eea29980db13f54c581bfc3ab04c853.png",
+        "/assets/vendor/expo-router/assets/arrow_down.017bc6ba3fc25503e5eb5e53826d48a8.png",
+        "/assets/vendor/expo-router/assets/error.d1ea1496f9057eb392d5bbf3732a61b7.png",
+        "/assets/vendor/expo-router/assets/file.19eeb73b9593a38f8e9f418337fc7d10.png",
+        "/assets/vendor/expo-router/assets/forward.d8b800c443b8972542883e0b9de2bdc6.png",
+        "/assets/vendor/expo-router/assets/pkg.ab19f4cbc543357183a20571f68380a3.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/back-icon-mask.0a328cd9c1afd0afe8e3b1ec5165b1b4.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/back-icon.35ba0eaec5a4f5ed12ca16fabeae451d.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55@2x.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55@3x.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55@4x.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7@2x.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7@3x.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7@4x.png",
+        "/assets/vendor/expo-router/assets/react-navigation/elements/search-icon.286d67d3f74808a60a78d3ebf1a5fb57.png",
+        "/assets/vendor/expo-router/assets/sitemap.412dd9275b6b48ad28f5e3d81bb1f626.png",
+        "/assets/vendor/expo-router/assets/unmatched.20e71bdf79e3a97bf55fd9e164041578.png",
+        "/icon-192.png",
+        "/icon-512.png",
+        "/icon.svg",
+        "/index.html",
+        "/licenses/CormorantGaramond-OFL.txt",
+        "/licenses/DMSans-OFL.txt",
+        "/licenses/MIT.txt",
+        "/licenses/THIRD_PARTY_NOTICES.txt",
+        "/manifest.webmanifest",
+        "/metadata.json",
+        "/preview-package.json",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/+not-found-cf31f09611d8951cc074083b4957800c.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/[book]-053f5cfcc0efdaf0f3200f66e8849f21.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/[book]-0f9eaa9859b891ea2487536d277fa72b.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/[book]-d9221dd2dda18776d1c25bef271f8b21.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/[id]-1b15031429ed7535343bf744c576f2fb.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/[id]-636395b409daef7e550e8004edfb0739.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/[id]-8a07223819a619e3a605e035dba03310.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/[id]-adc684c46b559ce4f92ad7c8085613ae.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/__common-a5d9ca451a862ef3c8f70b376d661eb2.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/_layout-a14f92c286cd4edb522c3a254c6d93df.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/bibel-49f929348586bac9dc418514a3a143ba.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/catalog-277124b2d9364c094bc4a6106ef4efd9.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/einladungen-40208a55c8156be63c4106945b035d2d.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/einstellungen-3acbb287ee358e576d7ba3dcab44e9d5.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/entry-c33de39945b5dbdc1a1b8b5df658db15.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/garten-2d87c76cc7e8ae8f268798ac14a9f6e4.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/geschichten-9f5506058a95250ebaa8135343974d92.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/importieren-c96b783966a71e48d7d45262eec45440.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/index-8a37102091d456386c44324496fa73df.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/index-96295d5981eaa7b0e52e27f2a2696546.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/index-db53f69ca284d5555731e14a2150fdea.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/quellen-504d226604c62c5e70004be335319804.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/sammlung-ed357197888e63b2b514e7664ef49659.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/start-2f09503354e82e8798b36e11277e6c59.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/themen-de2652f7fae6f5cfcf733d4eb2b3c331.js",
+        "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/wege-519d4dbea0f8f3849e0728acd7316742.js",
+        "/robots.txt"
+      ]
+    },
+    "restarted": {
+      "readyMs": 1661,
+      "ttfbMs": 16,
+      "domContentLoadedMs": 692,
+      "resources": {
+        "javascript": {
+          "transferBytes": 0,
+          "firstStartMs": 66,
+          "lastEndMs": 1184,
+          "files": [
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 66,
+              "endMs": 97,
+              "transferBytes": 0,
+              "encodedBytes": 3751,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/entry-c33de39945b5dbdc1a1b8b5df658db15.js",
+              "startMs": 66,
+              "endMs": 196,
+              "transferBytes": 0,
+              "encodedBytes": 1119808,
+              "decodedBytes": 1119808
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/__common-a5d9ca451a862ef3c8f70b376d661eb2.js",
+              "startMs": 66,
+              "endMs": 418,
+              "transferBytes": 0,
+              "encodedBytes": 6993704,
+              "decodedBytes": 6993704
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/_layout-a14f92c286cd4edb522c3a254c6d93df.js",
+              "startMs": 763,
+              "endMs": 786,
+              "transferBytes": 0,
+              "encodedBytes": 26064,
+              "decodedBytes": 26064
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/js/web/[id]-adc684c46b559ce4f92ad7c8085613ae.js",
+              "startMs": 1176,
+              "endMs": 1184,
+              "transferBytes": 0,
+              "encodedBytes": 14304,
+              "decodedBytes": 14304
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 0,
+          "firstStartMs": 1140,
+          "lastEndMs": 1147,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.09d1eaa1672d3815b7b121457ebda2d0.ttf",
+              "startMs": 1140,
+              "endMs": 1145,
+              "transferBytes": 0,
+              "encodedBytes": 240164,
+              "decodedBytes": 240164
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.618588c6026366f173cd30e38d54cc28.ttf",
+              "startMs": 1141,
+              "endMs": 1147,
+              "transferBytes": 0,
+              "encodedBytes": 1195560,
+              "decodedBytes": 1195560
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 0,
+          "firstStartMs": 764,
+          "lastEndMs": 1505,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 764,
+              "endMs": 784,
+              "transferBytes": 0,
+              "encodedBytes": 476,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+              "startMs": 1494,
+              "endMs": 1505,
+              "transferBytes": 0,
+              "encodedBytes": 126202,
+              "decodedBytes": 126202
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 0,
+          "firstStartMs": 64,
+          "lastEndMs": 82,
+          "files": [
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 64,
+              "endMs": 78,
+              "transferBytes": 0,
+              "encodedBytes": 393,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/preview-quiet-reading-ca10b74ebc-r1/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 66,
+              "endMs": 82,
+              "transferBytes": 0,
+              "encodedBytes": 675,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 1141,
+            "endMs": 1164,
+            "durationMs": 23
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 1164,
+            "endMs": 1186,
+            "durationMs": 22
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    }
+  },
+  "browser": "155.0.8059.79",
+  "passed": true
+}

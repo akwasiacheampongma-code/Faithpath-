@@ -1,0 +1,42 @@
+{
+  "baseline": {
+    "build": "oliva-507a582d5a9cc3a6",
+    "version": "0.18.0",
+    "entries": 105,
+    "rawAssetBytes": 18550810,
+    "images": 64,
+    "fonts": [
+      {
+        "file": "CormorantGaramond.618588c6026366f173cd30e38d54cc28.ttf",
+        "bytes": 1195560,
+        "sha256": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0"
+      },
+      {
+        "file": "DMSans.09d1eaa1672d3815b7b121457ebda2d0.ttf",
+        "bytes": 240164,
+        "sha256": "8cd08d97e89c24d0aa92edd2f0f4c8ee6195eee9b7c9f154865a58b02f0c1c0d"
+      }
+    ]
+  },
+  "candidate": {
+    "build": "oliva-ef3b048eca9d6b21",
+    "version": "0.18.0",
+    "entries": 126,
+    "rawAssetBytes": 17435283,
+    "images": 64,
+    "fonts": [
+      {
+        "file": "CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+        "bytes": 209428,
+        "sha256": "1c7136dcfe2ba0c22bd2e4ab48467813cb6dd7b5728a73920dd9eb6452b8a558"
+      },
+      {
+        "file": "DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+        "bytes": 88820,
+        "sha256": "40c3837c53c103a38fbce7faaa590b76edd61a8ede14672eb1e2f7eab0e0c6a4"
+      }
+    ]
+  },
+  "sameImageBytesAndCounts": true,
+  "scope": "Offline packet path presence, distinct from browser CacheStorage checks"
+}

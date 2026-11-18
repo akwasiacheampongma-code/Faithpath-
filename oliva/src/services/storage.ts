@@ -167,22 +167,25 @@ export async function exportRawData() {
   if (!(await Sharing.isAvailableAsync()))
     throw new Error("Auf diesem Gerät ist keine Dateifreigabe verfügbar.");
   const db = await SQLite.openDatabaseAsync("oliva.db", {
-      useNewConnection: true,
-    }),
-    file = new File(
+    useNewConnection: true,
+  });
+  try {
+    const file = new File(
       Paths.cache,
       `oliva-reparatursicherung-${Date.now()}.sqlite`,
     );
-  try {
-    file.create({ overwrite: true });
-    file.write(await db.serializeAsync());
-    await Sharing.shareAsync(file.uri, {
-      mimeType: "application/vnd.sqlite3",
-      UTI: "public.database",
-      dialogTitle: "Unveränderten Speicher sichern",
-    });
+    try {
+      file.create({ overwrite: true });
+      file.write(await db.serializeAsync());
+      await Sharing.shareAsync(file.uri, {
+        mimeType: "application/vnd.sqlite3",
+        UTI: "public.database",
+        dialogTitle: "Unveränderten Speicher sichern",
+      });
+    } finally {
+      if (file.exists) file.delete();
+    }
   } finally {
-    if (file.exists) file.delete();
     await db.closeAsync();
   }
 }

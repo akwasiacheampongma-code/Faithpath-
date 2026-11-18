@@ -1,4 +1,18 @@
-# Aktuell: Mobile Übersichten, Reader und Bildprüfung
+# Aktuell: Stabilisierung und Vorbereitung der Nutzerabnahme
+
+Der lokale Kandidat `oliva-ef3b048eca9d6b21` liegt auf `hardening/oliva-user-acceptance-20261118` mit Version 0.18.0. Die bisherige private Vorschau ist Version 24 mit einem berechtigten Konto. Im gedrosselten Chromium-Vergleich sinken die Mediane für Heute von 23,72 auf 16,12 Sekunden und für Noah von 22,05 auf 14,99 Sekunden. Granulare Web-Chunks und vollständige WOFF2-Dateien tragen die Verbesserung. Die Offline-Vorbereitung braucht im Median 4,20 statt 3,81 Sekunden. Der Offline-Neustart liegt weiter bei rund zwei Sekunden. [Stabilisierungsbericht](docs/43-stabilization.md) · [Handytest und Gerätematrix](docs/stabilization-device-matrix.md)
+
+Im Wechsel der echten PWA-Pakete bleiben die vier geprüften IndexedDB-Rohdatensätze einschließlich FaithPath-Original und Rückkehrsicherung exakt erhalten. Die statischen Expo-Exporte für Android und iOS und 345 Fachtests sind geprüft. Der Browser- und Teststand ist im Bericht belegt. Für die Freigabe stehen die picomatch-Advisory, Schutzheader der privaten Plattform, rechtliche Freigaben und physische Geräte- und Hilfstechnologieprüfungen aus. [PWA-Wechsel](docs/evidence/stabilization/pwa-upgrade-full-profile.json) · [Freigabeplan](docs/privacy-security-rights/approval-plan.md)
+
+## Vorheriger Stand: Mobile Übersichten, Reader und Bildprüfung
+
+## Bildabschlussprüfung der privaten Vorschau
+
+Der visuelle Audit des Pakets `oliva-507a582d5a9cc3a6` liegt auf `audit/oliva-image-review-post-audit-20261118`. Sechs von 436 Originaleinheiten tragen eigene Illustrationen. 162 Inventareinträge, alle 64 Webbilder im tatsächlichen Offlinecache, 48 Kombinationen aus sechs Ansichten, vier Breiten und zwei Farbschemata sowie 24 Übersichtsaufnahmen sind belegt. In den kleinen Listenausschnitten verlieren vor allem Noah und das offene Grab einen Teil ihrer Bildaussage. Für den ersten Pilot ist der barmherzige Samariter vorgeschlagen. Die Bildproduktion setzt die ausdrückliche Freigabe voraus. Echte Android-/iOS- und Hilfstechnologieprüfungen stehen aus. [Abschlussbericht, Inventar und Aufnahmen](docs/42-image-review-final.md)
+
+## Lokale Datenschutz-, Sicherheits- und Rechteprüfung
+
+Prüfstand ist die ausgelieferte private Vorschau auf Basis von 0.18.0 vom 18.11.2026. Der neue Audit liegt auf `audit/oliva-privacy-security-rights-20261118`. Der lokale Ausgangstag lautet `oliva-pre-privacy-security-rights-audit-20261118`. Das Auditpaket enthält Befunde mit Priorität, 162 Bilddateieinträge, Lizenzübersicht, Entwürfe für die Pflichtangaben und einen Freigabeplan. Die einzige Laufzeitkorrektur betrifft das Schließen einer zusätzlichen SQLite-Verbindung im nativen Reparaturexport. Typecheck und 34 gezielte Tests sind bestanden. Die bestehende private Vorschau blieb der geprüfte Ausgangsstand. [Audit](docs/41-privacy-security-rights-audit.md) · [Plan zur Freigabe](docs/privacy-security-rights/approval-plan.md)
 
 Seit dem 18.11.2026 um 11:25 UTC steht der geprüfte Arbeitsstand auf Basis von OLIVA 0.18.0 in der privaten Vorschau bereit. Bibel und Wege kommen schneller zum Inhalt. Der Garten zeigt den bestehenden A51-Baum und frühere FaithPath-Momente, die Sammlung ordnet ihre vier Bereiche in ein flexibles Raster und der Reader zeigt früher den Bibeltext. [Private Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site/) · [Mobile Vergleiche](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/quiet-reading/index.svg)
 

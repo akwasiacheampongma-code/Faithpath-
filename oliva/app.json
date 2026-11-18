@@ -25,7 +25,10 @@
       "expo-sqlite"
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "chunking": {
+        "mode": "granular"
+      }
     }
   }
 }

@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-11-18T15:14:38.210Z",
+  "canonicalRepository": "https://github.com/micromatch/picomatch",
+  "defaultBranch": "master",
+  "officialLinkInAdvisory": {
+    "title": "fix: treat a leading `?` in an extglob body as a wildcard",
+    "state": "open",
+    "mergedAt": null,
+    "link": "https://github.com/micromatch/picomatch/pull/194"
+  },
+  "recentTitles": [
+    {
+      "sha": "9fab7bf61913ea334c4203ed321c426cfde44a42",
+      "date": "2026-08-27T19:07:51Z",
+      "title": "Merge pull request #181 from fdma/fix/globstar-adjacent-literal-issue-99",
+      "link": "https://github.com/micromatch/picomatch/commit/9fab7bf61913ea334c4203ed321c426cfde44a42"
+    },
+    {
+      "sha": "8f5ecc02e186bfea06cf50f35d0539c339e1a26e",
+      "date": "2026-08-27T19:04:06Z",
+      "title": "fix: treat `**` adjacent to a literal as a single star (#99)",
+      "link": "https://github.com/micromatch/picomatch/commit/8f5ecc02e186bfea06cf50f35d0539c339e1a26e"
+    },
+    {
+      "sha": "838c9d791cbd0e7c92e858f71ae38f6597416c09",
+      "date": "2026-08-27T11:48:42Z",
+      "title": "Merge pull request #202 from koding88/fix/globstar-newlines",
+      "link": "https://github.com/micromatch/picomatch/commit/838c9d791cbd0e7c92e858f71ae38f6597416c09"
+    },
+    {
+      "sha": "1fc1284b0d7201acc266ca5f585f6800d5d600b9",
+      "date": "2026-08-27T11:25:16Z",
+      "title": "Merge pull request #203 from youdie006/fix/punct-backslash",
+      "link": "https://github.com/micromatch/picomatch/commit/1fc1284b0d7201acc266ca5f585f6800d5d600b9"
+    },
+    {
+      "sha": "b96ad51e957cb27971ed311adde2d839bb662e87",
+      "date": "2026-08-27T11:23:13Z",
+      "title": "chore: sync .verb.md and add negation test for punct backslash",
+      "link": "https://github.com/micromatch/picomatch/commit/b96ad51e957cb27971ed311adde2d839bb662e87"
+    },
+    {
+      "sha": "15c324a9dae5d5b1e7281a6708d16371a0b14098",
+      "date": "2026-08-27T02:02:26Z",
+      "title": "fix: include the backslash in [[:punct:]]",
+      "link": "https://github.com/micromatch/picomatch/commit/15c324a9dae5d5b1e7281a6708d16371a0b14098"
+    },
+    {
+      "sha": "1470a59e4e6c3bc3c1d04f98c9ab032837107baa",
+      "date": "2026-08-25T22:23:43Z",
+      "title": "test: add carriage return tests for newline globstar matching",
+      "link": "https://github.com/micromatch/picomatch/commit/1470a59e4e6c3bc3c1d04f98c9ab032837107baa"
+    },
+    {
+      "sha": "75c313a9a5de0883afbbd9fa74ae03ef2919bd3e",
+      "date": "2026-08-25T16:56:07Z",
+      "title": "fix: allow globstars to match paths containing newlines",
+      "link": "https://github.com/micromatch/picomatch/commit/75c313a9a5de0883afbbd9fa74ae03ef2919bd3e"
+    }
+  ]
+}

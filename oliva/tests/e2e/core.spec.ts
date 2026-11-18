@@ -297,7 +297,7 @@ test("Offline-Neustart öffnet auch einen noch nicht besuchten Reader", async ({
   await context.setOffline(true);
   await page.goto("/lesen/REV?chapter=22");
   await expect(
-    page.getByText("Offenbarung", { exact: true }).first(),
+    page.getByRole("heading", { name: "Offenbarung 22", exact: true }),
   ).toBeVisible();
   await expect(page.getByRole("button", { name: /^Vers 21:/ })).toBeVisible();
   await page

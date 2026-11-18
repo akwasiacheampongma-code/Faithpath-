@@ -5,8 +5,10 @@ import net from 'node:net';
 import path from 'node:path';
 
 const directory = path.resolve(process.argv[2] ?? 'dist');
-const out = 'docs/evidence/illustration-review';
+const out = process.argv[3] ?? 'docs/evidence/illustration-review';
 const inventory = JSON.parse(await readFile(`${out}/inventory.json`, 'utf8'));
+const packaged = inventory.appVersionBasis !== undefined;
+const screenshotScale = packaged ? 'css' : 'device';
 const catalog = JSON.parse(await readFile('src/data/story-index.json', 'utf8')).units;
 const units = [...inventory.storyAssignments, ...catalog.filter(u => ['NS-0073', 'NS-0349'].includes(u.id))];
 await mkdir(`${out}/screens`, {recursive:true});
@@ -21,7 +23,8 @@ for (let i = 0; i < 50; i++) {
   await new Promise(resolve => setTimeout(resolve, 100));
 }
 const browser = await chromium.launch({executablePath:process.env.CHROMIUM_PATH ?? '/usr/bin/chromium',args:['--no-sandbox']});
-const report = {build:inventory.build, browser:'Local Chromium on loopback', physicalDeviceTest:false, visual:[], coldLoads:[], offline:[], resources:[], errors:[]};
+const report = {build:inventory.build, browser:'Local Chromium on loopback', physicalDeviceTest:false,
+  privateReleasePackageTestedOnLoopback:packaged, visual:[], thumbnails:[], coldLoads:[], offline:[], resources:[], errors:[]};
 
 function artImage(page, unit) {
   return page.getByRole('main').locator(`img[src*="${unit.image}-"]`).first();
@@ -40,6 +43,7 @@ function inspectRequests(context) {
 async function loadStory(page, unit) {
   await page.goto(`${base}/geschichte/${unit.id}`, {waitUntil:'domcontentloaded',timeout:90000});
   await expect(page.getByRole('heading',{name:unit.title,exact:true})).toBeVisible({timeout:65000});
+  await expect(page.locator('meta[name="oliva-build"]')).toHaveAttribute('content',inventory.build);
   const main = page.getByRole('main');
   await page.evaluate(() => document.fonts.ready);
   let asset = null;
@@ -60,11 +64,20 @@ async function loadStory(page, unit) {
   } else {
     await expect(page.getByTestId('story-typographic-hero')).toBeVisible();
   }
-  const pageMetrics = await main.evaluate(el => ({
-    readyMs:Math.round(performance.now()),
-    domContentLoadedMs:Math.round(performance.getEntriesByType('navigation')[0].domContentLoadedEventEnd),
-    overflow:el.scrollWidth > el.clientWidth + 1 || document.documentElement.scrollWidth > innerWidth,
-  }));
+  const pageMetrics = await main.evaluate(el => {
+    const referenceButton = [...el.querySelectorAll('[role="button"],button')].find(button => button.textContent.trim() === 'Im Bibeltext lesen');
+    const rect = referenceButton?.getBoundingClientRect();
+    const mainRect = el.getBoundingClientRect();
+    const resources = performance.getEntriesByType('resource');
+    return {
+      readyMs:Math.round(performance.now()),
+      domContentLoadedMs:Math.round(performance.getEntriesByType('navigation')[0].domContentLoadedEventEnd),
+      scriptTransferBytes:resources.filter(entry => new URL(entry.name).pathname.endsWith('.js')).reduce((total,entry) => total+entry.transferSize,0),
+      readerButtonTop:rect ? Math.round(rect.top) : null,
+      readerButtonVisibleAtStart:!!rect && rect.bottom <= mainRect.bottom,
+      overflow:el.scrollWidth > el.clientWidth + 1 || document.documentElement.scrollWidth > innerWidth,
+    };
+  });
   expect(pageMetrics.overflow).toBe(false);
   return {id:unit.id,title:unit.title,asset,...pageMetrics};
 }
@@ -83,14 +96,31 @@ try {
       const metrics = await loadStory(page, unit);
       await expect(page.getByRole('button',{name:theme === 'dark' ? 'Hellen Modus aktivieren' : 'Dunklen Modus aktivieren',exact:true})).toBeVisible();
       const file = `screens/${unit.id}-${width}-${theme}.png`;
-      await page.screenshot({path:`${out}/${file}`,animations:'disabled'});
+      await page.screenshot({path:`${out}/${file}`,animations:'disabled',scale:screenshotScale});
       let artFile = null;
       if (unit.image) {
         artFile = `screens/${unit.id}-${width}-${theme}-art.png`;
         const frame = unit.image === 'storm' ? artImage(page,unit).locator('..') : page.getByTestId(`story-artwork-${unit.image}`);
-        await frame.screenshot({path:`${out}/${artFile}`,animations:'disabled'});
+        await frame.screenshot({path:`${out}/${artFile}`,animations:'disabled',scale:screenshotScale});
       }
       report.visual.push({width,height,theme,deviceScaleFactor:2,file,artFile,...metrics});
+    }
+    if (packaged) {
+      await page.goto(base + '/geschichten');
+      await page.getByRole('button',{name:'Mit Bild',exact:true}).click();
+      await expect(page.getByText('6 Abschnitte',{exact:true})).toBeVisible();
+      for (const unit of inventory.storyAssignments) {
+        const row = page.getByTestId(`story-row-${unit.id}`);
+        const image = row.locator(`img[src*="${unit.image}-"]`).first();
+        await expect.poll(() => image.evaluate(el=>el.complete && el.naturalWidth>0)).toBe(true);
+        const frame = await image.evaluate(el=>{
+          const rect = el.getBoundingClientRect();
+          return {width:Math.round(rect.width),height:Math.round(rect.height),naturalWidth:el.naturalWidth,naturalHeight:el.naturalHeight,path:new URL(el.currentSrc || el.src).pathname};
+        });
+        const file = `screens/${unit.id}-${width}-${theme}-list-row.png`;
+        await row.screenshot({path:`${out}/${file}`,animations:'disabled',scale:screenshotScale});
+        report.thumbnails.push({id:unit.id,title:unit.title,width,theme,frame,file});
+      }
     }
     await context.close();
   }

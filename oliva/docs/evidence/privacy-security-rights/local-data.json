@@ -1,0 +1,112 @@
+{
+  "browser": "Local Chromium",
+  "syntheticDataOnly": true,
+  "testedHost": "loopback",
+  "runtimeOriginIsNotPrivateProductionOrigin": true,
+  "cases": [
+    {
+      "case": "Unsupported FaithPath schema",
+      "rejected": true,
+      "rawRecordsExact": true
+    },
+    {
+      "case": "Confirmed FaithPath import",
+      "previewReadOnly": true,
+      "archiveBytesExact": true,
+      "sourceSha256": "947ebee359a1a4b9e0e11ebd329d75e3330925717aa36f68a3c54655db01e9b3",
+      "recoveryCopyPresent": true,
+      "keys": [
+        "archive:<sha256>",
+        "before-faithpath-import",
+        "main",
+        "recovery-index"
+      ]
+    },
+    {
+      "case": "HTML-shaped text in note and legacy history",
+      "escapedTextInTwoViews": true,
+      "rawRecordsExact": true,
+      "activePayloadUsed": false
+    },
+    {
+      "case": "Export",
+      "mimicsRealUserDownload": true,
+      "plainJSON": true,
+      "currentPrivateNotesAndArchiveInExport": true,
+      "recoveryCopyNotInRegularExport": true,
+      "bytes": 10118,
+      "exportSha256": "cded1ef3870cf9375f223183ea0a36b44e8b71acd104dd33daffef0e0a032ee6"
+    },
+    {
+      "case": "Restore",
+      "invalidRejectedWithoutWrite": true,
+      "validPreviewReadOnly": true,
+      "explicitApplyWorked": true,
+      "originalArchiveExact": true,
+      "recoveryCopyStillPresent": true
+    },
+    {
+      "case": "Offline reread after restore",
+      "passed": true,
+      "rawRecordsExact": true
+    }
+  ],
+  "requestCounts": {
+    "same-origin GET document": 6,
+    "same-origin GET stylesheet": 12,
+    "same-origin GET script": 32,
+    "same-origin GET other": 8,
+    "same-origin GET font": 12,
+    "same-origin GET fetch": 108,
+    "same-origin GET image": 1
+  },
+  "consoleCounts": {},
+  "pageErrors": 0,
+  "outgoingMarkerSeen": false,
+  "consoleMarkerSeen": false,
+  "sqlOnPhysicalDevice": false,
+  "build": "oliva-ae078dca10b74ebc",
+  "cookieCount": 0,
+  "localHeaders": {
+    "/": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "no-cache",
+        "content-security-policy": null,
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "no-referrer",
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "strict-transport-security": null
+      }
+    },
+    "/sw.js": {
+      "status": 200,
+      "headers": {
+        "content-type": "text/javascript; charset=utf-8",
+        "cache-control": "no-cache",
+        "content-security-policy": null,
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "no-referrer",
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "strict-transport-security": null
+      }
+    },
+    "/manifest.webmanifest": {
+      "status": 200,
+      "headers": {
+        "content-type": "application/octet-stream",
+        "cache-control": "no-cache",
+        "content-security-policy": null,
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "no-referrer",
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "strict-transport-security": null
+      }
+    }
+  },
+  "passed": true
+}

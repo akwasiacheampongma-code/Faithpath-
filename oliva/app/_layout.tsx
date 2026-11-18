@@ -5,6 +5,7 @@ import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useApp } from "../src/state/store";
+import { fonts } from "../src/design-system/fonts";
 import { useTheme } from "../src/design-system/theme";
 import { T, Button } from "../src/components/ui";
 import { RecoveryScreen } from "../src/components/RecoveryScreen";
@@ -12,10 +13,7 @@ import { useVolatileDrafts } from "../src/features/personal/volatile-drafts";
 import { WebOffline } from "../src/components/WebOffline";
 import "../src/design-system/global.css";
 export default function RootLayout() {
-  const [loaded, fontError] = useFonts({
-      DMSans: require("../assets/fonts/DMSans.ttf"),
-      Cormorant: require("../assets/fonts/CormorantGaramond.ttf"),
-    }),
+  const [loaded, fontError] = useFonts(fonts),
     hydrate = useApp((s) => s.hydrate),
     ready = useApp((s) => s.ready),
     healthy = useApp((s) => s.healthy),

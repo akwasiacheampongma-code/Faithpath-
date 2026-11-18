@@ -1,0 +1,13 @@
+
+ RUN  v5.1.0 /workspace/faithpath-next
+
+
+ Test Files  5 passed (5)
+      Tests  34 passed (34)
+   Start at  13:50:36
+   Duration  27.34s (import 61%, tests 24%, transform 15%)
+
+     Import  55 modules were evaluated 82 times · 15.57s total, 61% of tracked time
+             ~5.13s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+

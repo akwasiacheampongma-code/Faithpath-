@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-11-18T14:35:25.022Z",
+  "urls": {
+    "advisory": "https://api.github.com/advisories/GHSA-fc5q-39xc-vjpf",
+    "registry": "https://registry.npmjs.org/picomatch",
+    "releases": "https://api.github.com/repos/micromatch/picomatch/releases/latest"
+  },
+  "advisory": {
+    "id": "GHSA-fc5q-39xc-vjpf",
+    "update": "2026-11-17T15:56:44Z",
+    "ranges": [
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "picomatch"
+        },
+        "vulnerable_version_range": "<= 4.0.7",
+        "first_patched_version": null,
+        "vulnerable_functions": []
+      }
+    ],
+    "withdrawn": null
+  },
+  "registry": {
+    "tags": {
+      "latest": "4.0.7"
+    },
+    "lastPublished": "2026-08-24T14:36:23.690Z"
+  },
+  "latestUpstreamRelease": {
+    "tag": "4.0.7",
+    "published": "2026-08-24T14:34:48Z"
+  }
+}

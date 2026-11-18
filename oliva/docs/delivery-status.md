@@ -1,5 +1,9 @@
 # Lieferstand · OLIVA 0.18.0 · Ein geistliches Schwert
 
+## Stabilisierung für die Nutzerabnahme · lokaler Kandidat
+
+Der Kandidat `oliva-ef3b048eca9d6b21` basiert auf OLIVA 0.18.0. Im lokalen Labor starten beide geprüften Einstiegsansichten im Median rund 32 Prozent früher. Das gesamte Offlinepaket ist geprüft. Der echte Paketwechsel erhält die vier geprüften persönlichen Rohdatensätze. Die bestehende private Vorschau zeigt den Vergleichsstand. Sicherheits-, Rechte- und Gerätefreigaben stehen aus. [Stabilisierungsbericht](43-stabilization.md) · [Handytest](stabilization-device-matrix.md)
+
 ## Aktueller privater Arbeitsstand vom 18.11.2026
 
 Die private Vorschau enthält seit 11:25 UTC die geprüften mobilen Übersichten und den ruhigeren Reader. Das bestehende Konto hat alleinigen Zugriff. Das formale App-Release bleibt OLIVA 0.18.0. [Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site/) · [Bibel und Wege im Vergleich](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/bible-paths-focus/index.svg) · [Garten, Sammlung und Reader im Vergleich](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/quiet-reading/index.svg)
@@ -8,7 +12,7 @@ Lokale Abnahme: 343 Fachtests, 67 gezielte Browserfälle, eine korrigierte Dunke
 
 Bibel und Wege wurden vorab mit 33 eigenen Browserfällen geprüft und auf dem separaten Branch gesichert. Im unabhängigen CI-Lauf stoppt die bekannte picomatch-Advisory den Audit-Schritt. Die erneute Prüfung findet dieselbe Advisory und weiterhin keine korrigierte Version in der Registry. [Quellbackup Bibel und Wege](https://github.com/akwasiacheampongma-code/Faithpath-/tree/feature/oliva-bible-paths-focus-20261118/oliva) · [Datenschutz und Sicherheit](39-privacy-security-review.md)
 
-Von 436 Originaleinheiten sind sechs bebildert. Das Bildeinsatzinventar, Offline- und Lademessungen und der begründete Vorschlag für vier Einzelmotive liegen vor. Die Empfehlung zur Freigabe beginnt mit dem barmherzigen Samariter. [Bildbericht](40-illustration-review.md)
+Von 436 Originaleinheiten sind sechs bebildert. Die erneute Bildabnahme nach dem Datenschutz- und Sicherheitsaudit bestätigt alle 64 Laufzeitbilddateien im Offlinecache und 48 mobile Browserzustände. Die Empfehlung zur Freigabe des ersten Pilotmotivs ist der barmherzige Samariter. Die Geräteprüfung und die Freigabe zur Bildproduktion stehen aus. [Aktueller Bildbericht mit Aufnahmen, Inventar und Lademessung](42-image-review-final.md) · [Vorherige Bildprüfung](40-illustration-review.md)
 
 <!-- TODAY_FOCUS_20261118 -->
 ## Aktueller privater Arbeitsstand: ausschließlich Heute

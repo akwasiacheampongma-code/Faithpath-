@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-11-18T15:03:17.358Z",
+  "lockSha256": "bcc067923ee760d01aff6fd2d3795b0898d12e80dcab52063ae0534b299011d4",
+  "source": "https://registry.npmjs.org/-/npm/v1/security/advisories/bulk",
+  "dependenciesChecked": 619,
+  "uniqueNames": 551,
+  "skipped": [],
+  "onlyNamesAndVersionsSent": true,
+  "dependenciesChanged": false,
+  "findings": [
+    {
+      "name": "picomatch",
+      "id": 1247710,
+      "url": "https://github.com/advisories/GHSA-fc5q-39xc-vjpf",
+      "severity": "high",
+      "title": "picomatch vulnerable to ReDoS through single-branch repeated extglobs",
+      "range": "<=4.0.7",
+      "affected": [
+        {
+          "location": "node_modules/expo/node_modules/picomatch",
+          "version": "4.0.7",
+          "devOnly": false
+        },
+        {
+          "location": "node_modules/picomatch",
+          "version": "2.3.2",
+          "devOnly": false
+        },
+        {
+          "location": "node_modules/tinyglobby/node_modules/picomatch",
+          "version": "4.0.7",
+          "devOnly": false
+        },
+        {
+          "location": "node_modules/vite/node_modules/picomatch",
+          "version": "4.0.7",
+          "devOnly": true
+        },
+        {
+          "location": "node_modules/vitest/node_modules/picomatch",
+          "version": "4.0.7",
+          "devOnly": true
+        }
+      ],
+      "registryLatest": "4.0.7",
+      "registryLatestMatchesAffectedRange": true
+    }
+  ],
+  "limitations": [
+    "Direct advisory matches on exact lockfile versions including development packages and optional platform packages.",
+    "Counts are direct matches, not npm audit's propagated dependency reports or proof of runtime reachability.",
+    "Registry coverage and package metadata as of the query date. OS, platform and native binary components require their own analysis."
+  ]
+}

@@ -1,0 +1,1430 @@
+{
+  "build": "oliva-66cf1e5ad6c3ba1b",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "deviceScaleFactor": 2,
+  "network": {
+    "latency": 150,
+    "downloadThroughput": 200000,
+    "uploadThroughput": 93750
+  },
+  "repetitions": 3,
+  "results": [
+    {
+      "name": "Heute",
+      "index": 1,
+      "readyMs": 17924,
+      "ttfbMs": 19,
+      "domContentLoadedMs": 12377,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2357035,
+          "firstStartMs": 200,
+          "lastEndMs": 14732,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 200,
+              "endMs": 398,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/__common-538fd21a842a223a24acf1ae9692e497.js",
+              "startMs": 200,
+              "endMs": 12128,
+              "transferBytes": 2046313,
+              "encodedBytes": 2046013,
+              "decodedBytes": 6993752
+            },
+            {
+              "file": "/_expo/static/js/web/entry-c7a952f919ebff4dd90a66809cb035b1.js",
+              "startMs": 200,
+              "endMs": 2918,
+              "transferBytes": 295466,
+              "encodedBytes": 295166,
+              "decodedBytes": 1119016
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-f2455d5e1d2c8d43a7d61394972a73f2.js",
+              "startMs": 12394,
+              "endMs": 12601,
+              "transferBytes": 8936,
+              "encodedBytes": 8636,
+              "decodedBytes": 26270
+            },
+            {
+              "file": "/_expo/static/js/web/index-79327b677d337a01814f7590c2b37194.js",
+              "startMs": 14561,
+              "endMs": 14732,
+              "transferBytes": 4469,
+              "encodedBytes": 4169,
+              "decodedBytes": 12161
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 12866,
+          "lastEndMs": 14520,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 12866,
+              "endMs": 13912,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 12868,
+              "endMs": 14520,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 396551,
+          "firstStartMs": 12431,
+          "lastEndMs": 17041,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 12431,
+              "endMs": 12593,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+              "startMs": 14898,
+              "endMs": 17041,
+              "transferBytes": 262850,
+              "encodedBytes": 262550,
+              "decodedBytes": 262550
+            },
+            {
+              "file": "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+              "startMs": 14898,
+              "endMs": 15736,
+              "transferBytes": 38142,
+              "encodedBytes": 37842,
+              "decodedBytes": 37842
+            },
+            {
+              "file": "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+              "startMs": 14900,
+              "endMs": 16088,
+              "transferBytes": 73260,
+              "encodedBytes": 72960,
+              "decodedBytes": 72960
+            },
+            {
+              "file": "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+              "startMs": 14900,
+              "endMs": 15488,
+              "transferBytes": 21694,
+              "encodedBytes": 21394,
+              "decodedBytes": 21394
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 198,
+          "lastEndMs": 376,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 198,
+              "endMs": 370,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 200,
+              "endMs": 376,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 12869,
+            "endMs": 12895,
+            "durationMs": 26
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 12896,
+            "endMs": 12899,
+            "durationMs": 3
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "name": "Noah",
+      "index": 1,
+      "readyMs": 15825,
+      "ttfbMs": 40,
+      "domContentLoadedMs": 12367,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2357907,
+          "firstStartMs": 250,
+          "lastEndMs": 14735,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 250,
+              "endMs": 448,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/__common-538fd21a842a223a24acf1ae9692e497.js",
+              "startMs": 250,
+              "endMs": 12162,
+              "transferBytes": 2046313,
+              "encodedBytes": 2046013,
+              "decodedBytes": 6993752
+            },
+            {
+              "file": "/_expo/static/js/web/entry-c7a952f919ebff4dd90a66809cb035b1.js",
+              "startMs": 250,
+              "endMs": 3043,
+              "transferBytes": 295466,
+              "encodedBytes": 295166,
+              "decodedBytes": 1119016
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-f2455d5e1d2c8d43a7d61394972a73f2.js",
+              "startMs": 12388,
+              "endMs": 12590,
+              "transferBytes": 8936,
+              "encodedBytes": 8636,
+              "decodedBytes": 26270
+            },
+            {
+              "file": "/_expo/static/js/web/[id]-d77d5c723801793bb56c836b1845c008.js",
+              "startMs": 14557,
+              "endMs": 14735,
+              "transferBytes": 5341,
+              "encodedBytes": 5041,
+              "decodedBytes": 14268
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 12879,
+          "lastEndMs": 14524,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 12879,
+              "endMs": 13917,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 12879,
+              "endMs": 14524,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 127107,
+          "firstStartMs": 12403,
+          "lastEndMs": 15695,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 12403,
+              "endMs": 12568,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+              "startMs": 14881,
+              "endMs": 15695,
+              "transferBytes": 126502,
+              "encodedBytes": 126202,
+              "decodedBytes": 126202
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 246,
+          "lastEndMs": 427,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 246,
+              "endMs": 427,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 249,
+              "endMs": 410,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 12880,
+            "endMs": 12909,
+            "durationMs": 29
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 12910,
+            "endMs": 12912,
+            "durationMs": 3
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "name": "Heute",
+      "index": 2,
+      "readyMs": 18109,
+      "ttfbMs": 8,
+      "domContentLoadedMs": 12427,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2357035,
+          "firstStartMs": 209,
+          "lastEndMs": 14943,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 209,
+              "endMs": 414,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/__common-538fd21a842a223a24acf1ae9692e497.js",
+              "startMs": 209,
+              "endMs": 12136,
+              "transferBytes": 2046313,
+              "encodedBytes": 2046013,
+              "decodedBytes": 6993752
+            },
+            {
+              "file": "/_expo/static/js/web/entry-c7a952f919ebff4dd90a66809cb035b1.js",
+              "startMs": 209,
+              "endMs": 3023,
+              "transferBytes": 295466,
+              "encodedBytes": 295166,
+              "decodedBytes": 1119016
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-f2455d5e1d2c8d43a7d61394972a73f2.js",
+              "startMs": 12488,
+              "endMs": 12700,
+              "transferBytes": 8936,
+              "encodedBytes": 8636,
+              "decodedBytes": 26270
+            },
+            {
+              "file": "/_expo/static/js/web/index-79327b677d337a01814f7590c2b37194.js",
+              "startMs": 14765,
+              "endMs": 14943,
+              "transferBytes": 4469,
+              "encodedBytes": 4169,
+              "decodedBytes": 12161
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 13070,
+          "lastEndMs": 14731,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 13070,
+              "endMs": 14124,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 13086,
+              "endMs": 14731,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 396551,
+          "firstStartMs": 12489,
+          "lastEndMs": 17222,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 12489,
+              "endMs": 12655,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+              "startMs": 15072,
+              "endMs": 17222,
+              "transferBytes": 262850,
+              "encodedBytes": 262550,
+              "decodedBytes": 262550
+            },
+            {
+              "file": "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+              "startMs": 15072,
+              "endMs": 15916,
+              "transferBytes": 38142,
+              "encodedBytes": 37842,
+              "decodedBytes": 37842
+            },
+            {
+              "file": "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+              "startMs": 15072,
+              "endMs": 16270,
+              "transferBytes": 73260,
+              "encodedBytes": 72960,
+              "decodedBytes": 72960
+            },
+            {
+              "file": "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+              "startMs": 15072,
+              "endMs": 15676,
+              "transferBytes": 21694,
+              "encodedBytes": 21394,
+              "decodedBytes": 21394
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 207,
+          "lastEndMs": 385,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 207,
+              "endMs": 369,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 209,
+              "endMs": 385,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 13088,
+            "endMs": 13112,
+            "durationMs": 24
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 13112,
+            "endMs": 13114,
+            "durationMs": 2
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "name": "Noah",
+      "index": 2,
+      "readyMs": 15932,
+      "ttfbMs": 32,
+      "domContentLoadedMs": 12372,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2357907,
+          "firstStartMs": 206,
+          "lastEndMs": 14864,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 206,
+              "endMs": 442,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/__common-538fd21a842a223a24acf1ae9692e497.js",
+              "startMs": 228,
+              "endMs": 12157,
+              "transferBytes": 2046313,
+              "encodedBytes": 2046013,
+              "decodedBytes": 6993752
+            },
+            {
+              "file": "/_expo/static/js/web/entry-c7a952f919ebff4dd90a66809cb035b1.js",
+              "startMs": 228,
+              "endMs": 2745,
+              "transferBytes": 295466,
+              "encodedBytes": 295166,
+              "decodedBytes": 1119016
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-f2455d5e1d2c8d43a7d61394972a73f2.js",
+              "startMs": 12420,
+              "endMs": 12622,
+              "transferBytes": 8936,
+              "encodedBytes": 8636,
+              "decodedBytes": 26270
+            },
+            {
+              "file": "/_expo/static/js/web/[id]-d77d5c723801793bb56c836b1845c008.js",
+              "startMs": 14682,
+              "endMs": 14864,
+              "transferBytes": 5341,
+              "encodedBytes": 5041,
+              "decodedBytes": 14268
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 12979,
+          "lastEndMs": 14631,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 12979,
+              "endMs": 14024,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 12980,
+              "endMs": 14631,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 127107,
+          "firstStartMs": 12426,
+          "lastEndMs": 15839,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 12426,
+              "endMs": 12592,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+              "startMs": 15053,
+              "endMs": 15839,
+              "transferBytes": 126502,
+              "encodedBytes": 126202,
+              "decodedBytes": 126202
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 205,
+          "lastEndMs": 402,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 205,
+              "endMs": 390,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 205,
+              "endMs": 402,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 12982,
+            "endMs": 13007,
+            "durationMs": 25
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 13007,
+            "endMs": 13011,
+            "durationMs": 4
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "name": "Heute",
+      "index": 3,
+      "readyMs": 17885,
+      "ttfbMs": 9,
+      "domContentLoadedMs": 12302,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2357035,
+          "firstStartMs": 224,
+          "lastEndMs": 14668,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 224,
+              "endMs": 410,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/__common-538fd21a842a223a24acf1ae9692e497.js",
+              "startMs": 225,
+              "endMs": 12125,
+              "transferBytes": 2046313,
+              "encodedBytes": 2046013,
+              "decodedBytes": 6993752
+            },
+            {
+              "file": "/_expo/static/js/web/entry-c7a952f919ebff4dd90a66809cb035b1.js",
+              "startMs": 225,
+              "endMs": 3020,
+              "transferBytes": 295466,
+              "encodedBytes": 295166,
+              "decodedBytes": 1119016
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-f2455d5e1d2c8d43a7d61394972a73f2.js",
+              "startMs": 12323,
+              "endMs": 12523,
+              "transferBytes": 8936,
+              "encodedBytes": 8636,
+              "decodedBytes": 26270
+            },
+            {
+              "file": "/_expo/static/js/web/index-79327b677d337a01814f7590c2b37194.js",
+              "startMs": 14496,
+              "endMs": 14668,
+              "transferBytes": 4469,
+              "encodedBytes": 4169,
+              "decodedBytes": 12161
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 12791,
+          "lastEndMs": 14449,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 12791,
+              "endMs": 13843,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 12792,
+              "endMs": 14449,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 396551,
+          "firstStartMs": 12338,
+          "lastEndMs": 16955,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 12338,
+              "endMs": 12500,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+              "startMs": 14806,
+              "endMs": 16955,
+              "transferBytes": 262850,
+              "encodedBytes": 262550,
+              "decodedBytes": 262550
+            },
+            {
+              "file": "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+              "startMs": 14806,
+              "endMs": 15649,
+              "transferBytes": 38142,
+              "encodedBytes": 37842,
+              "decodedBytes": 37842
+            },
+            {
+              "file": "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+              "startMs": 14806,
+              "endMs": 16002,
+              "transferBytes": 73260,
+              "encodedBytes": 72960,
+              "decodedBytes": 72960
+            },
+            {
+              "file": "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+              "startMs": 14807,
+              "endMs": 15402,
+              "transferBytes": 21694,
+              "encodedBytes": 21394,
+              "decodedBytes": 21394
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 222,
+          "lastEndMs": 388,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 222,
+              "endMs": 381,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 224,
+              "endMs": 388,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 12793,
+            "endMs": 12817,
+            "durationMs": 24
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 12817,
+            "endMs": 12820,
+            "durationMs": 3
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "name": "Noah",
+      "index": 3,
+      "readyMs": 15864,
+      "ttfbMs": 7,
+      "domContentLoadedMs": 12367,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2357907,
+          "firstStartMs": 199,
+          "lastEndMs": 14760,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 199,
+              "endMs": 393,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/entry-c7a952f919ebff4dd90a66809cb035b1.js",
+              "startMs": 199,
+              "endMs": 3083,
+              "transferBytes": 295466,
+              "encodedBytes": 295166,
+              "decodedBytes": 1119016
+            },
+            {
+              "file": "/_expo/static/js/web/__common-538fd21a842a223a24acf1ae9692e497.js",
+              "startMs": 199,
+              "endMs": 12173,
+              "transferBytes": 2046313,
+              "encodedBytes": 2046013,
+              "decodedBytes": 6993752
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-f2455d5e1d2c8d43a7d61394972a73f2.js",
+              "startMs": 12396,
+              "endMs": 12600,
+              "transferBytes": 8936,
+              "encodedBytes": 8636,
+              "decodedBytes": 26270
+            },
+            {
+              "file": "/_expo/static/js/web/[id]-d77d5c723801793bb56c836b1845c008.js",
+              "startMs": 14578,
+              "endMs": 14760,
+              "transferBytes": 5341,
+              "encodedBytes": 5041,
+              "decodedBytes": 14268
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 12886,
+          "lastEndMs": 14535,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 12886,
+              "endMs": 13928,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 12886,
+              "endMs": 14535,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 127107,
+          "firstStartMs": 12402,
+          "lastEndMs": 15705,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 12402,
+              "endMs": 12567,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+              "startMs": 14916,
+              "endMs": 15705,
+              "transferBytes": 126502,
+              "encodedBytes": 126202,
+              "decodedBytes": 126202
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 198,
+          "lastEndMs": 389,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 198,
+              "endMs": 386,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 199,
+              "endMs": 389,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 12887,
+            "endMs": 12914,
+            "durationMs": 27
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 12914,
+            "endMs": 12916,
+            "durationMs": 2
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    }
+  ],
+  "offline": {
+    "networkCondition": "unthrottled loopback; worker enabled",
+    "first": {
+      "readyMs": 2113,
+      "ttfbMs": 16,
+      "domContentLoadedMs": 1052,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2357035,
+          "firstStartMs": 60,
+          "lastEndMs": 1563,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 60,
+              "endMs": 155,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/__common-538fd21a842a223a24acf1ae9692e497.js",
+              "startMs": 60,
+              "endMs": 873,
+              "transferBytes": 2046313,
+              "encodedBytes": 2046013,
+              "decodedBytes": 6993752
+            },
+            {
+              "file": "/_expo/static/js/web/entry-c7a952f919ebff4dd90a66809cb035b1.js",
+              "startMs": 60,
+              "endMs": 354,
+              "transferBytes": 295466,
+              "encodedBytes": 295166,
+              "decodedBytes": 1119016
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-f2455d5e1d2c8d43a7d61394972a73f2.js",
+              "startMs": 1081,
+              "endMs": 1095,
+              "transferBytes": 8936,
+              "encodedBytes": 8636,
+              "decodedBytes": 26270
+            },
+            {
+              "file": "/_expo/static/js/web/index-79327b677d337a01814f7590c2b37194.js",
+              "startMs": 1559,
+              "endMs": 1563,
+              "transferBytes": 4469,
+              "encodedBytes": 4169,
+              "decodedBytes": 12161
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 1497,
+          "lastEndMs": 1514,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 1497,
+              "endMs": 1514,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 1498,
+              "endMs": 1513,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 396551,
+          "firstStartMs": 1120,
+          "lastEndMs": 2042,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 1120,
+              "endMs": 1126,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+              "startMs": 1908,
+              "endMs": 2031,
+              "transferBytes": 262850,
+              "encodedBytes": 262550,
+              "decodedBytes": 262550
+            },
+            {
+              "file": "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+              "startMs": 1908,
+              "endMs": 2024,
+              "transferBytes": 38142,
+              "encodedBytes": 37842,
+              "decodedBytes": 37842
+            },
+            {
+              "file": "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+              "startMs": 1908,
+              "endMs": 2042,
+              "transferBytes": 73260,
+              "encodedBytes": 72960,
+              "decodedBytes": 72960
+            },
+            {
+              "file": "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+              "startMs": 1909,
+              "endMs": 2039,
+              "transferBytes": 21694,
+              "encodedBytes": 21394,
+              "decodedBytes": 21394
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 60,
+          "lastEndMs": 152,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 60,
+              "endMs": 108,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 60,
+              "endMs": 152,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 1500,
+            "endMs": 1534,
+            "durationMs": 35
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 1534,
+            "endMs": 1543,
+            "durationMs": 8
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    },
+    "prepared": {
+      "readyMs": 4296,
+      "firstOfflineWorkerResponseMs": 0,
+      "paths": [
+        "/THIRD_PARTY_NOTICES.txt",
+        "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+        "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+        "/_expo/static/js/web/+not-found-cf31f09611d8951cc074083b4957800c.js",
+        "/_expo/static/js/web/[book]-adc0767ef09ea84ca2d6ff7a1ec73eb6.js",
+        "/_expo/static/js/web/[book]-ee6680d2284a487c5375720022f1595c.js",
+        "/_expo/static/js/web/[book]-f5ceec1bb5181124d1f80f508a1cb703.js",
+        "/_expo/static/js/web/[id]-5b79fd6c3577691639fa8a9474cb9a35.js",
+        "/_expo/static/js/web/[id]-6bd730634aa434f140187fb4908de94a.js",
+        "/_expo/static/js/web/[id]-8fab9955c33ece7334ab56b0008cf43b.js",
+        "/_expo/static/js/web/[id]-d77d5c723801793bb56c836b1845c008.js",
+        "/_expo/static/js/web/__common-538fd21a842a223a24acf1ae9692e497.js",
+        "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+        "/_expo/static/js/web/_layout-f2455d5e1d2c8d43a7d61394972a73f2.js",
+        "/_expo/static/js/web/bibel-dfd4ae3a223461cc482d21636548756b.js",
+        "/_expo/static/js/web/catalog-febd7f9db1a1dbf5b5697be0fcc288d6.js",
+        "/_expo/static/js/web/einladungen-9d0d9acb85e1fd7894be22331a448fe0.js",
+        "/_expo/static/js/web/einstellungen-fd4f2bdc8e13189d4e7806bca3a2f1e2.js",
+        "/_expo/static/js/web/entry-c7a952f919ebff4dd90a66809cb035b1.js",
+        "/_expo/static/js/web/garten-0de061c275f6964a16f769b11f98aec7.js",
+        "/_expo/static/js/web/geschichten-edb1bbae3fddd953c9a27f4ad30ac8a3.js",
+        "/_expo/static/js/web/importieren-efb1fe86ad27802d6d43ad7015a2e519.js",
+        "/_expo/static/js/web/index-2579522ab5ad9be058b1c8c453fa886d.js",
+        "/_expo/static/js/web/index-79327b677d337a01814f7590c2b37194.js",
+        "/_expo/static/js/web/index-80c393eac39c7951c21221c4c0e54177.js",
+        "/_expo/static/js/web/quellen-24dd3bef02cb4d61fef868f3e079b9fd.js",
+        "/_expo/static/js/web/sammlung-333c39516d5e17d267bc49756e9ae6ae.js",
+        "/_expo/static/js/web/start-4e1a793b4bc03370a2539eb2783354dc.js",
+        "/_expo/static/js/web/themen-8d7f29dc28abe5430515bb8579fa3ab1.js",
+        "/_expo/static/js/web/wege-a66c911542aba6690d90642a331f1164.js",
+        "/apple-touch-icon.png",
+        "/assets/assets/a51/stage-1-1024-09d0f0e48b45.272528ab27888db413511f95a5962d00.webp",
+        "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+        "/assets/assets/a51/stage-1-640-61bf0ea0364c.2b67b13687ef44452445d4c7ef025873.webp",
+        "/assets/assets/a51/stage-2-1024-5faf7d8bacae.20f510d14e96bf1776daf6500b4525ab.webp",
+        "/assets/assets/a51/stage-2-384-83c9e1b068c2.9704851601f26041aae382898640f46d.webp",
+        "/assets/assets/a51/stage-2-640-657d676673c5.25f53dd1dd4cef598f244059035ec428.webp",
+        "/assets/assets/a51/stage-3-1024-dd3447ecfc31.46d226e8789f58d7cb98dc66bab36999.webp",
+        "/assets/assets/a51/stage-3-384-67a026427a62.bede3991f9fe0ccf02314027cba2adf4.webp",
+        "/assets/assets/a51/stage-3-640-daed3e069ebb.dd5dfa1b4fafe8e3582a7d47f4d47b90.webp",
+        "/assets/assets/a51/stage-4-1024-b694c875ac25.b69ea70ffd81b8c8b3d5457cc56501de.webp",
+        "/assets/assets/a51/stage-4-384-7fdbd6abfc70.e33440b0a040e1e20be2341d67217fd2.webp",
+        "/assets/assets/a51/stage-4-640-6cd93c9040c1.dd1e32a89bf4e6d3abc199c09699922a.webp",
+        "/assets/assets/a51/stage-5-1024-9662127e6782.016e4632f6f8488db5642ae08fccc478.webp",
+        "/assets/assets/a51/stage-5-384-1f45acdc445c.caa99e2daab09b528c3bdd81f072c7b9.webp",
+        "/assets/assets/a51/stage-5-640-c725f8e572eb.16986b6b87ca5631e1cced83d152204a.webp",
+        "/assets/assets/a51/stage-6-1024-d332e48c635b.4f3a7d94f4b13583edf96b0dda2f701c.webp",
+        "/assets/assets/a51/stage-6-384-18e5329006bc.dd0bac41cfdfa42b7daf93782607490e.webp",
+        "/assets/assets/a51/stage-6-640-db5395a982ed.f4668be153a788854791fd5a11e30d1e.webp",
+        "/assets/assets/a51/stage-7-1024-8d580a524725.2da9f38609ded7abae209eea3310bda9.webp",
+        "/assets/assets/a51/stage-7-384-1325b09c8f58.3c427d8cb2b2ee9162712a3b0cda1742.webp",
+        "/assets/assets/a51/stage-7-640-c9b6a16a1bf4.654c14cc2fced83f29a04c1161888035.webp",
+        "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+        "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+        "/assets/assets/images/abraham-1024.9f1d8adf6c468efe857c4b1ef8116f78.webp",
+        "/assets/assets/images/abraham-1280.1ff17be8d76a19dfd275b01cf82cdefe.webp",
+        "/assets/assets/images/abraham-640.445c3c3b7fa98839659af0a8e0b417e8.webp",
+        "/assets/assets/images/david-before-goliath-1024.77572822e86764be0a1ed457eb792b9c.webp",
+        "/assets/assets/images/david-before-goliath-1280.536f3fb2f43c964e7e8d589b678e1e52.webp",
+        "/assets/assets/images/david-before-goliath-640.579763367b6d7d59109419ee264ec889.webp",
+        "/assets/assets/images/easter-dawn-1024.b67651a5db6e32dbc92085216e58921e.webp",
+        "/assets/assets/images/easter-dawn-1280.e0bc1a91d008b43850720e038a63d243.webp",
+        "/assets/assets/images/easter-dawn-640.879d2495a829c5dd832ad687edce5e6c.webp",
+        "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+        "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+        "/assets/assets/images/garden-640.6432cb455695a7b4e6d68f26f821f058.webp",
+        "/assets/assets/images/nativity-1024.c872d5757fcfdc8109c09f93cddc7852.webp",
+        "/assets/assets/images/nativity-1280.f3e0553a483489937485a58c8af3b1d9.webp",
+        "/assets/assets/images/nativity-640.cb61b77b3f68bcda8087c973221230f9.webp",
+        "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+        "/assets/assets/images/noah-1280.4eb4f2ce3d949d3f605210683dc10b15.webp",
+        "/assets/assets/images/noah-640.4206b12f0aacc4967bc68ae417589a1a.webp",
+        "/assets/assets/images/storm-1280.853333ddbd93e55c72b5854c450b92ac.webp",
+        "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+        "/assets/assets/spiritual-sword/word-sword-512.5eea29980db13f54c581bfc3ab04c853.png",
+        "/assets/node_modules/expo-router/assets/arrow_down.017bc6ba3fc25503e5eb5e53826d48a8.png",
+        "/assets/node_modules/expo-router/assets/error.d1ea1496f9057eb392d5bbf3732a61b7.png",
+        "/assets/node_modules/expo-router/assets/file.19eeb73b9593a38f8e9f418337fc7d10.png",
+        "/assets/node_modules/expo-router/assets/forward.d8b800c443b8972542883e0b9de2bdc6.png",
+        "/assets/node_modules/expo-router/assets/pkg.ab19f4cbc543357183a20571f68380a3.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/back-icon-mask.0a328cd9c1afd0afe8e3b1ec5165b1b4.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/back-icon.35ba0eaec5a4f5ed12ca16fabeae451d.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55@2x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55@3x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55@4x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7@2x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7@3x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7@4x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/search-icon.286d67d3f74808a60a78d3ebf1a5fb57.png",
+        "/assets/node_modules/expo-router/assets/sitemap.412dd9275b6b48ad28f5e3d81bb1f626.png",
+        "/assets/node_modules/expo-router/assets/unmatched.20e71bdf79e3a97bf55fd9e164041578.png",
+        "/icon-192.png",
+        "/icon-512.png",
+        "/icon.svg",
+        "/index.html",
+        "/licenses/CormorantGaramond-OFL.txt",
+        "/licenses/DMSans-OFL.txt",
+        "/licenses/MIT.txt",
+        "/licenses/THIRD_PARTY_NOTICES.txt",
+        "/manifest.webmanifest",
+        "/metadata.json"
+      ]
+    },
+    "restarted": {
+      "readyMs": 2253,
+      "ttfbMs": 31,
+      "domContentLoadedMs": 799,
+      "resources": {
+        "javascript": {
+          "transferBytes": 0,
+          "firstStartMs": 52,
+          "lastEndMs": 1404,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 52,
+              "endMs": 73,
+              "transferBytes": 0,
+              "encodedBytes": 3751,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/__common-538fd21a842a223a24acf1ae9692e497.js",
+              "startMs": 53,
+              "endMs": 280,
+              "transferBytes": 0,
+              "encodedBytes": 6993752,
+              "decodedBytes": 6993752
+            },
+            {
+              "file": "/_expo/static/js/web/entry-c7a952f919ebff4dd90a66809cb035b1.js",
+              "startMs": 53,
+              "endMs": 153,
+              "transferBytes": 0,
+              "encodedBytes": 1119016,
+              "decodedBytes": 1119016
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-f2455d5e1d2c8d43a7d61394972a73f2.js",
+              "startMs": 847,
+              "endMs": 851,
+              "transferBytes": 0,
+              "encodedBytes": 26270,
+              "decodedBytes": 26270
+            },
+            {
+              "file": "/_expo/static/js/web/[id]-d77d5c723801793bb56c836b1845c008.js",
+              "startMs": 1401,
+              "endMs": 1404,
+              "transferBytes": 0,
+              "encodedBytes": 14268,
+              "decodedBytes": 14268
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 0,
+          "firstStartMs": 1304,
+          "lastEndMs": 1316,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 1304,
+              "endMs": 1315,
+              "transferBytes": 0,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 1306,
+              "endMs": 1316,
+              "transferBytes": 0,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 0,
+          "firstStartMs": 1251,
+          "lastEndMs": 1744,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 1251,
+              "endMs": 1256,
+              "transferBytes": 0,
+              "encodedBytes": 476,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+              "startMs": 1740,
+              "endMs": 1744,
+              "transferBytes": 0,
+              "encodedBytes": 126202,
+              "decodedBytes": 126202
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 0,
+          "firstStartMs": 50,
+          "lastEndMs": 64,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 50,
+              "endMs": 64,
+              "transferBytes": 0,
+              "encodedBytes": 393,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 52,
+              "endMs": 64,
+              "transferBytes": 0,
+              "encodedBytes": 675,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 1307,
+            "endMs": 1351,
+            "durationMs": 44
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 1353,
+            "endMs": 1432,
+            "durationMs": 79
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    }
+  },
+  "browser": "155.0.8059.79",
+  "passed": true
+}

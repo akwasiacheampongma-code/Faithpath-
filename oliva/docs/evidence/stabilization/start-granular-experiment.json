@@ -1,0 +1,1153 @@
+{
+  "build": "oliva-ef3b048eca9d6b21",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "deviceScaleFactor": 2,
+  "network": {
+    "latency": 150,
+    "downloadThroughput": 200000,
+    "uploadThroughput": 93750
+  },
+  "repetitions": 1,
+  "results": [
+    {
+      "name": "Heute",
+      "index": 1,
+      "readyMs": 16328,
+      "ttfbMs": 23,
+      "domContentLoadedMs": 2218,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2068236,
+          "firstStartMs": 304,
+          "lastEndMs": 13932,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 304,
+              "endMs": 515,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/entry-6b2aa74a535cab0c49da27ec884c85e8.js",
+              "startMs": 309,
+              "endMs": 1977,
+              "transferBytes": 293796,
+              "encodedBytes": 293496,
+              "decodedBytes": 1128970
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-84689bcdca4792c54b9a6f160e707562.js",
+              "startMs": 2258,
+              "endMs": 2509,
+              "transferBytes": 9085,
+              "encodedBytes": 8785,
+              "decodedBytes": 26568
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-bd09926de51843f9-bb57f1c5cc791a9061d51653fbba55eb.js",
+              "startMs": 2258,
+              "endMs": 2439,
+              "transferBytes": 825,
+              "encodedBytes": 525,
+              "decodedBytes": 770
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-06c614e1d88ae9f2-865baad0a99c2f34a0c7243ee6e59eff.js",
+              "startMs": 2272,
+              "endMs": 2487,
+              "transferBytes": 3711,
+              "encodedBytes": 3411,
+              "decodedBytes": 10027
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-16353af1922e4800-76c7ae1d74f7d1bf4d7b7a94486a178a.js",
+              "startMs": 2274,
+              "endMs": 11417,
+              "transferBytes": 1722241,
+              "encodedBytes": 1721941,
+              "decodedBytes": 5909272
+            },
+            {
+              "file": "/_expo/static/js/web/index-2099c7be5638f091e3887113996f63ac.js",
+              "startMs": 13539,
+              "endMs": 13797,
+              "transferBytes": 4638,
+              "encodedBytes": 4338,
+              "decodedBytes": 12460
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-9204bbab897f5886-4a96702825f8840a50a0a193fcf37c20.js",
+              "startMs": 13539,
+              "endMs": 13716,
+              "transferBytes": 962,
+              "encodedBytes": 662,
+              "decodedBytes": 1064
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-a5c2011beffbaf88-c575119deda02d4f6608a47aff7f85f5.js",
+              "startMs": 13539,
+              "endMs": 13864,
+              "transferBytes": 16381,
+              "encodedBytes": 16081,
+              "decodedBytes": 43983
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-07d0f295cee0a8ef-bb7cd4f0044219d639a2611446761a6d.js",
+              "startMs": 13540,
+              "endMs": 13759,
+              "transferBytes": 2060,
+              "encodedBytes": 1760,
+              "decodedBytes": 3992
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-b4068a7f8e912e2c-6d889f32f420e2cf6665a3d217ea99d4.js",
+              "startMs": 13540,
+              "endMs": 13729,
+              "transferBytes": 823,
+              "encodedBytes": 523,
+              "decodedBytes": 804
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-43648b88b127b449-1492151c07ffba6c41617168e2e8cf72.js",
+              "startMs": 13541,
+              "endMs": 13813,
+              "transferBytes": 4784,
+              "encodedBytes": 4484,
+              "decodedBytes": 13335
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-0b859e4e68c3dc1a-492a94a5f3f5db395ab60fcb7af9b1e3.js",
+              "startMs": 13541,
+              "endMs": 13879,
+              "transferBytes": 2856,
+              "encodedBytes": 2556,
+              "decodedBytes": 5842
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-956db38c6a34be02-df0841382bae6d80ec1be5481ed038e0.js",
+              "startMs": 13542,
+              "endMs": 13886,
+              "transferBytes": 662,
+              "encodedBytes": 362,
+              "decodedBytes": 462
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-027d3da7cf47af36-37cca5cfce9e127eb6249748888fafce.js",
+              "startMs": 13542,
+              "endMs": 13932,
+              "transferBytes": 3561,
+              "encodedBytes": 3261,
+              "decodedBytes": 8685
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 11826,
+          "lastEndMs": 13474,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 11826,
+              "endMs": 12858,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 11832,
+              "endMs": 13474,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 396551,
+          "firstStartMs": 2286,
+          "lastEndMs": 16182,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 2286,
+              "endMs": 2464,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+              "startMs": 14038,
+              "endMs": 16182,
+              "transferBytes": 262850,
+              "encodedBytes": 262550,
+              "decodedBytes": 262550
+            },
+            {
+              "file": "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+              "startMs": 14039,
+              "endMs": 14876,
+              "transferBytes": 38142,
+              "encodedBytes": 37842,
+              "decodedBytes": 37842
+            },
+            {
+              "file": "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+              "startMs": 14039,
+              "endMs": 15229,
+              "transferBytes": 73260,
+              "encodedBytes": 72960,
+              "decodedBytes": 72960
+            },
+            {
+              "file": "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+              "startMs": 14039,
+              "endMs": 14636,
+              "transferBytes": 21694,
+              "encodedBytes": 21394,
+              "decodedBytes": 21394
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 302,
+          "lastEndMs": 471,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 302,
+              "endMs": 466,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 304,
+              "endMs": 471,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 11833,
+            "endMs": 11868,
+            "durationMs": 35
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 11868,
+            "endMs": 11871,
+            "durationMs": 3
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    },
+    {
+      "name": "Noah",
+      "index": 1,
+      "readyMs": 14817,
+      "ttfbMs": 13,
+      "domContentLoadedMs": 2095,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2059125,
+          "firstStartMs": 213,
+          "lastEndMs": 13580,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 213,
+              "endMs": 388,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/entry-6b2aa74a535cab0c49da27ec884c85e8.js",
+              "startMs": 213,
+              "endMs": 1857,
+              "transferBytes": 293796,
+              "encodedBytes": 293496,
+              "decodedBytes": 1128970
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-84689bcdca4792c54b9a6f160e707562.js",
+              "startMs": 2131,
+              "endMs": 2368,
+              "transferBytes": 9085,
+              "encodedBytes": 8785,
+              "decodedBytes": 26568
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-bd09926de51843f9-bb57f1c5cc791a9061d51653fbba55eb.js",
+              "startMs": 2132,
+              "endMs": 2296,
+              "transferBytes": 825,
+              "encodedBytes": 525,
+              "decodedBytes": 770
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-06c614e1d88ae9f2-865baad0a99c2f34a0c7243ee6e59eff.js",
+              "startMs": 2132,
+              "endMs": 2330,
+              "transferBytes": 3711,
+              "encodedBytes": 3411,
+              "decodedBytes": 10027
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-16353af1922e4800-76c7ae1d74f7d1bf4d7b7a94486a178a.js",
+              "startMs": 2133,
+              "endMs": 11060,
+              "transferBytes": 1722241,
+              "encodedBytes": 1721941,
+              "decodedBytes": 5909272
+            },
+            {
+              "file": "/_expo/static/js/web/[id]-6296c895e075d258762b40124bb3275f.js",
+              "startMs": 13167,
+              "endMs": 13399,
+              "transferBytes": 5572,
+              "encodedBytes": 5272,
+              "decodedBytes": 14664
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-ae6eecd1e58cc405-6c2437087e6f2152d97bc8c68a24431e.js",
+              "startMs": 13168,
+              "endMs": 13378,
+              "transferBytes": 1884,
+              "encodedBytes": 1584,
+              "decodedBytes": 3290
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-782cdc8313d3687e-f1e4cb0343c788632d4ba207f6cfc8cf.js",
+              "startMs": 13168,
+              "endMs": 13348,
+              "transferBytes": 1350,
+              "encodedBytes": 1050,
+              "decodedBytes": 2102
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-4afee87198f44a28-cf3265d0748db066f62f786cf8f9debf.js",
+              "startMs": 13169,
+              "endMs": 13415,
+              "transferBytes": 5180,
+              "encodedBytes": 4880,
+              "decodedBytes": 12559
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-7eae6e5b7f0c079b-3ce9bfdac999cc92174c0f84a854196b.js",
+              "startMs": 13169,
+              "endMs": 13355,
+              "transferBytes": 661,
+              "encodedBytes": 361,
+              "decodedBytes": 464
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-3106edb407d0dcc0-a3a986271010b44dd3f0cc99dfe76b92.js",
+              "startMs": 13171,
+              "endMs": 13363,
+              "transferBytes": 1079,
+              "encodedBytes": 779,
+              "decodedBytes": 1203
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-07d0f295cee0a8ef-bb7cd4f0044219d639a2611446761a6d.js",
+              "startMs": 13172,
+              "endMs": 13512,
+              "transferBytes": 2060,
+              "encodedBytes": 1760,
+              "decodedBytes": 3992
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-b4068a7f8e912e2c-6d889f32f420e2cf6665a3d217ea99d4.js",
+              "startMs": 13172,
+              "endMs": 13520,
+              "transferBytes": 823,
+              "encodedBytes": 523,
+              "decodedBytes": 804
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-43648b88b127b449-1492151c07ffba6c41617168e2e8cf72.js",
+              "startMs": 13173,
+              "endMs": 13557,
+              "transferBytes": 4784,
+              "encodedBytes": 4484,
+              "decodedBytes": 13335
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-956db38c6a34be02-df0841382bae6d80ec1be5481ed038e0.js",
+              "startMs": 13173,
+              "endMs": 13542,
+              "transferBytes": 662,
+              "encodedBytes": 362,
+              "decodedBytes": 462
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-027d3da7cf47af36-37cca5cfce9e127eb6249748888fafce.js",
+              "startMs": 13174,
+              "endMs": 13580,
+              "transferBytes": 3561,
+              "encodedBytes": 3261,
+              "decodedBytes": 8685
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 11460,
+          "lastEndMs": 13114,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 11460,
+              "endMs": 12508,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 11462,
+              "endMs": 13114,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 127107,
+          "firstStartMs": 2160,
+          "lastEndMs": 14420,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 2160,
+              "endMs": 2458,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+              "startMs": 13637,
+              "endMs": 14420,
+              "transferBytes": 126502,
+              "encodedBytes": 126202,
+              "decodedBytes": 126202
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 209,
+          "lastEndMs": 375,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 209,
+              "endMs": 365,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 212,
+              "endMs": 375,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 11463,
+            "endMs": 11485,
+            "durationMs": 22
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 11485,
+            "endMs": 11489,
+            "durationMs": 3
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    }
+  ],
+  "offline": {
+    "networkCondition": "unthrottled loopback; worker enabled",
+    "first": {
+      "readyMs": 2865,
+      "ttfbMs": 39,
+      "domContentLoadedMs": 791,
+      "resources": {
+        "javascript": {
+          "transferBytes": 2068236,
+          "firstStartMs": 59,
+          "lastEndMs": 2075,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 59,
+              "endMs": 83,
+              "transferBytes": 1851,
+              "encodedBytes": 1551,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/entry-6b2aa74a535cab0c49da27ec884c85e8.js",
+              "startMs": 59,
+              "endMs": 187,
+              "transferBytes": 293796,
+              "encodedBytes": 293496,
+              "decodedBytes": 1128970
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-84689bcdca4792c54b9a6f160e707562.js",
+              "startMs": 872,
+              "endMs": 885,
+              "transferBytes": 9085,
+              "encodedBytes": 8785,
+              "decodedBytes": 26568
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-bd09926de51843f9-bb57f1c5cc791a9061d51653fbba55eb.js",
+              "startMs": 873,
+              "endMs": 930,
+              "transferBytes": 825,
+              "encodedBytes": 525,
+              "decodedBytes": 770
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-06c614e1d88ae9f2-865baad0a99c2f34a0c7243ee6e59eff.js",
+              "startMs": 874,
+              "endMs": 930,
+              "transferBytes": 3711,
+              "encodedBytes": 3411,
+              "decodedBytes": 10027
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-16353af1922e4800-76c7ae1d74f7d1bf4d7b7a94486a178a.js",
+              "startMs": 875,
+              "endMs": 1534,
+              "transferBytes": 1722241,
+              "encodedBytes": 1721941,
+              "decodedBytes": 5909272
+            },
+            {
+              "file": "/_expo/static/js/web/index-2099c7be5638f091e3887113996f63ac.js",
+              "startMs": 2025,
+              "endMs": 2047,
+              "transferBytes": 4638,
+              "encodedBytes": 4338,
+              "decodedBytes": 12460
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-9204bbab897f5886-4a96702825f8840a50a0a193fcf37c20.js",
+              "startMs": 2026,
+              "endMs": 2037,
+              "transferBytes": 962,
+              "encodedBytes": 662,
+              "decodedBytes": 1064
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-a5c2011beffbaf88-c575119deda02d4f6608a47aff7f85f5.js",
+              "startMs": 2026,
+              "endMs": 2071,
+              "transferBytes": 16381,
+              "encodedBytes": 16081,
+              "decodedBytes": 43983
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-07d0f295cee0a8ef-bb7cd4f0044219d639a2611446761a6d.js",
+              "startMs": 2027,
+              "endMs": 2070,
+              "transferBytes": 2060,
+              "encodedBytes": 1760,
+              "decodedBytes": 3992
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-b4068a7f8e912e2c-6d889f32f420e2cf6665a3d217ea99d4.js",
+              "startMs": 2027,
+              "endMs": 2071,
+              "transferBytes": 823,
+              "encodedBytes": 523,
+              "decodedBytes": 804
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-43648b88b127b449-1492151c07ffba6c41617168e2e8cf72.js",
+              "startMs": 2027,
+              "endMs": 2072,
+              "transferBytes": 4784,
+              "encodedBytes": 4484,
+              "decodedBytes": 13335
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-0b859e4e68c3dc1a-492a94a5f3f5db395ab60fcb7af9b1e3.js",
+              "startMs": 2027,
+              "endMs": 2071,
+              "transferBytes": 2856,
+              "encodedBytes": 2556,
+              "decodedBytes": 5842
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-956db38c6a34be02-df0841382bae6d80ec1be5481ed038e0.js",
+              "startMs": 2028,
+              "endMs": 2072,
+              "transferBytes": 662,
+              "encodedBytes": 362,
+              "decodedBytes": 462
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-027d3da7cf47af36-37cca5cfce9e127eb6249748888fafce.js",
+              "startMs": 2028,
+              "endMs": 2075,
+              "transferBytes": 3561,
+              "encodedBytes": 3261,
+              "decodedBytes": 8685
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 298848,
+          "firstStartMs": 1963,
+          "lastEndMs": 1977,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 1963,
+              "endMs": 1974,
+              "transferBytes": 89120,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 1964,
+              "endMs": 1977,
+              "transferBytes": 209728,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 396551,
+          "firstStartMs": 951,
+          "lastEndMs": 2604,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 951,
+              "endMs": 1453,
+              "transferBytes": 605,
+              "encodedBytes": 305,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+              "startMs": 2335,
+              "endMs": 2604,
+              "transferBytes": 262850,
+              "encodedBytes": 262550,
+              "decodedBytes": 262550
+            },
+            {
+              "file": "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+              "startMs": 2335,
+              "endMs": 2597,
+              "transferBytes": 38142,
+              "encodedBytes": 37842,
+              "decodedBytes": 37842
+            },
+            {
+              "file": "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+              "startMs": 2336,
+              "endMs": 2600,
+              "transferBytes": 73260,
+              "encodedBytes": 72960,
+              "decodedBytes": 72960
+            },
+            {
+              "file": "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+              "startMs": 2336,
+              "endMs": 2602,
+              "transferBytes": 21694,
+              "encodedBytes": 21394,
+              "decodedBytes": 21394
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 1169,
+          "firstStartMs": 53,
+          "lastEndMs": 83,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 53,
+              "endMs": 78,
+              "transferBytes": 577,
+              "encodedBytes": 277,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 59,
+              "endMs": 83,
+              "transferBytes": 592,
+              "encodedBytes": 292,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 1965,
+            "endMs": 1997,
+            "durationMs": 32
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 1997,
+            "endMs": 2001,
+            "durationMs": 4
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    },
+    "prepared": {
+      "readyMs": 4430,
+      "firstOfflineWorkerResponseMs": 0,
+      "paths": [
+        "/THIRD_PARTY_NOTICES.txt",
+        "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+        "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+        "/_expo/static/js/web/+not-found-7ae1eafbd46a1bf2eb2f216356ceb950.js",
+        "/_expo/static/js/web/[book]-039ed8e9e9201766f05c76531e2f24ed.js",
+        "/_expo/static/js/web/[book]-7eda23eb6878f64978de808c714d7178.js",
+        "/_expo/static/js/web/[book]-dc1a66367293adb6bf325961fa664bbb.js",
+        "/_expo/static/js/web/[id]-0fc6d78a831d33907714b6ddcf4863c5.js",
+        "/_expo/static/js/web/[id]-582ee91a7df10e0206ea9b6b95517deb.js",
+        "/_expo/static/js/web/[id]-6296c895e075d258762b40124bb3275f.js",
+        "/_expo/static/js/web/[id]-875f68f3d97b40e4bc0267027b9fd1da.js",
+        "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+        "/_expo/static/js/web/__shared-027d3da7cf47af36-37cca5cfce9e127eb6249748888fafce.js",
+        "/_expo/static/js/web/__shared-06c614e1d88ae9f2-865baad0a99c2f34a0c7243ee6e59eff.js",
+        "/_expo/static/js/web/__shared-07d0f295cee0a8ef-bb7cd4f0044219d639a2611446761a6d.js",
+        "/_expo/static/js/web/__shared-0b859e4e68c3dc1a-492a94a5f3f5db395ab60fcb7af9b1e3.js",
+        "/_expo/static/js/web/__shared-0e2b01e49e17f20e-fd1d648615d6053508ed449acc0e7739.js",
+        "/_expo/static/js/web/__shared-0ede170d4d0db58e-68e1374c1311b61e0865e7a225e7af52.js",
+        "/_expo/static/js/web/__shared-16353af1922e4800-76c7ae1d74f7d1bf4d7b7a94486a178a.js",
+        "/_expo/static/js/web/__shared-2fb776c3674ef156-b52c3cd2a4227b5ab389c3a74df6438c.js",
+        "/_expo/static/js/web/__shared-3106edb407d0dcc0-a3a986271010b44dd3f0cc99dfe76b92.js",
+        "/_expo/static/js/web/__shared-43648b88b127b449-1492151c07ffba6c41617168e2e8cf72.js",
+        "/_expo/static/js/web/__shared-4afee87198f44a28-cf3265d0748db066f62f786cf8f9debf.js",
+        "/_expo/static/js/web/__shared-782cdc8313d3687e-f1e4cb0343c788632d4ba207f6cfc8cf.js",
+        "/_expo/static/js/web/__shared-7899ddb03b7f0042-b1ee711f39bf3ba22337bc4c66e5f142.js",
+        "/_expo/static/js/web/__shared-7eae6e5b7f0c079b-3ce9bfdac999cc92174c0f84a854196b.js",
+        "/_expo/static/js/web/__shared-9204bbab897f5886-4a96702825f8840a50a0a193fcf37c20.js",
+        "/_expo/static/js/web/__shared-956db38c6a34be02-df0841382bae6d80ec1be5481ed038e0.js",
+        "/_expo/static/js/web/__shared-9c9f990f9f5a8cea-d0c8293ec272ac934a533cb4e9be81b0.js",
+        "/_expo/static/js/web/__shared-a5c2011beffbaf88-c575119deda02d4f6608a47aff7f85f5.js",
+        "/_expo/static/js/web/__shared-ae6eecd1e58cc405-6c2437087e6f2152d97bc8c68a24431e.js",
+        "/_expo/static/js/web/__shared-b4068a7f8e912e2c-6d889f32f420e2cf6665a3d217ea99d4.js",
+        "/_expo/static/js/web/__shared-bd09926de51843f9-bb57f1c5cc791a9061d51653fbba55eb.js",
+        "/_expo/static/js/web/__shared-d5e2c682307af6d0-a2427119429b73691a6b68e2bf650ffb.js",
+        "/_expo/static/js/web/__shared-d7a6fe4296debba1-de74aab292931505eeb43630bb70117c.js",
+        "/_expo/static/js/web/__shared-e831e988b9f4615d-bdce0c452a55fe6993c4d97193d98824.js",
+        "/_expo/static/js/web/_layout-84689bcdca4792c54b9a6f160e707562.js",
+        "/_expo/static/js/web/bibel-6174314a58dc872ba02df46e63cc4da7.js",
+        "/_expo/static/js/web/catalog-14027bbd8df880eeef854b62e2a3d32f.js",
+        "/_expo/static/js/web/einladungen-036eaa186f941ffb3a6c58f698049067.js",
+        "/_expo/static/js/web/einstellungen-087381dcabd0fc95f2c5e3f3a8a6d610.js",
+        "/_expo/static/js/web/entry-6b2aa74a535cab0c49da27ec884c85e8.js",
+        "/_expo/static/js/web/garten-26856603b91d92ce1bd9e99bd68a8260.js",
+        "/_expo/static/js/web/geschichten-3efe65fc69a4de2111d08d920789077c.js",
+        "/_expo/static/js/web/importieren-f08cc77bb1a639d9ea35cdd5bfb9aaa1.js",
+        "/_expo/static/js/web/index-2099c7be5638f091e3887113996f63ac.js",
+        "/_expo/static/js/web/index-c4fafc93d99f86931de21dc3903055bc.js",
+        "/_expo/static/js/web/index-f0c8f3afdd5978035eb0bcc8a0e44bd0.js",
+        "/_expo/static/js/web/quellen-a0d6af1d069511bd52c6f83f123f2bb8.js",
+        "/_expo/static/js/web/sammlung-377ae176f6bae42427006429b45ba6f9.js",
+        "/_expo/static/js/web/start-aed0afffbffa694d859bad10cc735361.js",
+        "/_expo/static/js/web/themen-070168435d7df9c6e668dae50f15ce97.js",
+        "/_expo/static/js/web/wege-4db0c8bc6e2c528f1cfe48a283e5656d.js",
+        "/apple-touch-icon.png",
+        "/assets/assets/a51/stage-1-1024-09d0f0e48b45.272528ab27888db413511f95a5962d00.webp",
+        "/assets/assets/a51/stage-1-384-938d65fabbea.f9be0a9f83717f51239a92238112efd6.webp",
+        "/assets/assets/a51/stage-1-640-61bf0ea0364c.2b67b13687ef44452445d4c7ef025873.webp",
+        "/assets/assets/a51/stage-2-1024-5faf7d8bacae.20f510d14e96bf1776daf6500b4525ab.webp",
+        "/assets/assets/a51/stage-2-384-83c9e1b068c2.9704851601f26041aae382898640f46d.webp",
+        "/assets/assets/a51/stage-2-640-657d676673c5.25f53dd1dd4cef598f244059035ec428.webp",
+        "/assets/assets/a51/stage-3-1024-dd3447ecfc31.46d226e8789f58d7cb98dc66bab36999.webp",
+        "/assets/assets/a51/stage-3-384-67a026427a62.bede3991f9fe0ccf02314027cba2adf4.webp",
+        "/assets/assets/a51/stage-3-640-daed3e069ebb.dd5dfa1b4fafe8e3582a7d47f4d47b90.webp",
+        "/assets/assets/a51/stage-4-1024-b694c875ac25.b69ea70ffd81b8c8b3d5457cc56501de.webp",
+        "/assets/assets/a51/stage-4-384-7fdbd6abfc70.e33440b0a040e1e20be2341d67217fd2.webp",
+        "/assets/assets/a51/stage-4-640-6cd93c9040c1.dd1e32a89bf4e6d3abc199c09699922a.webp",
+        "/assets/assets/a51/stage-5-1024-9662127e6782.016e4632f6f8488db5642ae08fccc478.webp",
+        "/assets/assets/a51/stage-5-384-1f45acdc445c.caa99e2daab09b528c3bdd81f072c7b9.webp",
+        "/assets/assets/a51/stage-5-640-c725f8e572eb.16986b6b87ca5631e1cced83d152204a.webp",
+        "/assets/assets/a51/stage-6-1024-d332e48c635b.4f3a7d94f4b13583edf96b0dda2f701c.webp",
+        "/assets/assets/a51/stage-6-384-18e5329006bc.dd0bac41cfdfa42b7daf93782607490e.webp",
+        "/assets/assets/a51/stage-6-640-db5395a982ed.f4668be153a788854791fd5a11e30d1e.webp",
+        "/assets/assets/a51/stage-7-1024-8d580a524725.2da9f38609ded7abae209eea3310bda9.webp",
+        "/assets/assets/a51/stage-7-384-1325b09c8f58.3c427d8cb2b2ee9162712a3b0cda1742.webp",
+        "/assets/assets/a51/stage-7-640-c9b6a16a1bf4.654c14cc2fced83f29a04c1161888035.webp",
+        "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+        "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+        "/assets/assets/images/abraham-1024.9f1d8adf6c468efe857c4b1ef8116f78.webp",
+        "/assets/assets/images/abraham-1280.1ff17be8d76a19dfd275b01cf82cdefe.webp",
+        "/assets/assets/images/abraham-640.445c3c3b7fa98839659af0a8e0b417e8.webp",
+        "/assets/assets/images/david-before-goliath-1024.77572822e86764be0a1ed457eb792b9c.webp",
+        "/assets/assets/images/david-before-goliath-1280.536f3fb2f43c964e7e8d589b678e1e52.webp",
+        "/assets/assets/images/david-before-goliath-640.579763367b6d7d59109419ee264ec889.webp",
+        "/assets/assets/images/easter-dawn-1024.b67651a5db6e32dbc92085216e58921e.webp",
+        "/assets/assets/images/easter-dawn-1280.e0bc1a91d008b43850720e038a63d243.webp",
+        "/assets/assets/images/easter-dawn-640.879d2495a829c5dd832ad687edce5e6c.webp",
+        "/assets/assets/images/galilee-1280.cf82dd54ecb3bbcc189a9b89b6eb44e3.webp",
+        "/assets/assets/images/galilee-640.7a0de160dc2fd049d568f1133bd28163.webp",
+        "/assets/assets/images/garden-640.6432cb455695a7b4e6d68f26f821f058.webp",
+        "/assets/assets/images/nativity-1024.c872d5757fcfdc8109c09f93cddc7852.webp",
+        "/assets/assets/images/nativity-1280.f3e0553a483489937485a58c8af3b1d9.webp",
+        "/assets/assets/images/nativity-640.cb61b77b3f68bcda8087c973221230f9.webp",
+        "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+        "/assets/assets/images/noah-1280.4eb4f2ce3d949d3f605210683dc10b15.webp",
+        "/assets/assets/images/noah-640.4206b12f0aacc4967bc68ae417589a1a.webp",
+        "/assets/assets/images/storm-1280.853333ddbd93e55c72b5854c450b92ac.webp",
+        "/assets/assets/images/storm-640.d36f94c3328a1590e5df97733e3f077f.webp",
+        "/assets/assets/spiritual-sword/word-sword-512.5eea29980db13f54c581bfc3ab04c853.png",
+        "/assets/node_modules/expo-router/assets/arrow_down.017bc6ba3fc25503e5eb5e53826d48a8.png",
+        "/assets/node_modules/expo-router/assets/error.d1ea1496f9057eb392d5bbf3732a61b7.png",
+        "/assets/node_modules/expo-router/assets/file.19eeb73b9593a38f8e9f418337fc7d10.png",
+        "/assets/node_modules/expo-router/assets/forward.d8b800c443b8972542883e0b9de2bdc6.png",
+        "/assets/node_modules/expo-router/assets/pkg.ab19f4cbc543357183a20571f68380a3.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/back-icon-mask.0a328cd9c1afd0afe8e3b1ec5165b1b4.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/back-icon.35ba0eaec5a4f5ed12ca16fabeae451d.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55@2x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55@3x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.c94f6478e7ae0cdd9f15de1fcb9e5e55@4x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7@2x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7@3x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.808e1b1b9b53114ec2838071a7e6daa7@4x.png",
+        "/assets/node_modules/expo-router/assets/react-navigation/elements/search-icon.286d67d3f74808a60a78d3ebf1a5fb57.png",
+        "/assets/node_modules/expo-router/assets/sitemap.412dd9275b6b48ad28f5e3d81bb1f626.png",
+        "/assets/node_modules/expo-router/assets/unmatched.20e71bdf79e3a97bf55fd9e164041578.png",
+        "/icon-192.png",
+        "/icon-512.png",
+        "/icon.svg",
+        "/index.html",
+        "/licenses/CormorantGaramond-OFL.txt",
+        "/licenses/DMSans-OFL.txt",
+        "/licenses/MIT.txt",
+        "/licenses/THIRD_PARTY_NOTICES.txt",
+        "/manifest.webmanifest",
+        "/metadata.json"
+      ]
+    },
+    "restarted": {
+      "readyMs": 1892,
+      "ttfbMs": 44,
+      "domContentLoadedMs": 615,
+      "resources": {
+        "javascript": {
+          "transferBytes": 0,
+          "firstStartMs": 66,
+          "lastEndMs": 1253,
+          "files": [
+            {
+              "file": "/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js",
+              "startMs": 66,
+              "endMs": 106,
+              "transferBytes": 0,
+              "encodedBytes": 3751,
+              "decodedBytes": 3751
+            },
+            {
+              "file": "/_expo/static/js/web/entry-6b2aa74a535cab0c49da27ec884c85e8.js",
+              "startMs": 66,
+              "endMs": 152,
+              "transferBytes": 0,
+              "encodedBytes": 1128970,
+              "decodedBytes": 1128970
+            },
+            {
+              "file": "/_expo/static/js/web/_layout-84689bcdca4792c54b9a6f160e707562.js",
+              "startMs": 662,
+              "endMs": 670,
+              "transferBytes": 0,
+              "encodedBytes": 26568,
+              "decodedBytes": 26568
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-bd09926de51843f9-bb57f1c5cc791a9061d51653fbba55eb.js",
+              "startMs": 663,
+              "endMs": 676,
+              "transferBytes": 0,
+              "encodedBytes": 770,
+              "decodedBytes": 770
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-06c614e1d88ae9f2-865baad0a99c2f34a0c7243ee6e59eff.js",
+              "startMs": 664,
+              "endMs": 679,
+              "transferBytes": 0,
+              "encodedBytes": 10027,
+              "decodedBytes": 10027
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-16353af1922e4800-76c7ae1d74f7d1bf4d7b7a94486a178a.js",
+              "startMs": 664,
+              "endMs": 795,
+              "transferBytes": 0,
+              "encodedBytes": 5909272,
+              "decodedBytes": 5909272
+            },
+            {
+              "file": "/_expo/static/js/web/[id]-6296c895e075d258762b40124bb3275f.js",
+              "startMs": 1232,
+              "endMs": 1239,
+              "transferBytes": 0,
+              "encodedBytes": 14664,
+              "decodedBytes": 14664
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-ae6eecd1e58cc405-6c2437087e6f2152d97bc8c68a24431e.js",
+              "startMs": 1233,
+              "endMs": 1245,
+              "transferBytes": 0,
+              "encodedBytes": 3290,
+              "decodedBytes": 3290
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-782cdc8313d3687e-f1e4cb0343c788632d4ba207f6cfc8cf.js",
+              "startMs": 1233,
+              "endMs": 1248,
+              "transferBytes": 0,
+              "encodedBytes": 2102,
+              "decodedBytes": 2102
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-4afee87198f44a28-cf3265d0748db066f62f786cf8f9debf.js",
+              "startMs": 1234,
+              "endMs": 1248,
+              "transferBytes": 0,
+              "encodedBytes": 12559,
+              "decodedBytes": 12559
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-7eae6e5b7f0c079b-3ce9bfdac999cc92174c0f84a854196b.js",
+              "startMs": 1234,
+              "endMs": 1251,
+              "transferBytes": 0,
+              "encodedBytes": 464,
+              "decodedBytes": 464
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-3106edb407d0dcc0-a3a986271010b44dd3f0cc99dfe76b92.js",
+              "startMs": 1235,
+              "endMs": 1253,
+              "transferBytes": 0,
+              "encodedBytes": 1203,
+              "decodedBytes": 1203
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-07d0f295cee0a8ef-bb7cd4f0044219d639a2611446761a6d.js",
+              "startMs": 1235,
+              "endMs": 1253,
+              "transferBytes": 0,
+              "encodedBytes": 3992,
+              "decodedBytes": 3992
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-b4068a7f8e912e2c-6d889f32f420e2cf6665a3d217ea99d4.js",
+              "startMs": 1236,
+              "endMs": 1253,
+              "transferBytes": 0,
+              "encodedBytes": 804,
+              "decodedBytes": 804
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-43648b88b127b449-1492151c07ffba6c41617168e2e8cf72.js",
+              "startMs": 1236,
+              "endMs": 1253,
+              "transferBytes": 0,
+              "encodedBytes": 13335,
+              "decodedBytes": 13335
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-956db38c6a34be02-df0841382bae6d80ec1be5481ed038e0.js",
+              "startMs": 1236,
+              "endMs": 1253,
+              "transferBytes": 0,
+              "encodedBytes": 462,
+              "decodedBytes": 462
+            },
+            {
+              "file": "/_expo/static/js/web/__shared-027d3da7cf47af36-37cca5cfce9e127eb6249748888fafce.js",
+              "startMs": 1237,
+              "endMs": 1253,
+              "transferBytes": 0,
+              "encodedBytes": 8685,
+              "decodedBytes": 8685
+            }
+          ]
+        },
+        "fonts": {
+          "transferBytes": 0,
+          "firstStartMs": 1164,
+          "lastEndMs": 1174,
+          "files": [
+            {
+              "file": "/assets/assets/fonts/DMSans.d3a19ba12483e9f5f0110411cdbc16e9.woff2",
+              "startMs": 1164,
+              "endMs": 1169,
+              "transferBytes": 0,
+              "encodedBytes": 88820,
+              "decodedBytes": 88820
+            },
+            {
+              "file": "/assets/assets/fonts/CormorantGaramond.511d8b51b62bae72d450fbc0e70be0af.woff2",
+              "startMs": 1167,
+              "endMs": 1174,
+              "transferBytes": 0,
+              "encodedBytes": 209428,
+              "decodedBytes": 209428
+            }
+          ]
+        },
+        "images": {
+          "transferBytes": 0,
+          "firstStartMs": 696,
+          "lastEndMs": 1572,
+          "files": [
+            {
+              "file": "/icon.svg",
+              "startMs": 696,
+              "endMs": 712,
+              "transferBytes": 0,
+              "encodedBytes": 476,
+              "decodedBytes": 476
+            },
+            {
+              "file": "/assets/assets/images/noah-1024.97c06f598e47b836ed8f27052ab563fe.webp",
+              "startMs": 1563,
+              "endMs": 1572,
+              "transferBytes": 0,
+              "encodedBytes": 126202,
+              "decodedBytes": 126202
+            }
+          ]
+        },
+        "styles": {
+          "transferBytes": 0,
+          "firstStartMs": 65,
+          "lastEndMs": 87,
+          "files": [
+            {
+              "file": "/_expo/static/css/global-9b0a9b4f49c80ee9f3646c29ae828919.css",
+              "startMs": 65,
+              "endMs": 87,
+              "transferBytes": 0,
+              "encodedBytes": 393,
+              "decodedBytes": 393
+            },
+            {
+              "file": "/_expo/static/css/tree-0436fa23ca22fd7677b86f30792e36a3.css",
+              "startMs": 66,
+              "endMs": 87,
+              "transferBytes": 0,
+              "encodedBytes": 675,
+              "decodedBytes": 675
+            }
+          ]
+        }
+      },
+      "storage": {
+        "dbOpens": [
+          {
+            "startMs": 1168,
+            "endMs": 1204,
+            "durationMs": 36
+          }
+        ],
+        "dbTransactions": [
+          {
+            "startMs": 1205,
+            "endMs": 1255,
+            "durationMs": 51
+          }
+        ]
+      },
+      "fontFaces": [
+        {
+          "family": "DMSans",
+          "status": "loaded"
+        },
+        {
+          "family": "Cormorant",
+          "status": "loaded"
+        }
+      ]
+    }
+  },
+  "browser": "155.0.8059.79",
+  "passed": true
+}
