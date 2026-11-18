@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { View, Pressable, useWindowDimensions } from "react-native";
 import { router } from "expo-router";
 import { Shell } from "../src/components/Shell";
-import { T, Button, Card, Field, Tag } from "../src/components/ui";
+import { T, Button, Card, Field } from "../src/components/ui";
 import { Icon } from "../src/components/Icon";
 import { useTheme } from "../src/design-system/theme";
 import {
@@ -46,50 +46,46 @@ export default function Bible() {
   );
   return (
     <Shell wide>
-      <Tag icon="book">Luther 1912 · vollständig offline enthalten</Tag>
       <T
         variant="title"
         accessibilityRole="header"
-        style={{ fontSize: 40, marginTop: 10, marginBottom: 8 }}
+        style={{ fontSize: 34, lineHeight: 40, marginBottom: 4 }}
       >
         Deine Bibel.
       </T>
-      <T style={{ color: t.muted, fontSize: 13, marginBottom: 18 }}>
-        66 Bücher. Raum zum Lesen und Verstehen.
+      <T style={{ color: t.muted, fontSize: 12, lineHeight: 19, marginBottom: 14 }}>
+        Luther 1912 · vollständig offline enthalten
       </T>
       <Card
         style={{
           backgroundColor: t.soft,
           borderWidth: 0,
-          marginBottom: 24,
-          gap: 12,
+          marginBottom: 16,
+          padding: 14,
         }}
       >
-        <T variant="label" style={{ color: t.muted, fontSize: 9 }}>
-          HIER KANNST DU WEITERLESEN
-        </T>
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
-          <View style={{ flex: 1, minWidth: 0 }}>
-            <T variant="heading" style={{ fontSize: 26 }}>{referenceLabel(data.reading)}</T>
-            {data.readingPosition && <T variant="small" style={{ color: t.muted }}>Zuletzt bei Vers {data.readingPosition.verse}</T>}
+        <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: 10 }}>
+          <View style={{ flexGrow: 1, flexBasis: 120, minWidth: 0 }}>
+            <T variant="heading" style={{ fontSize: 24, lineHeight: 28 }}>{referenceLabel(data.reading)}</T>
+            {data.readingPosition && <T variant="small" style={{ color: t.muted, fontSize: 11, lineHeight: 18 }}>Zuletzt bei Vers {data.readingPosition.verse}</T>}
           </View>
-          <Button icon={null} style={{ paddingHorizontal: 14 }} onPress={() => router.push({
+          <Button icon={null} style={{ paddingHorizontal: 12, maxWidth: "100%" }} onPress={() => router.push({
             pathname: "/lesen/[book]", params: {
               book: data.reading.book, chapter: data.reading.chapter, from: data.reading.from,
               to: data.reading.to, mode: data.readingPosition?.mode,
             },
           })}>Weiterlesen</Button>
         </View>
-        <T style={{ fontSize: 11, lineHeight: 18, color: t.muted }}>{data.readChapters.length} Kapitel bewusst als gelesen bestätigt</T>
       </Card>
-      <View style={{ flexDirection: "row", gap: 8, marginBottom: 15 }}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 8 }}>
         {[
-          ["books", "Bücher finden"],
-          ["text", "Bibeltext durchsuchen"],
-        ].map(([id, label]) => (
+          ["books", "Bücher", "Bücher finden"],
+          ["text", "Bibeltext", "Bibeltext durchsuchen"],
+        ].map(([id, label, accessibleLabel]) => (
           <Pressable
             key={id}
             accessibilityRole="button"
+            accessibilityLabel={accessibleLabel}
             accessibilityState={{ selected: mode === id }}
             aria-pressed={mode === id}
             onPress={() => {
@@ -127,21 +123,14 @@ export default function Bible() {
       />
       {mode === "books" ? (
         <>
-          <View style={{ marginVertical: 20 }}>
-            <BibleScopeSelect value={group} onChange={setGroup} />
+          <View style={{ marginVertical: 8 }}>
+            <BibleScopeSelect value={group} onChange={setGroup} inline />
           </View>
-          <T style={{ fontSize: 12, color: t.muted, marginBottom: 22 }}>
-            {group === "NT"
-              ? "Das Neue Testament erzählt von Jesus und den Anfängen christlicher Gemeinden."
-              : group === "AT"
-                ? "Das Alte Testament umfasst Israels Geschichte, Gebete, Weisheit und prophetische Texte."
-                : "Die Bibel ist eine Sammlung verschiedener Bücher – von Erzählungen bis zu Briefen."}
-          </T>
           <View style={{ flexDirection: width >= 960 ? "row" : "column", gap: 24, alignItems: "flex-start" }}>
-            {width < 960 && <View style={{ width: "100%" }}><SpiritualWordCard /></View>}
-          <View testID="bible-book-list" style={{ gap: 10, width: width >= 960 ? undefined : "100%", flex: width >= 960 ? 1 : undefined }}>
+          <View style={{ width: width >= 960 ? undefined : "100%", flex: width >= 960 ? 1 : undefined, minWidth: 0 }}>
+          <View testID="bible-book-list" style={{ width: "100%" }}>
             {books.map((book) => (
-              <Card key={book.code} style={{ padding: 0, overflow: "hidden" }}>
+              <View key={book.code} style={{ borderBottomWidth: 1, borderBottomColor: t.line }}>
                 <Pressable
                   accessibilityRole="button"
                   accessibilityLabel={`${book.name}, ${book.chapters} Kapitel`}
@@ -151,30 +140,19 @@ export default function Bible() {
                     setExpanded(expanded === book.code ? null : book.code)
                   }
                   style={{
-                    padding: 18,
+                    paddingVertical: 10,
+                    paddingHorizontal: 4,
                     flexDirection: "row",
                     alignItems: "center",
-                    gap: 16,
-                    minHeight: 72,
+                    gap: 12,
+                    minHeight: 64,
                   }}
                 >
-                  <View
-                    style={{
-                      width: 38,
-                      height: 42,
-                      borderRadius: 9,
-                      backgroundColor: t.soft,
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Icon name="book" color={t.primary} size={21} />
-                  </View>
-                  <View style={{ flex: 1, gap: 3 }}>
-                    <T variant="heading" style={{ fontSize: 24 }}>
+                  <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
+                    <T variant="heading" style={{ fontSize: 23, lineHeight: 28 }}>
                       {book.name}
                     </T>
-                    <T style={{ fontSize: 10, color: t.muted }}>
+                    <T style={{ fontSize: 11, lineHeight: 18, color: t.muted }}>
                       {book.chapters} Kapitel · {countBookRead(data, book.code)}{" "}
                       gelesen
                     </T>
@@ -186,7 +164,8 @@ export default function Bible() {
                   />
                 </Pressable>
                 {expanded === book.code && (
-                  <View style={{ padding: 20, paddingTop: 0, gap: 14 }}>
+                  <View style={{ paddingHorizontal: 4, paddingBottom: 18, gap: 14 }}>
+                    <BookChapterGrid code={book.code} />
                     <T style={{ fontSize: 12, color: t.muted }}>
                       {book.description}
                     </T>
@@ -204,10 +183,9 @@ export default function Bible() {
                         Über dieses Buch
                       </Button>
                     </View>
-                    <BookChapterGrid code={book.code} />
                   </View>
                 )}
-              </Card>
+              </View>
             ))}
           </View>
           {!books.length && (
@@ -218,6 +196,16 @@ export default function Bible() {
               </T>
             </Card>
           )}
+          <T style={{ fontSize: 12, lineHeight: 19, color: t.muted, marginTop: 16 }}>
+            {group === "NT"
+              ? "Das Neue Testament erzählt von Jesus und den Anfängen christlicher Gemeinden."
+              : group === "AT"
+                ? "Das Alte Testament umfasst Israels Geschichte, Gebete, Weisheit und prophetische Texte."
+                : "Die Bibel ist eine Sammlung verschiedener Bücher – von Erzählungen bis zu Briefen."}
+          </T>
+          <T style={{ fontSize: 11, lineHeight: 18, color: t.muted, marginTop: 8 }}>{data.readChapters.length} Kapitel bewusst als gelesen bestätigt</T>
+          {width < 960 && <View style={{ width: "100%", marginTop: 20 }}><SpiritualWordCard /></View>}
+          </View>
             {width >= 960 && <View style={{ width: 320 }}><SpiritualWordCard /></View>}
           </View>
         </>

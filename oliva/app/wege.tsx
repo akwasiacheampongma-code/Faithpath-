@@ -2,8 +2,10 @@ import { router } from "expo-router";
 import { useState } from "react";
 import { View, useWindowDimensions, Pressable } from "react-native";
 import { Shell } from "../src/components/Shell";
-import { T, Card, Tag, Button } from "../src/components/ui";
+import { T, Card } from "../src/components/ui";
 import { PathCard } from "../src/components/PathCard";
+import { PathListItem } from "../src/features/paths/PathListItem";
+import { PathCategorySelect } from "../src/features/paths/PathCategorySelect";
 import { PATHS } from "../src/features/paths/catalog";
 import { useTheme } from "../src/design-system/theme";
 export default function Paths() {
@@ -19,13 +21,12 @@ export default function Paths() {
   ];
   return (
     <Shell>
-      <Tag icon="path">Kleine Reisen. Neue Perspektiven.</Tag>
       <T
         variant="title"
         accessibilityRole="header"
-        style={{ marginTop: 14, marginBottom: 10, fontSize: 44 }}
+        style={{ marginBottom: 8, fontSize: 34, lineHeight: 40 }}
       >
-        Du brauchst kein Vorwissen.
+        Deine Wege.
       </T>
       <T
         style={{
@@ -33,85 +34,55 @@ export default function Paths() {
           maxWidth: 650,
           fontSize: 14,
           lineHeight: 24,
-          marginBottom: 26,
+          marginBottom: 16,
         }}
       >
-        Ein Weg ist eine kleine, geführte Reise durch ein Thema der Bibel. Du
-        liest kurze Abschnitte, bekommst verständliche Erklärungen und kannst
-        über das Gelernte nachdenken.
+        Ein Weg führt dich durch kurze Bibelabschnitte – mit Erklärungen und
+        freiwilligen Gedanken. Du brauchst kein Vorwissen.
       </T>
-      <Card
-        style={{
-          backgroundColor: t.soft,
-          borderWidth: 0,
-          marginBottom: 28,
-          padding: 21,
-        }}
-      >
-        <T style={{ fontSize: 13 }}>Lesen → Verstehen → Nachdenken</T>
-        <T style={{ fontSize: 11, color: t.muted, marginTop: 6 }}>
-          Etwa 5 Minuten pro Schritt. Reflexion und Gebet sind immer freiwillig.
-          Pausen sind willkommen.
-        </T>
-      </Card>
+      <PathCategorySelect value={filter} options={categories} onChange={setFilter} />
       <View
         style={{
           flexDirection: "row",
-          gap: 8,
+          gap: 12,
           flexWrap: "wrap",
-          marginBottom: 24,
+          marginTop: 8,
+          marginBottom: 8,
         }}
       >
-        {categories.map((c) => (
+        {[
+          ["18 Lebensthemen", "18 Lebensthemen entdecken", "/themen"],
+          ["Persönliche Vorhaben", "Deine persönlichen Vorhaben", "/vorhaben"],
+        ].map(([label, accessibleLabel, destination]) => (
           <Pressable
-            key={c}
+            key={destination}
             accessibilityRole="button"
-            accessibilityState={{ selected: c === filter }}
-            aria-pressed={c === filter}
-            onPress={() => setFilter(c)}
+            accessibilityLabel={accessibleLabel}
+            onPress={() => router.push(destination as "/themen" | "/vorhaben")}
             style={{
               minHeight: 44,
               justifyContent: "center",
-              paddingHorizontal: 15,
-              paddingVertical: 9,
-              borderRadius: 24,
-              backgroundColor: c === filter ? t.primary : t.soft,
+              maxWidth: "100%",
+              paddingVertical: 8,
             }}
           >
             <T
               style={{
-                fontSize: 11,
-                color: c === filter ? t.onPrimary : t.text,
+                fontSize: 12,
+                lineHeight: 19,
+                color: t.primary,
               }}
             >
-              {c}
+              {label}
             </T>
           </Pressable>
         ))}
       </View>
-      <Card style={{ gap: 12, marginBottom: 24 }}>
-        <T variant="heading">Ein Gedanke darf Alltag werden.</T>
-        <T style={{ fontSize: 12, color: t.muted }}>
-          Ein geführter Weg begleitet dich beim Lesen. Mit einem persönlichen
-          Vorhaben hältst du deine eigenen kleinen Versuche und späteren
-          Rückblicke fest.
-        </T>
-        <Button
-          kind="secondary"
-          icon="leaf"
-          onPress={() => router.push("/vorhaben")}
-        >
-          Deine persönlichen Vorhaben
-        </Button>
-      </Card>
-      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 18 }}>
-        <View style={{ width: "100%", alignItems: "flex-start", marginBottom: 8 }}>
-          <Button kind="ghost" icon="leaf" onPress={() => router.push("/themen")}>18 Lebensthemen entdecken</Button>
-        </View>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: width < 600 ? 0 : 18 }}>
         {PATHS.filter(
           (p) => filter === "Alle Wege" || p.category === filter,
         ).map((path) => (
-          <PathCard
+          width < 600 ? <PathListItem key={path.id} path={path} /> : <PathCard
             key={path.id}
             path={path}
             style={{
@@ -121,6 +92,23 @@ export default function Paths() {
             }}
           />
         ))}
+      </View>
+      <View style={{ borderTopWidth: 1, borderTopColor: t.line, marginTop: 28, paddingTop: 20, gap: 16 }}>
+        <View style={{ gap: 6 }}>
+          <T style={{ fontSize: 13 }}>Lesen → Verstehen → Nachdenken</T>
+          <T style={{ fontSize: 12, lineHeight: 19, color: t.muted }}>
+            Etwa 5 Minuten pro Schritt. Reflexion und Gebet sind immer freiwillig.
+            Pausen sind willkommen.
+          </T>
+        </View>
+        <Card style={{ gap: 10 }}>
+          <T variant="heading">Ein Gedanke darf Alltag werden.</T>
+          <T style={{ fontSize: 12, color: t.muted }}>
+            Ein geführter Weg begleitet dich beim Lesen. Mit einem persönlichen
+            Vorhaben hältst du deine eigenen kleinen Versuche und späteren
+            Rückblicke fest.
+          </T>
+        </Card>
       </View>
     </Shell>
   );

@@ -9,14 +9,15 @@ export type BibleScopeSelectProps = {
   value: BibleScope;
   onChange: (value: BibleScope) => void;
   compact?: boolean;
+  inline?: boolean;
 };
 
-export function BibleScopeSelect({ value, onChange, compact = false }: BibleScopeSelectProps) {
+export function BibleScopeSelect({ value, onChange, compact = false, inline = false }: BibleScopeSelectProps) {
   const t = useTheme(),
     [open, setOpen] = useState(false),
     selected = BIBLE_SCOPES.find((scope) => scope.value === value)!;
   return (
-    <View style={{ width: "100%", maxWidth: 420, gap: 7 }}>
+    <View style={{ width: "100%", maxWidth: 420, gap: inline ? 12 : 7, ...(inline ? { flexDirection: "row", flexWrap: "wrap", alignItems: "center" } : {}) }}>
       <T variant="small" style={{ fontWeight: "600" }}>
         Bibelbereich
       </T>
@@ -29,6 +30,7 @@ export function BibleScopeSelect({ value, onChange, compact = false }: BibleScop
         onPress={() => setOpen(true)}
         style={({ pressed }) => ({
           minHeight: 50,
+          ...(inline ? { flexGrow: 1, flexBasis: 160, minWidth: 0 } : {}),
           padding: compact ? 10 : 14,
           borderWidth: 1,
           borderColor: t.line,

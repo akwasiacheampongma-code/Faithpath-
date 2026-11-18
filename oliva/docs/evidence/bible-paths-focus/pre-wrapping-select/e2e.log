@@ -1,0 +1,51 @@
+
+> oliva-faith-companion@0.18.0 test:e2e
+> playwright test tests/e2e/bible-paths-overview.spec.ts tests/e2e/book-search.spec.ts tests/e2e/spiritual-word.spec.ts tests/e2e/stories.spec.ts tests/e2e/today.spec.ts
+
+[WebServer] (node:171737) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 33 tests using 1 worker
+
+(node:171745) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/bible-paths-overview.spec.ts:41:1 › Bibel und Wege sind in vier mobilen Breiten und beiden Farbschemata lesbar und semantisch zugänglich (1.1m)
+  ✓   2 tests/e2e/bible-paths-overview.spec.ts:72:1 › 200 Prozent Text lässt lange Buchnamen, Kapitel und alle Wegefilter ohne horizontales Scrollen erreichbar (28.4s)
+  ✓   3 tests/e2e/bible-paths-overview.spec.ts:101:1 › die Tastatur öffnet nach der Buchzeile unmittelbar die Kapitel und den bestehenden Reader (5.6s)
+  ✓   4 tests/e2e/bible-paths-overview.spec.ts:113:1 › der Wegefilter behält alle Kategorien und der Tastatureinstieg erreicht jeden der neun Originalwege (25.2s)
+  ✓   5 tests/e2e/bible-paths-overview.spec.ts:137:1 › beide Übersichten bleiben offline nach Neustart mit unveränderten persönlichen Daten nutzbar (6.8s)
+  ✓   6 tests/e2e/book-search.spec.ts:19:1 › die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein (2.8s)
+  ✓   7 tests/e2e/book-search.spec.ts:46:1 › Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix (6.3s)
+  ✓   8 tests/e2e/book-search.spec.ts:66:1 › der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus (3.9s)
+  ✓   9 tests/e2e/book-search.spec.ts:87:1 › Suche und Bereich erhalten die Buchübersicht und öffnen das gewählte Kapitel (6.4s)
+  ✓  10 tests/e2e/book-search.spec.ts:117:1 › die NT-Fragenübersicht nutzt dieselbe Buchsuche und bleibt auf ihre 27 Bücher begrenzt (3.9s)
+  ✓  11 tests/e2e/book-search.spec.ts:140:1 › Buchsuche und Dropdown sind bei 320 Pixeln hell und 1440 Pixeln dunkel zugänglich (15.2s)
+  ✓  12 tests/e2e/spiritual-word.spec.ts:70:1 › der Bibelhub öffnet alle66Bücher und1189Kapitel ohne Buchschwert-Auswahl oder Datenänderung (15.8s)
+  ✓  13 tests/e2e/spiritual-word.spec.ts:88:1 › alle66altenBuch-Links öffnen ruhige Buchübersichten und keine Schwertseiten (1.5m)
+  ✓  14 tests/e2e/spiritual-word.spec.ts:107:1 › der quellentreue Vers und sein friedlicher Zusammenhang öffnen den gemeinsamen Reader (7.3s)
+  ✓  15 tests/e2e/spiritual-word.spec.ts:134:1 › der Hub bleibt bei320/1440Pixeln in Hell/Dunkel mit reduzierter Bewegung barrierearm (17.0s)
+  ✓  16 tests/e2e/spiritual-word.spec.ts:162:1 › das einzelne Symbol und alle Bücher bleiben beim Offline-Neustart ohne Schreibvorgang verfügbar (5.6s)
+  ✓  17 tests/e2e/spiritual-word.spec.ts:176:1 › Startseite und Sammlung bleiben frei von Schwertern; bestätigtes Lesen behält seinen normalen Fortschritt (7.4s)
+  ✓  18 tests/e2e/spiritual-word.spec.ts:197:3 › einzelnes Bild bei echtem Ladefehler › Vers und Navigation bleiben bedienbar; bewusster Retry dekodiert das Original (4.7s)
+  ✓  19 tests/e2e/spiritual-word.spec.ts:215:3 › hochauflösende Browserdarstellung › die eine512erDatei reicht für den vollständigen80x120Bildrahmen (7.1s)
+  ✓  20 tests/e2e/stories.spec.ts:20:1 › 436 Originaleinheiten sind auffindbar, standardmäßig gesamte Bibel und tatsächlich virtualisiert (7.4s)
+  ✓  21 tests/e2e/stories.spec.ts:43:1 › Originalantworten bleiben nach Neustart änderbar, ohne Lesen oder Baumwachstum auszulösen (8.3s)
+  ✓  22 tests/e2e/stories.spec.ts:64:1 › auch die längste Einheit führt durch alle 31 Fragen und setzt genau am letzten Schritt fort (9.1s)
+  ✓  23 tests/e2e/stories.spec.ts:84:1 › Reflexionsentwürfe führen über die Sammlung zur richtigen Einheit und bewahren die Originalquelle (9.3s)
+  ✓  24 tests/e2e/stories.spec.ts:108:1 › Judas öffnet zwei exakte Lesebereiche; ein gefälschter Reflexionslink zeigt niemals den Editor (6.8s)
+  ✓  25 tests/e2e/stories.spec.ts:121:1 › ein echter Zwei-Fenster-Konflikt bewahrt die lokale Auswahl bis zur ausdrücklichen Übernahme (9.1s)
+  ✓  26 tests/e2e/stories.spec.ts:139:1 › ein noch nie geöffneter Abschnitt und die Originalfragen funktionieren beim Offline-Neustart (5.8s)
+  ✓  27 tests/e2e/stories.spec.ts:150:1 › bestätigte Ansichten bleiben auf kleinen Displays, in Dunkelansicht und per Tastatur barrierearm (38.1s)
+  ✓  28 tests/e2e/today.spec.ts:21:1 › Heute bietet Gästen einen direkten freiwilligen Einstieg in die vorhandene erste Geschichte (5.8s)
+  ✓  29 tests/e2e/today.spec.ts:29:1 › die Hauptaktion setzt den gespeicherten Abschnitt am tatsächlichen Vers fort (4.5s)
+  ✓  30 tests/e2e/today.spec.ts:37:1 › persönliche Inhalte und alle weiteren Heute-Zugänge bleiben beim Ansehen und Neustart erhalten (6.9s)
+  ✓  31 tests/e2e/today.spec.ts:44:1 › Heute bleibt in beiden Themen bei320/375/390px mit reduzierter Bewegung zugänglich (20.0s)
+  ✓  32 tests/e2e/today.spec.ts:58:1 › Heute und die gespeicherte Lesestelle funktionieren nach einem Offline-Neustart (7.3s)
+  ✓  33 tests/e2e/today.spec.ts:66:2 › ohne geladenes Landschaftsbild › Begrüßung und Hauptaktion bleiben vollständig bedienbar (2.3s)
+
+  33 passed (7.8m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

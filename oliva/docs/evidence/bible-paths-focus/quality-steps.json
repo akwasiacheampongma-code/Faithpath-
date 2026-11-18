@@ -1,0 +1,73 @@
+{
+  "steps": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "content:check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "content:nt"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "content:art"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "content:tree"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "content:swords"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "content:stories"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "content:topics"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "allContentAndRuntimeChecksPassed": true,
+  "securityAuditPassed": false,
+  "securityAuditStatus": "Known unresolved GHSA-fc5q-39xc-vjpf; see prior independent audit and CI evidence",
+  "firstTypecheckFailurePreserved": "typecheck-first-failure.log",
+  "testHelperFix": "Explicit non-null reads for bounded baseline test arrays; no runtime change"
+}

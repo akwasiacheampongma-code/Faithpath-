@@ -1,0 +1,216 @@
+{
+  "all32CatalogAndProgressComparisonsExact": true,
+  "all32MainRecordsExact": true,
+  "all16LargeTextCasesWithoutHorizontalOverflow": true,
+  "allOtherRuntimeSourcesExact": true,
+  "comparisons": [
+    {
+      "area": "bibel",
+      "width": 320,
+      "theme": "light",
+      "beforeY": 1289,
+      "afterY": 480,
+      "beforeHeight": 96,
+      "afterHeight": 68
+    },
+    {
+      "area": "wege",
+      "width": 320,
+      "theme": "light",
+      "beforeY": 1124,
+      "afterY": 384,
+      "beforeHeight": 300,
+      "afterHeight": 162
+    },
+    {
+      "area": "bibel",
+      "width": 375,
+      "theme": "light",
+      "beforeY": 1183,
+      "afterY": 456,
+      "beforeHeight": 96,
+      "afterHeight": 68
+    },
+    {
+      "area": "wege",
+      "width": 375,
+      "theme": "light",
+      "beforeY": 1000,
+      "afterY": 360,
+      "beforeHeight": 282,
+      "afterHeight": 162
+    },
+    {
+      "area": "bibel",
+      "width": 390,
+      "theme": "light",
+      "beforeY": 1164,
+      "afterY": 456,
+      "beforeHeight": 96,
+      "afterHeight": 68
+    },
+    {
+      "area": "wege",
+      "width": 390,
+      "theme": "light",
+      "beforeY": 1000,
+      "afterY": 360,
+      "beforeHeight": 282,
+      "afterHeight": 162
+    },
+    {
+      "area": "bibel",
+      "width": 430,
+      "theme": "light",
+      "beforeY": 1143,
+      "afterY": 456,
+      "beforeHeight": 96,
+      "afterHeight": 68
+    },
+    {
+      "area": "wege",
+      "width": 430,
+      "theme": "light",
+      "beforeY": 952,
+      "afterY": 360,
+      "beforeHeight": 282,
+      "afterHeight": 143
+    },
+    {
+      "area": "bibel",
+      "width": 320,
+      "theme": "dark",
+      "beforeY": 1289,
+      "afterY": 480,
+      "beforeHeight": 96,
+      "afterHeight": 68
+    },
+    {
+      "area": "wege",
+      "width": 320,
+      "theme": "dark",
+      "beforeY": 1124,
+      "afterY": 384,
+      "beforeHeight": 300,
+      "afterHeight": 162
+    },
+    {
+      "area": "bibel",
+      "width": 375,
+      "theme": "dark",
+      "beforeY": 1183,
+      "afterY": 456,
+      "beforeHeight": 96,
+      "afterHeight": 68
+    },
+    {
+      "area": "wege",
+      "width": 375,
+      "theme": "dark",
+      "beforeY": 1000,
+      "afterY": 360,
+      "beforeHeight": 282,
+      "afterHeight": 162
+    },
+    {
+      "area": "bibel",
+      "width": 390,
+      "theme": "dark",
+      "beforeY": 1164,
+      "afterY": 456,
+      "beforeHeight": 96,
+      "afterHeight": 68
+    },
+    {
+      "area": "wege",
+      "width": 390,
+      "theme": "dark",
+      "beforeY": 1000,
+      "afterY": 360,
+      "beforeHeight": 282,
+      "afterHeight": 162
+    },
+    {
+      "area": "bibel",
+      "width": 430,
+      "theme": "dark",
+      "beforeY": 1143,
+      "afterY": 456,
+      "beforeHeight": 96,
+      "afterHeight": 68
+    },
+    {
+      "area": "wege",
+      "width": 430,
+      "theme": "dark",
+      "beforeY": 952,
+      "afterY": 360,
+      "beforeHeight": 282,
+      "afterHeight": 143
+    }
+  ],
+  "protectedScreens": [
+    {
+      "area": "heute",
+      "theme": "light",
+      "bytesExact": true,
+      "differingPixels": 0,
+      "totalPixels": 329160,
+      "differenceBounds": null,
+      "allRuntimeSourcesUnchanged": true
+    },
+    {
+      "area": "garten",
+      "theme": "light",
+      "bytesExact": true,
+      "differingPixels": 0,
+      "totalPixels": 329160,
+      "differenceBounds": null,
+      "allRuntimeSourcesUnchanged": true
+    },
+    {
+      "area": "sammlung",
+      "theme": "light",
+      "bytesExact": true,
+      "differingPixels": 0,
+      "totalPixels": 329160,
+      "differenceBounds": null,
+      "allRuntimeSourcesUnchanged": true
+    },
+    {
+      "area": "heute",
+      "theme": "dark",
+      "bytesExact": true,
+      "differingPixels": 0,
+      "totalPixels": 329160,
+      "differenceBounds": null,
+      "allRuntimeSourcesUnchanged": true
+    },
+    {
+      "area": "garten",
+      "theme": "dark",
+      "bytesExact": false,
+      "differingPixels": 22,
+      "totalPixels": 329160,
+      "differenceBounds": [
+        170,
+        633,
+        220,
+        635
+      ],
+      "allRuntimeSourcesUnchanged": true
+    },
+    {
+      "area": "sammlung",
+      "theme": "dark",
+      "bytesExact": true,
+      "differingPixels": 0,
+      "totalPixels": 329160,
+      "differenceBounds": null,
+      "allRuntimeSourcesUnchanged": true
+    }
+  ],
+  "rawCaptureFailure": "Error: garten dark unchanged\n\nexpect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at captureRawStack (/workspace/faithpath-next/node_modules/playwright-core/lib/coreBundle.js:9551:17)\n    at callMatcherAsStep (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13342:57)\n    at Object.toBe (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13334:23)\n    at /workspace/faithpath-next/scripts/capture-bible-paths.mjs:73:311",
+  "protectedVisualReview": "Both Garden screenshots inspected. The22different pixels lie at the tree/soil antialiasing edge (170,633)-(220,635); no layout or source change. Other five protected screenshots byte-exact.",
+  "deviceTest": false
+}

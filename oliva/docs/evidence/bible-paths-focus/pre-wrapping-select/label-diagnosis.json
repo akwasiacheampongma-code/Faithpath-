@@ -1,0 +1,21 @@
+{
+  "method": "Local Chromium,320px viewport, select font-size30px only; does not claim full OS text scaling",
+  "measurements": [
+    {
+      "value": "Alle",
+      "textWidth": 194.87979125976562,
+      "availableTextWidth": 141
+    },
+    {
+      "value": "NT",
+      "textWidth": 297.61468505859375,
+      "availableTextWidth": 141
+    },
+    {
+      "value": "AT",
+      "textWidth": 276.700927734375,
+      "availableTextWidth": 141
+    }
+  ],
+  "problem": "Native selected labels clip; retain actual HTML select but show a wrapping aria-hidden mirror in inline Bible view only"
+}

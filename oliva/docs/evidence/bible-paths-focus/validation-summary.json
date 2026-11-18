@@ -1,0 +1,41 @@
+{
+  "versionBasis": "0.18.0",
+  "formalNewRelease": false,
+  "coreBuild": "oliva-d5c8bc2a00df2334",
+  "runtimeSourceDigest": {
+    "sha256": "3b0a8ec676efb9e15a341002fd1ccd2a4a4c6c990b3c45360bb0cb01fa5c52fd",
+    "changedFromQualifiedToday": [
+      "app/bibel.tsx",
+      "app/wege.tsx",
+      "src/features/bible/BibleScopeSelect.tsx",
+      "src/features/bible/BibleScopeSelect.web.tsx",
+      "src/features/paths/PathCategorySelect.tsx",
+      "src/features/paths/PathCategorySelect.web.tsx",
+      "src/features/paths/PathListItem.tsx"
+    ],
+    "runtimeFiles": 347
+  },
+  "unitPassed": 343,
+  "browserPassed": 33,
+  "browserSingleFullRun": true,
+  "typecheckPassed": true,
+  "contentChecksPassed": true,
+  "screensBefore": 32,
+  "screensAfter": 32,
+  "largeTextCases": 16,
+  "allOtherRuntimeSourcesExact": true,
+  "protectedScreensByteExact": 5,
+  "protectedScreensTotal": 6,
+  "gardenCanvasEdgeDifferentPixels": 22,
+  "pwaUpdateAllFourRawRecordsExact": true,
+  "appDataVersion": 11,
+  "securityAuditPassed": false,
+  "knownAdvisory": "GHSA-fc5q-39xc-vjpf",
+  "physicalDeviceTest": false,
+  "simulatorTest": false,
+  "hostedBrowserQa": false,
+  "newDependencies": false,
+  "newContent": false,
+  "scopedLocalAcceptancePassed": true,
+  "allCoreChecksPassed": false
+}
