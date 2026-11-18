@@ -1,0 +1,32 @@
+{
+  "auditExitCode": 1,
+  "severity": "high",
+  "affectedPackageReports": 33,
+  "distinctAdvisories": [
+    {
+      "source": 1247710,
+      "name": "picomatch",
+      "dependency": "picomatch",
+      "title": "picomatch vulnerable to ReDoS through single-branch repeated extglobs",
+      "url": "https://github.com/advisories/GHSA-fc5q-39xc-vjpf",
+      "severity": "high",
+      "cwe": [
+        "CWE-1333"
+      ],
+      "cvss": {
+        "score": 7.5,
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      },
+      "range": "<=4.0.7"
+    }
+  ],
+  "installedPicomatch": [
+    "2.3.2",
+    "4.0.7"
+  ],
+  "registryLatestObserved": "4.0.7",
+  "automaticFixApplied": false,
+  "runtimeExploitationTested": false,
+  "historical018AuditOverwritten": false,
+  "followup": "Trace toolchain and any shipped-runtime reachability; assess a compatible published fix without force downgrade."
+}

@@ -1,0 +1,64 @@
+{
+  "scope": "Audit/proposals only, no application runtime edits",
+  "runtimeFilesVerified": 344,
+  "runtimeDigest": "29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab",
+  "newAppBuildCreated": false,
+  "baseAppProductionBuild": "oliva-6e2b52bb8e634041",
+  "basePrivateHostBuild": "oliva-5d647075614ace83",
+  "unit": {
+    "passed": 343,
+    "failed": 0
+  },
+  "typecheckExit": 0,
+  "baselineLayoutCases": 100,
+  "finalProposalCases": 100,
+  "baselineAxeCases": 10,
+  "proposalAxeCases": 20,
+  "axeViolations": 0,
+  "largeTextCases": 10,
+  "readerStoryCases": 40,
+  "readerMaximumFont": 33,
+  "offlineConditions": [
+    {
+      "mode": "normal",
+      "message": "Für den Offline-Neustart bereit.",
+      "conditions": {
+        "secureContext": true,
+        "serviceWorkerExposed": true,
+        "online": true
+      },
+      "passed": true
+    },
+    {
+      "mode": "api-absent",
+      "message": "Dieser Browser unterstützt keinen Offline-Neustart.",
+      "conditions": {
+        "secureContext": true,
+        "serviceWorkerExposed": false,
+        "online": true
+      },
+      "passed": true
+    },
+    {
+      "mode": "registration-blocked",
+      "message": "Offline-Paket noch nicht vollständig. Mit Verbindung erneut öffnen.",
+      "conditions": {
+        "secureContext": true,
+        "serviceWorkerExposed": true,
+        "online": true
+      },
+      "passed": true
+    }
+  ],
+  "keyboardRoutes": 5,
+  "rawRecordsPreserved": true,
+  "actualDeviceTests": false,
+  "nativeExecution": false,
+  "newVersionAssigned": false,
+  "newMajorLayoutImplementation": false,
+  "productionAuditPassed": false,
+  "productionAuditDistinctAdvisories": 1,
+  "productionAuditAffectedPackages": 33,
+  "publicReleaseApproved": false,
+  "majorDesignApprovalPending": true
+}

@@ -1,5 +1,12 @@
 # Lieferstand · OLIVA 0.18.0 · Ein geistliches Schwert
 
+<!-- OLIVA_QUIET_UX_AUDIT_20261118 -->
+## Aktueller Auftrag: Weniger Oberfläche, mehr Tiefe
+
+Audit und zwei Gestaltungsvorschläge vom 18.11.2026: [Befunde und Freigabevorlage](35-quiet-ux-audit.md). [Private Vorher-/A-/B-Vergleiche aller fünf Bereiche](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/quiet-ux/index.svg). Die App bleibt unverändert auf 0.18; größere Gestaltungsänderungen warten gemäß Nutzerauftrag auf Freigabe. 343 Fachtests, Typecheck und sieben Inhaltsprüfungen erneut bestanden. Der heutige Produktionsaudit meldet eine neue picomatch-Advisory; öffentliche Rechte und Hosting-Schutzheader bleiben offen. Keine Geräteprüfung oder vollständige neue Produktabnahme behauptet. Kein neuer Release-Tag.
+<!-- /OLIVA_QUIET_UX_AUDIT_20261118 -->
+
+
 <!-- OLIVA_018_CURRENT -->
 ## OLIVA 0.18.0 · ein geistliches Schwert
 

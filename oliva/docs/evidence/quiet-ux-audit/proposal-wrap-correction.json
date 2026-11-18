@@ -1,0 +1,21 @@
+{
+  "scope": "Review-only wrapping correction; not an app source change",
+  "reason": "Fixed an unconstrained heading parent in variantA at320px",
+  "checks": [
+    {
+      "width": 320,
+      "theme": "light",
+      "clientWidth": 320,
+      "scrollWidth": 320,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "theme": "dark",
+      "clientWidth": 320,
+      "scrollWidth": 320,
+      "overflow": false
+    }
+  ],
+  "checkedAt": "2026-11-18T06:17:01.244Z"
+}

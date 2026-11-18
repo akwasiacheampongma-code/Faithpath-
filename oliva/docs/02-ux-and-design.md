@@ -1,6 +1,6 @@
 # Informationsarchitektur und Designsystem
 
-Arbeitsmarke **OLIVA**. Eigenständiges Erscheinungsbild; Markenverfügbarkeit ist noch nicht geprüft. Keine Übernahme von FaithPath-Quellcode, Layoutdateien, Fonts oder Bildassets. Die lokal eingebundenen Open-Font-Schriften wurden neu aus ihrer Originalquelle bezogen.
+Arbeitsmarke **OLIVA**. Eigenständiges Erscheinungsbild; Markenverfügbarkeit ist noch nicht geprüft. Eigenständige OLIVA-Oberfläche; die ausdrücklich beauftragte Übernahme von A51-Baum und Originalinhalten aus FaithPath ist mit Provenienz und Rechteausnahmen dokumentiert. Die lokal eingebundenen Open-Font-Schriften wurden neu aus ihrer Originalquelle bezogen.
 
 ## Informationsarchitektur
 
@@ -25,7 +25,7 @@ flowchart TD
  G --> A[Freiwillige Alltagserfahrung]
  A --> S
  S --> J[Gedanken · Bearbeiten / Löschen / Undo]
- S --> K[66 Buchschwerter]
+ B --> K[Ein geistliches Schwert · Epheser 6,17]
  H --> P[Einstellungen]
  P --> Q[Quellen / Datenschutz / Bildherkunft]
  P --> X[Export / Prüfen / Bestätigter Restore]
@@ -75,11 +75,13 @@ Abstandsskala: 4, 8, 12, 16, 20, 24, 32, 40, 48, 64. Radien: 10 / 18 / 26 / Pill
 
 ## Olivenbaum und Schwert
 
-Sieben eigene Vektorstadien: Samen → Wurzeln → Spross → Stamm → Zweige → Blätterdach → Früchte. Stufen spiegeln unterschiedliche Lernaktionen. Früchte benötigen mindestens eine selbst festgehaltene Anwendung. Keine Stufe fällt durch Pausen zurück. Das Beibehalten einer erreichten Bildstufe nach Löschen einer Reflexion bewahrt das Bild; gelöschter persönlicher Text bleibt gelöscht.
+Sieben originale A51-Baumstadien mit gemeinsamer Stadienlogik und plattformabhängiger Web-/Native-Darstellung. Originalmaster, Windlogik, statische Fallbacks und Provenienz bleiben erhalten. Die aktuelle persönliche Darstellung und Originalhistorie sind in den aktuellen Garten-Verträgen bzw. den Liefernachweisen zu0.16/0.17 beschrieben. Der Baum ist kein Glaubensscore, verliert durch Pausen keine Blätter und misst weder Gottes Liebe noch menschlichen Wert. Vorschauen schreiben keinen persönlichen Fortschritt. Reduzierte Bewegung und Fehler-/Retryzustände bleiben erhalten.
 
-Die Voraussetzungen stehen deterministisch in `grow()` und sind Produktlogik, keine theologische Messung. Eine Vorschau zeigt alle Stadien, trägt ein sichtbares Vorschau-Label und schreibt keinen Fortschritt. Kurzer visueller Übergang bei Stufenwechsel, OS-/App-Einstellung zur reduzierten Bewegung. Kein unendlicher Timer oder bildschirmfüllendes Belohnungsfeuerwerk.
+Die frühere Sammlung von66Buchschwertern wurde auf ausdrücklichen Nutzerauftrag in0.18 entfernt. Aktuell steht genau ein statisches, vorhandenes Schwert im Bibel-Hub: friedliches Symbol für Gottes Wort zuEpheser6,17, ohne Fortschritts-/Belohnungsfunktion. Geprüfter Luther-1912-Auszug, Kontext6,10–18 und Provenienz: `docs/34-single-spirit-sword.md`. Historische Originalkunst und Rechteinformationen bleiben archiviert.
 
-Alle 66 Buchschwerter sind sichtbar, ohne „freigeschaltet“ werden zu müssen. Die individuelle Metadatenfamilie beschreibt Thema und Symbol. Die parametrisierte Vektorfamilie variiert Klinge, Griff, Emblem und Ornament. Die Lichtlinie folgt bestätigten **vollen Kapiteln** dieses Buchs. Ein Abschnitt im Weg bleibt davon getrennt. Das Schwert steht für Orientierung, nicht Gewalt, Status oder Überlegenheit.
+## Laufende UX-Phase vom18.11.2026
+
+Die fünf Hauptbereiche bleiben. Der Auftrag „Weniger Oberfläche, mehr Tiefe“ verlangt klare Hauptaktionen, kürzere Wege, flexible Typografie und Datenerhalt. Aktuelles Audit und zwei Vorschläge: [Freigabevorlage](35-quiet-ux-audit.md). Die0.18-Oberfläche ist bis zur ausdrücklich geforderten Freigabe unverändert. Reviewbilder sind als nicht implementierte Studien gekennzeichnet. Große Schrift wird getrennt von reiner Dokumentbreite geprüft; CSS-Vergrößerung ersetzt keine Systemschrift-/Geräteabnahme.
 
 ## High-Fidelity-Ansichten
 

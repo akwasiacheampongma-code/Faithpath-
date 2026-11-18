@@ -1,0 +1,16 @@
+{
+  "scope": "Unveränderter qualifizierter Produktions-Webbuild 0.18; lokale Chromium-Viewports. Keine echten Geräte-/Simulator-/Screenreaderprüfungen.",
+  "baseline": "oliva-6e2b52bb8e634041",
+  "productionUiChanged": false,
+  "proposalsRequireApproval": true,
+  "startedAt": "2026-11-18T05:58:26.629Z",
+  "matrix": [],
+  "proposals": [],
+  "axe": [],
+  "largeText": [],
+  "errors": [],
+  "network": [],
+  "checks": [],
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Namen speichern', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button disabled role=\"button\" tabindex=\"-1\" type=\"button\" aria-disabled=\"true\" class=\"css-g5y9jx r-12vffkv\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at profile (/workspace/faithpath-next/scripts/audit-quiet-ux.mjs:37:70)\n    at async file:///workspace/faithpath-next/scripts/audit-quiet-ux.mjs:83:16",
+  "finishedAt": "2026-11-18T05:59:00.940Z"
+}

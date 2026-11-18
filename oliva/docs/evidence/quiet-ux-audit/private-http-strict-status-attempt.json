@@ -1,0 +1,325 @@
+{
+  "checkedAt": "2026-11-18T06:03:25.432809+00:00",
+  "scope": "Read-only HTTP headers/content markers, not a hosted browser or OS-device test",
+  "existingDeployment": "appgdep_6afc85fb56b8819195ae3d2b7859d32f",
+  "accessPolicy": {
+    "role": "owner",
+    "accessMode": "custom",
+    "revision": 1,
+    "users": 1,
+    "groups": 0,
+    "externalVisitors": 0
+  },
+  "liveCi": {
+    "run": 44124684188,
+    "job": 134185116862,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "tokenPersisted": false,
+  "accessChanged": false,
+  "deployed": false,
+  "results": [
+    {
+      "route": "/",
+      "authenticated": false,
+      "status": 403,
+      "bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": "same-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "content-type": "text/plain; charset=UTF-8"
+      },
+      "setCookiePresent": true
+    },
+    {
+      "route": "/",
+      "authenticated": true,
+      "status": 200,
+      "bytes": 2381,
+      "sha256": "9b798164ea6de938ea95327199f41607f8d8da709f454b926eb9188a4db3bafd",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html"
+      },
+      "setCookiePresent": true,
+      "expectedDeployed018Marker": true
+    },
+    {
+      "route": "/bibel",
+      "authenticated": false,
+      "status": 403,
+      "bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": "same-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "content-type": "text/plain; charset=UTF-8"
+      },
+      "setCookiePresent": true
+    },
+    {
+      "route": "/bibel",
+      "authenticated": true,
+      "status": 200,
+      "bytes": 2381,
+      "sha256": "9b798164ea6de938ea95327199f41607f8d8da709f454b926eb9188a4db3bafd",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html"
+      },
+      "setCookiePresent": true,
+      "expectedDeployed018Marker": true
+    },
+    {
+      "route": "/wege",
+      "authenticated": false,
+      "status": 403,
+      "bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": "same-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "content-type": "text/plain; charset=UTF-8"
+      },
+      "setCookiePresent": true
+    },
+    {
+      "route": "/wege",
+      "authenticated": true,
+      "status": 200,
+      "bytes": 2381,
+      "sha256": "9b798164ea6de938ea95327199f41607f8d8da709f454b926eb9188a4db3bafd",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html"
+      },
+      "setCookiePresent": true,
+      "expectedDeployed018Marker": true
+    },
+    {
+      "route": "/garten",
+      "authenticated": false,
+      "status": 403,
+      "bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": "same-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "content-type": "text/plain; charset=UTF-8"
+      },
+      "setCookiePresent": true
+    },
+    {
+      "route": "/garten",
+      "authenticated": true,
+      "status": 200,
+      "bytes": 2381,
+      "sha256": "9b798164ea6de938ea95327199f41607f8d8da709f454b926eb9188a4db3bafd",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html"
+      },
+      "setCookiePresent": true,
+      "expectedDeployed018Marker": true
+    },
+    {
+      "route": "/sammlung",
+      "authenticated": false,
+      "status": 403,
+      "bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": "same-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "content-type": "text/plain; charset=UTF-8"
+      },
+      "setCookiePresent": true
+    },
+    {
+      "route": "/sammlung",
+      "authenticated": true,
+      "status": 200,
+      "bytes": 2381,
+      "sha256": "9b798164ea6de938ea95327199f41607f8d8da709f454b926eb9188a4db3bafd",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html"
+      },
+      "setCookiePresent": true,
+      "expectedDeployed018Marker": true
+    },
+    {
+      "route": "/sw.js",
+      "authenticated": false,
+      "status": 403,
+      "bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": "same-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "content-type": "text/plain; charset=UTF-8"
+      },
+      "setCookiePresent": true
+    },
+    {
+      "route": "/sw.js",
+      "authenticated": true,
+      "status": 200,
+      "bytes": 10926,
+      "sha256": "6b0a8b94cb13595ba117416e087295a0480999de7beb0337c0c9c069a2926880",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/javascript"
+      },
+      "setCookiePresent": true
+    },
+    {
+      "route": "/manifest.webmanifest",
+      "authenticated": false,
+      "status": 403,
+      "bytes": 17,
+      "sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": "same-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "content-type": "text/plain; charset=UTF-8"
+      },
+      "setCookiePresent": true
+    },
+    {
+      "route": "/manifest.webmanifest",
+      "authenticated": true,
+      "status": 200,
+      "bytes": 588,
+      "sha256": "89e1fa799ec6a3daad16050e11ed5a337c60fa67665cd0cd5b5cac1789521cc6",
+      "headers": {
+        "content-security-policy": null,
+        "content-security-policy-report-only": null,
+        "strict-transport-security": null,
+        "x-content-type-options": null,
+        "referrer-policy": null,
+        "x-frame-options": null,
+        "permissions-policy": null,
+        "cross-origin-opener-policy": null,
+        "cross-origin-resource-policy": null,
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "application/manifest+json"
+      },
+      "setCookiePresent": true
+    }
+  ],
+  "expectedAccessPassed": false,
+  "expected018Passed": true
+}

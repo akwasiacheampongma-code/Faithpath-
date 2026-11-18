@@ -1,0 +1,8 @@
+{
+  "scope": "Audit helper setup failure, not an app regression",
+  "requestsAttempted": 14,
+  "assertion": "Expected authenticated200/anonymous401 was not met",
+  "cause": "Helper omitted the required Bearer prefix; no app/access changes were made",
+  "rawResponsesRetained": false,
+  "retryUsesCorrectAuthorizationScheme": true
+}

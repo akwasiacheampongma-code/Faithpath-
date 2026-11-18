@@ -1,3 +1,23 @@
+# Aktuell: Ruhe-UX-Audit · größere Gestaltung wartet auf Freigabe
+
+Der neue Masterauftrag „Weniger Oberfläche, mehr Tiefe“ vom 18.11.2026 hebt die vorherige Pause auf und ersetzt die frühere Priorisierung der Bildserien. Keine neuen Funktionen, Cloud-/KI-/Audio-/Zahlungsintegration. Fünf Hauptbereiche und alle bestehenden Inhalte/Daten bewahren. Abschnitt 13 verlangt vor größeren Gestaltungsänderungen zwei begründete Varianten und ausdrückliche Nutzerfreigabe.
+
+OLIVA 0.18 ist vollständig gesichert und ausgeliefert. Ausgangscommit `e5750309786fc70dad4d3944206d55550d1c0699`, Rückkehrtag `oliva-pre-quiet-ux-audit-20261118`, aktueller Arbeitsbranch `feature/oliva-quiet-ux-audit-20261118`. Alle 344 Runtime-Dateien stimmen weiterhin exakt mit dem abgenommenen Release überein; SHA-256 `29b2c6c4292c38e943108a4afd5de003e150d9ed47cf9f4269a53b565e46f0ab`. Keine neue Appversion vergeben, keine größere Layoutänderung implementiert.
+
+Aktueller Bericht: `docs/35-quiet-ux-audit.md`; rechtliche Arbeitsentwürfe: `docs/quiet-ux/privacy-and-rights-drafts.md`; Belege/Screenshots: `docs/evidence/quiet-ux-audit/`. 343 Fachtests und Typecheck erneut bestanden, sieben Inhaltsprüfungen bestanden. 100 Bestandsfälle für fünf Bereiche × fünf Breiten × zwei Themen × zwei Datenstände; 100 finale Layoutstudien. 30 Axe-Stichproben ohne gemeldete Verstöße, 10 separate 200%-CSS-Textfälle mit Bestandsüberläufen in Heute/Bibel. 40 Reader-/Geschichtenfälle mit realer Maximalschrift, direkte Versauswahl, drei Offlinebedingungen und Tastaturstichprobe. Kein echter Geräte-/Simulator-/VoiceOver-/TalkBack-Test.
+
+Neu am 18.11.: Produktionsaudit schlägt wegen einer High-Advisory für picomatch fehl (33 abhängige Paketmeldungen, eine eigene Advisory GHSA-fc5q-39xc-vjpf). Registrylatest bleibt 4.0.7. Nicht als behoben oder als 33 unabhängige Lücken ausgeben, kein audit-fix-force oder pauschaler Downgrade. Hosting-Schutzheader und öffentliche Bild-/Inhaltsrechte sind ebenfalls offen.
+
+Die separate private Vergleichsansicht liegt unter `https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/quiet-ux/index.svg`. Nur Review-SVG/PNG ergänzt, alle 161 vorherigen Dateien bytegenau erhalten; App bleibt auf 0.18, ServiceWorker/Offlinepaket unverändert. Sitequelle `fb08a009e0a54516969310924a1e0dd6e7812327`, Review-Deployment `appgdep_6afd44576c7c819197bbdc54e2493db3`, erfolgreich am 18.11.2026 um 06:23:34 UTC, Eigentümerpolitik unverändert Revision 1. Die frühere Ein-HTML-Regel wurde nicht abgeschwächt: Ein zusätzlicher HTML-Einstieg kann SPA-Routen beschädigen, deshalb gehostete Review nur SVG/PNG. Lokaler HTML-Entwurf bleibt außerhalb des Appbundles.
+
+Empfehlung A: Inhalt zuerst. Variante B hält mehr Auswahl/Schwert vor dem Inhalt. Erst nach ausdrücklicher Freigabe mit Heute anfangen; anschließend jeden Bereich einzeln umsetzen, vergleichen und prüfen. Persönliche/originale Historie, 436 Geschichten, 2479 Fragen, 436 Impulse, 95 Varianten, 1300 separate NT-Fragen, 18 Lebensthemen/45 Stellen, neun bestehende Wege und sieben Originalbaumstadien erhalten. Die folgenden älteren Pause-/Weiterarbeitsanweisungen sind historische Stände. Keine subagents. Git/GH-Traces entfernen, Geheimnisse nur im Sitzungsspeicher/versteckten stdin. Original-FaithPath/GitHub-main/historische Tags bleiben unverändert.
+
+Sicherung dieser Auditphase: tatsächliche Commit-/GitHubkennungen erst aus `/workspace/oliva-quiet-ux-audit-checkpoint.json` und `/workspace/oliva-quiet-ux-audit-github-backup.json` übernehmen, sobald erstellt. Keine historischen Tags retaggen; keine neue Releaseversion oder fertige Gesamt-Definition-of-Done behaupten.
+
+---
+
+## Historischer Pausenstand nach 0.18
+
 # PAUSE AUF NUTZERWUNSCH
 
 Der Nutzer hat zuletzt angewiesen: „Fahre fort und mach nach Beenden Pause.“ Die aktuelle Ein-Schwert-Aufgabe ist als OLIVA 0.18.0 privat ausgeliefert und unabhängig geprüft. Dieser Dokumentationsstand beendet die abschließende Sicherung. Danach **keine weitere Entwicklung, Bildgenerierung oder automatische Master-Fortsetzung** beginnen. Erst bei erneutem ausdrücklichem Fortsetzen weiterarbeiten. Der Gesamt-Master bleibt fachlich offen; diese Pause ist kein Abschluss des Gesamtprojekts.

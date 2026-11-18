@@ -1,0 +1,11 @@
+{
+  "reason": "First harness read wrapper CSS font rather than actual paragraph and checked a nonexistent testid",
+  "firstReport": "reader-offline-first-probe.json",
+  "correctedReport": "reader-offline-audit.json",
+  "assertionsNow": [
+    "actual paragraph font33",
+    "named verse-selection toolbar visible",
+    "both selected verses aria-pressed true"
+  ],
+  "appCodeChanged": false
+}
