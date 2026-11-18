@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Pressable, View } from "react-native";
 import { router } from "expo-router";
-import { Button, Card, T, Tag } from "../../components/ui";
+import { Button, Card, T } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { personalTreeLinks, type personalTreeHistory, type TreeMoment } from "./personal-history";
 
@@ -28,24 +28,20 @@ export function PersonalTreePins({ links }: { links: Links }) {
 export function PersonalTreeJourney({ model, links }: { model: Model; links: Links }) {
   const t = useTheme(), [branchLimit, setBranchLimit] = useState(6), [momentLimit, setMomentLimit] = useState(10),
     [unplacedLimit, setUnplacedLimit] = useState(6);
-  return <View style={{ marginTop: 30, gap: 18 }} testID="personal-tree-journey">
-    <Tag icon="leaf">Deine Aufzeichnungen</Tag>
-    <T variant="heading" style={{ fontSize: 34, lineHeight: 39 }}>Deine Geschichte im Baum.</T>
-    <T style={{ color: t.muted, fontSize: 13, lineHeight: 23 }}>
-      Deine eigenen Worte, Schritte und Rückblicke gehören zu deiner Geschichte. Die Zweige öffnen vorhandene persönliche Vorhaben. Auch ruhende Vorhaben behalten ihren Platz.
-    </T>
+  return <View style={{ marginTop: 24, gap: 12 }} testID="personal-tree-journey">
+    <T variant="heading" accessibilityRole="header" style={{ fontSize: 27, lineHeight: 33 }}>Deine Geschichte im Baum</T>
     {model.branches.length > 0 && <View style={{ gap: 12 }}>
       {model.branches.slice(0, branchLimit).map((branch) => {
         const pin = links.find((link) => link.branch.goalId === branch.goalId);
         return <Pressable key={branch.goalId} accessibilityRole="button"
           accessibilityLabel={`${branch.title}${branch.archived ? ", ruhendes Vorhaben" : ""}: zugehöriges Vorhaben öffnen`}
           onPress={() => openGoal(branch.goalId)} style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}>
-          <Card style={{ gap: 8 }}>
+          <View style={{ paddingVertical: 12, gap: 5, borderBottomWidth: 1, borderColor: t.line }}>
             <T variant="small" style={{ color: t.gold }}>{pin ? `Zweig ${pin.number} · ` : ""}{branch.archived ? "Ruhendes Vorhaben" : "Persönliches Vorhaben"}{branch.imported ? " · aus FaithPath" : ""}</T>
             <T variant="heading" style={{ fontSize: 26, lineHeight: 31 }}>{branch.title}</T>
             <T variant="small" numberOfLines={2} style={{ color: t.muted }}>{branch.moments[0]?.text}</T>
             <T variant="small" style={{ color: t.primary }}>Zum Vorhaben →</T>
-          </Card>
+          </View>
         </Pressable>;
       })}
       {branchLimit < model.branches.length && <Button kind="ghost" onPress={() => setBranchLimit((n) => n + 6)}>Weitere Vorhaben anzeigen</Button>}
@@ -56,14 +52,11 @@ export function PersonalTreeJourney({ model, links }: { model: Model; links: Lin
       {model.unplaced.slice(0, unplacedLimit).map((goal) => <Button key={goal.goalId} kind="ghost" onPress={() => openGoal(goal.goalId)}>{goal.title}{goal.archived ? " · ruht" : ""}</Button>)}
       {unplacedLimit < model.unplaced.length && <Button kind="secondary" onPress={() => setUnplacedLimit((n) => n + 6)}>Weitere Vorhaben ohne Aufzeichnungen</Button>}
     </Card>}
-    {model.timeline.length > 0 ? <Card style={{ gap: 18 }}>
-      <T variant="heading" style={{ fontSize: 28 }}>Momente auf deinem Weg</T>
+    {model.timeline.length > 0 ? <View style={{ gap: 12 }}>
+      <T variant="heading" style={{ fontSize: 24, lineHeight: 30 }}>Momente auf deinem Weg</T>
       {model.timeline.slice(0, momentLimit).map((moment) => <Moment key={moment.key} moment={moment} />)}
       {momentLimit < model.timeline.length && <Button kind="ghost" onPress={() => setMomentLimit((n) => n + 10)}>Weitere Momente anzeigen</Button>}
-    </Card> : <Card style={{ gap: 12, backgroundColor: t.soft }}>
-      <T variant="heading" style={{ fontSize: 27 }}>Hier ist Raum für deine Geschichte.</T>
-      <T variant="small" style={{ color: t.muted }}>Wenn du eigene Worte, Schritte oder Rückblicke festhältst, kannst du sie hier wiederfinden. Du brauchst nichts nachzuholen.</T>
-    </Card>}
+    </View> : <T variant="small" style={{ color: t.muted }}>Hier findest du Gedanken, Schritte und Rückblicke wieder, sobald du sie festhältst.</T>}
   </View>;
 }
 

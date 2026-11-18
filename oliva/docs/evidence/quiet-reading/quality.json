@@ -1,0 +1,83 @@
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "test",
+      "--",
+      "--reporter=json",
+      "--outputFile=docs/evidence/quiet-reading/unit.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:check"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:nt"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:stories"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:topics"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:art"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:tree"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "content:swords"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "node",
+      "scripts/check-spiritual-sword-runtime.mjs"
+    ],
+    "exitCode": 0
+  }
+]

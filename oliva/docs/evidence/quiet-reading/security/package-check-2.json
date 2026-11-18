@@ -1,0 +1,138 @@
+{
+  "version": "0.18.0",
+  "name": "oliva-faith-companion",
+  "dependencies": {
+    "expo": {
+      "version": "58.0.23",
+      "resolved": "https://registry.npmjs.org/expo/-/expo-58.0.23.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@expo/cli": {
+          "version": "58.1.19",
+          "resolved": "https://registry.npmjs.org/@expo/cli/-/cli-58.1.19.tgz",
+          "overridden": false,
+          "dependencies": {
+            "@expo/metro-file-map": {
+              "version": "58.0.5",
+              "resolved": "https://registry.npmjs.org/@expo/metro-file-map/-/metro-file-map-58.0.5.tgz",
+              "overridden": false,
+              "dependencies": {
+                "jest-worker": {
+                  "version": "29.7.0",
+                  "resolved": "https://registry.npmjs.org/jest-worker/-/jest-worker-29.7.0.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "jest-util": {
+                      "version": "29.7.0",
+                      "resolved": "https://registry.npmjs.org/jest-util/-/jest-util-29.7.0.tgz",
+                      "overridden": false,
+                      "dependencies": {
+                        "picomatch": {
+                          "version": "2.3.2"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "picomatch": {
+              "version": "4.0.7",
+              "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz",
+              "overridden": false
+            }
+          }
+        },
+        "@expo/metro-config": {
+          "version": "58.0.21",
+          "resolved": "https://registry.npmjs.org/@expo/metro-config/-/metro-config-58.0.21.tgz",
+          "overridden": false,
+          "dependencies": {
+            "picomatch": {
+              "version": "4.0.7"
+            }
+          }
+        },
+        "@expo/metro": {
+          "version": "58.0.0",
+          "resolved": "https://registry.npmjs.org/@expo/metro/-/metro-58.0.0.tgz",
+          "overridden": false,
+          "dependencies": {
+            "metro-file-map": {
+              "version": "0.87.1",
+              "resolved": "https://registry.npmjs.org/metro-file-map/-/metro-file-map-0.87.1.tgz",
+              "overridden": false,
+              "dependencies": {
+                "micromatch": {
+                  "version": "4.0.8",
+                  "resolved": "https://registry.npmjs.org/micromatch/-/micromatch-4.0.8.tgz",
+                  "overridden": false,
+                  "dependencies": {
+                    "picomatch": {
+                      "version": "2.3.2",
+                      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz",
+                      "overridden": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "react-native": {
+      "version": "0.88.1",
+      "resolved": "https://registry.npmjs.org/react-native/-/react-native-0.88.1.tgz",
+      "overridden": false,
+      "dependencies": {
+        "tinyglobby": {
+          "version": "0.2.17",
+          "resolved": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz",
+          "overridden": false,
+          "dependencies": {
+            "fdir": {
+              "version": "6.5.0",
+              "resolved": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz",
+              "overridden": false,
+              "dependencies": {
+                "picomatch": {
+                  "version": "4.0.7"
+                }
+              }
+            },
+            "picomatch": {
+              "version": "4.0.7",
+              "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz",
+              "overridden": false
+            }
+          }
+        }
+      }
+    },
+    "vitest": {
+      "version": "5.1.0",
+      "resolved": "https://registry.npmjs.org/vitest/-/vitest-5.1.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "picomatch": {
+          "version": "4.0.7",
+          "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz",
+          "overridden": false
+        },
+        "vite": {
+          "version": "8.3.6",
+          "resolved": "https://registry.npmjs.org/vite/-/vite-8.3.6.tgz",
+          "overridden": false,
+          "dependencies": {
+            "picomatch": {
+              "version": "4.0.7",
+              "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz",
+              "overridden": false
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,6 @@ import { View, Pressable, ScrollView, useWindowDimensions } from "react-native";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Shell } from "../../src/components/Shell";
 import { T, Button, Card, IconButton, Tag } from "../../src/components/ui";
-import { Icon } from "../../src/components/Icon";
 import { useTheme } from "../../src/design-system/theme";
 import { useApp } from "../../src/state/store";
 import {
@@ -445,7 +444,7 @@ export default function Reader() {
       <View
         ref={position.rootRef}
         onLayout={position.rootLayout}
-        style={{ maxWidth: 860, width: "100%", alignSelf: "center", gap: 22 }}
+        style={{ maxWidth: 660, width: "100%", alignSelf: "center", gap: 12 }}
       >
         {!focus && (
           <View
@@ -479,11 +478,10 @@ export default function Reader() {
                   flexShrink: 1,
                 }}
               >
-                <T style={{ fontSize: 14 }}>{referenceLabel(ref)}⌄</T>
+                <T style={{ fontSize: 13, lineHeight: 20 }}>Buchauswahl</T>
               </Pressable>
             </View>
             <View style={{ flexDirection: "row", gap: 3 }}>
-              {width >= 600 && <Tag>Luther 1912</Tag>}
               <IconButton
                 name="settings"
                 label="Leseeinstellungen"
@@ -536,61 +534,40 @@ export default function Reader() {
             )}
 
             {!focus && (
-              <View style={{ alignItems: "center", gap: 14, marginTop: 12 }}>
+              <View style={{ alignItems: "flex-start", gap: 8 }}>
                 {path && (
                   <Tag icon="path">
                     {path.title} · Schritt {Number(params.step) + 1}
                   </Tag>
                 )}
-                <T variant="label" style={{ color: t.gold, fontSize: 9 }}>
-                  {book?.testament === "NT"
-                    ? "NEUES TESTAMENT"
-                    : "ALTES TESTAMENT"}
-                </T>
                 <T
-                  variant="hero"
+                  variant="title"
                   accessibilityRole="header"
-                  style={{
-                    fontSize: width < 500 ? 40 : 51,
-                    textAlign: "center",
-                  }}
+                  style={{ fontSize: width < 500 ? 34 : 42, lineHeight: width < 500 ? 40 : 48 }}
                 >
-                  {step?.title ?? book?.name}
+                  {step?.title ?? referenceLabel(ref)}
                 </T>
-                <T style={{ color: t.muted, fontSize: 12 }}>
-                  {referenceLabel(ref)} · Bibeltext
+                <T variant="small" style={{ color: t.muted }}>
+                  {step ? `${referenceLabel(ref)} · ` : ""}Luther 1912
                 </T>
                 {passage && (
                   <T
                     variant="small"
-                    style={{ color: t.muted, textAlign: "center" }}
+                    style={{ color: t.muted }}
                   >
-                    Das ganze Kapitel bleibt lesbar. Der farbig hinterlegte
-                    Abschnitt ist dein Bezug; eine Bestätigung gilt nur für
-                    diesen Abschnitt.
+                    Das Kapitel bleibt vollständig lesbar. Die Lesebestätigung gilt für den farbig hinterlegten Abschnitt.
                   </T>
                 )}
-                <Button
-                  kind="ghost"
-                  icon="back"
-                  onPress={() => {
-                    if (passage) {
-                      const target = ref.from ?? verses[0]!.n;
-                      position.restore(target);
-                      if (routeActive.current)
-                        flowText.current?.focusVerse(target);
-                    } else position.beginning();
-                  }}
-                >
-                  {passage ? "Zum Abschnittsanfang" : "Zum Kapitelanfang"}
-                </Button>
                 <View
                   style={{
                     flexDirection: "row",
+                    flexWrap: "wrap",
+                    maxWidth: "100%",
+                    gap: 4,
                     backgroundColor: t.soft,
                     padding: 4,
-                    borderRadius: 30,
-                    marginTop: 7,
+                    borderRadius: 14,
+                    marginTop: 4,
                   }}
                 >
                   {[
@@ -607,17 +584,20 @@ export default function Reader() {
                         router.setParams({ mode: id });
                       }}
                       style={{
-                        paddingHorizontal: 18,
-                        paddingVertical: 12,
+                        paddingHorizontal: 12,
+                        paddingVertical: 8,
                         minHeight: 44,
-                        borderRadius: 25,
+                        maxWidth: "100%",
+                        borderRadius: 10,
+                        justifyContent: "center",
                         backgroundColor:
                           mode === id ? t.surface : "transparent",
                       }}
                     >
                       <T
                         style={{
-                          fontSize: 11,
+                          fontSize: 12,
+                          lineHeight: 19,
                           color: mode === id ? t.text : t.muted,
                         }}
                       >
@@ -626,14 +606,6 @@ export default function Reader() {
                     </Pressable>
                   ))}
                 </View>
-                <Button
-                  kind="ghost"
-                  icon="book"
-                  buttonRef={focusEntry}
-                  onPress={startFocus}
-                >
-                  Lesefokus starten
-                </Button>
               </View>
             )}
             {!focus && mode === "deep" && (
@@ -699,20 +671,10 @@ export default function Reader() {
                 width: "100%",
                 alignSelf: "center",
                 gap: 5,
-                marginTop: 12,
               }}
             >
               {selectionError && !selectionToolsOpen && (
                 <T accessibilityRole="alert">{selectionError}</T>
-              )}
-              {!focus && (
-                <T
-                  variant="small"
-                  style={{ fontSize: 10, color: t.muted, marginBottom: 15 }}
-                >
-                  Tippe Verse an. Unten kannst du sie markieren, kopieren oder
-                  eine Notiz schreiben. Erneutes Antippen hebt die Auswahl auf.
-                </T>
               )}
               {!focus &&
                 data.drafts
@@ -775,14 +737,15 @@ export default function Reader() {
                     alignItems: "flex-start",
                     flexDirection: "row",
                     flexWrap: "wrap",
-                    gap: 8,
-                    marginBottom: 12,
+                    columnGap: 16,
+                    rowGap: 0,
                   }}
                 >
                   <Button
                     kind="ghost"
-                    icon="pen"
+                    icon={null}
                     buttonRef={pickerEntry}
+                    style={{ paddingHorizontal: 2, paddingVertical: 9, minHeight: 44, maxWidth: "100%" }}
                     onPress={() => {
                       setTools(false);
                       if (chooseVerse) closePicker();
@@ -790,6 +753,21 @@ export default function Reader() {
                     }}
                   >
                     {chooseVerse ? "Verswahl schließen" : "Zu Vers springen"}
+                  </Button>
+                  <Button kind="ghost" icon={null} buttonRef={focusEntry} onPress={startFocus}
+                    style={{ paddingHorizontal: 2, paddingVertical: 9, minHeight: 44, maxWidth: "100%" }}>
+                    Lesefokus starten
+                  </Button>
+                  <Button kind="ghost" icon={null}
+                    style={{ paddingHorizontal: 2, paddingVertical: 9, minHeight: 44, maxWidth: "100%" }}
+                    onPress={() => {
+                      if (passage) {
+                        const target = ref.from ?? verses[0]!.n;
+                        position.restore(target);
+                        if (routeActive.current) flowText.current?.focusVerse(target);
+                      } else position.beginning();
+                    }}>
+                    {passage ? "Zum Abschnittsanfang" : "Zum Kapitelanfang"}
                   </Button>
                 </View>
               )}
@@ -823,6 +801,11 @@ export default function Reader() {
                     ))}
                   </View>
                 </Card>
+              )}
+              {!focus && (
+                <T variant="small" style={{ color: t.muted, marginBottom: 10 }}>
+                  Verse antippen, um sie zu markieren, zu kopieren oder eine Notiz zu schreiben.
+                </T>
               )}
               {flow ? (
                 <FlowText

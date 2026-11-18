@@ -1,0 +1,36 @@
+{
+  "stage": "/workspace/oliva-quiet-reading-private-stage",
+  "appCore": "oliva-ae078dca10b74ebc",
+  "hostBuild": "oliva-507a582d5a9cc3a6",
+  "totalPaths": 431,
+  "oldReviewsExact": true,
+  "validation": {
+    "version": "0.18.0",
+    "checkedAt": "2026-11-18T11:21:35.283Z",
+    "runtime_files_verified": 102,
+    "unchanged_runtime_asset_bytes": 99,
+    "rewritten_uri_files": 3,
+    "all_runtime_hashes_match": true,
+    "pwa_manifest_valid": true,
+    "icons_valid": true,
+    "cache_files_verified": 105,
+    "build_id": "oliva-507a582d5a9cc3a6",
+    "app_routes_rewritten": true,
+    "source_build": "oliva-ae078dca10b74ebc",
+    "source_validation": {
+      "core": "oliva-ae078dca10b74ebc",
+      "runtimeSha256": "94354074243a9e07cd0242425dc2a26f740afabc32787c1c489a208d17c870ea",
+      "unit": 343,
+      "uxBrowser": 67,
+      "darkMatrixRecheck": true,
+      "beforeAfterCaptures": true,
+      "allOtherScopePreserved": true,
+      "artReview": 16,
+      "artOfflineChecks": 14,
+      "knownDependencyAdvisory": "GHSA-fc5q-39xc-vjpf",
+      "actualRealDeviceTest": false
+    },
+    "managed_sites_browser_qa": "unavailable: cua_repl.js not exposed",
+    "physical_phone_test": false
+  }
+}

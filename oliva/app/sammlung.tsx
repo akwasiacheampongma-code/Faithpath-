@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { View, Pressable } from "react-native";
+import { View } from "react-native";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { T, Button, Card, Field, Tag } from "../src/components/ui";
-import { Icon } from "../src/components/Icon";
 import { useTheme } from "../src/design-system/theme";
 import { useApp } from "../src/state/store";
 import {
@@ -17,6 +16,9 @@ import { highlightBackground } from "../src/features/bible/highlights";
 import { DraftLinks } from "../src/features/personal/DraftLinks";
 import { CaptureContext } from "../src/features/personal/CaptureContext";
 import { captureBibleDestination } from "../src/features/personal/capture-presentation";
+import { CollectionSections, type CollectionSection } from "../src/features/personal/CollectionSections";
+
+const sections = ["Gedanken", "Entwürfe", "Lesezeichen", "Markierungen"] as const;
 export default function Collection() {
   const {
     tab: requestedTab,
@@ -32,7 +34,7 @@ export default function Collection() {
     data = useApp((s) => s.data),
     mutate = useApp((s) => s.mutate),
     busy = useApp((s) => s.busy),
-    [tab, setTab] = useState(
+    [tab, setTab] = useState<CollectionSection>(
       requestedTab === "Entwürfe" ? "Entwürfe" : "Gedanken",
     ),
     [query, setQuery] = useState(""),
@@ -120,59 +122,21 @@ export default function Collection() {
   };
   return (
     <Shell>
-      <Tag icon="bookmark">Was du bewahren möchtest</Tag>
       <T
         variant="title"
         accessibilityRole="header"
-        style={{ fontSize: 44, marginTop: 14, marginBottom: 10 }}
+        style={{ fontSize: 34, lineHeight: 40, marginBottom: 6 }}
       >
         Deine Sammlung.
       </T>
-      <T style={{ fontSize: 13, color: t.muted, marginBottom: 26 }}>
-        Eigene Worte, bedeutsame Verse und die Bücher, die du entdeckst. Privat
-        auf diesem Gerät.
+      <T style={{ fontSize: 13, lineHeight: 21, color: t.muted, marginBottom: 14 }}>
+        Deine Einträge bleiben auf diesem Gerät.
       </T>
-      <View
-        style={{
-          flexDirection: "row",
-          gap: 8,
-          flexWrap: "wrap",
-          marginBottom: 24,
-        }}
-      >
-        {[
-          "Gedanken",
-          "Entwürfe",
-          "Lesezeichen",
-          "Markierungen",
-        ].map((label) => (
-          <Pressable
-            key={label}
-            accessibilityRole="button"
-            accessibilityState={{ selected: tab === label }}
-            aria-pressed={tab === label}
-            onPress={() => {
-              setTab(label);
-              setQuery("");
-            }}
-            style={{
-              minHeight: 44,
-              paddingHorizontal: 16,
-              paddingVertical: 11,
-              borderRadius: 25,
-              backgroundColor: tab === label ? t.primary : t.soft,
-            }}
-          >
-            <T
-              style={{
-                fontSize: 12,
-                color: tab === label ? t.onPrimary : t.text,
-              }}
-            >
-              {label}
-            </T>
-          </Pressable>
-        ))}
+      <View style={{ marginBottom: 16 }}>
+        <CollectionSections sections={sections} current={tab} onChange={section => {
+          setTab(section);
+          setQuery("");
+        }} />
       </View>
       {tab !== "Entwürfe" && (
         <Field
@@ -182,7 +146,7 @@ export default function Collection() {
           placeholder="Deine Suchwörter …"
         />
       )}
-      <View style={{ height: 20 }} />
+      <View style={{ height: 14 }} />
       {tab === "Entwürfe" ? (
         <DraftLinks
           onJournal={() => {
@@ -537,13 +501,11 @@ export default function Collection() {
 function Empty({ text }: { text: string }) {
   const t = useTheme();
   return (
-    <Card style={{ alignItems: "center", padding: 35, gap: 15 }}>
-      <Icon name="leaf" color={t.gold} size={27} />
+    <Card style={{ padding: 16, backgroundColor: t.soft, borderWidth: 0 }}>
       <T
         style={{
           fontSize: 13,
           color: t.muted,
-          textAlign: "center",
           maxWidth: 400,
         }}
       >

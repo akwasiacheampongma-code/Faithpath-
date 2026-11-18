@@ -1,0 +1,1775 @@
+{
+  "stage": "after",
+  "fixedClock": "2026-11-18T09:00:00Z",
+  "syntheticData": true,
+  "browser": "Local Chromium",
+  "deviceTest": false,
+  "scenes": [
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-garten-320-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": {
+        "top": 237,
+        "bottom": 438,
+        "width": 230,
+        "height": 201
+      },
+      "archive": {
+        "top": 762,
+        "bottom": 893,
+        "width": 276,
+        "height": 131
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2460,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-sammlung-320-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 276,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1534,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-reader-320-light-normal.png",
+      "main": {
+        "top": 0,
+        "bottom": 546,
+        "width": 320,
+        "height": 546
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 371,
+        "bottom": 647,
+        "width": 275,
+        "height": 276
+      },
+      "firstText": {
+        "top": 365,
+        "bottom": 7801,
+        "width": 280,
+        "height": 7436
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 8956,
+      "readerFont": "23px",
+      "readerLineHeight": "41.4px"
+    },
+    {
+      "area": "heute",
+      "route": "/",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-heute-320-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": {
+        "top": 2650,
+        "bottom": 2855,
+        "width": 235,
+        "height": 205
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3671,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "bibel",
+      "route": "/bibel",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-bibel-320-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5921,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "wege",
+      "route": "/wege",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-wege-320-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2222,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "light",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-garten-375-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": {
+        "top": 237,
+        "bottom": 486,
+        "width": 285,
+        "height": 249
+      },
+      "archive": {
+        "top": 786,
+        "bottom": 887,
+        "width": 331,
+        "height": 101
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2297,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "light",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-sammlung-375-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 331,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1319,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "light",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-reader-375-light-normal.png",
+      "main": {
+        "top": 0,
+        "bottom": 790,
+        "width": 375,
+        "height": 790
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 371,
+        "bottom": 606,
+        "width": 323,
+        "height": 235
+      },
+      "firstText": {
+        "top": 365,
+        "bottom": 6601,
+        "width": 335,
+        "height": 6236
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 7615,
+      "readerFont": "23px",
+      "readerLineHeight": "41.4px"
+    },
+    {
+      "area": "heute",
+      "route": "/",
+      "theme": "light",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-heute-375-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": {
+        "top": 2572,
+        "bottom": 2777,
+        "width": 235,
+        "height": 205
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3550,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "bibel",
+      "route": "/bibel",
+      "theme": "light",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-bibel-375-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5824,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "wege",
+      "route": "/wege",
+      "theme": "light",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-wege-375-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1954,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-garten-390-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": {
+        "top": 237,
+        "bottom": 499,
+        "width": 300,
+        "height": 262
+      },
+      "archive": {
+        "top": 799,
+        "bottom": 900,
+        "width": 346,
+        "height": 101
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2310,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-sammlung-390-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 346,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1319,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-reader-390-light-normal.png",
+      "main": {
+        "top": 0,
+        "bottom": 822,
+        "width": 390,
+        "height": 822
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 371,
+        "bottom": 606,
+        "width": 350,
+        "height": 235
+      },
+      "firstText": {
+        "top": 365,
+        "bottom": 6270,
+        "width": 350,
+        "height": 5905
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 7284,
+      "readerFont": "23px",
+      "readerLineHeight": "41.4px"
+    },
+    {
+      "area": "heute",
+      "route": "/",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-heute-390-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": {
+        "top": 2539,
+        "bottom": 2744,
+        "width": 235,
+        "height": 205
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3493,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "bibel",
+      "route": "/bibel",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-bibel-390-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5805,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "wege",
+      "route": "/wege",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-wege-390-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1935,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-garten-430-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": {
+        "top": 237,
+        "bottom": 534,
+        "width": 340,
+        "height": 297
+      },
+      "archive": {
+        "top": 764,
+        "bottom": 865,
+        "width": 386,
+        "height": 101
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2237,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-sammlung-430-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 386,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1319,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-reader-430-light-normal.png",
+      "main": {
+        "top": 0,
+        "bottom": 910,
+        "width": 430,
+        "height": 910
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 327,
+        "bottom": 521,
+        "width": 387,
+        "height": 194
+      },
+      "firstText": {
+        "top": 321,
+        "bottom": 5687,
+        "width": 390,
+        "height": 5366
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 6668,
+      "readerFont": "23px",
+      "readerLineHeight": "41.4px"
+    },
+    {
+      "area": "heute",
+      "route": "/",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-heute-430-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": {
+        "top": 2389,
+        "bottom": 2594,
+        "width": 235,
+        "height": 205
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3343,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "bibel",
+      "route": "/bibel",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-bibel-430-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5784,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "wege",
+      "route": "/wege",
+      "theme": "light",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-wege-430-light-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1864,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "scenario": "large",
+      "file": "screens/after-garten-320-light-large.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": {
+        "top": 501,
+        "bottom": 702,
+        "width": 230,
+        "height": 201
+      },
+      "archive": {
+        "top": 1374,
+        "bottom": 1697,
+        "width": 276,
+        "height": 323
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5802,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "scenario": "large",
+      "file": "screens/after-sammlung-320-light-large.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 433,
+        "bottom": 705,
+        "width": 276,
+        "height": 272
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3374,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "light",
+      "width": 320,
+      "height": 568,
+      "scenario": "large",
+      "file": "screens/after-reader-320-light-large.png",
+      "main": {
+        "top": 0,
+        "bottom": 546,
+        "width": 320,
+        "height": 546
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 765,
+        "bottom": 2063,
+        "width": 276,
+        "height": 1298
+      },
+      "firstText": {
+        "top": 752,
+        "bottom": 32035,
+        "width": 280,
+        "height": 31283
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 34621,
+      "readerFont": "46px",
+      "readerLineHeight": "82.8px"
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "scenario": "empty",
+      "file": "screens/after-garten-390-light-empty.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": {
+        "top": 268,
+        "bottom": 357,
+        "width": 300,
+        "height": 89
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1412,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "light",
+      "width": 390,
+      "height": 844,
+      "scenario": "empty",
+      "file": "screens/after-sammlung-390-light-empty.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 346,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 677,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "dark",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-garten-320-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": {
+        "top": 237,
+        "bottom": 438,
+        "width": 230,
+        "height": 201
+      },
+      "archive": {
+        "top": 762,
+        "bottom": 893,
+        "width": 276,
+        "height": 131
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2460,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "dark",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-sammlung-320-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 276,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1534,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "dark",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-reader-320-dark-normal.png",
+      "main": {
+        "top": 0,
+        "bottom": 546,
+        "width": 320,
+        "height": 546
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 371,
+        "bottom": 647,
+        "width": 275,
+        "height": 276
+      },
+      "firstText": {
+        "top": 365,
+        "bottom": 7801,
+        "width": 280,
+        "height": 7436
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 8956,
+      "readerFont": "23px",
+      "readerLineHeight": "41.4px"
+    },
+    {
+      "area": "heute",
+      "route": "/",
+      "theme": "dark",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-heute-320-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": {
+        "top": 2650,
+        "bottom": 2855,
+        "width": 235,
+        "height": 205
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3671,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "bibel",
+      "route": "/bibel",
+      "theme": "dark",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-bibel-320-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5921,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "wege",
+      "route": "/wege",
+      "theme": "dark",
+      "width": 320,
+      "height": 568,
+      "scenario": "normal",
+      "file": "screens/after-wege-320-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2222,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "dark",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-garten-375-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": {
+        "top": 237,
+        "bottom": 486,
+        "width": 285,
+        "height": 249
+      },
+      "archive": {
+        "top": 786,
+        "bottom": 887,
+        "width": 331,
+        "height": 101
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2297,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "dark",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-sammlung-375-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 331,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1319,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "dark",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-reader-375-dark-normal.png",
+      "main": {
+        "top": 0,
+        "bottom": 790,
+        "width": 375,
+        "height": 790
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 371,
+        "bottom": 606,
+        "width": 323,
+        "height": 235
+      },
+      "firstText": {
+        "top": 365,
+        "bottom": 6601,
+        "width": 335,
+        "height": 6236
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 7615,
+      "readerFont": "23px",
+      "readerLineHeight": "41.4px"
+    },
+    {
+      "area": "heute",
+      "route": "/",
+      "theme": "dark",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-heute-375-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": {
+        "top": 2572,
+        "bottom": 2777,
+        "width": 235,
+        "height": 205
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3550,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "bibel",
+      "route": "/bibel",
+      "theme": "dark",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-bibel-375-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5824,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "wege",
+      "route": "/wege",
+      "theme": "dark",
+      "width": 375,
+      "height": 812,
+      "scenario": "normal",
+      "file": "screens/after-wege-375-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 718,
+        "width": 375,
+        "height": 645
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1954,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "dark",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-garten-390-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": {
+        "top": 237,
+        "bottom": 499,
+        "width": 300,
+        "height": 262
+      },
+      "archive": {
+        "top": 799,
+        "bottom": 900,
+        "width": 346,
+        "height": 101
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2310,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "dark",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-sammlung-390-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 346,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1319,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "dark",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-reader-390-dark-normal.png",
+      "main": {
+        "top": 0,
+        "bottom": 822,
+        "width": 390,
+        "height": 822
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 371,
+        "bottom": 606,
+        "width": 350,
+        "height": 235
+      },
+      "firstText": {
+        "top": 365,
+        "bottom": 6270,
+        "width": 350,
+        "height": 5905
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 7284,
+      "readerFont": "23px",
+      "readerLineHeight": "41.4px"
+    },
+    {
+      "area": "heute",
+      "route": "/",
+      "theme": "dark",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-heute-390-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": {
+        "top": 2539,
+        "bottom": 2744,
+        "width": 235,
+        "height": 205
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3493,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "bibel",
+      "route": "/bibel",
+      "theme": "dark",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-bibel-390-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5805,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "wege",
+      "route": "/wege",
+      "theme": "dark",
+      "width": 390,
+      "height": 844,
+      "scenario": "normal",
+      "file": "screens/after-wege-390-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1935,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "dark",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-garten-430-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": {
+        "top": 237,
+        "bottom": 534,
+        "width": 340,
+        "height": 297
+      },
+      "archive": {
+        "top": 764,
+        "bottom": 865,
+        "width": 386,
+        "height": 101
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 2237,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "dark",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-sammlung-430-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 386,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1319,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "dark",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-reader-430-dark-normal.png",
+      "main": {
+        "top": 0,
+        "bottom": 910,
+        "width": 430,
+        "height": 910
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 327,
+        "bottom": 521,
+        "width": 387,
+        "height": 194
+      },
+      "firstText": {
+        "top": 321,
+        "bottom": 5687,
+        "width": 390,
+        "height": 5366
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 6668,
+      "readerFont": "23px",
+      "readerLineHeight": "41.4px"
+    },
+    {
+      "area": "heute",
+      "route": "/",
+      "theme": "dark",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-heute-430-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": {
+        "top": 2389,
+        "bottom": 2594,
+        "width": 235,
+        "height": 205
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3343,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "bibel",
+      "route": "/bibel",
+      "theme": "dark",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-bibel-430-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5784,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "wege",
+      "route": "/wege",
+      "theme": "dark",
+      "width": 430,
+      "height": 932,
+      "scenario": "normal",
+      "file": "screens/after-wege-430-dark-normal.png",
+      "main": {
+        "top": 73,
+        "bottom": 838,
+        "width": 430,
+        "height": 765
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1864,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "dark",
+      "width": 320,
+      "height": 568,
+      "scenario": "large",
+      "file": "screens/after-garten-320-dark-large.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": {
+        "top": 501,
+        "bottom": 702,
+        "width": 230,
+        "height": 201
+      },
+      "archive": {
+        "top": 1374,
+        "bottom": 1697,
+        "width": 276,
+        "height": 323
+      },
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 5802,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "dark",
+      "width": 320,
+      "height": 568,
+      "scenario": "large",
+      "file": "screens/after-sammlung-320-dark-large.png",
+      "main": {
+        "top": 73,
+        "bottom": 474,
+        "width": 320,
+        "height": 401
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 433,
+        "bottom": 705,
+        "width": 276,
+        "height": 272
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 3374,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "reader",
+      "route": "/lesen/MRK?chapter=4&mode=read",
+      "theme": "dark",
+      "width": 320,
+      "height": 568,
+      "scenario": "large",
+      "file": "screens/after-reader-320-dark-large.png",
+      "main": {
+        "top": 0,
+        "bottom": 546,
+        "width": 320,
+        "height": 546
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": {
+        "top": 765,
+        "bottom": 2063,
+        "width": 276,
+        "height": 1298
+      },
+      "firstText": {
+        "top": 752,
+        "bottom": 32035,
+        "width": 280,
+        "height": 31283
+      },
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 34621,
+      "readerFont": "46px",
+      "readerLineHeight": "82.8px"
+    },
+    {
+      "area": "garten",
+      "route": "/garten",
+      "theme": "dark",
+      "width": 390,
+      "height": 844,
+      "scenario": "empty",
+      "file": "screens/after-garten-390-dark-empty.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": {
+        "top": 268,
+        "bottom": 357,
+        "width": 300,
+        "height": 89
+      },
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": null,
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 1412,
+      "readerFont": null,
+      "readerLineHeight": null
+    },
+    {
+      "area": "sammlung",
+      "route": "/sammlung",
+      "theme": "dark",
+      "width": 390,
+      "height": 844,
+      "scenario": "empty",
+      "file": "screens/after-sammlung-390-dark-empty.png",
+      "main": {
+        "top": 73,
+        "bottom": 750,
+        "width": 390,
+        "height": 677
+      },
+      "tree": null,
+      "archive": null,
+      "firstVerse": null,
+      "firstText": null,
+      "collectionTabs": {
+        "top": 170,
+        "bottom": 274,
+        "width": 346,
+        "height": 104
+      },
+      "documentOverflow": false,
+      "mainOverflow": false,
+      "mainScrollHeight": 677,
+      "readerFont": null,
+      "readerLineHeight": null
+    }
+  ],
+  "errors": [],
+  "finishedAt": "2026-11-18T11:17:16.036Z",
+  "darkGuestCorrection": {
+    "reason": "The app defaults to light rather than the OS preference",
+    "appThemeVerified": true
+  }
+}

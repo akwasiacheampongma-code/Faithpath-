@@ -47,22 +47,32 @@ export function ReaderFooter({
 
   return (
     <>
-      <View style={{ height: 1, backgroundColor: t.line, marginTop: 20 }} />
-      <View style={{ alignItems: "center", gap: 15 }}>
+      <View style={{ height: 1, backgroundColor: t.line, marginTop: 12 }} />
+      <View style={{ alignItems: "flex-start", gap: 10, marginBottom: 12 }}>
         <T
           style={{
             fontFamily: "Cormorant",
-            fontSize: 27,
-            textAlign: "center",
+            fontSize: 24,
+            lineHeight: 29,
           }}
         >
-          {done
-            ? "Ein guter Moment zum Innehalten."
-            : passage
-              ? "Ein kleiner Abschnitt. Ein neuer Gedanke."
-              : "Du bist am Ende dieses Kapitels."}
+          {passage ? "Am Ende der Lesung" : "Kapitel wechseln"}
         </T>
+        {!passage && (
+          <View style={{ flexDirection: "row", gap: 8, flexWrap: "wrap" }}>
+            <Button kind="secondary" icon="back" style={{ paddingHorizontal: 10, maxWidth: "100%" }}
+              disabled={!adjacentChapter(reference.book, reference.chapter, -1)} onPress={() => navigate(-1)}>
+              Vorheriges Kapitel
+            </Button>
+            <Button kind="secondary" style={{ paddingHorizontal: 10, maxWidth: "100%" }}
+              disabled={!adjacentChapter(reference.book, reference.chapter, 1)} onPress={() => navigate(1)}>
+              Nächstes Kapitel
+            </Button>
+          </View>
+        )}
         <Button
+          kind={passage ? "primary" : "ghost"}
+          style={{ maxWidth: "100%", ...(passage ? {} : { paddingHorizontal: 0 }) }}
           disabled={done || busy}
           icon={done ? "check" : "leaf"}
           onPress={onComplete}
@@ -101,37 +111,11 @@ export function ReaderFooter({
           >
             Ganzes Kapitel als Lesebereich öffnen
           </Button>
-        ) : (
-          <View
-            style={{
-              flexDirection: "row",
-              gap: 12,
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
-            <Button
-              kind="secondary"
-              icon="back"
-              disabled={!adjacentChapter(reference.book, reference.chapter, -1)}
-              onPress={() => navigate(-1)}
-            >
-              Vorheriges Kapitel
-            </Button>
-            <Button
-              kind="secondary"
-              disabled={!adjacentChapter(reference.book, reference.chapter, 1)}
-              onPress={() => navigate(1)}
-            >
-              Nächstes Kapitel
-            </Button>
-          </View>
-        )}
+        ) : null}
         <T
           style={{
             fontSize: 10,
             color: t.muted,
-            textAlign: "center",
           }}
         >
           Lesefortschritt ist eine Erinnerung – keine Bewertung deines

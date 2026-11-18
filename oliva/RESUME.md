@@ -1,4 +1,14 @@
-# Aktuell: Heute abgeschlossen · private Lieferung dokumentiert
+# Aktuell: Mobile Übersichten, Reader und Bildprüfung
+
+Seit dem 18.11.2026 um 11:25 UTC steht der geprüfte Arbeitsstand auf Basis von OLIVA 0.18.0 in der privaten Vorschau bereit. Bibel und Wege kommen schneller zum Inhalt. Der Garten zeigt den bestehenden A51-Baum und frühere FaithPath-Momente, die Sammlung ordnet ihre vier Bereiche in ein flexibles Raster und der Reader zeigt früher den Bibeltext. [Private Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site/) · [Mobile Vergleiche](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/quiet-reading/index.svg)
+
+Arbeitsbranch `feature/oliva-garden-collection-reader-20261118` mit Vorher-Stand `oliva-pre-garden-collection-reader-20261118`. Vorangegangener Bibliotheks-Branch `feature/oliva-bible-paths-focus-20261118` mit eigener Abnahme von 33 Browserfällen. Der aktuelle Stand ist mit 343 Fachtests, 67 gezielten Browserfällen und einer korrigierten Dunkelprüfung getestet. Der lokale Wechsel zwischen den tatsächlich verwendeten Vorschau-Paketen erhält vier Rohdatensätze einschließlich des originalen FaithPath-Archivs. [Bericht und Tests](docs/38-quiet-reading.md) · [Lieferstatus](docs/delivery-status.md)
+
+Bildinventar und Vorschlag für vier Motive liegen vor. Als erstes Motiv ist der barmherzige Samariter empfohlen. Bildproduktion setzt die Freigabe voraus. Echte Android-/iOS-Prüfungen und die Abhängigkeits-Advisory für picomatch bleiben offen. Die Entwürfe zu Betreiberangaben und öffentlichen Rechten sind zur späteren Prüfung gekennzeichnet. Der ursprüngliche Master bleibt offen. [Bildbericht](docs/40-illustration-review.md) · [Datenschutz und Sicherheit](docs/39-privacy-security-review.md)
+
+---
+
+# Vorheriger Stand: Heute abgeschlossen
 
 ## Heute ist privat bereitgestellt · 18.11.2026
 

@@ -1,5 +1,11 @@
 # OLIVA · Raum für deinen Glauben
 
+## Privater Arbeitsstand · mobile Übersichten und Reader
+
+Die private Vorschau auf Basis von 0.18.0 enthält die kompakteren Übersichten für Bibel, Wege, Garten und Sammlung sowie einen Reader mit früher sichtbarem Bibeltext. Vorher-/Nachher-Aufnahmen, Datenerhalt, Offline-Wechsel und Testgrenzen sind belegt. [Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site/) · [Vergleich](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/quiet-reading/index.svg) · [Lieferstatus](docs/delivery-status.md)
+
+Die Bildprüfung bewertet die vorhandenen Illustrationen und schlägt vier ausgewählte Originaleinheiten zur Freigabe vor. [Bildbericht](docs/40-illustration-review.md)
+
 <!-- TODAY_FOCUS_20261118 -->
 ## Aktueller privater Arbeitsstand: ausschließlich Heute
 

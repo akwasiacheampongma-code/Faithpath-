@@ -1,0 +1,55 @@
+{
+  "build": "oliva-ae078dca10b74ebc",
+  "browser": "Local Chromium on loopback",
+  "physicalDeviceTest": false,
+  "visual": [],
+  "coldLoads": [],
+  "offline": [],
+  "resources": [
+    {
+      "sameOrigin": true,
+      "method": "GET",
+      "type": "document",
+      "count": 1
+    },
+    {
+      "sameOrigin": true,
+      "method": "GET",
+      "type": "stylesheet",
+      "count": 2
+    },
+    {
+      "sameOrigin": true,
+      "method": "GET",
+      "type": "script",
+      "count": 6
+    },
+    {
+      "sameOrigin": true,
+      "method": "GET",
+      "type": "other",
+      "count": 1
+    },
+    {
+      "sameOrigin": true,
+      "method": "GET",
+      "type": "font",
+      "count": 2
+    },
+    {
+      "sameOrigin": true,
+      "method": "GET",
+      "type": "fetch",
+      "count": 103
+    },
+    {
+      "sameOrigin": true,
+      "method": "GET",
+      "type": "image",
+      "count": 1
+    }
+  ],
+  "errors": [],
+  "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 60000ms exceeded while waiting on the predicate\n    at captureRawStack (/workspace/faithpath-next/node_modules/playwright-core/lib/coreBundle.js:9551:17)\n    at callMatcherAsStep (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13342:57)\n    at Object.toBe (/workspace/faithpath-next/node_modules/playwright/lib/matchers/expect.js:13334:23)\n    at loadStory (/workspace/faithpath-next/scripts/review-oliva-art.mjs:44:162)\n    at async file:///workspace/faithpath-next/scripts/review-oliva-art.mjs:70:23",
+  "finishedAt": "2026-11-18T11:13:45.521Z"
+}

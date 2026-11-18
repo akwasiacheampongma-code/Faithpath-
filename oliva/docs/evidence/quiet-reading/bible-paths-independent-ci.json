@@ -1,0 +1,60 @@
+{
+  "run": 44290174565,
+  "head": "67935140b5d4dca3d69956e7c768d7f5dadb5bd8",
+  "jobs": {
+    "jobs": [
+      {
+        "id": 134753055273,
+        "name": "verify",
+        "status": "completed",
+        "conclusion": "failure",
+        "run_id": 44290174565,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 3
+          },
+          {
+            "name": "Post Run ./oliva/.github/actions/quality",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          }
+        ]
+      }
+    ]
+  },
+  "logChecks": {
+    "audit": true,
+    "advisory": true,
+    "exit1": true,
+    "reported35": true
+  }
+}

@@ -2,9 +2,8 @@ import { useMemo, useState } from "react";
 import { View, Pressable, useWindowDimensions } from "react-native";
 import { router } from "expo-router";
 import { Shell } from "../src/components/Shell";
-import { T, Card, Button, Tag } from "../src/components/ui";
+import { T, Card, Button } from "../src/components/ui";
 import { OliveTree } from "../src/components/Artwork";
-import { Icon } from "../src/components/Icon";
 import { STAGES } from "../src/features/garden/model";
 import { TreeStill } from "../src/features/garden/TreeStill";
 import { useApp } from "../src/state/store";
@@ -29,38 +28,29 @@ export default function Garden() {
     links = preview === null && loadedStage === data.growthStage ? personalTreeLinks(history, treeSize, fontScale, treeHeight) : [];
   return (
     <Shell>
-      <Tag icon="leaf">Dein persönlicher Garten</Tag>
       <T
         variant="title"
         accessibilityRole="header"
-        style={{ fontSize: 44, marginTop: 14, marginBottom: 10 }}
+        style={{ fontSize: 34, lineHeight: 40, marginBottom: 6 }}
       >
-        Wachsen braucht Zeit.
+        Mein Garten.
       </T>
       <T
         style={{
           color: t.muted,
           fontSize: 13,
           maxWidth: 620,
-          marginBottom: 28,
+          lineHeight: 21,
+          marginBottom: 16,
         }}
       >
-        Dein Olivenbaum erinnert an gelesene Worte, neue Erkenntnisse und
-        freiwillig festgehaltene Erfahrungen. Er misst weder deinen Glauben noch
-        Gottes Liebe.
+        Dein Olivenbaum erinnert an Worte und Erfahrungen auf deinem Weg.
       </T>
-      <View
-        style={{
-          flexDirection: width >= 1180 ? "row" : "column",
-          gap: 24,
-          alignItems: "stretch",
-        }}
-      >
         <Card
           style={{
-            flex: 1,
             alignItems: "center",
-            padding: 26,
+            paddingVertical: 16,
+            paddingHorizontal: 12,
             backgroundColor: t.soft,
             borderWidth: 0,
             gap: 10,
@@ -75,7 +65,7 @@ export default function Garden() {
             <OliveTree stage={stage} size={treeSize} onReady={setLoadedStage} />
             <PersonalTreePins links={links} />
           </View>
-          <T variant="title">{STAGES[stage]?.name}</T>
+          <T variant="title" style={{ fontSize: 30, lineHeight: 36, textAlign: "center" }}>{STAGES[stage]?.name}</T>
           <T
             style={{
               textAlign: "center",
@@ -94,10 +84,10 @@ export default function Garden() {
           <View
             style={{
               flexDirection: "row",
+              flexWrap: "wrap",
               gap: 2,
               width: "100%",
-              maxWidth: 340,
-              marginVertical: 8,
+              maxWidth: width < 400 ? 182 : 340,
               justifyContent: "center",
             }}
           >
@@ -110,9 +100,8 @@ export default function Garden() {
                 aria-pressed={i === stage}
                 onPress={() => setPreview(i)}
                 style={{
-                  flex: 1,
-                  minWidth: 24,
-                  height: 44,
+                  width: 44,
+                  minHeight: 44,
                   alignItems: "center",
                   justifyContent: "center",
                 }}
@@ -128,10 +117,6 @@ export default function Garden() {
               </Pressable>
             ))}
           </View>
-          <T style={{ fontSize: 10, color: t.muted, textAlign: "center" }}>
-            Du kannst die sieben Bilder ansehen, ohne deinen Fortschritt zu
-            verändern.
-          </T>
           <Button
             kind="ghost"
             icon="leaf"
@@ -197,70 +182,43 @@ export default function Garden() {
             </View>
           )}
         </Card>
-        <View style={{ width: width >= 1180 ? 310 : "100%", gap: 18 }}>
-          <Card style={{ gap: 15 }}>
-            <T variant="heading">Was die Bilder bedeuten</T>
-            {[
-              ["Samen", "Ein Anfang ist schon wertvoll."],
-              ["Wurzeln", "Ein Fundament zum Weiterdenken."],
-              ["Stamm", "Beständigkeit in deinem Tempo."],
-              ["Zweige", "Neue Zusammenhänge entdecken."],
-              ["Blätter", "Mit den Texten vertrauter werden."],
-              ["Früchte", "Freiwillig gelebte Werte."],
-            ].map(([title, text]) => (
-              <View key={title} style={{ gap: 2 }}>
-                <T style={{ fontSize: 12, fontWeight: "600" }}>{title}</T>
-                <T style={{ fontSize: 11, color: t.muted }}>{text}</T>
-              </View>
-            ))}
-          </Card>
-          <Card style={{ backgroundColor: t.goldSoft, borderWidth: 0, gap: 8 }}>
-            <Icon name="heart" color={t.gold} />
-            <T variant="heading" style={{ fontSize: 25 }}>
-              Du musst nichts verdienen.
-            </T>
-            <T style={{ fontSize: 12, lineHeight: 21 }}>
-              Dein Baum verliert in einer Pause keine Blätter. Es gibt keine
-              Rangliste und keine verlorene Serie. Gottes Liebe ist kein
-              Aktivitätsbonus.
-            </T>
-          </Card>
-        </View>
-      </View>
-      <PersonalTreeJourney model={history} links={links} />
       <LegacyGardenHistory />
-      <Card style={{ marginTop: 24, gap: 13 }}>
-        <T variant="heading">Was möchtest du im Alltag ausprobieren?</T>
-        <T style={{ fontSize: 12, color: t.muted }}>
-          Deine persönlichen Vorhaben verbinden kleine, selbst gewählte Schritte
-          mit freiwilligen Rückblicken. Sie dürfen sich verändern und auch eine
-          Pause machen.
-        </T>
+      <PersonalTreeJourney model={history} links={links} />
+      <View style={{ marginTop: 24, alignItems: "flex-start" }}>
         <Button
-          kind="secondary"
+          kind="ghost"
           icon="leaf"
+          style={{ paddingHorizontal: 0 }}
           onPress={() => router.push("/vorhaben")}
         >
           Deine persönlichen Vorhaben
         </Button>
-      </Card>
-      <Card style={{ marginTop: 24, gap: 15 }}>
+      </View>
+      <View style={{ marginTop: 22, paddingTop: 18, borderTopWidth: 1, borderColor: t.line, gap: 10 }}>
         <T variant="heading">Ein kleiner Moment im Alltag</T>
         <T style={{ fontSize: 13, color: t.muted }}>
-          Hast du etwas bewusst ausprobiert – zugehört, geholfen oder Frieden
-          gesucht? Wenn du möchtest, halte deine Erfahrung fest. Die App
-          entscheidet nicht, ob sie „gut genug“ war.
+          Wenn du möchtest, halte eine Erfahrung oder einen kleinen Schritt fest.
         </T>
         <CaptureInput
           source={{ type: "experience", question: EXPERIENCE_QUESTION }}
           label="Eine freiwillig gelebte Erfahrung"
           placeholder="Was hast du erlebt?"
         />
-      </Card>
-      <View style={{ marginTop: 25, alignItems: "flex-start" }}>
-        <Button kind="ghost" onPress={() => router.replace("/wege")}>
+      </View>
+      <View style={{ marginTop: 16, alignItems: "flex-start" }}>
+        <Button kind="ghost" style={{ paddingHorizontal: 0 }} onPress={() => router.replace("/wege")}>
           Einen neuen Gedanken entdecken
         </Button>
+      </View>
+      <View style={{ marginTop: 26, paddingTop: 18, borderTopWidth: 1, borderColor: t.line, gap: 8 }}>
+        <T variant="heading" style={{ fontSize: 24, lineHeight: 29 }}>Was die Bilder bedeuten</T>
+        <T variant="small" style={{ color: t.muted }}>
+          Samen stehen für den Anfang, Wurzeln für das Fundament und der Stamm für Beständigkeit.
+          Zweige erinnern an neue Erkenntnisse, Blätter an vertraute Texte und Früchte an gelebte Werte.
+        </T>
+        <T variant="small" style={{ color: t.muted }}>
+          Dein Baum bewahrt Erinnerungen. Gottes Liebe gilt dir auch in jeder Pause.
+        </T>
       </View>
     </Shell>
   );
