@@ -1,9 +1,9 @@
 # OLIVA · Raum für deinen Glauben
 
 <!-- TODAY_FOCUS_20261118 -->
-## Aktueller Arbeitsstand: ausschließlich Heute
+## Aktueller privater Arbeitsstand: ausschließlich Heute
 
-Die kleine Heute-Verbesserung ist lokal umgesetzt und qualifiziert: klare Leseaktion, konkrete Lesestelle, vorhandene Landschaft in flexibler Höhe, alle bisherigen Angebote erhalten. [Analyse, Vergleiche und echte Prüfergebnisse](docs/36-today-focus.md). Basis0.18.0, noch kein neuer formaler Release. Private Lieferung wird erst nach Ausführung bestätigt.343Fachtests, Typecheck, sieben Inhaltsprüfungen, Produktionsbuild,33bestehende Browserfälle und sechs Heute-Fälle bestanden; der erste Testhelferfehler bleibt dokumentiert. Die bekanntepicomatch-Advisory blockiert weiterhin die CI. Andere Hauptbereiche und Datenmodelle unverändert.
+[Heute ausprobieren](https://oliva-v04-private-preview.purplebean128.chatgpt.site/) · [Vorher/Nachher 320/375/390 Pixel](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/today-focus/index.svg) · [Bericht und Testnachweise](docs/36-today-focus.md). Die kleine Verbesserung ist seit 18.11.2026,07:27:56 UTC eigentümerprivat bereitgestellt. Klare Leseaktion, tatsächliche Lesestelle, flexible vorhandene Landschaft, alle bisherigen Angebote erhalten. Nur `app/index.tsx` geändert; alle anderen Bereiche und Datenmodelle unverändert.343 Fachtests, Typecheck, sieben Inhaltsprüfungen, Produktionsbuild,33 bestehende Browserfälle und sechs Heute-Fälle bestanden. PWA-Wechsel bewahrt vier Rohdatensätze exakt. Kein neuer formaler Release; Basis 0.18.0. Bekanntepicomatch-Advisory blockiert CI weiterhin; Hosting-Fallback und echte Geräteprüfungen bleiben offen. Erstfehler und Grenzen sind im Bericht dokumentiert. GitHub-main, historische Tags und Original-FaithPath unverändert.
 <!-- /TODAY_FOCUS_20261118 -->
 
 

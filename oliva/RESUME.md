@@ -1,3 +1,29 @@
+# Aktuell: Heute abgeschlossen · private Lieferung dokumentiert
+
+## Heute ist privat bereitgestellt · 18.11.2026
+
+Die kleine Heute-Verbesserung ist umgesetzt, lokal geprüft und seit 18.11.2026, 07:27:56 UTC eigentümerprivat bereitgestellt. [Heute öffnen](https://oliva-v04-private-preview.purplebean128.chatgpt.site/) · [Echte Vorher-/Nachher-Vergleiche](https://oliva-v04-private-preview.purplebean128.chatgpt.site/review/today-focus/index.svg).
+
+Der aktuelle Auftrag ist damit für Heute umgesetzt. Die Antwort „A“ bestätigt die Richtung; andere Hauptbereiche wurden in diesem Auftrag nicht verändert. Der Gesamt-Master bleibt offen. Keine öffentliche Website-/Storefreigabe und kein neuer formaler Release: Arbeitsstand auf 0.18-Basis, historischer Tag `oliva-v0.18.0` unverändert.
+
+Genau eine Anwendungsdatei geändert: `app/index.tsx`. Klarer Gruß, konkrete Lesestelle, flexibler vorhandener Landschaftsbereich, gleiche Hauptaktion, nachgeordnete Wegaktion und lokaler Textumbruch. Keine neuen geistlichen Inhalte, Bilder, Abhängigkeiten, gespeicherten Felder oder Migrationen. Alle bisherigen Heute-Aktionen bleiben zugänglich. Auf 320 px liegt die Leseaktion im fiktiven Rückkehrprofil 212 px früher und vollständig im ersten sichtbaren Inhaltsbereich.
+
+Lokal bestanden:343 Fachtests, finaler Typecheck, sieben Inhaltsprüfungen, Web-/PWA-Produktionsbuild, Runtimecheck,33 bestehende Browserfälle und sechs neue Heute-Fälle. Es handelt sich um zwei qualifizierte Läufe, keinen einzelnen vollen 39/39-Lauf. Erster Testlauf 38/39 und erster Test-Typecheck bleiben erhalten; nur der Testhelfer wurde korrigiert. Zwölf Vorher- und zwölf Nachher-Zustände sowie sechs zusätzliche CSS-200%-Textzustände sind dokumentiert. PWA-Wechsel vom bisherigen privaten 0.18 Host zum Heute-Core erhält alle vier V11-Rohdatensätze durchgehend exakt. Kein physischer Geräte-/Simulator-/VoiceOver-/TalkBack-Erfolg behauptet.
+
+Die unabhängige neue GitHub-CI 44258694702/Job 134646487223 bleibt **rot**: dieselbe bekannte picomatch-Advisory stoppt `npm audit --audit-level=moderate` vor den weiteren CI-Prüfungen.35 Gesamtpaketmeldungen,33 Produktionsmeldungen, eine unabhängige Advisory GHSA-fc5q-39xc-vjpf. Registrylatest weiterhin 4.0.7; kein Force-Fix/Downgrade und keine angebliche Sicherheitsfreigabe. Historische 0.18-CI weiterhin gesondert erfolgreich.
+
+Quellcheckpoint `caabaa52ea44f32967334f6d10cdc7c7e4928027`, GitHub `7ec52117522e70baae71cf8ef0e98be47d28984b`, Featurebranch `feature/oliva-today-focus-20261118`. Alle 32 Versionsrefs, geschützten Bestandsbranches und 47 Nicht-OLIVA-Root-Einträge unverändert bestätigt. Runtime 344 Dateien/SHA-256 `787e5140f59b60fe20467cacee284f03edcb0301cafa3b9c5b07231e2c530e81`; davon nurHeute geändert. Kern `oliva-d3cab1587b25292b`, privater Host `oliva-827cac01214b7955`; unterschiedliche Exporte mit geprüfter URI-Umsetzung, keine Byteidentität behauptet.
+
+Private Plattformquelle `7aede5585eae66a994a8cf606c996d13a98be8b0`, Deployment `appgdep_6afd536ac8e08191a1f5ab72e2ac50e4`, Siteversion `appgprj_6aedf77e5ce0819180c10eb799447018~appgver_e7b3d6043d4c819187efa309818320a9`. Owner/custom/Revision 1, ein Nutzer, keine Gruppen oder externen Besucher. HTTP bestätigt 225 Dateien bytegenau und 14 Routen; anonyme Zugriffe auf App, Review und Worker gesperrt. Drei Assetabrufe benötigten je eine Wiederholung, weil zunächst die 2381 Byte-App-HTML statt des JS/PNG zurückkam. Jeder Versuch protokolliert; Hostingursache bleibt offen. Keine gehostete Browser-QA mangels unterstütztem CUA.
+
+Alle 193 Dateien des vorherigen privaten Hosts bytegenau unter `/workspace/oliva-v018-private-host-before-today` erhalten. Qualifizierter neuer Core mit 104 Dateien durch Umbenennung nach `/workspace/oliva-today-focus-control-dist` unverändert eingefroren. Zum lokalen Start entweder `npm run build` und `npm run preview` oder den eingefrorenen Export mit `PORT=4173 node scripts/serve.mjs /workspace/oliva-today-focus-control-dist` aus dem Appcheckout bedienen. Keine Originale oder Quellarchive gelöscht; nur regenerierbare Caches bereinigt.
+
+Bericht `docs/36-today-focus.md`, vollständige Belege `docs/evidence/today-focus/`. Abschließende Lieferung auf eigenem Docsbranch `docs/oliva-today-focus-delivery-20261118` sichern; tatsächliche Abschlusskennungen aus `/workspace/oliva-today-focus-delivery.json` übernehmen, sobald vorhanden. Keine erneute Websitebereitstellung für Dokumentation, kein Retagging. Nach Abschluss keine anderen Hauptbereiche automatisch ändern, solange der aktuelle Heute-only-Auftrag gilt. Keine subagents; Git/GH-Traces entfernen; keine Credentials in Dateien/Logs. Vor finaler Sicherung tatsächliche verfügbare Token scannen und anschließend aus Sitzungsspeicher entfernen.
+
+---
+
+## Frühere Arbeitsstände
+
 # Aktuell: Heute-only · lokal qualifiziert, private Lieferung abschließen
 
 Der aktuelle Nutzerauftrag begrenzt die Arbeit ausdrücklich auf **Heute**, nach Prüfung des abgeschlossenen0.18-Releases. Die zusätzliche Antwort „A“ bestätigt die Gestaltungsrichtung; andere Hauptbereiche bleiben unberührt. Kein pauschaler Umbau und keine weitere automatische Arbeit an Bibel/Wege/Garten/Sammlung in diesem Auftrag.

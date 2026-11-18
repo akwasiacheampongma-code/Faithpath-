@@ -1,0 +1,17 @@
+{
+  "run": 44258694702,
+  "job": 134646487223,
+  "sourceCommit": "7ec52117522e70baae71cf8ef0e98be47d28984b",
+  "attempt": 1,
+  "conclusion": "failure",
+  "failedStep": "npm audit --audit-level=moderate",
+  "advisory": "GHSA-fc5q-39xc-vjpf",
+  "packageReportsWithDevDependencies": 35,
+  "independentAdvisories": 1,
+  "laterCiChecksNotRun": true,
+  "localQualifiedBrowserCases": 39,
+  "localSingleFullRun": false,
+  "logBytes": 45461,
+  "logSha256": "32192d71d4203927121c0f5910b17dd493f8cb994cd8f1c9ca598ab23ed6b3fa",
+  "logHandling": "Decoded connector log stored with final newline; canonical original available at GitHub job URL."
+}
