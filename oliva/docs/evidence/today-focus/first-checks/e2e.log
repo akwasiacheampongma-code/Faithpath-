@@ -1,0 +1,61 @@
+[WebServer] (node:165059) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 39 tests using 1 worker
+
+(node:165074) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/core.spec.ts:21:1 › Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt (9.5s)
+  ✓   2 tests/e2e/core.spec.ts:102:1 › Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss (7.3s)
+  ✓   3 tests/e2e/core.spec.ts:158:1 › Journal bearbeiten, löschen und rückgängig machen (5.0s)
+  ✓   4 tests/e2e/core.spec.ts:208:1 › Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen (4.3s)
+  ✓   5 tests/e2e/core.spec.ts:255:1 › Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeichert (6.0s)
+  ✓   6 tests/e2e/core.spec.ts:284:1 › Offline-Neustart öffnet auch einen noch nicht besuchten Reader (5.4s)
+  ✓   7 tests/e2e/core.spec.ts:317:1 › Gleichzeitige Fenster überschreiben keine fremden Änderungen (4.6s)
+  ✓   8 tests/e2e/core.spec.ts:349:1 › Speicherfehler bestätigt keine Notiz und erhält den getippten Text (2.8s)
+  ✓   9 tests/e2e/core.spec.ts:378:1 › Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung (34.7s)
+  ✓  10 tests/e2e/reading-position.spec.ts:18:1 › Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers (6.3s)
+  ✓  11 tests/e2e/reading-position.spec.ts:43:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen (7.9s)
+  ✓  12 tests/e2e/reading-position.spec.ts:80:1 › Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker (7.9s)
+  ✓  13 tests/e2e/reading-position.spec.ts:100:1 › eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust (5.1s)
+  ✓  14 tests/e2e/spiritual-word.spec.ts:70:1 › der Bibelhub öffnet alle66Bücher und1189Kapitel ohne Buchschwert-Auswahl oder Datenänderung (14.5s)
+  ✓  15 tests/e2e/spiritual-word.spec.ts:88:1 › alle66altenBuch-Links öffnen ruhige Buchübersichten und keine Schwertseiten (1.7m)
+  ✓  16 tests/e2e/spiritual-word.spec.ts:107:1 › der quellentreue Vers und sein friedlicher Zusammenhang öffnen den gemeinsamen Reader (8.9s)
+  ✓  17 tests/e2e/spiritual-word.spec.ts:134:1 › der Hub bleibt bei320/1440Pixeln in Hell/Dunkel mit reduzierter Bewegung barrierearm (21.2s)
+  ✓  18 tests/e2e/spiritual-word.spec.ts:162:1 › das einzelne Symbol und alle Bücher bleiben beim Offline-Neustart ohne Schreibvorgang verfügbar (5.3s)
+  ✓  19 tests/e2e/spiritual-word.spec.ts:176:1 › Startseite und Sammlung bleiben frei von Schwertern; bestätigtes Lesen behält seinen normalen Fortschritt (6.8s)
+  ✓  20 tests/e2e/spiritual-word.spec.ts:197:3 › einzelnes Bild bei echtem Ladefehler › Vers und Navigation bleiben bedienbar; bewusster Retry dekodiert das Original (4.2s)
+  ✓  21 tests/e2e/spiritual-word.spec.ts:215:3 › hochauflösende Browserdarstellung › die eine512erDatei reicht für den vollständigen80x120Bildrahmen (4.7s)
+  ✓  22 tests/e2e/today.spec.ts:21:1 › Heute bietet Gästen einen direkten freiwilligen Einstieg in die vorhandene erste Geschichte (6.1s)
+  ✓  23 tests/e2e/today.spec.ts:29:1 › die Hauptaktion setzt den gespeicherten Abschnitt am tatsächlichen Vers fort (6.0s)
+  ✓  24 tests/e2e/today.spec.ts:37:1 › persönliche Inhalte und alle weiteren Heute-Zugänge bleiben beim Ansehen und Neustart erhalten (5.4s)
+  ✘  25 tests/e2e/today.spec.ts:44:1 › Heute bleibt in beiden Themen bei320/375/390px mit reduzierter Bewegung zugänglich (3.0m)
+(node:167252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  26 tests/e2e/today.spec.ts:58:1 › Heute und die gespeicherte Lesestelle funktionieren nach einem Offline-Neustart (6.0s)
+  ✓  27 tests/e2e/today.spec.ts:66:2 › ohne geladenes Landschaftsbild › Begrüßung und Hauptaktion bleiben vollständig bedienbar (4.3s)
+  ✓  28 tests/e2e/topics.spec.ts:22:1 › alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt (3.6s)
+  ✓  29 tests/e2e/topics.spec.ts:39:1 › ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig (5.3s)
+  ✓  30 tests/e2e/topics.spec.ts:62:1 › originaler Arbeitskontext und getrennte OLIVA-Einordnung bleiben im Entwurf und in der Sammlung erhalten (10.1s)
+  ✓  31 tests/e2e/topics.spec.ts:100:1 › Wechsel von drei zu zwei Schritten bewahrt unterschiedliche Gedanken zur selben Bibelstelle (9.7s)
+  ✓  32 tests/e2e/topics.spec.ts:121:1 › ein zuvor ungeöffnetes Thema funktioniert samt Reader und Wiederaufnahme vollständig offline (6.8s)
+  ✓  33 tests/e2e/topics.spec.ts:134:1 › Themenbibliothek und Leseschritt bleiben bei 320, 390 und 1440 Pixeln sowie in Dunkelansicht zugänglich (18.6s)
+(node:167794) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  34 tests/e2e/invitations.spec.ts:181:1 › V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt den aktuellen V11-Stand und erschließt die Startseiteneinladung (8.7s)
+  ✓  35 tests/e2e/invitations.spec.ts:217:1 › die tatsächliche Oberfläche beachtet exakt 21 und 35 Tage, neue Belege und archivierte Vorhaben ohne Schreibzugriff (5.7s)
+  ✓  36 tests/e2e/invitations.spec.ts:276:1 › Zurückstellen, Ausblenden und Wiederzulassen überleben Offline-Neustart; Ausschalten bewahrt Entscheidungen und Quellen (6.5s)
+  ✓  37 tests/e2e/invitations.spec.ts:349:1 › Quellenlinks zeigen das richtige Vorhaben und den Gedanken schreibfrei, auch wenn bereits ein anderer Entwurf besteht (5.3s)
+  ✓  38 tests/e2e/invitations.spec.ts:413:1 › Einladungen bleiben bei 320 Pixeln in Hell und Dunkel sowie auf großem Display zugänglich und ohne Überlauf (7.8s)
+  ✓  39 tests/e2e/invitations.spec.ts:473:1 › ein echter konkurrierender IndexedDB-Stand wird beim Ausblenden aus einer alten Ansicht nicht überschrieben (5.3s)
+
+
+  1) tests/e2e/today.spec.ts:44:1 › Heute bleibt in beiden Themen bei320/375/390px mit reduzierter Bewegung zugänglich 
+
+    Test timeout of 180000ms exceeded.
+
+    Error Context: test-results/today-Heute-bleibt-in-beid-a261b-zierter-Bewegung-zugänglich/error-context.md
+
+  1 failed
+    tests/e2e/today.spec.ts:44:1 › Heute bleibt in beiden Themen bei320/375/390px mit reduzierter Bewegung zugänglich 
+  38 passed (9.8m)

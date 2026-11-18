@@ -7,7 +7,6 @@ import {
   Button,
   Card,
   Tag,
-  SectionTitle,
   Progress,
 } from "../src/components/ui";
 import { Icon } from "../src/components/Icon";
@@ -63,24 +62,18 @@ export default function Home() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          marginBottom: 25,
+          marginBottom: 18,
           gap: 16,
         }}
       >
-        <View style={{ gap: 7 }}>
-          <T variant="label" style={{ color: t.gold, fontSize: 9 }}>
-            {greeting.toUpperCase()}
-            {data.name ? `, ${data.name.toUpperCase()}` : ""}
-          </T>
+        <View style={{ flex: 1, minWidth: 0 }}>
           <T
+            testID="home-greeting"
             variant="title"
             accessibilityRole="header"
-            style={{ fontSize: width < 500 ? 34 : 40 }}
+            style={{ fontSize: width < 600 ? 32 : 38, lineHeight: width < 600 ? 37 : 43 }}
           >
-            Ein Moment, der bleibt.
-          </T>
-          <T style={{ color: t.muted, fontSize: 12 }}>
-            In deinem Tempo. Mit Raum für deine Fragen.
+            {greeting}{data.name ? `, ${data.name}` : ""}.
           </T>
         </View>
         {width >= 720 && (
@@ -119,8 +112,9 @@ export default function Home() {
           }}
         >
           <View
+            testID="home-reading-entry"
             style={{
-              height: width < 600 ? 354 : 310,
+              minHeight: width < 600 ? 204 : 224,
               borderRadius: 22,
               overflow: "hidden",
               backgroundColor: "#334c38",
@@ -150,24 +144,26 @@ export default function Home() {
             />
             <View
               style={{
-                padding: width < 600 ? 26 : 32,
-                flex: 1,
+                padding: width < 600 ? 22 : 28,
+                flexGrow: 1,
                 justifyContent: "center",
                 alignItems: "flex-start",
-                gap: 15,
+                gap: 12,
+                width: "100%",
+                minWidth: 0,
                 maxWidth: width < 600 ? "100%" : "72%",
               }}
             >
               <View
-                style={{ flexDirection: "row", alignItems: "center", gap: 7 }}
+                style={{ flexDirection: "row", alignItems: "center", gap: 7, maxWidth: "100%" }}
               >
                 <Icon name="leaf" size={14} color="#d8d7ae" />
                 <T
                   variant="label"
-                  style={{ color: "#e6e2ca", fontSize: 8, letterSpacing: 1.7 }}
+                  style={{ color: "#e6e2ca", fontSize: 10, letterSpacing: 1.2, flexShrink: 1 }}
                 >
                   {canResume
-                    ? "EIN NEUER TAG. EIN NEUER GEDANKE."
+                    ? "HIER KANNST DU WEITERLESEN"
                     : "DEIN ANFANG BRAUCHT KEIN VORWISSEN"}
                 </T>
               </View>
@@ -176,27 +172,31 @@ export default function Home() {
                 accessibilityRole="header"
                 style={{
                   color: "#fffdf2",
-                  fontSize: width < 600 ? 44 : 49,
-                  lineHeight: width < 600 ? 45 : 49,
+                  fontSize: width < 600 ? 34 : 40,
+                  lineHeight: width < 600 ? 38 : 44,
+                  maxWidth: "100%",
                 }}
               >
                 {canResume
-                  ? "Worte, die dich\nbegleiten."
-                  : "Hier beginnt\ndein Weg."}
+                  ? referenceLabel(data.reading)
+                  : "Hier beginnt dein Weg."}
               </T>
               <T
                 style={{
                   color: "#e2e4d4",
                   fontSize: 12,
                   lineHeight: 21,
-                  maxWidth: 260,
+                  maxWidth: "100%",
                 }}
               >
                 {canResume
-                  ? "Kehre zu deiner Geschichte zurück.\nEin kleiner Abschnitt ist ein guter Anfang."
-                  : "Entdecke die Bibel. Verstehe ihre Geschichten.\nUnd finde heraus, was sie dir sagen."}
+                  ? data.readingPosition
+                    ? `Zuletzt bei Vers ${data.readingPosition.verse}`
+                    : "In deinem Tempo."
+                  : "Entdecke die Bibel. Verstehe ihre Geschichten."}
               </T>
               <Button
+                testID="home-primary-action"
                 kind="secondary"
                 foregroundColor="#263c30"
                 onPress={() =>
@@ -218,6 +218,8 @@ export default function Home() {
                   borderWidth: 0,
                   paddingHorizontal: 18,
                   marginTop: 3,
+                  alignSelf: width < 600 ? "stretch" : "flex-start",
+                  maxWidth: "100%",
                 }}
               >
                 {canResume
@@ -225,8 +227,8 @@ export default function Home() {
                   : "Deine erste Geschichte"}
               </Button>
             </View>
-            <View style={{ position: "absolute", right: 13, bottom: 9 }}>
-              <T style={{ fontSize: 7, color: "#fffce2", opacity: 0.85 }}>
+            <View style={{ paddingHorizontal: 14, paddingBottom: 8 }}>
+              <T style={{ fontSize: 9, lineHeight: 14, textAlign: "right", color: "#fffce2", opacity: 0.85 }}>
                 Galiläa · künstlerische Interpretation
               </T>
             </View>
@@ -266,6 +268,7 @@ export default function Home() {
                 alignItems: "center",
                 justifyContent: "space-between",
                 gap: 10,
+                flexWrap: "wrap",
               }}
             >
               <T variant="small" style={{ fontSize: 10, color: t.muted }}>
@@ -294,13 +297,17 @@ export default function Home() {
             </View>
           </Card>
           <View>
-            <SectionTitle
-              title={
+            <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: 12, marginBottom: 18 }}>
+              <T variant="heading" accessibilityRole="header" style={{ flex: 1, minWidth: 0 }}>
+                {
                 active ? active.kind === "life-topic" ? "Dein aktuelles Thema" : "Dein aktueller Weg" : "Ein Weg, der zu dir passt"
-              }
-              action={active?.kind === "life-topic" ? "Alle Themen" : "Alle Wege"}
-              onPress={() => router.replace(active?.kind === "life-topic" ? "/themen" : "/wege")}
-            />
+                }
+              </T>
+              <Pressable accessibilityRole="button" onPress={() => router.replace(active?.kind === "life-topic" ? "/themen" : "/wege")}
+                style={{ minHeight: 44, justifyContent: "center", maxWidth: "100%" }}>
+                <T style={{ fontSize: 12, color: t.primary }}>{active?.kind === "life-topic" ? "Alle Themen" : "Alle Wege"} →</T>
+              </Pressable>
+            </View>
             {!active && (
               <T
                 style={{
@@ -328,6 +335,7 @@ export default function Home() {
                   label="Wegfortschritt"
                 />
                 <Button
+                  kind="secondary"
                   onPress={() =>
                     router.push({
                       pathname: "/weg/[id]",
@@ -397,11 +405,11 @@ export default function Home() {
               borderWidth: 0,
             }}
           >
-            <T variant="label" style={{ color: t.muted, fontSize: 8 }}>
+            <T variant="label" style={{ color: t.muted, fontSize: 8, maxWidth: "100%", textAlign: "center" }}>
               DEIN PERSÖNLICHER OLIVENBAUM
             </T>
             <OliveTree stage={data.growthStage} size={235} />
-            <T variant="heading" style={{ fontSize: 26, marginTop: 5 }}>
+            <T variant="heading" style={{ fontSize: 26, marginTop: 5, maxWidth: "100%" }}>
               {STAGES[data.growthStage]?.name}
             </T>
             <T
@@ -412,6 +420,7 @@ export default function Home() {
                 textAlign: "center",
                 marginTop: 8,
                 marginBottom: 12,
+                maxWidth: "100%",
               }}
             >
               Jeder Anfang ist wertvoll. Dein Baum erinnert an das, was du
@@ -435,6 +444,7 @@ export default function Home() {
             <T
               style={{
                 color: t.muted,
+                maxWidth: "100%",
                 fontSize: 9,
                 lineHeight: 16,
                 textAlign: "center",

@@ -187,7 +187,7 @@ test("V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges O
   expect(await rawData(page)).toEqual(raw);
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "Ein Moment, der bleibt.", exact: true }),
+    page.getByTestId("home-greeting"),
   ).toBeVisible();
   await expect(visible(page, "home-invitation")).toHaveCount(0);
   expect(await rawData(page)).toEqual(raw);

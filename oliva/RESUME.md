@@ -1,3 +1,25 @@
+# Aktuell: Heute-only · lokal qualifiziert, private Lieferung abschließen
+
+Der aktuelle Nutzerauftrag begrenzt die Arbeit ausdrücklich auf **Heute**, nach Prüfung des abgeschlossenen0.18-Releases. Die zusätzliche Antwort „A“ bestätigt die Gestaltungsrichtung; andere Hauptbereiche bleiben unberührt. Kein pauschaler Umbau und keine weitere automatische Arbeit an Bibel/Wege/Garten/Sammlung in diesem Auftrag.
+
+Kanonisch `/workspace/faithpath-next`, eigener Branch `feature/oliva-today-focus-20261118`, Basis `0d997e2b0905e40a56eb9b796b900215cd175175`, Rückkehrtag `oliva-pre-today-focus-20261118`. Original-FaithPath, GitHub-main, historische Tags und Quellenarchive unverändert. Appbasis bleibt0.18.0; kein neuer formaler Release oder erfundene Versionsnummer.
+
+Umgesetzt ist ausschließlich `app/index.tsx`: klare Begrüßung, konkrete Lesestelle/Vers, flexibel hohe vorhandene Landschaft, gleiche Hauptaktion, zurückhaltenderer Wegbutton und Umbruchkorrekturen für große Schrift. Kein neues geistliches Material, keine neuen Bilder/Abhängigkeiten/Datenfelder/Migrationen. Alle übrigen343Runtime-Dateien bytegenau zur0.18Basis. Neuer Runtimehash über344Dateien `787e5140f59b60fe20467cacee284f03edcb0301cafa3b9c5b07231e2c530e81`.
+
+Tatsächlich qualifiziert:343Fachtests, finaler Typecheck, sieben Inhaltsprüfungen, Web-/PWA-Build und Runtimecheck;33bestehende Browserfälle plus sechs korrigierte Heute-Fälle. Erster Lauf38/39 und erster Test-Typecheck rot: im neuen Testhelfer blieb „Namen speichern“ beim zweiten Thema korrekt deaktiviert; Viewporttupel waren nicht readonly typisiert. Nur Testhelfer korrigiert, sechs neue Fälle anschließend komplett grün. Kein einzelner voller39/39-Lauf behaupten. Originalfehler unter `docs/evidence/today-focus/first-checks/` erhalten. Appbuild dabei unverändert.
+
+Zwölf reale Vorher- und zwölf Nachher-Screens für320/375/390px inHell/Dunkel, frisch/zurückkehrend, gleiche feste Prüfuhrzeit und Bereitschaft. Sechs200%-CSS-Textzustände ohne Inhaltsüberlauf nach der Änderung. Alle Heute-Aktionen und Test-Rohdaten exakt erhalten. Der echte lokale Update vom bisherigen privaten0.18Host zum Heute-Core bewahrt alle vier V11-Rohdatensätze exakt, einschließlich historischer Quellen, Antworten und Entwürfe. Keine nativen Geräte-/Simulator-/VoiceOver-/TalkBack-Erfolge.
+
+Core `oliva-d3cab1587b25292b`, neuer vorbereiteter privater Host `oliva-827cac01214b7955`, Stage `/workspace/oliva-today-focus-host-stage`, Namespace `preview-today-587b25292b-r1`. Appdaten weiterhinV11/Dokument1/SQLite3/IndexedDB1. Die bekanntepicomatch-Advisory bleibt:33Produktions-/35Gesamtpaketmeldungen zu einer Advisory, Registrylatest4.0.7. Sicherheitsgate nicht abschwächen und CI nicht als grün ausgeben.
+
+Bericht `docs/36-today-focus.md`, qualifizierender Guard `docs/evidence/today-focus/checks.py`; Belege/Upgrade/Screens dort. Sourcechecker und alle historischen Reviews bleiben erhalten. Nun tatsächlichen Sourcecheckpoint sichern, die vorbereitete bekannte eigentümerprivate Vorschau aktualisieren, HTTP-/Quell-/Zugangskontrolle durchführen und Abschlussdokumentation sichern. Endkennungen erst aus `/workspace/oliva-today-focus-checkpoint.json`, `/workspace/oliva-today-focus-github-backup.json` und späterem Deliverynachweis übernehmen. Quelle/Privatdeployment nicht mit öffentlicher Freigabe oder vollständig erledigtem Master gleichsetzen.
+
+Git/GH-Traces entfernen, npmCache `/tmp/faithpath-npm`, keine subagents. Workspace knapp: nur regenerierbare Caches entfernen; Originale und Quellenarchive bewahren. Letzter voriger privater Sourcecommit `fb08a009e0a54516969310924a1e0dd6e7812327` bleibt archiviert; vor Übernahme des neuen Stages alten193-Datei-Host durch Umbenennung nach `/workspace/oliva-v018-private-host-before-today` erhalten. Neuer Review enthält nurHeute unter `/review/today-focus/index.svg` und32Dateien. Keine zweiteHTML-Datei ins Sitebundle aufnehmen. Private Plattformquelle hat einen eigenen internenmain; GitHub-main bleibt unberührt.
+
+---
+
+## Vorherige Auditstände
+
 
 ## Abschließender Sicherungs- und CI-Stand des Audits
 

@@ -1,0 +1,15 @@
+{
+  "firstTypecheck": "Viewport array inferred as number[] under noUncheckedIndexedAccess",
+  "typeFix": "Use readonly coordinate tuples",
+  "firstBrowserRun": {
+    "passed": 38,
+    "failed": 1,
+    "retries": 0,
+    "failedCase": "Today accessibility two-theme fixture setup"
+  },
+  "fixtureCause": "Second theme reused Mara; saveName was correctly disabled for an unchanged name",
+  "fixtureFix": "Save only when enabled, always require the existing persisted name before seeding settings; no forced click or relaxed app assertion",
+  "applicationCodeChanged": false,
+  "runtimeCoreUnchanged": "oliva-d3cab1587b25292b",
+  "repeatScope": "The6newTodaytests;33existingtests already passed on the identical runtime"
+}

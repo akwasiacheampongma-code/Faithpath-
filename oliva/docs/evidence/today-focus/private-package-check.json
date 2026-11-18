@@ -1,0 +1,62 @@
+{
+  "version": "0.18.0",
+  "checkedAt": "2026-11-18T07:12:19.306Z",
+  "runtime_files_verified": 102,
+  "unchanged_runtime_asset_bytes": 99,
+  "rewritten_uri_files": 3,
+  "all_runtime_hashes_match": true,
+  "pwa_manifest_valid": true,
+  "icons_valid": true,
+  "cache_files_verified": 105,
+  "build_id": "oliva-827cac01214b7955",
+  "app_routes_rewritten": true,
+  "source_build": "oliva-d3cab1587b25292b",
+  "source_validation": {
+    "version": "0.18.0",
+    "workStatus": "Today-only working candidate on0.18basis; no new formal release",
+    "coreBuild": "oliva-d3cab1587b25292b",
+    "runtimeSourceDigest": {
+      "algorithm": "SHA256(Python Path sorted path + NUL + bytes + NUL); app/src/assets, app/package/lock and active tree/spiritual-sword runtime manifests",
+      "fileCount": 344,
+      "sha256": "787e5140f59b60fe20467cacee284f03edcb0301cafa3b9c5b07231e2c530e81"
+    },
+    "onlyChangedApplicationFile": "app/index.tsx",
+    "unit": {
+      "passed": 343,
+      "total": 343
+    },
+    "browser": {
+      "passed": 39,
+      "total": 39,
+      "existingCasesFromFirstRun": 33,
+      "todayCasesFromCorrectedRun": 6,
+      "singleFullRun": false
+    },
+    "screenshots": {
+      "beforeStates": 12,
+      "afterStates": 12,
+      "widths": [
+        320,
+        375,
+        390
+      ],
+      "dataRecordsExact": true,
+      "allExistingActionsPreserved": true
+    },
+    "typecheckPassed": true,
+    "contentChecksPassed": true,
+    "productionSecurityAuditPassed": false,
+    "knownSecurityAdvisory": "GHSA-fc5q-39xc-vjpf",
+    "pwaUpdateAllFourRawRecordsExact": true,
+    "appDataVersion": 11,
+    "nativeExecution": false,
+    "physicalDeviceTest": false,
+    "simulatorTest": false,
+    "newReleaseTag": false,
+    "otherMainAreasChanged": false,
+    "allCoreChecksPassed": false,
+    "scopedLocalAcceptancePassed": true
+  },
+  "managed_sites_browser_qa": "unavailable: cua_repl.js not exposed",
+  "physical_phone_test": false
+}

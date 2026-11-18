@@ -1,0 +1,97 @@
+{
+  "checkedAt": "2026-11-18T07:02:38.288122+00:00",
+  "steps": [
+    {
+      "name": "check",
+      "command": [
+        "npm",
+        "run",
+        "content:check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "nt",
+      "command": [
+        "npm",
+        "run",
+        "content:nt"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "stories",
+      "command": [
+        "npm",
+        "run",
+        "content:stories"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "topics",
+      "command": [
+        "npm",
+        "run",
+        "content:topics"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "art",
+      "command": [
+        "npm",
+        "run",
+        "content:art"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "tree",
+      "command": [
+        "npm",
+        "run",
+        "content:tree"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "swords",
+      "command": [
+        "npm",
+        "run",
+        "content:swords"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "runtime",
+      "command": [
+        "node",
+        "scripts/check-spiritual-sword-runtime.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "production-audit",
+      "command": [
+        "npm",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "exitCode": 1
+    },
+    {
+      "name": "full-audit",
+      "command": [
+        "npm",
+        "audit",
+        "--json"
+      ],
+      "exitCode": 1
+    }
+  ],
+  "allContentAndRuntimeChecksPassed": true,
+  "securityAuditPassed": false
+}

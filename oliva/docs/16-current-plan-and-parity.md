@@ -1,5 +1,12 @@
 # Aktueller Plan und FaithPath-Parität
 
+<!-- TODAY_FOCUS_20261118 -->
+## Aktueller Arbeitsstand: ausschließlich Heute
+
+Die kleine Heute-Verbesserung ist lokal umgesetzt und qualifiziert: klare Leseaktion, konkrete Lesestelle, vorhandene Landschaft in flexibler Höhe, alle bisherigen Angebote erhalten. [Analyse, Vergleiche und echte Prüfergebnisse](36-today-focus.md). Basis0.18.0, noch kein neuer formaler Release. Private Lieferung wird erst nach Ausführung bestätigt.343Fachtests, Typecheck, sieben Inhaltsprüfungen, Produktionsbuild,33bestehende Browserfälle und sechs Heute-Fälle bestanden; der erste Testhelferfehler bleibt dokumentiert. Die bekanntepicomatch-Advisory blockiert weiterhin die CI. Andere Hauptbereiche und Datenmodelle unverändert.
+<!-- /TODAY_FOCUS_20261118 -->
+
+
 <!-- OLIVA_QUIET_UX_AUDIT_20261118 -->
 ## Aktueller Auftrag: Weniger Oberfläche, mehr Tiefe
 

@@ -286,7 +286,7 @@ test("Offline-Neustart öffnet auch einen noch nicht besuchten Reader", async ({
   context,
 }) => {
   await page.goto("/");
-  await page.getByText("Ein Moment, der bleibt.").waitFor();
+  await page.getByTestId("home-greeting").waitFor();
   await page.evaluate(() => navigator.serviceWorker.ready);
   await expect
     .poll(() => page.evaluate(() => !!navigator.serviceWorker.controller))
