@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-11-18T06:37:48.696524+00:00",
+  "run": 44252369532,
+  "job": 134625865755,
+  "githubSourceCommit": "c3f1f736bbbd37d61d3b0d845cfc377c9767a18e",
+  "sourceBranch": "feature/oliva-quiet-ux-audit-20261118",
+  "attempt": 1,
+  "conclusion": "failure",
+  "failedStep": "npm audit --audit-level=moderate",
+  "advisory": "GHSA-fc5q-39xc-vjpf",
+  "allDependencyPackageReports": 35,
+  "localProductionPackageReports": 33,
+  "independentAdvisories": 1,
+  "subsequentCiChecksNotRun": true,
+  "logBytes": 45488,
+  "storedLogSha256": "b38e9e5985a144adc66950a96bf1659137b9dbf6bc5ab5ae427ef9afdbff60e0",
+  "logNewlineHandling": "Decoded connector text stored through apply_patch with a final newline; original platform log remains at GitHub job URL.",
+  "historical018Ci": {
+    "run": 44124684188,
+    "conclusion": "success",
+    "source": "84527ef0b7e3c970b3c7e33bd758cd2fd28d06a0"
+  },
+  "sourceRuntimeChanged": false,
+  "greenCiClaimed": false
+}
