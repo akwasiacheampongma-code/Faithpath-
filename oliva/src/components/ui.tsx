@@ -10,6 +10,7 @@ import {
   type TextInputProps,
 } from "react-native";
 import { useTheme } from "../design-system/theme";
+import { noteAccessActivity } from "../features/security/access";
 import { Icon, type IconName } from "./Icon";
 export function T({
   children,
@@ -184,7 +185,7 @@ export function Card({
     </View>
   );
 }
-export function Field({ label, ...props }: TextInputProps & { label: string }) {
+export function Field({ label, onChangeText, ...props }: TextInputProps & { label: string }) {
   const t = useTheme();
   return (
     <View style={{ gap: 7 }}>
@@ -195,6 +196,7 @@ export function Field({ label, ...props }: TextInputProps & { label: string }) {
         accessibilityLabel={label}
         placeholderTextColor={t.muted}
         {...props}
+        onChangeText={onChangeText && ((value) => { noteAccessActivity(); onChangeText(value); })}
         style={[
           {
             minHeight: 48,

@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-11-18T18:38:39.441Z",
+  "lockSha256": "fa3f0336c62de316b3dd7f8bd90149f72d09f93223c63a9c86f0fa8cc8a30dd6",
+  "source": "https://registry.npmjs.org/-/npm/v1/security/advisories/bulk",
+  "dependenciesChecked": 621,
+  "uniqueNames": 553,
+  "skipped": [],
+  "onlyNamesAndVersionsSent": true,
+  "dependenciesChanged": false,
+  "findings": [],
+  "limitations": [
+    "Direct advisory matches on exact lockfile versions including development packages and optional platform packages.",
+    "Counts are direct matches, not npm audit's propagated dependency reports or proof of runtime reachability.",
+    "Registry coverage and package metadata as of the query date. OS, platform and native binary components require their own analysis."
+  ]
+}

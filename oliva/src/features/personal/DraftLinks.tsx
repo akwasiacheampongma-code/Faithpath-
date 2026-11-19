@@ -91,7 +91,7 @@ export function DraftLinks({ onJournal }: { onJournal?: () => void }) {
           <T variant="small" style={{ color: t.danger }}>
             Einige Worte sind nur in dieser Sitzung erhalten. Schließe die App
             erst, wenn du sie erfolgreich gesichert, exportiert oder kopiert
-            hast.
+            hast. Eine exportierte Sitzungskopie enthält diese Texte im Klartext.
           </T>
           <Button
             kind="secondary"

@@ -1,3 +1,4 @@
+import { requestPlainBackup } from "./backup-ui";
 import {
   selectionBar,
   noteDialog,
@@ -217,9 +218,7 @@ test("Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wieder
     .click();
   await expect.poll(async () => (await local(page)).name).toBe("Ada");
   const pending = page.waitForEvent("download");
-  await page
-    .getByRole("button", { name: "Sicherung exportieren", exact: true })
-    .click();
+  await requestPlainBackup(page);
   const download = await pending;
   expect(download.suggestedFilename()).toContain("oliva-sicherung-");
   const snapshot = await local(page);

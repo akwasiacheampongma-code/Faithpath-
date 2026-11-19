@@ -1,3 +1,4 @@
+import { requestPlainBackup } from "./backup-ui";
 import {
   selectionBar,
   noteDialog,
@@ -279,9 +280,7 @@ test("der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexi
     .getByRole("button", { name: /Profil und Einstellungen$/, exact: true })
     .click();
   const download = page.waitForEvent("download");
-  await page
-    .getByRole("button", { name: "Sicherung exportieren", exact: true })
-    .click();
+  await requestPlainBackup(page);
   const file = await (await download).path(),
     data = JSON.parse(await readFile(file!, "utf8")) as AppData;
   expect(
@@ -347,9 +346,7 @@ test("ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Si
   await page
     .getByRole("button", { name: /Profil und Einstellungen$/, exact: true })
     .click();
-  await page
-    .getByRole("button", { name: "Sicherung exportieren", exact: true })
-    .click();
+  await requestPlainBackup(page);
   await expect(
     page.getByText(/Einige Entwürfe sind noch nicht dauerhaft gesichert/),
   ).toBeVisible();

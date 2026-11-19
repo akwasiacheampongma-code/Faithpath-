@@ -424,6 +424,7 @@ export function ReviewEditEditor({
         onSave={e.save}
         onDiscard={e.discard}
       />
+      <T variant="small">Der exportierte Bearbeitungsentwurf enthält deine Worte im Klartext.</T>
       <Button
         kind="secondary"
         icon="download"

@@ -1,4 +1,10 @@
-# Aktuell: Stabilisierung und Vorbereitung der Nutzerabnahme
+# Aktuell · Passwortschutz für OLIVA
+
+Der lokale Zweig `feature/oliva-password-protection` basiert auf dem Stabilisierungskandidaten `4c2e0d3`. Die Implementierung liegt in `fe0f72a`. Die Einstellungen bieten verschlüsselte `.oliva`-Sicherungen mit AES-256-GCM, weiterhin den JSON-Import und eine optionale App-Sperre mit bestätigtem Wiederherstellungscode. Der Zugangsnachweis liegt in einem getrennten lokalen Speicher. Der Schutz steuert den Zugriff in OLIVA. Die bestehende Profildatenbank bleibt im bisherigen Format.
+
+Der tatsächliche lokale PWA-Wechsel auf den Kandidaten `oliva-a1008a991b30c338` bewahrt die vier geprüften Rohdatensätze einschließlich FaithPath-Original und Rückkehrsicherung. Webbuild, statische Android-/iOS-Exporte, 350 Fachtests und der vollständige Lauf mit 167 Chromium-Fällen sind dokumentiert. Die picomatch-Advisory wurde laut GitHub-API zurückgezogen. Echte Geräte, VoiceOver und TalkBack sowie die Freigabe zur privaten Bereitstellung stehen aus. Die bestehende private Vorschau zeigt weiterhin `oliva-507a582d5a9cc3a6`. [Passwortschutz und Testnachweise](docs/44-password-protection.md) · [Lieferstand](docs/delivery-status.md)
+
+## Vorheriger Stand · Stabilisierung und Vorbereitung der Nutzerabnahme
 
 Der lokale Kandidat `oliva-ef3b048eca9d6b21` liegt auf `hardening/oliva-user-acceptance-20261118` mit Version 0.18.0. Die bisherige private Vorschau ist Version 24 mit einem berechtigten Konto. Im gedrosselten Chromium-Vergleich sinken die Mediane für Heute von 23,72 auf 16,12 Sekunden und für Noah von 22,05 auf 14,99 Sekunden. Granulare Web-Chunks und vollständige WOFF2-Dateien tragen die Verbesserung. Die Offline-Vorbereitung braucht im Median 4,20 statt 3,81 Sekunden. Der Offline-Neustart liegt weiter bei rund zwei Sekunden. [Stabilisierungsbericht](docs/43-stabilization.md) · [Handytest und Gerätematrix](docs/stabilization-device-matrix.md)
 

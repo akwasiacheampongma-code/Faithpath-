@@ -1,6 +1,6 @@
 import { chromium, expect } from "@playwright/test";
 import { spawn } from "node:child_process";
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { mkdtemp, readFile, rename, rm, symlink, writeFile } from "node:fs/promises";
 import net from "node:net";
 import { tmpdir } from "node:os";
@@ -8,8 +8,9 @@ import path from "node:path";
 import { faithpathFixture } from "../tests/fixtures/faithpath-v5.ts";
 import { localData } from "../tests/e2e/persistence.ts";
 
-const [before, after, output] = process.argv.slice(2);
-if (!before || !after || !output) throw new Error("Usage: node scripts/check-current-pwa-upgrade.mjs <before-dist> <after-dist> <report.json>");
+const [before, after, output, accessCheck] = process.argv.slice(2);
+if (!before || !after || !output || (accessCheck && accessCheck !== "--check-password-protection"))
+  throw new Error("Usage: node scripts/check-current-pwa-upgrade.mjs <before-dist> <after-dist> <report.json> [--check-password-protection]");
 const hash = (value) => createHash("sha256").update(value).digest("hex");
 async function packageInfo(directory) {
   const html = await readFile(path.join(directory, "index.html"), "utf8");
@@ -175,7 +176,12 @@ try {
 
   await page.goto(origin + "/einstellungen");
   const pending = page.waitForEvent("download");
-  await button("Sicherung exportieren").click();
+  await expect(button("Sicherung erstellen").or(button("Sicherung exportieren"))).toBeVisible();
+  if (await button("Sicherung erstellen").isVisible()) {
+    await button("Sicherung erstellen").click();
+    await button("Unverschlüsselte Sicherung").click();
+    await button("Unverschlüsselt exportieren").click();
+  } else await button("Sicherung exportieren").click();
   const download = await pending;
   const exported = await readFile(await download.path(), "utf8");
   expect(JSON.parse(exported)).toEqual(data);
@@ -185,6 +191,26 @@ try {
   await expect(button("Daten durch diese Sicherung ersetzen")).toBeVisible();
   expect(await records(page)).toStrictEqual(original);
   report.steps.push({ step: "Restart, archive, backup and read-only restore preview offline", raw: describe(await records(page)), exportSha256: hash(exported) });
+  if (accessCheck) {
+    const password = randomUUID();
+    await button("Sicherung wiederherstellen").click();
+    await button("OLIVA mit Passwort schützen").click();
+    await page.getByLabel("Neues Passwort", { exact: true }).fill(password);
+    await page.getByLabel("Neues Passwort bestätigen", { exact: true }).fill(password);
+    await button("Weiter zum Wiederherstellungscode").click();
+    const code = await page.getByTestId("oliva-recovery-code").innerText();
+    await page.getByLabel("Wiederherstellungscode bestätigen", { exact: true }).fill(code);
+    await button("Passwortschutz aktivieren").click();
+    await expect(button("Jetzt sperren")).toBeVisible();
+    await page.reload();
+    await expect(page.getByRole("heading", { name: "OLIVA entsperren", exact: true })).toBeVisible();
+    await expect(page.getByTestId("oliva-unlocked-content")).toHaveCount(0);
+    await page.getByLabel("App-Passwort", { exact: true }).fill(password);
+    await button("Entsperren").click();
+    await expect(button("Jetzt sperren")).toBeVisible();
+    expect(await records(page)).toStrictEqual(original);
+    report.steps.push({ step: "Enable access protection after update, restart offline and unlock", raw: describe(await records(page)) });
+  }
   expect(await packageInfo(before)).toEqual(baseline);
   expect(await packageInfo(after)).toEqual(candidate);
   report.passed = true;

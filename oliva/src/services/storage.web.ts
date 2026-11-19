@@ -193,15 +193,14 @@ export async function readRecovery(): Promise<RecoveryCopy | null> {
       reject(new Error("Die lokale Rückkehrsicherung ist nicht verfügbar."));
   });
 }
-export async function exportData(data: AppData) {
-  return exportText(
-    JSON.stringify(data, null, 2),
-    `oliva-sicherung-${new Date().toISOString().slice(0, 10)}.json`,
-  );
-}
 export async function exportText(text: string, filename: string) {
-  const blob = new Blob([text], { type: "application/json" }),
-    url = URL.createObjectURL(blob),
+  download(new Blob([text], { type: "application/json" }), filename);
+}
+export async function exportBytes(bytes: Uint8Array<ArrayBuffer>, filename: string) {
+  download(new Blob([bytes], { type: "application/octet-stream" }), filename);
+}
+function download(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob),
     a = document.createElement("a");
   a.href = url;
   a.download = filename;

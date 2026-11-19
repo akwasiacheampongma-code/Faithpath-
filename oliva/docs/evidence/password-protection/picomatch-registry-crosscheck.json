@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-18T18:41:20.075Z",
+  "sources": {
+    "advisory": "https://api.github.com/advisories/GHSA-fc5q-39xc-vjpf",
+    "npm": "https://registry.npmjs.org/picomatch/latest"
+  },
+  "results": [
+    [
+      "advisory",
+      {
+        "status": 200,
+        "id": "GHSA-fc5q-39xc-vjpf",
+        "withdrawal": "2026-11-18T15:38:56Z",
+        "updated": "2026-11-18T15:38:58Z",
+        "packageRanges": [
+          {
+            "range": "<= 4.0.7",
+            "patch": null
+          }
+        ]
+      }
+    ],
+    [
+      "npm",
+      {
+        "status": 200,
+        "version": "4.0.7"
+      }
+    ]
+  ]
+}

@@ -52,7 +52,7 @@ export function RecoveryScreen() {
               Die Reparatursicherung enthält den gespeicherten Bestand
               einschließlich persönlicher Texte und möglicher beschädigter
               Einträge. Sie dient der Wiederherstellung mit technischer Hilfe
-              und ist keine normale OLIVA-Sicherung. Die Übergabe an den
+              und enthält die gespeicherten Daten unverschlüsselt. Die Übergabe an den
               Dateidialog bestätigt noch keine gespeicherte externe Datei.
             </T>
             <Button
@@ -82,7 +82,7 @@ export function RecoveryScreen() {
               <T variant="heading">Auch deine letzten Eingaben bewahren.</T>
               <T variant="small">
                 {pending} Entwürfe sind noch nicht dauerhaft gespeichert.
-                Sichere sie zusätzlich, bevor du dieses Fenster schließt.
+                Sichere sie zusätzlich, bevor du dieses Fenster schließt. Der Export enthält deine Texte im Klartext.
               </T>
               <Button
                 disabled={working}

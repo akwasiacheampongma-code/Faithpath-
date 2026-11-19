@@ -1,3 +1,4 @@
+import { requestPlainBackup } from "./backup-ui";
 import { test, expect, type Page } from "@playwright/test";
 import { readFile, mkdir } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
@@ -311,9 +312,7 @@ test("Löschen braucht Bestätigung, verwirft Undo beim Verlassen und exportiert
     .getByRole("button", { name: /Profil und Einstellungen$/, exact: true })
     .click();
   const download = page.waitForEvent("download");
-  await page
-    .getByRole("button", { name: "Sicherung exportieren", exact: true })
-    .click();
+  await requestPlainBackup(page);
   const path = await (await download).path(),
     backup = JSON.parse(await readFile(path!, "utf8"));
   expect(backup.goals[0].reviews).toEqual([]);

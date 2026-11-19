@@ -28,3 +28,59 @@ FaithPath life topics: 18 original topics with 45 Bible references, editorial co
 Der Projektauftrag vom08.11.2026 beauftragt ausdrücklich die nachträgliche GitHub-Ablage der OLIVA-Stände0.5,0.6 und0.7 wie bei0.4 sowie die Sicherung folgender Versionen. Das bestehende Zielrepository `akwasiacheampongma-code/Faithpath-` ist öffentlich. Diese Quellenablage erweitert keine MIT-Ausnahme zu einer pauschalen Weiterverwendungslizenz für A51 und ersetzt keine unabhängige Inhalts-, Rechte- oder Storefreigabe. Die Web-Vorschau bleibt eigentümerprivat; eine öffentliche Website-/App-Veröffentlichung ist damit nicht beauftragt.
 
 Current spiritual symbol: one unchanged project-generated sword illustration is reused in the Bible hub as a static symbol of God's Word (Ephesians6:17). It has no book selection, reading-progress or reward function. The former book-sword records above are historical; all original art/provenance remains preserved. The one active512pxPNG and exact source hashes are documented in `art/spiritual-sword/runtime.json`; former runtime files are archived byte-for-byte under `art/swords/historical-runtime-assets/`. Provider terms and pending public product-release review continue to apply.
+
+## Password protection dependencies
+
+Expo Crypto 58.0.7 supplies secure random bytes and authenticated AES on Android and iOS. Noble Hashes 2.4.0 supplies PBKDF2 on those platforms. Both are distributed under MIT. The web implementation uses the browser Web Crypto API.
+
+### Expo Crypto
+
+```text
+The MIT License (MIT)
+
+Copyright (c) 2015-present 650 Industries, Inc. (aka Expo)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+### Noble Hashes
+
+```text
+The MIT License (MIT)
+
+Copyright (c) 2022 Paul Miller (https://paulmillr.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+```

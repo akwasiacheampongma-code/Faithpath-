@@ -108,7 +108,12 @@ try {
 
   await page.goto(origin + "/einstellungen");
   const offered = page.waitForEvent("download");
-  await button("Sicherung exportieren").click();
+  await expect(button("Sicherung erstellen").or(button("Sicherung exportieren"))).toBeVisible();
+  if (await button("Sicherung erstellen").isVisible()) {
+    await button("Sicherung erstellen").click();
+    await button("Unverschlüsselte Sicherung").click();
+    await button("Unverschlüsselt exportieren").click();
+  } else await button("Sicherung exportieren").click();
   const download = await offered;
   const bytes = await readFile(await download.path());
   const backup = JSON.parse(bytes.toString());

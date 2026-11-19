@@ -1,5 +1,9 @@
 # Lieferstand · OLIVA 0.18.0 · Ein geistliches Schwert
 
+## Passwortschutz · lokaler Kandidat
+
+Der Kandidat `oliva-a1008a991b30c338` bietet verschlüsselte Sicherungsdateien und eine optionale App-Sperre. Er liegt lokal auf `feature/oliva-password-protection`. 350 Fachtests, 167 Browserfälle, Typecheck und der Web-/PWA-Build sind bestanden. Das tatsächliche PWA-Update im lokalen Chromium erhält den bisherigen Testdatenbestand bytegenau. Vor einer privaten Bereitstellung stehen die Freigabe und echte iOS-/Android-Prüfungen mit VoiceOver bzw. TalkBack aus. Die private Vorschau steht weiterhin auf dem bisherigen Paket `oliva-507a582d5a9cc3a6`. [Umsetzung, Sicherheitsgrenzen und Abnahme](44-password-protection.md) · [PWA-Update](evidence/password-protection/pwa-upgrade.json)
+
 ## Stabilisierung für die Nutzerabnahme · lokaler Kandidat
 
 Der Kandidat `oliva-ef3b048eca9d6b21` basiert auf OLIVA 0.18.0. Im lokalen Labor starten beide geprüften Einstiegsansichten im Median rund 32 Prozent früher. Das gesamte Offlinepaket ist geprüft. Der echte Paketwechsel erhält die vier geprüften persönlichen Rohdatensätze. Die bestehende private Vorschau zeigt den Vergleichsstand. Sicherheits-, Rechte- und Gerätefreigaben stehen aus. [Stabilisierungsbericht](43-stabilization.md) · [Handytest](stabilization-device-matrix.md)

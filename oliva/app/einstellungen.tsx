@@ -6,42 +6,18 @@ import { Shell } from "../src/components/Shell";
 import { T, Button, Card, Field, Tag } from "../src/components/ui";
 import { useTheme } from "../src/design-system/theme";
 import { useApp } from "../src/state/store";
-import { parseBackup, type AppData } from "../src/state/model";
-import { exportData } from "../src/services/storage";
-import { MAX_BACKUP_BYTES } from "../src/features/imports/schema";
-import { pickBackup } from "../src/services/pick-backup";
 import { useVolatileDrafts } from "../src/features/personal/volatile-drafts";
 import { InvitationSettings } from "../src/features/invitations/InvitationSettings";
+import { BackupExport } from "../src/features/security/BackupExport";
+import { BackupRestore } from "../src/features/security/BackupRestore";
+import { AccessSettings } from "../src/features/security/AccessSettings";
 export default function Settings() {
   const t = useTheme(),
     data = useApp((s) => s.data),
     pending = useVolatileDrafts((s) => Object.keys(s.items).length),
     mutate = useApp((s) => s.mutate),
-    restore = useApp((s) => s.restore),
     busy = useApp((s) => s.busy),
-    [name, setName] = useState(data.name),
-    [backup, setBackup] = useState(""),
-    [candidate, setCandidate] = useState<AppData | null>(null),
-    [message, setMessage] = useState(""),
-    [showImport, setShowImport] = useState(false);
-  function check() {
-    try {
-      setCandidate(parseBackup(backup));
-      setMessage(
-        "Die Sicherung ist formal gültig. Bitte prüfe die Übersicht vor der Wiederherstellung.",
-      );
-    } catch (error) {
-      setCandidate(null);
-      setMessage((error as Error).message);
-    }
-  }
-  async function apply() {
-    if (candidate && (await restore(candidate))) {
-      setCandidate(null);
-      setBackup("");
-      setMessage("Die Sicherung wurde wiederhergestellt.");
-    }
-  }
+    [name, setName] = useState(data.name);
   return (
     <Shell>
       <Tag icon="settings">Dein persönlicher Raum</Tag>
@@ -137,21 +113,7 @@ export default function Settings() {
             Sichere deine Daten regelmäßig an einem Ort, dem du vertraust. Eine
             Sicherung enthält auch deine persönlichen Texte.
           </T>
-          <Button
-            icon="download"
-            onPress={() =>
-              void useApp
-                .getState()
-                .waitForWrites()
-                .then(exportData)
-                .then(() =>
-                  setMessage("Sicherung zum Speichern oder Teilen übergeben."),
-                )
-                .catch((error) => setMessage((error as Error).message))
-            }
-          >
-            Sicherung exportieren
-          </Button>
+          <BackupExport disabled={busy} />
           {pending > 0 && (
             <Button
               kind="secondary"
@@ -161,16 +123,7 @@ export default function Settings() {
               Ungesicherte Entwürfe bewahren
             </Button>
           )}
-          <Button
-            kind="secondary"
-            icon="back"
-            onPress={() => {
-              setShowImport(!showImport);
-              setCandidate(null);
-            }}
-          >
-            Sicherung wiederherstellen
-          </Button>
+          <BackupRestore />
           <Button
             kind="secondary"
             icon="bookmark"
@@ -178,92 +131,8 @@ export default function Settings() {
           >
             FaithPath-Daten mitnehmen
           </Button>
-          {showImport && (
-            <View style={{ gap: 14 }}>
-              <T style={{ fontSize: 11, color: t.muted }}>
-                Wähle eine OLIVA-JSON-Sicherung oder füge ihren Inhalt ein
-                (maximal 64 MB). Für FaithPath nutze „FaithPath-Daten
-                mitnehmen“.
-              </T>
-              <Button
-                kind="secondary"
-                icon="download"
-                disabled={busy}
-                onPress={() =>
-                  void pickBackup(MAX_BACKUP_BYTES)
-                    .then((value) => {
-                      if (value !== null) {
-                        setBackup(value);
-                        setCandidate(parseBackup(value));
-                        setMessage(
-                          "Sicherung geprüft. Bitte prüfe die Übersicht vor der Wiederherstellung.",
-                        );
-                      }
-                    })
-                    .catch((e) => {
-                      setCandidate(null);
-                      setMessage((e as Error).message);
-                    })
-                }
-              >
-                OLIVA-Sicherungsdatei auswählen
-              </Button>
-              <Field
-                label="Inhalt deiner OLIVA-Sicherung"
-                multiline
-                value={backup}
-                maxLength={MAX_BACKUP_BYTES}
-                onChangeText={(value) => {
-                  setBackup(value);
-                  setCandidate(null);
-                }}
-                placeholder={'{"version":4, …}'}
-              />
-              <Button
-                kind="secondary"
-                disabled={!backup.trim() || busy}
-                icon="check"
-                onPress={check}
-              >
-                Sicherung prüfen
-              </Button>
-              {candidate && (
-                <Card style={{ backgroundColor: t.goldSoft, gap: 12 }}>
-                  <T style={{ fontSize: 13, fontWeight: "600" }}>
-                    Vorhandene lokale Daten werden ersetzt.
-                  </T>
-                  <T style={{ fontSize: 12 }}>
-                    Diese Sicherung enthält {candidate.notes.length} Einträge,{" "}
-                    {candidate.readChapters.length} gelesene Kapitel und{" "}
-                    {candidate.bookmarks.length} Lesezeichen,{" "}
-                    {candidate.goals.length} Vorhaben und{" "}
-                    {candidate.drafts.length} Entwürfe. Exportiere den aktuellen
-                    Stand vor der Wiederherstellung.
-                  </T>
-                  <Button
-                    disabled={busy}
-                    icon="check"
-                    onPress={() => void apply()}
-                  >
-                    Daten durch diese Sicherung ersetzen
-                  </Button>
-                  <Button
-                    kind="ghost"
-                    icon="close"
-                    onPress={() => setCandidate(null)}
-                  >
-                    Abbrechen
-                  </Button>
-                </Card>
-              )}
-            </View>
-          )}
-          {message && (
-            <T accessibilityRole="alert" style={{ fontSize: 12 }}>
-              {message}
-            </T>
-          )}
         </Card>
+        <AccessSettings />
         <InvitationSettings />
         <Card style={{ gap: 13 }}>
           <T variant="heading">Einordnungen und KI</T>

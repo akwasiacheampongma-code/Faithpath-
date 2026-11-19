@@ -104,6 +104,7 @@ export default function ImportArchive() {
           <T selectable style={{ fontSize: 10 }}>
             {receipt.sourceHash}
           </T>
+          <T variant="small">Der Originalexport enthält die unveränderte FaithPath-Datei im Klartext.</T>
           <Button
             icon="download"
             onPress={() =>

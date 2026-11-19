@@ -1,3 +1,4 @@
+import { requestPlainBackup } from "./backup-ui";
 /// <reference types="node" />
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
@@ -23,9 +24,7 @@ test("Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf",
     .getByRole("button", { name: /Profil und Einstellungen$/, exact: true })
     .click();
   const pending = page.waitForEvent("download");
-  await page
-    .getByRole("button", { name: "Sicherung exportieren", exact: true })
-    .click();
+  await requestPlainBackup(page);
   const downloaded = await pending,
     file = await downloaded.path();
   expect(file).not.toBeNull();

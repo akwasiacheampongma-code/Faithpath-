@@ -141,22 +141,22 @@ export async function writeData(
     );
   });
 }
-export async function exportData(data: AppData) {
-  return exportText(
-    JSON.stringify(data, null, 2),
-    `oliva-sicherung-${Date.now()}.json`,
-  );
-}
 export async function exportText(text: string, filename: string) {
+  return shareFile(text, filename, "application/json", "public.json");
+}
+export async function exportBytes(bytes: Uint8Array<ArrayBuffer>, filename: string) {
+  return shareFile(bytes, filename, "application/octet-stream", "public.data");
+}
+async function shareFile(contents: string | Uint8Array, filename: string, mimeType: string, UTI: string) {
   if (!(await Sharing.isAvailableAsync()))
     throw new Error("Auf diesem Gerät ist keine Dateifreigabe verfügbar.");
   const file = new File(Paths.cache, filename.replace(/[^a-zA-Z0-9._-]/g, "_"));
   try {
     file.create({ overwrite: true });
-    file.write(text);
+    file.write(contents);
     await Sharing.shareAsync(file.uri, {
-      mimeType: "application/json",
-      UTI: "public.json",
+      mimeType,
+      UTI,
       dialogTitle: "Persönliche Sicherung speichern",
     });
   } finally {

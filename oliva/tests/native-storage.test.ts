@@ -9,6 +9,8 @@ const harness = vi.hoisted(() => ({
   failMain: false,
   failExportCleanup: false,
   closedExportConnections: 0,
+  fileWrites: [] as (string | Uint8Array)[],
+  fileDeletes: 0,
 }));
 vi.mock("expo-sharing", () => ({ isAvailableAsync: async () => true, shareAsync: async () => {} }));
 vi.mock("expo-file-system", () => ({
@@ -16,9 +18,10 @@ vi.mock("expo-file-system", () => ({
     uri = "file:///synthetic-cache/recovery.sqlite";
     exists = false;
     create() { this.exists = true; }
-    write() {}
+    write(contents: string | Uint8Array) { harness.fileWrites.push(contents); }
     delete() {
       if (harness.failExportCleanup) throw new Error("Temporäre Datei konnte nicht entfernt werden");
+      harness.fileDeletes++;
       this.exists = false;
     }
   },
@@ -64,9 +67,18 @@ beforeEach(() => {
   harness.failMain = false;
   harness.failExportCleanup = false;
   harness.closedExportConnections = 0;
+  harness.fileWrites = [];
+  harness.fileDeletes = 0;
 });
 afterEach(() => harness.db?.close());
 describe("Native SQLite-Adapter mit realer SQL-Engine", () => {
+  it("übergibt beim binären Export nur die erhaltenen Dateibytes an den temporären Dateipfad", async () => {
+    const storage = await import("../src/services/storage");
+    const encrypted = Uint8Array.of(79, 76, 73, 86, 65, 69, 78, 67, 1, 1);
+    await storage.exportBytes(encrypted, "synthetic.oliva");
+    expect(harness.fileWrites).toEqual([encrypted]);
+    expect(harness.fileDeletes).toBe(1);
+  });
   it("schließt die zusätzliche Exportverbindung auch bei fehlgeschlagener Cachebereinigung", async () => {
     const storage = await import("../src/services/storage");
     harness.failExportCleanup = true;

@@ -85,6 +85,7 @@ export type Store = {
   busy: boolean;
   error: string | null;
   hydrate: () => Promise<void>;
+  suspend: () => Promise<void>;
   mutate: (fn: (d: AppData) => void) => Promise<boolean>;
   saveEditorDraft: (
     draft: Draft,
@@ -236,6 +237,12 @@ export const useApp = create<Store>((set, get) => {
     healthy: false,
     busy: false,
     error: null,
+    suspend: () => {
+      invalidateUndo();
+      return enqueue(async () => {
+        set({ data: initialData(), ready: false, healthy: false, error: null });
+      });
+    },
     hydrate: async () => {
       if (get().busy) return;
       invalidateUndo();

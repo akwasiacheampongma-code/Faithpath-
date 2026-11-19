@@ -10,7 +10,8 @@ import {
   MAX_SOURCE_BYTES,
   type RecoveryCopy,
 } from "../src/features/imports/schema";
-import { readRecovery, exportData } from "../src/services/storage";
+import { readRecovery } from "../src/services/storage";
+import { BackupExport } from "../src/features/security/BackupExport";
 import { pickBackup } from "../src/services/pick-backup";
 import { utf8Length } from "../src/lib/hash";
 
@@ -317,23 +318,7 @@ export default function FaithpathImport() {
                   wenn du sie behalten möchtest. Die Rückkehrsicherung wird
                   danach verbraucht.
                 </T>
-                <Button
-                  kind="secondary"
-                  icon="download"
-                  disabled={locked}
-                  onPress={() =>
-                    void useApp
-                      .getState()
-                      .waitForWrites()
-                      .then(exportData)
-                      .then(() =>
-                        setMessage("Aktueller Stand zum Speichern übergeben."),
-                      )
-                      .catch((e) => setMessage((e as Error).message))
-                  }
-                >
-                  Aktuellen Stand exportieren
-                </Button>
+                <BackupExport label="Aktuellen Stand exportieren" disabled={locked} />
                 <Button
                   disabled={locked || rollbackRevision !== data.revision}
                   icon="back"

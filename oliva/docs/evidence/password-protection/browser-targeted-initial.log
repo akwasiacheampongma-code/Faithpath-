@@ -1,0 +1,41 @@
+[WebServer] (node:206075) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:206083) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/core.spec.ts:209:1 › Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen (7.3s)
+  ✓  2 tests/e2e/password-protection.spec.ts:56:1 › real encrypted file keeps an original archive offline and only a confirmed preview replaces data (17.1s)
+  ✓  3 tests/e2e/password-protection.spec.ts:123:1 › setup blocks direct navigation and main storage before unlock with real offline reload (6.1s)
+  ✓  4 tests/e2e/password-protection.spec.ts:165:1 › activation and explicit lock revoke other browser windows; unlock belongs to one window (12.0s)
+  ✓  5 tests/e2e/password-protection.spec.ts:181:1 › auto lock uses the selected inactivity length and resets it with real input (3.2s)
+  ✘  6 tests/e2e/password-protection.spec.ts:197:1 › password changes require the old password; a saved recovery code rotates without losing data (2.0m)
+(node:206569) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 tests/e2e/password-protection.spec.ts:244:1 › small screen, large text and keyboard keep the unlock view accessible (6.7s)
+
+
+  1) tests/e2e/password-protection.spec.ts:197:1 › password changes require the old password; a saved recovery code rotates without losing data 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.click: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Jetzt sperren', exact: true })
+
+
+      211 |   await button(page, "Jetzt sperren").click();
+      212 |   await unlock(page, replacement);
+    > 213 |   await button(page, "Jetzt sperren").click();
+          |                                       ^
+      214 |   await button(page, "App-Passwort vergessen").click();
+      215 |   await field(page, "Wiederherstellungscode").fill("FALSCH");
+      216 |   await fillNewPassword(page, recovered);
+        at /workspace/faithpath-next/tests/e2e/password-protection.spec.ts:213:39
+
+    Error Context: ../../tmp/oliva-password-targeted/password-protection-passwo-5881e-rotates-without-losing-data/error-context.md
+
+  1 failed
+    tests/e2e/password-protection.spec.ts:197:1 › password changes require the old password; a saved recovery code rotates without losing data 
+  6 passed (3.0m)

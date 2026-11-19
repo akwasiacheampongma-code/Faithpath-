@@ -1,0 +1,10 @@
+{
+  "chromium": true,
+  "fault": "QuotaExceededError in editor tab",
+  "passed": true,
+  "steps": [
+    "Input held after failed disk write",
+    "Lock from another tab removes editor",
+    "Draft reopened and persisted after unlock"
+  ]
+}
