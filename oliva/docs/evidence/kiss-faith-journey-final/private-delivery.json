@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-19T10:19:49.120994+00:00",
+  "preview": "https://oliva-v04-private-preview.purplebean128.chatgpt.site",
+  "sitesVersion": 26,
+  "ownerOnly": true,
+  "unchangedAccessPolicy": true,
+  "rollbackVersion": 24,
+  "acceptedSource": "b22f59879b6d496acb4fbbbe91b30fab9b01c0e8",
+  "coreBuild": "oliva-dc815901e80fb696",
+  "hostBuild": "oliva-dcb5ca7c4e49b0b0",
+  "hostSource": "58825e9b56a7061042c8f56be8212eadada7fbbc",
+  "archiveFileCount": 464,
+  "archiveSha256": "49a26842684ac79438cddef46bbab80e433ec4378ae45e0f57fbd7e06196f906",
+  "hostingChanges": {
+    "relocatedExpoAssets": 18,
+    "unchangedFileContents": 131,
+    "urlAndMetadataChanges": 5,
+    "preservedReviewFiles": 323,
+    "offlineFiles": 135,
+    "licenseBytesUnchanged": true
+  },
+  "checks": {
+    "authenticatedMatches": 149,
+    "runtimeFiles": 136,
+    "appRoutes": 10,
+    "existingReviewSamples": 3,
+    "anonymousDenied": 14,
+    "anonymousStatuses": [
+      401,
+      403
+    ],
+    "physicalDeviceTest": false,
+    "hostedBrowserTest": false
+  },
+  "firstHostCheck": {
+    "version": 25,
+    "dependencyAssetPathsReturnedHtml": 18
+  },
+  "protectedGithubRefsAtSourceUpload": 85
+}

@@ -1,8 +1,10 @@
-# Aktuell · KISS Faith Journey · Variante A umgesetzt
+# Aktuell · KISS Faith Journey · Variante A privat verfügbar
+
+Seit dem 19.11.2026 läuft die private Vorschau als Sites-Version 26. Das geprüfte App-Paket `oliva-dc815901e80fb696` wird mit hostinggerechten Assetpfaden als `oliva-dcb5ca7c4e49b0b0` ausgeliefert. Alle 136 Laufzeitdateien und zehn App-Routen wurden beim privaten HTTP-Abruf verifiziert. Ohne Anmeldung sind die geprüften Pfade gesperrt. Der Eigentümerzugriff blieb unverändert und Version 24 ist als Rückkehrpunkt verfügbar. [Private Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site/) · [GitHub-Feature-Branch](https://github.com/akwasiacheampongma-code/Faithpath-/tree/feature/oliva-kiss-faith-journey/oliva) · [Liefernachweis](docs/evidence/kiss-faith-journey-final/private-delivery.json)
 
 Der lokale Web-/PWA-Kandidat `oliva-dc815901e80fb696` liegt auf `feature/oliva-kiss-faith-journey`. Laufzeitquellstand `298ce8e`, auf dem freigegebenen Audit `9cff742` und dem vollständigen Notizen- und Passwortstand. Die Einführung ist überspringbar. Auf Heute öffnet die Leseaktion direkt den Reader, und der persönliche A51-Baum steht direkt darunter. Freiwillige Reflexion, verknüpfte Notiz und Rückkehr zum Bibeltext sind offline geprüft.
 
-359 Fachtests und alle sieben Inhaltsprüfungen bestanden. Alle 184 Browserfälle sind erfolgreich belegt, davon 182 im ersten Gesamtlauf und zwei nach einer Korrektur der Testabläufe. Beide V11-/V12-PWA-Updates bewahrten die vier geprüften Rohdatensätze einschließlich FaithPath-Original und Rückkehrsicherung bytegleich. Android und iOS sind statisch geprüft. Die private Vorschau steht auf dem bisherigen Paket `oliva-507a582d5a9cc3a6`. [Abschlussbericht und echte Vergleichsbilder](docs/47-kiss-faith-journey-implementation.md)
+359 Fachtests und alle sieben Inhaltsprüfungen bestanden. Alle 184 Browserfälle sind erfolgreich belegt, davon 182 im ersten Gesamtlauf und zwei nach einer Korrektur der Testabläufe. Beide V11-/V12-PWA-Updates bewahrten die vier geprüften Rohdatensätze einschließlich FaithPath-Original und Rückkehrsicherung bytegleich. Android und iOS sind statisch geprüft. [Abschlussbericht und echte Vergleichsbilder](docs/47-kiss-faith-journey-implementation.md)
 
 ## Vorheriger Stand · KISS-UX-Audit und Entwurf
 

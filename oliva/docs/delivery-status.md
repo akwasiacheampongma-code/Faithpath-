@@ -1,8 +1,10 @@
 # Lieferstand · OLIVA 0.18.0 · Ein geistliches Schwert
 
-## KISS Faith Journey · lokaler Abnahmekandidat
+## KISS Faith Journey · private Vorschau und GitHub-Stand
 
-Die freigegebene Variante A läuft lokal als `oliva-dc815901e80fb696` auf `feature/oliva-kiss-faith-journey`. Der Stand enthält den kurzen Einstieg, den persönlichen Baum auf Heute und die direkte Verbindung zwischen Reader, Reflexion und V12-Notizbuch. 359 Fachtests, 184 Browserfälle einschließlich zweier gezielter Wiederholungen, beide PWA-Paketwechsel und die statischen Android-/iOS-Exporte sind belegt. Die bestehende private Vorschau verwendet weiter `oliva-507a582d5a9cc3a6`. Eine private Bereitstellung ist ein eigener Freigabeschritt. [Abnahme und Vorher-/Nachher-Aufnahmen](47-kiss-faith-journey-implementation.md)
+Die freigegebene Variante A ist als Sites-Version 26 eigentümerprivat bereitgestellt. GitHub enthält die App auf dem getrennten Feature-Branch `feature/oliva-kiss-faith-journey`. Der verifizierte OLIVA-Stand umfasst den kurzen Einstieg, den persönlichen Baum auf Heute und die direkte Verbindung zwischen Reader, Reflexion und V12-Notizbuch. [Private Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site/) · [GitHub](https://github.com/akwasiacheampongma-code/Faithpath-/tree/feature/oliva-kiss-faith-journey/oliva)
+
+Das private Hostpaket `oliva-dcb5ca7c4e49b0b0` verwendet den geprüften App-Kern `oliva-dc815901e80fb696`. 18 Expo-Dateien wurden in einen vom Hoster unterstützten Pfad verschoben. Der HTTP-Abgleich bestätigt alle 136 Laufzeitdateien und zehn App-Routen. 14 anonyme Abrufe waren gesperrt. Version 24 bleibt als Rückkehrpunkt hinterlegt. 359 Fachtests, 184 Browserfälle einschließlich zweier gezielter Wiederholungen, beide PWA-Paketwechsel und die statischen Android-/iOS-Exporte wurden vor der Bereitstellung belegt. [Liefernachweis](evidence/kiss-faith-journey-final/private-delivery.json) · [Abnahme und Vorher-/Nachher-Aufnahmen](47-kiss-faith-journey-implementation.md)
 
 ## KISS-UX · Audit und Entwurf zur Freigabe
 

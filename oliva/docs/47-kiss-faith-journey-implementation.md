@@ -1,6 +1,6 @@
 # OLIVA · KISS Faith Journey · Abnahme der Variante A
 
-Die freigegebene Variante A ist auf `feature/oliva-kiss-faith-journey` umgesetzt. Ausgangspunkt ist der Audit `9cff742` auf dem Notizen- und Passwortstand `5262a4a`. Der Laufzeitquellstand `298ce8e` erzeugt den lokalen Web-/PWA-Kandidaten `oliva-dc815901e80fb696`. Die bestehende private Vorschau verwendet Paket `oliva-507a582d5a9cc3a6`. [Audit und freigegebener Entwurf](46-kiss-faith-journey.md)
+Die freigegebene Variante A ist auf `feature/oliva-kiss-faith-journey` umgesetzt. Ausgangspunkt ist der Audit `9cff742` auf dem Notizen- und Passwortstand `5262a4a`. Der Laufzeitquellstand `298ce8e` erzeugt den Web-/PWA-Kandidaten `oliva-dc815901e80fb696`. Bei der lokalen Abnahme war noch Paket `oliva-507a582d5a9cc3a6` privat ausgeliefert. [Audit und freigegebener Entwurf](46-kiss-faith-journey.md)
 
 ## Was sich in der App geändert hat
 
@@ -70,4 +70,6 @@ Im ersten Kandidatenlauf lagen die Mediane bei 16,86 s und 16,81 s. Der direkte 
 
 Den vorliegenden Stand nach Freigabe zunächst privat mit synthetischem Prüfprofil auf einem iPhone und einem Android-Gerät ausprobieren. Vorrang haben der überspringbare Einstieg, der gespeicherte Versanker, die erste verknüpfte Notiz, ihr Quelllink und ein Neustart im Flugmodus.
 
-Chromium im Labor prüft die Bedienfolge, Rollen, Beschriftungen und technische Darstellung. Nutzerbeobachtung zur Verständlichkeit innerhalb von fünf Sekunden, echte Geräteprüfungen sowie VoiceOver und TalkBack stehen aus. Die bestehende private Vorschau bleibt bis zur separaten Freigabe auf ihrem geprüften Paket.
+Chromium im Labor prüft die Bedienfolge, Rollen, Beschriftungen und technische Darstellung. Nutzerbeobachtung zur Verständlichkeit innerhalb von fünf Sekunden, echte Geräteprüfungen sowie VoiceOver und TalkBack stehen aus.
+
+Nach separater Freigabe wurde der Stand als private Sites-Version 26 bereitgestellt. Der Host verwendet angepasste Assetpfade. Die HTTP-Prüfung bestätigt Paket, Zugriffsgrenze und Direktlinks. Für den Hoster stehen erneute Bedienprüfungen im Browser und auf dem Gerät noch aus. [Private Vorschau](https://oliva-v04-private-preview.purplebean128.chatgpt.site/) · [Bereitstellungsnachweis](evidence/kiss-faith-journey-final/private-delivery.json)
