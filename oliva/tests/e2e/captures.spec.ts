@@ -21,6 +21,7 @@ test("Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart
   page,
 }) => {
   await page.goto("/");
+  await page.getByRole("button", { name: "Überspringen", exact: true }).click();
   const text = "Mein noch unfertiger Dank.\nDie zweite Zeile bleibt.";
   await page
     .getByRole("textbox", {
@@ -270,6 +271,7 @@ test("der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexi
   page,
 }) => {
   await page.goto("/");
+  await page.getByRole("button", { name: "Überspringen", exact: true }).click();
   await page
     .getByRole("textbox", {
       name: "Deine freiwillige Tagesreflexion",

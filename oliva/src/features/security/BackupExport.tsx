@@ -6,6 +6,7 @@ import { captureAccess } from "./access";
 import { protectBackup } from "./backup";
 import { checkNewPassword, PASSWORD_MIN_LENGTH } from "./crypto-contract";
 import { SecretField } from "./PasswordFields";
+import { resumeNotebookEdits } from "../notebook/autosave";
 
 export function BackupExport({ label = "Sicherung erstellen", disabled = false }: { label?: string; disabled?: boolean }) {
   const [step, setStep] = useState<"choose" | "encrypted" | "plain" | null>(null);
@@ -31,6 +32,7 @@ export function BackupExport({ label = "Sicherung erstellen", disabled = false }
     setMessage("");
     try {
       if (encrypted) checkNewPassword(password, confirmation);
+      await resumeNotebookEdits();
       const data = await useApp.getState().waitForWrites();
       if (!allowed()) return;
       const filename = `oliva-sicherung-${new Date().toISOString().slice(0, 10)}`;
@@ -66,7 +68,7 @@ export function BackupExport({ label = "Sicherung erstellen", disabled = false }
         {step === "encrypted" && <>
           <SecretField label="Passwort für die Sicherung" value={password} onChange={setPassword} />
           <SecretField label="Passwort für die Sicherung bestätigen" value={confirmation} onChange={setConfirmation} />
-          <T variant="small">Wähle mindestens {PASSWORD_MIN_LENGTH} Zeichen. Halte das Passwort getrennt von der Datei fest. OLIVA kann es später nicht zurücksetzen.</T>
+          <T variant="small">Dieses Passwort schützt die verschlüsselte Datei. Wähle mindestens {PASSWORD_MIN_LENGTH} Zeichen und bewahre es getrennt von der Datei auf. Ohne das Passwort lässt sich die Datei nicht wiederherstellen.</T>
           <Button disabled={working || disabled || !password || !confirmation} icon="download" onPress={() => void save(true)}>Verschlüsselte Sicherung exportieren</Button>
         </>}
         {step === "plain" && <>

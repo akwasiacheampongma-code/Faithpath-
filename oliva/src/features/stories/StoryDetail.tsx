@@ -7,6 +7,7 @@ import { useTheme } from "../../design-system/theme";
 import { useApp } from "../../state/store";
 import { referenceLabel, type Reference } from "../bible/repository";
 import { CaptureInput } from "../personal/CaptureInput";
+import { contextualNotebookHref } from "../notebook/links";
 import { resolveCaptureDraft } from "../personal/resolve-capture-draft";
 import { useVolatileDrafts } from "../personal/volatile-drafts";
 import { captureKey } from "../personal/capture-schema-current";
@@ -109,6 +110,9 @@ export function StoryDetail({ params }: { params: { id: string; stage?: string; 
         <T variant="heading">Was bleibt bei dir?</T>
         <T style={{ fontFamily: "Cormorant", fontSize: 30, lineHeight: 38 }}>{source?.question ?? unit.reflection}</T>
         <T variant="small" style={{ color: t.muted }}>Original-Reflexionsimpuls · FaithPath/Nachlese. Deine Antwort ist freiwillig.</T>
+        <Button kind="secondary" icon="pen" onPress={() => router.push(contextualNotebookHref({ kind: "story-question", storyId: unit.id }))}>
+          Gedanken festhalten
+        </Button>
         {!!params.draft ? <T>Dein Entwurf wird geprüft …</T> : draftError ? <View style={{ gap: 12 }}>
           <T accessibilityRole="alert">{draftError}</T><Button kind="secondary" onPress={() => router.push("/sammlung?tab=Entw%C3%BCrfe")}>Zur Sammlung</Button>
         </View> : source && <CaptureInput key={captureKey(source)} source={source} label="Dein eigener Gedanke · freiwillig" placeholder="Was möchtest du mitnehmen?" />}

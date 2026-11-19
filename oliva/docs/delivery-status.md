@@ -1,5 +1,17 @@
 # Lieferstand · OLIVA 0.18.0 · Ein geistliches Schwert
 
+## KISS Faith Journey · lokaler Abnahmekandidat
+
+Die freigegebene Variante A läuft lokal als `oliva-dc815901e80fb696` auf `feature/oliva-kiss-faith-journey`. Der Stand enthält den kurzen Einstieg, den persönlichen Baum auf Heute und die direkte Verbindung zwischen Reader, Reflexion und V12-Notizbuch. 359 Fachtests, 184 Browserfälle einschließlich zweier gezielter Wiederholungen, beide PWA-Paketwechsel und die statischen Android-/iOS-Exporte sind belegt. Die bestehende private Vorschau verwendet weiter `oliva-507a582d5a9cc3a6`. Eine private Bereitstellung ist ein eigener Freigabeschritt. [Abnahme und Vorher-/Nachher-Aufnahmen](47-kiss-faith-journey-implementation.md)
+
+## KISS-UX · Audit und Entwurf zur Freigabe
+
+Der lokale Zweig `feature/oliva-kiss-faith-journey` baut auf dem geprüften Notizen- und Passwortstand auf. Etappe A enthält Ist-Aufnahmen, den interaktiven Entwurf und die Risiken für Navigation, Offline-Nutzung und Datenerhalt. Variante A zeigt die direkte Leseaktion mit dem vorhandenen A51-Baum darunter. Etappe B setzt die ausdrückliche Zustimmung zum Entwurf voraus. Der Entwurf ist ein lokales Prüfartefakt. [Audit und Freigabevorlage](46-kiss-faith-journey.md)
+
+## Notizen · lokaler Kandidat
+
+Der Zweig `feature/oliva-notes` enthält die neue Notizenseite unter Sammlung. Der Web-/PWA-Build `oliva-4fe58df588d05d3f`, Typecheck, 355 Fachtests und 176 Browserfälle sind bestanden. Beim lokalen PWA-Update blieben vier geprüfte Datensätze einschließlich des FaithPath-Originalarchivs bytegenau erhalten. Offene Geräteprüfungen und die Freigabe bleiben der privaten Bereitstellung vorgelagert. [Umsetzung und Vergleichsbilder](45-notebook.md) · [PWA-Update](evidence/notes/pwa-upgrade.json)
+
 ## Passwortschutz · lokaler Kandidat
 
 Der Kandidat `oliva-a1008a991b30c338` bietet verschlüsselte Sicherungsdateien und eine optionale App-Sperre. Er liegt lokal auf `feature/oliva-password-protection`. 350 Fachtests, 167 Browserfälle, Typecheck und der Web-/PWA-Build sind bestanden. Das tatsächliche PWA-Update im lokalen Chromium erhält den bisherigen Testdatenbestand bytegenau. Vor einer privaten Bereitstellung stehen die Freigabe und echte iOS-/Android-Prüfungen mit VoiceOver bzw. TalkBack aus. Die private Vorschau steht weiterhin auf dem bisherigen Paket `oliva-507a582d5a9cc3a6`. [Umsetzung, Sicherheitsgrenzen und Abnahme](44-password-protection.md) · [PWA-Update](evidence/password-protection/pwa-upgrade.json)

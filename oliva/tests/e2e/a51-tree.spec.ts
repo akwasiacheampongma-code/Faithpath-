@@ -190,11 +190,15 @@ test("alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine pe
   for(const stage of A51_STAGES) {await page.getByRole("button",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);}
   expect(await rawData(page)).toEqual(darkBefore);
   await context.setOffline(false);
-  await page.goto("/");await ready(page,0);
+  await page.goto("/");
+  const homeTree = page.getByRole("img", { name: "Dein Olivenbaum · Samen", exact: true });
+  await expect(homeTree).toBeVisible();
+  await expect.poll(() => homeTree.locator("img").evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
   await page.screenshot({path:`${output}/hub-tree-mobile.png`});
   expect(await rawData(page)).toEqual(darkBefore);
   await page.setViewportSize({width:1440,height:1000});
-  await page.goto("/");await ready(page,0);
+  await page.goto("/");
+  await expect(homeTree).toBeVisible();
   await page.screenshot({path:`${output}/hub-tree-desktop.png`});
 });
 test("Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild", async ({page}) => {

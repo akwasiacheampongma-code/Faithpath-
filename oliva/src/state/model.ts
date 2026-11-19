@@ -48,6 +48,7 @@ import {
   sameReadingScope,
 } from "../features/bible/position";
 import { readingPositionSchema } from "../features/bible/position-current";
+import { notebookSchema } from "../features/notebook/model";
 const chapterKey = z.string().refine((value) => {
   const [book, c] = value.split(":");
   return (
@@ -537,7 +538,8 @@ export const v10DataSchema = z
 export const dataSchema = z
   .object({
     ...v10DataSchema.shape,
-    version: z.literal(11),
+    version: z.literal([11, 12]),
+    notebook: notebookSchema.optional(),
     readSteps: z.array(currentStepKey).max(CURRENT_STEP_COUNT).refine(unique),
     completedSteps: z.array(currentStepKey).max(CURRENT_STEP_COUNT).refine(unique),
     activePath: z.string().nullable().refine((id) => id === null || !!pathById(id)),
@@ -561,6 +563,7 @@ export const dataSchema = z
     readingPosition: readingPositionSchema.nullable(),
   })
   .strict()
+  .refine((data) => (data.version === 12) === (data.notebook !== undefined), "Ungültiges Notizbuchformat")
   .refine(completeStepsValid, "Ungültiger Wegfortschritt")
   .refine(
     (data) =>
@@ -595,7 +598,7 @@ export function decodeData(input: unknown): AppData {
       ? input.version
       : undefined;
   let data: AppData;
-  if (version === 11) data = dataSchema.parse(input);
+  if (version === 11 || version === 12) data = dataSchema.parse(input);
   else if (version === 10) data = dataSchema.parse({ ...v10DataSchema.parse(input), version: 11 });
   else if (version === 9) data = dataSchema.parse({ ...v9DataSchema.parse(input), version: 11, storyStudy: emptyStoryStudy() });
   else if (version === 8)

@@ -1,0 +1,282 @@
+{
+  "browser": "155.0.8059.79",
+  "syntheticProfiles": true,
+  "deviceTest": false,
+  "app": {
+    "build": "oliva-4fe58df588d05d3f"
+  },
+  "geometry": [
+    {
+      "width": 320,
+      "height": 568,
+      "actionTop": 396,
+      "actionBottom": 446,
+      "treeTop": 2464,
+      "treeHeight": 70,
+      "contentBottom": 474,
+      "minScrollForTreeStart": 1990
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "actionTop": 320,
+      "actionBottom": 370,
+      "treeTop": 2310,
+      "treeHeight": 70,
+      "contentBottom": 718,
+      "minScrollForTreeStart": 1592
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "actionTop": 320,
+      "actionBottom": 370,
+      "treeTop": 2277,
+      "treeHeight": 70,
+      "contentBottom": 750,
+      "minScrollForTreeStart": 1527
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "actionTop": 282,
+      "actionBottom": 332,
+      "treeTop": 2154,
+      "treeHeight": 70,
+      "contentBottom": 838,
+      "minScrollForTreeStart": 1316
+    }
+  ],
+  "tasks": [
+    {
+      "name": "Erststart",
+      "firstRoute": "/",
+      "firstAction": "Deine erste Geschichte",
+      "nextRoute": "/start",
+      "startCtaTop": 893,
+      "contentBottom": 750,
+      "tapsToReader": 2,
+      "automaticPopup": false
+    },
+    {
+      "name": "Vom Bibelabschnitt zum Nachdenken",
+      "reference": {
+        "book": "MRK",
+        "chapter": 4,
+        "from": 35,
+        "to": 41
+      },
+      "currentReaderPath": "Tiefer verstehen → Ein Gedanke für dich",
+      "hasDirectWriteActionInThatCard": false,
+      "currentChapterNotebookPath": "Leseeinstellungen → Notizen zu diesem Kapitel → Neue Notiz"
+    },
+    {
+      "name": "Rückkehr nach 28 simulierten Tagen",
+      "version": 12,
+      "growthStage": 3,
+      "greeting": "Schön, dass du da bist, Mara.",
+      "bookmark": true,
+      "readerAnchor": 38,
+      "displayedIntroAutomatically": false
+    },
+    {
+      "name": "Baum und frühere Erfahrungen",
+      "path": "Heute → Deinen Garten ansehen → Frühere FaithPath-Momente ansehen"
+    },
+    {
+      "name": "Früheren Gedanken wiederfinden",
+      "path": "Sammlung → Notizen → Eintrag öffnen",
+      "sourceLink": {
+        "book": "MRK",
+        "chapter": 4,
+        "from": 35,
+        "to": 41
+      },
+      "readOnlyRecords": {
+        "exact": true,
+        "before": {
+          "profile": "6e0b6a3c1a4c23dce9b18b00267c80c557d359188148589d6101fb232fab98d2",
+          "recovery": "6baf9cd4ae42d20cee87b63b3c9a1bce4ebb74ca2b6c7babb0a7d9dd388784e0",
+          "recoveryIndex": "12383723bbb232b639b8115e142f80e8cdd6ffb2cf66edaaef12870ebea94f20",
+          "archive": "e64950e74a68e7ad519bc7f2d201e63d8d91c79c8c606c5c2c6cb75b3a269cf4"
+        },
+        "after": {
+          "profile": "6e0b6a3c1a4c23dce9b18b00267c80c557d359188148589d6101fb232fab98d2",
+          "recovery": "6baf9cd4ae42d20cee87b63b3c9a1bce4ebb74ca2b6c7babb0a7d9dd388784e0",
+          "recoveryIndex": "12383723bbb232b639b8115e142f80e8cdd6ffb2cf66edaaef12870ebea94f20",
+          "archive": "e64950e74a68e7ad519bc7f2d201e63d8d91c79c8c606c5c2c6cb75b3a269cf4"
+        }
+      }
+    },
+    {
+      "name": "Geschützter Direktlink offline",
+      "target": "Notizeditor",
+      "privateBeforeUnlock": false,
+      "targetAfterUnlock": true,
+      "unchangedDataRecords": 4
+    }
+  ],
+  "screens": [
+    {
+      "file": "before-today-new-320.png",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "location": "/"
+    },
+    {
+      "file": "before-today-new-375.png",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "location": "/"
+    },
+    {
+      "file": "before-today-new-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/"
+    },
+    {
+      "file": "before-today-new-430.png",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "location": "/"
+    },
+    {
+      "file": "before-start-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/start"
+    },
+    {
+      "file": "before-start-action-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/start"
+    },
+    {
+      "file": "before-reader-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/lesen/MRK"
+    },
+    {
+      "file": "before-reader-reflection-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/lesen/MRK"
+    },
+    {
+      "file": "before-bible-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/bibel"
+    },
+    {
+      "file": "before-paths-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/wege"
+    },
+    {
+      "file": "before-story-reflection-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/geschichte/NS-0203"
+    },
+    {
+      "file": "before-today-returning-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/"
+    },
+    {
+      "file": "before-today-tree-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/"
+    },
+    {
+      "file": "before-garden-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/garten"
+    },
+    {
+      "file": "before-garden-history-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/importarchiv/fp5-0e215d84d21208c99d05ab473b560fd3a3c3a6978766af8a52d17024a3666e2d"
+    },
+    {
+      "file": "before-collection-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/sammlung"
+    },
+    {
+      "file": "before-notebook-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/notizen"
+    },
+    {
+      "file": "before-notebook-editor-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/notizen/notiz-1792677600000-6jssxrhf"
+    },
+    {
+      "file": "before-backup-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/einstellungen"
+    },
+    {
+      "file": "before-locked-direct-link-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "location": "/notizen/notiz-1792677600000-6jssxrhf"
+    }
+  ],
+  "passed": true
+}

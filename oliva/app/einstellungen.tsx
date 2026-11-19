@@ -110,8 +110,9 @@ export default function Settings() {
             oder Löschen der App-/Browserdaten können sie verloren gehen.
           </T>
           <T style={{ fontSize: 12 }}>
-            Sichere deine Daten regelmäßig an einem Ort, dem du vertraust. Eine
-            Sicherung enthält auch deine persönlichen Texte.
+            Eine Sicherung enthält auch deine persönlichen Texte. Du kannst die
+            Datei beim Export mit einem eigenen Passwort verschlüsseln und an
+            einem Ort speichern, dem du vertraust.
           </T>
           <BackupExport disabled={busy} />
           {pending > 0 && (
@@ -160,7 +161,7 @@ export default function Settings() {
             icon="leaf"
             onPress={() => router.push("/start")}
           >
-            Den Einstieg noch einmal ansehen
+            Einführung noch einmal ansehen
           </Button>
           <T style={{ fontSize: 10, color: t.muted }}>
             OLIVA · lokale Entwicklungsausgabe {appConfig.expo.version}

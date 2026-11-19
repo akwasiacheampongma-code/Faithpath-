@@ -1,5 +1,6 @@
 import { initialData, assertStorageBudget, type AppData } from "../state/model";
 import type { RecoveryCopy, WriteOptions } from "../features/imports/schema";
+import { LocalRevisionConflict } from "./storage-conflict";
 import {
   ARCHIVE_PREFIX,
   forStorage,
@@ -35,13 +36,14 @@ function decode(value: unknown, store: IDBObjectStore) {
       }),
   );
 }
-export async function readData(): Promise<AppData> {
+export async function readData(onProfilePresence?: (exists: boolean) => void): Promise<AppData> {
   const db = await open();
   return new Promise((resolve, reject) => {
     const tx = db.transaction("state", "readonly"),
       store = tx.objectStore("state"),
       q = store.get("main");
     q.onsuccess = () => {
+      onProfilePresence?.(q.result !== undefined);
       if (q.result === undefined) resolve(initialData());
       else
         void decode(q.result, store)
@@ -152,11 +154,9 @@ export async function writeData(
     tx.oncomplete = () => resolve();
     tx.onabort = () =>
       reject(
-        new Error(
-          conflict
-            ? "Ein anderes Fenster hat die Daten geändert. Lade die App neu; deine Eingabe bleibt hier erhalten."
-            : "Speichern fehlgeschlagen. Bitte sichere deinen Text und versuche es erneut.",
-        ),
+        conflict
+          ? new LocalRevisionConflict("Ein anderes Fenster hat die Daten geändert. Lade die App neu; deine Eingabe bleibt hier erhalten.")
+          : new Error("Speichern fehlgeschlagen. Bitte sichere deinen Text und versuche es erneut."),
       );
     tx.onerror = () =>
       reject(

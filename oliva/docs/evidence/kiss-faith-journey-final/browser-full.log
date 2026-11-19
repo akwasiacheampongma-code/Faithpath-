@@ -1,0 +1,262 @@
+
+> oliva-faith-companion@0.18.0 test:e2e
+> playwright test --workers=2 --output=/dev/shm/oliva-kiss-acceptance/browser-results
+
+
+Running 184 tests using 2 workers
+
+(node:23765) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:23766) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    2 tests/e2e/archives.spec.ts:57:1 › ein großer Originalblob wird bei Entwurfsänderungen nicht erneut geschrieben (21.9s)
+  ✓    3 tests/e2e/archives.spec.ts:95:1 › verwaiste Blobs werden entfernt und Quellen der Rückkehrsicherung bleiben erhalten (44.3s)
+  ✓    1 tests/e2e/a51-tree.spec.ts:115:1 › alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten (1.4m)
+  ✓    4 tests/e2e/archives.spec.ts:130:1 › Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unverändert (14.7s)
+  ✓    5 tests/e2e/a51-tree.spec.ts:204:1 › Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild (24.6s)
+  ✓    6 tests/e2e/archives.spec.ts:149:1 › beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern (21.6s)
+  ✓    7 tests/e2e/a51-tree.spec.ts:228:1 › gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild (22.6s)
+  ✓    9 tests/e2e/a51-tree.spec.ts:241:3 › Bildladefehler ohne Service-Worker › ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium (12.9s)
+  ✓   10 tests/e2e/a51-tree.spec.ts:254:3 › Hochauflösende ruhende Darstellung › ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung (8.8s)
+  ✓   11 tests/e2e/book-search.spec.ts:19:1 › die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein (8.8s)
+  ✓   12 tests/e2e/book-search.spec.ts:46:1 › Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix (16.5s)
+  ✓   13 tests/e2e/book-search.spec.ts:66:1 › der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus (7.4s)
+  ✓   14 tests/e2e/book-search.spec.ts:87:1 › Suche und Bereich erhalten die Buchübersicht und öffnen das gewählte Kapitel (13.7s)
+  ✓   15 tests/e2e/book-search.spec.ts:117:1 › die NT-Fragenübersicht nutzt dieselbe Buchsuche und bleibt auf ihre 27 Bücher begrenzt (6.9s)
+  ✓   16 tests/e2e/book-search.spec.ts:140:1 › Buchsuche und Dropdown sind bei 320 Pixeln hell und 1440 Pixeln dunkel zugänglich (24.2s)
+  ✘   17 tests/e2e/core.spec.ts:22:1 › Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt (4.1s)
+(node:25159) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    8 tests/e2e/bible-paths-overview.spec.ts:41:1 › Bibel und Wege sind in vier mobilen Breiten und beiden Farbschemata lesbar und semantisch zugänglich (2.4m)
+  ✓   18 tests/e2e/core.spec.ts:97:1 › Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss (16.3s)
+  ✓   20 tests/e2e/core.spec.ts:153:1 › Journal bearbeiten, löschen und rückgängig machen (12.4s)
+  ✓   21 tests/e2e/core.spec.ts:203:1 › Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen (9.9s)
+  ✓   22 tests/e2e/core.spec.ts:248:1 › Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeichert (12.3s)
+  ✓   23 tests/e2e/core.spec.ts:277:1 › Offline-Neustart öffnet auch einen noch nicht besuchten Reader (20.0s)
+  ✓   24 tests/e2e/core.spec.ts:310:1 › Gleichzeitige Fenster überschreiben keine fremden Änderungen (14.4s)
+  ✓   25 tests/e2e/core.spec.ts:342:1 › Speicherfehler bestätigt keine Notiz und erhält den getippten Text (7.9s)
+  ✓   19 tests/e2e/bible-paths-overview.spec.ts:72:1 › 200 Prozent Text lässt lange Buchnamen, Kapitel und alle Wegefilter ohne horizontales Scrollen erreichbar (1.4m)
+  ✓   27 tests/e2e/bible-paths-overview.spec.ts:108:1 › die Tastatur öffnet nach der Buchzeile unmittelbar die Kapitel und den bestehenden Reader (12.4s)
+  ✓   28 tests/e2e/bible-paths-overview.spec.ts:120:1 › der Wegefilter behält alle Kategorien und der Tastatureinstieg erreicht jeden der neun Originalwege (48.4s)
+  ✓   29 tests/e2e/bible-paths-overview.spec.ts:144:1 › beide Übersichten bleiben offline nach Neustart mit unveränderten persönlichen Daten nutzbar (20.6s)
+  ✓   30 tests/e2e/direct-selection.spec.ts:43:1 › direktes Antippen öffnet die kleine Leiste und verändert weder Textlayout noch persönliche Inhalte (7.7s)
+  ✓   31 tests/e2e/direct-selection.spec.ts:81:1 › auch getrennte Verse lassen sich direkt kopieren, markieren und merken ohne Zwischenverse zu verändern (9.9s)
+  ✓   32 tests/e2e/direct-selection.spec.ts:128:1 › Notizen öffnen erst auf Wunsch und bewahren getrennte Vers- und Bereichsentwürfe (10.6s)
+  ✘   26 tests/e2e/core.spec.ts:371:1 › Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung (2.0m)
+(node:26277) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   34 tests/e2e/faith-journey.spec.ts:72:1 › der echte Erststart zeigt drei Schritte, Tastaturfokus und den direkten Einstieg (18.7s)
+  ✓   33 tests/e2e/direct-selection.spec.ts:181:1 › die Aktionsleiste bleibt schmal, dunkel und hell per Tastatur und Screenreader bedienbar (52.2s)
+  ✓   35 tests/e2e/faith-journey.spec.ts:99:1 › gespeicherte V11- und V12-Profile sehen die Einführung nur auf Wunsch (26.9s)
+  ✓   36 tests/e2e/imports.spec.ts:47:1 › Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten (16.4s)
+  ✓   37 tests/e2e/faith-journey.spec.ts:119:1 › Lesen, Reflexion, Notiz, Wiederfinden und Rückkehr funktionieren gemeinsam offline (26.2s)
+  ✓   38 tests/e2e/imports.spec.ts:70:1 › Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline (23.9s)
+  ✓   39 tests/e2e/faith-journey.spec.ts:165:1 › Weg- und Geschichtenfragen bleiben getrennt von verknüpften Notizen (15.6s)
+  ✓   41 tests/e2e/faith-journey.spec.ts:191:1 › Heute zeigt das tatsächliche Baumstadium und führt zur bestehenden FaithPath-Historie (14.4s)
+  ✓   40 tests/e2e/imports.spec.ts:132:1 › zwei Fenster schützen Änderungen und erlauben eine erneute Vorschau (21.5s)
+  ✓   43 tests/e2e/imports.spec.ts:162:1 › Schreibfehler lassen Bestand und vorherige Rückkehrsicherung atomar erhalten (15.5s)
+  ✓   42 tests/e2e/faith-journey.spec.ts:218:1 › ein geschützter Offline-Direktlink öffnet nach der Sperre den ursprünglichen Editor (18.4s)
+  ✓   44 tests/e2e/imports.spec.ts:195:1 › Rückkehr zeigt Folgen ausdrücklich und stellt den echten vorherigen Stand wieder her (30.6s)
+  ✓   46 tests/e2e/imports.spec.ts:230:1 › Importansichten sind mobil, dunkel und per Tastatur zugänglich (25.6s)
+  ✓   47 tests/e2e/learning.spec.ts:4:1 › Textfragen zeigen belegte Rückmeldung und verändern keinen Fortschritt (18.3s)
+  ✓   48 tests/e2e/learning.spec.ts:56:1 › Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zählt nur den Abschnitt (22.4s)
+  ✓   45 tests/e2e/faith-journey.spec.ts:245:1 › Heute hält Leseaktion und vorhandenes Baumbild auf vier Breiten in Hell und Dunkel sichtbar (1.7m)
+  ✓   49 tests/e2e/legacy-history.spec.ts:30:1 › historische Meilensteine und echte Spiegel öffnen genau ihre Originalstelle und bleiben auch offline schreibfrei (27.3s)
+  ✓   51 tests/e2e/legacy-history.spec.ts:53:1 › verknüpfte Gedankenrückblicke, abweichende Fassungen und fehlende Daten bleiben erkennbar statt heutige Belege zu erfinden (14.6s)
+  ✓   50 tests/e2e/faith-journey.spec.ts:283:1 › alle sieben A51-Stufen verwenden ihr jeweiliges Original auch auf Heute (39.4s)
+  ✓   53 tests/e2e/notebook.spec.ts:46:1 › aus Sammlung sofort schreiben und nach Neustart, schneller Eingabe und Offline-Wechsel weiterlesen (20.3s)
+  ✓   54 tests/e2e/notebook.spec.ts:70:1 › nach komplettem Chromium-Neustart bleibt die zuletzt geschriebene Fassung offline lesbar (22.7s)
+  ✓   52 tests/e2e/legacy-history.spec.ts:71:1 › historische Karten und genaue Archivstellen bleiben klein, dunkel und per Tastatur zugänglich; ein falscher Quellhash öffnet keinen fremden Datensatz (44.8s)
+  ✓   55 tests/e2e/notebook.spec.ts:98:1 › Suche, Datum, Anheften und bestätigtes Löschen mit Wiederherstellung (12.5s)
+  ✓   56 tests/e2e/legacy-history.spec.ts:97:1 › der Garten erschließt erhaltene Originalvorhaben ohne heutiges Vorhaben und stellt beim Offline-Neustart nichts wieder her (19.1s)
+  ✓   57 tests/e2e/notebook.spec.ts:132:1 › Bibelstelle, Wege, Geschichten und Reflexionsfragen verbinden und aus dem Reader wiederfinden (14.1s)
+  ✓   58 tests/e2e/legacy-history.spec.ts:119:1 › mehrere Originaldateien behalten ihre eigenen Fassungen und unzugeordnete Rückblicke bleiben ohne geratenen Weg (23.6s)
+  ✓   59 tests/e2e/notebook.spec.ts:170:1 › behält eine konkurrierende Notizfassung als Kopie und schreibt unabhängige Notizen zusammen (21.4s)
+  ✓   61 tests/e2e/notebook.spec.ts:192:1 › übersteht blockierte lokale Speicherung mit Zwischenstand und Wiederherstellung nach Browser-Neuladen (13.7s)
+  ✓   60 tests/e2e/legacy-history.spec.ts:143:1 › die vollständige Originalhistorie bleibt mobil und dunkel zugänglich und verwirft eine unbekannte Vorhabenauswahl (35.1s)
+  ✓   63 tests/e2e/nt-archive.spec.ts:140:1 › NT-Importvorschau liest nur und übernimmt belegte Abschlüsse ohne Antworten oder Baumfortschritt (10.6s)
+  ✓   62 tests/e2e/notebook.spec.ts:212:1 › kompletter unverschlüsselter und verschlüsselter Sicherungsweg mit alten FaithPath-Daten und App-Sperre (32.9s)
+  ✓   64 tests/e2e/nt-archive.spec.ts:193:1 › ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Quelle und Rückkehrsicherung bytegenau (28.3s)
+  ✓   65 tests/e2e/notebook.spec.ts:268:1 › ältere Bibelnotizen bleiben verlinkt und die FaithPath-Rückkehr bewahrt das eigenständige Notizbuch (37.4s)
+  ✓   66 tests/e2e/nt-archive.spec.ts:265:1 › ein fremder Fenstercommit blockiert die NT-Aktivierung und die Archivvorschau lässt sich sicher neu prüfen (28.6s)
+  ✓   67 tests/e2e/notebook.spec.ts:302:1 › kleiner Bildschirm und Bedienung per Tastatur mit Axe in Hell und Dunkel (19.9s)
+  ✓   68 tests/e2e/nt-pending-return.spec.ts:93:1 › an own confirmed answer reconciles after leaving while its real commit acknowledgement is pending (8.2s)
+  ✓   69 tests/e2e/nt-study.spec.ts:32:1 › NT discovery covers all 27 books and opens original questions without creating personal records (8.7s)
+  ✓   70 tests/e2e/nt-pending-return.spec.ts:136:1 › an own confirmed question move restores the visible question after a pending-commit detour (9.8s)
+  ✓   71 tests/e2e/nt-study.spec.ts:66:1 › an incorrect answer saves the exact source, survives reload and can be changed without altering its original date (13.1s)
+  ✓   72 tests/e2e/nt-pending-return.spec.ts:167:1 › a completion acknowledged away from the study view is shown on return without another completion write (14.8s)
+  ✓   73 tests/e2e/nt-study.spec.ts:110:1 › all five viewed questions may finish with wrong answers, and resume the exact last question without reading or growth (15.5s)
+  ✓   74 tests/e2e/offline-readiness.spec.ts:228:1 › eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten (19.1s)
+  ✓   75 tests/e2e/nt-study.spec.ts:144:1 › skipping questions remembers position but cannot create a completion (11.3s)
+  ✓   77 tests/e2e/nt-study.spec.ts:169:1 › a real second-tab conflict keeps the local choice until the saved answer is deliberately accepted (9.1s)
+  ✓   78 tests/e2e/nt-study.spec.ts:197:1 › a new NT chapter and the entire question bank work on first offline visit and after restart (6.8s)
+  ✓   76 tests/e2e/offline-readiness.spec.ts:257:1 › wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling (26.0s)
+  ✓   79 tests/e2e/nt-study.spec.ts:222:1 › keyboard answers, small-screen light mode, large-screen dark mode and invalid routes stay accessible (11.9s)
+  ✓   80 tests/e2e/offline-readiness.spec.ts:280:1 › eine ältere echte Antwort überschreibt keinen neueren Buildkonflikt (9.1s)
+  ✓   82 tests/e2e/offline-readiness.spec.ts:307:1 › ein bereits aktiver Worker wird trotz offenbleibender erneuter Registrierung sofort verifiziert (9.3s)
+  ✓   81 tests/e2e/password-protection.spec.ts:56:1 › real encrypted file keeps an original archive offline and only a confirmed preview replaces data (21.6s)
+  ✓   83 tests/e2e/offline-readiness.spec.ts:350:1 › ein unkontrolliertes Dokument entdeckt den echten aktiven Worker vor dem Ende einer offenen Registrierung (10.5s)
+  ✓   84 tests/e2e/password-protection.spec.ts:123:1 › setup blocks direct navigation and main storage before unlock with real offline reload (11.6s)
+  ✓   85 tests/e2e/offline-readiness.spec.ts:390:1 › eine offene Registrierung und eine offene Suche beenden die Prüfung weiterhin endlich (15.8s)
+  ✓   87 tests/e2e/personal-tree.spec.ts:45:1 › persönliche Baumzweige öffnen echte Vorhaben; alle Aufzeichnungen und der Baum bleiben unverändert (5.5s)
+  ✓   86 tests/e2e/password-protection.spec.ts:166:1 › activation and explicit lock revoke other browser windows; unlock belongs to one window (14.1s)
+  ✓   88 tests/e2e/personal-tree.spec.ts:60:3 › Baumverknüpfungen bei echtem Bildladen ohne Service-Worker › persönliche Pins warten auf das tatsächliche Originalbild; die Liste bleibt währenddessen bedienbar (6.7s)
+  ✓   89 tests/e2e/password-protection.spec.ts:182:1 › auto lock uses the selected inactivity length and resets it with real input (5.4s)
+  ✓   90 tests/e2e/personal-tree.spec.ts:77:1 › ein geteilter Gedanke erscheint einmal und öffnet die lesende Sammlung ohne fremde Entwürfe zu verändern (10.8s)
+  ✓   91 tests/e2e/password-protection.spec.ts:198:1 › password changes require the old password; a saved recovery code rotates without losing data (13.6s)
+  ✓   93 tests/e2e/password-protection.spec.ts:245:1 › small screen, large text and keyboard keep the unlock view accessible (8.1s)
+  ✓   94 tests/e2e/personal.spec.ts:13:1 › Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf (4.9s)
+  ✓   92 tests/e2e/personal-tree.spec.ts:89:1 › Stadienvorschauen zeigen keine eigenen Baumzweige; kleine Ziele und Dunkelansicht bleiben zugänglich (18.9s)
+  ✓   96 tests/e2e/pwa.spec.ts:2:1 › das installierbare Offlinepaket liefert Manifest, vollständige Icons und Inhaltsrechte (7.2s)
+  ✓   95 tests/e2e/personal.spec.ts:37:1 › Journalentwurf überlebt Neustart, Bearbeitung und anschließendes Speichern (10.2s)
+  ✓   98 tests/e2e/personal.spec.ts:83:1 › Vorhaben, Schritte, Rückblick-Snapshot und Archiv funktionieren zusammen (13.3s)
+  ✓   99 tests/e2e/personal.spec.ts:200:1 › Ungespeicherte Entwurfsworte werden erst nach ausdrücklichem Verwerfen gelöscht (8.4s)
+  ✓  100 tests/e2e/personal.spec.ts:233:1 › Eine installierte V1-Datenbank wird ohne Verlust weitergeführt (6.2s)
+  ✓  101 tests/e2e/personal.spec.ts:296:1 › Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben (5.6s)
+  ✓  102 tests/e2e/personal.spec.ts:325:1 › Neue Vorhaben- und Entwurfsansichten bleiben auf kleinen Displays zugänglich (13.6s)
+  ✓  103 tests/e2e/reading-position.spec.ts:18:1 › Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers (8.6s)
+  ✓  104 tests/e2e/reading-position.spec.ts:43:1 › ein langer Psalm behält den Vers bei Display- und Schriftänderungen (9.7s)
+  ✓   97 tests/e2e/quiet-reading.spec.ts:52:1 › Sammlungsbereiche bleiben einzeilig und Garten, Sammlung und Reader ohne horizontalen Überlauf bedienbar (1.2m)
+  ✓  106 tests/e2e/quiet-reading.spec.ts:102:1 › bei doppelter Schrift zeigen die vier Sammlungsfelder volle Namen und lassen sich per Tastatur wechseln (3.1s)
+  ✓  105 tests/e2e/reading-position.spec.ts:80:1 › Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker (11.2s)
+  ✓  108 tests/e2e/reading-position.spec.ts:100:1 › eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust (10.4s)
+  ✓  107 tests/e2e/quiet-reading.spec.ts:120:1 › Archiv, alle Sammlungsbereiche und sieben Baumvorschauen bewahren jeden gespeicherten Datensatz (14.4s)
+  ✓  110 tests/e2e/quiet-reading.spec.ts:147:1 › Kapitelwechsel an der Buchgrenze lässt Lesebestätigung, Markierungen und persönliche Texte unberührt (8.0s)
+  ✓  111 tests/e2e/stories.spec.ts:20:1 › 436 Originaleinheiten sind auffindbar, standardmäßig gesamte Bibel und tatsächlich virtualisiert (5.4s)
+  ✓  112 tests/e2e/stories.spec.ts:43:1 › Originalantworten bleiben nach Neustart änderbar, ohne Lesen oder Baumwachstum auszulösen (8.6s)
+  ✓  109 tests/e2e/spiritual-word.spec.ts:70:1 › der Bibelhub öffnet alle66Bücher und1189Kapitel ohne Buchschwert-Auswahl oder Datenänderung (33.0s)
+  ✓  113 tests/e2e/stories.spec.ts:64:1 › auch die längste Einheit führt durch alle 31 Fragen und setzt genau am letzten Schritt fort (15.2s)
+  ✓  115 tests/e2e/stories.spec.ts:84:1 › Reflexionsentwürfe führen über die Sammlung zur richtigen Einheit und bewahren die Originalquelle (11.0s)
+  ✓  116 tests/e2e/stories.spec.ts:108:1 › Judas öffnet zwei exakte Lesebereiche; ein gefälschter Reflexionslink zeigt niemals den Editor (8.4s)
+  ✓  117 tests/e2e/stories.spec.ts:121:1 › ein echter Zwei-Fenster-Konflikt bewahrt die lokale Auswahl bis zur ausdrücklichen Übernahme (8.3s)
+  ✓  118 tests/e2e/stories.spec.ts:139:1 › ein noch nie geöffneter Abschnitt und die Originalfragen funktionieren beim Offline-Neustart (9.3s)
+  ✓  119 tests/e2e/stories.spec.ts:150:1 › bestätigte Ansichten bleiben auf kleinen Displays, in Dunkelansicht und per Tastatur barrierearm (43.9s)
+  ✓  120 tests/e2e/today.spec.ts:21:1 › Heute bietet Gästen einen direkten freiwilligen Einstieg in die vorhandene erste Geschichte (7.6s)
+  ✓  121 tests/e2e/today.spec.ts:29:1 › die Hauptaktion setzt den gespeicherten Abschnitt am tatsächlichen Vers fort (6.5s)
+  ✓  122 tests/e2e/today.spec.ts:37:1 › persönliche Inhalte und alle weiteren Heute-Zugänge bleiben beim Ansehen und Neustart erhalten (7.5s)
+  ✓  114 tests/e2e/spiritual-word.spec.ts:88:1 › alle66altenBuch-Links öffnen ruhige Buchübersichten und keine Schwertseiten (1.9m)
+  ✓  124 tests/e2e/spiritual-word.spec.ts:107:1 › der quellentreue Vers und sein friedlicher Zusammenhang öffnen den gemeinsamen Reader (11.8s)
+  ✓  123 tests/e2e/today.spec.ts:44:1 › Heute bleibt in beiden Themen bei320/375/390px mit reduzierter Bewegung zugänglich (30.3s)
+  ✓  126 tests/e2e/today.spec.ts:58:1 › Heute und die gespeicherte Lesestelle funktionieren nach einem Offline-Neustart (9.5s)
+  ✓  125 tests/e2e/spiritual-word.spec.ts:134:1 › der Hub bleibt bei320/1440Pixeln in Hell/Dunkel mit reduzierter Bewegung barrierearm (29.2s)
+  ✓  127 tests/e2e/today.spec.ts:66:2 › ohne geladenes Landschaftsbild › Begrüßung und Hauptaktion bleiben vollständig bedienbar (4.4s)
+  ✓  129 tests/e2e/topics.spec.ts:22:1 › alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt (7.1s)
+  ✓  128 tests/e2e/spiritual-word.spec.ts:162:1 › das einzelne Symbol und alle Bücher bleiben beim Offline-Neustart ohne Schreibvorgang verfügbar (13.6s)
+  ✓  130 tests/e2e/topics.spec.ts:39:1 › ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig (11.4s)
+  ✓  131 tests/e2e/spiritual-word.spec.ts:176:1 › Startseite und Sammlung bleiben frei von Schwertern; bestätigtes Lesen behält seinen normalen Fortschritt (12.7s)
+  ✓  133 tests/e2e/spiritual-word.spec.ts:197:3 › einzelnes Bild bei echtem Ladefehler › Vers und Navigation bleiben bedienbar; bewusster Retry dekodiert das Original (7.1s)
+  ✓  132 tests/e2e/topics.spec.ts:62:1 › originaler Arbeitskontext und getrennte OLIVA-Einordnung bleiben im Entwurf und in der Sammlung erhalten (14.7s)
+  ✓  134 tests/e2e/spiritual-word.spec.ts:215:3 › hochauflösende Browserdarstellung › die eine512erDatei reicht für den vollständigen80x120Bildrahmen (8.4s)
+(node:32249) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  135 tests/e2e/topics.spec.ts:100:1 › Wechsel von drei zu zwei Schritten bewahrt unterschiedliche Gedanken zur selben Bibelstelle (15.6s)
+  ✓  136 tests/e2e/captures.spec.ts:20:1 › Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart (11.6s)
+  ✓  137 tests/e2e/topics.spec.ts:121:1 › ein zuvor ungeöffnetes Thema funktioniert samt Reader und Wiederaufnahme vollständig offline (15.0s)
+  ✓  138 tests/e2e/captures.spec.ts:71:1 › zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt (13.8s)
+  ✓  140 tests/e2e/captures.spec.ts:186:1 › Reflexionsentwurf im Lernweg überlebt Neustart und schließt nur auf ausdrücklichen Klick ab (12.0s)
+  ✓  141 tests/e2e/captures.spec.ts:238:1 › ein Entwurf wird erst nach ausdrücklichem Verwerfen gelöscht und bestätigt dabei keine Erfahrung (6.9s)
+  ✓  142 tests/e2e/captures.spec.ts:270:1 › der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexionsentwurf (5.3s)
+  ✓  143 tests/e2e/captures.spec.ts:293:1 › ein Speicherfehler lässt den Kontextentwurf sichtbar und erzeugt keinen fertigen Eintrag (5.9s)
+  ✓  139 tests/e2e/topics.spec.ts:134:1 › Themenbibliothek und Leseschritt bleiben bei 320, 390 und 1440 Pixeln sowie in Dunkelansicht zugänglich (39.6s)
+(node:32788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  144 tests/e2e/captures.spec.ts:325:1 › ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren (8.7s)
+  ✓  145 tests/e2e/david-story.spec.ts:78:1 › fünf Geschichten bewahren den Bestand; David öffnet acht Fokusverse im ganzen Kapitel und zählt nur nach ausdrücklicher Bestätigung (12.4s)
+  ✓  146 tests/e2e/invitations.spec.ts:181:1 › V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt den aktuellen V11-Stand und erschließt die Startseiteneinladung (14.4s)
+  ✓  147 tests/e2e/david-story.spec.ts:115:1 › das vollständige Offlinepaket öffnet David und alle bisherigen Bilder erstmals offline und nach Neustart (13.4s)
+  ✓  148 tests/e2e/invitations.spec.ts:217:1 › die tatsächliche Oberfläche beachtet exakt 21 und 35 Tage, neue Belege und archivierte Vorhaben ohne Schreibzugriff (10.3s)
+  ✓  150 tests/e2e/invitations.spec.ts:276:1 › Zurückstellen, Ausblenden und Wiederzulassen überleben Offline-Neustart; Ausschalten bewahrt Entscheidungen und Quellen (10.6s)
+  ✓  151 tests/e2e/invitations.spec.ts:349:1 › Quellenlinks zeigen das richtige Vorhaben und den Gedanken schreibfrei, auch wenn bereits ein anderer Entwurf besteht (7.4s)
+  ✓  152 tests/e2e/invitations.spec.ts:413:1 › Einladungen bleiben bei 320 Pixeln in Hell und Dunkel sowie auf großem Display zugänglich und ohne Überlauf (13.2s)
+  ✓  149 tests/e2e/david-story.spec.ts:135:1 › Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar (36.5s)
+  ✓  153 tests/e2e/invitations.spec.ts:473:1 › ein echter konkurrierender IndexedDB-Stand wird beim Ausblenden aus einer alten Ansicht nicht überschrieben (10.8s)
+  ✓  154 tests/e2e/david-story.spec.ts:177:3 › Reader-Übergang bei echter Netzwerklatenz › Davids Kontext wartet auf das echte Reader-Modul und einen positiven 3:2-Rahmen (10.1s)
+  ✓  155 tests/e2e/reader-copy.spec.ts:136:1 › ein einzelner Vers wird per echtem Browser-Clipboard unverändert mit LF und Übersetzungsname kopiert (4.9s)
+  ✓  156 tests/e2e/david-story.spec.ts:260:3 › echte Bildfehler ohne Service-Worker › drei ausgefallene Bildvarianten zeigen einen erreichbaren Wiederholungsbutton und laden danach wirklich (8.6s)
+  ✓  157 tests/e2e/reader-copy.spec.ts:159:1 › additive Auswahl kopiert genau 35–36 und danach 35–37 ohne UI-Einordnung oder persönliche Daten (5.7s)
+  ✓  158 tests/e2e/reader-flow.spec.ts:120:1 › echte Inlineabsätze erhalten jeden Johannesvers und umbrechen über Versgrenzen statt in Einzelblöcken (6.5s)
+  ✓  159 tests/e2e/reader-copy.spec.ts:185:1 › eine abgelehnte Clipboard-API zeigt denselben schreibgeschützten Text ohne falsche Erfolgsmeldung (6.8s)
+  ✓  160 tests/e2e/reader-flow.spec.ts:183:1 › eine tatsächlich geteilte Psalmzeile speichert nach Scrollen ihren ersten sichtbaren Vers 119 und erfindet keinen Verssprung zu 120 (6.0s)
+  ✓  162 tests/e2e/reader-flow.spec.ts:249:1 › ein ausdrücklicher Verslink bleibt nach breitem Reflow, größerer Schrift, Zeilenabstand und Neustart genau Johannes 6,35 (9.5s)
+  ✓  161 tests/e2e/reader-focus.spec.ts:123:1 › Lesefokus hält auf 320 Pixeln in Hell und Dunkel den kanonischen Text und einen erreichbaren Ausstieg ohne Leseabschluss (17.6s)
+  ✓  163 tests/e2e/reader-flow.spec.ts:282:1 › Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versnotizentwurf über Neustart ohne Leseabschluss (10.8s)
+  ✓  164 tests/e2e/reader-focus.spec.ts:244:1 › ein gerade getippter Versnotizentwurf überlebt das Unmount beim Fokusstart und bleibt mit derselben Quelle fortsetzbar (8.3s)
+  ✓  166 tests/e2e/reader-focus.spec.ts:334:1 › Escape schließt Einstellungen und Verswahl vor Versaktionen und gibt den Tastaturfokus vor einer Navigation zurück (6.3s)
+  ✓  165 tests/e2e/reader-flow.spec.ts:383:1 › Fließtext und Einzelverse behalten beim Umschalten denselben Versanker und denselben Notizquelltext (10.2s)
+  ✓  167 tests/e2e/reader-selection.spec.ts:151:1 › ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel (6.1s)
+  ✓  169 tests/e2e/reader-selection.spec.ts:200:1 › eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz (8.1s)
+  ✓  168 tests/e2e/reader-flow.spec.ts:440:1 › der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunkel sowie auf großem Display lesbar und zugänglich (18.7s)
+  ✓  170 tests/e2e/reader-selection.spec.ts:281:1 › 35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her (14.0s)
+  ✓  171 tests/e2e/reader-flow.spec.ts:500:1 › die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, markieren acht Fokusverse und bestätigen ausschließlich den Abschnitt (11.2s)
+  ✓  172 tests/e2e/reader-selection.spec.ts:387:1 › ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern (9.3s)
+  ✓  173 tests/e2e/reviews.spec.ts:111:1 › Rückblicktext wird geändert, historischer Stand bleibt; Löschen und Rückgängig bewahren den Baum (8.6s)
+  ✓  174 tests/e2e/reader-selection.spec.ts:424:3 › Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück (5.7s)
+  ✓  176 tests/e2e/reader-selection.spec.ts:424:3 › Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück (7.5s)
+  ✓  175 tests/e2e/reviews.spec.ts:160:1 › Bearbeitungsentwurf erreicht die Sammlung und überlebt Offline-Neustart ohne neuen Rückblick (13.0s)
+  ✓  177 tests/e2e/reader-selection.spec.ts:473:3 › Einzelvers: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme (8.2s)
+  ✓  178 tests/e2e/reviews.spec.ts:211:1 › nur unveränderte Rückblicke werden wieder verbunden; echte Konflikte bewahren beide Wortlaute (12.9s)
+  ✓  179 tests/e2e/reader-selection.spec.ts:473:3 › Bereich: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme (9.0s)
+  ✓  180 tests/e2e/reviews.spec.ts:288:1 › Löschen braucht Bestätigung, verwirft Undo beim Verlassen und exportiert keinen gelöschten Rückblick (9.4s)
+  ✓  181 tests/e2e/reader-selection.spec.ts:615:1 › eine abgelehnte Versentwurf-URL öffnet vor oder nach der Quellenprüfung keinen fremden Editor (9.6s)
+  ✓  182 tests/e2e/reviews.spec.ts:331:1 › archivierte und fehlende Ziele lassen eigene Entwurfsworte lesbar, exportierbar und verwerfbar (8.8s)
+  ✓  183 tests/e2e/reviews.spec.ts:390:1 › Rückblickeditor bleibt auf kleinen und großen Displays sowie in Hell und Dunkel lesbar (7.0s)
+  ✓  184 tests/e2e/reviews.spec.ts:448:1 › ein während des Verlassens abgeschlossener Löschvorgang lässt kein Undo zurück (4.4s)
+
+
+  1) tests/e2e/core.spec.ts:22:1 › Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Wenn der Sturm still wird', { exact: true })
+    Expected: visible
+    Error: strict mode violation: getByText('Wenn der Sturm still wird', { exact: true }) resolved to 2 elements:
+        1) <div dir="auto" class="css-146c3p1">Wenn der Sturm still wird</div> aka getByRole('button', { name: '1 Wenn der Sturm still wird' })
+        2) <div dir="auto" class="css-146c3p1">Wenn der Sturm still wird</div> aka getByText('Wenn der Sturm still wird').nth(1)
+
+    Call log:
+      - Expect "toBeVisible" getByText('Wenn der Sturm still wird', { exact: true }) with timeout 15000ms
+      - waiting for getByText('Wenn der Sturm still wird', { exact: true })
+
+
+      29 |   await expect(
+      30 |     page.getByText("Wenn der Sturm still wird", { exact: true }),
+    > 31 |   ).toBeVisible();
+         |     ^
+      32 |   await page.getByRole("button", { name: /^Vers 35:/ }).click();
+      33 |   await bookmarkSelection(page);
+      34 |   await markSelection(page, "Oliv");
+        at /workspace/faithpath-next/tests/e2e/core.spec.ts:31:5
+
+    Error Context: ../../dev/shm/oliva-kiss-acceptance/browser-results/core-Gast-erlebt-einen-vol-b0bba-eiben-von-Kapiteln-getrennt/error-context.md
+
+  2) tests/e2e/core.spec.ts:371:1 › Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.evaluate: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for getByTestId('home-primary-action')
+
+
+      410 |       if (route === "/") {
+      411 |         const ratio = await page
+    > 412 |           .getByTestId("home-primary-action")
+          |            ^
+      413 |           .evaluate((button) => {
+      414 |             const text = button.querySelector('[dir="auto"]')!;
+      415 |             const luminance = (value: string) => {
+        at /workspace/faithpath-next/tests/e2e/core.spec.ts:412:12
+
+    Error Context: ../../dev/shm/oliva-kiss-acceptance/browser-results/core-Kernansichten-reflowe-8b940-und-1440-Pixeln-Axe-Prüfung/error-context.md
+
+  Slow test file: tests/e2e/bible-paths-overview.spec.ts (5.1m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  2 failed
+    tests/e2e/core.spec.ts:22:1 › Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt
+    tests/e2e/core.spec.ts:371:1 › Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung
+  182 passed (28.1m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

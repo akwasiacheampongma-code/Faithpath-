@@ -1,4 +1,20 @@
-# Aktuell · Passwortschutz für OLIVA
+# Aktuell · KISS Faith Journey · Variante A umgesetzt
+
+Der lokale Web-/PWA-Kandidat `oliva-dc815901e80fb696` liegt auf `feature/oliva-kiss-faith-journey`. Laufzeitquellstand `298ce8e`, auf dem freigegebenen Audit `9cff742` und dem vollständigen Notizen- und Passwortstand. Die Einführung ist überspringbar. Auf Heute öffnet die Leseaktion direkt den Reader, und der persönliche A51-Baum steht direkt darunter. Freiwillige Reflexion, verknüpfte Notiz und Rückkehr zum Bibeltext sind offline geprüft.
+
+359 Fachtests und alle sieben Inhaltsprüfungen bestanden. Alle 184 Browserfälle sind erfolgreich belegt, davon 182 im ersten Gesamtlauf und zwei nach einer Korrektur der Testabläufe. Beide V11-/V12-PWA-Updates bewahrten die vier geprüften Rohdatensätze einschließlich FaithPath-Original und Rückkehrsicherung bytegleich. Android und iOS sind statisch geprüft. Die private Vorschau steht auf dem bisherigen Paket `oliva-507a582d5a9cc3a6`. [Abschlussbericht und echte Vergleichsbilder](docs/47-kiss-faith-journey-implementation.md)
+
+## Vorheriger Stand · KISS-UX-Audit und Entwurf
+
+Etappe A liegt lokal auf `feature/oliva-kiss-faith-journey`, abgezweigt vom vollständigen Notizenstand `5262a4a` mit Passwortschutz. Der Audit prüft den Ist-Stand `oliva-4fe58df588d05d3f`. Der klickbare Entwurf zeigt die überspringbare Einführung, Lesen direkt in Markus 4,35–41, den vorhandenen A51-Baum unter der Leseaktion und den Weg vom freiwilligen Reflexionsimpuls zur verknüpften Notiz. Sechs Browseraufgaben in der tatsächlichen App und vier Aufgaben im Entwurf sind getrennt belegt. Die Laufzeitumsetzung beginnt nach Freigabe des Entwurfs. Die private Vorschau steht auf dem bisherigen Paket `oliva-507a582d5a9cc3a6`. [Audit, Entwurf und Prüfplan](docs/46-kiss-faith-journey.md)
+
+## Vorheriger Stand · Notizen für OLIVA
+
+Die Notizfunktion liegt lokal auf `feature/oliva-notes`. Der Quellstand `a7a3b74` basiert auf `c945b26`. **Sammlung → Notizen → Neue Notiz** führt direkt zum Schreiben. Das Notizbuch bietet lokale automatische Speicherung, Suche, Anheften, „Zuletzt gelöscht“ und freiwillige Bezüge zu Bibel, Wegen, Geschichten und Reflexionsfragen.
+
+Der PWA-Kandidat `oliva-4fe58df588d05d3f` lädt die bestehende Profilfassung ohne Änderung. Erst beim Speichern einer Notiz kommt V12 mit eigenem Notizbuch hinzu. 355 Fachtests und 176 Chromium-Fälle einschließlich aller neun Notizfälle sind bestanden. Der alte Passwort-Stand ist separat auf GitHub als `1501a3b` gesichert. Die bisherige private Vorschau zeigt weiterhin ihr bisheriges Paket. [Abnahme und mobile Vergleichsbilder](docs/45-notebook.md) · [Passwort-Zweig auf GitHub](https://github.com/akwasiacheampongma-code/Faithpath-/tree/feature/oliva-password-protection/oliva)
+
+## Vorheriger Stand · Passwortschutz für OLIVA
 
 Der lokale Zweig `feature/oliva-password-protection` basiert auf dem Stabilisierungskandidaten `4c2e0d3`. Die Implementierung liegt in `fe0f72a`. Die Einstellungen bieten verschlüsselte `.oliva`-Sicherungen mit AES-256-GCM, weiterhin den JSON-Import und eine optionale App-Sperre mit bestätigtem Wiederherstellungscode. Der Zugangsnachweis liegt in einem getrennten lokalen Speicher. Der Schutz steuert den Zugriff in OLIVA. Die bestehende Profildatenbank bleibt im bisherigen Format.
 

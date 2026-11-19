@@ -59,6 +59,7 @@ export function Shell({
   children,
   wide = false,
   reader = false,
+  header = "standard",
   scrollRef,
   onScroll,
   readerToolbar,
@@ -68,6 +69,7 @@ export function Shell({
   children: React.ReactNode;
   wide?: boolean;
   reader?: boolean;
+  header?: "standard" | "compact" | "intro";
   scrollRef?: React.Ref<React.ComponentRef<typeof ScrollView>>;
   onScroll?: ScrollViewProps["onScroll"];
   readerToolbar?: React.ReactNode;
@@ -107,6 +109,7 @@ export function Shell({
     desktop = width >= 1000,
     path = usePathname(),
     insets = useSafeAreaInsets();
+  const intro = header === "intro", compactHeader = header !== "standard";
   useLayoutEffect(() => {
     const frame = requestAnimationFrame(measureViewport);
     return () => cancelAnimationFrame(frame);
@@ -140,6 +143,7 @@ export function Shell({
           justifyContent: compact ? "center" : "flex-start",
           gap: compact ? 5 : 13,
           flex: compact ? 1 : undefined,
+          minWidth: 0,
         })}
       >
         <Icon
@@ -152,6 +156,8 @@ export function Shell({
             fontSize: compact ? 9 : 13,
             color: active ? t.text : t.muted,
             fontWeight: active ? "600" : "400",
+            maxWidth: compact ? "100%" : undefined,
+            textAlign: compact ? "center" : undefined,
           }}
         >
           {n.label}
@@ -179,7 +185,7 @@ export function Shell({
         paddingTop: insets.top,
       }}
     >
-      {desktop && !reader && (
+      {desktop && !reader && !intro && (
         <View
           role="navigation"
           aria-label="Hauptnavigation"
@@ -243,8 +249,8 @@ export function Shell({
           <View
             role="banner"
             style={{
-              height: desktop ? 86 : 73,
-              paddingHorizontal: desktop ? 42 : 22,
+              height: desktop && !intro ? 86 : compactHeader ? 52 : 73,
+              paddingHorizontal: desktop && !intro ? 42 : compactHeader ? 18 : 22,
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
@@ -252,14 +258,14 @@ export function Shell({
               borderColor: t.line,
             }}
           >
-            {desktop ? (
+            {desktop && !intro ? (
               <T variant="label" style={{ fontSize: 9, color: t.muted }}>
                 LESEN. VERSTEHEN. WACHSEN.
               </T>
             ) : (
               <Brand small />
             )}
-            <View
+            {!intro && <View
               style={{ flexDirection: "row", alignItems: "center", gap: 12 }}
             >
               {desktop && (
@@ -311,7 +317,7 @@ export function Shell({
                   {data.name ? data.name[0]?.toUpperCase() : "Du"}
                 </T>
               </Pressable>
-            </View>
+            </View>}
           </View>
         )}
         {error && (
@@ -362,8 +368,8 @@ export function Shell({
           }}
           scrollEventThrottle={100}
           contentContainerStyle={{
-            paddingHorizontal: reader ? 20 : desktop ? 42 : 22,
-            paddingTop: reader ? 20 : desktop ? 30 : 16,
+            paddingHorizontal: reader ? 20 : desktop ? 42 : compactHeader ? 18 : 22,
+            paddingTop: reader ? 20 : desktop && !intro ? 30 : compactHeader ? 12 : 16,
             paddingBottom: reader ? 210 : 40,
             alignItems: "center",
           }}
@@ -391,7 +397,7 @@ export function Shell({
             {readerActions}
           </View>
         ) : null}
-        {!desktop && !reader && (
+        {!desktop && !reader && !intro && (
           <View
             role="navigation"
             aria-label="Hauptnavigation"

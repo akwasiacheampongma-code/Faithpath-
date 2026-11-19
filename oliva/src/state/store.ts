@@ -65,6 +65,9 @@ import { parseFaithpath } from "../features/imports/source";
 import { storyById } from "../features/stories/index";
 import { saveStoryAnswer, rememberStoryPosition, viewStoryQuestion } from "../features/stories/model";
 import { storyPositionSchema, type StoryPosition } from "../features/stories/state-schema";
+import { applyNotebookEdit, applyNotebookAction, pendingNoteSchema, type NoteAction, type PendingNote, type NotebookNote } from "../features/notebook/model";
+import { hasPendingNotes } from "../features/notebook/pending";
+import { LocalRevisionConflict } from "../services/storage-conflict";
 
 // A stamp may be supplied as a complete saved draft. Extract its two contract
 // fields and validate a detached snapshot before an earlier queued write yields.
@@ -82,9 +85,11 @@ export type Store = {
   data: AppData;
   ready: boolean;
   healthy: boolean;
+  freshProfile: boolean;
   busy: boolean;
   error: string | null;
   hydrate: () => Promise<void>;
+  finishIntro: () => Promise<boolean>;
   suspend: () => Promise<void>;
   mutate: (fn: (d: AppData) => void) => Promise<boolean>;
   saveEditorDraft: (
@@ -105,7 +110,9 @@ export type Store = {
   ) => Promise<string | null>;
   undoGoalReview: (token: string) => Promise<boolean>;
   forgetReviewUndo: (token: string) => void;
-  restore: (d: AppData) => Promise<boolean>;
+  restore: (d: AppData, expectedRevision?: number) => Promise<boolean>;
+  writeNotebookEdit: (input: PendingNote) => Promise<{ note: NotebookNote | null; copied: boolean } | null>;
+  changeNotebookNote: (id: string, stamp: string, action: NoteAction) => Promise<boolean>;
   clearError: () => void;
   setInvitationsEnabled: (
     enabled: boolean,
@@ -208,24 +215,33 @@ export const useApp = create<Store>((set, get) => {
     options: WriteOptions = {},
     updateGrowth = true,
     guard: (data: AppData) => boolean = () => true,
+    retryConflicts = false,
   ) =>
     enqueue(async () => {
       if (!get().ready || !get().healthy) return false;
       if (!guard(get().data)) return false;
       try {
-        const current = get().data,
-          next = cloneData(current);
-        // Only explicit metadata writers return false for a validated no-op.
-        // They still execute their stale-state guards before this early exit.
-        if (fn(next) === false) return true;
-        if (updateGrowth) grow(next);
-        next.revision = current.revision + 1;
-        dataSchema.parse(next);
-        assertStorageBudget(next);
-        await writeData(next, current.revision, options);
-        set({ data: next, error: null });
-        acknowledgeDrafts(next.drafts);
-        return true;
+        let current = get().data;
+        for (let attempt = 0; ; attempt++) {
+          const next = cloneData(current);
+          if (fn(next) === false) return true;
+          if (updateGrowth) grow(next);
+          next.revision = current.revision + 1;
+          dataSchema.parse(next);
+          assertStorageBudget(next);
+          try {
+            await writeData(next, current.revision, options);
+          } catch (error) {
+            if (!retryConflicts || attempt >= 2 || !(error instanceof LocalRevisionConflict)) throw error;
+            current = await readData();
+            // Queued writes observe the very latest model even when this edit is rejected.
+            set({ data: current });
+            continue;
+          }
+          set({ data: next, error: null });
+          acknowledgeDrafts(next.drafts);
+          return true;
+        }
       } catch (error) {
         set({ error: message(error) });
         return false;
@@ -235,12 +251,13 @@ export const useApp = create<Store>((set, get) => {
     data: initialData(),
     ready: false,
     healthy: false,
+    freshProfile: false,
     busy: false,
     error: null,
     suspend: () => {
       invalidateUndo();
       return enqueue(async () => {
-        set({ data: initialData(), ready: false, healthy: false, error: null });
+        set({ data: initialData(), ready: false, healthy: false, freshProfile: false, error: null });
       });
     },
     hydrate: async () => {
@@ -249,15 +266,25 @@ export const useApp = create<Store>((set, get) => {
       set({ busy: true });
       try {
         await enqueue(async () => {
-          const data = await readData();
-          set({ data, ready: true, healthy: true, error: null });
+          let freshProfile = false;
+          const data = await readData((exists) => { freshProfile = !exists; });
+          set({ data, ready: true, healthy: true, freshProfile, error: null });
         });
       } catch (error) {
-        set({ error: message(error), healthy: false, ready: true });
+        set({ error: message(error), healthy: false, freshProfile: false, ready: true });
       } finally {
         set({ busy: false });
       }
     },
+    finishIntro: () => action(false, async () => {
+      if (!get().freshProfile) return true;
+      const saved = await persist((data) => {
+        if (data.onboarded || data.revision !== 0) return false;
+        data.onboarded = true;
+      }, {}, false, undefined, true);
+      if (saved) set({ freshProfile: false });
+      return saved;
+    }),
     mutate: async (fn) => {
       if (get().busy || !get().ready || !get().healthy) return false;
       set({ busy: true, error: null });
@@ -376,18 +403,33 @@ export const useApp = create<Store>((set, get) => {
     forgetReviewUndo: (token) => {
       if (reviewUndo?.token === token) reviewUndo = null;
     },
-    restore: (incoming) =>
+    restore: (incoming, expectedRevision) =>
       action(false, async () => {
         invalidateUndo();
         return persist(
           (d) => {
             const revision = d.revision;
+            if (expectedRevision !== undefined && revision !== expectedRevision)
+              throw new Error("Der lokale Stand hat sich verändert. Prüfe die Sicherung bitte erneut.");
+            if (hasPendingNotes()) throw new Error("Sichere zuerst deine offenen Notizen.");
+            if (incoming.version === 11) delete d.notebook;
             Object.assign(d, dataSchema.parse(incoming), { revision });
           },
           {},
           false,
         );
       }),
+    writeNotebookEdit: async (input) => {
+      const edit = pendingNoteSchema.parse(input);
+      let saved: ReturnType<typeof applyNotebookEdit> | null = null;
+      const success = await persist((data) => {
+        saved = applyNotebookEdit(data, edit);
+        return saved.changed;
+      }, {}, false, undefined, true);
+      return success ? saved : null;
+    },
+    changeNotebookNote: (id, stamp, action) =>
+      persist((data) => applyNotebookAction(data, id, stamp, action, new Date().toISOString()), {}, false, undefined, true),
     clearError: () => set({ error: null }),
     setInvitationsEnabled: (enabled, expected) =>
       action(false, async () => {
@@ -693,6 +735,8 @@ export const useApp = create<Store>((set, get) => {
         throw new Error(
           "Einige Entwürfe sind noch nicht dauerhaft gesichert. Bewahre sie zuerst unter Sammlung → Entwürfe.",
         );
+      if (hasPendingNotes())
+        throw new Error("Einige Notizen warten noch auf das Speichern. Öffne sie zuerst unter Sammlung → Notizen.");
       return get().data;
     },
     refresh: async () => {
@@ -759,7 +803,14 @@ export const useApp = create<Store>((set, get) => {
                 "Der lokale Stand hat sich verändert. Bitte prüfe die Rückkehr erneut.",
               );
             const revision = d.revision;
+            const notebook = d.notebook;
             Object.assign(d, copy.data, { revision });
+            // FaithPath recovery belongs to the source import. Notebook entries are
+            // independent of that source and may have been written since the import.
+            if (notebook) {
+              d.version = 12;
+              d.notebook = notebook;
+            }
           },
           { consumeRecoveryToken: token },
           false,

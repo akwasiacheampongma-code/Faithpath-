@@ -130,8 +130,11 @@ export default function Collection() {
         Deine Sammlung.
       </T>
       <T style={{ fontSize: 13, lineHeight: 21, color: t.muted, marginBottom: 14 }}>
-        Deine Einträge bleiben auf diesem Gerät.
+        Hier findest du deine Gedanken und das, was du beim Lesen festgehalten hast. Deine Einträge bleiben auf diesem Gerät.
       </T>
+      <View style={{ alignItems: "flex-start", marginBottom: 14 }}>
+        <Button kind="secondary" icon="pen" onPress={() => router.push("/notizen")}>Notizen</Button>
+      </View>
       <View style={{ marginBottom: 16 }}>
         <CollectionSections sections={sections} current={tab} onChange={section => {
           setTab(section);

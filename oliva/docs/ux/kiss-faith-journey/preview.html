@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OLIVA · Entwurf für Einstieg und Glaubensweg</title>
+  <link rel="stylesheet" href="preview.css">
+  <script src="preview.js" defer></script>
+</head>
+<body>
+  <svg class="visually-hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M12 5C8 2 4 3 2 4v15c4-2 7-1 10 1 3-2 6-3 10-1V4c-4-2-7-1-10 1Zm0 0v15"/></symbol>
+    <symbol id="icon-path" viewBox="0 0 24 24"><path d="M17 3c-15 0 8 7-7 11s-4 7 0 7"/><circle cx="17" cy="3" r="1.5"/></symbol>
+    <symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M5 19C2 8 9 3 21 3c0 12-5 18-16 16ZM3 22 16 8M9 15V9M9 15h6"/></symbol>
+    <symbol id="icon-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v19l-6-4-6 4Z"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v2m0 18v2M1 12h2m18 0h2M4 4l1.5 1.5m13 13L20 20M20 4l-1.5 1.5m-13 13L4 20"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11Z"/></symbol>
+  </svg>
+  <aside class="review" aria-label="Entwurfssteuerung">
+    <h1>OLIVA · Entwurf zur Freigabe</h1>
+    <p>Die Vorschau nutzt beispielsweise Markus 4 und zwei synthetische Profile. Beispielnotizen werden bis zum Neuladen im Browserfenster gehalten.</p>
+    <div class="review-actions">
+      <button type="button" data-go="today">Heute im Entwurf</button>
+      <button type="button" data-go="intro-1">Einführung durchspielen</button>
+      <a href="../../evidence/kiss-faith-journey/before-today-new-390.png">Heute im Ist-Stand bei 390 px</a>
+      <button type="button" id="profile" aria-pressed="false">Rückkehrprofil</button>
+      <button type="button" data-theme-toggle aria-pressed="false">Dunkelmodus</button>
+    </div>
+  </aside>
+  <div class="phone" id="phone" data-theme="light">
+    <header class="top">
+      <button class="brand" type="button" data-go="today" aria-label="OLIVA, Heute"><svg aria-hidden="true"><use href="#icon-leaf"/></svg>OLIVA</button>
+      <span class="brand intro-brand" hidden><svg aria-hidden="true"><use href="#icon-leaf"/></svg>OLIVA</span>
+      <div class="quick-actions">
+        <button class="utility" type="button" data-theme-toggle aria-label="Dunkelmodus" aria-pressed="false">
+          <svg class="moon-icon" aria-hidden="true"><use href="#icon-moon"/></svg>
+          <svg class="sun-icon" aria-hidden="true"><use href="#icon-sun"/></svg>
+        </button>
+        <button class="utility" type="button" data-go="help" aria-label="Einstellungen"><span class="profile-mark" aria-hidden="true">Du</span></button>
+      </div>
+    </header>
+    <main id="content">
+      <section data-screen="today" class="today">
+        <p class="greeting">Schön, dass du da bist.</p>
+        <div class="hero">
+          <h1>Lass deinen Glaubensweg wachsen.</h1>
+          <p>Lies Gottes Wort. Entdecke, was es für dein Leben bedeutet. Halte deine Gedanken fest und sieh, wie dein persönlicher Weg wächst.</p>
+          <button class="button light" type="button" data-go="reader" id="read-action">Jetzt Bibel lesen</button>
+          <div class="hero-meta">
+            <span id="hero-reference">Markus 4,35–41</span>
+            <span>Galiläa · künstlerische Interpretation</span>
+          </div>
+        </div>
+        <article class="garden-card" aria-labelledby="journey-heading">
+          <div class="garden-copy">
+            <h2 id="journey-heading">Dein Glaubensweg</h2>
+            <p>Dein Olivenbaum erinnert dich an das, was du entdeckst.</p>
+            <button class="text-action" type="button" data-go="garden">Meinen Garten ansehen <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="tree-slot">
+            <img class="tree-image" src="../../../assets/a51/stage-1-384-938d65fabbea.webp" width="384" height="384" alt="Dein Olivenbaum im Stadium Samen">
+          </div>
+        </article>
+        <div class="doors">
+          <button class="text-action" type="button" data-go="paths">Einen Weg entdecken <span aria-hidden="true">→</span></button>
+          <button class="text-action" type="button" data-go="notes">Meine Notizen <span aria-hidden="true">→</span></button>
+        </div>
+        <article class="soft daily">
+          <p class="label">Ein Wort für deinen Tag</p>
+          <blockquote>Ein Psalm Davids. Der HERR ist mein Hirte; mir wird nichts mangeln.</blockquote>
+          <button class="text-action" type="button" data-go="daily">Psalm 23,1 im Kontext lesen</button>
+        </article>
+      </section>
+
+      <section data-screen="intro-1" class="intro" hidden>
+        <div class="intro-top">
+          <p class="label">Schritt 1 von 3</p>
+          <button class="text-action" type="button" data-go="today">Überspringen</button>
+        </div>
+        <figure class="intro-art">
+          <img src="../../../assets/images/storm-1280.webp" alt="Boot auf dem See von Galiläa im Sturm" width="1280" height="720">
+          <figcaption>Künstlerische Interpretation</figcaption>
+        </figure>
+        <h1>Gottes Wort entdecken</h1>
+        <p>Lies in der Bibel und finde Worte, die dich durch deinen Alltag begleiten.</p>
+        <button class="button" type="button" data-go="intro-2">Weiter</button>
+      </section>
+      <section data-screen="intro-2" class="intro" hidden>
+        <div class="intro-top">
+          <p class="label">Schritt 2 von 3</p>
+          <button class="text-action" type="button" data-go="today">Überspringen</button>
+        </div>
+        <div class="intro-paper">
+          <h1>Deine Gedanken festhalten</h1>
+          <p>Nimm dir Zeit für Fragen, Gebete und das, was dich persönlich bewegt.</p>
+        </div>
+        <button class="button" type="button" data-go="intro-3">Weiter</button>
+        <button class="text-action back" type="button" data-go="intro-1">Zurück</button>
+      </section>
+      <section data-screen="intro-3" class="intro" hidden>
+        <div class="intro-top">
+          <p class="label">Schritt 3 von 3</p>
+          <button class="text-action" type="button" data-go="today">Überspringen</button>
+        </div>
+        <div class="intro-tree">
+          <img src="../../../assets/a51/stage-1-384-938d65fabbea.webp" alt="Vorhandenes A51-Bild des Olivensamens" width="384" height="384">
+        </div>
+        <h1>Deinen Weg wachsen sehen</h1>
+        <p>Dein Olivenbaum begleitet dich. Deine Gedanken und Erfahrungen bleiben Teil deiner Geschichte.</p>
+        <button class="button" type="button" data-go="today">OLIVA entdecken</button>
+        <button class="text-action back" type="button" data-go="intro-2">Zurück</button>
+      </section>
+
+      <section data-screen="bible" class="reading" hidden>
+        <h1>Deine Bibel.</h1>
+        <article class="soft">
+          <p class="label">Lesen</p>
+          <h2>Markus 4,35–41</h2>
+          <button class="button" type="button" data-go="reader">Den Bibelabschnitt lesen</button>
+        </article>
+      </section>
+
+      <section data-screen="reader" class="reading" hidden>
+        <button class="text-action back" type="button" data-go="today">← Heute</button>
+        <h1>Markus 4,35–41</h1>
+        <p class="muted">Luther 1912</p>
+        <div class="verses" aria-label="Bibeltext">
+          <p><sup>35</sup> Und an demselben Tage des Abends sprach er zu ihnen: Laßt uns hinüberfahren.</p>
+          <p><sup>36</sup> Und sie ließen das Volk gehen und nahmen ihn, wie er im Schiff war; und es waren mehr Schiffe bei ihm.</p>
+          <p><sup>37</sup> Und es erhob sich ein großer Windwirbel und warf Wellen in das Schiff, also daß das Schiff voll ward.</p>
+          <p id="verse-in-view"><sup>38</sup> Und er war hinten auf dem Schiff und schlief auf einem Kissen. Und sie weckten ihn auf und sprachen zu ihm: Meister, fragst du nichts darnach, daß wir verderben?</p>
+          <p><sup>39</sup> Und er stand auf und bedrohte den Wind und sprach zu dem Meer: Schweig und verstumme! Und der Wind legte sich, und es ward eine große Stille.</p>
+          <p><sup>40</sup> Und er sprach zu ihnen: Wie seid ihr so furchtsam? Wie, daß ihr keinen Glauben habt?</p>
+          <p><sup>41</sup> Und sie fürchteten sich sehr und sprachen untereinander: Wer ist der? denn Wind und Meer sind ihm gehorsam.</p>
+        </div>
+        <button class="button" type="button" data-go="reflection">Darüber nachdenken</button>
+        <p class="muted">Bibeltext · eBible.org · gemeinfrei</p>
+      </section>
+      <section data-screen="daily" class="reading" hidden>
+        <button class="text-action back" type="button" data-go="today">← Heute</button>
+        <h1>Psalm 23,1</h1>
+        <p class="muted">Luther 1912</p>
+        <p class="verses">Ein Psalm Davids. Der HERR ist mein Hirte; mir wird nichts mangeln.</p>
+        <button class="button" type="button" data-go="editor" data-link="daily">Gedanken festhalten</button>
+      </section>
+      <section data-screen="reflection" class="reading" hidden>
+        <button class="text-action back" type="button" data-go="reader">← Markus 4,35–41</button>
+        <h1>Darüber nachdenken</h1>
+        <article class="soft thought">
+          <p class="label" id="question-context">Zum Bibelabschnitt</p>
+          <p class="question" id="question">Was bewegt dich an der Frage: „Kümmert es dich nicht?“</p>
+          <p class="muted">Deine Antwort ist freiwillig.</p>
+        </article>
+        <button class="button" type="button" data-go="editor" id="reflect-write">Gedanken festhalten</button>
+        <button class="text-action back" type="button" data-go="reader" id="reflect-back">Weiterlesen</button>
+      </section>
+      <section data-screen="editor" class="reading" hidden>
+        <button class="text-action back" type="button" data-go="reflection" id="editor-back">← Zurück</button>
+        <h1>Notiz</h1>
+        <div class="reference">
+          <button class="text-action" type="button" data-go="reader" id="source-link">Markus 4,35–41 <span aria-hidden="true">→</span></button>
+          <details>
+            <summary>Verknüpfung</summary>
+            <label for="link-choice" class="visually-hidden">Verknüpfung wählen</label>
+            <select id="link-choice">
+              <option value="bible">Markus 4,35–41</option>
+              <option value="daily">Johannes 14,27</option>
+              <option value="story">Reflexionsfrage der Geschichte</option>
+              <option value="path">Reflexionsfrage aus „Wer ist Jesus?“</option>
+              <option value="none">Ohne Verknüpfung</option>
+            </select>
+          </details>
+        </div>
+        <label for="note-text" class="visually-hidden">Notiztext</label>
+        <textarea id="note-text" maxlength="10000" placeholder="Hier ist Platz für deine Gedanken."></textarea>
+        <p id="note-caption" class="muted" role="status">Die erste Zeile wird zum Titel.</p>
+        <button class="text-action" type="button" data-go="notes">Meine Notizen ansehen <span aria-hidden="true">→</span></button>
+      </section>
+      <section data-screen="notes" class="reading" hidden>
+        <button class="text-action back" type="button" data-go="collection">← Sammlung</button>
+        <h1>Meine Notizen</h1>
+        <button class="text-action" type="button" data-go="editor" data-link="none" data-empty="true">Neue Notiz</button>
+        <button class="note-row text-action" type="button" data-go="editor" data-sample="true">
+          <strong id="note-title">Ein stiller Moment</strong>
+          <span id="note-details">Markus 4,35–41</span>
+        </button>
+      </section>
+      <section data-screen="garden" class="reading" hidden>
+        <button class="text-action back" type="button" data-go="today">← Heute</button>
+        <h1>Mein Garten.</h1>
+        <div class="garden-full">
+          <img class="tree-image" src="../../../assets/a51/stage-1-384-938d65fabbea.webp" width="384" height="384" alt="Dein Olivenbaum im Stadium Samen">
+        </div>
+        <h2 id="stage-name">Samen</h2>
+        <p class="muted">Dein Baum erinnert dich an das, was du entdeckst.</p>
+        <button class="text-action" type="button" data-go="moment">Momente auf deinem Weg <span aria-hidden="true">→</span></button>
+      </section>
+      <section data-screen="moment" class="reading" hidden>
+        <button class="text-action back" type="button" data-go="garden">← Mein Garten</button>
+        <h1>Frühere FaithPath-Momente</h1>
+        <article class="soft thought">
+          <h2>Ein früherer Gedanke</h2>
+          <p>Ich übe, Menschen ruhig und freundlich zuzuhören.</p>
+          <button class="text-action" type="button" data-go="collection">In der Sammlung ansehen</button>
+        </article>
+      </section>
+      <section data-screen="collection" class="reading" hidden>
+        <h1>Deine Sammlung.</h1>
+        <button class="button" type="button" data-go="notes">Meine Notizen</button>
+        <article class="soft thought">
+          <h2>Ein früherer Gedanke</h2>
+          <p>Ich übe, Menschen ruhig und freundlich zuzuhören.</p>
+        </article>
+      </section>
+      <section data-screen="paths" class="reading" hidden>
+        <h1>Wege</h1>
+        <article class="soft thought">
+          <h2>Wer ist Jesus?</h2>
+          <p>Begegne dem Menschen, der Hoffnung schenkt.</p>
+          <button class="text-action" type="button" data-go="reflection" data-context="path">Zu seiner Reflexionsfrage</button>
+        </article>
+        <article class="soft thought">
+          <h2>Schweig und verstumme</h2>
+          <p>Markus 4,35–41</p>
+          <button class="text-action" type="button" data-go="reflection" data-context="story">Zur Reflexionsfrage der Geschichte</button>
+        </article>
+      </section>
+      <section data-screen="help" class="reading" hidden>
+        <button class="text-action back" type="button" data-go="today">← Heute</button>
+        <h1>Einstellungen</h1>
+        <button class="button" type="button" data-go="intro-1">Einführung noch einmal ansehen</button>
+      </section>
+    </main>
+    <nav class="tabs" aria-label="Hauptnavigation">
+      <button type="button" data-go="today" aria-current="page"><svg aria-hidden="true"><use href="#icon-home"/></svg>Heute</button>
+      <button type="button" data-go="bible"><svg aria-hidden="true"><use href="#icon-book"/></svg>Bibel</button>
+      <button type="button" data-go="paths"><svg aria-hidden="true"><use href="#icon-path"/></svg>Wege</button>
+      <button type="button" data-go="garden"><svg aria-hidden="true"><use href="#icon-leaf"/></svg>Mein Garten</button>
+      <button type="button" data-go="collection"><svg aria-hidden="true"><use href="#icon-bookmark"/></svg>Sammlung</button>
+    </nav>
+  </div>
+</body>
+</html>

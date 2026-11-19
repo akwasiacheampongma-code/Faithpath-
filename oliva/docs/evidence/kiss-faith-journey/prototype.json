@@ -1,0 +1,232 @@
+{
+  "browser": "155.0.8059.79",
+  "staticDesignPrototype": true,
+  "deviceTest": false,
+  "layouts": [
+    {
+      "width": 320,
+      "height": 568,
+      "theme": "light",
+      "actionTop": 315,
+      "actionBottom": 363,
+      "treeTop": 443,
+      "treeHeight": 46,
+      "contentBottom": 516,
+      "treeVisible": 46,
+      "axeViolations": 0,
+      "enlargedCssTextOverflow": false
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "theme": "dark",
+      "actionTop": 315,
+      "actionBottom": 363,
+      "treeTop": 443,
+      "treeHeight": 46,
+      "contentBottom": 516,
+      "treeVisible": 46,
+      "axeViolations": 0,
+      "enlargedCssTextOverflow": false
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "theme": "light",
+      "actionTop": 301,
+      "actionBottom": 349,
+      "treeTop": 427,
+      "treeHeight": 124,
+      "contentBottom": 760,
+      "treeVisible": 124,
+      "axeViolations": 0,
+      "enlargedCssTextOverflow": false
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "theme": "dark",
+      "actionTop": 301,
+      "actionBottom": 349,
+      "treeTop": 427,
+      "treeHeight": 124,
+      "contentBottom": 760,
+      "treeVisible": 124,
+      "axeViolations": 0,
+      "enlargedCssTextOverflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "actionTop": 267,
+      "actionBottom": 315,
+      "treeTop": 380,
+      "treeHeight": 130,
+      "contentBottom": 792,
+      "treeVisible": 130,
+      "axeViolations": 0,
+      "enlargedCssTextOverflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "actionTop": 267,
+      "actionBottom": 315,
+      "treeTop": 380,
+      "treeHeight": 130,
+      "contentBottom": 792,
+      "treeVisible": 130,
+      "axeViolations": 0,
+      "enlargedCssTextOverflow": false
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "theme": "light",
+      "actionTop": 267,
+      "actionBottom": 315,
+      "treeTop": 380,
+      "treeHeight": 146,
+      "contentBottom": 880,
+      "treeVisible": 146,
+      "axeViolations": 0,
+      "enlargedCssTextOverflow": false
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "theme": "dark",
+      "actionTop": 267,
+      "actionBottom": 315,
+      "treeTop": 380,
+      "treeHeight": 146,
+      "contentBottom": 880,
+      "treeVisible": 146,
+      "axeViolations": 0,
+      "enlargedCssTextOverflow": false
+    }
+  ],
+  "tasks": [
+    {
+      "name": "Drei Entwurfsansichten",
+      "canSkipWithKeyboard": true,
+      "canReopen": true,
+      "target": "Heute"
+    },
+    {
+      "name": "Lesen, reflektieren und wiederfinden",
+      "reference": "Markus 4,35–41",
+      "retainedReaderScroll": true,
+      "editorFocused": true,
+      "prototypeNoteStoredInMemoryOnly": true
+    },
+    {
+      "name": "Vorhandene Reflexionsbezüge",
+      "sources": [
+        "NS-0203",
+        "jesus:0"
+      ]
+    },
+    {
+      "name": "Persönlicher Weg",
+      "existingA51Stage": 4,
+      "target": "Sammlung"
+    }
+  ],
+  "screens": [
+    {
+      "file": "draft-today-new-320.png",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      }
+    },
+    {
+      "file": "draft-today-dark-320.png",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      }
+    },
+    {
+      "file": "draft-today-new-375.png",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      }
+    },
+    {
+      "file": "draft-today-new-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "draft-today-new-430.png",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      }
+    },
+    {
+      "file": "draft-intro-1-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "draft-intro-2-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "draft-intro-3-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "draft-reflection-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "draft-linked-note-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "draft-today-returning-320.png",
+      "viewport": {
+        "width": 320,
+        "height": 568
+      }
+    },
+    {
+      "file": "draft-today-returning-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "draft-today-returning-dark-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "passed": true
+}

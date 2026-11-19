@@ -1,8 +1,11 @@
-import { View } from "react-native";
+import { useRef, useState } from "react";
+import { Pressable, Text, View } from "react-native";
 import { router } from "expo-router";
 import { Button, Card, T, Tag } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { ntChapterIndex } from "../quiz/index";
+import { contextualNotebookHref } from "../notebook/links";
+import { focusReaderControl } from "./flow/focus";
 import {
   adjacentChapter,
   referenceLabel,
@@ -17,9 +20,35 @@ export type ReaderFooterProps = {
   pathId?: string;
   pathStep?: number;
   question?: string;
+  reflection?: string;
   relatedPath?: { id: string; title: string };
   mode: "read" | "deep";
 };
+
+function ReaderReflection({ reference, question, deep }: { reference: Reference; question?: string; deep: boolean }) {
+  const [expanded, setExpanded] = useState<boolean | null>(null);
+  const heading = useRef<React.ComponentRef<typeof Text>>(null);
+  const opener = useRef<React.ComponentRef<typeof Pressable>>(null);
+  const t = useTheme();
+  const write = () => router.push(contextualNotebookHref({ kind: "bible", ref: reference }));
+  function toggle(open: boolean) {
+    setExpanded(open);
+    requestAnimationFrame(() => focusReaderControl(open ? heading.current : opener.current));
+  }
+  if (!question) return <Button kind="ghost" icon="pen" style={{ alignSelf: "flex-start", paddingHorizontal: 0 }}
+    onPress={write}>Gedanken festhalten</Button>;
+  if (!(expanded ?? deep)) return <Button kind="secondary" icon={null} buttonRef={opener}
+    style={{ alignSelf: "flex-start" }} onPress={() => toggle(true)}>Darüber nachdenken</Button>;
+  return <Card testID="reader-reflection" style={{ gap: 12, backgroundColor: t.soft }}>
+    <T ref={heading} tabIndex={-1} variant="heading" accessibilityRole="header" aria-level={2}>Ein Gedanke für dich</T>
+    <T style={{ fontSize: 15 }}>{question}</T>
+    <T variant="small" style={{ color: t.muted }}>Deine Antwort ist freiwillig.</T>
+    <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8, alignItems: "flex-start" }}>
+      <Button kind="secondary" icon="pen" style={{ maxWidth: "100%" }} onPress={write}>Gedanken festhalten</Button>
+      <Button kind="ghost" icon={null} onPress={() => toggle(false)}>Weiterlesen</Button>
+    </View>
+  </Card>;
+}
 
 /** Completion and onward navigation retain the reader's logical reference. */
 export function ReaderFooter({
@@ -30,6 +59,7 @@ export function ReaderFooter({
   pathId,
   pathStep,
   question,
+  reflection,
   relatedPath,
   mode,
 }: ReaderFooterProps) {
@@ -47,6 +77,8 @@ export function ReaderFooter({
 
   return (
     <>
+      <ReaderReflection key={`${reference.book}:${reference.chapter}:${reference.from}:${reference.to}`}
+        reference={reference} question={reflection} deep={mode === "deep"} />
       <View style={{ height: 1, backgroundColor: t.line, marginTop: 12 }} />
       <View style={{ alignItems: "flex-start", gap: 10, marginBottom: 12 }}>
         <T
@@ -122,7 +154,7 @@ export function ReaderFooter({
           Glaubens.
         </T>
       </View>
-      {mode === "deep" && question && (
+      {mode === "deep" && question && question !== reflection && (
         <Card style={{ gap: 14 }}>
           <T variant="heading">Ein Gedanke für dich</T>
           <T style={{ fontSize: 13 }}>{question}</T>

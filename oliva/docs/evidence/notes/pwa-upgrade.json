@@ -1,0 +1,103 @@
+{
+  "baseline": {
+    "build": "oliva-a1008a991b30c338",
+    "htmlSha256": "cafe4a6cd4fa313bccfa7ba6c7a9bdb7d8f7f9149bbe58a7e7fb7038f7d5a76e",
+    "workerSha256": "b3511c1e75d777da67734d1e03ae9ce5c949fd4e70777cce1ab2a76321633b21"
+  },
+  "candidate": {
+    "build": "oliva-4fe58df588d05d3f",
+    "htmlSha256": "0b6ca7ff8f3a065a4aca6b6f9ac9313dbf27b89b4343a4003582f60564d3bbdd",
+    "workerSha256": "f31c7b3dcc9102c3284988755fdd61b683beb8b7870f8a47c8cc8bde16b74e6b"
+  },
+  "syntheticProfile": true,
+  "sameOrigin": true,
+  "physicalDeviceTest": false,
+  "steps": [
+    {
+      "step": "Seeded private baseline through the UI",
+      "raw": [
+        {
+          "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+          "sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+        },
+        {
+          "key": "before-faithpath-import",
+          "sha256": "08c6d43550aff422d1432f16982dc910302fcf25c1e8a1cc2bc0873df858a5e2"
+        },
+        {
+          "key": "main",
+          "sha256": "a520befeabfbf19267548725fb43fcbfa68da5ca9889d19356768af29ee4d9ee"
+        },
+        {
+          "key": "recovery-index",
+          "sha256": "970a8b57daeb5f773a09d740e4a993d4b062f942bd403d05990755744889e88b"
+        }
+      ]
+    },
+    {
+      "step": "New service worker active",
+      "raw": [
+        {
+          "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+          "sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+        },
+        {
+          "key": "before-faithpath-import",
+          "sha256": "08c6d43550aff422d1432f16982dc910302fcf25c1e8a1cc2bc0873df858a5e2"
+        },
+        {
+          "key": "main",
+          "sha256": "a520befeabfbf19267548725fb43fcbfa68da5ca9889d19356768af29ee4d9ee"
+        },
+        {
+          "key": "recovery-index",
+          "sha256": "970a8b57daeb5f773a09d740e4a993d4b062f942bd403d05990755744889e88b"
+        }
+      ]
+    },
+    {
+      "step": "Restart, archive, backup and read-only restore preview offline",
+      "raw": [
+        {
+          "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+          "sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+        },
+        {
+          "key": "before-faithpath-import",
+          "sha256": "08c6d43550aff422d1432f16982dc910302fcf25c1e8a1cc2bc0873df858a5e2"
+        },
+        {
+          "key": "main",
+          "sha256": "a520befeabfbf19267548725fb43fcbfa68da5ca9889d19356768af29ee4d9ee"
+        },
+        {
+          "key": "recovery-index",
+          "sha256": "970a8b57daeb5f773a09d740e4a993d4b062f942bd403d05990755744889e88b"
+        }
+      ],
+      "exportSha256": "719ee114e1f08c3589d858772f1aa561d53e513b0e4692466c248e2dc96e7aca"
+    },
+    {
+      "step": "Enable access protection after update, restart offline and unlock",
+      "raw": [
+        {
+          "key": "archive:6cddbb4a08a17c46cfcad3aebed71e8057f3df6133ded6b300da1937c63fa4b0",
+          "sha256": "6be5c703ec3aea03a98f43a07d9300e329d1b262f4986040cd76ed537c02998d"
+        },
+        {
+          "key": "before-faithpath-import",
+          "sha256": "08c6d43550aff422d1432f16982dc910302fcf25c1e8a1cc2bc0873df858a5e2"
+        },
+        {
+          "key": "main",
+          "sha256": "a520befeabfbf19267548725fb43fcbfa68da5ca9889d19356768af29ee4d9ee"
+        },
+        {
+          "key": "recovery-index",
+          "sha256": "970a8b57daeb5f773a09d740e4a993d4b062f942bd403d05990755744889e88b"
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

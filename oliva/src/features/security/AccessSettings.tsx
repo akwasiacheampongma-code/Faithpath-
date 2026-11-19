@@ -37,8 +37,8 @@ export function AccessSettings() {
   }
 
   return <Card style={{ gap: 14 }}>
-    <T variant="heading" accessibilityRole="header">App-Passwortschutz</T>
-    <T variant="small">Ein App-Passwort schützt deine Ansichten vor neugierigen Blicken. Die lokale Datenbank bleibt dabei lesbar, wenn jemand direkt auf das Browserprofil oder die Gerätedateien zugreifen kann.</T>
+    <T variant="heading" accessibilityRole="header">App-Sperre auf diesem Gerät</T>
+    <T variant="small">Das App-Passwort sperrt den Zugang zu deinen Ansichten. Die Daten auf dem Gerät bleiben dabei unverschlüsselt. Sicherungsdateien schützt du separat beim Export.</T>
     {record ? <>
       <Button kind="secondary" icon={null} disabled={busy} onPress={() => void lockAllWindows().catch((error) => setMessage((error as Error).message))}>Jetzt sperren</Button>
       <T variant="small">Dieses Fenster sperrt sich automatisch, wenn du es so lange nicht nutzt.</T>

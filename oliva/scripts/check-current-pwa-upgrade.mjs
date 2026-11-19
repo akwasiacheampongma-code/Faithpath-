@@ -8,9 +8,11 @@ import path from "node:path";
 import { faithpathFixture } from "../tests/fixtures/faithpath-v5.ts";
 import { localData } from "../tests/e2e/persistence.ts";
 
-const [before, after, output, accessCheck] = process.argv.slice(2);
-if (!before || !after || !output || (accessCheck && accessCheck !== "--check-password-protection"))
-  throw new Error("Usage: node scripts/check-current-pwa-upgrade.mjs <before-dist> <after-dist> <report.json> [--check-password-protection]");
+const [before, after, output, ...options] = process.argv.slice(2);
+const accessCheck = options.includes("--check-password-protection");
+const seedNotebook = options.includes("--seed-notebook");
+if (!before || !after || !output || options.some((option) => !["--check-password-protection", "--seed-notebook"].includes(option)))
+  throw new Error("Usage: node scripts/check-current-pwa-upgrade.mjs <before-dist> <after-dist> <report.json> [--check-password-protection] [--seed-notebook]");
 const hash = (value) => createHash("sha256").update(value).digest("hex");
 async function packageInfo(directory) {
   const html = await readFile(path.join(directory, "index.html"), "utf8");
@@ -134,6 +136,12 @@ try {
   await page.goto(origin + "/lesen/JHN?chapter=6");
   await button("Kapitel als gelesen bestätigen").click();
   await expect(button("Als gelesen festgehalten")).toBeDisabled();
+  if (seedNotebook) {
+    await page.goto(origin + "/notizen");
+    await button("Neue Notiz").click();
+    await page.getByRole("textbox", { name: "Notiztext", exact: true }).fill("Synthetische V12-Notiz vor dem Paketwechsel.");
+    await expect(page.getByText("Auf diesem Gerät gespeichert", { exact: true })).toBeVisible();
+  }
   await page.goto(origin + "/einstellungen");
   await offlineReady(baseline);
   const data = await localData(page);
@@ -145,7 +153,8 @@ try {
   expect(Object.keys(data.storyStudy.answers)).toHaveLength(1);
   expect(data.goals).toHaveLength(1);
   expect(data.settings.theme).toBe("dark");
-  expect(data.version).toBe(11);
+  expect(data.version).toBe(seedNotebook ? 12 : 11);
+  report.profileVersion = data.version;
   expect(data.imports[0].sourceText).toBe(source);
   const original = await records(page);
   expect(original.find(([key]) => String(key).startsWith("archive:"))?.[1]).toBe(source);
@@ -172,6 +181,11 @@ try {
   await expect(page.getByRole("radio", { name: ntQuestion.options[0], exact: true }).filter({ visible: true })).toBeChecked();
   await page.goto(origin + "/geschichte/NS-0241?stage=verstehen");
   await expect(page.getByRole("radio", { name: storyQuestion.options[0], exact: true }).filter({ visible: true })).toBeChecked();
+  if (seedNotebook) {
+    await page.goto(origin + "/notizen");
+    await page.getByRole("button", { name: /Synthetische V12-Notiz vor dem Paketwechsel/ }).click();
+    await expect(page.getByRole("textbox", { name: "Notiztext", exact: true })).toHaveValue("Synthetische V12-Notiz vor dem Paketwechsel.");
+  }
   expect(await records(page)).toStrictEqual(original);
 
   await page.goto(origin + "/einstellungen");

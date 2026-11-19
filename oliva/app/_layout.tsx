@@ -13,6 +13,8 @@ import { useVolatileDrafts } from "../src/features/personal/volatile-drafts";
 import { WebOffline } from "../src/components/WebOffline";
 import { AccessGate } from "../src/features/security/AccessGate";
 import { useAccess } from "../src/features/security/access";
+import { resumeNotebookEdits } from "../src/features/notebook/autosave";
+import { hasPendingNotes } from "../src/features/notebook/pending";
 import "../src/design-system/global.css";
 function ProfileRoutes({ writesSettled, fontsReady, children }: {
   writesSettled: Promise<void>; fontsReady: boolean; children: ReactNode;
@@ -26,6 +28,9 @@ function ProfileRoutes({ writesSettled, fontsReady, children }: {
     void writesSettled.then(() => { if (mounted && useAccess.getState().phase === "open") return hydrate(); });
     return () => { mounted = false; };
   }, [hydrate, writesSettled]);
+  useEffect(() => {
+    if (ready && healthy) void resumeNotebookEdits();
+  }, [ready, healthy]);
   if (!ready || !fontsReady)
     return (
       <View
@@ -59,7 +64,7 @@ export default function RootLayout() {
     if (Platform.OS !== "web") return;
     document.documentElement.lang = "de";
     const before = (event: BeforeUnloadEvent) => {
-      if (Object.keys(useVolatileDrafts.getState().items).length) {
+      if (Object.keys(useVolatileDrafts.getState().items).length || hasPendingNotes()) {
         event.preventDefault();
         event.returnValue = "";
       }

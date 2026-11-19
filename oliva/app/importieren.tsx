@@ -307,7 +307,9 @@ export default function FaithpathImport() {
             {rollbackRevision !== null && (
               <View style={{ gap: 12 }}>
                 <T style={{ fontWeight: "600" }}>
-                  Alle Änderungen seit diesem Sicherungsstand werden ersetzt.
+                  {data.notebook?.length
+                    ? "Deine Notizen bleiben erhalten. Die anderen Änderungen seit diesem Sicherungsstand werden ersetzt."
+                    : "Alle Änderungen seit diesem Sicherungsstand werden ersetzt."}
                 </T>
                 <T variant="small">
                   Zurückkehren bedeutet: {recovery.data.notes.length} Gedanken,{" "}

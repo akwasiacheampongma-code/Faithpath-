@@ -15,6 +15,7 @@ import {
   checkedHashes,
 } from "./documents";
 import type { RecoveryCopy, WriteOptions } from "../features/imports/schema";
+import { LocalRevisionConflict } from "./storage-conflict";
 let connection: Promise<SQLite.SQLiteDatabase> | null = null;
 async function open() {
   return (connection ??= (async () => {
@@ -48,11 +49,12 @@ async function open() {
     throw error;
   }));
 }
-export async function readData(): Promise<AppData> {
+export async function readData(onProfilePresence?: (exists: boolean) => void): Promise<AppData> {
   const db = await open();
   const row = await db.getFirstAsync<{ payload: string }>(
     "SELECT payload FROM local_state WHERE id=1",
   );
+  onProfilePresence?.(!!row);
   if (!row) return initialData();
   try {
     return await decodeStored(JSON.parse(row.payload), async (hash) => {
@@ -81,7 +83,7 @@ export async function writeData(
       "SELECT revision,payload FROM local_state WHERE id=1",
     );
     if ((row?.revision ?? 0) !== expectedRevision)
-      throw new Error(
+      throw new LocalRevisionConflict(
         "Der Datenstand wurde verändert. Bitte öffne die App neu.",
       );
     const current = row ? JSON.parse(row.payload) : undefined;

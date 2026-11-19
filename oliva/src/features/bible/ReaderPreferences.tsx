@@ -8,11 +8,13 @@ export function ReaderPreferences({
   unavailable,
   onFlowChange,
   onClose,
+  onOpenNotes,
 }: {
   flow: boolean;
   unavailable: boolean;
   onFlowChange: (flow: boolean) => void;
   onClose: () => void;
+  onOpenNotes: () => void;
 }) {
   const t = useTheme(),
     settings = useApp((s) => s.data.settings),
@@ -106,6 +108,7 @@ export function ReaderPreferences({
           werden. Die Einzelverse bleiben vollständig lesbar.
         </T>
       )}
+      <Button kind="secondary" icon="pen" onPress={onOpenNotes}>Notizen zu diesem Kapitel</Button>
       <Button kind="ghost" icon="check" onPress={onClose}>
         Leseeinstellungen schließen
       </Button>

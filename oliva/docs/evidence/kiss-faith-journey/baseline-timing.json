@@ -1,0 +1,59 @@
+{
+  "build": "oliva-4fe58df588d05d3f",
+  "chromiumVersion": "155.0.8059.79",
+  "loopback": true,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "cpuRate": 4,
+  "network": {
+    "offline": false,
+    "latency": 150,
+    "downloadThroughput": 200000,
+    "uploadThroughput": 93750
+  },
+  "cacheDisabled": true,
+  "serviceWorkersBlocked": true,
+  "deviceTest": false,
+  "measurements": {
+    "Heute · Leseaktion sichtbar": {
+      "path": "/",
+      "testId": "home-primary-action",
+      "trials": [
+        {
+          "readyMs": 15971,
+          "transferredBytes": 2377955
+        },
+        {
+          "readyMs": 16051,
+          "transferredBytes": 2377955
+        },
+        {
+          "readyMs": 16237,
+          "transferredBytes": 2377955
+        }
+      ],
+      "medianMs": 16051
+    },
+    "Markus 4,35–41 · Fließtext sichtbar": {
+      "path": "/lesen/MRK?chapter=4&from=35&to=41",
+      "testId": "reader-flow",
+      "trials": [
+        {
+          "readyMs": 15640,
+          "transferredBytes": 2380589
+        },
+        {
+          "readyMs": 15464,
+          "transferredBytes": 2380589
+        },
+        {
+          "readyMs": 15829,
+          "transferredBytes": 2380589
+        }
+      ],
+      "medianMs": 15640
+    }
+  }
+}

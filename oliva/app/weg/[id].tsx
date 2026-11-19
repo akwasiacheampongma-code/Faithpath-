@@ -19,6 +19,7 @@ import { referenceLabel } from "../../src/features/bible/repository";
 import { CaptureInput } from "../../src/features/personal/CaptureInput";
 import { guidedSource } from "../../src/features/personal/capture-model";
 import { TextCheck } from "../../src/features/paths/TextCheck";
+import { contextualNotebookHref } from "../../src/features/notebook/links";
 export default function PathDetail() {
   const params = useLocalSearchParams<{
       id: string;
@@ -267,6 +268,10 @@ function PathExperience({ params }: { params: { id: string; step?: string } }) {
                 Was bleibt bei dir?
               </T>
               <T style={{ fontSize: 13 }}>{step.question}</T>
+              {step.question && <Button kind="secondary" icon="pen"
+                onPress={() => router.push(contextualNotebookHref({ kind: "path-question", pathId: id, step: selected }))}>
+                Gedanken festhalten
+              </Button>}
               {(!done ||
                 data.drafts.some(
                   (d) => d.key === `capture:guided:${id}:${selected}`,

@@ -42,6 +42,7 @@ import { ReaderSelectionBar } from "../../src/features/bible/ReaderSelectionBar"
 import { useVolatileDrafts } from "../../src/features/personal/volatile-drafts";
 import { resolveBibleDraft } from "../../src/features/personal/resolve-bible-draft";
 import { storyById } from "../../src/features/stories/index";
+import { bibleNoteParams, linksChapter } from "../../src/features/notebook/links";
 export default function Reader() {
   const params = useLocalSearchParams<{
       book: string;
@@ -73,6 +74,9 @@ export default function Reader() {
     book = bookByCode(ref.book),
     valid = validReference(ref),
     verses = valid ? getChapter(ref.book, ref.chapter) : [];
+  const hasChapterNotes = data.notebook?.some((note) => !note.deletedAt && linksChapter(note.link, ref)) ||
+    data.notes.some((note) => note.ref?.book === ref.book && note.ref.chapter === ref.chapter);
+  const openChapterNotes = () => router.push({ pathname: "/notizen", params: bibleNoteParams(ref) });
   const binding = guidedReadingContext(ref, params.path, params.step),
     stepKey = binding?.key,
     path = binding?.path,
@@ -88,6 +92,10 @@ export default function Reader() {
       ),
     );
   const topicContext = path?.kind === "life-topic" && !!step && context === step;
+  const story = params.story ? storyById(params.story) : undefined;
+  const reflection = (story?.references.some((source) => sameReadingScope(source, ref)) ? story.reflection : undefined)
+    || step?.question
+    || related.flatMap((candidate) => candidate.steps).find((candidate) => sameReadingScope(candidate.ref, ref))?.question;
   const [mode, setMode] = useState<"read" | "deep">(
       params.mode === "deep"
         ? "deep"
@@ -526,6 +534,7 @@ export default function Reader() {
                 flow={flow}
                 unavailable={flowUnavailable}
                 onClose={closeTools}
+                onOpenNotes={openChapterNotes}
                 onFlowChange={(next) => {
                   if (next) setFlowUnavailable(false);
                   setFlow(next);
@@ -754,6 +763,8 @@ export default function Reader() {
                   >
                     {chooseVerse ? "Verswahl schließen" : "Zu Vers springen"}
                   </Button>
+                  {hasChapterNotes && !tools && <Button kind="ghost" icon={null} style={{ minHeight: 44, paddingHorizontal: 2 }}
+                    onPress={openChapterNotes}>Notizen zu diesem Kapitel</Button>}
                   <Button kind="ghost" icon={null} buttonRef={focusEntry} onPress={startFocus}
                     style={{ paddingHorizontal: 2, paddingVertical: 9, minHeight: 44, maxWidth: "100%" }}>
                     Lesefokus starten
@@ -855,6 +866,7 @@ export default function Reader() {
                 pathId={path?.id}
                 pathStep={binding ? Number(params.step) : undefined}
                 question={context?.question}
+                reflection={reflection}
                 relatedPath={related[0]}
                 mode={mode}
               />

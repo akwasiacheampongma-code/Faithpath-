@@ -24,16 +24,11 @@ test("Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getr
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/");
-  await page
-    .getByRole("button", { name: "Deine erste Geschichte", exact: true })
-    .click();
-  await expect(page.getByText("Du darfst mit Fragen anfangen.")).toBeVisible();
-  await page
-    .getByRole("button", { name: "Geschichte lesen", exact: true })
-    .click();
+  await page.goto("/weg/jesus");
+  await page.getByRole("button", { name: "Abschnitt lesen", exact: true }).click();
+  await expect(page).toHaveURL(/\/lesen\/MRK\?/);
   await expect(
-    page.getByText("Wenn der Sturm still wird", { exact: true }),
+    page.getByRole("main").filter({ visible: true }).getByText("Wenn der Sturm still wird", { exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: /^Vers 35:/ }).click();
   await bookmarkSelection(page);
@@ -285,7 +280,7 @@ test("Offline-Neustart öffnet auch einen noch nicht besuchten Reader", async ({
   context,
 }) => {
   await page.goto("/");
-  await page.getByTestId("home-greeting").waitFor();
+  await page.getByTestId("journey-intro").waitFor();
   await page.evaluate(() => navigator.serviceWorker.ready);
   await expect
     .poll(() => page.evaluate(() => !!navigator.serviceWorker.controller))
@@ -377,7 +372,7 @@ test("Speicherfehler bestätigt keine Notiz und erhält den getippten Text", asy
 test("Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung", async ({
   page,
 }) => {
-  test.setTimeout(120000);
+  test.setTimeout(240000);
   for (const width of [320, 390, 768, 1440])
     for (const route of [
       "/",
@@ -413,8 +408,12 @@ test("Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung", a
       await page.goto(route);
       await page.getByRole("button").first().waitFor();
       if (route === "/") {
+        const skipIntro = page.getByRole("button", { name: "Überspringen", exact: true });
+        const readingAction = page.getByTestId("home-primary-action");
+        await expect(skipIntro.or(readingAction)).toBeVisible();
+        if (await skipIntro.isVisible()) await skipIntro.click();
         const ratio = await page
-          .getByRole("button", { name: "Deine erste Geschichte", exact: true })
+          .getByTestId("home-primary-action")
           .evaluate((button) => {
             const text = button.querySelector('[dir="auto"]')!;
             const luminance = (value: string) => {

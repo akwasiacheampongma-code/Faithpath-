@@ -10,6 +10,7 @@ import { initialData } from "../src/state/model";
 import { journalDraft, commitDraft } from "../src/features/personal/model";
 import { prepareImport } from "../src/features/imports/model";
 import { faithpathFixture } from "./fixtures/faithpath-v5";
+import { LocalRevisionConflict } from "../src/services/storage-conflict";
 import {
   useVolatileDrafts,
   holdDraft,
@@ -21,10 +22,50 @@ beforeEach(() => {
     data: initialData(),
     ready: true,
     healthy: true,
+    freshProfile: false,
     busy: false,
     error: null,
   });
   adapter.writeData.mockResolvedValue(undefined);
+});
+
+describe("Einführung und bestehende Profile", () => {
+  it("speichert beim echten Erststart nur die vorhandene Einführungsmarkierung", async () => {
+    adapter.readData.mockImplementation(async (presence) => {
+      presence(false);
+      return initialData();
+    });
+    await useApp.getState().hydrate();
+    expect(useApp.getState().freshProfile).toBe(true);
+    await expect(useApp.getState().finishIntro()).resolves.toBe(true);
+    expect(useApp.getState().data).toEqual({ ...initialData(), onboarded: true, revision: 1 });
+    await expect(useApp.getState().finishIntro()).resolves.toBe(true);
+    expect(adapter.writeData).toHaveBeenCalledTimes(1);
+  });
+
+  it("bewahrt auch ein vorhandenes Profil ohne Einführungsmarkierung", async () => {
+    adapter.readData.mockImplementation(async (presence) => {
+      presence(true);
+      return initialData();
+    });
+    await useApp.getState().hydrate();
+    expect(useApp.getState().freshProfile).toBe(false);
+    await expect(useApp.getState().finishIntro()).resolves.toBe(true);
+    expect(adapter.writeData).not.toHaveBeenCalled();
+  });
+
+  it("bewahrt das Profil, das während der Einführung in einem anderen Fenster gespeichert wurde", async () => {
+    const otherProfile = { ...initialData(), name: "Prüfprofil", revision: 1, growthStage: 3 };
+    adapter.readData.mockImplementationOnce(async (presence) => {
+      presence(false);
+      return initialData();
+    }).mockResolvedValueOnce(otherProfile);
+    adapter.writeData.mockRejectedValueOnce(new LocalRevisionConflict("Geprüfter Konflikt"));
+    await useApp.getState().hydrate();
+    await expect(useApp.getState().finishIntro()).resolves.toBe(true);
+    expect(useApp.getState().data).toEqual(otherProfile);
+    expect(adapter.writeData).toHaveBeenCalledTimes(1);
+  });
 });
 describe("Persistieren vor Bestätigung", () => {
   it("bewahrt den Versanker ohne Lernfortschritt und verwirft verspätete alte Reader-Schreibvorgänge", async () => {

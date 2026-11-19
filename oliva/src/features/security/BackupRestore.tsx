@@ -78,7 +78,7 @@ function RestoreForm() {
         setPreview(null);
         throw new Error("Der lokale Stand hat sich verändert. Prüfe die Sicherung bitte erneut.");
       }
-      if (!await current.restore(preview.data))
+      if (!await current.restore(preview.data, preview.revision))
         throw new Error(useApp.getState().error ?? "Die Sicherung konnte nicht wiederhergestellt werden.");
       if (allowed()) {
         clear();
@@ -88,6 +88,7 @@ function RestoreForm() {
   }
 
   const blocked = working || busy;
+  const notebookCount = preview?.data.notebook?.length ?? 0;
   return <View style={{ gap: 14 }}>
     <T variant="small">Wähle eine OLIVA-Sicherungsdatei. Alte JSON-Sicherungen kannst du auch einfügen. Für FaithPath nutze „FaithPath-Daten mitnehmen“.</T>
     <Button kind="secondary" icon="download" disabled={blocked} onPress={chooseFile}>OLIVA-Sicherungsdatei auswählen</Button>
@@ -105,7 +106,7 @@ function RestoreForm() {
     </>}
     {preview && <Card style={{ backgroundColor: t.goldSoft, gap: 12 }}>
       <T style={{ fontWeight: "600" }}>Vorhandene lokale Daten werden ersetzt.</T>
-      <T variant="small">Diese Sicherung enthält {preview.data.notes.length} Einträge, {preview.data.readChapters.length} gelesene Kapitel und {preview.data.bookmarks.length} Lesezeichen, {preview.data.goals.length} Vorhaben und {preview.data.drafts.length} Entwürfe. Exportiere den aktuellen Stand vor der Wiederherstellung.</T>
+      <T variant="small">Diese Sicherung enthält {preview.data.notes.length} Einträge, {preview.data.readChapters.length} gelesene Kapitel und {preview.data.bookmarks.length} Lesezeichen, {preview.data.goals.length} Vorhaben und {preview.data.drafts.length} Entwürfe.{notebookCount ? ` Dazu ${notebookCount === 1 ? "kommt 1 Notiz" : `kommen ${notebookCount} Notizen`} einschließlich „Zuletzt gelöscht“.` : ""} Exportiere den aktuellen Stand vor der Wiederherstellung.</T>
       <Button disabled={blocked} icon="check" onPress={apply}>Daten durch diese Sicherung ersetzen</Button>
       <Button disabled={blocked} kind="ghost" icon="close" onPress={clear}>Abbrechen</Button>
     </Card>}

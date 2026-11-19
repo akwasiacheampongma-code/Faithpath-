@@ -1,0 +1,1504 @@
+{
+  "build": "oliva-dc815901e80fb696",
+  "source": "298ce8e",
+  "fullRun": {
+    "startTime": "2026-11-19T09:02:12.100Z",
+    "duration": 1686641.896,
+    "expected": 182,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "targetedRerun": {
+    "startTime": "2026-11-19T09:52:40.513Z",
+    "duration": 42345.278000000006,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "successfulDistinctCases": 184,
+  "physicalDeviceTest": false,
+  "cases": [
+    {
+      "file": "a51-tree.spec.ts",
+      "title": "alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine persönlichen Daten",
+      "first": {
+        "status": "expected",
+        "ms": 81347
+      }
+    },
+    {
+      "file": "a51-tree.spec.ts",
+      "title": "Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild",
+      "first": {
+        "status": "expected",
+        "ms": 24575
+      }
+    },
+    {
+      "file": "a51-tree.spec.ts",
+      "title": "gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständiges Baumbild",
+      "first": {
+        "status": "expected",
+        "ms": 22641
+      }
+    },
+    {
+      "file": "a51-tree.spec.ts",
+      "title": "ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium",
+      "first": {
+        "status": "expected",
+        "ms": 12877
+      }
+    },
+    {
+      "file": "a51-tree.spec.ts",
+      "title": "ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung",
+      "first": {
+        "status": "expected",
+        "ms": 8837
+      }
+    },
+    {
+      "file": "archives.spec.ts",
+      "title": "ein großer Originalblob wird bei Entwurfsänderungen nicht erneut geschrieben",
+      "first": {
+        "status": "expected",
+        "ms": 21945
+      }
+    },
+    {
+      "file": "archives.spec.ts",
+      "title": "verwaiste Blobs werden entfernt und Quellen der Rückkehrsicherung bleiben erhalten",
+      "first": {
+        "status": "expected",
+        "ms": 44342
+      }
+    },
+    {
+      "file": "archives.spec.ts",
+      "title": "Fehler beim ersten Blobschreiben behalten Bestand und Sicherung unverändert",
+      "first": {
+        "status": "expected",
+        "ms": 14678
+      }
+    },
+    {
+      "file": "archives.spec.ts",
+      "title": "beschädigte Daten sperren Schreibaktionen und lassen sich unverändert zur Reparatur sichern",
+      "first": {
+        "status": "expected",
+        "ms": 21634
+      }
+    },
+    {
+      "file": "bible-paths-overview.spec.ts",
+      "title": "Bibel und Wege sind in vier mobilen Breiten und beiden Farbschemata lesbar und semantisch zugänglich",
+      "first": {
+        "status": "expected",
+        "ms": 144731
+      }
+    },
+    {
+      "file": "bible-paths-overview.spec.ts",
+      "title": "200 Prozent Text lässt lange Buchnamen, Kapitel und alle Wegefilter ohne horizontales Scrollen erreichbar",
+      "first": {
+        "status": "expected",
+        "ms": 81892
+      }
+    },
+    {
+      "file": "bible-paths-overview.spec.ts",
+      "title": "die Tastatur öffnet nach der Buchzeile unmittelbar die Kapitel und den bestehenden Reader",
+      "first": {
+        "status": "expected",
+        "ms": 12395
+      }
+    },
+    {
+      "file": "bible-paths-overview.spec.ts",
+      "title": "der Wegefilter behält alle Kategorien und der Tastatureinstieg erreicht jeden der neun Originalwege",
+      "first": {
+        "status": "expected",
+        "ms": 48371
+      }
+    },
+    {
+      "file": "bible-paths-overview.spec.ts",
+      "title": "beide Übersichten bleiben offline nach Neustart mit unveränderten persönlichen Daten nutzbar",
+      "first": {
+        "status": "expected",
+        "ms": 20578
+      }
+    },
+    {
+      "file": "book-search.spec.ts",
+      "title": "die Bibel beginnt mit allen 66 Büchern und grenzt NT und AT ohne persönliche Daten ein",
+      "first": {
+        "status": "expected",
+        "ms": 8804
+      }
+    },
+    {
+      "file": "book-search.spec.ts",
+      "title": "Buchnamen vertragen Leertasten, Unicode-Abstände, Großschreibung und Punkte im Zahlpräfix",
+      "first": {
+        "status": "expected",
+        "ms": 16456
+      }
+    },
+    {
+      "file": "book-search.spec.ts",
+      "title": "der native Web-Auswahlschalter lässt sich mit der Tastatur bedienen und behält den Fokus",
+      "first": {
+        "status": "expected",
+        "ms": 7361
+      }
+    },
+    {
+      "file": "book-search.spec.ts",
+      "title": "Suche und Bereich erhalten die Buchübersicht und öffnen das gewählte Kapitel",
+      "first": {
+        "status": "expected",
+        "ms": 13674
+      }
+    },
+    {
+      "file": "book-search.spec.ts",
+      "title": "die NT-Fragenübersicht nutzt dieselbe Buchsuche und bleibt auf ihre 27 Bücher begrenzt",
+      "first": {
+        "status": "expected",
+        "ms": 6869
+      }
+    },
+    {
+      "file": "book-search.spec.ts",
+      "title": "Buchsuche und Dropdown sind bei 320 Pixeln hell und 1440 Pixeln dunkel zugänglich",
+      "first": {
+        "status": "expected",
+        "ms": 24158
+      }
+    },
+    {
+      "file": "captures.spec.ts",
+      "title": "Hub und Garten bewahren angefangene Worte bei Bereichswechsel und Neustart",
+      "first": {
+        "status": "expected",
+        "ms": 11617
+      }
+    },
+    {
+      "file": "captures.spec.ts",
+      "title": "zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übersicht fortgesetzt",
+      "first": {
+        "status": "expected",
+        "ms": 13792
+      }
+    },
+    {
+      "file": "captures.spec.ts",
+      "title": "Reflexionsentwurf im Lernweg überlebt Neustart und schließt nur auf ausdrücklichen Klick ab",
+      "first": {
+        "status": "expected",
+        "ms": 12024
+      }
+    },
+    {
+      "file": "captures.spec.ts",
+      "title": "ein Entwurf wird erst nach ausdrücklichem Verwerfen gelöscht und bestätigt dabei keine Erfahrung",
+      "first": {
+        "status": "expected",
+        "ms": 6860
+      }
+    },
+    {
+      "file": "captures.spec.ts",
+      "title": "der Export nach Navigation enthält den noch nicht abgeschlossenen Reflexionsentwurf",
+      "first": {
+        "status": "expected",
+        "ms": 5293
+      }
+    },
+    {
+      "file": "captures.spec.ts",
+      "title": "ein Speicherfehler lässt den Kontextentwurf sichtbar und erzeugt keinen fertigen Eintrag",
+      "first": {
+        "status": "expected",
+        "ms": 5885
+      }
+    },
+    {
+      "file": "captures.spec.ts",
+      "title": "ungesicherte Worte überleben einen Bereichswechsel und lassen sich als Sitzungskopie exportieren",
+      "first": {
+        "status": "expected",
+        "ms": 8738
+      }
+    },
+    {
+      "file": "core.spec.ts",
+      "title": "Gast erlebt einen vollständigen Weg; Abschnitte bleiben von Kapiteln getrennt",
+      "first": {
+        "status": "unexpected",
+        "ms": 4131
+      },
+      "rerun": {
+        "status": "expected",
+        "ms": 7072
+      }
+    },
+    {
+      "file": "core.spec.ts",
+      "title": "Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss",
+      "first": {
+        "status": "expected",
+        "ms": 16319
+      }
+    },
+    {
+      "file": "core.spec.ts",
+      "title": "Journal bearbeiten, löschen und rückgängig machen",
+      "first": {
+        "status": "expected",
+        "ms": 12419
+      }
+    },
+    {
+      "file": "core.spec.ts",
+      "title": "Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen",
+      "first": {
+        "status": "expected",
+        "ms": 9907
+      }
+    },
+    {
+      "file": "core.spec.ts",
+      "title": "Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeichert",
+      "first": {
+        "status": "expected",
+        "ms": 12285
+      }
+    },
+    {
+      "file": "core.spec.ts",
+      "title": "Offline-Neustart öffnet auch einen noch nicht besuchten Reader",
+      "first": {
+        "status": "expected",
+        "ms": 20049
+      }
+    },
+    {
+      "file": "core.spec.ts",
+      "title": "Gleichzeitige Fenster überschreiben keine fremden Änderungen",
+      "first": {
+        "status": "expected",
+        "ms": 14377
+      }
+    },
+    {
+      "file": "core.spec.ts",
+      "title": "Speicherfehler bestätigt keine Notiz und erhält den getippten Text",
+      "first": {
+        "status": "expected",
+        "ms": 7886
+      }
+    },
+    {
+      "file": "core.spec.ts",
+      "title": "Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung",
+      "first": {
+        "status": "unexpected",
+        "ms": 120270
+      },
+      "rerun": {
+        "status": "expected",
+        "ms": 33096
+      }
+    },
+    {
+      "file": "david-story.spec.ts",
+      "title": "fünf Geschichten bewahren den Bestand; David öffnet acht Fokusverse im ganzen Kapitel und zählt nur nach ausdrücklicher Bestätigung",
+      "first": {
+        "status": "expected",
+        "ms": 12351
+      }
+    },
+    {
+      "file": "david-story.spec.ts",
+      "title": "das vollständige Offlinepaket öffnet David und alle bisherigen Bilder erstmals offline und nach Neustart",
+      "first": {
+        "status": "expected",
+        "ms": 13410
+      }
+    },
+    {
+      "file": "david-story.spec.ts",
+      "title": "Geschichten und David-Kontext bleiben auf kleinen und großen Displays in Hell und Dunkel lesbar",
+      "first": {
+        "status": "expected",
+        "ms": 36502
+      }
+    },
+    {
+      "file": "david-story.spec.ts",
+      "title": "Davids Kontext wartet auf das echte Reader-Modul und einen positiven 3:2-Rahmen",
+      "first": {
+        "status": "expected",
+        "ms": 10079
+      }
+    },
+    {
+      "file": "david-story.spec.ts",
+      "title": "drei ausgefallene Bildvarianten zeigen einen erreichbaren Wiederholungsbutton und laden danach wirklich",
+      "first": {
+        "status": "expected",
+        "ms": 8579
+      }
+    },
+    {
+      "file": "direct-selection.spec.ts",
+      "title": "direktes Antippen öffnet die kleine Leiste und verändert weder Textlayout noch persönliche Inhalte",
+      "first": {
+        "status": "expected",
+        "ms": 7746
+      }
+    },
+    {
+      "file": "direct-selection.spec.ts",
+      "title": "auch getrennte Verse lassen sich direkt kopieren, markieren und merken ohne Zwischenverse zu verändern",
+      "first": {
+        "status": "expected",
+        "ms": 9866
+      }
+    },
+    {
+      "file": "direct-selection.spec.ts",
+      "title": "Notizen öffnen erst auf Wunsch und bewahren getrennte Vers- und Bereichsentwürfe",
+      "first": {
+        "status": "expected",
+        "ms": 10595
+      }
+    },
+    {
+      "file": "direct-selection.spec.ts",
+      "title": "die Aktionsleiste bleibt schmal, dunkel und hell per Tastatur und Screenreader bedienbar",
+      "first": {
+        "status": "expected",
+        "ms": 52187
+      }
+    },
+    {
+      "file": "faith-journey.spec.ts",
+      "title": "der echte Erststart zeigt drei Schritte, Tastaturfokus und den direkten Einstieg",
+      "first": {
+        "status": "expected",
+        "ms": 18712
+      }
+    },
+    {
+      "file": "faith-journey.spec.ts",
+      "title": "gespeicherte V11- und V12-Profile sehen die Einführung nur auf Wunsch",
+      "first": {
+        "status": "expected",
+        "ms": 26911
+      }
+    },
+    {
+      "file": "faith-journey.spec.ts",
+      "title": "Lesen, Reflexion, Notiz, Wiederfinden und Rückkehr funktionieren gemeinsam offline",
+      "first": {
+        "status": "expected",
+        "ms": 26245
+      }
+    },
+    {
+      "file": "faith-journey.spec.ts",
+      "title": "Weg- und Geschichtenfragen bleiben getrennt von verknüpften Notizen",
+      "first": {
+        "status": "expected",
+        "ms": 15612
+      }
+    },
+    {
+      "file": "faith-journey.spec.ts",
+      "title": "Heute zeigt das tatsächliche Baumstadium und führt zur bestehenden FaithPath-Historie",
+      "first": {
+        "status": "expected",
+        "ms": 14409
+      }
+    },
+    {
+      "file": "faith-journey.spec.ts",
+      "title": "ein geschützter Offline-Direktlink öffnet nach der Sperre den ursprünglichen Editor",
+      "first": {
+        "status": "expected",
+        "ms": 18434
+      }
+    },
+    {
+      "file": "faith-journey.spec.ts",
+      "title": "Heute hält Leseaktion und vorhandenes Baumbild auf vier Breiten in Hell und Dunkel sichtbar",
+      "first": {
+        "status": "expected",
+        "ms": 99670
+      }
+    },
+    {
+      "file": "faith-journey.spec.ts",
+      "title": "alle sieben A51-Stufen verwenden ihr jeweiliges Original auch auf Heute",
+      "first": {
+        "status": "expected",
+        "ms": 39408
+      }
+    },
+    {
+      "file": "imports.spec.ts",
+      "title": "Dateiauswahl ist eine reine Vorschau; Abbrechen verändert keine Daten",
+      "first": {
+        "status": "expected",
+        "ms": 16398
+      }
+    },
+    {
+      "file": "imports.spec.ts",
+      "title": "Import, Quellen-Snapshot, Dateiexport und Neustart funktionieren offline",
+      "first": {
+        "status": "expected",
+        "ms": 23937
+      }
+    },
+    {
+      "file": "imports.spec.ts",
+      "title": "zwei Fenster schützen Änderungen und erlauben eine erneute Vorschau",
+      "first": {
+        "status": "expected",
+        "ms": 21540
+      }
+    },
+    {
+      "file": "imports.spec.ts",
+      "title": "Schreibfehler lassen Bestand und vorherige Rückkehrsicherung atomar erhalten",
+      "first": {
+        "status": "expected",
+        "ms": 15480
+      }
+    },
+    {
+      "file": "imports.spec.ts",
+      "title": "Rückkehr zeigt Folgen ausdrücklich und stellt den echten vorherigen Stand wieder her",
+      "first": {
+        "status": "expected",
+        "ms": 30644
+      }
+    },
+    {
+      "file": "imports.spec.ts",
+      "title": "Importansichten sind mobil, dunkel und per Tastatur zugänglich",
+      "first": {
+        "status": "expected",
+        "ms": 25621
+      }
+    },
+    {
+      "file": "invitations.spec.ts",
+      "title": "V6 bleibt beim Öffnen unverändert und ausgeschaltet; erst freiwilliges Opt-in schreibt den aktuellen V11-Stand und erschließt die Startseiteneinladung",
+      "first": {
+        "status": "expected",
+        "ms": 14381
+      }
+    },
+    {
+      "file": "invitations.spec.ts",
+      "title": "die tatsächliche Oberfläche beachtet exakt 21 und 35 Tage, neue Belege und archivierte Vorhaben ohne Schreibzugriff",
+      "first": {
+        "status": "expected",
+        "ms": 10348
+      }
+    },
+    {
+      "file": "invitations.spec.ts",
+      "title": "Zurückstellen, Ausblenden und Wiederzulassen überleben Offline-Neustart; Ausschalten bewahrt Entscheidungen und Quellen",
+      "first": {
+        "status": "expected",
+        "ms": 10606
+      }
+    },
+    {
+      "file": "invitations.spec.ts",
+      "title": "Quellenlinks zeigen das richtige Vorhaben und den Gedanken schreibfrei, auch wenn bereits ein anderer Entwurf besteht",
+      "first": {
+        "status": "expected",
+        "ms": 7414
+      }
+    },
+    {
+      "file": "invitations.spec.ts",
+      "title": "Einladungen bleiben bei 320 Pixeln in Hell und Dunkel sowie auf großem Display zugänglich und ohne Überlauf",
+      "first": {
+        "status": "expected",
+        "ms": 13155
+      }
+    },
+    {
+      "file": "invitations.spec.ts",
+      "title": "ein echter konkurrierender IndexedDB-Stand wird beim Ausblenden aus einer alten Ansicht nicht überschrieben",
+      "first": {
+        "status": "expected",
+        "ms": 10809
+      }
+    },
+    {
+      "file": "learning.spec.ts",
+      "title": "Textfragen zeigen belegte Rückmeldung und verändern keinen Fortschritt",
+      "first": {
+        "status": "expected",
+        "ms": 18268
+      }
+    },
+    {
+      "file": "learning.spec.ts",
+      "title": "Ostergeschichte trennt Illustration und Einordnung vom Bibeltext und zählt nur den Abschnitt",
+      "first": {
+        "status": "expected",
+        "ms": 22411
+      }
+    },
+    {
+      "file": "legacy-history.spec.ts",
+      "title": "historische Meilensteine und echte Spiegel öffnen genau ihre Originalstelle und bleiben auch offline schreibfrei",
+      "first": {
+        "status": "expected",
+        "ms": 27326
+      }
+    },
+    {
+      "file": "legacy-history.spec.ts",
+      "title": "verknüpfte Gedankenrückblicke, abweichende Fassungen und fehlende Daten bleiben erkennbar statt heutige Belege zu erfinden",
+      "first": {
+        "status": "expected",
+        "ms": 14613
+      }
+    },
+    {
+      "file": "legacy-history.spec.ts",
+      "title": "historische Karten und genaue Archivstellen bleiben klein, dunkel und per Tastatur zugänglich; ein falscher Quellhash öffnet keinen fremden Datensatz",
+      "first": {
+        "status": "expected",
+        "ms": 44776
+      }
+    },
+    {
+      "file": "legacy-history.spec.ts",
+      "title": "der Garten erschließt erhaltene Originalvorhaben ohne heutiges Vorhaben und stellt beim Offline-Neustart nichts wieder her",
+      "first": {
+        "status": "expected",
+        "ms": 19125
+      }
+    },
+    {
+      "file": "legacy-history.spec.ts",
+      "title": "mehrere Originaldateien behalten ihre eigenen Fassungen und unzugeordnete Rückblicke bleiben ohne geratenen Weg",
+      "first": {
+        "status": "expected",
+        "ms": 23583
+      }
+    },
+    {
+      "file": "legacy-history.spec.ts",
+      "title": "die vollständige Originalhistorie bleibt mobil und dunkel zugänglich und verwirft eine unbekannte Vorhabenauswahl",
+      "first": {
+        "status": "expected",
+        "ms": 35109
+      }
+    },
+    {
+      "file": "notebook.spec.ts",
+      "title": "aus Sammlung sofort schreiben und nach Neustart, schneller Eingabe und Offline-Wechsel weiterlesen",
+      "first": {
+        "status": "expected",
+        "ms": 20313
+      }
+    },
+    {
+      "file": "notebook.spec.ts",
+      "title": "nach komplettem Chromium-Neustart bleibt die zuletzt geschriebene Fassung offline lesbar",
+      "first": {
+        "status": "expected",
+        "ms": 22720
+      }
+    },
+    {
+      "file": "notebook.spec.ts",
+      "title": "Suche, Datum, Anheften und bestätigtes Löschen mit Wiederherstellung",
+      "first": {
+        "status": "expected",
+        "ms": 12458
+      }
+    },
+    {
+      "file": "notebook.spec.ts",
+      "title": "Bibelstelle, Wege, Geschichten und Reflexionsfragen verbinden und aus dem Reader wiederfinden",
+      "first": {
+        "status": "expected",
+        "ms": 14116
+      }
+    },
+    {
+      "file": "notebook.spec.ts",
+      "title": "behält eine konkurrierende Notizfassung als Kopie und schreibt unabhängige Notizen zusammen",
+      "first": {
+        "status": "expected",
+        "ms": 21396
+      }
+    },
+    {
+      "file": "notebook.spec.ts",
+      "title": "übersteht blockierte lokale Speicherung mit Zwischenstand und Wiederherstellung nach Browser-Neuladen",
+      "first": {
+        "status": "expected",
+        "ms": 13683
+      }
+    },
+    {
+      "file": "notebook.spec.ts",
+      "title": "kompletter unverschlüsselter und verschlüsselter Sicherungsweg mit alten FaithPath-Daten und App-Sperre",
+      "first": {
+        "status": "expected",
+        "ms": 32907
+      }
+    },
+    {
+      "file": "notebook.spec.ts",
+      "title": "ältere Bibelnotizen bleiben verlinkt und die FaithPath-Rückkehr bewahrt das eigenständige Notizbuch",
+      "first": {
+        "status": "expected",
+        "ms": 37447
+      }
+    },
+    {
+      "file": "notebook.spec.ts",
+      "title": "kleiner Bildschirm und Bedienung per Tastatur mit Axe in Hell und Dunkel",
+      "first": {
+        "status": "expected",
+        "ms": 19859
+      }
+    },
+    {
+      "file": "nt-archive.spec.ts",
+      "title": "NT-Importvorschau liest nur und übernimmt belegte Abschlüsse ohne Antworten oder Baumfortschritt",
+      "first": {
+        "status": "expected",
+        "ms": 10588
+      }
+    },
+    {
+      "file": "nt-archive.spec.ts",
+      "title": "ein V7-Originalarchiv aktiviert NT-Fakten erst ausdrücklich und bewahrt Quelle und Rückkehrsicherung bytegenau",
+      "first": {
+        "status": "expected",
+        "ms": 28287
+      }
+    },
+    {
+      "file": "nt-archive.spec.ts",
+      "title": "ein fremder Fenstercommit blockiert die NT-Aktivierung und die Archivvorschau lässt sich sicher neu prüfen",
+      "first": {
+        "status": "expected",
+        "ms": 28617
+      }
+    },
+    {
+      "file": "nt-pending-return.spec.ts",
+      "title": "an own confirmed answer reconciles after leaving while its real commit acknowledgement is pending",
+      "first": {
+        "status": "expected",
+        "ms": 8152
+      }
+    },
+    {
+      "file": "nt-pending-return.spec.ts",
+      "title": "an own confirmed question move restores the visible question after a pending-commit detour",
+      "first": {
+        "status": "expected",
+        "ms": 9823
+      }
+    },
+    {
+      "file": "nt-pending-return.spec.ts",
+      "title": "a completion acknowledged away from the study view is shown on return without another completion write",
+      "first": {
+        "status": "expected",
+        "ms": 14774
+      }
+    },
+    {
+      "file": "nt-study.spec.ts",
+      "title": "NT discovery covers all 27 books and opens original questions without creating personal records",
+      "first": {
+        "status": "expected",
+        "ms": 8735
+      }
+    },
+    {
+      "file": "nt-study.spec.ts",
+      "title": "an incorrect answer saves the exact source, survives reload and can be changed without altering its original date",
+      "first": {
+        "status": "expected",
+        "ms": 13138
+      }
+    },
+    {
+      "file": "nt-study.spec.ts",
+      "title": "all five viewed questions may finish with wrong answers, and resume the exact last question without reading or growth",
+      "first": {
+        "status": "expected",
+        "ms": 15522
+      }
+    },
+    {
+      "file": "nt-study.spec.ts",
+      "title": "skipping questions remembers position but cannot create a completion",
+      "first": {
+        "status": "expected",
+        "ms": 11286
+      }
+    },
+    {
+      "file": "nt-study.spec.ts",
+      "title": "a real second-tab conflict keeps the local choice until the saved answer is deliberately accepted",
+      "first": {
+        "status": "expected",
+        "ms": 9096
+      }
+    },
+    {
+      "file": "nt-study.spec.ts",
+      "title": "a new NT chapter and the entire question bank work on first offline visit and after restart",
+      "first": {
+        "status": "expected",
+        "ms": 6757
+      }
+    },
+    {
+      "file": "nt-study.spec.ts",
+      "title": "keyboard answers, small-screen light mode, large-screen dark mode and invalid routes stay accessible",
+      "first": {
+        "status": "expected",
+        "ms": 11914
+      }
+    },
+    {
+      "file": "offline-readiness.spec.ts",
+      "title": "eine verspätete echte Workerantwort erholt sich ohne Neustart und erhält die lokalen Daten",
+      "first": {
+        "status": "expected",
+        "ms": 19106
+      }
+    },
+    {
+      "file": "offline-readiness.spec.ts",
+      "title": "wiederholt verspätete echte Antworten enden ehrlich und erzeugen kein Dauerpolling",
+      "first": {
+        "status": "expected",
+        "ms": 25962
+      }
+    },
+    {
+      "file": "offline-readiness.spec.ts",
+      "title": "eine ältere echte Antwort überschreibt keinen neueren Buildkonflikt",
+      "first": {
+        "status": "expected",
+        "ms": 9072
+      }
+    },
+    {
+      "file": "offline-readiness.spec.ts",
+      "title": "ein bereits aktiver Worker wird trotz offenbleibender erneuter Registrierung sofort verifiziert",
+      "first": {
+        "status": "expected",
+        "ms": 9259
+      }
+    },
+    {
+      "file": "offline-readiness.spec.ts",
+      "title": "ein unkontrolliertes Dokument entdeckt den echten aktiven Worker vor dem Ende einer offenen Registrierung",
+      "first": {
+        "status": "expected",
+        "ms": 10519
+      }
+    },
+    {
+      "file": "offline-readiness.spec.ts",
+      "title": "eine offene Registrierung und eine offene Suche beenden die Prüfung weiterhin endlich",
+      "first": {
+        "status": "expected",
+        "ms": 15793
+      }
+    },
+    {
+      "file": "password-protection.spec.ts",
+      "title": "real encrypted file keeps an original archive offline and only a confirmed preview replaces data",
+      "first": {
+        "status": "expected",
+        "ms": 21616
+      }
+    },
+    {
+      "file": "password-protection.spec.ts",
+      "title": "setup blocks direct navigation and main storage before unlock with real offline reload",
+      "first": {
+        "status": "expected",
+        "ms": 11566
+      }
+    },
+    {
+      "file": "password-protection.spec.ts",
+      "title": "activation and explicit lock revoke other browser windows; unlock belongs to one window",
+      "first": {
+        "status": "expected",
+        "ms": 14088
+      }
+    },
+    {
+      "file": "password-protection.spec.ts",
+      "title": "auto lock uses the selected inactivity length and resets it with real input",
+      "first": {
+        "status": "expected",
+        "ms": 5443
+      }
+    },
+    {
+      "file": "password-protection.spec.ts",
+      "title": "password changes require the old password; a saved recovery code rotates without losing data",
+      "first": {
+        "status": "expected",
+        "ms": 13577
+      }
+    },
+    {
+      "file": "password-protection.spec.ts",
+      "title": "small screen, large text and keyboard keep the unlock view accessible",
+      "first": {
+        "status": "expected",
+        "ms": 8091
+      }
+    },
+    {
+      "file": "personal-tree.spec.ts",
+      "title": "persönliche Baumzweige öffnen echte Vorhaben; alle Aufzeichnungen und der Baum bleiben unverändert",
+      "first": {
+        "status": "expected",
+        "ms": 5461
+      }
+    },
+    {
+      "file": "personal-tree.spec.ts",
+      "title": "ein geteilter Gedanke erscheint einmal und öffnet die lesende Sammlung ohne fremde Entwürfe zu verändern",
+      "first": {
+        "status": "expected",
+        "ms": 10750
+      }
+    },
+    {
+      "file": "personal-tree.spec.ts",
+      "title": "Stadienvorschauen zeigen keine eigenen Baumzweige; kleine Ziele und Dunkelansicht bleiben zugänglich",
+      "first": {
+        "status": "expected",
+        "ms": 18895
+      }
+    },
+    {
+      "file": "personal-tree.spec.ts",
+      "title": "persönliche Pins warten auf das tatsächliche Originalbild; die Liste bleibt währenddessen bedienbar",
+      "first": {
+        "status": "expected",
+        "ms": 6707
+      }
+    },
+    {
+      "file": "personal.spec.ts",
+      "title": "Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf",
+      "first": {
+        "status": "expected",
+        "ms": 4922
+      }
+    },
+    {
+      "file": "personal.spec.ts",
+      "title": "Journalentwurf überlebt Neustart, Bearbeitung und anschließendes Speichern",
+      "first": {
+        "status": "expected",
+        "ms": 10219
+      }
+    },
+    {
+      "file": "personal.spec.ts",
+      "title": "Vorhaben, Schritte, Rückblick-Snapshot und Archiv funktionieren zusammen",
+      "first": {
+        "status": "expected",
+        "ms": 13317
+      }
+    },
+    {
+      "file": "personal.spec.ts",
+      "title": "Ungespeicherte Entwurfsworte werden erst nach ausdrücklichem Verwerfen gelöscht",
+      "first": {
+        "status": "expected",
+        "ms": 8382
+      }
+    },
+    {
+      "file": "personal.spec.ts",
+      "title": "Eine installierte V1-Datenbank wird ohne Verlust weitergeführt",
+      "first": {
+        "status": "expected",
+        "ms": 6193
+      }
+    },
+    {
+      "file": "personal.spec.ts",
+      "title": "Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben",
+      "first": {
+        "status": "expected",
+        "ms": 5586
+      }
+    },
+    {
+      "file": "personal.spec.ts",
+      "title": "Neue Vorhaben- und Entwurfsansichten bleiben auf kleinen Displays zugänglich",
+      "first": {
+        "status": "expected",
+        "ms": 13612
+      }
+    },
+    {
+      "file": "pwa.spec.ts",
+      "title": "das installierbare Offlinepaket liefert Manifest, vollständige Icons und Inhaltsrechte",
+      "first": {
+        "status": "expected",
+        "ms": 7174
+      }
+    },
+    {
+      "file": "quiet-reading.spec.ts",
+      "title": "Sammlungsbereiche bleiben einzeilig und Garten, Sammlung und Reader ohne horizontalen Überlauf bedienbar",
+      "first": {
+        "status": "expected",
+        "ms": 73775
+      }
+    },
+    {
+      "file": "quiet-reading.spec.ts",
+      "title": "bei doppelter Schrift zeigen die vier Sammlungsfelder volle Namen und lassen sich per Tastatur wechseln",
+      "first": {
+        "status": "expected",
+        "ms": 3084
+      }
+    },
+    {
+      "file": "quiet-reading.spec.ts",
+      "title": "Archiv, alle Sammlungsbereiche und sieben Baumvorschauen bewahren jeden gespeicherten Datensatz",
+      "first": {
+        "status": "expected",
+        "ms": 14437
+      }
+    },
+    {
+      "file": "quiet-reading.spec.ts",
+      "title": "Kapitelwechsel an der Buchgrenze lässt Lesebestätigung, Markierungen und persönliche Texte unberührt",
+      "first": {
+        "status": "expected",
+        "ms": 8017
+      }
+    },
+    {
+      "file": "reader-copy.spec.ts",
+      "title": "ein einzelner Vers wird per echtem Browser-Clipboard unverändert mit LF und Übersetzungsname kopiert",
+      "first": {
+        "status": "expected",
+        "ms": 4942
+      }
+    },
+    {
+      "file": "reader-copy.spec.ts",
+      "title": "additive Auswahl kopiert genau 35–36 und danach 35–37 ohne UI-Einordnung oder persönliche Daten",
+      "first": {
+        "status": "expected",
+        "ms": 5717
+      }
+    },
+    {
+      "file": "reader-copy.spec.ts",
+      "title": "eine abgelehnte Clipboard-API zeigt denselben schreibgeschützten Text ohne falsche Erfolgsmeldung",
+      "first": {
+        "status": "expected",
+        "ms": 6774
+      }
+    },
+    {
+      "file": "reader-flow.spec.ts",
+      "title": "echte Inlineabsätze erhalten jeden Johannesvers und umbrechen über Versgrenzen statt in Einzelblöcken",
+      "first": {
+        "status": "expected",
+        "ms": 6487
+      }
+    },
+    {
+      "file": "reader-flow.spec.ts",
+      "title": "eine tatsächlich geteilte Psalmzeile speichert nach Scrollen ihren ersten sichtbaren Vers 119 und erfindet keinen Verssprung zu 120",
+      "first": {
+        "status": "expected",
+        "ms": 6003
+      }
+    },
+    {
+      "file": "reader-flow.spec.ts",
+      "title": "ein ausdrücklicher Verslink bleibt nach breitem Reflow, größerer Schrift, Zeilenabstand und Neustart genau Johannes 6,35",
+      "first": {
+        "status": "expected",
+        "ms": 9452
+      }
+    },
+    {
+      "file": "reader-flow.spec.ts",
+      "title": "Tastaturauswahl, Merken und Inline-Markierung bewahren einen offenen Versnotizentwurf über Neustart ohne Leseabschluss",
+      "first": {
+        "status": "expected",
+        "ms": 10815
+      }
+    },
+    {
+      "file": "reader-flow.spec.ts",
+      "title": "Fließtext und Einzelverse behalten beim Umschalten denselben Versanker und denselben Notizquelltext",
+      "first": {
+        "status": "expected",
+        "ms": 10249
+      }
+    },
+    {
+      "file": "reader-flow.spec.ts",
+      "title": "der Fließtext bleibt bei großer Schrift auf 320 Pixeln in Hell und Dunkel sowie auf großem Display lesbar und zugänglich",
+      "first": {
+        "status": "expected",
+        "ms": 18690
+      }
+    },
+    {
+      "file": "reader-flow.spec.ts",
+      "title": "die erste Offlineöffnung und der Neustart zeigen Davids volles Kapitel, markieren acht Fokusverse und bestätigen ausschließlich den Abschnitt",
+      "first": {
+        "status": "expected",
+        "ms": 11203
+      }
+    },
+    {
+      "file": "reader-focus.spec.ts",
+      "title": "Lesefokus hält auf 320 Pixeln in Hell und Dunkel den kanonischen Text und einen erreichbaren Ausstieg ohne Leseabschluss",
+      "first": {
+        "status": "expected",
+        "ms": 17618
+      }
+    },
+    {
+      "file": "reader-focus.spec.ts",
+      "title": "ein gerade getippter Versnotizentwurf überlebt das Unmount beim Fokusstart und bleibt mit derselben Quelle fortsetzbar",
+      "first": {
+        "status": "expected",
+        "ms": 8276
+      }
+    },
+    {
+      "file": "reader-focus.spec.ts",
+      "title": "Escape schließt Einstellungen und Verswahl vor Versaktionen und gibt den Tastaturfokus vor einer Navigation zurück",
+      "first": {
+        "status": "expected",
+        "ms": 6293
+      }
+    },
+    {
+      "file": "reader-selection.spec.ts",
+      "title": "ein Teilabschnitt zeigt alle 71 kanonischen Verse, bestätigt aber erst nach ausdrücklichem Scopewechsel das ganze Kapitel",
+      "first": {
+        "status": "expected",
+        "ms": 6116
+      }
+    },
+    {
+      "file": "reader-selection.spec.ts",
+      "title": "eine additive Lücke bleibt sichtbar und schreibt nichts; erst 35–37 erhalten gemeinsam Farbe, Merken und eine exakt zugeordnete Notiz",
+      "first": {
+        "status": "expected",
+        "ms": 8129
+      }
+    },
+    {
+      "file": "reader-selection.spec.ts",
+      "title": "35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den tatsächlichen Entwurf und anschließend den gespeicherten vollständigen Bereich wieder her",
+      "first": {
+        "status": "expected",
+        "ms": 13968
+      }
+    },
+    {
+      "file": "reader-selection.spec.ts",
+      "title": "ein echter Verslink außerhalb des Teilabschnitts bleibt nach Reflow und Neustart Vers 60, ohne den logischen Lesebereich zu erweitern",
+      "first": {
+        "status": "expected",
+        "ms": 9326
+      }
+    },
+    {
+      "file": "reader-selection.spec.ts",
+      "title": "Fließtext: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück",
+      "first": {
+        "status": "expected",
+        "ms": 5678
+      }
+    },
+    {
+      "file": "reader-selection.spec.ts",
+      "title": "Einzelverse: Enter und Leertaste schalten additive Auswahl; Escape gibt den Fokus zum zuletzt hinzugefügten Vers 36 zurück",
+      "first": {
+        "status": "expected",
+        "ms": 7489
+      }
+    },
+    {
+      "file": "reader-selection.spec.ts",
+      "title": "Einzelvers: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme",
+      "first": {
+        "status": "expected",
+        "ms": 8168
+      }
+    },
+    {
+      "file": "reader-selection.spec.ts",
+      "title": "Bereich: ein echter Speicherfehler bewahrt den ungesicherten Entwurf über Sammlung und die genaue Wiederaufnahme",
+      "first": {
+        "status": "expected",
+        "ms": 9003
+      }
+    },
+    {
+      "file": "reader-selection.spec.ts",
+      "title": "eine abgelehnte Versentwurf-URL öffnet vor oder nach der Quellenprüfung keinen fremden Editor",
+      "first": {
+        "status": "expected",
+        "ms": 9612
+      }
+    },
+    {
+      "file": "reading-position.spec.ts",
+      "title": "Weiterlesen führt nach Bereichswechsel und Offline-Neustart zum tatsächlichen Vers",
+      "first": {
+        "status": "expected",
+        "ms": 8556
+      }
+    },
+    {
+      "file": "reading-position.spec.ts",
+      "title": "ein langer Psalm behält den Vers bei Display- und Schriftänderungen",
+      "first": {
+        "status": "expected",
+        "ms": 9719
+      }
+    },
+    {
+      "file": "reading-position.spec.ts",
+      "title": "Abschnitt und ausdrücklicher Verslink bleiben maßgeblich; Kapitelwechsel verwirft alte Anker",
+      "first": {
+        "status": "expected",
+        "ms": 11221
+      }
+    },
+    {
+      "file": "reading-position.spec.ts",
+      "title": "eine installierte private V4-Speicherung migriert beim Lesen ohne Datenverlust",
+      "first": {
+        "status": "expected",
+        "ms": 10432
+      }
+    },
+    {
+      "file": "reviews.spec.ts",
+      "title": "Rückblicktext wird geändert, historischer Stand bleibt; Löschen und Rückgängig bewahren den Baum",
+      "first": {
+        "status": "expected",
+        "ms": 8581
+      }
+    },
+    {
+      "file": "reviews.spec.ts",
+      "title": "Bearbeitungsentwurf erreicht die Sammlung und überlebt Offline-Neustart ohne neuen Rückblick",
+      "first": {
+        "status": "expected",
+        "ms": 13041
+      }
+    },
+    {
+      "file": "reviews.spec.ts",
+      "title": "nur unveränderte Rückblicke werden wieder verbunden; echte Konflikte bewahren beide Wortlaute",
+      "first": {
+        "status": "expected",
+        "ms": 12918
+      }
+    },
+    {
+      "file": "reviews.spec.ts",
+      "title": "Löschen braucht Bestätigung, verwirft Undo beim Verlassen und exportiert keinen gelöschten Rückblick",
+      "first": {
+        "status": "expected",
+        "ms": 9364
+      }
+    },
+    {
+      "file": "reviews.spec.ts",
+      "title": "archivierte und fehlende Ziele lassen eigene Entwurfsworte lesbar, exportierbar und verwerfbar",
+      "first": {
+        "status": "expected",
+        "ms": 8844
+      }
+    },
+    {
+      "file": "reviews.spec.ts",
+      "title": "Rückblickeditor bleibt auf kleinen und großen Displays sowie in Hell und Dunkel lesbar",
+      "first": {
+        "status": "expected",
+        "ms": 7003
+      }
+    },
+    {
+      "file": "reviews.spec.ts",
+      "title": "ein während des Verlassens abgeschlossener Löschvorgang lässt kein Undo zurück",
+      "first": {
+        "status": "expected",
+        "ms": 4400
+      }
+    },
+    {
+      "file": "spiritual-word.spec.ts",
+      "title": "der Bibelhub öffnet alle66Bücher und1189Kapitel ohne Buchschwert-Auswahl oder Datenänderung",
+      "first": {
+        "status": "expected",
+        "ms": 33042
+      }
+    },
+    {
+      "file": "spiritual-word.spec.ts",
+      "title": "alle66altenBuch-Links öffnen ruhige Buchübersichten und keine Schwertseiten",
+      "first": {
+        "status": "expected",
+        "ms": 113295
+      }
+    },
+    {
+      "file": "spiritual-word.spec.ts",
+      "title": "der quellentreue Vers und sein friedlicher Zusammenhang öffnen den gemeinsamen Reader",
+      "first": {
+        "status": "expected",
+        "ms": 11776
+      }
+    },
+    {
+      "file": "spiritual-word.spec.ts",
+      "title": "der Hub bleibt bei320/1440Pixeln in Hell/Dunkel mit reduzierter Bewegung barrierearm",
+      "first": {
+        "status": "expected",
+        "ms": 29241
+      }
+    },
+    {
+      "file": "spiritual-word.spec.ts",
+      "title": "das einzelne Symbol und alle Bücher bleiben beim Offline-Neustart ohne Schreibvorgang verfügbar",
+      "first": {
+        "status": "expected",
+        "ms": 13629
+      }
+    },
+    {
+      "file": "spiritual-word.spec.ts",
+      "title": "Startseite und Sammlung bleiben frei von Schwertern; bestätigtes Lesen behält seinen normalen Fortschritt",
+      "first": {
+        "status": "expected",
+        "ms": 12651
+      }
+    },
+    {
+      "file": "spiritual-word.spec.ts",
+      "title": "Vers und Navigation bleiben bedienbar; bewusster Retry dekodiert das Original",
+      "first": {
+        "status": "expected",
+        "ms": 7105
+      }
+    },
+    {
+      "file": "spiritual-word.spec.ts",
+      "title": "die eine512erDatei reicht für den vollständigen80x120Bildrahmen",
+      "first": {
+        "status": "expected",
+        "ms": 8433
+      }
+    },
+    {
+      "file": "stories.spec.ts",
+      "title": "436 Originaleinheiten sind auffindbar, standardmäßig gesamte Bibel und tatsächlich virtualisiert",
+      "first": {
+        "status": "expected",
+        "ms": 5356
+      }
+    },
+    {
+      "file": "stories.spec.ts",
+      "title": "Originalantworten bleiben nach Neustart änderbar, ohne Lesen oder Baumwachstum auszulösen",
+      "first": {
+        "status": "expected",
+        "ms": 8551
+      }
+    },
+    {
+      "file": "stories.spec.ts",
+      "title": "auch die längste Einheit führt durch alle 31 Fragen und setzt genau am letzten Schritt fort",
+      "first": {
+        "status": "expected",
+        "ms": 15162
+      }
+    },
+    {
+      "file": "stories.spec.ts",
+      "title": "Reflexionsentwürfe führen über die Sammlung zur richtigen Einheit und bewahren die Originalquelle",
+      "first": {
+        "status": "expected",
+        "ms": 11047
+      }
+    },
+    {
+      "file": "stories.spec.ts",
+      "title": "Judas öffnet zwei exakte Lesebereiche; ein gefälschter Reflexionslink zeigt niemals den Editor",
+      "first": {
+        "status": "expected",
+        "ms": 8394
+      }
+    },
+    {
+      "file": "stories.spec.ts",
+      "title": "ein echter Zwei-Fenster-Konflikt bewahrt die lokale Auswahl bis zur ausdrücklichen Übernahme",
+      "first": {
+        "status": "expected",
+        "ms": 8314
+      }
+    },
+    {
+      "file": "stories.spec.ts",
+      "title": "ein noch nie geöffneter Abschnitt und die Originalfragen funktionieren beim Offline-Neustart",
+      "first": {
+        "status": "expected",
+        "ms": 9262
+      }
+    },
+    {
+      "file": "stories.spec.ts",
+      "title": "bestätigte Ansichten bleiben auf kleinen Displays, in Dunkelansicht und per Tastatur barrierearm",
+      "first": {
+        "status": "expected",
+        "ms": 43853
+      }
+    },
+    {
+      "file": "today.spec.ts",
+      "title": "Heute bietet Gästen einen direkten freiwilligen Einstieg in die vorhandene erste Geschichte",
+      "first": {
+        "status": "expected",
+        "ms": 7577
+      }
+    },
+    {
+      "file": "today.spec.ts",
+      "title": "die Hauptaktion setzt den gespeicherten Abschnitt am tatsächlichen Vers fort",
+      "first": {
+        "status": "expected",
+        "ms": 6501
+      }
+    },
+    {
+      "file": "today.spec.ts",
+      "title": "persönliche Inhalte und alle weiteren Heute-Zugänge bleiben beim Ansehen und Neustart erhalten",
+      "first": {
+        "status": "expected",
+        "ms": 7547
+      }
+    },
+    {
+      "file": "today.spec.ts",
+      "title": "Heute bleibt in beiden Themen bei320/375/390px mit reduzierter Bewegung zugänglich",
+      "first": {
+        "status": "expected",
+        "ms": 30253
+      }
+    },
+    {
+      "file": "today.spec.ts",
+      "title": "Heute und die gespeicherte Lesestelle funktionieren nach einem Offline-Neustart",
+      "first": {
+        "status": "expected",
+        "ms": 9464
+      }
+    },
+    {
+      "file": "today.spec.ts",
+      "title": "Begrüßung und Hauptaktion bleiben vollständig bedienbar",
+      "first": {
+        "status": "expected",
+        "ms": 4371
+      }
+    },
+    {
+      "file": "topics.spec.ts",
+      "title": "alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt",
+      "first": {
+        "status": "expected",
+        "ms": 7128
+      }
+    },
+    {
+      "file": "topics.spec.ts",
+      "title": "ein vollständiges Thema mit zwei Schritten bestätigt nur echte Leseaktionen und lässt Reflexion freiwillig",
+      "first": {
+        "status": "expected",
+        "ms": 11377
+      }
+    },
+    {
+      "file": "topics.spec.ts",
+      "title": "originaler Arbeitskontext und getrennte OLIVA-Einordnung bleiben im Entwurf und in der Sammlung erhalten",
+      "first": {
+        "status": "expected",
+        "ms": 14731
+      }
+    },
+    {
+      "file": "topics.spec.ts",
+      "title": "Wechsel von drei zu zwei Schritten bewahrt unterschiedliche Gedanken zur selben Bibelstelle",
+      "first": {
+        "status": "expected",
+        "ms": 15630
+      }
+    },
+    {
+      "file": "topics.spec.ts",
+      "title": "ein zuvor ungeöffnetes Thema funktioniert samt Reader und Wiederaufnahme vollständig offline",
+      "first": {
+        "status": "expected",
+        "ms": 15023
+      }
+    },
+    {
+      "file": "topics.spec.ts",
+      "title": "Themenbibliothek und Leseschritt bleiben bei 320, 390 und 1440 Pixeln sowie in Dunkelansicht zugänglich",
+      "first": {
+        "status": "expected",
+        "ms": 39643
+      }
+    }
+  ]
+}
