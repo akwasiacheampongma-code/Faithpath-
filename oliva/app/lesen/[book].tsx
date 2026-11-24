@@ -24,6 +24,7 @@ import { LegacyVerseText } from "../../src/features/bible/flow/LegacyVerseText";
 import { ChapterPicker } from "../../src/features/bible/ChapterPicker";
 import { useReaderFont } from "../../src/features/bible/reader-font";
 import { ReaderPreferences } from "../../src/features/bible/ReaderPreferences";
+import { editionChapterRoute, OTB_NAME } from "../../src/features/bible/open-bible";
 import { focusReaderControl } from "../../src/features/bible/flow/focus";
 import { useReaderDismiss } from "../../src/features/bible/flow/useReaderDismiss";
 import { TextCheck } from "../../src/features/paths/TextCheck";
@@ -551,7 +552,10 @@ export default function Reader() {
                 unavailable={flowUnavailable}
                 onClose={closeTools}
                 onOpenNotes={openChapterNotes}
-                onEditions={() => router.push({ pathname: "/bibel", params: { ausgabe: "otb" } })}
+                editionSwitch={{
+                  label: "Zu " + OTB_NAME + " wechseln",
+                  onPress: () => router.replace(editionChapterRoute("otb", ref)),
+                }}
                 onFlowChange={(next) => {
                   if (next) setFlowUnavailable(false);
                   setFlow(next);

@@ -10,14 +10,14 @@ export function ReaderPreferences({
   onFlowChange,
   onClose,
   onOpenNotes,
-  onEditions,
+  editionSwitch,
 }: {
   flow: boolean;
   unavailable: boolean;
   onFlowChange: (flow: boolean) => void;
   onClose: () => void;
   onOpenNotes?: () => void;
-  onEditions?: () => void;
+  editionSwitch?: { label: string; onPress: () => void };
 }) {
   const font = useReaderFont();
   const t = useTheme(),
@@ -119,7 +119,9 @@ export function ReaderPreferences({
           werden. Die Einzelverse bleiben vollständig lesbar.
         </T>
       )}
-      {onEditions && <Button kind="secondary" icon="book" onPress={onEditions}>Bibelübersetzung wählen</Button>}
+      {editionSwitch && <Button kind="secondary" icon="book" onPress={editionSwitch.onPress}>
+        {editionSwitch.label}
+      </Button>}
       {onOpenNotes && <Button kind="secondary" icon="pen" onPress={onOpenNotes}>Notizen zu diesem Kapitel</Button>}
       <Button kind="ghost" icon="check" onPress={onClose}>
         Leseeinstellungen schließen

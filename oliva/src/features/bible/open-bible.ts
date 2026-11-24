@@ -9,3 +9,11 @@ export const OTB_SOURCE = "https://github.com/OpenTranslationBible/open-bible/tr
 
 export const OTB_BOOKS = catalog;
 export const otbBook = (code: string) => OTB_BOOKS.find((book) => book.code === code);
+
+export function editionChapterRoute(edition: "luther" | "otb", { book, chapter }: { book: string; chapter: number }) {
+  // Verse numbers belong to the source edition. Switch at chapter level.
+  return {
+    pathname: edition === "otb" ? "/offen/[book]" as const : "/lesen/[book]" as const,
+    params: { book, chapter },
+  };
+}

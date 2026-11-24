@@ -6,7 +6,7 @@ import { Shell } from "../../src/components/Shell";
 import { Button, IconButton, T } from "../../src/components/ui";
 import { useTheme } from "../../src/design-system/theme";
 import { useApp } from "../../src/state/store";
-import { OTB_BOOKS, OTB_CREDIT, OTB_LICENCE, otbBook } from "../../src/features/bible/open-bible";
+import { editionChapterRoute, OTB_BOOKS, OTB_CREDIT, OTB_LICENCE, otbBook } from "../../src/features/bible/open-bible";
 import { adjacentOtbChapter, otbChapter } from "../../src/features/bible/open-bible-content";
 import { ChapterPicker } from "../../src/features/bible/ChapterPicker";
 import { ReaderPreferences } from "../../src/features/bible/ReaderPreferences";
@@ -17,8 +17,8 @@ import { flowParagraphs } from "../../src/features/bible/flow/model";
 import { LegacyVerseText } from "../../src/features/bible/flow/LegacyVerseText";
 import type { FlowTextHandle } from "../../src/features/bible/flow/types";
 
-const editions = (otb = false) => router.push({ pathname: "/bibel", params: { ausgabe: otb ? "otb" : "luther" } });
-const readEdition = (ref: Reference) => router.replace({ pathname: "/offen/[book]", params: { book: ref.book, chapter: ref.chapter } });
+const openBookList = () => router.replace({ pathname: "/bibel", params: { ausgabe: "otb" } });
+const readEdition = (ref: Reference) => router.replace(editionChapterRoute("otb", ref));
 
 export default function OpenBibleChapter() {
   const { book = "", chapter = "1", verse } = useLocalSearchParams<{ book: string; chapter?: string; verse?: string }>();
@@ -26,7 +26,7 @@ export default function OpenBibleChapter() {
   const content = otbChapter(book, reference.chapter);
   if (!content) return <Shell reader>
     <T variant="heading">Diese Stelle gibt es in der OTB nicht.</T>
-    <Button kind="secondary" onPress={() => editions(true)}>Zur OTB-Buchauswahl</Button>
+    <Button kind="secondary" onPress={openBookList}>Zur OTB-Buchauswahl</Button>
   </Shell>;
   return <OpenBiblePage key={book + ":" + chapter + ":" + (verse ?? "")} reference={reference} content={content} requestedVerse={Number(verse)} />;
 }
@@ -93,7 +93,7 @@ function OpenBiblePage({ reference, content, requestedVerse }: {
     </View> : undefined}>
     <View style={{ maxWidth: 660, width: "100%", alignSelf: "center", gap: 12 }}>
       <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
-        <IconButton name="back" label="Zurück" onPress={() => router.canGoBack() ? router.back() : editions(true)} />
+        <IconButton name="back" label="Zurück" onPress={() => router.canGoBack() ? router.back() : openBookList()} />
         <Button kind="ghost" icon={null} onPress={() => { setPicker(!picker); setPrefs(false); }}>
           {referenceLabel(reference)} ⌄
         </Button>
@@ -105,7 +105,11 @@ function OpenBiblePage({ reference, content, requestedVerse }: {
           if (book !== reference.book || chapter !== reference.chapter) readEdition({ book, chapter });
         }} />}
       {prefs && <ReaderPreferences flow={flow} unavailable={unavailable} onClose={() => setPrefs(false)}
-        onEditions={() => editions()} onFlowChange={(nextLayout) => { setFlow(nextLayout); setUnavailable(false); }} />}
+        editionSwitch={{
+          label: "Zu Luther 1912 wechseln",
+          onPress: () => router.replace(editionChapterRoute("luther", reference)),
+        }}
+        onFlowChange={(nextLayout) => { setFlow(nextLayout); setUnavailable(false); }} />}
       <T variant="title" accessibilityRole="header">{referenceLabel(reference)}</T>
       <T variant="small" style={{ color: theme.muted }}>{OTB_CREDIT}</T>
       <View ref={list} onLayout={(event) => { listTop.current = event.nativeEvent.layout.y; void jumpToResult(); }}>

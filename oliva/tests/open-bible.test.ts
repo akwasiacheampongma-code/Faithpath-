@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import source from "../content/open-bible-de/import.json";
-import { OTB_BOOKS } from "../src/features/bible/open-bible";
+import { OTB_BOOKS, editionChapterRoute } from "../src/features/bible/open-bible";
 import { adjacentOtbChapter, otbChapter, searchOtb } from "../src/features/bible/open-bible-content";
 import { getChapter } from "../src/features/bible/repository";
 
@@ -26,6 +26,22 @@ describe("Open Translation Bible · Deutsch", () => {
     expect(getChapter("3JN", 1).at(-1)?.n).toBe(14);
     expect(adjacentOtbChapter("MAL", 3, 1)).toEqual({ book: "MAL", chapter: 4 });
     expect(adjacentOtbChapter("MAL", 4, 1)).toEqual({ book: "MAT", chapter: 1 });
+  });
+
+  it("öffnet dieselben 1.189 Kapitel in beiden Ausgaben und lässt Quellverse zurück", () => {
+    for (const book of OTB_BOOKS) {
+      for (let chapter = 1; chapter <= book.chapters; chapter++) {
+        expect(getChapter(book.code, chapter).length).toBeGreaterThan(0);
+        expect(otbChapter(book.code, chapter)?.verses.length).toBeGreaterThan(0);
+        const source = { book: book.code, chapter, from: 1, to: 15, verse: 15 };
+        expect(editionChapterRoute("otb", source)).toEqual({
+          pathname: "/offen/[book]", params: { book: book.code, chapter },
+        });
+        expect(editionChapterRoute("luther", source)).toEqual({
+          pathname: "/lesen/[book]", params: { book: book.code, chapter },
+        });
+      }
+    }
   });
 
   it("sucht im OTB-Wortlaut mit Quellenvers und getrennter Textanmerkung", () => {
