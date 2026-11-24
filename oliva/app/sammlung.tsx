@@ -38,7 +38,6 @@ function CollectionOverview({ initialSection }: { initialSection: CollectionSect
   const [query, setQuery] = useState("");
   useEffect(() => {
     setSection(initialSection);
-    setQuery("");
   }, [initialSection]);
 
   return <Shell header="compact">
@@ -52,10 +51,7 @@ function CollectionOverview({ initialSection }: { initialSection: CollectionSect
           </View>}
       </View>
       <Field label="Deine Sammlung durchsuchen" placeholder="Titel, Text oder Bibelstelle" value={query} onChangeText={setQuery} />
-      <CollectionSections sections={collectionSections} current={section} onChange={(next) => {
-        setSection(next);
-        setQuery("");
-      }} />
+      <CollectionSections sections={collectionSections} current={section} onChange={setSection} />
       {section === "Gedanken" || section === "Entwürfe"
         ? <WrittenEntries draftsOnly={section === "Entwürfe"} query={query} />
         : <SavedVerses bookmarks={section === "Lesezeichen"} query={query} />}

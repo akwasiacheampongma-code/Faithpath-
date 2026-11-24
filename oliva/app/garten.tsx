@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState, type ComponentRef } from "react";
-import { View, Pressable, useWindowDimensions, type Text } from "react-native";
+import { View, Pressable, ScrollView, useWindowDimensions, type Text } from "react-native";
 import { router } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { T, Card, Button } from "../src/components/ui";
@@ -18,6 +18,7 @@ import { LegacyGardenHistory } from "../src/features/imports/LegacyGardenHistory
 import { a51Stage, treeLayout } from "../src/features/garden/a51/stages";
 export default function Garden() {
   const treeTitle = useRef<ComponentRef<typeof Text>>(null);
+  const gardenScroll = useRef<ComponentRef<typeof ScrollView>>(null);
   const t = useTheme(),
     { width, fontScale } = useWindowDimensions(),
     data = useApp((s) => s.data),
@@ -29,8 +30,15 @@ export default function Garden() {
     treeHeight = Math.max(120, treeLayout(a51Stage(stage), treeSize).height),
     history = useMemo(() => personalTreeHistory(data), [data.goals, data.notes, data.growthStage]),
     links = preview === null && loadedStage === data.growthStage ? personalTreeLinks(history, treeSize, fontScale, treeHeight) : [];
+  function showTree() {
+    requestAnimationFrame(() => {
+      gardenScroll.current?.scrollTo({ y: 0, animated: false });
+      focusReaderControl(treeTitle.current);
+    });
+  }
+
   return (
-    <Shell>
+    <Shell scrollRef={gardenScroll}>
       <T
         variant="title"
         accessibilityRole="header"
@@ -38,7 +46,7 @@ export default function Garden() {
       >
         Mein Garten.
       </T>
-      <GardenIntro onDismiss={() => requestAnimationFrame(() => focusReaderControl(treeTitle.current))} />
+      <GardenIntro onDismiss={showTree} />
         <Card
           style={{
             alignItems: "center",
@@ -74,53 +82,20 @@ export default function Garden() {
               Zurück zu deinem Baum
             </Button>
           )}
-          <View
-            style={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              gap: 2,
-              width: "100%",
-              maxWidth: width < 400 ? 182 : 340,
-              justifyContent: "center",
-            }}
+          <Pressable
+            accessibilityRole="button"
+            accessibilityState={{ expanded: gallery }}
+            aria-controls={gallery ? "garden-stage-picker" : undefined}
+            onPress={() => setGallery(!gallery)}
+            style={{ minHeight: 48, justifyContent: "center", paddingHorizontal: 12 }}
           >
-            {STAGES.map((s, i) => (
-              <Pressable
-                key={i}
-                accessibilityRole="button"
-                accessibilityLabel={`Stadium ${i + 1} ansehen: ${s.name}`}
-                accessibilityState={{ selected: i === stage }}
-                aria-pressed={i === stage}
-                onPress={() => setPreview(i)}
-                style={{
-                  width: 44,
-                  minHeight: 44,
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <View
-                  style={{
-                    width: i === stage ? 25 : 8,
-                    height: 8,
-                    borderRadius: 5,
-                    backgroundColor: i === stage ? t.gold : t.line,
-                  }}
-                />
-              </Pressable>
-            ))}
-          </View>
-          <Button
-            kind="ghost"
-            icon="leaf"
-            onPress={() => setGallery((v) => !v)}
-          >
-            {gallery
-              ? "Lebensbilder schließen"
-              : "Alle sieben Lebensbilder ansehen"}
-          </Button>
+            <T style={{ color: t.primary, textAlign: "center" }}>
+              {gallery ? "Vorschau schließen" : "Alle sieben Baumstadien ansehen"}
+            </T>
+          </Pressable>
           {gallery && (
-            <View style={{ width: "100%", gap: 12 }}>
+            <View nativeID="garden-stage-picker" role="group" accessibilityLabel="Baumstadien"
+              style={{ width: "100%", gap: 12 }}>
               <T style={{ fontSize: 12, color: t.muted, textAlign: "center" }}>
                 Sieben Bilder einer Geschichte. Jedes hat seinen eigenen Wert.
               </T>
@@ -136,10 +111,14 @@ export default function Garden() {
                   <Pressable
                     key={i}
                     accessibilityRole="button"
-                    accessibilityLabel={`Lebensbild ${i + 1}: ${s.name}`}
+                    accessibilityLabel={`Baumstadium ${i + 1} ansehen: ${s.name}`}
                     accessibilityState={{ selected: i === stage }}
                     aria-pressed={i === stage}
-                    onPress={() => setPreview(i)}
+                    onPress={() => {
+                      setPreview(i);
+                      setGallery(false);
+                      showTree();
+                    }}
                     style={{
                       width: Math.min(145, (width - 110) / 2),
                       alignItems: "center",

@@ -155,7 +155,8 @@ test("alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine pe
     await original.bringToFront();
     await expect.poll(()=>original.locator("#tree").evaluate(el=>(el as Host).olivaTree?.().ready)).toBe(true);
     await original.locator("#tree").screenshot({path:`${output}/before-a51-${stage.index+1}.png`});
-    await page.getByRole("button",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();
+    await page.getByRole("button",{name:"Alle sieben Baumstadien ansehen",exact:true}).click();
+    await page.getByRole("button",{name:`Baumstadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();
     await ready(page,stage.index);
     await expect(page.getByTestId("olive-tree").locator("img.tree-fallback")).toBeVisible();
     await expect(page.getByTestId("olive-tree").locator("canvas")).toBeHidden();
@@ -164,14 +165,15 @@ test("alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine pe
     expect(await rawData(page)).toEqual(before);
   }
   await original.close();
-  await page.getByRole("button",{name:"Alle sieben Lebensbilder ansehen",exact:true}).click();
-  for(const stage of A51_STAGES) await expect(page.getByRole("button",{name:`Lebensbild ${stage.index+1}: ${stage.name}`,exact:true})).toBeVisible();
+  await page.getByRole("button",{name:"Alle sieben Baumstadien ansehen",exact:true}).click();
+  for(const stage of A51_STAGES) await expect(page.getByRole("button",{name:`Baumstadium ${stage.index+1} ansehen: ${stage.name}`,exact:true})).toBeVisible();
   expect(await rawData(page)).toEqual(before);
-  await page.getByRole("button",{name:"Lebensbilder schließen",exact:true}).click();
+  await page.getByRole("button",{name:"Vorschau schließen",exact:true}).click();
   for(const width of [320,1440]) {
     await page.setViewportSize({width,height:width===320?568:1000});
     for(const stage of A51_STAGES) {
-      await page.getByRole("button",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);
+      await page.getByRole("button",{name:"Alle sieben Baumstadien ansehen",exact:true}).click();
+      await page.getByRole("button",{name:`Baumstadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);
       expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
     }
   }
@@ -180,14 +182,15 @@ test("alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine pe
   await expect.poll(async()=>(await localData(page)).settings.theme).toBe("dark");
   const darkBefore=await rawData(page);
   for(const stage of A51_STAGES) {
-    await page.getByRole("button",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);
+    await page.getByRole("button",{name:"Alle sieben Baumstadien ansehen",exact:true}).click();
+    await page.getByRole("button",{name:`Baumstadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);
     await page.screenshot({path:`${output}/after-oliva-${stage.index+1}-dark-390.png`});
   }
   expect(await rawData(page)).toEqual(darkBefore);
   await page.getByRole("button",{name:"Zurück zu deinem Baum",exact:true}).click();await ready(page,0);
   await expect(page.getByText("Für den Offline-Neustart bereit.",{exact:true})).toBeVisible();
   await context.setOffline(true);await page.reload();await ready(page,0);
-  for(const stage of A51_STAGES) {await page.getByRole("button",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);}
+  for(const stage of A51_STAGES) {await page.getByRole("button",{name:`Baumstadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);}
   expect(await rawData(page)).toEqual(darkBefore);
   await context.setOffline(false);
   await page.goto("/");
@@ -204,7 +207,8 @@ test("alle sieben Originalbilder bleiben erhalten; Vorschauen schreiben keine pe
 test("Wind pausiert außerhalb des Bildschirms; reduzierte Bewegung und Grafikverlust behalten das Originalbild", async ({page}) => {
   const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
   await page.goto("/garten");
-  await page.getByRole("button",{name:/^Stadium 7 ansehen:/}).click();await ready(page,6);
+  await page.getByRole("button",{name:"Alle sieben Baumstadien ansehen",exact:true}).click();
+  await page.getByRole("button",{name:/^Baumstadium 7 ansehen:/}).click();await ready(page,6);
   await expect.poll(async()=>(await metrics(page))?.running).toBe(true);
   const frames=(await metrics(page))?.frames??0;
   await expect.poll(async()=>(await metrics(page))?.frames??0).toBeGreaterThan(frames+2);
@@ -231,7 +235,8 @@ test("gespeicherte reduzierte Bewegung liefert auch ohne WebGL ein vollständige
   await expect.poll(async()=>(await localData(page)).settings.reducedMotion).toBe(true);
   await page.goto("/garten");
   for(const stage of A51_STAGES) {
-    await page.getByRole("button",{name:`Stadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);
+    await page.getByRole("button",{name:"Alle sieben Baumstadien ansehen",exact:true}).click();
+    await page.getByRole("button",{name:`Baumstadium ${stage.index+1} ansehen: ${stage.name}`,exact:true}).click();await ready(page,stage.index);
     await expect(page.getByTestId("olive-tree").locator("img.tree-fallback")).toBeVisible();
     expect((await metrics(page))?.running).toBe(false);
   }
@@ -241,7 +246,8 @@ test.describe("Bildladefehler ohne Service-Worker",()=>{
   test("ein Bildfehler bewahrt den geladenen Baum und ein erneuter Versuch lädt das gewünschte Stadium", async ({page})=>{
     await page.goto("/garten");await ready(page,0);
     await page.route("**/*stage-4*.webp",r=>r.abort());
-    await page.getByRole("button",{name:/^Stadium 4 ansehen:/}).click();
+    await page.getByRole("button",{name:"Alle sieben Baumstadien ansehen",exact:true}).click();
+    await page.getByRole("button",{name:/^Baumstadium 4 ansehen:/}).click();
     await expect(page.getByRole("alert")).toContainText("Dieses Stadium konnte nicht geladen werden");
     expect((await metrics(page))?.stage).toBe(0);
     await page.unroute("**/*stage-4*.webp");
@@ -253,7 +259,8 @@ test.describe("Hochauflösende ruhende Darstellung",()=>{
   test.use({deviceScaleFactor:3,reducedMotion:"reduce"});
   test("ein Retina-Display lädt die 1024er-Originalvariante bei begrenzter Animationsauflösung",async({page})=>{
     await page.goto("/garten");
-    await page.getByRole("button",{name:/^Stadium 7 ansehen:/}).click();await ready(page,6);
+    await page.getByRole("button",{name:"Alle sieben Baumstadien ansehen",exact:true}).click();
+    await page.getByRole("button",{name:/^Baumstadium 7 ansehen:/}).click();await ready(page,6);
     expect((await metrics(page))?.variant?.width).toBe(1024);
     expect((await metrics(page))?.running).toBe(false);
     const image=page.getByTestId("olive-tree").locator("img.tree-fallback");

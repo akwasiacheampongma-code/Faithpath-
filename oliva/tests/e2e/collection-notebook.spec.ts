@@ -72,6 +72,21 @@ test("Gedanken, Gebete und freie Notizen erscheinen in einer Liste und bearbeite
   await expect(legacyEditor(page)).toHaveValue(pending.values.text);
 });
 
+test("die Suche bleibt erhalten, während du den Bereich wechselst", async ({ page }) => {
+  await seedCollectionProfile(page, (data) => { data.notes = [archivedPrayer]; });
+  await page.goto("/sammlung");
+  const before = await rawData(page);
+  await search(page).fill("Schlusswort");
+  await expect(legacyRow(page)).toBeVisible();
+  await button(page, "Lesezeichen").click();
+  await expect(search(page)).toHaveValue("Schlusswort");
+  await expect(page.getByText("Keine passenden Verse.", { exact: true })).toBeVisible();
+  await button(page, "Gedanken").click();
+  await expect(search(page)).toHaveValue("Schlusswort");
+  await expect(legacyRow(page)).toBeVisible();
+  expect(await rawData(page)).toEqual(before);
+});
+
 test("konkurrierende Änderung eines älteren Eintrags bewahrt die gespeicherte Fassung und die Eingabe in der Sitzung", async ({ page, context }) => {
   await seedCollectionProfile(page, (data) => { data.notes = [legacyThought("Gemeinsamer Gedanke")]; });
   await page.goto("/sammlung");

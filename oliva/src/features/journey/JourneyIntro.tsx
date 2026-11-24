@@ -8,9 +8,9 @@ import { focusReaderControl } from "../bible/flow/focus";
 import { TreeStill } from "../garden/TreeStill";
 
 const steps = [
-  { title: "Gottes Wort entdecken", text: "Lies in der Bibel und finde Worte, die dich durch deinen Alltag begleiten." },
-  { title: "Deine Gedanken festhalten", text: "Nimm dir Zeit für Fragen, Gebete und das, was dich persönlich bewegt." },
-  { title: "Deinen Weg wachsen sehen", text: "Dein Olivenbaum begleitet dich. Deine Gedanken und Erfahrungen bleiben Teil deiner Geschichte." },
+  { title: "Gottes Wort entdecken", text: "Lies einen kurzen Bibelabschnitt. Du brauchst kein Vorwissen." },
+  { title: "Deine Gedanken festhalten", text: "Wenn du magst, halte Gedanken, Fragen oder Gebete als Notiz fest." },
+  { title: "Deinen Weg wachsen sehen", text: "Dein Olivenbaum erinnert dich an Worte und Erfahrungen. Auf „Heute“ kannst du mit einem kurzen Bibelabschnitt beginnen." },
 ] as const;
 
 export function JourneyIntro({ onClose }: { onClose?: () => void }) {

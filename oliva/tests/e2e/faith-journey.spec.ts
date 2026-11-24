@@ -84,6 +84,7 @@ test("der echte Erststart zeigt drei Schritte, Tastaturfokus und den direkten Ei
   await screenshot(page, "after-intro-2-390");
   await button(page, "Weiter").click();
   await expect(heading(page, "Deinen Weg wachsen sehen")).toBeVisible();
+  await expect(page.getByText(/Auf „Heute“ kannst du mit einem kurzen Bibelabschnitt beginnen/)).toBeVisible();
   await screenshot(page, "after-intro-3-390");
   await button(page, "Zurück").click();
   await expect(heading(page, "Deine Gedanken festhalten")).toBeVisible();
@@ -94,6 +95,15 @@ test("der echte Erststart zeigt drei Schritte, Tastaturfokus und den direkten Ei
   await page.reload();
   await expect(button(page, "Jetzt Bibel lesen")).toBeVisible();
   await expect(intro(page)).toHaveCount(0);
+});
+
+test("du kannst die Einführung ohne Eingabe überspringen und sofort lesen", async ({ page }) => {
+  await page.goto("/");
+  await button(page, "Überspringen").click();
+  await expect(button(page, "Jetzt Bibel lesen")).toBeVisible();
+  await expect(intro(page)).toHaveCount(0);
+  await button(page, "Jetzt Bibel lesen").click();
+  await expect(page).toHaveURL(/\/lesen\/MRK/);
 });
 
 test("gespeicherte V11- und V12-Profile sehen die Einführung nur auf Wunsch", async ({ page }) => {

@@ -68,7 +68,10 @@ test("Sammlungsbereiche bleiben einzeilig und Garten, Sammlung und Reader ohne h
       await expect(button(page, theme === "dark" ? "Hellen Modus aktivieren" : "Dunklen Modus aktivieren")).toBeVisible();
       await page.evaluate(() => document.fonts.ready);
       if (name === "garten") {
-        const target = button(page, "Stadium 1 ansehen: Samen");
+        const toggle = button(page, "Alle sieben Baumstadien ansehen");
+        await expect(toggle).toHaveAttribute("aria-expanded", "false");
+        await toggle.click();
+        const target = button(page, "Baumstadium 1 ansehen: Samen");
         await expect(target).toBeVisible();
         expect((await target.boundingBox())?.width).toBeGreaterThanOrEqual(44);
       }

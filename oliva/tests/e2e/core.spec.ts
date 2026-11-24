@@ -238,9 +238,10 @@ test("Baumvorschau verändert keine Daten; reduzierte Bewegung bleibt gespeicher
 }) => {
   await page.goto("/garten");
   await expect(page.getByRole("img", { name: /^Samen –/ })).toBeVisible();
+  await page.getByRole("button", { name: "Alle sieben Baumstadien ansehen", exact: true }).click();
   await page
     .getByRole("button", {
-      name: "Stadium 7 ansehen: Fruchttragender Olivenbaum",
+      name: "Baumstadium 7 ansehen: Fruchttragender Olivenbaum",
       exact: true,
     })
     .click();

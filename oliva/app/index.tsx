@@ -241,23 +241,6 @@ function Today() {
               <Progress value={read / (book?.chapters ?? 1)} label="Lesefortschritt im aktuellen Buch" />
             </View>
             <Button
-              kind="ghost"
-              onPress={() =>
-                router.push({
-                  pathname: "/lesen/[book]",
-                  params: {
-                    book: data.reading.book,
-                    chapter: data.reading.chapter,
-                    from: data.reading.from,
-                    to: data.reading.to,
-                    mode: data.readingPosition?.mode,
-                  },
-                })
-              }
-            >
-              {referenceLabel(data.reading)} lesen
-            </Button>
-            <Button
               kind="secondary"
               icon="arrow"
               style={{ paddingHorizontal: 8 }}

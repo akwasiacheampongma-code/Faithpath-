@@ -179,6 +179,7 @@ test("Startseite und Sammlung bleiben frei von Schwertern; bestätigtes Lesen be
   const card = visible(page, "home-current-book");
   await expect(card.getByRole("button", { name: "Kapitelübersicht öffnen", exact: true })).toBeVisible();
   await expect(card.getByRole("progressbar")).toHaveCount(1);
+  await expect(card.getByRole("button")).toHaveCount(1);
   await noBookSwords(page);
   await page.goto("/sammlung");
   await expect(page.getByRole("button", { name: "Buchschwerter", exact: true })).toHaveCount(0);

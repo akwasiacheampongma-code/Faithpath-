@@ -26,7 +26,7 @@ export function GardenIntro({ onDismiss }: { onDismiss: () => void }) {
       Willkommen in deinem Garten
     </T>
     <T style={{ color: theme.muted, fontSize: 14, lineHeight: 21 }}>
-      Dein Olivenbaum erinnert dich an Worte und Erfahrungen auf deinem Glaubensweg. Du bestimmst dein Tempo.
+      Dein Olivenbaum erinnert dich an Bibelworte und Erfahrungen. Du kannst ihn einfach ansehen und in deinem Tempo weitergehen.
     </T>
     <Button kind="ghost" icon={null} onPress={() => { setVisible(false); onDismiss(); }}
       style={{ alignSelf: "flex-start", paddingHorizontal: 0 }}>Zum Baum</Button>
