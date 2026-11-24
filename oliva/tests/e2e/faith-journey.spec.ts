@@ -251,6 +251,25 @@ test("ein geschützter Offline-Direktlink öffnet nach der Sperre den ursprüngl
   expect(await rawData(page)).toEqual(before);
 });
 
+test("Heute behält das Bild und wechselt es passend zum angezeigten Testament", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 568 });
+  for (const [book, chapter, landscape] of [["PSA", 23, "at"], ["JHN", 3, "nt"]] as const) {
+    await openSettings(page);
+    const profile = initialData();
+    profile.reading = { book, chapter };
+    await storeProfile(page, profile);
+    const before = await rawData(page);
+    await page.goto("/");
+    const action = button(page, "In der Bibel weiterlesen");
+    await expect(page.getByTestId(`home-landscape-${landscape}`)).toBeVisible();
+    await expect(action).toBeInViewport({ ratio: 1 });
+    await expect(page.getByTestId("home-personal-tree")).toBeInViewport({ ratio: 0.8 });
+    expect(await rawData(page)).toEqual(before);
+    await action.click();
+    await expect(page).toHaveURL(new RegExp(`/lesen/${book}(?:\\?|$)`));
+  }
+});
+
 test("Heute hält Leseaktion und vorhandenes Baumbild auf vier Breiten in Hell und Dunkel sichtbar", async ({ page }) => {
   test.setTimeout(180000);
   const evidence = [];

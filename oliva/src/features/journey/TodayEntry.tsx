@@ -5,22 +5,31 @@ import { Pressable, Image, View, useWindowDimensions } from "react-native";
 import { Button, Card, T } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { useApp } from "../../state/store";
-import { sameReadingScope } from "../bible/position";
-import { referenceLabel, type Reference } from "../bible/repository";
+import { referenceLabel } from "../bible/repository";
 import { TreeStill } from "../garden/TreeStill";
 import { STAGES } from "../garden/model";
+import { homeReading } from "./home-reading";
 
-const firstReading: Reference = { book: "MRK", chapter: 4, from: 35, to: 41 };
+const landscapes = {
+  AT: {
+    small: require("../../../assets/images/garden-640.webp"),
+    large: require("../../../assets/images/garden-1280.webp"),
+    caption: "Garten Eden · künstlerische Interpretation",
+  },
+  NT: {
+    small: require("../../../assets/images/galilee-640.webp"),
+    large: require("../../../assets/images/galilee-1280.webp"),
+    caption: "Galiläa · künstlerische Interpretation",
+  },
+} as const;
 
 export function TodayEntry() {
   const t = useTheme();
   const { width, height } = useWindowDimensions();
   const data = useApp((state) => state.data);
-  const resume = !!data.readingPosition || data.readChapters.length > 0 ||
-    data.readPassages.length > 0 || !sameReadingScope(data.reading, { book: "MRK", chapter: 4 });
-  const reference = resume ? data.reading : firstReading;
-  const position = data.readingPosition && sameReadingScope(data.readingPosition.ref, reference)
-    ? data.readingPosition : null;
+  const { resume, reference, position, testament } = homeReading(data);
+  const landscape = landscapes[testament];
+  const label = referenceLabel(reference);
   const short = width <= 340 && height <= 660;
   const treeSize = short ? 82 : Math.min(136, Math.round(width * 0.33));
 
@@ -33,49 +42,55 @@ export function TodayEntry() {
     <T testID="home-greeting" variant="small" style={{ color: t.muted, fontSize: 14, lineHeight: 19 }}>
       {resume ? "Schön, dass du wieder da bist" : "Schön, dass du da bist"}{data.name ? `, ${data.name}` : ""}.
     </T>
-    {resume ? <Pressable testID="home-primary-action" accessibilityRole="button"
-      accessibilityLabel="In der Bibel weiterlesen" accessibilityHint={referenceLabel(reference)}
-      onPress={openReading} style={({ pressed }) => ({
-        backgroundColor: t.soft, borderRadius: 18, borderWidth: 1, borderColor: t.line,
-        padding: 16, flexDirection: "row", alignItems: "center", gap: 13, opacity: pressed ? 0.78 : 1,
-      })}>
-      <View style={{ backgroundColor: t.surface, padding: 10, borderRadius: 12 }}><Icon name="book" size={22} color={t.primary} /></View>
-      <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
-        <T variant="label" style={{ color: t.primary }}>Weiterlesen</T>
-        <T variant="heading" style={{ fontSize: 25, lineHeight: 28 }}>{referenceLabel(reference)}</T>
-        {position && <T variant="small" style={{ color: t.muted }}>Zuletzt bei Vers {position.verse}</T>}
-      </View>
-      <Icon name="chevron" size={18} color={t.primary} />
-    </Pressable> : <View testID="home-reading-entry" style={{ borderRadius: 22, overflow: "hidden", backgroundColor: "#334c38" }}>
-      <Image source={width < 600 ? require("../../../assets/images/galilee-640.webp") : require("../../../assets/images/galilee-1280.webp")}
+    <View testID="home-reading-entry" style={{ borderRadius: 22, overflow: "hidden", backgroundColor: "#334c38" }}>
+      <Image testID={`home-landscape-${testament.toLowerCase()}`}
+        source={width < 600 ? landscape.small : landscape.large}
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} resizeMode="cover" accessible={false} />
-      <LinearGradient colors={["rgba(19,38,26,.94)", "rgba(24,46,31,.74)", "rgba(30,49,31,.62)"]}
+      <LinearGradient colors={["rgba(19,38,26,.94)", "rgba(24,46,31,.74)", "rgba(30,49,31,.68)"]}
         locations={[0, 0.6, 1]} start={{ x: 0, y: 0.4 }} end={{ x: 1, y: 0.6 }} pointerEvents="none"
         style={{ position: "absolute", inset: 0 }} />
-      <View style={{ paddingHorizontal: short ? 15 : 18, paddingTop: short ? 12 : 17, paddingBottom: 11, gap: short ? 7 : 10 }}>
-        <T variant="hero" accessibilityRole="header" aria-level={1} style={{
-          color: "#fffdf2", maxWidth: 590, fontSize: short ? 31 : width < 600 ? 36 : 44,
-          lineHeight: short ? 32 : width < 600 ? 37 : 47,
-        }}>Lass deinen Glaubensweg wachsen.</T>
-        <T style={{ color: "#fffdf2", fontSize: 14, lineHeight: short ? 19 : 21, maxWidth: 430 }}>
-          Lies Gottes Wort. Entdecke, was es für dein Leben bedeutet. Halte deine Gedanken fest und sieh, wie dein persönlicher Weg wächst.
-        </T>
-        <Button testID="home-primary-action" kind="secondary" icon={null} foregroundColor="#263c30"
-          style={{ backgroundColor: "#f6f1dc", borderWidth: 0, alignSelf: width < 600 ? "stretch" : "flex-start" }}
-          onPress={openReading}>
-          Jetzt Bibel lesen
-        </Button>
-        <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", columnGap: 8, rowGap: 2 }}>
-          <View style={{ flexDirection: "row", flexWrap: "wrap", columnGap: 9, maxWidth: "100%" }}>
-            <T variant="small" style={{ color: "#fffdf2", fontSize: 11, lineHeight: 15 }}>{referenceLabel(reference)}</T>
-            {position && <T variant="small" style={{ color: "#fffdf2", fontSize: 11, lineHeight: 15 }}>Zuletzt bei Vers {position.verse}</T>}
+      {resume ? <Pressable testID="home-primary-action" accessibilityRole="button"
+        accessibilityLabel="In der Bibel weiterlesen"
+        accessibilityHint={position ? `${label} · Zuletzt bei Vers ${position.verse}` : label}
+        onPress={openReading} style={({ pressed }) => ({
+          paddingHorizontal: short ? 14 : 17, paddingVertical: short ? 12 : 15, gap: 7,
+          minHeight: short ? 110 : 125, justifyContent: "center", opacity: pressed ? 0.85 : 1,
+        })}>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 13 }}>
+          <View style={{ backgroundColor: "rgba(17,37,25,.75)", padding: 10, borderRadius: 12 }}>
+            <Icon name="book" size={22} color="#f6f1dc" />
           </View>
-          <T variant="small" style={{ color: "#fffdf2", fontSize: 10, lineHeight: 14, marginLeft: "auto" }}>
-            Galiläa · künstlerische Interpretation
-          </T>
+          <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
+            <T variant="label" style={{ color: "#f6f1dc" }}>Weiterlesen</T>
+            <T variant="heading" style={{ fontSize: 27, lineHeight: 30, color: "#fffdf2" }}>{label}</T>
+            {position && <T variant="small" style={{ color: "#fffdf2" }}>Zuletzt bei Vers {position.verse}</T>}
+          </View>
+          <Icon name="chevron" size={18} color="#f6f1dc" />
         </View>
-      </View>
-    </View>}
+        <T variant="small" style={{ color: "#fffdf2", fontSize: 10, lineHeight: 14 }}>{landscape.caption}</T>
+      </Pressable> : (
+        <View style={{ paddingHorizontal: short ? 15 : 18, paddingTop: short ? 12 : 17, paddingBottom: 11, gap: short ? 7 : 10 }}>
+          <T variant="hero" accessibilityRole="header" aria-level={1} style={{
+            color: "#fffdf2", maxWidth: 590, fontSize: short ? 31 : width < 600 ? 36 : 44,
+            lineHeight: short ? 32 : width < 600 ? 37 : 47,
+          }}>Lass deinen Glaubensweg wachsen.</T>
+          <T style={{ color: "#fffdf2", fontSize: 14, lineHeight: short ? 19 : 21, maxWidth: 430 }}>
+            Lies Gottes Wort. Entdecke, was es für dein Leben bedeutet. Halte deine Gedanken fest und sieh, wie dein persönlicher Weg wächst.
+          </T>
+          <Button testID="home-primary-action" kind="secondary" icon={null} foregroundColor="#263c30"
+            style={{ backgroundColor: "#f6f1dc", borderWidth: 0, alignSelf: width < 600 ? "stretch" : "flex-start" }}
+            onPress={openReading}>
+            Jetzt Bibel lesen
+          </Button>
+          <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", columnGap: 8, rowGap: 2 }}>
+            <T variant="small" style={{ color: "#fffdf2", fontSize: 11, lineHeight: 15 }}>{label}</T>
+            <T variant="small" style={{ color: "#fffdf2", fontSize: 10, lineHeight: 14, marginLeft: "auto" }}>
+              {landscape.caption}
+            </T>
+          </View>
+        </View>
+      )}
+    </View>
     <Card testID="home-garden-entry" style={{
       padding: short ? 10 : 14, flexDirection: "row", gap: 8, alignItems: short ? "flex-start" : "center",
       borderWidth: 0, backgroundColor: t.soft,
