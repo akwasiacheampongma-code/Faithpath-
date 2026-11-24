@@ -1,10 +1,12 @@
-import { useMemo, useState } from "react";
-import { View, Pressable, useWindowDimensions } from "react-native";
+import { useMemo, useRef, useState, type ComponentRef } from "react";
+import { View, Pressable, useWindowDimensions, type Text } from "react-native";
 import { router } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { T, Card, Button } from "../src/components/ui";
 import { OliveTree } from "../src/components/Artwork";
 import { STAGES } from "../src/features/garden/model";
+import { GardenIntro } from "../src/features/garden/GardenIntro";
+import { focusReaderControl } from "../src/features/bible/flow/focus";
 import { TreeStill } from "../src/features/garden/TreeStill";
 import { useApp } from "../src/state/store";
 import { useTheme } from "../src/design-system/theme";
@@ -15,6 +17,7 @@ import { PersonalTreeJourney, PersonalTreePins } from "../src/features/garden/Pe
 import { LegacyGardenHistory } from "../src/features/imports/LegacyGardenHistory";
 import { a51Stage, treeLayout } from "../src/features/garden/a51/stages";
 export default function Garden() {
+  const treeTitle = useRef<ComponentRef<typeof Text>>(null);
   const t = useTheme(),
     { width, fontScale } = useWindowDimensions(),
     data = useApp((s) => s.data),
@@ -35,17 +38,7 @@ export default function Garden() {
       >
         Mein Garten.
       </T>
-      <T
-        style={{
-          color: t.muted,
-          fontSize: 13,
-          maxWidth: 620,
-          lineHeight: 21,
-          marginBottom: 16,
-        }}
-      >
-        Dein Olivenbaum erinnert an Worte und Erfahrungen auf deinem Weg.
-      </T>
+      <GardenIntro onDismiss={() => requestAnimationFrame(() => focusReaderControl(treeTitle.current))} />
         <Card
           style={{
             alignItems: "center",
@@ -56,7 +49,7 @@ export default function Garden() {
             gap: 10,
           }}
         >
-          <T variant="label" style={{ color: t.gold, fontSize: 9 }}>
+          <T ref={treeTitle} tabIndex={-1} variant="label" style={{ color: t.gold, fontSize: 9 }}>
             {preview === null
               ? "DEIN BAUM HEUTE"
               : "VORSCHAU · KEIN EIGENER FORTSCHRITT"}

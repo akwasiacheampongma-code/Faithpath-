@@ -26,4 +26,6 @@ npm run build
 python3 scripts/import-open-bible.py /pfad/zur/upstream-quelle --check
 ```
 
+Beim ersten Öffnen des Gartens erscheint eine kurze Einführung direkt über dem Olivenbaum. „Zum Baum“ schließt sie. Auch beim Weitergehen ohne Antippen bleibt das einmalige Erscheinen lokal gemerkt. Diese Gerätepräferenz liegt außerhalb des Profils, der Sicherungsdateien und der Wachstumsdaten.
+
 Die getrennte Testseite besitzt ihren eigenen Browser-Speicher. Die bestehende Beta und die bestehende private Vorschau haben eigene Bereitstellungen und lokale Speicherbereiche.
