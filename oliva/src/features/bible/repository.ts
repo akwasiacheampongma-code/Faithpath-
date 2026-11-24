@@ -1,5 +1,6 @@
 import raw from "../../data/bible.json";
 import catalog from "../../data/catalog.json";
+import { withBookDisplayNames } from "./book-search";
 
 export type Verse = { n: number; text: string };
 export type Reference = {
@@ -8,7 +9,7 @@ export type Reference = {
   from?: number;
   to?: number;
 };
-export const BOOKS = catalog;
+export const BOOKS = withBookDisplayNames(catalog);
 const bible = raw as Record<string, Record<string, Verse[]>>;
 export const bookByCode = (code: string) =>
   BOOKS.find((book) => book.code === code);

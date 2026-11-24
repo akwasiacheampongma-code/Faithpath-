@@ -2,9 +2,22 @@ import { describe, expect, it } from "vitest";
 import source from "../content/open-bible-de/import.json";
 import { OTB_BOOKS, editionChapterRoute } from "../src/features/bible/open-bible";
 import { adjacentOtbChapter, otbChapter, searchOtb } from "../src/features/bible/open-bible-content";
-import { getChapter } from "../src/features/bible/repository";
+import { bookByCode, getChapter, referenceLabel } from "../src/features/bible/repository";
+import { normalizeBookSearch } from "../src/features/bible/book-search";
 
 describe("Open Translation Bible · Deutsch", () => {
+  it("zeigt Ruth in beiden Ausgaben und findet die Schreibweisen Ruth und Rut", () => {
+    expect(referenceLabel({ book: "RUT", chapter: 1 })).toBe("Ruth 1");
+    const luther = bookByCode("RUT");
+    const otb = OTB_BOOKS.find((book) => book.code === "RUT");
+    for (const book of [luther, otb]) {
+      expect(book?.name).toBe("Ruth");
+      for (const query of ["Rut", "Ruth"]) {
+        expect(normalizeBookSearch(book!.name)).toContain(normalizeBookSearch(query));
+      }
+    }
+  });
+
   it("enthält das vollständige Werk mit gültiger Kapitel- und Versnummerierung", () => {
     const chapters = OTB_BOOKS.flatMap((book) =>
       Array.from({ length: book.chapters }, (_, index) => otbChapter(book.code, index + 1)),
