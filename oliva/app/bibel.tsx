@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { View, Pressable, useWindowDimensions } from "react-native";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { T, Button, Card, Field } from "../src/components/ui";
 import { Icon } from "../src/components/Icon";
@@ -9,7 +9,10 @@ import {
   BOOKS,
   referenceLabel,
   searchBible,
+  type SearchHit,
 } from "../src/features/bible/repository";
+import { OTB_BOOKS, OTB_NAME, OTB_CREDIT } from "../src/features/bible/open-bible";
+import { bookGroup } from "../src/features/bible/book-groups";
 import { useApp } from "../src/state/store";
 import { countBookRead } from "../src/state/model";
 import { StoryLibrary } from "../src/features/bible/StoryCard";
@@ -21,6 +24,8 @@ import {
   type BibleScope,
 } from "../src/features/bible/book-search";
 export default function Bible() {
+  const otb = useLocalSearchParams<{ ausgabe?: string }>().ausgabe === "otb";
+  const [alternate, setAlternate] = useState<{ query: string; hits: SearchHit[]; failed?: boolean }>();
   const t = useTheme(),
     data = useApp((s) => s.data),
     { width } = useWindowDimensions(),
@@ -34,12 +39,29 @@ export default function Bible() {
     const timer = setTimeout(() => setDebounced(query), 250);
     return () => clearTimeout(timer);
   }, [query]);
-  const hits = useMemo(
-    () => (mode === "text" ? searchBible(debounced) : []),
-    [mode, debounced],
-  );
+  const lutherHits = useMemo(() => (!otb && mode === "text" ? searchBible(debounced) : []), [otb, mode, debounced]);
+  useEffect(() => {
+    if (!otb || mode !== "text" || !debounced.trim()) return;
+    let active = true;
+    void import("../src/features/bible/open-bible-content").then(({ searchOtb }) => {
+      if (active) setAlternate({ query: debounced, hits: searchOtb(debounced) });
+    }).catch(() => {
+      if (active) setAlternate({ query: debounced, hits: [], failed: true });
+    });
+    return () => { active = false; };
+  }, [otb, mode, debounced]);
+  const otbResult = alternate?.query === debounced ? alternate : undefined;
+  const hits = otb ? otbResult?.hits ?? [] : lutherHits;
+  const changeEdition = (next: boolean) => {
+    if (otb === next) return;
+    setExpanded(null);
+    setQuery("");
+    setDebounced("");
+    setAlternate(undefined);
+    router.setParams({ ausgabe: next ? "otb" : "luther" });
+  };
   const normalizedQuery = normalizeBookSearch(query);
-  const books = BOOKS.filter(
+  const books = (otb ? OTB_BOOKS : BOOKS).filter(
     (b) =>
       (group === "Alle" || b.testament === group) &&
       normalizeBookSearch(b.name).includes(normalizedQuery),
@@ -54,9 +76,16 @@ export default function Bible() {
         Deine Bibel.
       </T>
       <T style={{ color: t.muted, fontSize: 12, lineHeight: 19, marginBottom: 14 }}>
-        Luther 1912 · vollständig offline enthalten
+        {otb ? OTB_CREDIT : "Luther 1912 · vollständig offline enthalten"}
       </T>
-      <Card
+      <View role="group" accessibilityLabel="Bibelübersetzung" style={{ flexDirection: "row", gap: 7, flexWrap: "wrap", marginBottom: 12 }}>
+        <Button icon={null} selected={!otb} kind={!otb ? "primary" : "secondary"} onPress={() => changeEdition(false)}>Luther 1912</Button>
+        <Button icon={null} selected={otb} kind={otb ? "primary" : "secondary"} onPress={() => changeEdition(true)}>{OTB_NAME}</Button>
+      </View>
+      {otb ? <View style={{ gap: 4, alignItems: "flex-start", marginBottom: 10 }}>
+        <T variant="small" style={{ color: t.muted }}>Deutsch · eigene Kapitel- und Verszählung. Wähle ein Buch zum Lesen.</T>
+        <Button kind="ghost" icon="info" onPress={() => router.push({ pathname: "/quellen", params: { ausgabe: "otb" } })}>Quelle, Lizenz und Bedingungen</Button>
+      </View> : <Card
         style={{
           backgroundColor: t.soft,
           borderWidth: 0,
@@ -76,7 +105,7 @@ export default function Bible() {
             },
           })}>Weiterlesen</Button>
         </View>
-      </Card>
+      </Card>}
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 8 }}>
         {[
           ["books", "Bücher", "Bücher finden"],
@@ -129,8 +158,11 @@ export default function Bible() {
           <View style={{ flexDirection: width >= 960 ? "row" : "column", gap: 24, alignItems: "flex-start" }}>
           <View style={{ width: width >= 960 ? undefined : "100%", flex: width >= 960 ? 1 : undefined, minWidth: 0 }}>
           <View testID="bible-book-list" style={{ width: "100%" }}>
-            {books.map((book) => (
-              <View key={book.code} style={{ borderBottomWidth: 1, borderBottomColor: t.line }}>
+            {books.map((book) => {
+              const read = otb ? 0 : countBookRead(data, book.code);
+              return <View key={book.code} style={{ borderBottomWidth: 1, borderBottomColor: t.line }}>
+                {!normalizedQuery && bookGroup[book.code] && <T variant="label" accessibilityRole="header" aria-level={2}
+                  style={{ marginTop: 15, marginBottom: 3, color: t.muted }}>{bookGroup[book.code]}</T>}
                 <Pressable
                   accessibilityRole="button"
                   accessibilityLabel={`${book.name}, ${book.chapters} Kapitel`}
@@ -153,8 +185,7 @@ export default function Bible() {
                       {book.name}
                     </T>
                     <T style={{ fontSize: 11, lineHeight: 18, color: t.muted }}>
-                      {book.chapters} Kapitel · {countBookRead(data, book.code)}{" "}
-                      gelesen
+                      {book.chapters} Kapitel{read > 0 ? " · " + read + " gelesen" : ""}
                     </T>
                   </View>
                   <Icon
@@ -165,9 +196,9 @@ export default function Bible() {
                 </Pressable>
                 {expanded === book.code && (
                   <View style={{ paddingHorizontal: 4, paddingBottom: 18, gap: 14 }}>
-                    <BookChapterGrid code={book.code} />
-                    <T style={{ fontSize: 12, color: t.muted }}>
-                      {book.description}
+                    <BookChapterGrid code={book.code} otb={otb} />
+                    {!otb && <><T style={{ fontSize: 12, color: t.muted }}>
+                      {BOOKS.find((entry) => entry.code === book.code)?.description}
                     </T>
                     <View style={{ alignItems: "flex-start" }}>
                       <Button
@@ -182,11 +213,11 @@ export default function Bible() {
                       >
                         Über dieses Buch
                       </Button>
-                    </View>
+                    </View></>}
                   </View>
                 )}
-              </View>
-            ))}
+              </View>;
+            })}
           </View>
           {!books.length && (
             <Card>
@@ -203,7 +234,7 @@ export default function Bible() {
                 ? "Das Alte Testament umfasst Israels Geschichte, Gebete, Weisheit und prophetische Texte."
                 : "Die Bibel ist eine Sammlung verschiedener Bücher – von Erzählungen bis zu Briefen."}
           </T>
-          <T style={{ fontSize: 11, lineHeight: 18, color: t.muted, marginTop: 8 }}>{data.readChapters.length} Kapitel bewusst als gelesen bestätigt</T>
+          {!otb && data.readChapters.length > 0 && <T style={{ fontSize: 11, lineHeight: 18, color: t.muted, marginTop: 8 }}>{data.readChapters.length} Kapitel bewusst als gelesen bestätigt</T>}
           {width < 960 && <View style={{ width: "100%", marginTop: 20 }}><SpiritualWordCard /></View>}
           </View>
             {width >= 960 && <View style={{ width: 320 }}><SpiritualWordCard /></View>}
@@ -213,9 +244,12 @@ export default function Bible() {
         <View style={{ gap: 12, marginTop: 20 }}>
           {!debounced.trim() ? (
             <T style={{ color: t.muted }}>
-              Gib ein oder mehrere Wörter ein. Gesucht wird im vollständigen
-              Wortlaut der Lutherbibel 1912.
+              Gib ein oder mehrere Wörter ein. Gesucht wird in der gewählten Übersetzung.
             </T>
+          ) : otb && !otbResult ? (
+            <T accessibilityLiveRegion="polite">Die Open Translation Bible wird durchsucht …</T>
+          ) : otbResult?.failed && otb ? (
+            <T accessibilityRole="alert">Die OTB-Suche ist gerade nicht verfügbar. Du kannst die Kapitel über „Bücher“ öffnen.</T>
           ) : (
             <>
               <T style={{ fontSize: 12, color: t.muted }}>
@@ -230,7 +264,7 @@ export default function Bible() {
                   accessibilityRole="button"
                   onPress={() =>
                     router.push({
-                      pathname: "/lesen/[book]",
+                      pathname: otb ? "/offen/[book]" : "/lesen/[book]",
                       params: {
                         book: hit.book,
                         chapter: hit.chapter,
@@ -258,10 +292,10 @@ export default function Bible() {
               {!hits.length && (
                 <Card>
                   <T>Keine passenden Verse gefunden.</T>
-                  <T style={{ fontSize: 12, color: t.muted, marginTop: 7 }}>
+                  {!otb && <T style={{ fontSize: 12, color: t.muted, marginTop: 7 }}>
                     Diese historische Übersetzung verwendet ältere Wörter.
                     Versuche zum Beispiel „Friede“ statt „Frieden“.
-                  </T>
+                  </T>}
                 </Card>
               )}
             </>

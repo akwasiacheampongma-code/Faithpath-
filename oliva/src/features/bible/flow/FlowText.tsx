@@ -29,6 +29,7 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
     highlights,
     bookmarks,
     fontSize,
+      fontFamily = "Cormorant",
     lineHeight,
     layoutKey,
     onSelect,
@@ -301,7 +302,7 @@ const FlowText = forwardRef<FlowTextHandle, FlowTextProps>(function FlowText(
               }}
               style={{
                 marginBottom: 26,
-                fontFamily: "Cormorant",
+                fontFamily,
                 fontSize,
                 lineHeight: fontSize * lineHeight,
                 color: t.text,

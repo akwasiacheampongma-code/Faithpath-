@@ -115,55 +115,6 @@ export function useEditorActions<T extends Draft["type"]>(
     preserve: () => void finish(false, false),
   };
 }
-export function JournalEditor({
-  draft,
-  onDone,
-}: {
-  draft: DraftOf<"journal">;
-  onDone: () => void;
-}) {
-  const e = useEditorActions<"journal">(draft, onDone),
-    v = e.values,
-    labels = { note: "Gedanke", reflection: "Reflexion", action: "Erfahrung" };
-  return (
-    <Card style={{ gap: 16 }}>
-      <T variant="heading">
-        {v.targetId ? "Deine Worte bearbeiten" : "Hier ist Platz für dich."}
-      </T>
-      {!v.targetId && (
-        <View style={{ flexDirection: "row", gap: 7, flexWrap: "wrap" }}>
-          {(["note", "reflection", "action"] as const).map((kind) => (
-            <Button
-              key={kind}
-              kind={v.kind === kind ? "primary" : "secondary"}
-              icon={null}
-              disabled={e.working}
-              onPress={() => e.change({ ...v, kind })}
-            >
-              {labels[kind]}
-            </Button>
-          ))}
-        </View>
-      )}
-      <Field
-        label="Deine Worte"
-        value={v.text}
-        onChangeText={(text) => e.change({ ...v, text })}
-        editable={!e.working}
-        multiline
-        maxLength={10000}
-      />
-      <EditorFooter
-        status={e.status}
-        working={e.working}
-        canSave={!!v.text.trim()}
-        label="Gedanken speichern"
-        onSave={e.save}
-        onDiscard={e.discard}
-      />
-    </Card>
-  );
-}
 export function GoalEditor({
   draft,
   onDone,

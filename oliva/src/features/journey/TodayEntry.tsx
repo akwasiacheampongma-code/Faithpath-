@@ -1,6 +1,7 @@
 import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import { Image, View, useWindowDimensions } from "react-native";
+import { Icon } from "../../components/Icon";
+import { Pressable, Image, View, useWindowDimensions } from "react-native";
 import { Button, Card, T } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { useApp } from "../../state/store";
@@ -23,11 +24,29 @@ export function TodayEntry() {
   const short = width <= 340 && height <= 660;
   const treeSize = short ? 82 : Math.min(136, Math.round(width * 0.33));
 
+  const openReading = () => router.push({
+    pathname: "/lesen/[book]",
+    params: { ...reference, mode: position?.mode },
+  });
+
   return <View style={{ gap: 13, width: "100%" }}>
     <T testID="home-greeting" variant="small" style={{ color: t.muted, fontSize: 14, lineHeight: 19 }}>
       {resume ? "Schön, dass du wieder da bist" : "Schön, dass du da bist"}{data.name ? `, ${data.name}` : ""}.
     </T>
-    <View testID="home-reading-entry" style={{ borderRadius: 22, overflow: "hidden", backgroundColor: "#334c38" }}>
+    {resume ? <Pressable testID="home-primary-action" accessibilityRole="button"
+      accessibilityLabel="In der Bibel weiterlesen" accessibilityHint={referenceLabel(reference)}
+      onPress={openReading} style={({ pressed }) => ({
+        backgroundColor: t.soft, borderRadius: 18, borderWidth: 1, borderColor: t.line,
+        padding: 16, flexDirection: "row", alignItems: "center", gap: 13, opacity: pressed ? 0.78 : 1,
+      })}>
+      <View style={{ backgroundColor: t.surface, padding: 10, borderRadius: 12 }}><Icon name="book" size={22} color={t.primary} /></View>
+      <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
+        <T variant="label" style={{ color: t.primary }}>Weiterlesen</T>
+        <T variant="heading" style={{ fontSize: 25, lineHeight: 28 }}>{referenceLabel(reference)}</T>
+        {position && <T variant="small" style={{ color: t.muted }}>Zuletzt bei Vers {position.verse}</T>}
+      </View>
+      <Icon name="chevron" size={18} color={t.primary} />
+    </Pressable> : <View testID="home-reading-entry" style={{ borderRadius: 22, overflow: "hidden", backgroundColor: "#334c38" }}>
       <Image source={width < 600 ? require("../../../assets/images/galilee-640.webp") : require("../../../assets/images/galilee-1280.webp")}
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} resizeMode="cover" accessible={false} />
       <LinearGradient colors={["rgba(19,38,26,.94)", "rgba(24,46,31,.74)", "rgba(30,49,31,.62)"]}
@@ -43,11 +62,8 @@ export function TodayEntry() {
         </T>
         <Button testID="home-primary-action" kind="secondary" icon={null} foregroundColor="#263c30"
           style={{ backgroundColor: "#f6f1dc", borderWidth: 0, alignSelf: width < 600 ? "stretch" : "flex-start" }}
-          onPress={() => router.push({
-            pathname: "/lesen/[book]",
-            params: { ...reference, mode: position?.mode },
-          })}>
-          {resume ? "In der Bibel weiterlesen" : "Jetzt Bibel lesen"}
+          onPress={openReading}>
+          Jetzt Bibel lesen
         </Button>
         <View style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", columnGap: 8, rowGap: 2 }}>
           <View style={{ flexDirection: "row", flexWrap: "wrap", columnGap: 9, maxWidth: "100%" }}>
@@ -59,7 +75,7 @@ export function TodayEntry() {
           </T>
         </View>
       </View>
-    </View>
+    </View>}
     <Card testID="home-garden-entry" style={{
       padding: short ? 10 : 14, flexDirection: "row", gap: 8, alignItems: short ? "flex-start" : "center",
       borderWidth: 0, backgroundColor: t.soft,
@@ -79,7 +95,7 @@ export function TodayEntry() {
       <Button kind="ghost" foregroundColor={t.primary} style={{ paddingHorizontal: 6, gap: 5, maxWidth: "100%" }}
         onPress={() => router.push("/wege")}>Einen Weg entdecken</Button>
       <Button kind="ghost" foregroundColor={t.primary} style={{ paddingHorizontal: 6, gap: 5, maxWidth: "100%" }}
-        onPress={() => router.push("/notizen")}>Meine Notizen</Button>
+        onPress={() => router.push("/sammlung")}>Meine Notizen</Button>
     </View>
   </View>;
 }

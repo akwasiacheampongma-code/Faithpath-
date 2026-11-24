@@ -3,7 +3,7 @@ await cp("assets/pwa","dist",{recursive:true});
 const notices=await readFile("THIRD_PARTY_NOTICES.md","utf8");
 await writeFile("dist/THIRD_PARTY_NOTICES.txt",notices);
 await mkdir("dist/licenses",{recursive:true});
-for (const [source,name] of [["LICENSE","MIT.txt"],["THIRD_PARTY_NOTICES.md","THIRD_PARTY_NOTICES.txt"],["assets/fonts/DMSans-OFL.txt","DMSans-OFL.txt"],["assets/fonts/CormorantGaramond-OFL.txt","CormorantGaramond-OFL.txt"]]) await cp(source,"dist/licenses/"+name);
+for (const [source,name] of [["LICENSE","MIT.txt"],["content/open-bible-de/UPSTREAM-LICENCE.md","OTB-UPSTREAM-LICENCE.txt"],["content/open-bible-de/README.md","OTB-QUELLEN.txt"],["THIRD_PARTY_NOTICES.md","THIRD_PARTY_NOTICES.txt"],["assets/fonts/DMSans-OFL.txt","DMSans-OFL.txt"],["assets/fonts/CormorantGaramond-OFL.txt","CormorantGaramond-OFL.txt"]]) await cp(source,"dist/licenses/"+name);
 let html=await readFile("dist/index.html","utf8");
 html=html.replace(/<link\b[^>]*rel="(?:manifest|icon|apple-touch-icon)"[^>]*>/g,"")
   .replace(/<meta\b[^>]*name="(?:theme-color|apple-mobile-web-app-capable|apple-mobile-web-app-title)"[^>]*>/g,"");

@@ -45,11 +45,11 @@ async function downloadFrom(page: Page, trigger: () => Promise<unknown>) {
 
 test("aus Sammlung sofort schreiben und nach Neustart, schneller Eingabe und Offline-Wechsel weiterlesen", async ({ page, context }) => {
   await page.goto("/sammlung");
-  await button(page, "Notizen").click();
+  await expect(button(page, "Notizen")).toHaveCount(0);
   await expect(page.getByText("Hier ist Platz für deine Gedanken.", { exact: true })).toBeVisible();
   await button(page, "Neue Notiz").click();
   await expect(note(page)).toBeFocused();
-  await button(page, "Notizen").click();
+  await button(page, "Sammlung").click();
   expect((await rawData(page))?.data.notebook).toBeUndefined();
   await expect(page.getByText("Für den Offline-Neustart bereit.", { exact: true })).toBeVisible();
   await context.setOffline(true);
@@ -57,9 +57,9 @@ test("aus Sammlung sofort schreiben und nach Neustart, schneller Eingabe und Off
   await note(page).pressSequentially("Heute schreibe ich schnell.");
   const final = "Mein erster Eintrag\n\nEine zweite Zeile.\nEine dritte Zeile 🌿";
   await note(page).fill(final);
-  await button(page, "Notizen").click();
+  await button(page, "Sammlung").click();
   await expect(button(page, "Notiz öffnen: Mein erster Eintrag")).toBeVisible();
-  await expect(page).toHaveURL(/\/notizen$/);
+  await expect(page).toHaveURL(/\/sammlung$/);
   await page.reload();
   await button(page, "Notiz öffnen: Mein erster Eintrag").click();
   await expect(note(page)).toHaveValue(final);
@@ -98,17 +98,17 @@ test("nach komplettem Chromium-Neustart bleibt die zuletzt geschriebene Fassung 
 test("Suche, Datum, Anheften und bestätigtes Löschen mit Wiederherstellung", async ({ page }) => {
   await page.goto("/notizen");
   await newNote(page, "Ein erster Titel\nWorte, die Orientierung geben.");
-  await button(page, "Notizen").click();
+  await button(page, "Sammlung").click();
   await newNote(page, "Ein zweiter Titel\nEin anderer Eintrag.");
-  await button(page, "Notizen").click();
+  await button(page, "Sammlung").click();
   await expect(rows(page).first()).toHaveAccessibleName("Notiz öffnen: Ein zweiter Titel");
-  await field(page, "Notizen suchen").fill("ORIENTIERUNG");
+  await field(page, "Deine Sammlung durchsuchen").fill("ORIENTIERUNG");
   await expect(rows(page)).toHaveCount(1);
   await button(page, "Notiz öffnen: Ein erster Titel").click();
   await button(page, "Optionen").click();
   await button(page, "Notiz anheften").click();
-  await button(page, "Notizen").click();
-  await field(page, "Notizen suchen").fill("");
+  await button(page, "Sammlung").click();
+  await field(page, "Deine Sammlung durchsuchen").fill("");
   await expect(page.getByRole("heading", { name: "Angeheftet" })).toBeVisible();
   await expect(rows(page).first()).toHaveAccessibleName("Notiz öffnen: Ein erster Titel");
   await button(page, "Notiz öffnen: Ein erster Titel").click();
@@ -125,7 +125,7 @@ test("Suche, Datum, Anheften und bestätigtes Löschen mit Wiederherstellung", a
   await expect(page.getByText("Ein erster Titel", { exact: true })).toBeVisible();
   await button(page, "Wiederherstellen").click();
   await expect(page.getByText("Hier ist gerade nichts gelöscht.", { exact: true })).toBeVisible();
-  await button(page, "Notizen").click();
+  await button(page, "Sammlung").click();
   await expect(rows(page)).toHaveCount(2);
 });
 

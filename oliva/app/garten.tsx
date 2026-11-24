@@ -22,7 +22,7 @@ export default function Garden() {
     [gallery, setGallery] = useState(false),
     [loadedStage, setLoadedStage] = useState<number | null>(null),
     stage = preview ?? data.growthStage,
-    treeSize = Math.min(width - 90, 380),
+    treeSize = Math.min(width - 90, stage === 0 && width < 600 ? 198 : 380),
     treeHeight = Math.max(120, treeLayout(a51Stage(stage), treeSize).height),
     history = useMemo(() => personalTreeHistory(data), [data.goals, data.notes, data.growthStage]),
     links = preview === null && loadedStage === data.growthStage ? personalTreeLinks(history, treeSize, fontScale, treeHeight) : [];

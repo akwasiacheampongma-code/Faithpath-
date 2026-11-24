@@ -97,10 +97,11 @@ test("Reflexionsentwürfe führen über die Sammlung zur richtigen Einheit und b
   expect(data.drafts).toEqual([]); expect(note.text).toBe(text); expect(note.kind).toBe("reflection");
   expect(note.captureSource).toEqual((draft.values as any).source); expect(note.ref).toEqual(psalm.references[0]);
   expect(data.readChapters).toEqual([]); expect(data.storyStudy.answers).toEqual({});
-  await page.goto("/sammlung"); await expect(page.getByText("Original-Reflexionsimpuls: " + psalm.reflection, { exact: true })).toBeVisible();
-  await button(page, "Bearbeiten").click();
+  await page.goto("/sammlung");
+  await page.getByTestId(`collection-note-${note.id}`).click();
+  await expect(page.getByText("Original-Reflexionsimpuls: " + psalm.reflection, { exact: true })).toBeVisible();
   await page.getByRole("textbox", { name: "Deine Worte", exact: true }).fill("Weitergedacht und bewahrt.");
-  await button(page, "Gedanken speichern").click();
+  await button(page, "Sammlung").click();
   await expect.poll(async () => (await localData(page)).notes[0]?.text).toBe("Weitergedacht und bewahrt.");
   expect((await localData(page)).notes[0]?.captureSource).toEqual(note.captureSource);
 });

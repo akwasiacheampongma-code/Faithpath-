@@ -8,7 +8,7 @@ import { useApp } from "../../state/store";
 import type { LearningPath } from "./catalog";
 
 /** Compact overview only; the shared Today card and all path content stay intact. */
-export function PathListItem({ path }: { path: LearningPath }) {
+export function PathListItem({ path, featured = false }: { path: LearningPath; featured?: boolean }) {
   const t = useTheme(),
     completed = useApp((s) => s.data.completedSteps.filter((key) => key.startsWith(path.id + ":")).length);
   return (
@@ -18,9 +18,10 @@ export function PathListItem({ path }: { path: LearningPath }) {
       accessibilityLabel={`${path.title}, ${path.minutes !== undefined ? path.minutes + " Minuten" : path.steps.length + " Bibelabschnitte"}, ${completed} von ${path.steps.length} Schritten`}
       onPress={() => router.push({ pathname: "/weg/[id]", params: { id: path.id } })}
       style={({ pressed }) => ({
-        width: "100%", minHeight: 132, paddingVertical: 16, paddingHorizontal: 2,
+        width: "100%", minHeight: featured ? 120 : 112, paddingVertical: 12, paddingHorizontal: featured ? 12 : 2,
         flexDirection: "row", alignItems: "center", gap: 14,
-        borderBottomWidth: 1, borderBottomColor: t.line, opacity: pressed ? 0.75 : 1,
+        borderBottomWidth: 1, borderColor: t.line, borderWidth: featured ? 1 : 0, borderRadius: featured ? 18 : 0,
+        backgroundColor: featured ? t.soft : "transparent", opacity: pressed ? 0.75 : 1,
       })}
     >
       <Image source={artSources[path.art]} resizeMode="cover" accessible={false}

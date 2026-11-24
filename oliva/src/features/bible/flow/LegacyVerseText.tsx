@@ -21,10 +21,11 @@ type LegacyVerseTextProps = {
   selectedVerses?: FlowTextProps["selectedVerses"];
   focusRange?: FlowTextProps["focusRange"];
   fontSize: number;
+  fontFamily?: FlowTextProps["fontFamily"];
   lineHeight: number;
   highlights: Record<string, HighlightColor>;
   bookmarks: readonly string[];
-  position: Pick<
+  position?: Pick<
     ReturnType<typeof useReaderPosition>,
     "verseRef" | "verseLayout"
   >;
@@ -42,6 +43,7 @@ export const LegacyVerseText = forwardRef<FlowTextHandle, LegacyVerseTextProps>(
       selectedVerses,
       focusRange,
       fontSize,
+      fontFamily = "Cormorant",
       lineHeight,
       highlights,
       bookmarks,
@@ -79,9 +81,9 @@ export const LegacyVerseText = forwardRef<FlowTextHandle, LegacyVerseTextProps>(
           return (
             <View
               key={key}
-              ref={(node) => position.verseRef(verse.n, node)}
+              ref={(node) => position?.verseRef(verse.n, node)}
               collapsable={false}
-              onLayout={(event) => position.verseLayout(verse.n, event)}
+              onLayout={(event) => position?.verseLayout(verse.n, event)}
             >
               <Pressable
                 ref={(node) => {
@@ -113,7 +115,7 @@ export const LegacyVerseText = forwardRef<FlowTextHandle, LegacyVerseTextProps>(
               >
                 <T
                   style={{
-                    fontFamily: "Cormorant",
+                    fontFamily,
                     fontSize,
                     lineHeight: fontSize * lineHeight,
                   }}

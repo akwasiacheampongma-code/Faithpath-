@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { T, Button, Card } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
+import { chooseReaderFont, useReaderFont } from "./reader-font";
 import { useApp } from "../../state/store";
 
 export function ReaderPreferences({
@@ -9,13 +10,16 @@ export function ReaderPreferences({
   onFlowChange,
   onClose,
   onOpenNotes,
+  onEditions,
 }: {
   flow: boolean;
   unavailable: boolean;
   onFlowChange: (flow: boolean) => void;
   onClose: () => void;
-  onOpenNotes: () => void;
+  onOpenNotes?: () => void;
+  onEditions?: () => void;
 }) {
+  const font = useReaderFont();
   const t = useTheme(),
     settings = useApp((s) => s.data.settings),
     mutate = useApp((s) => s.mutate),
@@ -85,6 +89,13 @@ export function ReaderPreferences({
           </Button>
         ))}
       </View>
+      <T variant="small">Schriftbild</T>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
+        <Button kind={font === "Cormorant" ? "primary" : "secondary"} icon={null}
+          selected={font === "Cormorant"} onPress={() => chooseReaderFont("Cormorant")}>Buchschrift</Button>
+        <Button kind={font === "DMSans" ? "primary" : "secondary"} icon={null}
+          selected={font === "DMSans"} onPress={() => chooseReaderFont("DMSans")}>Serifenlos</Button>
+      </View>
       <T variant="small">Textdarstellung</T>
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
         <Button
@@ -108,7 +119,8 @@ export function ReaderPreferences({
           werden. Die Einzelverse bleiben vollständig lesbar.
         </T>
       )}
-      <Button kind="secondary" icon="pen" onPress={onOpenNotes}>Notizen zu diesem Kapitel</Button>
+      {onEditions && <Button kind="secondary" icon="book" onPress={onEditions}>Bibelübersetzung wählen</Button>}
+      {onOpenNotes && <Button kind="secondary" icon="pen" onPress={onOpenNotes}>Notizen zu diesem Kapitel</Button>}
       <Button kind="ghost" icon="check" onPress={onClose}>
         Leseeinstellungen schließen
       </Button>

@@ -9,6 +9,7 @@ import { captureBibleDestination } from "./capture-presentation";
 import type { Draft } from "./schema";
 import { useVolatileDrafts, volatileExport } from "./volatile-drafts";
 import { exportText } from "../../services/storage";
+import { normalizeCollectionText } from "./collection-model";
 export function draftDestination(draft: Draft): { label: string; href: Href } {
   switch (draft.type) {
     case "capture": {
@@ -40,7 +41,7 @@ export function draftDestination(draft: Draft): { label: string; href: Href } {
       }
     }
     case "journal":
-      return { label: "Deine Journalworte", href: "/sammlung" };
+      return { label: "Deine Journalworte", href: { pathname: "/sammlung", params: { draft: draft.id } } };
     case "goal":
       return {
         label: draft.values.title || "Dein Vorhaben",
@@ -68,7 +69,7 @@ export function draftDestination(draft: Draft): { label: string; href: Href } {
       };
   }
 }
-export function DraftLinks({ onJournal }: { onJournal?: () => void }) {
+export function DraftLinks({ query = "", hasOtherDrafts = false }: { query?: string; hasOtherDrafts?: boolean }) {
   const [message, setMessage] = useState("");
   const durable = useApp((s) => s.data.drafts),
     held = useVolatileDrafts((s) => s.items),
@@ -79,13 +80,14 @@ export function DraftLinks({ onJournal }: { onJournal?: () => void }) {
         .map((x) => x.draft),
     ],
     t = useTheme();
+  const needle = normalizeCollectionText(query);
+  const visible = drafts.flatMap((draft) => {
+    const destination = draftDestination(draft);
+    const preview = "text" in draft.values ? draft.values.text : "why" in draft.values ? draft.values.why : "";
+    return normalizeCollectionText(`${destination.label} ${preview}`).includes(needle) ? [{ draft, destination, preview }] : [];
+  });
   return (
-    <View style={{ gap: 14 }}>
-      <T variant="heading">Was du begonnen hast.</T>
-      <T variant="small" style={{ color: t.muted }}>
-        Entwürfe sind privat auf diesem Gerät. Sie schließen keinen Lernschritt
-        ab und bestätigen keine Erfahrung.
-      </T>
+    <View style={{ gap: 12 }}>
       {Object.keys(held).length > 0 && (
         <>
           <T variant="small" style={{ color: t.danger }}>
@@ -116,10 +118,9 @@ export function DraftLinks({ onJournal }: { onJournal?: () => void }) {
           {message}
         </T>
       )}
-      {drafts.map((d) => {
-        const destination = draftDestination(d);
+      {visible.map(({ draft: d, destination, preview }) => {
         return (
-          <Card key={d.id} style={{ gap: 12 }}>
+          <View key={d.id} style={{ gap: 5, paddingVertical: 8, alignItems: "flex-start", borderBottomWidth: 1, borderColor: t.line }}>
             <Tag icon="pen">
               {held[d.key]
                 ? held[d.key]?.reason === "error"
@@ -127,35 +128,21 @@ export function DraftLinks({ onJournal }: { onJournal?: () => void }) {
                   : "Wird noch gesichert"
                 : "Gesicherter Entwurf"}
             </Tag>
-            <T style={{ fontWeight: "600", fontSize: 13 }}>
-              {destination.label}
-            </T>
-            <T variant="small" numberOfLines={3}>
-              {"text" in d.values
-                ? d.values.text
-                : "why" in d.values
-                  ? d.values.why
-                  : ""}
-            </T>
+            {!!preview && <T variant="small" numberOfLines={2}>{preview}</T>}
             <Button
-              kind="secondary"
+              kind="ghost"
               icon="pen"
-              onPress={() =>
-                d.type === "journal" && onJournal
-                  ? onJournal()
-                  : router.push(destination.href)
-              }
+              onPress={() => router.push(destination.href)}
             >
               Entwurf fortsetzen: {destination.label}
             </Button>
-          </Card>
+          </View>
         );
       })}
-      {!drafts.length && (
+      {!visible.length && !hasOtherDrafts && (
         <Card>
           <T variant="small" style={{ color: t.muted }}>
-            Gerade wartet kein Entwurf. Deine fertigen Einträge findest du unter
-            „Gedanken“.
+            {needle ? "Kein passender Entwurf gefunden." : "Hier wartet gerade kein Entwurf."}
           </T>
         </Card>
       )}

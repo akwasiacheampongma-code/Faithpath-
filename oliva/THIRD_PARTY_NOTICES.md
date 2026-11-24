@@ -84,3 +84,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
+
+## Open Translation Bible · Deutsch
+
+Open Translation Bible (OTB), Deutsch (de-DE) · © OpenBible. Der Text und seine OLIVA-Importdateien stehen unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Die Verswörter werden unverändert übernommen. Markdown-Zitatzeichen und Trennlinien werden für die Anzeige entfernt. Anmerkungen werden separat angezeigt. Namensnennung, Lizenzlink, Kennzeichnung von Änderungen und Weitergabe unter derselben Lizenz gelten für Bearbeitungen des Textes. Der App-Code behält seine eigene Lizenz. [Originalquelle](https://github.com/OpenTranslationBible/open-bible/tree/31d411ac1c2d277242a3bd85697f354eaa11526b/lang/de-DE) · [Bedingungen](https://openbible.uk/en-GB/terms-and-conditions/) · [Nachweis und Import](content/open-bible-de/README.md)

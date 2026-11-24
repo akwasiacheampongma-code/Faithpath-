@@ -1,519 +1,142 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { View } from "react-native";
-import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
-import { T, Button, Card, Field, Tag } from "../src/components/ui";
+import { Button, Field, IconButton, T } from "../src/components/ui";
 import { useTheme } from "../src/design-system/theme";
-import { useApp } from "../src/state/store";
-import {
-  referenceLabel,
-  getPassage,
-} from "../src/features/bible/repository";
-import { type Note } from "../src/state/model";
-import { JournalEditor } from "../src/features/personal/Editors";
-import { journalDraft } from "../src/features/personal/model";
+import { getPassage, referenceLabel } from "../src/features/bible/repository";
 import { highlightBackground } from "../src/features/bible/highlights";
-import { DraftLinks } from "../src/features/personal/DraftLinks";
-import { CaptureContext } from "../src/features/personal/CaptureContext";
-import { captureBibleDestination } from "../src/features/personal/capture-presentation";
+import { resumeNotebookEdits } from "../src/features/notebook/autosave";
+import { NoteListRow } from "../src/features/notebook/NoteListRow";
+import { usePendingNotes } from "../src/features/notebook/pending";
+import { CollectionEntry } from "../src/features/personal/CollectionEntry";
 import { CollectionSections, type CollectionSection } from "../src/features/personal/CollectionSections";
+import {
+  collectionRows,
+  collectionSections,
+  normalizeCollectionText,
+} from "../src/features/personal/collection-model";
+import { DraftLinks } from "../src/features/personal/DraftLinks";
+import { newId } from "../src/features/personal/schema";
+import { useVolatileDrafts } from "../src/features/personal/volatile-drafts";
+import { useApp } from "../src/state/store";
 
-const sections = ["Gedanken", "Entwürfe", "Lesezeichen", "Markierungen"] as const;
 export default function Collection() {
-  const {
-    tab: requestedTab,
-    note: requestedNote,
-    view: requestedView,
-  } = useLocalSearchParams<{
-    tab?: string;
-    note?: string;
-    view?: string;
-  }>();
-  const handledNote = useRef<string | undefined>(undefined);
-  const t = useTheme(),
-    data = useApp((s) => s.data),
-    mutate = useApp((s) => s.mutate),
-    busy = useApp((s) => s.busy),
-    [tab, setTab] = useState<CollectionSection>(
-      requestedTab === "Entwürfe" ? "Entwürfe" : "Gedanken",
-    ),
-    [query, setQuery] = useState(""),
-    [deleting, setDeleting] = useState<string | null>(null),
-    [lastDeleted, setLastDeleted] = useState<Note | null>(null),
-    [showForm, setShowForm] = useState(false);
-  useEffect(() => {
-    if (requestedTab === "Entwürfe") {
-      setTab("Entwürfe");
-      setQuery("");
-    }
-  }, [requestedTab]);
-  const [editorMessage, setEditorMessage] = useState("");
-  const pendingDraft = data.drafts.find((d) => d.key === "journal");
-  const draft = pendingDraft?.type === "journal" ? pendingDraft : undefined;
-  // Invitation links reveal the existing thought without starting an edit or
-  // replacing another draft. Editing remains a separate, explicit action.
-  useFocusEffect(
-    useCallback(() => {
-      if (requestedNote && requestedView === "read") {
-        setTab("Gedanken");
-        setQuery("");
-        setShowForm(false);
-        setEditorMessage("");
-      }
-    }, [requestedNote, requestedView]),
-  );
-  useEffect(() => {
-    if (requestedView === "read") return;
-    if (requestedNote && requestedNote !== handledNote.current) {
-      const note = data.notes.find((n) => n.id === requestedNote);
-      if (note) {
-        handledNote.current = requestedNote;
-        setTab("Gedanken");
-        void openEditor(note);
-      }
-    }
-  }, [requestedNote, requestedView, data.notes]);
-  async function openEditor(note?: Note) {
-    if (draft) {
-      if (note && draft.values.targetId !== note.id) {
-        setEditorMessage(
-          "Du hast einen anderen Entwurf. Setze ihn fort oder verwirf ihn im Editor ausdrücklich, bevor du einen anderen Gedanken bearbeitest.",
-        );
-        setShowForm(true);
-        return;
-      }
-      setShowForm(true);
-      setEditorMessage("");
-      return;
-    }
-    const saved = await useApp
-      .getState()
-      .saveEditorDraft(journalDraft(note), null);
-    if (saved) {
-      setShowForm(true);
-      setEditorMessage("");
-    }
+  const { tab, note, view, draft } = useLocalSearchParams<{ tab?: string; note?: string; view?: string; draft?: string }>();
+  if (note || draft) {
+    return <CollectionEntry key={JSON.stringify([note, draft, view])} noteId={note} draftId={draft} rediscovered={view === "read"} />;
   }
-  async function remove(note: Note) {
-    if (
-      await mutate((d) => {
-        d.notes = d.notes.filter((n) => n.id !== note.id);
-      })
-    ) {
-      setLastDeleted(note);
-      setDeleting(null);
-    }
-  }
-  async function undo() {
-    if (
-      lastDeleted &&
-      (await mutate((d) => {
-        if (!d.notes.some((n) => n.id === lastDeleted.id))
-          d.notes.unshift(lastDeleted);
-      }))
-    ) {
-      setLastDeleted(null);
-    }
-  }
-  const labels = {
-    note: "Gedanke",
-    reflection: "Reflexion",
-    action: "Erfahrung",
-  };
-  return (
-    <Shell>
-      <T
-        variant="title"
-        accessibilityRole="header"
-        style={{ fontSize: 34, lineHeight: 40, marginBottom: 6 }}
-      >
-        Deine Sammlung.
-      </T>
-      <T style={{ fontSize: 13, lineHeight: 21, color: t.muted, marginBottom: 14 }}>
-        Hier findest du deine Gedanken und das, was du beim Lesen festgehalten hast. Deine Einträge bleiben auf diesem Gerät.
-      </T>
-      <View style={{ alignItems: "flex-start", marginBottom: 14 }}>
-        <Button kind="secondary" icon="pen" onPress={() => router.push("/notizen")}>Notizen</Button>
-      </View>
-      <View style={{ marginBottom: 16 }}>
-        <CollectionSections sections={sections} current={tab} onChange={section => {
-          setTab(section);
-          setQuery("");
-        }} />
-      </View>
-      {tab !== "Entwürfe" && (
-        <Field
-          label="Deine Sammlung durchsuchen"
-          value={query}
-          onChangeText={setQuery}
-          placeholder="Deine Suchwörter …"
-        />
-      )}
-      <View style={{ height: 14 }} />
-      {tab === "Entwürfe" ? (
-        <DraftLinks
-          onJournal={() => {
-            setTab("Gedanken");
-            void openEditor();
-          }}
-        />
-      ) : tab === "Gedanken" ? (
-        <View style={{ gap: 17 }}>
-          {requestedView === "read" &&
-            requestedNote &&
-            !data.notes.some((note) => note.id === requestedNote) && (
-              <Card>
-                <T>
-                  Dieser Gedanke ist nicht mehr in deiner Sammlung. Deine
-                  übrigen Einträge bleiben hier sichtbar.
-                </T>
-              </Card>
-            )}
-          <View style={{ alignItems: "flex-start" }}>
-            <Button
-              icon="pen"
-              onPress={() => {
-                if (showForm) setShowForm(false);
-                else void openEditor();
-              }}
-            >
-              {showForm
-                ? "Editor schließen"
-                : draft
-                  ? "Entwurf fortsetzen"
-                  : "Einen Gedanken festhalten"}
-            </Button>
-          </View>
-          {editorMessage && (
-            <T accessibilityRole="alert" style={{ fontSize: 12 }}>
-              {editorMessage}
-            </T>
-          )}
-          {!showForm && draft && (
-            <Card style={{ gap: 9 }}>
-              <T>Dein Entwurf wartet auf dich.</T>
-              <T style={{ fontSize: 11, color: t.muted }}>
-                Auch nach einem Neustart kannst du deine bisherigen Worte
-                fortsetzen.
-              </T>
-            </Card>
-          )}
-          {showForm && draft && (
-            <JournalEditor
-              key={draft.id}
-              draft={draft}
-              onDone={() => {
-                setShowForm(false);
-                setEditorMessage("");
-              }}
-            />
-          )}
-          {lastDeleted && (
-            <Card style={{ backgroundColor: t.goldSoft, gap: 10 }}>
-              <T>Eintrag gelöscht.</T>
-              <Button
-                disabled={busy}
-                kind="secondary"
-                icon="back"
-                onPress={() => void undo()}
-              >
-                Rückgängig machen
-              </Button>
-              <T style={{ fontSize: 10, color: t.muted }}>
-                Rückgängig ist hier bis zum Verlassen dieser Ansicht möglich.
-              </T>
-            </Card>
-          )}
-          {data.notes
-            .filter((n) =>
-              n.text
-                .toLocaleLowerCase("de")
-                .includes(query.toLocaleLowerCase("de")),
-            )
-            .sort((a, b) =>
-              requestedView === "read"
-                ? Number(b.id === requestedNote) -
-                  Number(a.id === requestedNote)
-                : 0,
-            )
-            .map((note) => (
-              <Card
-                key={note.id}
-                testID={`collection-note-${note.id}`}
-                style={{
-                  gap: 12,
-                  ...(requestedView === "read" && note.id === requestedNote
-                    ? { backgroundColor: t.goldSoft }
-                    : {}),
-                }}
-              >
-                {requestedView === "read" && note.id === requestedNote && (
-                  <T variant="small" style={{ color: t.muted }}>
-                    Dein wiederentdeckter Gedanke
-                  </T>
-                )}
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    gap: 10,
-                  }}
-                >
-                  <Tag icon={note.kind === "action" ? "leaf" : "pen"}>
-                    {labels[note.kind]}
-                  </Tag>
-                  <T style={{ fontSize: 10, color: t.muted }}>
-                    {new Date(note.createdAt).toLocaleDateString("de-DE")}
-                  </T>
-                </View>
-                <T
-                  style={{
-                    fontFamily: "Cormorant",
-                    fontSize: 25,
-                    lineHeight: 34,
-                  }}
-                >
-                  {note.text}
-                </T>
-                {note.ref && (
-                  <Button
-                    kind="ghost"
-                    icon="book"
-                    onPress={() =>
-                      router.push(note.captureSource?.type === "passage" ? captureBibleDestination(note.captureSource) : {
-                        pathname: "/lesen/[book]",
-                        params: {
-                          book: note.ref!.book,
-                          chapter: note.ref!.chapter,
-                          ...(note.ref!.from !== undefined && note.ref!.to !== undefined && note.ref!.to > note.ref!.from ? { from: note.ref!.from, to: note.ref!.to } : {}),
-                          verse: note.ref!.from,
-                        },
-                      })
-                    }
-                  >
-                    {referenceLabel(note.ref)}
-                  </Button>
-                )}
-                {note.captureSource && (
-                  <CaptureContext source={note.captureSource} />
-                )}
-                {note.origin && (
-                  <View style={{ gap: 8 }}>
-                    <T variant="small" style={{ color: t.muted }}>
-                      Aus FaithPath ·{" "}
-                      {note.origin.referenceLabel ?? "eigene Worte"}
-                    </T>
-                    {note.goalIds?.map((id) => {
-                      const goal = data.goals.find((g) => g.id === id);
-                      return goal ? (
-                        <Button
-                          key={id}
-                          kind="ghost"
-                          icon="path"
-                          onPress={() =>
-                            router.push({
-                              pathname: "/vorhaben/[id]",
-                              params: { id },
-                            })
-                          }
-                        >
-                          {goal.title}
-                        </Button>
-                      ) : null;
-                    })}
-                    <Button
-                      kind="ghost"
-                      icon="info"
-                      onPress={() =>
-                        router.push({
-                          pathname: "/importarchiv/[id]",
-                          params: { id: note.origin!.importId },
-                        })
-                      }
-                    >
-                      Originalquelle dieses Gedankens
-                    </Button>
-                  </View>
-                )}
-                <View
-                  style={{ flexDirection: "row", gap: 7, flexWrap: "wrap" }}
-                >
-                  <Button
-                    kind="ghost"
-                    icon="pen"
-                    onPress={() => {
-                      void openEditor(note);
-                    }}
-                  >
-                    Bearbeiten
-                  </Button>
-                  <Button
-                    kind="ghost"
-                    icon="close"
-                    onPress={() =>
-                      setDeleting(deleting === note.id ? null : note.id)
-                    }
-                  >
-                    Löschen
-                  </Button>
-                </View>
-                {deleting === note.id && (
-                  <View
-                    style={{
-                      gap: 10,
-                      borderTopWidth: 1,
-                      borderColor: t.line,
-                      paddingTop: 15,
-                    }}
-                  >
-                    <T style={{ fontSize: 12 }}>
-                      Diesen persönlichen Eintrag wirklich löschen?
-                    </T>
-                    <Button
-                      kind="secondary"
-                      disabled={busy}
-                      icon="close"
-                      onPress={() => void remove(note)}
-                    >
-                      Eintrag jetzt löschen
-                    </Button>
-                    <Button
-                      kind="ghost"
-                      icon={null}
-                      onPress={() => setDeleting(null)}
-                    >
-                      Behalten
-                    </Button>
-                  </View>
-                )}
-              </Card>
-            ))}
-          {!data.notes.filter((n) =>
-            n.text
-              .toLocaleLowerCase("de")
-              .includes(query.toLocaleLowerCase("de")),
-          ).length && (
-            <Empty
-              text={
-                query
-                  ? "Kein passender Gedanke gefunden."
-                  : "Deine Sammlung darf langsam wachsen. Halte einen ersten Gedanken fest, wenn du möchtest."
-              }
-            />
-          )}
-        </View>
-      ) : (
-        <View style={{ gap: 14 }}>
-          {(tab === "Lesezeichen"
-            ? data.bookmarks
-            : Object.keys(data.highlights)
-          )
-            .filter((key) => {
-              const [book, c, v] = key.split(":");
-              const ref = {
-                book: book!,
-                chapter: Number(c),
-                from: Number(v),
-                to: Number(v),
-              };
-              return `${referenceLabel(ref)} ${getPassage(ref)[0]?.text}`
-                .toLocaleLowerCase("de")
-                .includes(query.toLocaleLowerCase("de"));
-            })
-            .map((key) => {
-              const [book, c, v] = key.split(":"),
-                ref = {
-                  book: book!,
-                  chapter: Number(c),
-                  from: Number(v),
-                  to: Number(v),
-                };
-              return (
-                <Card
-                  key={key}
-                  style={{
-                    gap: 12,
-                    backgroundColor:
-                      tab === "Markierungen"
-                        ? highlightBackground(data.highlights[key], t.dark)
-                        : t.surface,
-                  }}
-                >
-                  <T variant="label" style={{ fontSize: 9, color: t.gold }}>
-                    {referenceLabel(ref)}
-                  </T>
-                  <T
-                    style={{
-                      fontFamily: "Cormorant",
-                      fontSize: 25,
-                      lineHeight: 33,
-                    }}
-                  >
-                    {getPassage(ref)[0]?.text}
-                  </T>
-                  <View
-                    style={{ flexDirection: "row", gap: 10, flexWrap: "wrap" }}
-                  >
-                    <Button
-                      icon="book"
-                      kind="ghost"
-                      onPress={() =>
-                        router.push({
-                          pathname: "/lesen/[book]",
-                          params: {
-                            book: ref.book,
-                            chapter: ref.chapter,
-                            verse: ref.from,
-                          },
-                        })
-                      }
-                    >
-                      Im Kapitel öffnen
-                    </Button>
-                    <Button
-                      icon="close"
-                      disabled={busy}
-                      kind="ghost"
-                      onPress={() =>
-                        void mutate((d) => {
-                          if (tab === "Lesezeichen")
-                            d.bookmarks = d.bookmarks.filter((k) => k !== key);
-                          else delete d.highlights[key];
-                        })
-                      }
-                    >
-                      Entfernen
-                    </Button>
-                  </View>
-                </Card>
-              );
-            })}
-          {(tab === "Lesezeichen"
-            ? data.bookmarks
-            : Object.keys(data.highlights)
-          ).length === 0 && (
-            <Empty
-              text={`Noch keine ${tab.toLocaleLowerCase("de")}. Tippe im Reader auf einen Vers, um ihn hier wiederzufinden.`}
-            />
-          )}
-        </View>
-      )}
-    </Shell>
-  );
+  const section = collectionSections.find((name) => name === tab) ?? "Gedanken";
+  return <CollectionOverview initialSection={section} />;
 }
+
+function CollectionOverview({ initialSection }: { initialSection: CollectionSection }) {
+  const theme = useTheme();
+  const empty = useApp((state) => !state.data.notes.length && !state.data.notebook?.some((note) => !note.deletedAt));
+  const compose = () => router.push({ pathname: "/notizen/[id]", params: { id: newId("notiz"), neu: "1" } });
+  const [section, setSection] = useState(initialSection);
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    setSection(initialSection);
+    setQuery("");
+  }, [initialSection]);
+
+  return <Shell header="compact">
+    <View style={{ gap: 14, width: "100%", maxWidth: 600, alignSelf: "center" }}>
+      <View style={{ flexDirection: "row", alignItems: "center", flexWrap: "wrap", gap: 12, justifyContent: "space-between" }}>
+        <T variant="title" accessibilityRole="header" style={{ flex: 1, minWidth: 128, fontSize: 34, lineHeight: 40 }}>Deine Sammlung.</T>
+        {empty ? <Button kind="secondary" icon="pen" onPress={compose}
+          style={{ maxWidth: "100%", paddingHorizontal: 10 }}>Neue Notiz</Button> :
+          <View style={{ borderRadius: 24, backgroundColor: theme.soft }}>
+            <IconButton name="pen" label="Neue Notiz" onPress={compose} />
+          </View>}
+      </View>
+      <Field label="Deine Sammlung durchsuchen" placeholder="Titel, Text oder Bibelstelle" value={query} onChangeText={setQuery} />
+      <CollectionSections sections={collectionSections} current={section} onChange={(next) => {
+        setSection(next);
+        setQuery("");
+      }} />
+      {section === "Gedanken" || section === "Entwürfe"
+        ? <WrittenEntries draftsOnly={section === "Entwürfe"} query={query} />
+        : <SavedVerses bookmarks={section === "Lesezeichen"} query={query} />}
+    </View>
+  </Shell>;
+}
+
+function WrittenEntries({ draftsOnly, query }: { draftsOnly: boolean; query: string }) {
+  const data = useApp((state) => state.data);
+  const held = useVolatileDrafts((state) => state.items);
+  const pending = usePendingNotes((state) => state.edits);
+  const rows = useMemo(() => collectionRows(data.notes, data.notebook ?? [], pending,
+    data.drafts, Object.values(held).map(({ draft, reason }) => ({ draft, pending: reason === "error" })), query),
+    [data.notes, data.notebook, data.drafts, pending, held, query]);
+  const notes = draftsOnly ? rows.filter((entry) => entry.type === "notebook" && entry.pending) : rows;
+
+  return <View style={{ gap: 10 }}>
+    {!!Object.keys(pending).length && <View style={{ alignItems: "flex-start", gap: 3 }}>
+      <T variant="small" accessibilityLiveRegion="polite">Eine Eingabe wartet noch auf das Speichern.</T>
+      <Button kind="ghost" icon={null} onPress={() => void resumeNotebookEdits()}>Erneut versuchen</Button>
+    </View>}
+    {!!notes.length && <View>
+      {notes.map((entry, index) => {
+        const legacy = entry.type === "legacy";
+        return <View key={`${entry.type}:${entry.id}`}>
+          {entry.pinned && index === 0 && <T variant="label" accessibilityRole="header" style={{ marginTop: 6 }}>Angeheftet</T>}
+          <NoteListRow text={entry.text} updatedAt={entry.updatedAt} context={entry.context} pending={entry.pending}
+            legacy={legacy} testID={`collection-${legacy ? "note" : "notebook"}-${entry.id}`}
+            onOpen={() => router.push(legacy
+              ? { pathname: "/sammlung", params: { note: entry.id } }
+              : { pathname: "/notizen/[id]", params: { id: entry.id } })} />
+        </View>;
+      })}
+    </View>}
+    {draftsOnly ? <DraftLinks query={query} hasOtherDrafts={notes.length > 0} /> : <>
+      {!notes.length && <Empty text={query.trim() ? "Keine passenden Einträge." : "Hier ist Platz für deine Gedanken."} />}
+      <View style={{ alignItems: "flex-start" }}>
+        <Button kind="ghost" icon={null} onPress={() => router.push({ pathname: "/notizen", params: { ansicht: "geloescht" } })}>
+          Zuletzt gelöscht
+        </Button>
+      </View>
+    </>}
+  </View>;
+}
+
+function SavedVerses({ bookmarks, query }: { bookmarks: boolean; query: string }) {
+  const theme = useTheme();
+  const data = useApp((state) => state.data);
+  const busy = useApp((state) => state.busy);
+  const needle = normalizeCollectionText(query);
+  const saved = bookmarks ? data.bookmarks : Object.keys(data.highlights);
+  const rows = saved.flatMap((key) => {
+    const [book, chapter, verse] = key.split(":");
+    if (!book) return [];
+    const ref = { book, chapter: Number(chapter), from: Number(verse), to: Number(verse) };
+    const label = referenceLabel(ref);
+    const text = getPassage(ref)[0]?.text ?? "";
+    return normalizeCollectionText(`${label} ${text}`).includes(needle) ? [{ key, ref, label, text }] : [];
+  });
+  if (!rows.length) {
+    return <Empty text={needle ? "Keine passenden Verse." : bookmarks ? "Deine Lesezeichen findest du hier wieder." : "Deine Markierungen findest du hier wieder."} />;
+  }
+  return <View>
+    {rows.map(({ key, ref, label, text }) => (
+      <View key={key} style={{ paddingVertical: 10, borderBottomWidth: 1, borderColor: theme.line, gap: 5 }}>
+        <T style={{ fontWeight: "700" }}>{label}</T>
+        <T numberOfLines={2} variant="small" style={bookmarks ? undefined : { backgroundColor: highlightBackground(data.highlights[key], theme.dark) }}>{text}</T>
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
+          <Button icon="book" kind="ghost" onPress={() => router.push({
+            pathname: "/lesen/[book]", params: { book: ref.book, chapter: ref.chapter, verse: ref.from },
+          })}>Im Kapitel öffnen</Button>
+          <Button icon="close" kind="ghost" disabled={busy} onPress={() => void useApp.getState().mutate((profile) => {
+            if (bookmarks) profile.bookmarks = profile.bookmarks.filter((entry) => entry !== key);
+            else delete profile.highlights[key];
+          })}>Entfernen</Button>
+        </View>
+      </View>
+    ))}
+  </View>;
+}
+
 function Empty({ text }: { text: string }) {
-  const t = useTheme();
-  return (
-    <Card style={{ padding: 16, backgroundColor: t.soft, borderWidth: 0 }}>
-      <T
-        style={{
-          fontSize: 13,
-          color: t.muted,
-          maxWidth: 400,
-        }}
-      >
-        {text}
-      </T>
-    </Card>
-  );
+  return <T variant="small" style={{ paddingVertical: 14 }}>{text}</T>;
 }

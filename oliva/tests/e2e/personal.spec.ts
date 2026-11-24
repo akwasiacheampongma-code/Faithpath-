@@ -4,7 +4,8 @@ import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import type { AppData } from "../../src/state/model";
 import { readFile } from "node:fs/promises";
-import { localData as local } from "./persistence";
+import { localData as local, rawData } from "./persistence";
+import { legacyJournalDraft, openJournalDraft, seedCollectionProfile } from "./collection-fixture";
 async function saved(page: Page) {
   await expect(
     page.getByText("Entwurf auf diesem Gerät gesichert.", { exact: true }),
@@ -13,13 +14,12 @@ async function saved(page: Page) {
 test("Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf", async ({
   page,
 }) => {
-  await page.goto("/sammlung");
-  await page
-    .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
-    .click();
+  await seedCollectionProfile(page, (data) => { data.drafts = [legacyJournalDraft()]; });
+  await openJournalDraft(page);
   await page
     .getByRole("textbox", { name: "Deine Worte", exact: true })
     .fill("Meine letzten Worte vor dem Bereichswechsel.");
+  await page.getByRole("button", { name: "Sammlung", exact: true }).filter({ visible: true }).click();
   await page
     .getByRole("button", { name: /Profil und Einstellungen$/, exact: true })
     .click();
@@ -37,18 +37,13 @@ test("Sicherung nach einem Bereichswechsel enthält den letzten Journalentwurf",
 test("Journalentwurf überlebt Neustart, Bearbeitung und anschließendes Speichern", async ({
   page,
 }) => {
-  await page.goto("/sammlung");
-  await page
-    .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
-    .click();
+  await seedCollectionProfile(page, (data) => { data.drafts = [legacyJournalDraft()]; });
+  await openJournalDraft(page);
   await page
     .getByRole("textbox", { name: "Deine Worte", exact: true })
     .fill("Diese Frage darf offen bleiben.\nUnd diese Zeile auch.");
   await saved(page);
   await page.reload();
-  await page
-    .getByRole("button", { name: "Entwurf fortsetzen", exact: true })
-    .click();
   await expect(
     page.getByRole("textbox", { name: "Deine Worte", exact: true }),
   ).toHaveValue("Diese Frage darf offen bleiben.\nUnd diese Zeile auch.");
@@ -60,20 +55,18 @@ test("Journalentwurf überlebt Neustart, Bearbeitung und anschließendes Speiche
   ).not.toBeVisible();
   expect((await local(page)).drafts).toHaveLength(0);
   expect((await local(page)).notes).toHaveLength(1);
-  await page.getByRole("button", { name: "Bearbeiten", exact: true }).click();
+  await page.getByRole("button", { name: "Gedanken", exact: true }).click();
+  await page.getByRole("button", { name: "Eintrag öffnen: Diese Frage darf offen bleiben.", exact: true }).click();
   await page
     .getByRole("textbox", { name: "Deine Worte", exact: true })
     .fill("Meine inzwischen weitergedachten Worte.");
   await saved(page);
   await page.reload();
-  await page
-    .getByRole("button", { name: "Entwurf fortsetzen", exact: true })
-    .click();
   await expect(
     page.getByRole("textbox", { name: "Deine Worte", exact: true }),
   ).toHaveValue("Meine inzwischen weitergedachten Worte.");
   await page
-    .getByRole("button", { name: "Gedanken speichern", exact: true })
+    .getByRole("button", { name: "Sammlung", exact: true })
     .click();
   await expect
     .poll(async () => (await local(page)).notes[0]?.text)
@@ -200,10 +193,8 @@ test("Vorhaben, Schritte, Rückblick-Snapshot und Archiv funktionieren zusammen"
 test("Ungespeicherte Entwurfsworte werden erst nach ausdrücklichem Verwerfen gelöscht", async ({
   page,
 }) => {
-  await page.goto("/sammlung");
-  await page
-    .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
-    .click();
+  await seedCollectionProfile(page, (data) => { data.drafts = [legacyJournalDraft()]; });
+  await openJournalDraft(page);
   await page
     .getByRole("textbox", { name: "Deine Worte", exact: true })
     .fill("Diesen Text möchte ich bewusst entscheiden.");
@@ -215,9 +206,6 @@ test("Ungespeicherte Entwurfsworte werden erst nach ausdrücklichem Verwerfen ge
     .getByRole("button", { name: "Entwurf behalten", exact: true })
     .click();
   await page.reload();
-  await page
-    .getByRole("button", { name: "Entwurf fortsetzen", exact: true })
-    .click();
   await expect(
     page.getByRole("textbox", { name: "Deine Worte", exact: true }),
   ).toHaveValue("Diesen Text möchte ich bewusst entscheiden.");
@@ -285,13 +273,17 @@ test("Eine installierte V1-Datenbank wird ohne Verlust weitergeführt", async ({
   await expect(
     page.getByText("Meine alten eigenen Worte.", { exact: true }),
   ).toBeVisible();
-  await page
-    .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
-    .click();
-  expect((await local(page)).version).toBe(11);
+  const before = await rawData(page);
+  await page.getByRole("button", { name: "Eintrag öffnen: Meine alten eigenen Worte.", exact: true }).click();
+  const editor = page.getByRole("textbox", { name: "Deine Worte", exact: true });
+  await expect(editor).toHaveValue("Meine alten eigenen Worte.");
+  expect(await rawData(page)).toEqual(before);
+  await editor.fill("Meine alten eigenen Worte. Ein neuer Satz.");
+  await page.getByRole("button", { name: "Sammlung", exact: true }).filter({ visible: true }).click();
+  await expect.poll(async () => (await local(page)).version).toBe(11);
   expect((await local(page)).readChapters).toEqual(["MRK:4"]);
   expect((await local(page)).growthStage).toBe(3);
-  expect((await local(page)).notes[0]?.text).toBe("Meine alten eigenen Worte.");
+  expect((await local(page)).notes[0]?.text).toBe("Meine alten eigenen Worte. Ein neuer Satz.");
 });
 test("Bibelbezug wird aus einer Versaktion an ein Vorhaben übergeben", async ({
   page,

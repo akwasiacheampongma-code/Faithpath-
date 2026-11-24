@@ -11,6 +11,7 @@ import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import type { AppData } from "../../src/state/model";
 import { localData as local } from "./persistence";
+import { legacyThought, seedCollectionProfile } from "./collection-fixture";
 async function noOverflow(page: Page) {
   expect(
     await page.evaluate(
@@ -152,32 +153,19 @@ test("Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss
 });
 
 test("Journal bearbeiten, löschen und rückgängig machen", async ({ page }) => {
+  const original = "Ein Anfang darf klein sein.";
+  const edited = "Ein Anfang darf langsam wachsen.";
+  await seedCollectionProfile(page, (data) => { data.notes = [legacyThought(original)]; });
   await page.goto("/sammlung");
-  await page
-    .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
-    .click();
-  await page
-    .getByRole("textbox", { name: "Deine Worte", exact: true })
-    .fill("Ein Anfang darf klein sein.");
-  await page
-    .getByRole("button", { name: "Gedanken speichern", exact: true })
-    .click();
-  await expect(
-    page.getByRole("textbox", { name: "Deine Worte", exact: true }),
-  ).not.toBeVisible();
-  await expect(
-    page.getByText("Ein Anfang darf klein sein.", { exact: true }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Bearbeiten", exact: true }).click();
-  await page
-    .getByRole("textbox", { name: "Deine Worte", exact: true })
-    .fill("Ein Anfang darf langsam wachsen.");
-  await page
-    .getByRole("button", { name: "Gedanken speichern", exact: true })
-    .click();
-  await expect(
-    page.getByText("Ein Anfang darf langsam wachsen.", { exact: true }),
-  ).toBeVisible();
+  const open = (text: string) => page.getByRole("button", { name: "Eintrag öffnen: " + text, exact: true });
+  await open(original).click();
+  const editor = page.getByRole("textbox", { name: "Deine Worte", exact: true });
+  await expect(editor).toHaveValue(original);
+  await editor.fill(edited);
+  await page.getByRole("button", { name: "Sammlung", exact: true }).filter({ visible: true }).click();
+  await open(edited).click();
+  await expect(editor).toHaveValue(edited);
+  await page.getByRole("button", { name: "Optionen", exact: true }).click();
   await page.getByRole("button", { name: "Löschen", exact: true }).click();
   await page
     .getByRole("button", { name: "Eintrag jetzt löschen", exact: true })
@@ -195,10 +183,9 @@ test("Journal bearbeiten, löschen und rückgängig machen", async ({ page }) =>
       ),
     )
     .toBe(true);
-  await page.reload();
-  await expect(
-    page.getByText("Ein Anfang darf langsam wachsen.", { exact: true }),
-  ).toBeVisible();
+  await page.goto("/sammlung");
+  await open(edited).click();
+  await expect(editor).toHaveValue(edited);
 });
 
 test("Sicherung exportieren, validieren und mit ausdrücklicher Ersetzung wiederherstellen", async ({
@@ -343,30 +330,19 @@ test("Gleichzeitige Fenster überschreiben keine fremden Änderungen", async ({
 test("Speicherfehler bestätigt keine Notiz und erhält den getippten Text", async ({
   page,
 }) => {
+  await seedCollectionProfile(page, (data) => { data.notes = [legacyThought("Bereits gespeicherter Gedanke")]; });
   await page.goto("/sammlung");
-  await page
-    .getByRole("button", { name: "Einen Gedanken festhalten", exact: true })
-    .click();
-  await page
-    .getByRole("textbox", { name: "Deine Worte", exact: true })
-    .fill("Dieser Text muss erhalten bleiben.");
+  await page.getByRole("button", { name: "Eintrag öffnen: Bereits gespeicherter Gedanke", exact: true }).click();
   await page.evaluate(() => {
     IDBObjectStore.prototype.put = function () {
-      throw new DOMException(
-        "Simulierter voller Speicher",
-        "QuotaExceededError",
-      );
+      throw new DOMException("Simulierter voller Speicher", "QuotaExceededError");
     };
   });
-  await page
-    .getByRole("button", { name: "Gedanken speichern", exact: true })
-    .click();
-  await expect(page.getByText(/Speichern fehlgeschlagen/)).toBeVisible();
-  await expect(
-    page.getByRole("textbox", { name: "Deine Worte", exact: true }),
-  ).toHaveValue("Dieser Text muss erhalten bleiben.");
-  const state = await local(page);
-  expect(state?.notes ?? []).toEqual([]);
+  const editor = page.getByRole("textbox", { name: "Deine Worte", exact: true });
+  await editor.fill("Dieser Text muss erhalten bleiben.");
+  await expect(page.getByText(/Entwurf konnte nicht gesichert werden/)).toBeVisible();
+  await expect(editor).toHaveValue("Dieser Text muss erhalten bleiben.");
+  expect((await local(page)).notes[0]?.text).toBe("Bereits gespeicherter Gedanke");
 });
 
 test("Kernansichten reflowen bei 320, 390, 768 und 1440 Pixeln; Axe-Prüfung", async ({

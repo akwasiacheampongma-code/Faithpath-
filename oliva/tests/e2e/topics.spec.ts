@@ -21,7 +21,7 @@ async function read(page: Page) {
 
 test("alle 18 Originalthemen bleiben von den neun Wegen getrennt; reines Entdecken speichert keinen Fortschritt", async ({ page }) => {
   await page.goto("/wege");
-  await button(page, "18 Lebensthemen entdecken").click();
+  await button(page, "Themen").click();
   await expect(page.getByText("18 Themen", { exact: true })).toBeVisible();
   for (const t of topics) await expect(button(page, `${t.title}, ${t.steps.length} Bibelabschnitte`)).toHaveCount(1);
   await page.getByRole("textbox", { name: "Ein Thema finden", exact: true }).fill(" über forde rung ");
@@ -90,9 +90,9 @@ test("originaler Arbeitskontext und getrennte OLIVA-Einordnung bleiben im Entwur
   expect(note.captureSource).toEqual(source); expect(note.text).toBe(text);
   expect((await localData(page)).completedSteps).toEqual(["faithpath-topic-arbeit:0"]);
   await page.goto("/sammlung");
-  await button(page, "Bearbeiten").click();
+  await page.getByTestId(`collection-note-${note.id}`).click();
   await page.getByRole("textbox", { name: "Deine Worte", exact: true }).fill("Weitergedacht, ohne die Herkunft zu verändern.");
-  await button(page, "Gedanken speichern").click();
+  await button(page, "Sammlung").click();
   await expect.poll(async () => (await localData(page)).notes[0]?.text).toBe("Weitergedacht, ohne die Herkunft zu verändern.");
   expect((await localData(page)).notes[0]?.captureSource).toEqual(source);
 });

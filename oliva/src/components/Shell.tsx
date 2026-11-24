@@ -17,7 +17,7 @@ import { ViewportSignals, useViewportSignals } from "./viewport";
 const nav: { path: Href; label: string; icon: IconName }[] = [
   { path: "/", label: "Heute", icon: "home" },
   { path: "/bibel", label: "Bibel", icon: "book" },
-  { path: "/wege", label: "Wege", icon: "path" },
+  { path: "/wege", label: "Entdecken", icon: "path" },
   { path: "/garten", label: "Mein Garten", icon: "leaf" },
   { path: "/sammlung", label: "Sammlung", icon: "bookmark" },
 ];
@@ -121,8 +121,8 @@ export function Shell({
   const item = (n: (typeof nav)[number], compact = false) => {
     const active =
       path === n.path ||
-      (n.path === "/wege" && path.startsWith("/vorhaben")) ||
-      (n.path === "/bibel" && ["/buch/", "/geschichte/", "/geschichten"].some((prefix) => path.startsWith(prefix)));
+      (n.path === "/wege" && ["/vorhaben", "/weg/", "/themen", "/geschichte/", "/geschichten"].some((prefix) => path.startsWith(prefix))) ||
+      (n.path === "/bibel" && ["/buch/", "/offen/"].some((prefix) => path.startsWith(prefix)));
     return (
       <Pressable
         key={String(n.path)}

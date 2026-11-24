@@ -160,7 +160,7 @@ test("zwei Versentwürfe bleiben beim Wechsel getrennt und werden über die Übe
     .getByRole("textbox", { name: "Deine Worte", exact: true })
     .fill("Meine weitergedachten Worte zu Vers 35.");
   await page
-    .getByRole("button", { name: "Gedanken speichern", exact: true })
+    .getByRole("button", { name: "Sammlung", exact: true })
     .click();
   await expect
     .poll(async () => (await local(page)).notes[0]?.text)
@@ -225,6 +225,7 @@ test("Reflexionsentwurf im Lernweg überlebt Neustart und schließt nur auf ausd
   expect(data.drafts).toEqual([]);
   expect(data.notes[0]?.captureSource?.type).toBe("guided");
   await page.goto("/sammlung");
+  await page.getByTestId(`collection-note-${data.notes[0]!.id}`).click();
   await page
     .getByRole("button", {
       name: "Damals gezeigte Einordnung ansehen",

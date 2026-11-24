@@ -6,6 +6,7 @@ import { T, Button, Card, IconButton, Tag } from "../../src/components/ui";
 import { useTheme } from "../../src/design-system/theme";
 import { useApp } from "../../src/state/store";
 import {
+  BOOKS,
   getChapter,
   getPassage,
   bookByCode,
@@ -20,6 +21,8 @@ import FlowText from "../../src/features/bible/flow/FlowText";
 import type { FlowTextHandle } from "../../src/features/bible/flow/types";
 import { flowParagraphs } from "../../src/features/bible/flow/model";
 import { LegacyVerseText } from "../../src/features/bible/flow/LegacyVerseText";
+import { ChapterPicker } from "../../src/features/bible/ChapterPicker";
+import { useReaderFont } from "../../src/features/bible/reader-font";
 import { ReaderPreferences } from "../../src/features/bible/ReaderPreferences";
 import { focusReaderControl } from "../../src/features/bible/flow/focus";
 import { useReaderDismiss } from "../../src/features/bible/flow/useReaderDismiss";
@@ -65,6 +68,8 @@ export default function Reader() {
     data = useApp((s) => s.data),
     mutate = useApp((s) => s.mutate),
     busy = useApp((s) => s.busy);
+  const font = useReaderFont();
+  const [chapterPicker, setChapterPicker] = useState(false);
   const ref = {
       book: params.book ?? "",
       chapter: Number(params.chapter ?? 1),
@@ -143,7 +148,7 @@ export default function Reader() {
     measureVerses: flow
       ? (node) => flowText.current?.measure(node) ?? Promise.resolve(null)
       : undefined,
-    layoutKey: `${width}:${fontScale}:${data.settings.fontSize}:${data.settings.lineHeight}:${mode}:${flow}:${chooseVerse}:${focus}:${selectionToolsOpen}`,
+    layoutKey: `${width}:${fontScale}:${data.settings.fontSize}:${data.settings.lineHeight}:${font}:${mode}:${flow}:${chooseVerse}:${focus}:${selectionToolsOpen}`,
   });
   const jumpToVerse = position.restore;
   useEffect(() => {
@@ -479,14 +484,16 @@ export default function Reader() {
               />
               <Pressable
                 accessibilityRole="button"
-                onPress={() => router.push("/bibel")}
+                accessibilityLabel="Buchauswahl"
+                accessibilityState={{ expanded: chapterPicker }}
+                onPress={() => { setTools(false); setChapterPicker(!chapterPicker); }}
                 style={{
                   minHeight: 44,
                   justifyContent: "center",
                   flexShrink: 1,
                 }}
               >
-                <T style={{ fontSize: 13, lineHeight: 20 }}>Buchauswahl</T>
+                <T style={{ fontSize: 13, lineHeight: 20 }}>{valid ? referenceLabel({ book: ref.book, chapter: ref.chapter }) : "Buchauswahl"} ⌄</T>
               </Pressable>
             </View>
             <View style={{ flexDirection: "row", gap: 3 }}>
@@ -497,6 +504,7 @@ export default function Reader() {
                 selected={tools}
                 onPress={() => {
                   setChooseVerse(false);
+                  setChapterPicker(false);
                   if (tools) closeTools();
                   else setTools(true);
                 }}
@@ -517,6 +525,14 @@ export default function Reader() {
             </View>
           </View>
         )}
+        {chapterPicker && !focus && <ChapterPicker books={BOOKS} currentBook={ref.book} currentChapter={ref.chapter}
+          onClose={() => setChapterPicker(false)}
+          onChoose={(book, chapter) => {
+            setChapterPicker(false);
+            if (book !== ref.book || chapter !== ref.chapter || ref.from || ref.to) {
+              router.push({ pathname: "/lesen/[book]", params: { book, chapter, mode } });
+            }
+          }} />}
         {!valid ? (
           <Card>
             <T variant="heading">Diese Bibelstelle gibt es nicht.</T>
@@ -535,6 +551,7 @@ export default function Reader() {
                 unavailable={flowUnavailable}
                 onClose={closeTools}
                 onOpenNotes={openChapterNotes}
+                onEditions={() => router.push({ pathname: "/bibel", params: { ausgabe: "otb" } })}
                 onFlowChange={(next) => {
                   if (next) setFlowUnavailable(false);
                   setFlow(next);
@@ -828,8 +845,9 @@ export default function Reader() {
                   highlights={data.highlights}
                   bookmarks={data.bookmarks}
                   fontSize={data.settings.fontSize + 3}
+                  fontFamily={font}
                   lineHeight={data.settings.lineHeight}
-                  layoutKey={`${width}:${fontScale}:${data.settings.fontSize}:${data.settings.lineHeight}:${mode}`}
+                  layoutKey={`${width}:${fontScale}:${data.settings.fontSize}:${data.settings.lineHeight}:${font}:${mode}`}
                   onSelect={selectVerse}
                   onGeometryChange={position.layoutChanged}
                   onUnavailable={() => {
@@ -850,6 +868,7 @@ export default function Reader() {
                   highlights={data.highlights}
                   bookmarks={data.bookmarks}
                   fontSize={data.settings.fontSize + 3}
+                  fontFamily={font}
                   lineHeight={data.settings.lineHeight}
                   position={position}
                   onSelect={selectVerse}

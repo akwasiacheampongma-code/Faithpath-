@@ -362,6 +362,8 @@ test("35–36 und 35–37 bewahren getrennte Entwürfe; die Sammlung stellt den 
   expect(rangeDraft(await localData(page), 37)).toEqual(second);
   await closeTools(page);
   await page.goto("/sammlung");
+  const storedRange = (await localData(page)).notes.find((item) => item.text === firstText)!;
+  await page.getByTestId(`collection-note-${storedRange.id}`).click();
   await button(page, "Johannes 6,35–36").click();
   await ready(page);
   await selected(page, [35, 36]);

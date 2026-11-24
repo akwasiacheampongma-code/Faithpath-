@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, type ReactNode } from "react";
 import { FlatList, Pressable, View, useWindowDimensions } from "react-native";
 import { router } from "expo-router";
 import { Shell } from "../../components/Shell";
@@ -13,7 +13,7 @@ import { filterStories, storyById, type StoryUnit } from "./index";
 import { storyProgress } from "./model";
 import { StoryHero, StoryThumbnail } from "./StoryArt";
 
-export function StoryLibrary() {
+export function StoryLibrary({ sectionHeader }: { sectionHeader?: ReactNode } = {}) {
   const t = useTheme(), { width } = useWindowDimensions(), data = useApp((s) => s.data);
   const [query, setQuery] = useState(""), [scope, setScope] = useState<BibleScope>("Alle"),
     [kind, setKind] = useState("Alle"), [book, setBook] = useState("Alle"), [booksOpen, setBooksOpen] = useState(false);
@@ -41,15 +41,21 @@ export function StoryLibrary() {
       <Icon name="chevron" color={t.muted} size={16} />
     </Pressable>;
   }
+  const search = <View style={{ flexDirection: "row", gap: 10, marginTop: 27, alignItems: "flex-end" }}>
+      <View style={{ flex: 1, minWidth: 0 }}><Field label="Titel oder Bibelstelle" placeholder="Was möchtest du entdecken?" value={query} onChangeText={setQuery} /></View>
+      <View style={{ width: width < 350 ? 135 : 150 }}><BibleScopeSelect compact value={scope} onChange={(v) => { setScope(v); setBook("Alle"); }} /></View>
+    </View>;
   const header = <View style={{ gap: 0 }}>
+    {sectionHeader ?? <>
     <T variant="label" style={{ color: t.gold, fontSize: 10, marginBottom: 12 }}>BIBEL ENTDECKEN</T>
     <T variant="title" accessibilityRole="header" aria-level={1} style={{ fontSize: width < 350 ? 40 : 44, lineHeight: 46 }}>Ein Text.{"\n"}Ein neuer Blick.</T>
-    <T style={{ color: t.muted, fontSize: 14, lineHeight: 24, marginTop: 14 }}>Geschichten, Gebete und Gedanken der Bibel. Du brauchst kein Vorwissen.</T>
+    <T style={{ color: t.muted, fontSize: 14, lineHeight: 24, marginTop: 14 }}>Geschichten, Gebete und Gedanken der Bibel. Du brauchst kein Vorwissen.</T></>}
     {resume && position && position.setHash === resume.questionSetHash && <View style={{ borderWidth: 1, borderColor: t.line, borderRadius: 18, padding: 16, gap: 8, marginTop: 22 }}>
       <T variant="small" style={{ color: t.muted }}>Hier weitermachen</T>
       <T style={{ fontFamily: "Cormorant", fontSize: 26 }}>{resume.title}</T>
       <Button kind="secondary" icon="bookmark" onPress={() => router.push({ pathname: "/geschichte/[id]", params: { id: resume.id, stage: position.stage, index: position.index } })}>Abschnitt fortsetzen</Button>
     </View>}
+    {sectionHeader && search}
     {showHero && <View style={{ marginTop: 24, gap: 0, backgroundColor: t.surface, borderWidth: 1, borderColor: t.line, borderRadius: 26, overflow: "hidden" }}>
       <StoryHero unit={featured} />
       <View style={{ padding: 21, gap: 10 }}>
@@ -60,10 +66,7 @@ export function StoryLibrary() {
         <Button kind="ghost" icon="arrow" onPress={() => open(featured)}>Geschichte entdecken</Button>
       </View>
     </View>}
-    <View style={{ flexDirection: "row", gap: 10, marginTop: 27, alignItems: "flex-end" }}>
-      <View style={{ flex: 1, minWidth: 0 }}><Field label="Titel oder Bibelstelle" placeholder="Was möchtest du entdecken?" value={query} onChangeText={setQuery} /></View>
-      <View style={{ width: width < 350 ? 135 : 150 }}><BibleScopeSelect compact value={scope} onChange={(v) => { setScope(v); setBook("Alle"); }} /></View>
-    </View>
+    {!sectionHeader && search}
     <View role="group" accessibilityLabel="Abschnitte filtern" style={{ flexDirection: "row", flexWrap: "wrap", gap: 8, marginTop: 14 }}>
       {[["Alle", "Alle Abschnitte"], ["Bilder", "Mit Bild"], ["Texte", "Psalmen & Briefe"]].map(([value, label]) =>
         <Pressable key={value} accessibilityRole="button" accessibilityLabel={label} accessibilityState={{ selected: kind === value }}

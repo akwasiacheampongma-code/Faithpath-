@@ -1,9 +1,26 @@
 import { View, Linking } from "react-native";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { T, Card, Button, Tag } from "../src/components/ui";
 import { useTheme } from "../src/design-system/theme";
+import { OTB_CREDIT, OTB_LICENCE, OTB_SOURCE, OTB_TERMS } from "../src/features/bible/open-bible";
+
+function OpenBibleRights() {
+  return <Card style={{ gap: 12 }}>
+    <T variant="heading">Open Translation Bible · Deutsch</T>
+    <T>{OTB_CREDIT}</T>
+    <T variant="small">66 Bücher und 1.189 Kapitel in der Nummerierung des Herausgebers. Die Worte der Verse bleiben erhalten. OLIVA hat Formatierung und Trennzeichen für die Darstellung angepasst und führt die Textanmerkungen separat.</T>
+    <T variant="small">Der Text darf mit Namensnennung und Lizenzverweis geteilt werden. Änderungen sind anzugeben. Veröffentlichte Bearbeitungen stehen unter denselben Bedingungen. Der Herausgeber stellt den Text ohne Gewähr bereit.</T>
+    <View style={{ gap: 4 }}>
+      <Button kind="ghost" icon="info" onPress={() => void Linking.openURL(OTB_SOURCE)}>Vollständige Originaldateien öffnen</Button>
+      <Button kind="ghost" icon="info" onPress={() => void Linking.openURL(OTB_LICENCE)}>Lizenz CC BY-SA 4.0 lesen</Button>
+      <Button kind="ghost" icon="info" onPress={() => void Linking.openURL(OTB_TERMS)}>Bedingungen des Herausgebers lesen</Button>
+    </View>
+  </Card>;
+}
+
 export default function Sources() {
+  const chosenOtb = useLocalSearchParams<{ ausgabe?: string }>().ausgabe === "otb";
   const t = useTheme();
   return (
     <Shell>
@@ -12,6 +29,7 @@ export default function Sources() {
         <T variant="title" accessibilityRole="header">
           Wissen, woher Worte kommen.
         </T>
+        {chosenOtb && <OpenBibleRights />}
         <Card style={{ gap: 13 }}>
           <T variant="heading">Der Bibeltext</T>
           <T>
@@ -34,6 +52,7 @@ export default function Sources() {
             Rechteangabe der Textquelle öffnen
           </Button>
         </Card>
+        {!chosenOtb && <OpenBibleRights />}
         <Card style={{ gap: 13 }}>
           <T variant="heading">Erklärungen und Gebete</T>
           <T>

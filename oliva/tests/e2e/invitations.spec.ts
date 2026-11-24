@@ -398,14 +398,9 @@ test("Quellenlinks zeigen das richtige Vorhaben und den Gedanken schreibfrei, au
     .getByRole("button", { name: "Bearbeiten", exact: true })
     .click();
   await expect(
-    page.getByText(
-      "Du hast einen anderen Entwurf. Setze ihn fort oder verwirf ihn im Editor ausdrücklich, bevor du einen anderen Gedanken bearbeitest.",
-      { exact: true },
-    ),
-  ).toBeVisible();
-  await expect(
     page.getByRole("textbox", { name: "Deine Worte", exact: true }),
-  ).toHaveValue(draftText);
+  ).toHaveValue(noteText);
+  expect(await rawData(page)).toEqual(raw);
   expect((await localData(page)).drafts).toEqual(data.drafts);
   await unchangedExperience(page, data);
 });

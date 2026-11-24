@@ -154,7 +154,6 @@ test("Lesen, Reflexion, Notiz, Wiederfinden und Rückkehr funktionieren gemeinsa
   for (const key of ["notes", "drafts", "growthStage", "readChapters", "readPassages", "readSteps", "completedSteps", "activePath"] as const)
     expect(after[key], key).toEqual(before[key]);
   await page.goto("/sammlung");
-  await button(page, "Notizen").click();
   await page.getByRole("button", { name: /Testnotiz zum Sturm/ }).click();
   await expect(noteBox(page)).toHaveValue(noteText);
   await button(page, "Markus 4,35–41 →").click();

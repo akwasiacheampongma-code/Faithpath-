@@ -24,6 +24,7 @@ export type FlowTextProps = {
   bookmarks: readonly string[];
   /** Actual rendered size, including the existing reader's +3 adjustment. */
   fontSize: number;
+  fontFamily?: "Cormorant" | "DMSans";
   lineHeight: number;
   layoutKey: string;
   onSelect: (verse: number) => void;

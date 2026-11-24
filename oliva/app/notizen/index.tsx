@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Pressable, View } from "react-native";
-import { router, useLocalSearchParams } from "expo-router";
+import { View } from "react-native";
+import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { Button, Field, T } from "../../src/components/ui";
 import { useTheme } from "../../src/design-system/theme";
 import { referenceLabel } from "../../src/features/bible/repository";
@@ -8,27 +8,23 @@ import { resumeNotebookEdits } from "../../src/features/notebook/autosave";
 import { bibleNoteFilter, bibleNoteParams, linkDetails, linksChapter, type BibleNoteParams } from "../../src/features/notebook/links";
 import { notebookStamp, notebookText, type NotebookNote } from "../../src/features/notebook/model";
 import { NotebookFrame } from "../../src/features/notebook/NotebookFrame";
+import { NoteListRow } from "../../src/features/notebook/NoteListRow";
 import { usePendingNotes } from "../../src/features/notebook/pending";
+import { normalizeCollectionText } from "../../src/features/personal/collection-model";
 import { newId } from "../../src/features/personal/schema";
 import { useApp } from "../../src/state/store";
 
-const date = new Intl.DateTimeFormat("de-DE", { day: "numeric", month: "short", year: "numeric" });
-const normalize = (text: string) => text.normalize("NFKC").toLocaleLowerCase("de").replace(/\s+/g, " ").trim();
-const visible = (value: string, query: string) => normalize(value).includes(query);
-
-function NoteRow({ note, pending, presses }: { note: Pick<NotebookNote, "text" | "updatedAt" | "link">; pending?: boolean; presses: () => void }) {
-  const t = useTheme();
-  const { title, preview } = notebookText(note.text);
-  return <Pressable accessibilityRole="button" accessibilityLabel={`Notiz öffnen: ${title}`} onPress={presses}
-    style={{ minHeight: 70, paddingVertical: 13, borderBottomWidth: 1, borderColor: t.line, gap: 3 }}>
-    <T numberOfLines={1} style={{ fontWeight: "700", fontSize: 17, lineHeight: 24 }}>{title}</T>
-    <T numberOfLines={2} variant="small" style={{ fontSize: 14, lineHeight: 21, color: t.muted }}>{preview || (note.link && linkDetails(note.link).label) || " "}</T>
-    <T variant="small" style={{ color: t.muted }}>{pending ? "Noch nicht gespeichert" : date.format(new Date(note.updatedAt))}</T>
-  </Pressable>;
-}
+const visible = (value: string, query: string) => normalizeCollectionText(value).includes(query);
 
 export default function NotebookList() {
   const params = useLocalSearchParams<BibleNoteParams & { ansicht?: string }>();
+  const filter = bibleNoteFilter(params);
+  const trash = params.ansicht === "geloescht";
+  if (!filter && !trash) return <Redirect href="/sammlung" />;
+  return <ScopedNotes filter={filter} trash={trash} />;
+}
+
+function ScopedNotes({ filter, trash }: { filter: ReturnType<typeof bibleNoteFilter>; trash: boolean }) {
   const t = useTheme();
   const notebook = useApp((state) => state.data.notebook) ?? [];
   const oldNotes = useApp((state) => state.data.notes);
@@ -37,9 +33,7 @@ export default function NotebookList() {
   const [purge, setPurge] = useState<string | null>(null);
   const [working, setWorking] = useState(false);
   const [error, setError] = useState("");
-  const needle = normalize(query);
-  const trash = params.ansicht === "geloescht";
-  const filter = bibleNoteFilter(params);
+  const needle = normalizeCollectionText(query);
   const matches = notebook.filter((entry) => !!entry.deletedAt === trash &&
     (!filter || trash || linksChapter(entry.link, filter)) &&
     visible(entry.text + " " + (entry.link ? linkDetails(entry.link).label : ""), needle))
@@ -54,7 +48,15 @@ export default function NotebookList() {
   const others = matches.filter((note) => trash || !note.pinned);
   const open = (id: string) => router.push({ pathname: "/notizen/[id]", params: { id } });
   const newNote = () => router.push({ pathname: "/notizen/[id]", params: { id: newId("notiz"), neu: "1", ...bibleNoteParams(filter) } });
-  const list = () => router.replace({ pathname: "/notizen", params: bibleNoteParams(filter) });
+  const back = () => {
+    if (router.canGoBack()) router.back();
+    else if (trash && filter) router.replace({ pathname: "/notizen", params: bibleNoteParams(filter) });
+    else if (filter) router.replace(linkDetails({ kind: "bible", ref: filter }).href);
+    else router.replace("/sammlung");
+  };
+  const row = (id: string, note: Pick<NotebookNote, "text" | "updatedAt" | "link">, pending = false) =>
+    <NoteListRow key={id} text={note.text} updatedAt={note.updatedAt} pending={pending}
+      context={note.link ? linkDetails(note.link).label : undefined} onOpen={() => open(id)} />;
   async function action(entry: NotebookNote, command: "restore" | "purge") {
     if (working) return;
     setWorking(true);
@@ -66,16 +68,13 @@ export default function NotebookList() {
     } finally { setWorking(false); }
   }
   return <NotebookFrame title={trash ? "Zuletzt gelöscht" : "Notizen"}
-    backLabel={trash ? "Notizen" : filter ? "Bibeltext" : "Sammlung"}
-    back={trash ? list : () => {
-      if (router.canGoBack()) router.back();
-      else router.replace(filter ? linkDetails({ kind: "bible", ref: filter }).href : "/sammlung");
-    }}
+    backLabel={trash && filter ? "Notizen" : !trash && filter ? "Bibeltext" : "Sammlung"}
+    back={back}
     action={!trash && <Button kind="ghost" icon="pen" onPress={newNote}>Neue Notiz</Button>}>
     {!trash && <Field label="Notizen suchen" placeholder="Titel, Text oder Bibelstelle" value={query} onChangeText={setQuery} />}
     {filter && !trash && <View style={{ backgroundColor: t.soft, padding: 12, borderRadius: 12, flexDirection: "row", alignItems: "center", flexWrap: "wrap", justifyContent: "space-between" }}>
       <T variant="small" style={{ color: t.primary }}>{referenceLabel({ book: filter.book, chapter: filter.chapter })}</T>
-      <Button kind="ghost" icon={null} onPress={() => router.replace("/notizen")}>Alle Notizen</Button>
+      <Button kind="ghost" icon={null} onPress={() => router.replace("/sammlung")}>Alle Notizen</Button>
     </View>}
     {!trash && <View style={{ alignItems: "flex-start" }}>
       <Button kind="ghost" icon={null} onPress={() => {
@@ -88,10 +87,10 @@ export default function NotebookList() {
       <T variant="small">Eine Eingabe wartet noch auf das Speichern.</T>
       <Button kind="secondary" icon={null} onPress={() => void resumeNotebookEdits()}>Erneut versuchen</Button>
     </View>}
-    {!!held.length && <View>{held.map(([id, item]) => <NoteRow key={id} note={item} pending presses={() => open(id)} />)}</View>}
+    {!!held.length && <View>{held.map(([id, item]) => row(id, item, true))}</View>}
     {!!pinned.length && <View>
       <T variant="heading" accessibilityRole="header" style={{ fontSize: 19 }}>Angeheftet</T>
-      {pinned.map((entry) => <NoteRow key={entry.id} note={entry} presses={() => open(entry.id)} />)}
+      {pinned.map((entry) => row(entry.id, entry))}
     </View>}
     {!!others.length && <View>{others.map((entry) => trash ? <View key={entry.id}
       style={{ paddingVertical: 14, gap: 8, borderBottomWidth: 1, borderColor: t.line }}>
@@ -103,11 +102,11 @@ export default function NotebookList() {
         <Button disabled={working} onPress={() => void action(entry, "purge")}>Endgültiges Löschen bestätigen</Button>
         <Button kind="ghost" onPress={() => setPurge(null)}>Abbrechen</Button>
       </> : <Button kind="ghost" disabled={working} onPress={() => setPurge(entry.id)}>Endgültig löschen</Button>}
-    </View> : <NoteRow key={entry.id} note={entry} presses={() => open(entry.id)} />)}</View>}
+    </View> : row(entry.id, entry))}</View>}
     {!!archived.length && <View>
       <T variant="heading" accessibilityRole="header" style={{ fontSize: 19 }}>Aus der Sammlung</T>
-      {archived.map((item) => <NoteRow key={item.id} note={{ ...item, link: null }}
-        presses={() => router.push({ pathname: "/sammlung", params: { note: item.id, view: "read" } })} />)}
+      {archived.map((item) => <NoteListRow key={item.id} text={item.text} updatedAt={item.updatedAt}
+        onOpen={() => router.push({ pathname: "/sammlung", params: { note: item.id, view: "read" } })} />)}
     </View>}
     {!matches.length && !held.length && !archived.length && <View style={{ paddingVertical: 30 }}>
       <T variant="heading" style={{ color: t.primary }}>{trash ? "Hier ist gerade nichts gelöscht." : needle ? "Keine passenden Notizen." : "Hier ist Platz für deine Gedanken."}</T>

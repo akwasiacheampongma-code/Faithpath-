@@ -136,7 +136,7 @@ test("der Wegefilter behält alle Kategorien und der Tastatureinstieg erreicht j
     await row.focus(); await page.keyboard.press("Enter"); await expect(page).toHaveURL(new RegExp("/weg/" + id + "(?:\\?|$)"));
     await expect(page.getByRole("heading", { name: originalName.split(", 15 Minuten")[0]!, exact: true })).toBeVisible(); expect(await rawData(page)).toEqual(before);
   }
-  await page.goto("/wege"); await page.getByRole("button", { name: "18 Lebensthemen entdecken", exact: true }).click(); await expect(page).toHaveURL(/\/themen$/);
+  await page.goto("/wege"); await page.getByRole("button", { name: "Themen", exact: true }).click(); await expect(page).toHaveURL(/\/wege\?bereich=themen$/);
   await page.goto("/wege"); await page.getByRole("button", { name: "Deine persönlichen Vorhaben", exact: true }).click(); await expect(page).toHaveURL(/\/vorhaben$/);
   expect(await rawData(page)).toEqual(before);
 });

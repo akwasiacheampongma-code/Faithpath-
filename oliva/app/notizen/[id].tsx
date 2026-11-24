@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { AppState, Keyboard, TextInput, View } from "react-native";
+import { AppState, Keyboard, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Button, T } from "../../src/components/ui";
-import { tokens, useTheme } from "../../src/design-system/theme";
+import { useTheme } from "../../src/design-system/theme";
 import { useApp } from "../../src/state/store";
 import { changeNotebookText, flushNotebookNote } from "../../src/features/notebook/autosave";
 import { NotebookFrame } from "../../src/features/notebook/NotebookFrame";
+import { NoteTextInput } from "../../src/features/notebook/NoteTextInput";
 import { usePendingNotes } from "../../src/features/notebook/pending";
 import { NOTE_TEXT_LIMIT, notebookId, notebookStamp, noteMatches, type NoteAction, type NotebookContent } from "../../src/features/notebook/model";
 import { initialNotebookLink, linkDetails, type NotebookEntryParams } from "../../src/features/notebook/links";
@@ -15,7 +16,7 @@ import { noteAccessActivity } from "../../src/features/security/access";
 export default function NotebookPage() {
   const args = useLocalSearchParams<NotebookEntryParams>();
   if (!notebookId.safeParse(args.id).success)
-    return <NotebookFrame title="Notiz" backLabel="Notizen" back={() => router.replace("/notizen")}>
+    return <NotebookFrame title="Notiz" backLabel="Sammlung" back={() => router.replace("/sammlung")}>
       <T>Diese Notiz ist hier nicht verfügbar.</T>
     </NotebookFrame>;
   return <NotebookEditor key={args.id} args={args} />;
@@ -67,7 +68,7 @@ function NotebookEditor({ args }: { args: NotebookEntryParams }) {
     Keyboard.dismiss();
     if (pending) void flushNotebookNote(id);
     if (router.canGoBack()) router.back();
-    else router.replace(originalContext?.href ?? "/notizen");
+    else router.replace(originalContext?.href ?? "/sammlung");
   }
   async function action(command: NoteAction) {
     if (!entry || working) return;
@@ -86,13 +87,13 @@ function NotebookEditor({ args }: { args: NotebookEntryParams }) {
     } finally { setWorking(false); }
   }
   const missing = (!entry && !pending && args.neu !== "1") || (entry?.deletedAt && !pending);
-  if (missing) return <NotebookFrame title="Notiz" backLabel="Notizen" back={back}>
+  if (missing) return <NotebookFrame title="Notiz" backLabel="Sammlung" back={back}>
     <T>{entry?.deletedAt ? "Diese Notiz liegt unter „Zuletzt gelöscht“." : "Diese Notiz ist hier nicht verfügbar."}</T>
     {entry?.deletedAt && <Button kind="secondary" onPress={() => router.replace({ pathname: "/notizen", params: { ansicht: "geloescht" } })}>Zuletzt gelöscht öffnen</Button>}
   </NotebookFrame>;
   const attached = link ? linkDetails(link) : null;
   const matchesOriginalContext = originalContext && noteMatches({ text: "", link }, { text: "", link: initialLink });
-  const backLabel = originalContext ? initialLink?.kind === "bible" ? "Bibeltext" : "Reflexion" : "Notizen";
+  const backLabel = originalContext ? initialLink?.kind === "bible" ? "Bibeltext" : "Reflexion" : "Sammlung";
   return <NotebookFrame title={args.neu === "1" && !entry ? "Neue Notiz" : "Notiz"} backLabel={backLabel} back={back}
     action={<Button kind="ghost" icon={null} disabled={working} onPress={() => {
       Keyboard.dismiss(); setMenu(!menu); setPicker(false); setConfirm(false);
@@ -126,13 +127,8 @@ function NotebookEditor({ args }: { args: NotebookEntryParams }) {
         router.push(attached.href);
       }}>{attached.label} →</Button>
     </View>}
-    <TextInput accessibilityLabel="Notiztext" multiline autoFocus={args.neu === "1"} editable={!working}
-      value={text} onChangeText={(value) => edit({ text: value, link })}
-      placeholder="Hier ist Platz für deine Gedanken." placeholderTextColor={t.muted}
-      maxLength={NOTE_TEXT_LIMIT}
-      selectionColor={t.primary}
-      style={{ padding: 0, paddingBottom: 12, minHeight: 250, textAlignVertical: "top", color: t.text,
-        fontFamily: tokens.font.body, fontSize: 19, lineHeight: 30 }} />
+    <NoteTextInput autoFocus={args.neu === "1"} editable={!working}
+      value={text} onChangeText={(value) => edit({ text: value, link })} />
     {text.length >= NOTE_TEXT_LIMIT && <T variant="small" accessibilityLiveRegion="polite">
       Diese Notiz hat ihre maximale Länge erreicht.
     </T>}

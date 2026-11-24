@@ -54,8 +54,8 @@ export function JourneyIntro({ onClose }: { onClose?: () => void }) {
         <Button kind="ghost" icon={null} disabled={busy} onPress={() => void finish()}>Überspringen</Button>
       </View>
       {step === 0 && <View style={{ gap: 5 }}>
-        <Image source={require("../../../assets/images/storm-1280.webp")} resizeMode="cover"
-          accessibilityLabel="Boot auf dem See von Galiläa im Sturm" accessible
+        <Image source={require("../../../assets/images/galilee-640.webp")} resizeMode="cover"
+          accessibilityLabel="Landschaft am See von Galiläa" accessible
           style={{ width: "100%", height: width <= 340 ? 128 : 170, borderRadius: 20 }} />
         <T variant="small" style={{ color: t.muted, alignSelf: "flex-end" }}>Künstlerische Interpretation</T>
       </View>}
