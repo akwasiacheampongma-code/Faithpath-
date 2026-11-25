@@ -6,6 +6,7 @@ import {
   initialData,
   assertStorageBudget,
   cloneData,
+  prepareEditionProfile,
   type AppData,
 } from "./model";
 import {
@@ -34,9 +35,11 @@ import {
   samePosition,
   type ReadingPosition,
 } from "../features/bible/position-current";
-import { getPassage, type Reference } from "../features/bible/repository";
-import { referenceSchema } from "../features/bible/schema";
-import { selectedBibleVerses } from "../features/bible/selection";
+import { getVerseNumbers, type Reference } from "../features/bible/repository";
+import { editionReferenceSchema } from "../features/bible/schema";
+import { selectedBibleNumbers } from "../features/bible/selection";
+import { bibleEdition } from "../features/bible/editions";
+import { verseKeyOf } from "../features/bible/reference-key";
 import {
   highlightColor,
   type HighlightColor,
@@ -226,6 +229,7 @@ export const useApp = create<Store>((set, get) => {
           const next = cloneData(current);
           if (fn(next) === false) return true;
           if (updateGrowth) grow(next);
+          prepareEditionProfile(next);
           next.revision = current.revision + 1;
           dataSchema.parse(next);
           assertStorageBudget(next);
@@ -412,7 +416,8 @@ export const useApp = create<Store>((set, get) => {
             if (expectedRevision !== undefined && revision !== expectedRevision)
               throw new Error("Der lokale Stand hat sich verändert. Prüfe die Sicherung bitte erneut.");
             if (hasPendingNotes()) throw new Error("Sichere zuerst deine offenen Notizen.");
-            if (incoming.version === 11) delete d.notebook;
+            if (!incoming.notebook) delete d.notebook;
+            if (!incoming.editionReading) delete d.editionReading;
             Object.assign(d, dataSchema.parse(incoming), { revision });
           },
           {},
@@ -463,11 +468,23 @@ export const useApp = create<Store>((set, get) => {
       ),
     openReading: async (reference) => {
       try {
-        const requested = referenceSchema.parse(reference);
+        const requested = editionReferenceSchema.parse(reference);
         return await persist(
           (d) => {
+            const active = bibleEdition(d.reading.edition);
+            const target = bibleEdition(requested.edition);
+            let position = null;
+            if (active !== target) {
+              const history = d.editionReading ??= {};
+              history[active] = { ref: d.reading, position: d.readingPosition };
+              const saved = history[target];
+              if (saved && sameReadingScope(saved.ref, requested)) position = saved.position;
+              delete history[target];
+            } else if (sameReadingScope(d.reading, requested)) {
+              position = d.readingPosition;
+            }
             d.reading = requested;
-            d.readingPosition = null;
+            d.readingPosition = position;
           },
           {},
           false,
@@ -480,7 +497,7 @@ export const useApp = create<Store>((set, get) => {
     },
     rememberReadingPosition: async (position, reference) => {
       try {
-        const requestedReference = referenceSchema.parse(reference);
+        const requestedReference = editionReferenceSchema.parse(reference);
         const requestedPosition =
           position === null ? null : readingPositionSchema.parse(position);
         return await persist(
@@ -500,12 +517,10 @@ export const useApp = create<Store>((set, get) => {
     },
     setPassageHighlight: (reference, color) =>
       action(false, () => {
-        const requested = referenceSchema.parse(reference);
+        const requested = editionReferenceSchema.parse(reference);
         const requestedColor =
           color === null ? null : highlightColor.parse(color);
-        const keys = getPassage(requested).map(
-          (verse) => `${requested.book}:${requested.chapter}:${verse.n}`,
-        );
+        const keys = getVerseNumbers(requested).map((verse) => verseKeyOf(requested, verse));
         return persist(
           (d) => {
             let changed = false;
@@ -528,12 +543,10 @@ export const useApp = create<Store>((set, get) => {
       }),
     setPassageBookmarked: (reference, bookmarked) =>
       action(false, () => {
-        const requested = referenceSchema.parse(reference);
+        const requested = editionReferenceSchema.parse(reference);
         if (typeof bookmarked !== "boolean")
           throw new Error("Ungültige Merken-Auswahl.");
-        const keys = getPassage(requested).map(
-          (verse) => `${requested.book}:${requested.chapter}:${verse.n}`,
-        );
+        const keys = getVerseNumbers(requested).map((verse) => verseKeyOf(requested, verse));
         return persist(
           (d) => {
             const before = new Set(d.bookmarks),
@@ -556,12 +569,10 @@ export const useApp = create<Store>((set, get) => {
       }),
     setSelectionHighlight: (reference, selected, color) =>
       action(false, () => {
-        const requested = referenceSchema.parse(reference);
+        const requested = editionReferenceSchema.parse(reference);
         const requestedColor =
           color === null ? null : highlightColor.parse(color);
-        const keys = selectedBibleVerses(requested, selected).map(
-          (verse) => `${requested.book}:${requested.chapter}:${verse.n}`,
-        );
+        const keys = selectedBibleNumbers(requested, selected).map((verse) => verseKeyOf(requested, verse));
         return persist(
           (d) => {
             let changed = false;
@@ -584,12 +595,10 @@ export const useApp = create<Store>((set, get) => {
       }),
     setSelectionBookmarked: (reference, selected, bookmarked) =>
       action(false, () => {
-        const requested = referenceSchema.parse(reference);
+        const requested = editionReferenceSchema.parse(reference);
         if (typeof bookmarked !== "boolean")
           throw new Error("Ungültige Merken-Auswahl.");
-        const keys = selectedBibleVerses(requested, selected).map(
-          (verse) => `${requested.book}:${requested.chapter}:${verse.n}`,
-        );
+        const keys = selectedBibleNumbers(requested, selected).map((verse) => verseKeyOf(requested, verse));
         return persist(
           (d) => {
             const before = new Set(d.bookmarks),
@@ -804,11 +813,13 @@ export const useApp = create<Store>((set, get) => {
               );
             const revision = d.revision;
             const notebook = d.notebook;
+            if (!copy.data.editionReading) delete d.editionReading;
+            if (!copy.data.notebook) delete d.notebook;
             Object.assign(d, copy.data, { revision });
             // FaithPath recovery belongs to the source import. Notebook entries are
             // independent of that source and may have been written since the import.
             if (notebook) {
-              d.version = 12;
+              if (d.version !== 13) d.version = 12;
               d.notebook = notebook;
             }
           },

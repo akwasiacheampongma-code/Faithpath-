@@ -5,6 +5,8 @@ import { Button, Card, T, Tag } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { ntChapterIndex } from "../quiz/index";
 import { contextualNotebookHref } from "../notebook/links";
+import { readerRoute } from "./editions";
+import { readingScope } from "./position";
 import { focusReaderControl } from "./flow/focus";
 import {
   adjacentChapter,
@@ -42,7 +44,9 @@ function ReaderReflection({ reference, question, deep }: { reference: Reference;
   return <Card testID="reader-reflection" style={{ gap: 12, backgroundColor: t.soft }}>
     <T ref={heading} tabIndex={-1} variant="heading" accessibilityRole="header" aria-level={2}>Ein Gedanke für dich</T>
     <T style={{ fontSize: 15 }}>{question}</T>
-    <T variant="small" style={{ color: t.muted }}>Deine Antwort ist freiwillig.</T>
+    <T variant="small" style={{ color: t.muted }}>
+      {reference.edition ? "Der Impuls wurde zum Kapitel in Luther 1912 erstellt. " : ""}Deine Antwort ist freiwillig.
+    </T>
     <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8, alignItems: "flex-start" }}>
       <Button kind="secondary" icon="pen" style={{ maxWidth: "100%" }} onPress={write}>Gedanken festhalten</Button>
       <Button kind="ghost" icon={null} onPress={() => toggle(false)}>Weiterlesen</Button>
@@ -65,20 +69,18 @@ export function ReaderFooter({
 }: ReaderFooterProps) {
   const t = useTheme(),
     passage = !!(reference.from || reference.to);
+  const reflectionQuestion = reflection ?? (reference.edition ? question : undefined);
 
   function navigate(delta: -1 | 1) {
-    const next = adjacentChapter(reference.book, reference.chapter, delta);
+    const next = adjacentChapter(reference.book, reference.chapter, delta, reference.edition);
     if (next)
-      router.replace({
-        pathname: "/lesen/[book]",
-        params: { book: next.book, chapter: next.chapter, mode },
-      });
+      router.replace(readerRoute(next, { mode }));
   }
 
   return (
     <>
-      <ReaderReflection key={`${reference.book}:${reference.chapter}:${reference.from}:${reference.to}`}
-        reference={reference} question={reflection} deep={mode === "deep"} />
+      <ReaderReflection key={readingScope(reference)}
+        reference={reference} question={reflectionQuestion} deep={mode === "deep"} />
       <View style={{ height: 1, backgroundColor: t.line, marginTop: 12 }} />
       <View style={{ alignItems: "flex-start", gap: 10, marginBottom: 12 }}>
         <T
@@ -93,11 +95,11 @@ export function ReaderFooter({
         {!passage && (
           <View style={{ flexDirection: "row", gap: 8, flexWrap: "wrap" }}>
             <Button kind="secondary" icon="back" style={{ paddingHorizontal: 10, maxWidth: "100%" }}
-              disabled={!adjacentChapter(reference.book, reference.chapter, -1)} onPress={() => navigate(-1)}>
+              disabled={!adjacentChapter(reference.book, reference.chapter, -1, reference.edition)} onPress={() => navigate(-1)}>
               Vorheriges Kapitel
             </Button>
             <Button kind="secondary" style={{ paddingHorizontal: 10, maxWidth: "100%" }}
-              disabled={!adjacentChapter(reference.book, reference.chapter, 1)} onPress={() => navigate(1)}>
+              disabled={!adjacentChapter(reference.book, reference.chapter, 1, reference.edition)} onPress={() => navigate(1)}>
               Nächstes Kapitel
             </Button>
           </View>
@@ -131,14 +133,7 @@ export function ReaderFooter({
           <Button
             kind="ghost"
             onPress={() =>
-              router.replace({
-                pathname: "/lesen/[book]",
-                params: {
-                  book: reference.book,
-                  chapter: reference.chapter,
-                  mode,
-                },
-              })
+              router.replace(readerRoute({ book: reference.book, chapter: reference.chapter, edition: reference.edition }, { mode }))
             }
           >
             Ganzes Kapitel als Lesebereich öffnen
@@ -154,7 +149,7 @@ export function ReaderFooter({
           Glaubens.
         </T>
       </View>
-      {mode === "deep" && question && question !== reflection && (
+      {mode === "deep" && question && question !== reflectionQuestion && (
         <Card style={{ gap: 14 }}>
           <T variant="heading">Ein Gedanke für dich</T>
           <T style={{ fontSize: 13 }}>{question}</T>
@@ -170,6 +165,7 @@ export function ReaderFooter({
           <T style={{ fontSize: 13, color: t.muted }}>
             Fünf Fragen zum ganzen Kapitel helfen dir beim Verstehen.
             Du kannst jederzeit nachlesen oder pausieren.
+            {reference.edition ? " Die Fragen wurden zu Luther 1912 erstellt." : ""}
           </T>
           <Button
             kind="secondary"

@@ -1,9 +1,10 @@
 import type { Href } from "expo-router";
+import { BIBLE_EDITIONS, bibleEdition, readerRoute } from "../bible/editions";
 import { referenceLabel } from "../bible/repository";
 import type { BibleCaptureSource } from "./capture-model";
 
 export function captureBibleContextLabel(source: BibleCaptureSource) {
-  return `${source.type === "passage" ? "Dein Bibelabschnitt" : "Dein Bibelbezug"}: ${referenceLabel(source.ref)} · Luther 1912`;
+  return `${source.type === "passage" ? "Dein Bibelabschnitt" : "Dein Bibelbezug"}: ${referenceLabel(source.ref)} · ${BIBLE_EDITIONS[bibleEdition(source.ref.edition)].name}`;
 }
 
 // A range link restores its full logical scope and its exact action selection.
@@ -13,21 +14,13 @@ export function captureBibleDestination(
   source: BibleCaptureSource,
   draftId?: string,
 ): Href {
-  return {
-    pathname: "/lesen/[book]",
-    params: {
-      book: source.ref.book,
-      chapter: source.ref.chapter,
-      verse: source.ref.from,
-      ...(source.type === "passage"
-        ? {
-            from: source.ref.from,
-            to: source.ref.to,
-            selectFrom: source.ref.from,
-            selectTo: source.ref.to,
-          }
-        : {}),
+  const { book, chapter, edition, from, to } = source.ref;
+  return readerRoute(
+    source.type === "passage" ? source.ref : { book, chapter, ...(edition ? { edition } : {}) },
+    {
+      verse: from,
+      ...(source.type === "passage" ? { selectFrom: from, selectTo: to } : {}),
       ...(draftId ? { draft: draftId } : {}),
     },
-  };
+  );
 }

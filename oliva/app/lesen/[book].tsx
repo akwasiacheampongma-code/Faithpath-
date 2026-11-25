@@ -7,6 +7,7 @@ import { useTheme } from "../../src/design-system/theme";
 import { useApp } from "../../src/state/store";
 import {
   BOOKS,
+  chapterTextNotes,
   getChapter,
   getPassage,
   bookByCode,
@@ -16,7 +17,7 @@ import {
 } from "../../src/features/bible/repository";
 import { PATHS } from "../../src/features/paths/catalog";
 import { guidedReadingContext } from "../../src/features/paths/reader-context";
-import { markRead, chapterId } from "../../src/state/model";
+import { markRead, chapterId, savedEditionReading } from "../../src/state/model";
 import FlowText from "../../src/features/bible/flow/FlowText";
 import type { FlowTextHandle } from "../../src/features/bible/flow/types";
 import { flowParagraphs } from "../../src/features/bible/flow/model";
@@ -24,7 +25,9 @@ import { LegacyVerseText } from "../../src/features/bible/flow/LegacyVerseText";
 import { ChapterPicker } from "../../src/features/bible/ChapterPicker";
 import { useReaderFont } from "../../src/features/bible/reader-font";
 import { ReaderPreferences } from "../../src/features/bible/ReaderPreferences";
-import { editionChapterRoute, OTB_NAME } from "../../src/features/bible/open-bible";
+import { BIBLE_EDITIONS, alternateEdition, bibleEdition, editionChapterRoute, readerRoute, type AlternateEdition, type BibleEdition } from "../../src/features/bible/editions";
+import { passageKeyOf, sameBibleChapter } from "../../src/features/bible/reference-key";
+import { useEditionText } from "../../src/features/bible/useEditionText";
 import { focusReaderControl } from "../../src/features/bible/flow/focus";
 import { useReaderDismiss } from "../../src/features/bible/flow/useReaderDismiss";
 import { TextCheck } from "../../src/features/paths/TextCheck";
@@ -47,43 +50,64 @@ import { useVolatileDrafts } from "../../src/features/personal/volatile-drafts";
 import { resolveBibleDraft } from "../../src/features/personal/resolve-bible-draft";
 import { storyById } from "../../src/features/stories/index";
 import { bibleNoteParams, linksChapter } from "../../src/features/notebook/links";
-export default function Reader() {
-  const params = useLocalSearchParams<{
-      book: string;
-      chapter: string;
-      from?: string;
-      to?: string;
-      path?: string;
-      step?: string;
-      mode?: string;
-      verse?: string;
-      selectFrom?: string;
-      selectTo?: string;
-      draft?: string;
-      story?: string;
-      storyStage?: string;
-      storyIndex?: string;
-    }>(),
-    t = useTheme(),
+type ReaderParams = {
+  book: string;
+  chapter: string;
+  edition?: string;
+  from?: string;
+  to?: string;
+  path?: string;
+  step?: string;
+  mode?: string;
+  verse?: string;
+  selectFrom?: string;
+  selectTo?: string;
+  draft?: string;
+  story?: string;
+  storyStage?: string;
+  storyIndex?: string;
+};
+
+export default function Reader({ fixedEdition }: { fixedEdition?: AlternateEdition } = {}) {
+  const params = useLocalSearchParams<ReaderParams>();
+  const edition = fixedEdition ?? alternateEdition(params.edition);
+  const status = useEditionText(bibleEdition(edition));
+  if (status !== "ready") return <Shell reader>
+    <T accessibilityLiveRegion="polite">{status === "error" ? "Der Bibeltext konnte gerade nicht geladen werden." : "Der Bibeltext wird geöffnet …"}</T>
+    {status === "error" && <Button kind="secondary" onPress={() => router.replace({ pathname: "/bibel", params: { ausgabe: edition } })}>
+      Zur Buchauswahl
+    </Button>}
+  </Shell>;
+  return <ReaderContent key={edition ?? "luther"} params={params} edition={edition} />;
+}
+
+function ReaderContent({ params, edition }: { params: ReaderParams; edition?: AlternateEdition }) {
+  const currentEdition = bibleEdition(edition);
+  const editionDetails = BIBLE_EDITIONS[currentEdition];
+  const t = useTheme(),
     { width, fontScale } = useWindowDimensions(),
     data = useApp((s) => s.data),
     mutate = useApp((s) => s.mutate),
     busy = useApp((s) => s.busy);
   const font = useReaderFont();
   const [chapterPicker, setChapterPicker] = useState(false);
+  const [showTextNotes, setShowTextNotes] = useState(false);
   const ref = {
       book: params.book ?? "",
       chapter: Number(params.chapter ?? 1),
+      ...(edition ? { edition } : {}),
       ...(params.from ? { from: Number(params.from) } : {}),
       ...(params.to ? { to: Number(params.to) } : {}),
     },
     book = bookByCode(ref.book),
     valid = validReference(ref),
-    verses = valid ? getChapter(ref.book, ref.chapter) : [];
+    verses = valid ? getChapter(ref.book, ref.chapter, edition) : [];
+  const textNotes = chapterTextNotes(ref);
+  const savedPosition = savedEditionReading(data, currentEdition)?.position;
   const hasChapterNotes = data.notebook?.some((note) => !note.deletedAt && linksChapter(note.link, ref)) ||
-    data.notes.some((note) => note.ref?.book === ref.book && note.ref.chapter === ref.chapter);
+    data.notes.some((note) => !!note.ref && sameBibleChapter(note.ref, ref));
   const openChapterNotes = () => router.push({ pathname: "/notizen", params: bibleNoteParams(ref) });
-  const binding = guidedReadingContext(ref, params.path, params.step),
+  const binding = edition ? undefined : guidedReadingContext(ref, params.path, params.step),
     stepKey = binding?.key,
     path = binding?.path,
     step = binding?.step,
@@ -107,9 +131,8 @@ export default function Reader() {
         ? "deep"
         : params.mode === "read"
           ? "read"
-          : data.readingPosition &&
-              sameReadingScope(data.readingPosition.ref, ref)
-            ? data.readingPosition.mode
+          : savedPosition && sameReadingScope(savedPosition.ref, ref)
+            ? savedPosition.mode
             : "read",
     ),
     [tools, setTools] = useState(false),
@@ -161,7 +184,8 @@ export default function Reader() {
     setSelectionToolsOpen(false);
     setSelectionError(null);
     setCopyText(null);
-    const saved = useApp.getState().data.readingPosition;
+    setShowTextNotes(false);
+    const saved = savedEditionReading(useApp.getState().data, currentEdition)?.position;
     setMode(
       params.mode === "deep"
         ? "deep"
@@ -177,7 +201,7 @@ export default function Reader() {
       const requested = Number(params.verse);
       if (
         valid &&
-        getChapter(ref.book, ref.chapter).some((verse) => verse.n === requested)
+        getChapter(ref.book, ref.chapter, edition).some((verse) => verse.n === requested)
       ) {
         setSelectedVerses([requested]);
         setSelectionOrder([requested]);
@@ -213,8 +237,7 @@ export default function Reader() {
         requested = draft.values.source.ref;
       } else
         requested = {
-          book: ref.book,
-          chapter: ref.chapter,
+          ...displayReference(ref),
           from: Number(params.selectFrom),
           to: Number(params.selectTo),
         };
@@ -358,7 +381,7 @@ export default function Reader() {
     else if (params.story && storyById(params.story)?.references.some((source) => source.book === ref.book && source.chapter === ref.chapter))
       router.replace({ pathname: "/geschichte/[id]", params: { id: params.story, stage: ["lesen", "verstehen", "gedanken"].includes(params.storyStage ?? "") ? params.storyStage : "lesen",
         index: String(Number.isInteger(Number(params.storyIndex)) && Number(params.storyIndex) >= 0 && Number(params.storyIndex) < storyById(params.story)!.questions.length ? params.storyIndex : 0) } });
-    else router.replace("/bibel");
+    else router.replace({ pathname: "/bibel", params: { ausgabe: edition } });
   };
   async function complete() {
     if (!valid) return;
@@ -378,7 +401,7 @@ export default function Reader() {
         ? data.readSteps.includes(stepKey)
         : passage
           ? data.readPassages.includes(
-              `${ref.book}:${ref.chapter}:${ref.from ?? getChapter(ref.book, ref.chapter)[0]?.n}:${ref.to ?? getChapter(ref.book, ref.chapter).at(-1)?.n}`,
+              passageKeyOf(ref, ref.from ?? verses[0]?.n ?? 0, ref.to ?? verses.at(-1)?.n ?? 0),
             )
           : read);
   let selectedReference: Reference | null = null;
@@ -531,7 +554,7 @@ export default function Reader() {
           onChoose={(book, chapter) => {
             setChapterPicker(false);
             if (book !== ref.book || chapter !== ref.chapter || ref.from || ref.to) {
-              router.push({ pathname: "/lesen/[book]", params: { book, chapter, mode } });
+              router.push(readerRoute({ book, chapter, edition }, { mode }));
             }
           }} />}
         {!valid ? (
@@ -540,7 +563,7 @@ export default function Reader() {
             <T style={{ marginVertical: 15 }}>
               Wähle ein vorhandenes Buch und Kapitel.
             </T>
-            <Button onPress={() => router.replace("/bibel")}>
+            <Button onPress={() => router.replace({ pathname: "/bibel", params: { ausgabe: edition } })}>
               Zur Buchauswahl
             </Button>
           </Card>
@@ -552,10 +575,12 @@ export default function Reader() {
                 unavailable={flowUnavailable}
                 onClose={closeTools}
                 onOpenNotes={openChapterNotes}
-                editionSwitch={{
-                  label: "Zu " + OTB_NAME + " wechseln",
-                  onPress: () => router.replace(editionChapterRoute("otb", ref)),
-                }}
+                editionSwitches={(Object.keys(BIBLE_EDITIONS) as BibleEdition[])
+                  .filter((candidate) => candidate !== currentEdition)
+                  .map((candidate) => ({
+                    label: "Zu " + BIBLE_EDITIONS[candidate].name + " wechseln",
+                    onPress: () => router.replace(editionChapterRoute(candidate, ref)),
+                  }))}
                 onFlowChange={(next) => {
                   if (next) setFlowUnavailable(false);
                   setFlow(next);
@@ -578,7 +603,7 @@ export default function Reader() {
                   {step?.title ?? referenceLabel(ref)}
                 </T>
                 <T variant="small" style={{ color: t.muted }}>
-                  {step ? `${referenceLabel(ref)} · ` : ""}Luther 1912
+                  {step ? `${referenceLabel(ref)} · ` : ""}{edition ? editionDetails.credit : editionDetails.name}
                 </T>
                 {passage && (
                   <T
@@ -660,7 +685,7 @@ export default function Reader() {
                 {context && (
                   <T style={{ fontSize: 10, color: t.muted }}>
                     Diese Einordnung bezieht sich auf{" "}
-                    {referenceLabel(context.ref)}.
+                    {referenceLabel(context.ref)}{edition ? " in Luther 1912" : ""}.
                   </T>
                 )}
                 {context?.word && (
@@ -713,8 +738,7 @@ export default function Reader() {
                       d.type === "capture" &&
                       (d.values.source.type === "verse" ||
                         d.values.source.type === "passage") &&
-                      d.values.source.ref.book === ref.book &&
-                      d.values.source.ref.chapter === ref.chapter,
+                      sameBibleChapter(d.values.source.ref, ref),
                   )
                   .map((d) => {
                     if (
@@ -880,7 +904,19 @@ export default function Reader() {
                 />
               )}
             </View>
-            {!focus && (
+            {!focus && <>
+              {textNotes.length > 0 && <View style={{ gap: 8, alignItems: "flex-start" }}>
+                <Button kind="ghost" icon={null} onPress={() => setShowTextNotes(!showTextNotes)}>
+                  {showTextNotes ? "Textanmerkungen schließen" : "Textanmerkungen der OTB"}
+                </Button>
+                {showTextNotes && textNotes.map((note, index) => <T variant="small" key={index}>
+                  {note.after > 0 ? `Nach Vers ${note.after} · ` : ""}{note.text}
+                </T>)}
+              </View>}
+              {edition && <Button kind="ghost" icon="info" style={{ alignSelf: "flex-start" }}
+                onPress={() => router.push({ pathname: "/quellen", params: { ausgabe: edition } })}>
+                Quelle, Lizenz und Bedingungen
+              </Button>}
               <ReaderFooter
                 reference={ref}
                 done={done}
@@ -893,7 +929,7 @@ export default function Reader() {
                 relatedPath={related[0]}
                 mode={mode}
               />
-            )}
+            </>}
             <T
               style={{
                 fontSize: 9,

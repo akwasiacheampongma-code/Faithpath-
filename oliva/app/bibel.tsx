@@ -10,10 +10,10 @@ import {
   referenceLabel,
   type SearchHit,
 } from "../src/features/bible/repository";
-import { OTB_BOOKS, OTB_NAME, OTB_CREDIT } from "../src/features/bible/open-bible";
+import { BIBLE_EDITIONS, alternateEdition, bibleEdition, readerRoute, type BibleEdition } from "../src/features/bible/editions";
 import { bookGroup } from "../src/features/bible/book-groups";
 import { useApp } from "../src/state/store";
-import { countBookRead } from "../src/state/model";
+import { countBookRead, savedEditionReading } from "../src/state/model";
 import { StoryLibrary } from "../src/features/bible/StoryCard";
 import { SpiritualWordCard } from "../src/features/bible/SpiritualWordCard";
 import { BookChapterGrid } from "../src/features/bible/BookChapterGrid";
@@ -24,7 +24,7 @@ import {
   type BibleScope,
 } from "../src/features/bible/book-search";
 export default function Bible() {
-  const otb = useLocalSearchParams<{ ausgabe?: string }>().ausgabe === "otb";
+  const { ausgabe } = useLocalSearchParams<{ ausgabe?: string }>();
   const t = useTheme(),
     data = useApp((s) => s.data),
     { width } = useWindowDimensions(),
@@ -33,6 +33,10 @@ export default function Bible() {
     [mode, setMode] = useState<"books" | "text">("books"),
     [expanded, setExpanded] = useState<string | null>(null),
     [showStory, setShowStory] = useState(false);
+  const [initialEdition] = useState(data.reading.edition);
+  const edition = bibleEdition(ausgabe ?? initialEdition);
+  const translated = alternateEdition(edition);
+  const reading = savedEditionReading(data, edition);
   const scroll = useRef<ComponentRef<typeof ScrollView>>(null);
   const offset = useRef(0);
   const returnOffset = useRef<number | null>(null);
@@ -49,19 +53,16 @@ export default function Bible() {
     // React Native Web returns the DOM scroll node, while native returns its handle.
     const scrollTop = (scroll.current?.getScrollableNode() as unknown as { scrollTop?: number } | undefined)?.scrollTop;
     returnOffset.current = typeof scrollTop === "number" ? scrollTop : offset.current;
-    router.push({
-      pathname: otb ? "/offen/[book]" : "/lesen/[book]",
-      params: { book: hit.book, chapter: hit.chapter, verse: hit.verse },
-    });
+    router.push(readerRoute({ book: hit.book, chapter: hit.chapter, edition: translated }, { verse: hit.verse }));
   };
-  const changeEdition = (next: boolean) => {
-    if (otb === next) return;
+  const changeEdition = (next: BibleEdition) => {
+    if (edition === next) return;
     setExpanded(null);
     setQuery("");
-    router.setParams({ ausgabe: next ? "otb" : "luther" });
+    router.setParams({ ausgabe: next });
   };
   const normalizedQuery = normalizeBookSearch(query);
-  const books = (otb ? OTB_BOOKS : BOOKS).filter(
+  const books = BOOKS.filter(
     (b) =>
       (group === "Alle" || b.testament === group) &&
       normalizeBookSearch(b.name).includes(normalizedQuery),
@@ -77,36 +78,33 @@ export default function Bible() {
         {mode === "text" ? "Im Bibeltext suchen" : "Deine Bibel."}
       </T>
       {mode === "books" && <T style={{ color: t.muted, fontSize: 12, lineHeight: 19, marginBottom: 14 }}>
-        {otb ? OTB_CREDIT : "Luther 1912 · vollständig offline enthalten"}
+        {translated ? BIBLE_EDITIONS[edition].credit : "Luther 1912 · vollständig offline enthalten"}
       </T>}
       <View role="group" accessibilityLabel="Bibelübersetzung" style={{ flexDirection: "row", gap: 7, flexWrap: "wrap", marginTop: mode === "text" ? 8 : 0, marginBottom: 12 }}>
-        <Button icon={null} style={{ paddingHorizontal: 11 }} selected={!otb} kind={!otb ? "primary" : "secondary"} onPress={() => changeEdition(false)}>Luther 1912</Button>
-        <Button icon={null} style={{ paddingHorizontal: 11 }} selected={otb} kind={otb ? "primary" : "secondary"} onPress={() => changeEdition(true)}>{OTB_NAME}</Button>
+        {(Object.keys(BIBLE_EDITIONS) as BibleEdition[]).map((candidate) => (
+          <Button key={candidate} icon={null} style={{ paddingHorizontal: 11 }}
+            selected={edition === candidate} kind={edition === candidate ? "primary" : "secondary"}
+            onPress={() => changeEdition(candidate)}>{BIBLE_EDITIONS[candidate].name}</Button>
+        ))}
       </View>
-      {mode === "books" && (otb ? <View style={{ gap: 4, alignItems: "flex-start", marginBottom: 10 }}>
-        <T variant="small" style={{ color: t.muted }}>Deutsch · eigene Kapitel- und Verszählung. Wähle ein Buch zum Lesen.</T>
-        <Button kind="ghost" icon="info" onPress={() => router.push({ pathname: "/quellen", params: { ausgabe: "otb" } })}>Quelle, Lizenz und Bedingungen</Button>
-      </View> : <Card
-        style={{
-          backgroundColor: t.soft,
-          borderWidth: 0,
-          marginBottom: 16,
-          padding: 14,
-        }}
-      >
+      {mode === "books" && translated && <View style={{ alignItems: "flex-start", marginBottom: 10 }}>
+        <Button kind="ghost" icon="info" onPress={() => router.push({ pathname: "/quellen", params: { ausgabe: edition } })}>
+          Quelle, Lizenz und Bedingungen
+        </Button>
+      </View>}
+      {mode === "books" && reading && <Card style={{ backgroundColor: t.soft, borderWidth: 0, marginBottom: 16, padding: 14 }}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: 10 }}>
           <View style={{ flexGrow: 1, flexBasis: 120, minWidth: 0 }}>
-            <T variant="heading" style={{ fontSize: 24, lineHeight: 28 }}>{referenceLabel(data.reading)}</T>
-            {data.readingPosition && <T variant="small" style={{ color: t.muted, fontSize: 11, lineHeight: 18 }}>Zuletzt bei Vers {data.readingPosition.verse}</T>}
+            <T variant="heading" style={{ fontSize: 24, lineHeight: 28 }}>{referenceLabel(reading.ref)}</T>
+            {reading.position && <T variant="small" style={{ color: t.muted, fontSize: 11, lineHeight: 18 }}>
+              Zuletzt bei Vers {reading.position.verse}
+            </T>}
           </View>
-          <Button icon={null} style={{ paddingHorizontal: 12, maxWidth: "100%" }} onPress={() => router.push({
-            pathname: "/lesen/[book]", params: {
-              book: data.reading.book, chapter: data.reading.chapter, from: data.reading.from,
-              to: data.reading.to, mode: data.readingPosition?.mode,
-            },
-          })}>Weiterlesen</Button>
+          <Button icon={null} style={{ paddingHorizontal: 12, maxWidth: "100%" }} onPress={() => router.push(
+            readerRoute(reading.ref, { mode: reading.position?.mode })
+          )}>Weiterlesen</Button>
         </View>
-      </Card>)}
+      </Card>}
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 8 }}>
         {[
           ["books", "Bücher", "Bücher finden"],
@@ -151,7 +149,7 @@ export default function Bible() {
           <View style={{ width: width >= 960 ? undefined : "100%", flex: width >= 960 ? 1 : undefined, minWidth: 0 }}>
           <View testID="bible-book-list" style={{ width: "100%" }}>
             {books.map((book) => {
-              const read = otb ? 0 : countBookRead(data, book.code);
+              const read = countBookRead(data, book.code, translated);
               return <View key={book.code} style={{ borderBottomWidth: 1, borderBottomColor: t.line }}>
                 {!normalizedQuery && bookGroup[book.code] && <T variant="label" accessibilityRole="header" aria-level={2}
                   style={{ marginTop: 15, marginBottom: 3, color: t.muted }}>{bookGroup[book.code]}</T>}
@@ -188,9 +186,9 @@ export default function Bible() {
                 </Pressable>
                 {expanded === book.code && (
                   <View style={{ paddingHorizontal: 4, paddingBottom: 18, gap: 14 }}>
-                    <BookChapterGrid code={book.code} otb={otb} />
-                    {!otb && <><T style={{ fontSize: 12, color: t.muted }}>
-                      {BOOKS.find((entry) => entry.code === book.code)?.description}
+                    <BookChapterGrid code={book.code} edition={edition} />
+                    <T style={{ fontSize: 12, color: t.muted }}>
+                      {book.description}
                     </T>
                     <View style={{ alignItems: "flex-start" }}>
                       <Button
@@ -199,13 +197,13 @@ export default function Bible() {
                         onPress={() =>
                           router.push({
                             pathname: "/buch/[book]",
-                            params: { book: book.code },
+                            params: { book: book.code, edition: translated },
                           })
                         }
                       >
                         Über dieses Buch
                       </Button>
-                    </View></>}
+                    </View>
                   </View>
                 )}
               </View>;
@@ -226,13 +224,13 @@ export default function Bible() {
                 ? "Das Alte Testament umfasst Israels Geschichte, Gebete, Weisheit und prophetische Texte."
                 : "Die Bibel ist eine Sammlung verschiedener Bücher – von Erzählungen bis zu Briefen."}
           </T>
-          {!otb && data.readChapters.length > 0 && <T style={{ fontSize: 11, lineHeight: 18, color: t.muted, marginTop: 8 }}>{data.readChapters.length} Kapitel bewusst als gelesen bestätigt</T>}
+
           {width < 960 && <View style={{ width: "100%", marginTop: 20 }}><SpiritualWordCard /></View>}
           </View>
             {width >= 960 && <View style={{ width: 320 }}><SpiritualWordCard /></View>}
           </View>
         </>
-      ) : <BibleTextSearch otb={otb} openHit={openHit} />}
+      ) : <BibleTextSearch edition={edition} openHit={openHit} />}
       {mode === "books" && (
       <View style={{ marginTop: 32, borderTopWidth: 1, borderTopColor: t.line, paddingTop: 24 }}>
       <View style={{ marginBottom: 22, gap: 9 }}>

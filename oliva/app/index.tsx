@@ -42,7 +42,7 @@ function Today() {
   const draftCount = new Set([...data.drafts.map((d) => d.key), ...(JSON.parse(volatileKeys) as string[])]).size;
   const active = pathById(data.activePath ?? "");
   const book = bookByCode(data.reading.book);
-  const chaptersRead = countBookRead(data, data.reading.book);
+  const chaptersRead = countBookRead(data, data.reading.book, data.reading.edition);
   const { ref: verseRef, text: verse } = dailyVerse();
 
   return <Shell header="compact">
@@ -107,7 +107,7 @@ function Today() {
         <T variant="small">{book.name} · {chaptersRead} von {book.chapters} Kapiteln gelesen</T>
         <Progress value={chaptersRead / book.chapters} label="Lesefortschritt im aktuellen Buch" />
         <Button kind="ghost" icon={null} style={{ alignSelf: "flex-start", paddingHorizontal: 0 }} onPress={() => router.push({
-          pathname: "/buch/[book]", params: { book: book.code },
+          pathname: "/buch/[book]", params: { book: book.code, edition: data.reading.edition },
         })}>Kapitelübersicht öffnen</Button>
       </Card>}
     </View>

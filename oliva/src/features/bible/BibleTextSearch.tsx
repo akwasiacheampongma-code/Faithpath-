@@ -3,14 +3,15 @@ import { Pressable, View, useWindowDimensions } from "react-native";
 import { Button, Field, T } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { BOOKS, referenceLabel, searchBible } from "./repository";
-import { OTB_BOOKS, OTB_NAME } from "./open-bible";
+import { BIBLE_EDITIONS, type BibleEdition } from "./editions";
+import { useEditionText } from "./useEditionText";
 import { BibleScopeSelect } from "./BibleScopeSelect";
 import type { BibleScope } from "./book-search";
 import { verseHighlightPattern, verseSearchParts, type SearchHit } from "./verse-search";
 
 const PAGE_SIZE = 30;
 
-export function BibleTextSearch({ otb, openHit }: { otb: boolean; openHit: (hit: SearchHit) => void }) {
+export function BibleTextSearch({ edition, openHit }: { edition: BibleEdition; openHit: (hit: SearchHit) => void }) {
   const t = useTheme();
   const { width } = useWindowDimensions();
   const [query, setQuery] = useState("");
@@ -18,8 +19,7 @@ export function BibleTextSearch({ otb, openHit }: { otb: boolean; openHit: (hit:
   const [testament, setTestament] = useState<BibleScope>("Alle");
   const [book, setBook] = useState<string>();
   const [loaded, setLoaded] = useState<{ key: string; limit: number }>();
-  const [alternate, setAlternate] = useState<{ key: string; hits: SearchHit[]; failed?: boolean }>();
-  const key = JSON.stringify([otb, debounced, testament, book]);
+  const key = JSON.stringify([edition, debounced, testament, book]);
   const visible = loaded?.key === key ? loaded.limit : PAGE_SIZE;
 
   useEffect(() => {
@@ -27,24 +27,11 @@ export function BibleTextSearch({ otb, openHit }: { otb: boolean; openHit: (hit:
     return () => clearTimeout(timer);
   }, [query]);
 
-  const lutherHits = useMemo(() => otb ? [] : searchBible(debounced, Infinity, { testament, book }),
-    [otb, debounced, testament, book]);
-
-  useEffect(() => {
-    if (!otb || !debounced) return;
-    let current = true;
-    void import("./open-bible-content").then(({ searchOtb }) => {
-      if (current) setAlternate({ key, hits: searchOtb(debounced, Infinity, { testament, book }) });
-    }).catch(() => {
-      if (current) setAlternate({ key, hits: [], failed: true });
-    });
-    return () => { current = false; };
-  }, [otb, key, debounced, testament, book]);
-
-  const edition = otb ? OTB_NAME : "Luther 1912";
-  const otbResult = alternate?.key === key ? alternate : undefined;
-  const hits = otb ? otbResult?.hits ?? [] : lutherHits;
-  const pending = query.trim() !== debounced || (otb && !!debounced && !otbResult);
+  const status = useEditionText(debounced ? edition : "luther");
+  const hits = useMemo(() => status === "ready" ? searchBible(debounced, Infinity, { testament, book }, edition) : [],
+    [status, edition, debounced, testament, book]);
+  const name = BIBLE_EDITIONS[edition].name;
+  const pending = query.trim() !== debounced || status === "loading";
   const pattern = useMemo(() => verseHighlightPattern(debounced), [debounced]);
 
   return <View style={{ gap: 13, width: "100%" }}>
@@ -60,17 +47,17 @@ export function BibleTextSearch({ otb, openHit }: { otb: boolean; openHit: (hit:
         onChange={(value) => { setTestament(value); setBook(undefined); }}
         bookFilter={{
           value: book,
-          books: otb ? OTB_BOOKS : BOOKS,
+          books: BOOKS,
           onChange: (code) => { setTestament("Alle"); setBook(code); },
         }}
       />
     </View>
     {pending ? <T variant="small" accessibilityLiveRegion="polite">Der Bibeltext wird durchsucht …</T>
-      : !debounced ? <T variant="small" style={{ color: t.muted }}>Gesucht wird in {edition}.</T>
-      : otb && otbResult?.failed ? <T accessibilityRole="alert">Die Suche ist gerade nicht verfügbar. Die Kapitel bleiben über „Bücher“ erreichbar.</T>
+      : !debounced ? <T variant="small" style={{ color: t.muted }}>Gesucht wird in {name}.</T>
+      : status === "error" ? <T accessibilityRole="alert">Die Suche ist gerade nicht verfügbar. Die Kapitel bleiben über „Bücher“ erreichbar.</T>
       : <View style={{ gap: 4 }}>
         <T testID="bible-search-count" variant="small" accessibilityLiveRegion="polite" style={{ color: t.muted }}>
-          {hits.length === 1 ? "1 Vers gefunden" : `${hits.length} Verse gefunden`} · {edition}
+          {hits.length === 1 ? "1 Vers gefunden" : `${hits.length} Verse gefunden`} · {name}
         </T>
         {hits.length === 0 && <T style={{ paddingTop: 5 }}>Keine passenden Verse gefunden.</T>}
         {hits.slice(0, visible).map((hit) => {

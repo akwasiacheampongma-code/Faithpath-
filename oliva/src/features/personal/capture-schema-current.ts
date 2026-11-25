@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { referenceSchema } from "../bible/schema";
-import { getPassage, validReference } from "../bible/repository";
+import { editionReferenceSchema } from "../bible/schema";
+import { getPassage, getVerseNumbers, validReference } from "../bible/repository";
+import { passageKeyOf, verseKeyOf } from "../bible/reference-key";
 import { storyCaptureSchema } from "../stories/schema";
 import {
   captureSourceSchema as historicalCaptureSourceSchema,
@@ -11,7 +12,7 @@ import {
 // source and key; a single verse keeps its original source and key forever.
 const passageReferenceSchema = z
   .object({
-    ...referenceSchema.shape,
+    ...editionReferenceSchema.shape,
     from: z.number().int().positive(),
     to: z.number().int().positive(),
   })
@@ -20,12 +21,22 @@ const passageReferenceSchema = z
   .refine(
     (ref) =>
       ref.from < ref.to &&
-      getPassage(ref).length === ref.to - ref.from + 1,
+      (ref.edition ? getVerseNumbers(ref) : getPassage(ref)).length === ref.to - ref.from + 1,
     "Eine Bereichsnotiz benötigt mehrere zusammenhängende Verse",
   );
 
+const [dailyCapture, experienceCapture, , guidedCapture] = historicalCaptureSourceSchema.options;
+
 export const captureSourceSchema = z.discriminatedUnion("type", [
-  ...historicalCaptureSourceSchema.options,
+  dailyCapture,
+  experienceCapture,
+  z.object({
+    type: z.literal("verse"),
+    ref: editionReferenceSchema.refine(
+      (ref) => ref.from !== undefined && ref.from === ref.to, "Ein Notizentwurf gehört zu genau einem Vers",
+    ),
+  }).strict(),
+  guidedCapture,
   z
     .object({ type: z.literal("passage"), ref: passageReferenceSchema })
     .strict(),
@@ -44,6 +55,7 @@ export type CaptureSource = z.infer<typeof captureSourceSchema>;
 export function captureKey(source: CaptureSource) {
   if (source.type === "story") return "capture:story:" + source.unitId + ":" + source.hash;
   if (source.type === "passage")
-    return `capture:passage:${source.ref.book}:${source.ref.chapter}:${source.ref.from}:${source.ref.to}`;
+    return "capture:passage:" + passageKeyOf(source.ref, source.ref.from, source.ref.to);
+  if (source.type === "verse") return "capture:verse:" + verseKeyOf(source.ref, source.ref.from!);
   return historicalCaptureKey(source);
 }

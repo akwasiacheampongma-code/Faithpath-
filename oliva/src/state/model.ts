@@ -3,11 +3,15 @@ import {
   validReference,
   type Reference,
   getChapter,
+  getVerseNumbers,
+  hasBibleVerse,
 } from "../features/bible/repository";
 import { pathById, CURRENT_STEP_COUNT } from "../features/paths/catalog";
 import { isHistoricalPath, isHistoricalStep } from "../features/paths/historical-progress";
 
-import { referenceSchema as ref } from "../features/bible/schema";
+import { ALTERNATE_EDITIONS, bibleEdition, type BibleEdition } from "../features/bible/editions";
+import { chapterKeyOf, passageKeyOf, splitBibleKey, verseKeyOf } from "../features/bible/reference-key";
+import { editionReferenceSchema, referenceSchema as ref } from "../features/bible/schema";
 import { goalSchema, draftSchema } from "../features/personal/schema";
 import {
   goalSchema as v8GoalSchema,
@@ -47,7 +51,7 @@ import {
   readingPositionSchema as historicalReadingPositionSchema,
   sameReadingScope,
 } from "../features/bible/position";
-import { readingPositionSchema } from "../features/bible/position-current";
+import { lutherReadingPositionSchema, readingPositionSchema } from "../features/bible/position-current";
 import { notebookSchema } from "../features/notebook/model";
 const chapterKey = z.string().refine((value) => {
   const [book, c] = value.split(":");
@@ -133,16 +137,22 @@ export const v9NoteSchema = historicalNoteSchema
       });
   });
 export const currentNoteSchema = historicalNoteSchema
-  .extend({ captureSource: captureSourceSchema.optional() })
+  .extend({ ref: editionReferenceSchema.optional(), captureSource: captureSourceSchema.optional() })
   .superRefine((note, ctx) => {
+    if (note.origin && note.ref?.edition)
+      ctx.addIssue({ code: "custom", path: ["ref"], message: "Die Importquelle enthält keine geprüfte Stelle dieser Ausgabe" });
     if (note.captureSource?.type === "story") {
       const source = note.captureSource;
       if (note.kind !== "reflection" || note.origin)
         ctx.addIssue({ code: "custom", message: "Eine Geschichtenreflexion hat eine eigene unveränderte Quelle" });
       const expected = source.references.length === 1 ? source.references[0] : undefined;
-      if (expected ? !note.ref || ["book", "chapter", "from", "to"].some((key) => note.ref![key as keyof typeof expected] !== expected[key as keyof typeof expected]) : note.ref !== undefined)
+      if (expected ? !note.ref || !sameReadingScope(note.ref, expected) : note.ref !== undefined)
         ctx.addIssue({ code: "custom", path: ["ref"], message: "Die Reflexion muss genau ihre Originalstellen bewahren" });
       return;
+    }
+    if (note.captureSource?.type === "verse" && note.captureSource.ref.edition &&
+      (!note.ref || !sameReadingScope(note.ref, note.captureSource.ref))) {
+      ctx.addIssue({ code: "custom", path: ["ref"], message: "Versnotiz und Quelle gehören zur selben Ausgabe und Stelle" });
     }
     if (note.captureSource?.type !== "passage") return;
     if (note.kind !== "note")
@@ -159,10 +169,7 @@ export const currentNoteSchema = historicalNoteSchema
       });
     const sourceRef = note.captureSource.ref;
     if (
-      !note.ref ||
-      (["book", "chapter", "from", "to"] as const).some(
-        (key) => note.ref![key] !== sourceRef[key],
-      )
+      !note.ref || !sameReadingScope(note.ref, sourceRef)
     )
       ctx.addIssue({
         code: "custom",
@@ -448,7 +455,7 @@ export const v9DataSchema = z
           unique(items.map((draft) => draft.key)) &&
           unique(items.map((draft) => draft.id)),
       ),
-    readingPosition: readingPositionSchema.nullable(),
+    readingPosition: lutherReadingPositionSchema.nullable(),
   })
   .strict()
   .refine(completeStepsValid, "Ungültiger Wegfortschritt")
@@ -502,7 +509,7 @@ export const v10DataSchema = z
           unique(items.map((draft) => draft.key)) &&
           unique(items.map((draft) => draft.id)),
       ),
-    readingPosition: readingPositionSchema.nullable(),
+    readingPosition: lutherReadingPositionSchema.nullable(),
   })
   .strict()
   .refine(completeStepsValid, "Ungültiger Wegfortschritt")
@@ -533,12 +540,77 @@ export const v10DataSchema = z
     "Originalbeleg des historischen NT-Status fehlt",
   );
 
+const editionChapterKey = z.string().refine((key) => {
+  const { ref: reference } = splitBibleKey(key);
+  return validReference(reference) && key === chapterKeyOf(reference);
+});
+const editionPassageKey = z.string().refine((key) => {
+  const { ref: reference, from, to } = splitBibleKey(key);
+  return validReference({ ...reference, from, to }) && key === passageKeyOf(reference, from, to);
+});
+const editionVerseKey = z.string().refine((key) => {
+  const { ref: reference, from } = splitBibleKey(key);
+  return validReference(reference) && hasBibleVerse(reference, from) && key === verseKeyOf(reference, from);
+});
+const readingState = z.object({ ref: editionReferenceSchema, position: readingPositionSchema.nullable() })
+  .strict().refine(({ ref, position }) => !position || sameReadingScope(ref, position.ref));
+const editionReadingSchema = z.partialRecord(z.enum(["luther", ...ALTERNATE_EDITIONS]), readingState)
+  .refine((record) => Object.entries(record).every(([edition, saved]) => bibleEdition(saved.ref.edition) === edition));
+
+function usesEditionReferences(data: {
+  reading: Reference;
+  notes: readonly z.infer<typeof currentNoteSchema>[];
+  goals: readonly z.infer<typeof goalSchema>[];
+  drafts: readonly z.infer<typeof draftSchema>[];
+  notebook?: z.infer<typeof notebookSchema>;
+  readChapters: readonly string[];
+  readPassages: readonly string[];
+  bookmarks: readonly string[];
+  highlights: Record<string, unknown>;
+}): boolean {
+  if (data.reading.edition || data.notes.some((note) => {
+    const source = note.captureSource;
+    return note.ref?.edition || ((source?.type === "verse" || source?.type === "passage") && source.ref.edition);
+  }) ||
+    data.goals.some((goal) => goal.ref?.edition) ||
+    data.notebook?.some((entry) => entry.link?.kind === "bible" && entry.link.ref.edition)) return true;
+  const hasPrefix = (key: string) => ALTERNATE_EDITIONS.some((edition) => key.startsWith(edition + ":"));
+  return data.readChapters.some(hasPrefix) || data.readPassages.some(hasPrefix) ||
+    data.bookmarks.some(hasPrefix) || Object.keys(data.highlights).some(hasPrefix) ||
+    data.drafts.some((draft) => {
+      if (draft.type === "capture") {
+        const source = draft.values.source;
+        return (source.type === "verse" || source.type === "passage") && !!source.ref.edition;
+      }
+      return "ref" in draft.values && !!draft.values.ref?.edition;
+    });
+}
+
+export function prepareEditionProfile(data: AppData) {
+  if (data.version === 13 || data.editionReading || usesEditionReferences(data)) {
+    data.version = 13;
+    data.editionReading ??= {};
+  }
+}
+
+export function savedEditionReading(data: Pick<AppData, "reading" | "readingPosition" | "editionReading">, edition: BibleEdition) {
+  return bibleEdition(data.reading.edition) === edition
+    ? { ref: data.reading, position: data.readingPosition }
+    : data.editionReading?.[edition];
+}
+
 // V11 extends the guided catalog to the original life topics. Old versions
 // retain the exact nine-path / 27-step bounds; no existing domain is reset.
 export const dataSchema = z
   .object({
     ...v10DataSchema.shape,
-    version: z.literal([11, 12]),
+    version: z.literal([11, 12, 13]),
+    reading: editionReferenceSchema,
+    editionReading: editionReadingSchema.optional(),
+    readChapters: z.array(editionChapterKey).max(1189 * 3).refine(unique),
+    readPassages: z.array(editionPassageKey).max(5000).refine(unique),
+    bookmarks: z.array(editionVerseKey).max(31103 * 3).refine(unique),
+    highlights: z.record(editionVerseKey, highlightColor),
     notebook: notebookSchema.optional(),
     readSteps: z.array(currentStepKey).max(CURRENT_STEP_COUNT).refine(unique),
     completedSteps: z.array(currentStepKey).max(CURRENT_STEP_COUNT).refine(unique),
@@ -563,7 +635,10 @@ export const dataSchema = z
     readingPosition: readingPositionSchema.nullable(),
   })
   .strict()
-  .refine((data) => (data.version === 12) === (data.notebook !== undefined), "Ungültiges Notizbuchformat")
+  .refine((data) => data.version === 13 || (data.version === 12) === (data.notebook !== undefined), "Ungültiges Notizbuchformat")
+  .refine((data) => data.version === 13
+    ? !!data.editionReading && !data.editionReading[bibleEdition(data.reading.edition)]
+    : data.editionReading === undefined && !usesEditionReferences(data), "Ungültiges Format der Bibelausgaben")
   .refine(completeStepsValid, "Ungültiger Wegfortschritt")
   .refine(
     (data) =>
@@ -598,7 +673,7 @@ export function decodeData(input: unknown): AppData {
       ? input.version
       : undefined;
   let data: AppData;
-  if (version === 11 || version === 12) data = dataSchema.parse(input);
+  if (version === 11 || version === 12 || version === 13) data = dataSchema.parse(input);
   else if (version === 10) data = dataSchema.parse({ ...v10DataSchema.parse(input), version: 11 });
   else if (version === 9) data = dataSchema.parse({ ...v9DataSchema.parse(input), version: 11, storyStudy: emptyStoryStudy() });
   else if (version === 8)
@@ -709,12 +784,13 @@ export const initialData = (): AppData => ({
   },
 });
 export function chapterId(ref: Reference) {
-  return `${ref.book}:${ref.chapter}`;
+  return chapterKeyOf(ref);
 }
 export function markRead(data: AppData, ref: Reference, step?: string) {
   if (!validReference(ref))
     throw new Error("Diese Bibelstelle ist nicht vorhanden.");
   if (step) {
+    if (ref.edition) throw new Error("Wegschritte verwenden ihre geprüfte Bibelausgabe.");
     const [id, n] = step.split(":"),
       target = pathById(id ?? "")?.steps[Number(n)]?.ref;
     if (
@@ -726,8 +802,8 @@ export function markRead(data: AppData, ref: Reference, step?: string) {
       throw new Error("Abschnitt und Wegschritt passen nicht zusammen.");
     if (!data.readSteps.includes(step)) data.readSteps.push(step);
   } else if (ref.from || ref.to) {
-    const verses = getChapter(ref.book, ref.chapter),
-      key = `${ref.book}:${ref.chapter}:${ref.from ?? verses[0]!.n}:${ref.to ?? verses[verses.length - 1]!.n}`;
+    const verses = getVerseNumbers({ book: ref.book, chapter: ref.chapter, edition: ref.edition });
+    const key = passageKeyOf(ref, ref.from ?? verses[0]!, ref.to ?? verses.at(-1)!);
     if (!data.readPassages.includes(key)) data.readPassages.push(key);
   } else if (!data.readChapters.includes(chapterId(ref)))
     data.readChapters.push(chapterId(ref));
@@ -814,6 +890,7 @@ export function backupByteLength(data: AppData) {
     if (!active.has(key)) sourceSizes.delete(key);
   return total;
 }
-export function countBookRead(data: AppData, code: string) {
-  return data.readChapters.filter((key) => key.startsWith(code + ":")).length;
+export function countBookRead(data: AppData, code: string, edition?: Reference["edition"]) {
+  const prefix = edition ? `${edition}:${code}:` : code + ":";
+  return data.readChapters.filter((key) => key.startsWith(prefix)).length;
 }

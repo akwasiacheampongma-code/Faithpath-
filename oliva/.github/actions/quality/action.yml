@@ -36,6 +36,7 @@ runs:
       working-directory: ${{ env.OLIVA_PROJECT }}
       run: |
         npm run content:check
+        npm run content:editions
         npm run content:nt
         npm run content:stories
         npm run content:topics

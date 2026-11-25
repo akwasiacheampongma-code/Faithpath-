@@ -5,6 +5,7 @@ import { Icon } from "../../components/Icon";
 import { Button, Card, T } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import { useApp } from "../../state/store";
+import { BIBLE_EDITIONS, readerRoute } from "../bible/editions";
 import { referenceLabel } from "../bible/repository";
 import { TreeStill } from "../garden/TreeStill";
 import { STAGES } from "../garden/model";
@@ -47,7 +48,7 @@ export function TodayEntry() {
       <Pressable testID="home-primary-action" accessibilityRole="button"
         accessibilityLabel={action}
         accessibilityHint={position ? `${label} · Zuletzt bei Vers ${position.verse}` : label}
-        onPress={() => router.push({ pathname: "/lesen/[book]", params: { ...reference, mode: position?.mode } })}
+        onPress={() => router.push(readerRoute(reference, { mode: position?.mode }))}
         style={({ pressed }) => ({
           flexDirection: "row", alignItems: "center", minHeight: 82, paddingHorizontal: 15, paddingVertical: 12,
           gap: 13, opacity: pressed ? 0.8 : 1,
@@ -60,6 +61,7 @@ export function TodayEntry() {
           <T variant="heading" style={{ fontSize: 25, lineHeight: 28, color: "#fffdf2" }}>
             {label}{position && !reference.from && !reference.to ? `,${position.verse}` : ""}
           </T>
+          {reference.edition && <T variant="small" style={{ color: "#fffdf2" }}>{BIBLE_EDITIONS[reference.edition].name}</T>}
           {position && (reference.from || reference.to) && (
             <T variant="small" style={{ color: "#fffdf2" }}>Zuletzt bei Vers {position.verse}</T>
           )}

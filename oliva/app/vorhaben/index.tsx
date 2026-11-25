@@ -7,10 +7,11 @@ import { Icon } from "../../src/components/Icon";
 import { useTheme } from "../../src/design-system/theme";
 import { useApp } from "../../src/state/store";
 import { newId, type DraftOf } from "../../src/features/personal/schema";
+import { alternateEdition } from "../../src/features/bible/editions";
 import { GoalEditor } from "../../src/features/personal/Editors";
 import {
   validReference,
-  referenceLabel,
+  editionReferenceLabel,
 } from "../../src/features/bible/repository";
 
 export default function Goals() {
@@ -21,6 +22,7 @@ export default function Goals() {
       start?: string;
       book?: string;
       chapter?: string;
+      edition?: string;
       from?: string;
       to?: string;
     }>();
@@ -37,6 +39,7 @@ export default function Goals() {
     const ref = {
       book: params.book ?? "",
       chapter: Number(params.chapter),
+      ...(alternateEdition(params.edition) ? { edition: alternateEdition(params.edition) } : {}),
       ...(params.from ? { from: Number(params.from) } : {}),
       ...(params.to ? { to: Number(params.to) } : {}),
     };
@@ -60,7 +63,7 @@ export default function Goals() {
   }
   useEffect(() => {
     if (params.start === "1") void begin();
-  }, [params.start, params.book, params.chapter, params.from, params.to]);
+  }, [params.start, params.book, params.chapter, params.from, params.to, params.edition]);
   const goals = data.goals.filter(
     (g) =>
       !!g.archivedAt === archived &&
@@ -180,7 +183,7 @@ export default function Goals() {
                 {goal.reviews.length} Rückblicke
                 {goal.archivedAt ? " · archiviert" : ""}
               </T>
-              {goal.ref && <Tag icon="book">{referenceLabel(goal.ref)}</Tag>}
+              {goal.ref && <Tag icon="book">{editionReferenceLabel(goal.ref)}</Tag>}
             </Card>
           </Pressable>
         ))}

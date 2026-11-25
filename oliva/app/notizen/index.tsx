@@ -3,7 +3,8 @@ import { View } from "react-native";
 import { Redirect, router, useLocalSearchParams } from "expo-router";
 import { Button, Field, T } from "../../src/components/ui";
 import { useTheme } from "../../src/design-system/theme";
-import { referenceLabel } from "../../src/features/bible/repository";
+import { sameBibleChapter } from "../../src/features/bible/reference-key";
+import { editionReferenceLabel } from "../../src/features/bible/repository";
 import { resumeNotebookEdits } from "../../src/features/notebook/autosave";
 import { bibleNoteFilter, bibleNoteParams, linkDetails, linksChapter, type BibleNoteParams } from "../../src/features/notebook/links";
 import { notebookStamp, notebookText, type NotebookNote } from "../../src/features/notebook/model";
@@ -42,8 +43,7 @@ function ScopedNotes({ filter, trash }: { filter: ReturnType<typeof bibleNoteFil
   const held = Object.entries(drafts).filter(([key, entry]) =>
     !trash && !notebook.some((note) => note.id === key || note.id === entry.targetId) &&
     (!filter || linksChapter(entry.link, filter)) && visible(entry.text, needle));
-  const archived = filter && !trash ? oldNotes.filter((entry) => entry.ref?.book === filter.book &&
-    entry.ref.chapter === filter.chapter && visible(entry.text, needle)) : [];
+  const archived = filter && !trash ? oldNotes.filter((entry) => !!entry.ref && sameBibleChapter(entry.ref, filter) && visible(entry.text, needle)) : [];
   const pinned = matches.filter((note) => !trash && note.pinned);
   const others = matches.filter((note) => trash || !note.pinned);
   const open = (id: string) => router.push({ pathname: "/notizen/[id]", params: { id } });
@@ -73,7 +73,7 @@ function ScopedNotes({ filter, trash }: { filter: ReturnType<typeof bibleNoteFil
     action={!trash && <Button kind="ghost" icon="pen" onPress={newNote}>Neue Notiz</Button>}>
     {!trash && <Field label="Notizen suchen" placeholder="Titel, Text oder Bibelstelle" value={query} onChangeText={setQuery} />}
     {filter && !trash && <View style={{ backgroundColor: t.soft, padding: 12, borderRadius: 12, flexDirection: "row", alignItems: "center", flexWrap: "wrap", justifyContent: "space-between" }}>
-      <T variant="small" style={{ color: t.primary }}>{referenceLabel({ book: filter.book, chapter: filter.chapter })}</T>
+      <T variant="small" style={{ color: t.primary }}>{editionReferenceLabel({ book: filter.book, chapter: filter.chapter, edition: filter.edition })}</T>
       <Button kind="ghost" icon={null} onPress={() => router.replace("/sammlung")}>Alle Notizen</Button>
     </View>}
     {!trash && <View style={{ alignItems: "flex-start" }}>

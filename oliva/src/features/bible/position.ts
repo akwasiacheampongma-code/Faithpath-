@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { chapterKeyOf } from "./reference-key";
 import { referenceSchema } from "./schema";
 import { getPassage, type Reference } from "./repository";
 
@@ -15,7 +16,7 @@ export const readingPositionSchema = z
   );
 export type ReadingPosition = z.infer<typeof readingPositionSchema>;
 export const readingScope = (ref: Reference) =>
-  `${ref.book}:${ref.chapter}:${ref.from ?? ""}:${ref.to ?? ""}`;
+  `${chapterKeyOf(ref)}:${ref.from ?? ""}:${ref.to ?? ""}`;
 export function sameReadingScope(a: Reference, b: Reference) {
   return readingScope(a) === readingScope(b);
 }

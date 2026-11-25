@@ -1,7 +1,9 @@
+import { editionCitation } from "./editions";
 import {
   bookByCode,
   getChapter,
   getPassage,
+  getVerseNumbers,
   referenceLabel,
   validReference,
   type Reference,
@@ -29,6 +31,7 @@ function checkedReference(reference: Reference): Reference {
   return {
     book: reference.book,
     chapter: reference.chapter,
+    ...(reference.edition ? { edition: reference.edition } : {}),
     ...(reference.from === undefined ? {} : { from: reference.from }),
     ...(reference.to === undefined ? {} : { to: reference.to }),
   };
@@ -38,9 +41,7 @@ function checkedSelection(
   reference: Reference,
   selected: readonly number[],
 ): number[] {
-  const numbers = new Set(
-    getChapter(reference.book, reference.chapter).map((verse) => verse.n),
-  );
+  const numbers = new Set(getVerseNumbers(displayReference(reference)));
   const seen = new Set<number>();
   for (const verse of selected) {
     if (!Number.isInteger(verse) || !numbers.has(verse))
@@ -57,8 +58,8 @@ function checkedSelection(
 
 /** The complete containing chapter, independent of the logical focus bounds. */
 export function displayReference(logicalReference: Reference): Reference {
-  const { book, chapter } = checkedReference(logicalReference);
-  return { book, chapter };
+  const { book, chapter, edition } = checkedReference(logicalReference);
+  return { book, chapter, ...(edition ? { edition } : {}) };
 }
 
 /** Add or remove exactly one verse; a temporary gap remains in the selection. */
@@ -91,8 +92,7 @@ export function selectionReference(
   if (sorted.some((verse, i) => i > 0 && verse !== sorted[i - 1]! + 1))
     throw new SelectionError("non-contiguous", SELECTION_GAP_MESSAGE);
   return {
-    book: reference.book,
-    chapter: reference.chapter,
+    ...displayReference(reference),
     from: sorted[0]!,
     to: sorted[sorted.length - 1]!,
   };
@@ -108,32 +108,31 @@ export function formatBibleCopy(reference: Reference): string {
     checked.from === undefined && checked.to === undefined
       ? checked
       : {
-          book: checked.book,
-          chapter: checked.chapter,
+          ...displayReference(checked),
           from: verses[0]!.n,
           to: verses[verses.length - 1]!.n,
         };
   return [
     referenceLabel(labelReference),
     ...verses.map((verse) => `${verse.n} ${verse.text}`),
-    "Lutherbibel 1912",
+    ...editionCitation(reference.edition),
   ].join("\n");
 }
 
 /** Canonical selected verses only; disjoint selections never include gap text. */
-export function selectedBibleVerses(
-  reference: Reference,
-  selected: readonly number[],
-) {
-  const checked = checkedReference(reference);
-  const numbers = checkedSelection(checked, selected);
+export function selectedBibleNumbers(reference: Reference, selected: readonly number[]) {
+  const numbers = checkedSelection(checkedReference(reference), selected);
   if (!numbers.length)
     throw new SelectionError(
       "invalid-verse",
       "Wähle mindestens einen Vers aus.",
     );
-  const wanted = new Set(numbers);
-  return getChapter(checked.book, checked.chapter).filter((verse) =>
+  return numbers;
+}
+
+export function selectedBibleVerses(reference: Reference, selected: readonly number[]) {
+  const wanted = new Set(selectedBibleNumbers(reference, selected));
+  return getChapter(reference.book, reference.chapter, reference.edition).filter((verse) =>
     wanted.has(verse.n),
   );
 }
@@ -142,12 +141,12 @@ export function selectedBibleLabel(
   reference: Reference,
   selected: readonly number[],
 ): string {
-  const verses = selectedBibleVerses(reference, selected);
+  const verses = selectedBibleNumbers(reference, selected);
   const groups: number[][] = [];
   for (const verse of verses) {
     const last = groups.at(-1);
-    if (last && last.at(-1)! + 1 === verse.n) last.push(verse.n);
-    else groups.push([verse.n]);
+    if (last && last.at(-1)! + 1 === verse) last.push(verse);
+    else groups.push([verse]);
   }
   const ranges = groups
     .map((group) =>
@@ -166,6 +165,6 @@ export function formatSelectedBibleCopy(
     ...selectedBibleVerses(reference, selected).map(
       (verse) => `${verse.n} ${verse.text}`,
     ),
-    "Lutherbibel 1912",
+    ...editionCitation(reference.edition),
   ].join("\n");
 }

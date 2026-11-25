@@ -1,3 +1,4 @@
+import { verseKeyOf, chapterKeyOf, sameBibleChapter } from "./reference-key";
 import { useEffect, useRef, useState } from "react";
 import { Modal, ScrollView, TextInput, View, Pressable } from "react-native";
 import { router } from "expo-router";
@@ -39,7 +40,7 @@ export function SelectionTools({
   const [message, setMessage] = useState<string | null>(null);
   const close = useRef<React.ComponentRef<typeof Pressable>>(null);
   const generation = useRef(0);
-  const sourceKey = `${logicalReference.book}:${logicalReference.chapter}:${selected.join(",")}`;
+  const sourceKey = `${chapterKeyOf(logicalReference)}:${selected.join(",")}`;
   useEffect(() => {
     generation.current++;
     setMessage(null);
@@ -48,7 +49,7 @@ export function SelectionTools({
     };
   }, [visible, panel, sourceKey]);
   const keys = selected.map(
-    (n) => `${logicalReference.book}:${logicalReference.chapter}:${n}`,
+    (n) => verseKeyOf(logicalReference, n),
   );
   const allBookmarked =
     keys.length > 0 && keys.every((key) => data.bookmarks.includes(key));
@@ -133,7 +134,7 @@ export function SelectionTools({
             )}
             {visible && panel === "note" && reference && (
               <CaptureInput
-                key={`${reference.book}:${reference.chapter}:${reference.from}:${reference.to}`}
+                key={`${chapterKeyOf(reference)}:${reference.from}:${reference.to}`}
                 source={captureSourceForReference(reference)}
                 autoFocus
                 label={
@@ -199,8 +200,7 @@ export function SelectionTools({
                   data.notes
                     .filter(
                       (note) =>
-                        note.ref?.book === reference.book &&
-                        note.ref.chapter === reference.chapter &&
+                        note.ref && sameBibleChapter(note.ref, reference) &&
                         (note.ref.from ?? 1) <= reference.to! &&
                         (note.ref.to ?? Number.MAX_SAFE_INTEGER) >=
                           reference.from!,

@@ -69,10 +69,11 @@ test("OTB sucht offline in ihrer eigenen Ausgabe und kehrt zur geladenen Ansicht
   await button(page, "Weitere Verse anzeigen").click();
   await expect(results(page)).toHaveCount(60);
   const hit = results(page).nth(31);
+  const verse = (await hit.getAttribute("aria-label"))?.match(/,(\d+)\./)?.[1];
+  expect(verse).toBeDefined();
   await hit.scrollIntoViewIfNeeded();
   await hit.click();
-  await expect(page).toHaveURL(/\/offen\/[A-Z0-9]+\?chapter=\d+&verse=\d+/);
-  const verse = new URL(page.url()).searchParams.get("verse");
+  await expect(page).toHaveURL(/\/offen\/[A-Z0-9]+\?chapter=\d+/);
   await expect(page.getByRole("button", { name: new RegExp(`^Vers ${verse}:`) }).filter({ visible: true })).toBeInViewport();
   await page.goBack();
   await expect(searchBox(page)).toHaveValue("Friede");

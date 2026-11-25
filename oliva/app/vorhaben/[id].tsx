@@ -19,7 +19,8 @@ import {
   ReviewEditor,
   ReviewEditEditor,
 } from "../../src/features/personal/Editors";
-import { referenceLabel } from "../../src/features/bible/repository";
+import { readerRoute } from "../../src/features/bible/editions";
+import { editionReferenceLabel } from "../../src/features/bible/repository";
 import { LegacyHistory } from "../../src/features/imports/LegacyHistory";
 
 export default function GoalDetail() {
@@ -219,18 +220,10 @@ export default function GoalDetail() {
             kind="secondary"
             icon="book"
             onPress={() =>
-              router.push({
-                pathname: "/lesen/[book]",
-                params: {
-                  book: goal.ref!.book,
-                  chapter: goal.ref!.chapter,
-                  from: goal.ref!.from,
-                  to: goal.ref!.to,
-                },
-              })
+              router.push(readerRoute(goal.ref!))
             }
           >
-            {referenceLabel(goal.ref)} lesen
+            {editionReferenceLabel(goal.ref)} lesen
           </Button>
         )}
         {goal.archivedAt ? (

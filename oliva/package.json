@@ -51,6 +51,7 @@
     "test:e2e": "playwright test",
     "content:import": "python3 scripts/import-bible.py",
     "content:check": "python3 scripts/import-bible.py --check",
+    "content:editions": "python3 scripts/import-schlachter.py --check && python3 scripts/generate-edition-verse-index.py --check",
     "content:nt": "python3 scripts/import-nt-catalog.py --check",
     "preview": "node scripts/serve.mjs",
     "content:art": "node scripts/check-art.mjs",

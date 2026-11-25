@@ -53,7 +53,7 @@ async function unlock(page: Page, password: string) {
   await expect(gate(page)).toHaveCount(0);
 }
 
-test("real encrypted file keeps an original archive offline and only a confirmed preview replaces data", async ({ page, context }) => {
+test("real encrypted V13 file keeps an original archive offline and only a confirmed preview replaces data", async ({ page, context }) => {
   const password = secret();
   await page.goto("/einstellungen");
   await setName(page, "Synthetisches Langarchiv");
@@ -62,7 +62,11 @@ test("real encrypted file keeps an original archive offline and only a confirmed
   await choose(page, "FaithPath-Datei auswählen", "synthetic-v5.json", Buffer.from(source));
   await button(page, "Jetzt sichern und Import übernehmen").click();
   await expect(page.getByText(/Import abgeschlossen/)).toBeVisible();
+  await page.goto("/lesen/MRK?chapter=4&edition=schlachter1951&verse=35");
+  await expect.poll(async () => (await localData(page))?.readingPosition?.verse).toBe(35);
   const original = await localData(page);
+  expect(original.version).toBe(13);
+  expect(original.reading.edition).toBe("schlachter1951");
   expect(original.imports[0]?.sourceText).toBe(source);
   await page.goto("/einstellungen");
   await expect(page.getByText("Für den Offline-Neustart bereit.", { exact: true })).toBeVisible();

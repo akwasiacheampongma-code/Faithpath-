@@ -1,6 +1,8 @@
 import type { Href } from "expo-router";
-import { referenceLabel, type Reference } from "../bible/repository";
-import { referenceSchema } from "../bible/schema";
+import { editionReferenceLabel, type Reference } from "../bible/repository";
+import { editionReferenceSchema } from "../bible/schema";
+import { readerRoute, alternateEdition } from "../bible/editions";
+import { sameBibleChapter } from "../bible/reference-key";
 import { pathById } from "../paths/catalog";
 import { DAILY_QUESTION } from "../personal/capture-model";
 import { newId } from "../personal/schema";
@@ -9,10 +11,7 @@ import { notebookLinkSchema, type NotebookLink } from "./model";
 
 export function linkDetails(link: NotebookLink): { label: string; href: Href } {
   switch (link.kind) {
-    case "bible": return { label: referenceLabel(link.ref), href: {
-      pathname: "/lesen/[book]",
-      params: { book: link.ref.book, chapter: String(link.ref.chapter), from: link.ref.from, to: link.ref.to },
-    } };
+    case "bible": return { label: editionReferenceLabel(link.ref), href: readerRoute(link.ref) };
     case "path": return { label: pathById(link.pathId)?.title ?? "Weg", href: { pathname: "/weg/[id]", params: { id: link.pathId } } };
     case "story": return { label: storyById(link.storyId)?.title ?? "Geschichte", href: { pathname: "/geschichte/[id]", params: { id: link.storyId } } };
     case "daily-question": return { label: DAILY_QUESTION, href: "/" };
@@ -27,7 +26,7 @@ export function linkDetails(link: NotebookLink): { label: string; href: Href } {
   }
 }
 
-export type BibleNoteParams = { book?: string; chapter?: string; from?: string; to?: string };
+export type BibleNoteParams = { book?: string; chapter?: string; edition?: string; from?: string; to?: string };
 export type NotebookEntryParams = BibleNoteParams & {
   id: string;
   neu?: string;
@@ -60,8 +59,11 @@ export function initialNotebookLink(params: NotebookEntryParams): NotebookLink |
 }
 
 export function bibleNoteFilter(params: BibleNoteParams): Reference | undefined {
-  const parsed = referenceSchema.safeParse({
+  const edition = alternateEdition(params.edition);
+  if (params.edition && !edition) return undefined;
+  const parsed = editionReferenceSchema.safeParse({
     book: params.book, chapter: Number(params.chapter),
+    ...(edition ? { edition } : {}),
     from: params.from ? Number(params.from) : undefined,
     to: params.to ? Number(params.to) : undefined,
   });
@@ -69,10 +71,10 @@ export function bibleNoteFilter(params: BibleNoteParams): Reference | undefined 
 }
 
 export function bibleNoteParams(ref?: Reference): BibleNoteParams {
-  return ref ? { book: ref.book, chapter: String(ref.chapter),
+  return ref ? { book: ref.book, chapter: String(ref.chapter), ...(ref.edition ? { edition: ref.edition } : {}),
     from: ref.from?.toString(), to: ref.to?.toString() } : {};
 }
 
 export function linksChapter(link: NotebookLink | null, ref: Reference) {
-  return link?.kind === "bible" && link.ref.book === ref.book && link.ref.chapter === ref.chapter;
+  return link?.kind === "bible" && sameBibleChapter(link.ref, ref);
 }

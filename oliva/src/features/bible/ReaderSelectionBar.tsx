@@ -1,3 +1,4 @@
+import { chapterKeyOf } from "./reference-key";
 import { useEffect, useRef, useState } from "react";
 import { Pressable, View } from "react-native";
 import { Icon, type IconName } from "../../components/Icon";
@@ -37,7 +38,7 @@ export function ReaderSelectionBar({
     busy = useApp((s) => s.busy);
   const [palette, setPalette] = useState(false),
     [message, setMessage] = useState<string | null>(null);
-  const selectionKey = `${reference.book}:${reference.chapter}:${selected.join(",")}`;
+  const selectionKey = `${chapterKeyOf(reference)}:${selected.join(",")}`;
   const current = useRef(selectionKey),
     mounted = useRef(true);
   current.current = selectionKey;

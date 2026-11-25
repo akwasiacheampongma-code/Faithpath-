@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { referenceSchema } from "../bible/schema";
+import { editionReferenceSchema } from "../bible/schema";
 import { pathById } from "../paths/catalog";
 import { storyById } from "../stories/index";
 import type { AppData } from "../../state/model";
@@ -14,7 +14,7 @@ const pathQuestion = z.object({
 }).strict().refine((value) => !!pathById(value.pathId)?.steps[value.step]?.question);
 
 export const notebookLinkSchema = z.discriminatedUnion("kind", [
-  z.object({ kind: z.literal("bible"), ref: referenceSchema }).strict(),
+  z.object({ kind: z.literal("bible"), ref: editionReferenceSchema }).strict(),
   z.object({ kind: z.literal("path"), pathId }).strict(),
   z.object({ kind: z.literal("story"), storyId }).strict(),
   z.object({ kind: z.literal("daily-question") }).strict(),
@@ -63,7 +63,11 @@ export function notebookStamp(entry: NotebookNote) {
 }
 
 function saveNotebook(data: AppData, notes: NotebookNote[]) {
-  data.version = 12;
+  if (data.version !== 13) data.version = 12;
+  if (notes.some((note) => note.link?.kind === "bible" && note.link.ref.edition)) {
+    data.version = 13;
+    data.editionReading ??= {};
+  }
   data.notebook = notes;
 }
 

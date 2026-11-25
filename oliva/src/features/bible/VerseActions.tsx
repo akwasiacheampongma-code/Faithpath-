@@ -1,3 +1,4 @@
+import { verseKeyOf } from "./reference-key";
 import { View } from "react-native";
 import { router } from "expo-router";
 import { Button, Card, T } from "../../components/ui";
@@ -22,9 +23,9 @@ export function VerseActions({
   const t = useTheme(),
     data = useApp((s) => s.data),
     busy = useApp((s) => s.busy),
-    key = `${reference.book}:${reference.chapter}:${verse.n}`,
+    key = verseKeyOf(reference, verse.n),
     color = data.highlights[key];
-  const selectedReference = { book: reference.book, chapter: reference.chapter, from: verse.n, to: verse.n };
+  const selectedReference = { ...reference, from: verse.n, to: verse.n };
   return (
     <Card
       testID={`verse-actions-${verse.n}`}

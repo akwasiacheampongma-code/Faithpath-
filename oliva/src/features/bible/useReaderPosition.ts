@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import { useFocusEffect } from "expo-router";
 import { useApp } from "../../state/store";
+import { savedEditionReading } from "../../state/model";
+import { bibleEdition } from "./editions";
 import {
   readingScope,
   sameReadingScope,
@@ -236,7 +238,7 @@ export function useReaderPosition({
     )
       return;
     const expected = new Set(
-      getChapter(latest.current.reference.book, latest.current.reference.chapter).map((verse) => verse.n),
+      getChapter(latest.current.reference.book, latest.current.reference.chapter, latest.current.reference.edition).map((verse) => verse.n),
     );
     if (
       !listFrame ||
@@ -293,7 +295,7 @@ export function useReaderPosition({
   requestViewport.current = viewportChanged;
   function restore(verse: number) {
     if (readingScope(latest.current.reference) !== scope) return;
-    if (!getChapter(latest.current.reference.book, latest.current.reference.chapter).some((v) => v.n === verse))
+    if (!getChapter(latest.current.reference.book, latest.current.reference.chapter, latest.current.reference.edition).some((v) => v.n === verse))
       return;
     target.current = verse;
     lastVerse.current = verse;
@@ -310,15 +312,15 @@ export function useReaderPosition({
     rootY.current = 0;
     offset.current = 0;
     if (!validReference(reference)) return;
-    const saved = useApp.getState().data.readingPosition;
+    const saved = savedEditionReading(useApp.getState().data, bibleEdition(reference.edition))?.position;
     const validExplicit =
-      explicitVerse && getChapter(reference.book, reference.chapter).some((v) => v.n === explicitVerse)
+      explicitVerse && getChapter(reference.book, reference.chapter, reference.edition).some((v) => v.n === explicitVerse)
         ? explicitVerse
         : null;
     const verse =
       validExplicit ??
       (saved && sameReadingScope(saved.ref, reference) ? saved.verse : null) ??
-      (reference.from ?? (reference.to ? getChapter(reference.book, reference.chapter)[0]?.n ?? null : null));
+      (reference.from ?? (reference.to ? getChapter(reference.book, reference.chapter, reference.edition)[0]?.n ?? null : null));
     target.current = verse;
     lastVerse.current = verse;
     holdRestoredVerse.current = verse !== null;

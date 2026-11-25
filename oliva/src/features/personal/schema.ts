@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { referenceSchema } from "../bible/schema";
+import { editionReferenceSchema } from "../bible/schema";
 import { originSchema } from "../imports/schema";
 import { captureValuesSchema } from "./capture-schema-current";
 
@@ -22,7 +22,7 @@ export const snapshotSchema = z
   .object({
     title: z.string().trim().min(1).max(120),
     why: z.string().max(3000),
-    ref: referenceSchema.optional(),
+    ref: editionReferenceSchema.optional(),
     steps: z
       .array(
         z
@@ -47,7 +47,7 @@ export const goalSchema = z
     id,
     title: z.string().trim().min(1).max(120),
     why: z.string().max(3000),
-    ref: referenceSchema.optional(),
+    ref: editionReferenceSchema.optional(),
     createdAt: date,
     updatedAt: date,
     archivedAt: date.nullable(),
@@ -71,7 +71,7 @@ export const journalValues = z
     baseUpdatedAt: date.nullable(),
     text: z.string().max(10000),
     kind: z.enum(["note", "reflection", "action"]),
-    ref: referenceSchema.optional(),
+    ref: editionReferenceSchema.optional(),
   })
   .strict();
 export const goalValues = z
@@ -82,7 +82,7 @@ export const goalValues = z
     title: z.string().max(120),
     why: z.string().max(3000),
     initialStep: z.string().max(1000),
-    ref: referenceSchema.optional(),
+    ref: editionReferenceSchema.optional(),
   })
   .strict();
 export const stepValues = z

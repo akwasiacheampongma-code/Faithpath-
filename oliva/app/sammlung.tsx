@@ -4,7 +4,10 @@ import { router, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { Button, Field, IconButton, T } from "../src/components/ui";
 import { useTheme } from "../src/design-system/theme";
-import { getPassage, referenceLabel } from "../src/features/bible/repository";
+import { readerRoute } from "../src/features/bible/editions";
+import { splitBibleKey } from "../src/features/bible/reference-key";
+import { useEditionText } from "../src/features/bible/useEditionText";
+import { getPassage, editionReferenceLabel } from "../src/features/bible/repository";
 import { highlightBackground } from "../src/features/bible/highlights";
 import { resumeNotebookEdits } from "../src/features/notebook/autosave";
 import { NoteListRow } from "../src/features/notebook/NoteListRow";
@@ -103,16 +106,18 @@ function SavedVerses({ bookmarks, query }: { bookmarks: boolean; query: string }
   const busy = useApp((state) => state.busy);
   const needle = normalizeCollectionText(query);
   const saved = bookmarks ? data.bookmarks : Object.keys(data.highlights);
+  const otbStatus = useEditionText(saved.some((key) => key.startsWith("otb:")) ? "otb" : "luther");
+  const schlachterStatus = useEditionText(saved.some((key) => key.startsWith("schlachter1951:")) ? "schlachter1951" : "luther");
+  const loading = otbStatus === "loading" || schlachterStatus === "loading";
   const rows = saved.flatMap((key) => {
-    const [book, chapter, verse] = key.split(":");
-    if (!book) return [];
-    const ref = { book, chapter: Number(chapter), from: Number(verse), to: Number(verse) };
-    const label = referenceLabel(ref);
+    const { ref: chapter, from: verse } = splitBibleKey(key);
+    const ref = { ...chapter, from: verse, to: verse };
+    const label = editionReferenceLabel(ref);
     const text = getPassage(ref)[0]?.text ?? "";
     return normalizeCollectionText(`${label} ${text}`).includes(needle) ? [{ key, ref, label, text }] : [];
   });
   if (!rows.length) {
-    return <Empty text={needle ? "Keine passenden Verse." : bookmarks ? "Deine Lesezeichen findest du hier wieder." : "Deine Markierungen findest du hier wieder."} />;
+    return <Empty text={loading ? "Die Bibeltexte werden geladen …" : needle ? "Keine passenden Verse." : bookmarks ? "Deine Lesezeichen findest du hier wieder." : "Deine Markierungen findest du hier wieder."} />;
   }
   return <View>
     {rows.map(({ key, ref, label, text }) => (
@@ -120,9 +125,9 @@ function SavedVerses({ bookmarks, query }: { bookmarks: boolean; query: string }
         <T style={{ fontWeight: "700" }}>{label}</T>
         <T numberOfLines={2} variant="small" style={bookmarks ? undefined : { backgroundColor: highlightBackground(data.highlights[key], theme.dark) }}>{text}</T>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
-          <Button icon="book" kind="ghost" onPress={() => router.push({
-            pathname: "/lesen/[book]", params: { book: ref.book, chapter: ref.chapter, verse: ref.from },
-          })}>Im Kapitel öffnen</Button>
+          <Button icon="book" kind="ghost" onPress={() => router.push(readerRoute(
+            { book: ref.book, chapter: ref.chapter, edition: ref.edition }, { verse: ref.from },
+          ))}>Im Kapitel öffnen</Button>
           <Button icon="close" kind="ghost" disabled={busy} onPress={() => void useApp.getState().mutate((profile) => {
             if (bookmarks) profile.bookmarks = profile.bookmarks.filter((entry) => entry !== key);
             else delete profile.highlights[key];

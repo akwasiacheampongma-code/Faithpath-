@@ -1,23 +1,18 @@
 import { z } from "zod";
-import { referenceSchema } from "./schema";
-import { getChapter } from "./repository";
+import { editionReferenceSchema, referenceSchema } from "./schema";
+import { hasBibleVerse } from "./repository";
 
-// The logical section remains part of the persisted scope. The visible text
-// is its whole chapter, so the last canonical anchor can lie outside the focus.
-export const readingPositionSchema = z
-  .object({
-    ref: referenceSchema,
-    verse: z.number().int().positive(),
-    mode: z.enum(["read", "deep"]),
-  })
-  .strict()
-  .refine(
-    (position) =>
-      getChapter(position.ref.book, position.ref.chapter).some(
-        (verse) => verse.n === position.verse,
-      ),
-    "Leseposition liegt außerhalb des Kapitels",
-  );
+const positionFields = {
+  verse: z.number().int().positive(),
+  mode: z.enum(["read", "deep"]),
+};
+
+// The saved scope can be a short reading with an anchor in its whole chapter.
+export const lutherReadingPositionSchema = z.object({ ref: referenceSchema, ...positionFields })
+  .strict().refine((position) => hasBibleVerse(position.ref, position.verse), "Leseposition liegt außerhalb des Kapitels");
+
+export const readingPositionSchema = z.object({ ref: editionReferenceSchema, ...positionFields })
+  .strict().refine((position) => hasBibleVerse(position.ref, position.verse), "Leseposition liegt außerhalb des Kapitels");
 
 export type ReadingPosition = z.infer<typeof readingPositionSchema>;
 export {

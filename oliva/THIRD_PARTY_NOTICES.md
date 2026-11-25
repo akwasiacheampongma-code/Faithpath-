@@ -88,3 +88,9 @@ THE SOFTWARE.
 ## Open Translation Bible · Deutsch
 
 Open Translation Bible (OTB), Deutsch (de-DE) · © OpenBible. Der Text und seine OLIVA-Importdateien stehen unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Die Verswörter werden unverändert übernommen. Markdown-Zitatzeichen und Trennlinien werden für die Anzeige entfernt. Anmerkungen werden separat angezeigt. Namensnennung, Lizenzlink, Kennzeichnung von Änderungen und Weitergabe unter derselben Lizenz gelten für Bearbeitungen des Textes. Der App-Code behält seine eigene Lizenz. [Originalquelle](https://github.com/OpenTranslationBible/open-bible/tree/31d411ac1c2d277242a3bd85697f354eaa11526b/lang/de-DE) · [Bedingungen](https://openbible.uk/en-GB/terms-and-conditions/) · [Nachweis und Import](content/open-bible-de/README.md)
+
+## Schlachter 1951
+
+Die Heilige Schrift, übersetzt von Franz Eugen Schlachter und 1951 durch die Genfer Bibelgesellschaft neu überarbeitet. © 1951 Genfer Bibelgesellschaft. Digitalisat `deu1951` von eBible.org unter CC BY 4.0. OLIVA hat die USFM-Layoutmarkierungen entfernt und Leerzeichen für die Darstellung vereinheitlicht. Wortlaut und Versnummern folgen der digitalen Vorlage.
+
+[Rechtehinweis der Quelle](https://ebible.org/deu1951/copyright.htm) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)

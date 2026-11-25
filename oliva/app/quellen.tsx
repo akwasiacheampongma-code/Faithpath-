@@ -3,6 +3,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { T, Card, Button, Tag } from "../src/components/ui";
 import { useTheme } from "../src/design-system/theme";
+import { BIBLE_EDITIONS } from "../src/features/bible/editions";
 import { OTB_CREDIT, OTB_LICENCE, OTB_SOURCE, OTB_TERMS } from "../src/features/bible/open-bible";
 
 function OpenBibleRights() {
@@ -19,8 +20,24 @@ function OpenBibleRights() {
   </Card>;
 }
 
+function SchlachterRights() {
+  const source = BIBLE_EDITIONS.schlachter1951;
+  return <Card style={{ gap: 12 }}>
+    <T variant="heading">{source.name}</T>
+    <T>{source.credit}</T>
+    <T variant="small">66 Bücher, 1.189 Kapitel und 31.101 Verse mit Text. OLIVA übernimmt die Worte und die Versnummern von eBible.org. Die Darstellung vereinheitlicht Leerzeichen und entfernt USFM-Layoutmarkierungen.</T>
+    <T variant="small">Matthäus 21,44 ist in dieser digitalen Ausgabe als leere Verszeile überliefert.</T>
+    <View style={{ gap: 4 }}>
+      <Button kind="ghost" icon="info" onPress={() => void Linking.openURL(source.source)}>Quelle und Rechteangabe öffnen</Button>
+      <Button kind="ghost" icon="info" onPress={() => void Linking.openURL(source.licence)}>Lizenz CC BY 4.0 lesen</Button>
+    </View>
+  </Card>;
+}
+
 export default function Sources() {
-  const chosenOtb = useLocalSearchParams<{ ausgabe?: string }>().ausgabe === "otb";
+  const { ausgabe } = useLocalSearchParams<{ ausgabe?: string }>();
+  const chosenOtb = ausgabe === "otb";
+  const chosenSchlachter = ausgabe === "schlachter1951";
   const t = useTheme();
   return (
     <Shell>
@@ -30,6 +47,7 @@ export default function Sources() {
           Wissen, woher Worte kommen.
         </T>
         {chosenOtb && <OpenBibleRights />}
+        {chosenSchlachter && <SchlachterRights />}
         <Card style={{ gap: 13 }}>
           <T variant="heading">Der Bibeltext</T>
           <T>
@@ -53,6 +71,7 @@ export default function Sources() {
           </Button>
         </Card>
         {!chosenOtb && <OpenBibleRights />}
+        {!chosenSchlachter && <SchlachterRights />}
         <Card style={{ gap: 13 }}>
           <T variant="heading">Erklärungen und Gebete</T>
           <T>

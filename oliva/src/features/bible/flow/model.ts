@@ -1,3 +1,4 @@
+import { verseKeyOf, chapterKeyOf } from "../reference-key";
 import type { Reference, Verse } from "../repository";
 import type { VerseFrame } from "../position";
 
@@ -47,7 +48,7 @@ export type FlowLineMeasurement = Readonly<{
 
 const positiveInteger = (value: number) => Number.isInteger(value) && value > 0;
 const sourceScope = (ref: Reference) =>
-  `${ref.book}:${ref.chapter}:${ref.from ?? ""}:${ref.to ?? ""}`;
+  `${chapterKeyOf(ref)}:${ref.from ?? ""}:${ref.to ?? ""}`;
 
 /** Five-verse groups reproduce a presentational rule, not literary paragraphs.
  * No source text, source array, progress field or position is changed. Gaps in
@@ -106,7 +107,7 @@ export function flowParagraphs(
       return {
         n: verse.n,
         text: verse.text,
-        key: `${reference.book}:${reference.chapter}:${verse.n}`,
+        key: verseKeyOf(reference, verse.n),
         ref: {
           book: reference.book,
           chapter: reference.chapter,

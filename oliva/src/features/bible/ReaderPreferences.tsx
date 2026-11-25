@@ -10,14 +10,14 @@ export function ReaderPreferences({
   onFlowChange,
   onClose,
   onOpenNotes,
-  editionSwitch,
+  editionSwitches,
 }: {
   flow: boolean;
   unavailable: boolean;
   onFlowChange: (flow: boolean) => void;
   onClose: () => void;
   onOpenNotes?: () => void;
-  editionSwitch?: { label: string; onPress: () => void };
+  editionSwitches?: readonly { label: string; onPress: () => void }[];
 }) {
   const font = useReaderFont();
   const t = useTheme(),
@@ -119,9 +119,9 @@ export function ReaderPreferences({
           werden. Die Einzelverse bleiben vollständig lesbar.
         </T>
       )}
-      {editionSwitch && <Button kind="secondary" icon="book" onPress={editionSwitch.onPress}>
-        {editionSwitch.label}
-      </Button>}
+      {editionSwitches?.map(({ label, onPress }) => <Button key={label} kind="secondary" icon="book" onPress={onPress}>
+        {label}
+      </Button>)}
       {onOpenNotes && <Button kind="secondary" icon="pen" onPress={onOpenNotes}>Notizen zu diesem Kapitel</Button>}
       <Button kind="ghost" icon="check" onPress={onClose}>
         Leseeinstellungen schließen

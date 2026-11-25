@@ -1,3 +1,4 @@
+import { verseKeyOf } from "../reference-key";
 import { Pressable, View } from "react-native";
 import {
   forwardRef,
@@ -68,7 +69,7 @@ export const LegacyVerseText = forwardRef<FlowTextHandle, LegacyVerseTextProps>(
     return (
       <View testID="reader-single-verses" style={{ gap: 5 }}>
         {verses.map((verse) => {
-          const key = `${reference.book}:${reference.chapter}:${verse.n}`,
+          const key = verseKeyOf(reference, verse.n),
             color = highlights[key],
             marked = bookmarks.includes(key),
             isSelected = selectedVerses

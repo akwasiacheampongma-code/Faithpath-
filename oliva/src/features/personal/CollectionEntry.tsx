@@ -5,7 +5,8 @@ import { Button, T } from "../../components/ui";
 import { useTheme } from "../../design-system/theme";
 import type { Note } from "../../state/model";
 import { useApp } from "../../state/store";
-import { referenceLabel } from "../bible/repository";
+import { readerRoute } from "../bible/editions";
+import { editionReferenceLabel } from "../bible/repository";
 import { NotebookFrame } from "../notebook/NotebookFrame";
 import { NoteTextInput } from "../notebook/NoteTextInput";
 import { CaptureContext } from "./CaptureContext";
@@ -33,9 +34,9 @@ function Details({ note }: { note: Note }) {
   return <View style={{ gap: 10, alignItems: "flex-start" }}>
     {ref && <Button kind="ghost" icon="book" onPress={() => router.push(note.captureSource?.type === "passage"
       ? captureBibleDestination(note.captureSource)
-      : { pathname: "/lesen/[book]", params: { book: ref.book, chapter: ref.chapter, verse: ref.from,
-        ...(ref.from !== undefined && ref.to !== undefined && ref.to > ref.from ? { from: ref.from, to: ref.to } : {}) } })}>
-      {referenceLabel(ref)}
+      : readerRoute(ref.from !== undefined && ref.to !== undefined && ref.to > ref.from ? ref
+        : { book: ref.book, chapter: ref.chapter, edition: ref.edition }, { verse: ref.from }))}>
+      {editionReferenceLabel(ref)}
     </Button>}
     {note.captureSource && <CaptureContext source={note.captureSource} />}
     {origin && <>
