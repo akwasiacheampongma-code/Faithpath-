@@ -10,6 +10,10 @@ Schlachter 1951 basiert auf dem USFM-Archiv von eBible.org unter CC BY 4.0. OLIV
 
 Die zusätzlichen Texte liegen in eigenen, bei Bedarf geladenen Web-Bundles. Der Service Worker nimmt sie mitsamt den Quellenhinweisen ins Offline-Paket auf. `npm run content:editions` prüft den Schlachter-Import und die lokale Versnummernübersicht gegen die gebündelten Daten.
 
+## Gemeinsamer Stand mit den Vorschauen
+
+Der Quellstand übernimmt die zwanzig Geschichtenmotive der bestehenden OLIVA-Beta samt Zuordnungen und Alternativtexten. Die 40 WebP-Dateien sind in der Liste und in der Detailansicht verfügbar. Die Darstellung kennzeichnet die Motive als künstlerische Interpretationen. Das ursprüngliche Liefermanifest beschreibt den damaligen Freigabestand. Die später dokumentierte Freigabe für die öffentliche OLIVA-Beta und die Bildnachweise sind separat verzeichnet und auch offline verfügbar. [Bildnachweise der Beta](../content/story-illustrations/BETA-CREDITS.md)
+
 ## Persönliche Daten
 
 Bestehende V11- und V12-Sicherungen bleiben importierbar. Luther-Referenzen und vorhandene Schlüssel behalten ihr Format. Bei der ersten Speicherung einer weiteren Ausgabe verwendet OLIVA Profildokument V13. Es ergänzt Ausgabekennungen für persönliche Bibelverknüpfungen und hält den letzten Abschnitt samt Versanker je Ausgabe fest. Die Einträge bleiben im bestehenden lokalen Speicher und in Klartext- und verschlüsselten Backups enthalten. V13-Sicherungen benötigen einen OLIVA-Build mit Unterstützung für mehrere Bibelausgaben.

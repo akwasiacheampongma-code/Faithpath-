@@ -40,7 +40,7 @@ test("436 Originaleinheiten sind auffindbar, standardmäßig gesamte Bibel und t
   await page.getByRole("textbox", { name: "Titel oder Bibelstelle", exact: true }).fill(psalm.title.split("").join(" "));
   await expect(page.getByTestId("story-row-" + psalm.id)).toBeVisible();
   await page.getByRole("textbox", { name: "Titel oder Bibelstelle", exact: true }).fill("");
-  await button(page, "Mit Bild").click(); await expect(page.getByText("6 Abschnitte", { exact: true })).toBeVisible();
+  await button(page, "Mit Bild").click(); await expect(page.getByText("26 Abschnitte", { exact: true })).toBeVisible();
   await button(page, "Alle Abschnitte").click(); await button(page, "Nach Bibelbuch filtern").click();
   await button(page, "Judas").click(); await expect(page.getByText("1 Abschnitt", { exact: true })).toBeVisible();
   await expect(page.getByTestId("story-row-NS-0420")).toBeVisible();
@@ -172,11 +172,15 @@ test("bestätigte Ansichten bleiben auf kleinen Displays, in Dunkelansicht und p
     }
     const actualThemeButton = theme === "dark" ? "Hellen Modus aktivieren" : "Dunklen Modus aktivieren";
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    for (const [name, route] of [["library", "/geschichten"], ["illustrated", "/geschichte/NS-0241"], ["psalm", "/geschichte/NS-0073"], ["questions", "/geschichte/NS-0324?stage=verstehen&index=30"]]) {
+    for (const [name, route] of [["library", "/geschichten"], ["illustrated", "/geschichte/NS-0241"], ["new-illustration", "/geschichte/NS-0073"], ["typographic", "/geschichte/NS-0420"], ["questions", "/geschichte/NS-0324?stage=verstehen&index=30"]]) {
       await page.goto(route!); await page.evaluate(() => document.fonts.ready.then(() => undefined));
       await expect(button(page, actualThemeButton)).toBeVisible();
       await expect(page.getByRole("heading", { level: 1 }).filter({ visible: true })).toBeVisible();
-      if (name === "psalm") { await expect(page.getByTestId("story-typographic-hero")).toBeVisible(); }
+      if (name === "new-illustration") {
+        await expect(page.getByTestId("story-project-illustration")).toBeVisible();
+        await expect(page.getByText(/KI-Illustration · künstlerische Interpretation. Gezeigter Abschnitt/)).toBeVisible();
+      }
+      if (name === "typographic") { await expect(page.getByTestId("story-typographic-hero")).toBeVisible(); }
       if (name === "questions") {
         await expect(question(page)).toBeVisible();
         const option = page.getByRole("radio").filter({ visible: true }).first();

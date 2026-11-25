@@ -1,5 +1,9 @@
 import raw from "../../data/story-index.json";
+import illustrations from "../../data/story-illustrations.json";
 import type { Reference } from "../bible/repository";
+
+export type StoryIllustration = { alt: string; passage: string };
+export const projectStoryIllustrations: Readonly<Partial<Record<string, StoryIllustration>>> = illustrations;
 
 export type StoryIdentity = { id: string; hash: string };
 export type StoryUnit = {
@@ -28,6 +32,6 @@ export function filterStories(query = "", testament = "Alle", kind = "Alle", boo
   return STORIES.filter((unit) =>
     (testament === "Alle" || unit.testament === testament) &&
     (book === "Alle" || unit.references.some((ref) => ref.book === book)) &&
-    (kind === "Alle" || (kind === "Bilder" ? !!unit.image : unit.kind === "Psalm" || unit.kind === "Briefabschnitt")) &&
+    (kind === "Alle" || (kind === "Bilder" ? Boolean(unit.image || projectStoryIllustrations[unit.id]) : unit.kind === "Psalm" || unit.kind === "Briefabschnitt")) &&
     normalizeStorySearch(unit.title + unit.referenceLabel).includes(needle));
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { STORIES, filterStories, storyById } from "../src/features/stories/index";
+import { STORIES, filterStories, projectStoryIllustrations, storyById } from "../src/features/stories/index";
 import { storyQuestions, storySourceVariants } from "../src/features/stories/catalog";
 import { storyQuestionSchema } from "../src/features/stories/schema";
 import { emptyStoryStudy, storyStudySchema } from "../src/features/stories/state-schema";
@@ -53,9 +53,22 @@ describe("The complete, original FaithPath story catalog", () => {
     expect(filterStories("", "NT")).toHaveLength(329);
     expect(filterStories("", "AT")).toHaveLength(107);
     expect(filterStories("", "Alle")).toHaveLength(436);
-    expect(filterStories("", "Alle", "Bilder")).toHaveLength(6);
+    expect(filterStories("", "Alle", "Bilder")).toHaveLength(26);
     expect(filterStories("", "Alle", "Alle", "PSA").every((s) => s.kind === "Psalm")).toBe(true);
     expect(psalm.image).toBeNull();
+  });
+  it("adds 20 illustrations by original ID without replacing existing assignments", () => {
+    const ids = Object.keys(projectStoryIllustrations);
+    expect(ids).toHaveLength(20);
+    for (const id of ids) {
+      const story = storyById(id);
+      expect(story?.image).toBeNull();
+      expect(projectStoryIllustrations[id]?.alt).toBeTruthy();
+      expect(projectStoryIllustrations[id]?.passage).toBeTruthy();
+      expect(filterStories("", "Alle", "Bilder").some((match) => match.id === id)).toBe(true);
+    }
+    expect(projectStoryIllustrations[nativity.id]).toBeUndefined();
+    expect(projectStoryIllustrations[jude.id]).toBeUndefined();
   });
   it("retains both Judas ranges and never calls the missing middle verses read", () => {
     expect(jude.references).toEqual([

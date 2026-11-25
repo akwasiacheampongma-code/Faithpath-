@@ -94,3 +94,7 @@ Open Translation Bible (OTB), Deutsch (de-DE) · © OpenBible. Der Text und sein
 Die Heilige Schrift, übersetzt von Franz Eugen Schlachter und 1951 durch die Genfer Bibelgesellschaft neu überarbeitet. © 1951 Genfer Bibelgesellschaft. Digitalisat `deu1951` von eBible.org unter CC BY 4.0. OLIVA hat die USFM-Layoutmarkierungen entfernt und Leerzeichen für die Darstellung vereinheitlicht. Wortlaut und Versnummern folgen der digitalen Vorlage.
 
 [Rechtehinweis der Quelle](https://ebible.org/deu1951/copyright.htm) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+## Geschichtenillustrationen
+
+Zwanzig mit OpenAI ImageGen für OLIVA erstellte Motive werden als künstlerische Interpretationen angezeigt. Die Namens- und Werkangaben, die dargestellten Bibelabschnitte und der Freigabestand sind in den [Bildnachweisen der Beta](content/story-illustrations/BETA-CREDITS.md) dokumentiert.

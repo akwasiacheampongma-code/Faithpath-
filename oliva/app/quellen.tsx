@@ -132,6 +132,12 @@ export default function Sources() {
             Pilotprüfung erfolgt; historische und theologische
             Veröffentlichungsgates sind offen.
           </T>
+          <T style={{ fontSize: 12, lineHeight: 19, color: t.muted }}>
+            20 weitere Geschichtenmotive wurden mit OpenAI ImageGen für OLIVA
+            erstellt und für die öffentliche OLIVA-Beta freigegeben. Die Bildunterschrift
+            nennt den dargestellten Bibelabschnitt. Die unabhängige historische und
+            theologische Prüfung steht aus.
+          </T>
         </Card>
         <Card style={{ gap: 13 }}>
           <T variant="heading">Das Schwert als Symbol</T>

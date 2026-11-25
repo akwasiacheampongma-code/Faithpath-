@@ -1,0 +1,536 @@
+{
+  "tool": "OpenAI ImageGen (image_gen)",
+  "model": null,
+  "modelNote": "Die Werkzeugschnittstelle stellte keine Modellkennung bereit.",
+  "styleReferenceSource": "https://github.com/akwasiacheampongma-code/Faithpath-/blob/hardening/oliva-user-acceptance-20261118/oliva/art/manifest.json",
+  "styleReferenceFiles": [
+    {
+      "assetId": "galilee",
+      "file": "assets/images/galilee-640.webp",
+      "sha256": "5d47bba60ae8f0ad4a121f3f61ef382ae6cdac5e6bb5dd3cf84d2420086cf2ef",
+      "promptVersion": "oliva-cinema-v1-galilee-01"
+    },
+    {
+      "assetId": "easter-dawn",
+      "file": "assets/images/easter-dawn-640.webp",
+      "sha256": "f4d44b2018030d521f397d6338adad362198d1557e0e4e081d16701d08e9547d",
+      "promptVersion": "oliva-cinema-v1-easter-dawn-01"
+    },
+    {
+      "assetId": "nativity",
+      "file": "assets/images/nativity-640.webp",
+      "sha256": "7c4309b24483064048b68d073e2b983dbf3b5a1390905e7c5d144f14c685be21",
+      "promptVersion": "oliva-cinema-v1-nativity-01"
+    },
+    {
+      "assetId": "david-before-goliath",
+      "file": "assets/images/david-before-goliath-640.webp",
+      "sha256": "58481a9761d1ad0b8b773994342b26dd076227e4f524d48edeb4fa609a854591",
+      "promptVersion": "oliva-cinema-v1-david-before-goliath-01"
+    }
+  ],
+  "referencePreparation": "Vier Original-WebPs wurden verlustarm als 2 × 2 Bildtafel für ImageGen zusammengesetzt.",
+  "referenceBoardSha256": "ee4a24bfa5d8783d53dd28d8cbe924e39ce8b25dbed2808623de968d03cf13cd",
+  "stories": [
+    {
+      "storyId": "NS-0001",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Low viewpoint just above an uninterrupted expanse of dark, gently rippling pre-creation waters. A broad soft break of warm creamy light diffuses across the clouded horizon and reflects in a single central vertical band. No solar disc, stars, birds, vegetation or dry land. Emphasize the transition from darkness to light, not a geographic sunrise.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "1. Mose 1,1–5",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "05135b408d0a464f4f07aacfaafd11a6de731b4eaf0b4f59e916da47ddd37b4c"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 399,
+          "top": 47,
+          "right": 1199,
+          "bottom": 997
+        },
+        "detailQuality": 88,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0022",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Low close diagonal view through Nile reeds, a small open waterproof woven reed basket held safely at the bank by an attendant, a clothed swaddled infant inside, Pharaoh’s daughter bending to look with quiet compassion. Keep basket and faces grouped close; simple pale linen, no crowns or monumental buildings.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "2. Mose 2,3–6",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "20c10afc887774e933d3a6a7219a6b4dbde7fa14b2b1a28921eb55ce93fc5d9e"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 683,
+          "top": 55,
+          "right": 1499,
+          "bottom": 1024
+        },
+        "detailQuality": 85,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0023",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Rocky dry mountain slope, compact living thorn bush with small amber flames among intact leaves, Moses a few paces away turned three-quarter back, lowering his head and pulling his mantle to hide his face, sandals set aside. Place figure and bush near each other visually while maintaining clear space between them. No anthropomorphic angel, divine face or magic effects.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "2. Mose 3,2–6",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "3b73e1004c7c3609ca898d18ae6d9711acd68d9ab8432890092cda27f677f8e7"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 344,
+          "top": 17,
+          "right": 1192,
+          "bottom": 1024
+        },
+        "detailQuality": 85,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0025",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: View from among a compact group of travelers from behind as they follow dry ground between dark parted seawater to the pale far horizon, water visibly to left and right, restrained wind in garments, a clearly readable nearby pair in the central corridor. Quiet sense of refuge and scale. No soldiers, drowning, giant fantasy waves or foreground weapons.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "2. Mose 14,21–22",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "0481c92e9ff78eae95b3615802c8480f99201085be63a3f1155174bdf79a842b"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 436,
+          "top": 8,
+          "right": 1284,
+          "bottom": 1015
+        },
+        "detailQuality": 88,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0047",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Close two-person profile on a dry hillside road, younger Ruth and elderly Naomi paused face to face in a moment of loyalty and grief. Ruth gently rests a hand on Naomi’s sleeve. Distinct ages and profiles, muted olive and flax clothing, wind-worn grasses, overcast side light. No third person or harvested barley.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Ruth 1,14–18",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "cc426a992558e5ced68da4b41ee6744f3dd2ebed4a651471303e5aee29291c14"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 359,
+          "top": 17,
+          "right": 1207,
+          "bottom": 1024
+        },
+        "detailQuality": 88,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0049",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Intimate half-length three-quarter portrait of Hannah quietly praying at Shiloh, lips slightly parted, eyes lowered, her posture upright but bowed at the shoulders. A soft daylight patch on earth-toned woven fabric and her cheek, plain shaded fabric and subdued timber behind. Any observer indistinct and deep in shadow. No ornate later temple, baby or halo.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "1. Samuel 1,10–16",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "415d8efaca0b9fc389148b46c3b424b72fc8d80b07eaafc3186961ffa0213920"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 407,
+          "top": 86,
+          "right": 1159,
+          "bottom": 979
+        },
+        "detailQuality": 88,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0059",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: View looking outward from the shaded side of a rough cave mouth onto a hushed rocky highland. Elijah stands close to the threshold in three-quarter back view, one weathered cloak raised to veil his face, only a little grass moving outside in pale diffuse daylight. Rugged ochre rock, stillness, single clear silhouette. No active storm, fire, beams or deity.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "1. Könige 19,11–13",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "54050fbd5845e3176581bbcffe24fe59bcd308fbbfdcd2c5157be587a042e8fb"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 275,
+          "top": 0,
+          "right": 1107,
+          "bottom": 988
+        },
+        "detailQuality": 88,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0073",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: A modest shepherd holding a wooden staff walks with a few sheep through a deep shaded valley, a narrow spring-fed stream catching soft reflected daylight beside them. Composition from a slightly raised view with shepherd and one foreground sheep easy to see, olive-green banks beyond the shadow. Symbolic scene with no halo and no literal visual claim about God.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Psalmen 23,1–4",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "612fe8bc732a8ee5e4f7d50ff33c37a4592760a77692214c649e645fe2147e2a"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 252,
+          "top": 55,
+          "right": 1068,
+          "bottom": 1024
+        },
+        "detailQuality": 79,
+        "listQuality": 86
+      }
+    },
+    {
+      "storyId": "NS-0117",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Quiet view inside a modest ancient plastered room with shut wooden door. A seated adult in rust-colored linen, viewed in back-three-quarter profile, with open resting palms and head inclined in prayer. A narrow high opening casts the softest side light on the figure. Use architectural simplicity and privacy. No scroll lettering, icon, cross, ceremonial gestures or visible Jesus.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Matthäus 6,5–9",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "987de36f19c5e779c0d92652303d42cfb751b2225c20c0b2cf4526f4be0a8cd9"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 268,
+          "top": 55,
+          "right": 1084,
+          "bottom": 1024
+        },
+        "detailQuality": 88,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0142",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Low close crop of an ancient sower in simple sand-colored linen mid-sowing, open hand scattering a few seeds in a readable gentle arc above dark tilled earth near a hard stony path. A plain satchel against the hip. Keep hand, seeds and earth together near the middle. Cloud-filtered afternoon light, no modern farming tools, no mature crop.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Matthäus 13,3–9",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "4172ed2a48d2ce0eda4ae2f6ea41bed0b5f57485313d9c606802cd705af1df4a"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 352,
+          "top": 36,
+          "right": 1184,
+          "bottom": 1024
+        },
+        "detailQuality": 85,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0192",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: At a Galilean shore Jesus stands on the dry bank, calling out gently to two fishermen at the water’s edge. One has just turned his head, a simple casting net is loose in the other’s hands. Keep the three heads and folded net as a compact clear cluster with open pale blue-grey water around it. Casual garment silhouettes, not a storm-like or sunrise composition.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Markus 1,16–18",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "de0fd1f235915adb0f8145a60cc0dadb251698f840a55968ab39611c94c2d81a"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 298,
+          "top": 17,
+          "right": 1146,
+          "bottom": 1024
+        },
+        "detailQuality": 85,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0249",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Close three-quarter view at the edge of a dry stony road: one Samaritan traveler kneeling gently wraps clean undyed linen around the forearm of a seated injured man propped against a low rock. Keep both faces and the bandaging gesture within a tight central cluster. Respectful, attentive body language, unembellished ancient clothes, no visible gore, no attack, no inn. Small plain oil vessel if it fits without distracting.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Lukas 10,33–35",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "238ea015be8c2a96015d2b7207284f0c38848b647af9ef7c13c21b695f0c4688"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 613,
+          "top": 36,
+          "right": 1445,
+          "bottom": 1024
+        },
+        "detailQuality": 85,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0254",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Close chest-up portrait of a joyful tired shepherd carrying one small cream sheep draped comfortably across both shoulders. A gently held front leg on one side, the animal’s head and ears clearly visible on the other; avoid extra limbs. Soft neutral sky and out-of-focus dry hillside, weathered olive ochre clothing. Quietly human, no halo, no other sheep or coins.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Lukas 15,3–7",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "7671abc4f30497f8098787be7645b0a2b3e161aaef78f9c281c0090332da0fcc"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 453,
+          "top": 6,
+          "right": 1237,
+          "bottom": 937
+        },
+        "detailQuality": 88,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0255",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Two adult men in a close standing embrace at the edge of a plain earthen courtyard, seen three-quarter side. An elderly father in a muted cream robe leans forward, his adult son has a visibly worn outer garment, both heads and shoulders within a compact central cluster. Late soft day light on wall, no additional people, crown, banquet or kneeling.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Lukas 15,17–24",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "b30c59d697811764b66f42e23d29b1026cda4f697e2cfc890bad7004682e8a3d"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 399,
+          "top": 6,
+          "right": 1199,
+          "bottom": 956
+        },
+        "detailQuality": 85,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0260",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: A compact low-angle view with Jesus below looking upward toward Zacchaeus perched securely on the low broad fork of a sycomore fig tree, a short clear vertical conversation axis. Dull olive broad fig leaves, softly lit adobe walls, two indistinct villagers only if well in the background. Zacchaeus is a believable adult, no comedy or halo. Keep both faces in the same narrow vertical strip.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Lukas 19,3–6",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "50ccd390ef7baa70bf5f97cd5baf8e7e8bf9ba9eb320a307dc59d4b1100f9e6a"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 329,
+          "top": 17,
+          "right": 1177,
+          "bottom": 1024
+        },
+        "detailQuality": 85,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0264",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Three adult travelers walking together up a gently winding road through dry low hills, seen from slightly behind and to the side at middle distance. Their three distinct silhouettes occupy a compact group, one traveler turns to answer the new companion. Dusty mauve and olive ground, diffused late afternoon. No identifying halo, no bread or table, no claim about the site of Emmaus.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Lukas 24,13–17",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "e064a919257ae422a62012a40af135ec4140bca63f1f4b8f943dc697a5cf204e"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 359,
+          "top": 17,
+          "right": 1207,
+          "bottom": 1024
+        },
+        "detailQuality": 82,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0273",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: An intimate profile conversation at a low round stone well in bright diffuse noon light. A travel-weary Jewish teacher seated on the stone edge and a dignified Samaritan woman standing close across from him, carrying a plain earthen water jar low at her hip. Keep their two faces and the rim in a compact central frame, midday shadows, no magical water or disciples.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Johannes 4,6–15",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "640f338c8d00518d44985890ca89ce536a52c53d56d194c1e37471515bc00518"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 359,
+          "top": 0,
+          "right": 1207,
+          "bottom": 1007
+        },
+        "detailQuality": 85,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0277",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Quiet overhead-leaning still life of exactly FIVE small rustic barley loaves and exactly TWO whole modest freshwater fish resting separately on a simple tan linen cloth, at the edge of a grassy hillside. Arrange as a compact group, legible centered crop. Pale natural daylight. No other food, baskets of leftovers, dinner plates, or duplicated fish shapes.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Johannes 6,8–13",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "157330d546444d5dce84a984c7a141b5461c968db72c1b92589260543b639411"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 359,
+          "top": 17,
+          "right": 1207,
+          "bottom": 1024
+        },
+        "detailQuality": 82,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0293",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: Quiet low three-quarter interior composition. Jesus kneels wearing a simple linen towel tied at his waist, gently cupping water over one bare anatomically natural foot of a seated disciple, with the foot resting just above a wide shallow bronze basin. Keep basin, hands, ankle and part of kneeling face close and readable. The disciple’s other foot rests normally on the floor or is out of frame. Soft ambient lamplight, restrained setting, no table scene or dramatic theatrics.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Johannes 13,3–10",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "a046c43e2ec66b5f6b8600f750617a2d3618ee324549f0cff72b2f89120b36c6"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 528,
+          "top": 17,
+          "right": 1376,
+          "bottom": 1024
+        },
+        "detailQuality": 88,
+        "listQuality": 89
+      }
+    },
+    {
+      "storyId": "NS-0332",
+      "date": "2026-11-19",
+      "prompt": "Generate one single independent full-bleed wide landscape 3:2 biblical editorial illustration for OLIVA. The attached OLIVA reference is a four-picture visual style board: match the restrained warm matte painterly realism, tactile linen and ochre limestone, organic layered depth, muted olive and sand colors, natural soft atmospheric light, understated facial expressions and period-plausible ancient Near Eastern or Mediterranean materials. Borrow only the rendering style. Do not reproduce any reference scene, face or pose, and do not make a montage. Maintain plausible anatomy and respectful imperfect human faces. No text, no border, no graphics, no watermark. Compose spacious horizontal context around one compact focal action, with every important element kept close enough to fit within a narrow vertical 64:76 crop. Keep the important subject sufficiently large so the action reads clearly on a phone.\n\nScene: A shadowed ancient prison room just after the doors have opened. Two adult prisoners with distinct profiles remain seated together in view through the ajar heavy wooden door, a small lamp carried near the doorway by an indistinct figure out of focus. Clear shapes and warm local light on faces, no grid of modern steel bars, no weapons, no injury, no active earthquake. Tight composition holds open door edge and both figures.",
+      "earlierPrompt": null,
+      "artisticInterpretation": true,
+      "illustratedPassage": "Apostelgeschichte 16,25–30",
+      "sourceImage": {
+        "width": 1536,
+        "height": 1024,
+        "sha256": "140412fe9c580822ddf9ec956fc59f6a0f772ccf4cde4dd057c4642ce7fc3803"
+      },
+      "postProcessing": {
+        "detail": "3:2-Bildfeld auf 1024 × 683 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "list": "Separat festgelegter Ausschnitt auf 256 × 304 px mit Lanczos. Verlustbehaftetes WebP ohne Zusatzmetadaten.",
+        "listCropSourcePixels": {
+          "left": 452,
+          "top": 17,
+          "right": 1300,
+          "bottom": 1024
+        },
+        "detailQuality": 88,
+        "listQuality": 89
+      }
+    }
+  ]
+}

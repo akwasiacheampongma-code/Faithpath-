@@ -5,7 +5,8 @@ import { SCENES } from "../bible/scenes";
 import { getPassage, referenceLabel } from "../bible/repository";
 import { useTheme } from "../../design-system/theme";
 import { T, Button } from "../../components/ui";
-import type { StoryUnit } from "./index";
+import { projectStoryIllustrations, type StoryIllustration, type StoryUnit } from "./index";
+import { projectStoryAssets } from "./project-story-assets";
 const thumbnails: Record<string, ImageSourcePropType> = {
   noah: require("../../../assets/images/noah-640.webp"),
   abraham: require("../../../assets/images/abraham-640.webp"),
@@ -16,8 +17,9 @@ const thumbnails: Record<string, ImageSourcePropType> = {
 };
 export function StoryThumbnail({ unit }: { unit: StoryUnit }) {
   const t = useTheme(), [failed, setFailed] = useState(false);
-  if (unit.image && thumbnails[unit.image] && !failed)
-    return <Image accessible={false} source={thumbnails[unit.image]} onError={() => setFailed(true)}
+  const source = projectStoryAssets[unit.id]?.list ?? (unit.image ? thumbnails[unit.image] : undefined);
+  if (source && !failed)
+    return <Image accessible={false} source={source} onError={() => setFailed(true)}
       style={{ width: 64, height: 76, borderRadius: 12 }} resizeMode="cover" />;
   return <View accessible={false} style={{ width: 64, height: 76, borderRadius: 12, backgroundColor: t.goldSoft, alignItems: "center", justifyContent: "center" }}>
     <T style={{ fontFamily: "Cormorant", fontSize: 32, color: t.gold }}>{unit.references[0]!.chapter}</T>
@@ -34,8 +36,34 @@ function StormArt() {
         <Button kind="secondary" onPress={() => setAttempt(0)}>Bild erneut laden</Button></View>}
   </View>;
 }
+function ProjectStoryHero({ unit, artwork, source }: {
+  unit: StoryUnit;
+  artwork: StoryIllustration;
+  source: ImageSourcePropType;
+}) {
+  const t = useTheme();
+  const [failed, setFailed] = useState(false);
+  if (failed) return <StoryPlaceholder unit={unit} />;
+
+  return (
+    <View style={{ gap: 9 }}>
+      <View style={{ aspectRatio: 1024 / 683, borderRadius: 24, overflow: "hidden", backgroundColor: t.soft }}>
+        <Image accessible accessibilityRole="image" accessibilityLabel={artwork.alt}
+          testID="story-project-illustration" source={source} resizeMode="contain"
+          style={{ width: "100%", height: "100%" }} onError={() => setFailed(true)} />
+      </View>
+      <T variant="small" style={{ color: t.muted, fontSize: 11, lineHeight: 18 }}>
+        KI-Illustration · künstlerische Interpretation. Gezeigter Abschnitt {artwork.passage}.
+      </T>
+    </View>
+  );
+}
+
 export function StoryHero({ unit }: { unit: StoryUnit }) {
   const t = useTheme(), scene = SCENES.find((s) => s.id === unit.image);
+  const artwork = projectStoryIllustrations[unit.id];
+  const source = projectStoryAssets[unit.id]?.detail;
+  if (artwork && source) return <ProjectStoryHero key={unit.id} unit={unit} artwork={artwork} source={source} />;
   if (scene || unit.image === "storm") return <View style={{ gap: 9 }}>
     <View style={{ borderRadius: 24, overflow: "hidden" }}>
       {scene ? <StoryArtwork scene={scene} context /> : <StormArt />}
@@ -46,6 +74,11 @@ export function StoryHero({ unit }: { unit: StoryUnit }) {
         unit.id === "NS-0052" ? " Gezeigter Moment: 1. Samuel 17,38–45." : ""}
     </T>
   </View>;
+  return <StoryPlaceholder unit={unit} />;
+}
+
+function StoryPlaceholder({ unit }: { unit: StoryUnit }) {
+  const t = useTheme();
   const first = getPassage(unit.references[0]!)[0];
   return <View testID="story-typographic-hero" style={{ backgroundColor: t.soft, borderWidth: 1, borderColor: t.line, borderRadius: 26, padding: 27, gap: 24, overflow: "hidden" }}>
     <T variant="label" style={{ color: t.gold, fontSize: 10 }}>{unit.kind === "Psalm" ? "EIN PSALM FÜR DEINEN WEG" : unit.kind === "Briefabschnitt" ? "WORTE ZUM WEITERDENKEN" : "EIN ABSCHNITT DER BIBEL"}</T>
