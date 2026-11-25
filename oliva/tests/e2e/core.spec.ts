@@ -140,7 +140,7 @@ test("Buchnavigation, Suche, Leserpräferenzen und idempotenter Kapitelabschluss
   await page
     .getByRole("textbox", { name: "Wörter im Bibeltext suchen" })
     .fill("Friede mit euch");
-  await expect(page.getByText(/Treffer/).first()).toBeVisible();
+  await expect(page.getByTestId("bible-search-count")).toBeVisible();
   await page
     .getByRole("button")
     .filter({ hasText: /Friede sei mit euch/ })

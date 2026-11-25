@@ -89,7 +89,8 @@ test("ein geteilter Gedanke erscheint einmal und öffnet die lesende Sammlung oh
 test("Stadienvorschauen zeigen keine eigenen Baumzweige; kleine Ziele und Dunkelansicht bleiben zugänglich", async ({ page, context }) => {
   const before = await seeded(page);
   for (let i = 0; i < 7; i++) {
-    await button(page, new RegExp(`^Stadium ${i + 1} ansehen:`)).click();
+    await button(page, "Alle sieben Baumstadien ansehen").click();
+    await button(page, new RegExp(`^Baumstadium ${i + 1} ansehen:`)).click();
     await readyTree(page, i);
     await expect(page.getByTestId(/^tree-goal-link-/)).toHaveCount(0);
   }

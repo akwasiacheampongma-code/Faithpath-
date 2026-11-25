@@ -1,5 +1,6 @@
 import raw from "../../data/open-bible-de.json";
-import type { SearchHit, Verse } from "./repository";
+import type { Verse } from "./repository";
+import { findVerseMatches, type SearchHit, type VerseSearchFilter } from "./verse-search";
 import { OTB_BOOKS, otbBook } from "./open-bible";
 
 type Chapter = { verses: Verse[]; notes: { after: number; text: string }[] };
@@ -18,17 +19,6 @@ export function adjacentOtbChapter(book: string, chapter: number, delta: -1 | 1)
   return neighbor ? { book: neighbor.code, chapter: delta > 0 ? 1 : neighbor.chapters } : null;
 }
 
-export function searchOtb(query: string, limit = 60): SearchHit[] {
-  const terms = query.toLocaleLowerCase("de").trim().split(/\s+/).filter(Boolean);
-  if (!terms.length) return [];
-  const result: SearchHit[] = [];
-  for (const book of OTB_BOOKS)
-    for (const [chapter, content] of Object.entries(bible[book.code] ?? {}))
-      for (const verse of content.verses) {
-        const text = verse.text.toLocaleLowerCase("de");
-        if (!terms.every((term) => text.includes(term))) continue;
-        result.push({ book: book.code, chapter: Number(chapter), verse: verse.n, text: verse.text });
-        if (result.length >= limit) return result;
-      }
-  return result;
+export function searchOtb(query: string, limit = Infinity, filter: VerseSearchFilter = {}): SearchHit[] {
+  return findVerseMatches(query, OTB_BOOKS, (book, chapter) => otbChapter(book, chapter)?.verses ?? [], limit, filter);
 }

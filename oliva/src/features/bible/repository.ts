@@ -1,6 +1,9 @@
 import raw from "../../data/bible.json";
 import catalog from "../../data/catalog.json";
 import { withBookDisplayNames } from "./book-search";
+import { findVerseMatches, type SearchHit, type VerseSearchFilter } from "./verse-search";
+
+export type { SearchHit } from "./verse-search";
 
 export type Verse = { n: number; text: string };
 export type Reference = {
@@ -49,28 +52,6 @@ export function adjacentChapter(
     ? { book: next.code, chapter: delta === 1 ? 1 : next.chapters }
     : null;
 }
-export type SearchHit = Reference & { verse: number; text: string };
-export function searchBible(query: string, limit = 60): SearchHit[] {
-  const terms = query
-    .toLocaleLowerCase("de")
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
-  if (!terms.length) return [];
-  const result: SearchHit[] = [];
-  for (const book of BOOKS)
-    for (const [c, verses] of Object.entries(bible[book.code] ?? {}))
-      for (const v of verses) {
-        const value = v.text.toLocaleLowerCase("de");
-        if (terms.every((term) => value.includes(term))) {
-          result.push({
-            book: book.code,
-            chapter: +c,
-            verse: v.n,
-            text: v.text,
-          });
-          if (result.length >= limit) return result;
-        }
-      }
-  return result;
+export function searchBible(query: string, limit = Infinity, filter: VerseSearchFilter = {}): SearchHit[] {
+  return findVerseMatches(query, BOOKS, getChapter, limit, filter);
 }

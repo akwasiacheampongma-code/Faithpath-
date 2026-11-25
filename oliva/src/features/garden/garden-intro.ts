@@ -1,14 +1,17 @@
 import { readDevicePreference, writeDevicePreference } from "../../services/device-preferences";
 
 const key = "oliva.garden-intro.v1";
-let introducedThisSession = false;
+let completeThisSession = false;
 
-export async function claimGardenIntro(isVisiting: () => boolean) {
-  if (introducedThisSession) return false;
+export async function isGardenIntroComplete() {
+  if (completeThisSession) return true;
   const saved = await readDevicePreference(key).catch(() => null);
-  if (introducedThisSession || !isVisiting()) return false;
-  introducedThisSession = true;
-  if (saved === "seen") return false;
-  void writeDevicePreference(key, "seen").catch(() => {});
-  return true;
+  if (saved === "seen") completeThisSession = true;
+  return completeThisSession;
+}
+
+export async function completeGardenIntro() {
+  if (completeThisSession) return;
+  completeThisSession = true;
+  await writeDevicePreference(key, "seen").catch(() => {});
 }

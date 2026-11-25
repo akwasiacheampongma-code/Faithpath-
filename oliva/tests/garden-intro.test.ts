@@ -14,32 +14,29 @@ beforeEach(() => {
 });
 
 describe("Garteneinführung", () => {
-  it("erscheint beim ersten Besuch genau einmal und merkt sich den Aufruf", async () => {
-    const { claimGardenIntro } = await import("../src/features/garden/garden-intro");
-    const results = await Promise.all([claimGardenIntro(() => true), claimGardenIntro(() => true)]);
-    expect(results).toEqual([true, false]);
+  it("zeigt die Einführung bis zum Abschluss und speichert den Abschluss einmal", async () => {
+    const { isGardenIntroComplete, completeGardenIntro } = await import("../src/features/garden/garden-intro");
+    expect(await isGardenIntroComplete()).toBe(false);
+    expect(await isGardenIntroComplete()).toBe(false);
+    expect(write).not.toHaveBeenCalled();
+    await Promise.all([completeGardenIntro(), completeGardenIntro()]);
+    expect(await isGardenIntroComplete()).toBe(true);
     expect(write).toHaveBeenCalledExactlyOnceWith("oliva.garden-intro.v1", "seen");
   });
 
-  it("bleibt nach einem Neustart ausgeblendet, wenn sie bereits erschienen ist", async () => {
+  it("berücksichtigt nach einem Neustart den vorhandenen Geräteschlüssel", async () => {
     read.mockResolvedValue("seen");
-    const { claimGardenIntro } = await import("../src/features/garden/garden-intro");
-    expect(await claimGardenIntro(() => true)).toBe(false);
+    const { isGardenIntroComplete } = await import("../src/features/garden/garden-intro");
+    expect(await isGardenIntroComplete()).toBe(true);
     expect(write).not.toHaveBeenCalled();
   });
 
-  it("merkt keinen Besuch, der vor der Anzeige verlassen wurde", async () => {
-    const { claimGardenIntro } = await import("../src/features/garden/garden-intro");
-    expect(await claimGardenIntro(() => false)).toBe(false);
-    expect(write).not.toHaveBeenCalled();
-    expect(await claimGardenIntro(() => true)).toBe(true);
-  });
-
-  it("zeigt die Einführung bei blockiertem Gerätespeicher einmal in der laufenden Sitzung", async () => {
+  it("merkt sich den Abschluss bei blockiertem Gerätespeicher für die laufende Sitzung", async () => {
     read.mockRejectedValue(new Error("storage blocked"));
     write.mockRejectedValue(new Error("storage blocked"));
-    const { claimGardenIntro } = await import("../src/features/garden/garden-intro");
-    expect(await claimGardenIntro(() => true)).toBe(true);
-    expect(await claimGardenIntro(() => true)).toBe(false);
+    const { isGardenIntroComplete, completeGardenIntro } = await import("../src/features/garden/garden-intro");
+    expect(await isGardenIntroComplete()).toBe(false);
+    await completeGardenIntro();
+    expect(await isGardenIntroComplete()).toBe(true);
   });
 });

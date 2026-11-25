@@ -90,19 +90,19 @@ test("der echte Erststart zeigt drei Schritte, Tastaturfokus und den direkten Ei
   await expect(heading(page, "Deine Gedanken festhalten")).toBeVisible();
   await button(page, "Weiter").click();
   await button(page, "OLIVA entdecken").click();
-  await expect(button(page, "Jetzt Bibel lesen")).toBeVisible();
+  await expect(button(page, "Jetzt lesen")).toBeVisible();
   expect(await localData(page)).toEqual({ ...initialData(), onboarded: true, revision: 1 });
   await page.reload();
-  await expect(button(page, "Jetzt Bibel lesen")).toBeVisible();
+  await expect(button(page, "Jetzt lesen")).toBeVisible();
   await expect(intro(page)).toHaveCount(0);
 });
 
 test("du kannst die Einführung ohne Eingabe überspringen und sofort lesen", async ({ page }) => {
   await page.goto("/");
   await button(page, "Überspringen").click();
-  await expect(button(page, "Jetzt Bibel lesen")).toBeVisible();
+  await expect(button(page, "Jetzt lesen")).toBeVisible();
   await expect(intro(page)).toHaveCount(0);
-  await button(page, "Jetzt Bibel lesen").click();
+  await button(page, "Jetzt lesen").click();
   await expect(page).toHaveURL(/\/lesen\/MRK/);
 });
 
@@ -112,14 +112,14 @@ test("gespeicherte V11- und V12-Profile sehen die Einführung nur auf Wunsch", a
     await storeProfile(page, data);
     const before = await rawData(page);
     await page.goto("/");
-    await expect(heading(page, "Lass deinen Glaubensweg wachsen.")).toBeVisible();
+    await expect(page.getByTestId("home-greeting")).toBeVisible();
     await expect(intro(page)).toHaveCount(0);
     expect(await rawData(page)).toEqual(before);
     await openSettings(page);
     await button(page, "Einführung noch einmal ansehen").click();
     await expect(heading(page, "Gottes Wort entdecken")).toBeVisible();
     await button(page, "Überspringen").click();
-    await expect(heading(page, "Lass deinen Glaubensweg wachsen.")).toBeVisible();
+    await expect(page.getByTestId("home-greeting")).toBeVisible();
     expect(await rawData(page)).toEqual(before);
     await page.reload();
     await expect(intro(page)).toHaveCount(0);
@@ -133,7 +133,7 @@ test("Lesen, Reflexion, Notiz, Wiederfinden und Rückkehr funktionieren gemeinsa
   const before = await localData(page);
   await context.setOffline(true);
   await page.reload();
-  await button(page, "Jetzt Bibel lesen").click();
+  await button(page, "Jetzt lesen").click();
   const readerUrl = page.url();
   expect(Object.fromEntries(new URL(readerUrl).searchParams)).toMatchObject({ chapter: "4", from: "35", to: "41" });
   await expect(page.getByTestId("reader-flow")).toBeVisible();
@@ -260,17 +260,17 @@ test("Heute behält das Bild und wechselt es passend zum angezeigten Testament",
     await storeProfile(page, profile);
     const before = await rawData(page);
     await page.goto("/");
-    const action = button(page, "In der Bibel weiterlesen");
+    const action = button(page, "Weiterlesen");
     await expect(page.getByTestId(`home-landscape-${landscape}`)).toBeVisible();
     await expect(action).toBeInViewport({ ratio: 1 });
-    await expect(page.getByTestId("home-personal-tree")).toBeInViewport({ ratio: 0.8 });
+    await expect(page.getByTestId("home-personal-tree")).toBeVisible();
     expect(await rawData(page)).toEqual(before);
     await action.click();
     await expect(page).toHaveURL(new RegExp(`/lesen/${book}(?:\\?|$)`));
   }
 });
 
-test("Heute hält Leseaktion und vorhandenes Baumbild auf vier Breiten in Hell und Dunkel sichtbar", async ({ page }) => {
+test("Heute hält die Leseaktion oberhalb der Falz und das Baumbild auf vier Breiten zugänglich", async ({ page }) => {
   test.setTimeout(180000);
   const evidence = [];
   await page.clock.setFixedTime(new Date("2026-11-19T14:00:00.000Z"));
@@ -282,9 +282,10 @@ test("Heute hält Leseaktion und vorhandenes Baumbild auf vier Breiten in Hell u
     for (const [width, height] of [[320, 568], [375, 812], [390, 844], [430, 932]] as const) {
       await page.setViewportSize({ width, height });
       await page.goto("/");
-      const action = button(page, "Jetzt Bibel lesen");
+      const action = button(page, "Jetzt lesen");
       const tree = page.getByTestId("home-personal-tree");
       await expect(action).toBeInViewport({ ratio: 1 });
+      await tree.scrollIntoViewIfNeeded();
       await expect(tree).toBeInViewport({ ratio: 0.8 });
       await expect.poll(() => tree.locator("img").evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
       await screenshot(page, `after-today-${theme}-${width}`);

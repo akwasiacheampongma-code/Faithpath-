@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import { View, Pressable, useWindowDimensions } from "react-native";
-import { router, useLocalSearchParams } from "expo-router";
+import { useCallback, useRef, useState, type ComponentRef } from "react";
+import { View, Pressable, ScrollView, useWindowDimensions } from "react-native";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Shell } from "../src/components/Shell";
 import { T, Button, Card, Field } from "../src/components/ui";
 import { Icon } from "../src/components/Icon";
@@ -8,7 +8,6 @@ import { useTheme } from "../src/design-system/theme";
 import {
   BOOKS,
   referenceLabel,
-  searchBible,
   type SearchHit,
 } from "../src/features/bible/repository";
 import { OTB_BOOKS, OTB_NAME, OTB_CREDIT } from "../src/features/bible/open-bible";
@@ -18,6 +17,7 @@ import { countBookRead } from "../src/state/model";
 import { StoryLibrary } from "../src/features/bible/StoryCard";
 import { SpiritualWordCard } from "../src/features/bible/SpiritualWordCard";
 import { BookChapterGrid } from "../src/features/bible/BookChapterGrid";
+import { BibleTextSearch } from "../src/features/bible/BibleTextSearch";
 import { BibleScopeSelect } from "../src/features/bible/BibleScopeSelect";
 import {
   normalizeBookSearch,
@@ -25,7 +25,6 @@ import {
 } from "../src/features/bible/book-search";
 export default function Bible() {
   const otb = useLocalSearchParams<{ ausgabe?: string }>().ausgabe === "otb";
-  const [alternate, setAlternate] = useState<{ query: string; hits: SearchHit[]; failed?: boolean }>();
   const t = useTheme(),
     data = useApp((s) => s.data),
     { width } = useWindowDimensions(),
@@ -33,31 +32,32 @@ export default function Bible() {
     [query, setQuery] = useState(""),
     [mode, setMode] = useState<"books" | "text">("books"),
     [expanded, setExpanded] = useState<string | null>(null),
-    [debounced, setDebounced] = useState(""),
     [showStory, setShowStory] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => setDebounced(query), 250);
-    return () => clearTimeout(timer);
-  }, [query]);
-  const lutherHits = useMemo(() => (!otb && mode === "text" ? searchBible(debounced) : []), [otb, mode, debounced]);
-  useEffect(() => {
-    if (!otb || mode !== "text" || !debounced.trim()) return;
-    let active = true;
-    void import("../src/features/bible/open-bible-content").then(({ searchOtb }) => {
-      if (active) setAlternate({ query: debounced, hits: searchOtb(debounced) });
-    }).catch(() => {
-      if (active) setAlternate({ query: debounced, hits: [], failed: true });
+  const scroll = useRef<ComponentRef<typeof ScrollView>>(null);
+  const offset = useRef(0);
+  const returnOffset = useRef<number | null>(null);
+  useFocusEffect(useCallback(() => {
+    const saved = returnOffset.current;
+    if (saved === null) return;
+    const frame = requestAnimationFrame(() => {
+      scroll.current?.scrollTo({ y: saved, animated: false });
+      returnOffset.current = null;
     });
-    return () => { active = false; };
-  }, [otb, mode, debounced]);
-  const otbResult = alternate?.query === debounced ? alternate : undefined;
-  const hits = otb ? otbResult?.hits ?? [] : lutherHits;
+    return () => cancelAnimationFrame(frame);
+  }, []));
+  const openHit = (hit: SearchHit) => {
+    // React Native Web returns the DOM scroll node, while native returns its handle.
+    const scrollTop = (scroll.current?.getScrollableNode() as unknown as { scrollTop?: number } | undefined)?.scrollTop;
+    returnOffset.current = typeof scrollTop === "number" ? scrollTop : offset.current;
+    router.push({
+      pathname: otb ? "/offen/[book]" : "/lesen/[book]",
+      params: { book: hit.book, chapter: hit.chapter, verse: hit.verse },
+    });
+  };
   const changeEdition = (next: boolean) => {
     if (otb === next) return;
     setExpanded(null);
     setQuery("");
-    setDebounced("");
-    setAlternate(undefined);
     router.setParams({ ausgabe: next ? "otb" : "luther" });
   };
   const normalizedQuery = normalizeBookSearch(query);
@@ -67,22 +67,23 @@ export default function Bible() {
       normalizeBookSearch(b.name).includes(normalizedQuery),
   );
   return (
-    <Shell wide>
+    <Shell wide scrollRef={scroll} onScroll={(event) => { offset.current = event.nativeEvent.contentOffset.y; }}>
+      <View style={{ width: "100%", ...(mode === "text" ? { maxWidth: 690, alignSelf: "center" } : {}) }}>
       <T
         variant="title"
         accessibilityRole="header"
         style={{ fontSize: 34, lineHeight: 40, marginBottom: 4 }}
       >
-        Deine Bibel.
+        {mode === "text" ? "Im Bibeltext suchen" : "Deine Bibel."}
       </T>
-      <T style={{ color: t.muted, fontSize: 12, lineHeight: 19, marginBottom: 14 }}>
+      {mode === "books" && <T style={{ color: t.muted, fontSize: 12, lineHeight: 19, marginBottom: 14 }}>
         {otb ? OTB_CREDIT : "Luther 1912 · vollständig offline enthalten"}
-      </T>
-      <View role="group" accessibilityLabel="Bibelübersetzung" style={{ flexDirection: "row", gap: 7, flexWrap: "wrap", marginBottom: 12 }}>
-        <Button icon={null} selected={!otb} kind={!otb ? "primary" : "secondary"} onPress={() => changeEdition(false)}>Luther 1912</Button>
-        <Button icon={null} selected={otb} kind={otb ? "primary" : "secondary"} onPress={() => changeEdition(true)}>{OTB_NAME}</Button>
+      </T>}
+      <View role="group" accessibilityLabel="Bibelübersetzung" style={{ flexDirection: "row", gap: 7, flexWrap: "wrap", marginTop: mode === "text" ? 8 : 0, marginBottom: 12 }}>
+        <Button icon={null} style={{ paddingHorizontal: 11 }} selected={!otb} kind={!otb ? "primary" : "secondary"} onPress={() => changeEdition(false)}>Luther 1912</Button>
+        <Button icon={null} style={{ paddingHorizontal: 11 }} selected={otb} kind={otb ? "primary" : "secondary"} onPress={() => changeEdition(true)}>{OTB_NAME}</Button>
       </View>
-      {otb ? <View style={{ gap: 4, alignItems: "flex-start", marginBottom: 10 }}>
+      {mode === "books" && (otb ? <View style={{ gap: 4, alignItems: "flex-start", marginBottom: 10 }}>
         <T variant="small" style={{ color: t.muted }}>Deutsch · eigene Kapitel- und Verszählung. Wähle ein Buch zum Lesen.</T>
         <Button kind="ghost" icon="info" onPress={() => router.push({ pathname: "/quellen", params: { ausgabe: "otb" } })}>Quelle, Lizenz und Bedingungen</Button>
       </View> : <Card
@@ -105,7 +106,7 @@ export default function Bible() {
             },
           })}>Weiterlesen</Button>
         </View>
-      </Card>}
+      </Card>)}
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 8 }}>
         {[
           ["books", "Bücher", "Bücher finden"],
@@ -118,7 +119,7 @@ export default function Bible() {
             accessibilityState={{ selected: mode === id }}
             aria-pressed={mode === id}
             onPress={() => {
-              setMode(id as "books");
+              setMode(id === "text" ? "text" : "books");
               setQuery("");
             }}
             style={{
@@ -140,18 +141,9 @@ export default function Bible() {
           </Pressable>
         ))}
       </View>
-      <Field
-        label={mode === "books" ? "Buch suchen" : "Wörter im Bibeltext suchen"}
-        value={query}
-        onChangeText={setQuery}
-        placeholder={
-          mode === "books"
-            ? "Zum Beispiel Markus oder Psalmen"
-            : "Zum Beispiel Liebe, Hoffnung oder Friede"
-        }
-      />
       {mode === "books" ? (
         <>
+          <Field label="Buch suchen" value={query} onChangeText={setQuery} placeholder="Zum Beispiel Markus oder Psalmen" />
           <View style={{ marginVertical: 8 }}>
             <BibleScopeSelect value={group} onChange={setGroup} inline />
           </View>
@@ -240,68 +232,8 @@ export default function Bible() {
             {width >= 960 && <View style={{ width: 320 }}><SpiritualWordCard /></View>}
           </View>
         </>
-      ) : (
-        <View style={{ gap: 12, marginTop: 20 }}>
-          {!debounced.trim() ? (
-            <T style={{ color: t.muted }}>
-              Gib ein oder mehrere Wörter ein. Gesucht wird in der gewählten Übersetzung.
-            </T>
-          ) : otb && !otbResult ? (
-            <T accessibilityLiveRegion="polite">Die Open Translation Bible wird durchsucht …</T>
-          ) : otbResult?.failed && otb ? (
-            <T accessibilityRole="alert">Die OTB-Suche ist gerade nicht verfügbar. Du kannst die Kapitel über „Bücher“ öffnen.</T>
-          ) : (
-            <>
-              <T style={{ fontSize: 12, color: t.muted }}>
-                {hits.length === 60
-                  ? "Die ersten 60 Treffer"
-                  : `${hits.length} Treffer`}{" "}
-                · alle Suchwörter müssen im Vers vorkommen
-              </T>
-              {hits.map((hit) => (
-                <Pressable
-                  key={`${hit.book}:${hit.chapter}:${hit.verse}`}
-                  accessibilityRole="button"
-                  onPress={() =>
-                    router.push({
-                      pathname: otb ? "/offen/[book]" : "/lesen/[book]",
-                      params: {
-                        book: hit.book,
-                        chapter: hit.chapter,
-                        verse: hit.verse,
-                      },
-                    })
-                  }
-                >
-                  <Card style={{ gap: 8 }}>
-                    <T variant="label" style={{ color: t.gold, fontSize: 9 }}>
-                      {referenceLabel({ ...hit, from: hit.verse })}
-                    </T>
-                    <T
-                      style={{
-                        fontFamily: "Cormorant",
-                        fontSize: 24,
-                        lineHeight: 31,
-                      }}
-                    >
-                      {hit.text}
-                    </T>
-                  </Card>
-                </Pressable>
-              ))}
-              {!hits.length && (
-                <Card>
-                  <T>Keine passenden Verse gefunden.</T>
-                  {!otb && <T style={{ fontSize: 12, color: t.muted, marginTop: 7 }}>
-                    Diese historische Übersetzung verwendet ältere Wörter.
-                    Versuche zum Beispiel „Friede“ statt „Frieden“.
-                  </T>}
-                </Card>
-              )}
-            </>
-          )}
-        </View>
-      )}
+      ) : <BibleTextSearch otb={otb} openHit={openHit} />}
+      {mode === "books" && (
       <View style={{ marginTop: 32, borderTopWidth: 1, borderTopColor: t.line, paddingTop: 24 }}>
       <View style={{ marginBottom: 22, gap: 9 }}>
         <Button kind="secondary" icon="book" onPress={() => router.push("/geschichten")}>Geschichten und Abschnitte entdecken</Button>
@@ -326,6 +258,7 @@ export default function Bible() {
           Fragen zum Neuen Testament
         </Button>
       </View>
+      </View>)}
       </View>
     </Shell>
   );

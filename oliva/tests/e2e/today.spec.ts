@@ -20,7 +20,7 @@ async function returning(page:Page,theme:'light'|'dark'='light'){
 
 test('Heute bietet Gästen einen direkten freiwilligen Einstieg in die vorhandene erste Geschichte',async({page})=>{
  await page.goto('/');await page.getByRole('button',{name:'Überspringen',exact:true}).click();await expect(page.getByTestId('home-greeting')).toBeVisible();
- const action=page.getByRole('button',{name:'Jetzt Bibel lesen',exact:true});await expect(action).toBeVisible();
+ const action=page.getByRole('button',{name:'Jetzt lesen',exact:true});await expect(action).toBeVisible();
  const before=await records(page);await page.reload();await expect(action).toBeVisible();expect(await records(page)).toEqual(before);
  await action.click();await expect(page).toHaveURL(/\/lesen\/MRK\?/);
  await expect(page.getByRole('button',{name:/^Vers 35:/})).toBeVisible();expect((await localData(page)).readChapters).toEqual([]);
@@ -36,7 +36,7 @@ test('die Hauptaktion setzt den gespeicherten Abschnitt am tatsächlichen Vers f
 
 test('persönliche Inhalte und alle weiteren Heute-Zugänge bleiben beim Ansehen und Neustart erhalten',async({page})=>{
  await returning(page);const before=await records(page);await page.goto('/');
- for(const label of ['Im Kontext lesen →','Alle Themen →','Dein Thema fortsetzen','Meinen Garten ansehen','Kapitelübersicht öffnen','Deine Entwürfe ansehen'])await expect(page.getByRole('button',{name:label,exact:true})).toBeVisible();
+ for(const label of ['Im Kontext lesen','Alle Themen','Dein Thema fortsetzen: Angst & Sorgen','Meinen Garten ansehen','Kapitelübersicht öffnen','Deine Entwürfe ansehen'])await expect(page.getByRole('button',{name:label,exact:true})).toBeVisible();
  await expect(page.getByRole('textbox',{name:'Deine freiwillige Tagesreflexion',exact:true})).toBeVisible();
  expect(await records(page)).toEqual(before);await page.reload();await expect(page.getByTestId('home-primary-action')).toBeVisible();expect(await records(page)).toEqual(before);
 });
@@ -66,6 +66,6 @@ test.describe('ohne geladenes Landschaftsbild',()=>{
  test('Begrüßung und Hauptaktion bleiben vollständig bedienbar',async({page})=>{
   await page.route('**/galilee-640*.webp',route=>route.abort());await page.goto('/');
   await page.getByRole('button',{name:'Überspringen',exact:true}).click();
-  await expect(page.getByTestId('home-greeting')).toBeVisible();const action=page.getByRole('button',{name:'Jetzt Bibel lesen',exact:true});await expect(action).toBeVisible();await action.click();await expect(page).toHaveURL(/\/lesen\/MRK\?/);
+  await expect(page.getByTestId('home-greeting')).toBeVisible();const action=page.getByRole('button',{name:'Jetzt lesen',exact:true});await expect(action).toBeVisible();await action.click();await expect(page).toHaveURL(/\/lesen\/MRK\?/);
  });
 });
