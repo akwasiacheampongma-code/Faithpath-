@@ -95,6 +95,30 @@ test("nach komplettem Chromium-Neustart bleibt die zuletzt geschriebene Fassung 
   }
 });
 
+test("eine lange geöffnete Notiz zeigt den ganzen Text im Seitenfluss", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.goto("/sammlung");
+  const title = "Eine lange Notiz";
+  const text = [title, "", ...Array.from({ length: 16 }, (_, index) =>
+    `${index + 1}. Ein Satz, der am Rand umbricht und auch in großer Schrift lesbar bleibt.`), "", "Das Ende der Notiz"].join("\n");
+  await newNote(page, text);
+  await button(page, "Sammlung").click();
+  await button(page, `Notiz öffnen: ${title}`).click();
+  await expect(note(page)).toHaveValue(text);
+  await expect(note(page)).not.toBeFocused();
+  await page.evaluate(async () => {
+    document.documentElement.style.fontSize = "200%";
+    await document.fonts.ready;
+  });
+  await expect.poll(() => note(page).evaluate((field) => field.scrollHeight - field.clientHeight)).toBeLessThanOrEqual(2);
+  const saved = page.getByText("Auf diesem Gerät gespeichert", { exact: true });
+  await saved.scrollIntoViewIfNeeded();
+  await expect(saved).toBeInViewport();
+  expect(await note(page).evaluate((field) => field.getBoundingClientRect().bottom)).toBeLessThanOrEqual((await saved.boundingBox())!.y);
+  await edit(page, text + "\nEine weitere Zeile.");
+  await expect.poll(() => note(page).evaluate((field) => field.scrollHeight - field.clientHeight)).toBeLessThanOrEqual(2);
+});
+
 test("Suche, Datum, Anheften und bestätigtes Löschen mit Wiederherstellung", async ({ page }) => {
   await page.goto("/notizen");
   await newNote(page, "Ein erster Titel\nWorte, die Orientierung geben.");

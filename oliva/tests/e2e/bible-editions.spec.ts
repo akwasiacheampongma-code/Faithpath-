@@ -4,6 +4,25 @@ import { localData } from "./persistence";
 const button = (page: Page, name: string) => page.getByRole("button", { name, exact: true }).filter({ visible: true });
 const visibleVerse = (page: Page, n: number) => page.getByRole("button", { name: new RegExp(`^Vers ${n}:`) }).filter({ visible: true });
 
+test("das Übersetzungsdropdown bietet alle Ausgaben bei schmalem Bildschirm per Tastatur an", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.goto("/bibel");
+  const picker = page.getByRole("combobox", { name: "Bibelübersetzung", exact: true });
+  await expect(picker.getByRole("option")).toHaveText(["Luther 1912", "Open Translation Bible", "Schlachter 1951"]);
+  await expect(picker).toHaveValue("luther");
+  await picker.focus();
+  await page.keyboard.press("ArrowDown");
+  await page.keyboard.press("Enter");
+  await expect(picker).toHaveValue("otb");
+  await expect(picker).toBeFocused();
+  await page.keyboard.press("End");
+  await page.keyboard.press("Enter");
+  await expect(picker).toHaveValue("schlachter1951");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await button(page, "Bibeltext durchsuchen").click();
+  await expect(picker).toHaveValue("schlachter1951");
+});
+
 for (const [edition, label, url] of [
   ["otb", "Open Translation Bible", "/offen/JHN?chapter=6&verse=35"],
   ["schlachter1951", "Schlachter 1951", "/lesen/JHN?chapter=6&edition=schlachter1951&verse=35"],
@@ -66,7 +85,7 @@ test("Schlachter 1951 ist vor dem ersten Öffnen vollständig offline verfügbar
   await expect(page.getByText("Für den Offline-Neustart bereit.", { exact: true })).toBeVisible({ timeout: 60000 });
   await context.setOffline(true);
   await page.reload();
-  await button(page, "Schlachter 1951").click();
+  await page.getByRole("combobox", { name: "Bibelübersetzung", exact: true }).selectOption("schlachter1951");
   await button(page, "Bibeltext durchsuchen").click();
   await page.getByRole("textbox", { name: "Wörter im Bibeltext suchen", exact: true }).fill("Friede");
   await expect(page.getByTestId("bible-search-count")).toHaveText("279 Verse gefunden · Schlachter 1951");

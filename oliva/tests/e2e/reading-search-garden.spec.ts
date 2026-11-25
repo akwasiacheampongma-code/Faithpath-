@@ -62,7 +62,7 @@ test("OTB sucht offline in ihrer eigenen Ausgabe und kehrt zur geladenen Ansicht
   await expect(page.getByText("Für den Offline-Neustart bereit.", { exact: true })).toBeVisible({ timeout: 60000 });
   await context.setOffline(true);
   await page.reload();
-  await button(page, "Open Translation Bible").click();
+  await page.getByRole("combobox", { name: "Bibelübersetzung", exact: true }).selectOption("otb");
   await button(page, "Bibeltext durchsuchen").click();
   await searchBox(page).fill("Friede");
   await expect(count(page)).toHaveText("383 Verse gefunden · Open Translation Bible");

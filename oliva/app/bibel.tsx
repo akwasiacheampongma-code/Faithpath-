@@ -19,6 +19,7 @@ import { SpiritualWordCard } from "../src/features/bible/SpiritualWordCard";
 import { BookChapterGrid } from "../src/features/bible/BookChapterGrid";
 import { BibleTextSearch } from "../src/features/bible/BibleTextSearch";
 import { BibleScopeSelect } from "../src/features/bible/BibleScopeSelect";
+import { BibleEditionSelect } from "../src/features/bible/BibleEditionSelect";
 import {
   normalizeBookSearch,
   type BibleScope,
@@ -77,16 +78,12 @@ export default function Bible() {
       >
         {mode === "text" ? "Im Bibeltext suchen" : "Deine Bibel."}
       </T>
-      {mode === "books" && <T style={{ color: t.muted, fontSize: 12, lineHeight: 19, marginBottom: 14 }}>
-        {translated ? BIBLE_EDITIONS[edition].credit : "Luther 1912 · vollständig offline enthalten"}
-      </T>}
-      <View role="group" accessibilityLabel="Bibelübersetzung" style={{ flexDirection: "row", gap: 7, flexWrap: "wrap", marginTop: mode === "text" ? 8 : 0, marginBottom: 12 }}>
-        {(Object.keys(BIBLE_EDITIONS) as BibleEdition[]).map((candidate) => (
-          <Button key={candidate} icon={null} style={{ paddingHorizontal: 11 }}
-            selected={edition === candidate} kind={edition === candidate ? "primary" : "secondary"}
-            onPress={() => changeEdition(candidate)}>{BIBLE_EDITIONS[candidate].name}</Button>
-        ))}
+      <View style={{ marginTop: 8, marginBottom: 12 }}>
+        <BibleEditionSelect value={edition} onChange={changeEdition} />
       </View>
+      {mode === "books" && <T style={{ color: t.muted, fontSize: 12, lineHeight: 19, marginBottom: 4 }}>
+        {translated ? BIBLE_EDITIONS[edition].credit : "Vollständig offline enthalten"}
+      </T>}
       {mode === "books" && translated && <View style={{ alignItems: "flex-start", marginBottom: 10 }}>
         <Button kind="ghost" icon="info" onPress={() => router.push({ pathname: "/quellen", params: { ausgabe: edition } })}>
           Quelle, Lizenz und Bedingungen
